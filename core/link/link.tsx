@@ -14,15 +14,6 @@ export interface Props {
   className?: string
 }
 
-const defaultProps = {
-  href: '',
-  color: false,
-  icon: false,
-  underline: false,
-  block: false,
-  className: ''
-}
-
 type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
 export type LinkProps = Props & NativeAttrs
 
@@ -32,19 +23,20 @@ const LinkComponent = React.forwardRef<
 >(
   (
     {
-      href,
-      color,
-      underline,
+      href = '',
+      color = false,
+      underline = false,
       children,
-      className,
-      block,
-      icon,
+      className = '',
+      block = false,
+      icon = false,
       ...props
-    }: React.PropsWithChildren<LinkProps> & typeof defaultProps,
+    }: React.PropsWithChildren<LinkProps>,
     ref: React.Ref<HTMLAnchorElement>
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+
     const linkColor = color || block ? theme.palette.link : 'inherit'
     const hoverColor = color || block ? theme.palette.successLight : 'inherit'
     const decoration = underline ? 'underline' : 'none'
@@ -96,7 +88,6 @@ const LinkComponent = React.forwardRef<
   }
 )
 
-LinkComponent.defaultProps = defaultProps
-LinkComponent.displayName = 'BolioUItLink'
+LinkComponent.displayName = 'BolioUILink'
 const Link = withScale(LinkComponent)
 export default Link
