@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Link from '.'
 import Spacer from '../spacer'
+import Text from '../text'
 
 export default {
   title: 'Navigation/Link',
@@ -31,19 +32,24 @@ export const WithIcon: Story = () => (
 
 export const Variant: Story = () => (
   <>
-    <Link href="#">HTTP is stateless, but not sessionless.</Link>
-
-    <Link href="#" color>
-      HTTP is stateless, but not sessionless.
-    </Link>
-
-    <Link href="#" underline>
-      HTTP is stateless, but not sessionless.
-    </Link>
-
-    <Link href="#" color underline>
-      HTTP is stateless, but not sessionless.
-    </Link>
+    <Text>
+      <Link href="#">HTTP is stateless, but not sessionless.</Link>
+    </Text>
+    <Text>
+      <Link href="#" color>
+        HTTP is stateless, but not sessionless.
+      </Link>
+    </Text>
+    <Text>
+      <Link href="#" underline>
+        HTTP is stateless, but not sessionless.
+      </Link>
+    </Text>
+    <Text>
+      <Link href="#" color underline>
+        HTTP is stateless, but not sessionless.
+      </Link>
+    </Text>
   </>
 )
 

@@ -11,9 +11,6 @@ export type { CardProps, CardContentProps, CardFooterProps } from './card'
 export { default as Grid } from './grid'
 export type { GridProps, GridContainerProps } from './grid'
 
-export { default as Spacer } from './spacer'
-export type { SpacerProps } from './spacer'
-
 export { default as Image } from './image'
 export type { ImageProps, ImageBrowserProps } from './image'
 
@@ -24,6 +21,12 @@ export type {
   PageContentProps,
   PageFooterProps
 } from './page'
+
+export { default as Spacer } from './spacer'
+export type { SpacerProps } from './spacer'
+
+export { default as Text } from './text'
+export type { TextProps } from './text'
 
 export { default as Themes } from './themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './themes'
