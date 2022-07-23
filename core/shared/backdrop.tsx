@@ -133,5 +133,5 @@ const Backdrop: React.FC<React.PropsWithChildren<BackdropProps>> = React.memo(
 )
 
 Backdrop.defaultProps = defaultProps
-Backdrop.displayName = 'BolioBackdrop'
+Backdrop.displayName = 'BolioUIBackdrop'
 export default Backdrop

@@ -5,20 +5,14 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  className: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageContentProps = Props & NativeAttrs
 
-const PageContentComponent: React.FC<
-  React.PropsWithChildren<PageContentProps>
-> = ({
+function PageContentComponent({
   className,
   children,
   ...props
-}: React.PropsWithChildren<PageContentProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<PageContentProps>) {
   const { SCALES } = useScale()
 
   return (
@@ -39,7 +33,6 @@ const PageContentComponent: React.FC<
   )
 }
 
-PageContentComponent.defaultProps = defaultProps
-PageContentComponent.displayName = 'BolioPageContent'
+PageContentComponent.displayName = 'BolioUIPageContent'
 const PageContent = withScale(PageContentComponent)
 export default PageContent

@@ -179,5 +179,5 @@ const GridBasicItem: React.FC<React.PropsWithChildren<GridBasicItemProps>> = ({
 }
 
 GridBasicItem.defaultProps = defaultProps
-GridBasicItem.displayName = 'BolioGridBasicItem'
+GridBasicItem.displayName = 'BolioUIGridBasicItem'
 export default GridBasicItem
