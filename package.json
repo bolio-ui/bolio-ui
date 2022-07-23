@@ -12,7 +12,11 @@
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "export": "yarn build && next export -o _static",
+    "clear-all": "rm -rf .next _static node_modules",
+    "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
+    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
   },
   "lint-staged": {
     "src/**/*": [
