@@ -8,6 +8,6 @@ export default {
 
 export const Default: Story = () => (
   <Card>
-    <p>A basic card.</p>
+    <p>A default card.</p>
   </Card>
 )

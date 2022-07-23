@@ -9,23 +9,25 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <Link href="#">HTTP is stateless, but not sessionless.</Link>
+  <Link href="#">
+    Is a reference to the data you can follow directly by tapping.
+  </Link>
 )
 
 export const Highlight: Story = () => (
   <Link href="#" color>
-    HTTP is stateless, but not sessionless.
+    Is a reference to the data you can follow directly by tapping.
   </Link>
 )
 
 export const WithIcon: Story = () => (
   <>
     <Link href="#" icon>
-      HTTP is stateless, but not sessionless.
+      Is a reference to the data you can follow directly by tapping.
     </Link>
     <Spacer h={0.5} />
     <Link href="#" icon color>
-      HTTP is stateless, but not sessionless.
+      Is a reference to the data you can follow directly by tapping.
     </Link>
   </>
 )
@@ -33,21 +35,23 @@ export const WithIcon: Story = () => (
 export const Variant: Story = () => (
   <>
     <Text>
-      <Link href="#">HTTP is stateless, but not sessionless.</Link>
+      <Link href="#">
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
     </Text>
     <Text>
       <Link href="#" color>
-        HTTP is stateless, but not sessionless.
+        Is a reference to the data you can follow directly by tapping.
       </Link>
     </Text>
     <Text>
       <Link href="#" underline>
-        HTTP is stateless, but not sessionless.
+        Is a reference to the data you can follow directly by tapping.
       </Link>
     </Text>
     <Text>
       <Link href="#" color underline>
-        HTTP is stateless, but not sessionless.
+        Is a reference to the data you can follow directly by tapping.
       </Link>
     </Text>
   </>
@@ -55,6 +59,6 @@ export const Variant: Story = () => (
 
 export const Block: Story = () => (
   <Link href="#" block>
-    HTTP is stateless, but not sessionless.
+    Is a reference to the data you can follow directly by tapping.
   </Link>
 )
