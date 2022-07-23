@@ -16,13 +16,6 @@ interface Props {
   dotSpace?: number
 }
 
-const defaultProps = {
-  render: 'default' as PageRenderMode,
-  dotBackdrop: false,
-  dotSize: '1px' as CSSProperties['fontSize'],
-  dotSpace: 1
-}
-
 export type DotStylesProps = {
   dotSize: CSSProperties['fontSize']
   dotSpace: number
@@ -54,22 +47,23 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageProps = Props & NativeAttrs
-
-const PageComponent: React.FC<React.PropsWithChildren<PageProps>> = ({
+function PageComponent({
   children,
-  render,
-  dotBackdrop,
+  render = 'default' as PageRenderMode,
+  dotBackdrop = false,
   className,
-  dotSize,
-  dotSpace,
+  dotSize = '1px' as CSSProperties['fontSize'],
+  dotSpace = 1,
   ...props
-}: React.PropsWithChildren<PageProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<PageProps>) {
   const theme = useTheme()
   const { SCALES } = useScale()
+
   const showDot = useMemo<boolean>(() => {
     if (theme.type === 'dark') return false
     return dotBackdrop
   }, [dotBackdrop, theme.type])
+
   const [preventRender, setPreventRender] = useState<boolean>(
     render !== 'default'
   )
@@ -81,6 +75,7 @@ const PageComponent: React.FC<React.PropsWithChildren<PageProps>> = ({
   if (preventRender) {
     const renderSEO = render === 'effect-seo'
     if (!renderSEO) return null
+
     return (
       <div className="hidden" aria-hidden="true">
         {children}
@@ -119,7 +114,6 @@ const PageComponent: React.FC<React.PropsWithChildren<PageProps>> = ({
   )
 }
 
-PageComponent.defaultProps = defaultProps
-PageComponent.displayName = 'BolioPage'
+PageComponent.displayName = 'BolioUIPage'
 const Page = withScale(PageComponent)
 export default Page

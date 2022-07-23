@@ -71,5 +71,5 @@ const CssTransition: React.FC<React.PropsWithChildren<CssTransitionProps>> = ({
 }
 
 CssTransition.defaultProps = defaultProps
-CssTransition.displayName = 'BolioCssTransition'
+CssTransition.displayName = 'BolioUICssTransition'
 export default CssTransition

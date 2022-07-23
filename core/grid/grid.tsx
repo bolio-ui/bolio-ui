@@ -41,6 +41,6 @@ const GridComponent: React.FC<React.PropsWithChildren<GridProps>> = ({
 }
 
 GridComponent.defaultProps = defaultProps
-GridComponent.displayName = 'BolioGrid'
+GridComponent.displayName = 'BolioUIGrid'
 const Grid = withScale(GridComponent)
 export default Grid

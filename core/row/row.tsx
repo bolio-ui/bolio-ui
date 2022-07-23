@@ -76,5 +76,5 @@ const Container: React.FC<React.PropsWithChildren<RowProps>> = ({
 }
 
 Container.defaultProps = defaultProps
-Container.displayName = 'BolioContainer'
+Container.displayName = 'BolioUIContainer'
 export default Container

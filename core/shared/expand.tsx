@@ -90,5 +90,5 @@ const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({
 }
 
 Expand.defaultProps = defaultProps
-Expand.displayName = 'BolioExpand'
+Expand.displayName = 'BolioUIExpand'
 export default Expand

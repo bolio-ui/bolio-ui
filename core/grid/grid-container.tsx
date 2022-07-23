@@ -56,6 +56,6 @@ const GridContainerComponent: React.FC<
 }
 
 GridContainerComponent.defaultProps = defaultProps
-GridContainerComponent.displayName = 'BolioGridContainer'
+GridContainerComponent.displayName = 'BolioUIGridContainer'
 const GridContainer = withScale(GridContainerComponent)
 export default GridContainer
