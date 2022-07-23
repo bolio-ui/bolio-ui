@@ -11,6 +11,9 @@ export type { CardProps, CardContentProps, CardFooterProps } from './card'
 export { default as Grid } from './grid'
 export type { GridProps, GridContainerProps } from './grid'
 
+export { default as Spacer } from './spacer'
+export type { SpacerProps } from './spacer'
+
 export { default as Image } from './image'
 export type { ImageProps, ImageBrowserProps } from './image'
 
