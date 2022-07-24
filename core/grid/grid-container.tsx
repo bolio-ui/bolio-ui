@@ -11,38 +11,32 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  gap: 0,
-  wrap: 'wrap' as GridWrap,
-  className: ''
-}
-
 export type GridContainerProps = Props & GridBasicItemProps
 
-const GridContainerComponent: React.FC<
-  React.PropsWithChildren<GridContainerProps>
-> = ({
-  gap,
-  wrap,
+function GridContainerComponent({
+  gap = 0,
+  wrap = 'wrap' as GridWrap,
   children,
-  className,
+  className = '',
   ...props
-}: React.PropsWithChildren<GridContainerProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<GridContainerProps>) {
   const { unit, SCALES } = useScale()
   const gapUnit = useMemo(() => `calc(${gap} * ${unit} * 1/3)`, [gap, unit])
+
+  const gridConMargin = 'calc(-1 * var(--grid-gap-unit))'
+  const gridConWidth = 'calc(100% + var(--grid-gap-unit) * 2)'
+
   const { className: resolveClassName, styles } = css.resolve`
     div {
       --grid-gap-unit: ${gapUnit};
-      --grid-container-margin: calc(-1 * var(--grid-gap-unit));
-      --grid-container-width: calc(100% + var(--grid-gap-unit) * 2);
+      --grid-container-margin: ${gridConMargin};
+      --grid-container-width: ${gridConWidth};
       display: flex;
       flex-wrap: ${wrap};
       box-sizing: border-box;
-      width: ${SCALES.width(1, 'var(--grid-container-width)')};
-      margin: ${SCALES.mt(0, 'var(--grid-container-margin)')}
-        ${SCALES.mr(0, 'var(--grid-container-margin)')}
-        ${SCALES.mb(0, 'var(--grid-container-margin)')}
-        ${SCALES.ml(0, 'var(--grid-container-margin)')};
+      width: ${SCALES.width(1, gridConWidth)};
+      margin: ${SCALES.mt(0, gridConMargin)} ${SCALES.mr(0, gridConMargin)}
+        ${SCALES.mb(0, gridConMargin)} ${SCALES.ml(0, gridConMargin)};
     }
   `
   const classes = useClasses(resolveClassName, className)
@@ -55,7 +49,6 @@ const GridContainerComponent: React.FC<
   )
 }
 
-GridContainerComponent.defaultProps = defaultProps
 GridContainerComponent.displayName = 'BolioUIGridContainer'
 const GridContainer = withScale(GridContainerComponent)
 export default GridContainer
