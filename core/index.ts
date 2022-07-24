@@ -20,6 +20,8 @@ export type { GridProps, GridContainerProps } from './grid'
 export { default as Image } from './image'
 export type { ImageProps, ImageBrowserProps } from './image'
 
+export * as ParsedCodes from './mdx-widgets'
+
 export { default as Page } from './page'
 export type {
   PageProps,
