@@ -1,10 +1,10 @@
-import GlobalStyles from '../src/styles/global'
+import { BolioUIProvider, CssBaseline } from '../core'
 
 export const decorators = [
   (Story) => (
-    <>
-      <GlobalStyles />
+    <BolioUIProvider>
+      <CssBaseline />
       <Story />
-    </>
+    </BolioUIProvider>
   )
 ]
