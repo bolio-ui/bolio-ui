@@ -12,22 +12,16 @@ interface Props {
   maxDelay?: number
 }
 
-const defaultProps = {
-  disableSkeleton: false,
-  className: '',
-  maxDelay: 3000
-}
-
 type NativeAttrs = Omit<React.ImgHTMLAttributes<any>, keyof Props>
 export type ImageProps = Props & NativeAttrs
 
-const ImageComponent: React.FC<ImageProps> = ({
+function ImageComponent({
   src,
-  disableSkeleton,
-  className,
-  maxDelay,
+  disableSkeleton = false,
+  className = '',
+  maxDelay = 3000,
   ...props
-}: ImageProps & typeof defaultProps) => {
+}: ImageProps) {
   const { SCALES, getScaleProps } = useScale()
   const width = getScaleProps(['width', 'w'])
   const height = getScaleProps(['height', 'h'])
@@ -51,7 +45,7 @@ const ImageComponent: React.FC<ImageProps> = ({
       setLoading(false)
       setShowSkeleton(false)
     }
-  })
+  }, [showAnimation])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,7 +55,7 @@ const ImageComponent: React.FC<ImageProps> = ({
       clearTimeout(timer)
     }, maxDelay)
     return () => clearTimeout(timer)
-  }, [loading])
+  }, [loading, maxDelay, showAnimation])
 
   return (
     <div className={useClasses('image', className)}>
@@ -94,7 +88,6 @@ const ImageComponent: React.FC<ImageProps> = ({
   )
 }
 
-ImageComponent.defaultProps = defaultProps
 ImageComponent.displayName = 'BolioUIImage'
 const Image = withScale(ImageComponent)
 export default Image

@@ -8,11 +8,19 @@ export type { BolioUIProviderProps } from './bolio-ui-provider'
 export { default as Card } from './card'
 export type { CardProps, CardContentProps, CardFooterProps } from './card'
 
+export { default as Code } from './code'
+export type { CodeProps } from './code'
+
+export { default as Display } from './display'
+export type { DisplayProps } from './display'
+
 export { default as Grid } from './grid'
 export type { GridProps, GridContainerProps } from './grid'
 
 export { default as Image } from './image'
 export type { ImageProps, ImageBrowserProps } from './image'
+
+export * as ParsedCodes from './mdx-widgets'
 
 export { default as Page } from './page'
 export type {
