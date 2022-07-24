@@ -52,7 +52,7 @@ export const Compose: Story = () => (
     shadow
     caption={
       <p>
-        Set the <Code>height</Code> to reduces the possibility of page rerender.
+        Reduce the possibility of page rendering by setting <Code>height</Code>
       </p>
     }
   >
