@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-nextjs",
+  "name": "@bolio-ui/core",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,11 @@
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "export": "yarn build && next export -o _static",
+    "clear-all": "rm -rf .next _static node_modules",
+    "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
+    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
   },
   "lint-staged": {
     "src/**/*": [
@@ -48,11 +52,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-storybook": "^0.6.1",
     "husky": "^7.0.0",
     "jest": "^27.0.6",
     "lint-staged": "^11.1.1",
     "plop": "^2.7.4",
     "prettier": "2.3.2",
+    "styled-jsx": "4.0.1",
     "typescript": "^4.3.5"
   }
 }
