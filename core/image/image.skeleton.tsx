@@ -5,14 +5,10 @@ interface Props {
   opacity?: number
 }
 
-const defaultProps = {
-  opacity: 0.5
-}
-
 export type ImageSkeletonProps = Props
 
 const ImageSkeleton: React.FC<ImageSkeletonProps> = React.memo(
-  ({ opacity, ...props }: ImageSkeletonProps & typeof defaultProps) => {
+  ({ opacity = 0.5, ...props }: ImageSkeletonProps) => {
     const theme = useTheme()
     return (
       <div className="skeleton" {...props}>
@@ -52,6 +48,5 @@ const ImageSkeleton: React.FC<ImageSkeletonProps> = React.memo(
   }
 )
 
-ImageSkeleton.defaultProps = defaultProps
 ImageSkeleton.displayName = 'BolioUItImageSkeleton'
 export default ImageSkeleton

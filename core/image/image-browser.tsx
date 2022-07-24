@@ -22,13 +22,6 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  className: '',
-  showFullLink: false,
-  anchorProps: {} as ImageAnchorProps,
-  invert: false
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ImageBrowserProps = Props & NativeAttrs
 
@@ -108,20 +101,22 @@ const ImageBrowserComponent = React.forwardRef<
       url,
       title,
       children,
-      showFullLink,
-      invert,
-      anchorProps,
-      className,
+      showFullLink = false,
+      invert = false,
+      anchorProps = {} as ImageAnchorProps,
+      className = '',
       ...props
-    }: React.PropsWithChildren<ImageBrowserProps> & typeof defaultProps,
+    }: React.PropsWithChildren<ImageBrowserProps>,
     ref: React.Ref<HTMLDivElement>
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+
     const colors = useMemo(
       () => getBrowserColors(invert, theme.palette),
       [invert, theme.palette]
     )
+
     const input = useMemo(() => {
       if (url) return getAddressInput(url, showFullLink, colors, anchorProps)
       if (title) return getTitle(title, colors)
@@ -206,7 +201,6 @@ const ImageBrowserComponent = React.forwardRef<
   }
 )
 
-ImageBrowserComponent.defaultProps = defaultProps
 ImageBrowserComponent.displayName = 'BolioUIImageBrowser'
 const ImageBrowser = withScale(ImageBrowserComponent)
 export default ImageBrowser

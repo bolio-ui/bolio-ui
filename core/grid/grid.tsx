@@ -8,26 +8,23 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  className: ''
-}
-
 export type GridProps = Props & GridBasicItemProps
 
-const GridComponent: React.FC<React.PropsWithChildren<GridProps>> = ({
+function GridComponent({
   children,
-  className,
+  className = '',
   ...props
-}: React.PropsWithChildren<GridProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<GridProps>) {
   const { SCALES } = useScale()
+
+  const gridGapUnit = 'var(--grid-gap-unit)'
+
   const { className: resolveClassName, styles } = css.resolve`
     div {
       margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)};
       box-sizing: border-box;
-      padding: ${SCALES.pt(0, 'var(--grid-gap-unit)')}
-        ${SCALES.pr(0, 'var(--grid-gap-unit)')}
-        ${SCALES.pb(0, 'var(--grid-gap-unit)')}
-        ${SCALES.pl(0, 'var(--grid-gap-unit)')};
+      padding: ${SCALES.pt(0, gridGapUnit)} ${SCALES.pr(0, gridGapUnit)}
+        ${SCALES.pb(0, gridGapUnit)} ${SCALES.pl(0, gridGapUnit)};
     }
   `
   const classes = useClasses(resolveClassName, className)
@@ -40,7 +37,6 @@ const GridComponent: React.FC<React.PropsWithChildren<GridProps>> = ({
   )
 }
 
-GridComponent.defaultProps = defaultProps
 GridComponent.displayName = 'BolioUIGrid'
 const Grid = withScale(GridComponent)
 export default Grid

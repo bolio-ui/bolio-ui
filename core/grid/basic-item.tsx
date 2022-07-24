@@ -10,6 +10,7 @@ import useScale from '../use-scale'
 import useClasses from '../use-classes'
 
 export type GridBreakpointsValue = number | boolean
+
 export interface GridBasicComponentProps {
   xs?: GridBreakpointsValue
   sm?: GridBreakpointsValue
@@ -44,6 +45,7 @@ type ItemLayoutValue = {
   basis: string
   display: string
 }
+
 const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
   const display = val === 0 ? 'display: none;' : 'display: inherit;'
   if (typeof val === 'number') {
@@ -64,7 +66,7 @@ const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
   }
 }
 
-const GridBasicItem: React.FC<React.PropsWithChildren<GridBasicItemProps>> = ({
+function GridBasicItem({
   xs,
   sm,
   md,
@@ -77,7 +79,7 @@ const GridBasicItem: React.FC<React.PropsWithChildren<GridBasicItemProps>> = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<GridBasicItemProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<GridBasicItemProps> & typeof defaultProps) {
   const theme = useTheme()
   const { SCALES } = useScale()
   const classes = useMemo(() => {
