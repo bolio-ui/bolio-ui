@@ -1194,7 +1194,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.17.8":
+"@babel/runtime@^7.16.3", "@babel/runtime@^7.17.8":
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -1292,6 +1292,12 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
+
+"@bolio-ui/icons@file:bolio-ui-icons-1.0.0.tgz":
+  version "1.0.0"
+  resolved "file:bolio-ui-icons-1.0.0.tgz#6399815f964a076ad8de91c5c5a8a989ab7e23fa"
+  dependencies:
+    "@babel/runtime" "^7.16.3"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
