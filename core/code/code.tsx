@@ -104,6 +104,6 @@ function CodeComponent({
   )
 }
 
-CodeComponent.displayName = 'BrunoUICode'
+CodeComponent.displayName = 'BolioUICode'
 const Code = withScale(CodeComponent)
 export default Code

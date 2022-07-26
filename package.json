@@ -33,6 +33,7 @@
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
+    "@bolio-ui/icons": "file:bolio-ui-icons-1.0.0.tgz",
     "@babel/core": "^7.14.8",
     "@babel/preset-typescript": "^7.14.5",
     "@storybook/addon-essentials": "^6.5.9",
