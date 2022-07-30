@@ -6,7 +6,7 @@ import Spacer from '../spacer'
 import Button from '../button'
 
 export default {
-  title: 'Data Display/Progress',
+  title: 'Feedback/Progress',
   component: Progress
 } as Meta
 
