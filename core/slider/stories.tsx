@@ -54,5 +54,5 @@ export const Event: Story = () => {
     console.log(val)
     setValue(val)
   }
-  return <Slider value={value} onChange={handler} width="75%" />
+  return <Slider value={value} onChange={handler} width="50%" />
 }
