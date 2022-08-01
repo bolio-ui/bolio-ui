@@ -10,7 +10,7 @@ export default {
   component: Progress
 } as Meta
 
-export const Feedback: Story = () => <Progress value={50} />
+export const Default: Story = () => <Progress value={50} />
 
 export const CustomMax: Story = () => <Progress value={45} max={50} />
 
