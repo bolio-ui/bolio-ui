@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { BolioUIProvider, CssBaseline } from 'core'
-import { PrefersContext, themes, ThemeType } from 'src/utils/use-prefers'
+import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import Menu from 'src/components/Navigation/menu'
 import Favicon from 'src/components/Favicon'
 
@@ -34,11 +34,11 @@ function App({ Component, pageProps }: AppProps) {
         <Favicon />
       </Head>
       <BolioUIProvider themeType={themeType}>
-        <PrefersContext.Provider value={{ themeType, switchTheme }}>
+        <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <CssBaseline />
           <Menu />
           <Component {...pageProps} />
-        </PrefersContext.Provider>
+        </SettingsContext.Provider>
       </BolioUIProvider>
     </>
   )
