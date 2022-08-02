@@ -2,11 +2,11 @@ import React from 'react'
 import { Avatar, Button, useTheme, Popover } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
 import UserSettings from './user-settings'
-import { usePrefers } from 'src/utils/use-prefers'
+import { useSettings } from 'src/utils/use-settings'
 
 const Menu: React.FC = () => {
   const theme = useTheme()
-  const prefers = usePrefers()
+  const settings = useSettings()
 
   return (
     <>
@@ -19,7 +19,7 @@ const Menu: React.FC = () => {
             auto
             type="abort"
             onClick={() =>
-              prefers.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
+              settings.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
             }
           >
             {theme.type === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
