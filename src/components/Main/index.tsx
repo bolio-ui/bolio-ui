@@ -1,8 +1,8 @@
 import * as S from './styles'
 
 const Main = ({
-  title = 'React',
-  description = 'TypeScript, ReactJS, NextJS e Styled Components'
+  title = 'Bolio UI',
+  description = 'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
 }) => (
   <S.Wrapper>
     <S.Logo

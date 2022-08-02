@@ -2,7 +2,7 @@
 
 exports[`<Main /> should render the heading 1`] = `
 .c0 {
-  background-color: #06092b;
+  background-color: #0f0d23;
   color: #fff;
   width: 100%;
   height: 100%;
@@ -55,12 +55,12 @@ exports[`<Main /> should render the heading 1`] = `
   <h1
     class="c2"
   >
-    React
+    Bolio UI
   </h1>
   <h2
     class="c3"
   >
-    TypeScript, ReactJS, NextJS e Styled Components
+    Make your development more creative and dynamic with amazing tools for React. 🥷🏼
   </h2>
   <img
     alt="Um desenvolvedor de frente para uma tela com código."
