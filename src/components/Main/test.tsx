@@ -6,7 +6,7 @@ describe('<Main />', () => {
   it('should render the heading', () => {
     const { container } = render(<Main />)
 
-    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('Bolio UI')).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
@@ -14,6 +14,6 @@ describe('<Main />', () => {
   it('should render the colors correctly', () => {
     const { container } = render(<Main />)
 
-    expect(container.firstChild).toHaveStyle({ 'background-color': '#06092b' })
+    expect(container.firstChild).toHaveStyle({ 'background-color': '#0f0d23' })
   })
 })
