@@ -2,8 +2,14 @@
 // @ts-ignore
 /// <reference types="styled-jsx" />
 
+export { default as Avatar } from './avatar'
+export type { AvatarProps, AvatarGroupProps } from './avatar'
+
 export { default as BolioUIProvider } from './bolio-ui-provider'
 export type { BolioUIProviderProps } from './bolio-ui-provider'
+
+export { default as Button } from './button'
+export type { ButtonProps } from './button'
 
 export { default as Card } from './card'
 export type { CardProps, CardContentProps, CardFooterProps } from './card'
@@ -23,6 +29,9 @@ export type { GridProps, GridContainerProps } from './grid'
 export { default as Image } from './image'
 export type { ImageProps, ImageBrowserProps } from './image'
 
+export { default as Link } from './link'
+export type { LinkProps } from './link'
+
 export * as ParsedCodes from './mdx-widgets'
 
 export { default as Page } from './page'
@@ -33,14 +42,23 @@ export type {
   PageFooterProps
 } from './page'
 
+export { default as Popover } from './popover'
+export type { PopoverProps, PopoverItemProps } from './popover'
+
 export { default as Spacer } from './spacer'
 export type { SpacerProps } from './spacer'
+
+export { default as Tabs } from './tabs'
+export type { TabsProps } from './tabs'
 
 export { default as Text } from './text'
 export type { TextProps } from './text'
 
 export { default as Themes } from './themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './themes'
+
+export { default as Tooltip } from './tooltip'
+export type { TooltipProps } from './tooltip'
 
 export { default as useAllThemes } from './use-all-themes'
 export type { AllThemesConfig } from './use-all-themes'

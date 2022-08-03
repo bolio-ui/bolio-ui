@@ -9,7 +9,7 @@ export default {
 } as Meta
 
 export const Default: Story = () => {
-  const [state, setState] = React.useState(false)
+  const [state, setState] = useState(false)
   return (
     <div>
       <Button auto onClick={() => setState(true)} scale={1 / 2}>

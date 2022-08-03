@@ -1,23 +1,45 @@
+import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-
-import GlobalStyles from 'styles/global'
+import { BolioUIProvider, CssBaseline } from 'core'
+import { PrefersContext, themes, ThemeType } from 'src/utils/use-prefers'
+import Menu from 'src/components/Navigation/menu'
+import Favicon from 'src/components/Favicon'
 
 function App({ Component, pageProps }: AppProps) {
+  const [themeType, setThemeType] = useState<ThemeType>('dark')
+
+  useEffect(() => {
+    document.documentElement.removeAttribute('style')
+    document.body.removeAttribute('style')
+
+    const theme = window.localStorage.getItem('theme') as ThemeType
+    if (themes.includes(theme)) setThemeType(theme)
+  }, [])
+
+  const switchTheme = useCallback((theme: ThemeType) => {
+    setThemeType(theme)
+    if (typeof window !== 'undefined' && window.localStorage)
+      window.localStorage.setItem('theme', theme)
+  }, [])
+
   return (
     <>
       <Head>
-        <title>React - Boilerplate</title>
-        <link rel="shortcut icon" href="/img/icon-512.png" />
-        <link rel="apple-touch-icon" href="/img/icon-512.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <title>Bolio UI</title>
         <meta
           name="description"
-          content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
+          content="Make your development more creative and dynamic with amazing tools for React."
         />
+        <Favicon />
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <BolioUIProvider themeType={themeType}>
+        <PrefersContext.Provider value={{ themeType, switchTheme }}>
+          <CssBaseline />
+          <Menu />
+          <Component {...pageProps} />
+        </PrefersContext.Provider>
+      </BolioUIProvider>
     </>
   )
 }
