@@ -4,8 +4,6 @@ import Head from 'next/head'
 import { BolioUIProvider, CssBaseline } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import Favicon from 'src/components/Favicon'
-import Menu from 'src/components/Navigation/menu'
-import Footer from 'src/components/Footer'
 
 function App({ Component, pageProps }: AppProps) {
   const [themeType, setThemeType] = useState<ThemeType>('dark')
@@ -37,9 +35,7 @@ function App({ Component, pageProps }: AppProps) {
       <BolioUIProvider themeType={themeType}>
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <CssBaseline />
-          <Menu />
           <Component {...pageProps} />
-          <Footer />
         </SettingsContext.Provider>
       </BolioUIProvider>
     </>

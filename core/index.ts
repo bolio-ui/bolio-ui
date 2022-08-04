@@ -23,6 +23,9 @@ export type { DisplayProps } from './display'
 export { default as Divider } from './divider'
 export type { DividerProps } from './divider'
 
+export { default as Dot } from './dot'
+export type { DotProps } from './dot'
+
 export { default as Grid } from './grid'
 export type { GridProps, GridContainerProps } from './grid'
 
@@ -50,6 +53,9 @@ export type { SpacerProps } from './spacer'
 
 export { default as Tabs } from './tabs'
 export type { TabsProps } from './tabs'
+
+export { default as Tag } from './tag'
+export type { TagProps } from './tag'
 
 export { default as Text } from './text'
 export type { TextProps } from './text'
