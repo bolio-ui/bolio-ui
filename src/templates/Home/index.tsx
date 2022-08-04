@@ -21,29 +21,24 @@ function Home() {
           <Grid.Container gap={2} marginTop={1} justify="flex-start">
             <Grid xs={24} sm={12} md={8}>
               <CardBox
-                projectId="react-dashboard-design"
-                framework="next"
-                git={{
-                  repo: 'ofekashery/react-dashboard-design',
-                  commitMessage: 'Bump version'
-                }}
-                updatedAt="4m"
+                title="Built in Components"
+                description="We have provided a lot of useful build in components to make it easy."
+                icon="Briefcase"
               />
             </Grid>
             <Grid xs={24} sm={12} md={8}>
               <CardBox
-                projectId="personal-website"
-                framework="react"
-                productionHostname="ofek.ashery.me"
-                git={{
-                  repo: 'ofekashery/personal-website',
-                  commitMessage: 'Improve homepage layout on smaller screens'
-                }}
-                updatedAt="2d"
+                title="Modern Design"
+                description="Responsive, theme-based style props for building design systems with React."
+                icon="Layout"
               />
             </Grid>
             <Grid xs={24} sm={12} md={8}>
-              <CardBox projectId="docs" framework="other" updatedAt="5d" />
+              <CardBox
+                title="Well Documented"
+                description="Documented organized way and its customization instruction easy for all."
+                icon="FileText"
+              />
             </Grid>
           </Grid.Container>
         </div>
@@ -51,17 +46,14 @@ function Home() {
       <style jsx>{`
         .page__wrapper {
           background-color: ${theme.palette.accents_1};
-          min-height: calc(100vh - 172px);
+          min-height: calc(100vh - 350px);
         }
         .page__content {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          width: ${theme.layout.pageWidthWithMargin};
-          max-width: 100%;
-          margin: 0 auto;
-          padding: calc(${theme.layout.unit} * 2) ${theme.layout.pageMargin};
-          box-sizing: border-box;
+          width: 100%;
+          max-width: ${theme.layout.pageWidthWithMargin};
+          margin-left: auto;
+          margin-right: auto;
+          padding: 20px 20px 50px 20px;
         }
       `}</style>
     </Base>
