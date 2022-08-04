@@ -1,7 +1,6 @@
 import React from 'react'
-import { Avatar, Button, useTheme, Popover } from 'core'
+import { Button, useTheme } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
-import UserSettings from './user-settings'
 import { useSettings } from 'src/utils/use-settings'
 
 const Menu: React.FC = () => {
@@ -24,27 +23,6 @@ const Menu: React.FC = () => {
           >
             {theme.type === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </Button>
-          <Popover
-            content={<UserSettings />}
-            placement="bottomEnd"
-            portalClassName="user-settings__popover"
-            trigger={'click'}
-            disableItemsAutoClose={false}
-            className={''}
-            initialVisible={false}
-            hideArrow={false}
-            enterDelay={0}
-            leaveDelay={0}
-            offset={0}
-            // onVisibleChange={function (visible: boolean): void {
-            //   throw new Error('Function not implemented.')
-            // }}
-            type={'default'}
-          >
-            <button className="user-settings__button">
-              <Avatar text="BA" />
-            </button>
-          </Popover>
         </div>
       </nav>
       <style jsx>{`

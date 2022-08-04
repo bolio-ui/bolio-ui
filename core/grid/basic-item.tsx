@@ -141,7 +141,7 @@ function GridBasicItem({
           flex-grow: ${layout.xs.grow};
           max-width: ${layout.xs.width};
           flex-basis: ${layout.xs.basis};
-          ${layout.xs.display}
+          /* ${layout.xs.display} */
         }
         @media only screen and (min-width: ${theme.breakpoints.sm.min}) {
           .sm {

@@ -13,12 +13,14 @@ function Hero({ content }: Props) {
   return (
     <>
       <div className="container">
-        <Grid>
-          <Text h1>{content.title}</Text>
-          <Text p font={1.5}>
-            {content.description}
-          </Text>
-        </Grid>
+        <Grid.Container justify="center">
+          <Grid xs={12} style={{ textAlign: 'center' }}>
+            <Text h1>{content.title}</Text>
+            <Text p font={1.5}>
+              {content.description}
+            </Text>
+          </Grid>
+        </Grid.Container>
       </div>
       <style jsx>{`
         .container {
@@ -26,8 +28,7 @@ function Hero({ content }: Props) {
           max-width: ${theme.layout.pageWidthWithMargin};
           margin-left: auto;
           margin-right: auto;
-          padding: 0 ${theme.layout.pageMargin};
-          border: 1px solid red;
+          padding: ${theme.layout.pageMargin};
         }
       `}</style>
     </>
