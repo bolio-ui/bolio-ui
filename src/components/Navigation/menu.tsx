@@ -1,17 +1,19 @@
 import React from 'react'
-import { Avatar, Button, useTheme, Popover } from 'core'
+import { Button, useTheme } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
-import UserSettings from './user-settings'
-import { usePrefers } from 'src/utils/use-prefers'
+import { useSettings } from 'src/utils/use-settings'
+import Logo from 'src/components/Logo'
 
 const Menu: React.FC = () => {
   const theme = useTheme()
-  const prefers = usePrefers()
+  const settings = useSettings()
 
   return (
     <>
       <nav className="menu-nav">
-        <h1 className="menu-nav__title">Bolio UI</h1>
+        <div className="menu-nav__title">
+          <Logo name="Bolio UI" />
+        </div>
         <div>
           <Button
             aria-label="Toggle Dark mode"
@@ -19,32 +21,11 @@ const Menu: React.FC = () => {
             auto
             type="abort"
             onClick={() =>
-              prefers.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
+              settings.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
             }
           >
             {theme.type === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </Button>
-          <Popover
-            content={<UserSettings />}
-            placement="bottomEnd"
-            portalClassName="user-settings__popover"
-            trigger={'click'}
-            disableItemsAutoClose={false}
-            className={''}
-            initialVisible={false}
-            hideArrow={false}
-            enterDelay={0}
-            leaveDelay={0}
-            offset={0}
-            // onVisibleChange={function (visible: boolean): void {
-            //   throw new Error('Function not implemented.')
-            // }}
-            type={'default'}
-          >
-            <button className="user-settings__button">
-              <Avatar text="BA" />
-            </button>
-          </Popover>
         </div>
       </nav>
       <style jsx>{`
@@ -62,10 +43,7 @@ const Menu: React.FC = () => {
           box-sizing: border-box;
         }
         .menu-nav__title {
-          font-size: 1rem;
-          font-weight: 500;
-          margin: 0;
-          letter-spacing: 0;
+          margin-top: 10px;
         }
         .menu-nav > div {
           display: flex;

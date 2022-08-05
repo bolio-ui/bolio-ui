@@ -23,7 +23,7 @@ function PageContentComponent({
           font-size: ${SCALES.font(1)};
           width: ${SCALES.width(1, '100%')};
           height: ${SCALES.height(1, '100%')};
-          padding: ${SCALES.pt(3.125)} ${SCALES.pr(0)} ${SCALES.pb(3.125)}
+          padding: ${SCALES.pt(2.7)} ${SCALES.pr(0)} ${SCALES.pb(2.7)}
             ${SCALES.pl(0)};
           margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
             ${SCALES.ml(0)};
