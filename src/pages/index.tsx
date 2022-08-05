@@ -1,5 +1,5 @@
-import Main from 'src/components/Main'
+import Home from 'src/templates/Home'
 
-export default function Home() {
-  return <Main />
+export default function Index() {
+  return <Home />
 }
