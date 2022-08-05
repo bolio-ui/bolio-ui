@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, useTheme } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'
+import Logo from 'src/components/Logo'
 
 const Menu: React.FC = () => {
   const theme = useTheme()
@@ -10,7 +11,9 @@ const Menu: React.FC = () => {
   return (
     <>
       <nav className="menu-nav">
-        <h1 className="menu-nav__title">Bolio UI</h1>
+        <div className="menu-nav__title">
+          <Logo name="Bolio UI" />
+        </div>
         <div>
           <Button
             aria-label="Toggle Dark mode"
@@ -40,10 +43,7 @@ const Menu: React.FC = () => {
           box-sizing: border-box;
         }
         .menu-nav__title {
-          font-size: 1rem;
-          font-weight: 500;
-          margin: 0;
-          letter-spacing: 0;
+          margin-top: 10px;
         }
         .menu-nav > div {
           display: flex;
