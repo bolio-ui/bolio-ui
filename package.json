@@ -35,7 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-typescript": "^7.14.5",
-    "@bolio-ui/icons": "file:bolio-ui-icons-1.0.0.tgz",
+    "@bolio-ui/icons": "^1.0.3",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@testing-library/jest-dom": "^5.14.1",
