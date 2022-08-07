@@ -22,11 +22,11 @@ export const Colored: Story = () => (
 
 export const Size: Story = () => (
   <Card>
-    <Smile style={{ fontSize: 16 }} /> <Spacer inline w={0.35} />
-    <Smile style={{ fontSize: 20 }} /> <Spacer inline w={0.35} />
-    <Smile style={{ fontSize: 24 }} /> <Spacer inline w={0.35} />
-    <Smile style={{ fontSize: 28 }} /> <Spacer inline w={0.35} />
-    <Smile style={{ fontSize: 32 }} /> <Spacer inline w={0.35} />
-    <Smile style={{ fontSize: 36 }} />
+    <Smile fontSize={16} /> <Spacer inline w={0.35} />
+    <Smile fontSize={20} /> <Spacer inline w={0.35} />
+    <Smile fontSize={24} /> <Spacer inline w={0.35} />
+    <Smile fontSize={28} /> <Spacer inline w={0.35} />
+    <Smile fontSize={32} /> <Spacer inline w={0.35} />
+    <Smile fontSize={36} />
   </Card>
 )
