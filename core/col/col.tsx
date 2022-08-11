@@ -7,24 +7,17 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  span: 24,
-  offset: 0,
-  component: 'div' as keyof JSX.IntrinsicElements,
-  className: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ColProps = Props & NativeAttrs
 
-const Col: React.FC<React.PropsWithChildren<ColProps>> = ({
-  component,
+function Col({
+  component = 'div' as keyof JSX.IntrinsicElements,
   children,
-  span,
-  offset,
-  className,
+  span = 24,
+  offset = 0,
+  className = '',
   ...props
-}: React.PropsWithChildren<ColProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<ColProps>) {
   const Component = component
 
   return (
@@ -44,6 +37,5 @@ const Col: React.FC<React.PropsWithChildren<ColProps>> = ({
   )
 }
 
-Col.defaultProps = defaultProps
 Col.displayName = 'BolioUICol'
 export default Col
