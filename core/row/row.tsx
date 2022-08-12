@@ -20,7 +20,7 @@ const defaultProps = {
   className: ''
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type RowProps = Props & NativeAttrs
 
 const getFlexAlignment = (justify: Justify, align: Align) => {
@@ -40,7 +40,7 @@ const getFlexAlignment = (justify: Justify, align: Align) => {
   }
 }
 
-const Container: React.FC<React.PropsWithChildren<RowProps>> = ({
+function Row({
   children,
   component,
   gap,
@@ -48,9 +48,10 @@ const Container: React.FC<React.PropsWithChildren<RowProps>> = ({
   align,
   className,
   ...props
-}: React.PropsWithChildren<RowProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<RowProps> & typeof defaultProps) {
   const Component = component
   const theme = useTheme()
+
   const { justifyValue, alignValue } = useMemo(
     () => getFlexAlignment(justify, align),
     [justify, align]
@@ -75,6 +76,6 @@ const Container: React.FC<React.PropsWithChildren<RowProps>> = ({
   )
 }
 
-Container.defaultProps = defaultProps
-Container.displayName = 'BolioUIContainer'
-export default Container
+Row.defaultProps = defaultProps
+Row.displayName = 'BolioUIRow'
+export default Row

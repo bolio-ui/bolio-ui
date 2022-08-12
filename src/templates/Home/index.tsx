@@ -40,6 +40,13 @@ function Home() {
                 icon="FileText"
               />
             </Grid>
+            <Grid xs={24} sm={12} md={8}>
+              <CardBox
+                title="Well Documented"
+                description="Documented organized way and its customization instruction easy for all."
+                icon="FileText"
+              />
+            </Grid>
           </Grid.Container>
         </div>
       </div>

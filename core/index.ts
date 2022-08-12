@@ -42,6 +42,9 @@ export type { CheckboxProps, CheckboxGroupProps } from './checkbox'
 export { default as Code } from './code'
 export type { CodeProps } from './code'
 
+export { default as Col } from './col'
+export type { ColProps } from './col'
+
 export { default as Collapse } from './collapse'
 export type { CollapseProps, CollapseGroupProps } from './collapse'
 
@@ -130,6 +133,9 @@ export type {
 
 export { default as Rating } from './rating'
 export type { RatingProps } from './rating'
+
+export { default as Row } from './row'
+export type { RowProps } from './row'
 
 export { default as Select } from './select'
 export type { SelectProps, SelectOptionProps } from './select'
