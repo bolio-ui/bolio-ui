@@ -12,7 +12,7 @@ function Footer() {
         borderTop: '1px solid',
         borderColor: theme.palette.accents_2
       }}
-      padding={1}
+      padding={2}
     >
       <Container>
         <Grid.Container

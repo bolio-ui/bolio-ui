@@ -19,8 +19,8 @@ function PageFooterComponent({
       {children}
       <style jsx>{`
         footer {
-          position: absolute;
-          bottom: 0;
+          /* position: absolute; */
+          /* bottom: 0; */
           font-size: ${SCALES.font(1)};
           width: ${SCALES.width(1, '100%')};
           height: ${SCALES.height(1, 'auto')};
