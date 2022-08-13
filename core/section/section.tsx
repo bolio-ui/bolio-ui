@@ -1,29 +1,39 @@
 import React from 'react'
-import { withScale } from '../use-scale'
+import css from 'styled-jsx/css'
+import SectionBasicItem, { SectionBasicItemProps } from './basic-item'
+import useScale, { withScale } from '../use-scale'
+import useClasses from '../use-classes'
 
 interface Props {
-  bg?: string
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
-export type SectionProps = Props & NativeAttrs
+export type SectionProps = Props & SectionBasicItemProps
 
-const SectionComponent: React.FC<SectionProps> = ({
-  bg = '',
-  className = '',
+function SectionComponent({
   children,
+  className = '',
   ...props
-}: React.PropsWithChildren<SectionProps>) => {
+}: React.PropsWithChildren<SectionProps>) {
+  const { SCALES } = useScale()
+
+  const sectionGapUnit = 'var(--section-gap-unit)'
+
+  const { className: resolveClassName, styles } = css.resolve`
+    div {
+      margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)};
+      box-sizing: border-box;
+      padding: ${SCALES.pt(0, sectionGapUnit)} ${SCALES.pr(0, sectionGapUnit)}
+        ${SCALES.pb(0, sectionGapUnit)} ${SCALES.pl(0, sectionGapUnit)};
+    }
+  `
+  const classes = useClasses(resolveClassName, className)
+
   return (
-    <section className={className} {...props}>
+    <SectionBasicItem className={classes} {...props}>
       {children}
-      <style jsx>{`
-        section {
-          background-color: ${bg ? bg : 'transparent'};
-        }
-      `}</style>
-    </section>
+      {styles}
+    </SectionBasicItem>
   )
 }
 
