@@ -14,8 +14,9 @@ function Base({ children }: BaseTemplateProps) {
         <Menu />
       </Page.Header>
       <Page.Content>{children}</Page.Content>
-
-      <Footer />
+      <Page.Footer>
+        <Footer />
+      </Page.Footer>
     </Page>
   )
 }
