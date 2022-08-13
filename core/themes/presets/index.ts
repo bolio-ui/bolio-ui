@@ -17,6 +17,10 @@ export interface BolioUIThemesPalette {
   successLighter: string
   successLight: string
   successDark: string
+  info: string
+  infoLighter: string
+  infoLight: string
+  infoDark: string
   error: string
   errorLighter: string
   errorLight: string

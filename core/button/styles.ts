@@ -55,6 +55,11 @@ export const getButtonColors = (
       border: palette.foreground,
       color: palette.background
     },
+    info: {
+      bg: palette.info,
+      border: palette.info,
+      color: '#fff'
+    },
     success: {
       bg: palette.success,
       border: palette.success,
@@ -148,6 +153,10 @@ export const getButtonHoverColors = (
       bg: palette.background,
       border: palette.foreground
     },
+    info: {
+      bg: palette.background,
+      border: palette.info
+    },
     success: {
       bg: palette.background,
       border: palette.success
@@ -166,6 +175,10 @@ export const getButtonHoverColors = (
       color: palette.accents_5
     },
     'secondary-light': {
+      ...defaultColor,
+      bg: alphaBackground
+    },
+    'info-light': {
       ...defaultColor,
       bg: alphaBackground
     },
