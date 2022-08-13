@@ -9,7 +9,7 @@ function Footer() {
     <>
       <div>
         <Container>
-          <Grid.Container justify="center" paddingTop={1}>
+          <Grid.Container justify="center">
             <Grid>
               <Text h6>
                 MADE & DESIGNED WITH

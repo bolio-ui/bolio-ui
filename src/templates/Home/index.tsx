@@ -16,7 +16,7 @@ function Home() {
             'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
         }}
       />
-      <Section bg={theme.palette.accents_1} padding={10}>
+      <Section bg={theme.palette.accents_1} padding={5}>
         <Container>
           <Grid.Container gap={2} justify="flex-start">
             <Grid xs={24} sm={12} md={8}>
