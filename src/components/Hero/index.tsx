@@ -10,7 +10,7 @@ export type HeroProps = Props
 function Hero({ content }: Props) {
   return (
     <Container>
-      <Grid.Container justify="center" marginBottom={4}>
+      <Grid.Container justify="center" my={4}>
         <Row justify="space-around" style={{ textAlign: 'center' }}>
           <Col span={18}>
             <Text h1>{content.title}</Text>
