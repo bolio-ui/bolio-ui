@@ -142,30 +142,6 @@ const Menu: React.FC = () => {
           scrollbar-width: none;
           box-sizing: border-box;
         }
-        .submenu__inner::-webkit-scrollbar {
-          display: none;
-        }
-        .submenu__inner :global(.content) {
-          display: none;
-        }
-        .submenu__inner :global(.tabs),
-        .submenu__inner :global(header) {
-          height: 100%;
-          border: none;
-        }
-        .submenu__inner :global(.tab) {
-          height: calc(100% - 2px);
-          padding-top: 0;
-          padding-bottom: 0;
-          color: ${theme.palette.accents_5};
-          font-size: 0.875rem;
-        }
-        .submenu__inner :global(.tab):hover {
-          color: ${theme.palette.foreground};
-        }
-        .submenu__inner :global(.active) {
-          color: ${theme.palette.foreground};
-        }
       `}</style>
     </>
   )
