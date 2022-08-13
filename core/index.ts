@@ -48,6 +48,9 @@ export type { ColProps } from './col'
 export { default as Collapse } from './collapse'
 export type { CollapseProps, CollapseGroupProps } from './collapse'
 
+export { default as Container } from './container'
+export type { ContainerProps } from './container'
+
 export { default as Description } from './description'
 export type { DescriptionProps } from './description'
 
@@ -136,6 +139,9 @@ export type { RatingProps } from './rating'
 
 export { default as Row } from './row'
 export type { RowProps } from './row'
+
+export { default as Section } from './section'
+export type { SectionProps } from './section'
 
 export { default as Select } from './select'
 export type { SelectProps, SelectOptionProps } from './select'
