@@ -28,14 +28,14 @@ interface Props {
   auto?: boolean
   effect?: boolean
   disabled?: boolean
-  htmlType?: React.ButtonHTMLAttributes<any>['type']
+  htmlType?: React.ButtonHTMLAttributes<unknown>['type']
   icon?: React.ReactNode
   iconRight?: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   className?: string
 }
 
-type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<unknown>, keyof Props>
 export type ButtonProps = Props & NativeAttrs
 
 const ButtonComponent = React.forwardRef<
@@ -53,6 +53,7 @@ const ButtonComponent = React.forwardRef<
   const [dripY, setDripY] = useState<number>(0)
   const groupConfig = useButtonGroupContext()
   const filteredProps = filterPropsWithGroup(btnProps, groupConfig)
+
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const {
     children,
