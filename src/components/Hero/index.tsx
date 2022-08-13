@@ -9,7 +9,7 @@ export type HeroProps = Props
 
 function Hero({ content }: Props) {
   return (
-    <Section py={3}>
+    <Section py={4}>
       <Container>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
