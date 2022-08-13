@@ -44,7 +44,7 @@ export const palette: BolioUIThemesPalette = {
   violetLighter: '#E59FFF',
   violetLight: '#8a63d2',
   violetDark: '#F2BFFF',
-  purple: '#7928ca',
+  purple: '#f81ce5',
   alert: '#ff0080',
   magenta: '#eb367f',
   link: '#0070f3'
