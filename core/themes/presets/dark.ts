@@ -6,20 +6,20 @@ import {
 import { defaultFont, defaultBreakpoints, defaultLayout } from './shared'
 
 export const palette: BolioUIThemesPalette = {
-  accents_1: '#fafafa',
-  accents_2: '#eaeaea',
-  accents_3: '#999',
-  accents_4: '#888',
-  accents_5: '#666',
-  accents_6: '#444',
-  accents_7: '#333',
-  accents_8: '#111',
-  background: '#fff',
-  foreground: '#000',
-  selection: '#79ffe1',
-  secondary: '#666',
-  code: '#f81ce5',
-  border: '#eaeaea',
+  accents_1: '#111',
+  accents_2: '#333',
+  accents_3: '#444',
+  accents_4: '#666',
+  accents_5: '#888',
+  accents_6: '#999',
+  accents_7: '#eaeaea',
+  accents_8: '#fafafa',
+  background: '#000',
+  foreground: '#fff',
+  selection: '#f81ce5',
+  secondary: '#888',
+  code: '#79ffe1',
+  border: '#333',
   info: '#22D8F4',
   infoLight: '#79FBF8',
   infoLighter: '#A6FDF4',
@@ -44,10 +44,10 @@ export const palette: BolioUIThemesPalette = {
   violetLighter: '#E59FFF',
   violetLight: '#8a63d2',
   violetDark: '#F2BFFF',
-  purple: '#7928ca',
+  purple: '#f81ce5',
   alert: '#ff0080',
   magenta: '#eb367f',
-  link: '#0070f3'
+  link: '#3291ff'
 }
 
 export const expressiveness: BolioUIThemesExpressiveness = {
