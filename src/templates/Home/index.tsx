@@ -2,7 +2,7 @@ import React from 'react'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
-import { Grid, useTheme } from 'core'
+import { Section, Container, Grid, useTheme } from 'core'
 
 function Home() {
   const theme = useTheme()
@@ -16,9 +16,9 @@ function Home() {
             'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
         }}
       />
-      <div className="page__wrapper">
-        <div className="page__content">
-          <Grid.Container gap={2} marginTop={1} justify="flex-start">
+      <Section bg={theme.palette.accents_1} padding={10}>
+        <Container>
+          <Grid.Container gap={2} justify="flex-start">
             <Grid xs={24} sm={12} md={8}>
               <CardBox
                 title="Built in Components"
@@ -40,22 +40,16 @@ function Home() {
                 icon="FileText"
               />
             </Grid>
+            <Grid xs={24} sm={12} md={8}>
+              <CardBox
+                title="Well Documented"
+                description="Documented organized way and its customization instruction easy for all."
+                icon="FileText"
+              />
+            </Grid>
           </Grid.Container>
-        </div>
-      </div>
-      <style jsx>{`
-        .page__wrapper {
-          background-color: ${theme.palette.accents_1};
-          min-height: calc(100vh - 350px);
-        }
-        .page__content {
-          width: 100%;
-          max-width: ${theme.layout.pageWidthWithMargin};
-          margin-left: auto;
-          margin-right: auto;
-          padding: 20px 20px 50px 20px;
-        }
-      `}</style>
+        </Container>
+      </Section>
     </Base>
   )
 }
