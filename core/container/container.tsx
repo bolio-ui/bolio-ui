@@ -17,11 +17,12 @@ const defaultProps = {
   justify: 'start' as Justify,
   align: 'top' as Align,
   component: 'div' as keyof JSX.IntrinsicElements,
-  className: ''
+  className: '',
+  fluid: false
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
-export type RowProps = Props & NativeAttrs
+export type ContainerProps = Props & NativeAttrs
 
 const getFlexAlignment = (justify: Justify, align: Align) => {
   const flexJustifyMap: { [key in Justify]?: string } = {
@@ -40,15 +41,15 @@ const getFlexAlignment = (justify: Justify, align: Align) => {
   }
 }
 
-function Row({
+function Container({
   children,
   component,
-  gap,
   justify,
   align,
+  fluid,
   className,
   ...props
-}: React.PropsWithChildren<RowProps> & typeof defaultProps) {
+}: React.PropsWithChildren<ContainerProps> & typeof defaultProps) {
   const Component = component
   const theme = useTheme()
 
@@ -57,17 +58,19 @@ function Row({
     [justify, align]
   )
 
+  const fluidWidth = !fluid && 'max-width: ' + theme.layout.pageWidthWithMargin
+
   return (
-    <Component className={`row ${className}`} {...props}>
+    <Component className={`container ${className}`} {...props}>
       {children}
       <style jsx>{`
-        .row {
-          display: flex;
-          position: relative;
-          box-sizing: border-box;
-          margin-left: calc(${gap} * ${theme.layout.gap} / 2);
-          margin-right: calc(${gap} * ${theme.layout.gap} / 2);
-          --row-gap: calc(${gap} * ${theme.layout.gap});
+        .container {
+          width: 100%;
+          ${fluidWidth};
+          padding-right: 15px;
+          padding-left: 15px;
+          margin-right: auto;
+          margin-left: auto;
           justify-content: ${justifyValue};
           align-items: ${alignValue};
         }
@@ -76,6 +79,6 @@ function Row({
   )
 }
 
-Row.defaultProps = defaultProps
-Row.displayName = 'BolioUIRow'
-export default Row
+Container.defaultProps = defaultProps
+Container.displayName = 'BolioUIContainer'
+export default Container
