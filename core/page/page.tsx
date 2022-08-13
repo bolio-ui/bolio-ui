@@ -108,6 +108,12 @@ function PageComponent({
             ${SCALES.pl(1.34)};
           margin: ${SCALES.mt(0)} ${SCALES.mr(0, 'auto')} ${SCALES.mb(0)}
             ${SCALES.ml(0, 'auto')}; */
+
+          align-content: space-between;
+          flex-wrap: wrap;
+          display: flex;
+          position: relative;
+          min-height: 100vh;
         }
       `}</style>
     </section>
