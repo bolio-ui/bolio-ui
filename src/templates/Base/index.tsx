@@ -1,6 +1,6 @@
 import React from 'react'
 import { Page } from 'core'
-import Menu from 'src/components/Navigation/menu'
+import Menu from 'src/components/Navigation'
 import Footer from 'src/components/Footer'
 
 export type BaseTemplateProps = {
