@@ -41,6 +41,11 @@ export const Types: Story = () => (
       </Button>
     </Grid>
     <Grid>
+      <Button auto type="info">
+        Info
+      </Button>
+    </Grid>
+    <Grid>
       <Button auto type="success">
         Success
       </Button>
@@ -63,6 +68,11 @@ export const Types: Story = () => (
     <Grid>
       <Button auto type="secondary-light">
         Secondary Light
+      </Button>
+    </Grid>
+    <Grid>
+      <Button auto type="info-light">
+        Info Light
       </Button>
     </Grid>
     <Grid>
