@@ -16,7 +16,7 @@ function Home() {
             'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
         }}
       />
-      <Section bg={theme.palette.accents_1} padding={5}>
+      <Section bg={theme.palette.accents_1} py={5}>
         <Container>
           <Grid.Container gap={2} justify="flex-start">
             <Grid xs={24} sm={12} md={8}>
@@ -31,13 +31,6 @@ function Home() {
                 title="Modern Design"
                 description="Responsive, theme-based style props for building design systems with React."
                 icon="Layout"
-              />
-            </Grid>
-            <Grid xs={24} sm={12} md={8}>
-              <CardBox
-                title="Well Documented"
-                description="Documented organized way and its customization instruction easy for all."
-                icon="FileText"
               />
             </Grid>
             <Grid xs={24} sm={12} md={8}>
