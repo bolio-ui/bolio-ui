@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
@@ -18,6 +19,15 @@ function Home() {
       />
       <Section bg={theme.palette.accents_1} py={5}>
         <Container>
+          <Link href={'/guide/introduction'} passHref key={1}>
+            Teste
+          </Link>
+          <Link href={'/components/introduction'} passHref key={1}>
+            Teste
+          </Link>
+          <Link href={'/hooks/introduction'} passHref key={1}>
+            Hooks
+          </Link>
           <Grid.Container gap={2} justify="flex-start">
             <Grid xs={24} sm={12} md={8}>
               <CardBox
