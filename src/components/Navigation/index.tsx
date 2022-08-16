@@ -12,7 +12,7 @@ const Menu: React.FC = () => {
 
   useEffect(() => {
     const scrollHandler = () =>
-      setSticky(document.documentElement.scrollTop > 54)
+      setSticky(document.documentElement.scrollTop > 0)
     document.addEventListener('scroll', scrollHandler)
     return () => document.removeEventListener('scroll', scrollHandler)
   }, [setSticky])

@@ -6,6 +6,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import * as Components from 'core'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import Docs from 'src/templates/Docs'
 
 const components = {
   ...Components,
@@ -18,7 +19,11 @@ interface Props {
 }
 
 function GuidePage({ mdxSource }: Props) {
-  return <MDXRemote {...mdxSource} components={components} />
+  return (
+    <Docs>
+      {mdxSource && <MDXRemote {...mdxSource} components={components} />}
+    </Docs>
+  )
 }
 
 const getStaticPaths: GetStaticPaths = async () => {
