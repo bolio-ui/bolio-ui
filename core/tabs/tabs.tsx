@@ -30,38 +30,26 @@ interface Props {
   activeStyles?: CSSProperties
 }
 
-const defaultProps = {
-  className: '',
-  hideDivider: false,
-  highlight: true,
-  leftSpace: '12px' as CSSProperties['marginLeft'],
-  hoverHeightRatio: 0.7,
-  hoverWidthRatio: 1.15,
-  activeClassName: '',
-  activeStyle: {},
-  align: 'left'
-}
-
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type TabsProps = Props & NativeAttrs
 
 function TabsComponent({
   initialValue: userCustomInitialValue,
   value,
-  hideDivider,
-  hideBorder,
+  hideDivider = false,
+  hideBorder = false,
   children,
   onChange,
-  className,
-  leftSpace,
-  highlight,
-  hoverHeightRatio,
-  hoverWidthRatio,
-  activeClassName,
-  activeStyle,
-  align,
+  className = '',
+  leftSpace = '12px' as CSSProperties['marginLeft'],
+  highlight = true,
+  hoverHeightRatio = 0.7,
+  hoverWidthRatio = 1.15,
+  activeClassName = '',
+  activeStyle = {},
+  align = 'left',
   ...props
-}: React.PropsWithChildren<TabsProps> & typeof defaultProps) {
+}: React.PropsWithChildren<TabsProps>): JSX.Element {
   const theme = useTheme()
   const { SCALES } = useScale()
 
