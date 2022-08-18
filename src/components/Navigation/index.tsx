@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Button, useTheme } from 'core'
+import { useRouter } from 'next/router'
+import { Button, Tabs, useTheme } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
@@ -7,6 +8,7 @@ import Logo from 'src/components/Logo'
 const Menu: React.FC = () => {
   const theme = useTheme()
   const settings = useSettings()
+  const router = useRouter()
 
   const [sticky, setSticky] = useState(false)
 
@@ -25,6 +27,21 @@ const Menu: React.FC = () => {
             <div className="menu-nav__title">
               <Logo name="Bolio UI" />
             </div>
+
+            <div className="tabs">
+              <Tabs
+                value={router.asPath}
+                onChange={(route) => router.push(route)}
+                hideDivider
+                hideBorder
+              >
+                <Tabs.Item label="Home" value="/" />
+                <Tabs.Item label="Guide" value="/guide" />
+                <Tabs.Item label="Components" value="/components" />
+                <Tabs.Item label="Hooks" value="/hooks" />
+              </Tabs>
+            </div>
+
             <div>
               <Button
                 aria-label="Toggle Dark mode"
@@ -141,6 +158,18 @@ const Menu: React.FC = () => {
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
           box-sizing: border-box;
+        }
+
+        .tabs {
+          padding: 0 ${theme.layout.gap};
+        }
+        .tabs :global(.content) {
+          display: none;
+        }
+        @media only screen and (max-width: ${theme.breakpoints.xs.max}) {
+          .tabs {
+            display: none;
+          }
         }
       `}</style>
     </>
