@@ -1,21 +1,14 @@
 import React from 'react'
-import { Button, useTheme } from 'core'
+import { useTheme } from 'core'
+import SideItem from 'src/components/SideItem'
+import { sidebarItem } from 'src/data'
 
 const Sidebar: React.FC = () => {
   const theme = useTheme()
 
   return (
     <div className="sides box">
-      {/* <SideItem sides={tabbarData}>
-        <SideGroup />
-      </SideItem> */}
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
-      <Button>Sidebar</Button>
+      <SideItem items={sidebarItem} />
       <style jsx>{`
         .sides {
           width: 100%;
