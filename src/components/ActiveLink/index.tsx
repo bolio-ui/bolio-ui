@@ -30,6 +30,11 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
           font-weight: 400;
         }
 
+        .link {
+          color: ${theme.palette.accents_5};
+          font-weight: 400;
+        }
+
         .link.active {
           color: ${theme.palette.link};
           font-weight: 600;
