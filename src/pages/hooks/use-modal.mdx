@@ -1,0 +1,59 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { useModal, Modal, Button } from 'core'
+
+export const meta = {
+  title: 'useModal',
+  group: 'Utility',
+  index: 9
+}
+
+## useModal
+
+`useModal` provides automatic binding for component [Modal](/components/modal), which can reduce the amount of repetitive code and improve the development experience.
+Using this hooks behaves the same as if you had added `React.useState` manually.
+
+This hooks also supports use on [Select component](/components/select 'Select Component').
+
+<Playground
+  desc="Use hooks to control `Modal`."
+  scope={{ Modal, Button, useModal }}
+  code={`
+() => {
+  const { visible, setVisible, bindings } = useModal()
+  return (
+    <>
+      <Button auto onClick={() => setVisible(true)}>Show Modal</Button>
+      <Modal {...bindings}>
+        <Modal.Title>Modal</Modal.Title>
+        <Modal.Subtitle>This is a modal</Modal.Subtitle>
+        <Modal.Content>
+          <p>Some content contained within the modal.</p>
+        </Modal.Content>
+        <Modal.Action passive onClick={() => setVisible(false)}>Cancel</Modal.Action>
+        <Modal.Action>Submit</Modal.Action>
+      </Modal>
+    </>
+  )
+}`}
+/>
+
+<Attributes edit="/pages/hooks/use-modal.mdx" >
+<Attributes.Title>useModal</Attributes.Title>
+
+```ts
+type useModal = (initialVisible: boolean) => {
+  visible: boolean
+  setVisible: Dispatch<SetStateAction<boolean>>
+  setVisible: Dispatch<SetStateAction<boolean>>
+  currentRef: MutableRefObject<boolean>
+  bindings: {
+    visible: boolean
+    onClose: () => void
+  }
+}
+```
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
