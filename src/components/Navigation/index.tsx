@@ -76,10 +76,10 @@ const Menu: React.FC = () => {
           max-width: 100%;
           margin: 0 auto;
           padding: 0 ${theme.layout.pageMargin};
-          background-color: ${theme.palette.background};
           font-size: 16px;
           height: 54px;
           box-sizing: border-box;
+          backdrop-filter: saturate(180%) blur(10px);
         }
         .menu_sticky {
           transition: box-shadow 0.2s ease;
@@ -90,10 +90,10 @@ const Menu: React.FC = () => {
           top: 0;
           right: 0;
           left: 0;
-          background: ${theme.palette.background};
           box-shadow: ${theme.type === 'dark'
             ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
+          backdrop-filter: saturate(180%) blur(10px);
         }
         .menu-nav__title {
           margin-top: 10px;
