@@ -39,8 +39,6 @@ const Playground: React.FC<PlaygroundProps> = React.memo(
     const code = inputCode.trim()
     const title = inputTitle || 'General'
 
-    console.log('scope', scope)
-
     return (
       <>
         <Title title={title} desc={desc} />
