@@ -8,6 +8,7 @@ const withMDX = require('@next/mdx')({
 const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
+  pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
   pwa: {
     dest: 'public',
     disable: !isProd
