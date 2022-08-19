@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
           background-color: transparent;
         }
         .box > :global(.item) {
-          margin-bottom: ${theme.layout.gap};
+          margin-bottom: 12pt;
         }
       `}</style>
     </div>
