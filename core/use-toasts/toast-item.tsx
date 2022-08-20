@@ -13,11 +13,14 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
   const theme = useTheme()
   const { color, bgColor } = useMemo(
     () => getColors(theme.palette, toast.type),
-    [theme.palette, toast.type],
+    [theme.palette, toast.type]
   )
   const isReactNode = typeof toast.text !== 'string'
   const { padding, margin, maxHeight, maxWidth, width, placement } = layout
-  const { enter, leave } = useMemo(() => getTranslateByPlacement(placement), [placement])
+  const { enter, leave } = useMemo(
+    () => getTranslateByPlacement(placement),
+    [placement]
+  )
 
   return (
     <CssTransition name="toast" visible={toast.visible} clearTime={350}>
@@ -27,7 +30,9 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
         ) : (
           <>
             <div className="message">{toast.text}</div>
-            <div className="action">{makeToastActions(toast.actions, toast.cancel)}</div>
+            <div className="action">
+              {makeToastActions(toast.actions, toast.cancel)}
+            </div>
           </>
         )}
 
@@ -55,7 +60,7 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
             font-size: 0.875em;
             display: -webkit-box;
             word-break: break-all;
-            padding-right: ${theme.layout.gapHalf};
+            /* padding-right: ${theme.layout.gapHalf}; */
             overflow: hidden;
             max-height: 100%;
             text-overflow: ellipsis;
@@ -94,4 +99,5 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
   )
 })
 
+ToastItem.displayName = 'BolioUIToastItem'
 export default ToastItem
