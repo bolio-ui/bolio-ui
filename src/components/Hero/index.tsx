@@ -21,18 +21,23 @@ function Hero({ content }: Props) {
               </Text>
             </Col>
           </Row>
-          <Row justify="space-around">
-            <Col>
-              <NextLink href="/guide/getting-started" passHref>
-                <Button type="info" auto mr={1} mt={1.5}>
-                  Get Started
-                </Button>
-              </NextLink>
-            </Col>
-            <Col>
-              <Snippet text="yarn add @bolio-ui/core" mt={1.5} />
-            </Col>
-          </Row>
+        </Grid.Container>
+        <Grid.Container gap={2} justify="center" alignItems="center">
+          <Grid xs={24} sm={12} md={4}>
+            <NextLink href={'/guide/getting-started'} passHref>
+              <Button type="info" width="100%">
+                Get Started
+              </Button>
+            </NextLink>
+          </Grid>
+          <Grid xs={24} sm={12} md={7}>
+            <Snippet
+              toastText="Code copied!"
+              toastType="secondary"
+              text="yarn add @bolio-ui/core"
+              width={'100%'}
+            />
+          </Grid>
         </Grid.Container>
       </Container>
     </Section>

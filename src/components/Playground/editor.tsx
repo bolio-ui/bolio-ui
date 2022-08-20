@@ -22,7 +22,7 @@ const Editor: React.FC<Props> = ({ code }) => {
     event.stopPropagation()
     event.preventDefault()
     copy(code)
-    setToast({ text: 'code copied.' })
+    setToast({ text: 'Code copied!' })
   }
 
   return (
