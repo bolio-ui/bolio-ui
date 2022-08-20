@@ -1,5 +1,5 @@
-import { Card, useTheme } from 'core'
 import React from 'react'
+import { Card, useTheme } from 'core'
 
 const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
   children

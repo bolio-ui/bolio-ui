@@ -1,5 +1,5 @@
 import React from 'react'
-// import { VirtualAnchor } from '../Pures'
+import Anchor from '../Anchor'
 
 export type TitleProps = {
   title: React.ReactNode | string
@@ -20,40 +20,40 @@ const replaceCode = (desc: string): string => {
   })
 }
 
-const Title: React.FC<TitleProps> = React.memo(
-  ({ title, desc }: TitleProps & typeof defaultProps) => {
-    const isStringDesc = typeof desc === 'string'
-    return (
-      <>
-        <h3>{/* <VirtualAnchor>{title}</VirtualAnchor> */}</h3>
-        {desc && isStringDesc && (
-          <p dangerouslySetInnerHTML={{ __html: replaceCode(desc) }} />
-        )}
-        {desc && !isStringDesc && <p>{desc}</p>}
-        <style jsx>{`
-          h3 {
-            margin-bottom: ${desc ? 0 : '30px'};
-            line-height: 1;
-            font-size: 1.3rem;
-            margin-top: 55px;
-            text-transform: capitalize;
-            position: relative;
-          }
+function Title({ title, desc }: TitleProps & typeof defaultProps) {
+  const isStringDesc = typeof desc === 'string'
+  return (
+    <>
+      <h3>
+        <Anchor>{title}</Anchor>
+      </h3>
+      {desc && isStringDesc && (
+        <p dangerouslySetInnerHTML={{ __html: replaceCode(desc) }} />
+      )}
+      {desc && !isStringDesc && <p>{desc}</p>}
+      <style jsx>{`
+        h3 {
+          margin-bottom: ${desc ? 0 : '30px'};
+          line-height: 1;
+          font-size: 1.3rem;
+          margin-top: 55px;
+          text-transform: capitalize;
+          position: relative;
+        }
 
-          h3 > p {
-            margin: 0;
-          }
+        h3 > p {
+          margin: 0;
+        }
 
-          h3 > :global(code),
-          h3 > :global(pre) {
-            text-transform: none;
-          }
-        `}</style>
-      </>
-    )
-  }
-)
+        h3 > :global(code),
+        h3 > :global(pre) {
+          text-transform: none;
+        }
+      `}</style>
+    </>
+  )
+}
 
 Title.defaultProps = defaultProps
 Title.displayName = 'BolioUIPlayGroundTitle'
-export default Title
+export default React.memo(Title)

@@ -9,6 +9,7 @@ import {
 } from '../utils/use-bolio-ui-context'
 import ThemeProvider from './theme-provider'
 import useCurrentState from '../utils/use-current-state'
+import ToastContainer from '../use-toasts/toast-container'
 import { BolioUIThemes } from '../themes/presets'
 
 export type BolioUIProviderProps = {
@@ -56,6 +57,7 @@ const BolioUIProvider: React.FC<PropsWithChildren<BolioUIProviderProps>> = ({
     <BolioUIContent.Provider value={initialValue}>
       <ThemeProvider themes={themes} themeType={themeType}>
         {children}
+        <ToastContainer />
       </ThemeProvider>
     </BolioUIContent.Provider>
   )
