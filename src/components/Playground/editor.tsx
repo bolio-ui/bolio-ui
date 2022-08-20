@@ -34,7 +34,7 @@ const Editor: React.FC<Props> = ({ code }) => {
               <span className="arrow">
                 <ChevronRight fontSize={16} />
               </span>
-              <span>{'Code Editor'}</span>
+              <span>{'Edit code'}</span>
             </div>
             <div className="action">
               {visible && (

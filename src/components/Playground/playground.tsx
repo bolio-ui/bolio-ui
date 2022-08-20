@@ -28,35 +28,33 @@ const defaultProps = {
   bindings: {}
 }
 
-const Playground: React.FC<PlaygroundProps> = React.memo(
-  ({
-    title: inputTitle,
-    code: inputCode,
-    desc,
-    scope
-  }: PlaygroundProps & typeof defaultProps) => {
-    const theme = useTheme()
-    const code = inputCode.trim()
-    const title = inputTitle || 'General'
+function Playground({
+  title: inputTitle,
+  code: inputCode,
+  desc,
+  scope
+}: PlaygroundProps & typeof defaultProps) {
+  const theme = useTheme()
+  const code = inputCode.trim()
+  const title = inputTitle || 'General'
 
-    return (
-      <>
-        <Title title={title} desc={desc} />
-        <div className="playground">
-          <DynamicLive code={code} scope={scope} />
-          <style jsx>{`
-            .playground {
-              width: 100%;
-              border-radius: ${theme.layout.radius};
-              border: 1px solid ${theme.palette.accents_2};
-            }
-          `}</style>
-        </div>
-      </>
-    )
-  }
-)
+  return (
+    <>
+      <Title title={title} desc={desc} />
+      <div className="playground">
+        <DynamicLive code={code} scope={scope} />
+        <style jsx>{`
+          .playground {
+            width: 100%;
+            border-radius: ${theme.layout.radius};
+            border: 1px solid ${theme.palette.accents_2};
+          }
+        `}</style>
+      </div>
+    </>
+  )
+}
 
 Playground.defaultProps = defaultProps
 Playground.displayName = 'BolioUIPlayground'
-export default Playground
+export default React.memo(Playground)
