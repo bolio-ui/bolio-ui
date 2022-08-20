@@ -3,6 +3,7 @@ import { useTheme } from 'core'
 import { Page } from 'core'
 import Menu from 'src/components/Navigation'
 import Sidebar from 'src/components/Sidebar'
+import MadeDesigned from 'src/components/MadeDesigned'
 
 export type DocsTemplateProps = {
   children: React.ReactNode
@@ -25,7 +26,7 @@ function Docs({ children }: DocsTemplateProps) {
           </aside>
           <main className="main">
             <div>{children}</div>
-            {/* <Footer /> */}
+            <MadeDesigned />
           </main>
           <style jsx>{`
             :global(.layout h3) {
