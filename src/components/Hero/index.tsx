@@ -23,14 +23,14 @@ function Hero({ content }: Props) {
           </Row>
         </Grid.Container>
         <Grid.Container gap={2} justify="center" alignItems="center">
-          <Grid xs={24} sm={12} md={4}>
+          <Grid xs={12} sm={6} md={2}>
             <NextLink href={'/guide/getting-started'} passHref>
               <Button type="info" width="100%">
                 Get Started
               </Button>
             </NextLink>
           </Grid>
-          <Grid xs={24} sm={12} md={7}>
+          <Grid xs={12} sm={6} md={4}>
             <Snippet
               toastText="Code copied!"
               toastType="secondary"
