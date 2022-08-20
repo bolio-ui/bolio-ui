@@ -1,1 +1,1 @@
-export { sidebarItem } from './sidebarItem'
+export { guide, components, hooks } from './sidebar'
