@@ -32,10 +32,11 @@ const Menu: React.FC = () => {
               <Tabs
                 value={router.asPath}
                 onChange={(route) => router.push(route)}
+                align="center"
                 hideDivider
                 hideBorder
               >
-                <Tabs.Item label="Home" font={1} value="/" />
+                <Tabs.Item label="Home" value="/" />
                 <Tabs.Item label="Guide" value="/guide" />
                 <Tabs.Item label="Components" value="/components" />
                 <Tabs.Item label="Hooks" value="/hooks/use-body-scroll" />
@@ -170,6 +171,7 @@ const Menu: React.FC = () => {
 
         .tabs {
           padding: 0 ${theme.layout.gap};
+          margin-bottom: 3px;
         }
         .tabs :global(.content) {
           display: none;
