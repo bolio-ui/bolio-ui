@@ -1,9 +1,20 @@
 import React from 'react'
-// import { VirtualAnchor } from '../Pures'
+import Anchor from '../Anchor'
 import { Code, useTheme } from 'core'
 
 export interface AttributesTitleProps {
   alias?: string
+}
+
+const getAlias = (alias?: string) => {
+  if (!alias) return null
+  return (
+    <small>
+      <span>[</span>
+      {'alias'}: <Code>{alias}</Code>
+      <span>]</span>
+    </small>
+  )
 }
 
 const AttributesTitle: React.FC<React.PropsWithChildren<AttributesTitleProps>> =
@@ -14,9 +25,9 @@ const AttributesTitle: React.FC<React.PropsWithChildren<AttributesTitleProps>> =
       <>
         <h4 className="title">
           <Code>
-            {children}
-            {/* <VirtualAnchor pure>{children}</VirtualAnchor> */}
+            <Anchor pure>{children}</Anchor>
           </Code>
+          {getAlias(alias)}
         </h4>
 
         <style jsx>{`

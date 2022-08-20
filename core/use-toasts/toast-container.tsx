@@ -11,10 +11,13 @@ import useCurrentState from '../utils/use-current-state'
 const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   const theme = useTheme()
   const portal = usePortal('toast')
+
   const [, setHovering, hoveringRef] = useCurrentState<boolean>(false)
   const { toasts, updateToasts, toastLayout, lastUpdateToastId } =
     useBolioUIContext()
+
   const memoizedLayout = useMemo(() => toastLayout, [toastLayout])
+
   const toastElements = useMemo(
     () =>
       toasts.map((toast) => (
@@ -34,6 +37,7 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
       }),
     [memoizedLayout]
   )
+
   const hoverHandler = (isHovering: boolean) => {
     setHovering(isHovering)
     if (isHovering) {
@@ -97,6 +101,7 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
 
   if (!portal) return null
   if (!toasts || toasts.length === 0) return null
+
   return createPortal(
     <div
       className={classNames}

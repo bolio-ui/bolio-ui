@@ -38,7 +38,7 @@ const LinkComponent = React.forwardRef<
     const { SCALES } = useScale()
 
     const linkColor = color || block ? theme.palette.link : 'inherit'
-    const hoverColor = color || block ? theme.palette.successLight : 'inherit'
+    const hoverColor = color || block ? theme.palette.infoDark : 'inherit'
     const decoration = underline ? 'underline' : 'none'
     const classes = useClasses('link', { block }, className)
 
