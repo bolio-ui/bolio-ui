@@ -3,12 +3,21 @@ import { useTheme } from 'core'
 import { Page } from 'core'
 import Menu from 'src/components/Navigation'
 import Sidebar from 'src/components/Sidebar'
+import MadeDesigned from 'src/components/MadeDesigned'
+
+export interface Meta {
+  title: string
+  sidebar: string
+  group: string
+  index: number
+}
 
 export type DocsTemplateProps = {
   children: React.ReactNode
+  meta: Meta
 }
 
-function Docs({ children }: DocsTemplateProps) {
+function Docs({ children, meta }: DocsTemplateProps) {
   const theme = useTheme()
 
   return (
@@ -20,12 +29,12 @@ function Docs({ children }: DocsTemplateProps) {
         <div className="layout">
           <aside className="sidebar">
             <div className="content">
-              <Sidebar />
+              <Sidebar sidebar={meta.sidebar} />
             </div>
           </aside>
           <main className="main">
             <div>{children}</div>
-            {/* <Footer /> */}
+            <MadeDesigned />
           </main>
           <style jsx>{`
             :global(.layout h3) {

@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useTheme } from 'core'
 import SideItem from 'src/components/SideItem'
-import { sidebarItem } from 'src/data'
+import { guide, components, hooks } from 'src/data/sidebar'
 
-const Sidebar: React.FC = () => {
+export interface SidebarProps {
+  sidebar: string
+}
+
+const sidebarItems = {
+  guide: guide,
+  components: components,
+  hooks: hooks
+}
+
+function Sidebar({ sidebar }: SidebarProps) {
   const theme = useTheme()
+
+  const items = useMemo(() => {
+    return sidebarItems[sidebar]
+  }, [sidebar])
 
   return (
     <div className="sides box">
-      <SideItem items={sidebarItem} />
+      <SideItem items={items} />
       <style jsx>{`
         .sides {
           width: 100%;

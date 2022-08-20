@@ -32,12 +32,12 @@ function Footer() {
               />
               BY{' '}
               <Link
-                href="https://github.com/bolio-ui/"
+                href="https://brunnoandrade.com.br/"
                 target="_blank"
                 rel="noopener"
                 underline
               >
-                BOLIO
+                BRUNNO ANDRADE
               </Link>
             </Text>
           </Grid>
