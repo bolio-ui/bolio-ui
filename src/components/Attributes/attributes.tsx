@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { Spacer, Divider, Text } from 'core'
-// import { VirtualAnchor } from '../Pures'
+import { Spacer, Link } from 'core'
+import Anchor from '../Anchor'
 import AttributesTitle from './attributes-title'
 import AttributesTable from './attributes-table'
 
@@ -10,12 +10,15 @@ export interface AttributesProps {
 
 const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
   React.memo(({ edit, children }) => {
+    const path = edit.replace('/pages', 'pages')
     const apiTitles = useMemo(() => {
       if (React.Children.count(children) === 0) return null
       return (
         <>
           <Spacer h={1} />
-          <h3>{/* <VirtualAnchor>APIs</VirtualAnchor> */}</h3>
+          <h3>
+            <Anchor>APIs</Anchor>
+          </h3>
           <AttributesTable>{children}</AttributesTable>
         </>
       )
@@ -24,11 +27,17 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
     return (
       <>
         {apiTitles}
-        <Divider font="12px" mt="80px">
-          <Text p b type="secondary" style={{ userSelect: 'none' }}>
-            {'Contributors'}
-          </Text>
-        </Divider>
+        <Link
+          href={path}
+          color
+          target="_blank"
+          rel="nofollow"
+          mt={2}
+          font={0.75}
+          style={{ userSelect: 'none' }}
+        >
+          Edit this page on GitHub
+        </Link>
       </>
     )
   })

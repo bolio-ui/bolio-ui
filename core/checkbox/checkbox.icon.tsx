@@ -52,5 +52,4 @@ function CheckboxIconComponent({ fill, bg, disabled, checked }: Props) {
 
 CheckboxIconComponent.displayName = 'BolioUICheckboxIcon'
 const CheckboxIcon = React.memo(CheckboxIconComponent)
-
 export default CheckboxIcon
