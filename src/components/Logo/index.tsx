@@ -10,7 +10,7 @@ export type HeroProps = Props
 function Logo({ name }: Props) {
   return (
     <Link href="/">
-      <Text h5>
+      <Text b>
         <svg
           viewBox="0 0 500 500"
           style={{
