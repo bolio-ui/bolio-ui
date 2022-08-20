@@ -1,4 +1,26 @@
-export const sidebarItem = [
+export const guide = [
+  {
+    name: 'Guide',
+    url: ''
+  },
+  {
+    name: 'Getting Started',
+    url: '/guide/getting-started'
+  }
+]
+
+export const components = [
+  {
+    name: 'Components',
+    url: ''
+  },
+  {
+    name: 'Getting Started',
+    url: '/components/getting-started'
+  }
+]
+
+export const hooks = [
   {
     name: 'Utility',
     url: ''
