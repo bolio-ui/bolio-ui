@@ -5,12 +5,12 @@ import AttributesTitle from './attributes-title'
 import AttributesTable from './attributes-table'
 
 export interface AttributesProps {
-  edit: string
+  edit?: string
 }
 
 const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
   React.memo(({ edit, children }) => {
-    const path = edit.replace('/pages', 'pages')
+    const path = edit?.replace('/pages', 'pages')
     const apiTitles = useMemo(() => {
       if (React.Children.count(children) === 0) return null
       return (
