@@ -1,4 +1,6 @@
 import Docs from 'src/templates/Docs'
+import { Attributes } from 'src/components'
+import { Tabs, Spacer, Snippet, Dot } from 'core'
 
 export const meta = {
   title: 'Getting Started',
@@ -7,6 +9,143 @@ export const meta = {
   index: 1
 }
 
-## Getting Started
+# Getting started
+
+Welcome to the Bolio UI documentation!
+
+Bolio UI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with <a href="https://reactjs.org/" rel="noreferrer" target="_blank">React.js</a>.
+
+### Install
+
+Inside your React project directory, install BolioUI by running either of the following:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-end" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet>yarn add @bolio-ui/core</Snippet>
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet>npm i @bolio-ui/core</Snippet>
+  </Tabs.Item>
+</Tabs>
+
+### Setup
+
+For Bolio UI to work correctly, you need to set up the `BolioUIProvider` at the root of your application.
+
+#### React
+
+Go to the root of your application and do this:
+
+```jsx
+// NAME: /src/app.js
+import * as React from 'react'
+
+// 1. import `BolioUIProvider` component
+import { BolioUIProvider } from '@bolio-ui/core'
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <BolioUIProvider>
+      <Component />
+    </BolioUIProvider>
+  )
+}
+```
+
+#### Next.js
+
+1. Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
+
+```ts
+// 1. import `BolioUIProvider` component
+import { BolioUIProvider } from '@bolio-ui/core'
+
+function MyApp({ Component, pageProps }) {
+  return (
+    // 2. Use at the root of your app
+    <BolioUIProvider>
+      <Component {...pageProps} />
+    </BolioUIProvider>
+  )
+}
+
+export default MyApp
+```
+
+2. Go to `pages/_document.js` or `pages/_document.tsx` (create if it doesn't exist) and add this:
+
+```ts
+import React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { CssBaseline } from '@bolio-ui/core'
+
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    return {
+      ...initialProps,
+      styles: React.Children.toArray([initialProps.styles])
+    }
+  }
+
+  render() {
+    return (
+      <Html lang="en">
+        <Head>{CssBaseline.flush()}</Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+
+export default MyDocument
+```
+
+> For more information about Next.js + BolioUI SSR check out the [documentation](/guide/bolio-ui-plus-nextjs).
+
+### Using BolioUI components
+
+Once BolioUI is installed you can use any of the components as follows.
+BolioUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
+each component is exported separately.
+
+```ts
+import { Button } from '@bolio-ui/core'
+
+const Component = () => <Button>Click me</Button>
+```
+
+### Individual components import
+
+```ts
+import Button from '@bolio-ui/core/button'
+
+const Component = () => <Button>Click me</Button>
+```
+
+### BolioUIProvider Props
+
+| Attribute           | Type            | Accepted values              | Description                                                     | Default |
+| ------------------- | --------------- | ---------------------------- | --------------------------------------------------------------- | ------- |
+| **theme**           | `BolioUIThemes` | [ThemeObject](#theme-object) | Optional custom theme, by default BolioUI applies `light` theme | -       |
+| **disableBaseline** | `boolean`       | `true/false`                 | BolioUI automatically includes `<CssBaseline/>`                 | `false` |
+
+### Community
+
+We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
+Whether it's a feature request, bug report, or a project to showcase, please get involved!
+
+- [Instagram](https://instagram.com/bolio.ui)
+- [GitHub](https://github.com/bolio-ui/bolio-ui)
+
+### Contributing
+
+PR's on BolioUI are always welcome, please see our [contribution guidelines](https://github.com/bolio-ui/bolio-ui/blob/main/CONTRIBUTING.MD) to learn how you can contribute to this project.
 
 export default ({ children }) => <Docs meta={meta}>{children}</Docs>
