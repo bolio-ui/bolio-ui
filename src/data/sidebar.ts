@@ -6,6 +6,10 @@ export const guide = [
   {
     name: 'Getting Started',
     url: '/guide/getting-started'
+  },
+  {
+    name: 'Bolio UI + Next.js',
+    url: '/guide/bolio-ui-plus-nextjs'
   }
 ]
 
