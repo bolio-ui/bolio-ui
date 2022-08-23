@@ -10,6 +10,14 @@ export const guide = [
   {
     name: 'Bolio UI + Next.js',
     url: '/guide/bolio-ui-plus-nextjs'
+  },
+  {
+    name: 'Theme',
+    url: ''
+  },
+  {
+    name: 'Default Theme',
+    url: '/guide/default-theme'
   }
 ]
 
