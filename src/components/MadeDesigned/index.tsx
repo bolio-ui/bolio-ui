@@ -5,7 +5,7 @@ import { Heart } from '@bolio-ui/icons'
 function MadeDesigned() {
   return (
     <Grid.Container justify="flex-end">
-      <Grid>
+      <Grid mt={4}>
         <Text font={0.75} b my={0}>
           MADE & DESIGNED WITH
           <Heart

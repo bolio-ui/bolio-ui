@@ -9,41 +9,7 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
   return (
     <Card className="attr">
       {children}
-      <style jsx global>{`
-        .tag {
-          color: ${theme.palette.accents_5};
-        }
-        .punctuation {
-          color: ${theme.palette.accents_5};
-        }
-        .attr-name {
-          color: ${theme.palette.accents_6};
-        }
-        .attr-value {
-          color: ${theme.palette.accents_4};
-        }
-        .language-javascript {
-          color: ${theme.palette.accents_4};
-        }
-        span.class-name {
-          color: ${theme.palette.warning};
-        }
-        span.maybe-class-name {
-          color: ${theme.palette.purple};
-        }
-        span.token.string {
-          color: ${theme.palette.accents_5};
-        }
-        span.token.comment {
-          color: ${theme.palette.accents_3};
-        }
-        span.keyword {
-          color: ${theme.palette.info};
-        }
-        span.plain-text {
-          color: ${theme.palette.accents_3};
-        }
-
+      <style jsx>{`
         .attr .pre {
           margin-top: 12px !important;
         }
