@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { BolioUIProvider, CssBaseline } from 'core'
+import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import Favicon from 'src/components/Favicon'
 
 function App({ Component, pageProps }: AppProps) {
+  const theme = useTheme()
   const [themeType, setThemeType] = useState<ThemeType>('dark')
 
   useEffect(() => {
@@ -37,6 +38,41 @@ function App({ Component, pageProps }: AppProps) {
           <CssBaseline />
           <Component {...pageProps} />
         </SettingsContext.Provider>
+        <style global jsx>{`
+          .tag {
+            color: ${theme.palette.accents_5};
+          }
+          .punctuation {
+            color: ${theme.palette.accents_5};
+          }
+          .attr-name {
+            color: ${theme.palette.accents_6};
+          }
+          .attr-value {
+            color: ${theme.palette.accents_4};
+          }
+          .language-javascript {
+            color: ${theme.palette.accents_4};
+          }
+          span.class-name {
+            color: ${theme.palette.warning};
+          }
+          span.maybe-class-name {
+            color: ${theme.palette.purple};
+          }
+          span.token.string {
+            color: ${theme.palette.accents_5};
+          }
+          span.token.comment {
+            color: ${theme.palette.accents_3};
+          }
+          span.keyword {
+            color: ${theme.palette.info};
+          }
+          span.plain-text {
+            color: ${theme.palette.accents_3};
+          }
+        `}</style>
       </BolioUIProvider>
     </>
   )
