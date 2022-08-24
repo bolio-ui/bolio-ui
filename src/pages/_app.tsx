@@ -90,6 +90,12 @@ function App({ Component, pageProps }: AppProps) {
           span.operator {
             color: ${theme.palette.accents_1};
           }
+          span.constant {
+            color: ${theme.palette.accents_1};
+          }
+          span.number {
+            color: ${theme.palette.accents_1};
+          }
           span.keyword {
             color: ${theme.palette.violetLighter};
           }
