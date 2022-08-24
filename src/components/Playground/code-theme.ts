@@ -3,8 +3,8 @@ import { BolioUIThemes } from 'core/themes/presets'
 
 const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
   plain: {
-    backgroundColor: theme.palette.background,
-    color: theme.palette.accents_4,
+    backgroundColor: '#333',
+    color: '#FFF',
     fontWeight: '400',
     fontStyle: 'normal',
     fontFamily: theme.font.mono,
@@ -13,10 +13,16 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
   },
   styles: [
     {
-      types: ['comment', 'prolog', 'doctype', 'cdata', 'punctuation'],
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
         color: 'theme.palette.accents_3',
         opacity: 0.5
+      }
+    },
+    {
+      types: ['punctuation'],
+      style: {
+        color: '#fff'
       }
     },
     {
@@ -28,13 +34,13 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     {
       types: ['tag', 'operator', 'number'],
       style: {
-        color: theme.palette.accents_6
+        color: theme.palette.warningLighter
       }
     },
     {
       types: ['property', 'function'],
       style: {
-        color: theme.palette.success
+        color: theme.palette.info
       }
     },
     {
@@ -67,7 +73,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
         'variable'
       ],
       style: {
-        color: theme.palette.purple
+        color: theme.palette.violetLighter
       }
     },
     {
@@ -79,7 +85,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     {
       types: ['language-javascript', 'script'],
       style: {
-        color: theme.palette.success
+        color: theme.palette.info
       }
     },
     {
