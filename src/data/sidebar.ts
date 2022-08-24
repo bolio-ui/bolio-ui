@@ -5,11 +5,11 @@ export const guide = [
   },
   {
     name: 'Getting Started',
-    url: '/guide/getting-started'
+    url: '/docs/guide/getting-started'
   },
   {
     name: 'Bolio UI + Next.js',
-    url: '/guide/bolio-ui-plus-nextjs'
+    url: '/docs/guide/bolio-ui-plus-nextjs'
   },
   {
     name: 'Theme',
@@ -17,7 +17,7 @@ export const guide = [
   },
   {
     name: 'Default Theme',
-    url: '/guide/default-theme'
+    url: '/docs/guide/default-theme'
   }
 ]
 
@@ -28,7 +28,7 @@ export const components = [
   },
   {
     name: 'Getting Started',
-    url: '/components/getting-started'
+    url: '/docs/components/getting-started'
   }
 ]
 
@@ -39,54 +39,54 @@ export const hooks = [
   },
   {
     name: 'useBodyScroll',
-    url: '/hooks/use-body-scroll'
+    url: '/docs/hooks/use-body-scroll'
   },
   {
     name: 'useClasses',
-    url: '/hooks/use-classes'
+    url: '/docs/hooks/use-classes'
   },
   {
     name: 'useClickAway',
-    url: '/hooks/use-click-away'
+    url: '/docs/hooks/use-click-away'
   },
   {
     name: 'useClipboard',
-    url: '/hooks/use-clipboard'
+    url: '/docs/hooks/use-clipboard'
   },
   {
     name: 'useCurrentState',
-    url: '/hooks/use-current-state'
+    url: '/docs/hooks/use-current-state'
   },
   {
     name: 'useInput',
-    url: '/hooks/use-input'
+    url: '/docs/hooks/use-input'
   },
   {
     name: 'useKeyboard',
-    url: '/hooks/use-keyboard'
+    url: '/docs/hooks/use-keyboard'
   },
   {
     name: 'useMediaQuery',
-    url: '/hooks/use-media-query'
+    url: '/docs/hooks/use-media-query'
   },
   {
     name: 'useModal',
-    url: '/hooks/use-modal'
+    url: '/docs/hooks/use-modal'
   },
   {
     name: 'useScale',
-    url: '/hooks/use-scale'
+    url: '/docs/hooks/use-scale'
   },
   {
     name: 'useTabs',
-    url: '/hooks/use-tabs'
+    url: '/docs/hooks/use-tabs'
   },
   {
     name: 'useTheme',
-    url: '/hooks/use-theme'
+    url: '/docs/hooks/use-theme'
   },
   {
     name: 'useToast',
-    url: '/hooks/use-toast'
+    url: '/docs/hooks/use-toast'
   }
 ]
