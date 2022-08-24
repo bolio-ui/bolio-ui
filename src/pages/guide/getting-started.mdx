@@ -38,7 +38,7 @@ For Bolio UI to work correctly, you need to set up the `BolioUIProvider` at the 
 
 Go to the root of your application and do this:
 
-```jsx
+```tsx
 // NAME: /src/app.js
 import * as React from 'react'
 
@@ -59,7 +59,7 @@ function App({ Component }) {
 
 1. Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
 
-```ts
+```tsx
 // 1. import `BolioUIProvider` component
 import { BolioUIProvider } from '@bolio-ui/core'
 
@@ -77,7 +77,7 @@ export default MyApp
 
 2. Go to `pages/_document.js` or `pages/_document.tsx` (create if it doesn't exist) and add this:
 
-```ts
+```jsx
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { CssBaseline } from '@bolio-ui/core'
@@ -115,7 +115,7 @@ Once BolioUI is installed you can use any of the components as follows.
 BolioUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
 each component is exported separately.
 
-```ts
+```tsx
 import { Button } from '@bolio-ui/core'
 
 const Component = () => <Button>Click me</Button>
@@ -123,7 +123,7 @@ const Component = () => <Button>Click me</Button>
 
 ### Individual components import
 
-```ts
+```jsx
 import Button from '@bolio-ui/core/button'
 
 const Component = () => <Button>Click me</Button>
