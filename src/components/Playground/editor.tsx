@@ -112,7 +112,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           font-size: 1em;
           overflow: hidden;
           border-top: 1px solid ${theme.palette.accents_2};
-          padding: ${theme.layout.gapHalf};
+          /* padding: ${theme.layout.gapHalf}; */
         }
 
         .arrow {
