@@ -44,12 +44,18 @@ const Menu: React.FC = () => {
                     hideBorder
                   >
                     <Tabs.Item label="Home" value="/" />
-                    <Tabs.Item label="Guide" value="/guide/getting-started" />
+                    <Tabs.Item
+                      label="Guide"
+                      value="/docs/guide/getting-started"
+                    />
                     <Tabs.Item
                       label="Components"
-                      value="/components/getting-started"
+                      value="/docs/components/getting-started"
                     />
-                    <Tabs.Item label="Hooks" value="/hooks/use-body-scroll" />
+                    <Tabs.Item
+                      label="Hooks"
+                      value="/docs/hooks/use-body-scroll"
+                    />
                   </Tabs>
                 </div>
               </Grid>
