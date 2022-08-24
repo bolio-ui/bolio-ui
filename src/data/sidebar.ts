@@ -27,8 +27,8 @@ export const components = [
     url: ''
   },
   {
-    name: 'Getting Started',
-    url: '/docs/components/getting-started'
+    name: 'Avatar',
+    url: '/docs/components/avatar'
   }
 ]
 
