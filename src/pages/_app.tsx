@@ -39,38 +39,62 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </SettingsContext.Provider>
         <style global jsx>{`
+          pre {
+            background-color: ${theme.palette.accents_7};
+          }
+          pre code {
+            color: ${theme.palette.accents_1};
+          }
           .tag {
-            color: ${theme.palette.accents_5};
+            color: ${theme.palette.error};
           }
           .punctuation {
-            color: ${theme.palette.accents_5};
+            color: ${theme.palette.accents_1};
           }
           .attr-name {
-            color: ${theme.palette.accents_6};
+            color: ${theme.palette.warning};
           }
           .attr-value {
-            color: ${theme.palette.accents_4};
+            color: ${theme.palette.error};
           }
           .language-javascript {
             color: ${theme.palette.accents_4};
           }
+          .method.function.property-access {
+            color: ${theme.palette.info};
+          }
+          .property-access {
+            color: ${theme.palette.accents_1};
+          }
+          .literal-property.property {
+            color: ${theme.palette.accents_1};
+          }
+          .function {
+            color: ${theme.palette.info};
+          }
+          .parameter {
+            color: ${theme.palette.accents_1};
+          }
           span.class-name {
-            color: ${theme.palette.warning};
+            color: ${theme.palette.warningLighter};
           }
           span.maybe-class-name {
-            color: ${theme.palette.purple};
+            color: ${theme.palette.accents_1};
           }
           span.token.string {
-            color: ${theme.palette.accents_5};
+            color: ${theme.palette.successLight};
           }
           span.token.comment {
             color: ${theme.palette.accents_3};
           }
+          span.operator {
+            color: ${theme.palette.accents_1};
+          }
           span.keyword {
-            color: ${theme.palette.info};
+            color: ${theme.palette.violetLighter};
           }
           span.plain-text {
-            color: ${theme.palette.accents_3};
+            color: ${theme.palette.accents_1};
           }
         `}</style>
       </BolioUIProvider>
