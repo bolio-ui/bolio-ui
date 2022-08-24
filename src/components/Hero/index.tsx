@@ -24,7 +24,7 @@ function Hero({ content }: Props) {
         </Grid.Container>
         <Grid.Container gap={2} justify="center" alignItems="center">
           <Grid xs={12} sm={6} md={2}>
-            <NextLink href={'/guide/getting-started'} passHref>
+            <NextLink href={'/docs/guide/getting-started'} passHref>
               <Button type="info" width="100%">
                 Get Started
               </Button>
