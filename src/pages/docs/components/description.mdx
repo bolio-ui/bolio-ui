@@ -1,0 +1,51 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Description, Code } from 'core'
+
+export const meta = {
+  title: 'Description',
+  sidebar: 'components',
+  group: 'Components',
+  index: 12
+}
+
+## Description
+
+Display brief information with a title and description.
+
+<Playground
+  desc="`Description` component contains title and content."
+  scope={{ Description }}
+  code={`
+<Description title="Section Title" content="Data about this section." />
+`}
+/>
+
+<Playground
+  title="With Component"
+  desc="Use in combination with other components."
+  scope={{ Description, Code }}
+  code={`
+<Description
+  title="Section Title"
+  content={
+    <p>
+      <Code>code</Code> about this section.
+    </p>
+  }
+/>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/description.mdx">
+<Attributes.Title>Description.Props</Attributes.Title>
+
+| Attribute   | Description  | Type                   | Accepted values | Default |
+| ----------- | ------------ | ---------------------- | --------------- | ------- |
+| **title**   | title text   | `ReactNode` / `string` | -               | -       |
+| **content** | title text   | `ReactNode` / `string` | -               | -       |
+| ...         | native props | `HTMLAttributes`       | -               | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

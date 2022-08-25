@@ -69,6 +69,10 @@ export const components = [
   {
     name: 'Collapse',
     url: '/docs/components/collapse'
+  },
+  {
+    name: 'Description',
+    url: '/docs/components/description'
   }
 ]
 
