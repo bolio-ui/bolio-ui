@@ -89,6 +89,10 @@ export const components = [
   {
     name: 'Drawer',
     url: '/docs/components/drawer'
+  },
+  {
+    name: 'Fieldset',
+    url: '/docs/components/fieldset'
   }
 ]
 
