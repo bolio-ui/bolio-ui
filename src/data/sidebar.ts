@@ -100,7 +100,11 @@ export const components = [
   },
   {
     name: 'Icons',
-    url: '/docs/components/icons'
+    url: '/docs/components/icon'
+  },
+  {
+    name: 'Image',
+    url: '/docs/components/image'
   }
 ]
 
