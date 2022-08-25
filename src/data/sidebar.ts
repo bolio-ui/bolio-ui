@@ -65,6 +65,30 @@ export const components = [
   {
     name: 'Code',
     url: '/docs/components/code'
+  },
+  {
+    name: 'Collapse',
+    url: '/docs/components/collapse'
+  },
+  {
+    name: 'Description',
+    url: '/docs/components/description'
+  },
+  {
+    name: 'Display',
+    url: '/docs/components/display'
+  },
+  {
+    name: 'Divider',
+    url: '/docs/components/divider'
+  },
+  {
+    name: 'Dot',
+    url: '/docs/components/dot'
+  },
+  {
+    name: 'Drawer',
+    url: '/docs/components/drawer'
   }
 ]
 
