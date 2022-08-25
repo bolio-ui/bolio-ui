@@ -49,6 +49,10 @@ export const components = [
   {
     name: 'Button Group',
     url: '/docs/components/button-group'
+  },
+  {
+    name: 'Capacity',
+    url: '/docs/components/capacity'
   }
 ]
 
