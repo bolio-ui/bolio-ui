@@ -1,0 +1,51 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Capacity, Spacer, useTheme } from 'core'
+
+export const meta = {
+  title: 'Capacity',
+  sidebar: 'components',
+  group: 'Components',
+  index: 7
+}
+
+## Capacity
+
+Display an capacity indicator.
+
+<Playground
+  scope={{ Capacity, Spacer }}
+  code={`
+<>
+  <Capacity value={15} /> <Spacer />
+  <Capacity value={45} /> <Spacer />
+  <Capacity value={95} />
+</>
+`}
+/>
+
+<Playground
+  title="Fixed Color"
+  desc="Specify a color to override the default."
+  scope={{ Capacity, Spacer, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return <Capacity value={75} color={theme.palette.success} />
+}
+`}
+/>
+
+<Attributes edit="/pages/docs/components/capacity.mdx">
+<Attributes.Title>Capacity.Props</Attributes.Title>
+
+| Attribute | Description      | Type             | Accepted values    | Default |
+| --------- | ---------------- | ---------------- | ------------------ | ------- |
+| **value** | value number     | `number`         | -                  | 0       |
+| **limit** | max value        | `number`         | -                  | 100     |
+| **color** | css color string | `string`         | -                  | -       |
+| ...       | native props     | `HTMLAttributes` | `'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
