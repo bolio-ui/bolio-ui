@@ -37,6 +37,18 @@ export const components = [
   {
     name: 'Breadcrumbs',
     url: '/docs/components/breadcrumbs'
+  },
+  {
+    name: 'Button',
+    url: '/docs/components/button'
+  },
+  {
+    name: 'Button Dropdown',
+    url: '/docs/components/button-dropdown'
+  },
+  {
+    name: 'Button Group',
+    url: '/docs/components/button-group'
   }
 ]
 
