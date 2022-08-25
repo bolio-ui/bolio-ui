@@ -93,6 +93,10 @@ export const components = [
   {
     name: 'Fieldset',
     url: '/docs/components/fieldset'
+  },
+  {
+    name: 'Grid',
+    url: '/docs/components/grid'
   }
 ]
 
