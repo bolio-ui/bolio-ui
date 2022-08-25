@@ -53,6 +53,10 @@ export const components = [
   {
     name: 'Capacity',
     url: '/docs/components/capacity'
+  },
+  {
+    name: 'Card',
+    url: '/docs/components/card'
   }
 ]
 
