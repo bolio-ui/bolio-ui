@@ -61,6 +61,10 @@ export const components = [
   {
     name: 'Checkbox',
     url: '/docs/components/checkbox'
+  },
+  {
+    name: 'Code',
+    url: '/docs/components/code'
   }
 ]
 
