@@ -97,6 +97,10 @@ export const components = [
   {
     name: 'Grid',
     url: '/docs/components/grid'
+  },
+  {
+    name: 'Icons',
+    url: '/docs/components/icons'
   }
 ]
 
