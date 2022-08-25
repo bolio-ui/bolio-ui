@@ -1,0 +1,136 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Collapse, Spacer, Text } from 'core'
+
+export const meta = {
+  title: 'Collapse',
+  sidebar: 'components',
+  group: 'Components',
+  index: 11
+}
+
+## Collapse
+
+Display large amounts of text in collapsible sections. Commonly referred to as an accordion.
+
+<Playground
+  scope={{ Collapse, Text }}
+  desc="Show title only by default."
+  code={`
+<Collapse.Group>
+  <Collapse title="Lorem ipsum 1">
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+  <Collapse title="Lorem ipsum 2">
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+</Collapse.Group>
+`}
+/>
+
+<Playground
+  title="Expanded"
+  desc="Specify what to display first."
+  scope={{ Collapse, Text }}
+  code={`
+<Collapse.Group>
+  <Collapse title="Lorem ipsum 1" initialVisible>
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+  <Collapse title="Lorem ipsum 2">
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+</Collapse.Group>
+`}
+/>
+
+<Playground
+  title="Subtitle"
+  desc="Add text or components as subtitle."
+  scope={{ Collapse, Text }}
+  code={`
+<Collapse.Group>
+  <Collapse
+    title="Lorem ipsum 1"
+    subtitle="More description about Lorem ipsum 1"
+  >
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+  <Collapse
+    title="Lorem ipsum 2"
+    subtitle={
+      <>
+        More description about <Text b>Lorem ipsum 2</Text>
+      </>
+    }
+  >
+    <Text>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </Text>
+  </Collapse>
+</Collapse.Group>
+`}
+/>
+
+<Playground
+  title="Shadow"
+  desc="Highlight importance at a higher level."
+  scope={{ Collapse, Text }}
+  code={`
+<Collapse
+  shadow
+  title="Lorem ipsum 1"
+  subtitle="More description about Lorem ipsum 1"
+>
+  <Text>
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+  </Text>
+</Collapse>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/collapse.mdx">
+<Attributes.Title>Collapse.Props</Attributes.Title>
+
+| Attribute           | Description      | Type             | Accepted values                  | Default |
+| ------------------- | ---------------- | ---------------- | -------------------------------- | ------- |
+| **title**(required) | collapse title   | `string`         | -                                | -       |
+| **subtitle**        | description      | `string`         | -                                | -       |
+| **initialVisible**  | initial expanded | `boolean`        | -                                | `false` |
+| **shadow**          | show shadow card | `boolean`        | -                                | `false` |
+| ...                 | native props     | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
+
+<Attributes.Title>Collapse.Group.Props</Attributes.Title>
+
+| Attribute     | Description    | Type             | Accepted values                  | Default |
+| ------------- | -------------- | ---------------- | -------------------------------- | ------- |
+| **accordion** | accordion mode | `boolean`        | -                                | `true`  |
+| ...           | native props   | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
