@@ -33,6 +33,10 @@ export const components = [
   {
     name: 'Badge',
     url: '/docs/components/badge'
+  },
+  {
+    name: 'Breadcrumbs',
+    url: '/docs/components/breadcrumbs'
   }
 ]
 
