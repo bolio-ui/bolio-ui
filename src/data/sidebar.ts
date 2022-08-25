@@ -27,8 +27,44 @@ export const components = [
     url: ''
   },
   {
-    name: 'Getting Started',
-    url: '/docs/components/getting-started'
+    name: 'Avatar',
+    url: '/docs/components/avatar'
+  },
+  {
+    name: 'Badge',
+    url: '/docs/components/badge'
+  },
+  {
+    name: 'Breadcrumbs',
+    url: '/docs/components/breadcrumbs'
+  },
+  {
+    name: 'Button',
+    url: '/docs/components/button'
+  },
+  {
+    name: 'Button Dropdown',
+    url: '/docs/components/button-dropdown'
+  },
+  {
+    name: 'Button Group',
+    url: '/docs/components/button-group'
+  },
+  {
+    name: 'Capacity',
+    url: '/docs/components/capacity'
+  },
+  {
+    name: 'Card',
+    url: '/docs/components/card'
+  },
+  {
+    name: 'Checkbox',
+    url: '/docs/components/checkbox'
+  },
+  {
+    name: 'Code',
+    url: '/docs/components/code'
   }
 ]
 

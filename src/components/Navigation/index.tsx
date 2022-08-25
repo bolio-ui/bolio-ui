@@ -50,7 +50,7 @@ const Menu: React.FC = () => {
                     />
                     <Tabs.Item
                       label="Components"
-                      value="/docs/components/getting-started"
+                      value="/docs/components/avatar"
                     />
                     <Tabs.Item
                       label="Hooks"

@@ -9,7 +9,7 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
   return (
     <Card className="attr">
       {children}
-      <style jsx>{`
+      <style jsx global>{`
         .attr .pre {
           margin-top: 12px !important;
         }

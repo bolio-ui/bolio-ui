@@ -1,0 +1,88 @@
+import Docs from 'src/templates/Docs'
+import { Code, Text } from 'core'
+import { Playground, Attributes, ParsedCodes } from 'src/components'
+import WaitTime from 'core/mdx-widgets/parsed-codes/wait-time'
+
+export const meta = {
+  title: 'Code',
+  sidebar: 'components',
+  group: 'Components',
+  index: 10
+}
+
+## Code
+
+Show source code in a standardized way. Want to display shell code snippets? try [Snippet](/docs/components/snippet).
+
+<Playground
+  desc="Basic inline codes."
+  scope={{ Code, Text }}
+  code={`
+<>
+  <Text my={0}>
+    Run <Code>npm i @bolio-ui/core</Code> to install.
+  </Text>
+  <Text my={0}>
+    Or run <Code>yarn add @bolio-ui/core</Code> to install.
+  </Text>
+</>
+`}
+/>
+
+<Playground
+  title="Code Block"
+  desc="Multi line code display."
+  scope={{ Code, WaitTime }}
+  code={`
+<Code block my={0}>
+  <WaitTime />
+</Code>
+`}
+/>
+
+<Playground
+  title="Width"
+  desc="Specify width manually, or other styles."
+  scope={{ Code, WaitTime }}
+  code={`
+<Code block width="50%" my={0}>
+  <WaitTime />
+</Code>
+`}
+/>
+
+<Playground
+  title="Name"
+  desc="Specify the file name for the code block."
+  scope={{ Code, WaitTime }}
+  code={`
+<Code block name="/Components/WaitTime.jsx" my={0}>
+  <WaitTime />
+</Code>
+`}
+/>
+
+<Playground
+  title="classic style"
+  desc="The classic design style with a line border instead of a background."
+  scope={{ Code, WaitTime }}
+  code={`
+<Code block classic name="/Components/WaitTime.jsx" my={0}>
+  <WaitTime />
+</Code>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/code.mdx">
+<Attributes.Title>Code.Props</Attributes.Title>
+
+| Attribute   | Description                                 | Type             | Accepted values    | Default |
+| ----------- | ------------------------------------------- | ---------------- | ------------------ | ------- |
+| **block**   | show code in `pre`                          | `boolean`        | -                  | `false` |
+| **name**    | text displayed at the top of the code block | `string`         | -                  | -       |
+| **classic** | display with classic style                  | `boolean`        | -                  | `false` |
+| ...         | native props                                | `HTMLAttributes` | `'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
