@@ -5,3 +5,5 @@ export { default as AttributesTable } from './Attributes/attributes-table'
 export { default as AttributesTitle } from './Attributes/attributes-title'
 
 export { default as Colors } from './Colors'
+
+export { default as IconsGallery } from './IconsGallery'
