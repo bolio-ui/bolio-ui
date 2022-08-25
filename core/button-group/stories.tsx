@@ -2,7 +2,6 @@ import { Story, Meta } from '@storybook/react'
 import ButtonGroup from '.'
 import Button from '../button'
 import ButtonDropdown from '../button-dropdown'
-import { Plus } from '@bolio-ui/icons'
 
 export default {
   title: 'Data Entry/ButtonGroup',
