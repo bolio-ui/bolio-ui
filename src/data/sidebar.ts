@@ -29,6 +29,10 @@ export const components = [
   {
     name: 'Avatar',
     url: '/docs/components/avatar'
+  },
+  {
+    name: 'Badge',
+    url: '/docs/components/badge'
   }
 ]
 
