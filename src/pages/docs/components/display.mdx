@@ -1,0 +1,82 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Display, Code, Snippet, Image } from 'core'
+
+export const meta = {
+  title: 'Display',
+  sidebar: 'components',
+  group: 'Components',
+  index: 13
+}
+
+## Display
+
+To display important information or images in a central alignment.
+
+<Playground
+  title="Basic"
+  desc="Describe the main part with a paragraph."
+  scope={{ Display, Image }}
+  code={`
+<Display shadow caption="Make your development more creative and dynamic with amazing tools for React. 🥷🏼">
+  <Image height="200px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
+</Display>
+`}
+/>
+
+<Playground
+  title="With Code"
+  desc="Show multiline code blocks."
+  scope={{ Display, Code }}
+  code={`
+() => {
+  const codes = \`{
+  "build": {
+    "env": {
+      "VARIABLE": "ENV_SECRET"
+    }
+  }
+}\`
+  return (
+    <Display width="500px" caption="Application's build with a defined secret environment variable.">
+      <Code block>{codes}</Code>
+    </Display>
+  )
+}
+`}
+/>
+
+<Playground
+  title="With Snippet"
+  desc="Show shell codes."
+  scope={{ Display, Snippet }}
+  code={`
+<Display width="500px" caption="Run this command to install the library.">
+  <Snippet type="dark">yarn add @bolio-ui/core</Snippet>
+</Display>
+`}
+/>
+
+<Playground
+  title="Component Caption"
+  desc="Use component on `caption` prop."
+  scope={{ Display, Code, Image }}
+  code={`
+<Display shadow caption={<p>Browse <Code>bolio-ui.com.br</Code> for more information.</p>}>
+  <Image width="650px" height="297px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
+</Display>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/display.mdx">
+<Attributes.Title>Display.Props</Attributes.Title>
+
+| Attribute   | Description                   | Type                   | Accepted values | Default |
+| ----------- | ----------------------------- | ---------------------- | --------------- | ------- |
+| **caption** | description for display block | `ReactNode` / `string` | -               | -       |
+| **shadow**  | show shadow                   | `boolean`              | -               | `false` |
+| ...         | native props                  | `HTMLAttributes`       | -               | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
