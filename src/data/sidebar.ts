@@ -73,6 +73,10 @@ export const components = [
   {
     name: 'Description',
     url: '/docs/components/description'
+  },
+  {
+    name: 'Display',
+    url: '/docs/components/display'
   }
 ]
 
