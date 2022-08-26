@@ -14,7 +14,7 @@ function Hero({ content }: Props) {
       <Container>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
-            <Col span={18}>
+            <Col span={8}>
               <Text h1>{content.title}</Text>
               <Text p font={1.5} mt={0}>
                 {content.description}

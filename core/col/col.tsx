@@ -29,8 +29,8 @@ function Col({
           box-sizing: border-box;
           padding-left: calc(var(--row-gap) / 2);
           padding-right: calc(var(--row-gap) / 2);
-          width: ${(100 / 24) * span}%;
-          margin-left: ${(100 / 24) * offset}%;
+          width: ${(100 / 12) * span}%;
+          margin-left: ${(100 / 12) * offset}%;
         }
       `}</style>
     </Component>
