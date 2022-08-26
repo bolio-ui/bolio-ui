@@ -129,6 +129,10 @@ export const components = [
   {
     name: 'Note',
     url: '/docs/components/note'
+  },
+  {
+    name: 'Page',
+    url: '/docs/components/page'
   }
 ]
 

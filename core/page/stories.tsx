@@ -33,7 +33,6 @@ export const Default: Story = () => {
 
 export const Content: Story = () => {
   const [visible, setVisible] = React.useState(false)
-
   return (
     <>
       <Button onClick={() => setVisible(true)} auto>
