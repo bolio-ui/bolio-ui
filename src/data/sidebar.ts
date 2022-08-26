@@ -121,6 +121,10 @@ export const components = [
   {
     name: 'Loading',
     url: '/docs/components/loading'
+  },
+  {
+    name: 'Modal',
+    url: '/docs/components/modal'
   }
 ]
 
