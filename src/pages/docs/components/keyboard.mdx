@@ -1,0 +1,69 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Keyboard } from 'core'
+
+export const meta = {
+  title: 'Keyboard',
+  sidebar: 'components',
+  group: 'Components',
+  index: 21
+}
+
+## Keyboard
+
+Display keyboard input that triggers an action.
+
+The `Keyboard` can only display layout styles, if you need to bind the keyboard events, please read subsection [useKeyboard](/docs/hooks/use-keyboard).
+
+<Playground
+  scope={{ Keyboard }}
+  code={`
+<Keyboard>C</Keyboard>
+`}
+/>
+
+<Playground
+  title="Modifiers"
+  scope={{ Keyboard }}
+  code={`
+<>
+  <Keyboard command mr="10px" />
+  <Keyboard shift mr="10px" />
+  <Keyboard option mr="10px" />
+  <Keyboard ctrl mr="10px" />
+</>
+`}
+/>
+
+<Playground
+  title="Combination"
+  scope={{ Keyboard }}
+  code={`
+  <>
+    <Keyboard command mr="10px">
+      f
+    </Keyboard>
+    <Keyboard shift mr="10px">
+      e
+    </Keyboard>
+    <Keyboard option ctrl mr="10px">
+      b
+    </Keyboard>
+  </>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/keyboard.mdx">
+<Attributes.Title>Keyboard.Props</Attributes.Title>
+
+| Attribute   | Description      | Type                   | Accepted values               | Default |
+| ----------- | ---------------- | ---------------------- | ----------------------------- | ------- |
+| **command** | show command key | `boolean`              | -                             | `false` |
+| **shift**   | show shift key   | `boolean`              | -                             | `false` |
+| **option**  | show option key  | `boolean`              | -                             | `false` |
+| **ctrl**    | show ctrl key    | `boolean`              | -                             | `false` |
+| ...         | native props     | `KeygenHTMLAttributes` | `'keyType', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
