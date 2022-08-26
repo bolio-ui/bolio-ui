@@ -117,6 +117,10 @@ export const components = [
   {
     name: 'Link',
     url: '/docs/components/link'
+  },
+  {
+    name: 'Loading',
+    url: '/docs/components/loading'
   }
 ]
 
