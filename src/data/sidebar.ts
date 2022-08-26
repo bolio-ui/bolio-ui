@@ -113,6 +113,10 @@ export const components = [
   {
     name: 'Keyboard',
     url: '/docs/components/keyboard'
+  },
+  {
+    name: 'Link',
+    url: '/docs/components/link'
   }
 ]
 
