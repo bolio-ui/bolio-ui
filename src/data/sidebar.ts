@@ -137,6 +137,10 @@ export const components = [
   {
     name: 'Pagination',
     url: '/docs/components/pagination'
+  },
+  {
+    name: 'Popover',
+    url: '/docs/components/popover'
   }
 ]
 
