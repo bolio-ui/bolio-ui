@@ -105,6 +105,10 @@ export const components = [
   {
     name: 'Image',
     url: '/docs/components/image'
+  },
+  {
+    name: 'Input',
+    url: '/docs/components/input'
   }
 ]
 
