@@ -105,6 +105,26 @@ export const components = [
   {
     name: 'Image',
     url: '/docs/components/image'
+  },
+  {
+    name: 'Input',
+    url: '/docs/components/input'
+  },
+  {
+    name: 'Keyboard',
+    url: '/docs/components/keyboard'
+  },
+  {
+    name: 'Link',
+    url: '/docs/components/link'
+  },
+  {
+    name: 'Loading',
+    url: '/docs/components/loading'
+  },
+  {
+    name: 'Modal',
+    url: '/docs/components/modal'
   }
 ]
 
