@@ -109,6 +109,10 @@ export const components = [
   {
     name: 'Input',
     url: '/docs/components/input'
+  },
+  {
+    name: 'Keyboard',
+    url: '/docs/components/keyboard'
   }
 ]
 
