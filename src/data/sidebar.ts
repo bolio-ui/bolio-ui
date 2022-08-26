@@ -133,6 +133,10 @@ export const components = [
   {
     name: 'Page',
     url: '/docs/components/page'
+  },
+  {
+    name: 'Pagination',
+    url: '/docs/components/pagination'
   }
 ]
 
