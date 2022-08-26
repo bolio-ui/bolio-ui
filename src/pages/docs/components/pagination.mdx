@@ -1,0 +1,117 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Pagination, Spacer } from 'core'
+import {
+  ChevronRight,
+  ChevronLeft,
+  ArrowRight,
+  ArrowLeft,
+  ArrowRightCircle,
+  ArrowLeftCircle
+} from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Pagination',
+  sidebar: 'components',
+  group: 'Components',
+  index: 27
+}
+
+## Pagination
+
+Navigation and identification between multiple pages.
+
+<Playground
+  scope={{ Pagination }}
+  code={`
+<Pagination count={20} initialPage={3} />
+`}
+/>
+
+<Playground
+  title="Limit"
+  desc="The maximum number of pages that can be displayed"
+  scope={{ Pagination }}
+  code={`
+<>
+  <Pagination count={10} limit={10} />
+  <Pagination count={5} />
+  <Pagination count={10} initialPage={6} limit={5} />
+  <Pagination count={10} initialPage={6} />
+  <Pagination count={30} initialPage={6} limit={10} />
+</>
+`}
+/>
+
+<Playground
+  title="Icon"
+  desc="Customize buttons as icons."
+  scope={{
+    Spacer,
+    Pagination,
+    ChevronRight,
+    ChevronLeft,
+    ArrowRight,
+    ArrowLeft,
+    ArrowRightCircle,
+    ArrowLeftCircle
+  }}
+  code={`
+<>
+  <Pagination count={5}>
+    <Pagination.Next>
+      <ChevronRight />
+    </Pagination.Next>
+    <Pagination.Previous>
+      <ChevronLeft />
+    </Pagination.Previous>
+  </Pagination>
+  <Spacer h={0.5} />
+  <Pagination count={5}>
+    <Pagination.Next>
+      <ArrowRight />
+    </Pagination.Next>
+    <Pagination.Previous>
+      <ArrowLeft />
+    </Pagination.Previous>
+  </Pagination>
+  <Spacer h={0.5} />
+  <Pagination count={5}>
+    <Pagination.Next>
+      <ArrowRightCircle />
+    </Pagination.Next>
+    <Pagination.Previous>
+      <ArrowLeftCircle />
+    </Pagination.Previous>
+  </Pagination>
+</>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/pagination.mdx">
+<Attributes.Title>Pagination.Props</Attributes.Title>
+
+| Attribute       | Description                  | Type                     | Accepted values          | Default |
+| --------------- | ---------------------------- | ------------------------ | ------------------------ | ------- |
+| **initialPage** | the page selected by default | `number`                 | -                        | 1       |
+| **page**        | current page                 | `number`                 | -                        | 1       |
+| **count**       | the total number of pages    | `number`                 | -                        | 1       |
+| **limit**       | limit of display page        | `number`                 | -                        | 7       |
+| **onChange**    | change event                 | `(page: number) => void` | -                        | -       |
+| ...             | native props                 | `HTMLAttributes`         | `'id', 'className', ...` | -       |
+
+<Attributes.Title>Pagination.Previous.Props</Attributes.Title>
+
+| Attribute | Description  | Type                   | Accepted values          | Default |
+| --------- | ------------ | ---------------------- | ------------------------ | ------- |
+| ...       | native props | `ButtonHTMLAttributes` | `'id', 'className', ...` | -       |
+
+<Attributes.Title>Pagination.Next.Props</Attributes.Title>
+
+| Attribute | Description  | Type                   | Accepted values          | Default |
+| --------- | ------------ | ---------------------- | ------------------------ | ------- |
+| ...       | native props | `ButtonHTMLAttributes` | `'id', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

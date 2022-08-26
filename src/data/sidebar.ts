@@ -125,6 +125,22 @@ export const components = [
   {
     name: 'Modal',
     url: '/docs/components/modal'
+  },
+  {
+    name: 'Note',
+    url: '/docs/components/note'
+  },
+  {
+    name: 'Page',
+    url: '/docs/components/page'
+  },
+  {
+    name: 'Pagination',
+    url: '/docs/components/pagination'
+  },
+  {
+    name: 'Popover',
+    url: '/docs/components/popover'
   }
 ]
 
