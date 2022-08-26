@@ -1,5 +1,6 @@
 import React from 'react'
 import Anchor from '../Anchor'
+import { kebabCase, isString } from 'lodash'
 
 export type TitleProps = {
   title: React.ReactNode | string
@@ -24,7 +25,11 @@ function Title({ title, desc }: TitleProps & typeof defaultProps) {
   const isStringDesc = typeof desc === 'string'
   return (
     <>
-      <h3>
+      <h3
+        id={`${isString(title) && kebabCase(title)}`}
+        data-name={title}
+        className="linked-heading"
+      >
         <Anchor>{title}</Anchor>
       </h3>
       {desc && isStringDesc && (
