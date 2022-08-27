@@ -1,0 +1,60 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Spacer, Grid } from 'core'
+
+export const meta = {
+  title: 'Spacer',
+  sidebar: 'components',
+  group: 'Components',
+  index: 34
+}
+
+## Spacer
+
+Provide empty space.
+
+<Playground
+  title="Vertical"
+  scope={{ Spacer, Grid }}
+  code={`
+<Grid.Container>
+  <Grid xs={12} style={{ background: '#444', borderRadius: '15px' }}>
+    <Spacer h={3} />
+  </Grid>
+  <Spacer h={2} />
+  <Grid xs={12} style={{ background: '#666', borderRadius: '15px' }}>
+    <Spacer h={3} />
+  </Grid>
+  <Spacer h={2} />
+  <Grid xs={12} style={{ background: '#999', borderRadius: '15px' }}>
+    <Spacer h={3} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Horizontal"
+  scope={{ Spacer, Grid }}
+  code={`
+<Grid.Container>
+  <Grid xs={5} style={{ background: '#999', borderRadius: '15px' }} />
+  <Spacer w={2} />
+  <Grid xs={5} style={{ background: '#999', borderRadius: '15px' }} />
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/spacer.mdx">
+<Attributes.Title>Spacer.Props</Attributes.Title>
+
+| Attribute  | Description    | Type               | Accepted values          | Default |
+| ---------- | -------------- | ------------------ | ------------------------ | ------- |
+| **w**      | x-axis spacing | `number` / `float` | -                        | 1       |
+| **h**      | y-axis spacing | `number` / `float` | -                        | 1       |
+| **inline** | inline space   | `boolean`          | -                        | `false` |
+| ...        | native props   | `HTMLAttributes`   | `'id', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

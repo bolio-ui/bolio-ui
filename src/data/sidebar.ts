@@ -165,6 +165,10 @@ export const components = [
   {
     name: 'Snippet',
     url: '/docs/components/snippet'
+  },
+  {
+    name: 'Spacer',
+    url: '/docs/components/spacer'
   }
 ]
 
