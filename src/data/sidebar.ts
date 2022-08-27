@@ -149,6 +149,10 @@ export const components = [
   {
     name: 'Radio',
     url: '/docs/components/radio'
+  },
+  {
+    name: 'Rating',
+    url: '/docs/components/rating'
   }
 ]
 
