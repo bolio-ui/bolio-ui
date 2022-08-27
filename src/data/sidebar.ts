@@ -153,6 +153,22 @@ export const components = [
   {
     name: 'Rating',
     url: '/docs/components/rating'
+  },
+  {
+    name: 'Select',
+    url: '/docs/components/select'
+  },
+  {
+    name: 'Slider',
+    url: '/docs/components/slider'
+  },
+  {
+    name: 'Snippet',
+    url: '/docs/components/snippet'
+  },
+  {
+    name: 'Spacer',
+    url: '/docs/components/spacer'
   }
 ]
 

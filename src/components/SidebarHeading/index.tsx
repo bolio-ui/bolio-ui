@@ -38,7 +38,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
       <style jsx>{`
         .container {
           position: relative;
-          padding-left: 1rem;
+          padding-left: 0.5rem;
         }
         .title {
           font-size: 1.2rem;
