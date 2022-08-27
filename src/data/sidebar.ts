@@ -153,6 +153,10 @@ export const components = [
   {
     name: 'Rating',
     url: '/docs/components/rating'
+  },
+  {
+    name: 'Select',
+    url: '/docs/components/select'
   }
 ]
 
