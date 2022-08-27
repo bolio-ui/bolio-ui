@@ -145,6 +145,10 @@ export const components = [
   {
     name: 'Progress',
     url: '/docs/components/progress'
+  },
+  {
+    name: 'Radio',
+    url: '/docs/components/radio'
   }
 ]
 
