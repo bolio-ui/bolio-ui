@@ -157,6 +157,10 @@ export const components = [
   {
     name: 'Select',
     url: '/docs/components/select'
+  },
+  {
+    name: 'Slider',
+    url: '/docs/components/slider'
   }
 ]
 
