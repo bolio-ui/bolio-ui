@@ -161,6 +161,10 @@ export const components = [
   {
     name: 'Slider',
     url: '/docs/components/slider'
+  },
+  {
+    name: 'Snippet',
+    url: '/docs/components/snippet'
   }
 ]
 
