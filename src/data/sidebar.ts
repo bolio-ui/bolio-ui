@@ -141,6 +141,10 @@ export const components = [
   {
     name: 'Popover',
     url: '/docs/components/popover'
+  },
+  {
+    name: 'Progress',
+    url: '/docs/components/progress'
   }
 ]
 
