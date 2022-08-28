@@ -189,6 +189,10 @@ export const components = [
   {
     name: 'Textarea',
     url: '/docs/components/textarea'
+  },
+  {
+    name: 'Toggle',
+    url: '/docs/components/toggle'
   }
 ]
 
