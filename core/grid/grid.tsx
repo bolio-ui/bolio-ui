@@ -1,30 +1,47 @@
-import React from 'react'
-import css from 'styled-jsx/css'
+import React, { useMemo } from 'react'
 import GridBasicItem, { GridBasicItemProps } from './basic-item'
+import { GridWrap } from './grid-types'
+import css from 'styled-jsx/css'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
 interface Props {
+  gap?: number
+  wrap?: GridWrap
   className?: string
 }
 
-export type GridProps = Props & GridBasicItemProps
+const defaultProps = {
+  gap: 0,
+  wrap: 'wrap' as GridWrap,
+  className: ''
+}
 
-function GridComponent({
+export type GridContainerProps = Props & GridBasicItemProps
+
+function GridContainerComponent({
+  gap,
+  wrap,
   children,
-  className = '',
+  className,
   ...props
-}: React.PropsWithChildren<GridProps>) {
-  const { SCALES } = useScale()
+}: React.PropsWithChildren<GridContainerProps> & typeof defaultProps) {
+  const { unit, SCALES } = useScale()
+  const gapUnit = useMemo(() => `calc(${gap} * ${unit} * 1/3)`, [gap, unit])
 
   const gridGapUnit = 'var(--grid-gap-unit)'
 
   const { className: resolveClassName, styles } = css.resolve`
     div {
-      margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)};
+      --grid-gap-unit: ${gapUnit};
+      --grid-container-margin: calc(-1 * var(--grid-gap-unit));
+      --grid-container-width: calc(100% + var(--grid-gap-unit) * 2);
+      display: flex;
+      flex-wrap: ${wrap};
       box-sizing: border-box;
-      padding: ${SCALES.pt(0, gridGapUnit)} ${SCALES.pr(0, gridGapUnit)}
-        ${SCALES.pb(0, gridGapUnit)} ${SCALES.pl(0, gridGapUnit)};
+      width: ${SCALES.width(1, 'var(--grid-container-width)')};
+      margin: ${SCALES.mt(0, gridGapUnit)} ${SCALES.mr(0, gridGapUnit)}
+        ${SCALES.mb(0, gridGapUnit)} ${SCALES.ml(0, gridGapUnit)};
     }
   `
   const classes = useClasses(resolveClassName, className)
@@ -37,6 +54,7 @@ function GridComponent({
   )
 }
 
-GridComponent.displayName = 'BolioUIGrid'
-const Grid = withScale(GridComponent)
-export default Grid
+GridContainerComponent.defaultProps = defaultProps
+GridContainerComponent.displayName = 'BolioUIGridContainer'
+const GridContainer = withScale(GridContainerComponent)
+export default GridContainer

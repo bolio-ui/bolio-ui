@@ -177,6 +177,26 @@ export const components = [
   {
     name: 'Tabs',
     url: '/docs/components/tabs'
+  },
+  {
+    name: 'Tag',
+    url: '/docs/components/tag'
+  },
+  {
+    name: 'Text',
+    url: '/docs/components/text'
+  },
+  {
+    name: 'Textarea',
+    url: '/docs/components/textarea'
+  },
+  {
+    name: 'Toggle',
+    url: '/docs/components/toggle'
+  },
+  {
+    name: 'Tooltip',
+    url: '/docs/components/tooltip'
   }
 ]
 
