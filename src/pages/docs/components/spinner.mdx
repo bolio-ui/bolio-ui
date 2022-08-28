@@ -1,0 +1,34 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Spinner } from 'core'
+
+export const meta = {
+  title: 'Spinner',
+  sidebar: 'components',
+  group: 'Components',
+  index: 35
+}
+
+## Spinner
+
+Indicate an action running in the background.
+
+As an indicator of load waiting, see also component [Loading](/docs/components/loading).
+
+<Playground
+  scope={{ Spinner }}
+  code={`
+<Spinner />
+`}
+/>
+
+<Attributes edit="/pages/docs/components/spinner.mdx">
+<Attributes.Title>Spinner.Props</Attributes.Title>
+
+| Attribute | Description  | Type             | Accepted values          | Default |
+| --------- | ------------ | ---------------- | ------------------------ | ------- |
+| ...       | native props | `HTMLAttributes` | `'id', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
