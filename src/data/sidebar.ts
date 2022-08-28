@@ -169,6 +169,14 @@ export const components = [
   {
     name: 'Spacer',
     url: '/docs/components/spacer'
+  },
+  {
+    name: 'Spinner',
+    url: '/docs/components/spinner'
+  },
+  {
+    name: 'Tabs',
+    url: '/docs/components/tabs'
   }
 ]
 
