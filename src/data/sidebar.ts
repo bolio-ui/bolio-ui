@@ -193,6 +193,10 @@ export const components = [
   {
     name: 'Toggle',
     url: '/docs/components/toggle'
+  },
+  {
+    name: 'Tooltip',
+    url: '/docs/components/tooltip'
   }
 ]
 
