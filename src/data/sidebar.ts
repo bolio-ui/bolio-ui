@@ -173,6 +173,10 @@ export const components = [
   {
     name: 'Spinner',
     url: '/docs/components/spinner'
+  },
+  {
+    name: 'Tabs',
+    url: '/docs/components/tabs'
   }
 ]
 
