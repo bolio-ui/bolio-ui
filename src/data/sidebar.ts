@@ -185,6 +185,10 @@ export const components = [
   {
     name: 'Text',
     url: '/docs/components/text'
+  },
+  {
+    name: 'Textarea',
+    url: '/docs/components/textarea'
   }
 ]
 
