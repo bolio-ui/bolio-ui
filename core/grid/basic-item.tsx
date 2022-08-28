@@ -10,7 +10,6 @@ import useScale from '../use-scale'
 import useClasses from '../use-classes'
 
 export type GridBreakpointsValue = number | boolean
-
 export interface GridBasicComponentProps {
   xs?: GridBreakpointsValue
   sm?: GridBreakpointsValue
@@ -45,7 +44,6 @@ type ItemLayoutValue = {
   basis: string
   display: string
 }
-
 const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
   const display = val === 0 ? 'display: none;' : 'display: inherit;'
   if (typeof val === 'number') {
@@ -141,7 +139,7 @@ function GridBasicItem({
           flex-grow: ${layout.xs.grow};
           max-width: ${layout.xs.width};
           flex-basis: ${layout.xs.basis};
-          /* ${layout.xs.display} */
+          ${layout.xs.display}
         }
         @media only screen and (min-width: ${theme.breakpoints.sm.min}) {
           .sm {
