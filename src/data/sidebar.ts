@@ -177,6 +177,10 @@ export const components = [
   {
     name: 'Tabs',
     url: '/docs/components/tabs'
+  },
+  {
+    name: 'Tag',
+    url: '/docs/components/tag'
   }
 ]
 
