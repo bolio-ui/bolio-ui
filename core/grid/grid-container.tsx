@@ -34,9 +34,9 @@ function GridContainerComponent({
       display: flex;
       flex-wrap: ${wrap};
       box-sizing: border-box;
-      width: ${SCALES.width(1, gridConWidth)};
-      margin: ${SCALES.mt(0, gridConMargin)} ${SCALES.mr(0, gridConMargin)}
-        ${SCALES.mb(0, gridConMargin)} ${SCALES.ml(0, gridConMargin)};
+      // width: ${SCALES.width(1, gridConWidth)};
+      // margin: ${SCALES.mt(0, gridConMargin)} ${SCALES.mr(0, gridConMargin)}
+      //   ${SCALES.mb(0, gridConMargin)} ${SCALES.ml(0, gridConMargin)};
     }
   `
   const classes = useClasses(resolveClassName, className)
