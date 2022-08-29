@@ -14,7 +14,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
   const activeId = useScrollSpy(
     headings.map(({ id }) => `[id="${id}"]`),
     {
-      rootMargin: '0% 0% -80% 0%'
+      rootMargin: '0% 0% -60% 0%'
     }
   )
 
