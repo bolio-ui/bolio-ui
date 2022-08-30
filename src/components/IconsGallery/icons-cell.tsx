@@ -16,7 +16,7 @@ export const getImportString = (name: string) => {
 }
 
 interface Props {
-  component: React.ComponentType<any>
+  component: React.ComponentType<unknown>
   name: string
   onClick: (name: string) => void
 }
