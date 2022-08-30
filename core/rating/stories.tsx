@@ -16,17 +16,17 @@ export const Default: Story = () => {
 
   return (
     <Grid.Container gap={2}>
-      <Grid xs={24} md={8} justify="center">
+      <Grid xs={12} md={4} justify="center">
         <Rating
           onLockedChange={setLocked}
           value={value}
           onValueChange={setValue}
         />
       </Grid>
-      <Grid xs={12} md={8} justify="center">
+      <Grid xs={6} md={4} justify="center">
         Selection: {value}
       </Grid>
-      <Grid xs={12} md={8} justify="center">
+      <Grid xs={6} md={4} justify="center">
         Locked: {locked ? 'true' : 'false'}
       </Grid>
     </Grid.Container>
@@ -36,13 +36,13 @@ export const Default: Story = () => {
 export const Types: Story = () => {
   return (
     <Grid.Container gap={2} justify="center">
-      <Grid xs={24} sm={24} md={8} justify="center">
+      <Grid xs={12} sm={12} md={4} justify="center">
         <Rating type="success" />
       </Grid>
-      <Grid xs={24} sm={12} md={8} justify="center">
+      <Grid xs={12} sm={6} md={4} justify="center">
         <Rating type="error" />
       </Grid>
-      <Grid xs={24} sm={12} md={8} justify="center">
+      <Grid xs={12} sm={6} md={4} justify="center">
         <Rating type="warning" />
       </Grid>
     </Grid.Container>

@@ -55,7 +55,7 @@ const useMediaQuery = (
     const up = matchType === 'up'
     const down = matchType === 'down'
     return makeQueries(theme.breakpoints, up, down)
-  }, [theme.breakpoints, options])
+  }, [matchType, theme.breakpoints])
   const query = useMemo(
     () => mediaQueries[breakpoint],
     [mediaQueries, breakpoint]
@@ -88,7 +88,7 @@ const useMediaQuery = (
     return () => {
       queryList.removeListener(update)
     }
-  }, [supportMedia])
+  }, [query, supportMedia])
 
   return state
 }

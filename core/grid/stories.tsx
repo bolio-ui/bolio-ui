@@ -23,12 +23,6 @@ export const Default: Story = () => (
 
 export const FluidLayout: Story = () => (
   <Grid.Container gap={2} justify="center">
-    <Grid xs={24}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
-    <Grid xs={12}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
     <Grid xs={12}>
       <Card shadow width="100%" height="50px" />
     </Grid>
@@ -38,19 +32,25 @@ export const FluidLayout: Story = () => (
     <Grid xs={6}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={6}>
+    <Grid xs={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={3}>
       <Card shadow width="100%" height="50px" />
     </Grid>
     <Grid xs={6}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={6}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
-    <Grid xs={12}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
-    <Grid xs={6}>
+    <Grid xs={3}>
       <Card shadow width="100%" height="50px" />
     </Grid>
   </Grid.Container>
@@ -58,19 +58,19 @@ export const FluidLayout: Story = () => (
 
 export const ResponsiveLayout: Story = () => (
   <Grid.Container gap={2} justify="center">
-    <Grid xs={24} md={12}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
-    <Grid xs={12} md={12}>
-      <Card shadow width="100%" height="50px" />
-    </Grid>
     <Grid xs={12} md={6}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={12} md={6}>
+    <Grid xs={6} md={6}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={12} md={6}>
+    <Grid xs={6} md={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={6} md={3}>
+      <Card shadow width="100%" height="50px" />
+    </Grid>
+    <Grid xs={6} md={3}>
       <Card shadow width="100%" height="50px" />
     </Grid>
   </Grid.Container>
@@ -78,16 +78,16 @@ export const ResponsiveLayout: Story = () => (
 
 export const HideElement: Story = () => (
   <Grid.Container gap={2} justify="center">
-    <Grid xs={12} sm={0}>
+    <Grid xs={6} sm={0}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={12} sm={0}>
+    <Grid xs={6} sm={0}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={24}>
+    <Grid xs={12}>
       <Card shadow width="100%" height="50px" />
     </Grid>
-    <Grid xs={24}>
+    <Grid xs={12}>
       <Card shadow width="100%" height="50px" />
     </Grid>
   </Grid.Container>
