@@ -9,7 +9,8 @@ import {
   Link,
   useTheme,
   useMediaQuery,
-  useBodyScroll
+  useBodyScroll,
+  Card
 } from 'core'
 import { Sun, Moon, Heart, Github, Instagram, Menu } from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'
@@ -22,7 +23,7 @@ const Navigation: React.FC = () => {
   const router = useRouter()
   const [expanded, setExpanded] = useState<boolean>(false)
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
-  const isMobile = useMediaQuery('xs', { match: 'down' })
+  const isMobile = useMediaQuery('sm', { match: 'down' })
 
   const [sticky, setSticky] = useState(false)
 
@@ -63,11 +64,11 @@ const Navigation: React.FC = () => {
               alignItems="center"
               alignContent="center"
             >
-              <Grid xs justify="flex-start">
+              <Grid xs={6} md={4} justify="flex-start">
                 <Logo name="Bolio UI" />
               </Grid>
 
-              <Grid xs justify="center">
+              <Grid xs={0} md={4} justify="center">
                 <div className="tabs">
                   <Tabs
                     value={router.asPath}
@@ -93,7 +94,7 @@ const Navigation: React.FC = () => {
                 </div>
               </Grid>
 
-              <Grid xs justify="flex-end">
+              <Grid xs={6} md={4} justify="flex-end">
                 <div className="controls">
                   {isMobile ? (
                     <Button
