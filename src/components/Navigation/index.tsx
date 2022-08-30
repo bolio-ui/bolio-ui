@@ -133,7 +133,6 @@ const Navigation: React.FC = () => {
                           py={0}
                           px={0}
                           aria-label="Instagram Bolio UI"
-                          width="0"
                           type="abort"
                         >
                           <Instagram fontSize={16} />

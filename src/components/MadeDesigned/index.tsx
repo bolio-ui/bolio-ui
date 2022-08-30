@@ -22,7 +22,7 @@ function MadeDesigned() {
             rel="noopener"
             underline
           >
-            BRUNNO ANDRADE
+            BOLIO UI
           </Link>
         </Text>
       </Grid>
