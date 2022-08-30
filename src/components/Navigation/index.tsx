@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Container, Grid, Spacer, Button, Tabs, Link, useTheme } from 'core'
-import { Sun, Moon, Heart, Github, Instagram } from '@bolio-ui/icons'
+import {
+  Container,
+  Grid,
+  Spacer,
+  Button,
+  Tabs,
+  Link,
+  useTheme,
+  useMediaQuery,
+  useBodyScroll
+} from 'core'
+import { Sun, Moon, Heart, Github, Instagram, Menu } from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
+import NavigationMobile from 'src/components/NavigationMobile'
 
-const Menu: React.FC = () => {
+const Navigation: React.FC = () => {
   const theme = useTheme()
   const settings = useSettings()
   const router = useRouter()
+  const [expanded, setExpanded] = useState<boolean>(false)
+  const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
+  const isMobile = useMediaQuery('xs', { match: 'down' })
 
   const [sticky, setSticky] = useState(false)
 
@@ -18,6 +32,25 @@ const Menu: React.FC = () => {
     document.addEventListener('scroll', scrollHandler)
     return () => document.removeEventListener('scroll', scrollHandler)
   }, [setSticky])
+
+  useEffect(() => {
+    setBodyHidden(expanded)
+  }, [expanded, setBodyHidden])
+
+  useEffect(() => {
+    if (!isMobile) {
+      setExpanded(false)
+    }
+  }, [isMobile])
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setExpanded(false)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => router.events.off('routeChangeComplete', handleRouteChange)
+  }, [router.events])
 
   return (
     <>
@@ -62,80 +95,99 @@ const Menu: React.FC = () => {
 
               <Grid xs justify="flex-end">
                 <div className="controls">
-                  <Link
-                    href="https://github.com/bolio-ui/bolio-ui"
-                    target="_blank"
-                  >
+                  {isMobile ? (
                     <Button
-                      w="28px"
-                      h="28px"
-                      py={0}
-                      px={0}
-                      aria-label="Github Bolio UI"
-                      type="abort"
-                    >
-                      <Github fontSize={16} />
-                    </Button>
-                  </Link>
-                  <Spacer w={1} />
-                  <Link
-                    href="https://www.instagram.com/bolio.ui/"
-                    target="_blank"
-                  >
-                    <Button
-                      w="28px"
-                      h="28px"
-                      py={0}
-                      px={0}
-                      aria-label="Instagram Bolio UI"
-                      width="0"
-                      type="abort"
-                    >
-                      <Instagram fontSize={16} />
-                    </Button>
-                  </Link>
-                  <Spacer w={1} />
-                  <Button
-                    w="28px"
-                    h="28px"
-                    py={0}
-                    px={0}
-                    aria-label="Toggle Dark mode"
-                    className="theme-button"
-                    type="abort"
-                    onClick={() =>
-                      settings.switchTheme(
-                        theme.type === 'dark' ? 'light' : 'dark'
-                      )
-                    }
-                  >
-                    {theme.type === 'dark' ? (
-                      <Sun fontSize={16} />
-                    ) : (
-                      <Moon fontSize={16} />
-                    )}
-                  </Button>
-                  <Spacer w={1} />
-                  <Link
-                    href="https://www.patreon.com/brunnoandrade"
-                    target="_blank"
-                  >
-                    <Button
-                      icon={
-                        <Heart fill="red" stroke="red" height={12} width={12} />
-                      }
+                      className="menu-toggle"
                       auto
-                      scale={0.75}
+                      type="abort"
+                      onClick={() => setExpanded(!expanded)}
                     >
-                      Sponsor
+                      <Menu fontSize={16} />
                     </Button>
-                  </Link>
+                  ) : (
+                    <>
+                      <Link
+                        href="https://github.com/bolio-ui/bolio-ui"
+                        target="_blank"
+                      >
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          aria-label="Github Bolio UI"
+                          type="abort"
+                        >
+                          <Github fontSize={16} />
+                        </Button>
+                      </Link>
+                      <Spacer w={1} />
+                      <Link
+                        href="https://www.instagram.com/bolio.ui/"
+                        target="_blank"
+                      >
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          aria-label="Instagram Bolio UI"
+                          width="0"
+                          type="abort"
+                        >
+                          <Instagram fontSize={16} />
+                        </Button>
+                      </Link>
+                      <Spacer w={1} />
+                      <Button
+                        w="28px"
+                        h="28px"
+                        py={0}
+                        px={0}
+                        aria-label="Toggle Dark mode"
+                        className="theme-button"
+                        type="abort"
+                        onClick={() =>
+                          settings.switchTheme(
+                            theme.type === 'dark' ? 'light' : 'dark'
+                          )
+                        }
+                      >
+                        {theme.type === 'dark' ? (
+                          <Sun fontSize={16} />
+                        ) : (
+                          <Moon fontSize={16} />
+                        )}
+                      </Button>
+                      <Spacer w={1} />
+                      <Link
+                        href="https://www.patreon.com/brunnoandrade"
+                        target="_blank"
+                      >
+                        <Button
+                          icon={
+                            <Heart
+                              fill="red"
+                              stroke="red"
+                              height={12}
+                              width={12}
+                            />
+                          }
+                          auto
+                          scale={0.75}
+                        >
+                          Sponsor
+                        </Button>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </Grid>
             </Grid.Container>
           </div>
         </Container>
       </nav>
+      <NavigationMobile expanded={expanded} />
       <style jsx>{`
         .menu_sticky {
           transition: box-shadow 0.2s ease;
@@ -183,4 +235,4 @@ const Menu: React.FC = () => {
   )
 }
 
-export default Menu
+export default Navigation
