@@ -58,7 +58,7 @@ export const DisabledOption: Story = () => (
   </Select>
 )
 
-export const WithIcon: Story = () => (
+export const WithoutIcon: Story = () => (
   <Select placeholder="Select one" pure>
     <Select.Option value="1">Value 1</Select.Option>
     <Select.Option value="2">Value 2</Select.Option>

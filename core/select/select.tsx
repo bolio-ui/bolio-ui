@@ -72,7 +72,7 @@ const SelectComponent = React.forwardRef<
       disabled = false,
       initialValue: init,
       value: customValue,
-      icon: Icon,
+      icon: Icon = SelectIcon as React.ComponentType,
       onChange,
       pure = false,
       multiple = false,
@@ -83,7 +83,7 @@ const SelectComponent = React.forwardRef<
       dropdownStyle,
       disableMatchWidth = false,
       getPopupContainer,
-      onDropdownVisibleChange,
+      onDropdownVisibleChange = () => {},
       ...props
     }: React.PropsWithChildren<SelectProps>,
     selectRef
@@ -102,6 +102,7 @@ const SelectComponent = React.forwardRef<
       if (Array.isArray(init)) return init
       return typeof init === 'undefined' ? [] : [init]
     })
+
     const isEmpty = useMemo(() => {
       if (!Array.isArray(value)) return !value
       return value.length === 0
@@ -116,6 +117,7 @@ const SelectComponent = React.forwardRef<
       onDropdownVisibleChange(next)
       setVisible(next)
     }
+
     const updateValue = (next: string) => {
       setValue((last) => {
         if (!Array.isArray(last)) return next
@@ -160,6 +162,7 @@ const SelectComponent = React.forwardRef<
       if (customValue === undefined) return
       setValue(customValue)
     }, [customValue])
+
     useImperativeHandle(
       selectRef,
       () => ({
