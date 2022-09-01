@@ -45,6 +45,7 @@ function CollapseComponent({
   )
 
   if (!title) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useWarning('"title" is required.', 'Collapse')
   }
 

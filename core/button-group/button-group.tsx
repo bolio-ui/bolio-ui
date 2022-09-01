@@ -22,14 +22,15 @@ const defaultProps = {
   className: ''
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type ButtonGroupProps = Props & NativeAttrs
 
 const getGroupBorderColors = (
   palette: BolioUIThemesPalette,
-  props: ButtonGroupProps & typeof defaultProps
+  props: ButtonGroupProps
 ): string => {
   const { ghost, type } = props
+
   if (!ghost && type !== 'default') return palette.background
   const colors: { [key in ButtonTypes]?: string } = {
     default: palette.border,
@@ -38,17 +39,19 @@ const getGroupBorderColors = (
     error: palette.error,
     warning: palette.warning
   }
-  const withoutLightType = type.replace('-light', '') as ButtonTypes
+
+  const withoutLightType = type?.replace('-light', '') as ButtonTypes
+
   return colors[withoutLightType] || (colors.default as string)
 }
 
-const ButtonGroupComponent: React.FC<
-  React.PropsWithChildren<ButtonGroupProps>
-> = (groupProps: ButtonGroupProps & typeof defaultProps) => {
+function ButtonGroupComponent(groupProps: ButtonGroupProps) {
   const theme = useTheme()
   const { SCALES } = useScale()
+
   const { disabled, type, ghost, vertical, children, className, ...props } =
     groupProps
+
   const initialValue = useMemo<ButtonGroupConfig>(
     () => ({
       disabled,
@@ -56,11 +59,13 @@ const ButtonGroupComponent: React.FC<
       ghost,
       isButtonGroup: true
     }),
-    [disabled, type]
+    [disabled, ghost, type]
   )
+
   const border = useMemo(() => {
     return getGroupBorderColors(theme.palette, groupProps)
-  }, [theme, type, disabled, ghost])
+  }, [theme.palette, groupProps])
+
   const classes = useClasses(
     'btn-group',
     {

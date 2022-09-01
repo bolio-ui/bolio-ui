@@ -12,16 +12,12 @@ export default {
 export const Default: Story = () => {
   const [state, setState] = useState(false)
   const handler = () => setState(true)
-  const closeHandler = (event: any) => {
-    setState(false)
-    console.log('closed')
-  }
   return (
     <div>
       <Button auto onClick={handler}>
         Show Modal
       </Button>
-      <Modal visible={state} onClose={closeHandler}>
+      <Modal visible={state} onClose={() => setState(false)}>
         <Modal.Title>Modal</Modal.Title>
         <Modal.Subtitle>Example of a modal</Modal.Subtitle>
         <Modal.Content>
@@ -61,16 +57,12 @@ export const UseModal: Story = () => {
 export const WithoutActions: Story = () => {
   const [state, setState] = useState(false)
   const handler = () => setState(true)
-  const closeHandler = (event: any) => {
-    setState(false)
-    console.log('closed')
-  }
   return (
     <div>
       <Button auto onClick={handler}>
         Show Modal
       </Button>
-      <Modal visible={state} onClose={closeHandler}>
+      <Modal visible={state} onClose={() => setState(false)}>
         <Modal.Title>Modal</Modal.Title>
         <Modal.Subtitle>Example of a modal</Modal.Subtitle>
         <Modal.Content>

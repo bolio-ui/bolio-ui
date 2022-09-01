@@ -223,8 +223,8 @@ export interface ButtonCursorGroup {
 }
 
 export const getButtonCursor = (
-  disabled: boolean,
-  loading: boolean
+  disabled?: boolean,
+  loading?: boolean
 ): ButtonCursorGroup => {
   if (disabled)
     return {

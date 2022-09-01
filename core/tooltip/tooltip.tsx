@@ -10,8 +10,9 @@ export type TooltipOnVisibleChange = (visible: boolean) => void
 export type TooltipTypes = SnippetTypes
 export type TooltipTriggers = TriggerTypes
 export type TooltipPlacement = Placement
+
 interface Props {
-  text: string | React.ReactNode
+  text?: string | React.ReactNode
   type?: TooltipTypes
   placement?: TooltipPlacement
   visible?: boolean
@@ -26,43 +27,31 @@ interface Props {
   onVisibleChange?: TooltipOnVisibleChange
 }
 
-const defaultProps = {
-  initialVisible: false,
-  hideArrow: false,
-  type: 'default' as TooltipTypes,
-  trigger: 'hover' as TooltipTriggers,
-  placement: 'top' as TooltipPlacement,
-  enterDelay: 100,
-  leaveDelay: 150,
-  offset: 12,
-  className: '',
-  portalClassName: '',
-  onVisibleChange: (() => {}) as TooltipOnVisibleChange
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TooltipProps = Props & NativeAttrs
 
 function TooltipComponent({
   children,
-  initialVisible,
-  text,
-  offset,
-  placement,
-  portalClassName,
-  enterDelay,
-  leaveDelay,
-  trigger,
-  type,
-  className,
-  onVisibleChange,
-  hideArrow,
+  initialVisible = false,
+  text = '',
+  offset = 12,
+  placement = 'top' as TooltipPlacement,
+  portalClassName = '',
+  enterDelay = 100,
+  leaveDelay = 150,
+  trigger = 'hover' as TooltipTriggers,
+  type = 'default' as TooltipTypes,
+  className = '',
+  onVisibleChange = (() => {}) as TooltipOnVisibleChange,
+  hideArrow = false,
   visible: customVisible,
   ...props
-}: React.PropsWithChildren<TooltipProps> & typeof defaultProps) {
+}: React.PropsWithChildren<TooltipProps>) {
   const timer = useRef<number>()
   const ref = useRef<HTMLDivElement>(null)
+
   const [visible, setVisible] = useState<boolean>(initialVisible)
+
   const iconOffset = useMemo<TooltipIconOffset>(() => {
     if (!ref?.current) return { x: '0.75em', y: '0.75em' }
     const rect = getRect(ref)
@@ -71,6 +60,7 @@ function TooltipComponent({
       y: `${rect.height ? rect.height / 2 : 0}px`
     }
   }, [ref?.current])
+
   const contentProps = {
     type,
     visible,
@@ -89,7 +79,7 @@ function TooltipComponent({
     }
     const handler = (nextState: boolean) => {
       setVisible(nextState)
-      // onVisibleChange(nextState)
+      onVisibleChange(nextState)
       clear()
     }
     clear()
@@ -135,7 +125,6 @@ function TooltipComponent({
   )
 }
 
-TooltipComponent.defaultProps = defaultProps
 TooltipComponent.displayName = 'BolioUITooltip'
 const Tooltip = withScale(TooltipComponent)
 export default Tooltip
