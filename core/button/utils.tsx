@@ -5,7 +5,7 @@ import { ButtonGroupConfig } from '../button-group/button-group-context'
 import useClasses from '../use-classes'
 
 export const getButtonChildrenWithIcon = (
-  auto: boolean,
+  auto = false,
   children: ReactNode,
   icons: {
     icon?: React.ReactNode
@@ -18,6 +18,8 @@ export const getButtonChildrenWithIcon = (
   const paddingForAutoMode = auto
     ? `calc(var(--bolio-ui-button-height) / 2 + var(--bolio-ui-button-icon-padding) * .5)`
     : 0
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useClasses('text', isRight ? 'right' : 'left')
 
   if (!hasIcon) return <div className="text">{children}</div>

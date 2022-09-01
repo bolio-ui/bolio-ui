@@ -15,7 +15,7 @@ interface Props {
   onClose?: () => void
   onContentClick?: (event: MouseEvent<HTMLElement>) => void
   wrapClassName?: string
-  placement?: DrawerPlacement
+  placement: DrawerPlacement
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
@@ -29,6 +29,7 @@ function DrawerComponent({
   onContentClick,
   wrapClassName = '',
   children,
+  placement,
   ...props
 }: React.PropsWithChildren<DrawerProps>) {
   const portal = usePortal('drawer')
@@ -72,7 +73,12 @@ function DrawerComponent({
       width="100%"
       {...bindings}
     >
-      <DrawerWrapper visible={visible} className={wrapClassName} {...props}>
+      <DrawerWrapper
+        visible={visible}
+        className={wrapClassName}
+        placement={placement}
+        {...props}
+      >
         {children}
       </DrawerWrapper>
     </Backdrop>,

@@ -41,8 +41,8 @@ function CollapseGroupComponent({
 
   const initialValue = useMemo<CollapseConfig>(
     () => ({
-      values: state,
-      updateValues
+      values: state
+      // updateValues
     }),
     [state.join(',')]
   )
