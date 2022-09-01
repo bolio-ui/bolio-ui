@@ -57,7 +57,7 @@ const InputComponent = React.forwardRef<
       children,
       disabled,
       ...props
-    }: React.PropsWithChildren<InputProps> & typeof defaultProps,
+    }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
   ) => {
     const theme = useTheme()
@@ -66,7 +66,7 @@ const InputComponent = React.forwardRef<
     const inputRef = useRef<HTMLInputElement>(null)
     useImperativeHandle(ref, () => inputRef.current)
 
-    const [selfValue, setSelfValue] = useState<string>(initialValue)
+    const [selfValue, setSelfValue] = useState<string>('')
     const [hover, setHover] = useState<boolean>(false)
     const isControlledComponent = useMemo(() => value !== undefined, [value])
     const labelClasses = useMemo(
