@@ -2,7 +2,7 @@ import React, { MutableRefObject } from 'react'
 
 export interface SelectConfig {
   value?: string | string[]
-  updateValue?: (next: string | undefined) => unknown
+  updateValue?: (next: string) => unknown
   visible?: boolean
   updateVisible?: (next: boolean) => unknown
   disableAll?: boolean
