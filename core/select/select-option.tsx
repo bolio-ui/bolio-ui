@@ -19,7 +19,7 @@ type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SelectOptionProps = Props & NativeAttrs
 
 function SelectOptionComponent({
-  value: identValue,
+  value: identValue = '',
   className = '',
   children,
   disabled = false,
@@ -41,6 +41,7 @@ function SelectOptionComponent({
   const classes = useClasses('option', { divider, label }, className)
 
   if (!isLabel && identValue === undefined) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useWarning('The props "value" is required.', 'Select Option')
   }
 
