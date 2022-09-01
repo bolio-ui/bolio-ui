@@ -19,28 +19,7 @@ export const Default: Story = () => {
       </Link>
     </div>
   )
-
-  return (
-    <Popover
-      content={content}
-      trigger={'click'}
-      placement={'bottom'}
-      disableItemsAutoClose={false}
-      initialVisible={false}
-      hideArrow={false}
-      enterDelay={0}
-      leaveDelay={0}
-      offset={0}
-      className={''}
-      portalClassName={''}
-      onVisibleChange={function (visible: boolean): void {
-        throw new Error('Function not implemented.')
-      }}
-      type={'default'}
-    >
-      Menu
-    </Popover>
-  )
+  return <Popover content={content}>Menu</Popover>
 }
 
 export const PresetItem: Story = () => {
@@ -63,27 +42,7 @@ export const PresetItem: Story = () => {
       </Popover.Item>
     </>
   )
-  return (
-    <Popover
-      content={content}
-      trigger={'click'}
-      placement={'bottom'}
-      disableItemsAutoClose={false}
-      initialVisible={false}
-      hideArrow={false}
-      enterDelay={0}
-      leaveDelay={0}
-      offset={0}
-      className={''}
-      portalClassName={''}
-      onVisibleChange={function (visible: boolean): void {
-        throw new Error('Function not implemented.')
-      }}
-      type={'default'}
-    >
-      Menu
-    </Popover>
-  )
+  return <Popover content={content}>Menu</Popover>
 }
 
 export const CloseManual: Story = () => {
@@ -103,17 +62,6 @@ export const CloseManual: Story = () => {
       content={content}
       visible={visible}
       onVisibleChange={changeHandler}
-      trigger={'click'}
-      placement={'bottom'}
-      disableItemsAutoClose={false}
-      initialVisible={false}
-      hideArrow={false}
-      enterDelay={0}
-      leaveDelay={0}
-      offset={0}
-      className={''}
-      portalClassName={''}
-      type={'default'}
     >
       Menu
     </Popover>

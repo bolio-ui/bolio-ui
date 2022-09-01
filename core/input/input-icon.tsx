@@ -1,8 +1,8 @@
 import React from 'react'
 
 export interface InputIconProps {
-  icon: React.ReactNode
-  clickable: boolean
+  icon?: React.ReactNode
+  clickable?: boolean
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 

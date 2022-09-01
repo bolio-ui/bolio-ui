@@ -12,6 +12,7 @@ import useClasses from '../use-classes'
 
 export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
+
 interface Props {
   content?: React.ReactNode | (() => React.ReactNode)
   trigger?: PopoverTriggerTypes
@@ -19,23 +20,7 @@ interface Props {
   disableItemsAutoClose?: boolean
 }
 
-const defaultProps = {
-  disableItemsAutoClose: false,
-  trigger: 'click' as PopoverTriggerTypes,
-  placement: 'bottom' as Placement,
-  portalClassName: '',
-  initialVisible: false,
-  hideArrow: false,
-  type: 'default' as TooltipTypes,
-  enterDelay: 100,
-  leaveDelay: 150,
-  offset: 12,
-  className: '',
-  onVisibleChange: (() => {}) as TooltipOnVisibleChange
-}
-
 type ExcludeTooltipProps = {
-  type: any
   text: any
   trigger: any
   placement: any
@@ -46,18 +31,18 @@ export type PopoverProps = Props & Omit<TooltipProps, keyof ExcludeTooltipProps>
 function PopoverComponent({
   content,
   children,
-  trigger,
-  placement,
-  initialVisible,
-  portalClassName,
-  disableItemsAutoClose,
-  onVisibleChange,
+  disableItemsAutoClose = false,
+  trigger = 'click' as PopoverTriggerTypes,
+  placement = 'bottom' as Placement,
+  portalClassName = '',
+  type = 'default' as TooltipTypes,
   visible: customVisible,
+  onVisibleChange = (() => {}) as TooltipOnVisibleChange,
   ...props
-}: React.PropsWithChildren<PopoverProps> & typeof defaultProps) {
+}: React.PropsWithChildren<PopoverProps>) {
   const { SCALES } = useScale()
 
-  const [visible, setVisible] = useState<boolean>(initialVisible)
+  const [visible, setVisible] = useState<boolean>(false)
   const textNode = useMemo(() => getReactNode(content), [content])
 
   const onChildClick = () => {
@@ -87,11 +72,13 @@ function PopoverComponent({
   return (
     <PopoverContext.Provider value={value}>
       <Tooltip
+        initialVisible={false}
         text={textNode}
         trigger={trigger}
         placement={placement}
         portalClassName={classes}
         visible={visible}
+        type={type}
         onVisibleChange={onPopoverVisibleChange}
         {...props}
       >

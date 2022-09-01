@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
+import { DrawerPlacement } from './helper'
 import Drawer from '.'
 import Button from '../button'
 
@@ -28,7 +29,7 @@ export const Default: Story = () => {
 
 export const Placement: Story = () => {
   const [state, setState] = React.useState(false)
-  const [placement, setPlacement] = React.useState('')
+  const [placement, setPlacement] = React.useState<DrawerPlacement>('bottom')
   const open = (text: any) => {
     setPlacement(text)
     setState(true)
