@@ -68,6 +68,6 @@ function CapacityComponent({
   )
 }
 
-CapacityComponent.displayName = 'BolioCapacity'
+CapacityComponent.displayName = 'BolioUICapacity'
 const Capacity = withScale(CapacityComponent)
 export default Capacity

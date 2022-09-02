@@ -48,5 +48,5 @@ const ImageSkeleton: React.FC<ImageSkeletonProps> = React.memo(
   }
 )
 
-ImageSkeleton.displayName = 'BolioUItImageSkeleton'
+ImageSkeleton.displayName = 'BolioUIImageSkeleton'
 export default ImageSkeleton
