@@ -20,7 +20,7 @@ const defaultProps = {
 
 export type CssTransitionProps = Props
 
-const CssTransition: React.FC<React.PropsWithChildren<CssTransitionProps>> = ({
+function CssTransition({
   children,
   className,
   visible,
@@ -29,7 +29,7 @@ const CssTransition: React.FC<React.PropsWithChildren<CssTransitionProps>> = ({
   clearTime,
   name,
   ...props
-}: React.PropsWithChildren<CssTransitionProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<CssTransitionProps> & typeof defaultProps) {
   const [classes, setClasses] = useState<string>('')
   const [renderable, setRenderable] = useState<boolean>(visible)
 
@@ -62,6 +62,7 @@ const CssTransition: React.FC<React.PropsWithChildren<CssTransitionProps>> = ({
       clearTimeout(clearClassesTimer)
     }
   }, [visible, renderable])
+
   if (!React.isValidElement(children) || !renderable) return null
 
   return React.cloneElement(children, {
