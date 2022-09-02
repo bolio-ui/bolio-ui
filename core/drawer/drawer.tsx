@@ -12,24 +12,24 @@ interface Props {
   visible?: boolean
   keyboard?: boolean
   disableBackdropClick?: boolean
-  onClose?: () => void
-  onContentClick?: (event: MouseEvent<HTMLElement>) => void
   wrapClassName?: string
   placement: DrawerPlacement
+  onClose?: () => void
+  onContentClick?: (event: MouseEvent<HTMLElement>) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type DrawerProps = Props & NativeAttrs
 
 function DrawerComponent({
   visible: customVisible,
-  keyboard = true,
-  disableBackdropClick = false,
-  onClose,
-  onContentClick,
-  wrapClassName = '',
+  keyboard,
+  disableBackdropClick,
+  wrapClassName,
   children,
   placement,
+  onClose,
+  onContentClick,
   ...props
 }: React.PropsWithChildren<DrawerProps>) {
   const portal = usePortal('drawer')

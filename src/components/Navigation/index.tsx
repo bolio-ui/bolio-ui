@@ -9,8 +9,7 @@ import {
   Link,
   useTheme,
   useMediaQuery,
-  useBodyScroll,
-  Card
+  useBodyScroll
 } from 'core'
 import { Sun, Moon, Heart, Github, Instagram, Menu } from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'

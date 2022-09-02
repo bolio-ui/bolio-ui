@@ -12,11 +12,11 @@ const defaultProps = {
   delay: 200
 }
 
-const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({
+function Expand({
   isExpanded,
   delay,
   children
-}: React.PropsWithChildren<ExpandProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<ExpandProps> & typeof defaultProps) {
   const [height, setHeight] = useState<string>(isExpanded ? 'auto' : '0')
   const [selfExpanded, setSelfExpanded] = useState<boolean>(isExpanded)
   const [visible, setVisible] = useState<boolean>(isExpanded)

@@ -127,6 +127,6 @@ function ButtonGroupComponent(groupProps: ButtonGroupProps) {
 }
 
 ButtonGroupComponent.defaultProps = defaultProps
-ButtonGroupComponent.displayName = 'BolioButtonGroup'
+ButtonGroupComponent.displayName = 'BolioUIButtonGroup'
 const ButtonGroup = withScale(ButtonGroupComponent)
 export default ButtonGroup
