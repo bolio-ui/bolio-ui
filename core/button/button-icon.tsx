@@ -60,5 +60,5 @@ function ButtonIcon({
   )
 }
 
-ButtonIcon.displayName = 'BolioButtonIcon'
+ButtonIcon.displayName = 'BolioUIButtonIcon'
 export default ButtonIcon

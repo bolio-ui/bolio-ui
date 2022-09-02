@@ -46,10 +46,10 @@ function TabsComponent({
   hoverHeightRatio = 0.7,
   hoverWidthRatio = 1.15,
   activeClassName = '',
-  activeStyle = {},
+  activeStyles,
   align = 'left',
   ...props
-}: React.PropsWithChildren<TabsProps>): JSX.Element {
+}: React.PropsWithChildren<TabsProps>) {
   const theme = useTheme()
   const { SCALES } = useScale()
 
@@ -124,7 +124,7 @@ function TabsComponent({
                 onClick={clickHandler}
                 onMouseOver={tabItemMouseOverHandler}
                 activeClassName={activeClassName}
-                activeStyle={activeStyle}
+                activeStyle={activeStyles}
                 hideBorder={hideBorder}
               />
             ))}

@@ -31,5 +31,5 @@ const SideItem: React.FC<SideItemProps> = React.memo(({ items }) => {
   )
 })
 
-SideItem.displayName = 'SideItem'
+SideItem.displayName = 'BolioUISideItem'
 export default SideItem

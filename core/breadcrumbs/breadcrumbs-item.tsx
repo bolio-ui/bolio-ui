@@ -65,5 +65,5 @@ const BreadcrumbsItem = React.forwardRef<
   }
 )
 
-BreadcrumbsItem.displayName = 'BolioUItBreadcrumbsItem'
+BreadcrumbsItem.displayName = 'BolioUIBreadcrumbsItem'
 export default BreadcrumbsItem

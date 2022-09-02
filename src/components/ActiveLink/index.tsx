@@ -49,5 +49,5 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
   )
 })
 
-ActiveLink.displayName = 'ActiveLink'
+ActiveLink.displayName = 'BolioUIActiveLink'
 export default ActiveLink
