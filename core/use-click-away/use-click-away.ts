@@ -4,7 +4,7 @@ export type ClickAwayGetContainer = () => HTMLElement | null
 
 const useClickAway = (
   ref: MutableRefObject<HTMLElement | null>,
-  handler: (event: Event) => void,
+  handler: (event: Event) => void
 ) => {
   const handlerRef = useRef(handler)
   useEffect(() => {

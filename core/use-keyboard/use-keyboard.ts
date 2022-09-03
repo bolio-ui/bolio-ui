@@ -21,22 +21,26 @@ export type KeyboardResult = {
   }
 }
 
-export type UseKeyboardHandler = (event: React.KeyboardEvent | KeyboardEvent) => void
+export type UseKeyboardHandler = (
+  event: React.KeyboardEvent | KeyboardEvent
+) => void
 
 export type UseKeyboard = (
   handler: UseKeyboardHandler,
   keyBindings: Array<number> | number,
-  options?: KeyboardOptions,
+  options?: KeyboardOptions
 ) => KeyboardResult
 
 const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
-  const bindings = Array.isArray(keyBindings) ? (keyBindings as number[]) : [keyBindings]
+  const bindings = Array.isArray(keyBindings)
+    ? (keyBindings as number[])
+    : [keyBindings]
   const {
     disableGlobalEvent = false,
     capture = false,
     stopPropagation = false,
     preventDefault = true,
-    event = 'keydown',
+    event = 'keydown'
   } = options
   const activeModMap = getActiveModMap(bindings)
   const keyCode = bindings.filter((item: number) => !KeyMod[item])
@@ -47,7 +51,7 @@ const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
     if (activeModMap.Alt && !event.altKey) return
     if (activeModMap.CtrlCmd && !event[CtrlCmd]) return
     if (activeModMap.WinCtrl && !event[WinCtrl]) return
-    const hitOne = keyCode.find(k => k === event.keyCode)
+    const hitOne = keyCode.find((k) => k === event.keyCode)
     if (keyCode && !hitOne) return
     if (stopPropagation) {
       event.stopPropagation()
@@ -69,7 +73,7 @@ const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
 
   const elementBindingHandler = (
     elementEventType: 'keydown' | 'keypress' | 'keyup',
-    isCapture: boolean = false,
+    isCapture = false
   ) => {
     if (elementEventType !== event) return () => {}
     if (isCapture !== capture) return () => {}
@@ -83,8 +87,8 @@ const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
       onKeyPress: elementBindingHandler('keypress'),
       onKeyPressCapture: elementBindingHandler('keypress', true),
       onKeyUp: elementBindingHandler('keyup'),
-      onKeyUpCapture: elementBindingHandler('keyup', true),
-    },
+      onKeyUpCapture: elementBindingHandler('keyup', true)
+    }
   }
 }
 

@@ -35,15 +35,6 @@ interface Props {
   resize?: TextareaResizes
 }
 
-const defaultProps = {
-  initialValue: '',
-  type: 'default' as TextareaTypes,
-  disabled: false,
-  readOnly: false,
-  className: '',
-  resize: 'none' as TextareaResizes
-}
-
 type NativeAttrs = Omit<React.TextareaHTMLAttributes<any>, keyof Props>
 export type TextareaProps = Props & NativeAttrs
 
@@ -53,19 +44,19 @@ const TextareaComponent = React.forwardRef<
 >(
   (
     {
-      type,
-      disabled,
-      readOnly,
+      type = 'default' as TextareaTypes,
+      disabled = false,
+      readOnly = false,
       onFocus,
       onBlur,
-      className,
-      initialValue,
+      className = '',
+      initialValue = '',
       onChange,
       value,
       placeholder,
-      resize,
+      resize = 'none' as TextareaResizes,
       ...props
-    }: React.PropsWithChildren<TextareaProps> & typeof defaultProps,
+    }: React.PropsWithChildren<TextareaProps>,
     ref: React.Ref<HTMLTextAreaElement | null>
   ) => {
     const theme = useTheme()
@@ -176,7 +167,6 @@ const TextareaComponent = React.forwardRef<
   }
 )
 
-TextareaComponent.defaultProps = defaultProps
 TextareaComponent.displayName = 'BolioUITextarea'
 const Textarea = withScale(TextareaComponent)
 export default Textarea
