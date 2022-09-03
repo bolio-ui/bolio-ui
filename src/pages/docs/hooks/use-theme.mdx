@@ -1,0 +1,81 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, useTheme } from 'core'
+
+export const meta = {
+  title: 'useTheme',
+  sidebar: 'hooks',
+  group: 'Utility',
+  index: 12
+}
+
+## useTheme
+
+This hooks can get the theme states of Bolio UI within any component, and can track changes in states.
+In the default scenario (you haven't changed the `themeType`), hooks gets the same value as `Themes.getPresets`.
+
+Usually the components from Bolio are already added with theme states, you don't need to change it,
+this hooks just helps you to build your own components using Bolio UI's themes.
+
+Notice in the example below that after we define the component using Theme,
+the properties of the custom component will change according to the current Bolio UI's theme,
+switching themes in the upper right corner of the website, the color of the components we create will also change with the theme.
+
+<Playground
+  scope={{ useTheme, Button }}
+  desc=""
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <div style={{
+        width: '200px',
+        height: '50px',
+        borderRadius: theme.layout.radius,
+        background: theme.palette.accents_2
+      }}
+    >
+      <span style={{
+          color: theme.palette.accents_7,
+          paddingLeft: theme.layout.gapQuarter
+        }}
+      >My first component.</span>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/pages/hooks/use-theme.mdx">
+<Attributes.Title>useTheme</Attributes.Title>
+
+```ts
+const theme: BolioUIThemes = useTheme()
+
+export type BolioUIThemes = {
+  type: string
+  font: BolioUIThemesFont
+  layout: BolioUIThemesLayout
+  palette: BolioUIThemesPalette
+  breakpoints: BolioUIThemesBreakpoints
+  expressiveness: BolioUIThemesExpressiveness
+}
+```
+
+<Attributes.Title>Get preset types</Attributes.Title>
+
+```ts
+import {
+  BolioUIThemes,
+  BolioUIThemesFont,
+  BolioUIThemesPalette,
+  BolioUIThemesExpressiveness,
+  BolioUIThemesLayout
+} from '@bolio-ui/core'
+
+const myFontTheme: BolioUIThemesFont = {}
+```
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

@@ -5,32 +5,21 @@ import Document, {
   NextScript,
   DocumentContext
 } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { CssBaseline } from 'core'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+    const initialProps = await Document.getInitialProps(ctx)
+    const styles = CssBaseline.flush()
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />)
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        )
-      }
-    } finally {
-      sheet.seal()
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          {styles}
+        </>
+      )
     }
   }
 
@@ -39,6 +28,21 @@ export default class MyDocument extends Document {
       <Html lang="pt-BR">
         <Head />
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function(){
+                if (!window.localStorage) return;
+                if (window.localStorage.getItem('theme') === 'dark') {
+                  document.documentElement.style.background = '#000';
+                  document.body.style.background = '#000';
+                } else {
+                  document.documentElement.style.background = '#fff';
+                  document.body.style.background = '#fff';
+                }
+              })()`
+            }}
+          />
           <Main />
           <NextScript />
         </body>

@@ -1,0 +1,112 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Note } from 'core'
+
+export const meta = {
+  title: 'Note',
+  sidebar: 'components',
+  group: 'Components',
+  index: 25
+}
+
+## Note
+
+Display text that requires attention or provides additional information.
+
+<Playground
+  desc="Show a piece of text or components."
+  scope={{ Note }}
+  code={`
+<Note>Check payment pending.</Note>
+`}
+/>
+
+<Playground
+  title="Secondary"
+  scope={{ Note }}
+  code={`
+<Note type="secondary">Check payment pending.</Note>
+`}
+/>
+
+<Playground
+  title="Status"
+  scope={{ Note }}
+  code={`
+<>
+  <Note type="success">Check payment pending.</Note>
+  <br />
+  <Note type="warning">Check payment pending.</Note>
+  <br />
+  <Note type="error">Check payment pending.</Note>
+</>
+`}
+/>
+
+<Playground
+  title="Hidden Label"
+  scope={{ Note }}
+  code={`
+<Note label={false}>Demo note!</Note>
+`}
+/>
+
+<Playground
+  title="Custom Label"
+  scope={{ Note }}
+  code={`
+<Note label="custom">Customize a note.</Note>
+`}
+/>
+
+<Playground
+  title="Filled Variant"
+  scope={{ Note }}
+  code={`
+<>
+  <Note label="custom" filled>
+    Customize a note.
+  </Note>
+  <br />
+  <Note label={false} filled>
+    Demo note!
+  </Note>
+  <br />
+  <Note type="success" label="success" filled>
+    Check payment pending.
+  </Note>
+  <br />
+  <Note type="warning" label="warning" filled>
+    Check payment pending.
+  </Note>
+  <br />
+  <Note type="error" label="error" filled>
+    Check payment pending.
+  </Note>
+  <br />
+  <Note type="secondary" filled>
+    Check payment pending.
+  </Note>
+</>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/note.mdx">
+<Attributes.Title>Note.Props</Attributes.Title>
+
+| Attribute  | Description               | Type                 | Accepted values          | Default   |
+| ---------- | ------------------------- | -------------------- | ------------------------ | --------- |
+| **type**   | note type                 | `NoteTypes`          | [NoteTypes](#nodetypes)  | `default` |
+| **label**  | show label or custom text | `boolean` / `string` | -                        | -         |
+| **filled** | fill color                | `boolean`            | -                        | `false`   |
+| ...        | native props              | `HTMLAttributes`     | `'id', 'className', ...` | -         |
+
+<Attributes.Title>NoteTypes</Attributes.Title>
+
+```ts
+type NoteTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
