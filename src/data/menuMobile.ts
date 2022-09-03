@@ -18,7 +18,7 @@ export const menuMobile = [
         ]
       },
       {
-        name: 'The',
+        name: 'Theme',
         children: [
           {
             name: 'Default Theme',
