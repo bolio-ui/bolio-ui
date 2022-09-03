@@ -48,14 +48,6 @@ Whether it's a feature request, bug report, or a project to showcase, please get
 - [Instagram](https://instagram.com/bolio.ui)
 - [GitHub](https://github.com/bolio-ui/bolio-ui)
 
-## Contributing
-
-Contributions are always welcome!
-
-See `CONTRIBUTING.md` for ways to get started.
-
-Please adhere to this project's `CODE_OF_CONDUCT`.
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
