@@ -37,7 +37,7 @@ function Footer() {
                 rel="noopener"
                 underline
               >
-                BOLIO UI
+                BRUNO ANDRADE
               </Link>
             </Text>
           </Grid>
