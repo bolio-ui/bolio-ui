@@ -1,4 +1,11 @@
-import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 
 export type ElementStackItem = {
   overflow: string
@@ -12,7 +19,7 @@ export type BodyScrollOptions = {
 
 const defaultOptions: BodyScrollOptions = {
   scrollLayer: false,
-  delayReset: 0,
+  delayReset: 0
 }
 
 const elementStack = new Map<HTMLElement, ElementStackItem>()
@@ -28,17 +35,17 @@ const getOwnerScrollbarWidth = (element: Element): number => {
   return Math.abs(window.innerWidth - doc.documentElement.clientWidth)
 }
 
-const useBodyScroll = (
+function useBodyScroll(
   elementRef?: RefObject<HTMLElement> | null,
-  options?: BodyScrollOptions,
-): [boolean, Dispatch<SetStateAction<boolean>>] => {
-  /* istanbul ignore next */
-  if (typeof document === 'undefined') return [false, (t: boolean) => t]
+  options?: BodyScrollOptions
+): [boolean, Dispatch<SetStateAction<boolean>>] {
+  if (typeof document === 'undefined') return [false, (t: unknown) => t]
+
   const elRef = elementRef || useRef<HTMLElement>(document.body)
   const [hidden, setHidden] = useState<boolean>(false)
   const safeOptions = {
     ...defaultOptions,
-    ...(options || {}),
+    ...(options || {})
   }
 
   useEffect(() => {
@@ -50,7 +57,7 @@ const useBodyScroll = (
       const scrollbarWidth = getOwnerScrollbarWidth(elRef.current)
       elementStack.set(elRef.current, {
         overflow: lastOverflow,
-        paddingRight: elRef.current.style.paddingRight,
+        paddingRight: elRef.current.style.paddingRight
       })
       elRef.current.style.overflow = 'hidden'
       elRef.current.style.paddingRight = `${paddingRight + scrollbarWidth}px`

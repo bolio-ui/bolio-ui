@@ -15,6 +15,7 @@ const reduceScaleCoefficient = (scale: number) => {
   return scale > 1 ? 1 + diff : 1 - diff
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const withScale = <T, P = {}>(
   Render: React.ComponentType<P & { ref?: React.Ref<T> }>
 ) => {

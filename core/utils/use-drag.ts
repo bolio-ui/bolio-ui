@@ -12,7 +12,7 @@ const useDrag = (
   elementRef: RefObject<HTMLElement> | null,
   draggingHandler: DraggingHandler = () => {},
   dragStartHandler: DraggingHandler = () => {},
-  dragEndHandler: DraggingHandler = () => {},
+  dragEndHandler: DraggingHandler = () => {}
 ) => {
   const onDragging = useRef<boolean>(false)
   const [, setStartX, startXRef] = useCurrentState<number>(0)
@@ -20,10 +20,10 @@ const useDrag = (
 
   const getCustomEvent = () => ({
     startX: startXRef.current,
-    currentX: currentXRef.current,
+    currentX: currentXRef.current
   })
 
-  const elementMouseDownHandler = (event: MouseEvent) => {
+  const elementMouseDownHandler = (event: MouseEvent | TouchEvent) => {
     event.stopPropagation()
     event.stopImmediatePropagation()
     onDragging.current = true
@@ -31,6 +31,7 @@ const useDrag = (
     setStartX(elementRef.current.getBoundingClientRect().x)
     dragStartHandler(getCustomEvent())
   }
+
   const globalDraggingHandler = (event: MouseEvent | TouchEvent) => {
     if (!onDragging.current) return
     if (event.type === 'touchmove') {
@@ -63,8 +64,14 @@ const useDrag = (
       window.removeEventListener('touchend', globalDragEndHandler)
 
       if (!elementRef || !elementRef.current) return
-      elementRef.current.removeEventListener('mousedown', elementMouseDownHandler)
-      elementRef.current.removeEventListener('touchstart', elementMouseDownHandler)
+      elementRef.current.removeEventListener(
+        'mousedown',
+        elementMouseDownHandler
+      )
+      elementRef.current.removeEventListener(
+        'touchstart',
+        elementMouseDownHandler
+      )
     }
   }, [elementRef])
 }
