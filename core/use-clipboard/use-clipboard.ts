@@ -11,11 +11,11 @@ export type UseClipboardResult = {
 }
 
 const defaultOptions: UseClipboardOptions = {
-  onError: () => useWarning('Failed to copy.', 'use-clipboard'),
+  onError: () => useWarning('Failed to copy.', 'use-clipboard')
 }
 
 const useClipboard = (
-  options: UseClipboardOptions = defaultOptions,
+  options: UseClipboardOptions = defaultOptions
 ): UseClipboardResult => {
   const el = usePortal('clipboard')
 
@@ -47,7 +47,7 @@ const useClipboard = (
     (text: string) => {
       copyText(el, text)
     },
-    [el],
+    [el]
   )
 
   return { copy }
