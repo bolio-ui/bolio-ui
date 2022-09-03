@@ -1,0 +1,149 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Checkbox, Spacer } from 'core'
+
+export const meta = {
+  title: 'Checkbox',
+  sidebar: 'components',
+  group: 'Components',
+  index: 9
+}
+
+## Checkbox
+
+Displays a boolean value.
+
+<Playground
+  desc="Change state with `checked` props."
+  scope={{ Checkbox }}
+  code={`
+<Checkbox checked={true}>Check option</Checkbox>
+`}
+/>
+
+<Playground
+  title="Sizes"
+  desc="Checkbox of different sizes."
+  scope={{ Checkbox }}
+  code={`
+<>
+  <Checkbox mr="15px" checked={true} scale={0.25}>
+    scale-0.25
+  </Checkbox>
+  <Checkbox mr="15px" checked={true} scale={0.5}>
+    scale-0.5
+  </Checkbox>
+  <Checkbox mr="15px" checked={true} scale={0.75}>
+    scale-0.75
+  </Checkbox>
+</>
+`}
+/>
+
+<Playground
+  title="Type"
+  desc="Differentiate states by color."
+  scope={{ Checkbox, Spacer }}
+  code={`
+<>
+  <Checkbox checked={true} type="default">
+    Checkbox Default
+  </Checkbox>
+  <Spacer h={0.5} />
+  <Checkbox checked={true} type="success">
+    Checkbox Success
+  </Checkbox>
+  <Spacer h={0.5} />
+  <Checkbox checked={true} type="warning">
+    Checkbox Warning
+  </Checkbox>
+  <Spacer h={0.5} />
+  <Checkbox checked={true} type="error">
+    Checkbox Error
+  </Checkbox>
+</>
+`}
+/>
+
+<Playground
+  title="Disable"
+  scope={{ Checkbox, Spacer }}
+  code={`
+<>
+  <Checkbox>Checkbox option</Checkbox>
+  <Spacer h={0.5} />
+  <Checkbox disabled checked={true}>
+    Checkbox option disabled
+  </Checkbox>
+</>
+`}
+/>
+
+<Playground
+  title="Group"
+  desc="Manage a set of `Checkbox`."
+  scope={{ Checkbox, Spacer }}
+  code={`
+() => {
+  const handler = value => {
+    console.log(value)
+  }
+  return (
+    <Checkbox.Group value={['check3']} onChange={handler}>
+      <Checkbox value="check1">Checkbox option 1</Checkbox>
+      <Checkbox value="check2">Checkbox option 2</Checkbox>
+      <Checkbox value="check3">Checkbox option 3</Checkbox>
+      <Checkbox value="check4">Checkbox option 4</Checkbox>
+    </Checkbox.Group>
+  )
+}
+`}
+/>
+
+<Attributes edit="/pages/docs/components/checkbox.mdx">
+<Attributes.Title>Checkbox.Props</Attributes.Title>
+
+| Attribute          | Description                                 | Type                                           | Accepted values                 | Default   |
+| ------------------ | ------------------------------------------- | ---------------------------------------------- | ------------------------------- | --------- |
+| **checked**        | checked or not                              | `boolean`                                      | -                               | -         |
+| **initialChecked** | checked or not on initial                   | `boolean`                                      | -                               | `false`   |
+| **onChange**       | change event handler                        | `CheckboxEvent`                                | -                               | -         |
+| **value**          | unique identification value (only in group) | `string`                                       | -                               | -         |
+| **disabled**       | disable checkbox                            | `boolean`                                      | -                               | `false`   |
+| **type**           | current type                                | `CheckboxTypes`                                | [CheckboxTypes](#checkboxtypes) | `default` |
+| **ref**            | forwardRef                                  | <Code>Ref<HTMLInputElement &#124; null></Code> | -                               | -         |
+| ...                | native props                                | `LabelHTMLAttributes`                          | `'form' ...`                    | -         |
+
+<Attributes.Title>Checkbox.Group.Props</Attributes.Title>
+
+| Attribute    | Description            | Type                         | Accepted values | Default |
+| ------------ | ---------------------- | ---------------------------- | --------------- | ------- |
+| **value**    | checked children       | `Array<string>`              | -               | `[]`    |
+| **disabled** | disable checkbox group | `boolean`                    | -               | `false` |
+| **onChange** | change event handler   | `(values: string[]) => void` | -               | -       |
+| ...          | native props           | `HTMLAttributes`             | `'id', ...`     | -       |
+
+<Attributes.Title>CheckboxTypes</Attributes.Title>
+
+```ts
+type CheckboxTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+<Attributes.Title>CheckboxEvent</Attributes.Title>
+
+```ts
+interface CheckboxEventTarget {
+  checked: boolean
+}
+
+export interface CheckboxEvent {
+  target: CheckboxEventTarget
+  stopPropagation: () => void
+  preventDefault: () => void
+  nativeEvent: React.ChangeEvent
+}
+```
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

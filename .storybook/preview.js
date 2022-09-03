@@ -1,10 +1,12 @@
-import GlobalStyles from '../src/styles/global'
+import { BolioUIProvider, CssBaseline } from '../core'
+import ToastContainer from '../core/use-toasts/toast-container'
 
 export const decorators = [
   (Story) => (
-    <>
-      <GlobalStyles />
+    <BolioUIProvider>
+      <CssBaseline />
       <Story />
-    </>
+      <ToastContainer />
+    </BolioUIProvider>
   )
 ]

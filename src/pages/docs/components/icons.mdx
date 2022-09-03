@@ -1,0 +1,82 @@
+import Docs from 'src/templates/Docs'
+import { Smile } from '@bolio-ui/icons'
+import { Spacer, Tabs, Snippet } from 'core'
+import {
+  Layout,
+  Playground,
+  PlaygroundTitle,
+  Attributes,
+  IconsGallery
+} from 'src/components'
+
+export const meta = {
+  title: 'Icons',
+  sidebar: 'components',
+  group: 'Components',
+  index: 19
+}
+
+## Icons
+
+Display semantic vector graphics in SVG format.
+
+<Title
+  title="Installation"
+  desc="Install the package in your project directory."
+/>
+<Tabs initialValue="yarn">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Spacer h={0.6} />
+    <Snippet width="400px">yarn add @bolio-ui/icons</Snippet>
+  </Tabs.Item>
+  <Tabs.Item label="npm" value="npm">
+    <Spacer h={0.6} />
+    <Snippet width="400px">npm i @bolio-ui/icons</Snippet>
+  </Tabs.Item>
+</Tabs>
+
+<Playground
+  title="Import"
+  scope={{ Smile, Spacer }}
+  code={`
+<Smile />
+`}
+/>
+
+<Playground
+  title="Color"
+  scope={{ Smile }}
+  code={`
+<Smile color="red" />
+`}
+/>
+
+<Playground
+  title="Sizes"
+  scope={{ Smile, Spacer }}
+  code={`
+<>
+  <Smile fontSize={16} /> <Spacer inline w={0.35} />
+  <Smile fontSize={20} /> <Spacer inline w={0.35} />
+  <Smile fontSize={24} /> <Spacer inline w={0.35} />
+  <Smile fontSize={28} /> <Spacer inline w={0.35} />
+  <Smile fontSize={32} /> <Spacer inline w={0.35} />
+  <Smile fontSize={36} />
+</>
+`}
+/>
+
+<IconsGallery />
+
+<Attributes edit="/pages/docs/components/icons.mdx">
+<Attributes.Title>Icon.Props</Attributes.Title>
+
+| Attribute    | Description  | Type            | Accepted values                  | Default |
+| ------------ | ------------ | --------------- | -------------------------------- | ------- |
+| **color**    | Icon color   | `string`        | -                                | -       |
+| **fontSize** | Icon size    | `number`        | -                                | -       |
+| ...          | Native props | `SVGAttributes` | `'id', 'name', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
