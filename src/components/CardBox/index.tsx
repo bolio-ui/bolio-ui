@@ -2,15 +2,17 @@ import React from 'react'
 import { Text, Card, useTheme, Grid } from 'core'
 import * as Icons from '@bolio-ui/icons'
 
+type Icon = keyof typeof Icons
+
 interface Props {
   title: string
   description: string
-  icon: string
+  icon: Icon
 }
 
 export type ProjectCardProps = Props
 
-const renderIcon = (icon: string) => {
+const renderIcon = (icon: Icon) => {
   const CurrentIcon = Icons[icon]
   return <CurrentIcon height={18} width={18} /> || null
 }

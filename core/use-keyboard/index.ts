@@ -6,6 +6,6 @@ export type {
   UseKeyboardHandler,
   KeyboardOptions,
   KeyboardResult,
-  UseKeyboard,
+  UseKeyboard
 } from './use-keyboard'
 export default useKeyboard

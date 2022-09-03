@@ -62,6 +62,7 @@ export const createBolioUIContext = <
       ...initialStates,
       ...initialValues
     } as Required<S>
+
     const [states, , statesRef] = useContextState(mergedValues, {
       onChange: onChange ? onChange : () => {},
       filter: onChangeBefore ? onChangeBefore : () => true

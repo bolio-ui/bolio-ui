@@ -57,6 +57,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
         </Container>
         <style jsx>{`
           .main {
+            max-width: 100%;
             flex-direction: column;
             flex: 0 0 100%;
           }
