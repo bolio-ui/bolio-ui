@@ -65,10 +65,10 @@ function Container({
       {children}
       <style jsx>{`
         .container {
-          width: 100%;
+          /* width: 100%; */
           ${fluidWidth};
-          padding-right: 15px;
           padding-left: 15px;
+          padding-right: 15px;
           margin-right: auto;
           margin-left: auto;
           justify-content: ${justifyValue};

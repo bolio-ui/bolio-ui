@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import Favicon from 'src/components/Favicon'
+import Menu from 'src/components/Navigation'
 
 function App({ Component, pageProps }: AppProps) {
   const theme = useTheme()
@@ -36,6 +37,7 @@ function App({ Component, pageProps }: AppProps) {
       <BolioUIProvider themeType={themeType}>
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <CssBaseline />
+          <Menu />
           <Component {...pageProps} />
         </SettingsContext.Provider>
         <style global jsx>{`
