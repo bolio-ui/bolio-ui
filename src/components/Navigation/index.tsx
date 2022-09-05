@@ -55,7 +55,7 @@ const Navigation: React.FC = () => {
   return (
     <>
       <nav>
-        <Container fluid>
+        <Container>
           <div className={`${sticky ? 'menu_sticky' : ''}`}>
             <Grid.Container
               gap={1}
