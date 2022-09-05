@@ -54,7 +54,7 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav>
+      <nav className="menu_wrapper">
         <Container fluid>
           <div className={`${sticky ? 'menu_sticky' : ''}`}>
             <Grid.Container
@@ -188,6 +188,11 @@ const Navigation: React.FC = () => {
       </nav>
       <NavigationMobile expanded={expanded} />
       <style jsx>{`
+        .menu_wrapper {
+          height: 60px;
+          position: relative;
+          overflow: hidden;
+        }
         .menu_sticky {
           transition: box-shadow 0.2s ease;
         }
@@ -197,11 +202,20 @@ const Navigation: React.FC = () => {
           top: 0;
           right: 0;
           left: 0;
-          padding: 0 15px;
           box-shadow: ${theme.type === 'dark'
             ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
           backdrop-filter: saturate(180%) blur(10px);
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        .menu_wrapper :global(.theme-button) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.25rem;
+          height: 2.25rem;
+          padding: 0;
         }
 
         .tabs {
