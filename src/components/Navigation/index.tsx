@@ -121,7 +121,7 @@ const Navigation: React.FC = () => {
                           <Github fontSize={16} />
                         </Button>
                       </Link>
-                      <Spacer w={1} />
+                      <Spacer w={0.5} />
                       <Link
                         href="https://www.instagram.com/bolio.ui/"
                         target="_blank"
@@ -137,7 +137,7 @@ const Navigation: React.FC = () => {
                           <Instagram fontSize={16} />
                         </Button>
                       </Link>
-                      <Spacer w={1} />
+                      <Spacer w={0.5} />
                       <Button
                         w="28px"
                         h="28px"
@@ -158,7 +158,7 @@ const Navigation: React.FC = () => {
                           <Moon fontSize={16} />
                         )}
                       </Button>
-                      <Spacer w={1} />
+                      <Spacer w={0.5} />
                       <Link
                         href="https://www.patreon.com/brunnoandrade"
                         target="_blank"
