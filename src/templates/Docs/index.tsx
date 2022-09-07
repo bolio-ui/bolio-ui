@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import { Container, Grid, useTheme } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
+import { toCapitalize } from 'src/utils/to-capitalize'
 import Sidebar from 'src/components/Sidebar'
 import SidebarHeading from 'src/components/SidebarHeading'
 import MadeDesigned from 'src/components/MadeDesigned'
 
 export interface Meta {
   title: string
+  description: string
   sidebar: string
   group: string
   index: number
@@ -19,14 +23,38 @@ export type DocsTemplateProps = {
 
 function Docs({ children, meta }: DocsTemplateProps) {
   const theme = useTheme()
+  const router = useRouter()
+
   const [headings, setHeadings] = useState<Heading[]>([])
 
   useEffect(() => {
     setHeadings(getHeadings())
   }, [])
 
+  const { title, description } = meta
+
+  let pageTitle = title ? `${toCapitalize(title)} | ` : ''
+  pageTitle += 'Bolio UI - Amazing, modern and creative tools for React UI'
+
   return (
     <>
+      <NextSeo
+        title={pageTitle}
+        description={description}
+        openGraph={{
+          url: `${router.pathname}`,
+          title: pageTitle,
+          description: description,
+          images: [
+            {
+              url: '/img/cover.png',
+              width: 500,
+              height: 500,
+              alt: `${pageTitle}`
+            }
+          ]
+        }}
+      />
       <Container fluid className="content-wrapper">
         <Grid.Container gap={2}>
           <Grid xs={0} sm={0} md={0} lg={2}>
