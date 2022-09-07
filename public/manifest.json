@@ -1,6 +1,6 @@
 {
-  "name": "React - Boilerplate",
-  "short_name": "React",
+  "name": "Bolio UI - Amazing, modern and creative tools for React UI",
+  "short_name": "Bolio UI",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#0f0d23",
-  "description": "Boilerlate utilizando Typescript, React, NextJS e Styled Components!",
+  "description": "Make your development more amazing, modern and creative with tools for React.",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#0f0d23"
