@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { DefaultSeo } from 'next-seo'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import Favicon from 'src/components/Favicon'
 import Menu from 'src/components/Navigation'
+import SEO from '../../next-seo.config'
 
 function App({ Component, pageProps }: AppProps) {
   const theme = useTheme()
@@ -27,15 +29,18 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Bolio UI</title>
+        <title>
+          Bolio UI - Amazing, modern and creative tools for React UI
+        </title>
         <meta
           name="description"
-          content="Make your development more creative and dynamic with amazing tools for React."
+          content="Make your development more amazing, modern and creative with tools for React."
         />
         <Favicon />
       </Head>
       <BolioUIProvider themeType={themeType}>
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
+          <DefaultSeo {...SEO} />
           <CssBaseline />
           <Menu />
           <Component {...pageProps} />
