@@ -17,8 +17,8 @@ function Home() {
           images: [
             {
               url: '/img/cover.png',
-              width: 500,
-              height: 500,
+              width: 1200,
+              height: 630,
               alt: 'Bolio UI - Amazing, modern and creative tools for React UI'
             }
           ]
