@@ -89,6 +89,171 @@
               "title": "Checkbox",
               "keywords": "checkbox, check, radio, selectable, checkbox, box",
               "path": "/docs/components/checkbox.mdx"
+            },
+            {
+              "title": "Code",
+              "keywords": "code, code block, block",
+              "path": "/docs/components/code.mdx"
+            },
+            {
+              "title": "Collapse",
+              "keywords": "collapse, accordion, subtitle, shadow",
+              "path": "/docs/components/collapse.mdx"
+            },
+            {
+              "title": "Description",
+              "keywords": "description, with component",
+              "path": "/docs/components/description.mdx"
+            },
+            {
+              "title": "Display",
+              "keywords": "display, code, snippet, caption",
+              "path": "/docs/components/display.mdx"
+            },
+            {
+              "title": "Divider",
+              "keywords": "divider, text, space, types",
+              "path": "/docs/components/divider.mdx"
+            },
+            {
+              "title": "Dot",
+              "keywords": "dot, text",
+              "path": "/docs/components/dot.mdx"
+            },
+            {
+              "title": "Drawer",
+              "keywords": "drawer, placement, modal",
+              "path": "/docs/components/drawer.mdx"
+            },
+            {
+              "title": "Fieldset",
+              "keywords": "fieldset, text, tabs, divider",
+              "path": "/docs/components/fieldset.mdx"
+            },
+            {
+              "title": "Grid",
+              "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
+              "path": "/docs/components/grid.mdx"
+            },
+            {
+              "title": "Icons",
+              "keywords": "icon, color, sizes, icons gallery",
+              "path": "/docs/components/icons.mdx"
+            },
+            {
+              "title": "Image",
+              "keywords": "image, skeleton, browser, browser invest, compose, svg",
+              "path": "/docs/components/image.mdx"
+            },
+            {
+              "title": "Input",
+              "keywords": "input, sizes, set width, unwritable, inline label, block label, types, icon, clearable, password, get change, imperative api",
+              "path": "/docs/components/input.mdx"
+            },
+            {
+              "title": "Keyboard",
+              "keywords": "keyboard, modifiers, combination",
+              "path": "/docs/components/keyboard.mdx"
+            },
+            {
+              "title": "Link",
+              "keywords": "link, navigation, href, next link",
+              "path": "/docs/components/link.mdx"
+            },
+            {
+              "title": "Loading",
+              "keywords": "loading, spinner, loadable, progress",
+              "path": "/docs/components/loading.mdx"
+            },
+            {
+              "title": "Modal",
+              "keywords": "modal, dialog, backdrop, actions, customized, loading, overlong",
+              "path": "/docs/components/modal.mdx"
+            },
+            {
+              "title": "Note",
+              "keywords": "note, secondary, status, hidden label, custom label, filled variant",
+              "path": "/docs/components/note.mdx"
+            },
+            {
+              "title": "Page",
+              "keywords": "page, content",
+              "path": "/docs/components/page.mdx"
+            },
+            {
+              "title": "Pagination",
+              "keywords": "pagination, paginate, table pagination, pages, navigate, limit",
+              "path": "/docs/components/pagination.mdx"
+            },
+            {
+              "title": "Popover",
+              "keywords": "popover, tooltip, preset item, close manual",
+              "path": "/docs/components/popover.mdx"
+            },
+            {
+              "title": "Progress",
+              "keywords": "progress, custom max, dynamic colors, types",
+              "path": "/docs/components/progress.mdx"
+            },
+            {
+              "title": "Radio",
+              "keywords": "radio, radio group, types, description, disabled, inline",
+              "path": "/docs/components/radio.mdx"
+            },
+            {
+              "title": "Rating",
+              "keywords": "rating, types, custom amount, icon, vote",
+              "path": "/docs/components/rating.mdx"
+            },
+            {
+              "title": "Select",
+              "keywords": "select, types, disabled, option, without Icon, labels, divider, multiple, clear, compose, over width",
+              "path": "/docs/components/select.mdx"
+            },
+            {
+              "title": "Snippet",
+              "keywords": "snippet, width, types, multi line, copy, custom symbol, toast, filled",
+              "path": "/docs/components/snippet.mdx"
+            },
+            {
+              "title": "Spacer",
+              "keywords": "spacer, vertical, horizontal",
+              "path": "/docs/components/spacer.mdx"
+            },
+            {
+              "title": "Spinner",
+              "keywords": "spinner",
+              "path": "/docs/components/spinner.mdx"
+            },
+            {
+              "title": "Tabs",
+              "keywords": "tabs, disabled, hide divider, hide border, icon, scroll behavior, imperatively",
+              "path": "/docs/components/tabs.mdx"
+            },
+            {
+              "title": "Tag",
+              "keywords": "tag, types, invert",
+              "path": "/docs/components/tag.mdx"
+            },
+            {
+              "title": "Text",
+              "keywords": "text, heading, paragraph, small, blockquote, types, sizes, compose",
+              "path": "/docs/components/text.mdx"
+            },
+            {
+              "title": "Textarea",
+              "keywords": "textarea, disabled, types, get change, imperative",
+              "path": "/docs/components/textarea.mdx"
+            },
+            {
+              "title": "Toggle",
+              "keywords": "toggle, types, disabled, get change",
+              "path": "/docs/components/toggle.mdx"
+            },
+            {
+              "title": "Tooltip",
+              "keywords": "tooltip, trigger, with components, custom content, types, variant, placements",
+              "path": "/docs/components/tooltip.mdx"
             }
           ]
         }
