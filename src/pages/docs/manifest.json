@@ -1,0 +1,98 @@
+{
+  "routes": [
+    {
+      "title": "Documentation",
+      "keywords": "docs, doc, documentation, getting started, bolioui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "Book",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Guide",
+          "open": true,
+          "keywords": "guide, getting started, start, bolio ui",
+          "icon": "BookOpen",
+          "routes": [
+            {
+              "title": "Getting Started",
+              "keywords": "getting started, start, bolio ui",
+              "path": "/docs/guide/getting-started.mdx"
+            },
+            {
+              "title": "Bolio UI + Next.js",
+              "keywords": "next, nextjs, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
+            }
+          ]
+        },
+        {
+          "title": "Theme",
+          "keywords": "themeable, theme, customize, palette",
+          "icon": "Target",
+          "open": true,
+          "routes": [
+            {
+              "title": "Default Theme",
+              "updated": true,
+              "path": "/docs/guide/default-theme.mdx"
+            }
+          ]
+        },
+        {
+          "title": "Components",
+          "keywords": "components, btn, button, input, modal",
+          "icon": "Box",
+          "open": true,
+          "routes": [
+            {
+              "title": "Avatar",
+              "keywords": "avatar, avatar text, avatar group, group",
+              "path": "/docs/components/avatar.mdx"
+            },
+            {
+              "title": "Badge",
+              "keywords": "badge, badge custom color, custom color, anchor",
+              "path": "/docs/components/badge.mdx"
+            },
+            {
+              "title": "Breadcrumbs",
+              "keywords": "breadcrumbs, breadcrumbs icons, icons",
+              "path": "/docs/components/breadcrumbs.mdx"
+            },
+            {
+              "title": "Button",
+              "keywords": "button, btn, buttons, action",
+              "path": "/docs/components/button.mdx"
+            },
+            {
+              "title": "Button Group",
+              "keywords": "btn, button, btn group, button group, group",
+              "path": "/docs/components/button-group.mdx"
+            },
+            {
+              "title": "Button Dropdown",
+              "keywords": "btn, button, btn dropdown, button group, dropdown",
+              "path": "/docs/components/button-dropdown.mdx"
+            },
+            {
+              "title": "Capacity",
+              "keywords": "capacity, capacity color",
+              "path": "/docs/components/capacity.mdx"
+            },
+            {
+              "title": "Card",
+              "keywords": "card, content, action, media",
+              "path": "/docs/components/card.mdx"
+            },
+            {
+              "title": "Checkbox",
+              "keywords": "checkbox, check, radio, selectable, checkbox, box",
+              "path": "/docs/components/checkbox.mdx"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

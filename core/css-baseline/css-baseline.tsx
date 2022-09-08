@@ -121,13 +121,13 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           line-height: 1.625em;
         }
 
-        ul li:before {
+        /* ul li:before {
           content: '–';
           display: inline-block;
           color: ${theme.palette.accents_4};
           position: absolute;
           margin-left: -0.9375em;
-        }
+        } */
 
         h1,
         h2,
