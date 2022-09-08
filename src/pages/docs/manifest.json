@@ -256,6 +256,79 @@
               "path": "/docs/components/tooltip.mdx"
             }
           ]
+        },
+        {
+          "title": "Hooks",
+          "keywords": "hooks, clipboard, keyboard, input, scale, tabs, theme, toast",
+          "icon": "Sliders",
+          "open": true,
+          "routes": [
+            {
+              "title": "useBodyScroll",
+              "keywords": "useBodyScroll",
+              "path": "/docs/hooks/use-body-scroll.mdx"
+            },
+            {
+              "title": "useClasses",
+              "keywords": "useClasses",
+              "path": "/docs/hooks/use-classes.mdx"
+            },
+            {
+              "title": "useClickAway",
+              "keywords": "useClickAway",
+              "path": "/docs/hooks/use-click-away.mdx"
+            },
+            {
+              "title": "useClipboard",
+              "keywords": "useClipboard",
+              "path": "/docs/hooks/use-clipboard.mdx"
+            },
+            {
+              "title": "useCurrentState",
+              "keywords": "useCurrentState",
+              "path": "/docs/hooks/use-current-state.mdx"
+            },
+            {
+              "title": "useInput",
+              "keywords": "useInput",
+              "path": "/docs/hooks/use-input.mdx"
+            },
+            {
+              "title": "useKeyboard",
+              "keywords": "useKeyboard",
+              "path": "/docs/hooks/use-keyboard.mdx"
+            },
+            {
+              "title": "useMediaQuery",
+              "keywords": "useMediaQuery",
+              "path": "/docs/hooks/use-media-query.mdx"
+            },
+            {
+              "title": "useModal",
+              "keywords": "useModal",
+              "path": "/docs/hooks/use-modal.mdx"
+            },
+            {
+              "title": "useScale",
+              "keywords": "useScale",
+              "path": "/docs/hooks/use-scale.mdx"
+            },
+            {
+              "title": "useTabs",
+              "keywords": "useTabs",
+              "path": "/docs/hooks/use-tabs.mdx"
+            },
+            {
+              "title": "useTheme",
+              "keywords": "useTheme",
+              "path": "/docs/hooks/use-theme.mdx"
+            },
+            {
+              "title": "useToast",
+              "keywords": "useToast",
+              "path": "/docs/hooks/use-toast.mdx"
+            }
+          ]
         }
       ]
     }
