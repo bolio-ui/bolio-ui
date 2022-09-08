@@ -12,7 +12,7 @@ export default function generateStyles(theme?: BolioUIThemes) {
       boxShadow: theme?.expressiveness?.shadowMedium
     },
     result: {
-      maxHeight: 400,
+      maxHeight: 450,
       paddingBottom: '8px',
       overflow: 'auto'
     }
