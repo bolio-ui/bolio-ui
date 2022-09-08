@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
+import { KBarWrapper as KBarProvider } from 'src/components'
 import Favicon from 'src/components/Favicon'
 import Menu from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
@@ -42,8 +43,10 @@ function App({ Component, pageProps }: AppProps) {
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <DefaultSeo {...SEO} />
           <CssBaseline />
-          <Menu />
-          <Component {...pageProps} />
+          <KBarProvider>
+            <Menu />
+            <Component {...pageProps} />
+          </KBarProvider>
         </SettingsContext.Provider>
         <style global jsx>{`
           pre {
