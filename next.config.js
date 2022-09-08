@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const withPWA = require('next-pwa')
-
 const withMDX = require('@next/mdx')({
   extension: /\.(md|mdx)?$/,
   options: {
@@ -11,7 +9,7 @@ const withMDX = require('@next/mdx')({
   }
 })
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.ENVIRONMENT === 'production'
 
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],

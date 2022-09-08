@@ -11,7 +11,15 @@ import {
   useMediaQuery,
   useBodyScroll
 } from 'core'
-import { Sun, Moon, Heart, Github, Instagram, Menu } from '@bolio-ui/icons'
+import {
+  Sun,
+  Moon,
+  Heart,
+  Github,
+  Instagram,
+  Twitter,
+  Menu
+} from '@bolio-ui/icons'
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
@@ -76,7 +84,6 @@ const Navigation: React.FC = () => {
                     hideDivider
                     hideBorder
                   >
-                    <Tabs.Item label="Home" value="/" />
                     <Tabs.Item
                       label="Guide"
                       value="/docs/guide/getting-started"
@@ -115,13 +122,29 @@ const Navigation: React.FC = () => {
                           h="28px"
                           py={0}
                           px={0}
+                          className="theme-button"
                           aria-label="Github Bolio UI"
                           type="abort"
                         >
                           <Github fontSize={16} />
                         </Button>
                       </Link>
-                      <Spacer w={0.5} />
+                      <Link
+                        href="https://www.twitter.com/bolio_ui/"
+                        target="_blank"
+                      >
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          className="theme-button"
+                          aria-label="Twitter Bolio UI"
+                          type="abort"
+                        >
+                          <Twitter fontSize={16} />
+                        </Button>
+                      </Link>
                       <Link
                         href="https://www.instagram.com/bolio.ui/"
                         target="_blank"
@@ -131,13 +154,13 @@ const Navigation: React.FC = () => {
                           h="28px"
                           py={0}
                           px={0}
+                          className="theme-button"
                           aria-label="Instagram Bolio UI"
                           type="abort"
                         >
                           <Instagram fontSize={16} />
                         </Button>
                       </Link>
-                      <Spacer w={0.5} />
                       <Button
                         w="28px"
                         h="28px"
