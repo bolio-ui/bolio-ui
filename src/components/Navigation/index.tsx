@@ -212,7 +212,7 @@ const Navigation: React.FC = () => {
       <NavigationMobile expanded={expanded} />
       <style jsx>{`
         .menu_wrapper {
-          height: 60px;
+          height: 80px;
           position: relative;
           overflow: hidden;
         }
@@ -262,13 +262,12 @@ const Navigation: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          height: 50px;
         }
         .controls :global(.menu-toggle) {
           display: flex;
           align-items: center;
-          min-width: 40px;
-          height: 40px;
-          padding: 0;
+          height: 50px;
         }
       `}</style>
     </>
