@@ -65,13 +65,13 @@ const Navigation: React.FC = () => {
       <nav className="menu_wrapper">
         <Container fluid>
           <div className={`${sticky ? 'menu_sticky' : ''}`}>
-            <Grid.Container
-              gap={1}
-              justify="center"
-              alignItems="center"
-              alignContent="center"
-            >
-              <Grid xs={6} md={4} justify="flex-start">
+            <Grid.Container gap={1} justify="center">
+              <Grid
+                xs={6}
+                md={4}
+                justify="flex-start"
+                style={{ marginTop: '8px' }}
+              >
                 <Logo name="Bolio UI" />
               </Grid>
 
@@ -241,6 +241,10 @@ const Navigation: React.FC = () => {
           padding: 0;
         }
 
+        .logo {
+          padding: 0 ${theme.layout.gap};
+          margin-bottom: 3px;
+        }
         .tabs {
           padding: 0 ${theme.layout.gap};
           margin-bottom: 3px;
