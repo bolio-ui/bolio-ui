@@ -18,7 +18,7 @@ function Logo({ name }: Props) {
             height: '2rem',
             width: '2rem',
             verticalAlign: 'middle',
-            marginBottom: '2px'
+            marginBottom: '3px'
           }}
         >
           <path
