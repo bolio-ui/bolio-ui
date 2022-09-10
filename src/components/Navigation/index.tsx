@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import {
   Container,
   Grid,
@@ -23,6 +24,10 @@ import {
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
+
+const SearchInput = dynamic(() => import('../Search/instant-search'), {
+  ssr: true
+})
 
 const Navigation: React.FC = () => {
   const theme = useTheme()
@@ -182,6 +187,8 @@ const Navigation: React.FC = () => {
                         )}
                       </Button>
                       <Spacer w={0.5} />
+                      <SearchInput />
+                      <Spacer w={1} />
                       <Link
                         href="https://www.patreon.com/brunnoandrade"
                         target="_blank"
@@ -220,6 +227,7 @@ const Navigation: React.FC = () => {
           transition: box-shadow 0.2s ease;
         }
         .menu_sticky {
+          z-index: 1;
           position: fixed;
           z-index: 1100;
           top: 0;
@@ -262,13 +270,12 @@ const Navigation: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          height: 50px;
         }
         .controls :global(.menu-toggle) {
           display: flex;
           align-items: center;
-          min-width: 40px;
-          height: 40px;
-          padding: 0;
+          height: 50px;
         }
       `}</style>
     </>

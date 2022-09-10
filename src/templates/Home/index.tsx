@@ -18,7 +18,7 @@ function Home() {
       name: 'Getting Started',
       section: 'Scope',
       shortcut: [],
-      keywords: 'help, docs, go, started, getting started, nextui',
+      keywords: 'help, docs, go, started, getting started, bolio ui',
       perform: () => router.push('/docs/guide/getting-started')
     }
   }, [router])
