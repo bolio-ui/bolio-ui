@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Avatar",
+    "component": true,
+    "path": "/docs/components/avatar"
+  },
+  {
+    "title": "Avatar",
+    "component": false,
+    "path": "/docs/components/avatar#avatar"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Text",
+    "component": false,
+    "path": "/docs/components/avatar#text"
+  }
+]
