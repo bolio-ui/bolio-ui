@@ -32,13 +32,19 @@ import usePortal from 'core/utils/use-portal'
 import withDeaults from 'src/utils/with-defaults'
 
 interface Props extends AutocompleteProvided {
-  hits?: any
-  refine?: any
   offsetTop?: number
 }
 
 const defaultProps = {
   offsetTop: 0
+}
+
+interface SuggestionsFetchRequestedParams {
+  value: string
+}
+
+interface OnSuggestionSelectedParams {
+  url: string
 }
 
 const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
@@ -90,7 +96,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     } else {
       setBodyHidden(false)
     }
-  }, [hits, value, isFocused, isMobile])
+  }, [hits, value, isFocused, isMobile, setBodyHidden])
 
   const onChange = (_: unknown, { newValue }: ChangeEvent) => {
     setValue(newValue)
@@ -105,24 +111,24 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     onBlur: () => setIsFocused(false)
   }
 
-  const onSuggestionsFetchRequested = ({ value }: any) => {
+  const onSuggestionsFetchRequested = ({
+    value
+  }: SuggestionsFetchRequestedParams) => {
     refine(value)
   }
 
-  const onSuggestionSelected: OnSuggestionSelected<any> = (
-    _,
-    { suggestion, method }
-  ) => {
-    if (method === 'enter') {
-      onClear()
-      router.push(suggestion.url)
+  const onSuggestionSelected: OnSuggestionSelected<OnSuggestionSelectedParams> =
+    (_, { suggestion, method }) => {
+      if (method === 'enter') {
+        onClear()
+        router.push(suggestion.url)
+      }
     }
-  }
 
   const getSuggestionValue = () => value
 
   const renderSuggestion = (
-    hit: any,
+    hit,
     { isHighlighted }: { isHighlighted: boolean }
   ) => <Suggestion highlighted={isHighlighted} hit={hit} />
 
@@ -132,16 +138,22 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     inputRef && inputRef?.current?.blur()
   }
 
-  const handleKeyboardClick = () => {
-    query.setVisualState((vs) =>
-      [VisualState.animatingOut, VisualState.hidden].includes(vs)
-        ? VisualState.animatingIn
-        : VisualState.animatingOut
-    )
-  }
-
   const renderInput = React.useCallback(
     (inputProps: RenderInputComponentProps) => {
+      const onClear = () => {
+        refine()
+        setValue('')
+        inputRef && inputRef?.current?.blur()
+      }
+
+      const handleKeyboardClick = () => {
+        query.setVisualState((vs) =>
+          [VisualState.animatingOut, VisualState.hidden].includes(vs)
+            ? VisualState.animatingIn
+            : VisualState.animatingOut
+        )
+      }
+
       return (
         <label className="search__input-container">
           <input
@@ -168,7 +180,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
         </label>
       )
     },
-    [value, theme.palette.accents_6]
+    [value, theme.palette.accents_6, refine, query]
   )
 
   const renderSuggestionsContainer = ({

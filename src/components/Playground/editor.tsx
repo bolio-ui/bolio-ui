@@ -34,7 +34,7 @@ const Editor: React.FC<Props> = ({ code }) => {
               <span className="arrow">
                 <ChevronRight fontSize={16} />
               </span>
-              <span>{'Edit code'}</span>
+              <span>{'Show code edit'}</span>
             </div>
             <div className="action">
               {visible && (
@@ -56,15 +56,14 @@ const Editor: React.FC<Props> = ({ code }) => {
 
       <style jsx>{`
         .editor {
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
+          border-top-left-radius: ${theme.layout.radius};
+          border-top-right-radius: ${theme.layout.radius};
         }
 
         details {
           transition: all 0.2s ease;
           overflow: hidden;
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
+          border-radius: ${theme.layout.radius};
         }
 
         details summary::-webkit-details-marker {
@@ -73,8 +72,7 @@ const Editor: React.FC<Props> = ({ code }) => {
 
         summary {
           box-sizing: border-box;
-          border-top: 1px solid ${theme.palette.accents_2};
-          color: ${theme.palette.accents_5};
+          color: ${theme.palette.accents_6};
           width: 100%;
           list-style: none;
           user-select: none;
@@ -89,6 +87,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gap};
+          background-color: ${theme.palette.accents_2};
         }
 
         summary :global(svg) {
@@ -128,7 +127,7 @@ const Editor: React.FC<Props> = ({ code }) => {
         .copy {
           display: inline-flex;
           align-items: center;
-          color: ${theme.palette.accents_4};
+          color: ${theme.palette.accents_6};
           transition: color 0.2s ease;
         }
 
