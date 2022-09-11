@@ -3,7 +3,7 @@ import {
   InstantSearch as BaseInstantSearch,
   Configure
 } from 'react-instantsearch-dom'
-import { useMediaQuery } from 'core'
+import { useIsMobile } from 'src/utils/use-media-query'
 import getAlgoliaClient from 'src/utils/get-algolia'
 import Autocomplete from './autocomplete'
 
@@ -15,8 +15,7 @@ export interface Props {
 }
 
 const InstantSearch: React.FC<Props> = (props) => {
-  const isMobile = useMediaQuery('sm', { match: 'down' })
-
+  const isMobile = useIsMobile()
   return (
     <BaseInstantSearch indexName={INDEX_NAME} searchClient={searchClient}>
       <Configure hitsPerPage={isMobile ? 6 : 8} />
