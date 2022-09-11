@@ -3,13 +3,7 @@ import { createPortal } from 'react-dom'
 import cn from 'classnames'
 import { isMacOs } from 'react-device-detect'
 import { useRouter } from 'next/router'
-import {
-  useTheme,
-  useBodyScroll,
-  useClickAway,
-  useMediaQuery,
-  Keyboard
-} from 'core'
+import { useTheme, useBodyScroll, useClickAway, Keyboard } from 'core'
 import AutoSuggest, {
   ChangeEvent,
   OnSuggestionSelected,
@@ -30,6 +24,7 @@ import Blockholder from 'src/components/Blockholder'
 import useIsMounted from 'src/utils/use-is-mounted'
 import usePortal from 'core/utils/use-portal'
 import withDeaults from 'src/utils/with-defaults'
+import { useIsMobile } from 'src/utils/use-media-query'
 
 interface Props extends AutocompleteProvided {
   offsetTop?: number
@@ -63,21 +58,12 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     return document?.getElementById('navbar-container')
   })
 
-  const isMobile = useMediaQuery('sm', { match: 'down' })
+  const isMobile = useIsMobile()
 
   const { query } = useKBar()
   const isMounted = useIsMounted()
 
   const inputRef = React.useRef<HTMLInputElement>(null)
-
-  const [sticky, setSticky] = React.useState(false)
-
-  React.useEffect(() => {
-    const scrollHandler = () =>
-      setSticky(document.documentElement.scrollTop > 0)
-    document.addEventListener('scroll', scrollHandler)
-    return () => document.removeEventListener('scroll', scrollHandler)
-  }, [setSticky])
 
   useClickAway(inputRef, () => {
     setIsFocused(false)
@@ -189,7 +175,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   }: RenderSuggestionsContainerParams) =>
     suggestionsPortal ? (
       createPortal(
-        <div className={`${sticky && 'suggest__suggestion-sticky'}`}>
+        <div className={'suggest__suggestion-sticky'}>
           <div {...containerProps}>
             <a
               href="https://www.algolia.com/"
@@ -227,7 +213,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
         searchResults &&
         searchResults.nbHits === 0
       const NoResultsContainer = () => (
-        <div className={`${sticky && 'suggest__suggestion-sticky'}`}>
+        <div className={'suggest__suggestion-sticky'}>
           <div className="no-results">
             <span>
               No results for <span>"{value}"</span>
@@ -357,11 +343,12 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
         .react-autosuggest__container {
           position: relative;
           z-index: 4;
+          width: 100%;
         }
         .search__input-container {
           position: relative;
           display: flex;
-          height: 38px;
+          height: 36px;
           justify-content: center;
           align-items: center;
           z-index: 9999;
@@ -521,14 +508,14 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
           }
         }
         @media only screen and (min-width: ${theme.breakpoints.xs
-            .min}) and (max-width: ${theme.breakpoints.md.max}) {
+            .min}) and (max-width: ${theme.breakpoints.lg.max}) {
           .react-autosuggest__suggestions-container,
           .no-results {
             top: 60px;
             right: 180px;
           }
           .react-autosuggest__input {
-            width: 248px;
+            width: 100%;
             padding-right: 0;
           }
         }
