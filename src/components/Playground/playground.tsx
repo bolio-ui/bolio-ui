@@ -1,6 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import { useTheme, Loading } from 'core'
+import { Loading } from 'core'
 import Title from './title'
 
 const DynamicLive = dynamic(() => import('./dynamic-live'), {
@@ -8,7 +8,7 @@ const DynamicLive = dynamic(() => import('./dynamic-live'), {
   // eslint-disable-next-line react/display-name
   loading: () => (
     <div style={{ padding: '20pt 0' }}>
-      <Loading />
+      <Loading spaceRatio={5} />
     </div>
   )
 })
@@ -34,7 +34,6 @@ function Playground({
   desc,
   scope
 }: PlaygroundProps & typeof defaultProps) {
-  const theme = useTheme()
   const code = inputCode.trim()
   const title = inputTitle || 'General'
 
@@ -46,8 +45,6 @@ function Playground({
         <style jsx>{`
           .playground {
             width: 100%;
-            border-radius: ${theme.layout.radius};
-            border: 1px solid ${theme.palette.accents_2};
           }
         `}</style>
       </div>

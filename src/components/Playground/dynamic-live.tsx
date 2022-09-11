@@ -29,8 +29,6 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
-          background-color: ${addColorAlpha(theme.palette.violetDark, 0.1)};
-          border-color: ${addColorAlpha(theme.palette.violetDark, 0.1)};
         }
         .wrapper > :global(div) {
           width: 100%;
@@ -41,8 +39,8 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
           margin-bottom: 0;
           border: 2px ${theme.palette.error} dotted;
           border-radius: ${theme.layout.radius};
-          color: ${theme.palette.errorLight};
-          font-size: 13px;
+          color: ${theme.palette.error};
+          font-size: 12px;
           background-color: ${addColorAlpha(theme.palette.violetDark, 0.1)};
         }
       `}</style>
