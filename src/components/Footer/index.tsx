@@ -19,6 +19,7 @@ function Footer() {
           justify="center"
           alignItems="center"
           alignContent="center"
+          style={{ textAlign: 'center' }}
         >
           <Grid>
             <Text h6 my={0}>

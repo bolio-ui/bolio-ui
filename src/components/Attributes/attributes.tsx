@@ -4,6 +4,7 @@ import Anchor from '../Anchor'
 import AttributesTitle from './attributes-title'
 import AttributesTable from './attributes-table'
 import { kebabCase, isString } from 'lodash'
+import { GITHUB_URL } from 'src/utils/constants'
 
 export interface AttributesProps {
   edit?: string
@@ -11,7 +12,14 @@ export interface AttributesProps {
 
 const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
   React.memo(({ edit, children }) => {
-    const path = edit?.replace('/pages', 'pages')
+    const path = edit?.replace('/pages', 'src/pages')
+
+    const GITHUB_MASTER_URL = `${GITHUB_URL}/blob/master`
+    const link = useMemo(
+      () => `${GITHUB_MASTER_URL}/${path || 'src/pages'}`,
+      [GITHUB_MASTER_URL, path]
+    )
+
     const apiTitles = useMemo(() => {
       if (React.Children.count(children) === 0) return null
       return (
@@ -33,7 +41,7 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
       <>
         {apiTitles}
         <Link
-          href={path}
+          href={link}
           color
           target="_blank"
           rel="nofollow"
