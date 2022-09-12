@@ -27,6 +27,8 @@ import withDeaults from 'src/utils/with-defaults'
 import { useIsMobile } from 'src/utils/use-media-query'
 
 interface Props extends AutocompleteProvided {
+  hits?: ReadonlyArray<string>
+  refine?: (value: string) => void
   offsetTop?: number
 }
 
@@ -119,7 +121,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   ) => <Suggestion highlighted={isHighlighted} hit={hit} />
 
   const onClear = () => {
-    refine()
+    refine('')
     setValue('')
     inputRef && inputRef?.current?.blur()
   }
@@ -127,7 +129,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   const renderInput = React.useCallback(
     (inputProps: RenderInputComponentProps) => {
       const onClear = () => {
-        refine()
+        refine('')
         setValue('')
         inputRef && inputRef?.current?.blur()
       }
