@@ -78,7 +78,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
         .mobile-menu {
           position: fixed;
           top: 64px;
-          height: calc(100vh - 4px);
+          height: 100vh;
           width: 100vw;
           overflow-y: auto;
           z-index: 999;
@@ -92,8 +92,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           opacity: 0;
         }
         .menu-item {
-          padding: 0 ${theme.layout.gapHalf};
-          margin: 0 ${theme.layout.gap};
+          padding: 0 ${theme.layout.pageMargin};
           height: 48px;
           width: 100%;
           display: flex;
@@ -101,7 +100,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           border: none;
           background: none;
           outline: none;
-          border-bottom: 1px solid ${theme.palette.accents_2};
+          /* border-bottom: 1px solid ${theme.palette.accents_2}; */
           text-transform: capitalize;
           color: ${theme.palette.accents_6};
           cursor: pointer;
@@ -118,8 +117,8 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
         }
         .group {
           background: ${theme.palette.accents_1};
-          padding: 0 calc(${theme.layout.gap} * 1.5) ${theme.layout.gap};
-          border-top: 1px solid ${theme.palette.accents_2};
+          padding: 1px ${theme.layout.gap} ${theme.layout.gap}
+            calc(${theme.layout.gap} * 1.5);
         }
         .section-name {
           display: block;

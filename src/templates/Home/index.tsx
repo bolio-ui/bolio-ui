@@ -1,12 +1,29 @@
 import React from 'react'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import { Section, Container, Grid, useTheme } from 'core'
+import { Action, useRegisterActions } from 'kbar'
+import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
-import { NextSeo } from 'next-seo'
-import { Section, Container, Grid, useTheme } from 'core'
 
 function Home() {
   const theme = useTheme()
+  const router = useRouter()
+
+  const homeAction: Action = React.useMemo(() => {
+    return {
+      id: getId(),
+      name: 'Getting Started',
+      section: 'Scope',
+      shortcut: [],
+      keywords: 'help, docs, go, started, getting started, bolio ui',
+      perform: () => router.push('/docs/guide/getting-started')
+    }
+  }, [router])
+
+  useRegisterActions([homeAction])
 
   return (
     <>
@@ -17,8 +34,8 @@ function Home() {
           images: [
             {
               url: '/img/cover.png',
-              width: 500,
-              height: 500,
+              width: 1200,
+              height: 630,
               alt: 'Bolio UI - Amazing, modern and creative tools for React UI'
             }
           ]
