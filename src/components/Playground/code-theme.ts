@@ -9,7 +9,10 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     fontStyle: 'normal',
     fontFamily: theme.font.mono,
     fontSize: '.875rem',
-    textRendering: 'geometricPrecision'
+    textRendering: 'geometricPrecision',
+    borderBottomLeftRadius: theme.layout.radius,
+    borderBottomRightRadius: theme.layout.radius,
+    paddingLeft: theme.layout.gapQuarter
   },
   styles: [
     {

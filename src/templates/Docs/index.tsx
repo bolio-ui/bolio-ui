@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import { Container, Grid, useTheme } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
 import { toCapitalize } from 'src/utils/to-capitalize'
+import { Action, useRegisterActions } from 'kbar'
+import { getId } from 'core/utils/collections'
 import Sidebar from 'src/components/Sidebar'
 import SidebarHeading from 'src/components/SidebarHeading'
 import MadeDesigned from 'src/components/MadeDesigned'
@@ -36,6 +38,21 @@ function Docs({ children, meta }: DocsTemplateProps) {
   let pageTitle = title ? `${toCapitalize(title)} | ` : ''
   pageTitle += 'Bolio UI - Amazing, modern and creative tools for React UI'
 
+  const homeAction: Action = React.useMemo(() => {
+    return {
+      id: getId(),
+      name: 'Go Home',
+      section: 'Scope',
+      icon: 'Home',
+      shortcut: [],
+      keywords: 'home, return, back, landing, page, init, initial',
+      children: [],
+      perform: () => router.push('/')
+    }
+  }, [router])
+
+  useRegisterActions([homeAction].filter(Boolean))
+
   return (
     <>
       <NextSeo
@@ -48,8 +65,8 @@ function Docs({ children, meta }: DocsTemplateProps) {
           images: [
             {
               url: '/img/cover.png',
-              width: 500,
-              height: 500,
+              width: 1200,
+              height: 630,
               alt: `${pageTitle}`
             }
           ]

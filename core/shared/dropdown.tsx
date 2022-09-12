@@ -27,7 +27,7 @@ const defaultRect: ReactiveDomReact = {
   top: -1000,
   left: -1000,
   right: -1000,
-  width: 0,
+  width: 0
 }
 
 const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
@@ -36,7 +36,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
     const [rect, setRect] = useState<ReactiveDomReact>(defaultRect)
     const classes = useClasses(
       'dropdown',
-      disableMatchWidth ? 'disable-match' : 'width-match',
+      disableMatchWidth ? 'disable-match' : 'width-match'
     )
 
     if (!parent) return null
@@ -48,7 +48,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
         const style = window.getComputedStyle(el as HTMLDivElement)
         if (style.position === 'static') {
           useWarning(
-            'The element specified by "getPopupContainer" must have "position" set.',
+            'The element specified by "getPopupContainer" must have "position" set.'
           )
         }
       }
@@ -59,7 +59,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
         top,
         left,
         right,
-        width: nativeWidth,
+        width: nativeWidth
       } = getRefRect(parent, getPopupContainer)
       setRect({ top, left, right, width: nativeWidth })
     }
@@ -96,7 +96,11 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
     if (!el) return null
     return createPortal(
       <CssTransition visible={visible}>
-        <div className={classes} onClick={clickHandler} onMouseDown={mouseDownHandler}>
+        <div
+          className={classes}
+          onClick={clickHandler}
+          onMouseDown={mouseDownHandler}
+        >
           {children}
           <style jsx>{`
             .dropdown {
@@ -114,9 +118,9 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
           `}</style>
         </div>
       </CssTransition>,
-      el,
+      el
     )
-  },
+  }
 )
 
 export default Dropdown

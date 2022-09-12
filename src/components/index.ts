@@ -7,3 +7,5 @@ export { default as AttributesTitle } from './Attributes/attributes-title'
 export { default as Colors } from './Colors'
 
 export { default as IconsGallery } from './IconsGallery'
+
+export { default as KBarWrapper } from './KBarWrapper'

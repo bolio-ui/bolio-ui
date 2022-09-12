@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import {
   Container,
   Grid,
@@ -8,13 +9,25 @@ import {
   Tabs,
   Link,
   useTheme,
-  useMediaQuery,
   useBodyScroll
 } from 'core'
-import { Sun, Moon, Heart, Github, Instagram, Menu } from '@bolio-ui/icons'
+import {
+  Sun,
+  Moon,
+  Heart,
+  Github,
+  Instagram,
+  Twitter,
+  Menu
+} from '@bolio-ui/icons'
+import { useMediaQuery } from 'src/utils/use-media-query'
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
+
+const SearchInput = dynamic(() => import('../Search/instant-search'), {
+  ssr: true
+})
 
 const Navigation: React.FC = () => {
   const theme = useTheme()
@@ -22,7 +35,7 @@ const Navigation: React.FC = () => {
   const router = useRouter()
   const [expanded, setExpanded] = useState<boolean>(false)
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
-  const isMobile = useMediaQuery('sm', { match: 'down' })
+  const isMobile = useMediaQuery(1280)
 
   const [sticky, setSticky] = useState(false)
 
@@ -41,6 +54,7 @@ const Navigation: React.FC = () => {
     if (!isMobile) {
       setExpanded(false)
     }
+    console.log('isMobile', isMobile)
   }, [isMobile])
 
   useEffect(() => {
@@ -57,87 +71,22 @@ const Navigation: React.FC = () => {
       <nav className="menu_wrapper">
         <Container fluid>
           <div className={`${sticky ? 'menu_sticky' : ''}`}>
-            <Grid.Container
-              gap={1}
-              justify="center"
-              alignItems="center"
-              alignContent="center"
-            >
-              <Grid xs={6} md={4} justify="flex-start">
-                <Logo name="Bolio UI" />
-              </Grid>
-
-              <Grid xs={0} md={4} justify="center">
-                <div className="tabs">
-                  <Tabs
-                    value={router.asPath}
-                    onChange={(route) => router.push(route)}
-                    align="center"
-                    hideDivider
-                    hideBorder
+            <Grid.Container gap={1} justify="center">
+              {isMobile ? (
+                <>
+                  <Grid
+                    xs={2}
+                    md={4}
+                    justify="flex-start"
+                    style={{ marginTop: '8px' }}
                   >
-                    <Tabs.Item label="Home" value="/" />
-                    <Tabs.Item
-                      label="Guide"
-                      value="/docs/guide/getting-started"
-                    />
-                    <Tabs.Item
-                      label="Components"
-                      value="/docs/components/avatar"
-                    />
-                    <Tabs.Item
-                      label="Hooks"
-                      value="/docs/hooks/use-body-scroll"
-                    />
-                  </Tabs>
-                </div>
-              </Grid>
+                    <Logo name="Bolio UI" />
+                  </Grid>
 
-              <Grid xs={6} md={4} justify="flex-end">
-                <div className="controls">
-                  {isMobile ? (
-                    <Button
-                      className="menu-toggle"
-                      auto
-                      type="abort"
-                      onClick={() => setExpanded(!expanded)}
-                    >
-                      <Menu fontSize={16} />
-                    </Button>
-                  ) : (
-                    <>
-                      <Link
-                        href="https://github.com/bolio-ui/bolio-ui"
-                        target="_blank"
-                      >
-                        <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          aria-label="Github Bolio UI"
-                          type="abort"
-                        >
-                          <Github fontSize={16} />
-                        </Button>
-                      </Link>
-                      <Spacer w={0.5} />
-                      <Link
-                        href="https://www.instagram.com/bolio.ui/"
-                        target="_blank"
-                      >
-                        <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          aria-label="Instagram Bolio UI"
-                          type="abort"
-                        >
-                          <Instagram fontSize={16} />
-                        </Button>
-                      </Link>
-                      <Spacer w={0.5} />
+                  <Grid xs={10} md={8} justify="flex-end">
+                    <SearchInput />
+                    <Spacer w={1} />
+                    <div className="controls">
                       <Button
                         w="28px"
                         h="28px"
@@ -158,30 +107,151 @@ const Navigation: React.FC = () => {
                           <Moon fontSize={16} />
                         )}
                       </Button>
-                      <Spacer w={0.5} />
-                      <Link
-                        href="https://www.patreon.com/brunnoandrade"
-                        target="_blank"
+                      <Button
+                        className="menu-toggle"
+                        auto
+                        type="abort"
+                        onClick={() => setExpanded(!expanded)}
                       >
-                        <Button
-                          icon={
-                            <Heart
-                              fill="red"
-                              stroke="red"
-                              height={12}
-                              width={12}
-                            />
-                          }
-                          auto
-                          scale={0.75}
+                        <Menu fontSize={16} />
+                      </Button>
+                    </div>
+                  </Grid>
+                </>
+              ) : (
+                <>
+                  <Grid
+                    xs={6}
+                    md={4}
+                    justify="flex-start"
+                    style={{ marginTop: '8px' }}
+                  >
+                    <Logo name="Bolio UI" />
+                  </Grid>
+
+                  <Grid xs={0} md={4} justify="center">
+                    <div className="tabs">
+                      <Tabs
+                        value={router.asPath}
+                        onChange={(route) => router.push(route)}
+                        align="center"
+                        hideDivider
+                        hideBorder
+                      >
+                        <Tabs.Item
+                          label="Guide"
+                          value="/docs/guide/getting-started"
+                        />
+                        <Tabs.Item
+                          label="Components"
+                          value="/docs/components/avatar"
+                        />
+                        <Tabs.Item
+                          label="Hooks"
+                          value="/docs/hooks/use-body-scroll"
+                        />
+                      </Tabs>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={6} md={4} justify="flex-end">
+                    <div className="controls">
+                      <>
+                        <Link
+                          href="https://github.com/bolio-ui/bolio-ui"
+                          target="_blank"
                         >
-                          Sponsor
+                          <Button
+                            w="28px"
+                            h="28px"
+                            py={0}
+                            px={0}
+                            className="theme-button"
+                            aria-label="Github Bolio UI"
+                            type="abort"
+                          >
+                            <Github fontSize={16} />
+                          </Button>
+                        </Link>
+                        <Link
+                          href="https://www.twitter.com/bolio_ui/"
+                          target="_blank"
+                        >
+                          <Button
+                            w="28px"
+                            h="28px"
+                            py={0}
+                            px={0}
+                            className="theme-button"
+                            aria-label="Twitter Bolio UI"
+                            type="abort"
+                          >
+                            <Twitter fontSize={16} />
+                          </Button>
+                        </Link>
+                        <Link
+                          href="https://www.instagram.com/bolio.ui/"
+                          target="_blank"
+                        >
+                          <Button
+                            w="28px"
+                            h="28px"
+                            py={0}
+                            px={0}
+                            className="theme-button"
+                            aria-label="Instagram Bolio UI"
+                            type="abort"
+                          >
+                            <Instagram fontSize={16} />
+                          </Button>
+                        </Link>
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          aria-label="Toggle Dark mode"
+                          className="theme-button"
+                          type="abort"
+                          onClick={() =>
+                            settings.switchTheme(
+                              theme.type === 'dark' ? 'light' : 'dark'
+                            )
+                          }
+                        >
+                          {theme.type === 'dark' ? (
+                            <Sun fontSize={16} />
+                          ) : (
+                            <Moon fontSize={16} />
+                          )}
                         </Button>
-                      </Link>
-                    </>
-                  )}
-                </div>
-              </Grid>
+                        <Spacer w={0.5} />
+                        <SearchInput />
+                        <Spacer w={1} />
+                        <Link
+                          href="https://www.patreon.com/brunnoandrade"
+                          target="_blank"
+                        >
+                          <Button
+                            icon={
+                              <Heart
+                                fill="red"
+                                stroke="red"
+                                height={12}
+                                width={12}
+                              />
+                            }
+                            auto
+                            scale={0.75}
+                          >
+                            Sponsor
+                          </Button>
+                        </Link>
+                      </>
+                    </div>
+                  </Grid>
+                </>
+              )}
             </Grid.Container>
           </div>
         </Container>
@@ -197,6 +267,7 @@ const Navigation: React.FC = () => {
           transition: box-shadow 0.2s ease;
         }
         .menu_sticky {
+          z-index: 1;
           position: fixed;
           z-index: 1100;
           top: 0;
@@ -218,6 +289,10 @@ const Navigation: React.FC = () => {
           padding: 0;
         }
 
+        .logo {
+          padding: 0 ${theme.layout.gap};
+          margin-bottom: 3px;
+        }
         .tabs {
           padding: 0 ${theme.layout.gap};
           margin-bottom: 3px;
@@ -225,7 +300,7 @@ const Navigation: React.FC = () => {
         .tabs :global(.content) {
           display: none;
         }
-        @media only screen and (max-width: ${theme.breakpoints.xs.max}) {
+        @media only screen and (max-width: ${theme.breakpoints.md.max}) {
           .tabs {
             display: none;
           }
@@ -235,13 +310,12 @@ const Navigation: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          height: 50px;
         }
         .controls :global(.menu-toggle) {
           display: flex;
           align-items: center;
-          min-width: 40px;
-          height: 40px;
-          padding: 0;
+          height: 50px;
         }
       `}</style>
     </>
