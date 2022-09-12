@@ -54,7 +54,6 @@ const Navigation: React.FC = () => {
     if (!isMobile) {
       setExpanded(false)
     }
-    console.log('isMobile', isMobile)
   }, [isMobile])
 
   useEffect(() => {
@@ -72,53 +71,7 @@ const Navigation: React.FC = () => {
         <Container fluid>
           <div className={`${sticky ? 'menu_sticky' : ''}`}>
             <Grid.Container gap={1} justify="center">
-              {isMobile ? (
-                <>
-                  <Grid
-                    xs={2}
-                    md={4}
-                    justify="flex-start"
-                    style={{ marginTop: '8px' }}
-                  >
-                    <Logo name="Bolio UI" />
-                  </Grid>
-
-                  <Grid xs={10} md={8} justify="flex-end">
-                    <SearchInput />
-                    <Spacer w={1} />
-                    <div className="controls">
-                      <Button
-                        w="28px"
-                        h="28px"
-                        py={0}
-                        px={0}
-                        aria-label="Toggle Dark mode"
-                        className="theme-button"
-                        type="abort"
-                        onClick={() =>
-                          settings.switchTheme(
-                            theme.type === 'dark' ? 'light' : 'dark'
-                          )
-                        }
-                      >
-                        {theme.type === 'dark' ? (
-                          <Sun fontSize={16} />
-                        ) : (
-                          <Moon fontSize={16} />
-                        )}
-                      </Button>
-                      <Button
-                        className="menu-toggle"
-                        auto
-                        type="abort"
-                        onClick={() => setExpanded(!expanded)}
-                      >
-                        <Menu fontSize={16} />
-                      </Button>
-                    </div>
-                  </Grid>
-                </>
-              ) : (
+              {!isMobile ? (
                 <>
                   <Grid
                     xs={6}
@@ -248,6 +201,52 @@ const Navigation: React.FC = () => {
                           </Button>
                         </Link>
                       </>
+                    </div>
+                  </Grid>
+                </>
+              ) : (
+                <>
+                  <Grid
+                    xs={2}
+                    md={4}
+                    justify="flex-start"
+                    style={{ marginTop: '8px' }}
+                  >
+                    <Logo name="Bolio UI" />
+                  </Grid>
+
+                  <Grid xs={10} md={8} justify="flex-end">
+                    <SearchInput />
+                    <Spacer w={1} />
+                    <div className="controls">
+                      <Button
+                        w="28px"
+                        h="28px"
+                        py={0}
+                        px={0}
+                        aria-label="Toggle Dark mode"
+                        className="theme-button"
+                        type="abort"
+                        onClick={() =>
+                          settings.switchTheme(
+                            theme.type === 'dark' ? 'light' : 'dark'
+                          )
+                        }
+                      >
+                        {theme.type === 'dark' ? (
+                          <Sun fontSize={16} />
+                        ) : (
+                          <Moon fontSize={16} />
+                        )}
+                      </Button>
+                      <Button
+                        className="menu-toggle"
+                        auto
+                        type="abort"
+                        onClick={() => setExpanded(!expanded)}
+                      >
+                        <Menu fontSize={16} />
+                      </Button>
                     </div>
                   </Grid>
                 </>
