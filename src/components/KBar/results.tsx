@@ -133,7 +133,7 @@ export default function KBarResults(props: KBarResultsProps) {
 
   const groupedMatches = groupBy(matches, 'section')
 
-  const renderAction = (action: unknown, index: number) => {
+  const renderAction = (action: Action, index: number) => {
     const handlers: ResultHandlers = {
       onClick: select,
       onPointerDown: () => setActiveIndex(index),
