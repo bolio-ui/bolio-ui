@@ -8,6 +8,7 @@ interface Props {
   title: string
   description: string
   icon: Icon
+  hover?: boolean
 }
 
 export type ProjectCardProps = Props
@@ -17,24 +18,33 @@ const renderIcon = (icon: Icon) => {
   return <CurrentIcon height={18} width={18} /> || null
 }
 
-function CardBox({ title, description, icon }: Props) {
+function CardBox({ title, description, icon, hover = false }: Props) {
   const theme = useTheme()
 
   return (
     <>
-      <Card shadow>
-        <Grid>
-          {renderIcon(icon)}
-          <Text margin={0} h4>
-            {title}
-          </Text>
-        </Grid>
-        <Grid>
-          <Text margin={0} style={{ color: theme.palette.accents_6 }}>
-            {description}
-          </Text>
-        </Grid>
-      </Card>
+      <div className="card-wrapper">
+        <Card className={`${hover && 'card-box'}`} shadow>
+          <Grid>
+            {renderIcon(icon)}
+            <Text margin={0} h4>
+              {title}
+            </Text>
+          </Grid>
+          <Grid>
+            <Text margin={0} style={{ color: theme.palette.accents_6 }}>
+              {description}
+            </Text>
+          </Grid>
+        </Card>
+      </div>
+      <style jsx>{`
+        .card-wrapper :global(.card-box):hover {
+          box-shadow: ${theme.type === 'dark'
+            ? `0 0 0 1px ${theme.palette.foreground}`
+            : '0px 4px 8px rgba(0,0,0,0.12)'};
+        }
+      `}</style>
     </>
   )
 }
