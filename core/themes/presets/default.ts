@@ -16,7 +16,7 @@ export const palette: BolioUIThemesPalette = {
   accents_8: '#111',
   background: '#fff',
   foreground: '#000',
-  selection: '#79ffe1',
+  selection: '#cee4fe',
   secondary: '#666',
   code: '#f81ce5',
   border: '#eaeaea',
