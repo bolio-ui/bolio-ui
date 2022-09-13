@@ -24,7 +24,7 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
       if (React.Children.count(children) === 0) return null
       return (
         <>
-          <Spacer h={1} />
+          <Spacer h={3} />
           <h3
             id={`${isString('APIs') && kebabCase('APIs')}`}
             data-name={'APIs'}
@@ -32,6 +32,7 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
           >
             <Anchor>APIs</Anchor>
           </h3>
+          <Spacer h={0.5} />
           <AttributesTable>{children}</AttributesTable>
         </>
       )
