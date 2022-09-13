@@ -6,7 +6,7 @@ import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
 import Favicon from 'src/components/Favicon'
-import Menu from 'src/components/Navigation'
+import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
 
 function App({ Component, pageProps }: AppProps) {
@@ -44,7 +44,7 @@ function App({ Component, pageProps }: AppProps) {
           <DefaultSeo {...SEO} />
           <CssBaseline />
           <KBarProvider>
-            <Menu />
+            <Navigation />
             <Component {...pageProps} />
           </KBarProvider>
         </SettingsContext.Provider>
