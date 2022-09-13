@@ -27,6 +27,7 @@ function Sidebar({ sidebar }: SidebarProps) {
         .sides {
           width: 100%;
           padding-bottom: ${theme.layout.gap};
+          /* cursor: pointer; */
         }
         .box {
           overflow-y: auto;
@@ -35,7 +36,15 @@ function Sidebar({ sidebar }: SidebarProps) {
           display: flex;
           flex-direction: column;
           align-items: center;
+          /* cursor: pointer; */
         }
+        /* .box::-webkit-scrollbar {
+          display: none;
+        }
+        .box {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        } */
         .box::-webkit-scrollbar {
           width: 0;
           background-color: transparent;
