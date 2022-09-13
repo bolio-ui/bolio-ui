@@ -5,7 +5,6 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
   children
 }) => {
   const theme = useTheme()
-
   return (
     <div className="attr">
       {children}
@@ -41,7 +40,7 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
         }
         .attr th {
           height: 2.5rem;
-          color: ${theme.palette.accents_4};
+          color: ${theme.palette.accents_6};
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0;
