@@ -107,7 +107,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
         .sidebar > .content-right {
           height: calc(100% - 2rem - 96px + var(--bolioui-page-nav-height));
           position: fixed;
-          top: 85px;
+          top: 80px;
           bottom: 2rem;
 
           width: 200px;
@@ -118,7 +118,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
         .sidebar > .content-left {
           height: calc(100% - 2rem - 96px + var(--bolioui-page-nav-height));
           position: fixed;
-          top: 85px;
+          top: 80px;
           bottom: 2rem;
 
           width: 200px;
