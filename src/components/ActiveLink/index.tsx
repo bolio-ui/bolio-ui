@@ -36,12 +36,12 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
         }
 
         .link.active {
-          color: ${theme.palette.link};
+          color: ${theme.palette.accents_7};
           font-weight: 600;
         }
 
         .link.active span {
-          color: ${theme.palette.link};
+          color: ${theme.palette.accents_7};
           font-weight: 600;
         }
       `}</style>
