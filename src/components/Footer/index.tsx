@@ -7,7 +7,6 @@ function Footer() {
 
   return (
     <Section
-      bg={theme.palette.background}
       style={{
         borderTop: '1px solid',
         borderColor: theme.palette.accents_2
