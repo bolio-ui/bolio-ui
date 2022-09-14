@@ -72,7 +72,7 @@ const Editor: React.FC<Props> = ({ code }) => {
 
         summary {
           box-sizing: border-box;
-          color: ${theme.palette.accents_6};
+          color: #ffffff;
           width: 100%;
           list-style: none;
           user-select: none;
@@ -87,7 +87,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gap};
-          background-color: ${theme.palette.accents_2};
+          background-color: #363450;
         }
 
         summary :global(svg) {
@@ -110,8 +110,6 @@ const Editor: React.FC<Props> = ({ code }) => {
           background-color: ${theme.palette.background};
           font-size: 1em;
           overflow: hidden;
-          border-top: 1px solid ${theme.palette.accents_2};
-          /* padding: ${theme.layout.gapHalf}; */
         }
 
         .arrow {
@@ -127,12 +125,12 @@ const Editor: React.FC<Props> = ({ code }) => {
         .copy {
           display: inline-flex;
           align-items: center;
-          color: ${theme.palette.accents_6};
+          color: #ffffff;
           transition: color 0.2s ease;
         }
 
         .copy:hover {
-          color: ${theme.palette.accents_6};
+          color: ${theme.palette.accents_4};
         }
       `}</style>
     </div>
