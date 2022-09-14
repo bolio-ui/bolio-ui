@@ -1,7 +1,18 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { useTheme, Section, Container, Grid, Row, Col, Text, Link } from 'core'
+import {
+  useTheme,
+  Section,
+  Container,
+  Grid,
+  Row,
+  Col,
+  Text,
+  Link,
+  Image
+} from 'core'
+import { useMediaQuery } from 'src/utils/use-media-query'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
@@ -11,6 +22,7 @@ import CardBox from 'src/components/CardBox'
 function Home() {
   const theme = useTheme()
   const router = useRouter()
+  const isMobile = useMediaQuery(650)
 
   const homeAction: Action = React.useMemo(() => {
     return {
@@ -49,7 +61,16 @@ function Home() {
               'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
           }}
         />
-        <Section bg={theme.palette.accents_1} py={5}>
+        <Section
+          py={5}
+          style={{
+            backdropFilter: 'saturate(180%) blur(14px)',
+            background: ' rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%',
+            borderTop: '1px solid',
+            borderBottom: '1px solid',
+            borderColor: theme.palette.accents_2
+          }}
+        >
           <Container>
             <Grid.Container gap={2} justify="flex-start">
               <Grid xs={12} sm={6} md={4}>
@@ -134,6 +155,55 @@ function Home() {
           </Container>
         </Section>
       </Base>
+      {isMobile ? (
+        <>
+          <Image
+            src="/img/svg/gradient-left.svg"
+            alt="docs background gradient blue"
+            style={{
+              position: 'fixed',
+              top: '-10%',
+              right: '-35%',
+              zIndex: 0
+            }}
+          />
+          <Image
+            src="/img/svg/gradient-right.svg"
+            alt="docs background gradient violet"
+            style={{
+              position: 'fixed',
+              top: '45%',
+              left: '-35%',
+              zIndex: 0
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <Image
+            src="/img/svg/gradient-left.svg"
+            alt="docs background gradient blue"
+            style={{
+              position: 'fixed',
+              bottom: '-50%',
+              top: '-40%',
+              right: '-35%',
+              zIndex: 0
+            }}
+          />
+          <Image
+            src="/img/svg/gradient-right.svg"
+            alt="docs background gradient violet"
+            style={{
+              position: 'fixed',
+              bottom: '-50%',
+              left: '-20%',
+              right: '-50%',
+              zIndex: 0
+            }}
+          />
+        </>
+      )}
     </>
   )
 }
