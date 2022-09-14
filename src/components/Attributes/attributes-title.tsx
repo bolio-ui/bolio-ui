@@ -24,9 +24,7 @@ const AttributesTitle: React.FC<React.PropsWithChildren<AttributesTitleProps>> =
     return (
       <>
         <h4 className="title">
-          <Code>
-            <Anchor pure>{children}</Anchor>
-          </Code>
+          <Anchor pure>{children}</Anchor>
           {getAlias(alias)}
         </h4>
 
@@ -34,10 +32,7 @@ const AttributesTitle: React.FC<React.PropsWithChildren<AttributesTitleProps>> =
           h4 {
             display: inline-flex;
             align-items: center;
-            height: 2rem;
-            padding-left: ${theme.layout.gapQuarter};
             padding-right: ${theme.layout.gapHalf};
-            background-color: ${theme.palette.accents_1};
             border-radius: ${theme.layout.radius};
             margin-bottom: 0;
           }

@@ -40,11 +40,11 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
         }
         .attr th {
           height: 2.5rem;
-          color: ${theme.palette.accents_6};
+          color: #ffffff;
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0;
-          background: ${theme.palette.accents_2};
+          background: #363450;
         }
         .attr th:nth-child(1) {
           border-radius: 4px 0 0 4px;
