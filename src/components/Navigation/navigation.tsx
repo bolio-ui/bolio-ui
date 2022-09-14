@@ -69,7 +69,7 @@ const Navigation: React.FC = () => {
     <>
       <nav className="menu_wrapper">
         <Container fluid>
-          <div className={`${sticky ? 'menu_sticky' : ''}`}>
+          <div className={`${sticky ? 'menu_sticky' : 'menu'}`}>
             <Grid.Container gap={1} justify="center">
               {!isMobile ? (
                 <>
@@ -261,9 +261,10 @@ const Navigation: React.FC = () => {
           height: 60px;
           position: relative;
           overflow: hidden;
+          z-index: 99;
         }
-        .menu_sticky {
-          transition: box-shadow 0.2s ease;
+        .menu {
+          backdrop-filter: saturate(180%) blur(10px);
         }
         .menu_sticky {
           z-index: 1;
@@ -276,6 +277,7 @@ const Navigation: React.FC = () => {
             ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
           backdrop-filter: saturate(180%) blur(10px);
+          transition: box-shadow 1s ease;
           padding-left: 15px;
           padding-right: 15px;
         }
