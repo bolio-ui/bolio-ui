@@ -11,8 +11,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     fontSize: '.875rem',
     textRendering: 'geometricPrecision',
     borderBottomLeftRadius: theme.layout.radius,
-    borderBottomRightRadius: theme.layout.radius,
-    paddingLeft: theme.layout.gapQuarter
+    borderBottomRightRadius: theme.layout.radius
   },
   styles: [
     {

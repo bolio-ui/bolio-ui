@@ -69,11 +69,12 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
         }
         .list-item a {
           font-size: 0.8rem;
-          color: ${theme.palette.accents_4};
+          font-weight: 400;
+          color: ${theme.palette.accents_5};
         }
         .list-item.active a {
-          color: inherit;
-          font-weight: 500;
+          color: ${theme.palette.accents_7};
+          font-weight: 600;
         }
         .list-item:after {
           content: '';
@@ -86,7 +87,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
           opacity: 0;
           border-radius: 10px;
 
-          background: ${theme.palette.foreground};
+          background: ${theme.palette.accents_7};
           transform: translateY(-50%);
           transition: opacity 0.25s ease;
         }

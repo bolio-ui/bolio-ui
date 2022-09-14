@@ -86,7 +86,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           align-items: center;
           width: 100%;
           height: 2.875rem;
-          padding: 0 ${theme.layout.gap};
+          padding: 0 ${theme.layout.gapHalf};
           background-color: #363450;
         }
 
@@ -127,6 +127,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           align-items: center;
           color: #ffffff;
           transition: color 0.2s ease;
+          padding-right: 5px;
         }
 
         .copy:hover {
