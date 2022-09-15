@@ -94,7 +94,6 @@ function Home() {
             backdropFilter: 'saturate(180%) blur(14px)',
             background: ' rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%',
             borderTop: '1px solid',
-            borderBottom: '1px solid',
             borderColor: theme.palette.accents_2
           }}
         >
