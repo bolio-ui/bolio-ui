@@ -27,16 +27,13 @@ export const generateGetAllScaleProps = <P>(
 ): GetAllScalePropsFunction => {
   const getAllScaleProps: GetAllScalePropsFunction = () => {
     const scaleProps: ScaleProps = {}
-
     for (const key of ScalePropKeys) {
       const value = props[key as keyof ScaleProps]
       if (typeof value !== 'undefined') {
-        scaleProps[key] = value as any
+        scaleProps[key as keyof ScaleProps] = value as any
       }
     }
-
     return scaleProps
   }
-
   return getAllScaleProps
 }
