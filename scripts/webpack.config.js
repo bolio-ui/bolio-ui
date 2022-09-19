@@ -110,7 +110,7 @@ module.exports = async () => {
       output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
-        library: 'GeistUI',
+        library: 'BolioUI',
         libraryTarget: 'umd',
         globalObject: 'this'
       }
