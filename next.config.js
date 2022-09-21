@@ -12,6 +12,7 @@ const withMDX = require('@next/mdx')({
 const isProd = process.env.ENVIRONMENT === 'production'
 
 const nextConfig = {
+  target: 'serverless',
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
   pwa: {
     dest: 'public',
