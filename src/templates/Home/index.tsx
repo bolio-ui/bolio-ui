@@ -1,16 +1,26 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { Section, Container, Grid, Row, Col, Text, Link, Image } from 'core'
+import {
+  useTheme,
+  Section,
+  Container,
+  Grid,
+  Row,
+  Col,
+  Text,
+  Link,
+  Image
+} from 'core'
 import { useMediaQuery } from 'src/utils/use-media-query'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
-import SectionPlayground from './SectionPlayground'
 
 function Home() {
+  const theme = useTheme()
   const router = useRouter()
   const isMobile = useMediaQuery(650)
 
@@ -53,7 +63,7 @@ function Home() {
         />
         <Section py={5}>
           <Container>
-            <Grid.Container gap={2} justify="center">
+            <Grid.Container gap={2} justify="flex-start">
               <Grid xs={12} sm={6} md={4}>
                 <CardBox
                   title="Built in Components"
@@ -78,13 +88,21 @@ function Home() {
             </Grid.Container>
           </Container>
         </Section>
-        <SectionPlayground />
-        <Section py={5}>
+        <Section
+          py={5}
+          style={{
+            backdropFilter: 'saturate(180%) blur(14px)',
+            background: ' rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%',
+            borderTop: '1px solid',
+            borderBottom: '1px solid',
+            borderColor: theme.palette.accents_2
+          }}
+        >
           <Container>
             <Grid.Container justify="center">
               <Row justify="space-around" style={{ textAlign: 'center' }}>
                 <Col span={8}>
-                  <Text h2 my={0}>
+                  <Text h1 my={0}>
                     Community
                   </Text>
                   <Text font={1.2} mt={0} mb={2}>
@@ -96,7 +114,7 @@ function Home() {
             </Grid.Container>
           </Container>
           <Container>
-            <Grid.Container gap={2} justify="center">
+            <Grid.Container gap={2} justify="flex-start">
               <Grid xs={12} sm={6} md={4}>
                 <Link href="https://www.twitter.com/bolio_ui/" target="_blank">
                   <CardBox
@@ -114,7 +132,7 @@ function Home() {
                 >
                   <CardBox
                     title="GitHub"
-                    description="For issues, feature requests, contribute and discussions."
+                    description="For issues, feature requests and contribute."
                     icon="Github"
                     hover
                   />
