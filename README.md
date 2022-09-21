@@ -45,9 +45,10 @@ const Component = () => <Button>Click me</Button>
 We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
 Whether it's a feature request, bug report, or a project to showcase, please get involved!
 
-- [Instagram](https://instagram.com/bolio.ui)
-- [GitHub](https://github.com/bolio-ui/bolio-ui)
+- [Twitter](https://twitter.com/bolio_ui/)
+- [Instagram](https://www.instagram.com/bolio.ui/)
+- [GitHub](https://github.com/bolio-ui/bolio-ui/)
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) © [brunnoandrade](https://github.com/brunnoandrade/)
