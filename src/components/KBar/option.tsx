@@ -7,6 +7,8 @@ import * as Icons from '@bolio-ui/icons'
 import { isEmpty } from 'lodash'
 import { Action, ResultHandlers, ResultState } from './types'
 
+type Icon = keyof typeof Icons
+
 interface Props {
   action: Action
   handlers: ResultHandlers
@@ -39,7 +41,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
   }, [active])
 
   const renderIcon = useCallback(() => {
-    const CurrentIcon = Icons[action.icon]
+    const CurrentIcon = Icons[action.icon as Icon]
 
     if (isEmpty(action.icon)) {
       return (
