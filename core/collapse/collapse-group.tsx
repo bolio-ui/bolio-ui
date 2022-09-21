@@ -41,8 +41,8 @@ function CollapseGroupComponent({
 
   const initialValue = useMemo<CollapseConfig>(
     () => ({
-      values: state,
-      updateValues
+      values: state
+      // updateValues
     }),
     [state.join(',')]
   )
@@ -64,6 +64,7 @@ function CollapseGroupComponent({
             margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
               ${SCALES.ml(0)};
           }
+
           .collapse-group > :global(div + div) {
             border-top: none;
           }

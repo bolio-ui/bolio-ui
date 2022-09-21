@@ -30,7 +30,7 @@ const IconsCell: React.FC<Props> = ({
   return (
     <div className="icon-item" key={name} onClick={() => onClick(name)}>
       <Component />
-      <Text style={{ color: '#FFFFFF' }} small>
+      <Text type="secondary" small>
         {name}
       </Text>
       <style jsx>{`
@@ -49,8 +49,6 @@ const IconsCell: React.FC<Props> = ({
           cursor: pointer;
           user-select: none;
           transition: all 150ms ease-in-out;
-          background-color: #716e96;
-          color: white;
         }
 
         .icon-item > :global(small) {
@@ -62,7 +60,7 @@ const IconsCell: React.FC<Props> = ({
         }
 
         .icon-item:hover {
-          box-shadow: ${theme.expressiveness.dropdownBoxShadow};
+          box-shadow: ${theme.expressiveness.shadowMedium};
         }
 
         @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
