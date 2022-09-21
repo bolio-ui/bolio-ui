@@ -37,5 +37,6 @@ export const generateGetAllScaleProps = <P>(
 
     return scaleProps
   }
+
   return getAllScaleProps
 }
