@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import useTheme from '../use-theme'
 import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
