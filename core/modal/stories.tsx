@@ -33,7 +33,7 @@ export const Default: Story = () => {
 }
 
 export const UseModal: Story = () => {
-  const { visible, setVisible, bindings } = useModal()
+  const { setVisible, bindings } = useModal()
   return (
     <>
       <Button auto onClick={() => setVisible(true)}>
@@ -91,7 +91,7 @@ export const Customized: Story = () => {
 }
 
 export const Loading: Story = () => {
-  const { visible, setVisible, bindings } = useModal()
+  const { setVisible, bindings } = useModal()
   return (
     <>
       <Button auto onClick={() => setVisible(true)}>
@@ -113,7 +113,7 @@ export const Loading: Story = () => {
 }
 
 export const Overlong: Story = () => {
-  const { visible, setVisible, bindings } = useModal()
+  const { setVisible, bindings } = useModal()
   return (
     <>
       <Button auto onClick={() => setVisible(true)}>
