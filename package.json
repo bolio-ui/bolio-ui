@@ -23,7 +23,6 @@
     "build:after": "node scripts/move-built-in.js",
     "build:webpack": "webpack --config scripts/webpack.config.js",
     "build:package": "yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:types && yarn build:after",
-    "build-netlify": "next build && cp -r .next _next && mv _next .next/",
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
     "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
