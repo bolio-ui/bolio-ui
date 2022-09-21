@@ -31,7 +31,7 @@ export const generateGetAllScaleProps = <P>(
     for (const key of ScalePropKeys) {
       const value = props[key as keyof ScaleProps]
       if (typeof value !== 'undefined') {
-        scaleProps[key] = value as any
+        scaleProps[key] = value
       }
     }
 
