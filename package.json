@@ -21,10 +21,9 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:babel": "babel --no-babelrc --config-file ./scripts/babel.config.js --extensions \".js,.ts,.tsx\" ./core --out-dir ./esm --ignore \"**/__tests__/**/*,**/*.d.ts\"",
-    "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
     "build:after": "node scripts/move-built-in.js",
     "build:webpack": "webpack --config scripts/webpack.config.js",
-    "build:package": "yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:types && yarn build:after",
+    "build:package": "yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:after",
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
     "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
