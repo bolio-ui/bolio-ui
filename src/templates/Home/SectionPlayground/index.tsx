@@ -29,7 +29,7 @@ function SectionPlayground() {
           code={`
 <Card
   style={{
-    background: 'rgba(255, 255, 255, 0.1) none repeat scroll 0% 0%'
+    background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
   }}
   shadow
 >
