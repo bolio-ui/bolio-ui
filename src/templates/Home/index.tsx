@@ -84,10 +84,10 @@ function Home() {
             <Grid.Container justify="center">
               <Row justify="space-around" style={{ textAlign: 'center' }}>
                 <Col span={8}>
-                  <Text h2 my={0}>
+                  <Text h2 my={0} mb={1}>
                     Community
                   </Text>
-                  <Text font={1.2} mt={0} mb={2}>
+                  <Text font={1.2} mt={0}>
                     Everyone is welcome! Feel free to report issues, ask
                     questions, and meet new people.
                   </Text>
