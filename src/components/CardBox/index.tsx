@@ -26,7 +26,7 @@ function CardBox({ title, description, icon, hover = false }: Props) {
       <div className="card-wrapper">
         <Card
           className={`${hover && 'card-box'}`}
-          padding={0.5}
+          padding={1}
           style={{
             background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
             border: 'none'
@@ -39,7 +39,7 @@ function CardBox({ title, description, icon, hover = false }: Props) {
             </Text>
           </Row>
           <Row>
-            <Text margin={0} style={{ color: theme.palette.accents_6 }}>
+            <Text mb={0} style={{ color: theme.palette.accents_6 }}>
               {description}
             </Text>
           </Row>

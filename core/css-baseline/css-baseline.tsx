@@ -137,6 +137,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         h6 {
           color: inherit;
           margin: 0 0 0.7rem 0;
+          line-height: 1;
         }
 
         h1 {
