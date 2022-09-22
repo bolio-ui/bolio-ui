@@ -74,7 +74,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           ]
         }}
       />
-      <Container fluid className="content-wrapper">
+      <Container fluid>
         <Grid.Container gap={2}>
           <Grid xs={0} sm={0} md={0} lg={2}>
             <aside className="sidebar">
@@ -151,6 +151,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           max-width: 100%;
           flex-direction: column;
           flex: 0 0 100%;
+          margin-top: 10px;
         }
         .sidebar {
           flex-grow: 1;
