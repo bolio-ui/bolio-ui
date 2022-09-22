@@ -137,7 +137,6 @@ function SnippetComponent({
           right: 0;
           top: 0;
           bottom: 0;
-          height: calc(100% - 2px);
           background-color: ${style.bgColor};
           display: inline-flex;
           justify-content: center;

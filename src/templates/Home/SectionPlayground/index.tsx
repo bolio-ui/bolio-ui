@@ -11,10 +11,10 @@ function SectionPlayground() {
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
-              <Text h2 my={0}>
+              <Text h2 my={0} mb={1}>
                 Develop pratic and more fast
               </Text>
-              <Text font={1.2} mt={0} mb={2}>
+              <Text font={1.2} mt={0}>
                 Develop much faster and create your pages in a practical and
                 simple way.
               </Text>
@@ -29,7 +29,7 @@ function SectionPlayground() {
           code={`
 <Card
   style={{
-    background: 'rgba(255, 255, 255, 0.1) none repeat scroll 0% 0%'
+    background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
   }}
   shadow
 >
