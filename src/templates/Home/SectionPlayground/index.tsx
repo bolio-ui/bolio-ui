@@ -11,10 +11,10 @@ function SectionPlayground() {
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
-              <Text h2 my={0}>
+              <Text h2 my={0} mb={1}>
                 Develop pratic and more fast
               </Text>
-              <Text font={1.2} mt={0} mb={2}>
+              <Text font={1.2} mt={0}>
                 Develop much faster and create your pages in a practical and
                 simple way.
               </Text>

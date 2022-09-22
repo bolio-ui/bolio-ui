@@ -1,6 +1,16 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { Text, Container, Grid, Row, Col, Section, Button, Snippet } from 'core'
+import {
+  useTheme,
+  Text,
+  Container,
+  Grid,
+  Row,
+  Col,
+  Section,
+  Button,
+  Snippet
+} from 'core'
 
 interface Props {
   content: { title: string; description: string }
@@ -9,6 +19,8 @@ interface Props {
 export type HeroProps = Props
 
 function Hero({ content }: Props) {
+  const theme = useTheme()
+
   return (
     <Section py={4}>
       <Container>
@@ -25,7 +37,13 @@ function Hero({ content }: Props) {
         <Grid.Container gap={2} justify="center" alignItems="center">
           <Grid xs={12} sm={6} md={2}>
             <NextLink href={'/docs/guide/getting-started'} passHref>
-              <Button type="info" width="100%">
+              <Button
+                style={{
+                  background: '#c25fff',
+                  color: theme.palette.foreground
+                }}
+                width="100%"
+              >
                 Get Started
               </Button>
             </NextLink>
@@ -35,7 +53,10 @@ function Hero({ content }: Props) {
               toastText="Code copied!"
               toastType="secondary"
               text="yarn add @bolio-ui/core"
-              width={'100%'}
+              width="100%"
+              style={{
+                background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
+              }}
             />
           </Grid>
         </Grid.Container>
