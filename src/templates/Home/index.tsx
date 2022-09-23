@@ -54,25 +54,32 @@ function Home() {
         <Section py={5}>
           <Container>
             <Grid.Container gap={2} justify="center">
-              <Grid xs={12} sm={6} md={4}>
+              <Grid xs={12} sm={6} md={3}>
                 <CardBox
-                  title="Built in Components"
-                  description="We have provided a lot of useful build in components to make it easy."
-                  icon="Briefcase"
+                  title="Customizable"
+                  description="Customize simple, you can change themes, colors, fonts and everything you need."
+                  icon="Target"
                 />
               </Grid>
-              <Grid xs={12} sm={6} md={4}>
+              <Grid xs={12} sm={6} md={3}>
                 <CardBox
                   title="Modern Design"
                   description="Responsive, theme-based style props for building design systems with React."
                   icon="Layout"
                 />
               </Grid>
-              <Grid xs={12} sm={6} md={4}>
+              <Grid xs={12} sm={6} md={3}>
                 <CardBox
                   title="Well Documented"
                   description="Documented organized way and its customization instruction easy for all."
                   icon="FileText"
+                />
+              </Grid>
+              <Grid xs={12} sm={6} md={3}>
+                <CardBox
+                  title="Fast Loading Speed"
+                  description="Faster loading speed. It's create your template so much faster."
+                  icon="Zap"
                 />
               </Grid>
             </Grid.Container>
