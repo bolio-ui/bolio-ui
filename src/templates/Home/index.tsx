@@ -8,6 +8,7 @@ import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
+import SectionComponents from './SectionComponents'
 import SectionPlayground from './SectionPlayground'
 
 function Home() {
@@ -51,6 +52,7 @@ function Home() {
               'Make your development more creative and dynamic with amazing tools for React. 🥷🏼'
           }}
         />
+        <SectionComponents />
         <Section py={5}>
           <Container>
             <Grid.Container gap={2} justify="center">
