@@ -391,7 +391,7 @@ export const Player = () => {
         </Row>
         <Spacer h={2} />
         <Row align="middle" justify="center">
-          <Col span={5}>
+          <Col>
             <Avatar
               alt="Your Avatar"
               mr={1.5}
@@ -400,7 +400,7 @@ export const Player = () => {
               src="https://bolio-nextjs.vercel.app/_next/static/images/1-b91719623c4254c6f46115d025adab47.jpg"
             />
           </Col>
-          <Col span={7}>
+          <Col>
             <Text b my={0}>
               Never Go Back
             </Text>
