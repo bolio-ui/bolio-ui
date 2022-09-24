@@ -10,6 +10,7 @@ import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
 import SectionComponents from './SectionComponents'
 import SectionPlayground from './SectionPlayground'
+import SectionDemonstration from './SectionDemonstration'
 
 function Home() {
   const router = useRouter()
@@ -88,6 +89,7 @@ function Home() {
           </Container>
         </Section>
         <SectionPlayground />
+        <SectionDemonstration />
         <Section py={5}>
           <Container>
             <Grid.Container justify="center">
