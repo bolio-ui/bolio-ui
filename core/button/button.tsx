@@ -202,7 +202,7 @@ const ButtonComponent = React.forwardRef<
           cursor: ${cursor};
           pointer-events: ${events};
           box-shadow: ${shadow ? theme.expressiveness.shadowMedium : 'none'};
-          transform: translate3d(0px, ${shadow ? '-1px' : '0px'}, 0px);
+          /* transform: translate3d(0px, ${shadow ? '-1px' : '0px'}, 0px); */
         }
 
         .btn :global(.text) {
@@ -213,7 +213,6 @@ const ButtonComponent = React.forwardRef<
           align-items: center;
           text-align: center;
           line-height: inherit;
-          top: -1px;
         }
 
         .btn :global(.text p),
