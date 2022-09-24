@@ -13,7 +13,7 @@ export type ColProps = Props & NativeAttrs
 function Col({
   component = 'div' as keyof JSX.IntrinsicElements,
   children,
-  span = 24,
+  span = 12,
   offset = 0,
   className = '',
   ...props

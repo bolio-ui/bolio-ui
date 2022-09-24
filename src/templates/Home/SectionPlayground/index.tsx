@@ -59,7 +59,7 @@ function SectionPlayground() {
     </Col>
     <Col span={2}>
       <Text font={0.8} my={0}>
-        CCV
+        CVV
       </Text>
       <Text font={1.2} my={0}>
         999
