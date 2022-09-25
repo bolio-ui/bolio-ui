@@ -78,7 +78,7 @@ function SectionCTA() {
                   >
                     <Image src="/img/png/home/typography.png" />
                     <Card.Content>
-                      <Text b>Typography</Text>
+                      <Text b>Text</Text>
                     </Card.Content>
                   </Card>
                 </Link>
