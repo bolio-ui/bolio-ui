@@ -5,7 +5,6 @@ import {
   Section,
   Container,
   Grid,
-  Row,
   Col,
   Text,
   Snippet,
@@ -30,45 +29,45 @@ function SectionCTA() {
         }}
       >
         <Container>
-          <Grid.Container gap={2} justify="center" alignItems="center">
-            <Grid xs={12} md={6}>
-              <Col>
-                <Text h2 my={0} mb={1}>
-                  Build even faster with Bolio UI
-                </Text>
-                <Text font={1.2} mt={0}>
-                  Build your next website even faster with premade responsive
-                  components designed and built by Bolio UI.
-                </Text>
-                <Col>
-                  <Row>
-                    <NextLink href={'/docs/guide/getting-started'} passHref>
-                      <Button
-                        style={{
-                          background: '#c25fff',
-                          color: theme.palette.foreground
-                        }}
-                      >
-                        Get Started
-                      </Button>
-                    </NextLink>
-                    <Spacer w={2} />
-                    <Snippet
-                      toastText="Code copied!"
-                      toastType="secondary"
-                      text="yarn add @bolio-ui/core"
-                      width="100%"
+          <Grid.Container gap={2}>
+            <Grid xs={12} md={6} direction="column" justify="center">
+              <Text h2 my={0} mb={1}>
+                Build even faster with Bolio UI
+              </Text>
+              <Text font={1.2} mt={0}>
+                Build your next website even faster with premade responsive
+                components designed and built by Bolio UI.
+              </Text>
+              <Grid.Container gap={2} xs={12} alignItems="center">
+                <Grid xs={12} sm={3}>
+                  <NextLink href={'/docs/guide/getting-started'} passHref>
+                    <Button
                       style={{
-                        background:
-                          'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
+                        background: '#c25fff',
+                        color: theme.palette.foreground
                       }}
-                    />
-                  </Row>
-                </Col>
-              </Col>
+                      width="100%"
+                    >
+                      Get Started
+                    </Button>
+                  </NextLink>
+                </Grid>
+                <Grid xs={12} sm={9}>
+                  <Snippet
+                    toastText="Code copied!"
+                    toastType="secondary"
+                    text="yarn add @bolio-ui/core"
+                    width="100%"
+                    style={{
+                      background:
+                        'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
+                    }}
+                  />
+                </Grid>
+              </Grid.Container>
             </Grid>
             <Grid xs={12} md={6}>
-              <Row>
+              <Grid xs={12} md={12} justify="center">
                 <Link href="/docs/components/text">
                   <Card
                     style={{
@@ -110,8 +109,10 @@ function SectionCTA() {
                     </Card.Content>
                   </Card>
                 </Link>
-              </Row>
+              </Grid>
             </Grid>
+          </Grid.Container>
+          <Grid.Container gap={2} justify="center" alignItems="center">
             <Grid mt={2}>
               <Col>
                 <NextLink href={'/docs/components/'} passHref>
