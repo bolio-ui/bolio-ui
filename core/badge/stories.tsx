@@ -11,7 +11,13 @@ export default {
   component: Badge
 } as Meta
 
-export const Default: Story = () => <Badge>Default</Badge>
+export const Default: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Badge>Default</Badge>
+    </Grid>
+  </Grid.Container>
+)
 
 export const Type: Story = () => (
   <Grid.Container gap={2}>
