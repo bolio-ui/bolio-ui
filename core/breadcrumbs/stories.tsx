@@ -10,7 +10,7 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <Grid.Container>
+  <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>
         <Breadcrumbs.Item>Home</Breadcrumbs.Item>
@@ -22,7 +22,7 @@ export const Default: Story = () => (
 )
 
 export const Separator: Story = () => (
-  <Grid.Container direction="column">
+  <Grid.Container gap={2} direction="column">
     <Grid>
       <Breadcrumbs separator="-">
         <Breadcrumbs.Item>Home</Breadcrumbs.Item>
@@ -43,7 +43,7 @@ export const Separator: Story = () => (
 )
 
 export const Icons: Story = () => (
-  <Grid.Container>
+  <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>
         <Breadcrumbs.Item>
@@ -59,7 +59,7 @@ export const Icons: Story = () => (
 )
 
 export const WithNextjs: Story = () => (
-  <Grid.Container>
+  <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>
         <NextLink href="/">
