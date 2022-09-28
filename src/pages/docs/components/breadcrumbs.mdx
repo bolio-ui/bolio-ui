@@ -18,18 +18,17 @@ Show where users are in the application.
 
 <Playground
   scope={{ Breadcrumbs, Grid }}
+  desc="Basic usage."
   code={`
-() => (
-  <Grid.Container>
-    <Grid>
-      <Breadcrumbs>
-        <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-        <Breadcrumbs.Item href="">Settings</Breadcrumbs.Item>
-        <Breadcrumbs.Item>General</Breadcrumbs.Item>
-      </Breadcrumbs>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Settings</Breadcrumbs.Item>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -38,26 +37,24 @@ Show where users are in the application.
   desc="Custom separator in characters."
   scope={{ Breadcrumbs, Grid }}
   code={`
-() => (
-  <Grid.Container direction="column">
-    <Grid>
-      <Breadcrumbs separator="-">
-        <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-        <Breadcrumbs.Item href="">Categories</Breadcrumbs.Item>
-        <Breadcrumbs.Item>Add</Breadcrumbs.Item>
-      </Breadcrumbs>
-    </Grid>
-    <Grid>
-      <Breadcrumbs separator=">">
-        <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-        <Breadcrumbs.Separator>:</Breadcrumbs.Separator>
-        <Breadcrumbs.Item href="">Pages</Breadcrumbs.Item>
-        <Breadcrumbs.Item href="">Default</Breadcrumbs.Item>
-        <Breadcrumbs.Item>Index</Breadcrumbs.Item>
-      </Breadcrumbs>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <Breadcrumbs separator="-">
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Categories</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Add</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+  <Grid>
+    <Breadcrumbs separator=">">
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Separator>:</Breadcrumbs.Separator>
+      <Breadcrumbs.Item href="">Pages</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Default</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Index</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -66,21 +63,19 @@ Show where users are in the application.
   desc="Show more information with icons."
   scope={{ Breadcrumbs, Home, Settings, Grid }}
   code={`
-() => (
-  <Grid.Container>
-    <Grid>
-      <Breadcrumbs>
-        <Breadcrumbs.Item>
-          <Home />
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Item href="">
-          <Settings /> Settings
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Item>General</Breadcrumbs.Item>
-      </Breadcrumbs>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <Breadcrumbs.Item>
+        <Home />
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">
+        <Settings /> Settings
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -89,21 +84,19 @@ Show where users are in the application.
   desc="Example for use with `next.js`."
   scope={{ Breadcrumbs, NextLink, Grid }}
   code={`
-() => (
-  <Grid.Container>
-    <Grid>
-      <Breadcrumbs>
-        <NextLink href="/">
-          <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
-        </NextLink>
-        <NextLink href="/settings">
-          <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
-        </NextLink>
-        <Breadcrumbs.Item>General</Breadcrumbs.Item>
-      </Breadcrumbs>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <NextLink href="/">
+        <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
+      </NextLink>
+      <NextLink href="/settings">
+        <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
+      </NextLink>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 

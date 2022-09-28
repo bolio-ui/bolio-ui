@@ -19,13 +19,12 @@ Display an indicator that requires attention.
   scope={{ Badge, Grid }}
   desc="Show number or text."
   code={`
-() => (
-  <Grid.Container gap={2}>
-    <Grid>
-      <Badge>Default</Badge>
-    </Grid>
-  </Grid.Container>
-)`}
+<Grid.Container gap={2}>
+  <Grid>
+    <Badge>Default</Badge>
+  </Grid>
+</Grid.Container>
+`}
 />
 
 <Playground
@@ -33,25 +32,23 @@ Display an indicator that requires attention.
   desc="Express state in different colors."
   scope={{ Badge, Grid }}
   code={`
-() => (
-  <Grid.Container gap={2}>
-    <Grid>
-      <Badge>Default</Badge>
-    </Grid>
-    <Grid>
-      <Badge type="secondary">Secondary</Badge>
-    </Grid>
-    <Grid>
-      <Badge type="success">Success</Badge>
-    </Grid>
-    <Grid>
-      <Badge type="warning">Warning</Badge>
-    </Grid>
-    <Grid>
-      <Badge type="error">Error</Badge>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2}>
+  <Grid>
+    <Badge>Default</Badge>
+  </Grid>
+  <Grid>
+    <Badge type="secondary">Secondary</Badge>
+  </Grid>
+  <Grid>
+    <Badge type="success">Success</Badge>
+  </Grid>
+  <Grid>
+    <Badge type="warning">Warning</Badge>
+  </Grid>
+  <Grid>
+    <Badge type="error">Error</Badge>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -102,50 +99,48 @@ Display an indicator that requires attention.
   desc="Fix the `Badge` in the designated position."
   scope={{ Grid, Badge, Avatar, Button, Link }}
   code={`
-() => (
-  <Grid.Container gap={2}>
-    <Grid>
-      <Badge.Anchor>
-        <Badge scale={0.5}>10</Badge>
-        <Avatar src="https://i.pravatar.cc/150?img=60" />
-      </Badge.Anchor>
-    </Grid>
-    <Grid>
-      <Badge.Anchor placement="bottomRight">
-        <Badge scale={0.5} type="success">
-          10
-        </Badge>
-        <Avatar scale={1.5} isSquare src="https://i.pravatar.cc/150?img=30" />
-      </Badge.Anchor>
-    </Grid>
-    <Grid>
-      <Badge.Anchor>
-        <Badge scale={0.5} type="warning">
-          99+
-        </Badge>
-        <Button scale={0.5} auto>
-          Action
-        </Button>
-      </Badge.Anchor>
-    </Grid>
-    <Grid>
-      <Badge.Anchor>
-        <Badge scale={0.5} type="error" dot />
-        <Link target="_blank" href="https://github.com/bolio-ui/bolio-ui/">
-          Bolio UI
-        </Link>
-      </Badge.Anchor>
-    </Grid>
-    <Grid>
-      <Badge.Anchor>
-        <Badge type="error" dot padding="5px" />
-        <Link target="_blank" href="https://github.com/bolio-ui/bolio-ui/">
-          Share Link
-        </Link>
-      </Badge.Anchor>
-    </Grid>
-  </Grid.Container>
-)
+<Grid.Container gap={2}>
+  <Grid>
+    <Badge.Anchor>
+      <Badge scale={0.5}>10</Badge>
+      <Avatar src="https://i.pravatar.cc/150?img=60" />
+    </Badge.Anchor>
+  </Grid>
+  <Grid>
+    <Badge.Anchor placement="bottomRight">
+      <Badge scale={0.5} type="success">
+        10
+      </Badge>
+      <Avatar scale={1.5} isSquare src="https://i.pravatar.cc/150?img=30" />
+    </Badge.Anchor>
+  </Grid>
+  <Grid>
+    <Badge.Anchor>
+      <Badge scale={0.5} type="warning">
+        99+
+      </Badge>
+      <Button scale={0.5} auto>
+        Action
+      </Button>
+    </Badge.Anchor>
+  </Grid>
+  <Grid>
+    <Badge.Anchor>
+      <Badge scale={0.5} type="error" dot />
+      <Link target="_blank" href="https://github.com/bolio-ui/bolio-ui/">
+        Bolio UI
+      </Link>
+    </Badge.Anchor>
+  </Grid>
+  <Grid>
+    <Badge.Anchor>
+      <Badge type="error" dot padding="5px" />
+      <Link target="_blank" href="https://github.com/bolio-ui/bolio-ui/">
+        Share Link
+      </Link>
+    </Badge.Anchor>
+  </Grid>
+</Grid.Container>
 `}
 />
 
