@@ -16,9 +16,16 @@ export const meta = {
 Display an indicator that requires attention.
 
 <Playground
-  scope={{ Badge }}
+  scope={{ Badge, Grid }}
   desc="Show number or text."
-  code={`<Badge>Text</Badge>`}
+  code={`
+() => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Badge>Default</Badge>
+    </Grid>
+  </Grid.Container>
+)`}
 />
 
 <Playground
