@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Link, Text, Code, Spacer } from 'core'
+import { Link, Text, Code, Grid } from 'core'
 import NextLink from 'next/link'
 
 export const meta = {
@@ -16,80 +16,103 @@ export const meta = {
 Hyperlinks between pages.
 
 <Playground
-  scope={{ Link }}
+  scope={{ Link, Grid }}
   code={`
-<Link href="#">
-  Is a reference to the data you can follow directly by tapping.
-</Link>
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#">
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Highlight"
   desc="Distinguish links with different colors."
-  scope={{ Link }}
+  scope={{ Link, Grid }}
   code={`
-<Link href="#" color>
-  Is a reference to the data you can follow directly by tapping.
-</Link>
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" color>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Icon"
   desc="Show an icon in the link."
-  scope={{ Link, Spacer }}
+  scope={{ Link, Grid }}
   code={`
-<>
-  <Link href="#" icon>
-    Is a reference to the data you can follow directly by tapping.
-  </Link>
-  <Spacer h={0.5} />
-  <Link href="#" icon color>
-    Is a reference to the data you can follow directly by tapping.
-  </Link>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" icon>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+  <Grid>
+    <Link href="#" icon color>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Variant"
   desc="Different styles of links."
-  scope={{ Link, Text }}
+  scope={{ Link, Text, Grid }}
   code={`
-<>
-  <Text>
-    <Link href="#">
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-  </Text>
-  <Text>
-    <Link href="#" color>
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-  </Text>
-  <Text>
-    <Link href="#" underline>
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-  </Text>
-  <Text>
-    <Link href="#" color underline>
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-  </Text>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Text>
+      <Link href="#">
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" color>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" underline>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" color underline>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Block"
   desc="Display as a separate block."
-  scope={{ Link }}
+  scope={{ Link, Grid }}
   code={`
-<Link href="#" block>
-  Is a reference to the data you can follow directly by tapping.
-</Link>
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" block>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -101,11 +124,15 @@ Hyperlinks between pages.
   } */
   title="With Next/Link"
   desc="Use `Link` with NextJS without any configuration."
-  scope={{ Link, NextLink }}
+  scope={{ Link, NextLink, Grid }}
   code={`
-<NextLink href="/docs/components/button">
-  <Link block>Docs of Button</Link>
-</NextLink>
+<Grid.Container gap={2}>
+  <Grid>
+    <NextLink href="/docs/components/button">
+      <Link block>Docs of Button</Link>
+    </NextLink>
+  </Grid>
+</Grid.Container>
 `}
 />
 

@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Link from '.'
-import Spacer from '../spacer'
+import Grid from '../grid'
 import Text from '../text'
 
 export default {
@@ -9,56 +9,79 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <Link href="#">
-    Is a reference to the data you can follow directly by tapping.
-  </Link>
-)
-
-export const Highlight: Story = () => (
-  <Link href="#" color>
-    Is a reference to the data you can follow directly by tapping.
-  </Link>
-)
-
-export const WithIcon: Story = () => (
-  <>
-    <Link href="#" icon>
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-    <Spacer h={0.5} />
-    <Link href="#" icon color>
-      Is a reference to the data you can follow directly by tapping.
-    </Link>
-  </>
-)
-
-export const Variant: Story = () => (
-  <>
-    <Text>
+  <Grid.Container gap={2}>
+    <Grid>
       <Link href="#">
         Is a reference to the data you can follow directly by tapping.
       </Link>
-    </Text>
-    <Text>
+    </Grid>
+  </Grid.Container>
+)
+
+export const Highlight: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
       <Link href="#" color>
         Is a reference to the data you can follow directly by tapping.
       </Link>
-    </Text>
-    <Text>
-      <Link href="#" underline>
+    </Grid>
+  </Grid.Container>
+)
+
+export const WithIcon: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Link href="#" icon>
         Is a reference to the data you can follow directly by tapping.
       </Link>
-    </Text>
-    <Text>
-      <Link href="#" color underline>
+    </Grid>
+    <Grid>
+      <Link href="#" icon color>
         Is a reference to the data you can follow directly by tapping.
       </Link>
-    </Text>
-  </>
+    </Grid>
+  </Grid.Container>
+)
+
+export const Variant: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Text>
+        <Link href="#">
+          Is a reference to the data you can follow directly by tapping.
+        </Link>
+      </Text>
+    </Grid>
+    <Grid>
+      <Text>
+        <Link href="#" color>
+          Is a reference to the data you can follow directly by tapping.
+        </Link>
+      </Text>
+    </Grid>
+    <Grid>
+      <Text>
+        <Link href="#" underline>
+          Is a reference to the data you can follow directly by tapping.
+        </Link>
+      </Text>
+    </Grid>
+    <Grid>
+      <Text>
+        <Link href="#" color underline>
+          Is a reference to the data you can follow directly by tapping.
+        </Link>
+      </Text>
+    </Grid>
+  </Grid.Container>
 )
 
 export const Block: Story = () => (
-  <Link href="#" block>
-    Is a reference to the data you can follow directly by tapping.
-  </Link>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Link href="#" block>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Grid>
+  </Grid.Container>
 )
