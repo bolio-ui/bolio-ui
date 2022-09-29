@@ -50,7 +50,7 @@ function App({ Component, pageProps }: AppProps) {
         </SettingsContext.Provider>
         <style global jsx>{`
           pre {
-            background-color: ${theme.palette.accents_7};
+            background-color: ${theme.palette.pre};
           }
           pre code {
             color: ${theme.palette.accents_1};

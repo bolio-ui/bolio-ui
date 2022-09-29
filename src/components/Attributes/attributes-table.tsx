@@ -44,7 +44,7 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0;
-          background: #363450;
+          background: ${theme.palette.pre};
         }
         .attr th:nth-child(1) {
           border-radius: 4px 0 0 4px;

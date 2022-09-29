@@ -41,6 +41,7 @@ export interface BolioUIThemesPalette {
   purple: string
   magenta: string
   alert: string
+  pre: string
 }
 
 export interface BolioUIThemesExpressiveness {
