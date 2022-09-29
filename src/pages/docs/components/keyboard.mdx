@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Keyboard } from 'core'
+import { Keyboard, Grid } from 'core'
 
 export const meta = {
   title: 'Keyboard',
@@ -17,40 +17,58 @@ Display keyboard input that triggers an action.
 The `Keyboard` can only display layout styles, if you need to bind the keyboard events, please read subsection [useKeyboard](/docs/hooks/use-keyboard).
 
 <Playground
-  scope={{ Keyboard }}
+  scope={{ Keyboard, Grid }}
   code={`
-<Keyboard>C</Keyboard>
+<Grid.Container gap={2}>
+  <Grid>
+    <Keyboard>C</Keyboard>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Modifiers"
-  scope={{ Keyboard }}
+  scope={{ Keyboard, Grid }}
   code={`
-<>
-  <Keyboard command mr="10px" />
-  <Keyboard shift mr="10px" />
-  <Keyboard option mr="10px" />
-  <Keyboard ctrl mr="10px" />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Keyboard command mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard shift mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard option mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard ctrl mr="10px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Combination"
-  scope={{ Keyboard }}
+  scope={{ Keyboard, Grid }}
   code={`
-  <>
+<Grid.Container gap={2}>
+  <Grid>
     <Keyboard command mr="10px">
       f
     </Keyboard>
+  </Grid>
+  <Grid>
     <Keyboard shift mr="10px">
       e
     </Keyboard>
+  </Grid>
+  <Grid>
     <Keyboard option ctrl mr="10px">
       b
     </Keyboard>
-  </>
+  </Grid>
+</Grid.Container>
 `}
 />
 

@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Card from '../card'
-import Spacer from '../spacer'
+import Grid from '../grid'
 import { Smile } from '@bolio-ui/icons'
 
 export default {
@@ -9,24 +9,40 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <Card>
-    <Smile />
-  </Card>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Smile />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Colored: Story = () => (
-  <Card>
-    <Smile color="purple" />
-  </Card>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Smile color="purple" />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Size: Story = () => (
-  <Card>
-    <Smile fontSize={16} /> <Spacer inline w={0.35} />
-    <Smile fontSize={20} /> <Spacer inline w={0.35} />
-    <Smile fontSize={24} /> <Spacer inline w={0.35} />
-    <Smile fontSize={28} /> <Spacer inline w={0.35} />
-    <Smile fontSize={32} /> <Spacer inline w={0.35} />
-    <Smile fontSize={36} />
-  </Card>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Smile fontSize={16} />
+    </Grid>
+    <Grid>
+      <Smile fontSize={20} />
+    </Grid>
+    <Grid>
+      <Smile fontSize={24} />
+    </Grid>
+    <Grid>
+      <Smile fontSize={28} />
+    </Grid>
+    <Grid>
+      <Smile fontSize={32} />
+    </Grid>
+    <Grid>
+      <Smile fontSize={36} />
+    </Grid>
+  </Grid.Container>
 )
