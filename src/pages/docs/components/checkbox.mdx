@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Checkbox, Spacer, Code } from 'core'
+import { Checkbox, Grid, Code } from 'core'
 
 export const meta = {
   title: 'Checkbox',
@@ -16,86 +16,108 @@ Displays a boolean value.
 
 <Playground
   desc="Change state with `checked` props."
-  scope={{ Checkbox }}
+  scope={{ Checkbox, Grid }}
   code={`
-<Checkbox checked={true}>Check option</Checkbox>
+<Grid.Container gap={2}>
+  <Grid>
+    <Checkbox checked={true}>Check option</Checkbox>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Sizes"
   desc="Checkbox of different sizes."
-  scope={{ Checkbox }}
+  scope={{ Checkbox, Grid }}
   code={`
-<>
-  <Checkbox mr="15px" checked={true} scale={0.25}>
-    scale-0.25
-  </Checkbox>
-  <Checkbox mr="15px" checked={true} scale={0.5}>
-    scale-0.5
-  </Checkbox>
-  <Checkbox mr="15px" checked={true} scale={0.75}>
-    scale-0.75
-  </Checkbox>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Checkbox mr="15px" checked={true} scale={0.25}>
+      scale-0.25
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox mr="15px" checked={true} scale={0.5}>
+      scale-0.5
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox mr="15px" checked={true} scale={0.75}>
+      scale-0.75
+    </Checkbox>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Checkbox, Spacer }}
+  scope={{ Checkbox, Grid }}
   code={`
-<>
-  <Checkbox checked={true} type="default">
-    Checkbox Default
-  </Checkbox>
-  <Spacer h={0.5} />
-  <Checkbox checked={true} type="success">
-    Checkbox Success
-  </Checkbox>
-  <Spacer h={0.5} />
-  <Checkbox checked={true} type="warning">
-    Checkbox Warning
-  </Checkbox>
-  <Spacer h={0.5} />
-  <Checkbox checked={true} type="error">
-    Checkbox Error
-  </Checkbox>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Checkbox checked={true} type="default">
+      Checkbox Default
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox checked={true} type="success">
+      Checkbox Success
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox checked={true} type="warning">
+      Checkbox Warning
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox checked={true} type="error">
+      Checkbox Error
+    </Checkbox>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disable"
-  scope={{ Checkbox, Spacer }}
+  scope={{ Checkbox, Grid }}
   code={`
-<>
-  <Checkbox>Checkbox option</Checkbox>
-  <Spacer h={0.5} />
-  <Checkbox disabled checked={true}>
-    Checkbox option disabled
-  </Checkbox>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Checkbox>Checkbox option</Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox disabled checked={true}>
+      Checkbox option disabled
+    </Checkbox>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Group"
   desc="Manage a set of `Checkbox`."
-  scope={{ Checkbox, Spacer }}
+  scope={{ Checkbox, Grid }}
   code={`
 () => {
   const handler = value => {
     console.log(value)
   }
   return (
-    <Checkbox.Group value={['check3']} onChange={handler}>
-      <Checkbox value="check1">Checkbox option 1</Checkbox>
-      <Checkbox value="check2">Checkbox option 2</Checkbox>
-      <Checkbox value="check3">Checkbox option 3</Checkbox>
-      <Checkbox value="check4">Checkbox option 4</Checkbox>
-    </Checkbox.Group>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Checkbox.Group value={['check3']} onChange={handler}>
+          <Checkbox value="check1">Checkbox option 1</Checkbox>
+          <Checkbox value="check2">Checkbox option 2</Checkbox>
+          <Checkbox value="check3">Checkbox option 3</Checkbox>
+          <Checkbox value="check4">Checkbox option 4</Checkbox>
+        </Checkbox.Group>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
