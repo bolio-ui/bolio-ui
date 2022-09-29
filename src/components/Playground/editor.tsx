@@ -87,7 +87,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gapHalf};
-          background-color: #363450;
+          background-color: ${theme.palette.pre};
         }
 
         summary :global(svg) {
