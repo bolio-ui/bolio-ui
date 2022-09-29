@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Dot } from 'core'
+import { Dot, Grid } from 'core'
 
 export const meta = {
   title: 'Dot',
@@ -15,31 +15,43 @@ export const meta = {
 Display an indicator of standardization status.
 
 <Playground
-  scope={{ Dot }}
+  scope={{ Dot, Grid }}
   code={`
-<>
-  <Dot style={{ marginRight: '15px' }} />
-  <Dot style={{ marginRight: '15px' }} type="success" />
-  <Dot style={{ marginRight: '15px' }} type="warning" />
-  <Dot type="error" />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Dot />
+  </Grid>
+  <Grid>
+    <Dot type="success" />
+  </Grid>
+  <Grid>
+    <Dot type="warning" />
+  </Grid>
+  <Grid>
+    <Dot type="error" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Text"
-  scope={{ Dot }}
+  scope={{ Dot, Grid }}
   code={`
-<>
-  <Dot style={{ marginRight: '20px' }}>Disabled</Dot>
-  <Dot style={{ marginRight: '20px' }} type="success">
-    Ready
-  </Dot>
-  <Dot style={{ marginRight: '20px' }} type="warning">
-    Warning
-  </Dot>
-  <Dot type="error">Error</Dot>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Dot>Canceled</Dot>
+  </Grid>
+  <Grid>
+    <Dot type="success">Ready</Dot>
+  </Grid>
+  <Grid>
+    <Dot type="warning">Warning</Dot>
+  </Grid>
+  <Grid>
+    <Dot type="error">Error</Dot>
+  </Grid>
+</Grid.Container>
 `}
 />
 
