@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Description, Code } from 'core'
+import { Description, Code, Grid } from 'core'
 
 export const meta = {
   title: 'Description',
@@ -16,25 +16,33 @@ Display brief information with a title and description.
 
 <Playground
   desc="`Description` component contains title and content."
-  scope={{ Description }}
+  scope={{ Description, Grid }}
   code={`
-<Description title="Section Title" content="Data about this section." />
+<Grid.Container gap={2}>
+  <Grid>
+    <Description title="Section Title" content="Data about this section." />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Component"
   desc="Use in combination with other components."
-  scope={{ Description, Code }}
+  scope={{ Description, Code, Grid }}
   code={`
-<Description
-  title="Section Title"
-  content={
-    <p>
-      <Code>code</Code> about this section.
-    </p>
-  }
-/>
+<Grid.Container gap={2}>
+  <Grid>
+    <Description
+      title="Section Title"
+      content={
+        <p>
+          <Code>code</Code> about this section.
+        </p>
+      }
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 

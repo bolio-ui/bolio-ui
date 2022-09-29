@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Code, Text } from 'core'
+import { Code, Text, Grid } from 'core'
 import { Playground, Attributes, ParsedCodes } from 'src/components'
 import WaitTime from 'core/mdx-widgets/parsed-codes/wait-time'
 
@@ -17,60 +17,78 @@ Show source code in a standardized way. Want to display shell code snippets? try
 
 <Playground
   desc="Basic inline codes."
-  scope={{ Code, Text }}
+  scope={{ Code, Text, Grid }}
   code={`
-<>
-  <Text my={0}>
-    Run <Code>npm i @bolio-ui/core</Code> to install.
-  </Text>
-  <Text my={0}>
-    Or run <Code>yarn add @bolio-ui/core</Code> to install.
-  </Text>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Text my={0}>
+      Run <Code>npm i @bolio-ui/core</Code> to install.
+    </Text>
+    <Text my={0}>
+      Or run <Code>yarn add @bolio-ui/core</Code> to install.
+    </Text>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Code Block"
   desc="Multi line code display."
-  scope={{ Code, WaitTime }}
+  scope={{ Code, WaitTime, Grid }}
   code={`
-<Code block my={0}>
-  <WaitTime />
-</Code>
+<Grid.Container gap={2}>
+  <Grid>
+    <Code block my={0}>
+      <WaitTime />
+    </Code>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Width"
   desc="Specify width manually, or other styles."
-  scope={{ Code, WaitTime }}
+  scope={{ Code, WaitTime, Grid }}
   code={`
-<Code block width="50%" my={0}>
-  <WaitTime />
-</Code>
+<Grid.Container gap={2}>
+  <Grid>
+    <Code block width="50%" my={0}>
+      <WaitTime />
+    </Code>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Name"
   desc="Specify the file name for the code block."
-  scope={{ Code, WaitTime }}
+  scope={{ Code, WaitTime, Grid }}
   code={`
-<Code block name="/Components/WaitTime.jsx" my={0}>
-  <WaitTime />
-</Code>
+<Grid.Container gap={2}>
+  <Grid>
+    <Code block name="/Components/WaitTime.jsx" my={0}>
+      <WaitTime />
+    </Code>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Classic Style"
   desc="The classic design style with a line border instead of a background."
-  scope={{ Code, WaitTime }}
+  scope={{ Code, WaitTime, Grid }}
   code={`
-<Code block classic name="/Components/WaitTime.jsx" my={0}>
-  <WaitTime />
-</Code>
+<Grid.Container gap={2}>
+  <Grid>
+    <Code block classic name="/Components/WaitTime.jsx" my={0}>
+      <WaitTime />
+    </Code>
+  </Grid>
+</Grid.Container>
 `}
 />
 
