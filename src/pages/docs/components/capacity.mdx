@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Capacity, Spacer, useTheme } from 'core'
+import { Capacity, Grid, useTheme } from 'core'
 
 export const meta = {
   title: 'Capacity',
@@ -15,24 +15,38 @@ export const meta = {
 Display an capacity indicator.
 
 <Playground
-  scope={{ Capacity, Spacer }}
+  title="General"
+  desc="The basic `Capacity` usage."
+  scope={{ Capacity, Grid }}
   code={`
-<>
-  <Capacity value={15} /> <Spacer />
-  <Capacity value={45} /> <Spacer />
-  <Capacity value={95} />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Capacity value={15} width="200px" />
+  </Grid>
+  <Grid>
+    <Capacity value={45} width="200px" />
+  </Grid>
+  <Grid>
+    <Capacity value={95} width="200px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Fixed Color"
   desc="Specify a color to override the default."
-  scope={{ Capacity, Spacer, useTheme }}
+  scope={{ Capacity, Grid, useTheme }}
   code={`
 () => {
   const theme = useTheme()
-  return <Capacity value={75} color={theme.palette.success} />
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Capacity value={75} color={theme.palette.success} width="200px" />
+      </Grid>
+    </Grid.Container>
+  )
 }
 `}
 />
