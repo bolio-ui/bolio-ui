@@ -47,7 +47,8 @@ export const palette: BolioUIThemesPalette = {
   purple: '#f81ce5',
   alert: '#ff0080',
   magenta: '#eb367f',
-  link: '#3291ff'
+  link: '#3291ff',
+  pre: '#363450'
 }
 
 export const expressiveness: BolioUIThemesExpressiveness = {

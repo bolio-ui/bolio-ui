@@ -3,7 +3,7 @@ import { BolioUIThemes } from 'core/themes/presets'
 
 const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
   plain: {
-    backgroundColor: '#363450',
+    backgroundColor: theme.palette.pre,
     color: '#FFF',
     fontWeight: '400',
     fontStyle: 'normal',

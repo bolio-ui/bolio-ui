@@ -80,7 +80,7 @@ const IconsGallery: React.FC<unknown> = () => {
           flex-wrap: wrap;
           margin-top: 8pt;
           justify-content: space-around;
-          background-color: #363450;
+          background-color: ${theme.palette.pre};
           border-radius: ${theme.layout.radius};
           padding: 10px;
         }
