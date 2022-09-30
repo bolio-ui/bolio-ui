@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Pagination from '.'
-import Spacer from '../spacer'
+import Grid from '../grid'
 import {
   ChevronRight,
   ChevronLeft,
@@ -15,45 +15,65 @@ export default {
   component: Pagination
 } as Meta
 
-export const Default: Story = () => <Pagination count={20} initialPage={3} />
+export const Default: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Pagination count={20} initialPage={3} />
+    </Grid>
+  </Grid.Container>
+)
 
 export const Limit: Story = () => (
-  <>
-    <Pagination count={10} limit={10} />
-    <Pagination count={5} />
-    <Pagination count={10} initialPage={6} limit={5} />
-    <Pagination count={10} initialPage={6} />
-    <Pagination count={30} initialPage={6} limit={10} />
-  </>
+  <Grid.Container gap={2} direction="column">
+    <Grid>
+      <Pagination count={10} limit={10} />
+    </Grid>
+    <Grid>
+      <Pagination count={5} />
+    </Grid>
+    <Grid>
+      <Pagination count={10} initialPage={6} limit={5} />
+    </Grid>
+    <Grid>
+      <Pagination count={10} initialPage={6} />
+    </Grid>
+    <Grid>
+      <Pagination count={30} initialPage={6} limit={10} />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Icon: Story = () => (
-  <>
-    <Pagination count={5}>
-      <Pagination.Next>
-        <ChevronRight />
-      </Pagination.Next>
-      <Pagination.Previous>
-        <ChevronLeft />
-      </Pagination.Previous>
-    </Pagination>
-    <Spacer h={0.5} />
-    <Pagination count={5}>
-      <Pagination.Next>
-        <ArrowRight />
-      </Pagination.Next>
-      <Pagination.Previous>
-        <ArrowLeft />
-      </Pagination.Previous>
-    </Pagination>
-    <Spacer h={0.5} />
-    <Pagination count={5}>
-      <Pagination.Next>
-        <ArrowRightCircle />
-      </Pagination.Next>
-      <Pagination.Previous>
-        <ArrowLeftCircle />
-      </Pagination.Previous>
-    </Pagination>
-  </>
+  <Grid.Container gap={2} direction="column">
+    <Grid>
+      <Pagination count={5}>
+        <Pagination.Next>
+          <ChevronRight />
+        </Pagination.Next>
+        <Pagination.Previous>
+          <ChevronLeft />
+        </Pagination.Previous>
+      </Pagination>
+    </Grid>
+    <Grid>
+      <Pagination count={5}>
+        <Pagination.Next>
+          <ArrowRight />
+        </Pagination.Next>
+        <Pagination.Previous>
+          <ArrowLeft />
+        </Pagination.Previous>
+      </Pagination>
+    </Grid>
+    <Grid>
+      <Pagination count={5}>
+        <Pagination.Next>
+          <ArrowRightCircle />
+        </Pagination.Next>
+        <Pagination.Previous>
+          <ArrowLeftCircle />
+        </Pagination.Previous>
+      </Pagination>
+    </Grid>
+  </Grid.Container>
 )
