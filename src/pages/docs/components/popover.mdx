@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Popover, Spacer, Link } from 'core'
+import { Popover, Grid, Spacer, Link } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -16,20 +16,24 @@ export const meta = {
 The floating box popped by clicking or hovering.
 
 <Playground
-  scope={{ Popover, Spacer, Link }}
+  scope={{ Popover, Grid, Spacer, Link }}
   code={`
 () => {
   const content = () => (
     <div style={{ padding: '0 10px' }}>
       <Link href="#">A hyperlink</Link>
-      <Spacer h={.5} />
-      <Link color href="#">External link</Link>
+      <Spacer h={0.5} />
+      <Link color href="#">
+        External link
+      </Link>
     </div>
   )
   return (
-    <Popover content={content}>
-      Menu
-    </Popover>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover content={content}>Menu</Popover>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -38,7 +42,7 @@ The floating box popped by clicking or hovering.
 <Playground
   title="Preset Item"
   desc="Use preset `Item` component build layout."
-  scope={{ Popover, Spacer, Link }}
+  scope={{ Popover, Grid, Spacer, Link }}
   code={`
 () => {
   const content = () => (
@@ -50,7 +54,9 @@ The floating box popped by clicking or hovering.
         <Link href="#">A hyperlink</Link>
       </Popover.Item>
       <Popover.Item>
-        <Link color href="#">A hyperlink for edit profile</Link>
+        <Link color href="#">
+          A hyperlink for edit profile
+        </Link>
       </Popover.Item>
       <Popover.Item line />
       <Popover.Item>
@@ -59,9 +65,11 @@ The floating box popped by clicking or hovering.
     </>
   )
   return (
-    <Popover content={content}>
-      Menu
-    </Popover>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover content={content}>Menu</Popover>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -70,7 +78,7 @@ The floating box popped by clicking or hovering.
 <Playground
   title="Close Manual"
   desc="You can control when to close the pop-up box."
-  scope={{ Popover, Spacer, Link, useState }}
+  scope={{ Popover, Spacer, Grid, Link, useState }}
   code={`
 () => {
   const [visible, setVisible] = useState(false)
@@ -80,15 +88,22 @@ The floating box popped by clicking or hovering.
   const content = () => (
     <div style={{ padding: '0 10px' }}>
       <span onClick={() => setVisible(false)}>Click to close</span>
-      <Spacer h={.5} />
+      <Spacer h={0.5} />
       <span>Nothing</span>
     </div>
   )
   return (
-    <Popover content={content} visible={visible}
-      onVisibleChange={changeHandler}>
-      Menu
-    </Popover>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover
+          content={content}
+          visible={visible}
+          onVisibleChange={changeHandler}
+        >
+          Menu
+        </Popover>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}

@@ -2,7 +2,6 @@ import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Rating from '.'
 import Grid from '../grid'
-import Spacer from '../spacer'
 import { Umbrella, Zap } from '@bolio-ui/icons'
 
 export default {
@@ -16,33 +15,29 @@ export const Default: Story = () => {
 
   return (
     <Grid.Container gap={2}>
-      <Grid xs={12} md={4} justify="center">
+      <Grid>
         <Rating
           onLockedChange={setLocked}
           value={value}
           onValueChange={setValue}
         />
       </Grid>
-      <Grid xs={6} md={4} justify="center">
-        Selection: {value}
-      </Grid>
-      <Grid xs={6} md={4} justify="center">
-        Locked: {locked ? 'true' : 'false'}
-      </Grid>
+      <Grid>Selection: {value}</Grid>
+      <Grid>Locked: {locked ? 'true' : 'false'}</Grid>
     </Grid.Container>
   )
 }
 
 export const Types: Story = () => {
   return (
-    <Grid.Container gap={2} justify="center">
-      <Grid xs={12} sm={12} md={4} justify="center">
+    <Grid.Container gap={2}>
+      <Grid>
         <Rating type="success" />
       </Grid>
-      <Grid xs={12} sm={6} md={4} justify="center">
+      <Grid>
         <Rating type="error" />
       </Grid>
-      <Grid xs={12} sm={6} md={4} justify="center">
+      <Grid>
         <Rating type="warning" />
       </Grid>
     </Grid.Container>
@@ -51,22 +46,29 @@ export const Types: Story = () => {
 
 export const CustomAmount: Story = () => {
   return (
-    <>
-      <Rating count={2} />
-      <Spacer h={0.5} />
-      <Rating value={3} count={6} />
-      <Spacer h={0.5} />
-      <Rating value={4} count={8} />
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Rating count={2} />
+      </Grid>
+      <Grid>
+        <Rating value={3} count={6} />
+      </Grid>
+      <Grid>
+        <Rating value={4} count={8} />
+      </Grid>
+    </Grid.Container>
   )
 }
 
 export const Icon: Story = () => {
   return (
-    <>
-      <Rating value={4} count={6} type="success" icon={<Umbrella />} />
-      <Spacer h={0.5} />
-      <Rating count={7} type="error" icon={<Zap />} />
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Rating value={4} count={6} type="success" icon={<Umbrella />} />
+      </Grid>
+      <Grid>
+        <Rating count={7} type="error" icon={<Zap />} />
+      </Grid>
+    </Grid.Container>
   )
 }
