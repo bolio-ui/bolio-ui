@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Tooltip, Spacer, Button, Link, Badge, Code, Text, Grid } from 'core'
+import { Tooltip, Grid, Button, Link, Badge, Code, Text } from 'core'
 
 export const meta = {
   title: 'Tooltip',
@@ -16,154 +16,223 @@ Displays additional information on hover.
 
 <Playground
   desc="Basic usage."
-  scope={{ Tooltip }}
+  scope={{ Tooltip, Grid }}
   code={`
-<Tooltip text={'Push to Git and your website is live.'}>Tooltip</Tooltip>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip text={'Push to Git and your website is live.'}>Tooltip</Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Trigger"
   desc="Trigger by click."
-  scope={{ Tooltip }}
+  scope={{ Tooltip, Grid }}
   code={`
-<Tooltip text={'Push to Git and your website is live.'} trigger="click" type="dark">
-  <span>Click me</span>
-</Tooltip>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip
+      text={'Push to Git and your website is live.'}
+      trigger="click"
+      type="dark"
+    >
+      Click me
+    </Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Components"
   desc="Combined with different components."
-  scope={{ Tooltip, Button, Link, Spacer, Badge }}
+  scope={{ Tooltip, Button, Link, Grid, Badge }}
   code={`
-<div>
-  <Tooltip text={'Push to Git and your website is live.'} type="dark">
-    <Button auto scale={1/2}>Button</Button>
-  </Tooltip>
-  <Spacer inline w={1} />
-  <Tooltip text={'Push to Git and your website is live.'} type="dark">
-    <Badge>1000+</Badge>
-  </Tooltip>
-  <Spacer inline w={1} />
-  <Tooltip text={'Push to Git and your website is live.'} type="dark">
-    <Link href="#" color>Hyperlink</Link>
-  </Tooltip>
-</div>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip text={'Push to Git and your website is live.'} type="dark">
+      <Button auto scale={1 / 2}>
+        Button
+      </Button>
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text={'Push to Git and your website is live.'} type="dark">
+      <Badge>1000+</Badge>
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text={'Push to Git and your website is live.'} type="dark">
+      <Link href="#" color>
+        Hyperlink
+      </Link>
+    </Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Content"
   desc="You can customize the pop-up content."
-  scope={{ Tooltip, Spacer, Code, Text }}
+  scope={{ Tooltip, Grid, Code, Text }}
   code={`
-<div>
-  <Tooltip text={<>Perfect for working with a <Code>CMS</Code>.</>}>
-    <span>Top</span>
-  </Tooltip>
-  <Spacer inline w={2.5} />
-  <Tooltip text={<><Text b>Perfect</Text> for working with a CMS.</>} placement="bottom">
-    <span>Bottom</span>
-  </Tooltip>
-</div>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip
+      text={
+        <>
+          Perfect for working with a <Code>CMS</Code>.
+        </>
+      }
+    >
+      Top
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip
+      text={
+        <>
+          <Text b>Perfect</Text> for working with a CMS.
+        </>
+      }
+      placement="bottom"
+    >
+      Bottom
+    </Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Types"
   desc="Different state."
-  scope={{ Tooltip, Spacer, Code, Text }}
+  scope={{ Tooltip, Grid, Code, Text }}
   code={`
-<div>
-  <Tooltip text="Perfect for working with a CMS." type="dark">
-    <span>Dark</span>
-  </Tooltip>
-  <Spacer inline w={1.5} />
-  <Tooltip text="Perfect for working with a CMS." type="success">
-    <span>Success</span>
-  </Tooltip>
-  <Spacer inline w={1.5} />
-  <Tooltip text="Perfect for working with a CMS." type="warning">
-    <span>Warning</span>
-  </Tooltip>
-  <Spacer inline w={1.5} />
-  <Tooltip text="Perfect for working with a CMS." type="error">
-    <span>Error</span>
-  </Tooltip>
-  <Spacer inline w={1.5} />
-  <Tooltip text="Perfect for working with a CMS." type="secondary">
-    <span>Secondary</span>
-  </Tooltip>
-</div>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip text="Perfect for working with a CMS." type="dark">
+      Dark
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text="Perfect for working with a CMS." type="success">
+      Success
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text="Perfect for working with a CMS." type="warning">
+      Warning
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text="Perfect for working with a CMS." type="error">
+      Error
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text="Perfect for working with a CMS." type="secondary">
+      Secondary
+    </Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Variant"
   desc="Special styles."
-  scope={{ Tooltip, Spacer, Code, Text }}
+  scope={{ Tooltip, Grid, Code, Text }}
   code={`
-<div>
-  <Tooltip text="Push to Git and your website is live." type="lite">
-    <span>Lite</span>
-  </Tooltip>
-  <Spacer inline w={2.5} />
-  <Tooltip text="Push to Git and your website is live." hideArrow>
-    <span>No Arrow</span>
-  </Tooltip>
-</div>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tooltip text="Push to Git and your website is live." type="lite">
+      Lite
+    </Tooltip>
+  </Grid>
+  <Grid>
+    <Tooltip text="Push to Git and your website is live." hideArrow>
+      No Arrow
+    </Tooltip>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Placements"
   desc="There are 12 `placement` options available."
-  scope={{ Tooltip, Spacer, Grid }}
+  scope={{ Tooltip, Grid }}
   code={`
 () => {
   const text = 'HTTP is stateless, but not sessionless'
   return (
-    <Grid.Container gap={1.5} justify="center" alignItems="center">
+    <Grid.Container gap={2} justify="center" alignItems="center">
       <Grid xs={4} justify="flex-end">
-        <Tooltip text={text} placement="topStart" type="dark">topStart</Tooltip>
+        <Tooltip text={text} placement="topStart" type="dark">
+          topStart
+        </Tooltip>
       </Grid>
       <Grid xs={4} justify="center">
-        <Tooltip text={text} placement="top" type="dark">top</Tooltip>
+        <Tooltip text={text} placement="top" type="dark">
+          top
+        </Tooltip>
       </Grid>
       <Grid xs={4}>
-        <Tooltip text={text} placement="topEnd" type="dark">topEnd</Tooltip>
+        <Tooltip text={text} placement="topEnd" type="dark">
+          topEnd
+        </Tooltip>
       </Grid>
       <Grid xs={3} justify="flex-end">
-        <Tooltip text={text} placement="leftStart" type="dark">leftStart</Tooltip>
+        <Tooltip text={text} placement="leftStart" type="dark">
+          leftStart
+        </Tooltip>
       </Grid>
       <Grid xs={6} />
       <Grid xs={3}>
-        <Tooltip text={text} placement="rightStart" type="dark">rightStart</Tooltip>
+        <Tooltip text={text} placement="rightStart" type="dark">
+          rightStart
+        </Tooltip>
       </Grid>
       <Grid xs={3} justify="flex-end">
-        <Tooltip text={text} placement="left" type="dark">left</Tooltip>
+        <Tooltip text={text} placement="left" type="dark">
+          left
+        </Tooltip>
       </Grid>
       <Grid xs={6} />
       <Grid xs={3}>
-        <Tooltip text={text} placement="right" type="dark">right</Tooltip>
+        <Tooltip text={text} placement="right" type="dark">
+          right
+        </Tooltip>
       </Grid>
       <Grid xs={3} justify="flex-end">
-        <Tooltip text={text} placement="leftEnd" type="dark">leftEnd</Tooltip>
+        <Tooltip text={text} placement="leftEnd" type="dark">
+          leftEnd
+        </Tooltip>
       </Grid>
       <Grid xs={6} />
       <Grid xs={3}>
-        <Tooltip text={text} placement="rightEnd" type="dark">rightEnd</Tooltip>
+        <Tooltip text={text} placement="rightEnd" type="dark">
+          rightEnd
+        </Tooltip>
       </Grid>
       <Grid xs={4} justify="flex-end">
-        <Tooltip text={text} placement="bottomStart" type="dark">bottomStart</Tooltip>
+        <Tooltip text={text} placement="bottomStart" type="dark">
+          bottomStart
+        </Tooltip>
       </Grid>
       <Grid xs={4} justify="center">
-        <Tooltip text={text} placement="bottom" type="dark">bottom</Tooltip>
+        <Tooltip text={text} placement="bottom" type="dark">
+          bottom
+        </Tooltip>
       </Grid>
       <Grid xs={4}>
-        <Tooltip text={text} placement="bottomEnd" type="dark">bottomEnd</Tooltip>
+        <Tooltip text={text} placement="bottomEnd" type="dark">
+          bottomEnd
+        </Tooltip>
       </Grid>
     </Grid.Container>
   )
