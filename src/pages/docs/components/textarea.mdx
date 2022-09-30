@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Textarea, Spacer, useInput, Button, Code } from 'core'
+import { Textarea, Grid, useInput, Button, Code } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -17,46 +17,59 @@ Retrieve multi-line user input.
 
 <Playground
   desc="Basic usage."
-  scope={{ Textarea }}
+  scope={{ Textarea, Grid }}
   code={`
-<Textarea placeholder="Enter a message." />
+<Grid.Container gap={2}>
+  <Grid>
+    <Textarea placeholder="Enter a message." />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
   desc="Disable interactive textarea."
-  scope={{ Textarea }}
+  scope={{ Textarea, Grid }}
   code={`
-<Textarea
-  width="100%"
-  disabled
-  placeholder="This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated."
-/>
+<Grid.Container gap={2}>
+  <Grid>
+    <Textarea
+      width="100%"
+      disabled
+      placeholder="This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated."
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Textarea, Spacer }}
+  scope={{ Textarea, Grid }}
   code={`
-<>
-  <Textarea type="success" height="65px" value="Success" />
-  <Spacer w={0.5} inline />
-  <Textarea type="secondary" height="65px" value="Secondary" />
-  <Spacer h={0.5} />
-  <Textarea type="warning" height="65px" value="Warning" />
-  <Spacer w={0.5} inline />
-  <Textarea type="error" height="65px" value="Error" />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Textarea type="success" height="65px" value="Success" />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" value="Secondary" />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" value="Warning" />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" value="Error" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Get Change"
   desc="Capture changes in textarea."
-  scope={{ Textarea, useState }}
+  scope={{ Textarea, Grid, useState }}
   code={`
 () => {
   const [value, setValue] = useState()
@@ -65,12 +78,16 @@ Retrieve multi-line user input.
     console.log(e.target.value)
   }
   return (
-    <Textarea
-      width="100%"
-      value={value}
-      onChange={handler}
-      placeholder="This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated."
-    />
+    <Grid.Container gap={2}>
+      <Grid>
+        <Textarea
+          width="100%"
+          value={value}
+          onChange={handler}
+          placeholder="This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated."
+        />
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -79,29 +96,33 @@ Retrieve multi-line user input.
 <Playground
   title="With useInput"
   desc="Use `hooks` to capture changes."
-  scope={{ Textarea, useInput, Button, Spacer }}
+  scope={{ Textarea, useInput, Button, Grid }}
   code={`
 () => {
   const { setState, reset, bindings } = useInput(
     'This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated.'
   )
   return (
-    <>
-      <Textarea width="100%" {...bindings} />
-      <Spacer h={0.5} />
-      <Button
-        auto
-        type="secondary"
-        scale={1 / 3}
-        onClick={() => setState(Math.random().toString(32))}
-      >
-        insert value
-      </Button>
-      <Spacer h={0.5} />
-      <Button auto scale={1 / 3} onClick={() => reset()}>
-        clear value
-      </Button>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Textarea width="100%" {...bindings} />
+      </Grid>
+      <Grid>
+        <Button
+          auto
+          type="secondary"
+          scale={1 / 3}
+          onClick={() => setState(Math.random().toString(32))}
+        >
+          insert value
+        </Button>
+      </Grid>
+      <Grid>
+        <Button auto scale={1 / 3} onClick={() => reset()}>
+          clear value
+        </Button>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -110,7 +131,7 @@ Retrieve multi-line user input.
 <Playground
   title="Imperative API"
   desc="Update component in an uncontrolled way."
-  scope={{ Textarea, Spacer, Button }}
+  scope={{ Textarea, Grid, Button }}
   code={`
 () => {
   const ref = React.useRef(null)
@@ -118,11 +139,14 @@ Retrieve multi-line user input.
     ref && (ref.current.value = Math.random().toString(32))
   }
   return (
-    <>
-      <Textarea initialValue="Text Here" onChange={e => console.log(e.target.value)} ref={ref} />
-      <Spacer h={.5} />
-      <Button auto type="secondary" scale={1/3} onClick={setChange}>Set Value</Button>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Textarea initialValue="Text Here" onChange={e => console.log(e.target.value)} ref={ref} />
+      </Grid>
+      <Grid>
+        <Button auto type="secondary" scale={1/3} onClick={setChange}>Set Value</Button>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
