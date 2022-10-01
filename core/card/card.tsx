@@ -70,7 +70,6 @@ function CardComponent({
           box-sizing: border-box;
           color: ${color};
           background-color: ${bgColor};
-          border: 1px solid ${borderColor};
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
           padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}

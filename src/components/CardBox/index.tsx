@@ -28,8 +28,7 @@ function CardBox({ title, description, icon, hover = false }: Props) {
           className={`${hover && 'card-box'}`}
           padding={1}
           style={{
-            background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
-            border: 'none'
+            background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
           }}
         >
           <Row align="middle">
