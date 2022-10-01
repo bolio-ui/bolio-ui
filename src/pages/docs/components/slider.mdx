@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Slider, Spacer } from 'core'
+import { Slider, Grid } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -17,78 +17,98 @@ Display the current value and an inputable range.
 
 <Playground
   desc="Accept clicks or drag actions."
-  scope={{ Slider }}
+  scope={{ Slider, Grid }}
   code={`
-<Slider initialValue={40} />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Slider initialValue={40} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Slider, Spacer }}
+  scope={{ Slider, Grid }}
   code={`
-<>
-  <Slider type="default" initialValue={40} />
-  <Spacer />
-  <Slider type="success" initialValue={60} />
-  <Spacer />
-  <Slider type="warning" initialValue={10} />
-  <Spacer />
-  <Slider type="error" initialValue={80} />
-</>
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Slider type="default" initialValue={40} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Slider type="success" initialValue={60} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Slider type="warning" initialValue={10} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Slider type="error" initialValue={80} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
   desc="Do not respond to drag and click."
-  scope={{ Slider }}
+  scope={{ Slider, Grid }}
   code={`
-<Slider initialValue={50} disabled />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Slider initialValue={50} disabled />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Step"
   desc="Different granularity."
-  scope={{ Slider }}
+  scope={{ Slider, Grid }}
   code={`
-<Slider step={10} showMarkers width="75%" />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Slider step={10} showMarkers width="75%" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Range"
   desc="Specifies the maximum or minimum value of the Slider."
-  scope={{ Slider, Spacer }}
+  scope={{ Slider, Grid }}
   code={`
-<>
-  <Slider
-    step={5}
-    max={50}
-    min={10}
-    initialValue={25}
-    showMarkers
-    width="75%"
-  />
-  <Spacer />
-  <Slider
-    step={0.2}
-    max={1}
-    min={0.2}
-    initialValue={0.4}
-    showMarkers
-    width="75%"
-  />
-</>
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Slider
+      step={5}
+      max={50}
+      min={10}
+      initialValue={25}
+      showMarkers
+      width="75%"
+    />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Slider
+      step={0.2}
+      max={1}
+      min={0.2}
+      initialValue={0.4}
+      showMarkers
+      width="75%"
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Event"
   desc="Get event when slide."
-  scope={{ Slider, useState }}
+  scope={{ Slider, Grid, useState }}
   code={`
 () => {
   const [value, setValue] = useState()
@@ -96,7 +116,13 @@ Display the current value and an inputable range.
     console.log(val)
     setValue(val)
   }
-  return <Slider value={value} onChange={handler} width="50%" />
+  return (
+    <Grid.Container gap={2}>
+      <Grid xs={12} md={12}>
+        <Slider value={value} onChange={handler} width="50%" />
+      </Grid>
+    </Grid.Container>
+  )
 }
 `}
 />

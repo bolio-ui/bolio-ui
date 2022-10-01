@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Rating, Grid, Spacer } from 'core'
+import { Rating, Grid } from 'core'
 import { useState } from 'react'
 import { Umbrella, Zap } from '@bolio-ui/icons'
 
@@ -26,17 +26,17 @@ Display an indicator of rankings with stars.
   const [locked, setLocked] = useState(false)
   return (
     <Grid.Container gap={2}>
-      <Grid xs={12} md={4} justify="center">
+      <Grid>
         <Rating
           onLockedChange={setLocked}
           value={value}
           onValueChange={setValue}
         />
       </Grid>
-      <Grid xs={6} md={4} justify="center">
+      <Grid>
         Selection: {value}
       </Grid>
-      <Grid xs={6} md={4} justify="center">
+      <Grid>
         Locked: {locked ? 'true' : 'false'}
       </Grid>
     </Grid.Container>
@@ -50,14 +50,14 @@ Display an indicator of rankings with stars.
   desc="Pass the property `type` to the Rating component."
   scope={{ Rating, Grid }}
   code={`
-<Grid.Container gap={2} justify="center">
-  <Grid xs={12} sm={6} md={4} justify="center">
+<Grid.Container gap={2}>
+  <Grid>
     <Rating type="success" />
   </Grid>
-  <Grid xs={12} sm={6} md={4} justify="center">
+  <Grid>
     <Rating type="error" />
   </Grid>
-  <Grid xs={12} sm={6} md={4} justify="center">
+  <Grid>
     <Rating type="warning" />
   </Grid>
 </Grid.Container>
@@ -67,28 +67,35 @@ Display an indicator of rankings with stars.
 <Playground
   title="Custom Amount"
   desc="Customize the amount of stars."
-  scope={{ Rating, Spacer }}
+  scope={{ Rating, Grid }}
   code={`
-<>
-  <Rating count={2} />
-  <Spacer h={0.5} />
-  <Rating value={3} count={6} />
-  <Spacer h={0.5} />
-  <Rating value={4} count={8} />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Rating count={2} />
+  </Grid>
+  <Grid>
+    <Rating value={3} count={6} />
+  </Grid>
+  <Grid>
+    <Rating value={4} count={8} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Icon"
   desc="Customize the icons of a rating."
-  scope={{ Rating, Umbrella, Zap, Spacer }}
+  scope={{ Rating, Umbrella, Zap, Grid }}
   code={`
-  <>
+<Grid.Container gap={2}>
+  <Grid>
     <Rating value={4} count={6} type="success" icon={<Umbrella />} />
-    <Spacer h={0.5} />
+  </Grid>
+  <Grid>
     <Rating count={7} type="error" icon={<Zap />} />
-  </>
+  </Grid>
+</Grid.Container>
 `}
 />
 

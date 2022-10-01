@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Page, Button } from 'core'
+import { Page, Button, Grid } from 'core'
 import { Layout, Playground, Attributes } from 'src/components'
 import MockPage from 'core/mdx-widgets/mock-page'
 
@@ -17,7 +17,7 @@ Container of general for display page content.
 
 <Playground
   desc="The content will be displayed in the center."
-  scope={{ Page, MockPage, Button }}
+  scope={{ Page, MockPage, Button, Grid }}
   code={`
 () => {
   const Child = () => (
@@ -28,16 +28,18 @@ Container of general for display page content.
   )
   const [visible, setVisible] = React.useState(false)
   return (
-    <>
-      <Button onClick={() => setVisible(true)} auto>
-        View Page
-      </Button>
-      <MockPage visible={visible} onClose={() => setVisible(false)}>
-        <Page>
-          <Child />
-        </Page>
-      </MockPage>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button onClick={() => setVisible(true)} auto>
+          View Page
+        </Button>
+        <MockPage visible={visible} onClose={() => setVisible(false)}>
+          <Page>
+            <Child />
+          </Page>
+        </MockPage>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -46,30 +48,32 @@ Container of general for display page content.
 <Playground
   title="Content"
   desc="Add `Header` and `Footer` for better layout."
-  scope={{ Page, MockPage, Button }}
+  scope={{ Page, MockPage, Button, Grid }}
   code={`
 () => {
   const [visible, setVisible] = React.useState(false)
   return (
-    <>
-      <Button onClick={() => setVisible(true)} auto>
-        Header, Body and Footer
-      </Button>
-      <MockPage visible={visible} onClose={() => setVisible(false)}>
-        <Page>
-          <Page.Header>
-            <h2>Header</h2>
-          </Page.Header>
-          <Page.Content>
-            <h2>Hi my dear!</h2>
-            <p>This is an example to show the body of a page.</p>
-          </Page.Content>
-          <Page.Footer>
-            <h2>Footer</h2>
-          </Page.Footer>
-        </Page>
-      </MockPage>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button onClick={() => setVisible(true)} auto>
+          Header, Body and Footer
+        </Button>
+        <MockPage visible={visible} onClose={() => setVisible(false)}>
+          <Page>
+            <Page.Header>
+              <h2>Header</h2>
+            </Page.Header>
+            <Page.Content>
+              <h2>Hi my dear!</h2>
+              <p>This is an example to show the body of a page.</p>
+            </Page.Content>
+            <Page.Footer>
+              <h2>Footer</h2>
+            </Page.Footer>
+          </Page>
+        </MockPage>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
