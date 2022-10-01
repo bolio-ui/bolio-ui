@@ -279,7 +279,8 @@ const Navigation: React.FC = () => {
             ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
           backdrop-filter: saturate(180%) blur(10px);
-          transition: box-shadow 0.2s ease;
+          transition: box-shadow 1s ease;
+          transition: backdrop-filter 1s ease;
           padding-left: 15px;
           padding-right: 15px;
         }
