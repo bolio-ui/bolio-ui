@@ -27,7 +27,6 @@ export const ProfileCard = () => {
         }}
         className="profile_card_hero"
         width="100%"
-        shadow
       >
         <Row align="middle">
           <Col span={4}>
@@ -154,11 +153,9 @@ export const Search = () => {
         font={1}
         width="100%"
         className="search_hero"
+        backgroundColor="rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%"
       />
       <style global jsx>{`
-        .input-wrapper {
-          background: rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%;
-        }
         .search_hero {
           animation: levitating 6s ease-in-out infinite;
         }
@@ -245,7 +242,6 @@ export const InfoCard = ({ title, quantity, info, icon }: InfoCardProps) => {
         className="info_card_hero"
         width="100%"
         height="185px"
-        shadow
       >
         <Badge
           style={{
@@ -305,7 +301,6 @@ export const FollowersCard = () => {
         }}
         className="followers_card_hero"
         width="100%"
-        shadow
       >
         <Row align="middle" justify="space-between">
           <Badge
@@ -368,7 +363,6 @@ export const Player = () => {
         }}
         className="player_card_hero"
         width="100%"
-        shadow
       >
         <Row justify="space-between">
           <Button
