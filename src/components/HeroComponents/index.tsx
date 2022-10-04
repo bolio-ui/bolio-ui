@@ -148,7 +148,7 @@ export const Search = () => {
     <>
       <Input
         icon={<Icons.Search />}
-        placeholder={'Search'}
+        placeholder="Search"
         height={1.1}
         font={1}
         width="100%"
