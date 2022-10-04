@@ -68,7 +68,7 @@ function Home() {
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
                 <NextLink href={'/docs/guide/getting-started'} passHref>
-                  <Button type="info" width="100%">
+                  <Button type="secondary-light" width="100%">
                     Get Started
                   </Button>
                 </NextLink>

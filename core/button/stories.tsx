@@ -55,13 +55,13 @@ export const Shadow: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Button auto type="secondary">
-        Secondary
+      <Button auto type="primary">
+        Primary
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="info">
-        Info
+      <Button auto type="secondary">
+        Secondary
       </Button>
     </Grid>
     <Grid>
@@ -80,18 +80,23 @@ export const Types: Story = () => (
       </Button>
     </Grid>
     <Grid>
+      <Button auto type="info">
+        Error
+      </Button>
+    </Grid>
+    <Grid>
       <Button auto type="abort">
         Abort
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="secondary-light">
-        Secondary Light
+      <Button auto type="primary-light">
+        Primary Light
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="info-light">
-        Info Light
+      <Button auto type="secondary-light">
+        Secondary Light
       </Button>
     </Grid>
     <Grid>
@@ -107,6 +112,11 @@ export const Types: Story = () => (
     <Grid>
       <Button auto type="error-light">
         Error Light
+      </Button>
+    </Grid>
+    <Grid>
+      <Button auto type="info-light">
+        Info Light
       </Button>
     </Grid>
   </Grid.Container>
