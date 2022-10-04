@@ -1,4 +1,6 @@
 export interface BolioUIThemesPalette {
+  background: string
+  foreground: string
   accents_1: string
   accents_2: string
   accents_3: string
@@ -7,8 +9,6 @@ export interface BolioUIThemesPalette {
   accents_6: string
   accents_7: string
   accents_8: string
-  background: string
-  foreground: string
   selection: string
   secondary: string
   code: string

@@ -160,7 +160,7 @@ const ButtonComponent = React.forwardRef<
         .btn {
           box-sizing: border-box;
           display: inline-block;
-          line-height: ${SCALES.height(2.5)};
+          /* line-height: ${SCALES.height(2.5)}; */
           border-radius: ${theme.layout.radius};
           font-weight: 400;
           font-size: ${SCALES.font(0.875)};
