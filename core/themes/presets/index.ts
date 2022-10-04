@@ -10,17 +10,20 @@ export interface BolioUIThemesPalette {
   accents_7: string
   accents_8: string
   selection: string
-  secondary: string
   code: string
   border: string
   success: string
   successLighter: string
   successLight: string
   successDark: string
-  info: string
-  infoLighter: string
-  infoLight: string
-  infoDark: string
+  primary: string
+  primaryLighter: string
+  primaryLight: string
+  primaryDark: string
+  secondary: string
+  secondaryLighter: string
+  secondaryLight: string
+  secondaryDark: string
   error: string
   errorLighter: string
   errorLight: string
@@ -29,17 +32,12 @@ export interface BolioUIThemesPalette {
   warningLighter: string
   warningLight: string
   warningDark: string
-  cyan: string
-  cyanLighter: string
-  cyanLight: string
-  cyanDark: string
-  violet: string
-  violetLighter: string
-  violetLight: string
-  violetDark: string
+  info: string
+  infoLighter: string
+  infoLight: string
+  infoDark: string
   link: string
   purple: string
-  magenta: string
   alert: string
   pre: string
 }

@@ -71,7 +71,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_4};
           }
           .method.function.property-access {
-            color: ${theme.palette.info};
+            color: ${theme.palette.primary};
           }
           .property-access {
             color: ${theme.palette.accents_1};
@@ -80,7 +80,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_1};
           }
           .function {
-            color: ${theme.palette.info};
+            color: ${theme.palette.primary};
           }
           .parameter {
             color: ${theme.palette.accents_1};

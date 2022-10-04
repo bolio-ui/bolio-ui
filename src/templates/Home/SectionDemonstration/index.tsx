@@ -41,13 +41,7 @@ function SectionCTA() {
               <Grid.Container gap={2} xs={12} alignItems="center">
                 <Grid xs={12} sm={3}>
                   <NextLink href={'/docs/guide/getting-started'} passHref>
-                    <Button
-                      style={{
-                        background: '#c25fff',
-                        color: theme.palette.foreground
-                      }}
-                      width="100%"
-                    >
+                    <Button type="secondary-light" width="100%">
                       Get Started
                     </Button>
                   </NextLink>
@@ -116,14 +110,7 @@ function SectionCTA() {
             <Grid mt={2}>
               <Col>
                 <NextLink href={'/docs/components/'} passHref>
-                  <Button
-                    style={{
-                      background: '#c25fff',
-                      color: theme.palette.foreground
-                    }}
-                  >
-                    More components
-                  </Button>
+                  <Button type="secondary-light">More components</Button>
                 </NextLink>
               </Col>
             </Grid>

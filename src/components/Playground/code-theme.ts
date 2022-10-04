@@ -42,7 +42,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     {
       types: ['property', 'function'],
       style: {
-        color: theme.palette.info
+        color: theme.palette.primary
       }
     },
     {
@@ -87,7 +87,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     {
       types: ['language-javascript', 'script'],
       style: {
-        color: theme.palette.info
+        color: theme.palette.primary
       }
     },
     {
