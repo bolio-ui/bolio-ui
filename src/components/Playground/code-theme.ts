@@ -75,7 +75,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
         'variable'
       ],
       style: {
-        color: theme.palette.violetLighter
+        color: theme.palette.secondaryLighter
       }
     },
     {
