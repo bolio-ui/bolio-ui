@@ -136,8 +136,8 @@ const ButtonComponent = React.forwardRef<
     [auto, children, icon, iconRight]
   )
   const [paddingLeft, paddingRight] = [
-    auto ? SCALES.pl(1.15) : SCALES.pl(2.5),
-    auto ? SCALES.pr(1.15) : SCALES.pr(2.5)
+    auto ? SCALES.pl(1.15) : SCALES.pl(1.15),
+    auto ? SCALES.pr(1.15) : SCALES.pr(1.15)
   ]
 
   return (

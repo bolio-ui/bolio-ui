@@ -41,7 +41,7 @@ function SectionCTA() {
               <Grid.Container gap={2} xs={12} alignItems="center">
                 <Grid xs={12} sm={3}>
                   <NextLink href={'/docs/guide/getting-started'} passHref>
-                    <Button type="secondary-light" width="100%">
+                    <Button type="secondary-light" auto>
                       Get Started
                     </Button>
                   </NextLink>
@@ -52,10 +52,6 @@ function SectionCTA() {
                     toastType="secondary"
                     text="yarn add @bolio-ui/core"
                     width="100%"
-                    style={{
-                      background:
-                        'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-                    }}
                   />
                 </Grid>
               </Grid.Container>

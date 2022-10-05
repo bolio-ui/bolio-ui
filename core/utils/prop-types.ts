@@ -31,10 +31,12 @@ const normalTypes = tuple(
 
 const snippetTypes = tuple(
   'default',
+  'primary',
   'secondary',
   'success',
   'warning',
   'error',
+  'info',
   'dark',
   'lite'
 )

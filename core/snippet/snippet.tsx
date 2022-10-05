@@ -37,7 +37,7 @@ function SnippetComponent({
   children,
   symbol = '$',
   toastText = 'Copied!',
-  toastType = 'success' as ToastTypes,
+  toastType = 'primary' as ToastTypes,
   text,
   copy: copyType,
   className = '',
