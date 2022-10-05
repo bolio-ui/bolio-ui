@@ -80,8 +80,8 @@ Used to trigger an operation.
 />
 
 <Playground
-  title="Types"
-  desc="Different state."
+  title="Type Colors"
+  desc="You can change the color of the `Button` with the property `type`."
   scope={{ Button, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -120,6 +120,16 @@ Used to trigger an operation.
       Abort
     </Button>
   </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Lighted"
+  desc="Different state."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
   <Grid>
     <Button auto type="primary-light">
       Primary Light
@@ -363,15 +373,19 @@ Used to trigger an operation.
 ```ts
 type ButtonTypes =
   | 'default'
+  | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
+  | 'info'
   | 'abort'
+  | 'primary-light'
   | 'secondary-light'
   | 'success-light'
   | 'warning-light'
   | 'error-light'
+  | 'info-light'
 ```
 
 </Attributes>

@@ -200,7 +200,7 @@ const ButtonComponent = React.forwardRef<
           color: ${hover.color};
           --bolio-ui-button-color: ${hover.color};
           background-color: ${hover.bg};
-          border-color: ${hover.border};
+          /* border-color: ${hover.border}; */
           cursor: ${cursor};
           pointer-events: ${events};
         }
