@@ -43,7 +43,7 @@ Used to trigger an operation.
     </Button>
   </Grid>
   <Grid>
-    <Button loading auto type="success" scale={2 / 3}>
+    <Button loading auto type="primary" scale={2 / 3}>
       Button
     </Button>
   </Grid>
@@ -71,7 +71,7 @@ Used to trigger an operation.
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Button shadow type="secondary">
+    <Button shadow type="primary">
       Button Shadow
     </Button>
   </Grid>
@@ -187,6 +187,46 @@ Used to trigger an operation.
   </Grid>
   <Grid>
     <Button type="info" ghost auto>
+      Info
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Rounded"
+  desc="You can completely round the corners of any type of `Button` with the `rounded` property."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button type="primary" rounded auto>
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="secondary" rounded auto>
+      Secondary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="success" rounded auto>
+      Success
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="warning" rounded auto>
+      Warning
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="error" rounded auto>
+      Error
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="info" rounded auto>
       Info
     </Button>
   </Grid>

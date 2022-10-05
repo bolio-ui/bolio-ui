@@ -60,7 +60,9 @@ export const CustomColor: Story = () => {
         <Badge style={{ backgroundColor: theme.palette.purple }}>Purple</Badge>
       </Grid>
       <Grid>
-        <Badge style={{ backgroundColor: theme.palette.violet }}>Violet</Badge>
+        <Badge style={{ backgroundColor: theme.palette.secondary }}>
+          Violet
+        </Badge>
       </Grid>
     </Grid.Container>
   )
