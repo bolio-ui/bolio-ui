@@ -13,6 +13,9 @@ export const getColors = (
     default: {
       bg: palette.success
     },
+    primary: {
+      bg: palette.primary
+    },
     secondary: {
       bg: palette.secondary
     },
@@ -24,6 +27,9 @@ export const getColors = (
     },
     error: {
       bg: palette.error
+    },
+    info: {
+      bg: palette.info
     }
   }
 

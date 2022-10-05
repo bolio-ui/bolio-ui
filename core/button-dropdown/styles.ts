@@ -22,12 +22,19 @@ export const getColor = (
       hoverBgColor: palette.accents_1,
       hoverBorder: palette.accents_2
     },
+    primary: {
+      color: palette.background,
+      bgColor: palette.primary,
+      borderLeftColor: palette.primaryDark,
+      hoverBgColor: palette.primaryDark,
+      hoverBorder: palette.primaryDark
+    },
     secondary: {
       color: palette.background,
-      bgColor: palette.foreground,
-      borderLeftColor: palette.accents_7,
-      hoverBgColor: palette.accents_7,
-      hoverBorder: palette.accents_7
+      bgColor: palette.secondary,
+      borderLeftColor: palette.secondaryDark,
+      hoverBgColor: palette.secondaryDark,
+      hoverBorder: palette.secondaryDark
     },
     success: {
       color: palette.background,
@@ -49,6 +56,13 @@ export const getColor = (
       borderLeftColor: palette.errorDark,
       hoverBgColor: palette.errorDark,
       hoverBorder: palette.errorDark
+    },
+    info: {
+      color: palette.background,
+      bgColor: palette.info,
+      borderLeftColor: palette.infoDark,
+      hoverBgColor: palette.infoDark,
+      hoverBorder: palette.infoDark
     }
   }
 

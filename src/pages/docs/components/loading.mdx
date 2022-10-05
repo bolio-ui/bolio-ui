@@ -45,16 +45,22 @@ Indicate an action running in the background.
   code={`
 <Grid.Container gap={2}>
   <Grid xs={3} md={3}>
-    <Loading type="success" />
+    <Loading type="primary" />
   </Grid>
   <Grid xs={3} md={3}>
     <Loading type="secondary" />
+  </Grid>
+  <Grid xs={3} md={3}>
+    <Loading type="success" />
   </Grid>
   <Grid xs={3} md={3}>
     <Loading type="warning" />
   </Grid>
   <Grid xs={3} md={3}>
     <Loading type="error" />
+  </Grid>
+  <Grid xs={3} md={3}>
+    <Loading type="info" />
   </Grid>
 </Grid.Container>
 `}
@@ -89,7 +95,14 @@ Indicate an action running in the background.
 <Attributes.Title>LoadingTypes</Attributes.Title>
 
 ```ts
-type LoadingTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type LoadingTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

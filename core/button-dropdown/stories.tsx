@@ -47,6 +47,11 @@ export const Disabled: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
+      <ButtonDropdown type="primary" scale={0.5}>
+        <ButtonDropdown.Item main>Primary Button</ButtonDropdown.Item>
+      </ButtonDropdown>
+    </Grid>
+    <Grid>
       <ButtonDropdown type="secondary" scale={0.5}>
         <ButtonDropdown.Item main>Secondary Button</ButtonDropdown.Item>
       </ButtonDropdown>
@@ -64,6 +69,11 @@ export const Types: Story = () => (
     <Grid>
       <ButtonDropdown type="error" scale={0.5}>
         <ButtonDropdown.Item main>Error Button</ButtonDropdown.Item>
+      </ButtonDropdown>
+    </Grid>
+    <Grid>
+      <ButtonDropdown type="info" scale={0.5}>
+        <ButtonDropdown.Item main>Info Button</ButtonDropdown.Item>
       </ButtonDropdown>
     </Grid>
   </Grid.Container>

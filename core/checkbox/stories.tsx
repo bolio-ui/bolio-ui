@@ -43,6 +43,16 @@ export const Type: Story = () => (
       </Checkbox>
     </Grid>
     <Grid>
+      <Checkbox checked={true} type="primary">
+        Checkbox Primary
+      </Checkbox>
+    </Grid>
+    <Grid>
+      <Checkbox checked={true} type="secondary">
+        Checkbox Secondary
+      </Checkbox>
+    </Grid>
+    <Grid>
       <Checkbox checked={true} type="success">
         Checkbox Success
       </Checkbox>
@@ -55,6 +65,11 @@ export const Type: Story = () => (
     <Grid>
       <Checkbox checked={true} type="error">
         Checkbox Error
+      </Checkbox>
+    </Grid>
+    <Grid>
+      <Checkbox checked={true} type="info">
+        Checkbox Info
       </Checkbox>
     </Grid>
   </Grid.Container>

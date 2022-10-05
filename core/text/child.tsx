@@ -13,10 +13,12 @@ export interface Props {
 const getTypeColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
   const colors: { [key in NormalTypes]: string } = {
     default: 'inherit',
+    primary: palette.primary,
     secondary: palette.secondary,
     success: palette.success,
     warning: palette.warning,
-    error: palette.error
+    error: palette.error,
+    info: palette.info
   }
 
   return colors[type] || colors.default

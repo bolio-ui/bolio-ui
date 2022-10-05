@@ -32,10 +32,12 @@ const getCurrentColor = (
 ): string => {
   const defaultColors: { [key in ProgressTypes]: string } = {
     default: palette.foreground,
+    primary: palette.primary,
     success: palette.success,
     secondary: palette.secondary,
     warning: palette.warning,
-    error: palette.error
+    error: palette.error,
+    info: palette.info
   }
   const colorKeys = Object.keys(colors)
   if (colorKeys.length === 0) return defaultColors[type]

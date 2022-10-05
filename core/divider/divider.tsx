@@ -19,12 +19,14 @@ export type DividerProps = Props & NativeAttrs
 const getColor = (type: DividerTypes, palette: BolioUIThemesPalette) => {
   const colors: { [key in DividerTypes]: string } = {
     default: palette.border,
-    lite: palette.accents_1,
+    primary: palette.primaryLight,
+    secondary: palette.secondaryLight,
     success: palette.successLight,
     warning: palette.warningLight,
     error: palette.errorLight,
-    secondary: palette.secondary,
-    dark: palette.foreground
+    info: palette.infoLight,
+    dark: palette.foreground,
+    lite: palette.accents_1
   }
   return colors[type]
 }
