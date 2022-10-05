@@ -20,7 +20,7 @@ export const makeToastActions = (
       auto
       scale={1 / 3}
       font="13px"
-      type={action.passive ? 'default' : 'secondary'}
+      type={action.passive ? 'default' : 'primary'}
       key={`action-${index}`}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
         handler(event, action.handler)
@@ -37,10 +37,12 @@ export const getColors = (
 ) => {
   const colors: { [key in NormalTypes]: string } = {
     default: palette.background,
+    primary: palette.primary,
     secondary: palette.secondary,
     success: palette.success,
     warning: palette.warning,
-    error: palette.error
+    error: palette.error,
+    info: palette.info
   }
   const isDefault = !type || type === 'default'
   if (isDefault)
