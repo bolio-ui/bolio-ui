@@ -23,6 +23,7 @@ import useClasses from '../use-classes'
 interface Props {
   type?: ButtonTypes
   ghost?: boolean
+  rounded?: boolean
   loading?: boolean
   shadow?: boolean
   auto?: boolean
@@ -39,6 +40,7 @@ const defaultProps = {
   type: 'default' as ButtonTypes,
   htmlType: 'button' as React.ButtonHTMLAttributes<unknown>['type'],
   ghost: false,
+  rounded: false,
   loading: false,
   shadow: false,
   auto: false,
@@ -73,6 +75,7 @@ const ButtonComponent = React.forwardRef<
     loading,
     shadow,
     ghost,
+    rounded,
     effect,
     onClick,
     auto,
@@ -161,7 +164,7 @@ const ButtonComponent = React.forwardRef<
           box-sizing: border-box;
           display: inline-block;
           /* line-height: ${SCALES.height(2.5)}; */
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           font-weight: 400;
           font-size: ${SCALES.font(0.875)};
           user-select: none;
