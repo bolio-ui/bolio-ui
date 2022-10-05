@@ -1,16 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import {
-  useTheme,
-  Text,
-  Container,
-  Grid,
-  Row,
-  Col,
-  Section,
-  Button,
-  Snippet
-} from 'core'
+import { Text, Container, Grid, Row, Col, Section, Button, Snippet } from 'core'
 
 interface Props {
   content: { title: string; description: string }
@@ -19,8 +9,6 @@ interface Props {
 export type HeroProps = Props
 
 function Hero({ content }: Props) {
-  const theme = useTheme()
-
   return (
     <Section py={4}>
       <Container>

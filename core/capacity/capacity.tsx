@@ -16,7 +16,7 @@ type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CapacityProps = Props & NativeAttrs
 
 const getColor = (val: number, palette: BolioUIThemesPalette): string => {
-  if (val < 33) return palette.cyan
+  if (val < 33) return palette.info
   if (val < 66) return palette.warning
   return palette.errorDark
 }
