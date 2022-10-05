@@ -39,14 +39,14 @@ function SectionCTA() {
                 components designed and built by Bolio UI.
               </Text>
               <Grid.Container gap={2} xs={12} alignItems="center">
-                <Grid xs={12} sm={3}>
+                <Grid xs={12} sm={4}>
                   <NextLink href={'/docs/guide/getting-started'} passHref>
-                    <Button type="secondary-light" auto>
+                    <Button type="secondary-light" w="100%">
                       Get Started
                     </Button>
                   </NextLink>
                 </Grid>
-                <Grid xs={12} sm={9}>
+                <Grid xs={12} sm={8}>
                   <Snippet
                     toastText="Code copied!"
                     toastType="secondary"

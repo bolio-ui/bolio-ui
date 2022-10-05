@@ -30,6 +30,12 @@ export const Text: Story = () => (
       <Dot>Canceled</Dot>
     </Grid>
     <Grid>
+      <Dot type="primary">Primary</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="secondary">Secondary</Dot>
+    </Grid>
+    <Grid>
       <Dot type="success">Ready</Dot>
     </Grid>
     <Grid>
@@ -37,6 +43,9 @@ export const Text: Story = () => (
     </Grid>
     <Grid>
       <Dot type="error">Error</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="info">Info</Dot>
     </Grid>
   </Grid.Container>
 )

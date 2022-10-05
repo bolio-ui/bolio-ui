@@ -69,16 +69,25 @@ export const BlockLabel: Story = () => (
 export const Type: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Input type="secondary" initialValue="Initial Value" />
+      <Input placeholder="Default" />
     </Grid>
     <Grid>
-      <Input type="success" initialValue="Initial Value" />
+      <Input type="primary" placeholder="Primary" />
     </Grid>
     <Grid>
-      <Input type="warning" initialValue="Initial Value" />
+      <Input type="secondary" placeholder="Secondary" />
     </Grid>
     <Grid>
-      <Input type="error" initialValue="Initial Value" />
+      <Input type="success" placeholder="Success" />
+    </Grid>
+    <Grid>
+      <Input type="warning" placeholder="Warning" />
+    </Grid>
+    <Grid>
+      <Input type="error" placeholder="Error" />
+    </Grid>
+    <Grid>
+      <Input type="info" placeholder="Info" />
     </Grid>
   </Grid.Container>
 )
