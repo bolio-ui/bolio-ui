@@ -44,7 +44,10 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
             border-radius: ${theme.layout.radius};
             color: ${theme.palette.error};
             font-size: 12px;
-            background-color: ${addColorAlpha(theme.palette.violetDark, 0.1)};
+            background-color: ${addColorAlpha(
+              theme.palette.secondaryDark,
+              0.1
+            )};
           }
         `}</style>
       </LiveProvider>

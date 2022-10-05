@@ -107,7 +107,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_1};
           }
           span.keyword {
-            color: ${theme.palette.violetLighter};
+            color: ${theme.palette.secondaryLighter};
           }
           span.plain-text {
             color: ${theme.palette.accents_1};
