@@ -3,16 +3,15 @@ import { Card, Grid, useTheme } from 'core'
 import { CardTypes } from 'core/utils/prop-types'
 
 const types = [
+  'default',
+  'primary',
   'secondary',
   'success',
   'warning',
   'error',
   'dark',
-  'alert',
-  'purple',
-  'violet',
-  'cyan',
-  'lite'
+  'lite',
+  'info'
 ]
 
 const Colors: React.FC<React.PropsWithChildren<unknown>> = () => {

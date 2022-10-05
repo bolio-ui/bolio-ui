@@ -41,16 +41,14 @@ const snippetTypes = tuple(
 
 const cardTypes = tuple(
   'default',
+  'primary',
   'secondary',
   'success',
   'warning',
   'error',
   'dark',
   'lite',
-  'alert',
-  'purple',
-  'violet',
-  'cyan'
+  'info'
 )
 
 const copyTypes = tuple('default', 'silent', 'prevent')

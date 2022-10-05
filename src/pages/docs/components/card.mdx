@@ -69,7 +69,7 @@ A common container component.
   scope={{ Card, Grid, Text }}
   code={`
 () => {
-  const types = ['secondary', 'success', 'warning', 'error', 'dark', 'alert', 'purple', 'violet', 'cyan']
+  const types = ['default', 'primary', 'secondary', 'success', 'warning', 'error', 'info', 'dark', 'lite']
   return (
     <Grid.Container gap={2}>
       {types.map((type) => (
@@ -142,7 +142,7 @@ A common container component.
       <Text h4 mb={0} mt={0}>
         Bolio UI
       </Text>
-      <Text type="secondary" small>
+      <Text type="primary" small>
         More creative and fun with amazing features for React.
       </Text>
       <Card.Footer>
@@ -217,16 +217,14 @@ A common container component.
 ```ts
 type CardType =
   | 'default'
+  | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
+  | 'info'
   | 'dark'
   | 'lite'
-  | 'alert'
-  | 'purple'
-  | 'violet'
-  | 'cyan'
 ```
 
 </Attributes>
