@@ -51,11 +51,11 @@ export const getStyles = (
     },
     violet: {
       color: 'white',
-      bgColor: palette.violet
+      bgColor: palette.secondary
     },
     cyan: {
       color: 'black',
-      bgColor: palette.cyan
+      bgColor: palette.info
     }
   }
   const showBorder = type === 'default' && !isShadow

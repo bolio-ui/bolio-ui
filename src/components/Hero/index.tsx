@@ -1,16 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import {
-  useTheme,
-  Text,
-  Container,
-  Grid,
-  Row,
-  Col,
-  Section,
-  Button,
-  Snippet
-} from 'core'
+import { Text, Container, Grid, Row, Col, Section, Button, Snippet } from 'core'
 
 interface Props {
   content: { title: string; description: string }
@@ -19,8 +9,6 @@ interface Props {
 export type HeroProps = Props
 
 function Hero({ content }: Props) {
-  const theme = useTheme()
-
   return (
     <Section py={4}>
       <Container>
@@ -37,13 +25,7 @@ function Hero({ content }: Props) {
         <Grid.Container gap={2} justify="center" alignItems="center">
           <Grid xs={12} sm={6} md={2}>
             <NextLink href={'/docs/guide/getting-started'} passHref>
-              <Button
-                style={{
-                  background: '#c25fff',
-                  color: theme.palette.foreground
-                }}
-                width="100%"
-              >
+              <Button type="secondary-light" width="100%">
                 Get Started
               </Button>
             </NextLink>

@@ -27,7 +27,7 @@ export const Loading: Story = () => (
       </Button>
     </Grid>
     <Grid>
-      <Button loading auto type="success" scale={2 / 3}>
+      <Button loading auto type="primary" scale={2 / 3}>
         Button
       </Button>
     </Grid>
@@ -45,7 +45,7 @@ export const Disabled: Story = () => (
 export const Shadow: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Button shadow type="secondary">
+      <Button shadow type="primary">
         Button Shadow
       </Button>
     </Grid>
@@ -55,13 +55,13 @@ export const Shadow: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Button auto type="secondary">
-        Secondary
+      <Button auto type="primary">
+        Primary
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="info">
-        Info
+      <Button auto type="secondary">
+        Secondary
       </Button>
     </Grid>
     <Grid>
@@ -80,18 +80,23 @@ export const Types: Story = () => (
       </Button>
     </Grid>
     <Grid>
+      <Button auto type="info">
+        Error
+      </Button>
+    </Grid>
+    <Grid>
       <Button auto type="abort">
         Abort
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="secondary-light">
-        Secondary Light
+      <Button auto type="primary-light">
+        Primary Light
       </Button>
     </Grid>
     <Grid>
-      <Button auto type="info-light">
-        Info Light
+      <Button auto type="secondary-light">
+        Secondary Light
       </Button>
     </Grid>
     <Grid>
@@ -107,6 +112,11 @@ export const Types: Story = () => (
     <Grid>
       <Button auto type="error-light">
         Error Light
+      </Button>
+    </Grid>
+    <Grid>
+      <Button auto type="info-light">
+        Info Light
       </Button>
     </Grid>
   </Grid.Container>
@@ -131,6 +141,31 @@ export const Ghost: Story = () => (
     </Grid>
     <Grid>
       <Button type="error" ghost auto scale={0.7}>
+        Error
+      </Button>
+    </Grid>
+  </Grid.Container>
+)
+
+export const Rounded: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Button type="secondary" rounded auto scale={0.7}>
+        Secondary
+      </Button>
+    </Grid>
+    <Grid>
+      <Button type="success" rounded auto scale={0.7}>
+        Success
+      </Button>
+    </Grid>
+    <Grid>
+      <Button type="warning" rounded auto scale={0.7}>
+        Warning
+      </Button>
+    </Grid>
+    <Grid>
+      <Button type="error" rounded auto scale={0.7}>
         Error
       </Button>
     </Grid>

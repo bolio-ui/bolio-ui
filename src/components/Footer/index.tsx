@@ -4,7 +4,7 @@ import { Heart } from '@bolio-ui/icons'
 
 function Footer() {
   return (
-    <Section padding={1}>
+    <Section padding={2}>
       <Container>
         <Grid.Container
           justify="center"
