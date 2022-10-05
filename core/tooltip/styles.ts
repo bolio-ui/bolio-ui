@@ -12,10 +12,12 @@ export const getColors = (
 ): TooltipColors => {
   const colors: { [key in SnippetTypes]: string } = {
     default: palette.background,
+    primary: palette.primary,
+    secondary: palette.secondary,
     success: palette.success,
     warning: palette.warning,
     error: palette.error,
-    secondary: palette.secondary,
+    info: palette.info,
     dark: palette.foreground,
     lite: palette.background
   }

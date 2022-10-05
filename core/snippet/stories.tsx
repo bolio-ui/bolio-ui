@@ -88,6 +88,22 @@ export const Filled: Story = () => (
     <Grid>
       <Snippet
         text="yarn add @bolio-ui/core"
+        type="primary"
+        filled
+        width="300px"
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="secondary"
+        filled
+        width="300px"
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
         type="success"
         filled
         width="300px"
@@ -112,7 +128,7 @@ export const Filled: Story = () => (
     <Grid>
       <Snippet
         text="yarn add @bolio-ui/core"
-        type="secondary"
+        type="info"
         filled
         width="300px"
       />

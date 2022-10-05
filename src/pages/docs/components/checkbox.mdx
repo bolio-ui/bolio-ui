@@ -63,6 +63,16 @@ Displays a boolean value.
     </Checkbox>
   </Grid>
   <Grid>
+    <Checkbox checked={true} type="primary">
+      Checkbox Primary
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox checked={true} type="secondary">
+      Checkbox Secondary
+    </Checkbox>
+  </Grid>
+  <Grid>
     <Checkbox checked={true} type="success">
       Checkbox Success
     </Checkbox>
@@ -75,6 +85,11 @@ Displays a boolean value.
   <Grid>
     <Checkbox checked={true} type="error">
       Checkbox Error
+    </Checkbox>
+  </Grid>
+  <Grid>
+    <Checkbox checked={true} type="info">
+      Checkbox Info
     </Checkbox>
   </Grid>
 </Grid.Container>
@@ -149,7 +164,14 @@ Displays a boolean value.
 <Attributes.Title>CheckboxTypes</Attributes.Title>
 
 ```ts
-type CheckboxTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type CheckboxTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 <Attributes.Title>CheckboxEvent</Attributes.Title>

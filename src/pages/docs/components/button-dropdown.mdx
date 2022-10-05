@@ -72,6 +72,11 @@ Display related but alternate actions for a button.
   code={`
 <Grid.Container gap={2}>
   <Grid>
+    <ButtonDropdown type="primary" scale={0.5}>
+      <ButtonDropdown.Item main>Primary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
     <ButtonDropdown type="secondary" scale={0.5}>
       <ButtonDropdown.Item main>Secondary Button</ButtonDropdown.Item>
     </ButtonDropdown>
@@ -89,6 +94,11 @@ Display related but alternate actions for a button.
   <Grid>
     <ButtonDropdown type="error" scale={0.5}>
       <ButtonDropdown.Item main>Error Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="info" scale={0.5}>
+      <ButtonDropdown.Item main>Info Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
 </Grid.Container>
@@ -157,10 +167,12 @@ Display related but alternate actions for a button.
 ```ts
 type ButtonDropdownTypes =
   | 'default'
+  | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
+  | 'info'
 ```
 
 </Attributes>

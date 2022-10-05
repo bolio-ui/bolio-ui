@@ -26,16 +26,22 @@ export const WithText: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid xs={3} md={3}>
-      <Loading type="success" />
+      <Loading type="primary" />
     </Grid>
     <Grid xs={3} md={3}>
       <Loading type="secondary" />
+    </Grid>
+    <Grid xs={3} md={3}>
+      <Loading type="success" />
     </Grid>
     <Grid xs={3} md={3}>
       <Loading type="warning" />
     </Grid>
     <Grid xs={3} md={3}>
       <Loading type="error" />
+    </Grid>
+    <Grid xs={3} md={3}>
+      <Loading type="info" />
     </Grid>
   </Grid.Container>
 )

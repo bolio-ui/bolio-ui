@@ -129,6 +129,22 @@ Display a snippet of copyable code for the command line.
   <Grid>
     <Snippet
       text="yarn add @bolio-ui/core"
+      type="primary"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="secondary"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
       type="success"
       filled
       width="300px"
@@ -153,7 +169,7 @@ Display a snippet of copyable code for the command line.
   <Grid>
     <Snippet
       text="yarn add @bolio-ui/core"
-      type="secondary"
+      type="info"
       filled
       width="300px"
     />
@@ -199,13 +215,27 @@ type CopyTypes = 'default' | 'silent' | 'prevent'
 <Attributes.Title>SnippetTypes</Attributes.Title>
 
 ```ts
-type SnippetTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type SnippetTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 <Attributes.Title>ToastTypes</Attributes.Title>
 
 ```ts
-type ToastTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type ToastTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

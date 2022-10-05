@@ -19,30 +19,38 @@ const buttonTypes = tuple(
   'error-light'
 )
 
-const normalTypes = tuple('default', 'secondary', 'success', 'warning', 'error')
-
-const snippetTypes = tuple(
+const normalTypes = tuple(
   'default',
+  'primary',
   'secondary',
   'success',
   'warning',
   'error',
+  'info'
+)
+
+const snippetTypes = tuple(
+  'default',
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info',
   'dark',
   'lite'
 )
 
 const cardTypes = tuple(
   'default',
+  'primary',
   'secondary',
   'success',
   'warning',
   'error',
   'dark',
   'lite',
-  'alert',
-  'purple',
-  'violet',
-  'cyan'
+  'info'
 )
 
 const copyTypes = tuple('default', 'silent', 'prevent')

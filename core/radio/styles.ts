@@ -17,10 +17,15 @@ export const getColors = (
       border: palette.border,
       bg: palette.foreground
     },
+    primary: {
+      label: palette.primary,
+      border: palette.primary,
+      bg: palette.primary
+    },
     secondary: {
-      label: palette.foreground,
-      border: palette.border,
-      bg: palette.foreground
+      label: palette.secondary,
+      border: palette.secondary,
+      bg: palette.secondary
     },
     success: {
       label: palette.success,
@@ -36,6 +41,11 @@ export const getColors = (
       label: palette.error,
       border: palette.error,
       bg: palette.error
+    },
+    info: {
+      label: palette.info,
+      border: palette.info,
+      bg: palette.info
     }
   }
 
