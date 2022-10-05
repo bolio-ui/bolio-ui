@@ -31,6 +31,12 @@ const getColors = (
     default: {
       color: palette.foreground
     },
+    primary: {
+      color: palette.primary
+    },
+    secondary: {
+      color: palette.secondary
+    },
     success: {
       color: palette.success
     },
@@ -40,8 +46,8 @@ const getColors = (
     error: {
       color: palette.error
     },
-    secondary: {
-      color: palette.secondary
+    info: {
+      color: palette.info
     },
     dark: {
       color: palette.foreground,
