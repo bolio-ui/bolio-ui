@@ -136,8 +136,8 @@ const ButtonComponent = React.forwardRef<
     [auto, children, icon, iconRight]
   )
   const [paddingLeft, paddingRight] = [
-    auto ? SCALES.pl(1.15) : SCALES.pl(1.375),
-    auto ? SCALES.pr(1.15) : SCALES.pr(1.375)
+    auto ? SCALES.pl(1.15) : SCALES.pl(2.5),
+    auto ? SCALES.pr(1.15) : SCALES.pr(2.5)
   ]
 
   return (
@@ -163,7 +163,6 @@ const ButtonComponent = React.forwardRef<
         .btn {
           box-sizing: border-box;
           display: inline-block;
-          /* line-height: ${SCALES.height(2.5)}; */
           border-radius: ${rounded ? '25px' : theme.layout.radius};
           font-weight: 500;
           font-size: ${SCALES.font(0.875)};
@@ -183,7 +182,7 @@ const ButtonComponent = React.forwardRef<
           cursor: ${cursor};
           pointer-events: ${events};
           box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
-          --bolio-ui-button-icon-padding: ${SCALES.pl(0.727)};
+          --bolio-ui-button-icon-padding: ${SCALES.pl(0.75)};
           --bolio-ui-button-height: ${SCALES.height(2.5)};
           --bolio-ui-button-color: ${color};
           --bolio-ui-button-bg: ${bg};
