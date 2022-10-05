@@ -181,7 +181,7 @@ const ButtonComponent = React.forwardRef<
           border: 1px solid ${border};
           cursor: ${cursor};
           pointer-events: ${events};
-          box-shadow: ${shadow ? '0 8px 20px 0' + bg : 'none'};
+          box-shadow: ${shadow ? '0 4px 10px 0' + bg : 'none'};
           --bolio-ui-button-icon-padding: ${SCALES.pl(0.75)};
           --bolio-ui-button-height: ${SCALES.height(2.5)};
           --bolio-ui-button-color: ${color};
@@ -203,8 +203,6 @@ const ButtonComponent = React.forwardRef<
           border-color: ${hover.border};
           cursor: ${cursor};
           pointer-events: ${events};
-          box-shadow: ${shadow ? '0 4px 10px 0' + bg : 'none'};
-          /* transform: translate3d(0px, ${shadow ? '-1px' : '0px'}, 0px); */
         }
         .btn:active {
           transform: scale(0.98, 0.98);
