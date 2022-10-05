@@ -240,7 +240,12 @@ export const WithIcons: Story = () => (
       </Button>
     </Grid>
     <Grid>
-      <Button icon={<AlertCircle />} type="success" scale={0.85}>
+      <Button iconRight={<AlertCircle />} type="success" scale={0.85}>
+        Button
+      </Button>
+    </Grid>
+    <Grid>
+      <Button icon={<AlertCircle />} type="warning" scale={0.85}>
         Button
       </Button>
     </Grid>
