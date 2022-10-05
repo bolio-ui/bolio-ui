@@ -13,8 +13,11 @@ export const getColors = (
     default: {
       bg: palette.accents_8
     },
+    primary: {
+      bg: palette.primary
+    },
     secondary: {
-      bg: palette.accents_8
+      bg: palette.secondary
     },
     success: {
       bg: palette.success
@@ -24,6 +27,9 @@ export const getColors = (
     },
     error: {
       bg: palette.error
+    },
+    info: {
+      bg: palette.info
     }
   }
 
