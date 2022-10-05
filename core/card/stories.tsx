@@ -53,16 +53,14 @@ export const Variants: Story = () => {
 
   const types = tuple(
     'default',
+    'primary',
     'secondary',
     'success',
     'warning',
     'error',
     'dark',
     'lite',
-    'alert',
-    'purple',
-    'violet',
-    'cyan'
+    'info'
   )
 
   return (

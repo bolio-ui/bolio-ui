@@ -52,7 +52,7 @@ export const Shadow: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const TypeColors: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button auto type="primary">
@@ -89,6 +89,11 @@ export const Types: Story = () => (
         Abort
       </Button>
     </Grid>
+  </Grid.Container>
+)
+
+export const Lighted: Story = () => (
+  <Grid.Container gap={2}>
     <Grid>
       <Button auto type="primary-light">
         Primary Light
@@ -240,7 +245,12 @@ export const WithIcons: Story = () => (
       </Button>
     </Grid>
     <Grid>
-      <Button icon={<AlertCircle />} type="success" scale={0.85}>
+      <Button iconRight={<AlertCircle />} type="success" scale={0.85}>
+        Button
+      </Button>
+    </Grid>
+    <Grid>
+      <Button icon={<AlertCircle />} type="warning" scale={0.85}>
         Button
       </Button>
     </Grid>

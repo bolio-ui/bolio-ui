@@ -36,9 +36,6 @@ function Hero({ content }: Props) {
               toastType="secondary"
               text="yarn add @bolio-ui/core"
               width="100%"
-              style={{
-                background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-              }}
             />
           </Grid>
         </Grid.Container>

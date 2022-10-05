@@ -25,6 +25,9 @@ export const Type: Story = () => (
       <Badge>Default</Badge>
     </Grid>
     <Grid>
+      <Badge type="primary">Primary</Badge>
+    </Grid>
+    <Grid>
       <Badge type="secondary">Secondary</Badge>
     </Grid>
     <Grid>
@@ -36,6 +39,9 @@ export const Type: Story = () => (
     <Grid>
       <Badge type="error">Error</Badge>
     </Grid>
+    <Grid>
+      <Badge type="info">Info</Badge>
+    </Grid>
   </Grid.Container>
 )
 
@@ -46,11 +52,6 @@ export const CustomColor: Story = () => {
       <Grid>
         <Badge style={{ backgroundColor: theme.palette.successLight }}>
           Success Light
-        </Badge>
-      </Grid>
-      <Grid>
-        <Badge style={{ backgroundColor: theme.palette.successDark }}>
-          Success Dark
         </Badge>
       </Grid>
       <Grid>

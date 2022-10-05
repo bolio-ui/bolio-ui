@@ -115,7 +115,7 @@ const ButtonComponent = React.forwardRef<
 
   const clickHandler = (event: MouseEvent<HTMLButtonElement>) => {
     if (disabled || loading) return
-    const showDrip = !shadow && !ghost && effect
+    const showDrip = effect
 
     if (showDrip && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect()
@@ -136,8 +136,8 @@ const ButtonComponent = React.forwardRef<
     [auto, children, icon, iconRight]
   )
   const [paddingLeft, paddingRight] = [
-    auto ? SCALES.pl(1.15) : SCALES.pl(1.375),
-    auto ? SCALES.pr(1.15) : SCALES.pr(1.375)
+    auto ? SCALES.pl(1.15) : SCALES.pl(1.15),
+    auto ? SCALES.pr(1.15) : SCALES.pr(1.15)
   ]
 
   return (
@@ -163,9 +163,8 @@ const ButtonComponent = React.forwardRef<
         .btn {
           box-sizing: border-box;
           display: inline-block;
-          /* line-height: ${SCALES.height(2.5)}; */
           border-radius: ${rounded ? '25px' : theme.layout.radius};
-          font-weight: 400;
+          font-weight: 500;
           font-size: ${SCALES.font(0.875)};
           user-select: none;
           outline: none;
@@ -182,8 +181,8 @@ const ButtonComponent = React.forwardRef<
           border: 1px solid ${border};
           cursor: ${cursor};
           pointer-events: ${events};
-          box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
-          --bolio-ui-button-icon-padding: ${SCALES.pl(0.727)};
+          box-shadow: ${shadow ? '0 4px 10px 0' + bg : 'none'};
+          --bolio-ui-button-icon-padding: ${SCALES.pl(0.75)};
           --bolio-ui-button-height: ${SCALES.height(2.5)};
           --bolio-ui-button-color: ${color};
           --bolio-ui-button-bg: ${bg};
@@ -201,11 +200,12 @@ const ButtonComponent = React.forwardRef<
           color: ${hover.color};
           --bolio-ui-button-color: ${hover.color};
           background-color: ${hover.bg};
-          border-color: ${hover.border};
+          /* border-color: ${hover.border}; */
           cursor: ${cursor};
           pointer-events: ${events};
-          box-shadow: ${shadow ? theme.expressiveness.shadowMedium : 'none'};
-          /* transform: translate3d(0px, ${shadow ? '-1px' : '0px'}, 0px); */
+        }
+        .btn:active {
+          transform: scale(0.98, 0.98);
         }
 
         .btn :global(.text) {
