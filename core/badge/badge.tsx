@@ -19,10 +19,12 @@ export type BadgeProps = Props & NativeAttrs
 const getBgColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
   const colors: { [key in NormalTypes]: string } = {
     default: palette.foreground,
+    secondary: palette.secondary,
+    primary: palette.primary,
     success: palette.success,
     warning: palette.warning,
     error: palette.error,
-    secondary: palette.secondary
+    info: palette.info
   }
   return colors[type]
 }
@@ -63,10 +65,10 @@ function BadgeComponent({
           color: ${color};
           border: 0;
           font-size: ${SCALES.font(0.875)};
+          font-weight: 500;
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0.25)} ${SCALES.pr(0.4375)} ${SCALES.pb(0.25)}
-            ${SCALES.pl(0.4375)};
+          padding: ${SCALES.pt(0.5)};
           margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
             ${SCALES.ml(0)};
         }
