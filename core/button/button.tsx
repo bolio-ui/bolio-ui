@@ -165,7 +165,7 @@ const ButtonComponent = React.forwardRef<
           display: inline-block;
           /* line-height: ${SCALES.height(2.5)}; */
           border-radius: ${rounded ? '25px' : theme.layout.radius};
-          font-weight: 400;
+          font-weight: 500;
           font-size: ${SCALES.font(0.875)};
           user-select: none;
           outline: none;
