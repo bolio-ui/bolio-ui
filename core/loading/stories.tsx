@@ -26,6 +26,9 @@ export const WithText: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid xs={3} md={3}>
+      <Loading />
+    </Grid>
+    <Grid xs={3} md={3}>
       <Loading type="primary" />
     </Grid>
     <Grid xs={3} md={3}>

@@ -115,6 +115,37 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 />
 
 <Playground
+  title="Type"
+  desc="Differentiate states by color."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input placeholder="Default" />
+  </Grid>
+  <Grid>
+    <Input type="primary" placeholder="Primary" />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary" />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success" />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning" />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error" />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Icon"
   desc="Specify an icon component."
   scope={{ Input, Instagram, Facebook, Grid }}
