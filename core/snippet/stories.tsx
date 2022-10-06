@@ -26,7 +26,13 @@ export const Width: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Snippet text="yarn add @bolio-ui/core" type="dark" width="300px" />
+      <Snippet text="yarn add @bolio-ui/core" width="300px" />
+    </Grid>
+    <Grid>
+      <Snippet text="yarn add @bolio-ui/core" type="primary" width="300px" />
+    </Grid>
+    <Grid>
+      <Snippet text="yarn add @bolio-ui/core" type="secondary" width="300px" />
     </Grid>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" type="success" width="300px" />
@@ -42,6 +48,9 @@ export const Types: Story = () => (
     </Grid>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" type="lite" width="300px" />
+    </Grid>
+    <Grid>
+      <Snippet text="yarn add @bolio-ui/core" type="dark" width="300px" />
     </Grid>
   </Grid.Container>
 )

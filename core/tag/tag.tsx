@@ -50,8 +50,8 @@ const getColors = (
       color: palette.info
     },
     dark: {
-      color: palette.foreground,
-      bgColor: palette.background
+      color: palette.background,
+      bgColor: palette.foreground
     },
     lite: {
       color: palette.foreground,

@@ -61,6 +61,21 @@ export const Types: Story = () => (
     <Grid>
       <Text b i style={{ letterSpacing: '0.6px' }}>
         <Grid>
+          <Text span type="default">
+            Text colored
+          </Text>
+        </Grid>
+        <Grid>
+          <Text span type="primary">
+            Text colored
+          </Text>
+        </Grid>
+        <Grid>
+          <Text span type="secondary">
+            Text colored
+          </Text>
+        </Grid>
+        <Grid>
           <Text span type="success">
             Text colored
           </Text>
@@ -71,22 +86,12 @@ export const Types: Story = () => (
           </Text>
         </Grid>
         <Grid>
-          <Text span type="secondary">
-            Text colored
-          </Text>
-        </Grid>
-        <Grid>
           <Text span type="error">
             Text colored
           </Text>
         </Grid>
         <Grid>
-          <Text span style={{ color: '#ccc' }}>
-            Text colored
-          </Text>
-        </Grid>
-        <Grid>
-          <Text span type="success" ml="5px">
+          <Text span type="info">
             Text colored
           </Text>
         </Grid>

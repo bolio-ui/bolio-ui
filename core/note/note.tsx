@@ -22,10 +22,13 @@ const getStatusColor = (
   theme: BolioUIThemes
 ) => {
   const colors: { [key in NoteTypes]?: string } = {
+    default: theme.palette.accents_6,
+    primary: theme.palette.primary,
     secondary: theme.palette.secondary,
     success: theme.palette.success,
     warning: theme.palette.warning,
-    error: theme.palette.error
+    error: theme.palette.error,
+    info: theme.palette.info
   }
   const statusColor = colors[type]
 

@@ -32,6 +32,15 @@ Display a unique keyword, optionally as a part of a set.
   code={`
 <Grid.Container gap={2}>
   <Grid>
+    <Tag>Default</Tag>
+  </Grid>
+  <Grid>
+    <Tag type="primary">Primary</Tag>
+  </Grid>
+  <Grid>
+    <Tag type="secondary">Secondary</Tag>
+  </Grid>
+  <Grid>
     <Tag type="success">Success</Tag>
   </Grid>
   <Grid>
@@ -41,7 +50,7 @@ Display a unique keyword, optionally as a part of a set.
     <Tag type="error">Error</Tag>
   </Grid>
   <Grid>
-    <Tag type="secondary">Secondary</Tag>
+    <Tag type="dark">Dark</Tag>
   </Grid>
   <Grid>
     <Tag type="lite">Lite</Tag>
@@ -57,29 +66,28 @@ Display a unique keyword, optionally as a part of a set.
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Tag type="default" invert>
-      Default
-    </Tag>
+    <Tag invert>Default</Tag>
   </Grid>
   <Grid>
-    <Tag type="success" invert>
-      Success
-    </Tag>
+    <Tag type="primary" invert>Primary</Tag>
   </Grid>
   <Grid>
-    <Tag type="warning" invert>
-      Warning
-    </Tag>
+    <Tag type="secondary" invert>Secondary</Tag>
   </Grid>
   <Grid>
-    <Tag type="error" invert>
-      Error
-    </Tag>
+    <Tag type="success" invert>Success</Tag>
   </Grid>
   <Grid>
-    <Tag type="secondary" invert>
-      Secondary
-    </Tag>
+    <Tag type="warning" invert>Warning</Tag>
+  </Grid>
+  <Grid>
+    <Tag type="error" invert>Error</Tag>
+  </Grid>
+  <Grid>
+    <Tag type="dark" invert>Dark</Tag>
+  </Grid>
+  <Grid>
+    <Tag type="lite" invert>Lite</Tag>
   </Grid>
 </Grid.Container>
 `}

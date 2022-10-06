@@ -25,7 +25,19 @@ export const Default: Story = () => {
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Select placeholder="Default" type="default">
+      <Select placeholder="Default">
+        <Select.Option value="1">Value 1</Select.Option>
+        <Select.Option value="2">Value 2</Select.Option>
+      </Select>
+    </Grid>
+    <Grid>
+      <Select type="primary" initialValue="1">
+        <Select.Option value="1">Value 1</Select.Option>
+        <Select.Option value="2">Value 2</Select.Option>
+      </Select>
+    </Grid>
+    <Grid>
+      <Select type="secondary" initialValue="2">
         <Select.Option value="1">Value 1</Select.Option>
         <Select.Option value="2">Value 2</Select.Option>
       </Select>
@@ -44,6 +56,12 @@ export const Types: Story = () => (
     </Grid>
     <Grid>
       <Select type="error" initialValue="1">
+        <Select.Option value="1">Value 1</Select.Option>
+        <Select.Option value="2">Value 2</Select.Option>
+      </Select>
+    </Grid>
+    <Grid>
+      <Select type="info" initialValue="2">
         <Select.Option value="1">Value 1</Select.Option>
         <Select.Option value="2">Value 2</Select.Option>
       </Select>
