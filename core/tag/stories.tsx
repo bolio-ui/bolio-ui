@@ -18,6 +18,15 @@ export const Default: Story = () => (
 export const Types: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
+      <Tag>Default</Tag>
+    </Grid>
+    <Grid>
+      <Tag type="primary">Primary</Tag>
+    </Grid>
+    <Grid>
+      <Tag type="secondary">Secondary</Tag>
+    </Grid>
+    <Grid>
       <Tag type="success">Success</Tag>
     </Grid>
     <Grid>
@@ -27,7 +36,7 @@ export const Types: Story = () => (
       <Tag type="error">Error</Tag>
     </Grid>
     <Grid>
-      <Tag type="secondary">Secondary</Tag>
+      <Tag type="dark">Dark</Tag>
     </Grid>
     <Grid>
       <Tag type="lite">Lite</Tag>
@@ -38,8 +47,16 @@ export const Types: Story = () => (
 export const TypesInvert: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Tag type="default" invert>
-        Default
+      <Tag invert>Default</Tag>
+    </Grid>
+    <Grid>
+      <Tag type="primary" invert>
+        Primary
+      </Tag>
+    </Grid>
+    <Grid>
+      <Tag type="secondary" invert>
+        Secondary
       </Tag>
     </Grid>
     <Grid>
@@ -58,8 +75,13 @@ export const TypesInvert: Story = () => (
       </Tag>
     </Grid>
     <Grid>
-      <Tag type="secondary" invert>
-        Secondary
+      <Tag type="dark" invert>
+        Dark
+      </Tag>
+    </Grid>
+    <Grid>
+      <Tag type="lite" invert>
+        Lite
       </Tag>
     </Grid>
   </Grid.Container>

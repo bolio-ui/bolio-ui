@@ -28,22 +28,19 @@ Display text that requires attention or provides additional information.
 />
 
 <Playground
-  title="Secondary"
+  title="Types"
   scope={{ Note, Grid }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
+    <Note>Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="primary">Check payment pending.</Note>
+  </Grid>
+  <Grid>
     <Note type="secondary">Check payment pending.</Note>
   </Grid>
-</Grid.Container>
-`}
-/>
-
-<Playground
-  title="Status"
-  scope={{ Note, Grid }}
-  code={`
-<Grid.Container gap={2}>
   <Grid>
     <Note type="success">Check payment pending.</Note>
   </Grid>
@@ -52,6 +49,9 @@ Display text that requires attention or provides additional information.
   </Grid>
   <Grid>
     <Note type="error">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="info">Check payment pending.</Note>
   </Grid>
 </Grid.Container>
 `}

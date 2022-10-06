@@ -19,32 +19,32 @@ export const getColors = (
     },
     primary: {
       color: palette.primary,
-      borderColor: palette.primaryLight,
+      borderColor: palette.primary,
       hoverBorder: palette.primary
     },
     secondary: {
       color: palette.secondary,
-      borderColor: palette.secondaryLight,
+      borderColor: palette.secondary,
       hoverBorder: palette.secondary
     },
     success: {
       color: palette.success,
-      borderColor: palette.successLight,
+      borderColor: palette.success,
       hoverBorder: palette.success
     },
     warning: {
       color: palette.warning,
-      borderColor: palette.warningLight,
+      borderColor: palette.warning,
       hoverBorder: palette.warning
     },
     error: {
       color: palette.error,
-      borderColor: palette.errorLight,
+      borderColor: palette.error,
       hoverBorder: palette.error
     },
     info: {
       color: palette.info,
-      borderColor: palette.infoLight,
+      borderColor: palette.info,
       hoverBorder: palette.info
     }
   }

@@ -37,8 +37,16 @@ export const Text: Story = () => {
 export const Type: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Radio checked={false} type="default">
-        Default
+      <Radio checked={false}>Default</Radio>
+    </Grid>
+    <Grid>
+      <Radio checked={false} type="primary">
+        Primary
+      </Radio>
+    </Grid>
+    <Grid>
+      <Radio checked={false} type="secondary">
+        Secondary
       </Radio>
     </Grid>
     <Grid>
@@ -54,6 +62,11 @@ export const Type: Story = () => (
     <Grid>
       <Radio checked={false} type="error">
         Error
+      </Radio>
+    </Grid>
+    <Grid>
+      <Radio checked={false} type="info">
+        Info
       </Radio>
     </Grid>
   </Grid.Container>
