@@ -13,6 +13,12 @@ export const Default: Story = () => (
       <Dot />
     </Grid>
     <Grid>
+      <Dot type="primary" />
+    </Grid>
+    <Grid>
+      <Dot type="secondary" />
+    </Grid>
+    <Grid>
       <Dot type="success" />
     </Grid>
     <Grid>
@@ -20,6 +26,9 @@ export const Default: Story = () => (
     </Grid>
     <Grid>
       <Dot type="error" />
+    </Grid>
+    <Grid>
+      <Dot type="info" />
     </Grid>
   </Grid.Container>
 )
