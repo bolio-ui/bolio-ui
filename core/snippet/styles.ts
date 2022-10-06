@@ -15,8 +15,8 @@ export const getStyles = (
   const styles: { [key in SnippetTypes]: SnippetStyles } = {
     default: {
       color: palette.foreground,
-      border: palette.border,
-      bgColor: palette.accents_1
+      border: palette.accents_2,
+      bgColor: palette.accents_2
     },
     primary: {
       color: palette.primary,

@@ -28,47 +28,53 @@ export const Default: Story = () => {
   )
 }
 
-export const Types: Story = () => {
-  return (
-    <Grid.Container gap={2}>
-      <Grid>
-        <Rating type="success" />
-      </Grid>
-      <Grid>
-        <Rating type="error" />
-      </Grid>
-      <Grid>
-        <Rating type="warning" />
-      </Grid>
-    </Grid.Container>
-  )
-}
+export const Types: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating />
+    </Grid>
+    <Grid>
+      <Rating type="primary" />
+    </Grid>
+    <Grid>
+      <Rating type="secondary" />
+    </Grid>
+    <Grid>
+      <Rating type="success" />
+    </Grid>
+    <Grid>
+      <Rating type="error" />
+    </Grid>
+    <Grid>
+      <Rating type="warning" />
+    </Grid>
+    <Grid>
+      <Rating type="info" />
+    </Grid>
+  </Grid.Container>
+)
 
-export const CustomAmount: Story = () => {
-  return (
-    <Grid.Container gap={2}>
-      <Grid>
-        <Rating count={2} />
-      </Grid>
-      <Grid>
-        <Rating value={3} count={6} />
-      </Grid>
-      <Grid>
-        <Rating value={4} count={8} />
-      </Grid>
-    </Grid.Container>
-  )
-}
+export const CustomAmount: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating count={2} />
+    </Grid>
+    <Grid>
+      <Rating value={3} count={6} />
+    </Grid>
+    <Grid>
+      <Rating value={4} count={8} />
+    </Grid>
+  </Grid.Container>
+)
 
-export const Icon: Story = () => {
-  return (
-    <Grid.Container gap={2}>
-      <Grid>
-        <Rating value={4} count={6} type="success" icon={<Umbrella />} />
-      </Grid>
-      <Grid>
-        <Rating count={7} type="error" icon={<Zap />} />
-      </Grid>
-    </Grid.Container>
-  )
-}
+export const Icon: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating value={4} count={6} type="success" icon={<Umbrella />} />
+    </Grid>
+    <Grid>
+      <Rating count={7} type="error" icon={<Zap />} />
+    </Grid>
+  </Grid.Container>
+)

@@ -23,10 +23,10 @@ function PaginationItem({
 
   const [hover, activeHover] = useMemo(
     () => [
-      addColorAlpha(theme.palette.success, 0.1),
-      addColorAlpha(theme.palette.success, 0.8)
+      addColorAlpha(theme.palette.primary, 0.1),
+      addColorAlpha(theme.palette.primary, 0.8)
     ],
-    [theme.palette.success]
+    [theme.palette.primary]
   )
 
   const classes = useClasses({
@@ -66,7 +66,7 @@ function PaginationItem({
           min-width: var(--pagination-size);
           font-size: inherit;
           cursor: pointer;
-          color: ${theme.palette.success};
+          color: ${theme.palette.primary};
           border-radius: ${theme.layout.radius};
           background-color: ${theme.palette.background};
           transition: all linear 200ms 0ms;
@@ -78,7 +78,7 @@ function PaginationItem({
 
         .active {
           font-weight: bold;
-          background-color: ${theme.palette.success};
+          background-color: ${theme.palette.primary};
           color: ${theme.palette.background};
           box-shadow: ${theme.expressiveness.shadowSmall};
         }

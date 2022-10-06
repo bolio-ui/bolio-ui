@@ -60,6 +60,12 @@ export const DynamicColors: Story = () => {
 export const Type: Story = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
+      <Progress value={3} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="primary" value={74} />
+    </Grid>
+    <Grid xs={12} md={12}>
       <Progress type="secondary" value={10} />
     </Grid>
     <Grid xs={12} md={12}>
@@ -70,6 +76,9 @@ export const Type: Story = () => (
     </Grid>
     <Grid xs={12} md={12}>
       <Progress type="error" value={21} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="info" value={34} />
     </Grid>
   </Grid.Container>
 )

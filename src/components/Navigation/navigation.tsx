@@ -196,11 +196,7 @@ const Navigation: React.FC = () => {
                             }
                             auto
                             scale={0.75}
-                            style={{
-                              background:
-                                'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
-                              border: 'none'
-                            }}
+                            type="secondary"
                           >
                             Sponsor
                           </Button>

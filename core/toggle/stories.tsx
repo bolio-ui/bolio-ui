@@ -21,19 +21,25 @@ export const Default: Story = () => (
 export const Type: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Toggle type="default" initialChecked />
+      <Toggle scale={2} initialChecked />
     </Grid>
     <Grid>
-      <Toggle type="secondary" initialChecked />
+      <Toggle type="primary" scale={2} initialChecked />
     </Grid>
     <Grid>
-      <Toggle type="success" initialChecked />
+      <Toggle type="secondary" scale={2} initialChecked />
     </Grid>
     <Grid>
-      <Toggle type="warning" initialChecked />
+      <Toggle type="success" scale={2} initialChecked />
     </Grid>
     <Grid>
-      <Toggle type="error" initialChecked />
+      <Toggle type="warning" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="error" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="info" scale={2} initialChecked />
     </Grid>
   </Grid.Container>
 )

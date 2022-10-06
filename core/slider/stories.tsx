@@ -19,7 +19,13 @@ export const Default: Story = () => (
 export const Type: Story = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
-      <Slider type="default" initialValue={40} />
+      <Slider initialValue={40} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Slider type="primary" initialValue={20} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Slider type="secondary" initialValue={70} />
     </Grid>
     <Grid xs={12} md={12}>
       <Slider type="success" initialValue={60} />
@@ -29,6 +35,9 @@ export const Type: Story = () => (
     </Grid>
     <Grid xs={12} md={12}>
       <Slider type="error" initialValue={80} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Slider type="info" initialValue={90} />
     </Grid>
   </Grid.Container>
 )

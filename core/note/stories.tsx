@@ -15,16 +15,17 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Secondary: Story = () => (
+export const Types: Story = () => (
   <Grid.Container gap={2}>
+    <Grid>
+      <Note>Check payment pending.</Note>
+    </Grid>
+    <Grid>
+      <Note type="primary">Check payment pending.</Note>
+    </Grid>
     <Grid>
       <Note type="secondary">Check payment pending.</Note>
     </Grid>
-  </Grid.Container>
-)
-
-export const Status: Story = () => (
-  <Grid.Container gap={2}>
     <Grid>
       <Note type="success">Check payment pending.</Note>
     </Grid>
@@ -33,6 +34,9 @@ export const Status: Story = () => (
     </Grid>
     <Grid>
       <Note type="error">Check payment pending.</Note>
+    </Grid>
+    <Grid>
+      <Note type="info">Check payment pending.</Note>
     </Grid>
   </Grid.Container>
 )
