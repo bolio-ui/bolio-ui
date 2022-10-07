@@ -106,7 +106,9 @@ function SectionCTA() {
             <Grid mt={2}>
               <Col>
                 <NextLink href={'/docs/components/'} passHref>
-                  <Button type="secondary-light">More components</Button>
+                  <Button type="secondary-light">
+                    Explore more components
+                  </Button>
                 </NextLink>
               </Col>
             </Grid>

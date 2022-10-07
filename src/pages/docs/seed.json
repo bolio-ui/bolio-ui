@@ -300,5 +300,85 @@
     "title": "Types Button Dropdown",
     "component": false,
     "path": "/docs/components/button-dropdown#buttondropdowntypes"
+  },
+  {
+    "title": "Button Group",
+    "component": true,
+    "path": "/docs/components/button-group"
+  },
+  {
+    "title": "Button Group",
+    "component": false,
+    "path": "/docs/components/button-group#button-group"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Variant",
+    "component": false,
+    "path": "/docs/components/button-group#variant"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Sizes",
+    "component": false,
+    "path": "/docs/components/button-group#sizes"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Vertical",
+    "component": false,
+    "path": "/docs/components/button-group#vertical"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Disabled",
+    "component": false,
+    "path": "/docs/components/button-group#disabled"
+  },
+  {
+    "head": "Button Group",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button-group#apis"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Props",
+    "component": false,
+    "path": "/docs/components/button-group#buttongroup.props"
+  },
+  {
+    "head": "Button Group",
+    "title": "Types - Button Group",
+    "component": false,
+    "path": "/docs/components/button-group#buttontypes"
+  },
+  {
+    "title": "Capacity",
+    "component": true,
+    "path": "/docs/components/capacity"
+  },
+  {
+    "title": "Capacity",
+    "component": false,
+    "path": "/docs/components/capacity#button-group"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity Fixed Color",
+    "component": false,
+    "path": "/docs/components/capacity#fixed-color"
+  },
+  {
+    "head": "Capacity",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/capacity#apis"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity Props",
+    "component": false,
+    "path": "/docs/components/capacity#capacity.props"
   }
 ]
