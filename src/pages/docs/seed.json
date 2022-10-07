@@ -361,7 +361,7 @@
   {
     "title": "Capacity",
     "component": false,
-    "path": "/docs/components/capacity#button-group"
+    "path": "/docs/components/capacity#capacity"
   },
   {
     "head": "Capacity",
@@ -380,5 +380,385 @@
     "title": "Capacity Props",
     "component": false,
     "path": "/docs/components/capacity#capacity.props"
+  },
+  {
+    "title": "Card",
+    "component": true,
+    "path": "/docs/components/card"
+  },
+  {
+    "title": "Card",
+    "component": false,
+    "path": "/docs/components/card#card"
+  },
+  {
+    "head": "Card",
+    "title": "Card Hoverable",
+    "component": false,
+    "path": "/docs/components/card#hoverable"
+  },
+  {
+    "head": "Card",
+    "title": "Card Types",
+    "component": false,
+    "path": "/docs/components/card#types"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Footer",
+    "component": false,
+    "path": "/docs/components/card#with-footer"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Image",
+    "component": false,
+    "path": "/docs/components/card#with-image"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Divider",
+    "component": false,
+    "path": "/docs/components/card#with-divider"
+  },
+  {
+    "head": "Card",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/card#apis"
+  },
+  {
+    "head": "Card",
+    "title": "Card Props",
+    "component": false,
+    "path": "/docs/components/card#card.props"
+  },
+  {
+    "head": "Card",
+    "title": "Card Content Props",
+    "component": false,
+    "path": "/docs/components/card#card.content.props"
+  },
+  {
+    "head": "Card",
+    "title": "Card Footer Props",
+    "component": false,
+    "path": "/docs/components/card#card.footer.props"
+  },
+  {
+    "head": "Card",
+    "title": "Types - Card",
+    "component": false,
+    "path": "/docs/components/card#cardtype"
+  },
+  {
+    "title": "Checkbox",
+    "component": true,
+    "path": "/docs/components/checkbox"
+  },
+  {
+    "title": "Checkbox",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Sizes",
+    "component": false,
+    "path": "/docs/components/checkbox#sizes"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Type",
+    "component": false,
+    "path": "/docs/components/checkbox#type"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Disabled",
+    "component": false,
+    "path": "/docs/components/checkbox#disable"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Group",
+    "component": false,
+    "path": "/docs/components/checkbox#group"
+  },
+  {
+    "head": "Checkbox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/checkbox#apis"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Group Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.group.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Types - Checkbox",
+    "component": false,
+    "path": "/docs/components/checkbox#checkboxtypes"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Event",
+    "component": false,
+    "path": "/docs/components/checkbox#checkboxtypes"
+  },
+  {
+    "title": "Code",
+    "component": true,
+    "path": "/docs/components/code"
+  },
+  {
+    "title": "Code",
+    "component": false,
+    "path": "/docs/components/code#code"
+  },
+  {
+    "head": "Code",
+    "title": "Code Block",
+    "component": false,
+    "path": "/docs/components/code#code-block"
+  },
+  {
+    "head": "Code",
+    "title": "Code Width",
+    "component": false,
+    "path": "/docs/components/code#width"
+  },
+  {
+    "head": "Code",
+    "title": "Code Name",
+    "component": false,
+    "path": "/docs/components/code#name"
+  },
+  {
+    "head": "Code",
+    "title": "Code Classic Style",
+    "component": false,
+    "path": "/docs/components/code#classic-style"
+  },
+  {
+    "head": "Code",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/code#apis"
+  },
+  {
+    "head": "Code",
+    "title": "Code Props",
+    "component": false,
+    "path": "/docs/components/code#code.props"
+  },
+  {
+    "title": "Collapse",
+    "component": true,
+    "path": "/docs/components/collapse"
+  },
+  {
+    "title": "Collapse",
+    "component": false,
+    "path": "/docs/components/collapse#collapse"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Expanded",
+    "component": false,
+    "path": "/docs/components/collapse#expanded"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Subtitle",
+    "component": false,
+    "path": "/docs/components/collapse#subtitle"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Shadow",
+    "component": false,
+    "path": "/docs/components/collapse#shadow"
+  },
+  {
+    "head": "Collapse",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/collapse#apis"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Props",
+    "component": false,
+    "path": "/docs/components/collapse#collapse.props"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Group Props",
+    "component": false,
+    "path": "/docs/components/collapse#collapse.group.props"
+  },
+  {
+    "title": "Description",
+    "component": true,
+    "path": "/docs/components/description"
+  },
+  {
+    "title": "Description",
+    "component": false,
+    "path": "/docs/components/description#description"
+  },
+  {
+    "head": "Description",
+    "title": "Description With Component",
+    "component": false,
+    "path": "/docs/components/description#with-component"
+  },
+  {
+    "head": "Description",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/description#apis"
+  },
+  {
+    "head": "Description",
+    "title": "Description Props",
+    "component": false,
+    "path": "/docs/components/description#description.props"
+  },
+  {
+    "title": "Display",
+    "component": true,
+    "path": "/docs/components/display"
+  },
+  {
+    "title": "Display",
+    "component": false,
+    "path": "/docs/components/display#display"
+  },
+  {
+    "head": "Display",
+    "title": "Display With Code",
+    "component": false,
+    "path": "/docs/components/display#with-code"
+  },
+  {
+    "head": "Display",
+    "title": "Display With Snippet",
+    "component": false,
+    "path": "/docs/components/display#with-snippet"
+  },
+  {
+    "head": "Display",
+    "title": "Display Component Caption",
+    "component": false,
+    "path": "/docs/components/display#component-caption"
+  },
+  {
+    "head": "Display",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/display#apis"
+  },
+  {
+    "head": "Display",
+    "title": "Display Props",
+    "component": false,
+    "path": "/docs/components/display#display.props"
+  },
+  {
+    "title": "Divider",
+    "component": true,
+    "path": "/docs/components/divider"
+  },
+  {
+    "title": "Divider",
+    "component": false,
+    "path": "/docs/components/divider#divider"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider With Text",
+    "component": false,
+    "path": "/docs/components/divider#with-text"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Space",
+    "component": false,
+    "path": "/docs/components/divider#space"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Types",
+    "component": false,
+    "path": "/docs/components/divider#types"
+  },
+  {
+    "head": "Divider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/divider#apis"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Props",
+    "component": false,
+    "path": "/docs/components/divider#divider.props"
+  },
+  {
+    "head": "Divider",
+    "title": "Types - Divider",
+    "component": false,
+    "path": "/docs/components/divider#dividertypes"
+  },
+  {
+    "head": "Divider",
+    "title": "Align - Divider",
+    "component": false,
+    "path": "/docs/components/divider#divideralign"
+  },
+  {
+    "title": "Dot",
+    "component": true,
+    "path": "/docs/components/dot"
+  },
+  {
+    "title": "Dot",
+    "component": false,
+    "path": "/docs/components/dot#divider"
+  },
+  {
+    "head": "Dot",
+    "title": "Dot With Text",
+    "component": false,
+    "path": "/docs/components/dot#with-text"
+  },
+  {
+    "head": "Dot",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/dot#apis"
+  },
+  {
+    "head": "Dot",
+    "title": "Dot Props",
+    "component": false,
+    "path": "/docs/components/dot#dot.props"
+  },
+  {
+    "head": "Dot",
+    "title": "Types - Dot",
+    "component": false,
+    "path": "/docs/components/dot#dottypes"
   }
 ]
