@@ -1,0 +1,304 @@
+[
+  {
+    "title": "Avatar",
+    "component": true,
+    "path": "/docs/components/avatar"
+  },
+  {
+    "title": "Avatar",
+    "component": false,
+    "path": "/docs/components/avatar#avatar"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Text",
+    "component": false,
+    "path": "/docs/components/avatar#text"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Group",
+    "component": false,
+    "path": "/docs/components/avatar#group"
+  },
+  {
+    "head": "Avatar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/avatar#apis"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Props",
+    "component": false,
+    "path": "/docs/components/avatar#avatar.props"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Group Props",
+    "component": false,
+    "path": "/docs/components/avatar#avatar.group.props"
+  },
+  {
+    "title": "Badge",
+    "component": true,
+    "path": "/docs/components/badge"
+  },
+  {
+    "title": "Badge",
+    "component": false,
+    "path": "/docs/components/badge#badge"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Type",
+    "component": false,
+    "path": "/docs/components/badge#type"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Custom Color",
+    "component": false,
+    "path": "/docs/components/badge#custom-color"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor",
+    "component": false,
+    "path": "/docs/components/badge#anchor"
+  },
+  {
+    "head": "Badge",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/badge#apis"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Props",
+    "component": false,
+    "path": "/docs/components/badge#badge.props"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor Props",
+    "component": false,
+    "path": "/docs/components/badge#badge.anchor.props"
+  },
+  {
+    "head": "Badge",
+    "title": "Types Badge",
+    "component": false,
+    "path": "/docs/components/badge#badgetypes"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor Placement",
+    "component": false,
+    "path": "/docs/components/badge#anchorplacement"
+  },
+  {
+    "title": "Breadcrumbs",
+    "component": true,
+    "path": "/docs/components/breadcrumbs"
+  },
+  {
+    "title": "Breadcrumbs",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Separator",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#separator"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Icons",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#icons"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs With NextJS",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#with-nextjs"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#apis"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.props"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Item Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.item.props"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Separator Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Separator Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
+  },
+  {
+    "title": "Button",
+    "component": true,
+    "path": "/docs/components/button"
+  },
+  {
+    "title": "Button",
+    "component": false,
+    "path": "/docs/components/button#button"
+  },
+  {
+    "head": "Button",
+    "title": "Button Loading",
+    "component": false,
+    "path": "/docs/components/button#loading"
+  },
+  {
+    "head": "Button",
+    "title": "Button Disabled",
+    "component": false,
+    "path": "/docs/components/button#disabled"
+  },
+  {
+    "head": "Button",
+    "title": "Button Shadow",
+    "component": false,
+    "path": "/docs/components/button#shadow"
+  },
+  {
+    "head": "Button",
+    "title": "Button Type Colors",
+    "component": false,
+    "path": "/docs/components/button#type-colors"
+  },
+  {
+    "head": "Button",
+    "title": "Button Lighted",
+    "component": false,
+    "path": "/docs/components/button#lighted"
+  },
+  {
+    "head": "Button",
+    "title": "Button Ghost",
+    "component": false,
+    "path": "/docs/components/button#ghost"
+  },
+  {
+    "head": "Button",
+    "title": "Button Rounded",
+    "component": false,
+    "path": "/docs/components/button#rounded"
+  },
+  {
+    "head": "Button",
+    "title": "Button Scale",
+    "component": false,
+    "path": "/docs/components/button#scale"
+  },
+  {
+    "head": "Button",
+    "title": "Button With Icons",
+    "component": false,
+    "path": "/docs/components/button#with-icons"
+  },
+  {
+    "head": "Button",
+    "title": "Button Loading",
+    "component": false,
+    "path": "/docs/components/button#loading"
+  },
+  {
+    "head": "Button",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button#apis"
+  },
+  {
+    "head": "Button",
+    "title": "Button Props",
+    "component": false,
+    "path": "/docs/components/button#button.props"
+  },
+  {
+    "head": "Button",
+    "title": "Types Button",
+    "component": false,
+    "path": "/docs/components/button#button-types"
+  },
+  {
+    "title": "Button Dropdown",
+    "component": true,
+    "path": "/docs/components/button"
+  },
+  {
+    "title": "Button Dropdown",
+    "component": false,
+    "path": "/docs/components/button-dropdown#button-dropdown"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Loading",
+    "component": false,
+    "path": "/docs/components/button-dropdown#loading"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Types",
+    "component": false,
+    "path": "/docs/components/button-dropdown#types"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Multiple Types",
+    "component": false,
+    "path": "/docs/components/button-dropdown#multiple-type"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Custom Right Icon",
+    "component": false,
+    "path": "/docs/components/button-dropdown#custom-right-icon"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button-dropdown#apis"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Props",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdown.props"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Items Props",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdown.item.props"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Types Button Dropdown",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdowntypes"
+  }
+]
