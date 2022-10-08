@@ -1624,5 +1624,379 @@
     "title": "Types - Progress",
     "component": false,
     "path": "/docs/components/progress#progresstypes"
+  },
+  {
+    "title": "Radio",
+    "component": true,
+    "path": "/docs/components/radio"
+  },
+  {
+    "title": "Radio",
+    "component": false,
+    "path": "/docs/components/radio#radio"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Group",
+    "component": false,
+    "path": "/docs/components/radio#group"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Type",
+    "component": false,
+    "path": "/docs/components/radio#type"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Description",
+    "component": false,
+    "path": "/docs/components/radio#description"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Disabled",
+    "component": false,
+    "path": "/docs/components/radio#disabled"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Row",
+    "component": false,
+    "path": "/docs/components/radio#row"
+  },
+  {
+    "head": "Radio",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/radio#apis"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Group Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.group.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Description Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.description.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Types - Radio",
+    "component": false,
+    "path": "/docs/components/radio#radiotypes"
+  },
+  {
+    "title": "Rating",
+    "component": true,
+    "path": "/docs/components/rating"
+  },
+  {
+    "title": "Rating",
+    "component": false,
+    "path": "/docs/components/rating#rating"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Types",
+    "component": false,
+    "path": "/docs/components/rating#types"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Custom Amount",
+    "component": false,
+    "path": "/docs/components/rating#custom-amount"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Icon",
+    "component": false,
+    "path": "/docs/components/rating#icon"
+  },
+  {
+    "head": "Rating",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/rating#apis"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Props",
+    "component": false,
+    "path": "/docs/components/rating#rating.props"
+  },
+  {
+    "head": "Rating",
+    "title": "Types - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingtypes"
+  },
+  {
+    "head": "Rating",
+    "title": "Count - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingcount"
+  },
+  {
+    "head": "Rating",
+    "title": "Value - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingvalue"
+  },
+  {
+    "title": "Select",
+    "component": true,
+    "path": "/docs/components/select"
+  },
+  {
+    "title": "Select",
+    "component": false,
+    "path": "/docs/components/select#select"
+  },
+  {
+    "head": "Select",
+    "title": "Select Types",
+    "component": false,
+    "path": "/docs/components/select#type"
+  },
+  {
+    "head": "Select",
+    "title": "Select Disabled",
+    "component": false,
+    "path": "/docs/components/select#disabled"
+  },
+  {
+    "head": "Select",
+    "title": "Select Disabled Option",
+    "component": false,
+    "path": "/docs/components/select#disabled-option"
+  },
+  {
+    "head": "Select",
+    "title": "Select Without Icon",
+    "component": false,
+    "path": "/docs/components/select#without-icon"
+  },
+  {
+    "head": "Select",
+    "title": "Select Labels",
+    "component": false,
+    "path": "/docs/components/select#labels"
+  },
+  {
+    "head": "Select",
+    "title": "Select Divider",
+    "component": false,
+    "path": "/docs/components/select#divider"
+  },
+  {
+    "head": "Select",
+    "title": "Select Multiple",
+    "component": false,
+    "path": "/docs/components/select#multiple"
+  },
+  {
+    "head": "Select",
+    "title": "Select Multiple Without Clear",
+    "component": false,
+    "path": "/docs/components/select#multiple-without-clear"
+  },
+  {
+    "head": "Select",
+    "title": "Select Compose",
+    "component": false,
+    "path": "/docs/components/select#compose"
+  },
+  {
+    "head": "Select",
+    "title": "Select Over Width",
+    "component": false,
+    "path": "/docs/components/select#over-width"
+  },
+  {
+    "head": "Select",
+    "title": "Select Set parent element",
+    "component": false,
+    "path": "/docs/components/select#set-parent-element"
+  },
+  {
+    "head": "Select",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/select#api"
+  },
+  {
+    "head": "Select",
+    "title": "Select Props",
+    "component": false,
+    "path": "/docs/components/select#select.props"
+  },
+  {
+    "head": "Select",
+    "title": "Select Option Props",
+    "component": false,
+    "path": "/docs/components/select#select.option.props"
+  },
+  {
+    "head": "Select",
+    "title": "SelectRef - Select",
+    "component": false,
+    "path": "/docs/components/select#selectref"
+  },
+  {
+    "head": "Select",
+    "title": "Types - Select",
+    "component": false,
+    "path": "/docs/components/select#selecttypes"
+  },
+  {
+    "title": "Slider",
+    "component": true,
+    "path": "/docs/components/slider"
+  },
+  {
+    "title": "Slider",
+    "component": false,
+    "path": "/docs/components/slider#slider"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Types",
+    "component": false,
+    "path": "/docs/components/slider#type"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Disabled",
+    "component": false,
+    "path": "/docs/components/slider#disabled"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Step",
+    "component": false,
+    "path": "/docs/components/slider#step"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Range",
+    "component": false,
+    "path": "/docs/components/slider#range"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Event",
+    "component": false,
+    "path": "/docs/components/slider#event"
+  },
+  {
+    "head": "Slider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/slider#apis"
+  },
+  {
+    "head": "Slider",
+    "title": "Slider Props",
+    "component": false,
+    "path": "/docs/components/slider#slider-props"
+  },
+  {
+    "head": "Slider",
+    "title": "Types - Slider",
+    "component": false,
+    "path": "/docs/components/slider#slidertypes"
+  },
+  {
+    "title": "Snippet",
+    "component": true,
+    "path": "/docs/components/snippet"
+  },
+  {
+    "title": "Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#snippet"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Width",
+    "component": false,
+    "path": "/docs/components/snippet#width"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Types",
+    "component": false,
+    "path": "/docs/components/snippet#types"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Multi Line",
+    "component": false,
+    "path": "/docs/components/snippet#multi-line"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Without Copy",
+    "component": false,
+    "path": "/docs/components/snippet#without-copy"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Custom Symbol",
+    "component": false,
+    "path": "/docs/components/snippet#custom-symbol"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Custom Toast",
+    "component": false,
+    "path": "/docs/components/snippet#custom-toast"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Filled",
+    "component": false,
+    "path": "/docs/components/snippet#filled"
+  },
+  {
+    "head": "Snippet",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/snippet#apis"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Props",
+    "component": false,
+    "path": "/docs/components/snippet#snippet.props"
+  },
+  {
+    "head": "Snippet",
+    "title": "Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#snippettypes"
+  },
+  {
+    "head": "Snippet",
+    "title": "Copy Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#copytypes"
+  },
+  {
+    "head": "Snippet",
+    "title": "Toast Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#toasttypes"
   }
 ]
