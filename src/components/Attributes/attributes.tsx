@@ -32,7 +32,7 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
           >
             <Anchor>APIs</Anchor>
           </h3>
-          <Spacer h={0.5} />
+          <Spacer h={1.5} />
           <AttributesTable>{children}</AttributesTable>
         </>
       )
