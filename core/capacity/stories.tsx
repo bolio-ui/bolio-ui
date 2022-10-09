@@ -27,7 +27,25 @@ export const FixedColor: Story = () => {
   return (
     <Grid.Container gap={2}>
       <Grid>
+        <Capacity value={75} color={theme.palette.foreground} width="200px" />
+      </Grid>
+      <Grid>
+        <Capacity value={75} color={theme.palette.primary} width="200px" />
+      </Grid>
+      <Grid>
+        <Capacity value={75} color={theme.palette.secondary} width="200px" />
+      </Grid>
+      <Grid>
         <Capacity value={75} color={theme.palette.success} width="200px" />
+      </Grid>
+      <Grid>
+        <Capacity value={75} color={theme.palette.warning} width="200px" />
+      </Grid>
+      <Grid>
+        <Capacity value={75} color={theme.palette.error} width="200px" />
+      </Grid>
+      <Grid>
+        <Capacity value={75} color={theme.palette.info} width="200px" />
       </Grid>
     </Grid.Container>
   )
