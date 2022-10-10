@@ -16,6 +16,7 @@ export const meta = {
 Provides single user input from a selection of options.
 
 <Playground
+  desc="The basic `Radio` usage."
   scope={{ Radio, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -184,7 +185,14 @@ Provides single user input from a selection of options.
 <Attributes.Title>RadioTypes</Attributes.Title>
 
 ```ts
-type RadioTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type RadioTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

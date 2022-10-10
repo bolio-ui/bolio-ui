@@ -160,6 +160,7 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
 
 <Playground
   title="Divider"
+  desc="You can use the divider of the `Select` with the property `divider`."
   scope={{ Select, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -360,7 +361,14 @@ type SelectRef = {
 <Attributes.Title>SelectTypes</Attributes.Title>
 
 ```ts
-type SelectTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type SelectTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

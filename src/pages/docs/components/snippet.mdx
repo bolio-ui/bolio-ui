@@ -75,6 +75,7 @@ Display a snippet of copyable code for the command line.
 
 <Playground
   title="Multi Line"
+  desc="You can use multi line of the `Snippet` with the array in `text` prop."
   scope={{ Snippet, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -100,6 +101,7 @@ Display a snippet of copyable code for the command line.
 
 <Playground
   title="Custom Symbol"
+  desc="You can custom symbol of the `Snippet` with the property `symbol`."
   scope={{ Snippet, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -112,6 +114,7 @@ Display a snippet of copyable code for the command line.
 
 <Playground
   title="Custom Toast"
+  desc="You can custom toast of the `Snippet` with the property `toastText` and `toastType`."
   scope={{ Snippet, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -129,6 +132,7 @@ Display a snippet of copyable code for the command line.
 
 <Playground
   title="Filled"
+  desc="Show different states filled with colors."
   scope={{ Snippet, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -204,31 +208,18 @@ Display a snippet of copyable code for the command line.
 ```ts
 type SnippetTypes =
   | 'default'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'dark'
-  | 'lite'
-```
-
-<Attributes.Title>CopyTypes</Attributes.Title>
-
-```ts
-type CopyTypes = 'default' | 'silent' | 'prevent'
-```
-
-<Attributes.Title>SnippetTypes</Attributes.Title>
-
-```ts
-type SnippetTypes =
-  | 'default'
   | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
   | 'info'
+```
+
+<Attributes.Title>CopyTypes</Attributes.Title>
+
+```ts
+type CopyTypes = 'default' | 'silent' | 'prevent'
 ```
 
 <Attributes.Title>ToastTypes</Attributes.Title>
