@@ -63,7 +63,6 @@ function CardComponent({
       {footerChildren}
       <style jsx>{`
         .card {
-          background: ${theme.palette.background};
           transition: all 0.2s ease;
           border-radius: ${theme.layout.radius};
           box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
