@@ -60,7 +60,7 @@ function ImageComponent({
   return (
     <div className={useClasses('image', className)}>
       {showSkeleton && showAnimation && (
-        <ImageSkeleton opacity={loading ? 0.5 : 0} />
+        <ImageSkeleton opacity={loading ? 1 : 0} />
       )}
       <img ref={imageRef} onLoad={imageLoaded} src={url} {...props} />
       <style jsx>{`
