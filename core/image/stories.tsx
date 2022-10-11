@@ -15,7 +15,7 @@ export const Default: Story = () => (
       <Image
         width="280px"
         height="160px"
-        src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        src="https://bolio-ui.com/logo-white.jpg"
       />
     </Grid>
   </Grid.Container>
@@ -27,7 +27,7 @@ export const Skeleton: Story = () => (
       <Image
         width="280px"
         height="160px"
-        src="http://www.deelay.me/2000/https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        src="https://bolio-ui.com/logo-white.jpg"
       />
     </Grid>
   </Grid.Container>
@@ -43,7 +43,7 @@ export const Browser: Story = () => (
         <Image
           width="450px"
           height="300px"
-          src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+          src="https://bolio-ui.com/logo-white.jpg"
         />
       </Image.Browser>
     </Grid>
@@ -57,7 +57,7 @@ export const BrowserInvert: Story = () => (
         <Image
           width="450px"
           height="300px"
-          src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+          src="https://bolio-ui.com/logo-white.jpg"
         />
       </Image.Browser>
     </Grid>
@@ -76,10 +76,7 @@ export const Compose: Story = () => (
           </p>
         }
       >
-        <Image
-          height="250px"
-          src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
-        />
+        <Image height="250px" src="https://bolio-ui.com/logo-white.jpg" />
       </Display>
     </Grid>
   </Grid.Container>

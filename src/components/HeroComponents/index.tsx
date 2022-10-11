@@ -31,6 +31,7 @@ export const ProfileCard = () => {
         <Row align="middle">
           <Col span={4}>
             <Avatar
+              alt="Your Avatar"
               mr={1.5}
               height={3}
               width={3}
