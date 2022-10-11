@@ -13,6 +13,8 @@
   <img alt="Github Stars" src="https://badgen.net/github/stars/bolio-ui/bolio-ui" />
 </p>
 
+<br />
+
 ## Getting Started
 
 Visit <a aria-label="bolio-ui learn" href="https://bolio-ui.com/docs/guide">https://bolio-ui.com/docs/guide</a> to get started with Bolio UI.
