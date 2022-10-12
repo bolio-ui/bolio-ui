@@ -16,6 +16,7 @@ interface Props {
   toastText?: string
   toastType?: ToastTypes
   filled?: boolean
+  rounded?: boolean
   copy?: CopyTypes
   type?: SnippetTypes
   className?: string
@@ -34,6 +35,7 @@ const textArrayToString = (text: string[]): string => {
 function SnippetComponent({
   type = 'default' as SnippetTypes,
   filled = false,
+  rounded = false,
   children,
   symbol = '$',
   toastText = 'Copied!',
@@ -41,6 +43,7 @@ function SnippetComponent({
   text,
   copy: copyType,
   className = '',
+
   ...props
 }: React.PropsWithChildren<SnippetProps>) {
   const theme = useTheme()
@@ -99,7 +102,7 @@ function SnippetComponent({
           color: ${style.color};
           background-color: ${style.bgColor};
           border: 1px solid ${style.border};
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           --snippet-font-size: ${SCALES.font(0.8125)};
           --snippet-padding-top: ${SCALES.pt(0.667)};
           font-size: var(--snippet-font-size);
@@ -144,7 +147,7 @@ function SnippetComponent({
           width: calc(3.281 * var(--snippet-font-size));
           color: inherit;
           transition: opacity 150ms ease 0s;
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           cursor: pointer;
           user-select: none;
           padding-top: ${isMultiLine ? 'var(--snippet-padding-top)' : 0};

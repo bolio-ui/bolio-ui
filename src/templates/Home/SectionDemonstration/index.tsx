@@ -15,7 +15,7 @@ import {
   Link
 } from 'core'
 
-function SectionCTA() {
+function SectionDemonstration() {
   const theme = useTheme()
   return (
     <>
@@ -119,4 +119,4 @@ function SectionCTA() {
   )
 }
 
-export default SectionCTA
+export default SectionDemonstration
