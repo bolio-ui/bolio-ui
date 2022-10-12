@@ -92,6 +92,32 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
+export const Rounded: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Input placeholder="Default" rounded />
+    </Grid>
+    <Grid>
+      <Input type="primary" placeholder="Primary" rounded />
+    </Grid>
+    <Grid>
+      <Input type="secondary" placeholder="Secondary" rounded />
+    </Grid>
+    <Grid>
+      <Input type="success" placeholder="Success" rounded />
+    </Grid>
+    <Grid>
+      <Input type="warning" placeholder="Warning" rounded />
+    </Grid>
+    <Grid>
+      <Input type="error" placeholder="Error" rounded />
+    </Grid>
+    <Grid>
+      <Input type="info" placeholder="Info" rounded />
+    </Grid>
+  </Grid.Container>
+)
+
 export const Icon: Story = () => (
   <Grid.Container gap={2}>
     <Grid>
