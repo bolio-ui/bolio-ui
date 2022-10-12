@@ -54,7 +54,8 @@
     "build:package": "yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:after",
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
-    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
+    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build",
+    "release": "yarn build && yarn build:package && yarn publish --access public --non-interactive"
   },
   "lint-staged": {
     "src/**/*": [
