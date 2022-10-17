@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/chakra-ui/chakra-ui">
+  <a href="https://github.com/bolio-ui/bolio-ui">
     <img src="https://github.com/bolio-ui/bolio-ui/blob/master/public/logo-colored.svg" alt="Bolio UI Logo" width="100" />
   </a>
 </p>
