@@ -102,7 +102,7 @@ function AvatarComponent({
           overflow: hidden;
           border-radius: ${radius};
           vertical-align: top;
-          background-color: ${theme.palette.accents_1};
+          background-color: ${theme.palette.accents_2};
           box-sizing: border-box;
           width: ${SCALES.width(1.75) || SCALES.height(1.75)};
           height: ${SCALES.height(1.75) || SCALES.width(1.75)};
