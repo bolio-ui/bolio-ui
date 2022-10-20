@@ -226,7 +226,7 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.disabled {
-            background-color: ${theme.palette.accents_3};
+            background-color: ${theme.palette.accents_4};
             cursor: not-allowed;
           }
 

@@ -43,7 +43,6 @@ function SnippetComponent({
   text,
   copy: copyType,
   className = '',
-
   ...props
 }: React.PropsWithChildren<SnippetProps>) {
   const theme = useTheme()
