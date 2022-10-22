@@ -38,10 +38,11 @@ npm i @bolio-ui/core
 Go to the root of your application and do this:
 
 ```jsx
-import { BolioUIProvider } from '@bolio-ui/core'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 const Application = () => (
   <BolioUIProvider>
+    <CssBaseline /> // ---> Normalize styles
     <AppComponent /> // ---> Your App Component
   </BolioUIProvider>
 )
