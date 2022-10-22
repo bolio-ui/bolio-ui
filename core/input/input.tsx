@@ -226,7 +226,7 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.disabled {
-            background-color: ${theme.palette.accents_3};
+            background-color: ${theme.palette.accents_4};
             cursor: not-allowed;
           }
 
@@ -240,7 +240,7 @@ const InputComponent = React.forwardRef<
 
           input {
             margin: 0.25em 0.625em;
-            padding: 0;
+            padding: 0 4px;
             box-shadow: none;
             font-size: ${SCALES.font(0.875)};
             background-color: transparent;

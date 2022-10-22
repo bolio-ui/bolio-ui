@@ -15,7 +15,7 @@ export const getStyles = (
   const colors: { [key in CardTypes]: Omit<CardStyles, 'borderColor'> } = {
     default: {
       color: palette.foreground,
-      bgColor: palette.accents_1
+      bgColor: palette.accents_2
     },
     dark: {
       color: palette.background,

@@ -55,6 +55,70 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
+export const Rounded: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Snippet text="yarn add @bolio-ui/core" width="300px" rounded />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="primary"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="secondary"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="success"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="warning"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="error"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="lite"
+        width="300px"
+        rounded
+      />
+    </Grid>
+    <Grid>
+      <Snippet
+        text="yarn add @bolio-ui/core"
+        type="dark"
+        width="300px"
+        rounded
+      />
+    </Grid>
+  </Grid.Container>
+)
+
 export const Multiline: Story = () => (
   <Grid.Container gap={2}>
     <Grid>

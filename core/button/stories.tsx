@@ -81,7 +81,7 @@ export const TypeColors: Story = () => (
     </Grid>
     <Grid>
       <Button auto type="info">
-        Error
+        Info
       </Button>
     </Grid>
     <Grid>

@@ -146,6 +146,37 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 />
 
 <Playground
+  title="Rounded"
+  desc="You can completely round the corners of any type of `Input` with the `rounded` property."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input placeholder="Default" rounded />
+  </Grid>
+  <Grid>
+    <Input type="primary" placeholder="Primary" rounded />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary" rounded />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success" rounded />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning" rounded />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error" rounded />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info" rounded />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Icon"
   desc="Specify an icon component."
   scope={{ Input, Instagram, Facebook, Grid }}
