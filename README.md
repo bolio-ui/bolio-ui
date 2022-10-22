@@ -58,6 +58,14 @@ import { Button } from '@bolio-ui/core'
 const Component = () => <Button>Click me</Button>
 ```
 
+### Showcases
+
+We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
+Whether it's a feature request, bug report, or a project to showcase, please get involved!
+
+- [Bolio Icons](https://icons.bolio-ui.com/)
+- [Bolio Me](https://me.bolio-ui.com/)
+
 ### Community
 
 We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
