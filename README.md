@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/bolio-ui/bolio-ui">
-    <img src="https://github.com/bolio-ui/bolio-ui/blob/master/public/logo-colored.svg" alt="Bolio UI Logo" width="100" />
+    <img src="https://bolio-ui.com/logo-colored.svg" alt="Bolio UI Logo" width="100" />
   </a>
 </p>
 
@@ -59,9 +59,6 @@ const Component = () => <Button>Click me</Button>
 ```
 
 ### Showcases
-
-We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
-Whether it's a feature request, bug report, or a project to showcase, please get involved!
 
 - [Bolio Icons](https://icons.bolio-ui.com/)
 - [Bolio Me](https://me.bolio-ui.com/)
