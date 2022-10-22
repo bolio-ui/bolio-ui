@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Display, Code, Snippet, Image } from 'core'
+import { Display, Code, Snippet, Image, Grid } from 'core'
 
 export const meta = {
   title: 'Display',
@@ -16,20 +16,24 @@ export const meta = {
 To display important information or images in a central alignment.
 
 <Playground
-  title="Basic"
+  title="General"
   desc="Describe the main part with a paragraph."
-  scope={{ Display, Image }}
+  scope={{ Display, Image, Grid }}
   code={`
-<Display shadow caption="Make your development more creative and dynamic with amazing tools for React. 🥷🏼">
-  <Image height="200px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
-</Display>
+<Grid.Container gap={2}>
+  <Grid md={12}>
+    <Display shadow caption="Make your development more creative and dynamic with amazing tools for React. 🥷🏼">
+      <Image height="200px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
+    </Display>
+  </Grid>
+</Grid.Container>  
 `}
 />
 
 <Playground
   title="With Code"
   desc="Show multiline code blocks."
-  scope={{ Display, Code }}
+  scope={{ Display, Code, Grid }}
   code={`
 () => {
   const codes = \`{
@@ -40,9 +44,13 @@ To display important information or images in a central alignment.
   }
 }\`
   return (
-    <Display width="500px" caption="Application's build with a defined secret environment variable.">
-      <Code block>{codes}</Code>
-    </Display>
+    <Grid.Container gap={2}>
+      <Grid md={12}>
+        <Display width="500px" caption="Application's build with a defined secret environment variable.">
+          <Code block>{codes}</Code>
+        </Display>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -51,22 +59,30 @@ To display important information or images in a central alignment.
 <Playground
   title="With Snippet"
   desc="Show shell codes."
-  scope={{ Display, Snippet }}
+  scope={{ Display, Snippet, Grid }}
   code={`
-<Display width="500px" caption="Run this command to install the library.">
-  <Snippet type="dark">yarn add @bolio-ui/core</Snippet>
-</Display>
+<Grid.Container gap={2}>
+  <Grid md={12}>
+    <Display width="500px" caption="Run this command to install the library.">
+      <Snippet type="dark" text="yarn add @bolio-ui/core" />
+    </Display>
+  </Grid>
+</Grid.Container> 
 `}
 />
 
 <Playground
   title="Component Caption"
   desc="Use component on `caption` prop."
-  scope={{ Display, Code, Image }}
+  scope={{ Display, Code, Image, Grid }}
   code={`
-<Display shadow caption={<p>Browse <Code>bolio-ui.com.br</Code> for more information.</p>}>
-  <Image width="650px" height="297px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
-</Display>
+<Grid.Container gap={2}>
+  <Grid md={12}>
+    <Display shadow caption={<p>Browse <Code>bolio-ui.com.br</Code> for more information.</p>}>
+      <Image width="650px" height="297px" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" />
+    </Display>
+  </Grid>
+</Grid.Container>
 `}
 />
 

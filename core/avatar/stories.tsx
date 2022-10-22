@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Avatar from '.'
-import Spacer from '../spacer'
+import Grid from '../grid'
 
 export default {
   title: 'Data Display/Avatar',
@@ -8,49 +8,111 @@ export default {
 } as Meta
 
 export const Default: Story = () => {
-  const url =
-    'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg'
   return (
-    <>
-      <Avatar src={url} />
-      <Avatar src={url} />
-      <Avatar src={url} />
-      <Avatar src={url} />
-      <Spacer h={0.5} />
-      <Avatar src={url} isSquare />
-      <Avatar src={url} isSquare />
-      <Avatar src={url} isSquare />
-      <Avatar src={url} isSquare />
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Avatar
+          src="https://i.pravatar.cc/150?img=60"
+          isSquare
+          width={1.5}
+          height={1.5}
+        />
+      </Grid>
+      <Grid>
+        <Avatar text="Bill" isSquare width={1.5} height={1.5} />
+      </Grid>
+      <Grid>
+        <Avatar
+          src="https://i.pravatar.cc/150?img=30"
+          isSquare
+          width={1.5}
+          height={1.5}
+        />
+      </Grid>
+      <Grid>
+        <Avatar text="Max" isSquare width={1.5} height={1.5} />
+      </Grid>
+      <Grid>
+        <Avatar
+          src="https://i.pravatar.cc/150?img=20"
+          isSquare
+          width={1.5}
+          height={1.5}
+        />
+      </Grid>
+      <Grid>
+        <Avatar text="Jane" isSquare width={1.5} height={1.5} />
+      </Grid>
+    </Grid.Container>
   )
 }
 
 export const Text: Story = () => (
-  <>
-    <Avatar text="W" />
-    <Avatar text="A" />
-    <Avatar text="W" />
-    <Avatar text="Joe" />
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Avatar text="BA" width={1.5} height={1.5} />
+    </Grid>
+    <Grid>
+      <Avatar text="ES" width={1.5} height={1.5} />
+    </Grid>
+    <Grid>
+      <Avatar text="MB" width={1.5} height={1.5} />
+    </Grid>
+    <Grid>
+      <Avatar text="WL" width={1.5} height={1.5} />
+    </Grid>
+    <Grid>
+      <Avatar text="ML" width={1.5} height={1.5} />
+    </Grid>
+    <Grid>
+      <Avatar text="TR" width={1.5} height={1.5} />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Group: Story = () => {
-  const url =
-    'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg'
   return (
-    <>
-      <Avatar.Group>
-        <Avatar src={url} stacked />
-        <Avatar src={url} stacked />
-        <Avatar src={url} stacked />
-        <Avatar src={url} stacked />
-      </Avatar.Group>
-      <Spacer />
-      <Avatar.Group count={12}>
-        <Avatar src={url} stacked />
-        <Avatar text="W" stacked />
-        <Avatar text="Ana" stacked />
-      </Avatar.Group>
-    </>
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Avatar.Group>
+          <Avatar
+            src="https://i.pravatar.cc/150?img=60"
+            width={1.5}
+            height={1.5}
+            stacked
+          />
+          <Avatar
+            src="https://i.pravatar.cc/150?img=30"
+            width={1.5}
+            height={1.5}
+            stacked
+          />
+          <Avatar
+            src="https://i.pravatar.cc/150?img=20"
+            width={1.5}
+            height={1.5}
+            stacked
+          />
+          <Avatar
+            src="https://i.pravatar.cc/150?img=10"
+            width={1.5}
+            height={1.5}
+            stacked
+          />
+        </Avatar.Group>
+      </Grid>
+      <Grid>
+        <Avatar.Group count={6}>
+          <Avatar
+            src="https://i.pravatar.cc/150?img=60"
+            width={1.5}
+            height={1.5}
+            stacked
+          />
+          <Avatar text="C" width={1.5} height={1.5} stacked />
+          <Avatar text="Mag" width={1.5} height={1.5} stacked />
+        </Avatar.Group>
+      </Grid>
+    </Grid.Container>
   )
 }

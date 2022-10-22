@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Select, Spacer, Code, Modal, useModal, Button } from 'core'
+import { Select, Grid, Code, Modal, useModal, Button } from 'core'
 
 export const meta = {
   title: 'Select',
@@ -18,15 +18,19 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
 
 <Playground
   desc="Basic usage."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
 () => {
   const handler = (val) => console.log(val)
   return (
-    <Select placeholder="Select one" onChange={handler}>
-      <Select.Option value="1">Value 1</Select.Option>
-      <Select.Option value="2">Value 2</Select.Option>
-    </Select>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Select placeholder="Select one" onChange={handler}>
+          <Select.Option value="1">Value 1</Select.Option>
+          <Select.Option value="2">Value 2</Select.Option>
+        </Select>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -35,213 +39,277 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Select, Spacer }}
+  scope={{ Select, Grid }}
   code={`
-() => (
-  <>
-    <Select placeholder="Default" type="default">
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Default">
       <Select.Option value="1">Value 1</Select.Option>
       <Select.Option value="2">Value 2</Select.Option>
     </Select>
-    <Spacer h={0.5} />
+  </Grid>
+  <Grid>
+    <Select type="primary" initialValue="1">
+      <Select.Option value="1">Value 1</Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" initialValue="2">
+      <Select.Option value="1">Value 1</Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+  <Grid>
     <Select type="success" initialValue="1">
       <Select.Option value="1">Value 1</Select.Option>
       <Select.Option value="2">Value 2</Select.Option>
     </Select>
-    <Spacer h={0.5} />
+  </Grid>
+  <Grid>
     <Select type="warning" initialValue="2">
       <Select.Option value="1">Value 1</Select.Option>
       <Select.Option value="2">Value 2</Select.Option>
     </Select>
-    <Spacer h={0.5} />
+  </Grid>
+  <Grid>
     <Select type="error" initialValue="1">
       <Select.Option value="1">Value 1</Select.Option>
       <Select.Option value="2">Value 2</Select.Option>
     </Select>
-  </>
-)
+  </Grid>
+  <Grid>
+    <Select type="info" initialValue="2">
+      <Select.Option value="1">Value 1</Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
   desc="Disable all options."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select placeholder="Select one" disabled>
-  <Select.Option value="1">Value 1</Select.Option>
-  <Select.Option value="2">Value 2</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Select one" disabled>
+      <Select.Option value="1">Value 1</Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled Option"
   desc="disable specified options."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select placeholder="Select one">
-  <Select.Option value="1" disabled>
-    Value 1
-  </Select.Option>
-  <Select.Option value="2">Value 2</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Select one">
+      <Select.Option value="1" disabled>
+        Value 1
+      </Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Without Icon"
   desc="Hide icon on right."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select placeholder="Select one" pure>
-  <Select.Option value="1">Value 1</Select.Option>
-  <Select.Option value="2">Value 2</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Select one" pure>
+      <Select.Option value="1">Value 1</Select.Option>
+      <Select.Option value="2">Value 2</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Labels"
   desc="show data as a group."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select placeholder="Technologies">
-  <Select.Option label>JavaScript</Select.Option>
-  <Select.Option value="react">React</Select.Option>
-  <Select.Option value="angular">Angular</Select.Option>
-  <Select.Option label>Ruby</Select.Option>
-  <Select.Option value="rails">Rails</Select.Option>
-  <Select.Option value="php">PHP</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Technologies">
+      <Select.Option label>JavaScript</Select.Option>
+      <Select.Option value="react">React</Select.Option>
+      <Select.Option value="angular">Angular</Select.Option>
+      <Select.Option label>Ruby</Select.Option>
+      <Select.Option value="rails">Rails</Select.Option>
+      <Select.Option value="php">PHP</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Divider"
-  scope={{ Select }}
+  desc="You can use the divider of the `Select` with the property `divider`."
+  scope={{ Select, Grid }}
   code={`
-<Select placeholder="Technologies">
-  <Select.Option value="react">React</Select.Option>
-  <Select.Option value="angular">Angular</Select.Option>
-  <Select.Option divider />
-  <Select.Option value="rails">Rails</Select.Option>
-  <Select.Option value="php">PHP</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Technologies">
+      <Select.Option value="react">React</Select.Option>
+      <Select.Option value="angular">Angular</Select.Option>
+      <Select.Option divider />
+      <Select.Option value="rails">Rails</Select.Option>
+      <Select.Option value="php">PHP</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Multiple"
   desc="`Select` supports multiple values to be selected."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select
-  placeholder="Technologies"
-  multiple
-  width="200px"
-  initialValue={['1', '3', '4', '6']}
->
-  <Select.Option value="1">React</Select.Option>
-  <Select.Option value="2">Angular</Select.Option>
-  <Select.Option value="3">Vue</Select.Option>
-  <Select.Option divider />
-  <Select.Option value="4">Rails</Select.Option>
-  <Select.Option value="5">PHP</Select.Option>
-  <Select.Option divider />
-  <Select.Option value="6">Express</Select.Option>
-  <Select.Option value="7">Koa</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select
+      placeholder="Technologies"
+      multiple
+      width="200px"
+      initialValue={['1', '3', '4', '6']}
+    >
+      <Select.Option value="1">React</Select.Option>
+      <Select.Option value="2">Angular</Select.Option>
+      <Select.Option value="3">Vue</Select.Option>
+      <Select.Option divider />
+      <Select.Option value="4">Rails</Select.Option>
+      <Select.Option value="5">PHP</Select.Option>
+      <Select.Option divider />
+      <Select.Option value="6">Express</Select.Option>
+      <Select.Option value="7">Koa</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Multiple Without Clear"
   desc="`Select` supports multiple values to be selected without the clear icon."
-  scope={{ Select }}
+  scope={{ Select, Grid }}
   code={`
-<Select
-  placeholder="Technologies"
-  multiple
-  width="200px"
-  clearable={false}
-  initialValue={['1', '3', '4', '6']}
->
-  <Select.Option value="1">React</Select.Option>
-  <Select.Option value="2">Angular</Select.Option>
-  <Select.Option value="3">Vue</Select.Option>
-  <Select.Option divider />
-  <Select.Option value="4">Rails</Select.Option>
-  <Select.Option value="5">PHP</Select.Option>
-  <Select.Option divider />
-  <Select.Option value="6">Express</Select.Option>
-  <Select.Option value="7">Koa</Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select
+      placeholder="Technologies"
+      multiple
+      width="200px"
+      clearable={false}
+      initialValue={['1', '3', '4', '6']}
+    >
+      <Select.Option value="1">React</Select.Option>
+      <Select.Option value="2">Angular</Select.Option>
+      <Select.Option value="3">Vue</Select.Option>
+      <Select.Option divider />
+      <Select.Option value="4">Rails</Select.Option>
+      <Select.Option value="5">PHP</Select.Option>
+      <Select.Option divider />
+      <Select.Option value="6">Express</Select.Option>
+      <Select.Option value="7">Koa</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Compose"
   desc="Use with other components."
-  scope={{ Select, Code }}
+  scope={{ Select, Code, Grid }}
   code={`
-<Select placeholder="Value one" initialValue="1">
-  <Select.Option value="1">
-    <Code>TypeScript</Code>
-  </Select.Option>
-  <Select.Option value="2">
-    <Code>JavaScript</Code>
-  </Select.Option>
-</Select>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Value one" initialValue="1">
+      <Select.Option value="1">
+        <Code>TypeScript</Code>
+      </Select.Option>
+      <Select.Option value="2">
+        <Code>JavaScript</Code>
+      </Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Over Width"
   desc="`Option` to show more text with adaptive width."
-  scope={{ Select, Spacer }}
+  scope={{ Select, Grid }}
   code={`
-<>
-  <Select placeholder="Choose one" value="1" width="150px">
-    <Select.Option value="1">Truncate an overly long string</Select.Option>
-    <Select.Option value="2">Option 2</Select.Option>
-  </Select>
-  <Spacer h={0.5} />
-  <Select placeholder="Choose one" value="1" width="150px" disableMatchWidth>
-    <Select.Option value="1">
-      Autoscale option width when text is too long
-    </Select.Option>
-    <Select.Option value="2">Option 2</Select.Option>
-  </Select>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Select placeholder="Choose one" value="1" width="150px">
+      <Select.Option value="1">Truncate an overly long string</Select.Option>
+      <Select.Option value="2">Option 2</Select.Option>
+    </Select>
+  </Grid>
+  <Grid>
+    <Select
+      placeholder="Choose one"
+      value="1"
+      width="150px"
+      disableMatchWidth
+    >
+      <Select.Option value="1">
+        Autoscale option width when text is too long
+      </Select.Option>
+      <Select.Option value="2">Option 2</Select.Option>
+    </Select>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Set parent element"
   desc="you can specify the container for drop-down box rendering."
-  scope={{ Select, Spacer, useModal, Modal, Button, Code }}
+  scope={{ Select, Grid, useModal, Modal, Button, Code, Grid }}
   code={`
 () => {
   const { visible, setVisible, bindings } = useModal()
   return (
-    <>
-      <Button auto onClick={() => setVisible(true)}>Show more</Button>
-      <Modal {...bindings}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Content id="customModalSelect">
-          <Select placeholder="Choose one" initialValue="1"
-            getPopupContainer={() => document.getElementById('customModalSelect')}>
-            <Select.Option value="1"><Code>TypeScript</Code></Select.Option>
-            <Select.Option value="2"><Code>JavaScript</Code></Select.Option>
-          </Select>
-          <p>Scroll through the content to see the changes.</p>
-          <div style={{ height: '1000px' }}></div>
-          <p>Scroll through the content to see the changes.</p>
-        </Modal.Content>
-        <Modal.Action passive onClick={() => setVisible(false)}>Cancel</Modal.Action>
-      </Modal>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={() => setVisible(true)}>Show more</Button>
+        <Modal {...bindings}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Content id="customModalSelect">
+            <Select placeholder="Choose one" initialValue="1"
+              getPopupContainer={() => document.getElementById('customModalSelect')}>
+              <Select.Option value="1"><Code>TypeScript</Code></Select.Option>
+              <Select.Option value="2"><Code>JavaScript</Code></Select.Option>
+            </Select>
+            <p>Scroll through the content to see the changes.</p>
+            <div style={{ height: '1000px' }}></div>
+            <p>Scroll through the content to see the changes.</p>
+          </Modal.Content>
+          <Modal.Action passive onClick={() => setVisible(false)}>Cancel</Modal.Action>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }`}
 />
@@ -293,7 +361,14 @@ type SelectRef = {
 <Attributes.Title>SelectTypes</Attributes.Title>
 
 ```ts
-type SelectTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type SelectTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

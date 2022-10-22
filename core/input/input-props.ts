@@ -23,6 +23,8 @@ export interface Props {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onIconClick?: (e: React.MouseEvent<HTMLDivElement>) => void
   autoComplete?: string
+  backgroundColor?: string
+  rounded?: boolean
 }
 
 export const defaultProps = {

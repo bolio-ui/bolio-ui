@@ -19,29 +19,41 @@ export const getColors = (
       iconBorder: palette.accents_5,
       placeholderColor: palette.accents_3
     },
+    primary: {
+      border: palette.primary,
+      borderActive: palette.primary,
+      iconBorder: palette.primary,
+      placeholderColor: palette.accents_3
+    },
     secondary: {
-      border: palette.border,
-      borderActive: palette.foreground,
-      iconBorder: palette.accents_5,
+      border: palette.secondary,
+      borderActive: palette.secondary,
+      iconBorder: palette.secondary,
       placeholderColor: palette.accents_3
     },
     success: {
-      border: palette.successLight,
-      borderActive: palette.successDark,
+      border: palette.success,
+      borderActive: palette.success,
       iconBorder: palette.success,
       placeholderColor: palette.accents_3
     },
     warning: {
-      border: palette.warningLight,
-      borderActive: palette.warningDark,
+      border: palette.warning,
+      borderActive: palette.warning,
       iconBorder: palette.warning,
       placeholderColor: palette.accents_3
     },
     error: {
-      border: palette.errorLight,
-      borderActive: palette.errorDark,
+      border: palette.error,
+      borderActive: palette.error,
       iconBorder: palette.error,
       placeholderColor: palette.error
+    },
+    info: {
+      border: palette.info,
+      borderActive: palette.info,
+      iconBorder: palette.info,
+      placeholderColor: palette.accents_3
     }
   }
 

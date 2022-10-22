@@ -50,7 +50,7 @@ function App({ Component, pageProps }: AppProps) {
         </SettingsContext.Provider>
         <style global jsx>{`
           pre {
-            background-color: ${theme.palette.accents_7};
+            background-color: ${theme.palette.pre};
           }
           pre code {
             color: ${theme.palette.accents_1};
@@ -71,7 +71,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_4};
           }
           .method.function.property-access {
-            color: ${theme.palette.info};
+            color: ${theme.palette.primary};
           }
           .property-access {
             color: ${theme.palette.accents_1};
@@ -80,7 +80,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_1};
           }
           .function {
-            color: ${theme.palette.info};
+            color: ${theme.palette.primary};
           }
           .parameter {
             color: ${theme.palette.accents_1};
@@ -107,7 +107,7 @@ function App({ Component, pageProps }: AppProps) {
             color: ${theme.palette.accents_1};
           }
           span.keyword {
-            color: ${theme.palette.violetLighter};
+            color: ${theme.palette.secondaryLighter};
           }
           span.plain-text {
             color: ${theme.palette.accents_1};

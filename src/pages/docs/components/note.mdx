@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Note } from 'core'
+import { Note, Grid } from 'core'
 
 export const meta = {
   title: 'Note',
@@ -17,79 +17,115 @@ Display text that requires attention or provides additional information.
 
 <Playground
   desc="Show a piece of text or components."
-  scope={{ Note }}
+  scope={{ Note, Grid }}
   code={`
-<Note>Check payment pending.</Note>
+<Grid.Container gap={2}>
+  <Grid>
+    <Note>Check payment pending.</Note>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
-  title="Secondary"
-  scope={{ Note }}
+  title="Types"
+  desc="You can apply a types differents with the `type` prop."
+  scope={{ Note, Grid }}
   code={`
-<Note type="secondary">Check payment pending.</Note>
-`}
-/>
-
-<Playground
-  title="Status"
-  scope={{ Note }}
-  code={`
-<>
-  <Note type="success">Check payment pending.</Note>
-  <br />
-  <Note type="warning">Check payment pending.</Note>
-  <br />
-  <Note type="error">Check payment pending.</Note>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Note>Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="primary">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="success">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="warning">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="error">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="info">Check payment pending.</Note>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Hidden Label"
-  scope={{ Note }}
+  desc="`Note` component with a show/hide label."
+  scope={{ Note, Grid }}
   code={`
-<Note label={false}>Demo note!</Note>
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label={false}>Demo note!</Note>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Label"
-  scope={{ Note }}
+  desc="You can change custom label of the `Note` with the property `label`."
+  scope={{ Note, Grid }}
   code={`
-<Note label="custom">Customize a note.</Note>
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label="custom">Customize a note.</Note>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Filled Variant"
-  scope={{ Note }}
+  desc="You can change the filled variant of the `Note` with the property `filled`."
+  scope={{ Note, Grid }}
   code={`
-<>
-  <Note label="custom" filled>
-    Customize a note.
-  </Note>
-  <br />
-  <Note label={false} filled>
-    Demo note!
-  </Note>
-  <br />
-  <Note type="success" label="success" filled>
-    Check payment pending.
-  </Note>
-  <br />
-  <Note type="warning" label="warning" filled>
-    Check payment pending.
-  </Note>
-  <br />
-  <Note type="error" label="error" filled>
-    Check payment pending.
-  </Note>
-  <br />
-  <Note type="secondary" filled>
-    Check payment pending.
-  </Note>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label="custom" filled>
+      Customize a note.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="primary" label="primary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary" label="secondary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="success" label="success" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="warning" label="warning" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="error" label="error" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -106,7 +142,14 @@ Display text that requires attention or provides additional information.
 <Attributes.Title>NoteTypes</Attributes.Title>
 
 ```ts
-type NoteTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type NoteTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

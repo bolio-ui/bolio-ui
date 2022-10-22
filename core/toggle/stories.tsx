@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Toggle from '.'
-import Spacer from '../spacer'
+import Grid from '../grid'
 
 export default {
   title: 'Data Entry/Toggle',
@@ -8,31 +8,49 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <>
-    <Toggle />
-    <Spacer h={0.5} />
-    <Toggle initialChecked />
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Toggle />
+    </Grid>
+    <Grid>
+      <Toggle initialChecked />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Type: Story = () => (
-  <>
-    <Toggle type="default" initialChecked />
-    <Spacer h={0.5} />
-    <Toggle type="secondary" initialChecked />
-    <Spacer h={0.5} />
-    <Toggle type="success" initialChecked />
-    <Spacer h={0.5} />
-    <Toggle type="warning" initialChecked />
-    <Spacer h={0.5} />
-    <Toggle type="error" initialChecked />
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Toggle scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="primary" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="secondary" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="success" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="warning" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="error" scale={2} initialChecked />
+    </Grid>
+    <Grid>
+      <Toggle type="info" scale={2} initialChecked />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Disabled: Story = () => (
-  <>
-    <Toggle disabled />
-    <Spacer h={0.5} />
-    <Toggle initialChecked disabled />
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Toggle disabled />
+    </Grid>
+    <Grid>
+      <Toggle initialChecked disabled />
+    </Grid>
+  </Grid.Container>
 )

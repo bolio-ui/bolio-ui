@@ -196,6 +196,7 @@ const Navigation: React.FC = () => {
                             }
                             auto
                             scale={0.75}
+                            type="secondary"
                           >
                             Sponsor
                           </Button>
@@ -263,9 +264,6 @@ const Navigation: React.FC = () => {
           overflow: hidden;
           z-index: 99;
         }
-        .menu {
-          backdrop-filter: saturate(180%) blur(10px);
-        }
         .menu_sticky {
           z-index: 1;
           position: fixed;
@@ -278,6 +276,7 @@ const Navigation: React.FC = () => {
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
           backdrop-filter: saturate(180%) blur(10px);
           transition: box-shadow 1s ease;
+          transition: backdrop-filter 1s ease;
           padding-left: 15px;
           padding-right: 15px;
         }

@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import useTheme from '../use-theme'
 import Progress from '.'
-import Spacer from '../spacer'
+import Grid from '../grid'
 import Button from '../button'
 
 export default {
@@ -10,9 +10,21 @@ export default {
   component: Progress
 } as Meta
 
-export const Default: Story = () => <Progress value={50} />
+export const Default: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={12}>
+      <Progress value={50} />
+    </Grid>
+  </Grid.Container>
+)
 
-export const CustomMax: Story = () => <Progress value={45} max={50} />
+export const CustomMax: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={12}>
+      <Progress value={45} max={50} />
+    </Grid>
+  </Grid.Container>
+)
 
 export const DynamicColors: Story = () => {
   const theme = useTheme()
@@ -27,28 +39,46 @@ export const DynamicColors: Story = () => {
   }
 
   return (
-    <>
-      <Progress value={value} colors={colors} />
-      <Spacer />
-      <Button onClick={() => setValue(value + 20)} auto scale={0.5}>
-        Add
-      </Button>
-      <Spacer w={0.5} inline />
-      <Button onClick={() => setValue(20)} auto scale={0.5} type="error">
-        Remove
-      </Button>
-    </>
+    <Grid.Container gap={2}>
+      <Grid xs={12} md={12}>
+        <Progress value={value} colors={colors} />
+      </Grid>
+      <Grid>
+        <Button onClick={() => setValue(value + 20)} auto scale={0.5}>
+          Add
+        </Button>
+      </Grid>
+      <Grid>
+        <Button onClick={() => setValue(20)} auto scale={0.5} type="error">
+          Remove
+        </Button>
+      </Grid>
+    </Grid.Container>
   )
 }
 
 export const Type: Story = () => (
-  <>
-    <Progress type="secondary" value={10} />
-    <Spacer />
-    <Progress type="success" value={45} />
-    <Spacer />
-    <Progress type="warning" value={100} />
-    <Spacer />
-    <Progress type="error" value={21} />
-  </>
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={12}>
+      <Progress value={3} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="primary" value={74} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="secondary" value={10} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="success" value={45} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="warning" value={100} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="error" value={21} />
+    </Grid>
+    <Grid xs={12} md={12}>
+      <Progress type="info" value={34} />
+    </Grid>
+  </Grid.Container>
 )

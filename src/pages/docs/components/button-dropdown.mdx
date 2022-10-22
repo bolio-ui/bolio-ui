@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { ButtonDropdown, Spacer } from 'core'
+import { ButtonDropdown, Grid } from 'core'
 import { Playground, Attributes } from 'src/components'
 import { Plus } from '@bolio-ui/icons'
 
@@ -16,92 +16,129 @@ export const meta = {
 Display related but alternate actions for a button.
 
 <Playground
-  title="Basic"
-  scope={{ ButtonDropdown }}
+  title="General"
+  desc="The basic `ButtonDropdown` usage."
+  scope={{ ButtonDropdown, Grid }}
   code={`
-<ButtonDropdown>
-  <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
-</ButtonDropdown>
-`}
-/>
-
-<Playground
-  title="Disabled"
-  desc="Disable all buttons."
-  scope={{ ButtonDropdown }}
-  code={`
-<ButtonDropdown disabled>
-  <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
-</ButtonDropdown>
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown>
+      <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Loading"
   desc="Show friendly load indicator."
-  scope={{ ButtonDropdown }}
+  scope={{ ButtonDropdown, Grid }}
   code={`
-<ButtonDropdown loading>
-  <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
-</ButtonDropdown>
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown loading>
+      <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Disable all buttons."
+  scope={{ ButtonDropdown, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown disabled>
+      <ButtonDropdown.Item main>Default Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Types"
-  scope={{ ButtonDropdown, Spacer }}
+  desc="You can change the color of the `ButtonDropdown` with the property `type`."
+  scope={{ ButtonDropdown, Grid }}
   code={`
-<>
-  <ButtonDropdown type="secondary" scale={0.5}>
-    <ButtonDropdown.Item main>Secondary Button</ButtonDropdown.Item>
-  </ButtonDropdown>
-  <Spacer h={0.5} />
-  <ButtonDropdown type="success" scale={0.5}>
-    <ButtonDropdown.Item main>Success Button</ButtonDropdown.Item>
-  </ButtonDropdown>
-  <Spacer h={0.5} />
-  <ButtonDropdown type="warning" scale={0.5}>
-    <ButtonDropdown.Item main>Warning Button</ButtonDropdown.Item>
-  </ButtonDropdown>
-  <Spacer h={0.5} />
-  <ButtonDropdown type="error" scale={0.5}>
-    <ButtonDropdown.Item main>Error Button</ButtonDropdown.Item>
-  </ButtonDropdown>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown type="primary" scale={0.5}>
+      <ButtonDropdown.Item main>Primary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="secondary" scale={0.5}>
+      <ButtonDropdown.Item main>Secondary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="success" scale={0.5}>
+      <ButtonDropdown.Item main>Success Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="warning" scale={0.5}>
+      <ButtonDropdown.Item main>Warning Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="error" scale={0.5}>
+      <ButtonDropdown.Item main>Error Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid>
+    <ButtonDropdown type="info" scale={0.5}>
+      <ButtonDropdown.Item main>Info Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Multiple Type"
   desc="Specify the status of a button individually."
-  scope={{ ButtonDropdown }}
+  scope={{ ButtonDropdown, Grid }}
   code={`
-<ButtonDropdown scale={2 / 3} auto>
-  <ButtonDropdown.Item main>Check</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Block</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Lock</ButtonDropdown.Item>
-  <ButtonDropdown.Item type="error">Destroy</ButtonDropdown.Item>
-</ButtonDropdown>
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown scale={2 / 3} auto>
+      <ButtonDropdown.Item main>Check</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Block</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Lock</ButtonDropdown.Item>
+      <ButtonDropdown.Item type="error">Destroy</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Right Icon"
   desc="The `color` and `size` of the right icon will be set automatically."
-  scope={{ ButtonDropdown, Plus }}
+  scope={{ ButtonDropdown, Grid, Plus }}
   code={`
-<ButtonDropdown scale={2 / 3} auto icon={<Plus />}>
-  <ButtonDropdown.Item main>Check User</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Block User</ButtonDropdown.Item>
-  <ButtonDropdown.Item>Lock User</ButtonDropdown.Item>
-  <ButtonDropdown.Item type="error">Destroy User</ButtonDropdown.Item>
-</ButtonDropdown>
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown scale={2 / 3} auto icon={<Plus />}>
+      <ButtonDropdown.Item main>Check User</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Block User</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Lock User</ButtonDropdown.Item>
+      <ButtonDropdown.Item type="error">Destroy User</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -131,10 +168,12 @@ Display related but alternate actions for a button.
 ```ts
 type ButtonDropdownTypes =
   | 'default'
+  | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
+  | 'info'
 ```
 
 </Attributes>

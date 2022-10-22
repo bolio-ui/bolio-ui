@@ -1,18 +1,10 @@
 import React from 'react'
-import { Section, Text, Link, Container, Grid, useTheme } from 'core'
+import { Section, Text, Link, Container, Grid } from 'core'
 import { Heart } from '@bolio-ui/icons'
 
 function Footer() {
-  const theme = useTheme()
-
   return (
-    <Section
-      style={{
-        borderTop: '1px solid',
-        borderColor: theme.palette.accents_2
-      }}
-      padding={1}
-    >
+    <Section padding={2}>
       <Container>
         <Grid.Container
           justify="center"

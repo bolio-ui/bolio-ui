@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Modal, Button, Code, useModal } from 'core'
+import { Modal, Button, Code, useModal, Grid } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -20,9 +20,9 @@ If you just need to prompt for a text message, try component [Toast](/docs/compo
 The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use-modal) for details.
 
 <Playground
-  title="Basic"
+  title="General"
   desc="Use `visible` control whether `Modal` is displayed."
-  scope={{ Modal, Button, useState }}
+  scope={{ Modal, Button, useState, Grid }}
   code={`
 () => {
   const [state, setState] = useState(false)
@@ -32,22 +32,24 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
     console.log('closed')
   }
   return (
-    <div>
-      <Button auto onClick={handler}>
-        Show Modal
-      </Button>
-      <Modal visible={state} onClose={closeHandler}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Subtitle>Example of a modal</Modal.Subtitle>
-        <Modal.Content>
-          <p>Demo content for the modal.</p>
-        </Modal.Content>
-        <Modal.Action passive onClick={() => setState(false)}>
-          Cancel
-        </Modal.Action>
-        <Modal.Action>Accepted</Modal.Action>
-      </Modal>
-    </div>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={handler}>
+          Show Modal
+        </Button>
+        <Modal visible={state} onClose={() => setState(false)}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Subtitle>Example of a modal</Modal.Subtitle>
+          <Modal.Content>
+            <p>Demo content for the modal.</p>
+          </Modal.Content>
+          <Modal.Action passive onClick={() => setState(false)}>
+            Cancel
+          </Modal.Action>
+          <Modal.Action>Accepted</Modal.Action>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -61,27 +63,29 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
   } */
   title="With useModal"
   desc="Use `hooks` for easier control `Modal`."
-  scope={{ Modal, Button, useModal }}
+  scope={{ Modal, Button, Grid, useModal }}
   code={`
 () => {
   const { visible, setVisible, bindings } = useModal()
   return (
-    <>
-      <Button auto onClick={() => setVisible(true)}>
-        Show Modal
-      </Button>
-      <Modal {...bindings}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Subtitle>Example of a modal</Modal.Subtitle>
-        <Modal.Content>
-          <p>Demo content for the modal.</p>
-        </Modal.Content>
-        <Modal.Action passive onClick={() => setVisible(false)}>
-          Cancel
-        </Modal.Action>
-        <Modal.Action>Confirm</Modal.Action>
-      </Modal>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={() => setVisible(true)}>
+          Show Modal
+        </Button>
+        <Modal {...bindings}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Subtitle>Example of a modal</Modal.Subtitle>
+          <Modal.Content>
+            <p>Demo content for the modal.</p>
+          </Modal.Content>
+          <Modal.Action passive onClick={() => setVisible(false)}>
+            Cancel
+          </Modal.Action>
+          <Modal.Action>Accepted</Modal.Action>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -90,7 +94,7 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 <Playground
   title="Without Actions"
   desc="Hide all action buttons."
-  scope={{ Modal, Button, useState }}
+  scope={{ Modal, Button, Grid, useState }}
   code={`
 () => {
   const [state, setState] = useState(false)
@@ -100,18 +104,20 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
     console.log('closed')
   }
   return (
-    <div>
-      <Button auto onClick={handler}>
-        Show Modal
-      </Button>
-      <Modal visible={state} onClose={closeHandler}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Subtitle>Example of a modal</Modal.Subtitle>
-        <Modal.Content>
-          <p>Demo content for the modal.</p>
-        </Modal.Content>
-      </Modal>
-    </div>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={handler}>
+          Show Modal
+        </Button>
+        <Modal visible={state} onClose={() => setState(false)}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Subtitle>Example of a modal</Modal.Subtitle>
+          <Modal.Content>
+            <p>Demo content for the modal.</p>
+          </Modal.Content>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -120,7 +126,7 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 <Playground
   title="Disable Action"
   desc="Disable one of the buttons."
-  scope={{ Modal, Button, useState }}
+  scope={{ Modal, Button, Grid, useState }}
   code={`
 () => {
   const [state, setState] = useState(false)
@@ -150,22 +156,24 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 <Playground
   title="Customized"
   desc="Custom `width` or `className`."
-  scope={{ Modal, Button, useModal }}
+  scope={{ Modal, Button, Grid, useModal }}
   code={`
 () => {
   const { setVisible, bindings } = useModal()
   return (
-    <div>
-      <Button auto onClick={() => setVisible(true)}>
-        Show Modal
-      </Button>
-      <Modal width="35rem" {...bindings}>
-        <Modal.Title>My Favorites</Modal.Title>
-        <Modal.Content>
-          <p>This is the width I want.</p>
-        </Modal.Content>
-      </Modal>
-    </div>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={() => setVisible(true)}>
+          Show Modal
+        </Button>
+        <Modal width="35rem" {...bindings}>
+          <Modal.Title>My Favorites</Modal.Title>
+          <Modal.Content>
+            <p>This is the width I want.</p>
+          </Modal.Content>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -173,27 +181,30 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 
 <Playground
   title="Loading"
-  scope={{ Modal, Button, useModal }}
+  desc="You can use loading in `Modal.Action` with the property `loading`."
+  scope={{ Modal, Button, Grid, useModal }}
   code={`
 () => {
   const { visible, setVisible, bindings } = useModal()
   return (
-    <>
-      <Button auto onClick={() => setVisible(true)}>
-        Show Modal
-      </Button>
-      <Modal {...bindings}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Subtitle>Example of a modal</Modal.Subtitle>
-        <Modal.Content>
-          <p>Demo content for the modal.</p>
-        </Modal.Content>
-        <Modal.Action passive onClick={() => setVisible(false)}>
-          Cancel
-        </Modal.Action>
-        <Modal.Action loading>Accepted</Modal.Action>
-      </Modal>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={() => setVisible(true)}>
+          Show Modal
+        </Button>
+        <Modal {...bindings}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Subtitle>Example of a modal</Modal.Subtitle>
+          <Modal.Content>
+            <p>Demo content for the modal.</p>
+          </Modal.Content>
+          <Modal.Action passive onClick={() => setVisible(false)}>
+            Cancel
+          </Modal.Action>
+          <Modal.Action loading>Accepted</Modal.Action>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -202,75 +213,77 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 <Playground
   title="Overlong"
   desc="Whether it is desktop or mobile, the content beyond the scope has been well handled."
-  scope={{ Modal, Button, useModal }}
+  scope={{ Modal, Button, Grid, useModal }}
   code={`
 () => {
   const { visible, setVisible, bindings } = useModal()
   return (
-    <>
-      <Button auto onClick={() => setVisible(true)}>
-        Show Modal
-      </Button>
-      <Modal {...bindings}>
-        <Modal.Title>Modal</Modal.Title>
-        <Modal.Subtitle>Modal with a very large content</Modal.Subtitle>
-        <Modal.Content>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-          <p>
-            React has been designed from the start for gradual adoption, and you
-            can use as little or as much React as you need. Whether you want to
-            get a taste of React, add some interactivity to a simple HTML page,
-            or start a complex React-powered app, the links in this section will
-            help you get started.
-          </p>
-        </Modal.Content>
-        <Modal.Action passive onClick={() => setVisible(false)}>
-          Cancel
-        </Modal.Action>
-        <Modal.Action>Accepted</Modal.Action>
-      </Modal>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button auto onClick={() => setVisible(true)}>
+          Show Modal
+        </Button>
+        <Modal {...bindings}>
+          <Modal.Title>Modal</Modal.Title>
+          <Modal.Subtitle>Modal with a very large content</Modal.Subtitle>
+          <Modal.Content>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+            <p>
+              React has been designed from the start for gradual adoption, and
+              you can use as little or as much React as you need. Whether you
+              want to get a taste of React, add some interactivity to a simple
+              HTML page, or start a complex React-powered app, the links in this
+              section will help you get started.
+            </p>
+          </Modal.Content>
+          <Modal.Action passive onClick={() => setVisible(false)}>
+            Cancel
+          </Modal.Action>
+          <Modal.Action>Accepted</Modal.Action>
+        </Modal>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}

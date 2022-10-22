@@ -29,10 +29,13 @@ export type RatingProps = Props & NativeAttrs
 
 const getColor = (type: RatingTypes, palette: BolioUIThemesPalette): string => {
   const colors: { [key in RatingTypes]?: string } = {
-    default: palette.foreground,
+    default: palette.accents_6,
+    primary: palette.primary,
+    secondary: palette.secondary,
     success: palette.success,
     warning: palette.warning,
-    error: palette.error
+    error: palette.error,
+    info: palette.info
   }
   return colors[type] || (colors.default as string)
 }

@@ -38,7 +38,7 @@ const LinkComponent = React.forwardRef<
     const { SCALES } = useScale()
 
     const linkColor = color || block ? theme.palette.link : 'inherit'
-    const hoverColor = color || block ? theme.palette.infoDark : 'inherit'
+    const hoverColor = color || block ? theme.palette.primary : 'inherit'
     const decoration = underline ? 'underline' : 'none'
     const classes = useClasses('link', { block }, className)
 
@@ -64,8 +64,8 @@ const LinkComponent = React.forwardRef<
               ${SCALES.pl(0)};
           }
           .block {
-            padding: ${SCALES.pt(0.125)} ${SCALES.pr(0.25)} ${SCALES.pb(0.125)}
-              ${SCALES.pl(0.25)};
+            padding: ${SCALES.pt(0.15)} ${SCALES.pr(0.4)} ${SCALES.pb(0.15)}
+              ${SCALES.pl(0.4)};
             margin: ${SCALES.mt(0)} ${SCALES.mr(-0.125)} ${SCALES.mb(0)}
               ${SCALES.ml(-0.125)};
           }

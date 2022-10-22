@@ -17,9 +17,12 @@ export type DotProps = Props & NativeAttrs
 const getColor = (type: DotTypes, theme: BolioUIThemes): string => {
   const colors: { [key in DotTypes]?: string } = {
     default: theme.palette.accents_2,
+    primary: theme.palette.primary,
+    secondary: theme.palette.secondary,
     success: theme.palette.success,
     warning: theme.palette.warning,
-    error: theme.palette.error
+    error: theme.palette.error,
+    info: theme.palette.info
   }
   return colors[type] || (colors.default as string)
 }

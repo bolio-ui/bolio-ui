@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Snippet, Spacer, Code } from 'core'
+import { Snippet, Grid, Code } from 'core'
 
 export const meta = {
   title: 'Snippet',
@@ -16,108 +16,244 @@ Display a snippet of copyable code for the command line.
 
 <Playground
   desc="Basic Usage"
-  scope={{ Snippet }}
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet text="yarn add @bolio-ui/core" width="300px" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" width="300px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Width"
   desc="Specify width manually."
-  scope={{ Snippet }}
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet text="yarn add @bolio-ui/core" width="100%" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" width="100%" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Types"
   desc="Show different states with colors."
-  scope={{ Snippet, Spacer }}
+  scope={{ Snippet, Grid }}
   code={`
-<>
-  <Snippet text="yarn add @bolio-ui/core" type="dark" width="300px" />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="success" width="300px" />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="warning" width="300px" />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="error" width="300px" />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="secondary" width="300px" />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="lite" width="300px" />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="primary" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="secondary" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="success" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="warning" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="error" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="lite" width="300px" />
+  </Grid>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" type="dark" width="300px" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Rounded"
+  desc="You can completely round the corners of any type of `Snippet` with the `rounded` property."
+  scope={{ Snippet, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet text="yarn add @bolio-ui/core" width="300px" rounded />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="primary"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="secondary"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="success"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="warning"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="error"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="lite"
+      width="300px"
+      rounded
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="dark"
+      width="300px"
+      rounded
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Multi Line"
-  scope={{ Snippet }}
+  desc="You can use multi line of the `Snippet` with the array in `text` prop."
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet text={['cd project', 'now']} width="300px" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet text={['cd project', 'now']} width="300px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Without Copy"
   desc="Hide icon for copy. (disable copy)"
-  scope={{ Snippet }}
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet copy="prevent" text="yarn add @bolio-ui/core" width="300px" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet copy="prevent" text="yarn add @bolio-ui/core" width="300px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Symbol"
-  scope={{ Snippet }}
+  desc="You can custom symbol of the `Snippet` with the property `symbol`."
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet symbol=">" text="yarn add @bolio-ui/core" width="300px" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet symbol=">" text="yarn add @bolio-ui/core" width="300px" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Toast"
-  scope={{ Snippet }}
+  desc="You can custom toast of the `Snippet` with the property `toastText` and `toastType`."
+  scope={{ Snippet, Grid }}
   code={`
-<Snippet
-  toastText="Code copied!"
-  toastType="secondary"
-  text="yarn add @bolio-ui/core"
-  width="300px"
-/>
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet
+      toastText="Code copied!"
+      toastType="secondary"
+      text="yarn add @bolio-ui/core"
+      width="300px"
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Filled"
-  scope={{ Snippet, Spacer }}
+  desc="Show different states filled with colors."
+  scope={{ Snippet, Grid }}
   code={`
-<>
-  <Snippet
-    text="yarn add @bolio-ui/core"
-    type="success"
-    filled
-    width="300px"
-  />
-  <Spacer />
-  <Snippet
-    text="yarn add @bolio-ui/core"
-    type="warning"
-    filled
-    width="300px"
-  />
-  <Spacer />
-  <Snippet text="yarn add @bolio-ui/core" type="error" filled width="300px" />
-  <Spacer />
-  <Snippet
-    text="yarn add @bolio-ui/core"
-    type="secondary"
-    filled
-    width="300px"
-  />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="primary"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="secondary"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="success"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="warning"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="error"
+      filled
+      width="300px"
+    />
+  </Grid>
+  <Grid>
+    <Snippet
+      text="yarn add @bolio-ui/core"
+      type="info"
+      filled
+      width="300px"
+    />
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -141,12 +277,12 @@ Display a snippet of copyable code for the command line.
 ```ts
 type SnippetTypes =
   | 'default'
+  | 'primary'
   | 'secondary'
   | 'success'
   | 'warning'
   | 'error'
-  | 'dark'
-  | 'lite'
+  | 'info'
 ```
 
 <Attributes.Title>CopyTypes</Attributes.Title>
@@ -155,16 +291,17 @@ type SnippetTypes =
 type CopyTypes = 'default' | 'silent' | 'prevent'
 ```
 
-<Attributes.Title>SnippetTypes</Attributes.Title>
-
-```ts
-type SnippetTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
-```
-
 <Attributes.Title>ToastTypes</Attributes.Title>
 
 ```ts
-type ToastTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type ToastTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

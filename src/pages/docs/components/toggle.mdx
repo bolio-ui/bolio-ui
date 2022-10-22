@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Toggle, Spacer } from 'core'
+import { Toggle, Grid } from 'core'
 
 export const meta = {
   title: 'Toggle',
@@ -15,56 +15,83 @@ export const meta = {
 Displays a boolean value.
 
 <Playground
-  scope={{ Toggle, Spacer }}
+  desc="The basic `Toggle` usage."
+  scope={{ Toggle, Grid }}
   code={`
-<>
-  <Toggle />
-  <Spacer h={0.5} />
-  <Toggle initialChecked />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Toggle scale={2} />
+  </Grid>
+  <Grid>
+    <Toggle scale={2} initialChecked />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Toggle, Spacer }}
+  scope={{ Toggle, Grid }}
   code={`
-<>
-  <Toggle type="default" initialChecked />
-  <Spacer h={0.5} />
-  <Toggle type="secondary" initialChecked />
-  <Spacer h={0.5} />
-  <Toggle type="success" initialChecked />
-  <Spacer h={0.5} />
-  <Toggle type="warning" initialChecked />
-  <Spacer h={0.5} />
-  <Toggle type="error" initialChecked />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Toggle type="default" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="primary" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="secondary" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="success" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="warning" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="error" scale={2} initialChecked />
+  </Grid>
+  <Grid>
+    <Toggle type="info" scale={2} initialChecked />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
-  scope={{ Toggle, Spacer }}
+  desc="You can change disabled `Toggle` with the property `disabled`."
+  scope={{ Toggle, Grid }}
   code={`
-<>
-  <Toggle disabled />
-  <Spacer h={.5} />
-  <Toggle initialChecked disabled />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Toggle scale={2} disabled />
+  </Grid>
+  <Grid>
+    <Toggle scale={2} initialChecked disabled />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Get Change"
-  scope={{ Toggle, Spacer }}
+  desc="Capture changes in `Toggle`."
+  scope={{ Toggle, Grid }}
   code={`
 () => {
   const handler = event => {
     console.log(event.target.checked)
   }
-  return <Toggle onChange={handler} />
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Toggle onChange={handler} scale={2} />
+      </Grid>
+    </Grid.Container>
+  )
 }
 `}
 />
@@ -99,7 +126,14 @@ export interface ToggleEvent {
 <Attributes.Title>ToggleTypes</Attributes.Title>
 
 ```ts
-type ToggleTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type ToggleTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

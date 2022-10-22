@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Smile } from '@bolio-ui/icons'
-import { Spacer, Tabs, Snippet } from 'core'
+import { Grid, Tabs, Snippet } from 'core'
 import {
   Layout,
   Playground,
@@ -21,49 +21,74 @@ export const meta = {
 
 Display semantic vector graphics in SVG format.
 
-<Title
-  title="Installation"
-  desc="Install the package in your project directory."
-/>
-<Tabs initialValue="yarn">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Spacer h={0.6} />
-    <Snippet width="400px">yarn add @bolio-ui/icons</Snippet>
-  </Tabs.Item>
-  <Tabs.Item label="npm" value="npm">
-    <Spacer h={0.6} />
-    <Snippet width="400px">npm i @bolio-ui/icons</Snippet>
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={4}>
+  <Grid md={12}>
+    <Title
+      title="Installation"
+      desc="Install the package in your project directory."
+    />
+    <Tabs initialValue="yarn" width="100%">
+      <Tabs.Item label="Yarn" value="yarn">
+        <Snippet width="100%">yarn add @bolio-ui/icons</Snippet>
+      </Tabs.Item>
+      <Tabs.Item label="npm" value="npm">
+        <Snippet width="100%">npm i @bolio-ui/icons</Snippet>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 
 <Playground
   title="Import"
-  scope={{ Smile, Spacer }}
+  desc="The basic `Icon` usage."
+  scope={{ Smile, Grid }}
   code={`
-<Smile />
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Color"
-  scope={{ Smile }}
+  desc="You can apply a color with the `color` prop."
+  scope={{ Smile, Grid }}
   code={`
-<Smile color="red" />
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile color="purple" />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Sizes"
-  scope={{ Smile, Spacer }}
+  desc="You can apply size with the `fontSize` prop."
+  scope={{ Smile, Grid }}
   code={`
-<>
-  <Smile fontSize={16} /> <Spacer inline w={0.35} />
-  <Smile fontSize={20} /> <Spacer inline w={0.35} />
-  <Smile fontSize={24} /> <Spacer inline w={0.35} />
-  <Smile fontSize={28} /> <Spacer inline w={0.35} />
-  <Smile fontSize={32} /> <Spacer inline w={0.35} />
-  <Smile fontSize={36} />
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile fontSize={16} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={20} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={24} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={28} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={32} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={36} />
+  </Grid>
+</Grid.Container>
 `}
 />
 

@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Spinner } from 'core'
+import { Spinner, Grid } from 'core'
 
 export const meta = {
   title: 'Spinner',
@@ -17,9 +17,14 @@ Indicate an action running in the background.
 As an indicator of load waiting, see also component [Loading](/docs/components/loading).
 
 <Playground
-  scope={{ Spinner }}
+  desc="The basic `Spinner` usage."
+  scope={{ Spinner, Grid }}
   code={`
-<Spinner />
+<Grid.Container gap={2}>
+  <Grid>
+    <Spinner scale={2} />
+  </Grid>
+</Grid.Container>
 `}
 />
 

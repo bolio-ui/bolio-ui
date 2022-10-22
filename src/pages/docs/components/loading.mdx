@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Loading, Spacer, Grid } from 'core'
+import { Loading, Grid } from 'core'
 
 export const meta = {
   title: 'Loading',
@@ -15,18 +15,27 @@ export const meta = {
 Indicate an action running in the background.
 
 <Playground
-  scope={{ Loading, Spacer }}
+  desc="The basic `Loading` usage."
+  scope={{ Loading, Grid }}
   code={`
-<Loading />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Loading />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Text"
   desc="Customize text next to icon."
-  scope={{ Loading }}
+  scope={{ Loading, Grid }}
   code={`
-<Loading>Loading</Loading>
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Loading>Loading</Loading>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -35,18 +44,27 @@ Indicate an action running in the background.
   desc="Loading indicators in different states."
   scope={{ Loading, Grid }}
   code={`
-<Grid.Container gap={2.5}>
-  <Grid xs={12}>
-    <Loading type="success" />
+<Grid.Container gap={2}>
+  <Grid xs={3} md={3}>
+    <Loading />
   </Grid>
-  <Grid xs={12}>
+  <Grid xs={3} md={3}>
+    <Loading type="primary" />
+  </Grid>
+  <Grid xs={3} md={3}>
     <Loading type="secondary" />
   </Grid>
-  <Grid xs={12}>
+  <Grid xs={3} md={3}>
+    <Loading type="success" />
+  </Grid>
+  <Grid xs={3} md={3}>
     <Loading type="warning" />
   </Grid>
-  <Grid xs={12}>
+  <Grid xs={3} md={3}>
     <Loading type="error" />
+  </Grid>
+  <Grid xs={3} md={3}>
+    <Loading type="info" />
   </Grid>
 </Grid.Container>
 `}
@@ -57,12 +75,12 @@ Indicate an action running in the background.
   desc="Customize the space between points. (the ratio is relative to the current `size`)"
   scope={{ Loading, Grid }}
   code={`
-<Grid.Container gap={2.5}>
-  <Grid xs={12}>
-    <Loading spaceRatio={2.5} />
+<Grid.Container gap={2}>
+  <Grid xs={6} md={6}>
+    <Loading spaceRatio={10} />
   </Grid>
-  <Grid xs={12}>
-    <Loading spaceRatio={0.5} />
+  <Grid xs={6} md={6}>
+    <Loading spaceRatio={5} />
   </Grid>
 </Grid.Container>
 `}
@@ -81,7 +99,14 @@ Indicate an action running in the background.
 <Attributes.Title>LoadingTypes</Attributes.Title>
 
 ```ts
-type LoadingTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type LoadingTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

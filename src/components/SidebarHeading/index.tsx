@@ -22,7 +22,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
 
   return (
     <div className="container" {...props}>
-      <h4 className="title">Contents</h4>
+      <span className="title">Contents</span>
       <ul className="list">
         {headings.map((heading, i) => (
           <li
@@ -44,6 +44,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
           font-size: 1.2rem;
           font-weight: 600;
           z-index: 1;
+          letter-spacing: 0.5px;
         }
         .list {
           max-height: 56vh;

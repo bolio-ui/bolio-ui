@@ -11,6 +11,7 @@ import useClasses from '../use-classes'
 
 interface Props {
   hoverable?: boolean
+  rounded?: boolean
   shadow?: boolean
   className?: string
   type?: CardTypes
@@ -22,6 +23,7 @@ export type CardProps = Props & NativeAttrs
 function CardComponent({
   children,
   hoverable = false,
+  rounded = false,
   className = '',
   shadow = false,
   type = 'default' as CardTypes,
@@ -63,14 +65,12 @@ function CardComponent({
       {footerChildren}
       <style jsx>{`
         .card {
-          background: ${theme.palette.background};
           transition: all 0.2s ease;
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
           box-sizing: border-box;
           color: ${color};
           background-color: ${bgColor};
-          border: 1px solid ${borderColor};
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
           padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}

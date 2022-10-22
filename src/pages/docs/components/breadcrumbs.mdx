@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Breadcrumbs, Spacer } from 'core'
+import { Breadcrumbs, Grid } from 'core'
 import NextLink from 'next/link'
 import { Home, Settings } from '@bolio-ui/icons'
 
@@ -17,70 +17,86 @@ export const meta = {
 Show where users are in the application.
 
 <Playground
-  scope={{ Breadcrumbs }}
+  scope={{ Breadcrumbs, Grid }}
+  desc="The basic `Breadcrumbs` usage."
   code={`
-<Breadcrumbs>
-  <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-  <Breadcrumbs.Item href="">Settings</Breadcrumbs.Item>
-  <Breadcrumbs.Item>General</Breadcrumbs.Item>
-</Breadcrumbs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Settings</Breadcrumbs.Item>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Separator"
   desc="Custom separator in characters."
-  scope={{ Breadcrumbs, Spacer }}
+  scope={{ Breadcrumbs, Grid }}
   code={`
-<>
-  <Breadcrumbs separator="-">
-    <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-    <Breadcrumbs.Item href="">Categories</Breadcrumbs.Item>
-    <Breadcrumbs.Item>Add</Breadcrumbs.Item>
-  </Breadcrumbs>
-  <Spacer h={0.5} />
-  <Breadcrumbs separator=">">
-    <Breadcrumbs.Item>Home</Breadcrumbs.Item>
-    <Breadcrumbs.Separator>:</Breadcrumbs.Separator>
-    <Breadcrumbs.Item href="">Pages</Breadcrumbs.Item>
-    <Breadcrumbs.Item href="">Default</Breadcrumbs.Item>
-    <Breadcrumbs.Item>Index</Breadcrumbs.Item>
-  </Breadcrumbs>
-</>
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <Breadcrumbs separator="-">
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Categories</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Add</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+  <Grid>
+    <Breadcrumbs separator=">">
+      <Breadcrumbs.Item>Home</Breadcrumbs.Item>
+      <Breadcrumbs.Separator>:</Breadcrumbs.Separator>
+      <Breadcrumbs.Item href="">Pages</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">Default</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Index</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Icons"
   desc="Show more information with icons."
-  scope={{ Breadcrumbs, Home, Settings }}
+  scope={{ Breadcrumbs, Home, Settings, Grid }}
   code={`
-<Breadcrumbs>
-  <Breadcrumbs.Item>
-    <Home />
-  </Breadcrumbs.Item>
-  <Breadcrumbs.Item href="">
-    <Settings /> Settings
-  </Breadcrumbs.Item>
-  <Breadcrumbs.Item>General</Breadcrumbs.Item>
-</Breadcrumbs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <Breadcrumbs.Item>
+        <Home />
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item href="">
+        <Settings /> Settings
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With NextJS"
   desc="Example for use with `next.js`."
-  scope={{ Breadcrumbs, NextLink }}
+  scope={{ Breadcrumbs, NextLink, Grid }}
   code={`
-<Breadcrumbs>
-  <NextLink href="/">
-    <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
-  </NextLink>
-  <NextLink href="/settings">
-    <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
-  </NextLink>
-  <Breadcrumbs.Item>General</Breadcrumbs.Item>
-</Breadcrumbs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Breadcrumbs>
+      <NextLink href="/">
+        <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
+      </NextLink>
+      <NextLink href="/settings">
+        <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
+      </NextLink>
+      <Breadcrumbs.Item>General</Breadcrumbs.Item>
+    </Breadcrumbs>
+  </Grid>
+</Grid.Container>
 `}
 />
 

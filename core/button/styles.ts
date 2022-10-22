@@ -14,10 +14,15 @@ export const getButtonGhostColors = (
   type: ButtonTypes
 ): ButtonColorGroup | null => {
   const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
+    primary: {
+      bg: palette.background,
+      border: palette.primary,
+      color: palette.primary
+    },
     secondary: {
       bg: palette.background,
-      border: palette.foreground,
-      color: palette.foreground
+      border: palette.secondary,
+      color: palette.secondary
     },
     success: {
       bg: palette.background,
@@ -33,6 +38,11 @@ export const getButtonGhostColors = (
       bg: palette.background,
       border: palette.error,
       color: palette.error
+    },
+    info: {
+      bg: palette.background,
+      border: palette.info,
+      color: palette.info
     }
   }
 
@@ -50,14 +60,14 @@ export const getButtonColors = (
       border: palette.border,
       color: palette.accents_5
     },
-    secondary: {
-      bg: palette.foreground,
-      border: palette.foreground,
-      color: palette.background
+    primary: {
+      bg: palette.primary,
+      border: palette.primary,
+      color: '#fff'
     },
-    info: {
-      bg: palette.info,
-      border: palette.info,
+    secondary: {
+      bg: palette.secondary,
+      border: palette.secondary,
       color: '#fff'
     },
     success: {
@@ -73,6 +83,11 @@ export const getButtonColors = (
     error: {
       bg: palette.error,
       border: palette.error,
+      color: '#fff'
+    },
+    info: {
+      bg: palette.info,
+      border: palette.info,
       color: '#fff'
     },
     abort: {
@@ -108,10 +123,15 @@ export const getButtonGhostHoverColors = (
   type: ButtonTypes
 ): ButtonColorGroup | null => {
   const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
-    secondary: {
-      bg: palette.foreground,
+    primary: {
+      bg: palette.primary,
       border: palette.background,
-      color: palette.background
+      color: 'white'
+    },
+    secondary: {
+      bg: palette.secondary,
+      border: palette.background,
+      color: 'white'
     },
     success: {
       bg: palette.success,
@@ -125,6 +145,11 @@ export const getButtonGhostHoverColors = (
     },
     error: {
       bg: palette.error,
+      border: palette.background,
+      color: 'white'
+    },
+    info: {
+      bg: palette.info,
       border: palette.background,
       color: 'white'
     }
@@ -149,13 +174,13 @@ export const getButtonHoverColors = (
       bg: palette.background,
       border: palette.foreground
     },
+    primary: {
+      bg: palette.background,
+      border: palette.primary
+    },
     secondary: {
       bg: palette.background,
-      border: palette.foreground
-    },
-    info: {
-      bg: palette.background,
-      border: palette.info
+      border: palette.secondary
     },
     success: {
       bg: palette.background,
@@ -169,16 +194,20 @@ export const getButtonHoverColors = (
       bg: palette.background,
       border: palette.error
     },
+    info: {
+      bg: palette.background,
+      border: palette.info
+    },
     abort: {
       bg: 'transparent',
       border: 'transparent',
       color: palette.accents_5
     },
-    'secondary-light': {
+    'primary-light': {
       ...defaultColor,
       bg: alphaBackground
     },
-    'info-light': {
+    'secondary-light': {
       ...defaultColor,
       bg: alphaBackground
     },
@@ -191,6 +220,10 @@ export const getButtonHoverColors = (
       bg: alphaBackground
     },
     'error-light': {
+      ...defaultColor,
+      bg: alphaBackground
+    },
+    'info-light': {
       ...defaultColor,
       bg: alphaBackground
     }

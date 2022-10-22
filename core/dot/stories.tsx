@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Dot from '.'
+import Grid from '../grid'
 
 export default {
   title: 'Data Display/Dot',
@@ -7,23 +8,53 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <>
-    <Dot style={{ marginRight: '15px' }} />
-    <Dot style={{ marginRight: '15px' }} type="success" />
-    <Dot style={{ marginRight: '15px' }} type="warning" />
-    <Dot type="error" />
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Dot />
+    </Grid>
+    <Grid>
+      <Dot type="primary" />
+    </Grid>
+    <Grid>
+      <Dot type="secondary" />
+    </Grid>
+    <Grid>
+      <Dot type="success" />
+    </Grid>
+    <Grid>
+      <Dot type="warning" />
+    </Grid>
+    <Grid>
+      <Dot type="error" />
+    </Grid>
+    <Grid>
+      <Dot type="info" />
+    </Grid>
+  </Grid.Container>
 )
 
 export const Text: Story = () => (
-  <>
-    <Dot style={{ marginRight: '20px' }}>Canceled</Dot>
-    <Dot style={{ marginRight: '20px' }} type="success">
-      Ready
-    </Dot>
-    <Dot style={{ marginRight: '20px' }} type="warning">
-      Warning
-    </Dot>
-    <Dot type="error">Error</Dot>
-  </>
+  <Grid.Container gap={2}>
+    <Grid>
+      <Dot>Canceled</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="primary">Primary</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="secondary">Secondary</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="success">Ready</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="warning">Warning</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="error">Error</Dot>
+    </Grid>
+    <Grid>
+      <Dot type="info">Info</Dot>
+    </Grid>
+  </Grid.Container>
 )

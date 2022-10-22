@@ -23,10 +23,12 @@ const getIconBgColor = (
 ) => {
   const colors: { [key in LoadingTypes]: string } = {
     default: palette.accents_6,
+    primary: palette.primary,
     secondary: palette.secondary,
     success: palette.success,
     warning: palette.warning,
-    error: palette.error
+    error: palette.error,
+    info: palette.info
   }
 
   return color ? color : colors[type]

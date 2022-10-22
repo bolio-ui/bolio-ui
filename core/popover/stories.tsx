@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Popover from '.'
 import Link from '../link'
 import Spacer from '../spacer'
+import Grid from '../grid'
 
 export default {
   title: 'Data Display/Popover',
@@ -19,7 +20,13 @@ export const Default: Story = () => {
       </Link>
     </div>
   )
-  return <Popover content={content}>Menu</Popover>
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover content={content}>Menu</Popover>
+      </Grid>
+    </Grid.Container>
+  )
 }
 
 export const PresetItem: Story = () => {
@@ -42,12 +49,18 @@ export const PresetItem: Story = () => {
       </Popover.Item>
     </>
   )
-  return <Popover content={content}>Menu</Popover>
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover content={content}>Menu</Popover>
+      </Grid>
+    </Grid.Container>
+  )
 }
 
 export const CloseManual: Story = () => {
   const [visible, setVisible] = useState(false)
-  const changeHandler = (next: any) => {
+  const changeHandler = (next) => {
     setVisible(next)
   }
   const content = () => (
@@ -58,12 +71,16 @@ export const CloseManual: Story = () => {
     </div>
   )
   return (
-    <Popover
-      content={content}
-      visible={visible}
-      onVisibleChange={changeHandler}
-    >
-      Menu
-    </Popover>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Popover
+          content={content}
+          visible={visible}
+          onVisibleChange={changeHandler}
+        >
+          Menu
+        </Popover>
+      </Grid>
+    </Grid.Container>
   )
 }

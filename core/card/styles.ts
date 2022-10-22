@@ -15,11 +15,15 @@ export const getStyles = (
   const colors: { [key in CardTypes]: Omit<CardStyles, 'borderColor'> } = {
     default: {
       color: palette.foreground,
-      bgColor: palette.background
+      bgColor: palette.accents_2
     },
     dark: {
       color: palette.background,
       bgColor: palette.foreground
+    },
+    primary: {
+      color: palette.background,
+      bgColor: palette.primary
     },
     secondary: {
       color: palette.background,
@@ -41,21 +45,9 @@ export const getStyles = (
       color: palette.foreground,
       bgColor: palette.background
     },
-    alert: {
-      color: 'white',
-      bgColor: palette.alert
-    },
-    purple: {
-      color: 'white',
-      bgColor: palette.purple
-    },
-    violet: {
-      color: 'white',
-      bgColor: palette.violet
-    },
-    cyan: {
-      color: 'black',
-      bgColor: palette.cyan
+    info: {
+      color: palette.background,
+      bgColor: palette.info
     }
   }
   const showBorder = type === 'default' && !isShadow

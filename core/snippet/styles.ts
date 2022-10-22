@@ -15,28 +15,38 @@ export const getStyles = (
   const styles: { [key in SnippetTypes]: SnippetStyles } = {
     default: {
       color: palette.foreground,
-      border: palette.border,
-      bgColor: palette.background
+      border: palette.accents_2,
+      bgColor: palette.accents_2
     },
-    success: {
-      color: palette.success,
-      border: palette.success,
-      bgColor: palette.background
-    },
-    warning: {
-      color: palette.warning,
-      border: palette.warning,
-      bgColor: palette.background
-    },
-    error: {
-      color: palette.error,
-      border: palette.error,
-      bgColor: palette.background
+    primary: {
+      color: palette.primary,
+      border: palette.primary,
+      bgColor: palette.accents_1
     },
     secondary: {
       color: palette.secondary,
       border: palette.secondary,
-      bgColor: palette.background
+      bgColor: palette.accents_1
+    },
+    success: {
+      color: palette.success,
+      border: palette.success,
+      bgColor: palette.accents_1
+    },
+    warning: {
+      color: palette.warning,
+      border: palette.warning,
+      bgColor: palette.accents_1
+    },
+    error: {
+      color: palette.error,
+      border: palette.error,
+      bgColor: palette.accents_1
+    },
+    info: {
+      color: palette.info,
+      border: palette.info,
+      bgColor: palette.accents_1
     },
     lite: {
       color: palette.foreground,
@@ -51,10 +61,12 @@ export const getStyles = (
   }
 
   const filledTypes: Array<SnippetTypes> = [
+    'primary',
+    'secondary',
     'success',
     'warning',
     'error',
-    'secondary'
+    'info'
   ]
   const style = styles[type]
   const shouldFilled = filledTypes.includes(type)

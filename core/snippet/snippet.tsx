@@ -16,6 +16,7 @@ interface Props {
   toastText?: string
   toastType?: ToastTypes
   filled?: boolean
+  rounded?: boolean
   copy?: CopyTypes
   type?: SnippetTypes
   className?: string
@@ -34,10 +35,11 @@ const textArrayToString = (text: string[]): string => {
 function SnippetComponent({
   type = 'default' as SnippetTypes,
   filled = false,
+  rounded = false,
   children,
   symbol = '$',
   toastText = 'Copied!',
-  toastType = 'success' as ToastTypes,
+  toastType = 'primary' as ToastTypes,
   text,
   copy: copyType,
   className = '',
@@ -99,7 +101,7 @@ function SnippetComponent({
           color: ${style.color};
           background-color: ${style.bgColor};
           border: 1px solid ${style.border};
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           --snippet-font-size: ${SCALES.font(0.8125)};
           --snippet-padding-top: ${SCALES.pt(0.667)};
           font-size: var(--snippet-font-size);
@@ -137,7 +139,6 @@ function SnippetComponent({
           right: 0;
           top: 0;
           bottom: 0;
-          height: calc(100% - 2px);
           background-color: ${style.bgColor};
           display: inline-flex;
           justify-content: center;
@@ -145,7 +146,7 @@ function SnippetComponent({
           width: calc(3.281 * var(--snippet-font-size));
           color: inherit;
           transition: opacity 150ms ease 0s;
-          border-radius: ${theme.layout.radius};
+          border-radius: ${rounded ? '25px' : theme.layout.radius};
           cursor: pointer;
           user-select: none;
           padding-top: ${isMultiLine ? 'var(--snippet-padding-top)' : 0};

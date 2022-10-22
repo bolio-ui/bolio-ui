@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Progress, Spacer, useTheme, Button } from 'core'
+import { Progress, Grid, useTheme, Button } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -16,25 +16,34 @@ export const meta = {
 Display progress relative to a limit or related to a task.
 
 <Playground
-  scope={{ Progress }}
+  desc="The basic `Progress` usage."
+  scope={{ Progress, Grid }}
   code={`
-<Progress value={50} />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Progress value={50} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Custom Max"
   desc="Modify the maximum value of progress."
-  scope={{ Progress }}
+  scope={{ Progress, Grid }}
   code={`
-<Progress value={45} max={50} />
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Progress value={45} max={50} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Dynamic Colors"
   desc="You can specify the color of the progress in any range."
-  scope={{ Progress, useState, useTheme, Button, Spacer }}
+  scope={{ Progress, useState, useTheme, Button, Grid }}
   code={`
 () => {
   const theme = useTheme()
@@ -46,17 +55,21 @@ Display progress relative to a limit or related to a task.
     80: '#000'
   }
   return (
-    <>
-      <Progress value={value} colors={colors} />
-      <Spacer />
-      <Button onClick={() => setValue(value + 20)} auto scale={0.5}>
-        Add
-      </Button>
-      <Spacer w={0.5} inline />
-      <Button onClick={() => setValue(20)} auto scale={0.5} type="error">
-        Remove
-      </Button>
-    </>
+    <Grid.Container gap={2}>
+      <Grid xs={12} md={12}>
+        <Progress value={value} colors={colors} />
+      </Grid>
+      <Grid>
+        <Button onClick={() => setValue(value + 20)} auto scale={0.5}>
+          Add
+        </Button>
+      </Grid>
+      <Grid>
+        <Button onClick={() => setValue(20)} auto scale={0.5} type="error">
+          Remove
+        </Button>
+      </Grid>
+    </Grid.Container>
   )
 }`}
 />
@@ -64,17 +77,31 @@ Display progress relative to a limit or related to a task.
 <Playground
   title="Type"
   desc="We prepared some different styles in advance."
-  scope={{ Progress, Spacer }}
+  scope={{ Progress, Grid }}
   code={`
-<>
-  <Progress type="secondary" value={10} />
-  <Spacer />
-  <Progress type="success" value={45} />
-  <Spacer />
-  <Progress type="warning" value={100} />
-  <Spacer />
-  <Progress type="error" value={21} />
-</>
+<Grid.Container gap={2}>
+  <Grid xs={12} md={12}>
+    <Progress value={3} />
+  </Grid>
+    <Grid xs={12} md={12}>
+    <Progress type="primary" value={74} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Progress type="secondary" value={10} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Progress type="success" value={45} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Progress type="warning" value={100} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Progress type="error" value={21} />
+  </Grid>
+  <Grid xs={12} md={12}>
+    <Progress type="info" value={34} />
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -94,7 +121,14 @@ Display progress relative to a limit or related to a task.
 <Attributes.Title>ProgressTypes</Attributes.Title>
 
 ```ts
-type ProgressTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type ProgressTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

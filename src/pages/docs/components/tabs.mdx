@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Tabs, Spacer, Text, Button, Code, useTabs } from 'core'
+import { Tabs, Grid, Text, Button, Code, useTabs } from 'core'
 import { useState } from 'react'
 import { Instagram, Facebook } from '@bolio-ui/icons'
 
@@ -19,170 +19,200 @@ Display tab content.
 The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-tabs) for details.
 
 <Playground
-  scope={{ Tabs }}
+  scope={{ Tabs, Grid }}
   desc="Toggle display of different templates."
   code={`
-<Tabs initialValue="1">
-  <Tabs.Item label="Declarative" value="1">
-    React makes it painless to create interactive UIs. Design simple views for
-    each state in your application, and React will efficiently update and
-    render just the right components when your data changes.
-  </Tabs.Item>
-  <Tabs.Item label="Component-Based" value="2">
-    Build encapsulated components that manage their own state, then compose
-    them to make complex UIs.
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="1">
+      <Tabs.Item label="Declarative" value="1">
+        React makes it painless to create interactive UIs. Design simple views
+        for each state in your application, and React will efficiently update
+        and render just the right components when your data changes.
+      </Tabs.Item>
+      <Tabs.Item label="Component-Based" value="2">
+        Build encapsulated components that manage their own state, then
+        compose them to make complex UIs.
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
-  scope={{ Tabs }}
+  desc="You can change disabled `Tabs` with the property `disabled`."
+  scope={{ Tabs, Grid }}
   code={`
-<Tabs initialValue="1">
-  <Tabs.Item label="Declarative" value="1">
-    React makes it painless to create interactive UIs. Design simple views for
-    each state in your application, and React will efficiently update and
-    render just the right components when your data changes.
-  </Tabs.Item>
-  <Tabs.Item label="Component-Based" value="2" disabled />
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="1">
+      <Tabs.Item label="Declarative" value="1">
+        React makes it painless to create interactive UIs. Design simple views
+        for each state in your application, and React will efficiently update
+        and render just the right components when your data changes.
+      </Tabs.Item>
+      <Tabs.Item label="Component-Based" value="2" disabled />
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Hide Divider"
-  scope={{ Tabs, Text }}
+  desc="`Tabs` component with a hide divider functionality."
+  scope={{ Tabs, Text, Grid }}
   code={`
-<Tabs initialValue="react" hideDivider>
-  <Tabs.Item label="Declarative" value="react">
-    <Text mt={0}>
-      React makes it painless to create interactive UIs. Design simple views
-      for each state in your application, and React will efficiently update
-      and render just the right components when your data changes.
-    </Text>
-  </Tabs.Item>
-  <Tabs.Item label="Component-Based" value="component-based">
-    <Text mt={0}>
-      Build encapsulated components that manage their own state, then compose
-      them to make complex UIs.
-    </Text>
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="react" hideDivider>
+      <Tabs.Item label="Declarative" value="react">
+        <Text mt={0}>
+          React makes it painless to create interactive UIs. Design simple
+          views for each state in your application, and React will efficiently
+          update and render just the right components when your data changes.
+        </Text>
+      </Tabs.Item>
+      <Tabs.Item label="Component-Based" value="component-based">
+        <Text mt={0}>
+          Build encapsulated components that manage their own state, then
+          compose them to make complex UIs.
+        </Text>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Hide Border"
-  scope={{ Tabs, Text }}
+  desc="`Tabs` component with a hide border functionality."
+  scope={{ Tabs, Text, Grid }}
   code={`
-<Tabs initialValue="react" hideDivider hideBorder leftSpace={0}>
-  <Tabs.Item label="Declarative" value="react">
-    <Text mt={0}>
-      React makes it painless to create interactive UIs. Design simple views
-      for each state in your application, and React will efficiently update
-      and render just the right components when your data changes.
-    </Text>
-  </Tabs.Item>
-  <Tabs.Item label="Component-Based" value="component-based">
-    <Text mt={0}>
-      Build encapsulated components that manage their own state, then compose
-      them to make complex UIs.
-    </Text>
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="react" hideDivider hideBorder leftSpace={0}>
+      <Tabs.Item label="Declarative" value="react">
+        <Text mt={0}>
+          React makes it painless to create interactive UIs. Design simple
+          views for each state in your application, and React will efficiently
+          update and render just the right components when your data changes.
+        </Text>
+      </Tabs.Item>
+      <Tabs.Item label="Component-Based" value="component-based">
+        <Text mt={0}>
+          Build encapsulated components that manage their own state, then
+          compose them to make complex UIs.
+        </Text>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="With Icon"
   desc="Show icon component on label button."
-  scope={{ Tabs, Instagram, Facebook, Text }}
+  scope={{ Tabs, Instagram, Facebook, Text, Grid }}
   code={`
-<Tabs initialValue="1" align="center" leftSpace={0}>
-  <Tabs.Item
-    label={
-      <>
-        <Instagram /> Instagram
-      </>
-    }
-    value="1"
-  >
-    <Text mt={0}>Hello, this is my profile.</Text>
-  </Tabs.Item>
-  <Tabs.Item
-    label={
-      <>
-        <Facebook /> Facebook
-      </>
-    }
-    value="2"
-  >
-    <Text mt={0}>Hi, this is my page.</Text>
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="1" align="center" leftSpace={0}>
+      <Tabs.Item
+        label={
+          <>
+            <Instagram /> Instagram
+          </>
+        }
+        value="1"
+      >
+        <Text mt={0}>Hello, this is my profile.</Text>
+      </Tabs.Item>
+      <Tabs.Item
+        label={
+          <>
+            <Facebook /> Facebook
+          </>
+        }
+        value="2"
+      >
+        <Text mt={0}>Hi, this is my page.</Text>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Scroll Behavior"
   desc="If all tabs cannot fit in the width then then hidden tabs can be accessed through user agent scrolling mechanisms (e.g. left/right swipe, shift-mousewheel, etc.)"
-  scope={{ Tabs, Instagram, Facebook, Text }}
+  scope={{ Tabs, Instagram, Facebook, Text, Grid }}
   code={`
-<Tabs initialValue="1">
-  <Tabs.Item label="Home" value="1">
-    <Text>Hello!</Text>
-  </Tabs.Item>
-  <Tabs.Item label="About" value="2">
-    <Text>Cool stuff.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="About Us" value="3">
-    <Text>Good people.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Features" value="4">
-    <Text>Amazing.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Pricing" value="5">
-    <Text>Very low.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Docs" value="6">
-    <Text>Clear.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Profile" value="7">
-    <Text>Extraordinary person.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Settings" value="8">
-    <Text>Easy to tweak.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Dashboard" value="9">
-    <Text>Charts.</Text>
-  </Tabs.Item>
-  <Tabs.Item label="Policies" value="10">
-    <Text>Privacy focused.</Text>
-  </Tabs.Item>
-</Tabs>
+<Grid.Container gap={2}>
+  <Grid>
+    <Tabs initialValue="1">
+      <Tabs.Item label="Home" value="1">
+        <Text>Hello!</Text>
+      </Tabs.Item>
+      <Tabs.Item label="About" value="2">
+        <Text>Cool stuff.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="About Us" value="3">
+        <Text>Good people.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Features" value="4">
+        <Text>Amazing.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Pricing" value="5">
+        <Text>Very low.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Docs" value="6">
+        <Text>Clear.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Profile" value="7">
+        <Text>Extraordinary person.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Settings" value="8">
+        <Text>Easy to tweak.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Dashboard" value="9">
+        <Text>Charts.</Text>
+      </Tabs.Item>
+      <Tabs.Item label="Policies" value="10">
+        <Text>Privacy focused.</Text>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Imperatively"
   desc="Control components with imperatively style."
-  scope={{ Tabs, Button, Spacer, Code, Text, useState }}
+  scope={{ Tabs, Button, Grid, Code, Text, useState }}
   code={`
 () => {
   const [value, setValue] = useState('1')
   const switchHandler = () => setValue('2')
   const changeHandler = val => setValue(val)
   return (
-    <>
-      <Button scale={1/3} font="12px" onClick={switchHandler}><Text>Select <Code>Component-Based</Code></Text></Button>
-      <Spacer h={.5} />
-      <Tabs value={value} onChange={changeHandler}>
-        <Tabs.Item label="declarative" value="1">React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</Tabs.Item>
-        <Tabs.Item label="component-based" value="2">Build encapsulated components that manage their own state, then compose them to make complex UIs.</Tabs.Item>
-      </Tabs>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button scale={1/3} font="12px" onClick={switchHandler}><Text>Select <Code>Component-Based</Code></Text></Button>
+      </Grid>
+      <Grid>
+        <Tabs value={value} onChange={changeHandler}>
+          <Tabs.Item label="declarative" value="1">React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</Tabs.Item>
+          <Tabs.Item label="component-based" value="2">Build encapsulated components that manage their own state, then compose them to make complex UIs.</Tabs.Item>
+        </Tabs>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}

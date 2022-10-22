@@ -137,7 +137,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
             transition: all 0.2s ease;
           }
           .active {
-            background: ${addColorAlpha(theme?.palette?.violet, 0.1)};
+            background: ${addColorAlpha(theme?.palette?.secondary, 0.1)};
           }
           .option-left-container {
             display: flex;

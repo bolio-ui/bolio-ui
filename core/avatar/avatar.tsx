@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import AvatarSkeleton from './avatar.skeleton'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { transformDataSource } from './helpers'
 
 interface Props {
   src?: string
@@ -31,22 +33,61 @@ function AvatarComponent({
   ...props
 }: AvatarProps) {
   const theme = useTheme()
-  const { SCALES } = useScale()
+  const { SCALES, getScaleProps } = useScale()
   const showText = !src
   const radius = isSquare ? theme.layout.radius : '50%'
   const marginLeft = stacked ? SCALES.ml(-0.625) : SCALES.ml(0)
   const classes = useClasses('avatar', className)
 
+  const width = getScaleProps(['width', 'w'])
+  const height = getScaleProps(['height', 'h'])
+  const showAnimation = width && height
+  const [loading, setLoading] = useState<boolean>(true)
+  const [showSkeleton, setShowSkeleton] = useState<boolean>(true)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const url = useMemo(() => transformDataSource(src), [src])
+
+  const imageLoaded = () => {
+    if (!showAnimation) return
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    if (!showAnimation) return
+    if (!imageRef.current) return
+    if (imageRef.current.complete) {
+      setLoading(false)
+      setShowSkeleton(false)
+    }
+  }, [showAnimation])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (showAnimation) {
+        setShowSkeleton(false)
+      }
+      clearTimeout(timer)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [loading, showAnimation])
+
   return (
     <span className={classes}>
       {!showText && (
-        <img
-          alt="avatar"
-          className="avatar-img"
-          src={src}
-          draggable={false}
-          {...props}
-        />
+        <>
+          {showSkeleton && showAnimation && (
+            <AvatarSkeleton opacity={loading ? 1 : 0} />
+          )}
+          <img
+            alt="Avatar"
+            src={src}
+            ref={imageRef}
+            onLoad={imageLoaded}
+            className="avatar-img"
+            draggable={false}
+            {...props}
+          />
+        </>
       )}
       {showText && (
         <span className="avatar-text" {...props}>
@@ -59,10 +100,9 @@ function AvatarComponent({
           display: inline-block;
           position: relative;
           overflow: hidden;
-          border: 1px solid ${theme.palette.accents_2};
           border-radius: ${radius};
           vertical-align: top;
-          background-color: ${theme.palette.background};
+          background-color: ${theme.palette.accents_2};
           box-sizing: border-box;
           width: ${SCALES.width(1.75) || SCALES.height(1.75)};
           height: ${SCALES.height(1.75) || SCALES.width(1.75)};
@@ -78,6 +118,7 @@ function AvatarComponent({
           height: 100%;
           border-radius: ${radius};
           user-select: none;
+          text-align: center;
         }
 
         .avatar-text {

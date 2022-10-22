@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Radio, Spacer, Code } from 'core'
+import { Radio, Grid, Code } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -16,16 +16,21 @@ export const meta = {
 Provides single user input from a selection of options.
 
 <Playground
-  scope={{ Radio }}
+  desc="The basic `Radio` usage."
+  scope={{ Radio, Grid }}
   code={`
-<Radio checked={false}>Option 1</Radio>
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio checked={false}>Option 1</Radio>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Group"
   desc="A group of radio components."
-  scope={{ Radio, useState }}
+  scope={{ Radio, useState, Grid }}
   code={`
 () => {
   const [state, setState] = useState('1')
@@ -34,12 +39,14 @@ Provides single user input from a selection of options.
     console.log(val)
   }
   return (
-    <>
-      <Radio.Group value={state} onChange={handler}>
-        <Radio value="1">Option 1</Radio>
-        <Radio value="2">Option 2</Radio>
-      </Radio.Group>
-    </>
+    <Grid.Container gap={2}>
+      <Grid>
+        <Radio.Group value={state} onChange={handler}>
+          <Radio value="1">Option 1</Radio>
+          <Radio value="2">Option 2</Radio>
+        </Radio.Group>
+      </Grid>
+    </Grid.Container>
   )
 }
 `}
@@ -48,67 +55,99 @@ Provides single user input from a selection of options.
 <Playground
   title="Type"
   desc="Differentiate states by color."
-  scope={{ Radio, Spacer }}
+  scope={{ Radio, Grid }}
   code={`
-<>
-  <Radio checked={false} type="default">
-    Default
-  </Radio>
-  <Spacer h={0.5} />
-  <Radio checked={false} type="success">
-    Success
-  </Radio>
-  <Spacer h={0.5} />
-  <Radio checked={false} type="warning">
-    Warning
-  </Radio>
-  <Spacer h={0.5} />
-  <Radio checked={false} type="error">
-    Error
-  </Radio>
-</>
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio checked={false}>Default</Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="primary">
+      Primary
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="secondary">
+      Secondary
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="success">
+      Success
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="warning">
+      Warning
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="error">
+      Error
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="info">
+      Info
+    </Radio>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Description"
   desc="`Description` can be combined with other components."
-  scope={{ Radio, Code }}
+  scope={{ Radio, Code, Grid }}
   code={`
-<Radio.Group value="1" onChange={(val) => console.log(val)}>
-  <Radio value="1">
-    Option 1
-    <Radio.Description>Example description for Option 1</Radio.Description>
-  </Radio>
-</Radio.Group>
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" onChange={(val) => console.log(val)}>
+      <Radio value="1">
+        Option 1
+        <Radio.Description>
+          Example description for Option 1
+        </Radio.Description>
+      </Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Disabled"
   desc="Disable all radios."
-  scope={{ Radio, useState, Code }}
+  scope={{ Radio, useState, Code, Grid }}
   code={`
-<Radio.Group value="1" disabled>
-  <Radio value="1">Option 1</Radio>
-  <Radio value="2">Option 2</Radio>
-</Radio.Group>
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" disabled>
+      <Radio value="1">Option 1</Radio>
+      <Radio value="2">Option 2</Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
 `}
 />
 
 <Playground
   title="Row"
   desc="Horizontal arrangement."
-  scope={{ Radio, Code }}
+  scope={{ Radio, Code, Grid }}
   code={`
-<Radio.Group value="1" useRow>
-  <Radio value="1">
-    Option 1<Radio.Desc>Description for Option1</Radio.Desc>
-  </Radio>
-  <Radio value="2">
-    Option 2<Radio.Desc>Description for Option2</Radio.Desc>
-  </Radio>
-</Radio.Group>
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" useRow>
+      <Radio value="1">
+        Option 1<Radio.Desc>Description for Option1</Radio.Desc>
+      </Radio>
+      <Radio value="2">
+        Option 2<Radio.Desc>Description for Option2</Radio.Desc>
+      </Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
 `}
 />
 
@@ -146,7 +185,14 @@ Provides single user input from a selection of options.
 <Attributes.Title>RadioTypes</Attributes.Title>
 
 ```ts
-type RadioTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+type RadioTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
 ```
 
 </Attributes>

@@ -15,8 +15,12 @@ export const getColors = (
       fill: palette.foreground,
       bg: palette.background
     },
+    primary: {
+      fill: palette.primary,
+      bg: palette.background
+    },
     secondary: {
-      fill: palette.foreground,
+      fill: palette.secondary,
       bg: palette.background
     },
     success: {
@@ -29,6 +33,10 @@ export const getColors = (
     },
     error: {
       fill: palette.error,
+      bg: palette.background
+    },
+    info: {
+      fill: palette.info,
       bg: palette.background
     }
   }

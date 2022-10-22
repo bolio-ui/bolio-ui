@@ -56,6 +56,8 @@ const InputComponent = React.forwardRef<
       placeholder,
       children,
       disabled,
+      rounded,
+      backgroundColor,
       ...props
     }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
@@ -206,9 +208,11 @@ const InputComponent = React.forwardRef<
             height: 100%;
             flex: 1;
             user-select: none;
-            border-radius: ${theme.layout.radius};
-            border: 1px solid ${borderColor};
+            border-radius: ${rounded ? '25px' : theme.layout.radius};
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
+            background: ${backgroundColor
+              ? backgroundColor
+              : theme.palette.accents_2};
           }
 
           .input-wrapper.left-label {
@@ -222,8 +226,7 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.disabled {
-            background-color: ${theme.palette.accents_1};
-            border-color: ${theme.palette.accents_2};
+            background-color: ${theme.palette.accents_4};
             cursor: not-allowed;
           }
 
@@ -237,7 +240,7 @@ const InputComponent = React.forwardRef<
 
           input {
             margin: 0.25em 0.625em;
-            padding: 0;
+            padding: 0 4px;
             box-shadow: none;
             font-size: ${SCALES.font(0.875)};
             background-color: transparent;
