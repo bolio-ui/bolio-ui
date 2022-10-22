@@ -196,7 +196,7 @@ const Navigation: React.FC = () => {
                             }
                             auto
                             scale={0.75}
-                            type="secondary"
+                            type="secondary-light"
                           >
                             Sponsor
                           </Button>
