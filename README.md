@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/bolio-ui/bolio-ui">
-    <img src="https://github.com/bolio-ui/bolio-ui/blob/master/public/logo-colored.svg" alt="Bolio UI Logo" width="100" />
+    <img src="https://bolio-ui.com/logo-colored.svg" alt="Bolio UI Logo" width="100" />
   </a>
 </p>
 
@@ -38,10 +38,11 @@ npm i @bolio-ui/core
 Go to the root of your application and do this:
 
 ```jsx
-import { BolioUIProvider } from '@bolio-ui/core'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 const Application = () => (
   <BolioUIProvider>
+    <CssBaseline /> // ---> Normalize styles
     <AppComponent /> // ---> Your App Component
   </BolioUIProvider>
 )
@@ -56,6 +57,11 @@ import { Button } from '@bolio-ui/core'
 
 const Component = () => <Button>Click me</Button>
 ```
+
+### Showcases
+
+- [Bolio Icons](https://icons.bolio-ui.com/)
+- [Bolio Me](https://me.bolio-ui.com/)
 
 ### Community
 
