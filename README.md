@@ -1,3 +1,20 @@
+<p align="center">
+  <a href="https://github.com/bolio-ui/bolio-ui">
+    <img src="https://bolio-ui.com/logo-colored.svg" alt="Bolio UI Logo" width="100" />
+  </a>
+</p>
+
+<h1 align="center">Bolio UI 🥷🏼</h1>
+
+<p align="center">
+  <img alt="Bundle Size" src="https://badgen.net/bundlephobia/minzip/@bolio-ui/core"/>
+  <img alt="MIT License" src="https://img.shields.io/github/license/bolio-ui/bolio-ui"/>
+  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@bolio-ui/core.svg?style=flat"/>
+  <img alt="Github Stars" src="https://badgen.net/github/stars/bolio-ui/bolio-ui" />
+</p>
+
+<br />
+
 ## Getting Started
 
 Visit <a aria-label="bolio-ui learn" href="https://bolio-ui.com/docs/guide">https://bolio-ui.com/docs/guide</a> to get started with Bolio UI.
