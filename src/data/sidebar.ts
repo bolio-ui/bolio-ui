@@ -175,6 +175,10 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Table',
+    url: '/docs/components/table'
+  },
+  {
     name: 'Tabs',
     url: '/docs/components/tabs'
   },

@@ -158,6 +158,9 @@ export type { SpacerProps } from './spacer'
 export { default as Spinner } from './spinner'
 export type { SpinnerProps } from './spinner'
 
+export { default as Table } from './table'
+export type { TableProps, TableColumnProps } from './table'
+
 export { default as Tabs } from './tabs'
 export type { TabsProps } from './tabs'
 
