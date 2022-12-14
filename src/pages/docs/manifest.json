@@ -226,6 +226,11 @@
               "path": "/docs/components/spinner.mdx"
             },
             {
+              "title": "Table",
+              "keywords": "table",
+              "path": "/docs/components/table.mdx"
+            },
+            {
               "title": "Tabs",
               "keywords": "tabs, disabled, hide divider, hide border, icon, scroll behavior, imperatively",
               "path": "/docs/components/tabs.mdx"

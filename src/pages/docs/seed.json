@@ -2056,6 +2056,88 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "title": "Table",
+    "component": true,
+    "path": "/docs/components/table"
+  },
+  {
+    "title": "Table",
+    "component": false,
+    "path": "/docs/components/table#table"
+  },
+  {
+    "head": "Table",
+    "title": "Table Compose",
+    "component": false,
+    "path": "/docs/components/table#compose"
+  },
+  {
+    "head": "Table",
+    "title": "Table Width",
+    "component": false,
+    "path": "/docs/components/table#width"
+  },
+  {
+    "head": "Table",
+    "title": "Table Actions",
+    "component": false,
+    "path": "/docs/components/table#actions"
+  },
+  {
+    "head": "Table",
+    "title": "Table Update Row",
+    "component": false,
+    "path": "/docs/components/table#update-row"
+  },
+  {
+    "head": "Table",
+    "title": "Table Custom Head",
+    "component": false,
+    "path": "/docs/components/table#custom-head"
+  },
+  {
+    "head": "Table",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/table#apis"
+  },
+  {
+    "head": "Table",
+    "title": "Table Props",
+    "component": false,
+    "path": "/docs/components/table#table.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table Column Props",
+    "component": false,
+    "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table OnRowClick",
+    "component": false,
+    "path": "/docs/components/table#tableonrowclick"
+  },
+  {
+    "head": "Table",
+    "title": "Table OnCellClick",
+    "component": false,
+    "path": "/docs/components/table#tableoncellclick"
+  },
+  {
+    "head": "Table",
+    "title": "Table RowClassNameHandler",
+    "component": false,
+    "path": "/docs/components/table#tablerowclassnamehandler"
+  },
+  {
+    "head": "Table",
+    "title": "Table ColumnRender",
+    "component": false,
+    "path": "/docs/components/table#tablecolumnrender"
+  },
+  {
     "title": "Tabs",
     "component": true,
     "path": "/docs/components/tabs"
