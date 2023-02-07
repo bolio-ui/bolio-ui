@@ -7,10 +7,21 @@
 <h1 align="center">Bolio UI 🥷🏼</h1>
 
 <p align="center">
-  <img alt="Bundle Size" src="https://badgen.net/bundlephobia/minzip/@bolio-ui/core"/>
-  <img alt="MIT License" src="https://img.shields.io/github/license/bolio-ui/bolio-ui"/>
-  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@bolio-ui/core.svg?style=flat"/>
-  <img alt="Github Stars" src="https://badgen.net/github/stars/bolio-ui/bolio-ui" />
+  <a href="https://github.com/bolio-ui/bolio-ui/blob/master/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/github/license/bolio-ui/bolio-ui" />
+  </a>
+  <a href="https://www.npmjs.com/package/@bolio-ui/core">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@bolio-ui/core.svg?style=flat" />
+  </a>
+  <a href="https://github.com/bolio-ui/bolio-ui/">
+    <img alt="Github Stars" src="https://badgen.net/github/stars/bolio-ui/bolio-ui" />
+  </a>
+  <a href="https://github.com/bolio-ui/bolio-ui/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/bolio-ui/bolio-ui?color=0088ff" />
+  </a>
+  <a href="https://github.com/bolio-ui/bolio-ui/pulls">
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/bolio-ui/bolio-ui?color=0088ff" />
+  </a>
 </p>
 
 <br />
@@ -62,6 +73,7 @@ const Component = () => <Button>Click me</Button>
 
 - [Bolio Icons](https://icons.bolio-ui.com/)
 - [Bolio Me](https://me.bolio-ui.com/)
+- [Bolio ChatGPT](https://chatgpt.bolio-ui.com/)
 
 ### Community
 
