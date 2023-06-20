@@ -9,6 +9,6 @@ export type {
   TableOnRowClick,
   TableRowClassNameHandler,
   TableDataItemBase,
-  TableColumnRender,
+  TableColumnRender
 } from './table-types'
 export default Table
