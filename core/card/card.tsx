@@ -17,15 +17,22 @@ interface Props {
   type?: CardTypes
 }
 
+const defaultProps = {
+  type: 'default' as CardTypes,
+  hoverable: false,
+  shadow: false,
+  className: ''
+}
+
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CardProps = Props & NativeAttrs
 
 function CardComponent({
   children,
-  hoverable = false,
-  rounded = false,
+  hoverable,
+  rounded,
   className = '',
-  shadow = false,
+  shadow,
   type = 'default' as CardTypes,
   ...props
 }: CardProps) {
@@ -46,12 +53,10 @@ function CardComponent({
     children,
     CardFooter
   )
-
   const [withoutImageChildren, imageChildren] = pickChild(
     withoutFooterChildren,
     Image
   )
-
   const hasContent = hasChild(withoutImageChildren, CardContent)
 
   return (
@@ -60,17 +65,19 @@ function CardComponent({
       {hasContent ? (
         withoutImageChildren
       ) : (
-        <CardContent className="card">{withoutImageChildren}</CardContent>
+        <CardContent>{withoutImageChildren}</CardContent>
       )}
       {footerChildren}
       <style jsx>{`
         .card {
+          background: ${theme.palette.background};
           transition: all 0.2s ease;
           border-radius: ${rounded ? '25px' : theme.layout.radius};
           box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
           box-sizing: border-box;
           color: ${color};
           background-color: ${bgColor};
+          border: 1px solid ${borderColor};
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
           padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
@@ -96,6 +103,7 @@ function CardComponent({
   )
 }
 
+CardComponent.defaultProps = defaultProps
 CardComponent.displayName = 'BolioUICard'
 const Card = withScale(CardComponent)
 export default Card
