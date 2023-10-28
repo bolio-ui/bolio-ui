@@ -209,6 +209,7 @@ const InputComponent = React.forwardRef<
             flex: 1;
             user-select: none;
             border-radius: ${rounded ? '25px' : theme.layout.radius};
+            border: 1px solid ${borderColor};
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
             background: ${backgroundColor
               ? backgroundColor

@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AvatarSkeleton from './avatar.skeleton'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
-import { transformDataSource } from './helpers'
 
 interface Props {
   src?: string
@@ -45,7 +44,6 @@ function AvatarComponent({
   const [loading, setLoading] = useState<boolean>(true)
   const [showSkeleton, setShowSkeleton] = useState<boolean>(true)
   const imageRef = useRef<HTMLImageElement>(null)
-  const url = useMemo(() => transformDataSource(src), [src])
 
   const imageLoaded = () => {
     if (!showAnimation) return
