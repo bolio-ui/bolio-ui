@@ -1,5 +1,5 @@
-import Popover from './popover'
-import PopoverItem from './popover-item'
+import Popover from './Popover'
+import PopoverItem from './PopoverItem'
 
 export type PopoverComponentType = typeof Popover & {
   Item: typeof PopoverItem
@@ -12,6 +12,6 @@ export type {
   PopoverProps,
   PopoverTriggerTypes,
   PopoverPlacement
-} from './popover'
-export type { PopoverItemProps } from './popover-item'
+} from './Popover'
+export type { PopoverItemProps } from './PopoverItem'
 export default Popover as PopoverComponentType

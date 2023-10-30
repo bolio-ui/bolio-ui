@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
-import Card from '../card'
-import Grid from '../grid'
+import Card from '../Card'
+import Grid from '../Grid'
 import { Smile } from '@bolio-ui/icons'
 
 export default {

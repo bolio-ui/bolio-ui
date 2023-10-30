@@ -1,7 +1,7 @@
-import { BolioUIThemes } from './presets/index'
+import { BolioUIThemes } from './Presets/index'
 import type { DeepPartial } from '../utils/types'
-import lightTheme from './presets/default'
-import darkTheme from './presets/dark'
+import lightTheme from './Presets/Default'
+import darkTheme from './Presets/Dark'
 
 export type BolioUIUserTheme = DeepPartial<BolioUIThemes> & { type: string }
 

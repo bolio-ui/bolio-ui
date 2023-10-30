@@ -1,6 +1,6 @@
 import React from 'react'
 import css from 'styled-jsx/css'
-import GridBasicItem, { GridBasicItemProps } from './basic-item'
+import GridBasicItem, { GridBasicItemProps } from './BasicItem'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 

@@ -1,6 +1,6 @@
-import Card from './card'
-import CardFooter from './card-footer'
-import CardContent from './card-content'
+import Card from './Card'
+import CardFooter from './CardFooter'
+import CardContent from './CardContent'
 
 export type CardComponentType = typeof Card & {
   Footer: typeof CardFooter
@@ -13,8 +13,8 @@ export type CardComponentType = typeof Card & {
 ;(Card as CardComponentType).Content = CardContent
 ;(Card as CardComponentType).Body = CardContent
 
-export type { CardProps } from './card'
-export type { CardContentProps } from './card-content'
-export type { CardFooterProps } from './card-footer'
+export type { CardProps } from './Card'
+export type { CardContentProps } from './CardContent'
+export type { CardFooterProps } from './CardFooter'
 export type { CardTypes } from '../utils/prop-types'
 export default Card as CardComponentType

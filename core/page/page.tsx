@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect, useMemo, useState } from 'react'
 import { tuple } from '../utils/prop-types'
 import useTheme from '../use-theme'
-import PageContent from './page-content'
+import PageContent from './PageContent'
 import { hasChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 

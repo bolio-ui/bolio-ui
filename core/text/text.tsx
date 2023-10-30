@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react'
 import { NormalTypes } from '../utils/prop-types'
-import TextChild from './child'
+import TextChild from './Child'
 import { withScale } from '../use-scale'
 
 export type TextTypes = NormalTypes

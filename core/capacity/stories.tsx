@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import useTheme from '../use-theme'
 import Capacity from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Display/Capacity',

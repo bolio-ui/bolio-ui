@@ -1,9 +1,9 @@
-import Rating from './rating'
+import Rating from './Rating'
 
 export type {
   RatingProps,
   RatingTypes,
   RatingCount,
   RatingValue
-} from './rating'
+} from './Rating'
 export default Rating

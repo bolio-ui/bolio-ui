@@ -1,8 +1,8 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Textarea from '.'
-import Grid from '../grid'
-import Button from '../button'
+import Grid from '../Grid'
+import Button from '../Button'
 import useInput from '../use-input'
 
 export default {

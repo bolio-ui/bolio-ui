@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Tabs from '.'
-import Text from '../text'
-import Grid from '../grid'
+import Text from '../Text'
+import Grid from '../Grid'
 import { Instagram, Facebook } from '@bolio-ui/icons'
 
 export default {

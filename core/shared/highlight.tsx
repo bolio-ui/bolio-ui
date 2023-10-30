@@ -43,7 +43,7 @@ const Highlight: React.FC<HighlightProps> = ({
       left: `${rect.left + (rect.width - width) / 2}px`,
       height: `${height}px`,
       top: `${rect.elementTop + (rect.height - height) / 2}px`,
-      transition: isFirstVisible ? 'opacity' : 'opacity, width, left, top',
+      transition: isFirstVisible ? 'opacity' : 'opacity, width, left, top'
     }
   }, [rect, hoverWidthRatio, hoverHeightRatio])
 

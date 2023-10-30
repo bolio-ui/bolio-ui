@@ -1,4 +1,4 @@
-import Row from './row'
+import Row from './Row'
 
-export type { RowProps } from './row'
+export type { RowProps } from './Row'
 export default Row

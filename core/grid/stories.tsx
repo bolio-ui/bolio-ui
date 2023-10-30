@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Grid from '.'
-import Card from '../card'
+import Card from '../Card'
 
 export default {
   title: 'Layout/Grid',

@@ -33,6 +33,7 @@ export const ScalePropKeys = [
 ]
 
 export type ScaleProps = {
+  [key: string]: any
   width?: string | number
   height?: string | number
   padding?: string | number

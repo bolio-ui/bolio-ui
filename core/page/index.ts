@@ -1,7 +1,7 @@
-import Page from './page'
-import PageHeader from './page-header'
-import PageContent from './page-content'
-import PageFooter from './page-footer'
+import Page from './Page'
+import PageHeader from './PageHeader'
+import PageContent from './PageContent'
+import PageFooter from './PageFooter'
 
 export type PageComponentType = typeof Page & {
   Header: typeof PageHeader
@@ -14,8 +14,8 @@ export type PageComponentType = typeof Page & {
 ;(Page as PageComponentType).Body = PageContent
 ;(Page as PageComponentType).Footer = PageFooter
 
-export type { PageProps, PageRenderMode } from './page'
-export type { PageHeaderProps } from './page-header'
-export type { PageContentProps } from './page-content'
-export type { PageFooterProps } from './page-footer'
+export type { PageProps, PageRenderMode } from './Page'
+export type { PageHeaderProps } from './PageHeader'
+export type { PageContentProps } from './PageContent'
+export type { PageFooterProps } from './PageFooter'
 export default Page as PageComponentType

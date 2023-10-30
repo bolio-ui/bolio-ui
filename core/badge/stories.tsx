@@ -1,10 +1,10 @@
 import { Story, Meta } from '@storybook/react'
 import { useTheme } from '../use-theme/theme-context'
 import Badge from '.'
-import Grid from '../grid'
-import Avatar from '../avatar'
-import Button from '../button'
-import Link from '../link'
+import Grid from '../Grid'
+import Avatar from '../Avatar'
+import Button from '../Button'
+import Link from '../Link'
 
 export default {
   title: 'Data Display/Badge',

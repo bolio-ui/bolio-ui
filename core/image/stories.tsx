@@ -1,8 +1,8 @@
 import { Story, Meta } from '@storybook/react'
 import Image from '.'
-import Display from '../display'
-import Code from '../code'
-import Grid from '../grid'
+import Display from '../Display'
+import Code from '../Code'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Display/Image',

@@ -1,4 +1,4 @@
-import Textarea from './textarea'
+import Textarea from './Textarea'
 
-export type { TextareaProps, TextareaResizes, TextareaTypes } from './textarea'
+export type { TextareaProps, TextareaResizes, TextareaTypes } from './Textarea'
 export default Textarea

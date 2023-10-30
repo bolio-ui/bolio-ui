@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Pagination from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 import {
   ChevronRight,
   ChevronLeft,

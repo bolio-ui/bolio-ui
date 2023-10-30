@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { NormalTypes } from '../utils/prop-types'
-import { BolioUIThemes } from '../themes/presets'
+import { BolioUIThemes } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 

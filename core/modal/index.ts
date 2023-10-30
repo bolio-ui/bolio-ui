@@ -1,8 +1,8 @@
-import Modal from './modal'
-import ModalTitle from './modal-title'
-import ModalSubtitle from './modal-subtitle'
-import ModalContent from './modal-content'
-import ModalAction from './modal-action'
+import Modal from './Modal'
+import ModalTitle from './ModalTitle'
+import ModalSubtitle from './ModalSubtitle'
+import ModalContent from './ModalContent'
+import ModalAction from './ModalAction'
 
 export type ModalComponentType = typeof Modal & {
   Title: typeof ModalTitle
@@ -15,9 +15,9 @@ export type ModalComponentType = typeof Modal & {
 ;(Modal as ModalComponentType).Content = ModalContent
 ;(Modal as ModalComponentType).Action = ModalAction
 
-export type { ModalProps } from './modal'
-export type { ModalTitleProps } from './modal-title'
-export type { ModalSubtitleProps } from './modal-subtitle'
-export type { ModalActionProps } from './modal-action'
-export type { ModalContentProps } from './modal-content'
+export type { ModalProps } from './Modal'
+export type { ModalTitleProps } from './ModalTitle'
+export type { ModalSubtitleProps } from './ModalSubtitle'
+export type { ModalActionProps } from './ModalAction'
+export type { ModalContentProps } from './ModalContent'
 export default Modal as ModalComponentType

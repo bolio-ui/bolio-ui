@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Text from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 
 export default {
   title: 'General/Text',

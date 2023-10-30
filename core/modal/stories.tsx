@@ -1,8 +1,8 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Modal from '.'
-import Button from '../button'
-import Grid from '../grid'
+import Button from '../Button'
+import Grid from '../Grid'
 import useModal from '../use-modal'
 
 export default {

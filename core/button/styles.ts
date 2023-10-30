@@ -1,6 +1,6 @@
-import { BolioUIThemesPalette } from '../themes/presets'
+import { BolioUIThemesPalette } from '../Themes/Presets'
 import { ButtonTypes } from '../utils/prop-types'
-import { ButtonProps } from './button'
+import { ButtonProps } from './Button'
 import { addColorAlpha } from '../utils/color'
 
 export interface ButtonColorGroup {

@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react'
 import useTheme from '../use-theme'
-import BreadcrumbsSeparator from './breadcrumbs-separator'
+import BreadcrumbsSeparator from './BreadcrumbsSeparator'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
 

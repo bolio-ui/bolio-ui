@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Description from '.'
-import Code from '../code'
-import Grid from '../grid'
+import Code from '../Code'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Display/Description',

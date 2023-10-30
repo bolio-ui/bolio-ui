@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import type { Toast, ToastLayout } from './use-toast'
-import CssTransition from '../shared/css-transition'
+import CssTransition from '../Shared/css-transition'
 import { makeToastActions, getColors, getTranslateByPlacement } from './helpers'
 
 export interface ToastItemProps {

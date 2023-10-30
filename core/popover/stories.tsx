@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Popover from '.'
-import Link from '../link'
-import Spacer from '../spacer'
-import Grid from '../grid'
+import Link from '../Link'
+import Spacer from '../Spacer'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Display/Popover',

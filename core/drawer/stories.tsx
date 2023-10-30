@@ -2,8 +2,8 @@ import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import { DrawerPlacement } from './helper'
 import Drawer from '.'
-import Button from '../button'
-import Grid from '../grid'
+import Button from '../Button'
+import Grid from '../Grid'
 
 export default {
   title: 'Feedback/Drawer',

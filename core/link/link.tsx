@@ -1,6 +1,6 @@
 import React from 'react'
 import useTheme from '../use-theme'
-import LinkIcon from './icon'
+import LinkIcon from './Icon'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

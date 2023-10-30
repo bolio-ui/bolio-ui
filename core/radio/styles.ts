@@ -1,4 +1,4 @@
-import { BolioUIThemesPalette } from '../themes/presets'
+import { BolioUIThemesPalette } from '../Themes/Presets'
 import { NormalTypes } from '../utils/prop-types'
 
 export type RadioColor = {

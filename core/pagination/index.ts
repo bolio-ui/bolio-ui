@@ -1,6 +1,6 @@
-import Pagination from './pagination'
-import PaginationPrevious from './pagination-previous'
-import PaginationNext from './pagination-next'
+import Pagination from './Pagination'
+import PaginationPrevious from './PaginationPrevious'
+import PaginationNext from './PaginationNext'
 
 export type PaginationComponentType = typeof Pagination & {
   Previous: typeof PaginationPrevious
@@ -9,7 +9,7 @@ export type PaginationComponentType = typeof Pagination & {
 ;(Pagination as PaginationComponentType).Previous = PaginationPrevious
 ;(Pagination as PaginationComponentType).Next = PaginationNext
 
-export type { PaginationProps } from './pagination'
-export type { PaginationPreviousProps } from './pagination-previous'
-export type { PaginationNextProps } from './pagination-next'
+export type { PaginationProps } from './Pagination'
+export type { PaginationPreviousProps } from './PaginationPrevious'
+export type { PaginationNextProps } from './PaginationNext'
 export default Pagination as PaginationComponentType

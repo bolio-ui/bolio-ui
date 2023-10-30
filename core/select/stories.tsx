@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Select from '.'
-import Grid from '../grid'
-import Code from '../code'
+import Grid from '../Grid'
+import Code from '../Code'
 
 export default {
   title: 'Data Entry/Select',

@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import useTheme from '../use-theme'
 import { NormalTypes, tuple } from '../utils/prop-types'
-import { getColors } from '../input/styles'
+import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import TableHead from './table-head'
-import TableBody from './table-body'
+import TableHead from './TableHead'
+import TableBody from './TableBody'
 import useRealShape from '../utils/use-real-shape'
 import useResize from '../utils/use-resize'
-import { TableContext, TableConfig } from './table-context'
+import { TableContext, TableConfig } from './TableContext'
 import {
   TableAbstractColumn,
   TableDataItemBase,
@@ -11,9 +11,9 @@ import {
   TableOnChange,
   TableOnRowClick,
   TableRowClassNameHandler
-} from './table-types'
+} from './TableTypes'
 import useScale, { ScaleProps, withScale } from '../use-scale'
-import TableColumn from './table-column'
+import TableColumn from './TableColumn'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   data?: Array<TableDataItem>

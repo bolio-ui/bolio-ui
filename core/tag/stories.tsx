@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Tag from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Display/Tag',

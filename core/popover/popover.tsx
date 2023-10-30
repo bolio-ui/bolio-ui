@@ -3,11 +3,11 @@ import Tooltip, {
   TooltipOnVisibleChange,
   TooltipProps,
   TooltipTypes
-} from '../tooltip/tooltip'
+} from '../Tooltip'
 import { Placement, TriggerTypes } from '../utils/prop-types'
 import { getReactNode } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
-import { PopoverContext, PopoverConfig } from './popover-context'
+import { PopoverContext, PopoverConfig } from './PopoverContext'
 import useClasses from '../use-classes'
 
 export type PopoverTriggerTypes = TriggerTypes

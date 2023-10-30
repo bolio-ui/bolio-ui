@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Slider from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 
 export default {
   title: 'Data Entry/Slider',

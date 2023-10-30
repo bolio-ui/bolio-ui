@@ -1,11 +1,11 @@
 import { Story, Meta } from '@storybook/react'
 import Card from '.'
-import Text from '../text'
-import Grid from '../grid'
-import Link from '../link'
-import Image from '../image'
-import Code from '../code'
-import Divider from '../divider'
+import Text from '../Text'
+import Grid from '../Grid'
+import Link from '../Link'
+import Image from '../Image'
+import Code from '../Code'
+import Divider from '../Divider'
 
 export default {
   title: 'Surface/Card',

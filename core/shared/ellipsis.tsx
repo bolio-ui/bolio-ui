@@ -6,7 +6,7 @@ export type EllipsisProps = {
 
 const Ellipsis: React.FC<React.PropsWithChildren<EllipsisProps>> = ({
   children,
-  height,
+  height
 }) => {
   return (
     <span>

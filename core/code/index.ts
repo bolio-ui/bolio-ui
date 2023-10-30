@@ -1,4 +1,4 @@
-import Code from './code'
+import Code from './Code'
 
-export type { CodeProps } from './code'
+export type { CodeProps } from './Code'
 export default Code

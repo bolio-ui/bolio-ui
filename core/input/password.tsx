@@ -1,7 +1,7 @@
 import React, { useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { Props, defaultProps } from './input-props'
-import PasswordIcon from './password-icon'
-import Input from './input'
+import { Props, defaultProps } from './InputProps'
+import PasswordIcon from './PasswordIcon'
+import Input from './Input'
 import { useScale, withScale } from '../use-scale'
 
 interface PasswordProps extends Props {
