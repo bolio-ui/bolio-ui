@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { useProportions } from '../utils/calculations'
-import { BolioUIThemesPalette } from '../themes/presets'
+import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 

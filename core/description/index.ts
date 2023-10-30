@@ -1,4 +1,4 @@
-import Description from './description'
+import Description from './Description'
 
-export type { DescriptionProps } from './description'
+export type { DescriptionProps } from './Description'
 export default Description

@@ -1,5 +1,5 @@
 import { NormalTypes } from '../utils/prop-types'
-import { BolioUIThemesPalette } from '../themes/presets'
+import { BolioUIThemesPalette } from '../Themes/Presets'
 
 export type InputColor = {
   color: string

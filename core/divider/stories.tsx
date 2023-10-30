@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Divider from '.'
-import Text from '../text'
-import Grid from '../grid'
+import Text from '../Text'
+import Grid from '../Grid'
 
 export default {
   title: 'Others/Divider',

@@ -1,4 +1,4 @@
-import Spinner from './spinner'
+import Spinner from './Spinner'
 
-export type { SpinnerProps } from './spinner'
+export type { SpinnerProps } from './Spinner'
 export default Spinner

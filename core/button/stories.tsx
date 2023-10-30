@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Button from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 import { Zap, ZapOff, AlertCircle, XSquare } from '@bolio-ui/icons'
 
 export default {

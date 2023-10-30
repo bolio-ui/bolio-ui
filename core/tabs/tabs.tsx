@@ -7,9 +7,9 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import { TabsHeaderItem, TabsConfig, TabsContext } from './tabs-context'
+import { TabsHeaderItem, TabsConfig, TabsContext } from './TabsContext'
 import useScale, { withScale } from '../use-scale'
-import Highlight from '../shared/highlight'
+import Highlight from '../Shared/highlight'
 import { useRect } from '../utils/layouts'
 import { isBolioUIElement } from '../utils/collections'
 import useClasses from '../use-classes'

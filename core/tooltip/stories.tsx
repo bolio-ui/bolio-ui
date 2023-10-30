@@ -1,12 +1,11 @@
 import { Story, Meta } from '@storybook/react'
 import Tooltip from '.'
-import Spacer from '../spacer'
-import Grid from '../grid'
-import Button from '../button'
-import Link from '../link'
-import Code from '../code'
-import Text from '../text'
-import Badge from '../badge'
+import Grid from '../Grid'
+import Button from '../Button'
+import Link from '../Link'
+import Code from '../Code'
+import Text from '../Text'
+import Badge from '../Badge'
 
 export default {
   title: 'Data Display/Tooltip',

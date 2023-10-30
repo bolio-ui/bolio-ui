@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import TooltipContent, { TooltipIconOffset } from './tooltip-content'
+import TooltipContent, { TooltipIconOffset } from './TooltipContent'
 import useClickAway from '../utils/use-click-away'
 import { TriggerTypes, Placement, SnippetTypes } from '../utils/prop-types'
 import { withScale } from '../use-scale'

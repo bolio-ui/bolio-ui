@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Link from '.'
-import Grid from '../grid'
-import Text from '../text'
+import Grid from '../Grid'
+import Text from '../Text'
 
 export default {
   title: 'Navigation/Link',

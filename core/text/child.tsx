@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { NormalTypes } from '../utils/prop-types'
-import { BolioUIThemesPalette } from '../themes/presets'
+import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale from '../use-scale'
 
 export interface Props {

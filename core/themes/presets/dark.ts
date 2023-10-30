@@ -3,7 +3,7 @@ import {
   BolioUIThemesPalette,
   BolioUIThemesExpressiveness
 } from './index'
-import { defaultFont, defaultBreakpoints, defaultLayout } from './shared'
+import { defaultFont, defaultBreakpoints, defaultLayout } from './Shared'
 
 export const palette: BolioUIThemesPalette = {
   background: '#000',

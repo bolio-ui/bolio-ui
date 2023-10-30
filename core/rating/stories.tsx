@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Rating from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 import { Umbrella, Zap } from '@bolio-ui/icons'
 
 export default {

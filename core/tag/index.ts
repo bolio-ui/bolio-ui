@@ -1,4 +1,4 @@
-import Tag from './tag'
+import Tag from './Tag'
 
-export type { TagProps, TagColors, TagTypes } from './tag'
+export type { TagProps, TagColors, TagTypes } from './Tag'
 export default Tag

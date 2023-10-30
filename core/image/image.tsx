@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import useTheme from '../use-theme'
-import ImageSkeleton from './image.skeleton'
+import ImageSkeleton from './ImageSkeleton'
 import { transformDataSource } from './helpers'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

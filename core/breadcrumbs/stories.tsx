@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import NextLink from 'next/link'
 import Breadcrumbs from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 import { Home, Settings } from '@bolio-ui/icons'
 
 export default {

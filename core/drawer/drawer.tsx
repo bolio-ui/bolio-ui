@@ -4,9 +4,9 @@ import usePortal from '../utils/use-portal'
 import useBodyScroll from '../utils/use-body-scroll'
 import useKeyboard, { KeyCode } from '../use-keyboard'
 import { createPortal } from 'react-dom'
-import Backdrop from '../shared/backdrop'
+import Backdrop from '../Shared/backdrop'
 import { DrawerPlacement } from './helper'
-import DrawerWrapper from './drawer-wrapper'
+import DrawerWrapper from './DrawerWrapper'
 
 interface Props {
   visible?: boolean

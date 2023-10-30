@@ -2,71 +2,71 @@
 // @ts-ignore
 /// <reference types="styled-jsx" />
 
-export { default as Avatar } from './avatar'
-export type { AvatarProps, AvatarGroupProps } from './avatar'
+export { default as Avatar } from './Avatar'
+export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
-export { default as Badge } from './badge'
-export type { BadgeProps, BadgeAnchorProps } from './badge'
+export { default as Badge } from './Badge'
+export type { BadgeProps, BadgeAnchorProps } from './Badge'
 
-export { default as BolioUIProvider } from './bolio-ui-provider'
-export type { BolioUIProviderProps } from './bolio-ui-provider'
+export { default as BolioUIProvider } from './BolioUIProvider'
+export type { BolioUIProviderProps } from './BolioUIProvider'
 
-export { default as Breadcrumbs } from './breadcrumbs'
+export { default as Breadcrumbs } from './Breadcrumbs'
 export type {
   BreadcrumbsProps,
   BreadcrumbsItemProps,
   BreadcrumbsSeparatorProps
-} from './breadcrumbs'
+} from './Breadcrumbs'
 
-export { default as Button } from './button'
-export type { ButtonProps } from './button'
+export { default as Button } from './Button'
+export type { ButtonProps } from './Button'
 
-export { default as ButtonDropdown } from './button-dropdown'
+export { default as ButtonDropdown } from './ButtonDropdown'
 export type {
   ButtonDropdownProps,
   ButtonDropdownItemProps
-} from './button-dropdown'
+} from './ButtonDropdown'
 
-export { default as ButtonGroup } from './button-group'
-export type { ButtonGroupProps } from './button-group'
+export { default as ButtonGroup } from './ButtonGroup'
+export type { ButtonGroupProps } from './ButtonGroup'
 
-export { default as Capacity } from './capacity'
-export type { CapacityProps } from './capacity'
+export { default as Capacity } from './Capacity'
+export type { CapacityProps } from './Capacity'
 
-export { default as Card } from './card'
-export type { CardProps, CardContentProps, CardFooterProps } from './card'
+export { default as Card } from './Card'
+export type { CardProps, CardContentProps, CardFooterProps } from './Card'
 
-export { default as Checkbox } from './checkbox'
-export type { CheckboxProps, CheckboxGroupProps } from './checkbox'
+export { default as Checkbox } from './Checkbox'
+export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
 
-export { default as Code } from './code'
-export type { CodeProps } from './code'
+export { default as Code } from './Code'
+export type { CodeProps } from './Code'
 
-export { default as Col } from './col'
-export type { ColProps } from './col'
+export { default as Col } from './Col'
+export type { ColProps } from './Col'
 
-export { default as Collapse } from './collapse'
-export type { CollapseProps, CollapseGroupProps } from './collapse'
+export { default as Collapse } from './Collapse'
+export type { CollapseProps, CollapseGroupProps } from './Collapse'
 
-export { default as Container } from './container'
-export type { ContainerProps } from './container'
+export { default as Container } from './Container'
+export type { ContainerProps } from './Container'
 
-export { default as Description } from './description'
-export type { DescriptionProps } from './description'
+export { default as Description } from './Description'
+export type { DescriptionProps } from './Description'
 
-export { default as Display } from './display'
-export type { DisplayProps } from './display'
+export { default as Display } from './Display'
+export type { DisplayProps } from './Display'
 
-export { default as Divider } from './divider'
-export type { DividerProps } from './divider'
+export { default as Divider } from './Divider'
+export type { DividerProps } from './Divider'
 
-export { default as Dot } from './dot'
-export type { DotProps } from './dot'
+export { default as Dot } from './Dot'
+export type { DotProps } from './Dot'
 
-export { default as Drawer } from './drawer'
-export type { DrawerProps } from './drawer'
+export { default as Drawer } from './Drawer'
+export type { DrawerProps } from './Drawer'
 
-export { default as Fieldset } from './fieldset'
+export { default as Fieldset } from './Fieldset'
 export type {
   FieldsetProps,
   FieldsetTitleProps,
@@ -74,113 +74,113 @@ export type {
   FieldsetGroupProps,
   FieldsetFooterProps,
   FieldsetContentProps
-} from './fieldset'
+} from './Fieldset'
 
-export { default as Grid } from './grid'
-export type { GridProps, GridContainerProps } from './grid'
+export { default as Grid } from './Grid'
+export type { GridProps, GridContainerProps } from './Grid'
 
-export { default as Image } from './image'
-export type { ImageProps, ImageBrowserProps } from './image'
+export { default as Image } from './Image'
+export type { ImageProps, ImageBrowserProps } from './Image'
 
-export { default as Input } from './input'
-export type { InputProps, InputPasswordProps } from './input'
+export { default as Input } from './Input'
+export type { InputProps, InputPasswordProps } from './Input'
 
-export { default as Keyboard } from './keyboard'
-export type { KeyboardProps } from './keyboard'
+export { default as Keyboard } from './Keyboard'
+export type { KeyboardProps } from './Keyboard'
 
-export { default as Link } from './link'
-export type { LinkProps } from './link'
+export { default as Link } from './Link'
+export type { LinkProps } from './Link'
 
-export { default as Loading } from './loading'
-export type { LoadingProps } from './loading'
+export { default as Loading } from './Loading'
+export type { LoadingProps } from './Loading'
 
-export { default as Modal } from './modal'
+export { default as Modal } from './Modal'
 export type {
   ModalProps,
   ModalTitleProps,
   ModalSubtitleProps,
   ModalContentProps,
   ModalActionProps
-} from './modal'
+} from './Modal'
 
-export { default as Note } from './note'
-export type { NoteProps } from './note'
+export { default as Note } from './Note'
+export type { NoteProps } from './Note'
 
-export { default as Page } from './page'
+export { default as Page } from './Page'
 export type {
   PageProps,
   PageHeaderProps,
   PageContentProps,
   PageFooterProps
-} from './page'
+} from './Page'
 
-export { default as Pagination } from './pagination'
+export { default as Pagination } from './Pagination'
 export type {
   PaginationProps,
   PaginationNextProps,
   PaginationPreviousProps
-} from './pagination'
+} from './Pagination'
 
-export { default as Popover } from './popover'
-export type { PopoverProps, PopoverItemProps } from './popover'
+export { default as Popover } from './Popover'
+export type { PopoverProps, PopoverItemProps } from './Popover'
 
-export { default as Progress } from './progress'
-export type { ProgressProps } from './progress'
+export { default as Progress } from './Progress'
+export type { ProgressProps } from './Progress'
 
-export { default as Radio } from './radio'
+export { default as Radio } from './Radio'
 export type {
   RadioProps,
   RadioGroupProps,
   RadioDescriptionProps
-} from './radio'
+} from './Radio'
 
-export { default as Rating } from './rating'
-export type { RatingProps } from './rating'
+export { default as Rating } from './Rating'
+export type { RatingProps } from './Rating'
 
-export { default as Row } from './row'
-export type { RowProps } from './row'
+export { default as Row } from './Row'
+export type { RowProps } from './Row'
 
-export { default as Section } from './section'
-export type { SectionProps } from './section'
+export { default as Section } from './Section'
+export type { SectionProps } from './Section'
 
-export { default as Select } from './select'
-export type { SelectProps, SelectOptionProps } from './select'
+export { default as Select } from './Select'
+export type { SelectProps, SelectOptionProps } from './Select'
 
-export { default as Slider } from './slider'
-export type { SliderProps } from './slider'
+export { default as Slider } from './Slider'
+export type { SliderProps } from './Slider'
 
-export { default as Snippet } from './snippet'
-export type { SnippetProps } from './snippet'
+export { default as Snippet } from './Snippet'
+export type { SnippetProps } from './Snippet'
 
-export { default as Spacer } from './spacer'
-export type { SpacerProps } from './spacer'
+export { default as Spacer } from './Spacer'
+export type { SpacerProps } from './Spacer'
 
-export { default as Spinner } from './spinner'
-export type { SpinnerProps } from './spinner'
+export { default as Spinner } from './Spinner'
+export type { SpinnerProps } from './Spinner'
 
-export { default as Table } from './table'
-export type { TableProps, TableColumnProps } from './table'
+export { default as Table } from './Table'
+export type { TableProps, TableColumnProps } from './Table'
 
-export { default as Tabs } from './tabs'
-export type { TabsProps } from './tabs'
+export { default as Tabs } from './Tabs'
+export type { TabsProps } from './Tabs'
 
-export { default as Tag } from './tag'
-export type { TagProps } from './tag'
+export { default as Tag } from './Tag'
+export type { TagProps } from './Tag'
 
-export { default as Text } from './text'
-export type { TextProps } from './text'
+export { default as Text } from './Text'
+export type { TextProps } from './Text'
 
-export { default as Textarea } from './textarea'
-export type { TextareaProps } from './textarea'
+export { default as Textarea } from './Textarea'
+export type { TextareaProps } from './Textarea'
 
-export { default as Themes } from './themes'
-export type { BolioUIThemes, BolioUIUserTheme } from './themes'
+export { default as Themes } from './Themes'
+export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 
-export { default as Toggle } from './toggle'
-export type { ToggleProps } from './toggle'
+export { default as Toggle } from './Toggle'
+export type { ToggleProps } from './Toggle'
 
-export { default as Tooltip } from './tooltip'
-export type { TooltipProps } from './tooltip'
+export { default as Tooltip } from './Tooltip'
+export type { TooltipProps } from './Tooltip'
 
 export { default as useAllThemes } from './use-all-themes'
 export type { AllThemesConfig } from './use-all-themes'
@@ -205,7 +205,7 @@ export { default as useModal } from './use-modal'
 export { default as useTabs } from './use-tabs'
 export { default as useClickAway } from './use-click-away'
 export { default as useCurrentState } from './use-current-state'
-export { default as CssBaseline } from './css-baseline'
+export { default as CssBaseline } from './CssBaseline'
 export { default as useTheme } from './use-theme'
 export { default as useClasses } from './use-classes'
 export { default as useScale } from './use-scale'
@@ -219,5 +219,5 @@ export type {
 
 export { useRect } from './utils/layouts'
 export type { ReactiveDomReact } from './utils/layouts'
-export { default as Highlight } from './shared/highlight'
-export type { HighlightProps } from './shared/highlight'
+export { default as Highlight } from './Shared/highlight'
+export type { HighlightProps } from './Shared/highlight'

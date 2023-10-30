@@ -1,8 +1,8 @@
 import { Story, Meta } from '@storybook/react'
 import Code from '.'
-import Text from '../text'
-import Grid from '../grid'
-import WaitTime from '../mdx-widgets/parsed-codes/wait-time'
+import Text from '../Text'
+import Grid from '../Grid'
+import WaitTime from '../MdxWidgets/ParsedCodes/WaitTime'
 
 export default {
   title: 'General/Code',

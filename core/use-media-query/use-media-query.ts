@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import { tuple } from '../utils/prop-types'
-import { BreakpointsItem, BolioUIThemesBreakpoints } from '../themes/presets'
+import { BreakpointsItem, BolioUIThemesBreakpoints } from '../Themes/Presets'
 
 const breakpoints = tuple('xs', 'sm', 'md', 'lg', 'xl', 'mobile')
 export type ResponsiveBreakpoint = typeof breakpoints[number]

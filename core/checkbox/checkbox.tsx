@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { useCheckbox } from './checkbox-context'
-import CheckboxIcon from './checkbox.icon'
+import { useCheckbox } from './CheckboxContext'
+import CheckboxIcon from './CheckboxIcon'
 import useWarning from '../utils/use-warning'
 import { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'

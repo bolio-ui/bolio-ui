@@ -1,6 +1,6 @@
-import Themes from './themes'
+import Themes from './Themes'
 
-export type { BolioUIUserTheme } from './themes'
+export type { BolioUIUserTheme } from './Themes'
 export type {
   BolioUIThemes,
   BolioUIThemesBreakpoints,
@@ -9,5 +9,5 @@ export type {
   BolioUIThemesFont,
   BolioUIThemesLayout,
   BolioUIThemesPalette
-} from './presets'
+} from './Presets'
 export default Themes

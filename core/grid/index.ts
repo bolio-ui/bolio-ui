@@ -1,19 +1,19 @@
-import Grid from './grid'
-import GridContainer from './grid-container'
+import Grid from './Grid'
+import GridContainer from './GridContainer'
 
 export type GridComponentType = typeof Grid & {
   Container: typeof GridContainer
 }
 ;(Grid as GridComponentType).Container = GridContainer
 
-export type { GridContainerProps } from './grid-container'
-export type { GridProps } from './grid'
-export type { GridBreakpointsValue } from './basic-item'
+export type { GridContainerProps } from './GridContainer'
+export type { GridProps } from './Grid'
+export type { GridBreakpointsValue } from './BasicItem'
 export type {
   GridAlignContent,
   GridAlignItems,
   GridDirection,
   GridJustify,
   GridWrap
-} from './grid-types'
+} from './GridTypes'
 export default Grid as GridComponentType

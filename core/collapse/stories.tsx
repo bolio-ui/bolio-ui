@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Collapse from '.'
-import Text from '../text'
-import Grid from '../grid'
+import Text from '../Text'
+import Grid from '../Grid'
 
 export default {
   title: 'Surface/Collapse',

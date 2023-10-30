@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react'
 import Fieldset from '.'
-import Button from '../button'
-import Text from '../text'
-import Divider from '../divider'
-import Grid from '../grid'
+import Button from '../Button'
+import Text from '../Text'
+import Divider from '../Divider'
+import Grid from '../Grid'
 
 export default {
   title: 'Surface/Fieldset',

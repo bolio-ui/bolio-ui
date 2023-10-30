@@ -1,5 +1,5 @@
-import Checkbox from './checkbox'
-import CheckboxGroup from './checkbox-group'
+import Checkbox from './Checkbox'
+import CheckboxGroup from './CheckboxGroup'
 
 export type CheckboxComponentType = typeof Checkbox & {
   Group: typeof CheckboxGroup
@@ -11,6 +11,6 @@ export type {
   CheckboxEvent,
   CheckboxEventTarget,
   CheckboxTypes
-} from './checkbox'
-export type { CheckboxGroupProps } from './checkbox-group'
+} from './Checkbox'
+export type { CheckboxGroupProps } from './CheckboxGroup'
 export default Checkbox as CheckboxComponentType

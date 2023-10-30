@@ -1,6 +1,6 @@
-import Radio from './radio'
-import RadioGroup from './radio-group'
-import RadioDescription from './radio-description'
+import Radio from './Radio'
+import RadioGroup from './RadioGroup'
+import RadioDescription from './RadioDescription'
 
 export type RadioComponentType = typeof Radio & {
   Group: typeof RadioGroup
@@ -16,7 +16,7 @@ export type {
   RadioEvent,
   RadioEventTarget,
   RadioTypes
-} from './radio'
-export type { RadioGroupProps } from './radio-group'
-export type { RadioDescriptionProps } from './radio-description'
+} from './Radio'
+export type { RadioGroupProps } from './RadioGroup'
+export type { RadioDescriptionProps } from './RadioDescription'
 export default Radio as RadioComponentType

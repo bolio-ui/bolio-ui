@@ -1,6 +1,6 @@
 import React from 'react'
 import useTheme from '../use-theme'
-import { BolioUIThemes } from '../themes/presets'
+import { BolioUIThemes } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 

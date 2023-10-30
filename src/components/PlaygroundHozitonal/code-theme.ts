@@ -1,5 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer'
-import { BolioUIThemes } from 'core/themes/presets'
+import { BolioUIThemes } from 'core/Themes/Presets'
 
 const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
   plain: {

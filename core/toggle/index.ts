@@ -1,4 +1,4 @@
-import Toggle from './toggle'
+import Toggle from './Toggle'
 
 export type {
   ToggleProps,
@@ -6,5 +6,5 @@ export type {
   ToggleEvent,
   ToggleEventTarget,
   ToggleTypes
-} from './toggle'
+} from './Toggle'
 export default Toggle

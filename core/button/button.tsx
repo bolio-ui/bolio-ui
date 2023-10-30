@@ -7,11 +7,11 @@ import React, {
 } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
-import ButtonDrip from './button.drip'
-import ButtonLoading from './button-loading'
+import ButtonDrip from './ButtonDrip'
+import ButtonLoading from './ButtonLoading'
 import { ButtonTypes } from '../utils/prop-types'
 import { filterPropsWithGroup, getButtonChildrenWithIcon } from './utils'
-import { useButtonGroupContext } from '../button-group/button-group-context'
+import { useButtonGroupContext } from '../ButtonGroup/ButtonGroupContext'
 import {
   getButtonColors,
   getButtonCursor,

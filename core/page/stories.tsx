@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Page from '.'
-import Button from '../button'
-import Grid from '../grid'
-import MockPage from '../mdx-widgets/mock-page'
+import Button from '../Button'
+import Grid from '../Grid'
+import MockPage from '../MdxWidgets/MockPage'
 
 export default {
   title: 'Layout/Page',

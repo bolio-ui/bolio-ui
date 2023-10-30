@@ -6,12 +6,12 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import InputLabel from './input-label'
-import InputBlockLabel from './input-block-label'
-import InputIcon from './input-icon'
-import InputClearIcon from './input-icon-clear'
+import InputLabel from './InputLabel'
+import InputBlockLabel from './InputBlockLabel'
+import InputIcon from './InputIcon'
+import InputClearIcon from './InputIconClear'
 import { getColors } from './styles'
-import { Props, defaultProps } from './input-props'
+import { Props, defaultProps } from './InputProps'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
@@ -58,6 +58,7 @@ const InputComponent = React.forwardRef<
       disabled,
       rounded,
       backgroundColor,
+      borderColor,
       ...props
     }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
@@ -81,10 +82,11 @@ const InputComponent = React.forwardRef<
       [icon, iconRight]
     )
 
-    const { color, borderColor, hoverBorder } = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
-    )
+    const {
+      color,
+      borderColor: borderColorThemed,
+      hoverBorder
+    } = useMemo(() => getColors(theme.palette, type), [theme.palette, type])
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled || readOnly) return
@@ -209,7 +211,7 @@ const InputComponent = React.forwardRef<
             flex: 1;
             user-select: none;
             border-radius: ${rounded ? '25px' : theme.layout.radius};
-            border: 1px solid ${borderColor};
+            border: 1px solid ${borderColor ? borderColor : borderColorThemed};
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
             background: ${backgroundColor
               ? backgroundColor

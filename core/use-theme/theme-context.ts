@@ -1,6 +1,6 @@
 import React from 'react'
-import Themes from '../themes'
-import { BolioUIThemes } from '../themes/presets'
+import Themes from '../Themes'
+import { BolioUIThemes } from '../Themes/Presets'
 
 const defaultTheme = Themes.getPresetStaticTheme()
 

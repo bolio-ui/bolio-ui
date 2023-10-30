@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import AvatarSkeleton from './avatar.skeleton'
+import AvatarSkeleton from './AvatarSkeleton'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

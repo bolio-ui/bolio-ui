@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
 import Spacer from '.'
-import Grid from '../grid'
+import Grid from '../Grid'
 
 export default {
   title: 'Layout/Spacer',

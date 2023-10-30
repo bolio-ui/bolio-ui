@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react'
 import React, { useState } from 'react'
 import Table from '.'
-import Code from '../code'
-import Text from '../text'
-import Button from '../button'
+import Code from '../Code'
+import Text from '../Text'
+import Button from '../Button'
 
 export default {
   title: 'Data Display/Table',

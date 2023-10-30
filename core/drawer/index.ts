@@ -1,7 +1,7 @@
-import Drawer from './drawer'
-import ModalTitle from '../modal/modal-title'
-import ModalSubtitle from '../modal/modal-subtitle'
-import ModalContent from '../modal/modal-content'
+import Drawer from './Drawer'
+import ModalTitle from '../Modal/ModalTitle'
+import ModalSubtitle from '../Modal/ModalSubtitle'
+import ModalContent from '../Modal/ModalContent'
 
 export type DrawerComponentType = typeof Drawer & {
   Title: typeof ModalTitle
@@ -12,10 +12,10 @@ export type DrawerComponentType = typeof Drawer & {
 ;(Drawer as DrawerComponentType).Subtitle = ModalSubtitle
 ;(Drawer as DrawerComponentType).Content = ModalContent
 
-export type { DrawerProps } from './drawer'
+export type { DrawerProps } from './Drawer'
 export type {
   ModalTitleProps as DrawerTitleProps,
   ModalSubtitleProps as DrawerSubtitleProps,
   ModalContentProps as DrawerContentProps
-} from '../modal'
+} from '../Modal'
 export default Drawer as DrawerComponentType
