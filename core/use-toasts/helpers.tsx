@@ -1,7 +1,7 @@
 import { Toast, ToastAction } from './use-toast'
 import React from 'react'
-import Button from '../button'
-import { BolioUIThemesPalette } from '../themes'
+import Button from '../Button'
+import { BolioUIThemesPalette } from '../Themes'
 import { NormalTypes, tuple } from '../utils/prop-types'
 
 export const makeToastActions = (

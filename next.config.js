@@ -1,4 +1,3 @@
-const withPWA = require('next-pwa')
 const withMDX = require('@next/mdx')({
   extension: /\.(md|mdx)?$/,
   options: {
@@ -9,14 +8,8 @@ const withMDX = require('@next/mdx')({
   }
 })
 
-const isProd = process.env.ENVIRONMENT === 'production'
-
 const nextConfig = {
-  pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
-  pwa: {
-    dest: 'public',
-    disable: !isProd
-  }
+  pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx']
 }
 
-module.exports = withPWA(withMDX(nextConfig))
+module.exports = withMDX(nextConfig)

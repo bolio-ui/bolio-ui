@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from 'core'
-import Backdrop from 'core/shared/backdrop'
+import Backdrop from 'core/Shared/backdrop'
 import {
   KBarPortal,
   KBarPositioner,

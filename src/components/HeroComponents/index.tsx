@@ -148,12 +148,13 @@ export const Search = () => {
     <>
       <Input
         icon={<Icons.Search />}
-        placeholder="Search"
+        placeholder="Search..."
         height={1.1}
         font={1}
         width="100%"
         className="search_hero"
         backgroundColor="rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%"
+        borderColor="none"
       />
       <style global jsx>{`
         .search_hero {
