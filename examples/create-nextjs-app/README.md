@@ -1,4 +1,4 @@
-# Next.js demo for Bolio UI
+# Next.js example for Bolio UI
 
 ## Getting Started
 
