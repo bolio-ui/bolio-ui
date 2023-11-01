@@ -1,4 +1,4 @@
-# Custom themes demo for Bolio UI
+# Custom themes example for Bolio UI
 
 This is an example of **how to custom themes in `bolio-ui`**.
 

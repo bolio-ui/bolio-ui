@@ -8,7 +8,7 @@ export default function Home() {
         <title>Bolio UI with NextJS</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Page padding={0}>
+      <Page>
         <Page.Header>
           <Grid.Container gap={2} justify="center">
             <Grid
@@ -25,7 +25,7 @@ export default function Home() {
               />
               <Text p font={1.5} mb={1} mt={0}>
                 Make your development more creative and dynamic with amazing
-                tools for React. 🥷🏼
+                tools. 🥷🏼
               </Text>
             </Grid>
           </Grid.Container>
