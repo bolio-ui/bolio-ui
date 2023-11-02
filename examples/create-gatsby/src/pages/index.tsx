@@ -1,13 +1,20 @@
-import Head from 'next/head'
-import { Page, Image, Grid, Card, Text, Container, Link } from '@bolio-ui/core'
+import * as React from 'react'
+import type { HeadFC, PageProps } from 'gatsby'
+import {
+  BolioUIProvider,
+  CssBaseline,
+  Page,
+  Grid,
+  Card,
+  Text,
+  Container,
+  Link
+} from '@bolio-ui/core'
 
-export default function Home() {
+const IndexPage: React.FC<PageProps> = () => {
   return (
-    <div>
-      <Head>
-        <title>Bolio UI with NextJS</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <BolioUIProvider>
+      <CssBaseline />
       <Page>
         <Page.Header>
           <Grid.Container gap={2} justify="center">
@@ -16,13 +23,8 @@ export default function Home() {
               sm={6}
               direction="column"
               style={{ textAlign: 'center' }}
+              mt={4}
             >
-              <Image
-                src="/logo.jpg"
-                alt="bolio ui logo"
-                style={{ width: 200 }}
-                mt={4}
-              />
               <Text p font={1.5} mb={1} mt={0}>
                 Make your development more creative and dynamic with amazing
                 tools. 🥷🏼
@@ -100,6 +102,10 @@ export default function Home() {
           </Grid.Container>
         </Page.Footer>
       </Page>
-    </div>
+    </BolioUIProvider>
   )
 }
+
+export default IndexPage
+
+export const Head: HeadFC = () => <title>Home - Bolio UI</title>

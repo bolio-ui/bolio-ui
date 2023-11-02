@@ -1,5 +1,3 @@
-import { cssBundleHref } from '@remix-run/css-bundle'
-import type { LinksFunction } from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -9,10 +7,6 @@ import {
   ScrollRestoration
 } from '@remix-run/react'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
-
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : [])
-]
 
 export default function App() {
   return (
