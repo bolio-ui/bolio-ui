@@ -10,13 +10,9 @@ export default function Index() {
             sm={6}
             direction="column"
             style={{ textAlign: 'center' }}
+            mt={4}
           >
-            <Image
-              src="/logo.jpg"
-              alt="bolio ui logo"
-              style={{ width: 200 }}
-              mt={4}
-            />
+            <Image src="/logo.jpg" alt="bolio ui logo" style={{ width: 200 }} />
             <Text p font={1.5} mb={1} mt={0}>
               Make your development more creative and dynamic with amazing
               tools. 🥷🏼
