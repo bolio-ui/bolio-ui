@@ -1,20 +1,7 @@
 {
   "name": "@bolio-ui/core",
   "version": "1.0.6",
-  "license": "MIT",
   "description": "Amazing, modern and creative tools for React UI. 🥷🏼",
-  "homepage": "https://bolio-ui.com/",
-  "author": {
-    "name": "Bruno Andrade",
-    "email": "brunnoandradi@gmail.com"
-  },
-  "bugs": {
-    "url": "https://github.com/bolio-ui/bolio-ui/issues/new/choose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bolio-ui/bolio-ui"
-  },
   "keywords": [
     "bolio",
     "bolio ui",
@@ -23,15 +10,28 @@
     "react components",
     "react ui"
   ],
+  "homepage": "https://bolio-ui.com/",
+  "bugs": {
+    "url": "https://github.com/bolio-ui/bolio-ui/issues/new/choose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bolio-ui/bolio-ui"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Bruno Andrade",
+    "email": "brunnoandradi@gmail.com"
+  },
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "unpkg": "dist/index.min.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
   "files": [
     "/dist",
     "/esm"
   ],
-  "main": "dist/index.js",
-  "module": "esm/index.js",
-  "types": "esm/index.d.ts",
-  "unpkg": "dist/index.min.js",
-  "sideEffects": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",

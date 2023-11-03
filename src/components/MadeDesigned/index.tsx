@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Link, Grid } from 'core'
+import { Text, Grid } from 'core'
 import { Heart } from '@bolio-ui/icons'
 
 function MadeDesigned() {
@@ -15,15 +15,7 @@ function MadeDesigned() {
             width={12}
             style={{ marginLeft: 3, marginRight: 3 }}
           />
-          BY{' '}
-          <Link
-            href="https://brunnoandrade.com.br/"
-            target="_blank"
-            rel="noopener"
-            underline
-          >
-            BRUNO ANDRADE
-          </Link>
+          BY BRUNO ANDRADE
         </Text>
       </Grid>
     </Grid.Container>
