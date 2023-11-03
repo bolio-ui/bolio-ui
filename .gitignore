@@ -6,9 +6,12 @@
 .pnp.js
 
 # dependencies examples
-/examples
-/examples/*/node_modules
-/examples/*/yarn.lock
+examples/**/yarn.lock
+examples/**/out
+examples/**/.next
+examples/**/node_modules
+examples/**/_build
+examples/**/.cache
 
 # testing
 /coverage
@@ -23,6 +26,9 @@
 # misc
 .DS_Store
 *.pem
+dist
+esm
+.now
 dist
 esm
 
@@ -46,3 +52,6 @@ public/workbox-*.js
 
 # storybook
 storybook-static
+
+# Local Netlify folder
+.netlify
