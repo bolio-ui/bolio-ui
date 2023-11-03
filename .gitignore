@@ -6,6 +6,7 @@
 .pnp.js
 
 # dependencies examples
+/examples
 /examples/*/node_modules
 /examples/*/yarn.lock
 
