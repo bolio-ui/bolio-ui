@@ -6,8 +6,8 @@
 .pnp.js
 
 # dependencies examples
-examples/*/node_modules
-examples/*/yarn.lock
+/examples/*/node_modules
+/examples/*/yarn.lock
 
 # testing
 /coverage
