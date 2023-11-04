@@ -18,12 +18,12 @@ const ActiveCategory: React.FC<Props> = React.memo(({ name, ...props }) => {
         span {
           font-size: 1.2rem;
           font-weight: 600;
-          color: ${theme.palette.accents_7};
+          color: ${theme.palette.accents_8};
           letter-spacing: 0.5px;
         }
 
         .active {
-          color: red;
+          color: ${theme.palette.accents_8};
         }
       `}</style>
     </span>

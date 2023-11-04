@@ -17,12 +17,12 @@ You can use any color anywhere, all colors change with the theme.
 If you want to customize your colors, please read [use-theme](/docs/hooks/use-theme) to learn more.
 
 ```jsx
-import { useTheme } from '@bolio-ui/core'
+import { useTheme, Text } from '@bolio-ui/core'
 
-const myComponent = () => {
+const TextCustomComponent = () => {
   const { palette } = useTheme()
 
-  return <p style={{ color: palette.accents_1 }}>myComponent</p>
+  return <Text style={{ color: palette.accents_1 }}>TextCustomComponent</Text>
 }
 ```
 

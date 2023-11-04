@@ -156,6 +156,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
                 command={isMacOs}
                 ctrl={!isMacOs}
                 onClick={handleKeyboardClick}
+                style={{ borderRadius: 20 }}
               >
                 K
               </Keyboard>
@@ -358,7 +359,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
           box-shadow: ${theme.type === 'dark'
             ? '0px 5px 20px -5px rgba(0, 0, 0, 0.1)'
             : 'none'};
-          border-radius: 8px;
+          border-radius: 20px;
         }
         .react-autosuggest__input {
           text-align: left;

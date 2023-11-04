@@ -71,10 +71,10 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
         .list-item a {
           font-size: 0.8rem;
           font-weight: 400;
-          color: ${theme.palette.accents_5};
+          color: ${theme.palette.accents_6};
         }
         .list-item.active a {
-          color: ${theme.palette.accents_7};
+          color: ${theme.palette.accents_8};
           font-weight: 600;
         }
         .list-item:after {
