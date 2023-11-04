@@ -67,15 +67,15 @@ function Home() {
             </Grid.Container>
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
-                <NextLink href={'/docs/guide/getting-started'} passHref>
-                  <Button type="secondary-light" width="100%">
+                <NextLink href="/docs/guide/getting-started" passHref>
+                  <Button type="secondary-light" rounded width="100%">
                     Get Started
                   </Button>
                 </NextLink>
               </Grid>
               <Grid xs={6} sm={6} md={3}>
-                <NextLink href={'/'} passHref>
-                  <Button type="default" width="100%">
+                <NextLink href="/" passHref>
+                  <Button type="default" rounded width="100%">
                     Go to homepage
                   </Button>
                 </NextLink>

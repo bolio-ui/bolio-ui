@@ -26,22 +26,23 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
 
         span {
           font-size: 1rem;
-          color: ${theme.palette.accents_4};
+          color: ${theme.palette.accents_6};
           font-weight: 400;
         }
 
         .link {
-          color: ${theme.palette.accents_5};
+          color: ${theme.palette.accents_6};
           font-weight: 400;
+          margin-left: 15px;
         }
 
         .link.active {
-          color: ${theme.palette.accents_7};
+          color: ${theme.palette.accents_8};
           font-weight: 600;
         }
 
         .link.active span {
-          color: ${theme.palette.accents_7};
+          color: ${theme.palette.accents_8};
           font-weight: 600;
         }
       `}</style>

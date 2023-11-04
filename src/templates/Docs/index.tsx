@@ -100,7 +100,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
       {isMobile ? (
         <>
           <Image
-            src="/img/svg/gradient-left.svg"
+            src="/img/png/home/hero-bg.png"
             alt="docs background gradient blue"
             style={{
               position: 'fixed',
@@ -110,7 +110,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
             }}
           />
           <Image
-            src="/img/svg/gradient-right.svg"
+            src="/img/png/home/hero-bg.png"
             alt="docs background gradient violet"
             style={{
               position: 'fixed',
@@ -123,18 +123,18 @@ function Docs({ children, meta }: DocsTemplateProps) {
       ) : (
         <>
           <Image
-            src="/img/svg/gradient-left.svg"
+            src="/img/png/home/hero-bg.png"
             alt="docs background gradient blue"
             style={{
               position: 'fixed',
               bottom: '-50%',
               top: '-40%',
-              right: '-35%',
+              right: '-10%',
               zIndex: 0
             }}
           />
           <Image
-            src="/img/svg/gradient-right.svg"
+            src="/img/png/home/hero-bg.png"
             alt="docs background gradient violet"
             style={{
               position: 'fixed',

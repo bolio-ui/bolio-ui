@@ -5,7 +5,7 @@ import CardBox from 'src/components/CardBox'
 function SectionCommunity() {
   return (
     <Section py={5}>
-      <Container>
+      <Container style={{ maxWidth: 1400 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={8}>
