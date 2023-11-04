@@ -37,15 +37,6 @@ const Navigation: React.FC = () => {
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
   const isMobile = useMediaQuery(1280)
 
-  const [sticky, setSticky] = useState(false)
-
-  useEffect(() => {
-    const scrollHandler = () =>
-      setSticky(document.documentElement.scrollTop > 0)
-    document.addEventListener('scroll', scrollHandler)
-    return () => document.removeEventListener('scroll', scrollHandler)
-  }, [setSticky])
-
   useEffect(() => {
     setBodyHidden(expanded)
   }, [expanded, setBodyHidden])
@@ -69,7 +60,7 @@ const Navigation: React.FC = () => {
     <>
       <nav className="menu_wrapper">
         <Container fluid>
-          <div className={`${sticky ? 'menu_sticky' : 'menu'}`}>
+          <div className="menu_sticky">
             <Grid.Container gap={1} justify="center">
               {!isMobile ? (
                 <>

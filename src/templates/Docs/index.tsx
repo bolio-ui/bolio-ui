@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { useTheme, Container, Grid, Image } from 'core'
+import { useTheme, Container, Grid } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
 import { toCapitalize } from 'src/utils/to-capitalize'
-import { useMediaQuery } from 'src/utils/use-media-query'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Sidebar from 'src/components/Sidebar'
@@ -27,7 +26,6 @@ export type DocsTemplateProps = {
 function Docs({ children, meta }: DocsTemplateProps) {
   const theme = useTheme()
   const router = useRouter()
-  const isMobile = useMediaQuery(650)
 
   const [headings, setHeadings] = useState<Heading[]>([])
 
@@ -97,55 +95,6 @@ function Docs({ children, meta }: DocsTemplateProps) {
           </Grid>
         </Grid.Container>
       </Container>
-      {isMobile ? (
-        <>
-          <Image
-            src="/img/svg/gradient-left.svg"
-            alt="docs background gradient blue"
-            style={{
-              position: 'fixed',
-              top: '-10%',
-              right: '-35%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/svg/gradient-right.svg"
-            alt="docs background gradient violet"
-            style={{
-              position: 'fixed',
-              top: '45%',
-              left: '-35%',
-              zIndex: 0
-            }}
-          />
-        </>
-      ) : (
-        <>
-          <Image
-            src="/img/svg/gradient-left.svg"
-            alt="docs background gradient blue"
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              top: '-40%',
-              right: '-35%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/svg/gradient-right.svg"
-            alt="docs background gradient violet"
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              left: '-20%',
-              right: '-50%',
-              zIndex: 0
-            }}
-          />
-        </>
-      )}
       <style jsx>{`
         .main {
           max-width: 100%;
