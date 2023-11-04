@@ -12,12 +12,32 @@ export const guide = [
     url: '/docs/guide/bolio-ui-plus-nextjs'
   },
   {
+    name: 'Bolio UI + Vite',
+    url: '/docs/guide/bolio-ui-plus-vite'
+  },
+  {
+    name: 'Bolio UI + Remix',
+    url: '/docs/guide/bolio-ui-plus-remix'
+  },
+  {
+    name: 'Bolio UI + Gatsby',
+    url: '/docs/guide/bolio-ui-plus-gatsby'
+  },
+  {
+    name: 'Bolio UI + RedwoodJS',
+    url: '/docs/guide/bolio-ui-plus-redwoodjs'
+  },
+  {
     name: 'Theme',
     url: ''
   },
   {
     name: 'Default Theme',
     url: '/docs/guide/default-theme'
+  },
+  {
+    name: 'Customize Themes',
+    url: '/docs/guide/customize-themes'
   }
 ]
 

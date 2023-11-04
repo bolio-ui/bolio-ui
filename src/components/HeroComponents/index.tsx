@@ -323,7 +323,7 @@ export const FollowersCard = () => {
             </Text>
           </Col>
           <Row>
-            <Icons.BarChart2 fontSize={32} />
+            <Icons.BarChart2 fontSize={32} color={theme.palette.foreground} />
           </Row>
         </Row>
       </Card>
@@ -397,9 +397,9 @@ export const Player = () => {
           </Col>
           <Col>
             <Text b my={0}>
-              Never Go Back
+              Radio mix
             </Text>
-            <Text my={0}>Dennis Lloyd</Text>
+            <Text my={0}>Top 100 this week</Text>
           </Col>
         </Row>
         <Spacer h={1} />

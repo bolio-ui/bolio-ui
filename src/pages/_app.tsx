@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
-import { BolioUIProvider, CssBaseline, useTheme } from 'core'
+import { BolioUIProvider, CssBaseline, useTheme, Image } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
+import { MDXProvider } from '@mdx-js/react'
+import { HybridCode, HybridLink } from 'src/components'
 import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
@@ -45,7 +47,15 @@ function App({ Component, pageProps }: AppProps) {
           <CssBaseline />
           <KBarProvider>
             <Navigation />
-            <Component {...pageProps} />
+            <MDXProvider
+              components={{
+                a: HybridLink,
+                img: Image,
+                pre: HybridCode
+              }}
+            >
+              <Component {...pageProps} />
+            </MDXProvider>
           </KBarProvider>
         </SettingsContext.Provider>
         <style global jsx>{`

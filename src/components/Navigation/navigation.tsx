@@ -188,6 +188,7 @@ const Navigation: React.FC = () => {
                             auto
                             scale={0.75}
                             type="secondary-light"
+                            rounded
                           >
                             Sponsor
                           </Button>

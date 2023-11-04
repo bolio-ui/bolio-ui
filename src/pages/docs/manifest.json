@@ -23,6 +23,26 @@
               "title": "Bolio UI + Next.js",
               "keywords": "next, nextjs, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
+            },
+            {
+              "title": "Bolio UI + Vite",
+              "keywords": "next, nextjs, vite, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-vite.mdx"
+            },
+            {
+              "title": "Bolio UI + Remix",
+              "keywords": "next, nextjs, remix, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-remix.mdx"
+            },
+            {
+              "title": "Bolio UI + Gatsby",
+              "keywords": "next, nextjs, gatsby, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-gatsby.mdx"
+            },
+            {
+              "title": "Bolio UI + RedwoodJS",
+              "keywords": "next, nextjs, redwoodjs, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-redwoodjs.mdx"
             }
           ]
         },
@@ -36,6 +56,11 @@
               "title": "Default Theme",
               "updated": true,
               "path": "/docs/guide/default-theme.mdx"
+            },
+            {
+              "title": "Customize Themes",
+              "updated": true,
+              "path": "/docs/guide/customize-themes.mdx"
             }
           ]
         },

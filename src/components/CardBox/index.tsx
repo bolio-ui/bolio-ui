@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Card, useTheme, Row } from 'core'
+import { Text, Card, useTheme, Row, Badge } from 'core'
 import * as Icons from '@bolio-ui/icons'
 
 type Icon = keyof typeof Icons
@@ -13,9 +13,9 @@ interface Props {
 
 export type ProjectCardProps = Props
 
-const renderIcon = (icon: Icon) => {
+const renderIcon = (icon: Icon, color) => {
   const CurrentIcon = Icons[icon]
-  return <CurrentIcon height={18} width={18} /> || null
+  return <CurrentIcon fontSize={26} color={color} /> || null
 }
 
 function CardBox({ title, description, icon, hover = false }: Props) {
@@ -28,11 +28,21 @@ function CardBox({ title, description, icon, hover = false }: Props) {
           className={`${hover && 'card-box'}`}
           padding={1}
           style={{
-            background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
+            backgroundColor: 'transparent',
+            backdropFilter: 'saturate(180%) blur(10px)'
           }}
         >
           <Row align="middle">
-            {renderIcon(icon)}
+            <Badge
+              style={{
+                background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
+                borderRadius: '50%',
+                padding: 12
+              }}
+            >
+              {renderIcon(icon, theme.palette.secondary)}
+            </Badge>
+
             <Text my={0} ml={0.8} h4>
               {title}
             </Text>

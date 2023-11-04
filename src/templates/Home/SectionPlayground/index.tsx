@@ -5,6 +5,7 @@ import PlaygroundHorizontal from 'src/components/PlaygroundHozitonal'
 
 function SectionPlayground() {
   const theme = useTheme()
+
   return (
     <Section py={5}>
       <Container>
@@ -12,7 +13,28 @@ function SectionPlayground() {
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
               <Text h2 my={0} mb={1}>
-                Develop pratic and more fast
+                Develop{' '}
+                <span
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  pratic
+                </span>{' '}
+                and{' '}
+                <span
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  more fast
+                </span>
               </Text>
               <Text font={1.2} mt={0}>
                 Develop much faster and create your pages in a practical and

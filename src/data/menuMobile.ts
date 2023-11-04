@@ -14,6 +14,26 @@ export const menuMobile = [
             name: 'Bolio UI + Next.js',
             url: '/docs/guide/bolio-ui-plus-nextjs',
             group: 'Guide'
+          },
+          {
+            name: 'Bolio UI + Vite',
+            url: '/docs/guide/bolio-ui-plus-vite',
+            group: 'Guide'
+          },
+          {
+            name: 'Bolio UI + Remix',
+            url: '/docs/guide/bolio-ui-plus-remix',
+            group: 'Guide'
+          },
+          {
+            name: 'Bolio UI + Gatsby',
+            url: '/docs/guide/bolio-ui-plus-gatsby',
+            group: 'Guide'
+          },
+          {
+            name: 'Bolio UI + RedwoodJS',
+            url: '/docs/guide/bolio-ui-plus-redwoodjs',
+            group: 'Guide'
           }
         ]
       },
@@ -23,6 +43,11 @@ export const menuMobile = [
           {
             name: 'Default Theme',
             url: '/docs/guide/default-theme',
+            group: 'Theme'
+          },
+          {
+            name: 'Customize Themes',
+            url: '/docs/guide/customize-themes',
             group: 'Theme'
           }
         ]

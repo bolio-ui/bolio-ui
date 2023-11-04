@@ -1,0 +1,175 @@
+import Docs from 'src/templates/Docs'
+import { Grid, Code, Display } from 'core'
+import { Colors } from 'src/components'
+
+export const meta = {
+  title: 'Customize Theme',
+  description:
+    'Support a variety of themes, and it is very easy to create or inherit modifications.',
+  sidebar: 'guide',
+  group: 'Theme',
+  index: 3
+}
+
+## Themes
+
+**Bolio UI** now offers support for a variety of themes, and it is incredibly easy to create or inherit modifications,
+without the need for third-party styles or configurations. As a basic choice, there are two themes available: `light` and `dark`.
+
+### Switch themes
+
+To change between the default themes, you simply need to adjust the value of `themeType`. You can follow the steps below:
+
+1. Ensure that `BolioUIProvider` and `CssBaseline` are already placed in the root component.
+
+2. Modify the `themeType` value, and all components will automatically adapt to the new theme.
+
+```jsx
+// NAME:src/app.js
+import { CssBaseline, BolioUIProvider } from '@bolio-ui/core'
+
+const App = () => {
+  const [themeType, setThemeType] = useState('light')
+
+  const switchThemes = () => {
+    setThemeType((last) => (last === 'dark' ? 'light' : 'dark'))
+  }
+
+  return (
+    <BolioUIProvider themeType={themeType}>
+      <CssBaseline />
+      <YourComponent onClick={switchThemes} />
+    </BolioUIProvider>
+  )
+}
+```
+
+### Customizing theme
+
+Modifying a theme in Bolio UI is straightforward. You only need to supply a new theme `Object`,
+and all the components will seamlessly adjust.
+Here is a complete [sample](https://github.com/bolio-ui/bolio-ui/tree/master/examples/custom-themes) for your reference.
+
+```jsx
+import { CssBaseline, BolioUIProvider, Themes } from '@bolio-ui/core'
+
+const myNewTheme1 = Themes.createFromLight({
+  type: 'newTheme',
+  palette: {
+    success: '#000'
+  }
+})
+
+const App = () => (
+  <BolioUIProvider themes={[myNewTheme1]} themeType="newTheme">
+    <CssBaseline />
+    <YourAppComponent onClick={switchThemes} />
+  </BolioUIProvider>
+)
+```
+
+The `Themes.createFromLight` function enables you to derive a new theme from the Light Theme.
+Likewise, you have the option to create a theme rooted in the dark style using : `Themes.createFromDark`.
+Alternatively, you can craft a theme based on your custom preferences:
+
+```jsx
+const myBaseTheme = { ... }
+
+const myNewTheme2 = Themes.create(myBaseTheme, {
+  type: 'newTheme2',
+  palette: {
+    success: '#000',
+  },
+})
+```
+
+### Get types
+
+If you require a comprehensive type definition while making theme adjustments,
+you can consult the [type file](https://github.com/bolio-ui/bolio-ui/blob/master/core/Themes/Presets/index.ts)
+already available. For projects that support TypeScript, you can directly access the type within the package.
+
+```ts
+import {
+  BolioUIThemes,
+  BolioUIThemesFont,
+  BolioUIThemesPalette,
+  BolioUIThemesExpressiveness,
+  BolioUIThemesLayout
+} from '@bolio-ui/core'
+
+// usage:
+const myStyles: BolioUIThemes = {
+  /* ... */
+}
+const myPalette: Partial<BolioUIThemesPalette> = {
+  /* ... */
+}
+```
+
+### Customizer
+
+#### ClassName
+
+You have the ability to customize the style by specifying a `className` for the component.
+
+```jsx
+import { Button, Row } from '@bolio-ui/core'
+
+const MyPage = () => (
+  <Row>
+    <Button className="my-page-button">Click here!</Button>
+  </Row>
+)
+
+// in css file:
+.my-page-button {
+  padding: 0;
+}
+```
+
+#### Inline styles
+
+Using an inline style will effectively supersede the component's default styling.
+
+```jsx
+const MyPage = () => (
+  <Row>
+    <Button style={{ margin: '20px' }}>Click me!</Button>
+  </Row>
+)
+```
+
+### Build components
+
+You can utilize the Bolio UI preset Hooks to access theme states and craft your own components. For additional details,
+please consult the [useTheme](/en-us/hooks/use-theme) documentation.
+
+```jsx
+import { useTheme } from '@bolio-ui/core'
+
+const MyComponent = () => {
+  const theme = useTheme()
+
+  return (
+    <div style={{ color: theme.palette.success }}>
+      <span>hello world!</span>
+    </div>
+  )
+}
+```
+
+### Themes APIs
+
+`Themes` offer a range of static methods that prove valuable when dealing with custom themes:
+
+- `Themes.create` - Create a new theme object.
+- `Themes.createFromDark` - Generate a new theme object based on the Dark Theme.
+- `Themes.createFromLight` - Construct a new theme object based on the Light Theme.
+- `Themes.isPresetTheme` - Verify if a theme serves as the foundation for Bolio UI.
+- `Themes.isAvailableThemeType` - Determine if a theme name is available.
+- `Themes.hasUserCustomTheme` - Check for the presence of custom themes within a list.
+- `Themes.getPresets` - Retrieve a default list of themes.
+- `Themes.getPresetStaticTheme` - Access the theme loaded by Bolio UI as the default.
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

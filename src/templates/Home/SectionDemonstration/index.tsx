@@ -31,7 +31,18 @@ function SectionDemonstration() {
         <Grid.Container gap={2}>
           <Grid xs={12} md={6} direction="column" justify="center">
             <Text h2 my={0} mb={1}>
-              Build even faster with Bolio UI
+              Build{' '}
+              <span
+                style={{
+                  backgroundImage:
+                    'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                even faster
+              </span>{' '}
+              with Bolio UI
             </Text>
             <Text font={1.2} mt={0}>
               Build your next website even faster with premade responsive
@@ -39,8 +50,8 @@ function SectionDemonstration() {
             </Text>
             <Grid.Container gap={2} xs={12} alignItems="center">
               <Grid xs={12} sm={4}>
-                <NextLink href={'/docs/guide/getting-started'} passHref>
-                  <Button type="secondary-light" w="100%">
+                <NextLink href="/docs/guide/getting-started" passHref>
+                  <Button type="secondary-light" rounded w="100%">
                     Get Started
                   </Button>
                 </NextLink>
@@ -51,6 +62,7 @@ function SectionDemonstration() {
                   toastType="secondary"
                   text="yarn add @bolio-ui/core"
                   width="100%"
+                  rounded
                 />
               </Grid>
             </Grid.Container>
@@ -104,8 +116,10 @@ function SectionDemonstration() {
         <Grid.Container gap={2} justify="center" alignItems="center">
           <Grid mt={2}>
             <Col>
-              <NextLink href={'/docs/components/'} passHref>
-                <Button type="secondary-light">Explore more components</Button>
+              <NextLink href="/docs/components/" passHref>
+                <Button type="secondary-light" rounded>
+                  Explore more components
+                </Button>
               </NextLink>
             </Col>
           </Grid>
