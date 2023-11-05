@@ -1,16 +1,80 @@
 import Docs from 'src/templates/Docs'
-import { Link } from 'core'
+import { Link, Tabs, Spacer, Snippet } from 'core'
 
 export const meta = {
-  title: 'Bolio UI + Vite',
+  title: 'Example with Vite',
   description: '',
   sidebar: 'guide',
-  group: 'Guide',
-  index: 2
+  group: 'Guide'
 }
 
-## Bolio UI + Vite
+## Example with Vite
 
-Bolio UI is totally compatible with <Link target="_blank" color rel="nofollow" href="https://nextjs.org">Next.js</Link>.
+<Spacer h={2} />
+
+### Get started with a example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-vite">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://vitejs.dev/guide/">Vite getting started</Link> guide to create new Vite application:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn create vite" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm create vite@latest" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={3} />
+
+### Installation
+
+Install dependencies:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn add @bolio-ui/core" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm install @bolio-ui/core" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={3} />
+
+### Setup
+
+Add styles imports, BolioUIProvider and CssBaseline to src/App.tsx:
+
+```jsx
+import { BolioUIProvider, CssBaseline, Text } from '@bolio-ui/core'
+
+export default function App() {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      <Text p>Your app page here</Text>
+    </BolioUIProvider>
+  )
+}
+```
+
+Ready to go! Start the development server:
+
+<Snippet text="npm run dev" />
 
 export default ({ children }) => <Docs meta={meta}>{children}</Docs>

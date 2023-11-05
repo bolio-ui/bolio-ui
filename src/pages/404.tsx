@@ -68,14 +68,24 @@ function Home() {
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
                 <NextLink href="/docs/guide/getting-started" passHref>
-                  <Button type="secondary-light" rounded width="100%">
-                    Get Started
+                  <Button
+                    type="secondary-light"
+                    rounded
+                    width="100%"
+                    style={{ textTransform: 'none' }}
+                  >
+                    Get started
                   </Button>
                 </NextLink>
               </Grid>
               <Grid xs={6} sm={6} md={3}>
                 <NextLink href="/" passHref>
-                  <Button type="default" rounded width="100%">
+                  <Button
+                    type="default"
+                    rounded
+                    width="100%"
+                    style={{ textTransform: 'none' }}
+                  >
                     Go to homepage
                   </Button>
                 </NextLink>

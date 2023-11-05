@@ -1,16 +1,93 @@
 import Docs from 'src/templates/Docs'
-import { Link } from 'core'
+import { Link, Tabs, Spacer, Snippet } from 'core'
 
 export const meta = {
-  title: 'Bolio UI + RedwoodJS',
+  title: 'Example with RedwoodJS',
   description: '',
   sidebar: 'guide',
-  group: 'Guide',
-  index: 2
+  group: 'Guide'
 }
 
-## Bolio UI + RedwoodJS
+## Example with RedwoodJS
 
-Bolio UI is totally compatible with <Link target="_blank" color rel="nofollow" href="https://nextjs.org">Next.js</Link>.
+<Spacer h={2} />
+
+### Get started with a example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-redwoodjs">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://redwoodjs.com/docs/quick-start"> Redwood getting started</Link> guide to create new Gatsby application:
+
+<Spacer h={2} />
+
+<Snippet text="yarn create redwood-app my-redwood-project" />
+
+<Spacer h={3} />
+
+### Installation
+
+Open web directory before installing dependencies:
+
+<Spacer h={2} />
+
+<Snippet text="cd web" />
+
+<Spacer h={2} />
+
+Install dependencies:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn add @bolio-ui/core" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm install @bolio-ui/core" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={3} />
+
+### Setup
+
+Add styles imports, BolioUIProvider and CssBaseline to web/src/App.tsx:
+
+```jsx
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+
+import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
+import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
+
+import FatalErrorPage from 'src/pages/FatalErrorPage'
+import Routes from 'src/Routes'
+
+const App = () => (
+  <FatalErrorBoundary page={FatalErrorPage}>
+    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
+      <BolioUIProvider>
+        <RedwoodApolloProvider>
+          <CssBaseline />
+          <Routes />
+        </RedwoodApolloProvider>
+      </BolioUIProvider>
+    </RedwoodProvider>
+  </FatalErrorBoundary>
+)
+
+export default App
+```
+
+Ready to go! Start the development server:
+
+<Snippet text="yarn rw dev" />
 
 export default ({ children }) => <Docs meta={meta}>{children}</Docs>
