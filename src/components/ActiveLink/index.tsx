@@ -1,7 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTheme } from 'core'
+import { useTheme, Text, Link, Dot } from 'core'
 
 export interface Props {
   onAcitve?: () => void
@@ -15,38 +14,20 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
   const isActive = router.asPath === href
 
   return (
-    <>
-      <Link href={href}>
-        <a className={`link ${isActive ? 'active' : ''}`}>{text}</a>
-      </Link>
-      <style jsx>{`
-        a {
-          font: inherit;
-        }
-
-        span {
-          font-size: 1rem;
-          color: ${theme.palette.accents_6};
-          font-weight: 400;
-        }
-
-        .link {
-          color: ${theme.palette.accents_6};
-          font-weight: 400;
-          margin-left: 15px;
-        }
-
-        .link.active {
-          color: ${theme.palette.accents_8};
-          font-weight: 600;
-        }
-
-        .link.active span {
-          color: ${theme.palette.accents_8};
-          font-weight: 600;
-        }
-      `}</style>
-    </>
+    <Link href={href}>
+      <Text
+        font="14px"
+        my={0}
+        mb={1}
+        b={isActive}
+        ml="15px"
+        style={{
+          color: isActive ? theme.palette.accents_8 : theme.palette.accents_6
+        }}
+      >
+        {text}
+      </Text>
+    </Link>
   )
 })
 
