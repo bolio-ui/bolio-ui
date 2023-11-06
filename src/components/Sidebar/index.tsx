@@ -27,7 +27,6 @@ function Sidebar({ sidebar }: SidebarProps) {
         .sides {
           width: 100%;
           padding-bottom: ${theme.layout.gap};
-          /* cursor: pointer; */
         }
         .box {
           overflow-y: auto;
@@ -35,7 +34,7 @@ function Sidebar({ sidebar }: SidebarProps) {
           height: 100%;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          /* align-items: center; */
           /* cursor: pointer; */
         }
         /* .box::-webkit-scrollbar {
@@ -49,9 +48,9 @@ function Sidebar({ sidebar }: SidebarProps) {
           width: 0;
           background-color: transparent;
         }
-        .box > :global(.item) {
+        /* .box > :global(.item) {
           margin-bottom: 12pt;
-        }
+        } */
       `}</style>
     </div>
   )

@@ -8,23 +8,23 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
-    name: 'Bolio UI + Next.js',
+    name: 'Example with Next.js',
     url: '/docs/guide/bolio-ui-plus-nextjs'
   },
   {
-    name: 'Bolio UI + Vite',
+    name: 'Example with Vite',
     url: '/docs/guide/bolio-ui-plus-vite'
   },
   {
-    name: 'Bolio UI + Remix',
+    name: 'Example with Remix',
     url: '/docs/guide/bolio-ui-plus-remix'
   },
   {
-    name: 'Bolio UI + Gatsby',
+    name: 'Example with Gatsby',
     url: '/docs/guide/bolio-ui-plus-gatsby'
   },
   {
-    name: 'Bolio UI + RedwoodJS',
+    name: 'Example with RedwoodJS',
     url: '/docs/guide/bolio-ui-plus-redwoodjs'
   },
   {

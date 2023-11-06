@@ -85,7 +85,7 @@ export default function Index() {
       <Page.Footer>
         <Grid.Container gap={2} justify="center">
           <Text h6 my={2}>
-            MADE & DESIGNED WITH BY BOLIO UI
+            MADE & DESIGNED BY BOLIO UI
           </Text>
         </Grid.Container>
       </Page.Footer>

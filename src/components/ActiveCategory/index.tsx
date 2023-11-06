@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { useTheme } from 'core'
+import { useTheme, Text } from 'core'
 
 export interface Props {
   name: string
@@ -12,21 +12,18 @@ const ActiveCategory: React.FC<Props> = React.memo(({ name, ...props }) => {
   const isActive = router.asPath.includes(`/${name}/`)
 
   return (
-    <span {...props} className={isActive ? 'active' : ''}>
+    <Text
+      {...props}
+      b
+      font="18px"
+      my={0}
+      mb={1}
+      style={{
+        color: isActive ? theme.palette.accents_8 : theme.palette.accents_8
+      }}
+    >
       {name}
-      <style jsx>{`
-        span {
-          font-size: 1.2rem;
-          font-weight: 600;
-          color: ${theme.palette.accents_8};
-          letter-spacing: 0.5px;
-        }
-
-        .active {
-          color: ${theme.palette.accents_8};
-        }
-      `}</style>
-    </span>
+    </Text>
   )
 })
 

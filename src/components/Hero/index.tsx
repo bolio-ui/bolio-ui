@@ -42,8 +42,13 @@ function Hero() {
             <Grid.Container gap={2}>
               <Grid xs={12} sm={6} md={4} ml={-0.5}>
                 <NextLink href="/docs/guide/getting-started" passHref>
-                  <Button type="secondary-light" rounded width="100%">
-                    Get Started
+                  <Button
+                    type="secondary-light"
+                    rounded
+                    width="100%"
+                    style={{ textTransform: 'none' }}
+                  >
+                    Get started
                   </Button>
                 </NextLink>
               </Grid>

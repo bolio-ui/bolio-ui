@@ -1,20 +1,27 @@
 import Docs from 'src/templates/Docs'
-import { Link } from 'core'
+import { Link, Tabs, Spacer, Snippet } from 'core'
 
 export const meta = {
-  title: 'Bolio UI + Next.js',
+  title: 'Example with Next.js',
   description:
     'Bolio UI is totally compatible with Next.js you just need to customize the _app.jsx entry file to load the provider.',
   sidebar: 'guide',
-  group: 'Guide',
-  index: 2
+  group: 'Guide'
 }
 
-## Bolio UI + Next.js
+## Example with Next.js
 
-Bolio UI is totally compatible with <Link target="_blank" color rel="nofollow" href="https://nextjs.org">Next.js</Link> you just need to customize the <Link target="_blank" color rel="nofollow" href="https://nextjs.org/docs/advanced-features/custom-app">\_app.jsx</Link> entry file to load the provider.
+<Spacer h={2} />
 
-Start your Next.js project with <Link target="\_blank" color rel="nofollow" href="https://github.com/bolio-ui/bolio-ui/tree/main/examples/create-next-app"> this example</Link>.
+### Get started with a example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-nextjs-ts-app">this example</Link>.
+
+<Spacer h={2} />
 
 ### Server Render
 
@@ -22,15 +29,17 @@ All Components of `@bolio-ui/core` are compatible with **Server Render**. In fac
 
 Server-side rendering (SSR) is the process of rendering web pages on a server and passing them to the browser (client-side),
 instead of rendering them in the browser. SSR sends a fully rendered page to the client; the client's JavaScript
-bundle takes over and enables the SPA framework to operate, the best option to use server side render in React.js is using <Link target="_blank" color rel="nofollow" href="https://nextjs.org">Next.js</Link>.
+bundle takes over and enables the SPA framework to operate, the best option to use server side render in React.js is using <Link target="_blank" rel="nofollow" color icon href="https://nextjs.org">Next.js</Link>.
 
 If you are worried about losing the advantages of a Single Page Application by implementing server-side rendering, you can use the `hybrid render` application.
-Please read <Link color href="https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support" rel="nofollow">
+Please read <Link target="_blank" rel="nofollow" color icon href="https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support">
 the post from the Next.js team</Link> to learn more.
+
+<Spacer h={2} />
 
 ### Next.js
 
-In <Link target="_blank" color rel="nofollow" href="https://nextjs.org">Next.js</Link> framework, you need customization file `_document.js`,
+In <Link target="_blank" rel="nofollow" color icon href="https://nextjs.org">Next.js</Link> framework, you need customization file `_document.js`,
 please refer to <Link target="_blank" href="https://nextjs.org/docs/advanced-features/custom-document" rel="nofollow">Next.js document here</Link>
 to create file `_document.js`.
 
@@ -67,6 +76,8 @@ export default MyDocument
 ```
 
 Here's an example of what your `_document.js` file should look like: <Link target="_blank" href="https://github.com/bolio-ui/bolio-ui/blob/main/examples/create-next-app/pages/_document.js" rel="nofollow" color>\_document.jsx</Link>.
+
+<Spacer h={2} />
 
 ### Custom Server
 

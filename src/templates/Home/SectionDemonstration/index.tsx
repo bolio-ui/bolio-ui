@@ -51,8 +51,13 @@ function SectionDemonstration() {
             <Grid.Container gap={2} xs={12} alignItems="center">
               <Grid xs={12} sm={4}>
                 <NextLink href="/docs/guide/getting-started" passHref>
-                  <Button type="secondary-light" rounded w="100%">
-                    Get Started
+                  <Button
+                    type="secondary-light"
+                    rounded
+                    w="100%"
+                    style={{ textTransform: 'none' }}
+                  >
+                    Get started
                   </Button>
                 </NextLink>
               </Grid>
@@ -117,7 +122,11 @@ function SectionDemonstration() {
           <Grid mt={2}>
             <Col>
               <NextLink href="/docs/components/" passHref>
-                <Button type="secondary-light" rounded>
+                <Button
+                  type="secondary-light"
+                  rounded
+                  style={{ textTransform: 'none' }}
+                >
                   Explore more components
                 </Button>
               </NextLink>

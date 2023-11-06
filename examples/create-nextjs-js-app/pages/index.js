@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Bolio UI with NextJS</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       <Page>
         <Page.Header>
@@ -95,7 +95,7 @@ export default function Home() {
         <Page.Footer>
           <Grid.Container gap={2} justify="center">
             <Text h6 my={2}>
-              MADE & DESIGNED WITH BY BOLIO UI
+              MADE & DESIGNED BY BOLIO UI
             </Text>
           </Grid.Container>
         </Page.Footer>
