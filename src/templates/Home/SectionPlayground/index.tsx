@@ -51,11 +51,7 @@ function SectionPlayground() {
           title="Card Playground"
           scope={{ Card, Text, Row, Col, Box, theme }}
           code={`
-<Card
-  style={{
-    background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-  }}
->
+<Card>
   <Box fontSize={30} />
   <Text my={0} mt={2}>
     Card Number

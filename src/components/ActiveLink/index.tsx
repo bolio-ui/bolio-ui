@@ -1,6 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTheme, Text, Link, Dot } from 'core'
+import { useTheme, Text } from 'core'
 
 export interface Props {
   onAcitve?: () => void
@@ -14,7 +15,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
   const isActive = router.asPath === href
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <Text
         font="14px"
         my={0}
@@ -22,7 +23,8 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
         b={isActive}
         ml="15px"
         style={{
-          color: isActive ? theme.palette.accents_8 : theme.palette.accents_6
+          color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
+          cursor: 'pointer'
         }}
       >
         {text}
