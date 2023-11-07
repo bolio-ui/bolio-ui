@@ -18,7 +18,8 @@ function Hero() {
                   backgroundImage:
                     'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
                   backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  WebkitBackgroundClip: 'text'
                 }}
               >
                 more creative
@@ -29,7 +30,8 @@ function Hero() {
                   backgroundImage:
                     'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
                   backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  WebkitBackgroundClip: 'text'
                 }}
               >
                 dynamic
