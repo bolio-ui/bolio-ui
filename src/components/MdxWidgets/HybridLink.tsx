@@ -12,7 +12,7 @@ const HybridLink: React.FC<HybridLinkProps> = ({
 }) => {
   const isRelativeUrl = !/^([a-z0-9]*:|.{0})\/\/.*$/gim.test(href)
   const { pathname } = useRouter()
-  const isHomePage = pathname.includes('guide/introduction')
+  const isHomePage = pathname.includes('guide/getting-started')
 
   if (isRelativeUrl) {
     return (

@@ -1,9 +1,8 @@
-import * as React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
 import {
   BolioUIProvider,
   CssBaseline,
   Page,
+  Image,
   Grid,
   Card,
   Text,
@@ -11,7 +10,7 @@ import {
   Link
 } from '@bolio-ui/core'
 
-const IndexPage: React.FC<PageProps> = () => {
+function App() {
   return (
     <BolioUIProvider>
       <CssBaseline />
@@ -25,6 +24,11 @@ const IndexPage: React.FC<PageProps> = () => {
               style={{ textAlign: 'center' }}
               mt={4}
             >
+              <Image
+                src="/logo.jpg"
+                alt="bolio ui logo"
+                style={{ width: 200 }}
+              />
               <Text p font={1.5} mb={1} mt={0}>
                 Make your development more creative and dynamic with amazing
                 tools. 🥷🏼
@@ -106,6 +110,4 @@ const IndexPage: React.FC<PageProps> = () => {
   )
 }
 
-export default IndexPage
-
-export const Head: HeadFC = () => <title>Home - Bolio UI</title>
+export default App

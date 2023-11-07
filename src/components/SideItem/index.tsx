@@ -1,6 +1,7 @@
 import React from 'react'
 import ActiveLink from '../ActiveLink'
 import ActiveCategory from '../ActiveCategory'
+import { Grid } from 'core'
 
 export type Items = {
   name: string
@@ -16,17 +17,12 @@ const SideItem: React.FC<SideItemProps> = React.memo(({ items }) => {
     <>
       {items.map((item, index) => {
         return (
-          <div key={`${item.name}-${index}`} className="item">
+          <Grid.Container gap={2} key={`${item.name}-${index}`}>
             {!item.url && <ActiveCategory name={item.name} />}
             {item.url && <ActiveLink href={item.url} text={item.name} />}
-          </div>
+          </Grid.Container>
         )
       })}
-      <style jsx>{`
-        .item {
-          width: 100%;
-        }
-      `}</style>
     </>
   )
 })

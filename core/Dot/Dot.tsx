@@ -9,6 +9,7 @@ export type DotTypes = NormalTypes
 interface Props {
   type?: DotTypes
   className?: string
+  color?: string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
@@ -31,12 +32,13 @@ function DotComponent({
   type = 'default' as DotTypes,
   children,
   className = '',
+  color = '',
   ...props
 }: React.PropsWithChildren<DotProps>) {
   const theme = useTheme()
   const { SCALES } = useScale()
 
-  const color = useMemo(() => getColor(type, theme), [type, theme])
+  const typeColor = useMemo(() => getColor(type, theme), [type, theme])
 
   return (
     <span className={useClasses('dot', className)} {...props}>
@@ -61,7 +63,7 @@ function DotComponent({
           min-height: calc(0.625 * 12px);
           line-height: 0.625em;
           border-radius: 50%;
-          background-color: ${color};
+          background-color: ${color ? color : typeColor};
           user-select: none;
         }
         .label {

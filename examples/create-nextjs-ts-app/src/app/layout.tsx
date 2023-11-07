@@ -11,7 +11,7 @@ export default function RootLayout({
       <head>
         <CssBaseline />
         <title>Bolio UI</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"

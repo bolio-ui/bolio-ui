@@ -10,6 +10,7 @@ import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
 import SectionPlayground from './SectionPlayground'
 import SectionDemonstration from './SectionDemonstration'
+import SectionReadStarted from './SectionReadyStarted'
 import SectionCommunity from './SectionCommunity'
 
 function Home() {
@@ -83,6 +84,7 @@ function Home() {
         </Section>
         <SectionPlayground />
         <SectionDemonstration />
+        <SectionReadStarted />
         <SectionCommunity />
       </Base>
       {isMobile ? (

@@ -1,7 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
 import {
-  useTheme,
   Section,
   Container,
   Grid,
@@ -16,17 +15,8 @@ import {
 } from 'core'
 
 function SectionDemonstration() {
-  const theme = useTheme()
   return (
-    <Section
-      py={5}
-      style={{
-        background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
-        borderTop: '1px solid',
-        borderBottom: '1px solid',
-        borderColor: theme.palette.accents_2
-      }}
-    >
+    <Section py={5}>
       <Container>
         <Grid.Container gap={2}>
           <Grid xs={12} md={6} direction="column" justify="center">
@@ -37,7 +27,8 @@ function SectionDemonstration() {
                   backgroundImage:
                     'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
                   backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  WebkitBackgroundClip: 'text'
                 }}
               >
                 even faster
@@ -51,8 +42,13 @@ function SectionDemonstration() {
             <Grid.Container gap={2} xs={12} alignItems="center">
               <Grid xs={12} sm={4}>
                 <NextLink href="/docs/guide/getting-started" passHref>
-                  <Button type="secondary-light" rounded w="100%">
-                    Get Started
+                  <Button
+                    type="secondary-light"
+                    rounded
+                    w="100%"
+                    style={{ textTransform: 'none' }}
+                  >
+                    Get started
                   </Button>
                 </NextLink>
               </Grid>
@@ -117,7 +113,11 @@ function SectionDemonstration() {
           <Grid mt={2}>
             <Col>
               <NextLink href="/docs/components/" passHref>
-                <Button type="secondary-light" rounded>
+                <Button
+                  type="secondary-light"
+                  rounded
+                  style={{ textTransform: 'none' }}
+                >
                   Explore more components
                 </Button>
               </NextLink>
