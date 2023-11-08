@@ -43,7 +43,7 @@ const Editor: React.FC = () => {
           align-items: center;
           justify-content: center;
           position: relative;
-          background-color: ${theme.palette.pre};
+          background-color: ${theme.palette.border};
           border-top-left-radius: ${theme.layout.radius};
           border-top-right-radius: ${theme.layout.radius};
         }

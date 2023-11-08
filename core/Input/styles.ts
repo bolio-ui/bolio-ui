@@ -14,7 +14,7 @@ export const getColors = (
   const colors: { [key in NormalTypes]: InputColor } = {
     default: {
       color: palette.foreground,
-      borderColor: palette.border,
+      borderColor: palette.accents_3,
       hoverBorder: palette.accents_5
     },
     primary: {
