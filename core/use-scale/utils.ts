@@ -28,8 +28,8 @@ export const generateGetAllScaleProps = <P>(
   const getAllScaleProps: GetAllScalePropsFunction = () => {
     const scaleProps: ScaleProps = {}
     for (const key of ScalePropKeys) {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const value = props[key as keyof ScaleProps]
-      console.log('🚀 ~ file: utils.ts:32 ~ value:', value)
       // if (typeof value !== 'undefined') {
       //   scaleProps[key as keyof ScaleProps] = value as any
       // }
