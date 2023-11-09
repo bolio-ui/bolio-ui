@@ -16,7 +16,7 @@ function Hero() {
               <span
                 style={{
                   backgroundImage:
-                    'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    'linear-gradient(to right, #a91cc6, #d779eb)',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   WebkitBackgroundClip: 'text'
@@ -28,7 +28,7 @@ function Hero() {
               <span
                 style={{
                   backgroundImage:
-                    'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    'linear-gradient(to right, #a91cc6, #d779eb)',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   WebkitBackgroundClip: 'text'

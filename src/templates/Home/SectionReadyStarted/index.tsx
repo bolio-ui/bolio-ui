@@ -23,15 +23,15 @@ function SectionReadStarted() {
                 Prepared to{' '}
                 <span
                   style={{
-                    background:
-                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    backgroundImage:
+                      'linear-gradient(to right, #e17900, #fdb766)',
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     WebkitBackgroundClip: 'text'
                   }}
                 >
                   get started?
-                </span>{' '}
+                </span>
               </Text>
               <Text font={1.2} mt={0}>
                 Bolio UI is compatible with a wide range platforms. You can

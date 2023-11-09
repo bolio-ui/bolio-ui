@@ -25,7 +25,7 @@ function SectionDemonstration() {
               <span
                 style={{
                   backgroundImage:
-                    'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    'linear-gradient(to right, #59be23, #a2e67e)',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   WebkitBackgroundClip: 'text'

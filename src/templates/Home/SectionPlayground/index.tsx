@@ -17,7 +17,7 @@ function SectionPlayground() {
                 <span
                   style={{
                     backgroundImage:
-                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                      'linear-gradient(to right, #0088e4, #64c1ff)',
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     WebkitBackgroundClip: 'text'
@@ -29,7 +29,7 @@ function SectionPlayground() {
                 <span
                   style={{
                     backgroundImage:
-                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                      'linear-gradient(to right, #0088e4, #64c1ff)',
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     WebkitBackgroundClip: 'text'
