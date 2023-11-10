@@ -11,6 +11,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'About Bolio UI',
+            url: '/docs/guide/about-bolio-ui',
+            group: 'Guide'
+          },
+          {
             name: 'Example with Next.js',
             url: '/docs/guide/bolio-ui-plus-nextjs',
             group: 'Guide'
@@ -33,6 +38,11 @@ export const menuMobile = [
           {
             name: 'Example with RedwoodJS',
             url: '/docs/guide/bolio-ui-plus-redwoodjs',
+            group: 'Guide'
+          },
+          {
+            name: 'Contribute',
+            url: '/docs/guide/contribute',
             group: 'Guide'
           }
         ]
