@@ -162,7 +162,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           top: 80px;
           bottom: 2rem;
 
-          width: 200px;
+          width: 210px;
           -webkit-overflow-scrolling: touch;
           -webkit-flex-shrink: 0;
           z-index: 100;
@@ -173,7 +173,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           top: 80px;
           bottom: 2rem;
 
-          width: 200px;
+          width: 210px;
           -webkit-overflow-scrolling: touch;
           -webkit-flex-shrink: 0;
           z-index: 100;

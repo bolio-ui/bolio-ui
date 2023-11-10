@@ -237,7 +237,7 @@ export const components = [
 
 export const hooks = [
   {
-    name: 'Utility',
+    name: 'Hooks',
     url: '',
     icon: 'Settings'
   },
