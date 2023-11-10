@@ -30,7 +30,6 @@ function SectionFooterGithub() {
                   backdropFilter: 'saturate(180%) blur(10px)',
                   boxShadow: 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
                 }}
-                className="card-box"
               >
                 <Row justify="space-around" style={{ textAlign: 'center' }}>
                   <Col span={12}>
