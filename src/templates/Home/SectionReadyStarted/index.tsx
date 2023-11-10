@@ -44,14 +44,14 @@ function SectionFooterGithub() {
       </Container>
       <Container>
         <Grid.Container gap={2} justify="center">
-          <Grid xs={6} sm={4} md={2} justify="center">
+          <Grid xs={4} sm={4} md={2} justify="center">
             <CardPlatforms
               title="Next.js"
               link="/docs/guide/bolio-ui-plus-nextjs"
               image="/img/png/home/nextjs.png"
             />
           </Grid>
-          <Grid xs={6} sm={4} md={2} justify="center">
+          <Grid xs={4} sm={4} md={2} justify="center">
             <CardPlatforms
               title="Vite"
               link="/docs/guide/bolio-ui-plus-vite"
