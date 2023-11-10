@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme, Section, Container, Grid, Col, Text, Row } from 'core'
 import { CardPlatforms } from 'src/components'
 
-function SectionReadStarted() {
+function SectionFooterGithub() {
   const theme = useTheme()
 
   return (
@@ -15,7 +15,7 @@ function SectionReadStarted() {
         borderColor: theme.palette.accents_2
       }}
     >
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
@@ -85,4 +85,4 @@ function SectionReadStarted() {
   )
 }
 
-export default SectionReadStarted
+export default SectionFooterGithub

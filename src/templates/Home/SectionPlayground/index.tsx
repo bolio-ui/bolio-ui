@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme, Section, Container, Row, Col, Text, Card, Grid } from 'core'
-import { Box } from '@bolio-ui/icons'
+import { CreditCard as CreditCardIcon } from '@bolio-ui/icons'
 import PlaygroundHorizontal from 'src/components/PlaygroundHozitonal'
 
 function SectionPlayground() {
@@ -8,7 +8,7 @@ function SectionPlayground() {
 
   return (
     <Section py={5}>
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
@@ -46,13 +46,18 @@ function SectionPlayground() {
           </Row>
         </Grid.Container>
       </Container>
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <PlaygroundHorizontal
           title="Card Playground"
-          scope={{ Card, Text, Row, Col, Box, theme }}
+          scope={{ Card, Text, Row, Col, CreditCardIcon, theme }}
           code={`
-<Card>
-  <Box fontSize={30} />
+<Card
+  style={{
+    backgroundImage:
+      'linear-gradient(to right bottom, #a91cc6, #e17900, #59be23, #0088e4)'
+  }}
+>
+  <CreditCardIcon fontSize={30} />
   <Text my={0} mt={2}>
     Card Number
   </Text>
@@ -64,15 +69,15 @@ function SectionPlayground() {
       <Text font={0.8} my={0}>
         Card Holder
       </Text>
-      <Text font={1.2} my={0}>
-        Bruno Andrade
+      <Text b font={1.2} my={0}>
+        Bolio UI
       </Text>
     </Col>
     <Col span={4}>
       <Text font={0.8} my={0}>
         Exp. Date
       </Text>
-      <Text font={1.2} my={0}>
+      <Text b font={1.2} my={0}>
         03/28
       </Text>
     </Col>
@@ -80,7 +85,7 @@ function SectionPlayground() {
       <Text font={0.8} my={0}>
         CVV
       </Text>
-      <Text font={1.2} my={0}>
+      <Text b font={1.2} my={0}>
         999
       </Text>
     </Col>

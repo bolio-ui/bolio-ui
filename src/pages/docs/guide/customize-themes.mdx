@@ -1,6 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Grid, Code, Display } from 'core'
-import { Colors } from 'src/components'
+import { Spacer } from 'core'
 
 export const meta = {
   title: 'Customize Theme',
@@ -12,8 +11,14 @@ export const meta = {
 
 ## Themes
 
+<Spacer h={2} />
+
+### Usage
+
 **Bolio UI** now offers support for a variety of themes, and it is incredibly easy to create or inherit modifications,
 without the need for third-party styles or configurations. As a basic choice, there are two themes available: `light` and `dark`.
+
+<Spacer h={2} />
 
 ### Switch themes
 
@@ -42,6 +47,8 @@ const App = () => {
   )
 }
 ```
+
+<Spacer h={2} />
 
 ### Customizing theme
 
@@ -82,6 +89,8 @@ const myNewTheme2 = Themes.create(myBaseTheme, {
 })
 ```
 
+<Spacer h={2} />
+
 ### Get types
 
 If you require a comprehensive type definition while making theme adjustments,
@@ -106,7 +115,11 @@ const myPalette: Partial<BolioUIThemesPalette> = {
 }
 ```
 
+<Spacer h={2} />
+
 ### Customizer
+
+<Spacer h={1} />
 
 #### ClassName
 
@@ -127,6 +140,8 @@ const MyPage = () => (
 }
 ```
 
+<Spacer h={2} />
+
 #### Inline styles
 
 Using an inline style will effectively supersede the component's default styling.
@@ -138,6 +153,8 @@ const MyPage = () => (
   </Row>
 )
 ```
+
+<Spacer h={2} />
 
 ### Build components
 
@@ -157,6 +174,8 @@ const MyComponent = () => {
   )
 }
 ```
+
+<Spacer h={2} />
 
 ### Themes APIs
 

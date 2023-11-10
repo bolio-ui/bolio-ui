@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
-import { useTheme } from 'core'
-import SideItem from 'src/components/SideItem'
+import { useTheme, Grid } from 'core'
 import { guide, components, hooks } from 'src/data/sidebar'
+import ActiveLink from '../ActiveLink'
+import ActiveCategory from '../ActiveCategory'
 
 export interface SidebarProps {
   sidebar: string
@@ -22,7 +23,14 @@ function Sidebar({ sidebar }: SidebarProps) {
 
   return (
     <div className="sides box">
-      <SideItem items={items} />
+      {items.map((item, index) => {
+        return (
+          <Grid.Container gap={2} key={`${item.name}-${index}`}>
+            {!item.url && <ActiveCategory name={item.name} />}
+            {item.url && <ActiveLink href={item.url} text={item.name} />}
+          </Grid.Container>
+        )
+      })}
       <style jsx>{`
         .sides {
           width: 100%;
@@ -56,4 +64,5 @@ function Sidebar({ sidebar }: SidebarProps) {
   )
 }
 
+Sidebar.displayName = 'BolioUISidebar'
 export default Sidebar

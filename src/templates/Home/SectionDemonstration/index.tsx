@@ -17,7 +17,7 @@ import {
 function SectionDemonstration() {
   return (
     <Section py={5}>
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2}>
           <Grid xs={12} md={6} direction="column" justify="center">
             <Text h2 my={0} mb={1}>
@@ -109,7 +109,7 @@ function SectionDemonstration() {
             </Grid>
           </Grid>
         </Grid.Container>
-        <Grid.Container gap={2} justify="center" alignItems="center">
+        <Grid.Container gap={2} justify="center">
           <Grid mt={2}>
             <Col>
               <NextLink href="/docs/components/" passHref>
