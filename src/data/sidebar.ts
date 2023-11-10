@@ -8,6 +8,10 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
+    name: 'About Bolio UI',
+    url: '/docs/guide/about-bolio-ui'
+  },
+  {
     name: 'Example with Next.js',
     url: '/docs/guide/bolio-ui-plus-nextjs'
   },
@@ -26,6 +30,10 @@ export const guide = [
   {
     name: 'Example with RedwoodJS',
     url: '/docs/guide/bolio-ui-plus-redwoodjs'
+  },
+  {
+    name: 'Contribute',
+    url: '/docs/guide/contribute'
   },
   {
     name: 'Theme',

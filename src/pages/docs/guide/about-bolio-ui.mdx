@@ -1,0 +1,54 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'About Bolio UI',
+  description: '',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## About Bolio UI
+
+<Spacer h={2} />
+
+### Components library
+
+Bolio UI is a dedicated library designed to enhance both user and developer experiences.
+The development of Bolio UI commenced in july 2022, and its 1.0 version was officially launched on september, 2022,
+and since then, more releases have been published.
+
+<Spacer h={2} />
+
+### Browser support
+
+Bolio UI is tested on actual devices across various browsers, including: Chrome, Safari, Firefox, Edge, Safari for iOS, Chrome for Android.
+Testing in other browsers is not performed.
+
+All components and hooks were tested to work in the following browsers:
+
+    • Chromium browsers 108+ – Chrome, Edge, Chrome for Android, etc.
+    • Firefox 101+
+    • Safari 15.4+
+    • IE (any version) is not supported
+
+<Spacer h={2} />
+
+### Releases cycle
+
+All `@bolio-ui/*` packages follow semver:
+
+    • Patches (1.0.X) are typically released at intervals of one to two weeks.
+    • Minor versions (1.X.0) are generally released on the first Monday of each month or bi-monthly.
+    • Major versions (X.0.0) are deployed when there are significant changes that necessitate breaking compatibility. Usually, a new major
+      version is released approximately every 6 months to 1 year.
+
+<Spacer h={2} />
+
+### Project maintenance
+
+Bolio UI is make and overseen by <a href="https://github.com/brunnoandrade" rel="noreferrer" target="_blank">Bruno Andrade</a>.
+The inclusion of new features and components/hooks in the library is largely influenced by community feedback.
+You're welcome to engage in discussions about upcoming features on <a href="https://github.com/bolio-ui/bolio-ui/discussions" rel="noreferrer" target="_blank">Github</a>.
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
