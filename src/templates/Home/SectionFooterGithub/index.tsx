@@ -24,7 +24,7 @@ function SectionFooterGithub() {
           <Grid xs={12} sm={12} md={12}>
             <div className="card-wrapper">
               <Card
-                padding={isMobile ? 2 : 5}
+                padding={isMobile ? 2 : 4}
                 style={{
                   backgroundColor: 'transparent',
                   backdropFilter: 'saturate(180%) blur(10px)',

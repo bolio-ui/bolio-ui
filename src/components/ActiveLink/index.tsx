@@ -21,7 +21,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
         my={0}
         mb={1}
         b={isActive}
-        ml="15px"
+        ml="26px"
         style={{
           color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
           cursor: 'pointer'

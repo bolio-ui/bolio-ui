@@ -1,7 +1,8 @@
 export const guide = [
   {
     name: 'Guide',
-    url: ''
+    url: '',
+    icon: 'Book'
   },
   {
     name: 'Getting Started',
@@ -37,7 +38,8 @@ export const guide = [
   },
   {
     name: 'Theme',
-    url: ''
+    url: '',
+    icon: 'Target'
   },
   {
     name: 'Default Theme',
@@ -52,7 +54,8 @@ export const guide = [
 export const components = [
   {
     name: 'Components',
-    url: ''
+    url: '',
+    icon: 'Grid'
   },
   {
     name: 'Avatar',
@@ -235,7 +238,8 @@ export const components = [
 export const hooks = [
   {
     name: 'Utility',
-    url: ''
+    url: '',
+    icon: 'Settings'
   },
   {
     name: 'useBodyScroll',
