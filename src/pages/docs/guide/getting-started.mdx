@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Attributes } from 'src/components'
-import { Tabs, Spacer, Snippet, Dot } from 'core'
+import { Tabs, Spacer, Snippet } from 'core'
 
 export const meta = {
   title: 'Getting Started',
@@ -18,9 +18,11 @@ export const meta = {
 
 Bolio UI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with <a href="https://reactjs.org/" rel="noreferrer" target="_blank">React.js</a>.
 
+<Spacer h={2} />
+
 ### Install
 
-Inside your React project directory, install BolioUI by running either of the following:
+Inside your React project directory, install Bolio UI by running either of the following:
 
 <Spacer h={3} />
 
@@ -38,6 +40,8 @@ Inside your React project directory, install BolioUI by running either of the fo
 ### Setup
 
 For Bolio UI to work correctly, you need to set up the `BolioUIProvider` at the root of your application.
+
+<Spacer h={1} />
 
 #### React
 
@@ -59,6 +63,8 @@ function App({ Component }) {
   )
 }
 ```
+
+<Spacer h={2} />
 
 #### Next.js
 
@@ -112,12 +118,14 @@ class MyDocument extends Document {
 export default MyDocument
 ```
 
-> For more information about Next.js + BolioUI SSR check out the [documentation](/guide/bolio-ui-plus-nextjs).
+> For more information about Next.js + Bolio UI SSR check out the [documentation](/guide/bolio-ui-plus-nextjs).
 
-### Using BolioUI components
+<Spacer h={2} />
 
-Once BolioUI is installed you can use any of the components as follows.
-BolioUI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
+### Using Bolio UI components
+
+Once Bolio UI is installed you can use any of the components as follows.
+Bolio UI uses tree-shaking so the unused modules will not be included in the bundle during the build process and
 each component is exported separately.
 
 ```tsx
@@ -125,6 +133,8 @@ import { Button } from '@bolio-ui/core'
 
 const Component = () => <Button>Click me</Button>
 ```
+
+<Spacer h={2} />
 
 ### Individual components import
 
@@ -137,14 +147,14 @@ const Component = () => <Button>Click me</Button>
 <Attributes edit="/pages/docs/components/avatar.mdx">
 <Attributes.Title>BolioUIProvider.Props</Attributes.Title>
 
-| Attribute           | Type            | Accepted values              | Description                                                     | Default |
-| ------------------- | --------------- | ---------------------------- | --------------------------------------------------------------- | ------- |
-| **theme**           | `BolioUIThemes` | [ThemeObject](#theme-object) | Optional custom theme, by default BolioUI applies `light` theme | -       |
-| **disableBaseline** | `boolean`       | `true/false`                 | BolioUI automatically includes `<CssBaseline/>`                 | `false` |
+| Attribute           | Type            | Accepted values              | Description                                                      | Default |
+| ------------------- | --------------- | ---------------------------- | ---------------------------------------------------------------- | ------- |
+| **theme**           | `BolioUIThemes` | [ThemeObject](#theme-object) | Optional custom theme, by default Bolio UI applies `light` theme | -       |
+| **disableBaseline** | `boolean`       | `true/false`                 | Bolio UI automatically includes `<CssBaseline/>`                 | `false` |
 
 </Attributes>
 
-<Spacer h={2} />
+<Spacer h={3} />
 
 ### Community
 
@@ -154,8 +164,10 @@ Whether it's a feature request, bug report, or a project to showcase, please get
 - [Instagram](https://instagram.com/bolio.ui)
 - [GitHub](https://github.com/bolio-ui/bolio-ui)
 
+<Spacer h={2} />
+
 ### Contributing
 
-PR's on BolioUI are always welcome, please see our [contribution guidelines](https://github.com/bolio-ui/bolio-ui/blob/main/CONTRIBUTING.MD) to learn how you can contribute to this project.
+PR's on Bolio UI are always welcome, please see our [contribution guidelines](https://github.com/bolio-ui/bolio-ui/blob/main/CONTRIBUTING.MD) to learn how you can contribute to this project.
 
 export default ({ children }) => <Docs meta={meta}>{children}</Docs>
