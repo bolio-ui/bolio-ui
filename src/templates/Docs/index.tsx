@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useTheme, Container, Grid, Image } from 'core'
@@ -10,6 +10,8 @@ import { getId } from 'core/utils/collections'
 import Sidebar from 'src/components/Sidebar'
 import SidebarHeading from 'src/components/SidebarHeading'
 import MadeDesigned from 'src/components/MadeDesigned'
+import NavigationDocs from 'src/components/NavigationDocs'
+import { guide, components, hooks } from 'src/data/sidebar'
 
 export interface Meta {
   title: string
@@ -55,6 +57,22 @@ function Docs({ children, meta }: DocsTemplateProps) {
 
   useRegisterActions([homeAction].filter(Boolean))
 
+  const sidebarItems = {
+    guide: guide,
+    components: components,
+    hooks: hooks
+  }
+
+  const items = useMemo(() => {
+    return sidebarItems[meta.sidebar]
+  }, [meta.sidebar])
+
+  const currentPostIndex = items.findIndex(
+    (p) => p.name === title && p.url !== ''
+  )
+  const nextPost = items[currentPostIndex + 1] ?? null
+  const prevPost = items[currentPostIndex - 1] ?? null
+
   return (
     <>
       <NextSeo
@@ -85,7 +103,9 @@ function Docs({ children, meta }: DocsTemplateProps) {
           </Grid>
           <Grid xs={12} sm={12} md={12} lg={8}>
             <main className="main" style={{ zIndex: 1 }}>
-              {children} <MadeDesigned />
+              {children}
+              <NavigationDocs previous={prevPost} next={nextPost} />
+              <MadeDesigned />
             </main>
           </Grid>
           <Grid xs={0} sm={0} md={0} lg={2}>
@@ -162,7 +182,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           top: 80px;
           bottom: 2rem;
 
-          width: 200px;
+          width: 210px;
           -webkit-overflow-scrolling: touch;
           -webkit-flex-shrink: 0;
           z-index: 100;
@@ -173,7 +193,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           top: 80px;
           bottom: 2rem;
 
-          width: 200px;
+          width: 210px;
           -webkit-overflow-scrolling: touch;
           -webkit-flex-shrink: 0;
           z-index: 100;
