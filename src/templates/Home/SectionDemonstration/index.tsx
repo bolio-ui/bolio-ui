@@ -17,6 +17,15 @@ import {
 function SectionDemonstration() {
   return (
     <Section py={5}>
+      {/* <img
+        src="/img/png/home/hero-bg.png"
+        style={{
+          position: 'absolute',
+          width: '120%',
+          bottom: '27%',
+          zIndex: -1
+        }}
+      /> */}
       <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2}>
           <Grid xs={12} md={6} direction="column" justify="center">
