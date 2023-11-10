@@ -22,7 +22,7 @@ const Editor: React.FC = () => {
           width: 100%;
         }
         .area {
-          height: 350px;
+          height: 300px;
           overflow: auto;
           border-bottom-left-radius: ${theme.layout.radius};
           border-bottom-right-radius: ${theme.layout.radius};

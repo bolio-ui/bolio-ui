@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme, Section, Container, Grid, Col, Text, Row } from 'core'
 import { CardPlatforms } from 'src/components'
 
-function SectionReadStarted() {
+function SectionFooterGithub() {
   const theme = useTheme()
 
   return (
@@ -15,7 +15,7 @@ function SectionReadStarted() {
         borderColor: theme.palette.accents_2
       }}
     >
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={10}>
@@ -23,15 +23,15 @@ function SectionReadStarted() {
                 Prepared to{' '}
                 <span
                   style={{
-                    background:
-                      'linear-gradient(rgb(194,95,255) 25%, rgb(120, 40, 201  ) 100%)',
+                    backgroundImage:
+                      'linear-gradient(to right, #e17900, #fdb766)',
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     WebkitBackgroundClip: 'text'
                   }}
                 >
                   get started?
-                </span>{' '}
+                </span>
               </Text>
               <Text font={1.2} mt={0}>
                 Bolio UI is compatible with a wide range platforms. You can
@@ -85,4 +85,4 @@ function SectionReadStarted() {
   )
 }
 
-export default SectionReadStarted
+export default SectionFooterGithub

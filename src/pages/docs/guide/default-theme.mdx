@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Grid, Code, Display } from 'core'
+import { Spacer } from 'core'
 import { Colors } from 'src/components'
 
 export const meta = {
@@ -11,6 +11,10 @@ export const meta = {
 }
 
 ## Default Theme
+
+<Spacer h={2} />
+
+### Usage
 
 You can use any color anywhere, all colors change with the theme.
 If you want to customize your colors, please read [use-theme](/docs/hooks/use-theme) to learn more.
@@ -24,6 +28,8 @@ const TextCustomComponent = () => {
   return <Text style={{ color: palette.accents_1 }}>TextCustomComponent</Text>
 }
 ```
+
+<Spacer h={2} />
 
 ### Colors
 
