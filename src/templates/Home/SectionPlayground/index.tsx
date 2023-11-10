@@ -54,7 +54,7 @@ function SectionPlayground() {
 <Card
   style={{
     backgroundImage:
-      'linear-gradient(to right bottom, #a91cc6, #e17900, #59be23, #0088e4)'
+      'linear-gradient(to right bottom, #4a5167, #808496, #4a5167)'
   }}
 >
   <CreditCardIcon fontSize={30} />

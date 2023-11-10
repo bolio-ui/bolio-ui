@@ -17,7 +17,7 @@ function CardPlatforms({ title, link, image }: CardPlatformsProps) {
         }}
       >
         <Image src={image} />
-        <Card.Content style={{}}>
+        <Card.Content>
           <Text b>{title}</Text>
         </Card.Content>
       </Card>

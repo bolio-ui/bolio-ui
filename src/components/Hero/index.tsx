@@ -36,7 +36,7 @@ function Hero() {
               >
                 dynamic
               </span>{' '}
-              with amazing tools for React.
+              with amazing tools for React
             </Text>
             <Text p style={{ color: theme.palette.accents_6 }} mt={1}>
               Develop pratic and more fast with React components.
