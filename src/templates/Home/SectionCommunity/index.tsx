@@ -5,16 +5,26 @@ import CardBox from 'src/components/CardBox'
 function SectionCommunity() {
   return (
     <Section py={5}>
-      <Container style={{ maxWidth: 1400 }}>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
             <Col span={8}>
               <Text h2 my={0} mb={1}>
-                Community
+                <span
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(to right, #d60867, #f66eab)',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    WebkitBackgroundClip: 'text'
+                  }}
+                >
+                  Everyone
+                </span>{' '}
+                is welcome!
               </Text>
               <Text font={1.2} mt={0}>
-                Everyone is welcome! Feel free to report issues, ask questions,
-                and meet new people.
+                Feel free to report issues, ask questions, and meet new people.
               </Text>
             </Col>
           </Row>

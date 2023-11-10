@@ -12,6 +12,7 @@ import SectionPlayground from './SectionPlayground'
 import SectionDemonstration from './SectionDemonstration'
 import SectionReadStarted from './SectionReadyStarted'
 import SectionCommunity from './SectionCommunity'
+import SectionFooterGithub from './SectionFooterGithub'
 
 function Home() {
   const router = useRouter()
@@ -49,7 +50,7 @@ function Home() {
       <Base>
         <Hero />
         <Section py={1}>
-          <Container>
+          <Container style={{ maxWidth: 1300 }}>
             <Grid.Container gap={2} justify="center">
               <Grid xs={12} sm={6} md={3}>
                 <CardBox
@@ -86,6 +87,7 @@ function Home() {
         <SectionDemonstration />
         <SectionReadStarted />
         <SectionCommunity />
+        <SectionFooterGithub />
       </Base>
       {isMobile ? (
         <>
