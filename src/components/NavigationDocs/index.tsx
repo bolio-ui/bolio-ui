@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { Grid, Card, Row, Text } from 'core'
+import { useTheme, Grid, Card, Row, Text } from 'core'
 import {
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
@@ -18,10 +18,11 @@ export interface Docs {
 }
 
 function NavigationDocs({ next, previous }: NavigationDocsProps) {
+  const theme = useTheme()
   const isMobile = useIsMobile()
 
   return (
-    <Grid.Container justify="center">
+    <Grid.Container gap={2} justify="center">
       <Grid xs={6} sm={6} md={6} justify="flex-start">
         {previous && (
           <NextLink href={previous.url} passHref>
@@ -34,10 +35,20 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
                 cursor: 'pointer'
               }}
               hoverable
+              width="100%"
             >
-              <Row align="middle">
+              <Row align="middle" justify="space-between">
                 <ChevronLeftIcon />
-                <Text ml={1}>{previous.name}</Text>
+                <div style={{ textAlign: 'right' }}>
+                  <Text my={0}>Previous</Text>
+                  <Text
+                    font={0.9}
+                    my={0}
+                    style={{ color: theme.palette.accents_4 }}
+                  >
+                    {previous.name}
+                  </Text>
+                </div>
               </Row>
             </Card>
           </NextLink>
@@ -55,9 +66,19 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
                 cursor: 'pointer'
               }}
               hoverable
+              width="100%"
             >
-              <Row align="middle">
-                <Text mr={1}>{next.name}</Text>
+              <Row align="middle" justify="space-between">
+                <div style={{ textAlign: 'left' }}>
+                  <Text my={0}>Next</Text>
+                  <Text
+                    font={0.9}
+                    my={0}
+                    style={{ color: theme.palette.accents_4 }}
+                  >
+                    {next.name}
+                  </Text>
+                </div>
                 <ChevronRightIcon />
               </Row>
             </Card>

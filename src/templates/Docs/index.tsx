@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { useTheme, Container, Grid, Image } from 'core'
+import { Container, Grid, Image } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
 import { toCapitalize } from 'src/utils/to-capitalize'
 import { useMediaQuery } from 'src/utils/use-media-query'
@@ -27,7 +27,6 @@ export type DocsTemplateProps = {
 }
 
 function Docs({ children, meta }: DocsTemplateProps) {
-  const theme = useTheme()
   const router = useRouter()
   const isMobile = useMediaQuery(650)
 
@@ -92,27 +91,51 @@ function Docs({ children, meta }: DocsTemplateProps) {
           ]
         }}
       />
-      <Container fluid>
-        <Grid.Container gap={2}>
+      <Container style={{ maxWidth: 1300 }}>
+        <Grid.Container justify="center">
           <Grid xs={0} sm={0} md={0} lg={2}>
-            <aside className="sidebar">
-              <div className="content-right">
-                <Sidebar sidebar={meta.sidebar} />
-              </div>
+            <aside
+              style={{
+                height:
+                  'calc(100% - 2rem - 96px + var(--bolioui-page-nav-height))',
+                position: 'fixed',
+                top: '80px',
+                bottom: '2rem',
+                width: '250px',
+                marginTop: '10px',
+                zIndex: 2
+              }}
+            >
+              <Sidebar sidebar={meta.sidebar} />
             </aside>
           </Grid>
           <Grid xs={12} sm={12} md={12} lg={8}>
-            <main className="main" style={{ zIndex: 1 }}>
+            <div
+              style={{
+                width: isMobile ? '95%' : '80%',
+                margin: '0 auto',
+                marginTop: '30px',
+                zIndex: 2
+              }}
+            >
               {children}
               <NavigationDocs previous={prevPost} next={nextPost} />
               <MadeDesigned />
-            </main>
+            </div>
           </Grid>
           <Grid xs={0} sm={0} md={0} lg={2}>
-            <aside className="sidebar">
-              <div className="content-left">
-                <SidebarHeading headings={headings} />
-              </div>
+            <aside
+              style={{
+                height:
+                  'calc(100% - 2rem - 96px + var(--bolioui-page-nav-height))',
+                position: 'fixed',
+                top: '80px',
+                bottom: '2rem',
+                marginTop: '10px',
+                zIndex: 2
+              }}
+            >
+              <SidebarHeading headings={headings} />
             </aside>
           </Grid>
         </Grid.Container>
@@ -122,6 +145,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           <Image
             src="/img/png/home/hero-bg.png"
             alt="docs background gradient blue"
+            draggable={false}
             style={{
               position: 'fixed',
               top: '-10%',
@@ -132,6 +156,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           <Image
             src="/img/png/home/hero-bg.png"
             alt="docs background gradient violet"
+            draggable={false}
             style={{
               position: 'fixed',
               top: '45%',
@@ -145,6 +170,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           <Image
             src="/img/png/home/hero-bg.png"
             alt="docs background gradient blue"
+            draggable={false}
             style={{
               position: 'fixed',
               bottom: '-50%',
@@ -156,6 +182,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           <Image
             src="/img/png/home/hero-bg.png"
             alt="docs background gradient violet"
+            draggable={false}
             style={{
               position: 'fixed',
               bottom: '-50%',
@@ -166,44 +193,6 @@ function Docs({ children, meta }: DocsTemplateProps) {
           />
         </>
       )}
-      <style jsx>{`
-        .main {
-          max-width: 100%;
-          flex-direction: column;
-          flex: 0 0 100%;
-          margin-top: 10px;
-        }
-        .sidebar {
-          flex-grow: 1;
-        }
-        .sidebar > .content-right {
-          height: calc(100% - 2rem - 96px + var(--bolioui-page-nav-height));
-          position: fixed;
-          top: 80px;
-          bottom: 2rem;
-
-          width: 210px;
-          -webkit-overflow-scrolling: touch;
-          -webkit-flex-shrink: 0;
-          z-index: 100;
-        }
-        .sidebar > .content-left {
-          height: calc(100% - 2rem - 96px + var(--bolioui-page-nav-height));
-          position: fixed;
-          top: 80px;
-          bottom: 2rem;
-
-          width: 210px;
-          -webkit-overflow-scrolling: touch;
-          -webkit-flex-shrink: 0;
-          z-index: 100;
-        }
-        @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
-          .sidebar {
-            display: none;
-          }
-        }
-      `}</style>
     </>
   )
 }
