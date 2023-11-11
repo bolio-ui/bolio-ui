@@ -74,7 +74,7 @@ function SectionFooterGithub() {
           </Grid>
           <Grid xs={4} sm={4} md={2} justify="center">
             <CardPlatforms
-              title="RedwoodJS"
+              title="Redwood"
               link="/docs/guide/bolio-ui-plus-redwoodjs"
               image="/img/png/home/redwoodjs.png"
             />

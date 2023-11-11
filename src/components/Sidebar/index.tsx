@@ -26,7 +26,7 @@ function Sidebar({ sidebar }: SidebarProps) {
       {items.map((item, index) => {
         return (
           <Grid.Container gap={2} key={`${item.name}-${index}`}>
-            {!item.url && <ActiveCategory name={item.name} />}
+            {!item.url && <ActiveCategory name={item.name} icon={item.icon} />}
             {item.url && <ActiveLink href={item.url} text={item.name} />}
           </Grid.Container>
         )

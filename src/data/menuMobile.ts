@@ -298,7 +298,7 @@ export const menuMobile = [
     name: 'hooks',
     children: [
       {
-        name: 'Utility',
+        name: 'Hooks',
         children: [
           {
             name: 'useBodyScroll',
