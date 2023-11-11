@@ -28,7 +28,10 @@ function SectionFooterGithub() {
                 style={{
                   backgroundColor: 'transparent',
                   backdropFilter: 'saturate(180%) blur(10px)',
-                  boxShadow: 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
+                  boxShadow:
+                    theme.type === 'dark'
+                      ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
+                      : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'
                 }}
               >
                 <Row justify="space-around" style={{ textAlign: 'center' }}>
