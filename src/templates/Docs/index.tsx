@@ -66,9 +66,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
     return sidebarItems[meta.sidebar]
   }, [meta.sidebar])
 
-  const currentPostIndex = items.findIndex(
-    (p) => p.name === title && p.url !== ''
-  )
+  const currentPostIndex = items.findIndex((p) => p.name === title)
   const nextPost = items[currentPostIndex + 1] ?? null
   const prevPost = items[currentPostIndex - 1] ?? null
 
