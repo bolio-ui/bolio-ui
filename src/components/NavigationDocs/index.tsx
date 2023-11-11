@@ -24,7 +24,7 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
   return (
     <Grid.Container gap={2} justify="center">
       <Grid xs={6} sm={6} md={6} justify="flex-start">
-        {previous && (
+        {previous && previous.url && (
           <NextLink href={previous.url} passHref>
             <Card
               padding={isMobile ? 0 : 1}
@@ -55,7 +55,7 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
         )}
       </Grid>
       <Grid xs={6} sm={6} md={6} justify="flex-end">
-        {next && (
+        {next && next.url && (
           <NextLink href={next.url} passHref>
             <Card
               mt={2}
