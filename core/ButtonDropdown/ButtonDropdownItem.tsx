@@ -65,6 +65,7 @@ function ButtonDropdownItem({
           min-width: var(--bolio-ui-dropdown-min-width);
           padding: var(--bolio-ui-dropdown-padding);
           font-size: var(--bolio-ui-dropdown-font-size);
+          font-weight: bold;
         }
 
         button:hover {

@@ -96,7 +96,7 @@ function ToggleComponent({
           position: relative;
           cursor: ${disabled ? 'not-allowed' : 'pointer'};
           --toggle-font-size: ${SCALES.font(1)};
-          --toggle-height: ${SCALES.height(0.875)};
+          --toggle-height: ${SCALES.height(1)};
           width: ${SCALES.width(1.75)};
           height: var(--toggle-height);
           padding: ${SCALES.pt(0.1875)} ${SCALES.pr(0)} ${SCALES.pb(0.1875)}
@@ -117,7 +117,7 @@ function ToggleComponent({
         }
 
         .toggle {
-          height: var(--toggle-height);
+          height: calc(var(--toggle-height) + 2px);
           width: 100%;
           border-radius: var(--toggle-height);
           transition-delay: 0.12s;
@@ -141,7 +141,7 @@ function ToggleComponent({
             rgba(0, 0, 0, 0.1) 0 1px 3px 0;
           transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
           border-radius: 50%;
-          background-color: ${theme.palette.background};
+          background-color: ${theme.palette.accents_1};
         }
 
         .disabled {
@@ -163,7 +163,7 @@ function ToggleComponent({
         }
 
         .checked > .inner {
-          left: calc(100% - (var(--toggle-height) - 2px));
+          left: calc(100% - (var(--toggle-height) - 1px));
           box-shadow: none;
         }
       `}</style>

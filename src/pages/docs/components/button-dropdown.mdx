@@ -72,34 +72,46 @@ Display related but alternate actions for a button.
   scope={{ ButtonDropdown, Grid }}
   code={`
 <Grid.Container gap={2}>
-  <Grid>
-    <ButtonDropdown type="primary" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="primary">
       <ButtonDropdown.Item main>Primary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
-  <Grid>
-    <ButtonDropdown type="secondary" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="secondary">
       <ButtonDropdown.Item main>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
-  <Grid>
-    <ButtonDropdown type="success" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="success">
       <ButtonDropdown.Item main>Success Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
-  <Grid>
-    <ButtonDropdown type="warning" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="warning">
       <ButtonDropdown.Item main>Warning Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
-  <Grid>
-    <ButtonDropdown type="error" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="error">
       <ButtonDropdown.Item main>Error Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
-  <Grid>
-    <ButtonDropdown type="info" scale={0.5}>
+  <Grid xs={12} sm={6} md={4}>
+    <ButtonDropdown type="info">
       <ButtonDropdown.Item main>Info Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Tertiary Button</ButtonDropdown.Item>
     </ButtonDropdown>
   </Grid>
 </Grid.Container>

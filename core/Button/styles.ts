@@ -56,8 +56,8 @@ export const getButtonColors = (
   const { type, disabled, ghost } = props
   const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
     default: {
-      bg: palette.background,
-      border: palette.border,
+      bg: palette.accents_1,
+      border: palette.accents_1,
       color: palette.accents_5
     },
     primary: {
@@ -98,7 +98,7 @@ export const getButtonColors = (
   }
   if (disabled)
     return {
-      bg: palette.accents_1,
+      bg: palette.accents_2,
       border: palette.accents_2,
       color: '#ccc'
     }
@@ -230,7 +230,7 @@ export const getButtonHoverColors = (
   }
   if (disabled)
     return {
-      bg: palette.accents_1,
+      bg: palette.accents_2,
       border: palette.accents_2,
       color: '#ccc'
     }

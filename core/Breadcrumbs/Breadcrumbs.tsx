@@ -48,7 +48,7 @@ function BreadcrumbsComponent({
       <style jsx>{`
         nav {
           line-height: inherit;
-          color: ${theme.palette.accents_4};
+          color: ${theme.palette.accents_5};
           box-sizing: border-box;
           display: flex;
           align-items: center;
@@ -66,7 +66,7 @@ function BreadcrumbsComponent({
         }
 
         nav > :global(span:last-of-type) {
-          color: ${theme.palette.accents_6};
+          color: ${theme.palette.accents_7};
         }
 
         nav > :global(.separator:last-child) {

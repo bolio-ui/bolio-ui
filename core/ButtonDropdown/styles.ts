@@ -17,52 +17,52 @@ export const getColor = (
   const colors: { [key in NormalTypes]: ButtonDropdownColors } = {
     default: {
       color: palette.accents_5,
-      bgColor: palette.background,
+      bgColor: palette.accents_1,
       borderLeftColor: palette.accents_2,
-      hoverBgColor: palette.accents_1,
+      hoverBgColor: palette.accents_2,
       hoverBorder: palette.accents_2
     },
     primary: {
-      color: palette.background,
-      bgColor: palette.primary,
-      borderLeftColor: palette.primaryDark,
-      hoverBgColor: palette.primaryDark,
-      hoverBorder: palette.primaryDark
+      color: palette.primaryDark,
+      bgColor: palette.primaryLight,
+      borderLeftColor: palette.primaryLighter,
+      hoverBgColor: palette.primaryLighter,
+      hoverBorder: palette.primaryLighter
     },
     secondary: {
-      color: palette.background,
-      bgColor: palette.secondary,
-      borderLeftColor: palette.secondaryDark,
-      hoverBgColor: palette.secondaryDark,
-      hoverBorder: palette.secondaryDark
+      color: palette.secondaryDark,
+      bgColor: palette.secondaryLight,
+      borderLeftColor: palette.secondaryLighter,
+      hoverBgColor: palette.secondaryLighter,
+      hoverBorder: palette.secondaryLighter
     },
     success: {
-      color: palette.background,
-      bgColor: palette.success,
-      borderLeftColor: palette.successDark,
-      hoverBgColor: palette.successDark,
-      hoverBorder: palette.successDark
+      color: palette.successDark,
+      bgColor: palette.successLight,
+      borderLeftColor: palette.successLighter,
+      hoverBgColor: palette.successLighter,
+      hoverBorder: palette.successLighter
     },
     warning: {
-      color: palette.background,
-      bgColor: palette.warning,
-      borderLeftColor: palette.warningDark,
-      hoverBgColor: palette.warningDark,
-      hoverBorder: palette.warningDark
+      color: palette.warningDark,
+      bgColor: palette.warningLight,
+      borderLeftColor: palette.warningLighter,
+      hoverBgColor: palette.warningLighter,
+      hoverBorder: palette.warningLighter
     },
     error: {
-      color: palette.background,
-      bgColor: palette.error,
-      borderLeftColor: palette.errorDark,
-      hoverBgColor: palette.errorDark,
-      hoverBorder: palette.errorDark
+      color: palette.errorDark,
+      bgColor: palette.errorLight,
+      borderLeftColor: palette.errorLighter,
+      hoverBgColor: palette.errorLighter,
+      hoverBorder: palette.errorLighter
     },
     info: {
-      color: palette.background,
-      bgColor: palette.info,
-      borderLeftColor: palette.infoDark,
-      hoverBgColor: palette.infoDark,
-      hoverBorder: palette.infoDark
+      color: palette.infoDark,
+      bgColor: palette.infoLight,
+      borderLeftColor: palette.infoLighter,
+      hoverBgColor: palette.infoLighter,
+      hoverBorder: palette.infoLighter
     }
   }
 

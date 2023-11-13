@@ -215,7 +215,7 @@ const InputComponent = React.forwardRef<
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
             background: ${backgroundColor
               ? backgroundColor
-              : theme.palette.accents_2};
+              : theme.palette.accents_1};
           }
 
           .input-wrapper.left-label {
@@ -229,7 +229,7 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.disabled {
-            background-color: ${theme.palette.accents_4};
+            background-color: ${theme.palette.accents_2};
             cursor: not-allowed;
           }
 
