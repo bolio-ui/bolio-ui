@@ -46,6 +46,6 @@ export const defaultLayout: BolioUIThemesLayout = {
   pageWidthWithMargin: '930pt',
   breakpointMobile: defaultBreakpoints.xs.max,
   breakpointTablet: defaultBreakpoints.sm.max,
-  radius: '6px',
+  radius: '10px',
   unit: '16px'
 }

@@ -11,31 +11,16 @@ import { getColor } from './styles'
 import ButtonDropdownIcon from './Icon'
 import ButtonDropdownItem from './ButtonDropdownItem'
 import { ButtonDropdownContext } from './ButtonDropdownContext'
-import { NormalTypes } from '../utils/prop-types'
 import { pickChild, pickChildByProps } from '../utils/collections'
-import useScale, { withScale } from '../use-scale'
+import useScale from '../use-scale'
 import useClasses from '../use-classes'
+import {
+  ButtonDropdownTypes,
+  ButtonDropdownProps,
+  stopPropagation
+} from './ButtonDropdown'
 
-export type ButtonDropdownTypes = NormalTypes
-
-interface Props {
-  type?: ButtonDropdownTypes
-  auto?: boolean
-  loading?: boolean
-  disabled?: boolean
-  className?: string
-  icon?: React.ReactNode
-}
-
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
-export type ButtonDropdownProps = Props & NativeAttrs
-
-const stopPropagation = (event: MouseEvent<HTMLElement>) => {
-  event.stopPropagation()
-  event.nativeEvent.stopImmediatePropagation()
-}
-
-function ButtonDropdownComponent({
+export function ButtonDropdownComponent({
   children,
   type = 'default' as ButtonDropdownTypes,
   auto = false,
@@ -190,7 +175,7 @@ function ButtonDropdownComponent({
             z-index: 90;
             width: 100%;
             border-radius: ${theme.layout.radius};
-            box-shadow: ${theme.expressiveness.shadowSmall};
+            box-shadow: ${theme.expressiveness.shadowLarge};
             transform: translateY(${theme.layout.gapHalf});
             background-color: ${theme.palette.background};
           }
@@ -216,7 +201,4 @@ function ButtonDropdownComponent({
     </ButtonDropdownContext.Provider>
   )
 }
-
 ButtonDropdownComponent.displayName = 'BolioUIButtonDropdown'
-const ButtonDropdown = withScale(ButtonDropdownComponent)
-export default ButtonDropdown
