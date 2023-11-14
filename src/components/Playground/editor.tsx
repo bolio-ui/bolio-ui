@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LiveEditor } from 'react-live'
-import { useTheme, useToasts, useClipboard, Card } from 'core'
+import { useTheme, useToasts, useClipboard, Card, Tooltip, Text } from 'core'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
 
 interface Props {
@@ -35,19 +35,17 @@ const Editor: React.FC<Props> = ({ code }) => {
           <div className="open-header">
             <div className="action">
               <span className="arrow">
-                <ChevronRight fontSize={16} />
+                <ChevronRight fontSize={16} color="#FFFFFF" />
               </span>
-              <span>{visible ? 'Hide code edit' : 'Show code edit'}</span>
+              <Text style={{ color: '#FFFFFF' }}>
+                {visible ? 'Hide code edit' : 'Show code edit'}
+              </Text>
             </div>
             <div className="action">
               {visible && (
-                <span
-                  className="copy"
-                  onClick={copyHandler}
-                  title={'Copy Code'}
-                >
-                  <Copy fontSize={18} />
-                </span>
+                <Tooltip onClick={copyHandler} text="Copy Code" scale={1 / 2}>
+                  <Copy fontSize={18} color="#FFFFFF" />
+                </Tooltip>
               )}
             </div>
           </div>
@@ -64,11 +62,10 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gapHalf};
-          /* background-color: ${theme.palette.pre}; */
-        }
-
-        summary :global(svg) {
-          cursor: pointer;
+          background-color: ${theme.palette.pre};
+          border-radius: ${theme.layout.radius};
+          border-bottom-left-radius: ${visible ? 0 : theme.layout.radius};
+          border-bottom-right-radius: ${visible ? 0 : theme.layout.radius};
         }
 
         .action {
@@ -76,17 +73,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           display: flex;
           align-items: center;
           font-size: 0.8rem;
-        }
-
-        .area {
-          position: relative;
-          box-sizing: border-box;
-          white-space: pre;
-          font-family: ${theme.font.mono};
-          color: ${theme.palette.foreground};
-          background-color: ${theme.palette.background};
-          font-size: 1em;
-          overflow: hidden;
+          cursor: pointer;
         }
 
         .arrow {
@@ -97,18 +84,6 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 1rem;
           height: 1rem;
           margin-right: 0.5rem;
-        }
-
-        .copy {
-          display: inline-flex;
-          align-items: center;
-          color: #ffffff;
-          transition: color 0.2s ease;
-          padding-right: 5px;
-        }
-
-        .copy:hover {
-          color: ${theme.palette.accents_4};
         }
       `}</style>
     </div>
