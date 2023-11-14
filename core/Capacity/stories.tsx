@@ -10,13 +10,13 @@ export default {
 
 export const Default: Story = () => (
   <Grid.Container gap={2}>
-    <Grid>
+    <Grid xs={4} md={4}>
       <Capacity value={15} width="200px" />
     </Grid>
-    <Grid>
+    <Grid xs={4} md={4}>
       <Capacity value={45} width="200px" />
     </Grid>
-    <Grid>
+    <Grid xs={4} md={4}>
       <Capacity value={95} width="200px" />
     </Grid>
   </Grid.Container>
@@ -26,25 +26,25 @@ export const FixedColor: Story = () => {
   const theme = useTheme()
   return (
     <Grid.Container gap={2}>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.foreground} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.primary} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.secondary} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.success} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.warning} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.error} width="200px" />
       </Grid>
-      <Grid>
+      <Grid xs={6} md={4}>
         <Capacity value={75} color={theme.palette.info} width="200px" />
       </Grid>
     </Grid.Container>

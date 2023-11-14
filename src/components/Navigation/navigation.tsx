@@ -59,7 +59,7 @@ const Navigation: React.FC = () => {
   return (
     <>
       <nav className="menu_wrapper">
-        <Container fluid>
+        <Container>
           <div className="menu_sticky">
             <Grid.Container gap={1} justify="center">
               {!isMobile ? (

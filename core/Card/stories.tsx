@@ -22,27 +22,53 @@ export const Default: Story = () => (
 
 export const Hover: Story = () => (
   <Grid.Container gap={2}>
-    <Grid>
-      <Card hoverable>A hover default card.</Card>
+    <Grid xs={12} md={4}>
+      <Card hoverable>A hoverable default card.</Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card hoverable type="primary">
+        A hoverable primary card.
+      </Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card hoverable type="secondary">
+        A hoverable secondary card.
+      </Card>
+    </Grid>
+  </Grid.Container>
+)
+
+export const Border: Story = () => (
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={4}>
+      <Card bordered>A bordered default card.</Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card bordered type="primary">
+        A bordered primary card.
+      </Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card bordered type="secondary">
+        A bordered secondary card.
+      </Card>
     </Grid>
   </Grid.Container>
 )
 
 export const Shadow: Story = () => (
   <Grid.Container gap={2}>
-    <Grid>
-      <Card shadow>
-        <Text h4 my={0}>
-          React is declarative
-        </Text>
-        <Text>
-          React makes it painless to create interactive UIs. Design simple views
-          for each state in your application, and React will efficiently update
-          and render just the right components when your data changes.
-        </Text>
-        <Text>
-          Declarative views make your code more predictable and easier to debug.
-        </Text>
+    <Grid xs={12} md={4}>
+      <Card shadow>A shadow default card.</Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card shadow type="primary">
+        A shadow primary card.
+      </Card>
+    </Grid>
+    <Grid xs={12} md={4}>
+      <Card shadow type="secondary">
+        A shadow secondary card.
       </Card>
     </Grid>
   </Grid.Container>

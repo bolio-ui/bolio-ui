@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { useTheme } from 'core'
+import { useTheme, Text } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
 import { useRouter } from 'next/router'
 import { menuMobile } from 'src/data/menuMobile'
@@ -25,11 +25,9 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
   return (
     <div className="mobile-menu">
       <div className="content">
-        <NextLink href={`/`}>
-          <a className={`menu-item fadein ${pathname === `/` ? 'active' : ''}`}>
-            {'Home'}
-          </a>
-        </NextLink>
+        <Text className={`fadein ${pathname === `/` ? 'active' : ''}`} ml={1}>
+          Documentation
+        </Text>
 
         {menuMobile.map((item, index) => (
           <div
@@ -77,14 +75,30 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
       <style jsx>{`
         .mobile-menu {
           position: fixed;
-          top: 64px;
-          height: 100vh;
-          width: 100vw;
-          overflow-y: auto;
-          z-index: 999;
-          box-sizing: border-box;
-          background-color: ${theme.palette.background};
-          overflow-y: auto;
+          top: 60px;
+          z-index: 1001;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          display: block;
+          margin: 0;
+          width: 100%;
+          /* height: 100vh; */
+          -webkit-transition: height.25s ease;
+          -moz-transition: height.25s ease;
+          -o-transition: height.25s ease;
+          transition: height.25s ease;
+          will-change: height;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+
+          backdrop-filter: saturate(180%) blur(40px);
+          transition: box-shadow 1s ease;
+          transition: backdrop-filter 1s ease;
         }
         .fadein {
           animation: fadeIn 200ms ease;
@@ -102,7 +116,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           outline: none;
           /* border-bottom: 1px solid ${theme.palette.accents_2}; */
           text-transform: capitalize;
-          color: ${theme.palette.accents_6};
+          color: ${theme.palette.accents_7};
           cursor: pointer;
         }
         .menu-item :global(svg) {
@@ -116,7 +130,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           transform: rotate(90deg) translateY(${theme.layout.gapQuarter});
         }
         .group {
-          background: ${theme.palette.accents_1};
+          /* background: ${theme.palette.accents_1}; */
           padding: 1px ${theme.layout.gap} ${theme.layout.gap}
             calc(${theme.layout.gap} * 1.5);
         }
@@ -124,7 +138,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           display: block;
           font-size: 0.75rem;
           text-transform: uppercase;
-          color: ${theme.palette.accents_5};
+          color: ${theme.palette.accents_7};
           margin-top: ${theme.layout.gap};
           margin-bottom: ${theme.layout.gapHalf};
         }

@@ -67,7 +67,7 @@ function TabsItemComponent({
             box-sizing: border-box;
             cursor: pointer;
             outline: 0;
-            text-transform: capitalize;
+            /* text-transform: capitalize; */
             white-space: nowrap;
             background-color: transparent;
             color: ${theme.palette.accents_5};
