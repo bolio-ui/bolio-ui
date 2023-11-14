@@ -16,8 +16,8 @@ export const getColor = (
 ) => {
   const colors: { [key in NormalTypes]: ButtonDropdownColors } = {
     default: {
-      color: palette.accents_5,
-      bgColor: palette.accents_1,
+      color: palette.foreground,
+      bgColor: palette.accents_2,
       borderLeftColor: palette.accents_2,
       hoverBgColor: palette.accents_2,
       hoverBorder: palette.accents_2
@@ -69,8 +69,8 @@ export const getColor = (
   if (disabled)
     return {
       ...colors.default,
-      bgColor: palette.accents_1,
-      color: palette.accents_4
+      bgColor: palette.accents_3,
+      color: palette.accents_5
     }
   return type ? colors[type] : colors.default
 }
