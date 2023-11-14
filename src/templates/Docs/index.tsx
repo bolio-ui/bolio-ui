@@ -26,6 +26,12 @@ export type DocsTemplateProps = {
   meta: Meta
 }
 
+const sidebarItems = {
+  guide: guide,
+  components: components,
+  hooks: hooks
+}
+
 function Docs({ children, meta }: DocsTemplateProps) {
   const router = useRouter()
   const isMobile = useMediaQuery(650)
@@ -55,12 +61,6 @@ function Docs({ children, meta }: DocsTemplateProps) {
   }, [router])
 
   useRegisterActions([homeAction].filter(Boolean))
-
-  const sidebarItems = {
-    guide: guide,
-    components: components,
-    hooks: hooks
-  }
 
   const items = useMemo(() => {
     return sidebarItems[meta.sidebar]

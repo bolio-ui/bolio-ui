@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LiveEditor } from 'react-live'
-import { useTheme, useToasts, useClipboard, Card, Grid } from 'core'
+import { useTheme, useToasts, useClipboard, Card } from 'core'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
 
 interface Props {
