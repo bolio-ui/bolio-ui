@@ -33,11 +33,13 @@ const getGroupBorderColors = (
 
   if (!ghost && type !== 'default') return palette.background
   const colors: { [key in ButtonTypes]?: string } = {
-    default: palette.border,
-    success: palette.success,
+    // default: palette.accents_3,
+    primary: palette.primary,
     secondary: palette.secondary,
+    success: palette.success,
+    warning: palette.warning,
     error: palette.error,
-    warning: palette.warning
+    info: palette.info
   }
 
   const withoutLightType = type?.replace('-light', '') as ButtonTypes

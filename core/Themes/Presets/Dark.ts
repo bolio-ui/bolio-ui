@@ -55,9 +55,9 @@ export const expressiveness: BolioUIThemesExpressiveness = {
   dropdownBoxShadow: '0 0 0 1px #333',
   scrollerStart: 'rgba(255, 255, 255, 1)',
   scrollerEnd: 'rgba(255, 255, 255, 0)',
-  shadowSmall: '0 0 0 1px #333',
-  shadowMedium: '0 0 0 1px #333',
-  shadowLarge: '0 0 0 1px #333',
+  shadowSmall: '0 5px 10px rgba(255, 255, 255, 0.12)',
+  shadowMedium: '0 8px 30px rgba(255, 255, 255, 0.12)',
+  shadowLarge: '0 30px 60px rgba(255, 255, 255, 0.12)',
   portalOpacity: 0.75
 }
 
