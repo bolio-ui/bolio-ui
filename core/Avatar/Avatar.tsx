@@ -124,10 +124,12 @@ function AvatarComponent({
           left: 50%;
           top: 50%;
           font-size: ${SCALES.font(1)};
+          font-weight: bold;
           text-align: center;
           transform: translate(-50%, -50%) scale(0.65);
           white-space: nowrap;
           user-select: none;
+          text-transform: none;
         }
       `}</style>
     </span>

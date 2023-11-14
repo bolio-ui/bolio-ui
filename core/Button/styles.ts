@@ -56,9 +56,9 @@ export const getButtonColors = (
   const { type, disabled, ghost } = props
   const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
     default: {
-      bg: palette.background,
-      border: palette.border,
-      color: palette.accents_5
+      bg: palette.accents_2,
+      border: palette.accents_2,
+      color: palette.foreground
     },
     primary: {
       bg: palette.primary,
@@ -98,9 +98,9 @@ export const getButtonColors = (
   }
   if (disabled)
     return {
-      bg: palette.accents_1,
-      border: palette.accents_2,
-      color: '#ccc'
+      bg: palette.accents_3,
+      border: palette.accents_3,
+      color: palette.accents_5
     }
 
   /**
@@ -230,7 +230,7 @@ export const getButtonHoverColors = (
   }
   if (disabled)
     return {
-      bg: palette.accents_1,
+      bg: palette.accents_2,
       border: palette.accents_2,
       color: '#ccc'
     }
@@ -285,5 +285,5 @@ export const getButtonDripColor = (
   const hoverColors = getButtonHoverColors(palette, props)
   return isLightHover
     ? addColorAlpha(hoverColors.bg, 0.65)
-    : addColorAlpha(palette.accents_2, 0.65)
+    : addColorAlpha(palette.accents_3, 0.65)
 }

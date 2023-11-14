@@ -134,23 +134,24 @@ const TextareaComponent = React.forwardRef<
             border-color: ${hoverBorder};
           }
           .wrapper.disabled {
-            background-color: ${theme.palette.accents_1};
-            border-color: ${theme.palette.accents_2};
+            background-color: ${theme.palette.accents_2};
+            border-color: ${theme.palette.accents_3};
             cursor: not-allowed;
           }
           textarea {
-            background-color: transparent;
+            background-color: ${theme.palette.accents_1};
             box-shadow: none;
             display: block;
             font-family: ${theme.font.sans};
             font-size: var(--textarea-font-size);
             width: 100%;
-            height: var(--textarea-height);
+            /* height: var(--textarea-height); */
             border: none;
             outline: none;
             padding: ${SCALES.pt(0.5)} ${SCALES.pr(0.5)} ${SCALES.pb(0.5)}
               ${SCALES.pl(0.5)};
             resize: ${resize};
+            border-radius: ${theme.layout.radius};
           }
           .disabled > textarea {
             cursor: not-allowed;

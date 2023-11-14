@@ -18,7 +18,7 @@ export type BadgeProps = Props & NativeAttrs
 
 const getBgColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
   const colors: { [key in NormalTypes]: string } = {
-    default: palette.foreground,
+    default: palette.accents_2,
     secondary: palette.secondary,
     primary: palette.primary,
     success: palette.success,
@@ -45,9 +45,9 @@ function BadgeComponent({
   )
 
   const color = useMemo(() => {
-    if (!type || type === 'default') return theme.palette.background
-    return 'white'
-  }, [type, theme.palette.background])
+    if (!type || type === 'default') return theme.palette.foreground
+    return '#FFFFFF'
+  }, [type, theme.palette.foreground])
 
   const classes = useClasses('badge', { dot }, className)
 
@@ -65,7 +65,8 @@ function BadgeComponent({
           color: ${color};
           border: 0;
           font-size: ${SCALES.font(0.875)};
-          font-weight: 500;
+          font-weight: bold;
+          text-transform: none;
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
           padding: ${SCALES.pt(0.5)};

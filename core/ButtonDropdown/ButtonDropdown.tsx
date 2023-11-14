@@ -75,12 +75,12 @@ function ButtonDropdownComponent({
     loading
   }
   const bgColor = useMemo(() => {
-    if (disabled || loading) return theme.palette.accents_1
+    if (disabled || loading) return theme.palette.accents_3
     return visible ? colors.hoverBgColor : colors.bgColor
   }, [
     disabled,
     loading,
-    theme.palette.accents_1,
+    theme.palette.accents_3,
     visible,
     colors.hoverBgColor,
     colors.bgColor
@@ -108,7 +108,8 @@ function ButtonDropdownComponent({
                 <span
                   className="dropdown-icon"
                   style={{
-                    color: colors.color,
+                    color:
+                      disabled || loading ? theme.palette.error : colors.color,
                     height: SCALES.height(2.5),
                     width: SCALES.height(2.5)
                   }}
@@ -117,7 +118,9 @@ function ButtonDropdownComponent({
                 </span>
               ) : (
                 <ButtonDropdownIcon
-                  color={colors.color}
+                  color={
+                    disabled || loading ? theme.palette.accents_4 : colors.color
+                  }
                   height={SCALES.height(2.5)}
                 />
               )}
@@ -130,7 +133,7 @@ function ButtonDropdownComponent({
             display: inline-flex;
             position: relative;
             box-sizing: border-box;
-            border: 1px solid ${theme.palette.border};
+            /* border: 1px solid ${colors.borderLeftColor}; */
             border-radius: ${theme.layout.radius};
             --bolio-ui-dropdown-height: ${SCALES.height(2.5)};
             --bolio-ui-dropdown-min-width: ${auto
@@ -168,7 +171,7 @@ function ButtonDropdownComponent({
             color: ${colors.color};
             background-color: ${bgColor};
             height: ${SCALES.height(2.5)};
-            border-left: 1px solid ${colors.borderLeftColor};
+            /* border-left: 1px solid ${colors.borderLeftColor}; */
             cursor: ${disabled || loading ? 'not-allowed' : 'pointer'};
             display: flex;
             justify-content: center;
@@ -190,7 +193,7 @@ function ButtonDropdownComponent({
             z-index: 90;
             width: 100%;
             border-radius: ${theme.layout.radius};
-            box-shadow: ${theme.expressiveness.shadowLarge};
+            box-shadow: ${theme.expressiveness.shadowSmall};
             transform: translateY(${theme.layout.gapHalf});
             background-color: ${theme.palette.background};
           }

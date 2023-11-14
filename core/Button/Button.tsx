@@ -164,7 +164,7 @@ const ButtonComponent = React.forwardRef<
           box-sizing: border-box;
           display: inline-block;
           border-radius: ${rounded ? '25px' : theme.layout.radius};
-          font-weight: 500;
+          font-weight: bold;
           font-size: ${SCALES.font(0.875)};
           user-select: none;
           outline: none;
@@ -197,9 +197,9 @@ const ButtonComponent = React.forwardRef<
 
         .btn:hover,
         .btn:focus {
-          color: ${hover.color};
-          --bolio-ui-button-color: ${hover.color};
-          background-color: ${hover.bg};
+          /* color: ${hover.color}; */
+          /* --bolio-ui-button-color: ${hover.color}; */
+          /* background-color: ${hover.bg}; */
           /* border-color: ${hover.border}; */
           cursor: ${cursor};
           pointer-events: ${events};

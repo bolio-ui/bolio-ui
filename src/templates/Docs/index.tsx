@@ -26,6 +26,12 @@ export type DocsTemplateProps = {
   meta: Meta
 }
 
+const sidebarItems = {
+  guide: guide,
+  components: components,
+  hooks: hooks
+}
+
 function Docs({ children, meta }: DocsTemplateProps) {
   const router = useRouter()
   const isMobile = useMediaQuery(650)
@@ -56,19 +62,11 @@ function Docs({ children, meta }: DocsTemplateProps) {
 
   useRegisterActions([homeAction].filter(Boolean))
 
-  const sidebarItems = {
-    guide: guide,
-    components: components,
-    hooks: hooks
-  }
-
   const items = useMemo(() => {
     return sidebarItems[meta.sidebar]
   }, [meta.sidebar])
 
-  const currentPostIndex = items.findIndex(
-    (p) => p.name === title && p.url !== ''
-  )
+  const currentPostIndex = items.findIndex((p) => p.name === title)
   const nextPost = items[currentPostIndex + 1] ?? null
   const prevPost = items[currentPostIndex - 1] ?? null
 

@@ -113,7 +113,7 @@ function CheckboxComponent({
       <span className="text">{children}</span>
       <style jsx>{`
         .checkbox {
-          --checkbox-size: ${SCALES.font(0.875)};
+          --checkbox-size: ${SCALES.font(1)};
           display: inline-flex;
           justify-content: center;
           align-items: center;
