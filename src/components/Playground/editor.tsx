@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LiveEditor } from 'react-live'
-import { useTheme, useToasts, useClipboard } from 'core'
+import { useTheme, useToasts, useClipboard, Card, Grid } from 'core'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
 
 interface Props {
@@ -9,9 +9,12 @@ interface Props {
 
 const Editor: React.FC<Props> = ({ code }) => {
   const theme = useTheme()
+
   const { copy } = useClipboard()
-  const [visible, setVisible] = useState(false)
   const { setToast } = useToasts()
+
+  const [visible, setVisible] = useState(true)
+
   const clickHandler = (event: React.MouseEvent) => {
     event.stopPropagation()
     event.preventDefault()
@@ -27,14 +30,14 @@ const Editor: React.FC<Props> = ({ code }) => {
 
   return (
     <div className="editor">
-      <details open={visible}>
-        <summary onClick={clickHandler}>
-          <div className="summary-safari">
+      <Card bordered style={{ background: 'none' }}>
+        <Card.Content onClick={clickHandler} px={0} py={0}>
+          <div className="open-header">
             <div className="action">
               <span className="arrow">
                 <ChevronRight fontSize={16} />
               </span>
-              <span>{'Show code edit'}</span>
+              <span>{visible ? 'Hide code edit' : 'Show code edit'}</span>
             </div>
             <div className="action">
               {visible && (
@@ -48,38 +51,12 @@ const Editor: React.FC<Props> = ({ code }) => {
               )}
             </div>
           </div>
-        </summary>
-        <div className="area">
-          <LiveEditor />
-        </div>
-      </details>
+        </Card.Content>
+        {visible && <LiveEditor />}
+      </Card>
 
       <style jsx>{`
-        .editor {
-          border-top-left-radius: ${theme.layout.radius};
-          border-top-right-radius: ${theme.layout.radius};
-        }
-
-        details {
-          transition: all 0.2s ease;
-          overflow: hidden;
-          border-radius: ${theme.layout.radius};
-        }
-
-        details summary::-webkit-details-marker {
-          display: none;
-        }
-
-        summary {
-          box-sizing: border-box;
-          color: #ffffff;
-          width: 100%;
-          list-style: none;
-          user-select: none;
-          outline: none;
-        }
-
-        .summary-safari {
+        .open-header {
           box-sizing: border-box;
           display: flex;
           justify-content: space-between;
@@ -87,7 +64,7 @@ const Editor: React.FC<Props> = ({ code }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gapHalf};
-          background-color: ${theme.palette.pre};
+          /* background-color: ${theme.palette.pre}; */
         }
 
         summary :global(svg) {
