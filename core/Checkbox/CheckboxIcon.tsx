@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import useTheme from '../use-theme'
 import useScale from '../use-scale'
 
 interface Props {
@@ -11,9 +10,8 @@ interface Props {
 
 function CheckboxIconComponent({ fill, bg, disabled, checked }: Props) {
   const { SCALES } = useScale()
-  const theme = useTheme()
 
-  const { propsFill, propsBg } = useMemo(() => {
+  const { propsFill } = useMemo(() => {
     return {
       propsFill: fill,
       propsBg: bg
