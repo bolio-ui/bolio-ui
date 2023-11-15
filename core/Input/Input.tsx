@@ -59,6 +59,7 @@ const InputComponent = React.forwardRef<
       rounded,
       backgroundColor,
       borderColor,
+      hoverBorder,
       ...props
     }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
@@ -82,11 +83,13 @@ const InputComponent = React.forwardRef<
       [icon, iconRight]
     )
 
-    const {
-      color,
-      borderColor: borderColorThemed,
-      hoverBorder
-    } = useMemo(() => getColors(theme.palette, type), [theme.palette, type])
+    // const {
+    //   color,
+    //   borderColor: borderColorThemed,
+    //   hoverBorder
+    // } = useMemo(() => getColors(theme.palette, type), [theme.palette, type])
+
+    const colors = getColors(theme.palette, type)
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled || readOnly) return
@@ -211,11 +214,17 @@ const InputComponent = React.forwardRef<
             flex: 1;
             user-select: none;
             border-radius: ${rounded ? '25px' : theme.layout.radius};
-            border: 1px solid ${borderColor ? borderColor : borderColorThemed};
+            border: 1px solid ${borderColor ? borderColor : colors.borderColor};
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
+            background: ${backgroundColor ? backgroundColor : colors.bgColor};
+          }
+
+          .input-wrapper.active,
+          .input-wrapper:hover {
+            border: 1px solid ${hoverBorder ? hoverBorder : colors.hoverBorder};
             background: ${backgroundColor
               ? backgroundColor
-              : theme.palette.accents_1};
+              : colors.hoverBgColor};
           }
 
           .input-wrapper.left-label {
@@ -238,7 +247,7 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.hover {
-            border-color: ${hoverBorder};
+            border-color: ${colors.hoverBorder};
           }
 
           input {
@@ -248,7 +257,7 @@ const InputComponent = React.forwardRef<
             font-size: ${SCALES.font(0.875)};
             background-color: transparent;
             border: none;
-            color: ${color};
+            color: ${colors.color};
             outline: none;
             border-radius: 0;
             width: 100%;
@@ -280,7 +289,7 @@ const InputComponent = React.forwardRef<
           input:-webkit-autofill:active,
           input:-webkit-autofill:focus {
             -webkit-box-shadow: 0 0 0 30px ${theme.palette.background} inset !important;
-            -webkit-text-fill-color: ${color} !important;
+            -webkit-text-fill-color: ${colors.color} !important;
           }
         `}</style>
       </div>

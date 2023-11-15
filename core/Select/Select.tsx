@@ -108,7 +108,7 @@ const SelectComponent = React.forwardRef<
       return value.length === 0
     }, [value])
 
-    const { border, borderActive, iconBorder, placeholderColor } = useMemo(
+    const colors = useMemo(
       () => getColors(theme.palette, type),
       [theme.palette, type]
     )
@@ -254,12 +254,13 @@ const SelectComponent = React.forwardRef<
               overflow: hidden;
               transition: border 150ms ease-in 0s, color 200ms ease-out 0s,
                 box-shadow 200ms ease 0s;
-              border: 1px solid ${border};
+              border: 1px solid ${colors.borderColor};
               border-radius: ${theme.layout.radius};
 
               background-color: ${disabled
-                ? theme.palette.accents_1
-                : theme.palette.background};
+                ? theme.palette.accents_3
+                : colors.bgColor};
+
               --select-font-size: ${SCALES.font(0.875)};
               --select-height: ${SCALES.height(2.25)};
               min-width: 11.5em;
@@ -280,12 +281,17 @@ const SelectComponent = React.forwardRef<
 
             .select.active,
             .select:hover {
-              border-color: ${disabled ? theme.palette.border : borderActive};
+              border-color: ${disabled
+                ? theme.palette.border
+                : colors.hoverBorder};
+              background-color: ${disabled
+                ? theme.palette.border
+                : colors.hoverBgColor};
             }
 
             .select.active.icon,
             .select:hover .icon {
-              color: ${disabled ? theme.palette.accents_5 : borderActive};
+              color: ${disabled ? theme.palette.accents_5 : colors.color};
             }
 
             .value {
@@ -297,9 +303,7 @@ const SelectComponent = React.forwardRef<
               padding: 0;
               margin-right: 1.25em;
               font-size: var(--select-font-size);
-              color: ${disabled
-                ? theme.palette.accents_4
-                : theme.palette.foreground};
+              color: ${disabled ? theme.palette.accents_4 : colors.color};
               width: calc(100% - 1.25em);
             }
 
@@ -313,7 +317,8 @@ const SelectComponent = React.forwardRef<
             }
 
             .placeholder {
-              color: ${placeholderColor};
+              color: ${colors.color};
+              font-size: ${SCALES.font(0.775)};
             }
 
             .icon {
@@ -327,7 +332,7 @@ const SelectComponent = React.forwardRef<
               transition: transform 200ms ease;
               display: flex;
               align-items: center;
-              color: ${iconBorder};
+              color: ${colors.color};
             }
           `}</style>
         </div>

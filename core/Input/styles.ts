@@ -3,7 +3,9 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 
 export type InputColor = {
   color: string
+  bgColor: string
   borderColor: string
+  hoverBgColor: string
   hoverBorder: string
 }
 
@@ -14,37 +16,51 @@ export const getColors = (
   const colors: { [key in NormalTypes]: InputColor } = {
     default: {
       color: palette.foreground,
-      borderColor: palette.accents_2,
-      hoverBorder: palette.accents_3
+      bgColor: palette.accents_2,
+      borderColor: palette.accents_3,
+      hoverBgColor: palette.accents_2,
+      hoverBorder: palette.accents_6
     },
     primary: {
-      color: palette.primary,
-      borderColor: palette.primary,
+      color: palette.primaryDark,
+      bgColor: palette.primaryLighter,
+      borderColor: palette.primaryDark,
+      hoverBgColor: palette.primaryLight,
       hoverBorder: palette.primary
     },
     secondary: {
-      color: palette.secondary,
-      borderColor: palette.secondary,
+      color: palette.secondaryDark,
+      bgColor: palette.secondaryLighter,
+      borderColor: palette.secondaryDark,
+      hoverBgColor: palette.secondaryLight,
       hoverBorder: palette.secondary
     },
     success: {
-      color: palette.success,
-      borderColor: palette.success,
+      color: palette.successDark,
+      bgColor: palette.successLighter,
+      borderColor: palette.successDark,
+      hoverBgColor: palette.successLight,
       hoverBorder: palette.success
     },
     warning: {
-      color: palette.warning,
-      borderColor: palette.warning,
+      color: palette.warningDark,
+      bgColor: palette.warningLighter,
+      borderColor: palette.warningDark,
+      hoverBgColor: palette.warningLight,
       hoverBorder: palette.warning
     },
     error: {
-      color: palette.error,
-      borderColor: palette.error,
+      color: palette.errorDark,
+      bgColor: palette.errorLighter,
+      borderColor: palette.errorDark,
+      hoverBgColor: palette.errorLight,
       hoverBorder: palette.error
     },
     info: {
-      color: palette.info,
-      borderColor: palette.info,
+      color: palette.infoDark,
+      bgColor: palette.infoLighter,
+      borderColor: palette.infoDark,
+      hoverBgColor: palette.infoLight,
       hoverBorder: palette.info
     }
   }

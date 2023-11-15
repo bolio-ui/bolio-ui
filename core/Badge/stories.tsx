@@ -50,7 +50,7 @@ export const CustomColor: Story = () => {
   return (
     <Grid.Container gap={2}>
       <Grid>
-        <Badge style={{ backgroundColor: theme.palette.successLight }}>
+        <Badge style={{ backgroundColor: theme.palette.successDark }}>
           Success Light
         </Badge>
       </Grid>
