@@ -54,8 +54,8 @@ function SelectOptionComponent({
   }, [identValue, value])
 
   const bgColor = useMemo(() => {
-    if (isDisabled) return theme.palette.accents_1
-    return selected ? theme.palette.accents_2 : theme.palette.background
+    if (isDisabled) return theme.palette.accents_3
+    return selected ? theme.palette.accents_3 : theme.palette.accents_2
   }, [selected, isDisabled, theme.palette])
 
   const hoverBgColor = useMemo(() => {
@@ -112,7 +112,7 @@ function SelectOptionComponent({
         .divider {
           line-height: 0;
           overflow: hidden;
-          border-top: 1px solid ${theme.palette.border};
+          border-top: 1px solid ${theme.palette.accents_3};
           width: ${SCALES.width(1, '100%')};
           height: ${SCALES.height(1, 0)};
           padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
@@ -123,7 +123,7 @@ function SelectOptionComponent({
 
         .label {
           color: ${theme.palette.accents_7};
-          border-bottom: 1px solid ${theme.palette.border};
+          border-bottom: 1px solid ${theme.palette.accents_3};
           text-transform: capitalize;
           cursor: default;
           font-size: ${SCALES.font(0.875)};

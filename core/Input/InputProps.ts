@@ -25,6 +25,7 @@ export interface Props {
   autoComplete?: string
   backgroundColor?: string
   borderColor?: string
+  hoverBorder?: string
   rounded?: boolean
 }
 

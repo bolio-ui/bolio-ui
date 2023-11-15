@@ -133,7 +133,7 @@ function ButtonDropdownComponent({
             display: inline-flex;
             position: relative;
             box-sizing: border-box;
-            /* border: 1px solid ${colors.borderLeftColor}; */
+            border: 1px solid ${colors.borderColor};
             border-radius: ${theme.layout.radius};
             --bolio-ui-dropdown-height: ${SCALES.height(2.5)};
             --bolio-ui-dropdown-min-width: ${auto
@@ -142,6 +142,10 @@ function ButtonDropdownComponent({
             --bolio-ui-dropdown-padding: ${SCALES.pt(0)} ${paddingRight}
               ${SCALES.pb(0)} ${paddingLeft};
             --bolio-ui-dropdown-font-size: ${SCALES.font(0.875)};
+          }
+
+          .btn-dropdown:hover {
+            border: 1px solid ${colors.hoverBorder};
           }
 
           .btn-dropdown > :global(button) {
