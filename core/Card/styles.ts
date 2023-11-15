@@ -61,7 +61,7 @@ export const getStyles = (
   }
   const showBorder = type === 'default' && !isShadow
   return {
-    ...colors[type]
-    // borderColor: showBorder ? palette.border : 'transparent'
+    ...colors[type],
+    borderColor: showBorder ? palette.border : 'transparent'
   }
 }
