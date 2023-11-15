@@ -19,34 +19,34 @@ export const getStyles = (
       borderColor: palette.accents_2
     },
     primary: {
-      color: palette.primaryLighter,
-      bgColor: palette.primaryDark,
-      borderColor: palette.primaryLighter
+      color: palette.primaryDark,
+      bgColor: palette.primaryLighter,
+      borderColor: palette.primaryDark
     },
     secondary: {
-      color: palette.secondaryLighter,
-      bgColor: palette.secondaryDark,
-      borderColor: palette.secondaryLighter
+      color: palette.secondaryDark,
+      bgColor: palette.secondaryLighter,
+      borderColor: palette.secondaryDark
     },
     success: {
-      color: palette.successLighter,
-      bgColor: palette.successDark,
-      borderColor: palette.successLighter
+      color: palette.successDark,
+      bgColor: palette.successLighter,
+      borderColor: palette.successDark
     },
     warning: {
-      color: palette.warningLighter,
-      bgColor: palette.warningDark,
-      borderColor: palette.warningLighter
+      color: palette.warningDark,
+      bgColor: palette.warningLighter,
+      borderColor: palette.warningDark
     },
     error: {
-      color: palette.errorLighter,
-      bgColor: palette.errorDark,
-      borderColor: palette.errorLighter
+      color: palette.errorDark,
+      bgColor: palette.errorLighter,
+      borderColor: palette.errorDark
     },
     info: {
-      color: palette.infoLighter,
-      bgColor: palette.infoDark,
-      borderColor: palette.infoLighter
+      color: palette.infoDark,
+      bgColor: palette.infoLighter,
+      borderColor: palette.infoDark
     },
     dark: {
       color: palette.background,

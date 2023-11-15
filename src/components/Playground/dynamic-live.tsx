@@ -18,7 +18,7 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
 
   return (
     <LiveProvider code={code} scope={scope} theme={codeTheme}>
-      <Tabs initialValue="1" hideDivider>
+      <Tabs initialValue="1" hideDivider hideBorder>
         <Tabs.Item label="Preview" value="1">
           <Card bordered style={{ background: 'none' }}>
             <div className="wrapper">

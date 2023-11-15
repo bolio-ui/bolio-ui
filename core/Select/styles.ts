@@ -2,10 +2,11 @@ import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 
 export type SelectColor = {
-  border: string
-  borderActive: string
-  iconBorder: string
-  placeholderColor: string
+  color: string
+  bgColor: string
+  borderColor: string
+  hoverBgColor: string
+  hoverBorder: string
 }
 
 export const getColors = (
@@ -14,46 +15,53 @@ export const getColors = (
 ): SelectColor => {
   const colors: { [key in NormalTypes]: SelectColor } = {
     default: {
-      border: palette.border,
-      borderActive: palette.foreground,
-      iconBorder: palette.accents_5,
-      placeholderColor: palette.accents_3
+      color: palette.foreground,
+      bgColor: palette.accents_2,
+      borderColor: palette.accents_3,
+      hoverBgColor: palette.accents_2,
+      hoverBorder: palette.accents_6
     },
     primary: {
-      border: palette.primary,
-      borderActive: palette.primary,
-      iconBorder: palette.primary,
-      placeholderColor: palette.accents_3
+      color: palette.primaryDark,
+      bgColor: palette.primaryLighter,
+      borderColor: palette.primaryDark,
+      hoverBgColor: palette.primaryLight,
+      hoverBorder: palette.primary
     },
     secondary: {
-      border: palette.secondary,
-      borderActive: palette.secondary,
-      iconBorder: palette.secondary,
-      placeholderColor: palette.accents_3
+      color: palette.secondaryDark,
+      bgColor: palette.secondaryLighter,
+      borderColor: palette.secondaryDark,
+      hoverBgColor: palette.secondaryLight,
+      hoverBorder: palette.secondary
     },
     success: {
-      border: palette.success,
-      borderActive: palette.success,
-      iconBorder: palette.success,
-      placeholderColor: palette.accents_3
+      color: palette.successDark,
+      bgColor: palette.successLighter,
+      borderColor: palette.successDark,
+      hoverBgColor: palette.successLight,
+      hoverBorder: palette.success
     },
     warning: {
-      border: palette.warning,
-      borderActive: palette.warning,
-      iconBorder: palette.warning,
-      placeholderColor: palette.accents_3
+      color: palette.warningDark,
+      bgColor: palette.warningLighter,
+      borderColor: palette.warningDark,
+      hoverBgColor: palette.warningLight,
+      hoverBorder: palette.warning
     },
     error: {
-      border: palette.error,
-      borderActive: palette.error,
-      iconBorder: palette.error,
-      placeholderColor: palette.error
+      color: palette.errorDark,
+      bgColor: palette.errorLighter,
+      borderColor: palette.errorDark,
+      hoverBgColor: palette.errorLight,
+      hoverBorder: palette.error
     },
     info: {
-      border: palette.info,
-      borderActive: palette.info,
-      iconBorder: palette.info,
-      placeholderColor: palette.accents_3
+      color: palette.infoDark,
+      bgColor: palette.infoLighter,
+      borderColor: palette.infoDark,
+      hoverBgColor: palette.infoLight,
+      hoverBorder: palette.info
     }
   }
 

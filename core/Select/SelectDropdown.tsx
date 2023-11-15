@@ -57,7 +57,7 @@ const SelectDropdown = React.forwardRef<
             .select-dropdown {
               border-radius: ${theme.layout.radius};
               box-shadow: ${theme.expressiveness.shadowLarge};
-              background-color: ${theme.palette.background};
+              background-color: ${theme.palette.accents_2};
               max-height: 17em;
               overflow-y: auto;
               overflow-anchor: none;

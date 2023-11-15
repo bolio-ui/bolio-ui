@@ -66,10 +66,12 @@ const TextareaComponent = React.forwardRef<
     const isControlledComponent = useMemo(() => value !== undefined, [value])
     const [selfValue, setSelfValue] = useState<string>(initialValue)
     const [hover, setHover] = useState<boolean>(false)
-    const { color, borderColor, hoverBorder } = useMemo(
+
+    const colors = useMemo(
       () => getColors(theme.palette, type),
       [theme.palette, type]
     )
+
     const classes = useClasses('wrapper', { hover, disabled }, className)
 
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -118,8 +120,8 @@ const TextareaComponent = React.forwardRef<
             box-sizing: border-box;
             user-select: none;
             border-radius: ${theme.layout.radius};
-            border: 1px solid ${borderColor};
-            color: ${color};
+            border: 1px solid ${colors.borderColor};
+            color: ${colors.color};
             transition: border 0.2s ease 0s, color 0.2s ease 0s;
             min-width: 12.5rem;
             max-width: 95vw;
@@ -130,16 +132,20 @@ const TextareaComponent = React.forwardRef<
             margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
               ${SCALES.ml(0)};
           }
+
           .wrapper.hover {
-            border-color: ${hoverBorder};
+            border-color: ${colors.hoverBorder};
+            background-color: ${colors.hoverBgColor};
           }
+
           .wrapper.disabled {
             background-color: ${theme.palette.accents_2};
             border-color: ${theme.palette.accents_3};
             cursor: not-allowed;
           }
+
           textarea {
-            background-color: ${theme.palette.accents_1};
+            background-color: ${colors.bgColor};
             box-shadow: none;
             display: block;
             font-family: ${theme.font.sans};
@@ -155,6 +161,11 @@ const TextareaComponent = React.forwardRef<
           }
           .disabled > textarea {
             cursor: not-allowed;
+          }
+          textarea.active,
+          textarea:hover {
+            border-color: ${colors.hoverBorder};
+            background: ${colors.hoverBgColor};
           }
           textarea:-webkit-autofill,
           textarea:-webkit-autofill:hover,
