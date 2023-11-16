@@ -3,7 +3,7 @@ import useTheme from '../use-theme'
 
 export interface InputBlockLabelLabel {
   children?: ReactNode
-  error?: string
+  error?: boolean
 }
 
 function InputBlockLabelComponent({ children, error }: InputBlockLabelLabel) {
