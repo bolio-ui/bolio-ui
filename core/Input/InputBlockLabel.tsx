@@ -3,9 +3,10 @@ import useTheme from '../use-theme'
 
 export interface InputBlockLabelLabel {
   children?: ReactNode
+  error?: boolean
 }
 
-function InputBlockLabelComponent({ children }: InputBlockLabelLabel) {
+function InputBlockLabelComponent({ children, error }: InputBlockLabelLabel) {
   const theme = useTheme()
 
   return (
@@ -15,10 +16,11 @@ function InputBlockLabelComponent({ children }: InputBlockLabelLabel) {
         label {
           display: block;
           font-weight: normal;
-          color: ${theme.palette.accents_6};
+          color: ${error ? theme.palette.error : theme.palette.accents_6};
           padding: 0 0 0 1px;
-          margin-bottom: 0.5em;
-          font-size: 1em;
+          margin-bottom: ${error ? 0 : '0.5em'};
+          margin-tp[]: ${error ? '1em' : 0};
+          font-size: ${error ? '0.775rem' : '1em'};
           line-height: 1.5;
         }
 
