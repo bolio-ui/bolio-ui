@@ -83,13 +83,10 @@ const InputComponent = React.forwardRef<
       [icon, iconRight]
     )
 
-    // const {
-    //   color,
-    //   borderColor: borderColorThemed,
-    //   hoverBorder
-    // } = useMemo(() => getColors(theme.palette, type), [theme.palette, type])
-
-    const colors = getColors(theme.palette, type)
+    const colors = useMemo(
+      () => getColors(theme.palette, type, disabled),
+      [theme.palette, type, disabled]
+    )
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled || readOnly) return
@@ -238,7 +235,6 @@ const InputComponent = React.forwardRef<
           }
 
           .input-wrapper.disabled {
-            background-color: ${theme.palette.accents_2};
             cursor: not-allowed;
           }
 
