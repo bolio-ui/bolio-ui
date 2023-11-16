@@ -17,10 +17,10 @@ export const getColors = (
   const colors: { [key in NormalTypes]: SelectColor } = {
     default: {
       color: palette.foreground,
-      bgColor: palette.accents_2,
-      borderColor: palette.accents_3,
-      hoverBgColor: palette.accents_2,
-      hoverBorder: palette.accents_5
+      bgColor: palette.accents_1,
+      borderColor: palette.accents_2,
+      hoverBgColor: palette.accents_1,
+      hoverBorder: palette.accents_4
     },
     primary: {
       color: palette.primaryDark,
@@ -68,11 +68,11 @@ export const getColors = (
 
   if (disabled)
     return {
-      color: palette.accents_5,
-      bgColor: palette.accents_3,
-      borderColor: palette.accents_4,
-      hoverBgColor: palette.accents_3,
-      hoverBorder: palette.accents_4
+      color: palette.accents_6,
+      bgColor: palette.accents_2,
+      borderColor: palette.accents_3,
+      hoverBgColor: palette.accents_2,
+      hoverBorder: palette.accents_3
     }
 
   if (!status) return colors.default
