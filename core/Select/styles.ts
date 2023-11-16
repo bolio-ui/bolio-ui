@@ -20,7 +20,7 @@ export const getColors = (
       bgColor: palette.accents_2,
       borderColor: palette.accents_3,
       hoverBgColor: palette.accents_2,
-      hoverBorder: palette.accents_6
+      hoverBorder: palette.accents_5
     },
     primary: {
       color: palette.primaryDark,
