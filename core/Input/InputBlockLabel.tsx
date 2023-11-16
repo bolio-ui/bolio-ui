@@ -18,9 +18,9 @@ function InputBlockLabelComponent({ children, error }: InputBlockLabelLabel) {
           font-weight: normal;
           color: ${error ? theme.palette.error : theme.palette.accents_6};
           padding: 0 0 0 1px;
-          margin-bottom: 0.5em;
-          margin-bottom: ${error && '0.5em'};
-          font-size: ${error ? '0.875rem' : '1em'};
+          margin-bottom: ${error ? 0 : '0.5em'};
+          margin-tp[]: ${error ? '1em' : 0};
+          font-size: ${error ? '0.775rem' : '1em'};
           line-height: 1.5;
         }
 
