@@ -27,6 +27,7 @@ export interface Props {
   borderColor?: string
   hoverBorder?: string
   rounded?: boolean
+  error?: string
 }
 
 export const defaultProps = {

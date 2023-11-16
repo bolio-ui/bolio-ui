@@ -60,6 +60,7 @@ const InputComponent = React.forwardRef<
       backgroundColor,
       borderColor,
       hoverBorder,
+      error,
       ...props
     }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
@@ -182,6 +183,7 @@ const InputComponent = React.forwardRef<
           </div>
           {labelRight && <InputLabel isRight={true}>{labelRight}</InputLabel>}
         </div>
+        {error && <InputBlockLabel error={error}>{error}</InputBlockLabel>}
         <style jsx>{`
           .with-label {
             display: inline-block;
