@@ -109,8 +109,8 @@ const SelectComponent = React.forwardRef<
     }, [value])
 
     const colors = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
+      () => getColors(theme.palette, type, disabled),
+      [theme.palette, type, disabled]
     )
 
     const updateVisible = (next: boolean) => {
@@ -256,11 +256,7 @@ const SelectComponent = React.forwardRef<
                 box-shadow 200ms ease 0s;
               border: 1px solid ${colors.borderColor};
               border-radius: ${theme.layout.radius};
-
-              background-color: ${disabled
-                ? theme.palette.accents_3
-                : colors.bgColor};
-
+              background-color: ${colors.bgColor};
               --select-font-size: ${SCALES.font(0.875)};
               --select-height: ${SCALES.height(2.25)};
               min-width: 11.5em;
@@ -281,17 +277,13 @@ const SelectComponent = React.forwardRef<
 
             .select.active,
             .select:hover {
-              border-color: ${disabled
-                ? theme.palette.border
-                : colors.hoverBorder};
-              background-color: ${disabled
-                ? theme.palette.border
-                : colors.hoverBgColor};
+              border-color: ${colors.hoverBorder};
+              background-color: ${colors.hoverBgColor};
             }
 
             .select.active.icon,
             .select:hover .icon {
-              color: ${disabled ? theme.palette.accents_5 : colors.color};
+              color: ${colors.color};
             }
 
             .value {
@@ -303,7 +295,7 @@ const SelectComponent = React.forwardRef<
               padding: 0;
               margin-right: 1.25em;
               font-size: var(--select-font-size);
-              color: ${disabled ? theme.palette.accents_4 : colors.color};
+              color: ${colors.color};
               width: calc(100% - 1.25em);
             }
 

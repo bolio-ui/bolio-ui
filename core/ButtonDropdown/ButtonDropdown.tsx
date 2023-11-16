@@ -133,7 +133,7 @@ function ButtonDropdownComponent({
             display: inline-flex;
             position: relative;
             box-sizing: border-box;
-            border: 1px solid ${colors.borderColor};
+            /* border: 1px solid ${colors.borderColor}; */
             border-radius: ${theme.layout.radius};
             --bolio-ui-dropdown-height: ${SCALES.height(2.5)};
             --bolio-ui-dropdown-min-width: ${auto
@@ -144,9 +144,9 @@ function ButtonDropdownComponent({
             --bolio-ui-dropdown-font-size: ${SCALES.font(0.875)};
           }
 
-          .btn-dropdown:hover {
+          /* .btn-dropdown:hover {
             border: 1px solid ${colors.hoverBorder};
-          }
+          } */
 
           .btn-dropdown > :global(button) {
             border-top-left-radius: ${theme.layout.radius};
@@ -185,10 +185,10 @@ function ButtonDropdownComponent({
             transition: background 0.2s ease 0s, border-color 0.2s ease 0s;
           }
 
-          summary:hover {
+          /* summary:hover {
             border-color: ${colors.hoverBorder};
             background-color: ${colors.hoverBgColor};
-          }
+          } */
 
           .content {
             position: absolute;
