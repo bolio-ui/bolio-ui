@@ -75,12 +75,12 @@ function ButtonDropdownComponent({
     loading
   }
   const bgColor = useMemo(() => {
-    if (disabled || loading) return theme.palette.accents_3
+    if (disabled || loading) return theme.palette.accents_2
     return visible ? colors.hoverBgColor : colors.bgColor
   }, [
     disabled,
     loading,
-    theme.palette.accents_3,
+    theme.palette.accents_2,
     visible,
     colors.hoverBgColor,
     colors.bgColor
