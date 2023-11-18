@@ -98,9 +98,9 @@ export const getButtonColors = (
   }
   if (disabled)
     return {
-      bg: palette.accents_3,
-      border: palette.accents_3,
-      color: palette.accents_5
+      bg: palette.accents_2,
+      border: palette.accents_2,
+      color: palette.accents_4
     }
 
   /**

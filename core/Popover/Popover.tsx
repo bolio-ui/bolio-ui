@@ -14,7 +14,7 @@ export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
 
 interface Props {
-  content?: React.ReactNode | (() => React.ReactNode)
+  content?: React.ReactNode | (() => React.ReactNode) | string
   trigger?: PopoverTriggerTypes
   placement?: Placement
   disableItemsAutoClose?: boolean
