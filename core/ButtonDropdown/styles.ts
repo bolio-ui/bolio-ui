@@ -77,12 +77,12 @@ export const getColor = (
   if (disabled)
     return {
       ...colors.default,
-      color: palette.accents_5,
-      bgColor: palette.accents_3,
-      borderColor: palette.accents_4,
-      borderLeftColor: palette.accents_4,
-      hoverBgColor: palette.accents_3,
-      hoverBorder: palette.accents_4
+      color: palette.accents_4,
+      bgColor: palette.accents_2,
+      borderColor: palette.accents_3,
+      borderLeftColor: palette.accents_3,
+      hoverBgColor: palette.accents_2,
+      hoverBorder: palette.accents_3
     }
 
   return type ? colors[type] : colors.default
