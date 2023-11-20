@@ -2,6 +2,9 @@ import React from 'react'
 import { NormalTypes } from '../utils/prop-types'
 
 export type InputTypes = NormalTypes
+
+export type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined
+
 export interface Props {
   value?: string
   initialValue?: string
@@ -29,6 +32,7 @@ export interface Props {
   rounded?: boolean
   error?: boolean
   errorMessage?: string
+  crossOrigin?: CrossOrigin
 }
 
 export const defaultProps = {
@@ -41,5 +45,6 @@ export const defaultProps = {
   autoComplete: 'off',
   className: '',
   placeholder: '',
-  initialValue: ''
+  initialValue: '',
+  crossOrigin: '' as CrossOrigin
 }
