@@ -31,6 +31,8 @@ export interface Props {
   errorMessage?: string
 }
 
+type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined
+
 export const defaultProps = {
   disabled: false,
   readOnly: false,
@@ -41,5 +43,6 @@ export const defaultProps = {
   autoComplete: 'off',
   className: '',
   placeholder: '',
-  initialValue: ''
+  initialValue: '',
+  crossOrigin: '' as CrossOrigin
 }
