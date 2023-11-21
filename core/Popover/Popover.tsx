@@ -1,9 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import Tooltip, {
-  TooltipOnVisibleChange,
-  TooltipProps,
-  TooltipTypes
-} from '../Tooltip'
+import Tooltip, { TooltipTypes } from '../Tooltip'
 import { Placement, TriggerTypes } from '../utils/prop-types'
 import { getReactNode } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
@@ -12,43 +8,61 @@ import useClasses from '../use-classes'
 
 export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
+export type TooltipOnVisibleChange = (visible: boolean) => void
 
 interface Props {
-  content?: React.ReactNode | (() => React.ReactNode) | string
+  content?: React.ReactNode | (() => React.ReactNode)
   trigger?: PopoverTriggerTypes
   placement?: Placement
   disableItemsAutoClose?: boolean
+  visible?: boolean
+  onVisibleChange?: TooltipOnVisibleChange
 }
 
-type ExcludeTooltipProps = {
-  text: any
-  trigger: any
-  placement: any
+const defaultProps = {
+  disableItemsAutoClose: false,
+  trigger: 'click' as PopoverTriggerTypes,
+  placement: 'bottom' as Placement,
+  portalClassName: '',
+  initialVisible: false,
+  hideArrow: false,
+  type: 'default' as TooltipTypes,
+  enterDelay: 100,
+  leaveDelay: 150,
+  offset: 12,
+  className: '',
+  onVisibleChange: (() => {}) as TooltipOnVisibleChange,
+  visible: false as boolean
 }
 
-export type PopoverProps = Props & Omit<TooltipProps, keyof ExcludeTooltipProps>
+// type ExcludeTooltipProps = {
+//   type: any
+//   text: any
+//   trigger: any
+//   placement: any
+// }
 
-function PopoverComponent({
+export type PopoverProps = Props
+
+const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
   content,
   children,
-  disableItemsAutoClose = false,
-  trigger = 'click' as PopoverTriggerTypes,
-  placement = 'bottom' as Placement,
-  portalClassName = '',
-  type = 'default' as TooltipTypes,
+  trigger,
+  placement,
+  initialVisible,
+  portalClassName,
+  disableItemsAutoClose,
+  onVisibleChange,
   visible: customVisible,
-  onVisibleChange = (() => {}) as TooltipOnVisibleChange,
+  type = 'default' as TooltipTypes,
   ...props
-}: React.PropsWithChildren<PopoverProps>) {
+}: React.PropsWithChildren<PopoverProps> & typeof defaultProps) => {
   const { SCALES } = useScale()
-
-  const [visible, setVisible] = useState<boolean>(false)
+  const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
-
   const onChildClick = () => {
     onPopoverVisibleChange(false)
   }
-
   const value = useMemo<PopoverConfig>(
     () => ({
       onItemClick: onChildClick,
@@ -56,7 +70,6 @@ function PopoverComponent({
     }),
     [disableItemsAutoClose]
   )
-
   const classes = useClasses('popover', portalClassName)
 
   const onPopoverVisibleChange = (next: boolean) => {
@@ -94,6 +107,7 @@ function PopoverComponent({
   )
 }
 
+PopoverComponent.defaultProps = defaultProps
 PopoverComponent.displayName = 'BolioUIPopover'
 const Popover = withScale(PopoverComponent)
 export default Popover
