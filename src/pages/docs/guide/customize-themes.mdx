@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Spacer } from 'core'
+import { Spacer, Tabs, Snippet } from 'core'
 
 export const meta = {
   title: 'Customize Theme',
@@ -159,7 +159,7 @@ const MyPage = () => (
 ### Build components
 
 You can utilize the Bolio UI preset Hooks to access theme states and craft your own components. For additional details,
-please consult the [useTheme](/en-us/hooks/use-theme) documentation.
+please consult the [useTheme](/docs/hooks/use-theme) documentation.
 
 ```jsx
 import { useTheme } from '@bolio-ui/core'
@@ -173,6 +173,36 @@ const MyComponent = () => {
     </div>
   )
 }
+```
+
+### Build components
+
+In Web applications, certain fonts may not display optimally on Windows, or you might find that font rendering for specific character sets not satisfactory.
+If this occurs, you have the option to enhance the rendering by adding extra font packages
+
+> You're not required to make any changes to CSS files or specify font declarations.
+
+<Spacer h={2} />
+
+#### Install `inter-ui`
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn add inter-ui" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm i inter-ui" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={3} />
+
+#### Add `Inter Font` to your project:
+
+```jsx
+import 'inter-ui/inter.css'
 ```
 
 <Spacer h={2} />

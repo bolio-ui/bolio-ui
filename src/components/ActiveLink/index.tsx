@@ -1,21 +1,24 @@
 import React from 'react'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { useTheme, Text } from 'core'
+import { useTheme, Text, Link } from 'core'
 
 export interface Props {
   onAcitve?: () => void
   href: string
   text: string
+  target?: string
 }
 
-const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
+const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   const theme = useTheme()
   const router = useRouter()
   const isActive = router.asPath === href
 
+  const Component = target ? Link : NextLink
+
   return (
-    <Link href={href} passHref>
+    <Component href={href} target={target}>
       <Text
         font="14px"
         my={0}
@@ -29,7 +32,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text }) => {
       >
         {text}
       </Text>
-    </Link>
+    </Component>
   )
 })
 

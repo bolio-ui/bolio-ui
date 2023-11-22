@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { useTheme, Text } from 'core'
+import { useTheme, Text, Link } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
 import { useRouter } from 'next/router'
 import { menuMobile } from 'src/data/menuMobile'
@@ -53,17 +53,24 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
                 {item.children.map((section) => (
                   <div key={section.name}>
                     <span className="section-name">{section.name}</span>
-                    {section.children.map((item) => (
-                      <NextLink href={item.url || '/'} key={item.url}>
-                        <a
-                          className={`section-item ${
-                            pathname === item.url ? 'active' : ''
-                          }`}
+                    {section.children.map((item) => {
+                      const Component = item.target ? Link : NextLink
+                      return (
+                        <Component
+                          href={item.url || '/'}
+                          target={item.target}
+                          key={item.url}
                         >
-                          {item.name}
-                        </a>
-                      </NextLink>
-                    ))}
+                          <a
+                            className={`section-item ${
+                              pathname === item.url ? 'active' : ''
+                            }`}
+                          >
+                            {item.name}
+                          </a>
+                        </Component>
+                      )
+                    })}
                   </div>
                 ))}
               </div>

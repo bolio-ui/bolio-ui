@@ -22,7 +22,7 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
   const isMobile = useIsMobile()
 
   return (
-    <Grid.Container gap={2} justify="center">
+    <Grid.Container gap={2} justify="center" style={{ margin: '25px 0' }}>
       <Grid xs={6} sm={6} md={6} justify="flex-start">
         {previous && previous.url && (
           <NextLink href={previous.url} passHref>
