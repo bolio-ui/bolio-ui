@@ -6,7 +6,7 @@ import { BolioUIProvider, CssBaseline, Image, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
 import { MDXProvider } from '@mdx-js/react'
-import { HybridCode, HybridLink } from 'src/components'
+import { HybridCode, HybridLink, HybridLinkHeading } from 'src/components'
 import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
@@ -50,6 +50,7 @@ function App({ Component, pageProps }: AppProps) {
             <Navigation />
             <MDXProvider
               components={{
+                h3: HybridLinkHeading,
                 a: HybridLink,
                 img: Image,
                 pre: HybridCode

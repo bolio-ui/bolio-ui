@@ -38,18 +38,19 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
       <style jsx>{`
         .container {
           position: relative;
-          padding-left: 0.5rem;
         }
         .title {
           font-size: 1.2rem;
           font-weight: 600;
           z-index: 1;
-          letter-spacing: 0.5px;
         }
         .list {
           max-height: 56vh;
           margin-bottom: 20px;
           overflow: auto;
+          margin: 0;
+          margin-top: 10px;
+          margin-left: 17px;
         }
         .list::-webkit-scrollbar {
           width: 0px;

@@ -130,6 +130,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
                 top: '80px',
                 bottom: '2rem',
                 marginTop: '10px',
+                width: '250px',
                 zIndex: 2
               }}
             >
