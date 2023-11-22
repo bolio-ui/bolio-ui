@@ -11,11 +11,13 @@ function Base({ children }: BaseTemplateProps) {
   const isMobile = useMediaQuery(650)
 
   return (
-    <Page style={{ zIndex: 1 }}>
-      <Page.Content>{children}</Page.Content>
-      <Page.Footer>
-        <Footer />
-      </Page.Footer>
+    <>
+      <Page style={{ zIndex: 1 }}>
+        <Page.Content>{children}</Page.Content>
+        <Page.Footer>
+          <Footer />
+        </Page.Footer>
+      </Page>{' '}
       {isMobile ? (
         <>
           <Image
@@ -69,7 +71,7 @@ function Base({ children }: BaseTemplateProps) {
           />
         </>
       )}
-    </Page>
+    </>
   )
 }
 
