@@ -16,6 +16,22 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Contribute',
+            url: '/docs/guide/contribute',
+            group: 'Guide'
+          },
+          {
+            name: 'Bolio Icons',
+            url: 'https://icons.bolio-ui.com/',
+            group: 'Guide',
+            target: '_blank'
+          }
+        ]
+      },
+      {
+        name: 'Frameworks',
+        children: [
+          {
             name: 'Example with Next.js',
             url: '/docs/guide/bolio-ui-plus-nextjs',
             group: 'Guide'
@@ -38,11 +54,6 @@ export const menuMobile = [
           {
             name: 'Example with RedwoodJS',
             url: '/docs/guide/bolio-ui-plus-redwoodjs',
-            group: 'Guide'
-          },
-          {
-            name: 'Contribute',
-            url: '/docs/guide/contribute',
             group: 'Guide'
           }
         ]

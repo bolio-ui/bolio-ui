@@ -25,6 +25,19 @@
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
             },
             {
+              "title": "Contribute",
+              "keywords": "contribute, bolio ui",
+              "path": "/docs/guide/contribute.mdx"
+            }
+          ]
+        },
+        {
+          "title": "Frameworks",
+          "open": true,
+          "keywords": "frameworks, examples frameworks, bolio ui",
+          "icon": "Package",
+          "routes": [
+            {
               "title": "Example with Next.js",
               "keywords": "next, nextjs, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
@@ -48,11 +61,6 @@
               "title": "Example with RedwoodJS",
               "keywords": "next, nextjs, redwoodjs, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-redwoodjs.mdx"
-            },
-            {
-              "title": "Contribute",
-              "keywords": "contribute, bolio ui",
-              "path": "/docs/guide/contribute.mdx"
             }
           ]
         },
