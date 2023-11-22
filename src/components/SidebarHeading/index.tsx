@@ -49,7 +49,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
           margin-bottom: 20px;
           overflow: auto;
           margin: 0;
-          margin-top: 10px;
+          margin-top: 5px;
           margin-left: 17px;
         }
         .list::-webkit-scrollbar {
