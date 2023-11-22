@@ -1,10 +1,9 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { Section, Container, Grid, Image } from 'core'
+import { Section, Container, Grid } from 'core'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
-import { useMediaQuery } from 'src/utils/use-media-query'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
@@ -16,7 +15,6 @@ import SectionFooterGithub from './SectionFooterGithub'
 
 function Home() {
   const router = useRouter()
-  const isMobile = useMediaQuery(650)
 
   const homeAction: Action = React.useMemo(() => {
     return {
@@ -89,55 +87,6 @@ function Home() {
         <SectionCommunity />
         <SectionFooterGithub />
       </Base>
-      {isMobile ? (
-        <>
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient blue"
-            style={{
-              position: 'fixed',
-              top: '-10%',
-              right: '-35%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient violet"
-            style={{
-              position: 'fixed',
-              top: '45%',
-              left: '-35%',
-              zIndex: 0
-            }}
-          />
-        </>
-      ) : (
-        <>
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient blue"
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              top: '-40%',
-              right: '-10%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient violet"
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              left: '-20%',
-              right: '-50%',
-              zIndex: 0
-            }}
-          />
-        </>
-      )}
     </>
   )
 }

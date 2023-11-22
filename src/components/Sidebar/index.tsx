@@ -27,7 +27,13 @@ function Sidebar({ sidebar }: SidebarProps) {
         return (
           <Grid.Container gap={2} key={`${item.name}-${index}`}>
             {!item.url && <ActiveCategory name={item.name} icon={item.icon} />}
-            {item.url && <ActiveLink href={item.url} text={item.name} />}
+            {item.url && (
+              <ActiveLink
+                href={item.url}
+                text={item.name}
+                target={item.target}
+              />
+            )}
           </Grid.Container>
         )
       })}

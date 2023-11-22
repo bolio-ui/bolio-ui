@@ -13,6 +13,20 @@ export const guide = [
     url: '/docs/guide/about-bolio-ui'
   },
   {
+    name: 'Contribute',
+    url: '/docs/guide/contribute'
+  },
+  {
+    name: 'Bolio Icons',
+    url: 'https://icons.bolio-ui.com/',
+    target: '_blank'
+  },
+  {
+    name: 'Frameworks',
+    url: '',
+    icon: 'Package'
+  },
+  {
     name: 'Example with Next.js',
     url: '/docs/guide/bolio-ui-plus-nextjs'
   },
@@ -31,10 +45,6 @@ export const guide = [
   {
     name: 'Example with RedwoodJS',
     url: '/docs/guide/bolio-ui-plus-redwoodjs'
-  },
-  {
-    name: 'Contribute',
-    url: '/docs/guide/contribute'
   },
   {
     name: 'Theme',
