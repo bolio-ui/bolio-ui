@@ -1,20 +1,10 @@
 import React from 'react'
-import { useTheme, Section, Container, Grid, Col, Text, Row } from 'core'
+import { Section, Container, Grid, Col, Text, Row } from 'core'
 import { CardPlatforms } from 'src/components'
 
 function SectionFooterGithub() {
-  const theme = useTheme()
-
   return (
-    <Section
-      py={5}
-      style={{
-        background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
-        borderTop: '1px solid',
-        borderBottom: '1px solid',
-        borderColor: theme.palette.accents_2
-      }}
-    >
+    <Section py={5}>
       <Container style={{ maxWidth: 1300 }}>
         <Grid.Container justify="center">
           <Row justify="space-around" style={{ textAlign: 'center' }}>
