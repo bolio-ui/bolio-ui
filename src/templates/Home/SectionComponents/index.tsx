@@ -6,7 +6,8 @@ import {
   InfoCard,
   FollowersCard,
   Player,
-  ButtonLoading
+  ButtonLoading,
+  InfoUsersCard
 } from 'src/components/HeroComponents'
 
 function SectionComponents() {
@@ -31,13 +32,13 @@ function SectionComponents() {
               quantity="2.5k"
               info="CAL"
               icon="Smile"
+              src="https://bolio-nextjs.vercel.app/_next/static/images/4-f644322437d168b27aea6b8198d9c020.jpg"
             />
             <Spacer w={2} />
-            <InfoCard
-              title="Avg Heart Rate"
-              quantity="78"
-              info="BPM"
-              icon="Heart"
+            <InfoUsersCard
+              title="Start coding"
+              subtitle="Get started with Bolio UI"
+              src="https://bolio-nextjs.vercel.app/_next/static/images/2-5314bc1e7cf441777a9a9d237911fc98.jpg"
             />
           </Row>
           <Spacer h={1} />
