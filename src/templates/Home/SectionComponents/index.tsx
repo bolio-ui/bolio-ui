@@ -2,10 +2,11 @@ import React from 'react'
 import { Grid, Row, Col, Spacer } from 'core'
 import {
   Search,
-  ButtonIcon,
+  Toogle,
   InfoCard,
   FollowersCard,
-  Player
+  Player,
+  ButtonLoading
 } from 'src/components/HeroComponents'
 
 function SectionComponents() {
@@ -17,9 +18,11 @@ function SectionComponents() {
       <Grid xs={12} md={6}>
         <Col>
           <Row justify="space-around">
+            <ButtonLoading />
+            <Spacer w={1} />
             <Search />
             <Spacer w={1} />
-            <ButtonIcon />
+            <Toogle />
           </Row>
           <Spacer h={0.6} />
           <Row>
