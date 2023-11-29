@@ -16,6 +16,7 @@ import {
   Grid,
   Spinner
 } from 'core'
+import { useSettings } from 'src/utils/use-settings'
 import * as Icons from '@bolio-ui/icons'
 
 type Icon = keyof typeof Icons
@@ -169,17 +170,21 @@ export const Search = () => {
 }
 
 export const Toogle = () => {
+  const theme = useTheme()
+  const settings = useSettings()
   return (
     <>
       <Toggle
         type="secondary"
         scale={2}
         w={1.8}
-        initialChecked
-        className="toogle_hero"
         mt="8px"
+        initialChecked
+        onChange={() =>
+          settings.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
+        }
+        className="toogle_hero"
       />
-
       <style global jsx>{`
         .toogle_hero {
           animation: levitating 9s ease-in-out infinite;
@@ -277,10 +282,12 @@ export const ButtonIcon = () => {
 }
 
 interface InfoCardProps {
-  title: string
-  quantity: string
-  info: string
-  icon: Icon
+  title?: string
+  quantity?: string
+  info?: string
+  icon?: Icon
+  src?: string
+  subtitle?: string
 }
 
 const renderIcon = (icon: Icon, color: string) => {
@@ -288,40 +295,165 @@ const renderIcon = (icon: Icon, color: string) => {
   return <CurrentIcon color={color} fontSize={26} /> || null
 }
 
-export const InfoCard = ({ title, quantity, info, icon }: InfoCardProps) => {
+export const InfoCard = ({
+  title,
+  quantity,
+  info,
+  icon,
+  src
+}: InfoCardProps) => {
   const theme = useTheme()
   return (
     <>
-      <Card
-        className="info_card_hero"
-        width="100%"
-        height="185px"
-        bordered={theme.type === 'light'}
-      >
-        <Badge
-          style={{
-            borderRadius: '50%',
-            padding: 14
-          }}
-        >
-          {renderIcon(icon, theme.palette.foreground)}
-        </Badge>
-        <Text my={0} mt={2}>
-          {title}
-        </Text>
-        <Row>
-          <Text h2 my={0} mb={2}>
-            {quantity}
-          </Text>
-          <Text my={0} ml={0.2} pt={0.8}>
-            {info}
-          </Text>
-        </Row>
-      </Card>
+      <div className="info_card_hero">
+        <div className="info_card_container">
+          <img
+            src={src}
+            alt="img"
+            style={{
+              objectFit: 'cover',
+              width: '100%',
+              height: '185px'
+            }}
+            className="info_card_image"
+          />
+          <div className="info_card_content">
+            <Badge
+              style={{
+                background: 'rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%',
+                borderRadius: '50%',
+                padding: 12
+              }}
+            >
+              {renderIcon(icon, theme.palette.foreground)}
+            </Badge>
+            <Text my={0} mt={2}>
+              {title}
+            </Text>
+            <Row>
+              <Text h2 my={0} mb={2}>
+                {quantity}
+              </Text>
+              <Text my={0} ml={0.2} pt={0.8}>
+                {info}
+              </Text>
+            </Row>
+          </div>
+        </div>
+      </div>
       <style global jsx>{`
         .info_card_hero {
           width: 100%;
           animation: levitating 12s ease-in-out infinite;
+        }
+
+        .info_card_container {
+          position: relative;
+        }
+
+        .info_card_image {
+          border-radius: 8px;
+          opacity: 0.2;
+          display: block;
+          width: 100%;
+          height: auto;
+          transition: 0.5s ease;
+          backface-visibility: hidden;
+        }
+
+        .info_card_content {
+          padding: 20px;
+          transition: 0.5s ease;
+          position: absolute;
+          top: 0%;
+        }
+        @keyframes levitating {
+          0% {
+            transform: translateX(0);
+          }
+          30% {
+            transform: translateX(-10px);
+          }
+          50% {
+            transform: translateX(4px);
+          }
+          70% {
+            transform: translateX(-15px);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </>
+  )
+}
+
+export const InfoUsersCard = ({ title, subtitle, src }: InfoCardProps) => {
+  return (
+    <>
+      <div className="info_users_card_hero">
+        <div className="info_users_card_container">
+          <img
+            src={src}
+            alt="img"
+            style={{
+              objectFit: 'cover',
+              width: '100%',
+              height: '185px'
+            }}
+            className="info_card_image"
+          />
+          <div className="info_users_card_content">
+            <Text font="14px" my={0}>
+              {title}
+            </Text>
+            <Text h5 my={0} mb={3.5}>
+              {subtitle}
+            </Text>
+            <Avatar.Group count={6} ml={0.5}>
+              <Avatar
+                src="https://i.pravatar.cc/150?img=60"
+                width={1.2}
+                height={1.2}
+                stacked
+              />
+              <Avatar
+                src="https://i.pravatar.cc/150?img=30"
+                width={1.2}
+                height={1.2}
+                stacked
+              />
+              <Avatar text="Mag" width={1.2} height={1.2} stacked />
+            </Avatar.Group>
+          </div>
+        </div>
+      </div>
+      <style global jsx>{`
+        .info_users_card_hero {
+          width: 100%;
+          animation: levitating 12s ease-in-out infinite;
+        }
+
+        .info_users_card_container {
+          position: relative;
+        }
+
+        .info_users_card_image {
+          border-radius: 8px;
+          opacity: 0.2;
+          display: block;
+          width: 100%;
+          height: auto;
+          transition: 0.5s ease;
+          backface-visibility: hidden;
+        }
+
+        .info_users_card_content {
+          padding: 20px;
+          transition: 0.5s ease;
+          position: absolute;
+          top: 0%;
         }
         @keyframes levitating {
           0% {
@@ -356,15 +488,20 @@ export const FollowersCard = () => {
       >
         <Grid.Container>
           <Grid xs={12} md={12} alignItems="center">
-            <div style={{ marginRight: 10 }}>
+            <div style={{ marginRight: 15 }}>
               <div className="border-gradient">
-                <Avatar
-                  alt="Your Avatar"
-                  mr={0}
-                  height={2}
-                  width={2}
-                  src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
-                />
+                <Badge.Anchor>
+                  <Badge scale={1 / 2} type="default">
+                    12
+                  </Badge>
+                  <Avatar
+                    alt="Your Avatar"
+                    mr={0}
+                    height={2}
+                    width={2}
+                    src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
+                  />
+                </Badge.Anchor>
               </div>
             </div>
             <div>
@@ -480,32 +617,38 @@ export const Player = () => {
           <Text my={0}>3:18</Text>
         </Row>
         <Capacity color="#c25fff" width="100%" value={45} />
-        <Spacer h={2} />
+        <Spacer h={1.5} />
         <Row align="middle" justify="space-between">
           <Button
             icon={<Icons.Shuffle stroke={theme.palette.foreground} />}
             type="abort"
+            scale={0.8}
             auto
           />
           <Button
             icon={<Icons.SkipBack stroke={theme.palette.foreground} />}
             type="abort"
+            scale={0.8}
             auto
           />
           <Button
-            icon={<Icons.Play stroke={theme.palette.foreground} />}
-            type="abort"
+            icon={<Icons.Play stroke="white" />}
+            type="secondary"
+            rounded
             auto
+            scale={1}
           />
           <Button
             icon={<Icons.SkipForward stroke={theme.palette.foreground} />}
             type="abort"
             auto
+            scale={0.8}
           />
           <Button
             icon={<Icons.Repeat stroke={theme.palette.foreground} />}
             type="abort"
             auto
+            scale={0.8}
           />
         </Row>
       </Card>
