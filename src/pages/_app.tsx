@@ -10,6 +10,7 @@ import { HybridCode, HybridLink, HybridLinkHeading } from 'src/components'
 import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
+import Analytics from 'src/components/Analytics'
 
 function App({ Component, pageProps }: AppProps) {
   const theme = useTheme()
@@ -45,6 +46,7 @@ function App({ Component, pageProps }: AppProps) {
       <BolioUIProvider themeType={themeType}>
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <DefaultSeo {...SEO} />
+          <Analytics />
           <CssBaseline />
           <KBarProvider>
             <Navigation />
