@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { BolioUIProvider, CssBaseline, Image, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
@@ -11,9 +12,11 @@ import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
 import Analytics from 'src/components/Analytics'
+import * as gtag from 'src/utils/gtag'
 
 function App({ Component, pageProps }: AppProps) {
   const theme = useTheme()
+  const router = useRouter()
 
   const [themeType, setThemeType] = useState<ThemeType>('dark')
 
@@ -30,6 +33,16 @@ function App({ Component, pageProps }: AppProps) {
     if (typeof window !== 'undefined' && window.localStorage)
       window.localStorage.setItem('theme', theme)
   }, [])
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
