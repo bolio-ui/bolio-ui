@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://bolio-ui.com
+
+# Sitemaps
+Sitemap: https://bolio-ui.com/sitemap.xml
