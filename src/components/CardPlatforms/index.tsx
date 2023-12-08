@@ -16,7 +16,7 @@ function CardPlatforms({ title, link, image }: CardPlatformsProps) {
           textAlign: 'center'
         }}
       >
-        <Image src={image} />
+        <Image src={image} alt={title} />
         <Card.Content>
           <Text b>{title}</Text>
         </Card.Content>
