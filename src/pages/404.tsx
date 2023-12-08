@@ -79,14 +79,14 @@ function Home() {
                 </NextLink>
               </Grid>
               <Grid xs={6} sm={6} md={3}>
-                <NextLink href="/" passHref>
+                <NextLink href="/" passHref aria-label="Link to home page">
                   <Button
                     type="default"
                     rounded
                     width="100%"
                     style={{ textTransform: 'none' }}
                   >
-                    Go to homepage
+                    Go to home page
                   </Button>
                 </NextLink>
               </Grid>

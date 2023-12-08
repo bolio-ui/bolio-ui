@@ -104,6 +104,7 @@ const Navigation: React.FC = () => {
                         <Link
                           href="https://github.com/bolio-ui/bolio-ui"
                           target="_blank"
+                          aria-label="Link to Github Bolio UI"
                         >
                           <Button
                             w="28px"
@@ -120,6 +121,7 @@ const Navigation: React.FC = () => {
                         <Link
                           href="https://www.twitter.com/bolio_ui/"
                           target="_blank"
+                          aria-label="Link to Twitter Bolio UI"
                         >
                           <Button
                             w="28px"
@@ -136,6 +138,7 @@ const Navigation: React.FC = () => {
                         <Link
                           href="https://www.instagram.com/bolio.ui/"
                           target="_blank"
+                          aria-label="Link to Instagram Bolio UI"
                         >
                           <Button
                             w="28px"
@@ -175,6 +178,7 @@ const Navigation: React.FC = () => {
                         <Link
                           href="https://www.patreon.com/brunnoandrade"
                           target="_blank"
+                          aria-label="Link to Sponsor Patreon"
                         >
                           <Button
                             icon={
@@ -189,6 +193,7 @@ const Navigation: React.FC = () => {
                             scale={0.75}
                             type="secondary-light"
                             rounded
+                            aria-label="Button Sponsor"
                           >
                             Sponsor
                           </Button>
@@ -236,6 +241,7 @@ const Navigation: React.FC = () => {
                         className="menu-toggle"
                         auto
                         type="abort"
+                        aria-label="Menu Toogle"
                         onClick={() => setExpanded(!expanded)}
                       >
                         <Menu fontSize={16} />
