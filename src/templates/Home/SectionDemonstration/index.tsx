@@ -81,7 +81,11 @@ function SectionDemonstration() {
                       'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
                   }}
                 >
-                  <Image src="/img/png/home/typography.png" />
+                  <Image
+                    src="/img/png/home/typography.png"
+                    alt="text"
+                    draggable={false}
+                  />
                   <Card.Content>
                     <Text b>Text</Text>
                   </Card.Content>
@@ -95,7 +99,11 @@ function SectionDemonstration() {
                       'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
                   }}
                 >
-                  <Image src="/img/png/home/icons.png" />
+                  <Image
+                    src="/img/png/home/icons.png"
+                    alt="icons"
+                    draggable={false}
+                  />
                   <Card.Content>
                     <Text b>Icons</Text>
                   </Card.Content>
@@ -109,7 +117,11 @@ function SectionDemonstration() {
                       'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
                   }}
                 >
-                  <Image src="/img/png/home/button.png" draggable={false} />
+                  <Image
+                    src="/img/png/home/button.png"
+                    alt="button"
+                    draggable={false}
+                  />
                   <Card.Content>
                     <Text b>Button</Text>
                   </Card.Content>
