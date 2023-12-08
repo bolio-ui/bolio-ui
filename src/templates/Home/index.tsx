@@ -37,7 +37,7 @@ function Home() {
         openGraph={{
           images: [
             {
-              url: '/img/cover.png',
+              url: '/img/cover.jpg',
               width: 1200,
               height: 630,
               alt: 'Bolio UI - Amazing, modern and creative tools for React UI'
