@@ -2,6 +2,20 @@ import React from 'react'
 import { Section, Text, Container, Grid, Link } from 'core'
 import { Heart } from '@bolio-ui/icons'
 
+function NameMadeDesigned() {
+  return (
+    <Link
+      href="https://github.com/brunnoandrade/"
+      target="_blank"
+      rel="noopener"
+      underline
+      aria-label="Link to Github Bruno Andrade"
+    >
+      BRUNO ANDRADE
+    </Link>
+  )
+}
+
 function Footer() {
   return (
     <Section padding={2}>
@@ -13,7 +27,7 @@ function Footer() {
           style={{ textAlign: 'center' }}
         >
           <Grid>
-            <Text h6 my={0}>
+            <Text font={0.75} b my={0}>
               MADE & DESIGNED WITH
               <Heart
                 fill="red"
@@ -22,15 +36,7 @@ function Footer() {
                 width={12}
                 style={{ marginLeft: 3, marginRight: 3 }}
               />
-              BY{' '}
-              <Link
-                href="https://github.com/brunnoandrade/"
-                target="_blank"
-                rel="noopener"
-                underline
-              >
-                BRUNO ANDRADE
-              </Link>
+              BY <NameMadeDesigned />
             </Text>
           </Grid>
         </Grid.Container>

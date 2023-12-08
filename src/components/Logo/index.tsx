@@ -11,7 +11,7 @@ function Logo({ name }: Props) {
   const theme = useTheme()
 
   return (
-    <Link href="/">
+    <Link href="/" aria-label="Link to home page">
       <Text b>
         <svg
           viewBox="0 0 500 500"

@@ -74,7 +74,10 @@ function SectionDemonstration() {
           </Grid>
           <Grid xs={12} md={6}>
             <Grid xs={12} md={12} justify="center">
-              <Link href="/docs/components/text">
+              <Link
+                href="/docs/components/text"
+                aria-label="Link to Documents Text"
+              >
                 <Card
                   style={{
                     background:
@@ -92,7 +95,10 @@ function SectionDemonstration() {
                 </Card>
               </Link>
               <Spacer width={2} />
-              <Link href="/docs/components/icons">
+              <Link
+                href="/docs/components/icons"
+                aria-label="Link to Documents Icons"
+              >
                 <Card
                   style={{
                     background:
@@ -110,7 +116,10 @@ function SectionDemonstration() {
                 </Card>
               </Link>
               <Spacer width={2} />
-              <Link href="/docs/components/button">
+              <Link
+                href="/docs/components/button"
+                aria-label="Link to Documents Button"
+              >
                 <Card
                   style={{
                     background:

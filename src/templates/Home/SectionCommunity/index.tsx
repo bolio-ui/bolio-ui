@@ -37,6 +37,7 @@ function SectionCommunity() {
               href="https://www.twitter.com/bolio_ui/"
               target="_blank"
               width="100%"
+              aria-label="Link to Twitter"
             >
               <CardBox
                 title="Twitter"
@@ -51,6 +52,7 @@ function SectionCommunity() {
               href="https://github.com/bolio-ui/bolio-ui"
               target="_blank"
               width="100%"
+              aria-label="Link to Github Bolio UI"
             >
               <CardBox
                 title="GitHub"
@@ -65,6 +67,7 @@ function SectionCommunity() {
               href="https://www.instagram.com/bolio.ui/"
               target="_blank"
               width="100%"
+              aria-label="Link to Instagram Bolio UI"
             >
               <CardBox
                 title="Instagram"
