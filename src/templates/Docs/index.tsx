@@ -81,7 +81,7 @@ function Docs({ children, meta }: DocsTemplateProps) {
           description: description,
           images: [
             {
-              url: '/img/cover.jpg',
+              url: '/cover.jpg',
               width: 1200,
               height: 630,
               alt: `${pageTitle}`
