@@ -37,7 +37,7 @@ export const ProfileCard = () => {
               mr={1.5}
               height={3}
               width={3}
-              src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
+              src="/img/jpg/home/img1.jpg"
             />
           </Col>
           <Col>
@@ -499,7 +499,7 @@ export const FollowersCard = () => {
                     mr={0}
                     height={2}
                     width={2}
-                    src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
+                    src="/img/jpg/home/img1.jpg"
                   />
                 </Badge.Anchor>
               </div>
@@ -601,7 +601,7 @@ export const Player = () => {
               mr={1.5}
               height={5}
               width={5}
-              src="https://bolio-nextjs.vercel.app/_next/static/images/1-b91719623c4254c6f46115d025adab47.jpg"
+              src="/img/jpg/home/img2.jpg"
             />
           </Col>
           <Col>
