@@ -40,7 +40,7 @@ function Home() {
             'Make your development more amazing, modern and creative with tools for React.',
           images: [
             {
-              url: '/img/cover.png',
+              url: '/img/cover.jpg',
               width: 1200,
               height: 630,
               alt: '404: Not | Bolio UI - Amazing, modern and creative tools for React UI'
