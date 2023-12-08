@@ -43,7 +43,7 @@ function CardBox({ title, description, icon, hover = false }: Props) {
               {renderIcon(icon, theme.palette.secondary)}
             </Badge>
 
-            <Text my={0} ml={0.8} h4>
+            <Text font={1.2} b my={0} ml={0.8}>
               {title}
             </Text>
           </Row>

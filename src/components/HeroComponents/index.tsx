@@ -37,7 +37,7 @@ export const ProfileCard = () => {
               mr={1.5}
               height={3}
               width={3}
-              src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
+              src="/img/jpg/home/img1.jpg"
             />
           </Col>
           <Col>
@@ -254,6 +254,7 @@ export const ButtonIcon = () => {
         style={{
           border: 'none'
         }}
+        aria-label="Button Icon"
       />
       <style global jsx>{`
         .button_icon_hero {
@@ -408,10 +409,10 @@ export const InfoUsersCard = ({ title, subtitle, src }: InfoCardProps) => {
             <Text font="14px" my={0}>
               {title}
             </Text>
-            <Text h5 my={0} mb={3.5}>
+            <Text font={1} b>
               {subtitle}
             </Text>
-            <Avatar.Group count={6} ml={0.5}>
+            <Avatar.Group count={6} ml={0.5} mt={2.5}>
               <Avatar
                 src="https://i.pravatar.cc/150?img=60"
                 width={1.2}
@@ -499,7 +500,7 @@ export const FollowersCard = () => {
                     mr={0}
                     height={2}
                     width={2}
-                    src="https://bolio-nextjs.vercel.app/_next/static/images/2-a0f5306c52277e607fa93f04d7174cdb.jpg"
+                    src="/img/jpg/home/img1.jpg"
                   />
                 </Badge.Anchor>
               </div>
@@ -518,7 +519,14 @@ export const FollowersCard = () => {
             </div>
           </Grid>
           <Grid xs={6} md={6}>
-            <Button type="default" rounded scale={1 / 2} width="95%" mt={1}>
+            <Button
+              type="default"
+              rounded
+              scale={1 / 2}
+              width="95%"
+              mt={1}
+              aria-label="Button Reject"
+            >
               Reject
             </Button>
           </Grid>
@@ -530,6 +538,7 @@ export const FollowersCard = () => {
               width="95%"
               iconRight={<Icons.Check stroke={'white'} />}
               mt={1}
+              aria-label="Button Accept"
             >
               Accept
             </Button>
@@ -583,6 +592,7 @@ export const Player = () => {
             icon={<Icons.ArrowLeft stroke={theme.palette.foreground} />}
             type="abort"
             auto
+            aria-label="Button Arrow Left Player"
           />
           <Text b my={0} mt={0.4}>
             Play now
@@ -591,6 +601,7 @@ export const Player = () => {
             icon={<Icons.MoreVertical stroke={theme.palette.foreground} />}
             type="abort"
             auto
+            aria-label="Button More Vertical Player"
           />
         </Row>
         <Spacer h={2.5} />
@@ -601,7 +612,7 @@ export const Player = () => {
               mr={1.5}
               height={5}
               width={5}
-              src="https://bolio-nextjs.vercel.app/_next/static/images/1-b91719623c4254c6f46115d025adab47.jpg"
+              src="/img/jpg/home/img2.jpg"
             />
           </Col>
           <Col>
@@ -624,12 +635,14 @@ export const Player = () => {
             type="abort"
             scale={0.8}
             auto
+            aria-label="Button Shuffle Player"
           />
           <Button
             icon={<Icons.SkipBack stroke={theme.palette.foreground} />}
             type="abort"
             scale={0.8}
             auto
+            aria-label="Button Skip Back Player"
           />
           <Button
             icon={<Icons.Play stroke="white" />}
@@ -637,18 +650,21 @@ export const Player = () => {
             rounded
             auto
             scale={1}
+            aria-label="Button Play Player"
           />
           <Button
             icon={<Icons.SkipForward stroke={theme.palette.foreground} />}
             type="abort"
             auto
             scale={0.8}
+            aria-label="Button Skip Forward Player"
           />
           <Button
             icon={<Icons.Repeat stroke={theme.palette.foreground} />}
             type="abort"
             auto
             scale={0.8}
+            aria-label="Button Repeat Player"
           />
         </Row>
       </Card>
