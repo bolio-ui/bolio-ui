@@ -51,12 +51,7 @@ function SectionPlayground() {
           title="Card Playground"
           scope={{ Card, Text, Row, Col, CreditCardIcon, theme }}
           code={`
-<Card
-  style={{
-    backgroundImage:
-      'linear-gradient(to right bottom, #4a5167, #808496, #4a5167)'
-  }}
->
+<Card bordered>
   <CreditCardIcon fontSize={30} />
   <Text my={0} mt={2}>
     Card Number
