@@ -33,11 +33,11 @@ function Home() {
     <>
       <NextSeo
         title="Bolio UI - Amazing, modern and creative tools for React UI"
-        description="Make your development more amazing, modern and creative with tools for React."
+        description="Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!"
         openGraph={{
           images: [
             {
-              url: '/img/cover.jpg',
+              url: '/cover.jpg',
               width: 1200,
               height: 630,
               alt: 'Bolio UI - Amazing, modern and creative tools for React UI'

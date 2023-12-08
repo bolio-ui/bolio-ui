@@ -52,7 +52,11 @@ function App({ Component, pageProps }: AppProps) {
         </title>
         <meta
           name="description"
-          content="Make your development more amazing, modern and creative with tools for React."
+          content="Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!"
+        />
+        <meta
+          name="keywords"
+          content="React, Next.js, Bolio UI, React Aria, React Components, UI Components, UI Kit, UI Library, UI Framework, UI Design System"
         />
         <Favicon />
       </Head>
