@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import NextLink from 'next/link'
 import {
   Section,
@@ -10,11 +11,13 @@ import {
   Button,
   Spacer,
   Card,
-  Image,
-  Link
+  Link,
+  useTheme
 } from 'core'
 
 function SectionDemonstration() {
+  const theme = useTheme()
+
   return (
     <Section py={5}>
       {/* <img
@@ -86,8 +89,14 @@ function SectionDemonstration() {
                 >
                   <Image
                     src="/img/png/home/typography.png"
-                    alt="text"
-                    draggable={false}
+                    alt="text doc component"
+                    width="180px"
+                    height="120px"
+                    priority
+                    style={{
+                      borderTopLeftRadius: theme.layout.radius,
+                      borderTopRightRadius: theme.layout.radius
+                    }}
                   />
                   <Card.Content>
                     <Text b>Text</Text>
@@ -107,8 +116,14 @@ function SectionDemonstration() {
                 >
                   <Image
                     src="/img/png/home/icons.png"
-                    alt="icons"
-                    draggable={false}
+                    alt="icons doc component"
+                    width="180px"
+                    height="120px"
+                    priority
+                    style={{
+                      borderTopLeftRadius: theme.layout.radius,
+                      borderTopRightRadius: theme.layout.radius
+                    }}
                   />
                   <Card.Content>
                     <Text b>Icons</Text>
@@ -128,8 +143,14 @@ function SectionDemonstration() {
                 >
                   <Image
                     src="/img/png/home/button.png"
-                    alt="button"
-                    draggable={false}
+                    alt="buttond doc component"
+                    width="180px"
+                    height="120px"
+                    priority
+                    style={{
+                      borderTopLeftRadius: theme.layout.radius,
+                      borderTopRightRadius: theme.layout.radius
+                    }}
                   />
                   <Card.Content>
                     <Text b>Button</Text>
