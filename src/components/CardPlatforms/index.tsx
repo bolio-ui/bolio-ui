@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, Card, Link, Image } from 'core'
+import Image from 'next/image'
+import { Text, Card, Link, useTheme } from 'core'
 
 interface CardPlatformsProps {
   title: string
@@ -8,6 +9,8 @@ interface CardPlatformsProps {
 }
 
 function CardPlatforms({ title, link, image }: CardPlatformsProps) {
+  const theme = useTheme()
+
   return (
     <Link href={link}>
       <Card
@@ -16,7 +19,17 @@ function CardPlatforms({ title, link, image }: CardPlatformsProps) {
           textAlign: 'center'
         }}
       >
-        <Image src={image} alt={title} />
+        <Image
+          src={image}
+          alt={`${title} doc framework`}
+          width="180px"
+          height="120px"
+          priority
+          style={{
+            borderTopLeftRadius: theme.layout.radius,
+            borderTopRightRadius: theme.layout.radius
+          }}
+        />
         <Card.Content>
           <Text b>{title}</Text>
         </Card.Content>
