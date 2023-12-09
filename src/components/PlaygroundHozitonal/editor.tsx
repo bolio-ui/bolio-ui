@@ -6,16 +6,16 @@ const Editor: React.FC = () => {
   const theme = useTheme()
 
   return (
-    <div className="live-editor-container">
-      <header>
+    <div className="live-editor-container" id="editor-area-container">
+      <header id="editor-area-header">
         <div className="traffic">
           <span className="close" />
           <span className="mini" />
           <span className="full" />
         </div>
       </header>
-      <div className="area">
-        <LiveEditor />
+      <div className="area" id="editor-area">
+        <LiveEditor id="live-editor" aria-labelledby="live editor" />
       </div>
       <style jsx>{`
         .live-editor-container {
