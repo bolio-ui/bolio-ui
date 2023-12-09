@@ -8,8 +8,20 @@ const withMDX = require('@next/mdx')({
   }
 })
 
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  swcMinify: true,
+  disable: process.env.ENVIRONMENT === 'develop',
+  workboxOptions: {
+    disableDevLogs: true
+  }
+})
+
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx']
 }
 
-module.exports = withMDX(nextConfig)
+module.exports = withPWA(withMDX(nextConfig))
