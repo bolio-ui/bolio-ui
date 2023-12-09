@@ -58,6 +58,10 @@ function App({ Component, pageProps }: AppProps) {
           name="keywords"
           content="React, Next.js, Bolio UI, React Aria, React Components, UI Components, UI Kit, UI Library, UI Framework, UI Design System"
         />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
         <Favicon />
       </Head>
       <BolioUIProvider themeType={themeType}>
