@@ -178,7 +178,6 @@ const Navigation: React.FC = () => {
                         <Link
                           href="https://www.patreon.com/brunnoandrade"
                           target="_blank"
-                          aria-label="Link to Sponsor Patreon"
                         >
                           <Button
                             icon={
