@@ -43,9 +43,15 @@
       "type": "image/png",
       "density": "4.0",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/img/favicon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "density": "4.0",
+      "purpose": "any maskable"
     }
   ],
-
   "description": "Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!",
   "display": "fullscreen",
   "start_url": "/",
