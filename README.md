@@ -30,10 +30,6 @@
 
 Visit <a aria-label="bolio-ui learn" href="https://bolio-ui.com/docs/guide">https://bolio-ui.com/docs/guide</a> to get started with Bolio UI.
 
-## Documentation
-
-Visit [https://bolio-ui.com/docs](https://bolio-ui.com/docs) to view the full documentation.
-
 ## Quick Start
 
 1. Installation: Inside your React project directory, install Bolio UI by running either of the following:
