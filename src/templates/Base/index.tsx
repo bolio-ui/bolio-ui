@@ -17,7 +17,7 @@ function Base({ children }: BaseTemplateProps) {
         <Page.Footer>
           <Footer />
         </Page.Footer>
-      </Page>{' '}
+      </Page>
       {isMobile ? (
         <>
           <Image
