@@ -11,7 +11,7 @@ import SectionPlayground from './SectionPlayground'
 import SectionDemonstration from './SectionDemonstration'
 import SectionReadStarted from './SectionReadyStarted'
 import SectionCommunity from './SectionCommunity'
-// import SectionFooterGithub from './SectionFooterGithub'
+import SectionFooterGithub from './SectionFooterGithub'
 
 function Home() {
   const router = useRouter()
@@ -85,7 +85,7 @@ function Home() {
         <SectionDemonstration />
         <SectionReadStarted />
         <SectionCommunity />
-        {/* <SectionFooterGithub /> */}
+        <SectionFooterGithub />
       </Base>
     </>
   )
