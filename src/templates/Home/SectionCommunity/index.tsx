@@ -60,7 +60,7 @@ function SectionCommunity() {
               />
             </Link>
           </Grid>
-          <Grid xs={12} sm={6} md={4}>
+          {/* <Grid xs={12} sm={6} md={4}>
             <Link
               href="https://www.instagram.com/bolio.ui/"
               target="_blank"
@@ -73,7 +73,7 @@ function SectionCommunity() {
                 hover
               />
             </Link>
-          </Grid>
+          </Grid> */}
         </Grid.Container>
       </Container>
     </Section>
