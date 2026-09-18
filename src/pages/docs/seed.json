@@ -354,6 +354,22 @@
     "path": "/docs/components/button-group#buttontypes"
   },
   {
+    "title": "Calendar",
+    "component": true,
+    "path": "/docs/components/calendar"
+  },
+  {
+    "title": "Calendar",
+    "component": false,
+    "path": "/docs/components/calendar#calendar"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Props",
+    "component": false,
+    "path": "/docs/components/calendar#calendar.props"
+  },
+  {
     "title": "Capacity",
     "component": true,
     "path": "/docs/components/capacity"
@@ -628,6 +644,22 @@
     "title": "ComboboxOption",
     "component": false,
     "path": "/docs/components/combobox#comboboxoption"
+  },
+  {
+    "title": "DatePicker",
+    "component": true,
+    "path": "/docs/components/date-picker"
+  },
+  {
+    "title": "DatePicker",
+    "component": false,
+    "path": "/docs/components/date-picker#datepicker"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Props",
+    "component": false,
+    "path": "/docs/components/date-picker#datepicker.props"
   },
   {
     "title": "Description",

@@ -122,6 +122,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Calendar',
+            url: '/docs/components/calendar',
+            group: 'Components'
+          },
+          {
             name: 'Capacity',
             url: '/docs/components/capacity',
             group: 'Components'
@@ -149,6 +154,11 @@ export const menuMobile = [
           {
             name: 'Combobox',
             url: '/docs/components/combobox',
+            group: 'Components'
+          },
+          {
+            name: 'DatePicker',
+            url: '/docs/components/date-picker',
             group: 'Components'
           },
           {

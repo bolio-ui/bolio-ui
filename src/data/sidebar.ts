@@ -100,6 +100,10 @@ export const components = [
     url: '/docs/components/button-group'
   },
   {
+    name: 'Calendar',
+    url: '/docs/components/calendar'
+  },
+  {
     name: 'Capacity',
     url: '/docs/components/capacity'
   },
@@ -122,6 +126,10 @@ export const components = [
   {
     name: 'Combobox',
     url: '/docs/components/combobox'
+  },
+  {
+    name: 'DatePicker',
+    url: '/docs/components/date-picker'
   },
   {
     name: 'Description',

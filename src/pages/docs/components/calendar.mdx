@@ -1,0 +1,93 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Calendar, Grid } from 'core'
+
+export const meta = {
+  title: 'Calendar',
+  description: 'A month grid to pick a day with the mouse or the keyboard.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 43
+}
+
+## Calendar
+
+A month grid to pick a day with the mouse or the keyboard. `DatePicker` uses it, and you can use it alone when the calendar should always be visible.
+
+<Playground
+  desc="Pass the selected day with `value` and listen to `onChange`."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar value={new Date(2026, 0, 15)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="Days outside the range are disabled and the keyboard does not go there."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar
+      value={new Date(2026, 0, 15)}
+      min={new Date(2026, 0, 10)}
+      max={new Date(2026, 0, 20)}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Locale and first day of the week"
+  desc="`locale` sets the names of the month and of the weekdays, and `weekStartsOn` the first column (0 is Sunday)."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar value={new Date(2026, 0, 15)} locale="pt-BR" weekStartsOn={1} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/calendar.mdx">
+<Attributes.Title>Calendar.Props</Attributes.Title>
+
+| Attribute         | Description                                       | Type                        | Accepted values                  | Default          |
+| ----------------- | ------------------------------------------------- | --------------------------- | -------------------------------- | ---------------- |
+| **value**         | selected day, to control the component            | `Date` / `null`             | -                                | -                |
+| **onChange**      | called with the day the user picked               | `(date: Date) => void`      | -                                | -                |
+| **min**           | first day that can be picked                      | `Date`                      | -                                | -                |
+| **max**           | last day that can be picked                       | `Date`                      | -                                | -                |
+| **locale**        | language of the month and weekday names           | `string`                    | any `Intl` locale                | `en-US`          |
+| **weekStartsOn**  | first day of the week, 0 is Sunday                | `number`                    | `0` to `6`                       | `0`              |
+| **autoFocus**     | move the focus to the day when it is shown       | `boolean`                   | -                                | `false`          |
+| **previousLabel** | name of the previous month button                 | `string`                    | -                                | `Previous month` |
+| **nextLabel**     | name of the next month button                     | `string`                    | -                                | `Next month`     |
+| ...               | native props                                      | `HTMLAttributes`            | `'id', 'className', ...`         | -                |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The days are a `grid` named by the month, with a single tab stop on the focused day. The selected day has `aria-selected` and today has `aria-current="date"`.
+
+| Key                      | Action                                  |
+| ------------------------ | --------------------------------------- |
+| Arrow keys               | Move by one day, or one week            |
+| Home and End             | Go to the first and to the last day of the week |
+| Page Up and Page Down    | Go to the previous and to the next month |
+| Shift and Page Up or Down | Go to the previous and to the next year |
+| Enter and Space          | Pick the day                            |
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

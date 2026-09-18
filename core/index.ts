@@ -30,6 +30,9 @@ export type {
 export { default as ButtonGroup } from './ButtonGroup'
 export type { ButtonGroupProps } from './ButtonGroup'
 
+export { default as Calendar } from './Calendar'
+export type { CalendarProps } from './Calendar'
+
 export { default as Capacity } from './Capacity'
 export type { CapacityProps } from './Capacity'
 
@@ -53,6 +56,9 @@ export type { ComboboxProps, ComboboxOption } from './Combobox'
 
 export { default as Container } from './Container'
 export type { ContainerProps } from './Container'
+
+export { default as DatePicker } from './DatePicker'
+export type { DatePickerProps } from './DatePicker'
 
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'

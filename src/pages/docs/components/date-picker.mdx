@@ -1,0 +1,104 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { DatePicker, Grid } from 'core'
+
+export const meta = {
+  title: 'DatePicker',
+  description: 'An input to type a date, with a calendar to pick it.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 44
+}
+
+## DatePicker
+
+An input to type a date, with a calendar to pick it. The text is a date in the `YYYY-MM-DD` format, which is the same in every country.
+
+<Playground
+  desc="Name the field with `aria-label`, or with a visible label."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker aria-label="Birthday" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Initial value"
+  desc="Start with a date using `initialValue`. Use `value` and `onChange` to control it."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker aria-label="Birthday" initialValue={new Date(2026, 0, 15)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="A date outside the range cannot be typed, and its day is disabled in the calendar."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker
+      aria-label="Trip date"
+      initialValue={new Date(2026, 0, 15)}
+      min={new Date(2026, 0, 10)}
+      max={new Date(2026, 0, 20)}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Disable the input and the calendar button."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker aria-label="Birthday" disabled />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/date-picker.mdx">
+<Attributes.Title>DatePicker.Props</Attributes.Title>
+
+| Attribute         | Description                                                 | Type                        | Accepted values            | Default       |
+| ----------------- | ----------------------------------------------------------- | --------------------------- | -------------------------- | ------------- |
+| **value**         | selected date, to control the component                     | `Date` / `null`             | -                          | -             |
+| **initialValue**  | date at the start                                           | `Date` / `null`             | -                          | `null`        |
+| **onChange**      | called with the date, or `null` when the text is emptied    | `(date: Date \| null) => void` | -                       | -             |
+| **min**           | first date that can be picked                               | `Date`                      | -                          | -             |
+| **max**           | last date that can be picked                                | `Date`                      | -                          | -             |
+| **locale**        | language of the calendar                                    | `string`                    | any `Intl` locale          | `en-US`       |
+| **weekStartsOn**  | first day of the week in the calendar, 0 is Sunday          | `number`                    | `0` to `6`                 | `0`           |
+| **placeholder**   | text shown when the input is empty                          | `string`                    | -                          | `YYYY-MM-DD`  |
+| **calendarLabel** | name of the calendar button and of its dialog               | `string`                    | -                          | `Choose date` |
+| **disabled**      | disable the component                                       | `boolean`                   | -                          | `false`       |
+| ...               | native props, passed to the input                           | `InputHTMLAttributes`       | `'aria-label', 'name', ...` | -            |
+
+<Attributes.Title>Typing</Attributes.Title>
+
+The value changes only for a real date inside `min` and `max`. `2026-02-31` is not accepted. When the input loses the focus, it goes back to the last valid date. An empty text clears the value.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The calendar button has `aria-haspopup="dialog"` and `aria-expanded`. The calendar opens in a dialog with the focus on the day of the current value. Escape closes it and puts the focus back on the button, and picking a day puts the focus on the input. See <a href="/docs/components/calendar">Calendar</a> for the keys.
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

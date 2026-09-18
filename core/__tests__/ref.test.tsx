@@ -10,6 +10,7 @@ const {
   Button,
   ButtonDropdown,
   ButtonGroup,
+  Calendar,
   Capacity,
   Card,
   Checkbox,
@@ -18,6 +19,7 @@ const {
   Collapse,
   Combobox,
   Container,
+  DatePicker,
   Description,
   Display,
   Divider,
@@ -87,6 +89,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       </ButtonGroup>
     )
   ],
+  ['Calendar', (ref) => <Calendar ref={ref} />],
   ['Capacity', (ref) => <Capacity ref={ref} value={50} />],
   ['Card', (ref) => <Card ref={ref}>Content</Card>],
   ['Checkbox', (ref) => <Checkbox ref={ref}>Check</Checkbox>, 'INPUT'],
@@ -112,6 +115,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'INPUT'
   ],
   ['Container', (ref) => <Container ref={ref}>Content</Container>],
+  [
+    'DatePicker',
+    (ref) => <DatePicker ref={ref} aria-label="Birthday" />,
+    'INPUT'
+  ],
   ['Description', (ref) => <Description ref={ref} title="T" content="C" />],
   ['Display', (ref) => <Display ref={ref}>Content</Display>],
   ['Divider', (ref) => <Divider ref={ref} />],

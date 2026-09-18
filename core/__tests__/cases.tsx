@@ -10,6 +10,7 @@ const {
   Button,
   ButtonDropdown,
   ButtonGroup,
+  Calendar,
   Capacity,
   Card,
   Checkbox,
@@ -18,6 +19,7 @@ const {
   Combobox,
   Container,
   CssBaseline,
+  DatePicker,
   Description,
   Display,
   Divider,
@@ -85,6 +87,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </ButtonGroup>
     )
   ],
+  ['Calendar', () => <Calendar value={new Date(2026, 0, 15)} />],
   ['Capacity', () => <Capacity value={50} />],
   ['Card', () => <Card>Content</Card>],
   ['Checkbox', () => <Checkbox>Check</Checkbox>],
@@ -108,6 +111,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Container', () => <Container>Content</Container>],
   ['CssBaseline', () => <CssBaseline />],
+  ['DatePicker', () => <DatePicker aria-label="Birthday" />],
   ['Description', () => <Description title="T" content="C" />],
   ['Display', () => <Display caption="Caption">Content</Display>],
   ['Divider', () => <Divider />],

@@ -129,6 +129,11 @@
               "path": "/docs/components/button-dropdown.mdx"
             },
             {
+              "title": "Calendar",
+              "keywords": "calendar, month, day picker, date, week, grid",
+              "path": "/docs/components/calendar.mdx"
+            },
+            {
               "title": "Capacity",
               "keywords": "capacity, capacity color",
               "path": "/docs/components/capacity.mdx"
@@ -157,6 +162,11 @@
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"
+            },
+            {
+              "title": "DatePicker",
+              "keywords": "date picker, datepicker, date, calendar, input date, day",
+              "path": "/docs/components/date-picker.mdx"
             },
             {
               "title": "Description",
