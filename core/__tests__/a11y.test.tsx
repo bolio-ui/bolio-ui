@@ -145,6 +145,20 @@ describe('semantics', () => {
     )
   })
 
+  it('Drawer closes with Escape by default, like Modal', () => {
+    const onClose = jest.fn()
+    wrap(
+      <Drawer visible placement="right" onClose={onClose}>
+        Drawer
+      </Drawer>
+    )
+    fireEvent.keyDown(screen.getByRole('dialog'), {
+      key: 'Escape',
+      keyCode: 27
+    })
+    expect(onClose).toHaveBeenCalled()
+  })
+
   it('Popover opens from a button and closes with Escape', async () => {
     wrap(
       <Popover content={<span>Popover body</span>}>

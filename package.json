@@ -39,8 +39,12 @@
       "module": "./esm/Next/index.js",
       "default": "./dist/Next/index.js"
     },
-    "./dist/*": "./dist/*",
-    "./esm/*": "./esm/*",
+    "./dist/index.js": "./dist/index.js",
+    "./dist/*/index.js": "./dist/*/index.js",
+    "./dist/*": "./dist/*/index.js",
+    "./esm/index.js": "./esm/index.js",
+    "./esm/*/index.js": "./esm/*/index.js",
+    "./esm/*": "./esm/*/index.js",
     "./package.json": "./package.json"
   },
   "typesVersions": {

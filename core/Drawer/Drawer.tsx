@@ -28,7 +28,7 @@ const DrawerComponent = React.forwardRef<
   (
     {
       visible: customVisible,
-      keyboard,
+      keyboard = true,
       disableBackdropClick,
       wrapClassName,
       children,
