@@ -68,7 +68,9 @@ function App({ Component }) {
 
 #### Next.js
 
-1. Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
+##### Pages Router
+
+Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
 
 ```tsx
 // 1. import `BolioUIProvider` component
@@ -86,36 +88,29 @@ function MyApp({ Component, pageProps }) {
 export default MyApp
 ```
 
-2. Go to `pages/_document.js` or `pages/_document.tsx` (create if it doesn't exist) and add this:
+You don't need a custom `_document`, Next.js already adds the styles to the HTML.
 
-```jsx
-import React from 'react'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { CssBaseline } from '@bolio-ui/core'
+##### App Router
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return {
-      ...initialProps,
-      styles: React.Children.toArray([initialProps.styles])
-    }
-  }
+Go to `app/layout.js` or `app/layout.tsx` and add this:
 
-  render() {
-    return (
-      <Html lang="en">
-        <Head>{CssBaseline.flush()}</Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+```tsx
+// 1. import `BolioUIProvider` and the styles registry
+import { BolioUIProvider } from '@bolio-ui/core'
+import { StyledJsxRegistry } from '@bolio-ui/core/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {/* 2. The registry adds the styles rendered on the server to the HTML */}
+        <StyledJsxRegistry>
+          <BolioUIProvider>{children}</BolioUIProvider>
+        </StyledJsxRegistry>
+      </body>
+    </html>
+  )
 }
-
-export default MyDocument
 ```
 
 > For more information about Next.js + Bolio UI SSR check out the [documentation](/guide/bolio-ui-plus-nextjs).
