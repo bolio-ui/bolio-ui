@@ -65,43 +65,36 @@ const Navigation: React.FC = () => {
             <Grid.Container gap={1} justify="center">
               {!isMobile ? (
                 <>
-                  <Grid
-                    xs={6}
-                    md={4}
-                    justify="flex-start"
-                    style={{ marginTop: '8px' }}
-                  >
-                    <Logo name="Bolio UI" />
-                    <Spacer w={0.5} />
-                    <VersionSelect />
-                  </Grid>
-
-                  <Grid xs={0} md={4} justify="center">
-                    <div className="tabs">
-                      <Tabs
-                        value={router.asPath}
-                        onChange={(route) => router.push(route)}
-                        align="center"
-                        hideDivider
-                        hideBorder
-                      >
-                        <Tabs.Item
-                          label="Guide"
-                          value="/docs/guide/getting-started"
-                        />
-                        <Tabs.Item
-                          label="Components"
-                          value="/docs/components/avatar"
-                        />
-                        <Tabs.Item
-                          label="Hooks"
-                          value="/docs/hooks/use-body-scroll"
-                        />
-                      </Tabs>
+                  <Grid xs={6} md={6} justify="flex-start">
+                    <div className="brand">
+                      <div className="logo-wrapper">
+                        <Logo name="Bolio UI" />
+                      </div>
+                      <div className="tabs">
+                        <Tabs
+                          value={router.asPath}
+                          onChange={(route) => router.push(route)}
+                          hideDivider
+                          hideBorder
+                        >
+                          <Tabs.Item
+                            label="Guide"
+                            value="/docs/guide/getting-started"
+                          />
+                          <Tabs.Item
+                            label="Components"
+                            value="/docs/components/avatar"
+                          />
+                          <Tabs.Item
+                            label="Hooks"
+                            value="/docs/hooks/use-body-scroll"
+                          />
+                        </Tabs>
+                      </div>
                     </div>
                   </Grid>
 
-                  <Grid xs={6} md={4} justify="flex-end">
+                  <Grid xs={6} md={6} justify="flex-end">
                     <div className="controls">
                       <>
                         <Link
@@ -175,6 +168,8 @@ const Navigation: React.FC = () => {
                             <Moon fontSize={16} />
                           )}
                         </Button>
+                        <Spacer w={0.5} />
+                        <VersionSelect />
                         <Spacer w={0.5} />
                         <SearchInput />
                         <Spacer w={1} />
@@ -289,6 +284,13 @@ const Navigation: React.FC = () => {
           padding: 0;
         }
 
+        .brand {
+          display: flex;
+          align-items: flex-start;
+        }
+        .logo-wrapper {
+          margin-top: 8px;
+        }
         .logo {
           padding: 0 ${theme.layout.gap};
           margin-bottom: 3px;
