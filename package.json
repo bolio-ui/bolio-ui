@@ -82,7 +82,7 @@
     "release": "yarn build && yarn build:package && yarn publish --access public --non-interactive"
   },
   "lint-staged": {
-    "src/**/*": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
