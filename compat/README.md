@@ -12,7 +12,7 @@ renders under different Next/React versions. It covers three entry points:
 ## Run
 
 ```bash
-yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:after
+yarn build:package
 npm pack --pack-destination /tmp/bolio-pack
 PACK_DIR=/tmp/bolio-pack compat/run.sh <next-version> <react-version> [port]
 
@@ -21,8 +21,6 @@ PACK_DIR=/tmp/bolio-pack compat/run.sh 15 19
 PACK_DIR=/tmp/bolio-pack compat/run.sh 16 19
 PACK_DIR=/tmp/bolio-pack compat/run.sh 14 18
 ```
-
-(`build:types` is skipped on purpose while it is broken on Node 24.)
 
 For each route the script prints the HTTP status, how many `<style>` tags reach
 the server-rendered HTML and how many `jsx-*` classes appear. `jsx-*` classes with
