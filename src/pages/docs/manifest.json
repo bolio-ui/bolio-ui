@@ -154,6 +154,11 @@
               "path": "/docs/components/collapse.mdx"
             },
             {
+              "title": "Combobox",
+              "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
+              "path": "/docs/components/combobox.mdx"
+            },
+            {
               "title": "Description",
               "keywords": "description, with component",
               "path": "/docs/components/description.mdx"

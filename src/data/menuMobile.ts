@@ -147,6 +147,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Combobox',
+            url: '/docs/components/combobox',
+            group: 'Components'
+          },
+          {
             name: 'Description',
             url: '/docs/components/description',
             group: 'Components'

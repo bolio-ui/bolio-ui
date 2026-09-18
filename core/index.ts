@@ -48,6 +48,9 @@ export type { ColProps } from './Col'
 export { default as Collapse } from './Collapse'
 export type { CollapseProps, CollapseGroupProps } from './Collapse'
 
+export { default as Combobox } from './Combobox'
+export type { ComboboxProps, ComboboxOption } from './Combobox'
+
 export { default as Container } from './Container'
 export type { ContainerProps } from './Container'
 

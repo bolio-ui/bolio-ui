@@ -1,0 +1,143 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Combobox, Grid } from 'core'
+
+export const meta = {
+  title: 'Combobox',
+  description:
+    'An input that filters a list of options while you type and lets you pick one.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 42
+}
+
+## Combobox
+
+An input that filters a list of options while you type and lets you pick one.
+Use it when the list is long enough that a `Select` is hard to scan.
+
+<Playground
+  desc="Pass the options and name the field with `aria-label`, or with a visible label."
+  scope={{ Combobox, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Combobox
+      aria-label="Country"
+      placeholder="Search a country"
+      options={[
+        { value: 'br', label: 'Brazil' },
+        { value: 'pt', label: 'Portugal' },
+        { value: 'us', label: 'United States' },
+        { value: 'ar', label: 'Argentina' }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Initial value and disabled options"
+  desc="Use `initialValue` to start with a selection. An option with `disabled` cannot be picked."
+  scope={{ Combobox, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Combobox
+      aria-label="Country"
+      initialValue="pt"
+      options={[
+        { value: 'br', label: 'Brazil' },
+        { value: 'pt', label: 'Portugal' },
+        { value: 'xx', label: 'Nowhere', disabled: true }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Empty text"
+  desc="Change what shows when nothing matches with `emptyText`."
+  scope={{ Combobox, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Combobox
+      aria-label="Fruit"
+      emptyText="No fruit with that name"
+      options={[
+        { value: 'apple', label: 'Apple' },
+        { value: 'pear', label: 'Pear' }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="A disabled Combobox cannot be focused."
+  scope={{ Combobox, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Combobox
+      aria-label="Country"
+      disabled
+      options={[{ value: 'br', label: 'Brazil' }]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/pages/docs/components/combobox.mdx">
+<Attributes.Title>Combobox.Props</Attributes.Title>
+
+| Attribute         | Description                                              | Type                                               | Accepted values                    | Default        |
+| ----------------- | -------------------------------------------------------- | -------------------------------------------------- | ---------------------------------- | -------------- |
+| **options**       | the options to choose from                               | `ComboboxOption[]`                                 | [ComboboxOption](#comboboxoption)  | -              |
+| **value**         | selected value, to control the component                 | `string` / `null`                                  | -                                  | -              |
+| **initialValue**  | selected value at the start                              | `string` / `null`                                  | -                                  | `null`         |
+| **onChange**      | called with the chosen value, or `null` when it is cleared | `(value: string \| null) => void`                | -                                  | -              |
+| **onInputChange** | called with the text while the user types                | `(text: string) => void`                           | -                                  | -              |
+| **filter**        | decides which options match the text                     | `(option, text) => boolean`                        | -                                  | contains, case insensitive |
+| **placeholder**   | text shown when the input is empty                       | `string`                                           | -                                  | -              |
+| **emptyText**     | text shown when no option matches                        | `string`                                           | -                                  | `No results`   |
+| **disabled**      | disable the component                                    | `boolean`                                          | -                                  | `false`        |
+| ...               | native props, passed to the input                        | `InputHTMLAttributes`                              | `'aria-label', 'name', 'id', ...`  | -              |
+
+<Attributes.Title>ComboboxOption</Attributes.Title>
+
+```ts
+type ComboboxOption = {
+  value: string
+  label?: string // shown in the list and in the input, `value` when missing
+  disabled?: boolean
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The input has `role="combobox"` and points at the active option with `aria-activedescendant`. The list is a `listbox` of `option` elements.
+
+| Key                | Action                                               |
+| ------------------ | ---------------------------------------------------- |
+| Arrow Down and Up  | Open the list, and move between the options          |
+| Enter              | Choose the active option                             |
+| Escape             | Close the list                                       |
+| Tab                | Close the list and restore the text of the selection |
+
+A screen reader hears how many options match while the user types. Give the input a name with `aria-label` or `aria-labelledby`.
+
+</Attributes>
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

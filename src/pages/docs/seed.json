@@ -608,6 +608,28 @@
     "path": "/docs/components/collapse#collapse.group.props"
   },
   {
+    "title": "Combobox",
+    "component": true,
+    "path": "/docs/components/combobox"
+  },
+  {
+    "title": "Combobox",
+    "component": false,
+    "path": "/docs/components/combobox#combobox"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Props",
+    "component": false,
+    "path": "/docs/components/combobox#combobox.props"
+  },
+  {
+    "head": "Combobox",
+    "title": "ComboboxOption",
+    "component": false,
+    "path": "/docs/components/combobox#comboboxoption"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"

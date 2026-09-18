@@ -16,6 +16,7 @@ const {
   Code,
   Col,
   Collapse,
+  Combobox,
   Container,
   Description,
   Display,
@@ -98,6 +99,17 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         Body
       </Collapse>
     )
+  ],
+  [
+    'Combobox',
+    (ref) => (
+      <Combobox
+        ref={ref}
+        aria-label="Country"
+        options={[{ value: 'br', label: 'Brazil' }]}
+      />
+    ),
+    'INPUT'
   ],
   ['Container', (ref) => <Container ref={ref}>Content</Container>],
   ['Description', (ref) => <Description ref={ref} title="T" content="C" />],

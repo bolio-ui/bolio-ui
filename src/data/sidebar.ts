@@ -120,6 +120,10 @@ export const components = [
     url: '/docs/components/collapse'
   },
   {
+    name: 'Combobox',
+    url: '/docs/components/combobox'
+  },
+  {
     name: 'Description',
     url: '/docs/components/description'
   },

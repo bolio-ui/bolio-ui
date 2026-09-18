@@ -15,6 +15,7 @@ const {
   Checkbox,
   Code,
   Collapse,
+  Combobox,
   Container,
   CssBaseline,
   Description,
@@ -94,6 +95,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       <Collapse title="Title" subtitle="Sub">
         Body
       </Collapse>
+    )
+  ],
+  [
+    'Combobox',
+    () => (
+      <Combobox
+        aria-label="Country"
+        options={[{ value: 'br', label: 'Brazil' }]}
+      />
     )
   ],
   ['Container', () => <Container>Content</Container>],
