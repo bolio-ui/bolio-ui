@@ -9,6 +9,14 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
+    name: 'Migrating to v2',
+    url: '/docs/guide/migration-v1-to-v2'
+  },
+  {
+    name: 'Refs and accessibility',
+    url: '/docs/guide/refs-and-accessibility'
+  },
+  {
     name: 'About Bolio UI',
     url: '/docs/guide/about-bolio-ui'
   },

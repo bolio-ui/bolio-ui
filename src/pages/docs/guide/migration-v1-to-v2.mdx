@@ -1,0 +1,117 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Migrating to v2',
+  description: '',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Migrating from v1 to v2
+
+Version 2 works with React 18 and 19 and with the Next.js App Router. This page lists what changes and what to do about it.
+The documentation of v1 stays available at <a href="https://v1.bolio-ui.com" rel="noreferrer" target="_blank">v1.bolio-ui.com</a>.
+
+While v2 is in alpha, install it with the `next` tag:
+
+```bash
+yarn add @bolio-ui/core@next
+```
+
+<Spacer h={2} />
+
+### Requirements
+
+- React 18.2 or later, including React 19. React 16 and 17 are no longer supported.
+- TypeScript users need `@types/react` 18 or 19.
+- Next.js 14, 15 and 16 are tested, with the Pages Router and with the App Router.
+- Vite 8 with React 19 and plain Node (18, 22 and 24, with `require`, `import` and server rendering) are tested too.
+
+<Spacer h={2} />
+
+### Breaking changes
+
+#### `CssBaseline.flush` and `CssBaseline.flushToHTML` were removed
+
+Bolio UI used to bundle a private copy of styled-jsx, and Next.js could not read its styles, so `_document` had to call `CssBaseline.flush()`.
+Version 2 uses the real `styled-jsx` package, which Next.js already collects. In the Pages Router you can delete the custom code from `_document`:
+
+```jsx
+// v1: pages/_document.js
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>{CssBaseline.flush()}</Head>
+        ...
+
+// v2: nothing to add. Remove the call, or the whole custom _document if it was only for this.
+```
+
+In a custom server, use a `styled-jsx` registry. See <a href="/docs/guide/bolio-ui-plus-nextjs">Bolio UI plus Next.js</a>.
+
+#### App Router needs the styles registry
+
+The App Router does not add styled-jsx styles to the HTML by itself. Wrap your app with `StyledJsxRegistry` in `app/layout.js`:
+
+```jsx
+import { BolioUIProvider } from '@bolio-ui/core'
+import { StyledJsxRegistry } from '@bolio-ui/core/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <StyledJsxRegistry>
+          <BolioUIProvider>{children}</BolioUIProvider>
+        </StyledJsxRegistry>
+      </body>
+    </html>
+  )
+}
+```
+
+You do not need `'use client'` to use the components in Server Components. The entry files of the package already have it.
+
+#### `styled-jsx` is a dependency
+
+The package now depends on `styled-jsx` (5.0.7 or later) instead of bundling a copy. If your app already uses Next.js, both share the same copy.
+
+#### Package entry points
+
+The package has an `exports` map. These paths work:
+
+| Path | What it is |
+| ---- | ---------- |
+| `@bolio-ui/core` | All components and hooks |
+| `@bolio-ui/core/next` | `StyledJsxRegistry` for the Next.js App Router |
+| `@bolio-ui/core/dist/*` and `@bolio-ui/core/esm/*` | Deep imports, as before |
+
+Other paths are no longer resolved.
+
+<Spacer h={2} />
+
+### Changes in behavior
+
+- **Container** no longer renders a stray `gap="0"` attribute in the DOM.
+- **Toggle, Checkbox and Radio** can be reached with the Tab key and show a focus ring. The native `input` of Toggle and Radio was hidden with `visibility: hidden` and is not hidden anymore, so a CSS selector or a test that relies on that may need a change.
+- **Tabs** items have `role="tab"` instead of `role="button"`, inside a `role="tablist"`. The content has `role="tabpanel"`.
+- **Pagination** puts its items in a list and marks the current page with `aria-current="page"`.
+- **Slider** thumb has `role="slider"` and answers to the keyboard.
+- **Tooltip** opens when its trigger gets the focus and closes with Escape. **Popover** closes with Escape.
+- **Refs**: every component forwards its `ref` now. See <a href="/docs/guide/refs-and-accessibility">Refs and accessibility</a>.
+- **Types**: `Table` accepts `ref` and the scale props, and `Container` types its `fluid` prop.
+
+<Spacer h={2} />
+
+### Checklist
+
+1. Update React to 18.2 or later.
+2. Install `@bolio-ui/core@next`.
+3. Remove `CssBaseline.flush()` from your custom server or `_document`.
+4. In the App Router, add `StyledJsxRegistry` to the root layout.
+5. Update `@types/react` to 18 or 19 if you use TypeScript.
+6. Search your tests and styles for the changes listed under behavior.
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

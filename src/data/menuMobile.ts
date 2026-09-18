@@ -11,6 +11,16 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Migrating to v2',
+            url: '/docs/guide/migration-v1-to-v2',
+            group: 'Guide'
+          },
+          {
+            name: 'Refs and accessibility',
+            url: '/docs/guide/refs-and-accessibility',
+            group: 'Guide'
+          },
+          {
             name: 'About Bolio UI',
             url: '/docs/guide/about-bolio-ui',
             group: 'Guide'

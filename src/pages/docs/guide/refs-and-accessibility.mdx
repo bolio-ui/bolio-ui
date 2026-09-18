@@ -1,0 +1,87 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Refs and accessibility',
+  description: '',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Refs and accessibility
+
+<Spacer h={2} />
+
+### Refs
+
+Every component forwards its `ref`. The ref points at the element that receives the native props, such as `className`, event handlers and `data-*` attributes.
+
+```tsx
+import { useRef } from 'react'
+import { Button, Input } from '@bolio-ui/core'
+
+function Form() {
+  const input = useRef<HTMLInputElement>(null)
+
+  return (
+    <>
+      <Input ref={input} placeholder="Name" />
+      <Button onClick={() => input.current?.focus()}>Focus the input</Button>
+    </>
+  )
+}
+```
+
+| Component | The ref points at |
+| --------- | ----------------- |
+| Most components, such as Card, Text, Badge, Tag, Grid, Tabs and Pagination | The root element |
+| Input, Textarea, Checkbox, Radio and Toggle | The native `input` or `textarea` |
+| Button, Link and Image | The `button`, the `a` and the `img` |
+| Table | The `table` |
+| Modal and Drawer | The element with `role="dialog"` |
+| Popover and Tooltip | The wrapper around the trigger |
+| Select | A `SelectRef` with `focus`, `blur` and `scrollTo` |
+
+<Spacer h={2} />
+
+### Accessibility
+
+#### Give a name to controls without visible text
+
+Select, Slider and Toggle can be used without a visible label. Name them with `aria-label`, or with `aria-labelledby` pointing at a text on the page:
+
+```tsx
+<Slider aria-label="Volume" initialValue={20} />
+<Toggle aria-label="Notifications" />
+<Select aria-label="Country" placeholder="Pick one">
+  <Select.Option value="br">Brazil</Select.Option>
+</Select>
+```
+
+Select uses its `placeholder` as the name when you do not pass one. A Button that only has an icon also needs an `aria-label`.
+
+#### Keyboard
+
+| Component | Keys |
+| --------- | ---- |
+| Tabs | Left and Right arrows move between tabs, Home and End go to the first and last |
+| Slider | Arrows change the value by `step`, Page Up and Page Down by ten steps, Home and End go to the minimum and the maximum |
+| Collapse | Enter and Space open and close it |
+| Toggle, Checkbox and Radio | Tab reaches them and Space changes them, with a visible focus ring |
+| Tooltip | Opens when the trigger gets the focus and closes with Escape |
+| Popover | Escape closes it. The trigger has to be focusable, for example a Button |
+| Modal and Drawer | Escape closes them, and Tab stays inside |
+
+#### Roles and states
+
+- Toggle is a `switch`, Slider has `role="slider"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`.
+- Tabs use `tablist`, `tab` and `tabpanel`, and mark the selected tab with `aria-selected`.
+- Collapse exposes `aria-expanded`, and Pagination marks the current page with `aria-current="page"`.
+- Modal and Drawer are `aria-modal` dialogs, Spinner and Loading have `role="status"`, and Tooltip is described by its content through `aria-describedby`.
+
+#### How it is checked
+
+The tests run <a href="https://github.com/dequelabs/axe-core" rel="noreferrer" target="_blank">axe-core</a> on the default render of every component, and check the keyboard behavior above.
+The tests do not check color contrast, which depends on the theme, and they were not run with a real screen reader or in a browser.
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>

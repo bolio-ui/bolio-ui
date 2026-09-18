@@ -20,6 +20,16 @@
               "path": "/docs/guide/getting-started.mdx"
             },
             {
+              "title": "Migrating to v2",
+              "keywords": "migrate, migration, upgrade, v1, v2, breaking changes, bolio ui",
+              "path": "/docs/guide/migration-v1-to-v2.mdx"
+            },
+            {
+              "title": "Refs and accessibility",
+              "keywords": "ref, refs, forwardRef, accessibility, a11y, aria, keyboard, bolio ui",
+              "path": "/docs/guide/refs-and-accessibility.mdx"
+            },
+            {
               "title": "About Bolio UI",
               "keywords": "about, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
