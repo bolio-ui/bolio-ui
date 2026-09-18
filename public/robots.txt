@@ -1,9 +1,3 @@
-# *
+# Documentation for v1. The current docs live at https://bolio-ui.com
 User-agent: *
-Allow: /
-
-# Host
-Host: https://bolio-ui.com
-
-# Sitemaps
-Sitemap: https://bolio-ui.com/sitemap.xml
+Disallow: /

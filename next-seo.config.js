@@ -2,7 +2,7 @@ const DefaultSEO = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://bolio-ui.com/',
+    url: 'https://v1.bolio-ui.com/',
     site_name: 'Bolio UI',
     title: 'Bolio UI - Amazing, modern and creative tools for React UI',
     description:
