@@ -32,6 +32,8 @@ interface Props {
   offset: number
   className?: string
   iconOffset: TooltipIconOffset
+  id?: string
+  role?: string
 }
 export type TooltipIconOffset = {
   x: string
@@ -47,7 +49,9 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   placement,
   type,
   className,
-  hideArrow
+  hideArrow,
+  id,
+  role
 }) => {
   const theme = useTheme()
   const { SCALES } = useScale()
@@ -85,7 +89,13 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   if (!el) return null
   return createPortal(
     <CssTransition visible={visible}>
-      <div className={classes} ref={selfRef} onClick={preventHandler}>
+      <div
+        id={id}
+        role={role}
+        className={classes}
+        ref={selfRef}
+        onClick={preventHandler}
+      >
         <div className="inner">
           {!hideArrow && (
             <TooltipIcon placement={placement} shadow={hasShadow} />

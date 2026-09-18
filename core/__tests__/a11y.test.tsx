@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import axe from 'axe-core'
 import {
   BolioUIProvider,
@@ -8,11 +8,13 @@ import {
   Loading,
   Modal,
   Pagination,
+  Popover,
   Select,
   Slider,
   Spinner,
   Tabs,
-  Toggle
+  Toggle,
+  Tooltip
 } from '..'
 import { cases } from './cases'
 
@@ -118,6 +120,44 @@ describe('semantics', () => {
     expect(dialogs).toHaveLength(2)
     dialogs.forEach((dialog) =>
       expect(dialog).toHaveAttribute('aria-modal', 'true')
+    )
+  })
+
+  it('Tooltip opens with the focus, describes its trigger and closes with Escape', async () => {
+    wrap(
+      <Tooltip text="Tip">
+        <button>Trigger</button>
+      </Tooltip>
+    )
+    const trigger = screen.getByRole('button', { name: 'Trigger' })
+    act(() => trigger.focus())
+
+    const tooltip = await screen.findByRole('tooltip')
+    expect(tooltip).toHaveTextContent('Tip')
+    expect(trigger.parentElement).toHaveAttribute(
+      'aria-describedby',
+      tooltip.id
+    )
+
+    fireEvent.keyDown(trigger, { key: 'Escape' })
+    await waitFor(() =>
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    )
+  })
+
+  it('Popover opens from a button and closes with Escape', async () => {
+    wrap(
+      <Popover content={<span>Popover body</span>}>
+        <button>Open</button>
+      </Popover>
+    )
+    const trigger = screen.getByRole('button', { name: 'Open' })
+    fireEvent.click(trigger)
+    expect(await screen.findByText('Popover body')).toBeInTheDocument()
+
+    fireEvent.keyDown(trigger, { key: 'Escape' })
+    await waitFor(() =>
+      expect(screen.queryByText('Popover body')).not.toBeInTheDocument()
     )
   })
 

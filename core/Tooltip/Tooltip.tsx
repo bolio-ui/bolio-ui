@@ -1,5 +1,6 @@
 import React, {
   useEffect,
+  useId,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -62,6 +63,7 @@ const TooltipComponent = React.forwardRef<
   ) => {
     const timer = useRef<number>()
     const innerRef = useRef<HTMLDivElement>(null)
+    const tooltipId = useId()
     useImperativeHandle(ref, () => innerRef.current as HTMLDivElement)
 
     const [visible, setVisible] = useState<boolean>(initialVisible)
@@ -83,7 +85,9 @@ const TooltipComponent = React.forwardRef<
       hideArrow,
       iconOffset,
       parent: innerRef,
-      className: portalClassName
+      className: portalClassName,
+      id: tooltipId,
+      role: trigger === 'hover' ? 'tooltip' : undefined
     }
 
     const changeVisible = (nextState: boolean) => {
@@ -113,6 +117,10 @@ const TooltipComponent = React.forwardRef<
     const clickEventHandler = () =>
       trigger === 'click' && changeVisible(!visible)
 
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Escape' && visible) changeVisible(false)
+    }
+
     useClickAway(innerRef, () => trigger === 'click' && changeVisible(false))
     useEffect(() => {
       if (customVisible === undefined) return
@@ -126,6 +134,12 @@ const TooltipComponent = React.forwardRef<
         onClick={clickEventHandler}
         onMouseEnter={() => mouseEventHandler(true)}
         onMouseLeave={() => mouseEventHandler(false)}
+        onFocus={() => mouseEventHandler(true)}
+        onBlur={() => mouseEventHandler(false)}
+        onKeyDown={keyDownHandler}
+        aria-describedby={
+          trigger === 'hover' && visible ? tooltipId : undefined
+        }
         {...props}
       >
         {children}
