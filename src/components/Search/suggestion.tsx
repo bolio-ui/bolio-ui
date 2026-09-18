@@ -1,19 +1,30 @@
 import * as React from 'react'
 import cn from 'classnames'
-import { Highlight } from 'react-instantsearch-dom'
 import NextLink from 'next/link'
-import { Hit } from 'react-instantsearch-core'
 import { useTheme } from 'core'
 import { File, Hash, ArrowRight } from '@bolio-ui/icons'
 import { addColorAlpha } from 'core/utils/color'
 import { includes } from 'lodash'
+import { DocHit, splitMatches } from 'src/utils/local-search'
 
 interface Props {
-  hit: Hit
+  hit: DocHit
+  query: string
   highlighted: boolean
 }
 
-const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
+const Highlighted: React.FC<{ text: string; query: string }> = ({
+  text,
+  query
+}) => (
+  <>
+    {splitMatches(text, query).map((part, i) =>
+      part.match ? <mark key={i}>{part.text}</mark> : part.text
+    )}
+  </>
+)
+
+const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
   const theme = useTheme()
 
   return (
@@ -29,11 +40,11 @@ const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
         <div className="suggestion__data-container">
           {hit.head && (
             <span className="suggestion__title">
-              <Highlight hit={hit} attribute="head" tagName="mark" />
+              <Highlighted text={hit.head} query={query} />
             </span>
           )}
           <span className="suggestion__content">
-            <Highlight hit={hit} attribute="title" tagName="mark" />
+            <Highlighted text={hit.title} query={query} />
           </span>
         </div>
         <div>
