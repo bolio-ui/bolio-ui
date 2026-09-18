@@ -300,7 +300,11 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
 | **wrapClassName**        | className of the modal dialog    | `string`                  | -                                       | -       |
 | **keyboard**             | press Esc to close modal         | `boolean`                 | -                                       | `true`  |
 | **disableBackdropClick** | click background and don't close | `boolean`                 | -                                       | `false` |
+| **role**                 | use `alertdialog` for a message that needs an answer | `'dialog'` / `'alertdialog'` | -                                    | `dialog` |
+| **aria-label**           | name of the dialog when there is no `Modal.Title` | `string`                  | -                                       | -       |
 | ...                      | native props                     | `HTMLAttributes`          | `'autoFocus', 'name', 'className', ...` | -       |
+
+The dialog is named by `Modal.Title` and described by `Modal.Subtitle` on its own. Without a title, pass `aria-label` or `aria-labelledby`.
 
 <Attributes.Title>Modal.Title.Props</Attributes.Title>
 
