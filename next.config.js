@@ -17,6 +17,9 @@ const withPWA = require('next-pwa')({
 })
 
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_VERSION: require('./package.json').version
+  },
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
   async headers() {
     return [

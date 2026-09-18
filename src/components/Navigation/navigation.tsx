@@ -24,6 +24,7 @@ import { useMediaQuery } from 'src/utils/use-media-query'
 import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
+import VersionSelect from 'src/components/VersionSelect'
 
 const SearchInput = dynamic(() => import('../Search/instant-search'), {
   ssr: true
@@ -71,6 +72,8 @@ const Navigation: React.FC = () => {
                     style={{ marginTop: '8px' }}
                   >
                     <Logo name="Bolio UI" />
+                    <Spacer w={0.5} />
+                    <VersionSelect />
                   </Grid>
 
                   <Grid xs={0} md={4} justify="center">
