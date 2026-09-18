@@ -1,19 +1,30 @@
 import * as React from 'react'
 import cn from 'classnames'
-import { Highlight } from 'react-instantsearch-dom'
 import NextLink from 'next/link'
-import { Hit } from 'react-instantsearch-core'
 import { useTheme } from 'core'
 import { File, Hash, ArrowRight } from '@bolio-ui/icons'
 import { addColorAlpha } from 'core/utils/color'
 import { includes } from 'lodash'
+import { DocHit, splitMatches } from 'src/utils/local-search'
 
 interface Props {
-  hit: Hit
+  hit: DocHit
+  query: string
   highlighted: boolean
 }
 
-const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
+const Highlighted: React.FC<{ text: string; query: string }> = ({
+  text,
+  query
+}) => (
+  <>
+    {splitMatches(text, query).map((part, i) =>
+      part.match ? <mark key={i}>{part.text}</mark> : part.text
+    )}
+  </>
+)
+
+const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
   const theme = useTheme()
 
   return (
@@ -29,11 +40,11 @@ const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
         <div className="suggestion__data-container">
           {hit.head && (
             <span className="suggestion__title">
-              <Highlight hit={hit} attribute="head" tagName="mark" />
+              <Highlighted text={hit.head} query={query} />
             </span>
           )}
           <span className="suggestion__content">
-            <Highlight hit={hit} attribute="title" tagName="mark" />
+            <Highlighted text={hit.title} query={query} />
           </span>
         </div>
         <div>
@@ -46,11 +57,11 @@ const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
               display: flex;
               align-items: center;
               cursor: pointer;
-              padding: 16px 8px;
+              padding: 8px;
               justify-content: space-between;
               border-bottom: 1px solid
                 ${addColorAlpha(theme.palette.border, 0.6)};
-              min-height: 68px;
+              min-height: 40px;
               transition: all 0.2s ease;
             }
             .suggestion__container,
@@ -68,7 +79,7 @@ const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
               font-size: 0.735rem;
               line-height: 2px;
               font-weight: 500;
-              margin-bottom: 8px;
+              margin-bottom: 4px;
               margin-left: 5px;
               display: flex;
               color: ${theme.palette.accents_6};
@@ -86,10 +97,9 @@ const Suggestion: React.FC<Props> = ({ hit, highlighted }) => {
               color: ${theme.palette.accents_6};
             }
             .suggestion__content {
-              font-size: 1rem;
-              line-height: 2px;
+              font-size: 0.875rem;
               display: block;
-              line-height: 1.6;
+              line-height: 1.4;
               color: ${theme.palette.accents_6};
               margin-left: 5px;
             }

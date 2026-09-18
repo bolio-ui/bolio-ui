@@ -10,15 +10,11 @@ import AutoSuggest, {
   RenderSuggestionsContainerParams,
   RenderInputComponentProps
 } from 'react-autosuggest'
-import { SearchByAlgolia, Close } from 'src/components/Icons'
+import { Close } from 'src/components/Icons'
 import { addColorAlpha } from 'core/utils/color'
-import {
-  connectAutoComplete,
-  connectStateResults
-} from 'react-instantsearch-dom'
 import { isEmpty } from 'lodash'
-import { AutocompleteProvided } from 'react-instantsearch-core'
 import Suggestion from './suggestion'
+import { searchDocs } from 'src/utils/local-search'
 import { VisualState, useKBar } from 'kbar'
 import Blockholder from 'src/components/Blockholder'
 import useIsMounted from 'src/utils/use-is-mounted'
@@ -26,9 +22,7 @@ import usePortal from 'core/utils/use-portal'
 import withDeaults from 'src/utils/with-defaults'
 import { useIsMobile } from 'src/utils/use-media-query'
 
-interface Props extends AutocompleteProvided {
-  hits?: ReadonlyArray<string>
-  refine?: (value: string) => void
+interface Props {
   offsetTop?: number
 }
 
@@ -36,15 +30,11 @@ const defaultProps = {
   offsetTop: 0
 }
 
-interface SuggestionsFetchRequestedParams {
-  value: string
-}
-
 interface OnSuggestionSelectedParams {
-  url: string
+  path: string
 }
 
-const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
+const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
   const theme = useTheme()
 
   const [value, setValue] = React.useState('')
@@ -61,6 +51,10 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   })
 
   const isMobile = useIsMobile()
+  const hits = React.useMemo(
+    () => searchDocs(value, isMobile ? 6 : 8),
+    [value, isMobile]
+  )
 
   const { query } = useKBar()
   const isMounted = useIsMounted()
@@ -99,17 +93,11 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     onBlur: () => setIsFocused(false)
   }
 
-  const onSuggestionsFetchRequested = ({
-    value
-  }: SuggestionsFetchRequestedParams) => {
-    refine(value)
-  }
-
   const onSuggestionSelected: OnSuggestionSelected<OnSuggestionSelectedParams> =
     (_, { suggestion, method }) => {
       if (method === 'enter') {
         onClear()
-        router.push(suggestion.url)
+        router.push(suggestion.path)
       }
     }
 
@@ -118,10 +106,9 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   const renderSuggestion = (
     hit,
     { isHighlighted }: { isHighlighted: boolean }
-  ) => <Suggestion highlighted={isHighlighted} hit={hit} />
+  ) => <Suggestion highlighted={isHighlighted} hit={hit} query={value} />
 
   const onClear = () => {
-    refine('')
     setValue('')
     inputRef && inputRef?.current?.blur()
   }
@@ -129,7 +116,6 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   const renderInput = React.useCallback(
     (inputProps: RenderInputComponentProps) => {
       const onClear = () => {
-        refine('')
         setValue('')
         inputRef && inputRef?.current?.blur()
       }
@@ -169,7 +155,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
         </label>
       )
     },
-    [value, theme.palette.accents_6, refine, query]
+    [value, theme.palette.accents_6, query]
   )
 
   const renderSuggestionsContainer = ({
@@ -179,64 +165,29 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     suggestionsPortal ? (
       createPortal(
         <div className={'suggest__suggestion-sticky'}>
-          <div {...containerProps}>
-            <a
-              href="https://www.algolia.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="react-autosuggest__suggestions-header"
-            >
-              <SearchByAlgolia fill={theme.palette.accents_6} />
-            </a>
-            {children}
-          </div>
+          <div {...containerProps}>{children}</div>
         </div>,
         suggestionsPortal
       )
     ) : (
-      <div {...containerProps}>
-        <a
-          href="https://www.algolia.com/"
-          target="_blank"
-          rel="noreferrer"
-          className="react-autosuggest__suggestions-header"
-        >
-          <SearchByAlgolia fill={theme.palette.accents_6} />
-        </a>
-        {children}
-      </div>
+      <div {...containerProps}>{children}</div>
     )
 
-  const NoResults = connectStateResults(
-    ({ searchState, searchResults, searching }) => {
-      const open =
-        searchState &&
-        searchState.query &&
-        !searching &&
-        searchResults &&
-        searchResults.nbHits === 0
-      const NoResultsContainer = () => (
-        <div className={'suggest__suggestion-sticky'}>
-          <div className="no-results">
-            <span>
-              No results for <span>"{value}"</span>
-            </span>
-            <br />
-            <span>Try again with a different keyword</span>
-          </div>
+  const NoResults = () => {
+    if (!value || hits.length > 0 || !noResultsPortal) return null
+    return createPortal(
+      <div className={'suggest__suggestion-sticky'}>
+        <div className="no-results">
+          <span>
+            No results for <span>"{value}"</span>
+          </span>
+          <br />
+          <span>Try again with a different keyword</span>
         </div>
-      )
-      // if (accents_0 && open) {
-      //   if (!noResultsPortal) return null
-      //   return createPortal(<NoResultsContainer />, noResultsPortal)
-      // }
-      if (open) {
-        if (!noResultsPortal) return null
-        return createPortal(<NoResultsContainer />, noResultsPortal)
-      }
-      return open ? <NoResultsContainer /> : null
-    }
-  )
+      </div>,
+      noResultsPortal
+    )
+  }
 
   if (!isMounted) {
     return (
@@ -281,7 +232,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
       >
         <AutoSuggest
           highlightFirstSuggestion={true}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          onSuggestionsFetchRequested={() => undefined}
           onSuggestionsClearRequested={onClear}
           onSuggestionSelected={onSuggestionSelected}
           getSuggestionValue={getSuggestionValue}
@@ -421,10 +372,6 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
         .react-autosuggest__suggestions-container::-webkit-scrollbar {
           width: 0px;
         }
-        .react-autosuggest__suggestions-header {
-          padding: 14px;
-          width: 100%;
-        }
         .react-autosuggest__suggestions-container--open {
           display: block;
           opacity: 1;
@@ -529,4 +476,4 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
 
 const MemoAutocomplete = React.memo(Autocomplete)
 
-export default connectAutoComplete(withDeaults(MemoAutocomplete, defaultProps))
+export default withDeaults(MemoAutocomplete, defaultProps)
