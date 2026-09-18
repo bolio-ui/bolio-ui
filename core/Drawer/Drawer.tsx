@@ -21,70 +21,79 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type DrawerProps = Props & NativeAttrs
 
-function DrawerComponent({
-  visible: customVisible,
-  keyboard,
-  disableBackdropClick,
-  wrapClassName,
-  children,
-  placement,
-  onClose,
-  onContentClick,
-  ...props
-}: React.PropsWithChildren<DrawerProps>) {
-  const portal = usePortal('drawer')
-
-  const [visible, setVisible] = useState<boolean>(false)
-  const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
-
-  const closeDrawer = () => {
-    onClose && onClose()
-    setVisible(false)
-    setBodyHidden(false)
-  }
-
-  useEffect(() => {
-    if (typeof customVisible === 'undefined') return
-    setVisible(customVisible)
-    setBodyHidden(customVisible)
-  }, [customVisible, setBodyHidden])
-
-  const { bindings } = useKeyboard(
-    () => {
-      keyboard && closeDrawer()
-    },
-    KeyCode.Escape,
+const DrawerComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<DrawerProps>
+>(
+  (
     {
-      disableGlobalEvent: true
+      visible: customVisible,
+      keyboard,
+      disableBackdropClick,
+      wrapClassName,
+      children,
+      placement,
+      onClose,
+      onContentClick,
+      ...props
+    },
+    ref
+  ) => {
+    const portal = usePortal('drawer')
+
+    const [visible, setVisible] = useState<boolean>(false)
+    const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
+
+    const closeDrawer = () => {
+      onClose && onClose()
+      setVisible(false)
+      setBodyHidden(false)
     }
-  )
 
-  const closeFromBackdrop = () => {
-    if (disableBackdropClick) return
-    closeDrawer()
-  }
+    useEffect(() => {
+      if (typeof customVisible === 'undefined') return
+      setVisible(customVisible)
+      setBodyHidden(customVisible)
+    }, [customVisible, setBodyHidden])
 
-  if (!portal) return null
-  return createPortal(
-    <Backdrop
-      onClick={closeFromBackdrop}
-      onContentClick={onContentClick}
-      visible={visible}
-      width="100%"
-      {...bindings}
-    >
-      <DrawerWrapper
+    const { bindings } = useKeyboard(
+      () => {
+        keyboard && closeDrawer()
+      },
+      KeyCode.Escape,
+      {
+        disableGlobalEvent: true
+      }
+    )
+
+    const closeFromBackdrop = () => {
+      if (disableBackdropClick) return
+      closeDrawer()
+    }
+
+    if (!portal) return null
+    return createPortal(
+      <Backdrop
+        onClick={closeFromBackdrop}
+        onContentClick={onContentClick}
         visible={visible}
-        className={wrapClassName}
-        placement={placement}
-        {...props}
+        width="100%"
+        {...bindings}
       >
-        {children}
-      </DrawerWrapper>
-    </Backdrop>,
-    portal
-  )
-}
+        <DrawerWrapper
+          ref={ref}
+          visible={visible}
+          className={wrapClassName}
+          placement={placement}
+          {...props}
+        >
+          {children}
+        </DrawerWrapper>
+      </Backdrop>,
+      portal
+    )
+  }
+)
 
 DrawerComponent.displayName = 'BolioUIDrawer'
 const Drawer = withScale(DrawerComponent)

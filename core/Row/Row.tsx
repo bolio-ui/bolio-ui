@@ -40,42 +40,46 @@ const getFlexAlignment = (justify: Justify, align: Align) => {
   }
 }
 
-function Row({
-  children,
-  component,
-  gap,
-  justify,
-  align,
-  className,
-  ...props
-}: React.PropsWithChildren<RowProps> & typeof defaultProps) {
-  const Component = component
-  const theme = useTheme()
+const Row = React.forwardRef<HTMLElement, React.PropsWithChildren<RowProps>>(
+  (
+    {
+      children,
+      component = defaultProps.component,
+      gap = defaultProps.gap,
+      justify = defaultProps.justify,
+      align = defaultProps.align,
+      className = defaultProps.className,
+      ...props
+    },
+    ref
+  ) => {
+    const Component = component as React.ElementType
+    const theme = useTheme()
 
-  const { justifyValue, alignValue } = useMemo(
-    () => getFlexAlignment(justify, align),
-    [justify, align]
-  )
+    const { justifyValue, alignValue } = useMemo(
+      () => getFlexAlignment(justify, align),
+      [justify, align]
+    )
 
-  return (
-    <Component className={`row ${className}`} {...props}>
-      {children}
-      <style jsx>{`
-        .row {
-          display: flex;
-          position: relative;
-          box-sizing: border-box;
-          margin-left: calc(${gap} * ${theme.layout.gap} / 2);
-          margin-right: calc(${gap} * ${theme.layout.gap} / 2);
-          --row-gap: calc(${gap} * ${theme.layout.gap});
-          justify-content: ${justifyValue};
-          align-items: ${alignValue};
-        }
-      `}</style>
-    </Component>
-  )
-}
+    return (
+      <Component ref={ref} className={`row ${className}`} {...props}>
+        {children}
+        <style jsx>{`
+          .row {
+            display: flex;
+            position: relative;
+            box-sizing: border-box;
+            margin-left: calc(${gap} * ${theme.layout.gap} / 2);
+            margin-right: calc(${gap} * ${theme.layout.gap} / 2);
+            --row-gap: calc(${gap} * ${theme.layout.gap});
+            justify-content: ${justifyValue};
+            align-items: ${alignValue};
+          }
+        `}</style>
+      </Component>
+    )
+  }
+)
 
-Row.defaultProps = defaultProps
 Row.displayName = 'BolioUIRow'
 export default Row

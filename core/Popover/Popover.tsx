@@ -5,6 +5,7 @@ import { getReactNode } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import { PopoverContext, PopoverConfig } from './PopoverContext'
 import useClasses from '../use-classes'
+import useDefaultProps from '../utils/use-default-props'
 
 export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
@@ -44,19 +45,23 @@ const defaultProps = {
 
 export type PopoverProps = Props
 
-const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
-  content,
-  children,
-  trigger,
-  placement,
-  initialVisible,
-  portalClassName,
-  disableItemsAutoClose,
-  onVisibleChange,
-  visible: customVisible,
-  type = 'default' as TooltipTypes,
-  ...props
-}: React.PropsWithChildren<PopoverProps> & typeof defaultProps) => {
+const PopoverComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<PopoverProps>
+>((popoverProps, ref) => {
+  const {
+    content,
+    children,
+    trigger,
+    placement,
+    initialVisible,
+    portalClassName,
+    disableItemsAutoClose,
+    onVisibleChange,
+    visible: customVisible,
+    type = 'default' as TooltipTypes,
+    ...props
+  } = useDefaultProps(popoverProps, defaultProps)
   const { SCALES } = useScale()
   const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
@@ -85,6 +90,7 @@ const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
   return (
     <PopoverContext.Provider value={value}>
       <Tooltip
+        ref={ref}
         initialVisible={false}
         text={textNode}
         trigger={trigger}
@@ -105,9 +111,8 @@ const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
       </Tooltip>
     </PopoverContext.Provider>
   )
-}
+})
 
-PopoverComponent.defaultProps = defaultProps
 PopoverComponent.displayName = 'BolioUIPopover'
 const Popover = withScale(PopoverComponent)
 export default Popover

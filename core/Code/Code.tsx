@@ -13,96 +13,109 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CodeProps = Props & NativeAttrs
 
-function CodeComponent({
-  children,
-  block = false,
-  className = '',
-  name = '',
-  classic = false,
-  ...props
-}: React.PropsWithChildren<CodeProps>) {
-  const { SCALES } = useScale()
-  const theme = useTheme()
+const CodeComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<CodeProps>
+>(
+  (
+    {
+      children,
+      block = false,
+      className = '',
+      name = '',
+      classic = false,
+      ...props
+    },
+    ref
+  ) => {
+    const { SCALES } = useScale()
+    const theme = useTheme()
 
-  const { background, border } = useMemo(() => {
-    if (!classic)
+    const { background, border } = useMemo(() => {
+      if (!classic)
+        return {
+          border: theme.palette.accents_1,
+          background: addColorAlpha(theme.palette.accents_1, 0.75)
+        }
       return {
-        border: theme.palette.accents_1,
-        background: addColorAlpha(theme.palette.accents_1, 0.75)
+        border: theme.palette.accents_2,
+        background: theme.palette.background
       }
-    return {
-      border: theme.palette.accents_2,
-      background: theme.palette.background
-    }
-  }, [classic, theme.palette])
+    }, [classic, theme.palette])
 
-  if (!block) return <code {...props}>{children}</code>
+    if (!block)
+      return (
+        <code ref={ref} {...props}>
+          {children}
+        </code>
+      )
 
-  return (
-    <div className="pre">
-      {name && (
-        <header>
-          <div className="name">{name}</div>
-        </header>
-      )}
-      <pre className={className} {...props}>
-        {children}
-      </pre>
-      <style jsx>{`
-        .pre {
-          max-width: 100%;
-          border: 1px solid ${border};
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'initial')};
-          height: ${SCALES.height(1, 'auto')};
-          margin: ${SCALES.mt(1.3)} ${SCALES.mr(0)} ${SCALES.mb(1.3)}
-            ${SCALES.ml(0)};
-          border-radius: ${theme.layout.radius};
-          background-color: ${background};
-        }
-        pre {
-          max-width: 100%;
-          font-size: inherit;
-          border: none;
-          margin: 0;
-          line-height: 1.5em;
-          padding: ${SCALES.pt(1.1)} ${SCALES.pr(1)} ${SCALES.pb(1.1)}
-            ${SCALES.pl(1)};
-        }
-        .dark {
-          color: white;
-          background: black;
-        }
-        .dark code {
-          color: white;
-        }
-        header {
-          height: auto;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          border-radius: ${theme.layout.radius};
-          background-color: transparent;
-        }
-        .name {
-          border: 1px solid ${theme.palette.accents_2};
-          background-color: ${theme.palette.accents_2};
-          color: ${theme.palette.accents_5};
-          height: auto;
-          line-height: 1.35em;
-          display: inline-flex;
-          align-items: center;
-          font-size: ${SCALES.font(0.8125)};
-          padding: ${SCALES.font(0.32)} ${SCALES.font(0.5)} ${SCALES.font(0.32)}
-            ${SCALES.font(0.5)};
-          width: auto;
-          border-top-left-radius: calc(${theme.layout.radius} - 1px);
-          border-bottom-right-radius: ${theme.layout.radius};
-        }
-      `}</style>
-    </div>
-  )
-}
+    return (
+      <div ref={ref as React.Ref<HTMLDivElement>} className="pre">
+        {name && (
+          <header>
+            <div className="name">{name}</div>
+          </header>
+        )}
+        <pre className={className} {...props}>
+          {children}
+        </pre>
+        <style jsx>{`
+          .pre {
+            max-width: 100%;
+            border: 1px solid ${border};
+            font-size: ${SCALES.font(0.875)};
+            width: ${SCALES.width(1, 'initial')};
+            height: ${SCALES.height(1, 'auto')};
+            margin: ${SCALES.mt(1.3)} ${SCALES.mr(0)} ${SCALES.mb(1.3)}
+              ${SCALES.ml(0)};
+            border-radius: ${theme.layout.radius};
+            background-color: ${background};
+          }
+          pre {
+            max-width: 100%;
+            font-size: inherit;
+            border: none;
+            margin: 0;
+            line-height: 1.5em;
+            padding: ${SCALES.pt(1.1)} ${SCALES.pr(1)} ${SCALES.pb(1.1)}
+              ${SCALES.pl(1)};
+          }
+          .dark {
+            color: white;
+            background: black;
+          }
+          .dark code {
+            color: white;
+          }
+          header {
+            height: auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            border-radius: ${theme.layout.radius};
+            background-color: transparent;
+          }
+          .name {
+            border: 1px solid ${theme.palette.accents_2};
+            background-color: ${theme.palette.accents_2};
+            color: ${theme.palette.accents_5};
+            height: auto;
+            line-height: 1.35em;
+            display: inline-flex;
+            align-items: center;
+            font-size: ${SCALES.font(0.8125)};
+            padding: ${SCALES.font(0.32)} ${SCALES.font(0.5)}
+              ${SCALES.font(0.32)} ${SCALES.font(0.5)};
+            width: auto;
+            border-top-left-radius: calc(${theme.layout.radius} - 1px);
+            border-bottom-right-radius: ${theme.layout.radius};
+          }
+        `}</style>
+      </div>
+    )
+  }
+)
 
 CodeComponent.displayName = 'BolioUICode'
 const Code = withScale(CodeComponent)

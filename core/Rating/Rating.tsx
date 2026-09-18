@@ -40,106 +40,114 @@ const getColor = (type: RatingTypes, palette: BolioUIThemesPalette): string => {
   return colors[type] || (colors.default as string)
 }
 
-function RatingComponent({
-  type = 'default' as RatingTypes,
-  className = '',
-  icon = (<RatingIcon />) as React.JSX.Element,
-  count = 5 as RatingCount,
-  value: customValue,
-  initialValue = 1 as RatingValue,
-  onValueChange,
-  locked = false,
-  onLockedChange,
-  ...props
-}: React.PropsWithChildren<RatingProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+const RatingComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<RatingProps>
+>(
+  (
+    {
+      type = 'default' as RatingTypes,
+      className = '',
+      icon = (<RatingIcon />) as React.JSX.Element,
+      count = 5 as RatingCount,
+      value: customValue,
+      initialValue = 1 as RatingValue,
+      onValueChange,
+      locked = false,
+      onLockedChange,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const color = useMemo(
-    () => getColor(type, theme.palette),
-    [type, theme.palette]
-  )
-  const [value, setValue] = useState<number>(initialValue)
-  const [isLocked, setIsLocked] = useState<boolean>(locked)
+    const color = useMemo(
+      () => getColor(type, theme.palette),
+      [type, theme.palette]
+    )
+    const [value, setValue] = useState<number>(initialValue)
+    const [isLocked, setIsLocked] = useState<boolean>(locked)
 
-  const lockedChangeHandler = (next: boolean) => {
-    setIsLocked(next)
-    onLockedChange && onLockedChange(next)
+    const lockedChangeHandler = (next: boolean) => {
+      setIsLocked(next)
+      onLockedChange && onLockedChange(next)
+    }
+
+    const valueChangeHandler = (next: number) => {
+      setValue(next)
+      const emitValue = next > count ? count : next
+      onValueChange && onValueChange(emitValue)
+    }
+
+    const clickHandler = (index: number) => {
+      if (isLocked) return lockedChangeHandler(false)
+      valueChangeHandler(index)
+      lockedChangeHandler(true)
+    }
+
+    const mouseEnterHandler = (index: number) => {
+      if (isLocked) return
+      valueChangeHandler(index)
+    }
+
+    useEffect(() => {
+      if (typeof customValue === 'undefined') return
+      setValue(customValue < 0 ? 0 : customValue)
+    }, [customValue])
+
+    return (
+      <div ref={ref} className={useClasses('rating', className)} {...props}>
+        {[...Array(count)].map((_, index) => (
+          <div
+            className={useClasses('icon-box', {
+              hovered: index + 1 <= value
+            })}
+            key={index}
+            onMouseEnter={() => mouseEnterHandler(index + 1)}
+            onClick={() => clickHandler(index + 1)}
+          >
+            {icon}
+          </div>
+        ))}
+        <style jsx>{`
+          .rating {
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            --rating-font-size: ${SCALES.font(1)};
+            font-size: var(--rating-font-size);
+            width: ${SCALES.width(1, 'auto')};
+            height: ${SCALES.height(1, 'auto')};
+            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
+              ${SCALES.pl(0)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
+          .icon-box {
+            box-sizing: border-box;
+            color: ${color};
+            width: calc(var(--rating-font-size) * 1.5);
+            height: calc(var(--rating-font-size) * 1.5);
+            margin-right: calc(var(--rating-font-size) * 1 / 5);
+            cursor: ${isLocked ? 'default' : 'pointer'};
+          }
+          .icon-box :global(svg) {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+            transform: scale(1);
+            transition: transform, color, fill 30ms linear;
+          }
+          .hovered :global(svg) {
+            fill: ${color};
+            transform: scale(0.9);
+          }
+        `}</style>
+      </div>
+    )
   }
-
-  const valueChangeHandler = (next: number) => {
-    setValue(next)
-    const emitValue = next > count ? count : next
-    onValueChange && onValueChange(emitValue)
-  }
-
-  const clickHandler = (index: number) => {
-    if (isLocked) return lockedChangeHandler(false)
-    valueChangeHandler(index)
-    lockedChangeHandler(true)
-  }
-
-  const mouseEnterHandler = (index: number) => {
-    if (isLocked) return
-    valueChangeHandler(index)
-  }
-
-  useEffect(() => {
-    if (typeof customValue === 'undefined') return
-    setValue(customValue < 0 ? 0 : customValue)
-  }, [customValue])
-
-  return (
-    <div className={useClasses('rating', className)} {...props}>
-      {[...Array(count)].map((_, index) => (
-        <div
-          className={useClasses('icon-box', {
-            hovered: index + 1 <= value
-          })}
-          key={index}
-          onMouseEnter={() => mouseEnterHandler(index + 1)}
-          onClick={() => clickHandler(index + 1)}
-        >
-          {icon}
-        </div>
-      ))}
-      <style jsx>{`
-        .rating {
-          box-sizing: border-box;
-          display: inline-flex;
-          align-items: center;
-          --rating-font-size: ${SCALES.font(1)};
-          font-size: var(--rating-font-size);
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-        .icon-box {
-          box-sizing: border-box;
-          color: ${color};
-          width: calc(var(--rating-font-size) * 1.5);
-          height: calc(var(--rating-font-size) * 1.5);
-          margin-right: calc(var(--rating-font-size) * 1 / 5);
-          cursor: ${isLocked ? 'default' : 'pointer'};
-        }
-        .icon-box :global(svg) {
-          width: 100%;
-          height: 100%;
-          fill: transparent;
-          transform: scale(1);
-          transition: transform, color, fill 30ms linear;
-        }
-        .hovered :global(svg) {
-          fill: ${color};
-          transform: scale(0.9);
-        }
-      `}</style>
-    </div>
-  )
-}
+)
 
 RatingComponent.displayName = 'BolioUIRating'
 const Rating = withScale(RatingComponent)

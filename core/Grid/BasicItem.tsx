@@ -64,120 +64,131 @@ const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
   }
 }
 
-function GridBasicItem({
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
-  justify,
-  direction,
-  alignItems,
-  alignContent,
-  children,
-  className,
-  ...props
-}: React.PropsWithChildren<GridBasicItemProps> & typeof defaultProps) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
-  const classes = useMemo(() => {
-    const aligns: { [key: string]: any } = {
+const GridBasicItem = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<GridBasicItemProps>
+>(
+  (
+    {
+      xs = defaultProps.xs,
+      sm = defaultProps.sm,
+      md = defaultProps.md,
+      lg = defaultProps.lg,
+      xl = defaultProps.xl,
       justify,
       direction,
       alignItems,
       alignContent,
-      xs,
-      sm,
-      md,
-      lg,
-      xl
-    }
-    const classString = Object.keys(aligns).reduce((pre, name) => {
-      if (aligns[name] !== undefined && aligns[name] !== false)
-        return `${pre} ${name}`
-      return pre
-    }, '')
-    return classString.trim()
-  }, [justify, direction, alignItems, alignContent, xs, sm, md, lg, xl])
+      children,
+      className = defaultProps.className,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
+    const classes = useMemo(() => {
+      const aligns: { [key: string]: any } = {
+        justify,
+        direction,
+        alignItems,
+        alignContent,
+        xs,
+        sm,
+        md,
+        lg,
+        xl
+      }
+      const classString = Object.keys(aligns).reduce((pre, name) => {
+        if (aligns[name] !== undefined && aligns[name] !== false)
+          return `${pre} ${name}`
+        return pre
+      }, '')
+      return classString.trim()
+    }, [justify, direction, alignItems, alignContent, xs, sm, md, lg, xl])
 
-  const layout = useMemo<
-    {
-      [key in ['xs', 'sm', 'md', 'lg', 'xl'][number]]: ItemLayoutValue
-    }
-  >(
-    () => ({
-      xs: getItemLayout(xs),
-      sm: getItemLayout(sm),
-      md: getItemLayout(md),
-      lg: getItemLayout(lg),
-      xl: getItemLayout(xl)
-    }),
-    [xs, sm, md, lg, xl]
-  )
+    const layout = useMemo<
+      {
+        [key in ['xs', 'sm', 'md', 'lg', 'xl'][number]]: ItemLayoutValue
+      }
+    >(
+      () => ({
+        xs: getItemLayout(xs),
+        sm: getItemLayout(sm),
+        md: getItemLayout(md),
+        lg: getItemLayout(lg),
+        xl: getItemLayout(xl)
+      }),
+      [xs, sm, md, lg, xl]
+    )
 
-  return (
-    <div className={useClasses('item', classes, className)} {...props}>
-      {children}
-      <style jsx>{`
-        .item {
-          font-size: ${SCALES.font(1, 'inherit')};
-          height: ${SCALES.height(1, 'auto')};
-        }
-        .justify {
-          justify-content: ${justify};
-        }
-        .direction {
-          flex-direction: ${direction};
-        }
-        .alignContent {
-          align-content: ${alignContent};
-        }
-        .alignItems {
-          align-items: ${alignItems};
-        }
-        .xs {
-          flex-grow: ${layout.xs.grow};
-          max-width: ${layout.xs.width};
-          flex-basis: ${layout.xs.basis};
-          ${layout.xs.display}
-        }
-        @media only screen and (min-width: ${theme.breakpoints.sm.min}) {
-          .sm {
-            flex-grow: ${layout.sm.grow};
-            max-width: ${layout.sm.width};
-            flex-basis: ${layout.sm.basis};
-            ${layout.sm.display}
+    return (
+      <div
+        ref={ref}
+        className={useClasses('item', classes, className)}
+        {...props}
+      >
+        {children}
+        <style jsx>{`
+          .item {
+            font-size: ${SCALES.font(1, 'inherit')};
+            height: ${SCALES.height(1, 'auto')};
           }
-        }
-        @media only screen and (min-width: ${theme.breakpoints.md.min}) {
-          .md {
-            flex-grow: ${layout.md.grow};
-            max-width: ${layout.md.width};
-            flex-basis: ${layout.md.basis};
-            ${layout.md.display}
+          .justify {
+            justify-content: ${justify};
           }
-        }
-        @media only screen and (min-width: ${theme.breakpoints.lg.min}) {
-          .lg {
-            flex-grow: ${layout.lg.grow};
-            max-width: ${layout.lg.width};
-            flex-basis: ${layout.lg.basis};
-            ${layout.lg.display}
+          .direction {
+            flex-direction: ${direction};
           }
-        }
-        @media only screen and (min-width: ${theme.breakpoints.xl.min}) {
-          .xl {
-            flex-grow: ${layout.xl.grow};
-            max-width: ${layout.xl.width};
-            flex-basis: ${layout.xl.basis};
-            ${layout.xl.display}
+          .alignContent {
+            align-content: ${alignContent};
           }
-        }
-      `}</style>
-    </div>
-  )
-}
+          .alignItems {
+            align-items: ${alignItems};
+          }
+          .xs {
+            flex-grow: ${layout.xs.grow};
+            max-width: ${layout.xs.width};
+            flex-basis: ${layout.xs.basis};
+            ${layout.xs.display}
+          }
+          @media only screen and (min-width: ${theme.breakpoints.sm.min}) {
+            .sm {
+              flex-grow: ${layout.sm.grow};
+              max-width: ${layout.sm.width};
+              flex-basis: ${layout.sm.basis};
+              ${layout.sm.display}
+            }
+          }
+          @media only screen and (min-width: ${theme.breakpoints.md.min}) {
+            .md {
+              flex-grow: ${layout.md.grow};
+              max-width: ${layout.md.width};
+              flex-basis: ${layout.md.basis};
+              ${layout.md.display}
+            }
+          }
+          @media only screen and (min-width: ${theme.breakpoints.lg.min}) {
+            .lg {
+              flex-grow: ${layout.lg.grow};
+              max-width: ${layout.lg.width};
+              flex-basis: ${layout.lg.basis};
+              ${layout.lg.display}
+            }
+          }
+          @media only screen and (min-width: ${theme.breakpoints.xl.min}) {
+            .xl {
+              flex-grow: ${layout.xl.grow};
+              max-width: ${layout.xl.width};
+              flex-basis: ${layout.xl.basis};
+              ${layout.xl.display}
+            }
+          }
+        `}</style>
+      </div>
+    )
+  }
+)
 
-GridBasicItem.defaultProps = defaultProps
 GridBasicItem.displayName = 'BolioUIGridBasicItem'
 export default GridBasicItem

@@ -47,78 +47,86 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageProps = Props & NativeAttrs
-function PageComponent({
-  children,
-  render = 'default' as PageRenderMode,
-  dotBackdrop = false,
-  className,
-  dotSize = '1px' as CSSProperties['fontSize'],
-  dotSpace = 1,
-  ...props
-}: React.PropsWithChildren<PageProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+const PageComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<PageProps>
+>(
+  (
+    {
+      children,
+      render = 'default' as PageRenderMode,
+      dotBackdrop = false,
+      className,
+      dotSize = '1px' as CSSProperties['fontSize'],
+      dotSpace = 1,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const showDot = useMemo<boolean>(() => {
-    if (theme.type === 'dark') return false
-    return dotBackdrop
-  }, [dotBackdrop, theme.type])
+    const showDot = useMemo<boolean>(() => {
+      if (theme.type === 'dark') return false
+      return dotBackdrop
+    }, [dotBackdrop, theme.type])
 
-  const [preventRender, setPreventRender] = useState<boolean>(
-    render !== 'default'
-  )
+    const [preventRender, setPreventRender] = useState<boolean>(
+      render !== 'default'
+    )
 
-  useEffect(() => {
-    setPreventRender(false)
-  }, [])
+    useEffect(() => {
+      setPreventRender(false)
+    }, [])
 
-  if (preventRender) {
-    const renderSEO = render === 'effect-seo'
-    if (!renderSEO) return null
+    if (preventRender) {
+      const renderSEO = render === 'effect-seo'
+      if (!renderSEO) return null
+
+      return (
+        <div className="hidden" aria-hidden="true">
+          {children}
+          <style jsx>{`
+            .hidden {
+              opacity: 0;
+              display: none;
+            }
+          `}</style>
+        </div>
+      )
+    }
+
+    const hasContent = hasChild(children, PageContent)
 
     return (
-      <div className="hidden" aria-hidden="true">
-        {children}
+      <section className={className} ref={ref} {...props}>
+        {hasContent ? children : <PageContent>{children}</PageContent>}
+        {showDot && <DotStyles dotSize={dotSize} dotSpace={dotSpace} />}
         <style jsx>{`
-          .hidden {
-            opacity: 0;
-            display: none;
-          }
-        `}</style>
-      </div>
-    )
-  }
-
-  const hasContent = hasChild(children, PageContent)
-
-  return (
-    <section className={className} {...props}>
-      {hasContent ? children : <PageContent>{children}</PageContent>}
-      {showDot && <DotStyles dotSize={dotSize} dotSpace={dotSpace} />}
-      <style jsx>{`
-        section {
-          max-width: 100vw;
-          min-height: 100vh;
-          box-sizing: border-box;
-          position: relative;
-          font-size: ${SCALES.font(1)};
-          /* width: ${SCALES.width(1, 'calc(100% - 100pt)')}; */
-          height: ${SCALES.height(1, 'auto')};
-          /* padding: ${SCALES.pt(0)} ${SCALES.pr(1.34)} ${SCALES.pb(0)}
+          section {
+            max-width: 100vw;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
+            font-size: ${SCALES.font(1)};
+            /* width: ${SCALES.width(1, 'calc(100% - 100pt)')}; */
+            height: ${SCALES.height(1, 'auto')};
+            /* padding: ${SCALES.pt(0)} ${SCALES.pr(1.34)} ${SCALES.pb(0)}
             ${SCALES.pl(1.34)};
           margin: ${SCALES.mt(0)} ${SCALES.mr(0, 'auto')} ${SCALES.mb(0)}
             ${SCALES.ml(0, 'auto')}; */
 
-          align-content: space-between;
-          flex-wrap: wrap;
-          display: flex;
-          position: relative;
-          min-height: 100vh;
-        }
-      `}</style>
-    </section>
-  )
-}
+            align-content: space-between;
+            flex-wrap: wrap;
+            display: flex;
+            position: relative;
+            min-height: 100vh;
+          }
+        `}</style>
+      </section>
+    )
+  }
+)
 
 PageComponent.displayName = 'BolioUIPage'
 const Page = withScale(PageComponent)

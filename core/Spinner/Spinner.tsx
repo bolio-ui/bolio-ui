@@ -99,14 +99,17 @@ const getSpans = (theme: BolioUIThemes) => {
   ))
 }
 
-function SpinnerComponent({ className = '', ...props }: SpinnerProps) {
+const SpinnerComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<SpinnerProps>
+>(({ className = '', ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
   const classes = useClasses('spinner', className)
 
   return (
-    <div className={classes} {...props}>
+    <div ref={ref} className={classes} {...props}>
       <div className="container">{getSpans(theme)}</div>
       <style jsx>{`
         .spinner {
@@ -130,7 +133,7 @@ function SpinnerComponent({ className = '', ...props }: SpinnerProps) {
       `}</style>
     </div>
   )
-}
+})
 
 SpinnerComponent.displayName = 'BolioUISpinner'
 const Spinner = withScale(SpinnerComponent)

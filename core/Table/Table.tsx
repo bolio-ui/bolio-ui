@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 import TableHead from './TableHead'
 import TableBody from './TableBody'
 import useRealShape from '../utils/use-real-shape'
@@ -40,28 +46,31 @@ export type TableProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
 
 function TableComponent<TableDataItem extends TableDataItemBase>(
-  tableProps: React.PropsWithChildren<TableProps<TableDataItem>>
+  tableProps: React.PropsWithChildren<TableProps<TableDataItem>> & {
+    ref?: React.Ref<HTMLTableElement>
+  },
+  forwardedRef: React.ForwardedRef<HTMLTableElement>
 ) {
   /* eslint-disable  @typescript-eslint/no-unused-vars */
   const {
     children,
     data: customData,
-    initialData,
-    hover,
-    emptyText,
+    initialData = defaultProps.initialData,
+    hover = defaultProps.hover,
+    emptyText = defaultProps.emptyText,
     onRow,
     onCell,
     onChange,
-    className,
-    rowClassName,
+    className = defaultProps.className,
+    rowClassName = defaultProps.rowClassName,
     ...props
-  } = tableProps as React.PropsWithChildren<TableProps<TableDataItem>> &
-    typeof defaultProps
+  } = tableProps
   /* eslint-enable @typescript-eslint/no-unused-vars */
 
   const { SCALES } = useScale()
-  const ref = useRef<HTMLTableElement>(null)
-  const [{ width }, updateShape] = useRealShape<HTMLTableElement>(ref)
+  const tableRef = useRef<HTMLTableElement>(null)
+  useImperativeHandle(forwardedRef, () => tableRef.current as HTMLTableElement)
+  const [{ width }, updateShape] = useRealShape<HTMLTableElement>(tableRef)
   const [columns, setColumns] = useState<
     Array<TableAbstractColumn<TableDataItem>>
   >([])
@@ -93,7 +102,7 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
 
   return (
     <TableContext.Provider value={contextValue}>
-      <table ref={ref} className={className} {...props}>
+      <table ref={tableRef} className={className} {...props}>
         <TableHead columns={columns} width={width} />
         <TableBody<TableDataItem>
           data={data}
@@ -124,9 +133,17 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
   )
 }
 
-TableComponent.defaultProps = defaultProps
 TableComponent.displayName = 'BolioUITable'
 TableComponent.Column = TableColumn
-const Table = withScale(TableComponent) as any
+const Table = withScale(React.forwardRef(TableComponent) as any) as any
 Table.Column = TableColumn
-export default Table as typeof TableComponent & ScaleProps
+type TableType = {
+  <TableDataItem extends TableDataItemBase>(
+    props: React.PropsWithChildren<TableProps<TableDataItem>> &
+      ScaleProps & { ref?: React.Ref<HTMLTableElement> }
+  ): React.JSX.Element
+  Column: typeof TableColumn
+  displayName?: string
+}
+
+export default Table as TableType

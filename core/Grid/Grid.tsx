@@ -10,11 +10,10 @@ interface Props {
 
 export type GridProps = Props & GridBasicItemProps
 
-function GridComponent({
-  children,
-  className = '',
-  ...props
-}: React.PropsWithChildren<GridProps>) {
+const GridComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<GridProps>
+>(({ children, className = '', ...props }, ref) => {
   const { SCALES } = useScale()
 
   const gridGapUnit = 'var(--grid-gap-unit)'
@@ -30,12 +29,12 @@ function GridComponent({
   const classes = useClasses(resolveClassName, className)
 
   return (
-    <GridBasicItem className={classes} {...props}>
+    <GridBasicItem ref={ref} className={classes} {...props}>
       {children}
       {styles}
     </GridBasicItem>
   )
-}
+})
 
 GridComponent.displayName = 'BolioUIGrid'
 const Grid = withScale(GridComponent)

@@ -33,143 +33,152 @@ export type ToggleSize = {
   height: string
 }
 
-function ToggleComponent({
-  initialChecked = false,
-  checked,
-  disabled = false,
-  onChange,
-  type = 'default' as ToggleTypes,
-  className = '',
-  ...props
-}: ToggleProps) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
-  const [selfChecked, setSelfChecked] = useState<boolean>(initialChecked)
-  const classes = useClasses('toggle', { checked: selfChecked, disabled })
-
-  const changeHandle = useCallback(
-    (ev: React.ChangeEvent) => {
-      if (disabled) return
-      const selfEvent: ToggleEvent = {
-        target: {
-          checked: !selfChecked
-        },
-        stopPropagation: ev.stopPropagation,
-        preventDefault: ev.preventDefault,
-        nativeEvent: ev
-      }
-
-      setSelfChecked(!selfChecked)
-      onChange && onChange(selfEvent)
+const ToggleComponent = React.forwardRef<
+  HTMLInputElement,
+  React.PropsWithChildren<ToggleProps>
+>(
+  (
+    {
+      initialChecked = false,
+      checked,
+      disabled = false,
+      onChange,
+      type = 'default' as ToggleTypes,
+      className = '',
+      ...props
     },
-    [disabled, selfChecked, onChange]
-  )
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
+    const [selfChecked, setSelfChecked] = useState<boolean>(initialChecked)
+    const classes = useClasses('toggle', { checked: selfChecked, disabled })
 
-  const { bg } = useMemo(
-    () => getColors(theme.palette, type),
-    [theme.palette, type]
-  )
-
-  useEffect(() => {
-    if (checked === undefined) return
-    setSelfChecked(checked)
-  }, [checked])
-
-  return (
-    <label className={className} {...props}>
-      <input
-        type="checkbox"
-        disabled={disabled}
-        checked={selfChecked}
-        onChange={changeHandle}
-      />
-      <div className={classes}>
-        <span className="inner" />
-      </div>
-      <style jsx>{`
-        label {
-          -webkit-tap-highlight-color: transparent;
-          display: inline-block;
-          vertical-align: middle;
-          white-space: nowrap;
-          user-select: none;
-          position: relative;
-          cursor: ${disabled ? 'not-allowed' : 'pointer'};
-          --toggle-font-size: ${SCALES.font(1)};
-          --toggle-height: ${SCALES.height(1)};
-          width: ${SCALES.width(1.75)};
-          height: var(--toggle-height);
-          padding: ${SCALES.pt(0.1875)} ${SCALES.pr(0)} ${SCALES.pb(0.1875)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
+    const changeHandle = useCallback(
+      (ev: React.ChangeEvent) => {
+        if (disabled) return
+        const selfEvent: ToggleEvent = {
+          target: {
+            checked: !selfChecked
+          },
+          stopPropagation: ev.stopPropagation,
+          preventDefault: ev.preventDefault,
+          nativeEvent: ev
         }
 
-        input {
-          overflow: hidden;
-          visibility: hidden;
-          height: 0;
-          opacity: 0;
-          width: 0;
-          position: absolute;
-          background-color: transparent;
-          z-index: -1;
-        }
+        setSelfChecked(!selfChecked)
+        onChange && onChange(selfEvent)
+      },
+      [disabled, selfChecked, onChange]
+    )
 
-        .toggle {
-          height: calc(var(--toggle-height) + 2px);
-          width: 100%;
-          border-radius: var(--toggle-height);
-          transition-delay: 0.12s;
-          transition-duration: 0.2s;
-          transition-property: background, border;
-          transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-          position: relative;
-          border: 1px solid transparent;
-          background-color: ${theme.palette.accents_2};
-          padding: 0;
-        }
+    const { bg } = useMemo(
+      () => getColors(theme.palette, type),
+      [theme.palette, type]
+    )
 
-        .inner {
-          width: calc(var(--toggle-height) - 2px);
-          height: calc(var(--toggle-height) - 2px);
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: 1px;
-          box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0,
-            rgba(0, 0, 0, 0.1) 0 1px 3px 0;
-          transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
-          border-radius: 50%;
-          background-color: ${theme.palette.accents_1};
-        }
+    useEffect(() => {
+      if (checked === undefined) return
+      setSelfChecked(checked)
+    }, [checked])
 
-        .disabled {
-          border-color: ${theme.palette.accents_2};
-          background-color: ${theme.palette.accents_1};
-        }
+    return (
+      <label className={className} {...props}>
+        <input
+          ref={ref}
+          type="checkbox"
+          disabled={disabled}
+          checked={selfChecked}
+          onChange={changeHandle}
+        />
+        <div className={classes}>
+          <span className="inner" />
+        </div>
+        <style jsx>{`
+          label {
+            -webkit-tap-highlight-color: transparent;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+            user-select: none;
+            position: relative;
+            cursor: ${disabled ? 'not-allowed' : 'pointer'};
+            --toggle-font-size: ${SCALES.font(1)};
+            --toggle-height: ${SCALES.height(1)};
+            width: ${SCALES.width(1.75)};
+            height: var(--toggle-height);
+            padding: ${SCALES.pt(0.1875)} ${SCALES.pr(0)} ${SCALES.pb(0.1875)}
+              ${SCALES.pl(0)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
 
-        .disabled > .inner {
-          background-color: ${theme.palette.accents_2};
-        }
+          input {
+            overflow: hidden;
+            visibility: hidden;
+            height: 0;
+            opacity: 0;
+            width: 0;
+            position: absolute;
+            background-color: transparent;
+            z-index: -1;
+          }
 
-        .disabled.checked {
-          border-color: ${theme.palette.accents_4};
-          background-color: ${theme.palette.accents_4};
-        }
+          .toggle {
+            height: calc(var(--toggle-height) + 2px);
+            width: 100%;
+            border-radius: var(--toggle-height);
+            transition-delay: 0.12s;
+            transition-duration: 0.2s;
+            transition-property: background, border;
+            transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid transparent;
+            background-color: ${theme.palette.accents_2};
+            padding: 0;
+          }
 
-        .checked {
-          background-color: ${bg};
-        }
+          .inner {
+            width: calc(var(--toggle-height) - 2px);
+            height: calc(var(--toggle-height) - 2px);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0,
+              rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+            transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
+            border-radius: 50%;
+            background-color: ${theme.palette.accents_1};
+          }
 
-        .checked > .inner {
-          left: calc(100% - (var(--toggle-height) - 1px));
-          box-shadow: none;
-        }
-      `}</style>
-    </label>
-  )
-}
+          .disabled {
+            border-color: ${theme.palette.accents_2};
+            background-color: ${theme.palette.accents_1};
+          }
+
+          .disabled > .inner {
+            background-color: ${theme.palette.accents_2};
+          }
+
+          .disabled.checked {
+            border-color: ${theme.palette.accents_4};
+            background-color: ${theme.palette.accents_4};
+          }
+
+          .checked {
+            background-color: ${bg};
+          }
+
+          .checked > .inner {
+            left: calc(100% - (var(--toggle-height) - 1px));
+            box-shadow: none;
+          }
+        `}</style>
+      </label>
+    )
+  }
+)
 
 ToggleComponent.displayName = 'BolioUIToggle'
 const Toggle = withScale(ToggleComponent)

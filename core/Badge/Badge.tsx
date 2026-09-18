@@ -29,60 +29,68 @@ const getBgColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
   return colors[type]
 }
 
-function BadgeComponent({
-  type = 'default' as BadgeTypes,
-  className = '',
-  children,
-  dot = false,
-  ...props
-}: BadgeProps) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+const BadgeComponent = React.forwardRef<
+  HTMLSpanElement,
+  React.PropsWithChildren<BadgeProps>
+>(
+  (
+    {
+      type = 'default' as BadgeTypes,
+      className = '',
+      children,
+      dot = false,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const bg = useMemo(
-    () => getBgColor(type, theme.palette),
-    [type, theme.palette]
-  )
+    const bg = useMemo(
+      () => getBgColor(type, theme.palette),
+      [type, theme.palette]
+    )
 
-  const color = useMemo(() => {
-    if (!type || type === 'default') return theme.palette.foreground
-    return '#FFFFFF'
-  }, [type, theme.palette.foreground])
+    const color = useMemo(() => {
+      if (!type || type === 'default') return theme.palette.foreground
+      return '#FFFFFF'
+    }, [type, theme.palette.foreground])
 
-  const classes = useClasses('badge', { dot }, className)
+    const classes = useClasses('badge', { dot }, className)
 
-  return (
-    <span className={classes} {...props}>
-      {!dot && children}
-      <style jsx>{`
-        .badge {
-          display: inline-block;
-          border-radius: 16px;
-          font-variant: tabular-nums;
-          line-height: 1;
-          vertical-align: middle;
-          background-color: ${bg};
-          color: ${color};
-          border: 0;
-          font-size: ${SCALES.font(0.875)};
-          font-weight: bold;
-          text-transform: none;
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0.5)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
+    return (
+      <span ref={ref} className={classes} {...props}>
+        {!dot && children}
+        <style jsx>{`
+          .badge {
+            display: inline-block;
+            border-radius: 16px;
+            font-variant: tabular-nums;
+            line-height: 1;
+            vertical-align: middle;
+            background-color: ${bg};
+            color: ${color};
+            border: 0;
+            font-size: ${SCALES.font(0.875)};
+            font-weight: bold;
+            text-transform: none;
+            width: ${SCALES.width(1, 'auto')};
+            height: ${SCALES.height(1, 'auto')};
+            padding: ${SCALES.pt(0.5)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
 
-        .dot {
-          padding: ${SCALES.py(0.25)} ${SCALES.px(0.25)};
-          border-radius: 50%;
-          user-select: none;
-        }
-      `}</style>
-    </span>
-  )
-}
+          .dot {
+            padding: ${SCALES.py(0.25)} ${SCALES.px(0.25)};
+            border-radius: 50%;
+            user-select: none;
+          }
+        `}</style>
+      </span>
+    )
+  }
+)
 
 BadgeComponent.displayName = 'BolioUIBadge'
 const Badge = withScale(BadgeComponent)

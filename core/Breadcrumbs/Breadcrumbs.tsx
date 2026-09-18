@@ -12,11 +12,10 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type BreadcrumbsProps = Props & NativeAttrs
 
-function BreadcrumbsComponent({
-  separator = '/',
-  children,
-  className = ''
-}: BreadcrumbsProps) {
+const BreadcrumbsComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<BreadcrumbsProps>
+>(({ separator = '/', children, className = '' }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
@@ -43,7 +42,7 @@ function BreadcrumbsComponent({
   })
 
   return (
-    <nav className={className}>
+    <nav ref={ref} className={className}>
       {withSeparatorChildren}
       <style jsx>{`
         nav {
@@ -86,7 +85,7 @@ function BreadcrumbsComponent({
       `}</style>
     </nav>
   )
-}
+})
 
 BreadcrumbsComponent.displayName = 'BolioUIBreadcrumbs'
 const Breadcrumbs = withScale(BreadcrumbsComponent)

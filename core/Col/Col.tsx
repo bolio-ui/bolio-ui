@@ -10,32 +10,37 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ColProps = Props & NativeAttrs
 
-function Col({
-  component = 'div' as keyof React.JSX.IntrinsicElements,
-  children,
-  span = 12,
-  offset = 0,
-  className = '',
-  ...props
-}: React.PropsWithChildren<ColProps>) {
-  const Component = component
+const Col = React.forwardRef<HTMLElement, React.PropsWithChildren<ColProps>>(
+  (
+    {
+      component = 'div' as keyof React.JSX.IntrinsicElements,
+      children,
+      span = 12,
+      offset = 0,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const Component = component as React.ElementType
 
-  return (
-    <Component className={`col ${className}`} {...props}>
-      {children}
-      <style jsx>{`
-        .col {
-          float: left;
-          box-sizing: border-box;
-          padding-left: calc(var(--row-gap) / 2);
-          padding-right: calc(var(--row-gap) / 2);
-          width: ${(100 / 12) * span}%;
-          margin-left: ${(100 / 12) * offset}%;
-        }
-      `}</style>
-    </Component>
-  )
-}
+    return (
+      <Component ref={ref} className={`col ${className}`} {...props}>
+        {children}
+        <style jsx>{`
+          .col {
+            float: left;
+            box-sizing: border-box;
+            padding-left: calc(var(--row-gap) / 2);
+            padding-right: calc(var(--row-gap) / 2);
+            width: ${(100 / 12) * span}%;
+            margin-left: ${(100 / 12) * offset}%;
+          }
+        `}</style>
+      </Component>
+    )
+  }
+)
 
 Col.displayName = 'BolioUICol'
 export default Col

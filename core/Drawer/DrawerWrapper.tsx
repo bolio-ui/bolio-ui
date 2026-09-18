@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
 import useScale from '../use-scale'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
@@ -14,17 +14,15 @@ interface Props {
 
 export type DrawerWrapperProps = Props
 
-function DrawerWrapper({
-  className = '',
-  children,
-  visible = false,
-  placement,
-  ...props
-}: React.PropsWithChildren<DrawerWrapperProps>) {
+const DrawerWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<DrawerWrapperProps>
+>(({ className = '', children, visible = false, placement, ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
   const modalContent = useRef<HTMLDivElement>(null)
+  useImperativeHandle(ref, () => modalContent.current as HTMLDivElement)
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
   const transform = useMemo(() => getDrawerTransform(placement), [placement])
@@ -163,7 +161,7 @@ function DrawerWrapper({
       </div>
     </CssTransition>
   )
-}
+})
 
 DrawerWrapper.displayName = 'BolioUIDrawerWrapper'
 export default DrawerWrapper

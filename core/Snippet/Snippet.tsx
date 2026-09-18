@@ -32,134 +32,142 @@ const textArrayToString = (text: string[]): string => {
   }, '')
 }
 
-function SnippetComponent({
-  type = 'default' as SnippetTypes,
-  filled = false,
-  rounded = false,
-  children,
-  symbol = '$',
-  toastText = 'Copied!',
-  toastType = 'primary' as ToastTypes,
-  text,
-  copy: copyType,
-  className = '',
-  ...props
-}: React.PropsWithChildren<SnippetProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+const SnippetComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<SnippetProps>
+>(
+  (
+    {
+      type = 'default' as SnippetTypes,
+      filled = false,
+      rounded = false,
+      children,
+      symbol = '$',
+      toastText = 'Copied!',
+      toastType = 'primary' as ToastTypes,
+      text,
+      copy: copyType,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const { copy } = useClipboard()
-  const { setToast } = useToasts()
+    const { copy } = useClipboard()
+    const { setToast } = useToasts()
 
-  const ref = useRef<HTMLPreElement>(null)
-  const isMultiLine = text && Array.isArray(text)
+    const preRef = useRef<HTMLPreElement>(null)
+    const isMultiLine = text && Array.isArray(text)
 
-  const style = useMemo(
-    () => getStyles(type, theme.palette, filled),
-    [type, theme.palette, filled]
-  )
+    const style = useMemo(
+      () => getStyles(type, theme.palette, filled),
+      [type, theme.palette, filled]
+    )
 
-  const showCopyIcon = useMemo(() => copyType !== 'prevent', [copyType])
+    const showCopyIcon = useMemo(() => copyType !== 'prevent', [copyType])
 
-  const childText = useMemo<string | undefined | null>(() => {
-    if (isMultiLine) return textArrayToString(text as string[])
-    if (!children) return text as string
-    if (!ref.current) return ''
-    return ref.current.textContent
-  }, [isMultiLine, text, children])
+    const childText = useMemo<string | undefined | null>(() => {
+      if (isMultiLine) return textArrayToString(text as string[])
+      if (!children) return text as string
+      if (!preRef.current) return ''
+      return preRef.current.textContent
+    }, [isMultiLine, text, children])
 
-  const symbolBefore = useMemo(() => {
-    const str = symbol.trim()
-    return str ? `${str} ` : ''
-  }, [symbol])
+    const symbolBefore = useMemo(() => {
+      const str = symbol.trim()
+      return str ? `${str} ` : ''
+    }, [symbol])
 
-  const clickHandler = () => {
-    if (!childText || !showCopyIcon) return
-    copy(childText)
-    if (copyType === 'silent') return
-    setToast({ text: toastText, type: toastType })
+    const clickHandler = () => {
+      if (!childText || !showCopyIcon) return
+      copy(childText)
+      if (copyType === 'silent') return
+      setToast({ text: toastText, type: toastType })
+    }
+
+    return (
+      <div ref={ref} className={useClasses('snippet', className)} {...props}>
+        {isMultiLine ? (
+          (text as string[]).map((t, index) => (
+            <pre key={`snippet-${index}-${t}`}>{t}</pre>
+          ))
+        ) : (
+          <pre ref={preRef}>{children || text}</pre>
+        )}
+        {showCopyIcon && (
+          <div className="copy" onClick={clickHandler}>
+            <SnippetIcon />
+          </div>
+        )}
+        <style jsx>{`
+          .snippet {
+            position: relative;
+            max-width: 100%;
+            color: ${style.color};
+            background-color: ${style.bgColor};
+            border: 1px solid ${style.border};
+            border-radius: ${rounded ? '25px' : theme.layout.radius};
+            --snippet-font-size: ${SCALES.font(0.8125)};
+            --snippet-padding-top: ${SCALES.pt(0.667)};
+            font-size: var(--snippet-font-size);
+            width: ${SCALES.width(1, 'initial')};
+            height: ${SCALES.height(1, 'auto')};
+            padding: ${SCALES.pt(0.667)} ${SCALES.pr(2.667)} ${SCALES.pb(0.667)}
+              ${SCALES.pl(0.667)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
+
+          pre {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: ${style.color};
+            font-size: inherit;
+          }
+
+          pre::before {
+            content: '${symbolBefore}';
+            user-select: none;
+          }
+
+          pre :global(*) {
+            margin: 0;
+            padding: 0;
+            font-size: inherit;
+            color: inherit;
+          }
+
+          .copy {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: ${style.bgColor};
+            display: inline-flex;
+            justify-content: center;
+            align-items: ${isMultiLine ? 'flex-start' : 'center'};
+            width: calc(3.281 * var(--snippet-font-size));
+            color: inherit;
+            transition: opacity 150ms ease 0s;
+            border-radius: ${rounded ? '25px' : theme.layout.radius};
+            cursor: pointer;
+            user-select: none;
+            padding-top: ${isMultiLine ? 'var(--snippet-padding-top)' : 0};
+            opacity: 0.65;
+          }
+
+          .copy:hover {
+            opacity: 1;
+          }
+        `}</style>
+      </div>
+    )
   }
-
-  return (
-    <div className={useClasses('snippet', className)} {...props}>
-      {isMultiLine ? (
-        (text as string[]).map((t, index) => (
-          <pre key={`snippet-${index}-${t}`}>{t}</pre>
-        ))
-      ) : (
-        <pre ref={ref}>{children || text}</pre>
-      )}
-      {showCopyIcon && (
-        <div className="copy" onClick={clickHandler}>
-          <SnippetIcon />
-        </div>
-      )}
-      <style jsx>{`
-        .snippet {
-          position: relative;
-          max-width: 100%;
-          color: ${style.color};
-          background-color: ${style.bgColor};
-          border: 1px solid ${style.border};
-          border-radius: ${rounded ? '25px' : theme.layout.radius};
-          --snippet-font-size: ${SCALES.font(0.8125)};
-          --snippet-padding-top: ${SCALES.pt(0.667)};
-          font-size: var(--snippet-font-size);
-          width: ${SCALES.width(1, 'initial')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0.667)} ${SCALES.pr(2.667)} ${SCALES.pb(0.667)}
-            ${SCALES.pl(0.667)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        pre {
-          margin: 0;
-          padding: 0;
-          border: none;
-          background-color: transparent;
-          color: ${style.color};
-          font-size: inherit;
-        }
-
-        pre::before {
-          content: '${symbolBefore}';
-          user-select: none;
-        }
-
-        pre :global(*) {
-          margin: 0;
-          padding: 0;
-          font-size: inherit;
-          color: inherit;
-        }
-
-        .copy {
-          position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          background-color: ${style.bgColor};
-          display: inline-flex;
-          justify-content: center;
-          align-items: ${isMultiLine ? 'flex-start' : 'center'};
-          width: calc(3.281 * var(--snippet-font-size));
-          color: inherit;
-          transition: opacity 150ms ease 0s;
-          border-radius: ${rounded ? '25px' : theme.layout.radius};
-          cursor: pointer;
-          user-select: none;
-          padding-top: ${isMultiLine ? 'var(--snippet-padding-top)' : 0};
-          opacity: 0.65;
-        }
-
-        .copy:hover {
-          opacity: 1;
-        }
-      `}</style>
-    </div>
-  )
-}
+)
 
 SnippetComponent.displayName = 'BolioUISnippet'
 const Snippet = withScale(SnippetComponent)

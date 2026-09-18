@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
 import { isChildElement } from '../utils/collections'
@@ -12,15 +12,14 @@ interface Props {
 
 export type ModalWrapperProps = Props
 
-function ModalWrapper({
-  className = '',
-  children,
-  visible = false,
-  ...props
-}: React.PropsWithChildren<ModalWrapperProps>) {
+const ModalWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<ModalWrapperProps>
+>(({ className = '', children, visible = false, ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
   const modalContent = useRef<HTMLDivElement>(null)
+  useImperativeHandle(ref, () => modalContent.current as HTMLDivElement)
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
 
@@ -130,7 +129,7 @@ function ModalWrapper({
       </div>
     </CssTransition>
   )
-}
+})
 
 ModalWrapper.displayName = 'BolioUIModalWrapper'
 export default ModalWrapper

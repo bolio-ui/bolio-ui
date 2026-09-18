@@ -12,16 +12,14 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type SectionProps = Props & NativeAttrs
 
-function SectionComponent({
-  children,
-  bg = 'transparent',
-  className = '',
-  ...props
-}: React.PropsWithChildren<SectionProps>) {
+const SectionComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<SectionProps>
+>(({ children, bg = 'transparent', className = '', ...props }, ref) => {
   const { SCALES } = useScale()
 
   return (
-    <section className={useClasses('section', className)} {...props}>
+    <section ref={ref} className={useClasses('section', className)} {...props}>
       {children}
       <style jsx>{`
         section {
@@ -34,7 +32,7 @@ function SectionComponent({
       `}</style>
     </section>
   )
-}
+})
 
 SectionComponent.displayName = 'BolioUISection'
 const Section = withScale(SectionComponent)

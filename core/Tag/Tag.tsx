@@ -75,44 +75,52 @@ const getColors = (
       }
 }
 
-function TagComponent({
-  type = 'default' as TagTypes,
-  children,
-  className = '',
-  invert = false,
-  ...props
-}: React.PropsWithChildren<TagProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
-  const { color, bgColor, borderColor } = useMemo(
-    () => getColors(type, theme.palette, invert),
-    [type, theme.palette, invert]
-  )
+const TagComponent = React.forwardRef<
+  HTMLSpanElement,
+  React.PropsWithChildren<TagProps>
+>(
+  (
+    {
+      type = 'default' as TagTypes,
+      children,
+      className = '',
+      invert = false,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
+    const { color, bgColor, borderColor } = useMemo(
+      () => getColors(type, theme.palette, invert),
+      [type, theme.palette, invert]
+    )
 
-  return (
-    <span className={className} {...props}>
-      {children}
-      <style jsx>{`
-        span {
-          display: inline-block;
-          border: 1px solid ${borderColor};
-          background-color: ${bgColor};
-          color: ${color};
-          box-sizing: border-box;
-          line-height: 1em;
-          border-radius: ${SCALES.height(0.3125)};
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1.75)};
-          padding: ${SCALES.pt(0.375)} ${SCALES.pr(0.375)} ${SCALES.pb(0.375)}
-            ${SCALES.pl(0.375)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-      `}</style>
-    </span>
-  )
-}
+    return (
+      <span ref={ref} className={className} {...props}>
+        {children}
+        <style jsx>{`
+          span {
+            display: inline-block;
+            border: 1px solid ${borderColor};
+            background-color: ${bgColor};
+            color: ${color};
+            box-sizing: border-box;
+            line-height: 1em;
+            border-radius: ${SCALES.height(0.3125)};
+            font-size: ${SCALES.font(0.875)};
+            width: ${SCALES.width(1, 'auto')};
+            height: ${SCALES.height(1.75)};
+            padding: ${SCALES.pt(0.375)} ${SCALES.pr(0.375)} ${SCALES.pb(0.375)}
+              ${SCALES.pl(0.375)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
+        `}</style>
+      </span>
+    )
+  }
+)
 
 TagComponent.displayName = 'BolioUITag'
 const Tag = withScale(TagComponent)

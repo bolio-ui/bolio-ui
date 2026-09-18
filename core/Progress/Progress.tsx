@@ -48,81 +48,89 @@ const getCurrentColor = (
   return colors[+customColorKey]
 }
 
-function ProgressComponent({
-  value = 0,
-  max = 100,
-  className = '',
-  type = 'default' as ProgressTypes,
-  colors,
-  fixedTop = false,
-  fixedBottom = false,
-  ...props
-}: ProgressProps) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+const ProgressComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<ProgressProps>
+>(
+  (
+    {
+      value = 0,
+      max = 100,
+      className = '',
+      type = 'default' as ProgressTypes,
+      colors,
+      fixedTop = false,
+      fixedBottom = false,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const percentValue = useProportions(value, max)
-  const currentColor = getCurrentColor(
-    percentValue,
-    theme.palette,
-    type,
-    colors
-  )
-  const fixed = fixedTop || fixedBottom
-  const classes = useClasses('progress', { fixed }, className)
+    const percentValue = useProportions(value, max)
+    const currentColor = getCurrentColor(
+      percentValue,
+      theme.palette,
+      type,
+      colors
+    )
+    const fixed = fixedTop || fixedBottom
+    const classes = useClasses('progress', { fixed }, className)
 
-  return (
-    <div className={classes}>
-      <div className="inner" title={`${percentValue}%`} />
-      <progress className={className} value={value} max={max} {...props} />
-      <style jsx>{`
-        progress {
-          position: fixed;
-          top: -1000px;
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
-        }
+    return (
+      <div ref={ref} className={classes}>
+        <div className="inner" title={`${percentValue}%`} />
+        <progress className={className} value={value} max={max} {...props} />
+        <style jsx>{`
+          progress {
+            position: fixed;
+            top: -1000px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+          }
 
-        .progress {
-          position: relative;
-          background-color: ${theme.palette.accents_2};
-          border-radius: ${theme.layout.radius};
-          width: ${SCALES.width(1, '100%')};
-          height: ${SCALES.height(0.625)};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
+          .progress {
+            position: relative;
+            background-color: ${theme.palette.accents_2};
+            border-radius: ${theme.layout.radius};
+            width: ${SCALES.width(1, '100%')};
+            height: ${SCALES.height(0.625)};
+            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
+              ${SCALES.pl(0)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
 
-        .fixed {
-          position: fixed;
-          top: ${fixedTop ? 0 : 'unset'};
-          bottom: ${fixedBottom ? 0 : 'unset'};
-          left: 0;
-          border-radius: 0;
-        }
+          .fixed {
+            position: fixed;
+            top: ${fixedTop ? 0 : 'unset'};
+            bottom: ${fixedBottom ? 0 : 'unset'};
+            left: 0;
+            border-radius: 0;
+          }
 
-        .fixed > .inner {
-          border-radius: 0;
-        }
+          .fixed > .inner {
+            border-radius: 0;
+          }
 
-        .inner {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          bottom: 0;
-          transition: all 100ms ease-in;
-          border-radius: ${theme.layout.radius};
-          background-color: ${currentColor};
-          width: ${percentValue}%;
-        }
-      `}</style>
-    </div>
-  )
-}
+          .inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            bottom: 0;
+            transition: all 100ms ease-in;
+            border-radius: ${theme.layout.radius};
+            background-color: ${currentColor};
+            width: ${percentValue}%;
+          }
+        `}</style>
+      </div>
+    )
+  }
+)
 
 ProgressComponent.displayName = 'BolioUIProgress'
 const Progress = withScale(ProgressComponent)

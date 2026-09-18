@@ -10,6 +10,7 @@ interface Props {
   align?: Align
   component?: keyof React.JSX.IntrinsicElements
   className?: string
+  fluid?: boolean
 }
 
 const defaultProps = {
@@ -41,44 +42,52 @@ const getFlexAlignment = (justify: Justify, align: Align) => {
   }
 }
 
-function Container({
-  children,
-  component,
-  justify,
-  align,
-  fluid,
-  className,
-  ...props
-}: React.PropsWithChildren<ContainerProps> & typeof defaultProps) {
-  const Component = component
-  const theme = useTheme()
+const Container = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<ContainerProps>
+>(
+  (
+    {
+      children,
+      component = defaultProps.component,
+      justify = defaultProps.justify,
+      align = defaultProps.align,
+      fluid = defaultProps.fluid,
+      className = defaultProps.className,
+      ...props
+    },
+    ref
+  ) => {
+    const Component = component as React.ElementType
+    const theme = useTheme()
 
-  const { justifyValue, alignValue } = useMemo(
-    () => getFlexAlignment(justify, align),
-    [justify, align]
-  )
+    const { justifyValue, alignValue } = useMemo(
+      () => getFlexAlignment(justify, align),
+      [justify, align]
+    )
 
-  const fluidWidth = !fluid && 'max-width: ' + theme.layout.pageWidthWithMargin
+    const fluidWidth =
+      !fluid && 'max-width: ' + theme.layout.pageWidthWithMargin
 
-  return (
-    <Component className={`container ${className}`} {...props}>
-      {children}
-      <style jsx>{`
-        .container {
-          /* width: 100%; */
-          ${fluidWidth};
-          padding-left: 15px;
-          padding-right: 15px;
-          margin-right: auto;
-          margin-left: auto;
-          justify-content: ${justifyValue};
-          align-items: ${alignValue};
-        }
-      `}</style>
-    </Component>
-  )
-}
+    return (
+      <Component ref={ref} className={`container ${className}`} {...props}>
+        {children}
+        <style jsx>{`
+          .container {
+            /* width: 100%; */
+            ${fluidWidth};
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: ${justifyValue};
+            align-items: ${alignValue};
+          }
+        `}</style>
+      </Component>
+    )
+  }
+)
 
-Container.defaultProps = defaultProps
 Container.displayName = 'BolioUIContainer'
 export default Container

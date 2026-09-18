@@ -46,61 +46,69 @@ const getStatusColor = (
   }
 }
 
-export function NoteComponent({
-  children,
-  type = 'default' as NoteTypes,
-  label = 'note' as string | boolean,
-  filled = false,
-  className = '',
-  ...props
-}: React.PropsWithChildren<NoteProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
+export const NoteComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<NoteProps>
+>(
+  (
+    {
+      children,
+      type = 'default' as NoteTypes,
+      label = 'note' as string | boolean,
+      filled = false,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
 
-  const { color, borderColor, bgColor } = useMemo(
-    () => getStatusColor(type, filled, theme),
-    [type, filled, theme]
-  )
+    const { color, borderColor, bgColor } = useMemo(
+      () => getStatusColor(type, filled, theme),
+      [type, filled, theme]
+    )
 
-  return (
-    <div className={useClasses('note', className)} {...props}>
-      {label && (
-        <span className="label">
-          <b>{label}:</b>
-        </span>
-      )}
-      {children}
+    return (
+      <div ref={ref} className={useClasses('note', className)} {...props}>
+        {label && (
+          <span className="label">
+            <b>{label}:</b>
+          </span>
+        )}
+        {children}
 
-      <style jsx>{`
-        .note {
-          line-height: 1.8;
-          border: 1px solid ${borderColor};
-          color: ${color};
-          background-color: ${bgColor};
-          border-radius: ${theme.layout.radius};
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0.667)} ${SCALES.pr(1.32)} ${SCALES.pb(0.667)}
-            ${SCALES.pl(1.32)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
+        <style jsx>{`
+          .note {
+            line-height: 1.8;
+            border: 1px solid ${borderColor};
+            color: ${color};
+            background-color: ${bgColor};
+            border-radius: ${theme.layout.radius};
+            font-size: ${SCALES.font(0.875)};
+            width: ${SCALES.width(1, 'auto')};
+            height: ${SCALES.height(1, 'auto')};
+            padding: ${SCALES.pt(0.667)} ${SCALES.pr(1.32)} ${SCALES.pb(0.667)}
+              ${SCALES.pl(1.32)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
 
-        .note :global(p) {
-          margin: 0;
-        }
+          .note :global(p) {
+            margin: 0;
+          }
 
-        .label {
-          text-transform: uppercase;
-          user-select: none;
-          line-height: 1.5;
-          padding-right: 0.38em;
-        }
-      `}</style>
-    </div>
-  )
-}
+          .label {
+            text-transform: uppercase;
+            user-select: none;
+            line-height: 1.5;
+            padding-right: 0.38em;
+          }
+        `}</style>
+      </div>
+    )
+  }
+)
 
 NoteComponent.displayName = 'BolioUINote'
 const Note = withScale(NoteComponent)
