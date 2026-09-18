@@ -1,6 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
+import { useModalContext } from './ModalContext'
 
 interface Props {
   className?: string
@@ -16,10 +17,11 @@ function ModalTitleComponent({
 }: React.PropsWithChildren<ModalTitleProps>) {
   const theme = useTheme()
   const { SCALES } = useScale()
+  const { titleId } = useModalContext()
 
   return (
     <>
-      <h2 className={className} {...props}>
+      <h2 id={titleId} className={className} {...props}>
         {children}
       </h2>
       <style jsx>{`

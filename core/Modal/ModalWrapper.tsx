@@ -10,7 +10,8 @@ interface Props {
   visible?: boolean
 }
 
-export type ModalWrapperProps = Props
+type NativeAttrs = Omit<React.HTMLAttributes<HTMLDivElement>, keyof Props>
+export type ModalWrapperProps = Props & NativeAttrs
 
 const ModalWrapper = React.forwardRef<
   HTMLDivElement,

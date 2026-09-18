@@ -1,12 +1,14 @@
-import React, { MouseEvent, useEffect, useMemo, useState } from 'react'
+import React, { MouseEvent, useEffect, useId, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import usePortal from '../utils/use-portal'
 import ModalWrapper from './ModalWrapper'
 import ModalAction from './ModalAction'
 import ModalActions from './ModalActions'
+import ModalTitle from './ModalTitle'
+import ModalSubtitle from './ModalSubtitle'
 import Backdrop from '../Shared/backdrop'
 import { ModalConfig, ModalContext } from './ModalContext'
-import { pickChild } from '../utils/collections'
+import { hasChild, pickChild } from '../utils/collections'
 import useBodyScroll from '../utils/use-body-scroll'
 import useScale, { withScale } from '../use-scale'
 import useKeyboard, { KeyCode } from '../use-keyboard'
@@ -17,6 +19,7 @@ interface Props {
   onContentClick?: (event: MouseEvent<HTMLElement>) => void
   visible?: boolean
   keyboard?: boolean
+  role?: 'dialog' | 'alertdialog'
   wrapClassName?: string
   positionClassName?: string
   backdropClassName?: string
@@ -41,11 +44,18 @@ const ModalComponent = React.forwardRef<
       disableBackdropClick = false,
       positionClassName = '',
       backdropClassName = '',
-      layerClassName = ''
+      layerClassName = '',
+      role = 'dialog',
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby
     },
     ref
   ) => {
     const portal = usePortal('modal')
+    const baseId = useId()
+    const titleId = `${baseId}-title`
+    const descriptionId = `${baseId}-description`
     const { SCALES } = useScale()
 
     const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
@@ -85,7 +95,9 @@ const ModalComponent = React.forwardRef<
 
     const modalConfig: ModalConfig = useMemo(
       () => ({
-        close: closeModal
+        close: closeModal,
+        titleId,
+        descriptionId
       }),
       []
     )
@@ -103,7 +115,21 @@ const ModalComponent = React.forwardRef<
           layerClassName={layerClassName}
           {...bindings}
         >
-          <ModalWrapper ref={ref} visible={visible} className={wrapClassName}>
+          <ModalWrapper
+            ref={ref}
+            visible={visible}
+            className={wrapClassName}
+            role={role}
+            aria-label={ariaLabel}
+            aria-labelledby={
+              ariaLabelledby ||
+              (hasChild(children, ModalTitle) ? titleId : undefined)
+            }
+            aria-describedby={
+              ariaDescribedby ||
+              (hasChild(children, ModalSubtitle) ? descriptionId : undefined)
+            }
+          >
             {withoutActionsChildren}
             {hasActions && <ModalActions>{ActionsChildren}</ModalActions>}
           </ModalWrapper>

@@ -14,7 +14,8 @@ import {
   Spinner,
   Tabs,
   Toggle,
-  Tooltip
+  Tooltip,
+  useToasts
 } from '..'
 import { cases } from './cases'
 
@@ -173,6 +174,49 @@ describe('semantics', () => {
     await waitFor(() =>
       expect(screen.queryByText('Popover body')).not.toBeInTheDocument()
     )
+  })
+
+  it('Modal is named by its title and described by its subtitle', () => {
+    wrap(
+      <Modal visible onClose={() => undefined}>
+        <Modal.Title>Delete file</Modal.Title>
+        <Modal.Subtitle>This cannot be undone</Modal.Subtitle>
+      </Modal>
+    )
+    const dialog = screen.getByRole('dialog', { name: 'Delete file' })
+    expect(dialog).toHaveAccessibleDescription('This cannot be undone')
+  })
+
+  it('Modal can be an alert dialog', () => {
+    wrap(
+      <Modal visible role="alertdialog" onClose={() => undefined}>
+        <Modal.Title>Discard changes</Modal.Title>
+      </Modal>
+    )
+    expect(
+      screen.getByRole('alertdialog', { name: 'Discard changes' })
+    ).toHaveAttribute('aria-modal', 'true')
+  })
+
+  it('Toast is announced: status for messages and alert for errors', async () => {
+    const Notify = ({ type }: { type: 'success' | 'error' }) => {
+      const { setToast } = useToasts()
+      React.useEffect(() => {
+        setToast({ text: `${type} message`, type })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+      return null
+    }
+    wrap(
+      <>
+        <Notify type="success" />
+        <Notify type="error" />
+      </>
+    )
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'success message'
+    )
+    expect(await screen.findByRole('alert')).toHaveTextContent('error message')
   })
 
   it('Spinner and Loading are status indicators', () => {

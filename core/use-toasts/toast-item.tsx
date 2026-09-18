@@ -24,7 +24,11 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
 
   return (
     <CssTransition name="toast" visible={toast.visible} clearTime={350}>
-      <div key={toast.id} className="toast">
+      <div
+        key={toast.id}
+        className="toast"
+        role={toast.type === 'error' ? 'alert' : 'status'}
+      >
         {isReactNode ? (
           toast.text
         ) : (
