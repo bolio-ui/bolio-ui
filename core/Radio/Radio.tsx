@@ -130,14 +130,19 @@ const RadioComponent = React.forwardRef<
         <style jsx>{`
           input {
             opacity: 0;
-            visibility: hidden;
             overflow: hidden;
             width: 1px;
             height: 1px;
-            top: -1000px;
-            right: -1000px;
-            position: fixed;
+            margin: 0;
+            top: 0;
+            left: 0;
+            position: absolute;
             font-size: 0;
+          }
+          input:focus-visible + .name {
+            border-radius: 4px;
+            outline: 2px solid ${theme.palette.primary};
+            outline-offset: 2px;
           }
           .radio {
             display: flex;

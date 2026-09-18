@@ -111,7 +111,7 @@ const ButtonDropdownComponent = React.forwardRef<
         >
           {mainItemChildren}
           <details open={visible}>
-            <summary onClick={clickHandler}>
+            <summary aria-label="More options" onClick={clickHandler}>
               <div className="dropdown-box">
                 {icon ? (
                   <span

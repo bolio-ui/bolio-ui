@@ -76,6 +76,8 @@ const SliderComponent = React.forwardRef<
       onChange,
       className = '',
       showMarkers = false,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
@@ -143,6 +145,27 @@ const SliderComponent = React.forwardRef<
       setLastDargOffset(boundOffset)
     }
 
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (disabled) return
+      const nextByKey: Record<string, number> = {
+        ArrowRight: value + step,
+        ArrowUp: value + step,
+        ArrowLeft: value - step,
+        ArrowDown: value - step,
+        PageUp: value + step * 10,
+        PageDown: value - step * 10,
+        Home: min,
+        End: max
+      }
+      if (!(event.key in nextByKey)) return
+      event.preventDefault()
+      const next = Math.min(max, Math.max(min, nextByKey[event.key]))
+      if (next === value) return
+      setValue(next)
+      setLastOffsetManually(next)
+      onChange && onChange(next)
+    }
+
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
       if (disabled) return
       if (!sliderRef || !sliderRef.current) return
@@ -178,6 +201,15 @@ const SliderComponent = React.forwardRef<
           ref={dotRef}
           isClick={isClick}
           left={currentRatio}
+          role="slider"
+          tabIndex={disabled ? -1 : 0}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          aria-disabled={disabled || undefined}
+          onKeyDown={keyDownHandler}
         >
           {hideValue || value}
         </SliderDot>

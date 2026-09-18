@@ -49,14 +49,44 @@ function TabsItemComponent({
       onClick && onClick(value)
     }
 
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        clickHandler()
+        return
+      }
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key))
+        return
+      const tabs = Array.from(
+        event.currentTarget.parentElement?.querySelectorAll<HTMLElement>(
+          '[role="tab"]:not([aria-disabled="true"])'
+        ) || []
+      )
+      const current = tabs.indexOf(event.currentTarget)
+      const last = tabs.length - 1
+      let next = current
+      if (event.key === 'Home') next = 0
+      else if (event.key === 'End') next = last
+      else if (event.key === 'ArrowRight')
+        next = current === last ? 0 : current + 1
+      else next = current === 0 ? last : current - 1
+      event.preventDefault()
+      tabs[next]?.focus()
+      tabs[next]?.click()
+    }
+
     return (
       <div
         ref={ref}
         className={classes}
-        role="button"
+        role="tab"
+        aria-selected={active}
+        aria-disabled={disabled || undefined}
+        tabIndex={active ? 0 : -1}
         key={value}
         onMouseOver={onMouseOver}
         onClick={clickHandler}
+        onKeyDown={keyDownHandler}
         style={active ? activeStyle : {}}
         data-bolioui="tab-item"
       >
@@ -128,6 +158,10 @@ function TabsItemComponent({
             height: 0;
             overflow: hidden;
             visibility: hidden;
+          }
+          .tab:focus-visible {
+            outline: 2px solid ${theme.palette.primary};
+            outline-offset: -2px;
           }
           .hide-border:after {
             display: none;

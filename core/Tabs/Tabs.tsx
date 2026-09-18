@@ -124,6 +124,7 @@ const TabsComponent = React.forwardRef<
               hoverWidthRatio={hoverWidthRatio}
             />
             <div
+              role="tablist"
               className={useClasses('scroll-container', {
                 'hide-divider': hideDivider
               })}
@@ -140,7 +141,9 @@ const TabsComponent = React.forwardRef<
               ))}
             </div>
           </header>
-          <div className="content">{children}</div>
+          <div className="content" role="tabpanel">
+            {children}
+          </div>
           <style jsx>{`
             .tabs {
               font-size: ${SCALES.font(1)};

@@ -85,17 +85,25 @@ const PaginationComponent = React.forwardRef<
 
     return (
       <PaginationContext.Provider value={values}>
-        <nav ref={ref} className={className} {...props}>
-          {prevItem}
-          <PaginationPages
-            count={count}
-            current={page}
-            limit={limit}
-            setPage={setPage}
-          />
-          {nextItem}
+        <nav ref={ref} className={className} aria-label="Pagination" {...props}>
+          <ul>
+            {prevItem}
+            <PaginationPages
+              count={count}
+              current={page}
+              limit={limit}
+              setPage={setPage}
+            />
+            {nextItem}
+          </ul>
         </nav>
         <style jsx>{`
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+
           nav {
             font-variant: tabular-nums;
             font-feature-settings: 'tnum';

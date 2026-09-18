@@ -51,6 +51,7 @@ const ModalWrapper = React.forwardRef<
       <div
         className={useClasses('wrapper', className)}
         role="dialog"
+        aria-modal="true"
         tabIndex={-1}
         onKeyDown={onKeyDown}
         ref={modalContent}

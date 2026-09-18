@@ -109,7 +109,7 @@ const SpinnerComponent = React.forwardRef<
   const classes = useClasses('spinner', className)
 
   return (
-    <div ref={ref} className={classes} {...props}>
+    <div ref={ref} role="status" className={classes} {...props}>
       <div className="container">{getSpans(theme)}</div>
       <style jsx>{`
         .spinner {

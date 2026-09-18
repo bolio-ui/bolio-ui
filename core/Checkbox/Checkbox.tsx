@@ -144,6 +144,12 @@ const CheckboxComponent = React.forwardRef<
             cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
           }
 
+          .checkbox:focus-within {
+            border-radius: 4px;
+            outline: 2px solid ${theme.palette.primary};
+            outline-offset: 2px;
+          }
+
           input {
             opacity: 0;
             outline: none;

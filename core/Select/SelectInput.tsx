@@ -4,10 +4,12 @@ export type SelectInputProps = {
   visible: boolean
   onBlur: () => void
   onFocus: () => void
+  ariaLabel?: string
+  ariaLabelledby?: string
 }
 
 const SelectInput = React.forwardRef<HTMLInputElement | null, SelectInputProps>(
-  ({ visible, onBlur, onFocus }, inputRef) => {
+  ({ visible, onBlur, onFocus, ariaLabel, ariaLabelledby }, inputRef) => {
     const ref = useRef<HTMLInputElement | null>(null)
     useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(
       inputRef,
@@ -27,6 +29,8 @@ const SelectInput = React.forwardRef<HTMLInputElement | null, SelectInputProps>(
           type="search"
           role="combobox"
           aria-haspopup="listbox"
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
           readOnly
           unselectable="on"
           aria-expanded={visible}

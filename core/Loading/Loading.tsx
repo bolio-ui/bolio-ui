@@ -59,7 +59,7 @@ const LoadingComponent = React.forwardRef<
     )
 
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div ref={ref} role="status" className={classes} {...props}>
         <span className="loading">
           {children && <label>{children}</label>}
           <i />

@@ -56,6 +56,7 @@ const DrawerWrapper = React.forwardRef<
       <div
         className={classes}
         role="dialog"
+        aria-modal="true"
         tabIndex={-1}
         onKeyDown={onKeyDown}
         ref={modalContent}

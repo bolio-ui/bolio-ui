@@ -68,9 +68,22 @@ const CollapseComponent = React.forwardRef<
       updateValues && updateValues(index, next)
     }
 
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return
+      event.preventDefault()
+      clickHandler()
+    }
+
     return (
       <div ref={ref} className={classes} {...props}>
-        <div className="view" role="button" onClick={clickHandler}>
+        <div
+          className="view"
+          role="button"
+          tabIndex={0}
+          aria-expanded={visible}
+          onClick={clickHandler}
+          onKeyDown={keyDownHandler}
+        >
           <div className="title">
             <h3>{title}</h3> <CollapseIcon active={visible} />
           </div>
@@ -102,6 +115,11 @@ const CollapseComponent = React.forwardRef<
           .view {
             cursor: pointer;
             outline: none;
+          }
+
+          .view:focus-visible {
+            outline: 2px solid ${theme.palette.primary};
+            outline-offset: 4px;
           }
 
           .title {

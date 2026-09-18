@@ -41,7 +41,12 @@ function PaginationItem({
 
   return (
     <li>
-      <button className={classes} onClick={clickHandler} {...props}>
+      <button
+        className={classes}
+        aria-current={active ? 'page' : undefined}
+        onClick={clickHandler}
+        {...props}
+      >
         {children}
       </button>
       <style jsx>{`

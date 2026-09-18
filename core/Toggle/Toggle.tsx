@@ -45,6 +45,8 @@ const ToggleComponent = React.forwardRef<
       onChange,
       type = 'default' as ToggleTypes,
       className = '',
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
@@ -87,6 +89,9 @@ const ToggleComponent = React.forwardRef<
         <input
           ref={ref}
           type="checkbox"
+          role="switch"
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
           disabled={disabled}
           checked={selfChecked}
           onChange={changeHandle}
@@ -115,13 +120,18 @@ const ToggleComponent = React.forwardRef<
 
           input {
             overflow: hidden;
-            visibility: hidden;
             height: 0;
+            margin: 0;
             opacity: 0;
             width: 0;
             position: absolute;
             background-color: transparent;
             z-index: -1;
+          }
+
+          input:focus-visible + .toggle {
+            outline: 2px solid ${theme.palette.primary};
+            outline-offset: 2px;
           }
 
           .toggle {

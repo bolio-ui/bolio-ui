@@ -84,6 +84,8 @@ const SelectComponent = React.forwardRef<
       disableMatchWidth = false,
       getPopupContainer,
       onDropdownVisibleChange = () => {},
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
       ...props
     }: React.PropsWithChildren<SelectProps>,
     selectRef
@@ -214,6 +216,11 @@ const SelectComponent = React.forwardRef<
         >
           <SelectInput
             ref={inputRef}
+            ariaLabel={
+              ariaLabel ||
+              (typeof placeholder === 'string' ? placeholder : undefined)
+            }
+            ariaLabelledby={ariaLabelledby}
             visible={visible}
             onBlur={onInputBlur}
             onFocus={() => setSelectFocus(true)}

@@ -20,7 +20,8 @@ const SliderDot = React.forwardRef<
       children,
       disabled = false,
       left = 0,
-      isClick = false
+      isClick = false,
+      ...props
     }: React.PropsWithChildren<SliderDotProps>,
     ref: React.Ref<HTMLDivElement>
   ) => {
@@ -28,7 +29,7 @@ const SliderDot = React.forwardRef<
     const classes = useClasses('dot', { disabled, click: isClick })
 
     return (
-      <div className={classes} ref={ref}>
+      <div className={classes} ref={ref} {...props}>
         {children}
         <style jsx>{`
           .dot {
@@ -50,6 +51,10 @@ const SliderDot = React.forwardRef<
             padding: 0 calc(0.57 * var(--slider-font-size));
           }
 
+          .dot:focus-visible {
+            outline: 2px solid ${theme.palette.foreground};
+            outline-offset: 2px;
+          }
           .dot.disabled {
             cursor: not-allowed !important;
             background-color: ${theme.palette.accents_2};
