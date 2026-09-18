@@ -1,28 +1,6 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext
-} from 'next/document'
-import { CssBaseline } from 'core'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const styles = CssBaseline.flush()
-
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {styles}
-        </>
-      )
-    }
-  }
-
   render() {
     return (
       <Html lang="en">

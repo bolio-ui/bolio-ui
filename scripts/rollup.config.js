@@ -38,18 +38,13 @@ const globals = {
   'react-dom': 'ReactDOM'
 }
 
-const external = (id) => /^react|react-dom|next\/link/.test(id)
+const external = (id) => /^react|react-dom|^next\/|^styled-jsx/.test(id)
 
 const cjsOutput = {
   format: 'cjs',
   exports: 'named',
   entryFileNames: '[name]/index.js',
   dir: distPath,
-  manualChunks: (id) => {
-    if (id.includes('node_modules/styled-jsx')) {
-      return 'styled-jsx.cjs'
-    }
-  },
   chunkFileNames: '[name].js',
   globals,
   sourcemap: false
@@ -59,14 +54,6 @@ const esmOutput = {
   format: 'es',
   entryFileNames: '[name]/index.js',
   dir: esmPath,
-  manualChunks: (id) => {
-    if (id.includes('node_modules/styled-jsx/server')) {
-      return 'styled-jsx-server.es'
-    }
-    if (id.includes('node_modules/styled-jsx')) {
-      return 'styled-jsx.es'
-    }
-  },
   chunkFileNames: '[name].js',
   globals
 }

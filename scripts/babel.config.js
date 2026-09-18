@@ -13,19 +13,7 @@ module.exports = {
   plugins: [
     'styled-jsx/babel',
     ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
-    ['@babel/plugin-transform-runtime', { useESModules: true }],
-    [
-      'transform-rename-import',
-      {
-        replacements: [
-          { original: 'styled-jsx/style', replacement: '../styled-jsx.es.js' },
-          {
-            original: 'styled-jsx/server',
-            replacement: '../styled-jsx-server.es.js'
-          }
-        ]
-      }
-    ]
+    ['@babel/plugin-transform-runtime', { useESModules: true }]
   ],
 
   ignore: [/@babel[\\|/]runtime/]

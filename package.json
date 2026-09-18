@@ -28,6 +28,28 @@
   "unpkg": "dist/index.min.js",
   "module": "esm/index.js",
   "types": "esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./esm/index.d.ts",
+      "module": "./esm/index.js",
+      "default": "./dist/index.js"
+    },
+    "./next": {
+      "types": "./esm/Next/index.d.ts",
+      "module": "./esm/Next/index.js",
+      "default": "./dist/Next/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./esm/*": "./esm/*",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "next": [
+        "esm/Next/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "/dist",
     "/esm"
@@ -50,7 +72,7 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:babel": "babel --no-babelrc --config-file ./scripts/babel.config.js --extensions \".js,.ts,.tsx\" ./core --out-dir ./esm --ignore \"**/__tests__/**/*,**/*.d.ts,**/stories.tsx\"",
-    "build:after": "node scripts/move-built-in.js",
+    "build:after": "node scripts/add-use-client.js",
     "build:webpack": "webpack --config scripts/webpack.config.js",
     "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
     "build:package": "yarn build:clear && yarn build:rollup && yarn build:babel && yarn build:types && yarn build:after",
@@ -66,7 +88,8 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.14.8"
+    "@babel/runtime": "^7.14.8",
+    "styled-jsx": "^5.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
@@ -96,7 +119,6 @@
     "@typescript-eslint/parser": "^4.29.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
-    "babel-plugin-transform-rename-import": "^2.3.0",
     "classnames": "^2.3.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
@@ -130,7 +152,6 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-local-resolve": "^1.0.7",
     "styled-components": "^5.3.0",
-    "styled-jsx": "4.0.1",
     "ttypescript": "^1.5.13",
     "typescript": "^4.3.5",
     "typescript-transform-paths": "^3.3.1"
