@@ -21,12 +21,21 @@ function App({ Component, pageProps }: AppProps) {
   const [themeType, setThemeType] = useState<ThemeType>('dark')
 
   useEffect(() => {
-    document.documentElement.removeAttribute('style')
-    document.body.removeAttribute('style')
-
     const theme = window.localStorage.getItem('theme') as ThemeType
     if (themes.includes(theme)) setThemeType(theme)
   }, [])
+
+  // The page is served in dark. When the saved theme is light, the script in
+  // _document keeps it hidden on a light background until that theme is rendered.
+  useEffect(() => {
+    const root = document.documentElement
+    const pending = root.getAttribute('data-theme-pending')
+    if (pending && pending !== themeType) return
+
+    root.removeAttribute('data-theme-pending')
+    root.removeAttribute('style')
+    document.body.removeAttribute('style')
+  }, [themeType])
 
   const switchTheme = useCallback((theme: ThemeType) => {
     setThemeType(theme)
