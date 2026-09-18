@@ -14,6 +14,11 @@ import KBarResults from './results'
 import generateStyles from './styles'
 import { Action, ResultHandlers, ResultState } from './types'
 
+// kbar 0.1.0-beta.6 types its components without `children`
+const Animator = KBarAnimator as React.FC<
+  React.PropsWithChildren<React.ComponentProps<typeof KBarAnimator>>
+>
+
 const KBar: React.FC<unknown> = () => {
   const theme = useTheme()
   const styles = generateStyles(theme)
@@ -25,7 +30,7 @@ const KBar: React.FC<unknown> = () => {
     <KBarPortal>
       <Backdrop className="backdrop" visible={visible}>
         <KBarPositioner>
-          <KBarAnimator style={styles.container}>
+          <Animator style={styles.container}>
             <KBarSearch placeholder="What do you need?" />
             <KBarResults
               style={styles.result}
@@ -37,7 +42,7 @@ const KBar: React.FC<unknown> = () => {
                 <KBarOption action={action} handlers={handlers} state={state} />
               )}
             />
-          </KBarAnimator>
+          </Animator>
         </KBarPositioner>
       </Backdrop>
       <style jsx>

@@ -94,7 +94,7 @@ function SliderComponent({
   }
 
   const updateValue = useCallback(
-    (offset) => {
+    (offset: number) => {
       const currentValue = getValue(
         max,
         min,

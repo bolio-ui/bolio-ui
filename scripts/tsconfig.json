@@ -27,6 +27,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "files": ["../core/index.ts"],
+  "files": ["../core/index.ts", "../core/Next/index.ts"],
   "exclude": ["node_modules", "lib", "es"]
 }

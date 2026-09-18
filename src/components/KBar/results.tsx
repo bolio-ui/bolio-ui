@@ -203,11 +203,9 @@ export default function KBarResults(props: KBarResultsProps) {
 }
 
 // Separate component to ensure we can scrollTo active elements properly.
-const DefaultResultWrapper: React.FC<{ isActive: boolean }> = ({
-  isActive,
-  children,
-  ...rest
-}) => {
+const DefaultResultWrapper: React.FC<
+  React.PropsWithChildren<{ isActive: boolean }>
+> = ({ isActive, children, ...rest }) => {
   const ownRef = React.useRef<HTMLUListElement>(null)
 
   React.useEffect(() => {

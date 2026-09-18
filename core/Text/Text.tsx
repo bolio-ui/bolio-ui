@@ -23,12 +23,12 @@ interface Props {
   type?: TextTypes
 }
 
-type ElementMap = { [key in keyof JSX.IntrinsicElements]?: boolean }
+type ElementMap = { [key in keyof React.JSX.IntrinsicElements]?: boolean }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TextProps = Props & NativeAttrs
 
-type TextRenderableElements = Array<keyof JSX.IntrinsicElements>
+type TextRenderableElements = Array<keyof React.JSX.IntrinsicElements>
 
 const getModifierChild = (
   tags: TextRenderableElements,
@@ -64,21 +64,21 @@ function TextComponent({
   const inlineElements: ElementMap = { span, small, b, em, i, del }
 
   const names = Object.keys(elements).filter(
-    (name: keyof JSX.IntrinsicElements) => elements[name]
+    (name: keyof React.JSX.IntrinsicElements) => elements[name]
   ) as TextRenderableElements
 
   const inlineNames = Object.keys(inlineElements).filter(
-    (name: keyof JSX.IntrinsicElements) => inlineElements[name]
+    (name: keyof React.JSX.IntrinsicElements) => inlineElements[name]
   ) as TextRenderableElements
 
   const tag = useMemo(() => {
     if (names[0]) return names[0]
     if (inlineNames[0]) return inlineNames[0]
-    return 'p' as keyof JSX.IntrinsicElements
+    return 'p' as keyof React.JSX.IntrinsicElements
   }, [names, inlineNames])
 
   const renderableChildElements = inlineNames.filter(
-    (name: keyof JSX.IntrinsicElements) => name !== tag
+    (name: keyof React.JSX.IntrinsicElements) => name !== tag
   ) as TextRenderableElements
 
   const modifers = useMemo(() => {

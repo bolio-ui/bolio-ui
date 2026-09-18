@@ -3,7 +3,7 @@ import React from 'react'
 interface Props {
   span?: number
   offset?: number
-  component?: keyof JSX.IntrinsicElements
+  component?: keyof React.JSX.IntrinsicElements
   className?: string
 }
 
@@ -11,7 +11,7 @@ type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ColProps = Props & NativeAttrs
 
 function Col({
-  component = 'div' as keyof JSX.IntrinsicElements,
+  component = 'div' as keyof React.JSX.IntrinsicElements,
   children,
   span = 12,
   offset = 0,

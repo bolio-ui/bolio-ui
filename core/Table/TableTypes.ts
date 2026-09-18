@@ -6,9 +6,9 @@ export type TableColumnRender<Item extends TableDataItemBase> = (
   value: Item[keyof Item],
   rowData: Item,
   rowIndex: number
-) => JSX.Element | void
+) => React.JSX.Element | void
 
-export type TableAbstractColumn<TableDataItem> = {
+export type TableAbstractColumn<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
   label: React.ReactNode | string
   className: string

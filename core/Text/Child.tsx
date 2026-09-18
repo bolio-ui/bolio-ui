@@ -5,7 +5,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale from '../use-scale'
 
 export interface Props {
-  tag: keyof JSX.IntrinsicElements
+  tag: keyof React.JSX.IntrinsicElements
   type?: NormalTypes
   className?: string
 }

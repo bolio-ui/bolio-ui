@@ -15,11 +15,22 @@ const reduceScaleCoefficient = (scale: number) => {
   return scale > 1 ? 1 + diff : 1 - diff
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const withScale = <T, P = {}>(
+export type ScaleComponent<T, P> = React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<React.PropsWithChildren<P & ScaleProps>> &
+    React.RefAttributes<T>
+>
+
+/* eslint-disable @typescript-eslint/ban-types */
+function withScale<T, P = {}>(
   Render: React.ComponentType<P & { ref?: React.Ref<T> }>
-) => {
-  const ScaleFC = forwardRef<T, P & ScaleProps>(
+): ScaleComponent<T, P>
+function withScale<T, P = {}>(
+  Render: React.ForwardRefExoticComponent<P & React.RefAttributes<T>>
+): ScaleComponent<T, P>
+function withScale<T, P = {}>(
+  Render: React.ComponentType<any>
+): ScaleComponent<T, P> {
+  const ScaleFC = forwardRef<T, React.PropsWithChildren<P & ScaleProps>>(
     ({ children, ...props }, ref) => {
       const { layout } = useTheme()
       const {
@@ -114,7 +125,7 @@ const withScale = <T, P = {}>(
     }
   )
   ScaleFC.displayName = `Scale${Render.displayName || 'Wrapper'}`
-  return ScaleFC
+  return ScaleFC as ScaleComponent<T, P>
 }
 
 export default withScale

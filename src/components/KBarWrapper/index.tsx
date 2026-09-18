@@ -11,11 +11,16 @@ const KBarComponent = dynamic(() => import('../KBar'), {
   ssr: false
 })
 
+// kbar 0.1.0-beta.6 types its components without `children`
+const Provider = KBarProvider as React.FC<
+  React.PropsWithChildren<React.ComponentProps<typeof KBarProvider>>
+>
+
 const KBarWrapper: React.FC<KbarWrapperProps> = ({ children }) => {
   const kbarActions = useKbarActions()
 
   return (
-    <KBarProvider
+    <Provider
       actions={kbarActions}
       options={{
         animations: {
@@ -26,7 +31,7 @@ const KBarWrapper: React.FC<KbarWrapperProps> = ({ children }) => {
     >
       <KBarComponent />
       {children}
-    </KBarProvider>
+    </Provider>
   )
 }
 

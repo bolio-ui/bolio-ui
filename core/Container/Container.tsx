@@ -8,7 +8,7 @@ interface Props {
   gap?: number
   justify?: Justify
   align?: Align
-  component?: keyof JSX.IntrinsicElements
+  component?: keyof React.JSX.IntrinsicElements
   className?: string
 }
 
@@ -16,7 +16,7 @@ const defaultProps = {
   gap: 0,
   justify: 'start' as Justify,
   align: 'top' as Align,
-  component: 'div' as keyof JSX.IntrinsicElements,
+  component: 'div' as keyof React.JSX.IntrinsicElements,
   className: '',
   fluid: false
 }

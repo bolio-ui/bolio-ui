@@ -15,7 +15,7 @@ export type RatingCount = typeof ratingCountTuple[number]
 interface Props {
   type?: RatingTypes
   className?: string
-  icon?: JSX.Element
+  icon?: React.JSX.Element
   count?: RatingCount | number
   value?: RatingValue | number
   initialValue?: RatingValue
@@ -43,7 +43,7 @@ const getColor = (type: RatingTypes, palette: BolioUIThemesPalette): string => {
 function RatingComponent({
   type = 'default' as RatingTypes,
   className = '',
-  icon = (<RatingIcon />) as JSX.Element,
+  icon = (<RatingIcon />) as React.JSX.Element,
   count = 5 as RatingCount,
   value: customValue,
   initialValue = 1 as RatingValue,

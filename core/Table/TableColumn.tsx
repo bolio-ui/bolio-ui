@@ -8,7 +8,7 @@ const defaultProps = {
   render: () => {}
 }
 
-export type TableColumnProps<TableDataItem> = {
+export type TableColumnProps<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
   label?: string
   width?: number
