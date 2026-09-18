@@ -57,11 +57,11 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
               display: flex;
               align-items: center;
               cursor: pointer;
-              padding: 16px 8px;
+              padding: 8px;
               justify-content: space-between;
               border-bottom: 1px solid
                 ${addColorAlpha(theme.palette.border, 0.6)};
-              min-height: 68px;
+              min-height: 40px;
               transition: all 0.2s ease;
             }
             .suggestion__container,
@@ -79,7 +79,7 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
               font-size: 0.735rem;
               line-height: 2px;
               font-weight: 500;
-              margin-bottom: 8px;
+              margin-bottom: 4px;
               margin-left: 5px;
               display: flex;
               color: ${theme.palette.accents_6};
@@ -97,10 +97,9 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
               color: ${theme.palette.accents_6};
             }
             .suggestion__content {
-              font-size: 1rem;
-              line-height: 2px;
+              font-size: 0.875rem;
               display: block;
-              line-height: 1.6;
+              line-height: 1.4;
               color: ${theme.palette.accents_6};
               margin-left: 5px;
             }
