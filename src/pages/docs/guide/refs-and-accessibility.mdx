@@ -34,8 +34,8 @@ function Form() {
 
 | Component | The ref points at |
 | --------- | ----------------- |
-| Most components, such as Card, Text, Badge, Tag, Grid, Tabs and Pagination | The root element |
-| Input, Textarea, Checkbox, Radio and Toggle | The native `input` or `textarea` |
+| Most components, such as Card, Text, Badge, Tag, Grid, Tabs, Calendar and Pagination | The root element |
+| Input, Textarea, Combobox, DatePicker, Checkbox, Radio and Toggle | The native `input` or `textarea` |
 | Button, Link and Image | The `button`, the `a` and the `img` |
 | Table | The `table` |
 | Modal and Drawer | The element with `role="dialog"` |
@@ -48,7 +48,7 @@ function Form() {
 
 #### Give a name to controls without visible text
 
-Select, Slider and Toggle can be used without a visible label. Name them with `aria-label`, or with `aria-labelledby` pointing at a text on the page:
+Select, Combobox, DatePicker, Slider and Toggle can be used without a visible label. Name them with `aria-label`, or with `aria-labelledby` pointing at a text on the page:
 
 ```tsx
 <Slider aria-label="Volume" initialValue={20} />
@@ -68,6 +68,8 @@ Select uses its `placeholder` as the name when you do not pass one. A Button tha
 | Slider | Arrows change the value by `step`, Page Up and Page Down by ten steps, Home and End go to the minimum and the maximum |
 | Collapse | Enter and Space open and close it |
 | Toggle, Checkbox and Radio | Tab reaches them and Space changes them, with a visible focus ring |
+| Combobox | Arrow keys open the list and move between the options, Enter chooses, Escape closes |
+| Calendar and DatePicker | Arrow keys move by day and week, Home and End by week, Page Up and Down by month, Enter and Space pick the day |
 | Tooltip | Opens when the trigger gets the focus and closes with Escape |
 | Popover | Escape closes it. The trigger has to be focusable, for example a Button |
 | Modal and Drawer | Escape closes them, and Tab stays inside |
