@@ -4,6 +4,7 @@ import { useTheme, Text, Link } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
 import { useRouter } from 'next/router'
 import { menuMobile } from 'src/data/menuMobile'
+import { versions } from 'src/data/versions'
 
 interface Props {
   expanded: boolean
@@ -77,6 +78,38 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
             )}
           </div>
         ))}
+
+        <div
+          className="fadein"
+          style={{ animationDelay: `${(menuMobile.length + 1) * 50}ms` }}
+        >
+          <div className="group">
+            <span className="section-name">Version</span>
+            {versions.map(({ label, version, url, current }) => {
+              const className = `section-item ${current ? 'active' : ''}`
+              const text = `${label} (v${version})`
+              const ariaLabel = `Bolio UI ${label} documentation`
+              return current ? (
+                <NextLink href={url} key={label}>
+                  <a className={className} aria-label={ariaLabel}>
+                    {text}
+                  </a>
+                </NextLink>
+              ) : (
+                <a
+                  href={url}
+                  key={label}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={className}
+                  aria-label={ariaLabel}
+                >
+                  {text}
+                </a>
+              )
+            })}
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
