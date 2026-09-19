@@ -29,7 +29,7 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
   } = columnProps as React.PropsWithChildren<TableColumnProps<TableDataItem>> &
     typeof defaultProps
   const { updateColumn } = useTableContext<TableDataItem>()
-  const safeProp = `${prop}`.trim()
+  const safeProp = String(prop).trim()
   if (!safeProp) {
     useWarning('The props "prop" is required.', 'Table.Column')
   }

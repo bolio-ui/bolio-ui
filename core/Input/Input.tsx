@@ -62,7 +62,6 @@ const InputComponent = React.forwardRef<
       hoverBorder,
       error,
       errorMessage,
-      crossOrigin,
       ...props
     }: React.PropsWithChildren<InputProps>,
     ref: React.Ref<HTMLInputElement | null>
@@ -170,7 +169,6 @@ const InputComponent = React.forwardRef<
               onBlur={blurHandler}
               onChange={changeHandler}
               autoComplete={autoComplete}
-              {...crossOrigin}
               {...inputProps}
             />
             {clearable && (

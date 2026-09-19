@@ -65,9 +65,10 @@ function CssTransition({
 
   if (!React.isValidElement(children) || !renderable) return null
 
-  return React.cloneElement(children, {
+  const element = children as React.ReactElement<any>
+  return React.cloneElement(element, {
     ...props,
-    className: `${children.props.className} ${className} ${classes}`
+    className: `${element.props.className} ${className} ${classes}`
   })
 }
 
