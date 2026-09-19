@@ -1,9 +1,9 @@
 import React from 'react'
-import NextLink from 'next/link'
 import { useTheme, Text } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
 import { useRouter } from 'next/router'
 import { menuMobile } from 'src/data/menuMobile'
+import { isPlainLeftClick } from 'src/utils/client-navigation'
 import { versions } from 'src/data/versions'
 
 interface Props {
@@ -12,7 +12,14 @@ interface Props {
 
 const MenuMobile: React.FC<Props> = ({ expanded }) => {
   const theme = useTheme()
-  const { pathname } = useRouter()
+  const router = useRouter()
+  const { pathname } = router
+
+  const navigate = (event: React.MouseEvent, url: string) => {
+    if (!isPlainLeftClick(event)) return
+    event.preventDefault()
+    router.push(url)
+  }
   const [expandedGroupName, setExpandedGroupName] = React.useState<
     string | null
   >(null)
@@ -69,14 +76,14 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
                           {item.name}
                         </a>
                       ) : (
-                        <NextLink
+                        <a
                           key={item.url}
                           href={item.url || '/'}
-                          legacyBehavior
-                          passHref
+                          className={className}
+                          onClick={(event) => navigate(event, item.url || '/')}
                         >
-                          <a className={className}>{item.name}</a>
-                        </NextLink>
+                          {item.name}
+                        </a>
                       )
                     })}
                   </div>
@@ -97,11 +104,15 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
               const text = `${label} (v${version})`
               const ariaLabel = `Bolio UI ${label} documentation`
               return current ? (
-                <NextLink href={url} key={label} legacyBehavior passHref>
-                  <a className={className} aria-label={ariaLabel}>
-                    {text}
-                  </a>
-                </NextLink>
+                <a
+                  href={url}
+                  key={label}
+                  className={className}
+                  aria-label={ariaLabel}
+                  onClick={(event) => navigate(event, url)}
+                >
+                  {text}
+                </a>
               ) : (
                 <a
                   href={url}

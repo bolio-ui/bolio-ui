@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Link, Text, Code, Grid } from 'core'
-import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 export const meta = {
   title: 'Link',
@@ -117,17 +117,29 @@ Hyperlinks between pages.
 />
 
 <Playground
-  title="With Next/Link"
-  desc="Use `Link` with NextJS without any configuration."
-  scope={{ Link, NextLink, Grid }}
+  title="With the Next.js router"
+  desc="Keep the `href`, so the link works in a new tab, and navigate with the router on click."
+  scope={{ Link, Grid, useRouter }}
   code={`
-<Grid.Container gap={2}>
-  <Grid>
-    <NextLink href="/docs/components/button" legacyBehavior passHref>
-      <Link block>Docs of Button</Link>
-    </NextLink>
-  </Grid>
-</Grid.Container>
+() => {
+  const router = useRouter()
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Link
+          block
+          href="/docs/components/button"
+          onClick={(event) => {
+            event.preventDefault()
+            router.push('/docs/components/button')
+          }}
+        >
+          Docs of Button
+        </Link>
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 

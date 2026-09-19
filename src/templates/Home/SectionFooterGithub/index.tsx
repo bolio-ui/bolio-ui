@@ -1,5 +1,5 @@
 import React from 'react'
-import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import {
   Section,
   Container,
@@ -14,6 +14,7 @@ import {
 import { useIsMobile } from 'src/utils/use-media-query'
 
 function SectionFooterGithub() {
+  const router = useRouter()
   const theme = useTheme()
   const isMobile = useIsMobile()
 
@@ -54,19 +55,14 @@ function SectionFooterGithub() {
                       Get started with Bolio UI and learn by exploring
                       interactive examples.
                     </Text>
-                    <NextLink
-                      href="/docs/guide/getting-started"
-                      passHref
-                      legacyBehavior
+                    <Button
+                      onClick={() => router.push('/docs/guide/getting-started')}
+                      type="secondary-light"
+                      rounded
+                      style={{ textTransform: 'none' }}
                     >
-                      <Button
-                        type="secondary-light"
-                        rounded
-                        style={{ textTransform: 'none' }}
-                      >
-                        Get started
-                      </Button>
-                    </NextLink>
+                      Get started
+                    </Button>
                   </Col>
                 </Row>
               </Card>

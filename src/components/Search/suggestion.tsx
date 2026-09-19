@@ -28,7 +28,10 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
   const theme = useTheme()
 
   return (
-    <NextLink href={hit.path} legacyBehavior>
+    <NextLink
+      href={hit.path}
+      style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}
+    >
       <span className={cn('suggestion__container', { highlighted })}>
         <div className="suggestion__icon-container">
           {!hit.component || includes(hit.path, '#') ? (

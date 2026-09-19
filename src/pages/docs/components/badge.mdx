@@ -1,7 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Badge, Grid, Avatar, Button, Link, useTheme } from 'core'
-import NextLink from 'next/link'
 
 export const meta = {
   title: 'Badge',
@@ -63,9 +62,9 @@ Display an indicator that requires attention.
   desc={
     <>
       For more colors, please refer to the{' '}
-      <NextLink href="/guide/colors" legacyBehavior passHref>
-        <Link color>color section</Link>
-      </NextLink>
+      <Link color href="/guide/colors">
+        color section
+      </Link>
       .
     </>
   }

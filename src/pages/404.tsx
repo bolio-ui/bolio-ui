@@ -1,5 +1,4 @@
 import React from 'react'
-import NextLink from 'next/link'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { Section, Container, Grid, Text, Row, Col, Button } from 'core'
@@ -67,37 +66,27 @@ function Home() {
             </Grid.Container>
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
-                <NextLink
-                  href="/docs/guide/getting-started"
-                  passHref
-                  legacyBehavior
+                <Button
+                  onClick={() => router.push('/docs/guide/getting-started')}
+                  type="secondary-light"
+                  rounded
+                  width="100%"
+                  style={{ textTransform: 'none' }}
                 >
-                  <Button
-                    type="secondary-light"
-                    rounded
-                    width="100%"
-                    style={{ textTransform: 'none' }}
-                  >
-                    Get started
-                  </Button>
-                </NextLink>
+                  Get started
+                </Button>
               </Grid>
               <Grid xs={6} sm={6} md={3}>
-                <NextLink
-                  href="/"
-                  passHref
-                  legacyBehavior
+                <Button
+                  onClick={() => router.push('/')}
                   aria-label="Link to home page"
+                  type="default"
+                  rounded
+                  width="100%"
+                  style={{ textTransform: 'none' }}
                 >
-                  <Button
-                    type="default"
-                    rounded
-                    width="100%"
-                    style={{ textTransform: 'none' }}
-                  >
-                    Go to home page
-                  </Button>
-                </NextLink>
+                  Go to home page
+                </Button>
               </Grid>
             </Grid.Container>
           </Container>

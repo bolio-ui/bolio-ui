@@ -1,9 +1,10 @@
 import React from 'react'
-import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
 import SectionComponents from 'src/templates/Home/SectionComponents'
 
 function Hero() {
+  const router = useRouter()
   const theme = useTheme()
 
   return (
@@ -43,20 +44,15 @@ function Hero() {
             </Text>
             <Grid.Container gap={2}>
               <Grid xs={12} sm={6} md={4} ml={-0.5}>
-                <NextLink
-                  href="/docs/guide/getting-started"
-                  passHref
-                  legacyBehavior
+                <Button
+                  onClick={() => router.push('/docs/guide/getting-started')}
+                  type="secondary-light"
+                  rounded
+                  width="100%"
+                  style={{ textTransform: 'none' }}
                 >
-                  <Button
-                    type="secondary-light"
-                    rounded
-                    width="100%"
-                    style={{ textTransform: 'none' }}
-                  >
-                    Get started
-                  </Button>
-                </NextLink>
+                  Get started
+                </Button>
               </Grid>
               <Grid xs={12} sm={6} md={8} ml={-0.5}>
                 <Snippet

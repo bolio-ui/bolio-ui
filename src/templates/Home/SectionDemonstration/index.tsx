@@ -1,6 +1,6 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
-import NextLink from 'next/link'
 import {
   Section,
   Container,
@@ -16,6 +16,7 @@ import {
 } from 'core'
 
 function SectionDemonstration() {
+  const router = useRouter()
   const theme = useTheme()
 
   return (
@@ -53,20 +54,15 @@ function SectionDemonstration() {
             </Text>
             <Grid.Container gap={2} xs={12} alignItems="center">
               <Grid xs={12} sm={4}>
-                <NextLink
-                  href="/docs/guide/getting-started"
-                  passHref
-                  legacyBehavior
+                <Button
+                  onClick={() => router.push('/docs/guide/getting-started')}
+                  type="secondary-light"
+                  rounded
+                  w="100%"
+                  style={{ textTransform: 'none' }}
                 >
-                  <Button
-                    type="secondary-light"
-                    rounded
-                    w="100%"
-                    style={{ textTransform: 'none' }}
-                  >
-                    Get started
-                  </Button>
-                </NextLink>
+                  Get started
+                </Button>
               </Grid>
               <Grid xs={12} sm={8}>
                 <Snippet
@@ -158,15 +154,14 @@ function SectionDemonstration() {
         <Grid.Container gap={2} justify="center">
           <Grid mt={2}>
             <Col>
-              <NextLink href="/docs/components/" passHref legacyBehavior>
-                <Button
-                  type="secondary-light"
-                  rounded
-                  style={{ textTransform: 'none' }}
-                >
-                  Explore more components
-                </Button>
-              </NextLink>
+              <Button
+                onClick={() => router.push('/docs/components/')}
+                type="secondary-light"
+                rounded
+                style={{ textTransform: 'none' }}
+              >
+                Explore more components
+              </Button>
             </Col>
           </Grid>
         </Grid.Container>

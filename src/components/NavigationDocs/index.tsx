@@ -17,6 +17,13 @@ export interface Docs {
   url: string
 }
 
+// The card is the visible link, so the anchor around it must not add the link style.
+const linkReset = {
+  display: 'block',
+  color: 'inherit',
+  textDecoration: 'none'
+} as const
+
 function NavigationDocs({ next, previous }: NavigationDocsProps) {
   const theme = useTheme()
   const isMobile = useIsMobile()
@@ -25,7 +32,7 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
     <Grid.Container gap={2} justify="center" style={{ margin: '25px 0' }}>
       <Grid xs={6} sm={6} md={6} justify="flex-start">
         {previous && previous.url && (
-          <NextLink href={previous.url} passHref legacyBehavior>
+          <NextLink href={previous.url} style={linkReset}>
             <Card
               padding={isMobile ? 0 : 1}
               mt={2}
@@ -56,7 +63,7 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
       </Grid>
       <Grid xs={6} sm={6} md={6} justify="flex-end">
         {next && next.url && (
-          <NextLink href={next.url} passHref legacyBehavior>
+          <NextLink href={next.url} style={linkReset}>
             <Card
               mt={2}
               padding={isMobile ? 0 : 1}

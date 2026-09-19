@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Breadcrumbs, Grid } from 'core'
-import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import { Home, Settings } from '@bolio-ui/icons'
 
 export const meta = {
@@ -81,22 +81,27 @@ Show where users are in the application.
 
 <Playground
   title="With NextJS"
-  desc="Example for use with `next.js`."
-  scope={{ Breadcrumbs, NextLink, Grid }}
+  desc="Example for use with `next.js`: keep the `href` and navigate with the router on click."
+  scope={{ Breadcrumbs, Grid, useRouter }}
   code={`
-<Grid.Container gap={2}>
-  <Grid>
-    <Breadcrumbs>
-      <NextLink href="/" legacyBehavior passHref>
-        <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
-      </NextLink>
-      <NextLink href="/settings" legacyBehavior passHref>
-        <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
-      </NextLink>
-      <Breadcrumbs.Item>General</Breadcrumbs.Item>
-    </Breadcrumbs>
-  </Grid>
-</Grid.Container>
+() => {
+  const router = useRouter()
+  const go = (url) => (event) => {
+    event.preventDefault()
+    router.push(url)
+  }
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Breadcrumbs>
+          <Breadcrumbs.Item href="/" onClick={go('/')}>Home</Breadcrumbs.Item>
+          <Breadcrumbs.Item href="/settings" onClick={go('/settings')}>Settings</Breadcrumbs.Item>
+          <Breadcrumbs.Item>General</Breadcrumbs.Item>
+        </Breadcrumbs>
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 
@@ -113,7 +118,7 @@ Show where users are in the application.
 | Attribute    | Description        | Type                          | Accepted values          | Default |
 | ------------ | ------------------ | ----------------------------- | ------------------------ | ------- |
 | **href**     | link address       | `string`                      | -                        | -       |
-| **nextLink** | in `next.js` route | `boolean`                     | -                        | `false` |
+| **nextLink** | render as a link even without `href` | `boolean`                     | -                        | `false` |
 | **onClick**  | click event        | `(event: MouseEvent) => void` | -                        | -       |
 | ...          | native props       | `AnchorHTMLAttributes`        | `'id', 'className', ...` | -       |
 

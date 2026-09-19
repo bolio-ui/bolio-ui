@@ -40,7 +40,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   }
 
   return (
-    <NextLink href={href} legacyBehavior>
+    <NextLink href={href} style={{ textDecoration: 'none' }}>
       {label}
     </NextLink>
   )
