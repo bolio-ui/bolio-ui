@@ -32,11 +32,17 @@ describe('<Sidebar />', () => {
     expect(scrollBox(second.container).scrollTop).toBe(240)
   })
 
-  it('shows the current page in bold inside a block, so it keeps its margin', () => {
+  it('shows the current page like the others, only in bold', () => {
     setup()
     const current = screen.getByText('Badge')
-    expect(current.tagName).toBe('B')
-    expect(current.parentElement?.tagName).toBe('P')
-    expect(screen.getByText('Breadcrumbs').tagName).toBe('P')
+    const other = screen.getByText('Breadcrumbs')
+
+    // the same single element: a second one would repeat the margins and shift the text
+    expect(current.tagName).toBe('P')
+    expect(other.tagName).toBe('P')
+    expect(current.querySelector('b')).toBeNull()
+    expect(current.className).toBe(other.className)
+    expect(current).toHaveStyle({ fontWeight: 'bold' })
+    expect(other).not.toHaveStyle({ fontWeight: 'bold' })
   })
 })

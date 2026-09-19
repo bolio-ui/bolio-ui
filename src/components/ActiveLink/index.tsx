@@ -21,10 +21,11 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
       font="14px"
       my={0}
       mb={1}
-      b={isActive}
       ml="26px"
       style={{
         color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
+        // bold by style: the b prop adds a second element that repeats the margins
+        fontWeight: isActive ? 'bold' : undefined,
         cursor: 'pointer'
       }}
     >
