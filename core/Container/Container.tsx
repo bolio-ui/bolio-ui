@@ -66,8 +66,9 @@ const Container = React.forwardRef<
       [justify, align]
     )
 
-    const fluidWidth =
-      !fluid && 'max-width: ' + theme.layout.pageWidthWithMargin
+    const fluidWidth = fluid
+      ? ''
+      : 'max-width: ' + theme.layout.pageWidthWithMargin
 
     return (
       <Component ref={ref} className={`container ${className}`} {...props}>
