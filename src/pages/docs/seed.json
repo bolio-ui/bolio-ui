@@ -578,6 +578,22 @@
     "path": "/docs/components/code#code.props"
   },
   {
+    "title": "Col",
+    "component": true,
+    "path": "/docs/components/col"
+  },
+  {
+    "title": "Col",
+    "component": false,
+    "path": "/docs/components/col#col"
+  },
+  {
+    "head": "Col",
+    "title": "Col Props",
+    "component": false,
+    "path": "/docs/components/col#col.props"
+  },
+  {
     "title": "Collapse",
     "component": true,
     "path": "/docs/components/collapse"
@@ -644,6 +660,22 @@
     "title": "ComboboxOption",
     "component": false,
     "path": "/docs/components/combobox#comboboxoption"
+  },
+  {
+    "title": "Container",
+    "component": true,
+    "path": "/docs/components/container"
+  },
+  {
+    "title": "Container",
+    "component": false,
+    "path": "/docs/components/container#container"
+  },
+  {
+    "head": "Container",
+    "title": "Container Props",
+    "component": false,
+    "path": "/docs/components/container#container.props"
   },
   {
     "title": "DatePicker",
@@ -1808,6 +1840,22 @@
     "path": "/docs/components/rating#ratingvalue"
   },
   {
+    "title": "Row",
+    "component": true,
+    "path": "/docs/components/row"
+  },
+  {
+    "title": "Row",
+    "component": false,
+    "path": "/docs/components/row#row"
+  },
+  {
+    "head": "Row",
+    "title": "Row Props",
+    "component": false,
+    "path": "/docs/components/row#row.props"
+  },
+  {
     "title": "Select",
     "component": true,
     "path": "/docs/components/select"
@@ -1912,6 +1960,22 @@
     "title": "Types - Select",
     "component": false,
     "path": "/docs/components/select#selecttypes"
+  },
+  {
+    "title": "Section",
+    "component": true,
+    "path": "/docs/components/section"
+  },
+  {
+    "title": "Section",
+    "component": false,
+    "path": "/docs/components/section#section"
+  },
+  {
+    "head": "Section",
+    "title": "Section Props",
+    "component": false,
+    "path": "/docs/components/section#section.props"
   },
   {
     "title": "Slider",

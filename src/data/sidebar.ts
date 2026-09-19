@@ -17,6 +17,10 @@ export const guide = [
     url: '/docs/guide/refs-and-accessibility'
   },
   {
+    name: 'Page structure',
+    url: '/docs/guide/page-structure'
+  },
+  {
     name: 'About Bolio UI',
     url: '/docs/guide/about-bolio-ui'
   },
@@ -120,12 +124,20 @@ export const components = [
     url: '/docs/components/code'
   },
   {
+    name: 'Col',
+    url: '/docs/components/col'
+  },
+  {
     name: 'Collapse',
     url: '/docs/components/collapse'
   },
   {
     name: 'Combobox',
     url: '/docs/components/combobox'
+  },
+  {
+    name: 'Container',
+    url: '/docs/components/container'
   },
   {
     name: 'DatePicker',
@@ -216,8 +228,16 @@ export const components = [
     url: '/docs/components/rating'
   },
   {
+    name: 'Row',
+    url: '/docs/components/row'
+  },
+  {
     name: 'Select',
     url: '/docs/components/select'
+  },
+  {
+    name: 'Section',
+    url: '/docs/components/section'
   },
   {
     name: 'Slider',

@@ -21,6 +21,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Page structure',
+            url: '/docs/guide/page-structure',
+            group: 'Guide'
+          },
+          {
             name: 'About Bolio UI',
             url: '/docs/guide/about-bolio-ui',
             group: 'Guide'
@@ -147,6 +152,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Col',
+            url: '/docs/components/col',
+            group: 'Components'
+          },
+          {
             name: 'Collapse',
             url: '/docs/components/collapse',
             group: 'Components'
@@ -154,6 +164,11 @@ export const menuMobile = [
           {
             name: 'Combobox',
             url: '/docs/components/combobox',
+            group: 'Components'
+          },
+          {
+            name: 'Container',
+            url: '/docs/components/container',
             group: 'Components'
           },
           {
@@ -267,8 +282,18 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Row',
+            url: '/docs/components/row',
+            group: 'Components'
+          },
+          {
             name: 'Select',
             url: '/docs/components/select',
+            group: 'Components'
+          },
+          {
+            name: 'Section',
+            url: '/docs/components/section',
             group: 'Components'
           },
           {

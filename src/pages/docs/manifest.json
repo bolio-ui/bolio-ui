@@ -30,6 +30,11 @@
               "path": "/docs/guide/refs-and-accessibility.mdx"
             },
             {
+              "title": "Page structure",
+              "keywords": "page structure, layout, section, container, row, col, grid",
+              "path": "/docs/guide/page-structure.mdx"
+            },
+            {
               "title": "About Bolio UI",
               "keywords": "about, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"
@@ -154,6 +159,11 @@
               "path": "/docs/components/code.mdx"
             },
             {
+              "title": "Col",
+              "keywords": "col, column, span, offset, twelfths, layout, grid",
+              "path": "/docs/components/col.mdx"
+            },
+            {
               "title": "Collapse",
               "keywords": "collapse, accordion, subtitle, shadow",
               "path": "/docs/components/collapse.mdx"
@@ -162,6 +172,11 @@
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"
+            },
+            {
+              "title": "Container",
+              "keywords": "container, page width, max width, center, fluid, layout",
+              "path": "/docs/components/container.mdx"
             },
             {
               "title": "DatePicker",
@@ -272,6 +287,16 @@
               "title": "Rating",
               "keywords": "rating, types, custom amount, icon, vote",
               "path": "/docs/components/rating.mdx"
+            },
+            {
+              "title": "Row",
+              "keywords": "row, flex, justify, align, gap, layout, columns",
+              "path": "/docs/components/row.mdx"
+            },
+            {
+              "title": "Section",
+              "keywords": "section, band, background, page section, layout",
+              "path": "/docs/components/section.mdx"
             },
             {
               "title": "Select",

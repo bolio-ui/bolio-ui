@@ -1,0 +1,65 @@
+import Docs from 'src/templates/Docs'
+import { Playground } from 'src/components'
+import { Section, Container, Row, Col, Display, Card, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'Page structure',
+  description: '',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Page structure
+
+Four components build the layout of a page, one inside the other:
+
+| Component | What it does |
+| --------- | ------------ |
+| <a href="/docs/components/section">Section</a> | A band of the page. It can have a background that goes from edge to edge |
+| <a href="/docs/components/container">Container</a> | Limits the width and centers the content |
+| <a href="/docs/components/row">Row</a> | A flex row |
+| <a href="/docs/components/col">Col</a> | A column of the row, sized in twelfths |
+
+<Spacer h={2} />
+
+<Playground
+  desc="Section, Container, Row and Col, with a Display and Cards as the content."
+  scope={{ Section, Container, Row, Col, Display, Card, Text }}
+  code={`
+<>
+  <Section bg="#f5f5f5" style={{ padding: '32px 0' }}>
+    <Container>
+      <Row align="middle">
+        <Col span={6}>
+          <Text h3>A page with Bolio UI</Text>
+          <Text>The layout components hold the other components.</Text>
+        </Col>
+        <Col span={6}>
+          <Display caption="A caption">
+            <img src="/logo.svg" alt="Bolio UI logo" width={80} height={80} />
+          </Display>
+        </Col>
+      </Row>
+    </Container>
+  </Section>
+  <Section style={{ padding: '32px 0' }}>
+    <Container>
+      <Row>
+        <Col span={4}><Card><Text b>One third</Text></Card></Col>
+        <Col span={4}><Card><Text b>One third</Text></Card></Col>
+        <Col span={4}><Card><Text b>One third</Text></Card></Col>
+      </Row>
+    </Container>
+  </Section>
+</>
+`}
+/>
+
+### Rules that keep it working
+
+- Put the `Container` inside the `Section`, not the other way. The band goes from edge to edge and the content stays narrow.
+- The spans in a `Row` should add up to 12 or less. A `Row` does not wrap, so more than 12 makes the columns narrower.
+- Use a new `Row` for each line. If you need items that wrap to the next line by themselves, use <a href="/docs/components/grid">Grid</a>.
+- `Col` needs a `Row` around it. The space set by `gap` on the `Row` is what the columns use.
+
+export default ({ children }) => <Docs meta={meta}>{children}</Docs>
