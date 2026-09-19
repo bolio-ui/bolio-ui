@@ -87,10 +87,10 @@ Show where users are in the application.
 <Grid.Container gap={2}>
   <Grid>
     <Breadcrumbs>
-      <NextLink href="/">
+      <NextLink href="/" legacyBehavior passHref>
         <Breadcrumbs.Item nextLink>Home</Breadcrumbs.Item>
       </NextLink>
-      <NextLink href="/settings">
+      <NextLink href="/settings" legacyBehavior passHref>
         <Breadcrumbs.Item nextLink>Settings</Breadcrumbs.Item>
       </NextLink>
       <Breadcrumbs.Item>General</Breadcrumbs.Item>

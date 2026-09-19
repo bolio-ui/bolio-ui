@@ -53,7 +53,11 @@ function SectionDemonstration() {
             </Text>
             <Grid.Container gap={2} xs={12} alignItems="center">
               <Grid xs={12} sm={4}>
-                <NextLink href="/docs/guide/getting-started" passHref>
+                <NextLink
+                  href="/docs/guide/getting-started"
+                  passHref
+                  legacyBehavior
+                >
                   <Button
                     type="secondary-light"
                     rounded
@@ -87,8 +91,8 @@ function SectionDemonstration() {
                   <Image
                     src="/img/png/home/typography.png"
                     alt="text doc component"
-                    width="180px"
-                    height="120px"
+                    width={180}
+                    height={120}
                     priority
                     style={{
                       borderTopLeftRadius: theme.layout.radius,
@@ -111,8 +115,8 @@ function SectionDemonstration() {
                   <Image
                     src="/img/png/home/icons.png"
                     alt="icons doc component"
-                    width="180px"
-                    height="120px"
+                    width={180}
+                    height={120}
                     priority
                     style={{
                       borderTopLeftRadius: theme.layout.radius,
@@ -135,8 +139,8 @@ function SectionDemonstration() {
                   <Image
                     src="/img/png/home/button.png"
                     alt="buttond doc component"
-                    width="180px"
-                    height="120px"
+                    width={180}
+                    height={120}
                     priority
                     style={{
                       borderTopLeftRadius: theme.layout.radius,
@@ -154,7 +158,7 @@ function SectionDemonstration() {
         <Grid.Container gap={2} justify="center">
           <Grid mt={2}>
             <Col>
-              <NextLink href="/docs/components/" passHref>
+              <NextLink href="/docs/components/" passHref legacyBehavior>
                 <Button
                   type="secondary-light"
                   rounded

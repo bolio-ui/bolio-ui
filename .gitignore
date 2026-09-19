@@ -57,3 +57,6 @@ storybook-static
 # Local Netlify folder
 .netlify
 compat/.work
+
+# typescript
+*.tsbuildinfo

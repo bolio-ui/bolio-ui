@@ -7,6 +7,7 @@ import { BolioUIProvider, CssBaseline, Image, useTheme } from 'core'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
 import { MDXProvider } from '@mdx-js/react'
+import type { MDXComponents } from 'mdx/types'
 import { HybridCode, HybridLink, HybridLinkHeading } from 'src/components'
 import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
@@ -87,12 +88,14 @@ function App({ Component, pageProps }: AppProps) {
           <KBarProvider>
             <Navigation />
             <MDXProvider
-              components={{
-                h3: HybridLinkHeading,
-                a: HybridLink,
-                img: Image,
-                pre: HybridCode
-              }}
+              components={
+                {
+                  h3: HybridLinkHeading,
+                  a: HybridLink,
+                  img: Image,
+                  pre: HybridCode
+                } as unknown as MDXComponents
+              }
             >
               <Component {...pageProps} />
             </MDXProvider>

@@ -40,9 +40,12 @@ const extractFileName = (
         return !!r
       }
     )
-    return React.cloneElement(child, {
-      children: withoutSpaceAndNull
-    })
+    return React.cloneElement(
+      child as React.ReactElement<{ children?: React.ReactNode }>,
+      {
+        children: withoutSpaceAndNull
+      }
+    )
   })
   return {
     children: next,

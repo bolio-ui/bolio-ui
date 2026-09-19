@@ -54,7 +54,11 @@ function SectionFooterGithub() {
                       Get started with Bolio UI and learn by exploring
                       interactive examples.
                     </Text>
-                    <NextLink href="/docs/guide/getting-started" passHref>
+                    <NextLink
+                      href="/docs/guide/getting-started"
+                      passHref
+                      legacyBehavior
+                    >
                       <Button
                         type="secondary-light"
                         rounded

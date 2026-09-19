@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { useTheme, Text, Link } from 'core'
+import { useTheme, Text } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
 import { useRouter } from 'next/router'
 import { menuMobile } from 'src/data/menuMobile'
@@ -55,21 +55,28 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
                   <div key={section.name}>
                     <span className="section-name">{section.name}</span>
                     {section.children.map((item) => {
-                      const Component = item.target ? Link : NextLink
-                      return (
-                        <Component
+                      const className = `section-item ${
+                        pathname === item.url ? 'active' : ''
+                      }`
+                      return item.target ? (
+                        <a
+                          key={item.url}
                           href={item.url || '/'}
                           target={item.target}
-                          key={item.url}
+                          rel="noreferrer"
+                          className={className}
                         >
-                          <a
-                            className={`section-item ${
-                              pathname === item.url ? 'active' : ''
-                            }`}
-                          >
-                            {item.name}
-                          </a>
-                        </Component>
+                          {item.name}
+                        </a>
+                      ) : (
+                        <NextLink
+                          key={item.url}
+                          href={item.url || '/'}
+                          legacyBehavior
+                          passHref
+                        >
+                          <a className={className}>{item.name}</a>
+                        </NextLink>
                       )
                     })}
                   </div>
@@ -90,7 +97,7 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
               const text = `${label} (v${version})`
               const ariaLabel = `Bolio UI ${label} documentation`
               return current ? (
-                <NextLink href={url} key={label}>
+                <NextLink href={url} key={label} legacyBehavior passHref>
                   <a className={className} aria-label={ariaLabel}>
                     {text}
                   </a>

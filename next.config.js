@@ -1,10 +1,10 @@
+// MDX 3 does not read tables and strikethrough by itself: remark-gfm restores them.
+// The plugins are given by name, which is how @next/mdx loads ESM plugins.
 const withMDX = require('@next/mdx')({
-  extension: /\.(md|mdx)?$/,
+  extension: /\.mdx?$/,
   options: {
-    rehypePlugins: [
-      require('@mapbox/rehype-prism'),
-      require('rehype-join-line')
-    ]
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: ['@mapbox/rehype-prism', 'rehype-join-line']
   }
 })
 

@@ -15,24 +15,34 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   const router = useRouter()
   const isActive = router.asPath === href
 
-  const Component = target ? Link : NextLink
+  const label = (
+    <Text
+      font="14px"
+      my={0}
+      mb={1}
+      b={isActive}
+      ml="26px"
+      style={{
+        color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
+        cursor: 'pointer'
+      }}
+    >
+      {text}
+    </Text>
+  )
+
+  if (target) {
+    return (
+      <Link href={href} target={target}>
+        {label}
+      </Link>
+    )
+  }
 
   return (
-    <Component href={href} target={target}>
-      <Text
-        font="14px"
-        my={0}
-        mb={1}
-        b={isActive}
-        ml="26px"
-        style={{
-          color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
-          cursor: 'pointer'
-        }}
-      >
-        {text}
-      </Text>
-    </Component>
+    <NextLink href={href} legacyBehavior>
+      {label}
+    </NextLink>
   )
 })
 

@@ -16,7 +16,7 @@ const HybridLink: React.FC<HybridLinkProps> = ({
 
   if (isRelativeUrl) {
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} passHref legacyBehavior>
         <Link color block {...props}>
           {children}
         </Link>

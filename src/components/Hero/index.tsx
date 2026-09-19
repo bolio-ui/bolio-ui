@@ -43,7 +43,11 @@ function Hero() {
             </Text>
             <Grid.Container gap={2}>
               <Grid xs={12} sm={6} md={4} ml={-0.5}>
-                <NextLink href="/docs/guide/getting-started" passHref>
+                <NextLink
+                  href="/docs/guide/getting-started"
+                  passHref
+                  legacyBehavior
+                >
                   <Button
                     type="secondary-light"
                     rounded

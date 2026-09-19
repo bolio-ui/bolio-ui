@@ -22,8 +22,8 @@ function CardPlatforms({ title, link, image }: CardPlatformsProps) {
         <Image
           src={image}
           alt={`${title} doc framework`}
-          width="180px"
-          height="120px"
+          width={180}
+          height={120}
           priority
           style={{
             borderTopLeftRadius: theme.layout.radius,

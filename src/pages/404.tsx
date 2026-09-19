@@ -67,7 +67,11 @@ function Home() {
             </Grid.Container>
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
-                <NextLink href="/docs/guide/getting-started" passHref>
+                <NextLink
+                  href="/docs/guide/getting-started"
+                  passHref
+                  legacyBehavior
+                >
                   <Button
                     type="secondary-light"
                     rounded
@@ -79,7 +83,12 @@ function Home() {
                 </NextLink>
               </Grid>
               <Grid xs={6} sm={6} md={3}>
-                <NextLink href="/" passHref aria-label="Link to home page">
+                <NextLink
+                  href="/"
+                  passHref
+                  legacyBehavior
+                  aria-label="Link to home page"
+                >
                   <Button
                     type="default"
                     rounded
