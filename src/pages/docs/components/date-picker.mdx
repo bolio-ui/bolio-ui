@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { DatePicker, Grid } from 'core'
+import { DatePicker, Grid, Code } from 'core'
 
 export const meta = {
   title: 'DatePicker',
@@ -77,7 +77,7 @@ An input to type a date, with a calendar to pick it. The text is a date in the `
 | ----------------- | ----------------------------------------------------------- | --------------------------- | -------------------------- | ------------- |
 | **value**         | selected date, to control the component                     | `Date` / `null`             | -                          | -             |
 | **initialValue**  | date at the start                                           | `Date` / `null`             | -                          | `null`        |
-| **onChange**      | called with the date, or `null` when the text is emptied    | `(date: Date \| null) => void` | -                       | -             |
+| **onChange**      | called with the date, or `null` when the text is emptied    | <Code>(date: Date &#124; null) =&gt; void</Code> | -                       | -             |
 | **min**           | first date that can be picked                               | `Date`                      | -                          | -             |
 | **max**           | last date that can be picked                                | `Date`                      | -                          | -             |
 | **locale**        | language of the calendar                                    | `string`                    | any `Intl` locale          | `en-US`       |

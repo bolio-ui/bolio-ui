@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Combobox, Grid } from 'core'
+import { Combobox, Grid, Code } from 'core'
 
 export const meta = {
   title: 'Combobox',
@@ -103,7 +103,7 @@ Use it when the list is long enough that a `Select` is hard to scan.
 | **options**       | the options to choose from                               | `ComboboxOption[]`                                 | [ComboboxOption](#comboboxoption)  | -              |
 | **value**         | selected value, to control the component                 | `string` / `null`                                  | -                                  | -              |
 | **initialValue**  | selected value at the start                              | `string` / `null`                                  | -                                  | `null`         |
-| **onChange**      | called with the chosen value, or `null` when it is cleared | `(value: string \| null) => void`                | -                                  | -              |
+| **onChange**      | called with the chosen value, or `null` when it is cleared | <Code>(value: string &#124; null) =&gt; void</Code>                | -                                  | -              |
 | **onInputChange** | called with the text while the user types                | `(text: string) => void`                           | -                                  | -              |
 | **filter**        | decides which options match the text                     | `(option, text) => boolean`                        | -                                  | contains, case insensitive |
 | **placeholder**   | text shown when the input is empty                       | `string`                                           | -                                  | -              |
