@@ -54,6 +54,7 @@ else
   SERVER_ROUTE_BUILD="FAILED"
   echo "build: FAILED with all routes. Key errors:"
   grep -E "Error|error|Unhandled|not a function|use client" build.log | grep -v "Build error occurred" | head -6
+  echo "-- end of build.log:"; grep -vE "^\s*$" build.log | tail -12
   echo "== retrying without the server-component route to measure the others"
   rm -rf app/app-server .next
   build && echo "build (without /app-server): OK" || { echo "build still FAILED"; grep -vE "^\s*$" build.log | tail -20; exit 1; }
