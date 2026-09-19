@@ -17,6 +17,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
 
   const label = (
     <Text
+      p
       font="14px"
       my={0}
       mb={1}
