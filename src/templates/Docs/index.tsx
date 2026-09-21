@@ -66,9 +66,11 @@ function Docs({ children, meta }: DocsTemplateProps) {
     return sidebarItems[meta.sidebar]
   }, [meta.sidebar])
 
-  const currentPostIndex = items.findIndex((p) => p.name === title)
-  const nextPost = items[currentPostIndex + 1] ?? null
-  const prevPost = items[currentPostIndex - 1] ?? null
+  // Group headings have no url and external links leave the docs
+  const pages = items.filter((p) => p.url && !('target' in p))
+  const currentPostIndex = pages.findIndex((p) => p.name === title)
+  const nextPost = pages[currentPostIndex + 1] ?? null
+  const prevPost = pages[currentPostIndex - 1] ?? null
 
   return (
     <>
