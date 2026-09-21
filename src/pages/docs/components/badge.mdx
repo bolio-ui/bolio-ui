@@ -181,4 +181,4 @@ type AnchorPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 
 </Attributes>
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

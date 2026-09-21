@@ -196,4 +196,11 @@ function Docs({ children, meta }: DocsTemplateProps) {
   )
 }
 
+// The MDX language server cannot parse JSX inside an export, so pages
+// export the layout with `export default Docs.withMeta(meta)` instead.
+Docs.withMeta = (meta: Meta) =>
+  function DocsPage({ children }: Pick<DocsTemplateProps, 'children'>) {
+    return <Docs meta={meta}>{children}</Docs>
+  }
+
 export default Docs

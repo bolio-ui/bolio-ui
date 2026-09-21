@@ -62,4 +62,4 @@ Four components build the layout of a page, one inside the other:
 - Use a new `Row` for each line. If you need items that wrap to the next line by themselves, use <a href="/docs/components/grid">Grid</a>.
 - `Col` needs a `Row` around it. The space set by `gap` on the `Row` is what the columns use.
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

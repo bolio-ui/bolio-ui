@@ -220,4 +220,4 @@ import 'inter-ui/inter.css'
 - `Themes.getPresets` - Retrieve a default list of themes.
 - `Themes.getPresetStaticTheme` - Access the theme loaded by Bolio UI as the default.
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

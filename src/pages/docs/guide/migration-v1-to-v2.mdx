@@ -114,4 +114,4 @@ Other paths are no longer resolved.
 5. Update `@types/react` to 18 or 19 if you use TypeScript.
 6. Search your tests and styles for the changes listed under behavior.
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

@@ -86,4 +86,4 @@ Select uses its `placeholder` as the name when you do not pass one. A Button tha
 The tests run <a href="https://github.com/dequelabs/axe-core" rel="noreferrer" target="_blank">axe-core</a> on the default render of every component, and check the keyboard behavior above.
 The tests do not check color contrast, which depends on the theme, and they were not run with a real screen reader or in a browser.
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

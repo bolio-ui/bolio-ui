@@ -165,4 +165,4 @@ type DividerAlign = 'center' | 'start' | 'left' | 'end' | 'right'
 
 </Attributes>
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)

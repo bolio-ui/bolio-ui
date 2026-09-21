@@ -52,4 +52,4 @@ const useClipboard = (options?: UseClipboardOptions) => CopyResult
 
 </Attributes>
 
-export default ({ children }) => <Docs meta={meta}>{children}</Docs>
+export default Docs.withMeta(meta)
