@@ -58,25 +58,26 @@ Install dependencies:
 
 ### Setup
 
-Add styles imports, BolioUIProvider and CssBaseline to src/pages/index.tsx:
+Gatsby has no root component, so wrap the app with `wrapRootElement` to set up the `BolioUIProvider` and the `CssBaseline` on every page.
+
+Create `gatsby-browser.tsx` (or `.js`):
 
 ```jsx
 import * as React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
-import { BolioUIProvider, CssBaseline, Text } from '@bolio-ui/core'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
-const IndexPage: React.FC<PageProps> = () => {
-  return (
-    <BolioUIProvider>
-      <CssBaseline />
-      <Text p>Your app page here</Text>
-    </BolioUIProvider>
-  )
-}
+export const wrapRootElement = ({ element }) => (
+  <BolioUIProvider>
+    <CssBaseline />
+    {element}
+  </BolioUIProvider>
+)
+```
 
-export default IndexPage
+Then create `gatsby-ssr.tsx` (or `.js`) to render the same wrapper on the server:
 
-export const Head: HeadFC = () => <title>Home</title>
+```jsx
+export { wrapRootElement } from './gatsby-browser'
 ```
 
 Ready to go! Start the development server:

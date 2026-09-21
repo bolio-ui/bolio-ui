@@ -39,7 +39,7 @@ Inside your React project directory, install Bolio UI by running either of the f
 
 ### Setup
 
-For Bolio UI to work correctly, you need to set up the `BolioUIProvider` at the root of your application.
+For Bolio UI to work correctly, you need to set up the `BolioUIProvider` and the `CssBaseline` at the root of your application.
 
 <Spacer h={1} />
 
@@ -51,13 +51,14 @@ Go to the root of your application and do this:
 // NAME: /src/app.js
 import * as React from 'react'
 
-// 1. import `BolioUIProvider` component
-import { BolioUIProvider } from '@bolio-ui/core'
+// 1. import `BolioUIProvider` and `CssBaseline`
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function App({ Component }) {
   // 2. Use at the root of your app
   return (
     <BolioUIProvider>
+      <CssBaseline />
       <Component />
     </BolioUIProvider>
   )
@@ -73,13 +74,14 @@ function App({ Component }) {
 Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
 
 ```tsx
-// 1. import `BolioUIProvider` component
-import { BolioUIProvider } from '@bolio-ui/core'
+// 1. import `BolioUIProvider` and `CssBaseline`
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function MyApp({ Component, pageProps }) {
   return (
     // 2. Use at the root of your app
     <BolioUIProvider>
+      <CssBaseline />
       <Component {...pageProps} />
     </BolioUIProvider>
   )
@@ -95,8 +97,8 @@ You don't need a custom `_document`, Next.js already adds the styles to the HTML
 Go to `app/layout.js` or `app/layout.tsx` and add this:
 
 ```tsx
-// 1. import `BolioUIProvider` and the styles registry
-import { BolioUIProvider } from '@bolio-ui/core'
+// 1. import `BolioUIProvider`, `CssBaseline` and the styles registry
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 import { StyledJsxRegistry } from '@bolio-ui/core/next'
 
 export default function RootLayout({ children }) {
@@ -105,7 +107,10 @@ export default function RootLayout({ children }) {
       <body>
         {/* 2. The registry adds the styles rendered on the server to the HTML */}
         <StyledJsxRegistry>
-          <BolioUIProvider>{children}</BolioUIProvider>
+          <BolioUIProvider>
+            <CssBaseline />
+            {children}
+          </BolioUIProvider>
         </StyledJsxRegistry>
       </body>
     </html>
@@ -131,21 +136,13 @@ const Component = () => <Button>Click me</Button>
 
 <Spacer h={2} />
 
-### Individual components import
-
-```jsx
-import Button from '@bolio-ui/core/button'
-
-const Component = () => <Button>Click me</Button>
-```
-
 <Attributes edit="/pages/docs/components/avatar.mdx">
 <Attributes.Title>BolioUIProvider.Props</Attributes.Title>
 
-| Attribute           | Type            | Accepted values              | Description                                                      | Default |
-| ------------------- | --------------- | ---------------------------- | ---------------------------------------------------------------- | ------- |
-| **theme**           | `BolioUIThemes` | [ThemeObject](#theme-object) | Optional custom theme, by default Bolio UI applies `light` theme | -       |
-| **disableBaseline** | `boolean`       | `true/false`                 | Bolio UI automatically includes `<CssBaseline/>`                 | `false` |
+| Attribute     | Type                   | Accepted values                                 | Description                                                  | Default |
+| ------------- | ---------------------- | ----------------------------------------------- | ------------------------------------------------------------ | ------- |
+| **themes**    | `Array<BolioUIThemes>` | -                                               | Custom themes added to the default `light` and `dark` themes | -       |
+| **themeType** | `string`               | `light`, `dark` or the `type` of a custom theme | Theme applied to every component                             | `light` |
 
 </Attributes>
 

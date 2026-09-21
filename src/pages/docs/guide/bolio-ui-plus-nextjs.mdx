@@ -43,14 +43,15 @@ Bolio UI works with the Pages Router and with the App Router.
 
 #### Pages Router
 
-Next.js already adds the styles rendered on the server to the HTML, so you don't need a custom `_document`. Set up the `BolioUIProvider` in `pages/_app.js`:
+Next.js already adds the styles rendered on the server to the HTML, so you don't need a custom `_document`. Set up the `BolioUIProvider` and `CssBaseline` in `pages/_app.js`:
 
 ```jsx
-import { BolioUIProvider } from '@bolio-ui/core'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function MyApp({ Component, pageProps }) {
   return (
     <BolioUIProvider>
+      <CssBaseline />
       <Component {...pageProps} />
     </BolioUIProvider>
   )
@@ -66,7 +67,7 @@ export default MyApp
 The App Router doesn't add the styles of styled-jsx to the HTML on its own. Wrap the app with `StyledJsxRegistry` in `app/layout.js`:
 
 ```jsx
-import { BolioUIProvider } from '@bolio-ui/core'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 import { StyledJsxRegistry } from '@bolio-ui/core/next'
 
 export default function RootLayout({ children }) {
@@ -74,7 +75,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <StyledJsxRegistry>
-          <BolioUIProvider>{children}</BolioUIProvider>
+          <BolioUIProvider>
+            <CssBaseline />
+            {children}
+          </BolioUIProvider>
         </StyledJsxRegistry>
       </body>
     </html>
