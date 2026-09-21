@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Attributes } from 'src/components'
+import { Attributes, CodeTabs } from 'src/components'
 import { Tabs, Spacer, Snippet } from 'core'
 
 export const meta = {
@@ -69,11 +69,12 @@ function App({ Component }) {
 
 #### Next.js
 
-##### Pages Router
+Add this to the root of your app. Use the file of the router you have: `pages/_app` (create it if it doesn't exist) or `app/layout`.
 
-Go to `pages/_app.js` or `pages/_app.tsx` (create it if it doesn't exist) and add this:
+<CodeTabs>
 
 ```tsx
+// NAME: pages/_app.tsx
 // 1. import `BolioUIProvider` and `CssBaseline`
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
@@ -90,13 +91,8 @@ function MyApp({ Component, pageProps }) {
 export default MyApp
 ```
 
-You don't need a custom `_document`, Next.js already adds the styles to the HTML.
-
-##### App Router
-
-Go to `app/layout.js` or `app/layout.tsx` and add this:
-
 ```tsx
+// NAME: app/layout.tsx
 // 1. import `BolioUIProvider`, `CssBaseline` and the styles registry
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 import { StyledJsxRegistry } from '@bolio-ui/core/next'
@@ -117,6 +113,10 @@ export default function RootLayout({ children }) {
   )
 }
 ```
+
+</CodeTabs>
+
+The Pages Router doesn't need a custom `_document`, Next.js already adds the styles to the HTML.
 
 > For more information about Next.js + Bolio UI SSR check out the [documentation](/docs/guide/bolio-ui-plus-nextjs).
 

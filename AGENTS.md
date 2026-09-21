@@ -46,6 +46,7 @@ Todo guia em `src/pages/docs/guide` segue a estrutura de `about-bolio-ui.mdx`. C
 - Listas com `- •` (o CssBaseline remove o marcador de `ul`).
 - Playground segue o tema: cores via `useTheme`, nunca hex fixo.
 - Todo `.mdx` termina com `export default Docs.withMeta(meta)`. JSX dentro de `export` gera erro no editor (o language server do MDX não lê JSX em ESM).
+- Vários blocos de código do mesmo exemplo entram em `<CodeTabs>`, um bloco por aba, com `// NAME: caminho` na primeira linha de cada um.
 - Página nova entra em `manifest.json` e `seed.json`, com uma entrada por título de `Playground` (`General` quando não tem título), por `APIs`, por `Attributes.Title` e por `###`.
 
 ## Copy / textos

@@ -108,6 +108,10 @@ function App({ Component, pageProps }: AppProps) {
           pre code {
             color: #ffffff;
           }
+          .pre header .name.active {
+            background-color: ${theme.palette.pre};
+            color: rgba(255, 255, 255, 0.7);
+          }
           .linked-heading {
             scroll-margin-top: 75px;
           }
