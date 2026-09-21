@@ -21,7 +21,22 @@ export function useScrollSpy(
       })
     }, options)
     elements.forEach((el) => el && observer.current?.observe(el))
-    return () => observer.current?.disconnect()
+
+    // The last headings can never reach the observed band of a page that has
+    // no more room to scroll, so the end of the page selects the last one.
+    const onScroll = () => {
+      const last = elements[elements.length - 1]
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2
+      if (last && atBottom) setActiveId(last.getAttribute('id'))
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      observer.current?.disconnect()
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [options, selectors])
 
   return activeId
