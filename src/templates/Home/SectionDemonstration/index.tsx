@@ -88,9 +88,10 @@ function SectionDemonstration() {
                     src="/img/png/home/typography.png"
                     alt="text doc component"
                     width={180}
-                    height={120}
+                    height={121}
                     priority
                     style={{
+                      height: 'auto',
                       borderTopLeftRadius: theme.layout.radius,
                       borderTopRightRadius: theme.layout.radius
                     }}
@@ -112,9 +113,10 @@ function SectionDemonstration() {
                     src="/img/png/home/icons.png"
                     alt="icons doc component"
                     width={180}
-                    height={120}
+                    height={121}
                     priority
                     style={{
+                      height: 'auto',
                       borderTopLeftRadius: theme.layout.radius,
                       borderTopRightRadius: theme.layout.radius
                     }}
@@ -136,9 +138,10 @@ function SectionDemonstration() {
                     src="/img/png/home/button.png"
                     alt="buttond doc component"
                     width={180}
-                    height={120}
+                    height={121}
                     priority
                     style={{
+                      height: 'auto',
                       borderTopLeftRadius: theme.layout.radius,
                       borderTopRightRadius: theme.layout.radius
                     }}
