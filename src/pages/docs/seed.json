@@ -2614,5 +2614,465 @@
     "title": "Placement - Tooltip",
     "component": false,
     "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "title": "About Bolio UI",
+    "component": true,
+    "path": "/docs/guide/about-bolio-ui"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Components library",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#components-library"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Browser support",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#browser-support"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Releases cycle",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#releases-cycle"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Project maintenance",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#project-maintenance"
+  },
+  {
+    "title": "Example with Gatsby",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-gatsby"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#generate-new-application"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#installation"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#setup"
+  },
+  {
+    "title": "Example with Next.js",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-nextjs"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Server Render",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#server-render"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Next.js",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#next-js"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Custom Server",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#custom-server"
+  },
+  {
+    "title": "Example with RedwoodJS",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#get-started-with-an-example"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#generate-new-application"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#installation"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#setup"
+  },
+  {
+    "title": "Example with Remix",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-remix"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#generate-new-application"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#installation"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#setup"
+  },
+  {
+    "title": "Example with Vite",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-vite"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#generate-new-application"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#installation"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#setup"
+  },
+  {
+    "title": "Contribute",
+    "component": true,
+    "path": "/docs/guide/contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "Ways to contribute",
+    "component": false,
+    "path": "/docs/guide/contribute#ways-to-contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "How to contribute?",
+    "component": false,
+    "path": "/docs/guide/contribute#how-to-contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "npm scripts",
+    "component": false,
+    "path": "/docs/guide/contribute#npm-scripts"
+  },
+  {
+    "title": "Customize Themes",
+    "component": true,
+    "path": "/docs/guide/customize-themes"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/customize-themes#usage"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Switch themes",
+    "component": false,
+    "path": "/docs/guide/customize-themes#switch-themes"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Customizing theme",
+    "component": false,
+    "path": "/docs/guide/customize-themes#customizing-theme"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Get types",
+    "component": false,
+    "path": "/docs/guide/customize-themes#get-types"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Customizer",
+    "component": false,
+    "path": "/docs/guide/customize-themes#customizer"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Build components",
+    "component": false,
+    "path": "/docs/guide/customize-themes#build-components"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Fonts",
+    "component": false,
+    "path": "/docs/guide/customize-themes#fonts"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Themes APIs",
+    "component": false,
+    "path": "/docs/guide/customize-themes#themes-ap-is"
+  },
+  {
+    "title": "Default Theme",
+    "component": true,
+    "path": "/docs/guide/default-theme"
+  },
+  {
+    "head": "Default Theme",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/default-theme#usage"
+  },
+  {
+    "head": "Default Theme",
+    "title": "Colors",
+    "component": false,
+    "path": "/docs/guide/default-theme#colors"
+  },
+  {
+    "title": "Getting Started",
+    "component": true,
+    "path": "/docs/guide/getting-started"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/getting-started#install"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/getting-started#setup"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Using Bolio UI components",
+    "component": false,
+    "path": "/docs/guide/getting-started#using-bolio-ui-components"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Community",
+    "component": false,
+    "path": "/docs/guide/getting-started#community"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Contributing",
+    "component": false,
+    "path": "/docs/guide/getting-started#contributing"
+  },
+  {
+    "title": "Migrating to v2",
+    "component": true,
+    "path": "/docs/guide/migration-v1-to-v2"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Requirements",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#requirements"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Breaking changes",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#breaking-changes"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Changes in behavior",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#changes-in-behavior"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Checklist",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#checklist"
+  },
+  {
+    "title": "Page structure",
+    "component": true,
+    "path": "/docs/guide/page-structure"
+  },
+  {
+    "head": "Page structure",
+    "title": "Rules that keep it working",
+    "component": false,
+    "path": "/docs/guide/page-structure#rules-that-keep-it-working"
+  },
+  {
+    "title": "Refs and accessibility",
+    "component": true,
+    "path": "/docs/guide/refs-and-accessibility"
+  },
+  {
+    "head": "Refs and accessibility",
+    "title": "Refs",
+    "component": false,
+    "path": "/docs/guide/refs-and-accessibility#refs"
+  },
+  {
+    "head": "Refs and accessibility",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/guide/refs-and-accessibility#accessibility"
+  },
+  {
+    "title": "useBodyScroll",
+    "component": true,
+    "path": "/docs/hooks/use-body-scroll"
+  },
+  {
+    "title": "useClasses",
+    "component": true,
+    "path": "/docs/hooks/use-classes"
+  },
+  {
+    "head": "useClasses",
+    "title": "Basic usage",
+    "component": false,
+    "path": "/docs/hooks/use-classes#basic-usage"
+  },
+  {
+    "head": "useClasses",
+    "title": "Parse Object",
+    "component": false,
+    "path": "/docs/hooks/use-classes#parse-object"
+  },
+  {
+    "head": "useClasses",
+    "title": "Boundary Scenes",
+    "component": false,
+    "path": "/docs/hooks/use-classes#boundary-scenes"
+  },
+  {
+    "title": "useClickAway",
+    "component": true,
+    "path": "/docs/hooks/use-click-away"
+  },
+  {
+    "title": "useClipboard",
+    "component": true,
+    "path": "/docs/hooks/use-clipboard"
+  },
+  {
+    "title": "useCurrentState",
+    "component": true,
+    "path": "/docs/hooks/use-current-state"
+  },
+  {
+    "title": "useInput",
+    "component": true,
+    "path": "/docs/hooks/use-input"
+  },
+  {
+    "title": "useKeyboard",
+    "component": true,
+    "path": "/docs/hooks/use-keyboard"
+  },
+  {
+    "title": "useMediaQuery",
+    "component": true,
+    "path": "/docs/hooks/use-media-query"
+  },
+  {
+    "title": "useModal",
+    "component": true,
+    "path": "/docs/hooks/use-modal"
+  },
+  {
+    "title": "useScale",
+    "component": true,
+    "path": "/docs/hooks/use-scale"
+  },
+  {
+    "head": "useScale",
+    "title": "Scale the width",
+    "component": false,
+    "path": "/docs/hooks/use-scale#scale-the-width"
+  },
+  {
+    "head": "useScale",
+    "title": "Unconventional defaults",
+    "component": false,
+    "path": "/docs/hooks/use-scale#unconventional-defaults"
+  },
+  {
+    "head": "useScale",
+    "title": "Get native props",
+    "component": false,
+    "path": "/docs/hooks/use-scale#get-native-props"
+  },
+  {
+    "title": "useTabs",
+    "component": true,
+    "path": "/docs/hooks/use-tabs"
+  },
+  {
+    "title": "useTheme",
+    "component": true,
+    "path": "/docs/hooks/use-theme"
+  },
+  {
+    "title": "useToast",
+    "component": true,
+    "path": "/docs/hooks/use-toast"
   }
 ]

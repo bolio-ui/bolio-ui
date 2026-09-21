@@ -19,6 +19,20 @@ describe('searchDocs', () => {
     ).toBe(true)
   })
 
+  it('finds guides, hooks and their sections', () => {
+    expect(searchDocs('useClipboard', 8)[0]).toMatchObject({
+      path: '/docs/hooks/use-clipboard'
+    })
+    expect(searchDocs('migrating', 8)[0]).toMatchObject({
+      path: '/docs/guide/migration-v1-to-v2'
+    })
+    expect(
+      searchDocs('breaking changes', 8).some(
+        (hit) => hit.path === '/docs/guide/migration-v1-to-v2#breaking-changes'
+      )
+    ).toBe(true)
+  })
+
   it('ignores case and accents', () => {
     expect(searchDocs('AVATÁR', 8)).toEqual(searchDocs('avatar', 8))
   })
