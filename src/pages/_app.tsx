@@ -108,6 +108,9 @@ function App({ Component, pageProps }: AppProps) {
           pre code {
             color: #ffffff;
           }
+          .linked-heading {
+            scroll-margin-top: 75px;
+          }
           .tag {
             color: ${theme.palette.error};
           }
