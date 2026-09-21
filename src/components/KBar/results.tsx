@@ -35,10 +35,14 @@ export default function KBarResults(props: KBarResultsProps) {
     [actions]
   )
 
+  // A typed term searches every level, so groups and pages such as Guide and
+  // Hooks are found without opening Documentation first.
+  const searching = search.trim() !== ''
+
   const currActions = React.useMemo(() => {
     if (!currentRootActionId) {
       return actionsList.reduce((acc: unknown, curr) => {
-        if (!curr.parent) {
+        if (searching || !curr.parent) {
           acc[curr.id] = curr
         }
         return acc
@@ -60,7 +64,7 @@ export default function KBarResults(props: KBarResultsProps) {
         return acc
       }, {})
     }
-  }, [actions, actionsList, currentRootActionId])
+  }, [actions, actionsList, currentRootActionId, searching])
 
   const filteredList = React.useMemo(
     () =>

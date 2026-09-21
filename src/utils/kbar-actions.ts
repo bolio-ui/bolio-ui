@@ -7,8 +7,6 @@ import { removeFromLast } from 'src/utils/remove-from-last'
 // data imported from manifest
 import docsManifest from 'src/pages/docs/manifest.json'
 
-const docsActions: Action[] = []
-
 export interface Route {
   title: string
   subtitle?: string
@@ -25,6 +23,7 @@ export interface Route {
 }
 
 const buildDocsActions = (
+  docsActions: Action[],
   router: NextRouter,
   routes: Route[],
   parent?: string
@@ -61,7 +60,7 @@ const buildDocsActions = (
     }
     docsActions.push(action)
     if (route.routes) {
-      buildDocsActions(router, route.routes, routeId)
+      buildDocsActions(docsActions, router, route.routes, routeId)
     }
   })
 }
@@ -78,8 +77,8 @@ const useActions = (): Action[] => {
   const router = useRouter()
   const settings = useSettings()
 
-  const routes = docsManifest.routes
-  buildDocsActions(router, routes)
+  const docsActions: Action[] = []
+  buildDocsActions(docsActions, router, docsManifest.routes)
 
   const staticActions: Action[] = [
     {
