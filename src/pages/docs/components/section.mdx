@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Section, Container, Text } from 'core'
+import { Section, Container, Text, useTheme } from 'core'
 
 export const meta = {
   title: 'Section',
@@ -27,13 +27,18 @@ A band of the page that groups related content, with an optional background. It 
 <Playground
   title="Background"
   desc="Use `bg` to paint the whole band, and a Container to keep the content narrow."
-  scope={{ Section, Container, Text }}
+  scope={{ Section, Container, Text, useTheme }}
   code={`
-<Section bg="#f5f5f5" style={{ padding: 24 }}>
-  <Container>
-    <Text>A band with a background.</Text>
-  </Container>
-</Section>
+() => {
+  const theme = useTheme()
+  return (
+    <Section bg={theme.palette.accents_1} style={{ padding: 24 }}>
+      <Container>
+        <Text>A band with a background.</Text>
+      </Container>
+    </Section>
+  )
+}
 `}
 />
 

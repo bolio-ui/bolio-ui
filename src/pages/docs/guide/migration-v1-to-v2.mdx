@@ -3,12 +3,12 @@ import { Spacer } from 'core'
 
 export const meta = {
   title: 'Migrating to v2',
-  description: '',
+  description: 'What changes from v1 to v2 and what to do about it.',
   sidebar: 'guide',
   group: 'Guide'
 }
 
-## Migrating from v1 to v2
+## Migrating to v2
 
 Version 2 works with React 18 and 19 and with the Next.js App Router. This page lists what changes and what to do about it.
 The documentation of v1 stays available at <a href="https://v1.bolio-ui.com" rel="noreferrer" target="_blank">v1.bolio-ui.com</a>.
@@ -23,10 +23,10 @@ yarn add @bolio-ui/core@next
 
 ### Requirements
 
-- React 18.2 or later, including React 19. React 16 and 17 are no longer supported.
-- TypeScript users need `@types/react` 18 or 19.
-- Next.js 14, 15 and 16 are tested, with the Pages Router and with the App Router.
-- Vite 8 with React 19 and plain Node (18, 22 and 24, with `require`, `import` and server rendering) are tested too.
+- • React 18.2 or later, including React 19. React 16 and 17 are no longer supported.
+- • TypeScript users need `@types/react` 18 or 19.
+- • Next.js 14, 15 and 16 are tested, with the Pages Router and with the App Router.
+- • Vite 8 with React 19 and plain Node (18, 22 and 24, with `require`, `import` and server rendering) are tested too.
 
 <Spacer h={2} />
 
@@ -94,14 +94,14 @@ Other paths are no longer resolved.
 
 ### Changes in behavior
 
-- **Container** no longer renders a stray `gap="0"` attribute in the DOM.
-- **Toggle, Checkbox and Radio** can be reached with the Tab key and show a focus ring. The native `input` of Toggle and Radio was hidden with `visibility: hidden` and is not hidden anymore, so a CSS selector or a test that relies on that may need a change.
-- **Tabs** items have `role="tab"` instead of `role="button"`, inside a `role="tablist"`. The content has `role="tabpanel"`.
-- **Pagination** puts its items in a list and marks the current page with `aria-current="page"`.
-- **Slider** thumb has `role="slider"` and answers to the keyboard.
-- **Tooltip** opens when its trigger gets the focus and closes with Escape. **Popover** closes with Escape.
-- **Refs**: every component forwards its `ref` now. See <a href="/docs/guide/refs-and-accessibility">Refs and accessibility</a>.
-- **Types**: `Table` accepts `ref` and the scale props, and `Container` types its `fluid` prop.
+- • **Container** no longer renders a stray `gap="0"` attribute in the DOM.
+- • **Toggle, Checkbox and Radio** can be reached with the Tab key and show a focus ring. The native `input` of Toggle and Radio was hidden with `visibility: hidden` and is not hidden anymore, so a CSS selector or a test that relies on that may need a change.
+- • **Tabs** items have `role="tab"` instead of `role="button"`, inside a `role="tablist"`. The content has `role="tabpanel"`.
+- • **Pagination** puts its items in a list and marks the current page with `aria-current="page"`.
+- • **Slider** thumb has `role="slider"` and answers to the keyboard.
+- • **Tooltip** opens when its trigger gets the focus and closes with Escape. **Popover** closes with Escape.
+- • **Refs**: every component forwards its `ref` now. See <a href="/docs/guide/refs-and-accessibility">Refs and accessibility</a>.
+- • **Types**: `Table` accepts `ref` and the scale props, and `Container` types its `fluid` prop.
 
 <Spacer h={2} />
 

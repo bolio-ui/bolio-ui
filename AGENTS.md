@@ -35,6 +35,19 @@ O melhor código é aquele que você não precisou escrever.
 - Não investigue ou execute ferramentas quando a análise do código for suficiente.
 - Não execute comandos ou testes apenas por precaução; faça isso quando forem relevantes para a alteração.
 
+## Docs (guias em MDX)
+
+Todo guia em `src/pages/docs/guide` segue a estrutura de `about-bolio-ui.mdx`. Copie esse arquivo para criar um novo.
+
+- Imports na ordem `Docs`, `src/components`, `core`, sem imports sem uso.
+- `meta.title` igual ao título da sidebar em `manifest.json` (o anterior/próximo depende disso), `description` sempre preenchida (vai para o SEO).
+- `## Título` igual ao `meta.title`, depois `<Spacer h={2} />`.
+- Cada `###` precedido de `<Spacer h={2} />`, com título único na página (vira âncora e entra em `seed.json`).
+- Listas com `- •` (o CssBaseline remove o marcador de `ul`).
+- Playground segue o tema: cores via `useTheme`, nunca hex fixo.
+- Todo `.mdx` termina com `export default Docs.withMeta(meta)`. JSX dentro de `export` gera erro no editor (o language server do MDX não lê JSX em ESM).
+- Página nova entra em `manifest.json` e `seed.json`.
+
 ## Copy / textos
 
 - Nunca use hífen para unir frases; escreva corrido com conectivos ou pontuação normal. Exceção: em metadata (`<title>`, Open Graph, SEO), o padrão "Título da Página - Nome da Marca" é aceitável, é convenção do formato, não prosa.

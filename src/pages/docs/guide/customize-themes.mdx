@@ -2,14 +2,14 @@ import Docs from 'src/templates/Docs'
 import { Spacer, Tabs, Snippet } from 'core'
 
 export const meta = {
-  title: 'Customize Theme',
+  title: 'Customize Themes',
   description:
     'Support a variety of themes, and it is very easy to create or inherit modifications.',
   sidebar: 'guide',
   group: 'Theme'
 }
 
-## Themes
+## Customize Themes
 
 <Spacer h={2} />
 
@@ -175,7 +175,9 @@ const MyComponent = () => {
 }
 ```
 
-### Build components
+<Spacer h={2} />
+
+### Fonts
 
 In Web applications, certain fonts may not display optimally on Windows, or you might find that font rendering for specific character sets not satisfactory.
 If this occurs, you have the option to enhance the rendering by adding extra font packages
@@ -211,13 +213,13 @@ import 'inter-ui/inter.css'
 
 `Themes` offer a range of static methods that prove valuable when dealing with custom themes:
 
-- `Themes.create` - Create a new theme object.
-- `Themes.createFromDark` - Generate a new theme object based on the Dark Theme.
-- `Themes.createFromLight` - Construct a new theme object based on the Light Theme.
-- `Themes.isPresetTheme` - Verify if a theme serves as the foundation for Bolio UI.
-- `Themes.isAvailableThemeType` - Determine if a theme name is available.
-- `Themes.hasUserCustomTheme` - Check for the presence of custom themes within a list.
-- `Themes.getPresets` - Retrieve a default list of themes.
-- `Themes.getPresetStaticTheme` - Access the theme loaded by Bolio UI as the default.
+- • `Themes.create` - Create a new theme object.
+- • `Themes.createFromDark` - Generate a new theme object based on the Dark Theme.
+- • `Themes.createFromLight` - Construct a new theme object based on the Light Theme.
+- • `Themes.isPresetTheme` - Verify if a theme serves as the foundation for Bolio UI.
+- • `Themes.isAvailableThemeType` - Determine if a theme name is available.
+- • `Themes.hasUserCustomTheme` - Check for the presence of custom themes within a list.
+- • `Themes.getPresets` - Retrieve a default list of themes.
+- • `Themes.getPresetStaticTheme` - Access the theme loaded by Bolio UI as the default.
 
 export default Docs.withMeta(meta)

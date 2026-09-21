@@ -1,10 +1,21 @@
 import Docs from 'src/templates/Docs'
 import { Playground } from 'src/components'
-import { Section, Container, Row, Col, Display, Card, Text, Spacer } from 'core'
+import {
+  Section,
+  Container,
+  Row,
+  Col,
+  Display,
+  Card,
+  Text,
+  Spacer,
+  useTheme
+} from 'core'
 
 export const meta = {
   title: 'Page structure',
-  description: '',
+  description:
+    'Build the layout of a page with Section, Container, Row and Col.',
   sidebar: 'guide',
   group: 'Guide'
 }
@@ -24,42 +35,49 @@ Four components build the layout of a page, one inside the other:
 
 <Playground
   desc="Section, Container, Row and Col, with a Display and Cards as the content."
-  scope={{ Section, Container, Row, Col, Display, Card, Text }}
+  scope={{ Section, Container, Row, Col, Display, Card, Text, useTheme }}
   code={`
-<>
-  <Section bg="#f5f5f5" style={{ padding: '32px 0' }}>
-    <Container>
-      <Row align="middle">
-        <Col span={6}>
-          <Text h3>A page with Bolio UI</Text>
-          <Text>The layout components hold the other components.</Text>
-        </Col>
-        <Col span={6}>
-          <Display caption="A caption">
-            <img src="/logo.svg" alt="Bolio UI logo" width={80} height={80} />
-          </Display>
-        </Col>
-      </Row>
-    </Container>
-  </Section>
-  <Section style={{ padding: '32px 0' }}>
-    <Container>
-      <Row>
-        <Col span={4}><Card><Text b>One third</Text></Card></Col>
-        <Col span={4}><Card><Text b>One third</Text></Card></Col>
-        <Col span={4}><Card><Text b>One third</Text></Card></Col>
-      </Row>
-    </Container>
-  </Section>
-</>
+() => {
+  const theme = useTheme()
+  return (
+    <>
+      <Section bg={theme.palette.accents_1} style={{ padding: '32px 0' }}>
+        <Container>
+          <Row align="middle">
+            <Col span={6}>
+              <Text h3>A page with Bolio UI</Text>
+              <Text>The layout components hold the other components.</Text>
+            </Col>
+            <Col span={6}>
+              <Display caption="A caption">
+                <img src="/logo-colored.svg" alt="Bolio UI logo" width={80} height={80} />
+              </Display>
+            </Col>
+          </Row>
+        </Container>
+      </Section>
+      <Section style={{ padding: '32px 0' }}>
+        <Container>
+          <Row>
+            <Col span={4}><Card><Text b>One third</Text></Card></Col>
+            <Col span={4}><Card><Text b>One third</Text></Card></Col>
+            <Col span={4}><Card><Text b>One third</Text></Card></Col>
+          </Row>
+        </Container>
+      </Section>
+    </>
+  )
+}
 `}
 />
 
+<Spacer h={2} />
+
 ### Rules that keep it working
 
-- Put the `Container` inside the `Section`, not the other way. The band goes from edge to edge and the content stays narrow.
-- The spans in a `Row` should add up to 12 or less. A `Row` does not wrap, so more than 12 makes the columns narrower.
-- Use a new `Row` for each line. If you need items that wrap to the next line by themselves, use <a href="/docs/components/grid">Grid</a>.
-- `Col` needs a `Row` around it. The space set by `gap` on the `Row` is what the columns use.
+- • Put the `Container` inside the `Section`, not the other way. The band goes from edge to edge and the content stays narrow.
+- • The spans in a `Row` should add up to 12 or less. A `Row` does not wrap, so more than 12 makes the columns narrower.
+- • Use a new `Row` for each line. If you need items that wrap to the next line by themselves, use <a href="/docs/components/grid">Grid</a>.
+- • `Col` needs a `Row` around it. The space set by `gap` on the `Row` is what the columns use.
 
 export default Docs.withMeta(meta)

@@ -3,7 +3,8 @@ import { Spacer } from 'core'
 
 export const meta = {
   title: 'Refs and accessibility',
-  description: '',
+  description:
+    'How refs work in every component and how to make controls accessible.',
   sidebar: 'guide',
   group: 'Guide'
 }
@@ -76,10 +77,10 @@ Select uses its `placeholder` as the name when you do not pass one. A Button tha
 
 #### Roles and states
 
-- Toggle is a `switch`, Slider has `role="slider"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`.
-- Tabs use `tablist`, `tab` and `tabpanel`, and mark the selected tab with `aria-selected`.
-- Collapse exposes `aria-expanded`, and Pagination marks the current page with `aria-current="page"`.
-- Modal and Drawer are `aria-modal` dialogs, Spinner and Loading have `role="status"`, and Tooltip is described by its content through `aria-describedby`.
+- • Toggle is a `switch`, Slider has `role="slider"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`.
+- • Tabs use `tablist`, `tab` and `tabpanel`, and mark the selected tab with `aria-selected`.
+- • Collapse exposes `aria-expanded`, and Pagination marks the current page with `aria-current="page"`.
+- • Modal and Drawer are `aria-modal` dialogs, Spinner and Loading have `role="status"`, and Tooltip is described by its content through `aria-describedby`.
 
 #### How it is checked
 
