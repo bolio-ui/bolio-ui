@@ -51,6 +51,20 @@ export const wrapRootElement = ({ element }) => (
 )
 `
 
+const nextApp = (ts) => `${
+  ts ? "import type { AppProps } from 'next/app'\n" : ''
+}${coreImport}
+
+export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </BolioUIProvider>
+  )
+}
+`
+
 const getSetup = () => {
   if (deps.next) {
     const layout = find(
@@ -80,8 +94,17 @@ const getSetup = () => {
         wrapper: provider,
         imports: [coreImport]
       }
+    const pages = find(['src/pages', 'pages'])
+    if (pages) {
+      const ts = find(['tsconfig.json'])
+      return {
+        files: {
+          [`${pages}/_app.${ts ? 'tsx' : 'js'}`]: nextApp(ts)
+        }
+      }
+    }
     fail(
-      `Could not find app/layout or pages/_app. Set up BolioUIProvider manually: ${docs}`
+      `Could not find app/layout or pages. Set up BolioUIProvider manually: ${docs}`
     )
   }
   if (deps['@redwoodjs/web']) {
@@ -116,7 +139,7 @@ const getSetup = () => {
       }
     }
   }
-  if (deps.vite) {
+  if (deps.vite && deps.react) {
     const main = find(['src/main', 'src/index'].flatMap(withExt))
     if (main) {
       // React Router in library mode renders a RouterProvider instead of <App />
@@ -128,7 +151,7 @@ const getSetup = () => {
     fail(`Could not find src/main. Set up BolioUIProvider manually: ${docs}`)
   }
   fail(
-    `Could not detect Next.js, Remix, React Router, Gatsby, Redwood or Vite. Set up BolioUIProvider manually: ${docs}`
+    `Could not detect Next.js, Remix, React Router, Gatsby, Redwood or Vite with React. Set up BolioUIProvider manually: ${docs}`
   )
 }
 
