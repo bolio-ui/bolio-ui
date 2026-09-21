@@ -5,9 +5,10 @@
     "path": "/docs/components/avatar"
   },
   {
-    "title": "Avatar",
+    "head": "Avatar",
+    "title": "Avatar General",
     "component": false,
-    "path": "/docs/components/avatar#avatar"
+    "path": "/docs/components/avatar#general"
   },
   {
     "head": "Avatar",
@@ -45,9 +46,10 @@
     "path": "/docs/components/badge"
   },
   {
-    "title": "Badge",
+    "head": "Badge",
+    "title": "Badge General",
     "component": false,
-    "path": "/docs/components/badge#badge"
+    "path": "/docs/components/badge#general"
   },
   {
     "head": "Badge",
@@ -103,9 +105,10 @@
     "path": "/docs/components/breadcrumbs"
   },
   {
-    "title": "Breadcrumbs",
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs General",
     "component": false,
-    "path": "/docs/components/breadcrumbs#breadcrumbs"
+    "path": "/docs/components/breadcrumbs#general"
   },
   {
     "head": "Breadcrumbs",
@@ -123,7 +126,7 @@
     "head": "Breadcrumbs",
     "title": "Breadcrumbs With NextJS",
     "component": false,
-    "path": "/docs/components/breadcrumbs#with-nextjs"
+    "path": "/docs/components/breadcrumbs#with-next-js"
   },
   {
     "head": "Breadcrumbs",
@@ -150,20 +153,15 @@
     "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
   },
   {
-    "head": "Breadcrumbs",
-    "title": "Breadcrumbs Separator Props",
-    "component": false,
-    "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
-  },
-  {
     "title": "Button",
     "component": true,
     "path": "/docs/components/button"
   },
   {
-    "title": "Button",
+    "head": "Button",
+    "title": "Button General",
     "component": false,
-    "path": "/docs/components/button#button"
+    "path": "/docs/components/button#general"
   },
   {
     "head": "Button",
@@ -221,12 +219,6 @@
   },
   {
     "head": "Button",
-    "title": "Button Loading",
-    "component": false,
-    "path": "/docs/components/button#loading"
-  },
-  {
-    "head": "Button",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button#apis"
@@ -239,25 +231,32 @@
   },
   {
     "head": "Button",
-    "title": "Types Button",
+    "title": "Button Types",
     "component": false,
-    "path": "/docs/components/button#button-types"
+    "path": "/docs/components/button#buttontypes"
   },
   {
     "title": "Button Dropdown",
     "component": true,
-    "path": "/docs/components/button"
+    "path": "/docs/components/button-dropdown"
   },
   {
-    "title": "Button Dropdown",
+    "head": "Button Dropdown",
+    "title": "Button Dropdown General",
     "component": false,
-    "path": "/docs/components/button-dropdown#button-dropdown"
+    "path": "/docs/components/button-dropdown#general"
   },
   {
     "head": "Button Dropdown",
     "title": "Button Dropdown Loading",
     "component": false,
     "path": "/docs/components/button-dropdown#loading"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Disabled",
+    "component": false,
+    "path": "/docs/components/button-dropdown#disabled"
   },
   {
     "head": "Button Dropdown",
@@ -307,9 +306,10 @@
     "path": "/docs/components/button-group"
   },
   {
-    "title": "Button Group",
+    "head": "Button Group",
+    "title": "Button Group General",
     "component": false,
-    "path": "/docs/components/button-group#button-group"
+    "path": "/docs/components/button-group#general"
   },
   {
     "head": "Button Group",
@@ -359,9 +359,28 @@
     "path": "/docs/components/calendar"
   },
   {
-    "title": "Calendar",
+    "head": "Calendar",
+    "title": "Calendar General",
     "component": false,
-    "path": "/docs/components/calendar#calendar"
+    "path": "/docs/components/calendar#general"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Min and max",
+    "component": false,
+    "path": "/docs/components/calendar#min-and-max"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Locale and first day of the week",
+    "component": false,
+    "path": "/docs/components/calendar#locale-and-first-day-of-the-week"
+  },
+  {
+    "head": "Calendar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/calendar#apis"
   },
   {
     "head": "Calendar",
@@ -370,14 +389,27 @@
     "path": "/docs/components/calendar#calendar.props"
   },
   {
+    "head": "Calendar",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/calendar#ref"
+  },
+  {
+    "head": "Calendar",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/calendar#accessibility"
+  },
+  {
     "title": "Capacity",
     "component": true,
     "path": "/docs/components/capacity"
   },
   {
-    "title": "Capacity",
+    "head": "Capacity",
+    "title": "Capacity General",
     "component": false,
-    "path": "/docs/components/capacity#capacity"
+    "path": "/docs/components/capacity#general"
   },
   {
     "head": "Capacity",
@@ -403,15 +435,28 @@
     "path": "/docs/components/card"
   },
   {
-    "title": "Card",
+    "head": "Card",
+    "title": "Card General",
     "component": false,
-    "path": "/docs/components/card#card"
+    "path": "/docs/components/card#general"
   },
   {
     "head": "Card",
     "title": "Card Hoverable",
     "component": false,
     "path": "/docs/components/card#hoverable"
+  },
+  {
+    "head": "Card",
+    "title": "Card Bordered",
+    "component": false,
+    "path": "/docs/components/card#bordered"
+  },
+  {
+    "head": "Card",
+    "title": "Card Shadow",
+    "component": false,
+    "path": "/docs/components/card#shadow"
   },
   {
     "head": "Card",
@@ -473,9 +518,10 @@
     "path": "/docs/components/checkbox"
   },
   {
-    "title": "Checkbox",
+    "head": "Checkbox",
+    "title": "Checkbox General",
     "component": false,
-    "path": "/docs/components/checkbox#checkbox"
+    "path": "/docs/components/checkbox#general"
   },
   {
     "head": "Checkbox",
@@ -529,7 +575,7 @@
     "head": "Checkbox",
     "title": "Checkbox Event",
     "component": false,
-    "path": "/docs/components/checkbox#checkboxtypes"
+    "path": "/docs/components/checkbox#checkboxevent"
   },
   {
     "title": "Code",
@@ -537,9 +583,10 @@
     "path": "/docs/components/code"
   },
   {
-    "title": "Code",
+    "head": "Code",
+    "title": "Code General",
     "component": false,
-    "path": "/docs/components/code#code"
+    "path": "/docs/components/code#general"
   },
   {
     "head": "Code",
@@ -583,9 +630,22 @@
     "path": "/docs/components/col"
   },
   {
-    "title": "Col",
+    "head": "Col",
+    "title": "Col General",
     "component": false,
-    "path": "/docs/components/col#col"
+    "path": "/docs/components/col#general"
+  },
+  {
+    "head": "Col",
+    "title": "Col Offset",
+    "component": false,
+    "path": "/docs/components/col#offset"
+  },
+  {
+    "head": "Col",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/col#apis"
   },
   {
     "head": "Col",
@@ -594,14 +654,21 @@
     "path": "/docs/components/col#col.props"
   },
   {
+    "head": "Col",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/col#ref"
+  },
+  {
     "title": "Collapse",
     "component": true,
     "path": "/docs/components/collapse"
   },
   {
-    "title": "Collapse",
+    "head": "Collapse",
+    "title": "Collapse General",
     "component": false,
-    "path": "/docs/components/collapse#collapse"
+    "path": "/docs/components/collapse#general"
   },
   {
     "head": "Collapse",
@@ -645,9 +712,34 @@
     "path": "/docs/components/combobox"
   },
   {
-    "title": "Combobox",
+    "head": "Combobox",
+    "title": "Combobox General",
     "component": false,
-    "path": "/docs/components/combobox#combobox"
+    "path": "/docs/components/combobox#general"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Initial value and disabled options",
+    "component": false,
+    "path": "/docs/components/combobox#initial-value-and-disabled-options"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Empty text",
+    "component": false,
+    "path": "/docs/components/combobox#empty-text"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Disabled",
+    "component": false,
+    "path": "/docs/components/combobox#disabled"
+  },
+  {
+    "head": "Combobox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/combobox#apis"
   },
   {
     "head": "Combobox",
@@ -662,14 +754,39 @@
     "path": "/docs/components/combobox#comboboxoption"
   },
   {
+    "head": "Combobox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/combobox#ref"
+  },
+  {
+    "head": "Combobox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/combobox#accessibility"
+  },
+  {
     "title": "Container",
     "component": true,
     "path": "/docs/components/container"
   },
   {
-    "title": "Container",
+    "head": "Container",
+    "title": "Container General",
     "component": false,
-    "path": "/docs/components/container#container"
+    "path": "/docs/components/container#general"
+  },
+  {
+    "head": "Container",
+    "title": "Container Fluid",
+    "component": false,
+    "path": "/docs/components/container#fluid"
+  },
+  {
+    "head": "Container",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/container#apis"
   },
   {
     "head": "Container",
@@ -678,14 +795,45 @@
     "path": "/docs/components/container#container.props"
   },
   {
+    "head": "Container",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/container#ref"
+  },
+  {
     "title": "DatePicker",
     "component": true,
     "path": "/docs/components/date-picker"
   },
   {
-    "title": "DatePicker",
+    "head": "DatePicker",
+    "title": "DatePicker General",
     "component": false,
-    "path": "/docs/components/date-picker#datepicker"
+    "path": "/docs/components/date-picker#general"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Initial value",
+    "component": false,
+    "path": "/docs/components/date-picker#initial-value"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Min and max",
+    "component": false,
+    "path": "/docs/components/date-picker#min-and-max"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Disabled",
+    "component": false,
+    "path": "/docs/components/date-picker#disabled"
+  },
+  {
+    "head": "DatePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-picker#apis"
   },
   {
     "head": "DatePicker",
@@ -694,14 +842,33 @@
     "path": "/docs/components/date-picker#datepicker.props"
   },
   {
+    "head": "DatePicker",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/date-picker#typing"
+  },
+  {
+    "head": "DatePicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/date-picker#ref"
+  },
+  {
+    "head": "DatePicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/date-picker#accessibility"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"
   },
   {
-    "title": "Description",
+    "head": "Description",
+    "title": "Description General",
     "component": false,
-    "path": "/docs/components/description#description"
+    "path": "/docs/components/description#general"
   },
   {
     "head": "Description",
@@ -727,9 +894,10 @@
     "path": "/docs/components/display"
   },
   {
-    "title": "Display",
+    "head": "Display",
+    "title": "Display General",
     "component": false,
-    "path": "/docs/components/display#display"
+    "path": "/docs/components/display#general"
   },
   {
     "head": "Display",
@@ -767,9 +935,10 @@
     "path": "/docs/components/divider"
   },
   {
-    "title": "Divider",
+    "head": "Divider",
+    "title": "Divider General",
     "component": false,
-    "path": "/docs/components/divider#divider"
+    "path": "/docs/components/divider#general"
   },
   {
     "head": "Divider",
@@ -819,9 +988,10 @@
     "path": "/docs/components/dot"
   },
   {
-    "title": "Dot",
+    "head": "Dot",
+    "title": "Dot General",
     "component": false,
-    "path": "/docs/components/dot#dot"
+    "path": "/docs/components/dot#general"
   },
   {
     "head": "Dot",
@@ -853,9 +1023,10 @@
     "path": "/docs/components/drawer"
   },
   {
-    "title": "Drawer",
+    "head": "Drawer",
+    "title": "Drawer General",
     "component": false,
-    "path": "/docs/components/drawer#drawer"
+    "path": "/docs/components/drawer#general"
   },
   {
     "head": "Drawer",
@@ -867,7 +1038,7 @@
     "head": "Drawer",
     "title": "APIs",
     "component": false,
-    "path": "/docs/components/drawer#api"
+    "path": "/docs/components/drawer#apis"
   },
   {
     "head": "Drawer",
@@ -905,9 +1076,10 @@
     "path": "/docs/components/fieldset"
   },
   {
-    "title": "Fieldset",
+    "head": "Fieldset",
+    "title": "Fieldset General",
     "component": false,
-    "path": "/docs/components/fieldset#fieldset"
+    "path": "/docs/components/fieldset#general"
   },
   {
     "head": "Fieldset",
@@ -935,9 +1107,21 @@
   },
   {
     "head": "Fieldset",
+    "title": "Fieldset Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.props"
+  },
+  {
+    "head": "Fieldset",
     "title": "Fieldset Content Props",
     "component": false,
     "path": "/docs/components/fieldset#fieldset.content.props"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Footer Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.footer.props"
   },
   {
     "head": "Fieldset",
@@ -951,9 +1135,10 @@
     "path": "/docs/components/grid"
   },
   {
-    "title": "Grid",
+    "head": "Grid",
+    "title": "Grid General",
     "component": false,
-    "path": "/docs/components/grid#grid"
+    "path": "/docs/components/grid#general"
   },
   {
     "head": "Grid",
@@ -978,12 +1163,6 @@
     "title": "Grid Auto Width",
     "component": false,
     "path": "/docs/components/grid#auto-width"
-  },
-  {
-    "head": "Grid",
-    "title": "Grid Custom Breakpoints",
-    "component": false,
-    "path": "/docs/components/grid#custom-breakpoints"
   },
   {
     "head": "Grid",
@@ -1039,11 +1218,6 @@
     "path": "/docs/components/icons"
   },
   {
-    "title": "Icons",
-    "component": false,
-    "path": "/docs/components/icons#icons"
-  },
-  {
     "head": "Icons",
     "title": "Icons Import",
     "component": false,
@@ -1079,9 +1253,10 @@
     "path": "/docs/components/image"
   },
   {
-    "title": "Image",
+    "head": "Image",
+    "title": "Image General",
     "component": false,
-    "path": "/docs/components/image#image"
+    "path": "/docs/components/image#general"
   },
   {
     "head": "Image",
@@ -1137,9 +1312,10 @@
     "path": "/docs/components/input"
   },
   {
-    "title": "Input",
+    "head": "Input",
+    "title": "Input General",
     "component": false,
-    "path": "/docs/components/input#input"
+    "path": "/docs/components/input#general"
   },
   {
     "head": "Input",
@@ -1175,25 +1351,31 @@
     "head": "Input",
     "title": "Input Type",
     "component": false,
-    "path": "/docs/components/input#input-type"
+    "path": "/docs/components/input#type"
+  },
+  {
+    "head": "Input",
+    "title": "Input Rounded",
+    "component": false,
+    "path": "/docs/components/input#rounded"
   },
   {
     "head": "Input",
     "title": "Input Icon",
     "component": false,
-    "path": "/docs/components/input#input-icon"
+    "path": "/docs/components/input#icon"
   },
   {
     "head": "Input",
     "title": "Input Clearable",
     "component": false,
-    "path": "/docs/components/input#input-clearable"
+    "path": "/docs/components/input#clearable"
   },
   {
     "head": "Input",
     "title": "Input Password",
     "component": false,
-    "path": "/docs/components/input#input-password"
+    "path": "/docs/components/input#password"
   },
   {
     "head": "Input",
@@ -1243,9 +1425,10 @@
     "path": "/docs/components/keyboard"
   },
   {
-    "title": "Keyboard",
+    "head": "Keyboard",
+    "title": "Keyboard General",
     "component": false,
-    "path": "/docs/components/keyboard#keyboard"
+    "path": "/docs/components/keyboard#general"
   },
   {
     "head": "Keyboard",
@@ -1277,9 +1460,10 @@
     "path": "/docs/components/link"
   },
   {
-    "title": "Link",
+    "head": "Link",
+    "title": "Link General",
     "component": false,
-    "path": "/docs/components/link#link"
+    "path": "/docs/components/link#general"
   },
   {
     "head": "Link",
@@ -1307,9 +1491,9 @@
   },
   {
     "head": "Link",
-    "title": "Link With Next/Link",
+    "title": "Link With the Next.js router",
     "component": false,
-    "path": "/docs/components/link#with-next/link"
+    "path": "/docs/components/link#with-the-next-js-router"
   },
   {
     "head": "Link",
@@ -1329,9 +1513,10 @@
     "path": "/docs/components/loading"
   },
   {
-    "title": "Loading",
+    "head": "Loading",
+    "title": "Loading General",
     "component": false,
-    "path": "/docs/components/loading#loading"
+    "path": "/docs/components/loading#general"
   },
   {
     "head": "Loading",
@@ -1375,15 +1560,16 @@
     "path": "/docs/components/modal"
   },
   {
-    "title": "Modal",
+    "head": "Modal",
+    "title": "Modal General",
     "component": false,
-    "path": "/docs/components/modal#loading"
+    "path": "/docs/components/modal#general"
   },
   {
     "head": "Modal",
     "title": "Modal With useModal",
     "component": false,
-    "path": "/docs/components/modal#with-usemodal"
+    "path": "/docs/components/modal#with-use-modal"
   },
   {
     "head": "Modal",
@@ -1405,7 +1591,7 @@
   },
   {
     "head": "Modal",
-    "title": "Modal Loading",
+    "title": "Modal",
     "component": false,
     "path": "/docs/components/modal#loading"
   },
@@ -1469,15 +1655,10 @@
     "path": "/docs/components/note"
   },
   {
-    "title": "Note",
-    "component": false,
-    "path": "/docs/components/note#note"
-  },
-  {
     "head": "Note",
-    "title": "Note With useModal",
+    "title": "Note General",
     "component": false,
-    "path": "/docs/components/note#with-usemodal"
+    "path": "/docs/components/note#general"
   },
   {
     "head": "Note",
@@ -1527,15 +1708,22 @@
     "path": "/docs/components/page"
   },
   {
-    "title": "Page",
+    "head": "Page",
+    "title": "Page General",
     "component": false,
-    "path": "/docs/components/page#page"
+    "path": "/docs/components/page#general"
   },
   {
     "head": "Page",
     "title": "Page Content",
     "component": false,
     "path": "/docs/components/page#content"
+  },
+  {
+    "head": "Page",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/page#apis"
   },
   {
     "head": "Page",
@@ -1573,9 +1761,10 @@
     "path": "/docs/components/pagination"
   },
   {
-    "title": "Pagination",
+    "head": "Pagination",
+    "title": "Pagination General",
     "component": false,
-    "path": "/docs/components/pagination#pagination"
+    "path": "/docs/components/pagination#general"
   },
   {
     "head": "Pagination",
@@ -1619,9 +1808,10 @@
     "path": "/docs/components/popover"
   },
   {
-    "title": "Popover",
+    "head": "Popover",
+    "title": "Popover General",
     "component": false,
-    "path": "/docs/components/popover#popover"
+    "path": "/docs/components/popover#general"
   },
   {
     "head": "Popover",
@@ -1665,15 +1855,10 @@
     "path": "/docs/components/progress"
   },
   {
-    "title": "Progress",
-    "component": false,
-    "path": "/docs/components/progress#progress"
-  },
-  {
     "head": "Progress",
-    "title": "Progress Preset Item",
+    "title": "Progress General",
     "component": false,
-    "path": "/docs/components/progress#preset-item"
+    "path": "/docs/components/progress#general"
   },
   {
     "head": "Progress",
@@ -1717,9 +1902,10 @@
     "path": "/docs/components/radio"
   },
   {
-    "title": "Radio",
+    "head": "Radio",
+    "title": "Radio General",
     "component": false,
-    "path": "/docs/components/radio#radio"
+    "path": "/docs/components/radio#general"
   },
   {
     "head": "Radio",
@@ -1787,9 +1973,10 @@
     "path": "/docs/components/rating"
   },
   {
-    "title": "Rating",
+    "head": "Rating",
+    "title": "Rating Default",
     "component": false,
-    "path": "/docs/components/rating#rating"
+    "path": "/docs/components/rating#default"
   },
   {
     "head": "Rating",
@@ -1845,9 +2032,34 @@
     "path": "/docs/components/row"
   },
   {
-    "title": "Row",
+    "head": "Row",
+    "title": "Row General",
     "component": false,
-    "path": "/docs/components/row#row"
+    "path": "/docs/components/row#general"
+  },
+  {
+    "head": "Row",
+    "title": "Row Justify",
+    "component": false,
+    "path": "/docs/components/row#justify"
+  },
+  {
+    "head": "Row",
+    "title": "Row Align",
+    "component": false,
+    "path": "/docs/components/row#align"
+  },
+  {
+    "head": "Row",
+    "title": "Row Gap",
+    "component": false,
+    "path": "/docs/components/row#gap"
+  },
+  {
+    "head": "Row",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/row#apis"
   },
   {
     "head": "Row",
@@ -1856,14 +2068,56 @@
     "path": "/docs/components/row#row.props"
   },
   {
+    "head": "Row",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/row#ref"
+  },
+  {
+    "title": "Section",
+    "component": true,
+    "path": "/docs/components/section"
+  },
+  {
+    "head": "Section",
+    "title": "Section General",
+    "component": false,
+    "path": "/docs/components/section#general"
+  },
+  {
+    "head": "Section",
+    "title": "Section Background",
+    "component": false,
+    "path": "/docs/components/section#background"
+  },
+  {
+    "head": "Section",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/section#apis"
+  },
+  {
+    "head": "Section",
+    "title": "Section Props",
+    "component": false,
+    "path": "/docs/components/section#section.props"
+  },
+  {
+    "head": "Section",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/section#ref"
+  },
+  {
     "title": "Select",
     "component": true,
     "path": "/docs/components/select"
   },
   {
-    "title": "Select",
+    "head": "Select",
+    "title": "Select General",
     "component": false,
-    "path": "/docs/components/select#select"
+    "path": "/docs/components/select#general"
   },
   {
     "head": "Select",
@@ -1935,7 +2189,7 @@
     "head": "Select",
     "title": "APIs",
     "component": false,
-    "path": "/docs/components/select#api"
+    "path": "/docs/components/select#apis"
   },
   {
     "head": "Select",
@@ -1962,75 +2216,60 @@
     "path": "/docs/components/select#selecttypes"
   },
   {
-    "title": "Section",
-    "component": true,
-    "path": "/docs/components/section"
-  },
-  {
-    "title": "Section",
-    "component": false,
-    "path": "/docs/components/section#section"
-  },
-  {
-    "head": "Section",
-    "title": "Section Props",
-    "component": false,
-    "path": "/docs/components/section#section.props"
-  },
-  {
     "title": "Slider",
     "component": true,
     "path": "/docs/components/slider"
   },
   {
-    "title": "Slider",
+    "head": "Select",
+    "title": "Select General",
     "component": false,
-    "path": "/docs/components/slider#slider"
+    "path": "/docs/components/slider#general"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Types",
     "component": false,
     "path": "/docs/components/slider#type"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Disabled",
     "component": false,
     "path": "/docs/components/slider#disabled"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Step",
     "component": false,
     "path": "/docs/components/slider#step"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Range",
     "component": false,
     "path": "/docs/components/slider#range"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Event",
     "component": false,
     "path": "/docs/components/slider#event"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/slider#apis"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Slider Props",
     "component": false,
-    "path": "/docs/components/slider#slider-props"
+    "path": "/docs/components/slider#slider.props"
   },
   {
-    "head": "Slider",
+    "head": "Select",
     "title": "Types - Slider",
     "component": false,
     "path": "/docs/components/slider#slidertypes"
@@ -2041,9 +2280,10 @@
     "path": "/docs/components/snippet"
   },
   {
-    "title": "Snippet",
+    "head": "Snippet",
+    "title": "Snippet General",
     "component": false,
-    "path": "/docs/components/snippet#snippet"
+    "path": "/docs/components/snippet#general"
   },
   {
     "head": "Snippet",
@@ -2056,6 +2296,12 @@
     "title": "Snippet Types",
     "component": false,
     "path": "/docs/components/snippet#types"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Rounded",
+    "component": false,
+    "path": "/docs/components/snippet#rounded"
   },
   {
     "head": "Snippet",
@@ -2123,11 +2369,6 @@
     "path": "/docs/components/spacer"
   },
   {
-    "title": "Spacer",
-    "component": false,
-    "path": "/docs/components/spacer#spacer"
-  },
-  {
     "head": "Spacer",
     "title": "Spacer Vertical",
     "component": false,
@@ -2157,9 +2398,10 @@
     "path": "/docs/components/spinner"
   },
   {
-    "title": "Spinner",
+    "head": "Spinner",
+    "title": "Spinner General",
     "component": false,
-    "path": "/docs/components/spinner#spinner"
+    "path": "/docs/components/spinner#general"
   },
   {
     "head": "Spinner",
@@ -2179,9 +2421,10 @@
     "path": "/docs/components/table"
   },
   {
-    "title": "Table",
+    "head": "Table",
+    "title": "Table General",
     "component": false,
-    "path": "/docs/components/table#table"
+    "path": "/docs/components/table#general"
   },
   {
     "head": "Table",
@@ -2261,9 +2504,10 @@
     "path": "/docs/components/tabs"
   },
   {
-    "title": "Tabs",
+    "head": "Tabs",
+    "title": "Tabs General",
     "component": false,
-    "path": "/docs/components/tabs#tabs"
+    "path": "/docs/components/tabs#general"
   },
   {
     "head": "Tabs",
@@ -2325,9 +2569,10 @@
     "path": "/docs/components/tag"
   },
   {
-    "title": "Tag",
+    "head": "Tag",
+    "title": "Tag General",
     "component": false,
-    "path": "/docs/components/tag#tag"
+    "path": "/docs/components/tag#general"
   },
   {
     "head": "Tag",
@@ -2363,11 +2608,6 @@
     "title": "Text",
     "component": true,
     "path": "/docs/components/text"
-  },
-  {
-    "title": "Text",
-    "component": false,
-    "path": "/docs/components/text#text"
   },
   {
     "head": "Text",
@@ -2435,9 +2675,10 @@
     "path": "/docs/components/textarea"
   },
   {
-    "title": "Textarea",
+    "head": "Textarea",
+    "title": "Textarea General",
     "component": false,
-    "path": "/docs/components/textarea#textarea"
+    "path": "/docs/components/textarea#general"
   },
   {
     "head": "Textarea",
@@ -2461,7 +2702,7 @@
     "head": "Textarea",
     "title": "Textarea With useInput",
     "component": false,
-    "path": "/docs/components/textarea#with-useinput"
+    "path": "/docs/components/textarea#with-use-input"
   },
   {
     "head": "Textarea",
@@ -2505,9 +2746,10 @@
     "path": "/docs/components/toggle"
   },
   {
-    "title": "Toggle",
+    "head": "Toggle",
+    "title": "Toggle General",
     "component": false,
-    "path": "/docs/components/toggle#toggle"
+    "path": "/docs/components/toggle#general"
   },
   {
     "head": "Toggle",
@@ -2557,9 +2799,10 @@
     "path": "/docs/components/tooltip"
   },
   {
-    "title": "Tooltip",
+    "head": "Tooltip",
+    "title": "Tooltip General",
     "component": false,
-    "path": "/docs/components/tooltip#tooltip"
+    "path": "/docs/components/tooltip#general"
   },
   {
     "head": "Tooltip",
@@ -2572,6 +2815,12 @@
     "title": "Tooltip With Components",
     "component": false,
     "path": "/docs/components/tooltip#with-components"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Custom Content",
+    "component": false,
+    "path": "/docs/components/tooltip#custom-content"
   },
   {
     "head": "Tooltip",
@@ -2614,6 +2863,353 @@
     "title": "Placement - Tooltip",
     "component": false,
     "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "title": "useBodyScroll",
+    "component": true,
+    "path": "/docs/hooks/use-body-scroll"
+  },
+  {
+    "head": "useBodyScroll",
+    "title": "useBodyScroll General",
+    "component": false,
+    "path": "/docs/hooks/use-body-scroll#general"
+  },
+  {
+    "head": "useBodyScroll",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-body-scroll#apis"
+  },
+  {
+    "title": "useClasses",
+    "component": true,
+    "path": "/docs/hooks/use-classes"
+  },
+  {
+    "head": "useClasses",
+    "title": "Basic usage",
+    "component": false,
+    "path": "/docs/hooks/use-classes#basic-usage"
+  },
+  {
+    "head": "useClasses",
+    "title": "Parse Object",
+    "component": false,
+    "path": "/docs/hooks/use-classes#parse-object"
+  },
+  {
+    "head": "useClasses",
+    "title": "Boundary Scenes",
+    "component": false,
+    "path": "/docs/hooks/use-classes#boundary-scenes"
+  },
+  {
+    "head": "useClasses",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-classes#apis"
+  },
+  {
+    "title": "useClickAway",
+    "component": true,
+    "path": "/docs/hooks/use-click-away"
+  },
+  {
+    "head": "useClickAway",
+    "title": "useClickAway General",
+    "component": false,
+    "path": "/docs/hooks/use-click-away#general"
+  },
+  {
+    "head": "useClickAway",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-click-away#apis"
+  },
+  {
+    "title": "useClipboard",
+    "component": true,
+    "path": "/docs/hooks/use-clipboard"
+  },
+  {
+    "head": "useClipboard",
+    "title": "useClipboard General",
+    "component": false,
+    "path": "/docs/hooks/use-clipboard#general"
+  },
+  {
+    "head": "useClipboard",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-clipboard#apis"
+  },
+  {
+    "title": "useCurrentState",
+    "component": true,
+    "path": "/docs/hooks/use-current-state"
+  },
+  {
+    "head": "useCurrentState",
+    "title": "useCurrentState General",
+    "component": false,
+    "path": "/docs/hooks/use-current-state#general"
+  },
+  {
+    "head": "useCurrentState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-current-state#apis"
+  },
+  {
+    "title": "useInput",
+    "component": true,
+    "path": "/docs/hooks/use-input"
+  },
+  {
+    "head": "useInput",
+    "title": "useInput General",
+    "component": false,
+    "path": "/docs/hooks/use-input#general"
+  },
+  {
+    "head": "useInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-input#apis"
+  },
+  {
+    "head": "useInput",
+    "title": "Keyboard Options",
+    "component": false,
+    "path": "/docs/hooks/use-input#keyboardoptions"
+  },
+  {
+    "title": "useKeyboard",
+    "component": true,
+    "path": "/docs/hooks/use-keyboard"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "useKeyboard General",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#general"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "useKeyboard Element Event",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#element-event"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#apis"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "Keyboard Options",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#keyboardoptions"
+  },
+  {
+    "title": "useMediaQuery",
+    "component": true,
+    "path": "/docs/hooks/use-media-query"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "useMediaQuery General",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#general"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "useMediaQuery Match Type",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#match-type"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#apis"
+  },
+  {
+    "title": "useModal",
+    "component": true,
+    "path": "/docs/hooks/use-modal"
+  },
+  {
+    "head": "useModal",
+    "title": "useModal General",
+    "component": false,
+    "path": "/docs/hooks/use-modal#general"
+  },
+  {
+    "head": "useModal",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-modal#apis"
+  },
+  {
+    "title": "useScale",
+    "component": true,
+    "path": "/docs/hooks/use-scale"
+  },
+  {
+    "head": "useScale",
+    "title": "Scale the width",
+    "component": false,
+    "path": "/docs/hooks/use-scale#scale-the-width"
+  },
+  {
+    "head": "useScale",
+    "title": "Unconventional defaults",
+    "component": false,
+    "path": "/docs/hooks/use-scale#unconventional-defaults"
+  },
+  {
+    "head": "useScale",
+    "title": "Get native props",
+    "component": false,
+    "path": "/docs/hooks/use-scale#get-native-props"
+  },
+  {
+    "head": "useScale",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scale#apis"
+  },
+  {
+    "head": "useScale",
+    "title": "withScale",
+    "component": false,
+    "path": "/docs/hooks/use-scale#withscale"
+  },
+  {
+    "title": "useTabs",
+    "component": true,
+    "path": "/docs/hooks/use-tabs"
+  },
+  {
+    "head": "useTabs",
+    "title": "useTabs General",
+    "component": false,
+    "path": "/docs/hooks/use-tabs#general"
+  },
+  {
+    "head": "useTabs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-tabs#apis"
+  },
+  {
+    "title": "useTheme",
+    "component": true,
+    "path": "/docs/hooks/use-theme"
+  },
+  {
+    "head": "useTheme",
+    "title": "useTheme General",
+    "component": false,
+    "path": "/docs/hooks/use-theme#general"
+  },
+  {
+    "head": "useTheme",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-theme#apis"
+  },
+  {
+    "head": "useTheme",
+    "title": "Get preset types",
+    "component": false,
+    "path": "/docs/hooks/use-theme#get-preset-types"
+  },
+  {
+    "title": "useToast",
+    "component": true,
+    "path": "/docs/hooks/use-toast"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast General",
+    "component": false,
+    "path": "/docs/hooks/use-toast#general"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Multiline",
+    "component": false,
+    "path": "/docs/hooks/use-toast#multiline"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Action",
+    "component": false,
+    "path": "/docs/hooks/use-toast#action"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Cancel",
+    "component": false,
+    "path": "/docs/hooks/use-toast#cancel"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast ReactNode",
+    "component": false,
+    "path": "/docs/hooks/use-toast#react-node"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Type",
+    "component": false,
+    "path": "/docs/hooks/use-toast#type"
+  },
+  {
+    "head": "useToast",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-toast#apis"
+  },
+  {
+    "head": "useToast",
+    "title": "useToasts",
+    "component": false,
+    "path": "/docs/hooks/use-toast#usetoasts"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Layout",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastlayout"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Input",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastinput"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Placement",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastplacement"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Action",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastaction"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Types",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toasttypes"
   },
   {
     "title": "About Bolio UI",
@@ -2907,6 +3503,18 @@
   },
   {
     "head": "Getting Started",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/guide/getting-started#apis"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Bolio UIProvider Props",
+    "component": false,
+    "path": "/docs/guide/getting-started#boliouiprovider.props"
+  },
+  {
+    "head": "Getting Started",
     "title": "Community",
     "component": false,
     "path": "/docs/guide/getting-started#community"
@@ -2953,6 +3561,12 @@
   },
   {
     "head": "Page structure",
+    "title": "Page structure General",
+    "component": false,
+    "path": "/docs/guide/page-structure#general"
+  },
+  {
+    "head": "Page structure",
     "title": "Rules that keep it working",
     "component": false,
     "path": "/docs/guide/page-structure#rules-that-keep-it-working"
@@ -2973,106 +3587,5 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/guide/refs-and-accessibility#accessibility"
-  },
-  {
-    "title": "useBodyScroll",
-    "component": true,
-    "path": "/docs/hooks/use-body-scroll"
-  },
-  {
-    "title": "useClasses",
-    "component": true,
-    "path": "/docs/hooks/use-classes"
-  },
-  {
-    "head": "useClasses",
-    "title": "Basic usage",
-    "component": false,
-    "path": "/docs/hooks/use-classes#basic-usage"
-  },
-  {
-    "head": "useClasses",
-    "title": "Parse Object",
-    "component": false,
-    "path": "/docs/hooks/use-classes#parse-object"
-  },
-  {
-    "head": "useClasses",
-    "title": "Boundary Scenes",
-    "component": false,
-    "path": "/docs/hooks/use-classes#boundary-scenes"
-  },
-  {
-    "title": "useClickAway",
-    "component": true,
-    "path": "/docs/hooks/use-click-away"
-  },
-  {
-    "title": "useClipboard",
-    "component": true,
-    "path": "/docs/hooks/use-clipboard"
-  },
-  {
-    "title": "useCurrentState",
-    "component": true,
-    "path": "/docs/hooks/use-current-state"
-  },
-  {
-    "title": "useInput",
-    "component": true,
-    "path": "/docs/hooks/use-input"
-  },
-  {
-    "title": "useKeyboard",
-    "component": true,
-    "path": "/docs/hooks/use-keyboard"
-  },
-  {
-    "title": "useMediaQuery",
-    "component": true,
-    "path": "/docs/hooks/use-media-query"
-  },
-  {
-    "title": "useModal",
-    "component": true,
-    "path": "/docs/hooks/use-modal"
-  },
-  {
-    "title": "useScale",
-    "component": true,
-    "path": "/docs/hooks/use-scale"
-  },
-  {
-    "head": "useScale",
-    "title": "Scale the width",
-    "component": false,
-    "path": "/docs/hooks/use-scale#scale-the-width"
-  },
-  {
-    "head": "useScale",
-    "title": "Unconventional defaults",
-    "component": false,
-    "path": "/docs/hooks/use-scale#unconventional-defaults"
-  },
-  {
-    "head": "useScale",
-    "title": "Get native props",
-    "component": false,
-    "path": "/docs/hooks/use-scale#get-native-props"
-  },
-  {
-    "title": "useTabs",
-    "component": true,
-    "path": "/docs/hooks/use-tabs"
-  },
-  {
-    "title": "useTheme",
-    "component": true,
-    "path": "/docs/hooks/use-theme"
-  },
-  {
-    "title": "useToast",
-    "component": true,
-    "path": "/docs/hooks/use-toast"
   }
 ]

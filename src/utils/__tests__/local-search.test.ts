@@ -33,6 +33,12 @@ describe('searchDocs', () => {
     ).toBe(true)
   })
 
+  it('lists the General and APIs sections of a hook', () => {
+    const paths = searchDocs('clipboard', 8).map((hit) => hit.path)
+    expect(paths).toContain('/docs/hooks/use-clipboard#general')
+    expect(paths).toContain('/docs/hooks/use-clipboard#apis')
+  })
+
   it('ignores case and accents', () => {
     expect(searchDocs('AVATÁR', 8)).toEqual(searchDocs('avatar', 8))
   })
