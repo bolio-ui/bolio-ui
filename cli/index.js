@@ -35,15 +35,19 @@ if (!find(['package.json']))
 const pkg = JSON.parse(read('package.json'))
 const deps = { ...pkg.dependencies, ...pkg.devDependencies }
 
-const coreImport = "import { BolioUIProvider } from '@bolio-ui/core'"
+const coreImport =
+  "import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'"
 const nextImport = "import { StyledJsxRegistry } from '@bolio-ui/core/next'"
-const provider = ['<BolioUIProvider>', '</BolioUIProvider>']
+const provider = ['<BolioUIProvider><CssBaseline />', '</BolioUIProvider>']
 
 const gatsbyBrowser = `import * as React from 'react'
 ${coreImport}
 
 export const wrapRootElement = ({ element }) => (
-  <BolioUIProvider>{element}</BolioUIProvider>
+  <BolioUIProvider>
+    <CssBaseline />
+    {element}
+  </BolioUIProvider>
 )
 `
 
@@ -60,7 +64,7 @@ const getSetup = () => {
         wrapper: hasRegistry
           ? provider
           : [
-              '<StyledJsxRegistry><BolioUIProvider>',
+              '<StyledJsxRegistry><BolioUIProvider><CssBaseline />',
               '</BolioUIProvider></StyledJsxRegistry>'
             ],
         imports: hasRegistry ? [coreImport] : [coreImport, nextImport]
