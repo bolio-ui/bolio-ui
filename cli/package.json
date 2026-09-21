@@ -18,6 +18,12 @@
   "files": [
     "index.js"
   ],
+  "scripts": {
+    "release:next": "yarn publish --tag next --non-interactive"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18"
   }
