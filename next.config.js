@@ -3,6 +3,8 @@
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
+    // Without it MDX 3 ignores the MDXProvider components set in _app
+    providerImportSource: '@mdx-js/react',
     remarkPlugins: ['remark-gfm'],
     rehypePlugins: ['@mapbox/rehype-prism', 'rehype-join-line']
   }

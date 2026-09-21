@@ -8,7 +8,7 @@ export interface Props {
 
 export const virtualAnchorEncode = (text?: string) => {
   if (!text) return undefined
-  return text.toLowerCase().replace(/ /g, '-')
+  return text.trim().toLowerCase().replace(/ /g, '-')
 }
 
 const Anchor: React.FC<React.PropsWithChildren<Props>> = ({
@@ -17,7 +17,9 @@ const Anchor: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   const theme = useTheme()
   const ref = useRef<HTMLAnchorElement>(null)
-  const [id, setId] = useState<string | undefined>()
+  const [id, setId] = useState<string | undefined>(
+    typeof children === 'string' ? virtualAnchorEncode(children) : undefined
+  )
 
   useEffect(() => {
     if (!ref.current) return

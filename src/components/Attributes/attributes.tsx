@@ -3,7 +3,6 @@ import { Spacer, Link } from 'core'
 import Anchor from '../Anchor'
 import AttributesTitle from './attributes-title'
 import AttributesTable from './attributes-table'
-import { kebabCase, isString } from 'lodash'
 import { GITHUB_URL } from 'src/utils/constants'
 
 export interface AttributesProps {
@@ -25,11 +24,7 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
       return (
         <>
           <Spacer h={3} />
-          <h3
-            id={`${isString('APIs') && kebabCase('APIs')}`}
-            data-name={'APIs'}
-            className="linked-heading"
-          >
+          <h3 id="apis" data-name={'APIs'} className="linked-heading">
             <Anchor>APIs</Anchor>
           </h3>
           <Spacer h={1.5} />
