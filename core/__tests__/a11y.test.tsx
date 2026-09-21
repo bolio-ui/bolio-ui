@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import axe from 'axe-core'
 import {
   BolioUIProvider,
+  Code,
   Collapse,
   Drawer,
   Loading,
@@ -63,6 +64,46 @@ describe('semantics', () => {
       'true'
     )
     expect(screen.getByRole('tabpanel')).toHaveTextContent('Two body')
+  })
+
+  it('Code tabs expose tablist, tab and tabpanel and move with the arrow keys', () => {
+    const Tabbed = () => {
+      const [active, setActive] = React.useState(0)
+      const codes = ['first code', 'second code']
+      return (
+        <Code
+          block
+          tabs={['a.js', 'b.js']}
+          activeTab={active}
+          onTabChange={setActive}
+        >
+          {codes[active]}
+        </Code>
+      )
+    }
+    wrap(<Tabbed />)
+    const [a, b] = screen.getAllByRole('tab')
+    expect(a).toHaveAttribute('aria-selected', 'true')
+    expect(b).toHaveAttribute('tabindex', '-1')
+    expect(screen.getByRole('tabpanel')).toHaveTextContent('first code')
+    expect(screen.getByRole('tabpanel')).toHaveAttribute(
+      'aria-labelledby',
+      a.id
+    )
+
+    fireEvent.keyDown(a, { key: 'ArrowRight' })
+    expect(screen.getAllByRole('tab')[1]).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+    expect(screen.getByRole('tabpanel')).toHaveTextContent('second code')
+    expect(screen.getAllByRole('tab')[1]).toHaveFocus()
+
+    fireEvent.keyDown(screen.getAllByRole('tab')[1], { key: 'ArrowRight' })
+    expect(screen.getAllByRole('tab')[0]).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
   })
 
   it('Slider exposes its value and answers to the keyboard', () => {

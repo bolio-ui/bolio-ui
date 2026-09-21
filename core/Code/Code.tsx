@@ -8,6 +8,9 @@ interface Props {
   className?: string
   name?: string
   classic?: boolean
+  tabs?: string[]
+  activeTab?: number
+  onTabChange?: (index: number) => void
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
@@ -24,24 +27,50 @@ const CodeComponent = React.forwardRef<
       className = '',
       name = '',
       classic = false,
+      tabs = [],
+      activeTab = 0,
+      onTabChange,
       ...props
     },
     ref
   ) => {
     const { SCALES } = useScale()
     const theme = useTheme()
+    const id = React.useId()
+    const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([])
 
-    const { background, border } = useMemo(() => {
+    const { background, border, tab, bar } = useMemo(() => {
       if (!classic)
         return {
-          border: theme.palette.accents_1,
-          background: addColorAlpha(theme.palette.accents_1, 0.75)
+          border: theme.palette.accents_2,
+          background: addColorAlpha(theme.palette.accents_1, 0.75),
+          tab: theme.palette.accents_1,
+          bar: 'transparent'
         }
       return {
         border: theme.palette.accents_2,
-        background: theme.palette.background
+        background: theme.palette.background,
+        tab: theme.palette.background,
+        // the classic frame has no fill, so the bar takes the tone of the default one
+        bar: addColorAlpha(theme.palette.accents_1, 0.75)
       }
     }, [classic, theme.palette])
+
+    const hasTabs = tabs.length > 0
+
+    const moveTab = (event: React.KeyboardEvent, index: number) => {
+      const last = tabs.length - 1
+      const target = {
+        ArrowRight: index === last ? 0 : index + 1,
+        ArrowLeft: index === 0 ? last : index - 1,
+        Home: 0,
+        End: last
+      }[event.key]
+      if (target === undefined) return
+      event.preventDefault()
+      onTabChange?.(target)
+      tabRefs.current[target]?.focus()
+    }
 
     if (!block)
       return (
@@ -52,12 +81,46 @@ const CodeComponent = React.forwardRef<
 
     return (
       <div ref={ref as React.Ref<HTMLDivElement>} className="pre">
-        {name && (
+        {(hasTabs || name) && (
           <header>
-            <div className="name">{name}</div>
+            {hasTabs ? (
+              <div role="tablist" className="tabs">
+                {tabs.map((label, index) => (
+                  <button
+                    key={`${label}-${index}`}
+                    ref={(element) => {
+                      tabRefs.current[index] = element
+                    }}
+                    type="button"
+                    role="tab"
+                    id={`${id}-tab-${index}`}
+                    aria-selected={index === activeTab}
+                    aria-controls={`${id}-panel`}
+                    tabIndex={index === activeTab ? 0 : -1}
+                    className={`name tab${
+                      index === activeTab ? ' active' : ''
+                    }`}
+                    onClick={() => onTabChange?.(index)}
+                    onKeyDown={(event) => moveTab(event, index)}
+                  >
+                    <span>{label}</span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="name active">{name}</div>
+            )}
           </header>
         )}
-        <pre className={className} {...props}>
+        <pre
+          className={className}
+          {...(hasTabs && {
+            role: 'tabpanel',
+            id: `${id}-panel`,
+            'aria-labelledby': `${id}-tab-${activeTab}`
+          })}
+          {...props}
+        >
           {children}
         </pre>
         <style jsx>{`
@@ -71,11 +134,13 @@ const CodeComponent = React.forwardRef<
               ${SCALES.ml(0)};
             border-radius: ${theme.layout.radius};
             background-color: ${background};
+            overflow: hidden;
           }
           pre {
             max-width: 100%;
             font-size: inherit;
             border: none;
+            border-radius: 0;
             margin: 0;
             line-height: 1.5em;
             padding: ${SCALES.pt(1.1)} ${SCALES.pr(1)} ${SCALES.pb(1.1)}
@@ -92,13 +157,25 @@ const CodeComponent = React.forwardRef<
             height: auto;
             width: 100%;
             display: flex;
-            justify-content: space-between;
-            border-radius: ${theme.layout.radius};
-            background-color: transparent;
+            border-bottom: 1px solid ${theme.palette.accents_2};
+            background-color: ${bar};
+          }
+          .tabs {
+            display: flex;
+            max-width: 100%;
+          }
+          .tab {
+            min-width: 0;
+          }
+          .tab span {
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .name {
-            border: 1px solid ${theme.palette.accents_2};
-            background-color: ${theme.palette.accents_2};
+            margin-bottom: -1px;
+            border: none;
+            border-right: 1px solid ${theme.palette.accents_2};
+            background-color: transparent;
             color: ${theme.palette.accents_5};
             height: auto;
             line-height: 1.35em;
@@ -108,8 +185,22 @@ const CodeComponent = React.forwardRef<
             padding: ${SCALES.font(0.32)} ${SCALES.font(0.5)}
               ${SCALES.font(0.32)} ${SCALES.font(0.5)};
             width: auto;
-            border-top-left-radius: calc(${theme.layout.radius} - 1px);
-            border-bottom-right-radius: ${theme.layout.radius};
+            white-space: nowrap;
+          }
+          .name.active {
+            background-color: ${tab};
+          }
+          .tab {
+            font-family: inherit;
+            cursor: pointer;
+          }
+          .tab:hover,
+          .tab.active {
+            color: ${theme.palette.foreground};
+          }
+          .tab:focus-visible {
+            outline: 2px solid ${theme.palette.accents_5};
+            outline-offset: -2px;
           }
         `}</style>
       </div>

@@ -50,12 +50,12 @@ Show source code in a standardized way. Want to display shell code snippets? try
 <Playground
   title="Width"
   desc="Specify width manually, or other styles."
-  scope={{ Code, WaitTime, Grid }}
+  scope={{ Code, Grid }}
   code={`
 <Grid.Container gap={2}>
-  <Grid>
+  <Grid xs={24}>
     <Code block width="50%" my={0}>
-      <WaitTime />
+      {'yarn add @bolio-ui/core'}
     </Code>
   </Grid>
 </Grid.Container>
@@ -78,6 +78,36 @@ Show source code in a standardized way. Want to display shell code snippets? try
 />
 
 <Playground
+  title="Tabs"
+  desc="Show more than one code in the same block. Set the names in `tabs` and change the code when `onTabChange` is called."
+  scope={{ Code, Grid }}
+  code={`
+() => {
+  const [active, setActive] = React.useState(0)
+  const codes = [
+    "import { Button } from '@bolio-ui/core'",
+    "import { Text } from '@bolio-ui/core'"
+  ]
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Code
+          block
+          tabs={['/src/button.js', '/src/text.js']}
+          activeTab={active}
+          onTabChange={setActive}
+          my={0}
+        >
+          {codes[active]}
+        </Code>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
   title="Classic Style"
   desc="The classic design style with a line border instead of a background."
   scope={{ Code, WaitTime, Grid }}
@@ -95,12 +125,15 @@ Show source code in a standardized way. Want to display shell code snippets? try
 <Attributes edit="/pages/docs/components/code.mdx">
 <Attributes.Title>Code.Props</Attributes.Title>
 
-| Attribute   | Description                                 | Type             | Accepted values    | Default |
-| ----------- | ------------------------------------------- | ---------------- | ------------------ | ------- |
-| **block**   | show code in `pre`                          | `boolean`        | -                  | `false` |
-| **name**    | text displayed at the top of the code block | `string`         | -                  | -       |
-| **classic** | display with classic style                  | `boolean`        | -                  | `false` |
-| ...         | native props                                | `HTMLAttributes` | `'className', ...` | -       |
+| Attribute       | Description                                 | Type                      | Accepted values    | Default |
+| --------------- | ------------------------------------------- | ------------------------- | ------------------ | ------- |
+| **block**       | show code in `pre`                          | `boolean`                 | -                  | `false` |
+| **name**        | text displayed at the top of the code block | `string`                  | -                  | -       |
+| **classic**     | display with classic style                  | `boolean`                 | -                  | `false` |
+| **tabs**        | names of the tabs, in place of `name`       | `string[]`                | -                  | `[]`    |
+| **activeTab**   | index of the active tab                     | `number`                  | -                  | `0`     |
+| **onTabChange** | called with the index of the chosen tab     | `(index: number) => void` | -                  | -       |
+| ...             | native props                                | `HTMLAttributes`          | `'className', ...` | -       |
 
 </Attributes>
 

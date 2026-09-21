@@ -1,3 +1,4 @@
+import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import Code from '.'
 import Text from '../Text'
@@ -51,6 +52,29 @@ export const Name: Story = () => (
     </Grid>
   </Grid.Container>
 )
+
+export const Tabs: Story = () => {
+  const [active, setActive] = React.useState(0)
+  const codes = [
+    "import { Button } from '@bolio-ui/core'",
+    "import { Text } from '@bolio-ui/core'"
+  ]
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Code
+          block
+          tabs={['/src/button.js', '/src/text.js']}
+          activeTab={active}
+          onTabChange={setActive}
+          my={0}
+        >
+          {codes[active]}
+        </Code>
+      </Grid>
+    </Grid.Container>
+  )
+}
 
 export const Classic: Story = () => (
   <Grid.Container gap={2}>

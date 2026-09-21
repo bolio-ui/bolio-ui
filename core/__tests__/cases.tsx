@@ -93,6 +93,14 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Checkbox', () => <Checkbox>Check</Checkbox>],
   ['Code', () => <Code>yarn add</Code>],
   [
+    'Code with tabs',
+    () => (
+      <Code block tabs={['app.js', 'main.js']}>
+        yarn add
+      </Code>
+    )
+  ],
+  [
     'Collapse',
     () => (
       <Collapse title="Title" subtitle="Sub">

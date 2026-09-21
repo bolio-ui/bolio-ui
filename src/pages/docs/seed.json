@@ -608,6 +608,12 @@
   },
   {
     "head": "Code",
+    "title": "Code Tabs",
+    "component": false,
+    "path": "/docs/components/code#tabs"
+  },
+  {
+    "head": "Code",
     "title": "Code Classic Style",
     "component": false,
     "path": "/docs/components/code#classic-style"
