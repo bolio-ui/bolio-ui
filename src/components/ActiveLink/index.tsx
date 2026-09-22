@@ -26,7 +26,11 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
         color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
         // bold by style: the b prop adds a second element that repeats the margins
         fontWeight: isActive ? 'bold' : undefined,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        // Text is a <p>, a block element: without this the link area (and its
+        // hover state) stretches to the full row instead of hugging the text.
+        display: 'inline-block',
+        width: 'fit-content'
       }}
     >
       {text}
