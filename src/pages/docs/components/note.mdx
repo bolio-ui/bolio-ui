@@ -134,10 +134,12 @@ Display text that requires attention or provides additional information.
 
 | Attribute  | Description               | Type                 | Accepted values          | Default   |
 | ---------- | ------------------------- | -------------------- | ------------------------ | --------- |
-| **type**   | note type                 | `NoteTypes`          | [NoteTypes](#nodetypes)  | `default` |
-| **label**  | show label or custom text | `boolean` / `string` | -                        | -         |
-| **filled** | fill color                | `boolean`            | -                        | `false`   |
-| ...        | native props              | `HTMLAttributes`     | `'id', 'className', ...` | -         |
+| **type**   | note type                        | `NoteTypes`           | [NoteTypes](#nodetypes)  | `default` |
+| **label**  | show label or custom text        | `boolean` / `string`  | -                        | -         |
+| **filled** | filled variant: fill color       | `boolean`             | -                        | `false`   |
+| **light**  | light variant: tinted background | `boolean`             | -                        | `false`   |
+| **subtle** | subtle variant: no border        | `boolean`             | -                        | `false`   |
+| ...        | native props                     | `HTMLAttributes`      | `'id', 'className', ...` | -         |
 
 <Attributes.Title>NoteTypes</Attributes.Title>
 

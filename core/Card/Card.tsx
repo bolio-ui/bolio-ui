@@ -14,6 +14,9 @@ interface Props {
   rounded?: boolean
   bordered?: boolean
   shadow?: boolean
+  filled?: boolean
+  ghost?: boolean
+  subtle?: boolean
   className?: string
   type?: CardTypes
 }
@@ -23,6 +26,9 @@ const defaultProps = {
   hoverable: false,
   bordered: false,
   shadow: false,
+  filled: false,
+  ghost: false,
+  subtle: false,
   className: ''
 }
 
@@ -41,6 +47,9 @@ const CardComponent = React.forwardRef<
       bordered,
       className,
       shadow,
+      filled,
+      ghost,
+      subtle,
       type = 'default' as CardTypes,
       ...props
     },
@@ -55,9 +64,19 @@ const CardComponent = React.forwardRef<
     }, [hoverable, shadow, theme.expressiveness])
 
     const { color, bgColor, borderColor } = useMemo(
-      () => getStyles(type, theme.palette, shadow),
-      [type, theme.palette, shadow]
+      () =>
+        getStyles(type, theme.palette, {
+          isShadow: shadow,
+          filled,
+          ghost,
+          subtle
+        }),
+      [type, theme.palette, shadow, filled, ghost, subtle]
     )
+
+    // Outline has no meaning without a visible border, so `ghost` always
+    // shows one even if `bordered` wasn't explicitly set.
+    const showBorder = bordered || ghost
 
     const [withoutFooterChildren, footerChildren] = pickChild(
       children,
@@ -87,7 +106,7 @@ const CardComponent = React.forwardRef<
             box-sizing: border-box;
             color: ${color};
             background-color: ${bgColor};
-            border: ${bordered ? '1px solid' + borderColor : 'none'};
+            border: ${showBorder ? '1px solid' + borderColor : 'none'};
             width: ${SCALES.width(1, 'auto')};
             height: ${SCALES.height(1, 'auto')};
             padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}

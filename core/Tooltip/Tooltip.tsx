@@ -21,6 +21,9 @@ export type TooltipPlacement = Placement
 interface Props {
   text?: string | React.ReactNode
   type?: TooltipTypes
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   placement?: TooltipPlacement
   visible?: boolean
   initialVisible?: boolean
@@ -53,6 +56,9 @@ const TooltipComponent = React.forwardRef<
       leaveDelay = 150,
       trigger = 'hover' as TooltipTriggers,
       type = 'default' as TooltipTypes,
+      light = false,
+      ghost = false,
+      subtle = false,
       className = '',
       onVisibleChange = (() => {}) as TooltipOnVisibleChange,
       hideArrow = false,
@@ -79,6 +85,9 @@ const TooltipComponent = React.forwardRef<
 
     const contentProps = {
       type,
+      light,
+      ghost,
+      subtle,
       visible,
       offset,
       placement,

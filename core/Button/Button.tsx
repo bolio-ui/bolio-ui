@@ -23,6 +23,7 @@ import useClasses from '../use-classes'
 interface Props {
   type?: ButtonTypes
   ghost?: boolean
+  subtle?: boolean
   rounded?: boolean
   loading?: boolean
   shadow?: boolean
@@ -40,6 +41,7 @@ const defaultProps = {
   type: 'default' as ButtonTypes,
   htmlType: 'button' as React.ButtonHTMLAttributes<unknown>['type'],
   ghost: false,
+  subtle: false,
   rounded: false,
   loading: false,
   shadow: false,
@@ -75,6 +77,7 @@ const ButtonComponent = React.forwardRef<
     loading,
     shadow,
     ghost,
+    subtle,
     rounded,
     effect,
     onClick,

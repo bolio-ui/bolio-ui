@@ -4,29 +4,45 @@ import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type BadgeTypes = NormalTypes
 
 interface Props {
   type?: BadgeTypes
   dot?: boolean
+  ghost?: boolean
+  light?: boolean
+  subtle?: boolean
   className?: string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type BadgeProps = Props & NativeAttrs
 
-const getBgColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
-  const colors: { [key in NormalTypes]: string } = {
-    default: palette.accents_2,
-    secondary: palette.secondary,
-    primary: palette.primary,
-    success: palette.success,
-    warning: palette.warning,
-    error: palette.error,
-    info: palette.info
+export type BadgeColors = { bg: string; border: string; color: string }
+
+const getColors = (
+  type: BadgeTypes,
+  palette: BolioUIThemesPalette,
+  { ghost, light, subtle }: { ghost: boolean; light: boolean; subtle: boolean }
+): BadgeColors => {
+  if (isSemanticColorType(type)) {
+    const variant = subtle
+      ? 'subtle'
+      : light
+      ? 'light'
+      : ghost
+      ? 'outline'
+      : 'filled'
+    return getVariantColors(palette, type, variant)
   }
-  return colors[type]
+  // 'default' has no semantic color: a plain neutral chip either way.
+  return {
+    bg: palette.accents_2,
+    border: palette.accents_2,
+    color: palette.foreground
+  }
 }
 
 const BadgeComponent = React.forwardRef<
@@ -39,6 +55,9 @@ const BadgeComponent = React.forwardRef<
       className = '',
       children,
       dot = false,
+      ghost = false,
+      light = false,
+      subtle = false,
       ...props
     },
     ref
@@ -46,15 +65,10 @@ const BadgeComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
 
-    const bg = useMemo(
-      () => getBgColor(type, theme.palette),
-      [type, theme.palette]
+    const { bg, border, color } = useMemo(
+      () => getColors(type, theme.palette, { ghost, light, subtle }),
+      [type, theme.palette, ghost, light, subtle]
     )
-
-    const color = useMemo(() => {
-      if (!type || type === 'default') return theme.palette.foreground
-      return '#FFFFFF'
-    }, [type, theme.palette.foreground])
 
     const classes = useClasses('badge', { dot }, className)
 
@@ -64,13 +78,14 @@ const BadgeComponent = React.forwardRef<
         <style jsx>{`
           .badge {
             display: inline-block;
+            box-sizing: border-box;
             border-radius: 16px;
             font-variant: tabular-nums;
             line-height: 1;
             vertical-align: middle;
             background-color: ${bg};
             color: ${color};
-            border: 0;
+            border: 1px solid ${border};
             font-size: ${SCALES.font(0.875)};
             font-weight: bold;
             text-transform: none;

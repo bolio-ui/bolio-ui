@@ -3,11 +3,14 @@ import useTheme from '../use-theme'
 import { SnippetTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type TagTypes = SnippetTypes
 interface Props {
   type?: TagTypes
   invert?: boolean
+  light?: boolean
+  subtle?: boolean
   className?: string
 }
 
@@ -23,31 +26,32 @@ export type TagColors = {
 const getColors = (
   type: TagTypes,
   palette: BolioUIThemesPalette,
-  invert: boolean
-) => {
+  {
+    invert,
+    light,
+    subtle
+  }: { invert: boolean; light: boolean; subtle: boolean }
+): TagColors => {
+  // The 4 standard variants (outline is the default, invert is "filled")
+  // only make sense for the 6 semantic colors.
+  if (isSemanticColorType(type)) {
+    const variant = subtle
+      ? 'subtle'
+      : light
+      ? 'light'
+      : invert
+      ? 'filled'
+      : 'outline'
+    const { bg, border, color } = getVariantColors(palette, type, variant)
+    return { color, bgColor: bg, borderColor: border }
+  }
+
   const colors: {
-    [key in TagTypes]: Pick<TagColors, 'color'> & Partial<TagColors>
+    [key in 'default' | 'dark' | 'lite']: Pick<TagColors, 'color'> &
+      Partial<TagColors>
   } = {
     default: {
       color: palette.foreground
-    },
-    primary: {
-      color: palette.primary
-    },
-    secondary: {
-      color: palette.secondary
-    },
-    success: {
-      color: palette.success
-    },
-    warning: {
-      color: palette.warning
-    },
-    error: {
-      color: palette.error
-    },
-    info: {
-      color: palette.info
     },
     dark: {
       color: palette.background,
@@ -59,11 +63,12 @@ const getColors = (
     }
   }
   const hideBorder = invert || type === 'lite'
+  const key = type as 'default' | 'dark' | 'lite'
 
   const cardStyle = {
-    ...colors[type],
-    bgColor: colors[type].bgColor || palette.background,
-    borderColor: hideBorder ? 'transparent' : colors[type].color
+    ...colors[key],
+    bgColor: colors[key].bgColor || palette.background,
+    borderColor: hideBorder ? 'transparent' : colors[key].color
   }
 
   return !invert
@@ -85,6 +90,8 @@ const TagComponent = React.forwardRef<
       children,
       className = '',
       invert = false,
+      light = false,
+      subtle = false,
       ...props
     },
     ref
@@ -92,8 +99,8 @@ const TagComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const { color, bgColor, borderColor } = useMemo(
-      () => getColors(type, theme.palette, invert),
-      [type, theme.palette, invert]
+      () => getColors(type, theme.palette, { invert, light, subtle }),
+      [type, theme.palette, invert, light, subtle]
     )
 
     return (
