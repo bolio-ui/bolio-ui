@@ -9,6 +9,7 @@ import { KBarWrapper as KBarProvider } from 'src/components'
 import { MDXProvider } from '@mdx-js/react'
 import type { MDXComponents } from 'mdx/types'
 import { HybridCode, HybridLink, HybridLinkHeading } from 'src/components'
+import { DocsLayout } from 'src/templates/Docs'
 import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config'
@@ -18,6 +19,10 @@ import * as gtag from 'src/utils/gtag'
 function App({ Component, pageProps }: AppProps) {
   const theme = useTheme()
   const router = useRouter()
+
+  // DocsLayout is rendered here, outside Component, so it keeps its own
+  // identity across navigations instead of being recreated by every page.
+  const isDocsRoute = router.pathname.startsWith('/docs/')
 
   const [themeType, setThemeType] = useState<ThemeType>('dark')
 
@@ -97,7 +102,13 @@ function App({ Component, pageProps }: AppProps) {
                 } as unknown as MDXComponents
               }
             >
-              <Component {...pageProps} />
+              {isDocsRoute ? (
+                <DocsLayout>
+                  <Component {...pageProps} />
+                </DocsLayout>
+              ) : (
+                <Component {...pageProps} />
+              )}
             </MDXProvider>
           </KBarProvider>
         </SettingsContext.Provider>
