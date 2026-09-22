@@ -85,6 +85,11 @@ export const menuMobile = [
             name: 'Customize Themes',
             url: '/docs/guide/customize-themes',
             group: 'Theme'
+          },
+          {
+            name: 'Theme Generator',
+            url: '/theme-generator',
+            group: 'Theme'
           }
         ]
       }
