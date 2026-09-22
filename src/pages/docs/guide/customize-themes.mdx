@@ -1,5 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Spacer, Tabs, Snippet } from 'core'
+import { ThemeGenerator } from 'src/components'
 
 export const meta = {
   title: 'Customize Themes',
@@ -17,6 +18,17 @@ export const meta = {
 
 **Bolio UI** now offers support for a variety of themes, and it is incredibly easy to create or inherit modifications,
 without the need for third-party styles or configurations. As a basic choice, there are two themes available: `light` and `dark`.
+
+<Spacer h={2} />
+
+### Theme Generator
+
+Not sure which colors to pick? Try them below. Bolio UI derives the shades it actually uses
+(light, lighter and dark) from a primary and a secondary color, and gives you the code to drop
+into `Themes.createFromLight`. For the full version, with a live preview of every `Button`
+variant in light and dark, open the [Theme Generator](/theme-generator) page.
+
+<ThemeGenerator compact />
 
 <Spacer h={2} />
 

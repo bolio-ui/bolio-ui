@@ -89,6 +89,10 @@ const Navigation: React.FC = () => {
                             label="Hooks"
                             value="/docs/hooks/use-body-scroll"
                           />
+                          <Tabs.Item
+                            label="Theme Generator"
+                            value="/theme-generator"
+                          />
                         </Tabs>
                       </div>
                     </div>

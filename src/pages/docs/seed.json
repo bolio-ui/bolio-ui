@@ -201,6 +201,12 @@
   },
   {
     "head": "Button",
+    "title": "Button Subtle",
+    "component": false,
+    "path": "/docs/components/button#subtle"
+  },
+  {
+    "head": "Button",
     "title": "Button Rounded",
     "component": false,
     "path": "/docs/components/button#rounded"
@@ -3424,6 +3430,12 @@
     "title": "Usage",
     "component": false,
     "path": "/docs/guide/customize-themes#usage"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Theme Generator",
+    "component": false,
+    "path": "/docs/guide/customize-themes#theme-generator"
   },
   {
     "head": "Customize Themes",

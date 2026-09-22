@@ -71,7 +71,7 @@ const CheckboxComponent = React.forwardRef<
       }, [selfChecked, value, values])
     }
 
-    const { fill, bg } = useMemo(
+    const fill = useMemo(
       () => getColors(theme.palette, type),
       [theme.palette, type]
     )
@@ -104,12 +104,7 @@ const CheckboxComponent = React.forwardRef<
 
     return (
       <label className={classes}>
-        <CheckboxIcon
-          fill={fill}
-          bg={bg}
-          disabled={isDisabled}
-          checked={selfChecked}
-        />
+        <CheckboxIcon fill={fill} disabled={isDisabled} checked={selfChecked} />
         <input
           ref={ref}
           type="checkbox"

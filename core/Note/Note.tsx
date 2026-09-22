@@ -4,12 +4,15 @@ import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemes } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type NoteTypes = NormalTypes
 interface Props {
   type?: NoteTypes
   label?: string | boolean
   filled?: boolean
+  light?: boolean
+  subtle?: boolean
   className?: string
 }
 
@@ -18,32 +21,34 @@ export type NoteProps = Props & NativeAttrs
 
 const getStatusColor = (
   type: NoteTypes,
-  filled: boolean,
+  {
+    filled,
+    light,
+    subtle
+  }: { filled: boolean; light: boolean; subtle: boolean },
   theme: BolioUIThemes
 ) => {
-  const colors: { [key in NoteTypes]?: string } = {
-    default: theme.palette.accents_6,
-    primary: theme.palette.primary,
-    secondary: theme.palette.secondary,
-    success: theme.palette.success,
-    warning: theme.palette.warning,
-    error: theme.palette.error,
-    info: theme.palette.info
+  if (isSemanticColorType(type)) {
+    const variant = subtle
+      ? 'subtle'
+      : light
+      ? 'light'
+      : filled
+      ? 'filled'
+      : 'outline'
+    const { bg, border, color } = getVariantColors(theme.palette, type, variant)
+    return { color, borderColor: border, bgColor: bg }
   }
-  const statusColor = colors[type]
 
+  // 'default' has no semantic color: a neutral gray plays that role instead.
+  const neutral = theme.palette.accents_6
   if (!filled)
     return {
-      color: statusColor || theme.palette.foreground,
-      borderColor: statusColor || theme.palette.border,
+      color: neutral,
+      borderColor: neutral,
       bgColor: theme.palette.background
     }
-  const filledColor = statusColor ? 'white' : theme.palette.background
-  return {
-    color: filledColor,
-    borderColor: statusColor || theme.palette.foreground,
-    bgColor: statusColor || theme.palette.foreground
-  }
+  return { color: 'white', borderColor: neutral, bgColor: neutral }
 }
 
 export const NoteComponent = React.forwardRef<
@@ -56,6 +61,8 @@ export const NoteComponent = React.forwardRef<
       type = 'default' as NoteTypes,
       label = 'note' as string | boolean,
       filled = false,
+      light = false,
+      subtle = false,
       className = '',
       ...props
     },
@@ -65,8 +72,8 @@ export const NoteComponent = React.forwardRef<
     const { SCALES } = useScale()
 
     const { color, borderColor, bgColor } = useMemo(
-      () => getStatusColor(type, filled, theme),
-      [type, filled, theme]
+      () => getStatusColor(type, { filled, light, subtle }, theme),
+      [type, filled, light, subtle, theme]
     )
 
     return (

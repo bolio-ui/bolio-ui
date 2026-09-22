@@ -34,6 +34,9 @@ interface Props {
   iconOffset: TooltipIconOffset
   id?: string
   role?: string
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
 }
 export type TooltipIconOffset = {
   x: string
@@ -51,7 +54,10 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   className,
   hideArrow,
   id,
-  role
+  role,
+  light = false,
+  ghost = false,
+  subtle = false
 }) => {
   const theme = useTheme()
   const { SCALES } = useScale()
@@ -61,8 +67,8 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
 
   const [rect, setRect] = useState<TooltipPosition>(defaultTooltipPosition)
   const colors = useMemo(
-    () => getColors(type, theme.palette),
-    [type, theme.palette]
+    () => getColors(type, theme.palette, { light, ghost, subtle }),
+    [type, theme.palette, light, ghost, subtle]
   )
   const hasShadow = type === 'default'
   const classes = useClasses('tooltip-content', className)
@@ -114,6 +120,7 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
             transform: ${rect.transform};
             background-color: var(--tooltip-content-bg);
             color: ${colors.color};
+            border: 1px solid ${colors.borderColor};
             border-radius: ${theme.layout.radius};
             padding: 0;
             z-index: 1000;

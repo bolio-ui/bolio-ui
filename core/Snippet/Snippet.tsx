@@ -16,6 +16,9 @@ interface Props {
   toastText?: string
   toastType?: ToastTypes
   filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   rounded?: boolean
   copy?: CopyTypes
   type?: SnippetTypes
@@ -40,6 +43,9 @@ const SnippetComponent = React.forwardRef<
     {
       type = 'default' as SnippetTypes,
       filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       rounded = false,
       children,
       symbol = '$',
@@ -62,8 +68,9 @@ const SnippetComponent = React.forwardRef<
     const isMultiLine = text && Array.isArray(text)
 
     const style = useMemo(
-      () => getStyles(type, theme.palette, filled),
-      [type, theme.palette, filled]
+      () =>
+        getStyles(type, theme.palette, { fill: filled, light, ghost, subtle }),
+      [type, theme.palette, filled, light, ghost, subtle]
     )
 
     const showCopyIcon = useMemo(() => copyType !== 'prevent', [copyType])

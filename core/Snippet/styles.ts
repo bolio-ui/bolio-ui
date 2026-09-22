@@ -1,5 +1,6 @@
 import { SnippetTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type SnippetStyles = {
   color: string
@@ -7,11 +8,33 @@ export type SnippetStyles = {
   bgColor: string
 }
 
+export interface SnippetVariantProps {
+  fill?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
+}
+
 export const getStyles = (
   type: SnippetTypes,
   palette: BolioUIThemesPalette,
-  fill?: boolean
-) => {
+  { fill, light, ghost, subtle }: SnippetVariantProps = {}
+): SnippetStyles => {
+  if (isSemanticColorType(type)) {
+    if (subtle) {
+      const { bg, border, color } = getVariantColors(palette, type, 'subtle')
+      return { color, border, bgColor: bg }
+    }
+    if (light) {
+      const { bg, border, color } = getVariantColors(palette, type, 'light')
+      return { color, border, bgColor: bg }
+    }
+    if (ghost) {
+      const { bg, border, color } = getVariantColors(palette, type, 'outline')
+      return { color, border, bgColor: bg }
+    }
+  }
+
   const styles: { [key in SnippetTypes]: SnippetStyles } = {
     default: {
       color: palette.foreground,
