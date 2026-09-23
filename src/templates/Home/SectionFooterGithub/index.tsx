@@ -4,14 +4,15 @@ import {
   Section,
   Container,
   Grid,
+  Row,
   Col,
   Text,
-  Row,
   Button,
   Card,
   useTheme
 } from 'core'
 import { useIsMobile } from 'src/utils/use-media-query'
+import Eyebrow from 'src/components/Eyebrow'
 
 function SectionFooterGithub() {
   const router = useRouter()
@@ -20,36 +21,22 @@ function SectionFooterGithub() {
 
   return (
     <Section pb={5}>
-      <Container>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2} justify="center">
           <Grid xs={12} sm={12} md={12}>
             <div className="card-wrapper">
               <Card
                 padding={isMobile ? 2 : 4}
                 style={{
-                  backgroundColor: 'transparent',
-                  backdropFilter: 'saturate(180%) blur(10px)',
-                  boxShadow:
-                    theme.type === 'dark'
-                      ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
-                      : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'
+                  backgroundColor: theme.palette.accents_1,
+                  border: `1px solid ${theme.palette.border}`
                 }}
               >
-                <Row justify="space-around" style={{ textAlign: 'center' }}>
+                <Row>
                   <Col span={12}>
+                    <Eyebrow>Get started</Eyebrow>
                     <Text h1 my={0} mb={0}>
-                      <span
-                        style={{
-                          backgroundImage:
-                            'linear-gradient(to right, #a91cc6, #d779eb)',
-                          backgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          WebkitBackgroundClip: 'text'
-                        }}
-                      >
-                        Start coding
-                      </span>{' '}
-                      in seconds with Bolio UI
+                      Start coding in seconds with Bolio UI
                     </Text>
                     <Text font={1.2} mb={2}>
                       Get started with Bolio UI and learn by exploring

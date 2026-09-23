@@ -16,8 +16,89 @@ import SEO from '../../next-seo.config'
 import Analytics from 'src/components/Analytics'
 import * as gtag from 'src/utils/gtag'
 
-function App({ Component, pageProps }: AppProps) {
+// theme.palette here must come from useTheme() called *inside* BolioUIProvider,
+// not in App itself, otherwise it reads the default theme instead of the
+// active one (see the render below).
+function MdxGlobalStyles() {
   const theme = useTheme()
+
+  return (
+    <style global jsx>{`
+      pre {
+        background-color: ${theme.palette.pre};
+      }
+      pre code {
+        color: #ffffff;
+      }
+      .pre header .name.active {
+        background-color: ${theme.palette.pre};
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .linked-heading {
+        scroll-margin-top: 75px;
+      }
+      .tag {
+        color: ${theme.palette.error};
+      }
+      .punctuation {
+        color: #ffffff;
+      }
+      .attr-name {
+        color: ${theme.palette.warning};
+      }
+      .attr-value {
+        color: ${theme.palette.error};
+      }
+      .language-javascript {
+        color: ${theme.palette.accents_4};
+      }
+      .method.function.property-access {
+        color: ${theme.palette.primary};
+      }
+      .property-access {
+        color: #ffffff;
+      }
+      .literal-property.property {
+        color: #ffffff;
+      }
+      .function {
+        color: ${theme.palette.primary};
+      }
+      .parameter {
+        color: #ffffff;
+      }
+      span.class-name {
+        color: ${theme.palette.warningLighter};
+      }
+      span.maybe-class-name {
+        color: #ffffff;
+      }
+      span.token.string {
+        color: ${theme.palette.successLight};
+      }
+      span.token.comment {
+        color: ${theme.palette.accents_3};
+      }
+      span.operator {
+        color: #ffffff;
+      }
+      span.constant {
+        color: #ffffff;
+      }
+      span.number {
+        color: #ffffff;
+      }
+      span.keyword {
+        color: ${theme.palette.secondaryLighter};
+      }
+      span.plain-text {
+        color: #ffffff;
+      }
+    `}</style>
+  )
+}
+
+function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   // DocsLayout is rendered here, outside Component, so it keeps its own
@@ -112,78 +193,7 @@ function App({ Component, pageProps }: AppProps) {
             </MDXProvider>
           </KBarProvider>
         </SettingsContext.Provider>
-        <style global jsx>{`
-          pre {
-            background-color: ${theme.palette.pre};
-          }
-          pre code {
-            color: #ffffff;
-          }
-          .pre header .name.active {
-            background-color: ${theme.palette.pre};
-            color: rgba(255, 255, 255, 0.7);
-          }
-          .linked-heading {
-            scroll-margin-top: 75px;
-          }
-          .tag {
-            color: ${theme.palette.error};
-          }
-          .punctuation {
-            color: #ffffff;
-          }
-          .attr-name {
-            color: ${theme.palette.warning};
-          }
-          .attr-value {
-            color: ${theme.palette.error};
-          }
-          .language-javascript {
-            color: ${theme.palette.accents_4};
-          }
-          .method.function.property-access {
-            color: ${theme.palette.primary};
-          }
-          .property-access {
-            color: #ffffff;
-          }
-          .literal-property.property {
-            color: #ffffff;
-          }
-          .function {
-            color: ${theme.palette.primary};
-          }
-          .parameter {
-            color: #ffffff;
-          }
-          span.class-name {
-            color: ${theme.palette.warningLighter};
-          }
-          span.maybe-class-name {
-            color: #ffffff;
-          }
-          span.token.string {
-            color: ${theme.palette.successLight};
-          }
-          span.token.comment {
-            color: ${theme.palette.accents_3};
-          }
-          span.operator {
-            color: #ffffff;
-          }
-          span.constant {
-            color: #ffffff;
-          }
-          span.number {
-            color: #ffffff;
-          }
-          span.keyword {
-            color: ${theme.palette.secondaryLighter};
-          }
-          span.plain-text {
-            color: #ffffff;
-          }
-        `}</style>
+        <MdxGlobalStyles />
       </BolioUIProvider>
     </>
   )

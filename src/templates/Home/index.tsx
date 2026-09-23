@@ -7,6 +7,7 @@ import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import CardBox from 'src/components/CardBox'
+import Eyebrow from 'src/components/Eyebrow'
 import SectionPlayground from './SectionPlayground'
 import SectionDemonstration from './SectionDemonstration'
 import SectionReadStarted from './SectionReadyStarted'
@@ -49,7 +50,8 @@ function Home() {
         <Hero />
         <Section py={1}>
           <Container style={{ maxWidth: 1300 }}>
-            <Grid.Container gap={2} justify="center">
+            <Eyebrow>Features</Eyebrow>
+            <Grid.Container gap={2}>
               <Grid xs={12} sm={6} md={3}>
                 <CardBox
                   title="Customizable"

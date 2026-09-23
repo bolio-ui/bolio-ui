@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import {
   Container,
   Grid,
+  Row,
   Spacer,
   Button,
   Tabs,
@@ -18,7 +19,8 @@ import {
   Github,
   Instagram,
   Twitter,
-  Menu
+  Menu,
+  X
 } from '@bolio-ui/icons'
 import { useMediaQuery } from 'src/utils/use-media-query'
 import { useSettings } from 'src/utils/use-settings'
@@ -205,49 +207,51 @@ const Navigation: React.FC = () => {
                 </>
               ) : (
                 <>
-                  <Grid
-                    xs={2}
-                    md={4}
-                    justify="flex-start"
-                    style={{ marginTop: '8px' }}
-                  >
+                  <Grid xs={2} md={4} style={{ marginTop: '8px' }}>
                     <Logo name="Bolio UI" />
                   </Grid>
 
-                  <Grid xs={10} md={8} justify="flex-end">
-                    <SearchInput />
-                    <Spacer w={1} />
-                    <div className="controls">
-                      <Button
-                        w="28px"
-                        h="28px"
-                        py={0}
-                        px={0}
-                        aria-label="Toggle Dark mode"
-                        className="theme-button"
-                        type="abort"
-                        onClick={() =>
-                          settings.switchTheme(
-                            theme.type === 'dark' ? 'light' : 'dark'
-                          )
-                        }
-                      >
-                        {theme.type === 'dark' ? (
-                          <Sun fontSize={16} />
-                        ) : (
-                          <Moon fontSize={16} />
-                        )}
-                      </Button>
-                      <Button
-                        className="menu-toggle"
-                        auto
-                        type="abort"
-                        aria-label="Menu Toogle"
-                        onClick={() => setExpanded(!expanded)}
-                      >
-                        <Menu fontSize={16} />
-                      </Button>
-                    </div>
+                  <Grid xs={10} md={8}>
+                    <Row justify="end" align="middle">
+                      <SearchInput />
+                      <Spacer w={1} />
+                      <div className="controls">
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          aria-label="Toggle Dark mode"
+                          className="theme-button"
+                          type="abort"
+                          onClick={() =>
+                            settings.switchTheme(
+                              theme.type === 'dark' ? 'light' : 'dark'
+                            )
+                          }
+                        >
+                          {theme.type === 'dark' ? (
+                            <Sun fontSize={16} />
+                          ) : (
+                            <Moon fontSize={16} />
+                          )}
+                        </Button>
+                        <Button
+                          className="menu-toggle"
+                          auto
+                          type="abort"
+                          aria-label={expanded ? 'Close menu' : 'Open menu'}
+                          aria-expanded={expanded}
+                          onClick={() => setExpanded(!expanded)}
+                        >
+                          {expanded ? (
+                            <X fontSize={16} />
+                          ) : (
+                            <Menu fontSize={16} />
+                          )}
+                        </Button>
+                      </div>
+                    </Row>
                   </Grid>
                 </>
               )}
@@ -270,12 +274,8 @@ const Navigation: React.FC = () => {
           top: 0;
           right: 0;
           left: 0;
-          box-shadow: ${theme.type === 'dark'
-            ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
-            : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
-          backdrop-filter: saturate(180%) blur(10px);
-          transition: box-shadow 1s ease;
-          transition: backdrop-filter 1s ease;
+          background-color: ${theme.palette.background};
+          border-bottom: 1px solid ${theme.palette.border};
           padding-left: 15px;
           padding-right: 15px;
         }

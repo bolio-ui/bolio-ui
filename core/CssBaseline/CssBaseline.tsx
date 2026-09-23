@@ -31,12 +31,15 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           padding: 0;
           min-height: 100%;
           position: relative;
-          overflow-x: hidden;
+          /* clip, not hidden: overflow-x:hidden forces overflow-y into a
+             scroll container too (a CSS quirk), which breaks
+             position:sticky for every element down the tree. */
+          overflow-x: clip;
           font-family: ${theme.font.sans};
         }
 
         #__next {
-          overflow-x: hidden;
+          overflow-x: clip;
         }
 
         *,

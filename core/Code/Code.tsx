@@ -39,20 +39,17 @@ const CodeComponent = React.forwardRef<
     const id = React.useId()
     const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([])
 
-    const { background, border, tab, bar } = useMemo(() => {
+    const { background, border, tab } = useMemo(() => {
       if (!classic)
         return {
           border: theme.palette.accents_2,
           background: addColorAlpha(theme.palette.accents_1, 0.75),
-          tab: theme.palette.accents_1,
-          bar: 'transparent'
+          tab: theme.palette.accents_1
         }
       return {
         border: theme.palette.accents_2,
         background: theme.palette.background,
-        tab: theme.palette.background,
-        // the classic frame has no fill, so the bar takes the tone of the default one
-        bar: addColorAlpha(theme.palette.accents_1, 0.75)
+        tab: theme.palette.background
       }
     }, [classic, theme.palette])
 
@@ -81,37 +78,38 @@ const CodeComponent = React.forwardRef<
 
     return (
       <div ref={ref as React.Ref<HTMLDivElement>} className="pre">
-        {(hasTabs || name) && (
-          <header>
-            {hasTabs ? (
-              <div role="tablist" className="tabs">
-                {tabs.map((label, index) => (
-                  <button
-                    key={`${label}-${index}`}
-                    ref={(element) => {
-                      tabRefs.current[index] = element
-                    }}
-                    type="button"
-                    role="tab"
-                    id={`${id}-tab-${index}`}
-                    aria-selected={index === activeTab}
-                    aria-controls={`${id}-panel`}
-                    tabIndex={index === activeTab ? 0 : -1}
-                    className={`name tab${
-                      index === activeTab ? ' active' : ''
-                    }`}
-                    onClick={() => onTabChange?.(index)}
-                    onKeyDown={(event) => moveTab(event, index)}
-                  >
-                    <span>{label}</span>
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="name active">{name}</div>
-            )}
-          </header>
-        )}
+        <header>
+          <div className="traffic">
+            <span className="close" />
+            <span className="mini" />
+            <span className="full" />
+          </div>
+          {hasTabs ? (
+            <div role="tablist" className="tabs">
+              {tabs.map((label, index) => (
+                <button
+                  key={`${label}-${index}`}
+                  ref={(element) => {
+                    tabRefs.current[index] = element
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`${id}-tab-${index}`}
+                  aria-selected={index === activeTab}
+                  aria-controls={`${id}-panel`}
+                  tabIndex={index === activeTab ? 0 : -1}
+                  className={`name tab${index === activeTab ? ' active' : ''}`}
+                  onClick={() => onTabChange?.(index)}
+                  onKeyDown={(event) => moveTab(event, index)}
+                >
+                  <span>{label}</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            name && <div className="name active">{name}</div>
+          )}
+        </header>
         <pre
           className={className}
           {...(hasTabs && {
@@ -154,11 +152,36 @@ const CodeComponent = React.forwardRef<
             color: white;
           }
           header {
-            height: auto;
+            height: 2.5em;
             width: 100%;
             display: flex;
+            align-items: center;
             border-bottom: 1px solid ${theme.palette.accents_2};
-            background-color: ${bar};
+            background-color: ${theme.palette.border};
+          }
+          .traffic {
+            display: flex;
+            align-items: center;
+            padding: 0 ${theme.layout.gapHalf};
+            user-select: none;
+          }
+          .traffic span {
+            border-radius: 50%;
+            width: 0.75em;
+            height: 0.75em;
+            max-width: 12px;
+            max-height: 12px;
+            display: inline-block;
+            margin-right: 0.5em;
+          }
+          .traffic .close {
+            background-color: #ff5f56;
+          }
+          .traffic .mini {
+            background-color: #ffbd2e;
+          }
+          .traffic .full {
+            background-color: #27c93f;
           }
           .tabs {
             display: flex;

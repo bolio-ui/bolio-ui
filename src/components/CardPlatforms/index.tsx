@@ -12,10 +12,12 @@ function CardPlatforms({ title, link, image }: CardPlatformsProps) {
   const theme = useTheme()
 
   return (
-    <Link href={link}>
+    <Link href={link} width="100%">
       <Card
+        width="100%"
         style={{
-          background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
+          backgroundColor: theme.palette.accents_1,
+          border: `1px solid ${theme.palette.border}`,
           textAlign: 'center'
         }}
       >

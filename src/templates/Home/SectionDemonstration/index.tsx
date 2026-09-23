@@ -5,6 +5,7 @@ import {
   Section,
   Container,
   Grid,
+  Row,
   Col,
   Text,
   Snippet,
@@ -14,6 +15,7 @@ import {
   Link,
   useTheme
 } from 'core'
+import Eyebrow from 'src/components/Eyebrow'
 
 function SectionDemonstration() {
   const router = useRouter()
@@ -33,20 +35,9 @@ function SectionDemonstration() {
       <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2}>
           <Grid xs={12} md={6} direction="column" justify="center">
+            <Eyebrow>Components</Eyebrow>
             <Text h2 my={0} mb={1}>
-              Build{' '}
-              <span
-                style={{
-                  backgroundImage:
-                    'linear-gradient(to right, #59be23, #a2e67e)',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text'
-                }}
-              >
-                even faster
-              </span>{' '}
-              with Bolio UI
+              Build even faster with Bolio UI
             </Text>
             <Text font={1.2} mt={0}>
               Build your next website even faster with premade responsive
@@ -76,81 +67,83 @@ function SectionDemonstration() {
             </Grid.Container>
           </Grid>
           <Grid xs={12} md={6}>
-            <Grid xs={12} md={12} justify="center">
-              <Link href="/docs/components/text">
-                <Card
-                  style={{
-                    background:
-                      'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-                  }}
-                >
-                  <Image
-                    src="/img/png/home/typography.png"
-                    alt="text doc component"
-                    width={180}
-                    height={121}
-                    priority
+            <Grid xs={12} md={12}>
+              <Row justify="center">
+                <Link href="/docs/components/text">
+                  <Card
                     style={{
-                      height: 'auto',
-                      borderTopLeftRadius: theme.layout.radius,
-                      borderTopRightRadius: theme.layout.radius
+                      backgroundColor: theme.palette.accents_1,
+                      border: `1px solid ${theme.palette.border}`
                     }}
-                  />
-                  <Card.Content>
-                    <Text b>Text</Text>
-                  </Card.Content>
-                </Card>
-              </Link>
-              <Spacer width={2} />
-              <Link href="/docs/components/icons">
-                <Card
-                  style={{
-                    background:
-                      'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-                  }}
-                >
-                  <Image
-                    src="/img/png/home/icons.png"
-                    alt="icons doc component"
-                    width={180}
-                    height={121}
-                    priority
+                  >
+                    <Image
+                      src="/img/png/home/typography.png"
+                      alt="text doc component"
+                      width={180}
+                      height={121}
+                      priority
+                      style={{
+                        height: 'auto',
+                        borderTopLeftRadius: theme.layout.radius,
+                        borderTopRightRadius: theme.layout.radius
+                      }}
+                    />
+                    <Card.Content>
+                      <Text b>Text</Text>
+                    </Card.Content>
+                  </Card>
+                </Link>
+                <Spacer width={2} />
+                <Link href="/docs/components/icons">
+                  <Card
                     style={{
-                      height: 'auto',
-                      borderTopLeftRadius: theme.layout.radius,
-                      borderTopRightRadius: theme.layout.radius
+                      backgroundColor: theme.palette.accents_1,
+                      border: `1px solid ${theme.palette.border}`
                     }}
-                  />
-                  <Card.Content>
-                    <Text b>Icons</Text>
-                  </Card.Content>
-                </Card>
-              </Link>
-              <Spacer width={2} />
-              <Link href="/docs/components/button">
-                <Card
-                  style={{
-                    background:
-                      'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%'
-                  }}
-                >
-                  <Image
-                    src="/img/png/home/button.png"
-                    alt="buttond doc component"
-                    width={180}
-                    height={121}
-                    priority
+                  >
+                    <Image
+                      src="/img/png/home/icons.png"
+                      alt="icons doc component"
+                      width={180}
+                      height={121}
+                      priority
+                      style={{
+                        height: 'auto',
+                        borderTopLeftRadius: theme.layout.radius,
+                        borderTopRightRadius: theme.layout.radius
+                      }}
+                    />
+                    <Card.Content>
+                      <Text b>Icons</Text>
+                    </Card.Content>
+                  </Card>
+                </Link>
+                <Spacer width={2} />
+                <Link href="/docs/components/button">
+                  <Card
                     style={{
-                      height: 'auto',
-                      borderTopLeftRadius: theme.layout.radius,
-                      borderTopRightRadius: theme.layout.radius
+                      backgroundColor: theme.palette.accents_1,
+                      border: `1px solid ${theme.palette.border}`
                     }}
-                  />
-                  <Card.Content>
-                    <Text b>Button</Text>
-                  </Card.Content>
-                </Card>
-              </Link>
+                  >
+                    <Image
+                      src="/img/png/home/button.png"
+                      alt="buttond doc component"
+                      width={180}
+                      height={121}
+                      priority
+                      style={{
+                        height: 'auto',
+                        borderTopLeftRadius: theme.layout.radius,
+                        borderTopRightRadius: theme.layout.radius
+                      }}
+                    />
+                    <Card.Content>
+                      <Text b>Button</Text>
+                    </Card.Content>
+                  </Card>
+                </Link>
+              </Row>
             </Grid>
           </Grid>
         </Grid.Container>

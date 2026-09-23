@@ -65,23 +65,12 @@ function Sidebar({ sidebar }: SidebarProps) {
           height: 100%;
           display: flex;
           flex-direction: column;
-          /* align-items: center; */
-          /* cursor: pointer; */
-        }
-        /* .box::-webkit-scrollbar {
-          display: none;
-        }
-        .box {
           -ms-overflow-style: none;
           scrollbar-width: none;
-        } */
-        .box::-webkit-scrollbar {
-          width: 0;
-          background-color: transparent;
         }
-        /* .box > :global(.item) {
-          margin-bottom: 12pt;
-        } */
+        .box::-webkit-scrollbar {
+          display: none;
+        }
       `}</style>
     </div>
   )
