@@ -22,6 +22,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_VERSION: require('./package.json').version
   },
+  devIndicators: false,
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
   async headers() {
     return [

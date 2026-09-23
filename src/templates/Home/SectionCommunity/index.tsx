@@ -1,37 +1,24 @@
 import React from 'react'
-import { Section, Container, Grid, Col, Text, Row, Link } from 'core'
+import { Section, Container, Grid, Col, Text, Link } from 'core'
 import CardBox from 'src/components/CardBox'
+import Eyebrow from 'src/components/Eyebrow'
 
 function SectionCommunity() {
   return (
     <Section py={5}>
       <Container style={{ maxWidth: 1300 }}>
-        <Grid.Container justify="center">
-          <Row justify="space-around" style={{ textAlign: 'center' }}>
-            <Col span={8}>
-              <Text h2 my={0} mb={1}>
-                <span
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(to right, #d60867, #f66eab)',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    WebkitBackgroundClip: 'text'
-                  }}
-                >
-                  Everyone
-                </span>{' '}
-                is welcome!
-              </Text>
-              <Text font={1.2} mt={0}>
-                Feel free to report issues, ask questions, and meet new people.
-              </Text>
-            </Col>
-          </Row>
-        </Grid.Container>
+        <Col span={8}>
+          <Eyebrow>Community</Eyebrow>
+          <Text h2 my={0} mb={1}>
+            Everyone is welcome!
+          </Text>
+          <Text font={1.2} mt={0}>
+            Feel free to report issues, ask questions, and meet new people.
+          </Text>
+        </Col>
       </Container>
-      <Container>
-        <Grid.Container gap={2} justify="center">
+      <Container style={{ maxWidth: 1300 }}>
+        <Grid.Container gap={2} justify="flex-start">
           <Grid xs={12} sm={6} md={4}>
             <Link
               href="https://www.twitter.com/bolio_ui/"

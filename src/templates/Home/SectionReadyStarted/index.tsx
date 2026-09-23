@@ -1,39 +1,26 @@
 import React from 'react'
-import { Section, Container, Grid, Col, Text, Row } from 'core'
+import { Section, Container, Grid, Col, Text } from 'core'
 import { CardPlatforms } from 'src/components'
+import Eyebrow from 'src/components/Eyebrow'
 
 function SectionFooterGithub() {
   return (
     <Section py={5}>
       <Container style={{ maxWidth: 1300 }}>
-        <Grid.Container justify="center">
-          <Row justify="space-around" style={{ textAlign: 'center' }}>
-            <Col span={10}>
-              <Text h2 my={0} mb={1}>
-                Prepared to{' '}
-                <span
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(to right, #e17900, #fdb766)',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    WebkitBackgroundClip: 'text'
-                  }}
-                >
-                  get started?
-                </span>
-              </Text>
-              <Text font={1.2} mt={0}>
-                Bolio UI is compatible with a wide range platforms. You can
-                begin using it right away with Next.js, Gatsby.js, RedwoodJS,
-                Vite, or Remix by following the introductory guide.
-              </Text>
-            </Col>
-          </Row>
-        </Grid.Container>
+        <Col span={10}>
+          <Eyebrow>Platforms</Eyebrow>
+          <Text h2 my={0} mb={1}>
+            Prepared to get started?
+          </Text>
+          <Text font={1.2} mt={0}>
+            Bolio UI is compatible with a wide range platforms. You can begin
+            using it right away with Next.js, Gatsby.js, RedwoodJS, Vite, or
+            Remix by following the introductory guide.
+          </Text>
+        </Col>
       </Container>
-      <Container>
-        <Grid.Container gap={2} justify="center">
+      <Container style={{ maxWidth: 1300 }}>
+        <Grid.Container gap={2} justify="flex-start">
           <Grid xs={4} sm={4} md={2} justify="center">
             <CardPlatforms
               title="Next.js"

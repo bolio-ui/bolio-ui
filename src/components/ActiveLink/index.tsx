@@ -15,23 +15,42 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   const router = useRouter()
   const isActive = router.asPath === href
 
+  // Same behavior as the header Tabs: plain gray text (accents_5), hover only
+  // brightens the text, and the current page gets a background. The accents
+  // ramp runs the other way in light mode (3+ are text tones there).
+  const activeBg =
+    theme.type === 'dark' ? theme.palette.accents_4 : theme.palette.accents_2
+
+  // color/background-color are declared ONLY in the stylesheet below (never
+  // as inline style): an inline style for a property always wins over a
+  // stylesheet's `:hover` rule for that same property, hover or not — that
+  // silently defeated every earlier attempt at a hover effect here. Per-item
+  // values travel in as CSS custom properties instead, which the shared,
+  // identical-for-every-instance `:hover` rule reads via var().
   const label = (
     <Text
       p
       font="14px"
       my={0}
-      mb={1}
-      ml="26px"
-      style={{
-        color: isActive ? theme.palette.accents_8 : theme.palette.accents_6,
-        // bold by style: the b prop adds a second element that repeats the margins
-        fontWeight: isActive ? 'bold' : undefined,
-        cursor: 'pointer',
-        // Text is a <p>, a block element: without this the link area (and its
-        // hover state) stretches to the full row instead of hugging the text.
-        display: 'inline-block',
-        width: 'fit-content'
-      }}
+      mb={0.25}
+      className="sidebar-item"
+      style={
+        {
+          fontWeight: isActive ? 'bold' : undefined,
+          cursor: 'pointer',
+          display: 'block',
+          marginLeft: '14px',
+          marginRight: '10px',
+          padding: '6px 12px',
+          borderRadius: theme.layout.radius,
+          transition: 'background-color 150ms ease, color 150ms ease',
+          '--sidebar-item-color': isActive
+            ? theme.palette.foreground
+            : theme.palette.accents_5,
+          '--sidebar-item-bg': isActive ? activeBg : 'transparent',
+          '--sidebar-item-hover-color': theme.palette.foreground
+        } as React.CSSProperties
+      }
     >
       {text}
     </Text>
@@ -39,15 +58,33 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
 
   if (target) {
     return (
-      <Link href={href} target={target}>
+      <Link href={href} target={target} style={{ color: 'inherit' }}>
         {label}
+        <style jsx>{`
+          :global(p.sidebar-item.sidebar-item) {
+            color: var(--sidebar-item-color);
+            background-color: var(--sidebar-item-bg);
+          }
+          :global(p.sidebar-item.sidebar-item:hover) {
+            color: var(--sidebar-item-hover-color);
+          }
+        `}</style>
       </Link>
     )
   }
 
   return (
-    <NextLink href={href} style={{ textDecoration: 'none' }}>
+    <NextLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       {label}
+      <style jsx>{`
+        :global(p.sidebar-item.sidebar-item) {
+          color: var(--sidebar-item-color);
+          background-color: var(--sidebar-item-bg);
+        }
+        :global(p.sidebar-item.sidebar-item:hover) {
+          color: var(--sidebar-item-hover-color);
+        }
+      `}</style>
     </NextLink>
   )
 })

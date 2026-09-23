@@ -29,7 +29,6 @@ const Col = React.forwardRef<HTMLElement, React.PropsWithChildren<ColProps>>(
         {children}
         <style jsx>{`
           .col {
-            float: left;
             box-sizing: border-box;
             padding-left: calc(var(--row-gap) / 2);
             padding-right: calc(var(--row-gap) / 2);

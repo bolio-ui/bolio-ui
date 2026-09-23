@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Button, Grid, Code } from 'core'
+import { Button, Grid, Row, Code } from 'core'
 import { Zap, ZapOff, AlertCircle, XSquare } from '@bolio-ui/icons'
 
 export const meta = {
@@ -287,7 +287,7 @@ Used to trigger an operation.
 <Playground
   title="Scale"
   desc="Buttons of different sizes."
-  scope={{ Button, Grid }}
+  scope={{ Button, Grid, Row }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
@@ -329,15 +329,17 @@ Used to trigger an operation.
     <Button width="100%">Full Width</Button>
   </Grid>
   <Grid xs={12}>
-    <Button auto width="30%" mx="5px">
-      proportion
-    </Button>
-    <Button auto width="30%" mx="5px">
-      proportion
-    </Button>
-    <Button auto width="30%" mx="5px">
-      proportion
-    </Button>
+    <Row>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+    </Row>
   </Grid>
 </Grid.Container>
 `}

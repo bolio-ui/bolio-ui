@@ -24,20 +24,13 @@ const GridContainerComponent = React.forwardRef<
     const { unit, SCALES } = useScale()
     const gapUnit = useMemo(() => `calc(${gap} * ${unit} * 1/3)`, [gap, unit])
 
-    const gridConMargin = 'calc(-1 * var(--grid-gap-unit))'
-    const gridConWidth = 'calc(100% + var(--grid-gap-unit) * 2)'
-
     const { className: resolveClassName, styles } = css.resolve`
       div {
         --grid-gap-unit: ${gapUnit};
-        --grid-container-margin: ${gridConMargin};
-        --grid-container-width: ${gridConWidth};
         display: flex;
         flex-wrap: ${wrap};
         box-sizing: border-box;
-        // width: ${SCALES.width(1, gridConWidth)};
-        // margin: ${SCALES.mt(0, gridConMargin)} ${SCALES.mr(0, gridConMargin)}
-        //   ${SCALES.mb(0, gridConMargin)} ${SCALES.ml(0, gridConMargin)};
+        width: ${SCALES.width(1, '100%')};
       }
     `
     const classes = useClasses(resolveClassName, className)

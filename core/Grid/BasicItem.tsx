@@ -45,7 +45,7 @@ type ItemLayoutValue = {
   display: string
 }
 const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
-  const display = val === 0 ? 'display: none;' : 'display: inherit;'
+  const display = val === 0 ? 'display: none;' : 'display: block;'
   if (typeof val === 'number') {
     const width = (100 / 12) * val
     const ratio = width > 100 ? '100%' : width < 0 ? '0' : `${width}%`

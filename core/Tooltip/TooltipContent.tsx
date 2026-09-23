@@ -73,8 +73,6 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   const hasShadow = type === 'default'
   const classes = useClasses('tooltip-content', className)
 
-  if (!parent) return null
-
   const updateRect = () => {
     const position = getPosition(placement, getRect(parent), offset)
     setRect(position)
@@ -87,12 +85,28 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
     updateRect()
   }, [visible])
 
+  // The trigger can sit inside a `position: fixed` header, whose viewport
+  // position stays put while the page scrolls underneath it — but `getRect`
+  // bakes in `scrollTop` to place the portal in document coordinates, so the
+  // popover drifts away from a fixed trigger unless it's recomputed on every
+  // scroll, not just on resize/click.
+  useEffect(() => {
+    if (!visible) return
+    const handleScroll = () => updateRect()
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+      capture: true
+    })
+    return () =>
+      window.removeEventListener('scroll', handleScroll, { capture: true })
+  }, [visible])
+
   const preventHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
   }
 
-  if (!el) return null
+  if (!parent || !el) return null
   return createPortal(
     <CssTransition visible={visible}>
       <div

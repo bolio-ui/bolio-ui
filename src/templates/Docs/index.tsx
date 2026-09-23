@@ -1,10 +1,9 @@
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { Container, Grid, Image } from 'core'
+import { useTheme } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
 import { toCapitalize } from 'src/utils/to-capitalize'
-import { useMediaQuery } from 'src/utils/use-media-query'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Sidebar from 'src/components/Sidebar'
@@ -40,7 +39,7 @@ const useIsomorphicLayoutEffect =
 // every navigation, which was visible to the user as a flash.
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const isMobile = useMediaQuery(650)
+  const theme = useTheme()
 
   const [headings, setHeadings] = useState<Heading[]>([])
 
@@ -77,115 +76,113 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Container style={{ maxWidth: 1300 }}>
-        <Grid.Container justify="center">
-          <Grid xs={0} sm={0} md={0} lg={2}>
-            <aside
-              style={{
-                height:
-                  'calc(100% - 2rem - 96px + var(--bolioui-page-nav-height))',
-                position: 'fixed',
-                top: '80px',
-                bottom: '2rem',
-                width: '250px',
-                marginTop: '10px',
-                zIndex: 2
-              }}
-            >
-              <Sidebar sidebar={sidebar} />
-            </aside>
-          </Grid>
-          <Grid xs={12} sm={12} md={12} lg={8}>
-            <div
-              style={{
-                width: isMobile ? '95%' : '80%',
-                margin: '0 auto',
-                marginTop: '30px',
-                zIndex: 2
-              }}
-            >
-              {/* key remounts only this thin wrapper on navigation, so the
-                  new content fades in instead of popping in abruptly. The
-                  sidebar, Contents and backgrounds above are unaffected. */}
-              <div key={router.asPath} className="page-content">
-                {children}
-              </div>
-              <NavigationDocs previous={prevPost} next={nextPost} />
-              <MadeDesigned />
+      {/* A dashboard-style rail: pinned to the real edge of the viewport and
+          full height, not centered inside the 1300px content container —
+          otherwise it floats with a huge empty gutter on wide screens. */}
+      <aside className="docs-sidebar-left">
+        <Sidebar sidebar={sidebar} />
+      </aside>
+      <div className="docs-main">
+        <div className="docs-shell">
+          <div className="docs-content">
+            {/* key remounts only this thin wrapper on navigation, so the
+                new content fades in instead of popping in abruptly. The
+                sidebar, Contents and backgrounds above are unaffected. */}
+            <div key={router.asPath} className="page-content">
+              {children}
             </div>
-          </Grid>
-          <Grid xs={0} sm={0} md={0} lg={2}>
-            <aside
-              style={{
-                height:
-                  'calc(100% - 2rem - 96px + var(--bolioui-page-nav-height))',
-                position: 'fixed',
-                top: '80px',
-                bottom: '2rem',
-                marginTop: '10px',
-                width: '250px',
-                zIndex: 2
-              }}
-            >
+            <NavigationDocs previous={prevPost} next={nextPost} />
+          </div>
+          <aside className="docs-sidebar-right">
+            <div className="docs-sidebar-right-sticky">
               <SidebarHeading headings={headings} />
-            </aside>
-          </Grid>
-        </Grid.Container>
-      </Container>
-      {isMobile ? (
-        <>
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient blue"
-            draggable={false}
-            style={{
-              position: 'fixed',
-              top: '-10%',
-              right: '-35%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient violet"
-            draggable={false}
-            style={{
-              position: 'fixed',
-              top: '45%',
-              left: '-35%',
-              zIndex: 0
-            }}
-          />
-        </>
-      ) : (
-        <>
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient blue"
-            draggable={false}
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              top: '-40%',
-              right: '-10%',
-              zIndex: 0
-            }}
-          />
-          <Image
-            src="/img/png/home/hero-bg.png"
-            alt="docs background gradient violet"
-            draggable={false}
-            style={{
-              position: 'fixed',
-              bottom: '-50%',
-              left: '-20%',
-              right: '-50%',
-              zIndex: 0
-            }}
-          />
-        </>
-      )}
+            </div>
+          </aside>
+        </div>
+      </div>
+      {/* Sibling of .docs-main, not a child of it — the only piece that
+          keeps reaching the real right edge of the screen even past 1300px,
+          while everything else caps and centers. */}
+      <div className="docs-footer">
+        <div className="docs-footer-inner">
+          <MadeDesigned />
+        </div>
+      </div>
       <style jsx>{`
+        .docs-sidebar-left {
+          position: fixed;
+          /* Above 1300px the whole shell caps and centers like the rest of
+             the site, but the sidebar is position:fixed (viewport-relative,
+             not container-relative) so it needs its own matching offset
+             instead of a wrapping Container — a Container here can't align
+             with a fixed element and reintroduces the old gap/overlap bug. */
+          left: max(0px, calc((100vw - 1300px) / 2));
+          top: 60px;
+          bottom: 0;
+          width: 260px;
+          padding: 24px;
+          box-sizing: border-box;
+          border-right: 1px solid ${theme.palette.border};
+          z-index: 2;
+        }
+        .docs-main {
+          margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+          max-width: 1040px;
+        }
+        .docs-shell {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 250px;
+          grid-template-areas: 'content sidebar-right';
+        }
+        .docs-sidebar-right {
+          grid-area: sidebar-right;
+          box-sizing: border-box;
+          border-left: 1px solid ${theme.palette.border};
+        }
+        .docs-sidebar-right-sticky {
+          position: sticky;
+          top: 60px;
+          padding: 24px;
+          box-sizing: border-box;
+        }
+        .docs-content {
+          grid-area: content;
+          box-sizing: border-box;
+          min-width: 0;
+          padding: 30px 32px 0;
+        }
+        .docs-footer {
+          margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+          border-top: 1px solid ${theme.palette.border};
+        }
+        .docs-footer-inner {
+          padding: ${theme.layout.gap} 24px 1.5rem;
+        }
+        @media (max-width: calc(${theme.breakpoints.lg.min} - 1px)) {
+          .docs-sidebar-left {
+            display: none;
+          }
+          .docs-main {
+            margin-left: 0;
+            max-width: none;
+          }
+          .docs-shell {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas: 'content';
+          }
+          .docs-sidebar-right {
+            display: none;
+          }
+          .docs-content {
+            padding: 30px 16px 0;
+          }
+          .docs-footer {
+            margin-left: 0;
+          }
+          .docs-footer-inner {
+            padding: ${theme.layout.gap} 16px 2rem;
+          }
+        }
         .page-content {
           animation: fadeIn 180ms ease;
         }

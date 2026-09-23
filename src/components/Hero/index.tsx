@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
+import Eyebrow from 'src/components/Eyebrow'
+import WindowFrame from 'src/components/WindowFrame'
 import SectionComponents from 'src/templates/Home/SectionComponents'
 
 function Hero() {
@@ -12,32 +14,10 @@ function Hero() {
       <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2}>
           <Grid xs={12} sm={6} md={5} direction="column" justify="center">
+            <Eyebrow>React UI Kit</Eyebrow>
             <Text b font={3} style={{ lineHeight: 1.2 }}>
-              Your development{' '}
-              <span
-                style={{
-                  backgroundImage:
-                    'linear-gradient(to right, #a91cc6, #d779eb)',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text'
-                }}
-              >
-                more creative
-              </span>{' '}
-              and{' '}
-              <span
-                style={{
-                  backgroundImage:
-                    'linear-gradient(to right, #a91cc6, #d779eb)',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text'
-                }}
-              >
-                dynamic
-              </span>{' '}
-              with amazing tools for React
+              Your development more creative and dynamic with amazing tools for
+              React
             </Text>
             <Text p style={{ color: theme.palette.accents_6 }} mt={1}>
               Develop pratic and more fast with React components.
@@ -66,7 +46,9 @@ function Hero() {
             </Grid.Container>
           </Grid>
           <Grid xs={12} sm={6} md={7} direction="column" justify="center">
-            <SectionComponents />
+            <WindowFrame>
+              <SectionComponents />
+            </WindowFrame>
           </Grid>
         </Grid.Container>
       </Container>

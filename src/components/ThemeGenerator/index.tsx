@@ -426,6 +426,10 @@ const ColorField: React.FC<{
           border-radius: ${theme.layout.radius};
           cursor: pointer;
         }
+        .info {
+          display: flex;
+          flex-direction: column;
+        }
         .hex-input {
           width: 96px;
           padding: 2px 0;

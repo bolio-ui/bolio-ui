@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { Button, Grid } from 'core'
+import { Button, useTheme } from 'core'
 import {
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
@@ -27,6 +27,7 @@ const DocsPageLink: React.FC<{ docs: Docs; direction: 'previous' | 'next' }> =
         subtle
         auto
         scale={0.75}
+        className={`docs-page-link ${direction}`}
         onClick={() => router.push(docs.url)}
         icon={isPrevious && <ChevronLeftIcon fontSize={14} />}
         iconRight={!isPrevious && <ChevronRightIcon fontSize={14} />}
@@ -37,17 +38,44 @@ const DocsPageLink: React.FC<{ docs: Docs; direction: 'previous' | 'next' }> =
   }
 
 function NavigationDocs({ next, previous }: NavigationDocsProps) {
+  const theme = useTheme()
+
   return (
-    <Grid.Container gap={2} justify="center" style={{ margin: '25px 0' }}>
-      <Grid xs={6} sm={6} md={6} justify="flex-start">
-        {previous && previous.url && (
-          <DocsPageLink docs={previous} direction="previous" />
-        )}
-      </Grid>
-      <Grid xs={6} sm={6} md={6} justify="flex-end">
-        {next && next.url && <DocsPageLink docs={next} direction="next" />}
-      </Grid>
-    </Grid.Container>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        margin: '25px 0'
+      }}
+    >
+      {previous && previous.url && (
+        <DocsPageLink docs={previous} direction="previous" />
+      )}
+      {next && next.url && (
+        <div style={{ marginLeft: 'auto' }}>
+          <DocsPageLink docs={next} direction="next" />
+        </div>
+      )}
+      <style jsx>{`
+        :global(.docs-page-link.btn) {
+          transition: background-color 200ms ease, transform 200ms ease;
+        }
+        :global(.docs-page-link.btn:hover) {
+          background-color: ${theme.palette.primary}40;
+          transform: translateY(-1px);
+        }
+        :global(.docs-page-link.btn svg) {
+          transition: transform 200ms ease;
+        }
+        :global(.docs-page-link.previous.btn:hover svg) {
+          transform: translateX(-3px);
+        }
+        :global(.docs-page-link.next.btn:hover svg) {
+          transform: translateX(3px);
+        }
+      `}</style>
+    </div>
   )
 }
 

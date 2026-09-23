@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Button from '.'
 import Grid from '../Grid'
+import Row from '../Row'
 import { Zap, ZapOff, AlertCircle, XSquare } from '@bolio-ui/icons'
 
 export default {
@@ -218,15 +219,17 @@ export const Scale: Story = () => (
       <Button width="100%">Full Width</Button>
     </Grid>
     <Grid xs={12}>
-      <Button auto width="30%" mx="5px">
-        proportion
-      </Button>
-      <Button auto width="30%" mx="5px">
-        proportion
-      </Button>
-      <Button auto width="30%" mx="5px">
-        proportion
-      </Button>
+      <Row>
+        <Button auto width="30%" mx="5px">
+          proportion
+        </Button>
+        <Button auto width="30%" mx="5px">
+          proportion
+        </Button>
+        <Button auto width="30%" mx="5px">
+          proportion
+        </Button>
+      </Row>
     </Grid>
   </Grid.Container>
 )

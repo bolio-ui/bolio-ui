@@ -25,11 +25,7 @@ export const ProfileCard = () => {
   const theme = useTheme()
   return (
     <>
-      <Card
-        className="profile_card_hero"
-        width="100%"
-        bordered={theme.type === 'light'}
-      >
+      <Card className="profile_card_hero" width="100%" bordered>
         <Row align="middle">
           <Col span={4}>
             <Avatar
@@ -139,8 +135,8 @@ export const Search = () => {
         font={1}
         width="100%"
         className="search_hero"
-        borderColor={theme.type === 'light' ? theme.palette.accents_2 : 'none'}
-        hoverBorder={theme.type === 'light' ? theme.palette.accents_3 : 'none'}
+        borderColor={theme.palette.accents_2}
+        hoverBorder={theme.palette.accents_3}
       />
       <style global jsx>{`
         .search_hero {
@@ -212,10 +208,9 @@ export const Toogle = () => {
 }
 
 export const ButtonLoading = () => {
-  const theme = useTheme()
   return (
     <>
-      <Card className="button_hero" bordered={theme.type === 'light'}>
+      <Card className="button_hero" bordered>
         <Spinner />
       </Card>
       <style global jsx>{`
@@ -482,41 +477,39 @@ export const FollowersCard = () => {
   const theme = useTheme()
   return (
     <>
-      <Card
-        className="followers_card_hero"
-        width="100%"
-        bordered={theme.type === 'light'}
-      >
+      <Card className="followers_card_hero" width="100%" bordered>
         <Grid.Container>
-          <Grid xs={12} md={12} alignItems="center">
-            <div style={{ marginRight: 15 }}>
-              <div className="border-gradient">
-                <Badge.Anchor>
-                  <Badge scale={1 / 2} type="default">
-                    12
-                  </Badge>
-                  <Avatar
-                    alt="Your Avatar"
-                    mr={0}
-                    height={2}
-                    width={2}
-                    src="/img/jpg/home/img1.jpg"
-                  />
-                </Badge.Anchor>
+          <Grid xs={12} md={12}>
+            <Row align="middle">
+              <div style={{ marginRight: 15 }}>
+                <div className="border-gradient">
+                  <Badge.Anchor>
+                    <Badge scale={1 / 2} type="default">
+                      12
+                    </Badge>
+                    <Avatar
+                      alt="Your Avatar"
+                      mr={0}
+                      height={2}
+                      width={2}
+                      src="/img/jpg/home/img1.jpg"
+                    />
+                  </Badge.Anchor>
+                </div>
               </div>
-            </div>
-            <div>
-              <Text b span my={0}>
-                Kristian Watson
-              </Text>
-              <Text
-                font={0.9}
-                my={0}
-                style={{ color: theme.palette.accents_6 }}
-              >
-                Challenges to a match
-              </Text>
-            </div>
+              <div>
+                <Text b span my={0}>
+                  Kristian Watson
+                </Text>
+                <Text
+                  font={0.9}
+                  my={0}
+                  style={{ color: theme.palette.accents_6 }}
+                >
+                  Challenges to a match
+                </Text>
+              </div>
+            </Row>
           </Grid>
           <Grid xs={6} md={6}>
             <Button
@@ -582,11 +575,7 @@ export const Player = () => {
   const theme = useTheme()
   return (
     <>
-      <Card
-        className="player_card_hero"
-        width="100%"
-        bordered={theme.type === 'light'}
-      >
+      <Card className="player_card_hero" width="100%" bordered>
         <Row justify="space-between">
           <Button
             icon={<Icons.ArrowLeft stroke={theme.palette.foreground} />}
