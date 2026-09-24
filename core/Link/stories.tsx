@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Link from '.'
 import Grid from '../Grid'
 import Text from '../Text'
@@ -8,7 +8,7 @@ export default {
   component: Link
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Link href="#">
@@ -18,7 +18,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Highlight: Story = () => (
+export const Highlight: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Link href="#" color>
@@ -28,7 +28,7 @@ export const Highlight: Story = () => (
   </Grid.Container>
 )
 
-export const WithIcon: Story = () => (
+export const WithIcon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Link href="#" icon>
@@ -43,7 +43,7 @@ export const WithIcon: Story = () => (
   </Grid.Container>
 )
 
-export const Variant: Story = () => (
+export const Variant: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text>
@@ -76,7 +76,7 @@ export const Variant: Story = () => (
   </Grid.Container>
 )
 
-export const Block: Story = () => (
+export const Block: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Link href="#" block>

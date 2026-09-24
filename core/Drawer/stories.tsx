@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import { DrawerPlacement } from './helper'
 import Drawer from '.'
@@ -10,7 +10,7 @@ export default {
   component: Drawer
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const [state, setState] = useState(false)
   return (
     <Grid.Container gap={2}>
@@ -34,7 +34,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Placement: Story = () => {
+export const Placement: StoryFn = () => {
   const [state, setState] = React.useState(false)
   const [placement, setPlacement] = React.useState<DrawerPlacement>('bottom')
   const open = (text) => {

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Divider from '.'
 import Text from '../Text'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Divider
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text>
@@ -24,7 +24,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const WithText: Story = () => (
+export const WithText: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text>
@@ -50,7 +50,7 @@ export const WithText: Story = () => (
   </Grid.Container>
 )
 
-export const Space: Story = () => (
+export const Space: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text>
@@ -78,7 +78,7 @@ export const Space: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text>

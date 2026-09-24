@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Keyboard from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Keyboard
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Keyboard>C</Keyboard>
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Modifiers: Story = () => (
+export const Modifiers: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Keyboard command mr="10px" />
@@ -32,7 +32,7 @@ export const Modifiers: Story = () => (
   </Grid.Container>
 )
 
-export const Combination: Story = () => (
+export const Combination: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Keyboard command mr="10px">

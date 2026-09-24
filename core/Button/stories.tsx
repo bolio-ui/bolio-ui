@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Button from '.'
 import Grid from '../Grid'
 import Row from '../Row'
@@ -9,7 +9,7 @@ export default {
   component: Button
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button>Button</Button>
@@ -17,7 +17,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Loading: Story = () => (
+export const Loading: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button loading>Button</Button>
@@ -35,7 +35,7 @@ export const Loading: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button disabled>Button</Button>
@@ -43,7 +43,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Shadow: Story = () => (
+export const Shadow: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button shadow type="primary">
@@ -53,7 +53,7 @@ export const Shadow: Story = () => (
   </Grid.Container>
 )
 
-export const TypeColors: Story = () => (
+export const TypeColors: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button auto type="primary">
@@ -93,7 +93,7 @@ export const TypeColors: Story = () => (
   </Grid.Container>
 )
 
-export const Lighted: Story = () => (
+export const Lighted: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button auto type="primary-light">
@@ -128,7 +128,7 @@ export const Lighted: Story = () => (
   </Grid.Container>
 )
 
-export const Ghost: Story = () => (
+export const Ghost: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button type="secondary" ghost auto scale={0.7}>
@@ -153,7 +153,7 @@ export const Ghost: Story = () => (
   </Grid.Container>
 )
 
-export const Rounded: Story = () => (
+export const Rounded: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button type="secondary" rounded auto scale={0.7}>
@@ -178,7 +178,7 @@ export const Rounded: Story = () => (
   </Grid.Container>
 )
 
-export const Scale: Story = () => (
+export const Scale: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button auto scale={0.25}>
@@ -234,7 +234,7 @@ export const Scale: Story = () => (
   </Grid.Container>
 )
 
-export const WithIcons: Story = () => (
+export const WithIcons: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Button iconRight={<Zap />} auto scale={2 / 3} />

@@ -2,7 +2,8 @@
 // Components. Marking the entry files lets Server Components (Next App Router)
 // import them without adding 'use client' in the app.
 const { join } = require('path')
-const fs = require('fs-extra')
+const { existsSync } = require('fs')
+const fs = require('fs/promises')
 
 const root = join(__dirname, '..')
 const directive = "'use client';\n"
@@ -13,7 +14,7 @@ const directive = "'use client';\n"
     const entries = [join(base, 'index.js')]
     for (const name of await fs.readdir(base)) {
       const entry = join(base, name, 'index.js')
-      if (await fs.pathExists(entry)) entries.push(entry)
+      if (existsSync(entry)) entries.push(entry)
     }
 
     await Promise.all(

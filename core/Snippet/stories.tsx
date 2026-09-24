@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Snippet from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Snippet
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" width="300px" />
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Width: Story = () => (
+export const Width: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" width="100%" />
@@ -23,7 +23,7 @@ export const Width: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" width="300px" />
@@ -55,7 +55,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const Rounded: Story = () => (
+export const Rounded: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet text="yarn add @bolio-ui/core" width="300px" rounded />
@@ -119,7 +119,7 @@ export const Rounded: Story = () => (
   </Grid.Container>
 )
 
-export const Multiline: Story = () => (
+export const Multiline: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet text={['cd project', 'now']} width="300px" />
@@ -127,7 +127,7 @@ export const Multiline: Story = () => (
   </Grid.Container>
 )
 
-export const DisabledCopy: Story = () => (
+export const DisabledCopy: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet copy="prevent" text="yarn add @bolio-ui/core" width="300px" />
@@ -135,7 +135,7 @@ export const DisabledCopy: Story = () => (
   </Grid.Container>
 )
 
-export const CustomSymbol: Story = () => (
+export const CustomSymbol: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet symbol=">" text="yarn add @bolio-ui/core" width="300px" />
@@ -143,7 +143,7 @@ export const CustomSymbol: Story = () => (
   </Grid.Container>
 )
 
-export const CustomToast: Story = () => (
+export const CustomToast: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet
@@ -156,7 +156,7 @@ export const CustomToast: Story = () => (
   </Grid.Container>
 )
 
-export const Filled: Story = () => (
+export const Filled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Snippet

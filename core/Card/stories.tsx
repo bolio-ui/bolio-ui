@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Card from '.'
 import Text from '../Text'
 import Grid from '../Grid'
@@ -12,7 +12,7 @@ export default {
   component: Card
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Card>A default card.</Card>
@@ -20,7 +20,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Hover: Story = () => (
+export const Hover: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={4}>
       <Card hoverable>A hoverable default card.</Card>
@@ -38,7 +38,7 @@ export const Hover: Story = () => (
   </Grid.Container>
 )
 
-export const Border: Story = () => (
+export const Border: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={4}>
       <Card bordered>A bordered default card.</Card>
@@ -56,7 +56,7 @@ export const Border: Story = () => (
   </Grid.Container>
 )
 
-export const Shadow: Story = () => (
+export const Shadow: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={4}>
       <Card shadow>A shadow default card.</Card>
@@ -74,7 +74,7 @@ export const Shadow: Story = () => (
   </Grid.Container>
 )
 
-export const Variants: Story = () => {
+export const Variants: StoryFn = () => {
   const tuple = <T extends string[]>(...args: T) => args
 
   const types = tuple(
@@ -105,7 +105,7 @@ export const Variants: Story = () => {
   )
 }
 
-export const WithFooter: Story = () => (
+export const WithFooter: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} justify="center">
       <Card width="100%">
@@ -140,7 +140,7 @@ export const WithFooter: Story = () => (
   </Grid.Container>
 )
 
-export const WithImage: Story = () => (
+export const WithImage: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Card width="350px">
@@ -169,7 +169,7 @@ export const WithImage: Story = () => (
   </Grid.Container>
 )
 
-export const WithDivider: Story = () => (
+export const WithDivider: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Card width="400px">

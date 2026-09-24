@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Combobox from '.'
 import Grid from '../Grid'
 import Text from '../Text'
@@ -17,7 +17,7 @@ const countries = [
   { value: 'xx', label: 'Nowhere', disabled: true }
 ]
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Combobox
@@ -29,7 +29,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Controlled: Story = () => {
+export const Controlled: StoryFn = () => {
   const [value, setValue] = useState<string | null>('pt')
   return (
     <Grid.Container gap={2}>
@@ -46,7 +46,7 @@ export const Controlled: Story = () => {
   )
 }
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Combobox aria-label="Country" options={countries} disabled />

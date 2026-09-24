@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Code from '.'
 import Text from '../Text'
 import Grid from '../Grid'
@@ -10,7 +10,7 @@ export default {
   component: Code
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text my={0}>
@@ -23,7 +23,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Block: Story = () => (
+export const Block: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Code block my={0}>
@@ -33,7 +33,7 @@ export const Block: Story = () => (
   </Grid.Container>
 )
 
-export const Width: Story = () => (
+export const Width: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Code block width="50%" my={0}>
@@ -43,7 +43,7 @@ export const Width: Story = () => (
   </Grid.Container>
 )
 
-export const Name: Story = () => (
+export const Name: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Code block name="/Components/WaitTime.jsx" my={0}>
@@ -53,7 +53,7 @@ export const Name: Story = () => (
   </Grid.Container>
 )
 
-export const Tabs: Story = () => {
+export const Tabs: StoryFn = () => {
   const [active, setActive] = React.useState(0)
   const codes = [
     "import { Button } from '@bolio-ui/core'",
@@ -76,7 +76,7 @@ export const Tabs: Story = () => {
   )
 }
 
-export const Classic: Story = () => (
+export const Classic: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Code block classic name="/Components/WaitTime.jsx" my={0}>

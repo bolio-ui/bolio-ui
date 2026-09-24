@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Note from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Note
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Note>Check payment pending.</Note>
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Note>Check payment pending.</Note>
@@ -41,7 +41,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const HiddenLabel: Story = () => (
+export const HiddenLabel: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Note label={false}>Demo note!</Note>
@@ -49,7 +49,7 @@ export const HiddenLabel: Story = () => (
   </Grid.Container>
 )
 
-export const CustomLabel: Story = () => (
+export const CustomLabel: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Note label="custom">Customize a note.</Note>
@@ -57,7 +57,7 @@ export const CustomLabel: Story = () => (
   </Grid.Container>
 )
 
-export const FilledVariant: Story = () => (
+export const FilledVariant: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Note label="custom" filled>

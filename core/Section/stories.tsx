@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Section from '.'
 import Container from '../Container'
 import Text from '../Text'
@@ -8,7 +8,7 @@ export default {
   component: Section
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Section>
     <Text>
       A Section groups a part of the page. Without a background it is
@@ -17,7 +17,7 @@ export const Default: Story = () => (
   </Section>
 )
 
-export const Background: Story = () => (
+export const Background: StoryFn = () => (
   <>
     <Section bg="#f5f5f5" style={{ padding: 24 }}>
       <Container>

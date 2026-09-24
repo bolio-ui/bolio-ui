@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Card from '../Card'
 import Grid from '../Grid'
 import { Smile } from '@bolio-ui/icons'
@@ -8,7 +8,7 @@ export default {
   component: Card
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Smile />
@@ -16,7 +16,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Colored: Story = () => (
+export const Colored: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Smile color="purple" />
@@ -24,7 +24,7 @@ export const Colored: Story = () => (
   </Grid.Container>
 )
 
-export const Size: Story = () => (
+export const Size: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Smile fontSize={16} />

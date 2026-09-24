@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Section from '../Section'
 import Container from '../Container'
 import Row from '../Row'
@@ -19,7 +19,7 @@ export default {
  *     Row (a flex row)
  *       Col (span of 12, can be pushed with offset)
  */
-export const Overview: Story = () => (
+export const Overview: StoryFn = () => (
   <>
     <Section bg="#f5f5f5" style={{ padding: '48px 0' }}>
       <Container>
