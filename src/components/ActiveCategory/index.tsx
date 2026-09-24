@@ -12,7 +12,7 @@ type Icon = keyof typeof Icons
 
 const renderIcon = (icon: Icon, color: string) => {
   const CurrentIcon = Icons[icon]
-  return <CurrentIcon color={color} /> || null
+  return <CurrentIcon color={color} />
 }
 
 const ActiveCategory: React.FC<Props> = React.memo(

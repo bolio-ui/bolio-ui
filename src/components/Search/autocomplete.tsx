@@ -49,7 +49,7 @@ const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
 
   useClickAway(inputRef, () => {
     setIsFocused(false)
-    inputRef && inputRef?.current?.blur()
+    inputRef.current?.blur()
   })
 
   React.useEffect(() => {
@@ -74,7 +74,7 @@ const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
   // Leaving the field or picking a suggestion clears the search
   const onClear = () => {
     setValue('')
-    inputRef && inputRef?.current?.blur()
+    inputRef.current?.blur()
   }
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

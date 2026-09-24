@@ -1,7 +1,7 @@
 import React from 'react'
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Section, Container, Text, Themes, useTheme } from 'core'
+import { Section, Container, Text, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
 import CardPlatforms from 'src/components/CardPlatforms'
 
@@ -83,7 +83,6 @@ function SectionCapabilities() {
     return () => observer.disconnect()
   }, [])
 
-  const [lightTheme, darkTheme] = Themes.getPresets()
   const shades = ['Lighter', 'Light', '', 'Dark']
   const colors = ['primary', 'secondary'] as const
 
