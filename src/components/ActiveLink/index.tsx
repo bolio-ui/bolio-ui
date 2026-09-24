@@ -39,8 +39,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
           fontWeight: isActive ? 'bold' : undefined,
           cursor: 'pointer',
           display: 'block',
-          marginLeft: '14px',
-          marginRight: '10px',
+          textAlign: 'left',
           padding: '6px 12px',
           borderRadius: theme.layout.radius,
           transition: 'background-color 150ms ease, color 150ms ease',
@@ -56,9 +55,12 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
     </Text>
   )
 
+  // the link fills the row, so the item starts on the category's left edge
+  const linkStyle = { display: 'block', width: '100%', color: 'inherit' }
+
   if (target) {
     return (
-      <Link href={href} target={target} style={{ color: 'inherit' }}>
+      <Link href={href} target={target} style={linkStyle}>
         {label}
         <style jsx>{`
           :global(p.sidebar-item.sidebar-item) {
@@ -74,7 +76,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   }
 
   return (
-    <NextLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NextLink href={href} style={{ ...linkStyle, textDecoration: 'none' }}>
       {label}
       <style jsx>{`
         :global(p.sidebar-item.sidebar-item) {
