@@ -23,11 +23,7 @@ function FooterMeta() {
 
   return (
     <>
-      <Grid.Container
-        gap={2}
-        style={{ padding: '8px 16px' }}
-        alignItems="center"
-      >
+      <Grid.Container gap={2} alignItems="center">
         <Grid xs={12} md={4} className="footer-meta-cell">
           <Text
             font={0.75}
@@ -75,14 +71,15 @@ function FooterMeta() {
         </Grid>
       </Grid.Container>
       <style jsx>{`
-        .center {
+        :global(.footer-meta-cell.center) {
           text-align: center;
         }
-        .right {
+        :global(.footer-meta-cell.right) {
           text-align: right;
         }
         @media (max-width: calc(${theme.breakpoints.md.min} - 1px)) {
-          .footer-meta-cell {
+          :global(.footer-meta-cell.center),
+          :global(.footer-meta-cell.right) {
             text-align: left;
           }
         }

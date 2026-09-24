@@ -139,7 +139,7 @@ type PresetPair = { name: string; primary: string; secondary: string }
 // Curated pairs, not a hue wheel: each one is a primary/secondary duo that
 // already works together, so picking a preset never leaves you with a clash.
 const PRESETS: Array<PresetPair> = [
-  { name: 'Bolio Blue', primary: '#0072F6', secondary: '#7828C9' },
+  { name: 'Bolio Blue', primary: '#60A5FA', secondary: '#A78BFA' },
   { name: 'Sunset', primary: '#F5A525', secondary: '#F31261' },
   { name: 'Forest', primary: '#17C965', secondary: '#0072F6' },
   { name: 'Berry', primary: '#7828C9', secondary: '#F31261' },
