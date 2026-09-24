@@ -26,7 +26,7 @@ const InputPasswordComponent = React.forwardRef<
     const { getAllScaleProps } = useScale()
     const inputRef = useRef<HTMLInputElement>(null)
     const [visible, setVisible] = useState<boolean>(false)
-    useImperativeHandle(ref, () => inputRef.current)
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement)
 
     const iconClickHandler = () => {
       setVisible((v) => !v)

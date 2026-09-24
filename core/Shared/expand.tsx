@@ -16,9 +16,9 @@ function Expand({
   const [selfExpanded, setSelfExpanded] = useState<boolean>(isExpanded)
   const [visible, setVisible] = useState<boolean>(isExpanded)
   const contentRef = useRef<HTMLDivElement>(null)
-  const entryTimer = useRef<number>()
-  const leaveTimer = useRef<number>()
-  const resetTimer = useRef<number>()
+  const entryTimer = useRef<number | undefined>(undefined)
+  const leaveTimer = useRef<number | undefined>(undefined)
+  const resetTimer = useRef<number | undefined>(undefined)
   const [state, updateShape] = useRealShape<HTMLDivElement>(contentRef)
   const classes = useClasses('container', { expanded: selfExpanded })
 
