@@ -16,7 +16,7 @@ window.matchMedia = () =>
     matches: false,
     addListener: () => undefined,
     removeListener: () => undefined
-  } as unknown as MediaQueryList)
+  }) as unknown as MediaQueryList
 
 it('search field is in the server HTML and hydrates cleanly', async () => {
   const errors = jest

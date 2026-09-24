@@ -231,16 +231,18 @@ const InputComponent = React.forwardRef<
           user-select: none;
           border-radius: ${rounded ? '25px' : theme.layout.radius};
           border: 1px solid ${borderColor ? borderColor : colors.borderColor};
-          transition: border 0.2s ease 0s, color 0.2s ease 0s;
+          transition:
+            border 0.2s ease 0s,
+            color 0.2s ease 0s;
           background: ${backgroundColor ? backgroundColor : colors.bgColor};
         }
 
         .input-wrapper.active,
         .input-wrapper:hover {
           border: 1px solid ${hoverBorder ? hoverBorder : colors.hoverBorder};
-          background: ${backgroundColor
-            ? backgroundColor
-            : colors.hoverBgColor};
+          background: ${
+            backgroundColor ? backgroundColor : colors.hoverBgColor
+          };
         }
 
         .input-wrapper.left-label {

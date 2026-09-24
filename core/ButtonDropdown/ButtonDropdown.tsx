@@ -149,9 +149,9 @@ const ButtonDropdownComponent = React.forwardRef<
               /* border: 1px solid ${colors.borderColor}; */
               border-radius: ${theme.layout.radius};
               --bolio-ui-dropdown-height: ${SCALES.height(2.5)};
-              --bolio-ui-dropdown-min-width: ${auto
-                ? 'min-content'
-                : SCALES.width(10.5)};
+              --bolio-ui-dropdown-min-width: ${
+                auto ? 'min-content' : SCALES.width(10.5)
+              };
               --bolio-ui-dropdown-padding: ${SCALES.pt(0)} ${paddingRight}
                 ${SCALES.pb(0)} ${paddingLeft};
               --bolio-ui-dropdown-font-size: ${SCALES.font(0.875)};
@@ -195,7 +195,9 @@ const ButtonDropdownComponent = React.forwardRef<
               align-items: center;
               width: auto;
               padding: 0 1px;
-              transition: background 0.2s ease 0s, border-color 0.2s ease 0s;
+              transition:
+                background 0.2s ease 0s,
+                border-color 0.2s ease 0s;
             }
 
             /* summary:hover {

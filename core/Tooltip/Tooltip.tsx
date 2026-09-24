@@ -166,8 +166,8 @@ const TooltipComponent = React.forwardRef<
     const wrapperProps = focusableChild
       ? {}
       : isWrapperButton
-      ? { role: 'button', tabIndex: 0, ...triggerProps }
-      : triggerProps
+        ? { role: 'button', tabIndex: 0, ...triggerProps }
+        : triggerProps
 
     useClickAway(innerRef, () => trigger === 'click' && changeVisible(false))
     useEffect(() => {

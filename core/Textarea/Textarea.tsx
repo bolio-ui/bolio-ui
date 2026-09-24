@@ -19,7 +19,7 @@ const resizeTypes = tuple(
   'initial',
   'inherit'
 )
-export type TextareaResizes = typeof resizeTypes[number]
+export type TextareaResizes = (typeof resizeTypes)[number]
 export type TextareaTypes = NormalTypes
 interface Props {
   value?: string
@@ -122,7 +122,9 @@ const TextareaComponent = React.forwardRef<
             border-radius: ${theme.layout.radius};
             border: 1px solid ${colors.borderColor};
             color: ${colors.color};
-            transition: border 0.2s ease 0s, color 0.2s ease 0s;
+            transition:
+              border 0.2s ease 0s,
+              color 0.2s ease 0s;
             min-width: 12.5rem;
             max-width: 95vw;
             --textarea-font-size: ${SCALES.font(0.875)};

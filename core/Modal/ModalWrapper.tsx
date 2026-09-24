@@ -87,7 +87,8 @@ const ModalWrapper = React.forwardRef<
             opacity: 0;
             outline: none;
             transform: translate3d(0px, -30px, 0px);
-            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+            transition:
+              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s,
               transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s;
             width: 100%;
             font-size: ${SCALES.font(1)};

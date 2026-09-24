@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 
-const useResize = (callback: () => unknown, immediatelyInvoke: boolean = true): void => {
+const useResize = (
+  callback: () => unknown,
+  immediatelyInvoke: boolean = true
+): void => {
   useEffect(() => {
     const fn = () => callback()
     if (immediatelyInvoke) {

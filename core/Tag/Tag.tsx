@@ -38,10 +38,10 @@ const getColors = (
     const variant = subtle
       ? 'subtle'
       : light
-      ? 'light'
-      : invert
-      ? 'filled'
-      : 'outline'
+        ? 'light'
+        : invert
+          ? 'filled'
+          : 'outline'
     const { bg, border, color } = getVariantColors(palette, type, variant)
     return { color, bgColor: bg, borderColor: border }
   }

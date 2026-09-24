@@ -3,12 +3,7 @@ export type classNamesObject = Record<
   boolean | string | number | null | undefined
 >
 export type className =
-  | string
-  | classNamesObject
-  | null
-  | undefined
-  | boolean
-  | number
+  string | classNamesObject | null | undefined | boolean | number
 
 const classObjectToString = (className: classNamesObject) => {
   const keys = Object.keys(className)

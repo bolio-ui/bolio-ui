@@ -35,7 +35,9 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SliderProps = Props & NativeAttrs
 
-const getRefWidth = (elementRef: RefObject<HTMLElement | null> | null): number => {
+const getRefWidth = (
+  elementRef: RefObject<HTMLElement | null> | null
+): number => {
   if (!elementRef || !elementRef.current) return 0
   const rect = elementRef.current.getBoundingClientRect()
   return rect.width || rect.right - rect.left

@@ -29,7 +29,7 @@ type NativeAttrs = Omit<
 export type ComboboxProps = Props & NativeAttrs
 
 const getLabel = (option?: ComboboxOption) =>
-  option ? option.label ?? option.value : ''
+  option ? (option.label ?? option.value) : ''
 
 const defaultFilter = (option: ComboboxOption, text: string) =>
   getLabel(option).toLowerCase().includes(text.trim().toLowerCase())

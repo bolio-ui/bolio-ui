@@ -58,9 +58,9 @@ function InputIconClear({ onClick, disabled, visible }: Props) {
         }
 
         .clear-icon:hover {
-          color: ${disabled
-            ? theme.palette.accents_3
-            : theme.palette.foreground};
+          color: ${
+            disabled ? theme.palette.accents_3 : theme.palette.foreground
+          };
         }
 
         svg {

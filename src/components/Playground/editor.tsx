@@ -89,9 +89,9 @@ const Editor: React.FC<Props> = ({ code, codeTheme }) => {
           width: 100%;
           height: 2.875rem;
           padding: 0 ${theme.layout.gapHalf};
-          border-bottom: ${visible
-            ? `1px solid ${theme.palette.border}`
-            : 'none'};
+          border-bottom: ${
+            visible ? `1px solid ${theme.palette.border}` : 'none'
+          };
           cursor: pointer;
         }
 

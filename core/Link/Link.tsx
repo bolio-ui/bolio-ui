@@ -77,9 +77,9 @@ const LinkComponent = React.forwardRef<
           }
 
           .link:hover {
-            background-color: ${block
-              ? addColorAlpha(theme.palette.link, 0.1)
-              : 'unset'};
+            background-color: ${
+              block ? addColorAlpha(theme.palette.link, 0.1) : 'unset'
+            };
             color: ${hoverColor};
           }
         `}</style>

@@ -14,7 +14,7 @@ export const SEMANTIC_COLOR_TYPES = [
   'info'
 ] as const
 
-export type SemanticColorType = typeof SEMANTIC_COLOR_TYPES[number]
+export type SemanticColorType = (typeof SEMANTIC_COLOR_TYPES)[number]
 
 export const isSemanticColorType = (type?: string): type is SemanticColorType =>
   !!type && (SEMANTIC_COLOR_TYPES as ReadonlyArray<string>).includes(type)

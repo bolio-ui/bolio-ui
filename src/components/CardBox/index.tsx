@@ -59,9 +59,11 @@ function CardBox({ title, description, icon, hover = false }: Props) {
           width: 100%;
         }
         .card-wrapper :global(.card-box):hover {
-          box-shadow: ${theme.type === 'dark'
-            ? `0 0 0 1px ${theme.palette.foreground}`
-            : '0px 4px 8px rgba(0,0,0,0.12)'};
+          box-shadow: ${
+            theme.type === 'dark'
+              ? `0 0 0 1px ${theme.palette.foreground}`
+              : '0px 4px 8px rgba(0,0,0,0.12)'
+          };
         }
       `}</style>
     </>

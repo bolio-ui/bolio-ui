@@ -7,7 +7,7 @@ import useScale, { withScale } from '../use-scale'
 
 const renderMode = tuple('default', 'effect', 'effect-seo')
 
-export type PageRenderMode = typeof renderMode[number]
+export type PageRenderMode = (typeof renderMode)[number]
 
 interface Props {
   render?: PageRenderMode
@@ -33,9 +33,11 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
     <span>
       <style jsx>{`
         :global(body) {
-          background-image: radial-gradient(#e3e3e3 ${dotSize}, transparent 0),
+          background-image:
+            radial-gradient(#e3e3e3 ${dotSize}, transparent 0),
             radial-gradient(#e3e3e3 ${dotSize}, transparent 0);
-          background-position: 0 0,
+          background-position:
+            0 0,
             ${background.position} ${background.position};
           background-attachment: fixed;
           background-size: ${background.size} ${background.size};

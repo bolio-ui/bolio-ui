@@ -23,10 +23,10 @@ export const getColors = (
     const variant = subtle
       ? 'subtle'
       : light
-      ? 'light'
-      : ghost
-      ? 'outline'
-      : 'filled'
+        ? 'light'
+        : ghost
+          ? 'outline'
+          : 'filled'
     const { bg, border, color } = getVariantColors(palette, type, variant)
     return { color, bgColor: bg, borderColor: border }
   }

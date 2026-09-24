@@ -1,6 +1,13 @@
 'use client'
 
-import { BolioUIProvider, CssBaseline, Button, Card, Text, Input } from '@bolio-ui/core'
+import {
+  BolioUIProvider,
+  CssBaseline,
+  Button,
+  Card,
+  Text,
+  Input
+} from '@bolio-ui/core'
 
 export default function AppRouterClient() {
   return (

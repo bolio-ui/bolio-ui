@@ -8,7 +8,7 @@
       "core/*": ["core/*"]
     },
     "declaration": true,
-    "types": [],
+    "types": ["node"],
     "emitDeclarationOnly": true,
     "strictNullChecks": true,
     "moduleResolution": "node",

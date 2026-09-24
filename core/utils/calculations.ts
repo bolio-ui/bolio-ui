@@ -11,7 +11,7 @@ import { useMemo } from 'react'
 export const getProportions = (
   value: number,
   max: number,
-  maxFixed: number = 2,
+  maxFixed: number = 2
 ): number => {
   const val = value / max
   const couldBeDecimalValue = (Number.isNaN(val) ? 0 : val) * 100
@@ -25,5 +25,8 @@ export const getProportions = (
   return +couldBeDecimalValue.toFixed(maxFixed)
 }
 
-export const useProportions = (value: number, max: number, maxFixed: number = 2) =>
-  useMemo(() => getProportions(value, max, maxFixed), [value, max, maxFixed])
+export const useProportions = (
+  value: number,
+  max: number,
+  maxFixed: number = 2
+) => useMemo(() => getProportions(value, max, maxFixed), [value, max, maxFixed])

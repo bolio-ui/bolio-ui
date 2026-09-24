@@ -179,8 +179,11 @@ const ButtonComponent = React.forwardRef<
           justify-content: center;
           text-align: center;
           white-space: nowrap;
-          transition: background-color 200ms ease 0ms, box-shadow 200ms ease 0ms,
-            border 200ms ease 0ms, color 200ms ease 0ms;
+          transition:
+            background-color 200ms ease 0ms,
+            box-shadow 200ms ease 0ms,
+            border 200ms ease 0ms,
+            color 200ms ease 0ms;
           position: relative;
           overflow: hidden;
           color: ${color};

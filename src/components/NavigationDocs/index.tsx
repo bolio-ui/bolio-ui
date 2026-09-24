@@ -16,26 +16,28 @@ export interface Docs {
   url: string
 }
 
-const DocsPageLink: React.FC<{ docs: Docs; direction: 'previous' | 'next' }> =
-  ({ docs, direction }) => {
-    const router = useRouter()
-    const isPrevious = direction === 'previous'
+const DocsPageLink: React.FC<{
+  docs: Docs
+  direction: 'previous' | 'next'
+}> = ({ docs, direction }) => {
+  const router = useRouter()
+  const isPrevious = direction === 'previous'
 
-    return (
-      <Button
-        type="primary"
-        subtle
-        auto
-        scale={0.75}
-        className={`docs-page-link ${direction}`}
-        onClick={() => router.push(docs.url)}
-        icon={isPrevious && <ChevronLeftIcon fontSize={14} />}
-        iconRight={!isPrevious && <ChevronRightIcon fontSize={14} />}
-      >
-        {docs.name}
-      </Button>
-    )
-  }
+  return (
+    <Button
+      type="primary"
+      subtle
+      auto
+      scale={0.75}
+      className={`docs-page-link ${direction}`}
+      onClick={() => router.push(docs.url)}
+      icon={isPrevious && <ChevronLeftIcon fontSize={14} />}
+      iconRight={!isPrevious && <ChevronRightIcon fontSize={14} />}
+    >
+      {docs.name}
+    </Button>
+  )
+}
 
 function NavigationDocs({ next, previous }: NavigationDocsProps) {
   const theme = useTheme()
@@ -59,7 +61,9 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
       )}
       <style jsx>{`
         :global(.docs-page-link.btn) {
-          transition: background-color 200ms ease, transform 200ms ease;
+          transition:
+            background-color 200ms ease,
+            transform 200ms ease;
         }
         :global(.docs-page-link.btn:hover) {
           background-color: ${theme.palette.primary}40;

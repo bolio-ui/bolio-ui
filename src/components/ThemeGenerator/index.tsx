@@ -65,14 +65,14 @@ const hsvToRgb = ({ h, s, v }: Hsv) => {
     h < 60
       ? [c, x, 0]
       : h < 120
-      ? [x, c, 0]
-      : h < 180
-      ? [0, c, x]
-      : h < 240
-      ? [0, x, c]
-      : h < 300
-      ? [x, 0, c]
-      : [c, 0, x]
+        ? [x, c, 0]
+        : h < 180
+          ? [0, c, x]
+          : h < 240
+            ? [0, x, c]
+            : h < 300
+              ? [x, 0, c]
+              : [c, 0, x]
 
   return { r: (r1 + m) * 255, g: (g1 + m) * 255, b: (b1 + m) * 255 }
 }
@@ -353,7 +353,9 @@ const ColorPickerPanel: React.FC<{
           height: 16px;
           border-radius: 50%;
           border: 2px solid #fff;
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.3),
+            0 1px 4px rgba(0, 0, 0, 0.4);
           transform: translate(-50%, -50%);
           pointer-events: none;
         }

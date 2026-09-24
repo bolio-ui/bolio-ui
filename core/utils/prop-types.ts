@@ -74,18 +74,18 @@ const placement = tuple(
 
 const dividerAlign = tuple('start', 'center', 'end', 'left', 'right')
 
-export type ButtonTypes = typeof buttonTypes[number]
+export type ButtonTypes = (typeof buttonTypes)[number]
 
-export type NormalTypes = typeof normalTypes[number]
+export type NormalTypes = (typeof normalTypes)[number]
 
-export type SnippetTypes = typeof snippetTypes[number]
+export type SnippetTypes = (typeof snippetTypes)[number]
 
-export type CardTypes = typeof cardTypes[number]
+export type CardTypes = (typeof cardTypes)[number]
 
-export type CopyTypes = typeof copyTypes[number]
+export type CopyTypes = (typeof copyTypes)[number]
 
-export type TriggerTypes = typeof triggerTypes[number]
+export type TriggerTypes = (typeof triggerTypes)[number]
 
-export type Placement = typeof placement[number]
+export type Placement = (typeof placement)[number]
 
-export type DividerAlign = typeof dividerAlign[number]
+export type DividerAlign = (typeof dividerAlign)[number]

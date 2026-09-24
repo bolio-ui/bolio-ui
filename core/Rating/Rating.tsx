@@ -9,8 +9,8 @@ import useClasses from '../use-classes'
 export type RatingTypes = NormalTypes
 const ratingCountTuple = tupleNumber(2, 3, 4, 5, 6, 7, 8, 9, 10)
 const ratingValueTuple = tupleNumber(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-export type RatingValue = typeof ratingValueTuple[number]
-export type RatingCount = typeof ratingCountTuple[number]
+export type RatingValue = (typeof ratingValueTuple)[number]
+export type RatingCount = (typeof ratingCountTuple)[number]
 
 interface Props {
   type?: RatingTypes
@@ -178,7 +178,10 @@ const RatingComponent = React.forwardRef<
             height: 100%;
             fill: transparent;
             transform: scale(1);
-            transition: transform, color, fill 30ms linear;
+            transition:
+              transform,
+              color,
+              fill 30ms linear;
           }
           .hovered :global(svg) {
             fill: ${color};

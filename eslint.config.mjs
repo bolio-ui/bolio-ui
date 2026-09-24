@@ -3,8 +3,7 @@ import globals from 'globals'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import typescript from '@typescript-eslint/eslint-plugin'
-import prettierConfig from 'eslint-config-prettier/flat'
-import prettier from 'eslint-plugin-prettier'
+import prettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default [
   {
@@ -24,7 +23,7 @@ export default [
   js.configs.recommended,
   react.configs.flat.recommended,
   ...typescript.configs['flat/recommended'],
-  prettierConfig,
+  prettierRecommended,
   {
     languageOptions: {
       globals: {
@@ -41,15 +40,9 @@ export default [
       react: { version: 'detect' }
     },
     plugins: {
-      'react-hooks': reactHooks,
-      prettier
+      'react-hooks': reactHooks
     },
     rules: {
-      // what plugin:prettier/recommended turned on
-      'prettier/prettier': 'error',
-      'arrow-body-style': 'off',
-      'prefer-arrow-callback': 'off',
-
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'react/prop-types': 'off',

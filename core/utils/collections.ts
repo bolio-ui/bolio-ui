@@ -151,8 +151,8 @@ export const isBolioUIElement = (el?: HTMLElement): boolean => {
 export const isBrowser = (): boolean => {
   return Boolean(
     typeof window !== 'undefined' &&
-      window.document &&
-      window.document.createElement
+    window.document &&
+    window.document.createElement
   )
 }
 
