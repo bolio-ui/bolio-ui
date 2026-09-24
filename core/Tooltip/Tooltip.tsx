@@ -77,7 +77,7 @@ const TooltipComponent = React.forwardRef<
     },
     ref
   ) => {
-    const timer = useRef<number>()
+    const timer = useRef<number | undefined>(undefined)
     const innerRef = useRef<HTMLDivElement>(null)
     const tooltipId = useId()
     useImperativeHandle(ref, () => innerRef.current as HTMLDivElement)

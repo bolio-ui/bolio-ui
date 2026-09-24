@@ -9,7 +9,7 @@ export type DraggingEvent = {
 export type DraggingHandler = (event: DraggingEvent) => void
 
 const useDrag = (
-  elementRef: RefObject<HTMLElement> | null,
+  elementRef: RefObject<HTMLElement | null> | null,
   draggingHandler: DraggingHandler = () => {},
   dragStartHandler: DraggingHandler = () => {},
   dragEndHandler: DraggingHandler = () => {}

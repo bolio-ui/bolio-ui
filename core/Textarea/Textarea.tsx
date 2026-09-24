@@ -62,7 +62,7 @@ const TextareaComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const textareaRef = useRef<HTMLTextAreaElement>(null)
-    useImperativeHandle(ref, () => textareaRef.current)
+    useImperativeHandle(ref, () => textareaRef.current as HTMLTextAreaElement)
     const isControlledComponent = useMemo(() => value !== undefined, [value])
     const [selfValue, setSelfValue] = useState<string>(initialValue)
     const [hover, setHover] = useState<boolean>(false)

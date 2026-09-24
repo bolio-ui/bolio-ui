@@ -17,7 +17,7 @@ export const extractFileName = (
   let name: string | undefined = undefined
   const next = React.Children.map(children, (child) => {
     if (name) return child
-    if (!React.isValidElement(child)) return null
+    if (!React.isValidElement<{ children?: ReactNode }>(child)) return null
     const grandson = child.props?.children
     if (
       typeof grandson === 'string' &&

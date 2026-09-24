@@ -36,7 +36,7 @@ const getOwnerScrollbarWidth = (element: Element): number => {
 }
 
 function useBodyScroll(
-  elementRef?: RefObject<HTMLElement> | null,
+  elementRef?: RefObject<HTMLElement | null> | null,
   options?: BodyScrollOptions
 ): [boolean, Dispatch<SetStateAction<boolean>>] {
   if (typeof document === 'undefined') return [false, (t: unknown) => t]

@@ -62,7 +62,7 @@ const ButtonComponent = React.forwardRef<
   const theme = useTheme()
   const { SCALES } = useScale()
   const buttonRef = useRef<HTMLButtonElement>(null)
-  useImperativeHandle(ref, () => buttonRef.current)
+  useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement)
 
   const [dripShow, setDripShow] = useState<boolean>(false)
   const [dripX, setDripX] = useState<number>(0)

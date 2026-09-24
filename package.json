@@ -110,8 +110,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^16",
     "@types/jest": "^26.0.24",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.4",
     "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^8",
@@ -137,9 +137,9 @@
     "plop": "^2.7.4",
     "prettier": "2.3.2",
     "prism-react-renderer": "^1.2.1",
-    "react": "^18.2.0",
+    "react": "^19",
     "react-device-detect": "^1.17.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19",
     "react-live": "^2.2.3",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-join-line": "^1.0.2",
@@ -154,9 +154,10 @@
     "vite": "^8"
   },
   "resolutions": {
-    "@types/react": "^18.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19",
+    "react-dom": "^19"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
