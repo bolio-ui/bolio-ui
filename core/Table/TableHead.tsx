@@ -8,10 +8,6 @@ interface Props<TableDataItem extends TableDataItemBase> {
   className?: string
 }
 
-const defaultProps = {
-  className: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
 export type TableHeadProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
@@ -39,8 +35,7 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   props: TableHeadProps<TableDataItem>
 ) => {
   const theme = useTheme()
-  const { columns, width } = props as TableHeadProps<TableDataItem> &
-    typeof defaultProps
+  const { columns, width } = props
   const isScalableWidth = useMemo(
     () => columns.find((item) => !!item.width),
     [columns]
@@ -115,6 +110,5 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   )
 }
 
-TableHead.defaultProps = defaultProps
 TableHead.displayName = 'BolioUITableHead'
 export default TableHead

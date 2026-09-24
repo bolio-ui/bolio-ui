@@ -14,29 +14,20 @@ interface Props {
   layerClassName?: string
 }
 
-const defaultProps = {
-  onClick: () => {},
-  visible: false,
-  // onContentClick: () => {},
-  backdropClassName: '',
-  positionClassName: '',
-  layerClassName: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type BackdropProps = Props & NativeAttrs
 
 function BackdropComponent({
   children,
-  onClick,
-  visible,
+  onClick = () => {},
+  visible = false,
   width,
   onContentClick,
-  backdropClassName,
-  positionClassName,
-  layerClassName,
+  backdropClassName = '',
+  positionClassName = '',
+  layerClassName = '',
   ...props
-}: React.PropsWithChildren<BackdropProps> & typeof defaultProps) {
+}: React.PropsWithChildren<BackdropProps>) {
   const theme = useTheme()
 
   const [, setIsContentMouseDown, IsContentMouseDownRef] =
@@ -133,7 +124,6 @@ function BackdropComponent({
   )
 }
 
-BackdropComponent.defaultProps = defaultProps
 BackdropComponent.displayName = 'BolioUIBackdrop'
 const Backdrop = React.memo(BackdropComponent)
 export default Backdrop

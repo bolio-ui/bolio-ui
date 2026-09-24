@@ -9,27 +9,18 @@ interface Props {
   name?: string
 }
 
-const defaultProps = {
-  visible: false,
-  enterTime: 60,
-  leaveTime: 60,
-  clearTime: 60,
-  className: '',
-  name: 'transition'
-}
-
 export type CssTransitionProps = Props
 
 function CssTransition({
   children,
-  className,
-  visible,
-  enterTime,
-  leaveTime,
-  clearTime,
-  name,
+  className = '',
+  visible = false,
+  enterTime = 60,
+  leaveTime = 60,
+  clearTime = 60,
+  name = 'transition',
   ...props
-}: React.PropsWithChildren<CssTransitionProps> & typeof defaultProps) {
+}: React.PropsWithChildren<CssTransitionProps>) {
   const [classes, setClasses] = useState<string>('')
   const [renderable, setRenderable] = useState<boolean>(visible)
 
@@ -72,6 +63,5 @@ function CssTransition({
   })
 }
 
-CssTransition.defaultProps = defaultProps
 CssTransition.displayName = 'BolioUICssTransition'
 export default CssTransition

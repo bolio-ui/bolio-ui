@@ -19,6 +19,7 @@ import {
   getButtonHoverColors
 } from './styles'
 import useClasses from '../use-classes'
+import useDefaultProps from '../utils/use-default-props'
 
 interface Props {
   type?: ButtonTypes
@@ -67,7 +68,10 @@ const ButtonComponent = React.forwardRef<
   const [dripX, setDripX] = useState<number>(0)
   const [dripY, setDripY] = useState<number>(0)
   const groupConfig = useButtonGroupContext()
-  const filteredProps = filterPropsWithGroup(btnProps, groupConfig)
+  const filteredProps = filterPropsWithGroup(
+    useDefaultProps(btnProps, defaultProps),
+    groupConfig
+  )
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const {
@@ -231,7 +235,6 @@ const ButtonComponent = React.forwardRef<
   )
 })
 
-ButtonComponent.defaultProps = defaultProps
 ButtonComponent.displayName = 'BolioUIButton'
 const Button = withScale(ButtonComponent)
 export default Button

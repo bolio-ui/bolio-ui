@@ -20,10 +20,6 @@ interface Props<TableDataItem extends TableDataItemBase> {
   rowClassName: TableRowClassNameHandler<TableDataItem>
 }
 
-const defaultProps = {
-  className: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
 export type TableBodyProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
@@ -35,7 +31,7 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
   onRow,
   onCell,
   rowClassName
-}: TableBodyProps<TableDataItem> & typeof defaultProps) => {
+}: TableBodyProps<TableDataItem>) => {
   const theme = useTheme()
   const { columns } = useTableContext<TableDataItem>()
   const rowClickHandler = (row: TableDataItem, index: number) => {
@@ -89,6 +85,5 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
   )
 }
 
-TableBody.defaultProps = defaultProps
 TableBody.displayName = 'BolioUITableBody'
 export default TableBody

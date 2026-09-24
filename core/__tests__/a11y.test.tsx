@@ -6,10 +6,12 @@ import {
   Code,
   Collapse,
   Drawer,
+  Input,
   Loading,
   Modal,
   Pagination,
   Popover,
+  Rating,
   Select,
   Slider,
   Spinner,
@@ -176,10 +178,7 @@ describe('semantics', () => {
 
     const tooltip = await screen.findByRole('tooltip')
     expect(tooltip).toHaveTextContent('Tip')
-    expect(trigger.parentElement).toHaveAttribute(
-      'aria-describedby',
-      tooltip.id
-    )
+    expect(trigger).toHaveAttribute('aria-describedby', tooltip.id)
 
     fireEvent.keyDown(trigger, { key: 'Escape' })
     await waitFor(() =>
@@ -215,6 +214,87 @@ describe('semantics', () => {
     await waitFor(() =>
       expect(screen.queryByText('Popover body')).not.toBeInTheDocument()
     )
+  })
+
+  it('Popover with a text trigger is a button that opens with the keyboard', async () => {
+    wrap(<Popover content={<span>Menu body</span>}>Menu</Popover>)
+    const trigger = screen.getByRole('button', { name: 'Menu' })
+    expect(trigger).toHaveAttribute('tabindex', '0')
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+
+    fireEvent.keyDown(trigger, { key: 'Enter' })
+    const body = await screen.findByText('Menu body')
+    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+    expect(trigger).toHaveAttribute(
+      'aria-controls',
+      body.closest('.tooltip-content')?.id
+    )
+  })
+
+  it('Popover puts its state on a button trigger', async () => {
+    wrap(
+      <Popover content={<span>Popover body</span>}>
+        <button>Open</button>
+      </Popover>
+    )
+    const trigger = screen.getByRole('button', { name: 'Open' })
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    fireEvent.click(trigger)
+    await screen.findByText('Popover body')
+    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('Rating is a radio group that moves with the arrow keys', () => {
+    const onValueChange = jest.fn()
+    wrap(
+      <Rating
+        aria-label="Score"
+        initialValue={3}
+        onValueChange={onValueChange}
+      />
+    )
+    expect(
+      screen.getByRole('radiogroup', { name: 'Score' })
+    ).toBeInTheDocument()
+    const radios = screen.getAllByRole('radio')
+    expect(radios).toHaveLength(5)
+    expect(radios[2]).toHaveAttribute('aria-checked', 'true')
+    expect(radios[2]).toHaveAttribute('tabindex', '0')
+    expect(radios[0]).toHaveAttribute('tabindex', '-1')
+
+    fireEvent.keyDown(radios[2], { key: 'ArrowRight' })
+    expect(radios[3]).toHaveAttribute('aria-checked', 'true')
+    expect(radios[3]).toHaveFocus()
+    expect(onValueChange).toHaveBeenLastCalledWith(4)
+
+    fireEvent.keyDown(radios[3], { key: 'End' })
+    expect(radios[4]).toHaveAttribute('aria-checked', 'true')
+    fireEvent.keyDown(radios[4], { key: 'ArrowRight' })
+    expect(radios[4]).toHaveAttribute('aria-checked', 'true')
+    fireEvent.keyDown(radios[4], { key: 'Home' })
+    expect(radios[0]).toHaveAttribute('aria-checked', 'true')
+  })
+
+  it('Input is named by its label and described by its error', () => {
+    wrap(
+      <Input error errorMessage="Use a valid email">
+        Email
+      </Input>
+    )
+    const input = screen.getByLabelText('Email')
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(input).toHaveAccessibleDescription('Use a valid email')
+  })
+
+  it('Input.Password toggle is a button that works with the keyboard', () => {
+    wrap(<Input.Password aria-label="Password" />)
+    const input = screen.getByLabelText('Password')
+    expect(input).toHaveAttribute('type', 'password')
+    fireEvent.click(screen.getByRole('button', { name: 'Show password' }))
+    expect(input).toHaveAttribute('type', 'text')
+    expect(
+      screen.getByRole('button', { name: 'Hide password' })
+    ).toBeInTheDocument()
   })
 
   it('Modal is named by its title and described by its subtitle', () => {
