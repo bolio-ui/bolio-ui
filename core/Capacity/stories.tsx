@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import useTheme from '../use-theme'
 import Capacity from '.'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Capacity
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={4} md={4}>
       <Capacity value={15} width="200px" />
@@ -22,7 +22,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const FixedColor: Story = () => {
+export const FixedColor: StoryFn = () => {
   const theme = useTheme()
   return (
     <Grid.Container gap={2}>

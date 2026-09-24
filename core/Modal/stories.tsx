@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Modal from '.'
 import Button from '../Button'
@@ -10,7 +10,7 @@ export default {
   component: Modal
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const [state, setState] = useState(false)
   const handler = () => setState(true)
   return (
@@ -35,7 +35,7 @@ export const Default: Story = () => {
   )
 }
 
-export const UseModal: Story = () => {
+export const UseModal: StoryFn = () => {
   const { setVisible, bindings } = useModal()
   return (
     <Grid.Container gap={2}>
@@ -59,7 +59,7 @@ export const UseModal: Story = () => {
   )
 }
 
-export const WithoutActions: Story = () => {
+export const WithoutActions: StoryFn = () => {
   const [state, setState] = useState(false)
   const handler = () => setState(true)
   return (
@@ -80,7 +80,7 @@ export const WithoutActions: Story = () => {
   )
 }
 
-export const DisabledAction: Story = () => {
+export const DisabledAction: StoryFn = () => {
   const [state, setState] = useState(false)
   const handler = () => setState(true)
   const closeHandler = () => {
@@ -107,7 +107,7 @@ export const DisabledAction: Story = () => {
   )
 }
 
-export const Customized: Story = () => {
+export const Customized: StoryFn = () => {
   const { setVisible, bindings } = useModal()
   return (
     <Grid.Container gap={2}>
@@ -126,7 +126,7 @@ export const Customized: Story = () => {
   )
 }
 
-export const Loading: Story = () => {
+export const Loading: StoryFn = () => {
   const { setVisible, bindings } = useModal()
   return (
     <Grid.Container gap={2}>
@@ -150,7 +150,7 @@ export const Loading: Story = () => {
   )
 }
 
-export const Overlong: Story = () => {
+export const Overlong: StoryFn = () => {
   const { setVisible, bindings } = useModal()
   return (
     <Grid.Container gap={2}>

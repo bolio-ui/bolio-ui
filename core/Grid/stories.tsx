@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Grid from '.'
 import Card from '../Card'
 
@@ -7,7 +7,7 @@ export default {
   component: Grid
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2} justify="center" height="100px">
     <Grid xs={6}>
       <Card shadow width="100%" />
@@ -21,7 +21,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const FluidLayout: Story = () => (
+export const FluidLayout: StoryFn = () => (
   <Grid.Container gap={2} justify="center">
     <Grid xs={12}>
       <Card shadow width="100%" height="50px" />
@@ -56,7 +56,7 @@ export const FluidLayout: Story = () => (
   </Grid.Container>
 )
 
-export const ResponsiveLayout: Story = () => (
+export const ResponsiveLayout: StoryFn = () => (
   <Grid.Container gap={2} justify="center">
     <Grid xs={12} md={6}>
       <Card shadow width="100%" height="50px" />
@@ -76,7 +76,7 @@ export const ResponsiveLayout: Story = () => (
   </Grid.Container>
 )
 
-export const HideElement: Story = () => (
+export const HideElement: StoryFn = () => (
   <Grid.Container gap={2} justify="center">
     <Grid xs={6} sm={0}>
       <Card shadow width="100%" height="50px" />
@@ -93,7 +93,7 @@ export const HideElement: Story = () => (
   </Grid.Container>
 )
 
-export const AutoWidth: Story = () => (
+export const AutoWidth: StoryFn = () => (
   <>
     <Grid.Container gap={2} justify="center">
       <Grid xs>

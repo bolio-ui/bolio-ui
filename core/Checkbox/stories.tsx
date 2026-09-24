@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Checkbox from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Checkbox
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Checkbox checked={true}>Check option</Checkbox>
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Scale: Story = () => (
+export const Scale: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Checkbox mr="15px" checked={true} scale={0.25}>
@@ -35,7 +35,7 @@ export const Scale: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Checkbox checked={true} type="default">
@@ -75,7 +75,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Checkbox>Checkbox option</Checkbox>
@@ -88,7 +88,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Group: Story = () => {
+export const Group: StoryFn = () => {
   const handler = (value) => {
     console.log(value)
   }

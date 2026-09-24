@@ -10,3 +10,6 @@ export const decorators = [
     </BolioUIProvider>
   )
 ]
+
+// Storybook 6 showed a Docs page for every component; it is opt-in since 7
+export const tags = ['autodocs']

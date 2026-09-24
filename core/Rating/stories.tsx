@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Rating from '.'
 import Grid from '../Grid'
@@ -9,7 +9,7 @@ export default {
   component: Rating
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const [value, setValue] = useState(1)
   const [locked, setLocked] = useState(false)
 
@@ -28,7 +28,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Rating />
@@ -54,7 +54,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const CustomAmount: Story = () => (
+export const CustomAmount: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Rating count={2} />
@@ -68,7 +68,7 @@ export const CustomAmount: Story = () => (
   </Grid.Container>
 )
 
-export const Icon: Story = () => (
+export const Icon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Rating value={4} count={6} type="success" icon={<Umbrella />} />

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Container from '.'
 import Card from '../Card'
 import Text from '../Text'
@@ -8,7 +8,7 @@ export default {
   component: Container
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Container>
     <Card>
       <Text>
@@ -19,7 +19,7 @@ export const Default: Story = () => (
   </Container>
 )
 
-export const Fluid: Story = () => (
+export const Fluid: StoryFn = () => (
   <Container fluid>
     <Card>
       <Text>A fluid Container has no maximum width.</Text>
@@ -27,7 +27,7 @@ export const Fluid: Story = () => (
   </Container>
 )
 
-export const Aligned: Story = () => (
+export const Aligned: StoryFn = () => (
   <Container
     justify="center"
     align="middle"

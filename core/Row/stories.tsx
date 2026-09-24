@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Row from '.'
 import Col from '../Col'
 import Card from '../Card'
@@ -15,7 +15,7 @@ const Cell = ({ children }: { children: React.ReactNode }) => (
   </Card>
 )
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Row>
     <Col span={4}>
       <Cell>span 4</Cell>
@@ -29,7 +29,7 @@ export const Default: Story = () => (
   </Row>
 )
 
-export const Justify: Story = () => (
+export const Justify: StoryFn = () => (
   <>
     {(['start', 'center', 'end', 'space-between', 'space-around'] as const).map(
       (justify) => (
@@ -49,7 +49,7 @@ export const Justify: Story = () => (
   </>
 )
 
-export const Align: Story = () => (
+export const Align: StoryFn = () => (
   <>
     {(['top', 'middle', 'bottom'] as const).map((align) => (
       <div key={align} style={{ marginBottom: 16 }}>
@@ -71,7 +71,7 @@ export const Align: Story = () => (
   </>
 )
 
-export const Gap: Story = () => (
+export const Gap: StoryFn = () => (
   <Row gap={2}>
     <Col span={6}>
       <Cell>gap 2</Cell>
@@ -82,7 +82,7 @@ export const Gap: Story = () => (
   </Row>
 )
 
-export const AsList: Story = () => (
+export const AsList: StoryFn = () => (
   <Row component="ul" style={{ listStyle: 'none', padding: 0 }}>
     <Col component="li" span={6}>
       <Cell>first item</Cell>

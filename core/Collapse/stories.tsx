@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Collapse from '.'
 import Text from '../Text'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Collapse
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Collapse.Group>
@@ -33,7 +33,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Expanded: Story = () => (
+export const Expanded: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Collapse.Group>
@@ -58,7 +58,7 @@ export const Expanded: Story = () => (
   </Grid.Container>
 )
 
-export const Subtitle: Story = () => (
+export const Subtitle: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Collapse.Group>
@@ -93,7 +93,7 @@ export const Subtitle: Story = () => (
   </Grid.Container>
 )
 
-export const Shadow: Story = () => (
+export const Shadow: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Collapse

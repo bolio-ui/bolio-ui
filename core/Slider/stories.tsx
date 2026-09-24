@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Slider from '.'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Slider
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Slider initialValue={40} />
@@ -16,7 +16,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Slider initialValue={40} />
@@ -42,7 +42,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Slider initialValue={50} disabled />
@@ -50,7 +50,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Markers: Story = () => (
+export const Markers: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Slider step={10} showMarkers width="75%" />
@@ -58,7 +58,7 @@ export const Markers: Story = () => (
   </Grid.Container>
 )
 
-export const Range: Story = () => (
+export const Range: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Slider
@@ -83,7 +83,7 @@ export const Range: Story = () => (
   </Grid.Container>
 )
 
-export const Event: Story = () => {
+export const Event: StoryFn = () => {
   const [value, setValue] = useState()
   const handler = (val) => {
     console.log(val)

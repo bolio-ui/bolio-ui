@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Col from '.'
 import Row from '../Row'
 import Card from '../Card'
@@ -15,7 +15,7 @@ const Cell = ({ children }: { children: React.ReactNode }) => (
   </Card>
 )
 
-export const Spans: Story = () => (
+export const Spans: StoryFn = () => (
   <>
     <Row>
       <Col span={12}>
@@ -55,7 +55,7 @@ export const Spans: Story = () => (
   </>
 )
 
-export const Offset: Story = () => (
+export const Offset: StoryFn = () => (
   <Row>
     <Col span={4} offset={4}>
       <Cell>span 4, offset 4</Cell>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import DatePicker from '.'
 import Grid from '../Grid'
 import Text from '../Text'
@@ -9,7 +9,7 @@ export default {
   component: DatePicker
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <DatePicker aria-label="Birthday" />
@@ -17,7 +17,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Controlled: Story = () => {
+export const Controlled: StoryFn = () => {
   const [date, setDate] = useState<Date | null>(new Date(2026, 0, 15))
   return (
     <Grid.Container gap={2}>
@@ -29,7 +29,7 @@ export const Controlled: Story = () => {
   )
 }
 
-export const MinAndMax: Story = () => (
+export const MinAndMax: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <DatePicker
@@ -42,7 +42,7 @@ export const MinAndMax: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <DatePicker aria-label="Birthday" disabled />

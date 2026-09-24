@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import ButtonGroup from '.'
 import Button from '../Button'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: ButtonGroup
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonGroup>
@@ -20,7 +20,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Variant: Story = () => (
+export const Variant: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonGroup type="success">
@@ -51,7 +51,7 @@ export const Variant: Story = () => (
   </Grid.Container>
 )
 
-export const Sizes: Story = () => (
+export const Sizes: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonGroup scale={2 / 3}>
@@ -69,7 +69,7 @@ export const Sizes: Story = () => (
   </Grid.Container>
 )
 
-export const Vertical: Story = () => (
+export const Vertical: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonGroup vertical>
@@ -82,7 +82,7 @@ export const Vertical: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonGroup scale={0.5} disabled>
