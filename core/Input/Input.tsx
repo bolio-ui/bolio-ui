@@ -69,7 +69,7 @@ const InputComponent = React.forwardRef<
   const { SCALES } = useScale()
 
   const inputRef = useRef<HTMLInputElement>(null)
-  useImperativeHandle(ref, () => inputRef.current)
+  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement)
 
   const generatedId = useId()
   const inputId = props.id || generatedId
