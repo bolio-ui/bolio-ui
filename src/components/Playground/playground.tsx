@@ -5,7 +5,6 @@ import Title from './title'
 
 const DynamicLive = dynamic(() => import('./dynamic-live'), {
   ssr: false,
-  // eslint-disable-next-line react/display-name
   loading: () => (
     <div style={{ padding: '20pt 0' }}>
       <Loading spaceRatio={5} />

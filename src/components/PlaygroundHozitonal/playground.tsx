@@ -4,7 +4,6 @@ import { Loading } from 'core'
 
 const DynamicLive = dynamic(() => import('./dynamic-live'), {
   ssr: false,
-  // eslint-disable-next-line react/display-name
   loading: () => (
     <div
       style={{
