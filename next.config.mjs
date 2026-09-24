@@ -1,21 +1,27 @@
+import { createRequire } from 'module'
+import createMDX from '@next/mdx'
+import withSerwistInit from '@serwist/next'
+
+const require = createRequire(import.meta.url)
+
 // MDX 3 does not read tables and strikethrough by itself: remark-gfm restores them.
 // The plugins are given by name, which is how @next/mdx loads ESM plugins.
-const withMDX = require('@next/mdx')({
+// The components used by every MDX page come from src/mdx-components.tsx.
+const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    // Without it MDX 3 ignores the MDXProvider components set in _app
-    providerImportSource: '@mdx-js/react',
     remarkPlugins: ['remark-gfm'],
     rehypePlugins: ['@mapbox/rehype-prism', 'rehype-join-line']
   }
 })
 
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  cacheOnFrontEndNav: true,
+// The service worker source is src/app/sw.ts, built into public/sw.js
+const withSerwist = withSerwistInit({
+  swSrc: 'src/app/sw.ts',
+  swDest: 'public/sw.js',
+  cacheOnNavigation: true,
   reloadOnOnline: true,
-  disable: process.env.ENVIRONMENT === 'develop',
-  skipWaiting: true
+  disable: process.env.ENVIRONMENT === 'develop'
 })
 
 const nextConfig = {
@@ -23,7 +29,21 @@ const nextConfig = {
     NEXT_PUBLIC_VERSION: require('./package.json').version
   },
   devIndicators: false,
-  pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
+  // .mdx here also makes the MDX files use the React that ships with the App Router
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // each docs section opens on its first page
+  async redirects() {
+    return [
+      ['/docs', '/docs/guide/getting-started'],
+      ['/docs/guide', '/docs/guide/getting-started'],
+      ['/docs/components', '/docs/components/avatar'],
+      ['/docs/hooks', '/docs/hooks/use-body-scroll']
+    ].map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: false
+    }))
+  },
   async headers() {
     return [
       {
@@ -62,4 +82,4 @@ const nextConfig = {
   }
 }
 
-module.exports = withPWA(withMDX(nextConfig))
+export default withSerwist(withMDX(nextConfig))

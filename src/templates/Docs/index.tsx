@@ -1,9 +1,15 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
+'use client'
+
+import React, {
+  lazy,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState
+} from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'core'
 import { Heading, getHeadings } from 'src/utils/get-headings'
-import { toCapitalize } from 'src/utils/to-capitalize'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Sidebar from 'src/components/Sidebar'
@@ -34,24 +40,25 @@ const sidebarItems = {
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-// _app renders this once for every /docs page (see isDocsRoute), so the
-// sidebar, Contents and the backgrounds update instead of remounting on
-// every navigation, which was visible to the user as a flash.
+// app/docs/layout renders this once for every /docs page, so the sidebar,
+// Contents and the backgrounds update instead of remounting on every
+// navigation, which was visible to the user as a flash.
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+  const pathname = usePathname()
   const theme = useTheme()
 
   const [headings, setHeadings] = useState<Heading[]>([])
 
   // The segment after /docs picks the sidebar: guide, components or hooks.
-  const sidebar = router.asPath.split('/')[2]
+  const sidebar = pathname.split('/')[2]
   const items = sidebarItems[sidebar] ?? []
 
   // Runs before paint, unlike useEffect, so Contents does not show the
   // previous page's headings for a beat after navigating.
   useIsomorphicLayoutEffect(() => {
     setHeadings(getHeadings())
-  }, [router.asPath])
+  }, [pathname])
 
   const homeAction: Action = useMemo(() => {
     return {
@@ -70,7 +77,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   // Group headings have no url and external links leave the docs
   const pages = items.filter((p) => p.url && !('target' in p))
-  const currentPostIndex = pages.findIndex((p) => p.url === router.asPath)
+  const currentPostIndex = pages.findIndex((p) => p.url === pathname)
   const nextPost = pages[currentPostIndex + 1] ?? null
   const prevPost = pages[currentPostIndex - 1] ?? null
 
@@ -88,7 +95,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
             {/* key remounts only this thin wrapper on navigation, so the
                 new content fades in instead of popping in abruptly. The
                 sidebar, Contents and backgrounds above are unaffected. */}
-            <div key={router.asPath} className="page-content">
+            <div key={pathname} className="page-content">
               {children}
             </div>
             <NavigationDocs previous={prevPost} next={nextPost} />
@@ -204,38 +211,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   )
 }
 
-// Every page's SEO tags, the only part that still needs to change on each
-// navigation. The sidebar shell (DocsLayout) is rendered once by _app, so it
-// is not recreated here.
-function Docs({ children, meta }: DocsTemplateProps) {
-  const router = useRouter()
-  const { title, description } = meta
-
-  let pageTitle = title ? `${toCapitalize(title)} | ` : ''
-  pageTitle += 'Bolio UI - Amazing, modern and creative tools for React UI'
-
-  return (
-    <>
-      <NextSeo
-        title={pageTitle}
-        description={description}
-        openGraph={{
-          url: `${router.pathname}`,
-          title: pageTitle,
-          description: description,
-          images: [
-            {
-              url: '/cover.jpg',
-              width: 1200,
-              height: 630,
-              alt: `${pageTitle}`
-            }
-          ]
-        }}
-      />
-      {children}
-    </>
-  )
+// Each MDX page ends with `export default Docs.withMeta(meta)`. The meta is
+// read for the <head> by app/docs/[section]/[slug]/page, so here the page is
+// only rendered.
+function Docs({ children }: DocsTemplateProps) {
+  return <>{children}</>
 }
 
 // The MDX language server cannot parse JSX inside an export, so pages
@@ -246,3 +226,25 @@ Docs.withMeta = (meta: Meta) =>
   }
 
 export default Docs
+
+// One lazy component per page, created once, so a page is not remounted when
+// the layout renders again. The MDX files use hooks, so they load in the
+// browser; the page is still rendered on the server.
+const docsPages: Record<string, React.ComponentType> = {}
+
+export function DocsContent({
+  section,
+  slug
+}: {
+  section: string
+  slug: string
+}) {
+  const key = `${section}/${slug}`
+  if (!docsPages[key]) {
+    docsPages[key] = lazy(
+      () => import(`../../content/docs/${section}/${slug}.mdx`)
+    )
+  }
+  const Content = docsPages[key]
+  return <Content />
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useTheme, Text, Link } from 'core'
 
 export interface Props {
@@ -12,8 +12,7 @@ export interface Props {
 
 const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   const theme = useTheme()
-  const router = useRouter()
-  const isActive = router.asPath === href
+  const isActive = usePathname() === href
 
   // Same behavior as the header Tabs: plain gray text (accents_5), hover only
   // brightens the text, and the current page gets a background. The accents

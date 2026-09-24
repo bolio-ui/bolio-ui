@@ -2,43 +2,29 @@ import * as React from 'react'
 import { createPortal } from 'react-dom'
 import cn from 'classnames'
 import { isMacOs } from 'react-device-detect'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useTheme, useBodyScroll, useClickAway, Keyboard } from 'core'
-import AutoSuggest, {
-  ChangeEvent,
-  OnSuggestionSelected,
-  RenderSuggestionsContainerParams,
-  RenderInputComponentProps
-} from 'react-autosuggest'
 import { Close } from 'src/components/Icons'
 import { addColorAlpha } from 'core/utils/color'
 import { isEmpty } from 'lodash'
 import Suggestion from './suggestion'
 import { searchDocs } from 'src/utils/local-search'
 import { VisualState, useKBar } from 'kbar'
-import Blockholder from 'src/components/Blockholder'
 import useIsMounted from 'src/utils/use-is-mounted'
 import usePortal from 'core/utils/use-portal'
-import withDeaults from 'src/utils/with-defaults'
 import { useIsMobile } from 'src/utils/use-media-query'
 
 interface Props {
   offsetTop?: number
 }
 
-const defaultProps = {
-  offsetTop: 0
-}
-
-interface OnSuggestionSelectedParams {
-  path: string
-}
-
-const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
+const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
   const theme = useTheme()
 
   const [value, setValue] = React.useState('')
   const [isFocused, setIsFocused] = React.useState(false)
+  const [highlighted, setHighlighted] = React.useState(0)
+  const listId = React.useId()
   const [, setBodyHidden] = useBodyScroll(null, { scrollLayer: true })
   const router = useRouter()
 
@@ -80,98 +66,75 @@ const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
     }
   }, [hits, value, isFocused, isMobile, setBodyHidden])
 
-  const onChange = (_: unknown, { newValue }: ChangeEvent) => {
-    setValue(newValue)
-  }
+  const isOpen = isFocused && hits.length > 0
 
-  const inputProps = {
-    value,
-    onChange,
-    ref: inputRef,
-    type: 'search',
-    onFocus: () => setIsFocused(true),
-    onBlur: () => setIsFocused(false)
-  }
+  // the first suggestion is highlighted again for every new search
+  React.useEffect(() => setHighlighted(0), [value])
 
-  const onSuggestionSelected: OnSuggestionSelected<OnSuggestionSelectedParams> =
-    (_, { suggestion, method }) => {
-      if (method === 'enter') {
-        onClear()
-        router.push(suggestion.path)
-      }
-    }
-
-  const getSuggestionValue = () => value
-
-  const renderSuggestion = (
-    hit,
-    { isHighlighted }: { isHighlighted: boolean }
-  ) => <Suggestion highlighted={isHighlighted} hit={hit} query={value} />
-
+  // Leaving the field or picking a suggestion clears the search
   const onClear = () => {
     setValue('')
     inputRef && inputRef?.current?.blur()
   }
 
-  const renderInput = React.useCallback(
-    (inputProps: RenderInputComponentProps) => {
-      const onClear = () => {
-        setValue('')
-        inputRef && inputRef?.current?.blur()
-      }
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') return onClear()
+    if (!isOpen) return
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      const step = event.key === 'ArrowDown' ? 1 : -1
+      setHighlighted((index) => (index + step + hits.length) % hits.length)
+    }
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      const { path } = hits[highlighted]
+      onClear()
+      router.push(path)
+    }
+  }
 
-      const handleKeyboardClick = () => {
-        query.setVisualState((vs) =>
-          [VisualState.animatingOut, VisualState.hidden].includes(vs)
-            ? VisualState.animatingIn
-            : VisualState.animatingOut
-        )
-      }
-
-      return (
-        <label className="search__input-container">
-          <input
-            className="search__input"
-            {...inputProps}
-            placeholder="Search..."
-          />
-          {!value ? (
-            <span className="search__placeholder-container">
-              <Keyboard
-                className="search__placeholder-kbd"
-                command={isMacOs}
-                ctrl={!isMacOs}
-                onClick={handleKeyboardClick}
-                style={{ borderRadius: 20 }}
-              >
-                K
-              </Keyboard>
-            </span>
-          ) : (
-            <span className="search__reset-container" onClick={onClear}>
-              <Close size={16} fill={theme.palette.accents_6} />
-            </span>
-          )}
-        </label>
-      )
-    },
-    [value, theme.palette.accents_6, query]
-  )
-
-  const renderSuggestionsContainer = ({
-    containerProps,
-    children
-  }: RenderSuggestionsContainerParams) =>
-    suggestionsPortal ? (
-      createPortal(
-        <div className={'suggest__suggestion-sticky'}>
-          <div {...containerProps}>{children}</div>
-        </div>,
-        suggestionsPortal
-      )
-    ) : (
-      <div {...containerProps}>{children}</div>
+  const handleKeyboardClick = () => {
+    query.setVisualState((vs) =>
+      [VisualState.animatingOut, VisualState.hidden].includes(vs)
+        ? VisualState.animatingIn
+        : VisualState.animatingOut
     )
+  }
+
+  const suggestions = (
+    <div
+      id={listId}
+      role="listbox"
+      aria-label="Search results"
+      className={cn('react-autosuggest__suggestions-container', {
+        'react-autosuggest__suggestions-container--open': isOpen
+      })}
+      // keeps the focus in the field while a suggestion is clicked
+      onMouseDown={(event) => event.preventDefault()}
+    >
+      {isOpen && (
+        <ul className="react-autosuggest__suggestions-list">
+          {hits.map((hit, index) => (
+            <li
+              key={hit.path}
+              id={`${listId}-${index}`}
+              role="option"
+              aria-selected={index === highlighted}
+              className="react-autosuggest__suggestion"
+              onMouseEnter={() => setHighlighted(index)}
+              onClick={onClear}
+            >
+              <Suggestion
+                highlighted={index === highlighted}
+                hit={hit}
+                query={value}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 
   const NoResults = () => {
     if (!value || hits.length > 0 || !noResultsPortal) return null
@@ -189,39 +152,6 @@ const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
     )
   }
 
-  if (!isMounted) {
-    return (
-      <>
-        <Blockholder
-          className="search__placeholder-block"
-          alt="search placeholder"
-          height="38px"
-        />
-        <style jsx global>{`
-          .search__placeholder-block {
-            max-width: 200px;
-          }
-          @media only screen and (max-width: ${theme.breakpoints.md.max}) {
-            .search__placeholder-block {
-              max-width: 228px;
-            }
-          }
-          @media only screen and (max-width: ${theme.breakpoints.xs.max}) {
-            .search__placeholder-block {
-              max-width: 64vw;
-            }
-          }
-          @media only screen and (min-width: ${theme.breakpoints.xs
-              .min}) and (max-width: ${theme.breakpoints.md.max}) {
-            .search__placeholder-block {
-              max-width: 248px;
-            }
-          }
-        `}</style>
-      </>
-    )
-  }
-
   return (
     <>
       <div
@@ -230,18 +160,64 @@ const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
           'has-value': !!value.length
         })}
       >
-        <AutoSuggest
-          highlightFirstSuggestion={true}
-          onSuggestionsFetchRequested={() => undefined}
-          onSuggestionsClearRequested={onClear}
-          onSuggestionSelected={onSuggestionSelected}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          renderInputComponent={renderInput}
-          renderSuggestionsContainer={renderSuggestionsContainer}
-          suggestions={hits}
-          inputProps={inputProps}
-        />
+        <div className="react-autosuggest__container">
+          <label className="search__input-container">
+            <input
+              ref={inputRef}
+              className="react-autosuggest__input"
+              type="search"
+              role="combobox"
+              aria-label="Search the docs"
+              aria-autocomplete="list"
+              aria-expanded={isOpen}
+              aria-controls={listId}
+              aria-activedescendant={
+                isOpen ? `${listId}-${highlighted}` : undefined
+              }
+              autoComplete="off"
+              placeholder="Search..."
+              value={value}
+              onChange={(event) => setValue(event.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => {
+                setIsFocused(false)
+                setValue('')
+              }}
+              onKeyDown={onKeyDown}
+            />
+            {!value ? (
+              <span className="search__placeholder-container">
+                <Keyboard
+                  className="search__placeholder-kbd"
+                  command={isMounted && isMacOs}
+                  ctrl={!(isMounted && isMacOs)}
+                  onClick={handleKeyboardClick}
+                  // the server does not know the OS: shown once it is known
+                  style={{
+                    borderRadius: 20,
+                    visibility: isMounted ? 'visible' : 'hidden'
+                  }}
+                >
+                  K
+                </Keyboard>
+              </span>
+            ) : (
+              <span className="search__reset-container" onClick={onClear}>
+                <Close size={16} fill={theme.palette.accents_6} />
+              </span>
+            )}
+          </label>
+          {/* the list only opens on typing, so it is created after mount */}
+          {isMounted &&
+            (suggestionsPortal
+              ? createPortal(
+                  <div className="suggest__suggestion-sticky">
+                    {suggestions}
+                  </div>,
+                  suggestionsPortal
+                )
+              : suggestions)}
+        </div>
 
         <NoResults />
       </div>
@@ -474,6 +450,4 @@ const Autocomplete: React.FC<Props> = ({ offsetTop }) => {
   )
 }
 
-const MemoAutocomplete = React.memo(Autocomplete)
-
-export default withDeaults(MemoAutocomplete, defaultProps)
+export default React.memo(Autocomplete)

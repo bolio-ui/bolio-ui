@@ -3,12 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { BolioUIProvider } from 'core'
 import Sidebar from '..'
 
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    asPath: '/docs/components/badge',
-    pathname: '/docs/components/badge',
-    push: jest.fn()
-  })
+jest.mock('next/navigation', () => ({
+  usePathname: () => '/docs/components/badge',
+  useRouter: () => ({ push: jest.fn() })
 }))
 
 const setup = () =>

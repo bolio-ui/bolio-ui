@@ -1,12 +1,13 @@
+'use client'
+
 import React from 'react'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Section, Container, Grid, Text, Row, Col, Button } from 'core'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 
-function Home() {
+function NotFound() {
   const router = useRouter()
 
   const homeAction: Action = React.useMemo(() => {
@@ -24,29 +25,6 @@ function Home() {
 
   return (
     <>
-      <NextSeo
-        title={
-          '404: Page not found | Bolio UI - Amazing, modern and creative tools for React UI'
-        }
-        description={
-          'Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!'
-        }
-        openGraph={{
-          url: `${router.pathname}`,
-          title:
-            '404: Page not found | Bolio UI - Amazing, modern and creative tools for React UI',
-          description:
-            'Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!',
-          images: [
-            {
-              url: '/cover.jpg',
-              width: 1200,
-              height: 630,
-              alt: '404: Not | Bolio UI - Amazing, modern and creative tools for React UI'
-            }
-          ]
-        }}
-      />
       <Base>
         <Section py={4}>
           <Container>
@@ -96,4 +74,4 @@ function Home() {
   )
 }
 
-export default Home
+export default NotFound

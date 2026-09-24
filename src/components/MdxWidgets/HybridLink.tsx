@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, LinkProps } from 'core'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { isPlainLeftClick } from 'src/utils/client-navigation'
 
 export type HybridLinkProps = LinkProps
@@ -12,7 +12,7 @@ const HybridLink: React.FC<HybridLinkProps> = ({
 }) => {
   const isRelativeUrl = !/^([a-z0-9]*:|.{0})\/\/.*$/gim.test(href)
   const router = useRouter()
-  const { pathname } = router
+  const pathname = usePathname()
   const isHomePage = pathname.includes('guide/getting-started')
 
   if (isRelativeUrl) {

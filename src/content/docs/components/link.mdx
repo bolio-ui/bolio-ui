@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Link, Text, Code, Grid } from 'core'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export const meta = {
   title: 'Link',
@@ -143,7 +143,7 @@ Hyperlinks between pages.
 `}
 />
 
-<Attributes edit="/pages/docs/components/link.mdx">
+<Attributes edit="/content/docs/components/link.mdx">
 <Attributes.Title>Link.Props</Attributes.Title>
 
 | Attribute     | Description                 | Type                                            | Accepted values        | Default |

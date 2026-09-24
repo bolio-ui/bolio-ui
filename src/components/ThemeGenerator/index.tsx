@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useRouter } from 'next/router'
 import {
   BolioUIProvider,
   BolioUIThemes,
@@ -569,7 +568,6 @@ interface ThemeGeneratorProps {
 
 const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
   const theme = useTheme()
-  const router = useRouter()
   const { copy } = useClipboard()
   const { setToast } = useToasts()
 
@@ -579,8 +577,9 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
   // A preset or a shared link can set both colors at once, so state updates
   // don't race the query-string sync effect below.
   useEffect(() => {
-    if (!router.isReady) return
-    const { primary: queryPrimary, secondary: querySecondary } = router.query
+    const query = new URLSearchParams(window.location.search)
+    const queryPrimary = query.get('primary')
+    const querySecondary = query.get('secondary')
     if (typeof queryPrimary === 'string' && HEX_PATTERN.test(queryPrimary)) {
       setPrimary(queryPrimary.toUpperCase())
     }
@@ -591,8 +590,7 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
       setSecondary(querySecondary.toUpperCase())
     }
     // Only read the query string once, when the page lands with one.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady])
+  }, [])
 
   const applyPreset = (preset: PresetPair) => {
     setPrimary(preset.primary)

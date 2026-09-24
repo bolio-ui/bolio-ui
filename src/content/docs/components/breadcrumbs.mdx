@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Breadcrumbs, Grid } from 'core'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Home, Settings } from '@bolio-ui/icons'
 
 export const meta = {
@@ -105,7 +105,7 @@ Show where users are in the application.
 `}
 />
 
-<Attributes edit="/pages/docs/components/breadcrumbs.mdx">
+<Attributes edit="/content/docs/components/breadcrumbs.mdx">
 <Attributes.Title>Breadcrumbs.Props</Attributes.Title>
 
 | Attribute     | Description      | Type             | Accepted values          | Default |

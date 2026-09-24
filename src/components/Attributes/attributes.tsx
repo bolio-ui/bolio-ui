@@ -11,11 +11,11 @@ export interface AttributesProps {
 
 const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
   React.memo(({ edit, children }) => {
-    const path = edit?.replace('/pages', 'src/pages')
+    const path = edit?.replace('/content', 'src/content')
 
     const GITHUB_MASTER_URL = `${GITHUB_URL}/blob/master`
     const link = useMemo(
-      () => `${GITHUB_MASTER_URL}/${path || 'src/pages'}`,
+      () => `${GITHUB_MASTER_URL}/${path || 'src/content/docs'}`,
       [GITHUB_MASTER_URL, path]
     )
 
