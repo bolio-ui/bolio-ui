@@ -46,18 +46,6 @@ interface Props {
   getPopupContainer?: () => HTMLElement | null
 }
 
-const defaultProps = {
-  disabled: false,
-  type: 'default' as SelectTypes,
-  icon: SelectIcon as React.ComponentType,
-  pure: false,
-  multiple: false,
-  clearable: true,
-  className: '',
-  disableMatchWidth: false,
-  onDropdownVisibleChange: () => {}
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SelectProps = Props & NativeAttrs
 
@@ -342,7 +330,6 @@ const SelectComponent = React.forwardRef<
   }
 )
 
-SelectComponent.defaultProps = defaultProps
 SelectComponent.displayName = 'BolioUISelect'
 const Select = withScale(SelectComponent)
 export default Select

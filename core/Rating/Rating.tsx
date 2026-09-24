@@ -91,19 +91,60 @@ const RatingComponent = React.forwardRef<
       valueChangeHandler(index)
     }
 
+    // the checked star is the one in the tab order; with no value, the first
+    const focusIndex = value >= 1 && value <= count ? value : 1
+
+    const keyDownHandler = (
+      event: React.KeyboardEvent<HTMLDivElement>,
+      index: number
+    ) => {
+      const nextByKey: Record<string, number> = {
+        ArrowRight: index + 1,
+        ArrowUp: index + 1,
+        ArrowLeft: index - 1,
+        ArrowDown: index - 1,
+        Home: 1,
+        End: count
+      }
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        return clickHandler(index)
+      }
+      if (!(event.key in nextByKey)) return
+      event.preventDefault()
+      const next = Math.min(Math.max(nextByKey[event.key], 1), count)
+      valueChangeHandler(next)
+      lockedChangeHandler(true)
+      const radios =
+        event.currentTarget.parentElement?.querySelectorAll<HTMLElement>(
+          '[role="radio"]'
+        )
+      radios?.[next - 1]?.focus()
+    }
+
     useEffect(() => {
       if (typeof customValue === 'undefined') return
       setValue(customValue < 0 ? 0 : customValue)
     }, [customValue])
 
     return (
-      <div ref={ref} className={useClasses('rating', className)} {...props}>
+      <div
+        ref={ref}
+        role="radiogroup"
+        className={useClasses('rating', className)}
+        {...props}
+      >
         {[...Array(count)].map((_, index) => (
           <div
             className={useClasses('icon-box', {
               hovered: index + 1 <= value
             })}
             key={index}
+            role="radio"
+            aria-checked={index + 1 === value}
+            aria-label={`${index + 1} of ${count}`}
+            tabIndex={index + 1 === focusIndex ? 0 : -1}
+            onKeyDown={(event) => keyDownHandler(event, index + 1)}
             onMouseEnter={() => mouseEnterHandler(index + 1)}
             onClick={() => clickHandler(index + 1)}
           >

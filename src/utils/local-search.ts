@@ -1,4 +1,4 @@
-import seed from '../pages/docs/seed.json'
+import seed from '../content/docs/seed.json'
 
 export interface DocHit {
   title: string

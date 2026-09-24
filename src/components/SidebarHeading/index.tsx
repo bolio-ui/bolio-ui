@@ -11,12 +11,7 @@ interface SidebarHeadingProps {
 function Sidebar({ headings, ...props }: SidebarHeadingProps) {
   const theme = useTheme()
 
-  const activeId = useScrollSpy(
-    headings.map(({ id }) => `[id="${id}"]`),
-    {
-      rootMargin: '0% 0% -80% 0%'
-    }
-  )
+  const activeId = useScrollSpy(headings.map(({ id }) => id))
 
   if (headings.length <= 0) return null
 
@@ -50,7 +45,7 @@ function Sidebar({ headings, ...props }: SidebarHeadingProps) {
           overflow: auto;
           margin: 0;
           margin-top: 5px;
-          margin-left: 17px;
+          margin-left: 0;
         }
         .list::-webkit-scrollbar {
           width: 0px;

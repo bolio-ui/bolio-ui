@@ -40,6 +40,16 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TooltipProps = Props & NativeAttrs
 
+// a child that takes focus by itself gets the aria attributes; anything else
+// (text, a span) is wrapped by the tooltip's own element
+const focusableTags = ['a', 'button', 'input', 'select', 'textarea']
+const getFocusableChild = (children: React.ReactNode) => {
+  if (!React.isValidElement<Record<string, unknown>>(children)) return null
+  const { type } = children
+  if (typeof type === 'string' && !focusableTags.includes(type)) return null
+  return children
+}
+
 const TooltipComponent = React.forwardRef<
   HTMLDivElement,
   React.PropsWithChildren<TooltipProps>
@@ -126,9 +136,38 @@ const TooltipComponent = React.forwardRef<
     const clickEventHandler = () =>
       trigger === 'click' && changeVisible(!visible)
 
+    const focusableChild = getFocusableChild(children)
+    const isWrapperButton = trigger === 'click' && !focusableChild
+
     const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Escape' && visible) changeVisible(false)
+      if (!isWrapperButton || event.target !== event.currentTarget) return
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        changeVisible(!visible)
+      }
     }
+
+    const triggerProps =
+      trigger === 'click'
+        ? {
+            'aria-expanded': visible,
+            'aria-controls': visible ? tooltipId : undefined
+          }
+        : {
+            'aria-describedby':
+              [
+                focusableChild?.props['aria-describedby'],
+                visible ? tooltipId : undefined
+              ]
+                .filter(Boolean)
+                .join(' ') || undefined
+          }
+    const wrapperProps = focusableChild
+      ? {}
+      : isWrapperButton
+      ? { role: 'button', tabIndex: 0, ...triggerProps }
+      : triggerProps
 
     useClickAway(innerRef, () => trigger === 'click' && changeVisible(false))
     useEffect(() => {
@@ -146,12 +185,12 @@ const TooltipComponent = React.forwardRef<
         onFocus={() => mouseEventHandler(true)}
         onBlur={() => mouseEventHandler(false)}
         onKeyDown={keyDownHandler}
-        aria-describedby={
-          trigger === 'hover' && visible ? tooltipId : undefined
-        }
+        {...wrapperProps}
         {...props}
       >
-        {children}
+        {focusableChild
+          ? React.cloneElement(focusableChild, triggerProps)
+          : children}
         <TooltipContent {...contentProps}>{text}</TooltipContent>
         <style jsx>{`
           .tooltip {

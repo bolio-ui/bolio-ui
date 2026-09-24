@@ -1,11 +1,11 @@
 import { Action } from 'kbar'
-import { NextRouter, useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useSettings } from 'src/utils/use-settings'
 // import { Route } from '@lib/docs/page'
 import { getId } from 'core/utils/collections'
 import { removeFromLast } from 'src/utils/remove-from-last'
 // data imported from manifest
-import docsManifest from 'src/pages/docs/manifest.json'
+import docsManifest from 'src/content/docs/manifest.json'
 
 export interface Route {
   title: string
@@ -24,14 +24,14 @@ export interface Route {
 
 const buildDocsActions = (
   docsActions: Action[],
-  router: NextRouter,
+  router: ReturnType<typeof useRouter>,
   routes: Route[],
   parent?: string
 ) => {
   routes.forEach((route: Route) => {
     const routeId = getId()
-    const routePath: unknown = route.path
-      ? removeFromLast(route.path, '.')
+    const routePath = route.path
+      ? removeFromLast<string>(route.path, '.')
       : null
     const action: Action = {
       id: routeId,

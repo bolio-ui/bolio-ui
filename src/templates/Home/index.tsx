@@ -1,6 +1,7 @@
+'use client'
+
 import React from 'react'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
@@ -30,20 +31,6 @@ function Home() {
 
   return (
     <>
-      <NextSeo
-        title="Bolio UI - Amazing, modern and creative tools for React UI"
-        description="Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!"
-        openGraph={{
-          images: [
-            {
-              url: '/cover.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Bolio UI - Amazing, modern and creative tools for React UI'
-            }
-          ]
-        }}
-      />
       <Base>
         <Hero />
         <SectionFeatures />

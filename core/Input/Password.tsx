@@ -1,16 +1,11 @@
 import React, { useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { Props, defaultProps } from './InputProps'
+import { Props } from './InputProps'
 import PasswordIcon from './PasswordIcon'
 import Input from './Input'
 import { useScale, withScale } from '../use-scale'
 
 interface PasswordProps extends Props {
   hideToggle?: boolean
-}
-
-const passwordDefaultProps = {
-  ...defaultProps,
-  hideToggle: false
 }
 
 type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof PasswordProps>
@@ -22,7 +17,7 @@ const InputPasswordComponent = React.forwardRef<
 >(
   (
     {
-      hideToggle,
+      hideToggle = false,
       children,
       ...props
     }: React.PropsWithChildren<InputPasswordProps>,
@@ -65,7 +60,6 @@ const InputPasswordComponent = React.forwardRef<
   }
 )
 
-InputPasswordComponent.defaultProps = passwordDefaultProps
 InputPasswordComponent.displayName = 'BolioUIInputPassword'
 const InputPassword = withScale(InputPasswordComponent)
 export default InputPassword

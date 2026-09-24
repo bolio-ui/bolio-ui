@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
+import NextLink from 'next/link'
 import {
   Container,
   Grid,
   Row,
   Spacer,
   Button,
-  Tabs,
   Link,
   useTheme,
   useBodyScroll
@@ -27,15 +26,20 @@ import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
 import VersionSelect from 'src/components/VersionSelect'
+import SearchInput from 'src/components/Search/instant-search'
 
-const SearchInput = dynamic(() => import('../Search/instant-search'), {
-  ssr: true
-})
+// Plain links, not Tabs: they navigate between pages
+const navLinks = [
+  { label: 'Guide', href: '/docs/guide/getting-started' },
+  { label: 'Components', href: '/docs/components/avatar' },
+  { label: 'Hooks', href: '/docs/hooks/use-body-scroll' },
+  { label: 'Theme Generator', href: '/theme-generator' }
+]
 
 const Navigation: React.FC = () => {
   const theme = useTheme()
   const settings = useSettings()
-  const router = useRouter()
+  const pathname = usePathname()
   const [expanded, setExpanded] = useState<boolean>(false)
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
   const isMobile = useMediaQuery(1280)
@@ -50,14 +54,10 @@ const Navigation: React.FC = () => {
     }
   }, [isMobile])
 
+  // close the mobile menu after navigating
   useEffect(() => {
-    const handleRouteChange = () => {
-      setExpanded(false)
-    }
-
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => router.events.off('routeChangeComplete', handleRouteChange)
-  }, [router.events])
+    setExpanded(false)
+  }, [pathname])
 
   return (
     <>
@@ -65,196 +65,184 @@ const Navigation: React.FC = () => {
         <Container>
           <div className="menu_sticky">
             <Grid.Container gap={1} justify="center">
-              {!isMobile ? (
-                <>
-                  <Grid xs={6} md={6} justify="flex-start">
-                    <div className="brand">
-                      <div className="logo-wrapper">
-                        <Logo name="Bolio UI" />
-                      </div>
-                      <div className="tabs">
-                        <Tabs
-                          value={router.asPath}
-                          onChange={(route) => router.push(route)}
-                          hideDivider
-                          hideBorder
-                        >
-                          <Tabs.Item
-                            label="Guide"
-                            value="/docs/guide/getting-started"
-                          />
-                          <Tabs.Item
-                            label="Components"
-                            value="/docs/components/avatar"
-                          />
-                          <Tabs.Item
-                            label="Hooks"
-                            value="/docs/hooks/use-body-scroll"
-                          />
-                          <Tabs.Item
-                            label="Theme Generator"
-                            value="/theme-generator"
-                          />
-                        </Tabs>
-                      </div>
+              {/* Both layouts come in the server HTML and CSS shows the one
+                  for the screen, so the navbar is ready on the first paint */}
+              <div className="nav-desktop">
+                <Grid xs={6} md={6} justify="flex-start">
+                  <div className="brand">
+                    <div className="logo-wrapper">
+                      <Logo name="Bolio UI" />
                     </div>
-                  </Grid>
+                    <div className="tabs">
+                      {navLinks.map(({ label, href }) => (
+                        <NextLink
+                          key={href}
+                          href={href}
+                          className={
+                            pathname === href ? 'nav-link active' : 'nav-link'
+                          }
+                          aria-current={pathname === href ? 'page' : undefined}
+                        >
+                          {label}
+                        </NextLink>
+                      ))}
+                    </div>
+                  </div>
+                </Grid>
 
-                  <Grid xs={6} md={6} justify="flex-end">
-                    <div className="controls">
-                      <>
-                        <Link
-                          href="https://github.com/bolio-ui/bolio-ui"
-                          target="_blank"
-                          aria-label="Link to Github Bolio UI"
-                        >
-                          <Button
-                            w="28px"
-                            h="28px"
-                            py={0}
-                            px={0}
-                            className="theme-button"
-                            aria-label="Github Bolio UI"
-                            type="abort"
-                          >
-                            <Github fontSize={16} />
-                          </Button>
-                        </Link>
-                        <Link
-                          href="https://www.twitter.com/bolio_ui/"
-                          target="_blank"
-                          aria-label="Link to Twitter Bolio UI"
-                        >
-                          <Button
-                            w="28px"
-                            h="28px"
-                            py={0}
-                            px={0}
-                            className="theme-button"
-                            aria-label="Twitter Bolio UI"
-                            type="abort"
-                          >
-                            <Twitter fontSize={16} />
-                          </Button>
-                        </Link>
-                        <Link
-                          href="https://www.instagram.com/bolio.ui/"
-                          target="_blank"
-                          aria-label="Link to Instagram Bolio UI"
-                        >
-                          <Button
-                            w="28px"
-                            h="28px"
-                            py={0}
-                            px={0}
-                            className="theme-button"
-                            aria-label="Instagram Bolio UI"
-                            type="abort"
-                          >
-                            <Instagram fontSize={16} />
-                          </Button>
-                        </Link>
+                <Grid xs={6} md={6} justify="flex-end">
+                  <div className="controls">
+                    <>
+                      <Link
+                        href="https://github.com/bolio-ui/bolio-ui"
+                        target="_blank"
+                        aria-label="Link to Github Bolio UI"
+                      >
                         <Button
                           w="28px"
                           h="28px"
                           py={0}
                           px={0}
-                          aria-label="Toggle Dark mode"
                           className="theme-button"
+                          aria-label="Github Bolio UI"
                           type="abort"
-                          onClick={() =>
-                            settings.switchTheme(
-                              theme.type === 'dark' ? 'light' : 'dark'
-                            )
-                          }
                         >
-                          {theme.type === 'dark' ? (
-                            <Sun fontSize={16} />
-                          ) : (
-                            <Moon fontSize={16} />
-                          )}
+                          <Github fontSize={16} />
                         </Button>
-                        <Spacer w={0.5} />
-                        <VersionSelect />
-                        <Spacer w={0.5} />
-                        <SearchInput />
-                        <Spacer w={1} />
-                        <Link
-                          href="https://www.patreon.com/brunnoandrade"
-                          target="_blank"
+                      </Link>
+                      <Link
+                        href="https://www.twitter.com/bolio_ui/"
+                        target="_blank"
+                        aria-label="Link to Twitter Bolio UI"
+                      >
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          className="theme-button"
+                          aria-label="Twitter Bolio UI"
+                          type="abort"
                         >
-                          <Button
-                            icon={
-                              <Heart
-                                fill="red"
-                                stroke="red"
-                                height={12}
-                                width={12}
-                              />
-                            }
-                            auto
-                            scale={0.75}
-                            type="secondary-light"
-                            rounded
-                            aria-label="Button Sponsor"
-                          >
-                            Sponsor
-                          </Button>
-                        </Link>
-                      </>
-                    </div>
-                  </Grid>
-                </>
-              ) : (
-                <>
-                  <Grid xs={2} md={4} style={{ marginTop: '8px' }}>
-                    <Logo name="Bolio UI" />
-                  </Grid>
-
-                  <Grid xs={10} md={8}>
-                    <Row justify="end" align="middle">
+                          <Twitter fontSize={16} />
+                        </Button>
+                      </Link>
+                      <Link
+                        href="https://www.instagram.com/bolio.ui/"
+                        target="_blank"
+                        aria-label="Link to Instagram Bolio UI"
+                      >
+                        <Button
+                          w="28px"
+                          h="28px"
+                          py={0}
+                          px={0}
+                          className="theme-button"
+                          aria-label="Instagram Bolio UI"
+                          type="abort"
+                        >
+                          <Instagram fontSize={16} />
+                        </Button>
+                      </Link>
+                      <Button
+                        w="28px"
+                        h="28px"
+                        py={0}
+                        px={0}
+                        aria-label="Toggle Dark mode"
+                        className="theme-button"
+                        type="abort"
+                        onClick={() =>
+                          settings.switchTheme(
+                            theme.type === 'dark' ? 'light' : 'dark'
+                          )
+                        }
+                      >
+                        {theme.type === 'dark' ? (
+                          <Sun fontSize={16} />
+                        ) : (
+                          <Moon fontSize={16} />
+                        )}
+                      </Button>
+                      <Spacer w={0.5} />
+                      <VersionSelect />
+                      <Spacer w={0.5} />
                       <SearchInput />
                       <Spacer w={1} />
-                      <div className="controls">
+                      <Link
+                        href="https://www.patreon.com/brunnoandrade"
+                        target="_blank"
+                      >
                         <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          aria-label="Toggle Dark mode"
-                          className="theme-button"
-                          type="abort"
-                          onClick={() =>
-                            settings.switchTheme(
-                              theme.type === 'dark' ? 'light' : 'dark'
-                            )
+                          icon={
+                            <Heart
+                              fill="red"
+                              stroke="red"
+                              height={12}
+                              width={12}
+                            />
                           }
-                        >
-                          {theme.type === 'dark' ? (
-                            <Sun fontSize={16} />
-                          ) : (
-                            <Moon fontSize={16} />
-                          )}
-                        </Button>
-                        <Button
-                          className="menu-toggle"
                           auto
-                          type="abort"
-                          aria-label={expanded ? 'Close menu' : 'Open menu'}
-                          aria-expanded={expanded}
-                          onClick={() => setExpanded(!expanded)}
+                          scale={0.75}
+                          type="secondary-light"
+                          rounded
+                          aria-label="Button Sponsor"
                         >
-                          {expanded ? (
-                            <X fontSize={16} />
-                          ) : (
-                            <Menu fontSize={16} />
-                          )}
+                          Sponsor
                         </Button>
-                      </div>
-                    </Row>
-                  </Grid>
-                </>
-              )}
+                      </Link>
+                    </>
+                  </div>
+                </Grid>
+              </div>
+              <div className="nav-mobile">
+                <Grid xs={2} md={4} style={{ marginTop: '8px' }}>
+                  <Logo name="Bolio UI" />
+                </Grid>
+
+                <Grid xs={10} md={8}>
+                  <Row justify="end" align="middle">
+                    <SearchInput />
+                    <Spacer w={1} />
+                    <div className="controls">
+                      <Button
+                        w="28px"
+                        h="28px"
+                        py={0}
+                        px={0}
+                        aria-label="Toggle Dark mode"
+                        className="theme-button"
+                        type="abort"
+                        onClick={() =>
+                          settings.switchTheme(
+                            theme.type === 'dark' ? 'light' : 'dark'
+                          )
+                        }
+                      >
+                        {theme.type === 'dark' ? (
+                          <Sun fontSize={16} />
+                        ) : (
+                          <Moon fontSize={16} />
+                        )}
+                      </Button>
+                      <Button
+                        className="menu-toggle"
+                        auto
+                        type="abort"
+                        aria-label={expanded ? 'Close menu' : 'Open menu'}
+                        aria-expanded={expanded}
+                        onClick={() => setExpanded(!expanded)}
+                      >
+                        {expanded ? (
+                          <X fontSize={16} />
+                        ) : (
+                          <Menu fontSize={16} />
+                        )}
+                      </Button>
+                    </div>
+                  </Row>
+                </Grid>
+              </div>
             </Grid.Container>
           </div>
         </Container>
@@ -279,6 +267,20 @@ const Navigation: React.FC = () => {
           padding-left: 15px;
           padding-right: 15px;
         }
+        .nav-desktop {
+          display: contents;
+        }
+        .nav-mobile {
+          display: none;
+        }
+        @media only screen and (max-width: 1280px) {
+          .nav-desktop {
+            display: none;
+          }
+          .nav-mobile {
+            display: contents;
+          }
+        }
         .menu_wrapper :global(.theme-button) {
           display: flex;
           align-items: center;
@@ -300,11 +302,51 @@ const Navigation: React.FC = () => {
           margin-bottom: 3px;
         }
         .tabs {
-          padding: 0 ${theme.layout.gap};
+          display: flex;
+          align-items: center;
+          padding: 0 ${theme.layout.gap} 0 calc(${theme.layout.gap} + 12px);
           margin-bottom: 3px;
         }
-        .tabs :global(.content) {
-          display: none;
+        /* same look as the Tabs they replaced, hover highlight included */
+        .tabs :global(.nav-link) {
+          position: relative;
+          z-index: 0;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          color: ${theme.palette.accents_5};
+          font-size: 0.875rem;
+          line-height: normal;
+          padding: 0.875rem 0.55rem;
+          margin: 0 0.2rem;
+          text-decoration: none;
+        }
+        .tabs :global(.nav-link:first-child) {
+          margin-left: 0;
+        }
+        .tabs :global(.nav-link::before) {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          inset: 15% -7.5%;
+          border-radius: 5px;
+          background: ${theme.palette.accents_2};
+          opacity: 0;
+          transition: opacity 0.15s ease;
+        }
+        .tabs :global(.nav-link:hover) {
+          color: ${theme.palette.foreground};
+        }
+        .tabs :global(.nav-link:hover::before) {
+          opacity: 0.8;
+        }
+        .tabs :global(.nav-link.active) {
+          color: ${theme.palette.foreground};
+          font-weight: 500;
+        }
+        .tabs :global(.nav-link:focus-visible) {
+          outline: 2px solid ${theme.palette.primary};
+          outline-offset: -2px;
         }
         @media only screen and (max-width: ${theme.breakpoints.md.max}) {
           .tabs {

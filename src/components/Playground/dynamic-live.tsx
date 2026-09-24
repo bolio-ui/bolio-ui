@@ -7,6 +7,10 @@ import { transformLiveCode } from './transform-code'
 import { buildPlaygroundSource } from './build-source'
 import Editor from './editor'
 
+// Component is read by react-live but missing from its types. React 19 does
+// not apply its defaultProps ('div') on function components, so it is passed.
+const Preview = LivePreview as unknown as React.FC<{ Component: string }>
+
 export interface Props {
   code: string
   scope: {
@@ -25,7 +29,10 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
   )
 
   return (
+    // react-live 2 sets these in defaultProps, which React 19 ignores on
+    // function components, so they are passed explicitly
     <LiveProvider
+      language="jsx"
       code={code}
       scope={scope}
       theme={codeTheme}
@@ -36,7 +43,7 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
         <Tabs.Item label="Preview" value="1">
           <Card bordered style={{ background: 'none' }}>
             <div className="wrapper">
-              <LivePreview />
+              <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
           </Card>
@@ -44,7 +51,7 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
         <Tabs.Item label="See code" value="2">
           <Card bordered style={{ background: 'none' }} mb={1}>
             <div className="wrapper">
-              <LivePreview />
+              <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
           </Card>

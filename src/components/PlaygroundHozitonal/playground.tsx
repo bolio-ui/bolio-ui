@@ -28,21 +28,14 @@ export type PlaygroundHorizontalProps = {
   }
 }
 
-const defaultProps = {
-  desc: '',
-  code: '',
-  bindings: {}
-}
-
 function PlaygroundHorizontal({
-  code: inputCode,
+  code: inputCode = '',
   scope
-}: PlaygroundHorizontalProps & typeof defaultProps) {
+}: PlaygroundHorizontalProps) {
   const code = inputCode.trim()
 
   return <DynamicLive code={code} scope={scope} />
 }
 
-PlaygroundHorizontal.defaultProps = defaultProps
 PlaygroundHorizontal.displayName = 'BolioUIPlaygroundHorizontal'
 export default React.memo(PlaygroundHorizontal)

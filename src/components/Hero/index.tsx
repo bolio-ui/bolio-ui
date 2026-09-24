@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
 import WindowFrame from 'src/components/WindowFrame'

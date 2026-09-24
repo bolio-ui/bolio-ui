@@ -3,10 +3,8 @@ import { useTableContext } from './TableContext'
 import useWarning from '../utils/use-warning'
 import { TableColumnRender, TableDataItemBase } from './TableTypes'
 
-const defaultProps = {
-  className: '',
-  render: () => {}
-}
+// module level, so the effect below does not run again on every render
+const defaultRender = () => {}
 
 export type TableColumnProps<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
@@ -24,10 +22,9 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
     prop,
     label,
     width,
-    className,
-    render: renderHandler
-  } = columnProps as React.PropsWithChildren<TableColumnProps<TableDataItem>> &
-    typeof defaultProps
+    className = '',
+    render: renderHandler = defaultRender
+  } = columnProps
   const { updateColumn } = useTableContext<TableDataItem>()
   const safeProp = String(prop).trim()
   if (!safeProp) {
@@ -47,6 +44,5 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
   return null
 }
 
-TableColumn.defaultProps = defaultProps
 TableColumn.displayName = 'BolioUITableColumn'
 export default TableColumn

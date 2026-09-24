@@ -36,7 +36,8 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => {
       {
         types: ['comment', 'prolog', 'doctype', 'cdata'],
         style: {
-          color: theme.palette.accents_4,
+          // accents_4 is near black in the dark theme
+          color: pick(theme.palette.accents_5, theme.palette.accents_4),
           fontStyle: 'italic'
         }
       },

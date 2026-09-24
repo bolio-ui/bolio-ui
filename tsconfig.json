@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext", "webworker"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -14,8 +14,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [{ "name": "next" }]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "es", "examples", "compat", "dist", "public/_headers"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "es",
+    "examples",
+    "compat",
+    "dist",
+    "public/_headers",
+    "public/sw.js"
+  ]
 }

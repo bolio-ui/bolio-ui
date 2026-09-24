@@ -1,0 +1,61 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Container, Card, Text } from 'core'
+
+export const meta = {
+  title: 'Container',
+  description: 'Limit the width of the page and center its content.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 45
+}
+
+## Container
+
+Limit the width of the page and center its content. Put a `Row` inside it to build the layout. See the <a href="/docs/guide/page-structure">page structure</a> guide.
+
+<Playground
+  desc="The Container has a maximum width and grows with the window until it."
+  scope={{ Container, Card, Text }}
+  code={`
+<Container>
+  <Card>
+    <Text>The content of the page.</Text>
+  </Card>
+</Container>
+`}
+/>
+
+<Playground
+  title="Fluid"
+  desc="A fluid Container has no maximum width."
+  scope={{ Container, Card, Text }}
+  code={`
+<Container fluid>
+  <Card>
+    <Text>This one has no maximum width.</Text>
+  </Card>
+</Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/container.mdx">
+<Attributes.Title>Container.Props</Attributes.Title>
+
+| Attribute     | Description                                                     | Type                  | Accepted values                               | Default |
+| ------------- | --------------------------------------------------------------- | --------------------- | --------------------------------------------- | ------- |
+| **fluid**     | remove the maximum width                                        | `boolean`             | -                                             | `false` |
+| **justify**   | horizontal alignment, when the Container is a flex box          | `string`              | `start`, `end`, `center`, `space-around`, `space-between` | `start` |
+| **align**     | vertical alignment, when the Container is a flex box            | `string`              | `top`, `middle`, `bottom`                     | `top`   |
+| **component** | the element to render                                           | `keyof JSX.IntrinsicElements` | `'div', 'main', 'section', ...`       | `div`   |
+| ...           | native props                                                    | `HTMLAttributes`      | `'id', 'className', ...`                      | -       |
+
+`justify` and `align` only have an effect when you make the Container a flex box, for example with `style={{ display: 'flex' }}`.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

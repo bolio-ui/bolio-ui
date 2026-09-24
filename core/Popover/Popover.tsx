@@ -102,13 +102,13 @@ const PopoverComponent = React.forwardRef<
         {...props}
       >
         {children}
-        <style jsx>{`
-          :global(.tooltip-content.popover > .inner) {
-            padding: ${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)}
-              ${SCALES.pl(0)};
-          }
-        `}</style>
       </Tooltip>
+      <style jsx>{`
+        :global(.tooltip-content.popover > .inner) {
+          padding: ${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)}
+            ${SCALES.pl(0)};
+        }
+      `}</style>
     </PopoverContext.Provider>
   )
 })

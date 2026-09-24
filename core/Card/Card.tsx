@@ -21,17 +21,6 @@ interface Props {
   type?: CardTypes
 }
 
-const defaultProps = {
-  type: 'default' as CardTypes,
-  hoverable: false,
-  bordered: false,
-  shadow: false,
-  filled: false,
-  ghost: false,
-  subtle: false,
-  className: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CardProps = Props & NativeAttrs
 
@@ -42,14 +31,14 @@ const CardComponent = React.forwardRef<
   (
     {
       children,
-      hoverable,
+      hoverable = false,
       rounded,
-      bordered,
-      className,
-      shadow,
-      filled,
-      ghost,
-      subtle,
+      bordered = false,
+      className = '',
+      shadow = false,
+      filled = false,
+      ghost = false,
+      subtle = false,
       type = 'default' as CardTypes,
       ...props
     },
@@ -133,7 +122,6 @@ const CardComponent = React.forwardRef<
   }
 )
 
-CardComponent.defaultProps = defaultProps
 CardComponent.displayName = 'BolioUICard'
 const Card = withScale(CardComponent)
 export default Card

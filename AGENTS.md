@@ -37,7 +37,7 @@ O melhor código é aquele que você não precisou escrever.
 
 ## Docs (guias em MDX)
 
-Todo guia em `src/pages/docs/guide` segue a estrutura de `about-bolio-ui.mdx`. Copie esse arquivo para criar um novo.
+Todo guia em `src/content/docs/guide` segue a estrutura de `about-bolio-ui.mdx`. Copie esse arquivo para criar um novo.
 
 - Imports na ordem `Docs`, `src/components`, `core`, sem imports sem uso.
 - `meta.title` igual ao título da sidebar em `manifest.json` (o anterior/próximo depende disso), `description` sempre preenchida (vai para o SEO).

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme, Text } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { menuMobile } from 'src/data/menuMobile'
 import { isPlainLeftClick } from 'src/utils/client-navigation'
 import { versions } from 'src/data/versions'
@@ -13,7 +13,7 @@ interface Props {
 const MenuMobile: React.FC<Props> = ({ expanded }) => {
   const theme = useTheme()
   const router = useRouter()
-  const { pathname } = router
+  const pathname = usePathname()
 
   const navigate = (event: React.MouseEvent, url: string) => {
     if (!isPlainLeftClick(event)) return

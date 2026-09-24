@@ -7,8 +7,15 @@ export interface InputIconProps {
 }
 
 function InputIconComponent({ icon, clickable, onClick }: InputIconProps) {
+  // a clickable icon is a real button, so it works with the keyboard too
+  const Component = clickable ? 'button' : 'span'
+
   return (
-    <span className="input-icon" onClick={onClick}>
+    <Component
+      type={clickable ? 'button' : undefined}
+      className="input-icon"
+      onClick={onClick as React.MouseEventHandler<HTMLElement>}
+    >
       {icon}
       <style jsx>{`
         .input-icon {
@@ -21,6 +28,10 @@ function InputIconComponent({ icon, clickable, onClick }: InputIconProps) {
           justify-content: center;
           margin: 0;
           padding: 0;
+          border: 0;
+          background: none;
+          color: inherit;
+          font: inherit;
           line-height: 1;
           position: relative;
           cursor: ${clickable ? 'pointer' : 'default'};
@@ -32,7 +43,7 @@ function InputIconComponent({ icon, clickable, onClick }: InputIconProps) {
           transform: scale(0.44);
         }
       `}</style>
-    </span>
+    </Component>
   )
 }
 

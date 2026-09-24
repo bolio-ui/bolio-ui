@@ -22,18 +22,12 @@ export type PlaygroundProps = {
   }
 }
 
-const defaultProps = {
-  desc: '',
-  code: '',
-  bindings: {}
-}
-
 function Playground({
   title: inputTitle,
-  code: inputCode,
-  desc,
+  code: inputCode = '',
+  desc = '',
   scope
-}: PlaygroundProps & typeof defaultProps) {
+}: PlaygroundProps) {
   const code = inputCode.trim()
   const title = inputTitle || 'General'
 
@@ -45,6 +39,5 @@ function Playground({
   )
 }
 
-Playground.defaultProps = defaultProps
 Playground.displayName = 'BolioUIPlayground'
 export default React.memo(Playground)

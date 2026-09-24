@@ -13,6 +13,7 @@ import Highlight from '../Shared/highlight'
 import { useRect } from '../utils/layouts'
 import { isBolioUIElement } from '../utils/collections'
 import useClasses from '../use-classes'
+import TabsItem, { TabsItemCell } from './TabsItem'
 
 interface Props {
   initialValue?: string
@@ -32,6 +33,19 @@ interface Props {
 
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type TabsProps = Props & NativeAttrs
+
+// The Tabs.Item children (fragments included) and their props, read during
+// render so the headers are in the first render and in the server HTML
+const getDirectItems = (children: React.ReactNode): TabsHeaderItem[] =>
+  React.Children.toArray(children).flatMap((child) => {
+    if (!React.isValidElement<Record<string, unknown>>(child)) return []
+    if (child.type === React.Fragment)
+      return getDirectItems(child.props.children as React.ReactNode)
+    if (child.type !== TabsItem) return []
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children: panel, ...props } = child.props as TabsHeaderItem['props']
+    return [{ value: props.value, props }]
+  })
 
 const TabsComponent = React.forwardRef<
   HTMLDivElement,
@@ -82,14 +96,25 @@ const TabsComponent = React.forwardRef<
       })
     }
 
+    const directItems = getDirectItems(children)
+    const directValues = directItems.map((item) => item.value)
+    const directKey = directValues.join('\n')
+    // items nested inside other components register themselves after mount
+    const headers = [
+      ...directItems,
+      ...tabs.filter((item) => !directValues.includes(item.value))
+    ]
+
     const initialValue = useMemo<TabsConfig>(
       () => ({
         register,
         currentValue: selfValue,
         inGroup: true,
-        leftSpace
+        leftSpace,
+        directValues
       }),
-      [selfValue, leftSpace]
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [selfValue, leftSpace, directKey]
     )
 
     useEffect(() => {
@@ -129,9 +154,10 @@ const TabsComponent = React.forwardRef<
                 'hide-divider': hideDivider
               })}
             >
-              {tabs.map(({ cell: Cell, value }) => (
-                <Cell
+              {headers.map(({ value, props: itemProps }) => (
+                <TabsItemCell
                   key={value}
+                  {...itemProps}
                   onClick={clickHandler}
                   onMouseOver={tabItemMouseOverHandler}
                   activeClassName={activeClassName}

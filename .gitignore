@@ -47,9 +47,9 @@ yarn-error.log*
 .vercel
 
 # sw stuff
-sw.*
-workbox-*
-swe-worker-*
+/public/sw.*
+/public/workbox-*
+/public/swe-worker-*
 
 # storybook
 storybook-static

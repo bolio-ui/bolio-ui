@@ -8,11 +8,15 @@ export type TabsInternalCellProps = {
   hideBorder?: boolean
 }
 
-export type TabsInternalCell = React.FC<TabsInternalCellProps>
-
 export interface TabsHeaderItem {
   value: string
-  cell: TabsInternalCell
+  // the Tabs.Item props that render its header, scale props included
+  props: {
+    value: string
+    label: React.ReactNode
+    disabled?: boolean
+    [scaleProp: string]: unknown
+  }
 }
 
 export interface TabsConfig {
@@ -20,6 +24,8 @@ export interface TabsConfig {
   currentValue?: string
   inGroup: boolean
   leftSpace?: CSSProperties['marginLeft']
+  // values of the items that are direct children of Tabs
+  directValues?: string[]
 }
 
 const defaultContext = {

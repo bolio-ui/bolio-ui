@@ -7,16 +7,11 @@ export type ExpandProps = {
   delay?: number
 }
 
-const defaultProps = {
-  isExpanded: false,
-  delay: 200
-}
-
 function Expand({
-  isExpanded,
-  delay,
+  isExpanded = false,
+  delay = 200,
   children
-}: React.PropsWithChildren<ExpandProps> & typeof defaultProps) {
+}: React.PropsWithChildren<ExpandProps>) {
   const [height, setHeight] = useState<string>(isExpanded ? 'auto' : '0')
   const [selfExpanded, setSelfExpanded] = useState<boolean>(isExpanded)
   const [visible, setVisible] = useState<boolean>(isExpanded)
@@ -89,6 +84,5 @@ function Expand({
   )
 }
 
-Expand.defaultProps = defaultProps
 Expand.displayName = 'BolioUIExpand'
 export default Expand
