@@ -1,70 +1,104 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import {
-  Section,
-  Container,
-  Grid,
-  Row,
-  Col,
-  Text,
-  Button,
-  Card,
-  useTheme
-} from 'core'
-import { useIsMobile } from 'src/utils/use-media-query'
+import NextLink from 'next/link'
+import { Section, Container, Text, useTheme } from 'core'
+import { ArrowRight } from '@bolio-ui/icons'
 import Eyebrow from 'src/components/Eyebrow'
 
+const stats = [
+  { label: 'components', value: '51' },
+  { label: 'hooks', value: '13' },
+  { label: 'guides', value: '13' },
+  { label: 'frameworks', value: '5' },
+  { label: 'license', value: 'MIT' }
+]
+
 function SectionFooterGithub() {
-  const router = useRouter()
   const theme = useTheme()
-  const isMobile = useIsMobile()
 
   return (
-    <Section pb={5}>
+    <Section py={5}>
       <Container style={{ maxWidth: 1300 }}>
-        <Grid.Container gap={2} justify="center">
-          <Grid xs={12} sm={12} md={12}>
-            <div className="card-wrapper">
-              <Card
-                padding={isMobile ? 2 : 4}
+        <div className="head">
+          <div>
+            <Eyebrow>
+              <span style={{ color: theme.palette.warning }}>
+                Components, hooks, themes, guides.
+              </span>
+            </Eyebrow>
+            <Text h1 my={0}>
+              Start coding in seconds with Bolio UI
+            </Text>
+          </div>
+          <NextLink href="/docs/guide/getting-started" className="cta">
+            Get started
+            <ArrowRight fontSize={18} />
+          </NextLink>
+        </div>
+        <div className="stats">
+          {stats.map((stat, index) => (
+            <div key={stat.label} className="stat">
+              <span className="stat-label">{stat.label}</span>
+              <span
                 style={{
-                  backgroundColor: theme.palette.accents_1,
-                  border: `1px solid ${theme.palette.border}`
+                  color:
+                    index === stats.length - 1
+                      ? theme.palette.success
+                      : theme.palette.foreground
                 }}
               >
-                <Row>
-                  <Col span={12}>
-                    <Eyebrow>Get started</Eyebrow>
-                    <Text h1 my={0} mb={0}>
-                      Start coding in seconds with Bolio UI
-                    </Text>
-                    <Text font={1.2} mb={2}>
-                      Get started with Bolio UI and learn by exploring
-                      interactive examples.
-                    </Text>
-                    <Button
-                      onClick={() => router.push('/docs/guide/getting-started')}
-                      type="secondary-light"
-                      rounded
-                      style={{ textTransform: 'none' }}
-                    >
-                      Get started
-                    </Button>
-                  </Col>
-                </Row>
-              </Card>
+                {stat.value}
+              </span>
             </div>
-          </Grid>
-        </Grid.Container>
+          ))}
+        </div>
       </Container>
       <style jsx>{`
-        .card-wrapper {
-          width: 100%;
+        .head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 32px;
+          margin-bottom: 96px;
         }
-        .card-wrapper :global(.card-box) {
-          box-shadow: ${theme.type === 'dark'
-            ? `0 0 0 1px ${theme.palette.foreground}`
-            : '0px 4px 8px rgba(0,0,0,0.12)'};
+        .head :global(.cta) {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-shrink: 0;
+          width: 340px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid ${theme.palette.border};
+          color: ${theme.palette.foreground};
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          transition: border-color 200ms ease;
+        }
+        .head :global(.cta:hover) {
+          border-color: ${theme.palette.foreground};
+        }
+        .stats {
+          border-top: 1px solid ${theme.palette.border};
+        }
+        .stat {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+          border-bottom: 1px solid ${theme.palette.border};
+          font-family: ${theme.font.mono};
+          font-size: 0.8rem;
+        }
+        .stat-label {
+          color: ${theme.palette.accents_5};
+        }
+        @media (max-width: ${theme.breakpoints.sm.max}) {
+          .head {
+            flex-direction: column;
+            margin-bottom: 48px;
+          }
+          .head :global(.cta) {
+            width: 100%;
+          }
         }
       `}</style>
     </Section>

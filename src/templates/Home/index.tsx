@@ -1,17 +1,15 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import { Section, Container, Grid } from 'core'
 import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
-import CardBox from 'src/components/CardBox'
-import Eyebrow from 'src/components/Eyebrow'
+import SectionFeatures from './SectionFeatures'
 import SectionPlayground from './SectionPlayground'
-import SectionDemonstration from './SectionDemonstration'
-import SectionReadStarted from './SectionReadyStarted'
-import SectionCommunity from './SectionCommunity'
+import SectionCapabilities from './SectionCapabilities'
+import SectionComponents from './SectionComponents'
+import SectionTokens from './SectionTokens'
 import SectionFooterGithub from './SectionFooterGithub'
 
 function Home() {
@@ -48,45 +46,11 @@ function Home() {
       />
       <Base>
         <Hero />
-        <Section py={1}>
-          <Container style={{ maxWidth: 1300 }}>
-            <Eyebrow>Features</Eyebrow>
-            <Grid.Container gap={2}>
-              <Grid xs={12} sm={6} md={3}>
-                <CardBox
-                  title="Customizable"
-                  description="Customize simple, you can change themes, colors, fonts and everything you need."
-                  icon="Target"
-                />
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <CardBox
-                  title="Modern Design"
-                  description="Responsive, theme-based style props for building design systems with React."
-                  icon="Layout"
-                />
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <CardBox
-                  title="Well Documented"
-                  description="Documented organized way and its customization instruction easy for all."
-                  icon="FileText"
-                />
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <CardBox
-                  title="Fast Loading Speed"
-                  description="Faster loading speed. It's create your template so much faster."
-                  icon="Zap"
-                />
-              </Grid>
-            </Grid.Container>
-          </Container>
-        </Section>
+        <SectionFeatures />
         <SectionPlayground />
-        <SectionDemonstration />
-        <SectionReadStarted />
-        <SectionCommunity />
+        <SectionCapabilities />
+        <SectionComponents />
+        <SectionTokens />
         <SectionFooterGithub />
       </Base>
     </>

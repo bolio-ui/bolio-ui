@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
 import WindowFrame from 'src/components/WindowFrame'
-import SectionComponents from 'src/templates/Home/SectionComponents'
+import SectionHeroComponents from 'src/templates/Home/SectionHeroComponents'
 
 function Hero() {
   const router = useRouter()
@@ -47,7 +47,7 @@ function Hero() {
           </Grid>
           <Grid xs={12} sm={6} md={7} direction="column" justify="center">
             <WindowFrame>
-              <SectionComponents />
+              <SectionHeroComponents />
             </WindowFrame>
           </Grid>
         </Grid.Container>

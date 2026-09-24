@@ -7,11 +7,8 @@ function Footer() {
   const theme = useTheme()
 
   return (
-    <Section
-      padding={2}
-      style={{ borderTop: `1px solid ${theme.palette.border}` }}
-    >
-      <Container>
+    <Section py={2} style={{ borderTop: `1px solid ${theme.palette.border}` }}>
+      <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2} alignItems="center">
           <Grid xs={12} md={6}>
             <Logo name="Bolio UI" />

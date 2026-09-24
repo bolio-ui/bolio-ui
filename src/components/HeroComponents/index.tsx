@@ -316,7 +316,6 @@ export const InfoCard = ({
           <div className="info_card_content">
             <Badge
               style={{
-                background: 'rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%',
                 borderRadius: '50%',
                 padding: 12
               }}
