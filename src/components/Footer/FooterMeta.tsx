@@ -23,7 +23,7 @@ function FooterMeta() {
 
   return (
     <>
-      <Grid.Container gap={2} alignItems="center">
+      <Grid.Container alignItems="center">
         <Grid xs={12} md={4} className="footer-meta-cell">
           <Text
             font={0.75}
