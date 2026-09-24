@@ -23,7 +23,7 @@ const HybridLink: React.FC<HybridLinkProps> = ({
         href={href}
         {...props}
         onClick={(event) => {
-          props.onClick && props.onClick(event)
+          props.onClick?.(event)
           if (!isPlainLeftClick(event)) return
           event.preventDefault()
           router.push(href)

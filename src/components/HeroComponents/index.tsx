@@ -288,7 +288,7 @@ interface InfoCardProps {
 
 const renderIcon = (icon: Icon, color: string) => {
   const CurrentIcon = Icons[icon]
-  return <CurrentIcon color={color} fontSize={26} /> || null
+  return <CurrentIcon color={color} fontSize={26} />
 }
 
 export const InfoCard = ({

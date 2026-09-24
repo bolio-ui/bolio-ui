@@ -15,7 +15,7 @@ export type ProjectCardProps = Props
 
 const renderIcon = (icon: Icon, color) => {
   const CurrentIcon = Icons[icon]
-  return <CurrentIcon fontSize={26} color={color} /> || null
+  return <CurrentIcon fontSize={26} color={color} />
 }
 
 function CardBox({ title, description, icon, hover = false }: Props) {
