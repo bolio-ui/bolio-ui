@@ -32,10 +32,10 @@ const getStatusColor = (
     const variant = subtle
       ? 'subtle'
       : light
-      ? 'light'
-      : filled
-      ? 'filled'
-      : 'outline'
+        ? 'light'
+        : filled
+          ? 'filled'
+          : 'outline'
     const { bg, border, color } = getVariantColors(theme.palette, type, variant)
     return { color, borderColor: border, bgColor: bg }
   }

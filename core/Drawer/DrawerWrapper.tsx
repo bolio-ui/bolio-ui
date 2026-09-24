@@ -95,7 +95,9 @@ const DrawerWrapper = React.forwardRef<
             opacity: 0;
             outline: none;
             transform: ${transform.initial};
-            transition: opacity, transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
+            transition:
+              opacity,
+              transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
             font-size: ${SCALES.font(1)};
             --modal-wrapper-padding-left: ${SCALES.pl(1.3125)};
             --modal-wrapper-padding-right: ${SCALES.pr(1.3125)};
@@ -145,7 +147,9 @@ const DrawerWrapper = React.forwardRef<
           .wrapper-leave {
             opacity: 1;
             transform: ${transform.visible};
-            transition: opacity, transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
+            transition:
+              opacity,
+              transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
           }
           .wrapper-leave-active {
             opacity: 0.4;

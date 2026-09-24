@@ -1,5 +1,11 @@
 // No 'use client' here on purpose: this is what a typical consumer writes.
-import { BolioUIProvider, CssBaseline, Button, Card, Text } from '@bolio-ui/core'
+import {
+  BolioUIProvider,
+  CssBaseline,
+  Button,
+  Card,
+  Text
+} from '@bolio-ui/core'
 
 export default function AppRouterServer() {
   return (

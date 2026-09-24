@@ -543,7 +543,8 @@ export const FollowersCard = () => {
           animation: levitating 3s ease-in-out infinite;
         }
         .border-gradient {
-          background: linear-gradient(#c25fff, #7828c9) padding-box,
+          background:
+            linear-gradient(#c25fff, #7828c9) padding-box,
             linear-gradient(to right, #c25fff, #7828c9) border-box;
           border-radius: 50em;
           border: 2px solid transparent;

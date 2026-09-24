@@ -1,4 +1,11 @@
-import { BolioUIProvider, CssBaseline, Button, Card, Text, Input } from '@bolio-ui/core'
+import {
+  BolioUIProvider,
+  CssBaseline,
+  Button,
+  Card,
+  Text,
+  Input
+} from '@bolio-ui/core'
 
 export default function PagesRouter() {
   return (

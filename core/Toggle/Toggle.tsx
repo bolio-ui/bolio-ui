@@ -155,7 +155,8 @@ const ToggleComponent = React.forwardRef<
             top: 50%;
             transform: translateY(-50%);
             left: 1px;
-            box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0,
+            box-shadow:
+              rgba(0, 0, 0, 0.2) 0 1px 2px 0,
               rgba(0, 0, 0, 0.1) 0 1px 3px 0;
             transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
             border-radius: 50%;

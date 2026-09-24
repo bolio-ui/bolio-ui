@@ -29,9 +29,9 @@ function SelectMultipleValue({ disabled, onClear, children }: Props) {
           height: calc(var(--select-font-size) * 2);
           border-radius: ${theme.layout.radius};
           background-color: ${theme.palette.accents_3};
-          color: ${disabled
-            ? theme.palette.accents_5
-            : theme.palette.accents_7};
+          color: ${
+            disabled ? theme.palette.accents_5 : theme.palette.accents_7
+          };
         }
 
         .item > :global(div:not(.clear-icon)),

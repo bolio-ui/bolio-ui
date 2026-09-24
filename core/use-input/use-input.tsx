@@ -2,8 +2,7 @@ import React, { Dispatch, MutableRefObject, SetStateAction } from 'react'
 import useCurrentState from '../utils/use-current-state'
 
 export type BindingsChangeTarget =
-  | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  | string
+  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | string
 
 const useInput = (
   initialValue: string

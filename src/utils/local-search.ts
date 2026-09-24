@@ -31,8 +31,8 @@ export const searchDocs = (query: string, limit: number): DocHit[] => {
     let score = hit.component ? 0 : 1
     const found = terms.every((term) => {
       if (title.startsWith(term)) return true
-      if (title.includes(term)) return (score += 2), true
-      if (head.includes(term)) return (score += 3), true
+      if (title.includes(term)) return ((score += 2), true)
+      if (head.includes(term)) return ((score += 3), true)
       return false
     })
     if (found) matches.push({ hit, score })

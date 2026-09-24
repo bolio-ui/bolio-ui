@@ -125,7 +125,9 @@ function TabsItemCellComponent({
           border-radius: 4px;
           transform: scaleX(0.75);
           background-color: ${theme.palette.foreground};
-          transition: opacity, transform 200ms ease-in;
+          transition:
+            opacity,
+            transform 200ms ease-in;
           opacity: 0;
         }
         .active:after {

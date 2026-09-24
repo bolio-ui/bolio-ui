@@ -283,9 +283,11 @@ const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
           align-items: center;
           z-index: 9999;
           background: ${addColorAlpha(theme.palette.background, 0.7)};
-          box-shadow: ${theme.type === 'dark'
-            ? '0px 5px 20px -5px rgba(0, 0, 0, 0.1)'
-            : 'none'};
+          box-shadow: ${
+            theme.type === 'dark'
+              ? '0px 5px 20px -5px rgba(0, 0, 0, 0.1)'
+              : 'none'
+          };
           border-radius: 20px;
         }
         .react-autosuggest__input {
@@ -433,8 +435,9 @@ const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
             right: 0;
           }
         }
-        @media only screen and (min-width: ${theme.breakpoints.xs
-            .min}) and (max-width: ${theme.breakpoints.lg.max}) {
+        @media only screen and (min-width: ${
+            theme.breakpoints.xs.min
+          }) and (max-width: ${theme.breakpoints.lg.max}) {
           .react-autosuggest__suggestions-container,
           .no-results {
             top: 60px;

@@ -61,7 +61,7 @@ export const getColors = (
 }
 
 const toastPlacement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
-export type ToastPlacement = typeof toastPlacement[number]
+export type ToastPlacement = (typeof toastPlacement)[number]
 
 export const isTopPlacement = (placement: ToastPlacement) =>
   `${placement}`.toLowerCase().startsWith('top')

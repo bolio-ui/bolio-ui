@@ -2,7 +2,7 @@ import React from 'react'
 import { tuple } from '../utils/prop-types'
 const paginationUpdateTypes = tuple('prev', 'next', 'click')
 
-export type PaginationUpdateType = typeof paginationUpdateTypes[number]
+export type PaginationUpdateType = (typeof paginationUpdateTypes)[number]
 
 export interface PaginationConfig {
   isFirst?: boolean

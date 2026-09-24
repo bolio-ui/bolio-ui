@@ -31,10 +31,10 @@ const getColors = (
     const variant = subtle
       ? 'subtle'
       : light
-      ? 'light'
-      : ghost
-      ? 'outline'
-      : 'filled'
+        ? 'light'
+        : ghost
+          ? 'outline'
+          : 'filled'
     return getVariantColors(palette, type, variant)
   }
   // 'default' has no semantic color: a plain neutral chip either way.

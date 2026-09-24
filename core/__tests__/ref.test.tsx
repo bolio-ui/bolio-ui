@@ -259,7 +259,7 @@ describe('ref: every component forwards it to a DOM element', () => {
 
   // a rest parameter keeps jest from passing its `done` callback as `tag`
   it.each(cases)('%s', (...row) => {
-    const [name, factory, tag] = row as typeof cases[number]
+    const [name, factory, tag] = row as (typeof cases)[number]
     const ref: Ref = React.createRef()
     render(<BolioUIProvider>{factory(ref)}</BolioUIProvider>)
 

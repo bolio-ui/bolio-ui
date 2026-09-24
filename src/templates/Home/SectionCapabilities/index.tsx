@@ -332,7 +332,8 @@ function SectionCapabilities() {
           font-size: 1.25rem;
           color: ${theme.palette.foreground};
           opacity: 0.38;
-          transition: opacity 260ms cubic-bezier(0.23, 1, 0.32, 1),
+          transition:
+            opacity 260ms cubic-bezier(0.23, 1, 0.32, 1),
             transform 260ms cubic-bezier(0.23, 1, 0.32, 1);
         }
         .rail-item.active {
@@ -345,7 +346,8 @@ function SectionCapabilities() {
           transform-origin: left center;
           transform: scaleX(0.25);
           opacity: 0.35;
-          transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1),
+          transition:
+            transform 260ms cubic-bezier(0.23, 1, 0.32, 1),
             opacity 260ms linear;
         }
         .rail-item.active .rail-bar {

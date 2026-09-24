@@ -58,9 +58,9 @@ const DisplayComponent = React.forwardRef<
             border-radius: 4px;
             overflow: hidden;
             width: ${SCALES.width(1, 'max-content')};
-            box-shadow: ${showShadow
-              ? theme.expressiveness.shadowLarge
-              : 'none'};
+            box-shadow: ${
+              showShadow ? theme.expressiveness.shadowLarge : 'none'
+            };
             max-width: 100%;
           }
 

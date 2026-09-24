@@ -5,7 +5,7 @@ import Badge from './Badge'
 
 const placement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
 
-export type BadgeAnchorPlacement = typeof placement[number]
+export type BadgeAnchorPlacement = (typeof placement)[number]
 
 interface Props {
   placement?: BadgeAnchorPlacement

@@ -50,7 +50,9 @@ function PopoverItemComponent({
             justify-content: flex-start;
             align-items: center;
             color: ${theme.palette.accents_5};
-            transition: color, background-color 150ms linear;
+            transition:
+              color,
+              background-color 150ms linear;
             line-height: 1.25em;
             font-size: ${SCALES.font(0.875)};
             width: ${SCALES.width(1, 'auto')};

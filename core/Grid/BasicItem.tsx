@@ -107,11 +107,9 @@ const GridBasicItem = React.forwardRef<
       return classString.trim()
     }, [justify, direction, alignItems, alignContent, xs, sm, md, lg, xl])
 
-    const layout = useMemo<
-      {
-        [key in ['xs', 'sm', 'md', 'lg', 'xl'][number]]: ItemLayoutValue
-      }
-    >(
+    const layout = useMemo<{
+      [key in ['xs', 'sm', 'md', 'lg', 'xl'][number]]: ItemLayoutValue
+    }>(
       () => ({
         xs: getItemLayout(xs),
         sm: getItemLayout(sm),

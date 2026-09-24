@@ -3,10 +3,10 @@
 Small Next.js app used to check that the **packed** `@bolio-ui/core` builds and
 renders under different Next/React versions. It covers three entry points:
 
-| Route         | Router / kind                              |
-| ------------- | ------------------------------------------ |
-| `/`           | Pages Router                               |
-| `/app-client` | App Router, page marked `'use client'`     |
+| Route         | Router / kind                               |
+| ------------- | ------------------------------------------- |
+| `/`           | Pages Router                                |
+| `/app-client` | App Router, page marked `'use client'`      |
 | `/app-server` | App Router, Server Component (no directive) |
 
 ## Run
