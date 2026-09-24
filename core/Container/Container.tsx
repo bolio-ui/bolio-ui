@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
+import useClasses from '../use-classes'
 
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 type Align = 'top' | 'middle' | 'bottom'
@@ -71,7 +72,11 @@ const Container = React.forwardRef<
       : 'max-width: ' + theme.layout.pageWidthWithMargin
 
     return (
-      <Component ref={ref} className={`container ${className}`} {...props}>
+      <Component
+        ref={ref}
+        className={useClasses('container', className)}
+        {...props}
+      >
         {children}
         <style jsx>{`
           .container {

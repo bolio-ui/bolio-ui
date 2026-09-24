@@ -1,4 +1,5 @@
 import React from 'react'
+import useClasses from '../use-classes'
 
 interface Props {
   span?: number
@@ -25,7 +26,7 @@ const Col = React.forwardRef<HTMLElement, React.PropsWithChildren<ColProps>>(
     const Component = component as React.ElementType
 
     return (
-      <Component ref={ref} className={`col ${className}`} {...props}>
+      <Component ref={ref} className={useClasses('col', className)} {...props}>
         {children}
         <style jsx>{`
           .col {

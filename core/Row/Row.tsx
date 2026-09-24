@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
+import useClasses from '../use-classes'
 
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 type Align = 'top' | 'middle' | 'bottom'
@@ -62,7 +63,7 @@ const Row = React.forwardRef<HTMLElement, React.PropsWithChildren<RowProps>>(
     )
 
     return (
-      <Component ref={ref} className={`row ${className}`} {...props}>
+      <Component ref={ref} className={useClasses('row', className)} {...props}>
         {children}
         <style jsx>{`
           .row {
