@@ -264,6 +264,11 @@
               "path": "/docs/components/note.mdx"
             },
             {
+              "title": "Number Input",
+              "keywords": "number input, numeric, spinbutton, stepper, quantity, increment, decrement, min, max, step",
+              "path": "/docs/components/number-input.mdx"
+            },
+            {
               "title": "Page",
               "keywords": "page, content",
               "path": "/docs/components/page.mdx"

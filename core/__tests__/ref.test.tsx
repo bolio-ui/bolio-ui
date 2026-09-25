@@ -35,6 +35,7 @@ const {
   Menu,
   Modal,
   Note,
+  NumberInput,
   Page,
   Pagination,
   Popover,
@@ -181,6 +182,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Note', (ref) => <Note ref={ref}>Note</Note>],
+  ['NumberInput', (ref) => <NumberInput ref={ref} aria-label="Qty" />, 'INPUT'],
   [
     'Page',
     (ref) => (

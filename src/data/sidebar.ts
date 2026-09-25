@@ -208,6 +208,10 @@ export const components = [
     url: '/docs/components/note'
   },
   {
+    name: 'Number Input',
+    url: '/docs/components/number-input'
+  },
+  {
     name: 'Page',
     url: '/docs/components/page'
   },
