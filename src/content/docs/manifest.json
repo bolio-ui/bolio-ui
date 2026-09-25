@@ -329,6 +329,11 @@
               "path": "/docs/components/spinner.mdx"
             },
             {
+              "title": "Stepper",
+              "keywords": "stepper, steps, wizard, progress, checkout, onboarding, timeline, vertical",
+              "path": "/docs/components/stepper.mdx"
+            },
+            {
               "title": "Table",
               "keywords": "table",
               "path": "/docs/components/table.mdx"

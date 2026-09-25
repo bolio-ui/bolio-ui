@@ -264,6 +264,10 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Stepper',
+    url: '/docs/components/stepper'
+  },
+  {
     name: 'Table',
     url: '/docs/components/table'
   },
