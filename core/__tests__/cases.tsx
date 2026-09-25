@@ -44,6 +44,7 @@ const {
   Row,
   Section,
   Select,
+  Skeleton,
   Slider,
   Snippet,
   Spacer,
@@ -219,6 +220,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Select>
     )
   ],
+  ['Skeleton', () => <Skeleton lines={2} />],
   ['Slider', () => <Slider initialValue={20} />],
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
   ['Spacer', () => <Spacer h={1} />],

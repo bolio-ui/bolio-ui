@@ -2382,6 +2382,59 @@
     "path": "/docs/components/slider#slidertypes"
   },
   {
+    "title": "Skeleton",
+    "component": true,
+    "path": "/docs/components/skeleton"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton General",
+    "component": false,
+    "path": "/docs/components/skeleton#general"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Lines",
+    "component": false,
+    "path": "/docs/components/skeleton#lines"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Circle",
+    "component": false,
+    "path": "/docs/components/skeleton#circle"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton With content",
+    "component": false,
+    "path": "/docs/components/skeleton#with-content"
+  },
+  {
+    "head": "Skeleton",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/skeleton#apis"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Props",
+    "component": false,
+    "path": "/docs/components/skeleton#skeleton.props"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/skeleton#ref"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/skeleton#accessibility"
+  },
+  {
     "title": "Snippet",
     "component": true,
     "path": "/docs/components/snippet"
