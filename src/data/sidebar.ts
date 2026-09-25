@@ -240,6 +240,10 @@ export const components = [
     url: '/docs/components/select'
   },
   {
+    name: 'Skeleton',
+    url: '/docs/components/skeleton'
+  },
+  {
     name: 'Section',
     url: '/docs/components/section'
   },

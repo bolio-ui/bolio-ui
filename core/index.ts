@@ -167,6 +167,9 @@ export type { SectionProps } from './Section'
 export { default as Select } from './Select'
 export type { SelectProps, SelectOptionProps } from './Select'
 
+export { default as Skeleton } from './Skeleton'
+export type { SkeletonProps } from './Skeleton'
+
 export { default as Slider } from './Slider'
 export type { SliderProps } from './Slider'
 

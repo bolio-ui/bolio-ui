@@ -309,6 +309,11 @@
               "path": "/docs/components/select.mdx"
             },
             {
+              "title": "Skeleton",
+              "keywords": "skeleton, placeholder, loading, shimmer, content loader, lines, circle, avatar",
+              "path": "/docs/components/skeleton.mdx"
+            },
+            {
               "title": "Snippet",
               "keywords": "snippet, width, types, multi line, copy, custom symbol, toast, filled",
               "path": "/docs/components/snippet.mdx"

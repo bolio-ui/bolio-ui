@@ -44,6 +44,7 @@ const {
   Row,
   Section,
   Select,
+  Skeleton,
   Slider,
   Snippet,
   Spacer,
@@ -219,6 +220,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       </Select>
     )
   ],
+  ['Skeleton', (ref) => <Skeleton ref={ref} />],
   ['Slider', (ref) => <Slider ref={ref} initialValue={20} />],
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
