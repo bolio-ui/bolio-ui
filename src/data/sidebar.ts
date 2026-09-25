@@ -196,6 +196,10 @@ export const components = [
     url: '/docs/components/loading'
   },
   {
+    name: 'Menu',
+    url: '/docs/components/menu'
+  },
+  {
     name: 'Modal',
     url: '/docs/components/modal'
   },

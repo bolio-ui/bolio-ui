@@ -1567,6 +1567,101 @@
     "path": "/docs/components/loading#loadingtypes"
   },
   {
+    "title": "Menu",
+    "component": true,
+    "path": "/docs/components/menu"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu General",
+    "component": false,
+    "path": "/docs/components/menu#general"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Labels and dividers",
+    "component": false,
+    "path": "/docs/components/menu#labels-and-dividers"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Submenus",
+    "component": false,
+    "path": "/docs/components/menu#submenus"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Checkbox and radio items",
+    "component": false,
+    "path": "/docs/components/menu#checkbox-and-radio-items"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Controlled",
+    "component": false,
+    "path": "/docs/components/menu#controlled"
+  },
+  {
+    "head": "Menu",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/menu#apis"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Item Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.item.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu CheckboxItem Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.checkboxitem.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu RadioGroup Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.radiogroup.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu RadioItem Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.radioitem.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Sub Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.sub.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Label and Menu Divider",
+    "component": false,
+    "path": "/docs/components/menu#menu.label-and-menu.divider"
+  },
+  {
+    "head": "Menu",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/menu#ref"
+  },
+  {
+    "head": "Menu",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/menu#accessibility"
+  },
+  {
     "title": "Modal",
     "component": true,
     "path": "/docs/components/modal"

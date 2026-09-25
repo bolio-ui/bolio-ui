@@ -247,6 +247,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Menu',
+            url: '/docs/components/menu',
+            group: 'Components'
+          },
+          {
             name: 'Modal',
             url: '/docs/components/modal',
             group: 'Components'
