@@ -127,6 +127,9 @@ export type {
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
 
+export { default as NumberInput } from './NumberInput'
+export type { NumberInputProps } from './NumberInput'
+
 export { default as Page } from './Page'
 export type {
   PageProps,

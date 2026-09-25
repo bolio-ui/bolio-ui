@@ -35,6 +35,7 @@ const {
   Menu,
   Modal,
   Note,
+  NumberInput,
   Page,
   Pagination,
   Popover,
@@ -175,6 +176,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Note', () => <Note>Note</Note>],
+  ['NumberInput', () => <NumberInput aria-label="Quantity" min={0} />],
   [
     'Page',
     () => (

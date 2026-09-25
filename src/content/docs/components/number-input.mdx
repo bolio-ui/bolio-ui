@@ -1,0 +1,162 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { NumberInput, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'Number Input',
+  description:
+    'A field for numbers, with buttons and arrow keys to step the value and limits it stays within.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 52
+}
+
+## Number Input
+
+A field for numbers. The buttons and the arrow keys step the value, and it
+stays within `min` and `max`.
+
+<Playground
+  desc="Name the field with `aria-label`, or with a label passed as children."
+  scope={{ NumberInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <NumberInput aria-label="Quantity" initialValue={1} min={0} max={10} />
+  </Grid>
+  <Grid>
+    <NumberInput initialValue={2}>Guests</NumberInput>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Step and precision"
+  desc="`step` sets how much each click or arrow adds. The value keeps the decimal places of `step`, or the ones set in `precision`."
+  scope={{ NumberInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <NumberInput aria-label="Price" initialValue={9.9} step={0.1} min={0} />
+  </Grid>
+  <Grid>
+    <NumberInput aria-label="Percent" initialValue={50} step={5} min={0} max={100} />
+  </Grid>
+  <Grid>
+    <NumberInput aria-label="Weight" initialValue={1.25} step={1} precision={2} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Without controls"
+  desc="Hide the buttons with `hideControls`. The arrow keys still step the value."
+  scope={{ NumberInput }}
+  code={`
+<NumberInput aria-label="Year" placeholder="Year" min={1900} max={2100} hideControls />
+`}
+/>
+
+<Playground
+  title="Error"
+  desc="Show a message with `error` and `errorMessage`. Say what happened and how to fix it."
+  scope={{ NumberInput }}
+  code={`
+() => {
+  const [guests, setGuests] = React.useState(12)
+  const tooMany = guests !== null && guests > 10
+  return (
+    <NumberInput
+      value={guests}
+      onChange={setGuests}
+      min={1}
+      error={tooMany}
+      errorMessage="The room fits 10 people. Remove a guest to continue."
+    >
+      Guests
+    </NumberInput>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="`onChange` receives the number, or `null` when the field is empty."
+  scope={{ NumberInput, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(3)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <NumberInput aria-label="Amount" value={value} onChange={setValue} />
+      </Grid>
+      <Grid>
+        <Text my={0}>Value: {value === null ? 'empty' : value}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Disabled and read only"
+  scope={{ NumberInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <NumberInput aria-label="Disabled" initialValue={4} disabled />
+  </Grid>
+  <Grid>
+    <NumberInput aria-label="Read only" initialValue={4} readOnly />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/number-input.mdx">
+<Attributes.Title>NumberInput.Props</Attributes.Title>
+
+| Attribute        | Description                                               | Type                                             | Accepted values                   | Default   |
+| ---------------- | --------------------------------------------------------- | ------------------------------------------------ | --------------------------------- | --------- |
+| **value**        | the number, to control the field                          | `number` / `null`                                | -                                 | -         |
+| **initialValue** | the number at the start                                   | `number` / `null`                                | -                                 | `null`    |
+| **onChange**     | called with the number, or `null` when the field is empty | <Code>(value: number &#124; null) =&gt; void</Code> | -                              | -         |
+| **min**          | lowest value                                              | `number`                                         | -                                 | -         |
+| **max**          | highest value                                             | `number`                                         | -                                 | -         |
+| **step**         | how much a button or an arrow key adds                    | `number`                                         | -                                 | `1`       |
+| **precision**    | decimal places kept                                       | `number`                                         | -                                 | the ones of `step` |
+| **type**         | color of the field                                        | `NormalTypes`                                    | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default` |
+| **hideControls** | hide the buttons                                          | `boolean`                                        | -                                 | `false`   |
+| **error**        | mark the value as invalid                                 | `boolean`                                        | -                                 | `false`   |
+| **errorMessage** | text shown below the field with `error`                   | `string`                                         | -                                 | -         |
+| **disabled**     | disable the field                                         | `boolean`                                        | -                                 | `false`   |
+| **readOnly**     | show the value without letting it change                  | `boolean`                                        | -                                 | `false`   |
+| **children**     | label shown above the field                               | `ReactNode`                                      | -                                 | -         |
+| ...              | native props, passed to the input                         | `InputHTMLAttributes`                            | `'aria-label', 'name', 'placeholder', ...` | - |
+
+<Attributes.Title>Typing and limits</Attributes.Title>
+
+The field accepts digits, a minus sign and one decimal separator, a dot or a comma. While the user types, `onChange` receives the number as it is. When the field loses the focus, the value is kept within `min` and `max` and rounded to `precision`. The buttons and the keys never go past the limits.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The input has `role="spinbutton"` with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`. The buttons are named Increase and Decrease and stay out of the tab order, since the keys do the same from the input. With `error`, the input has `aria-invalid` and is described by the message.
+
+| Key                  | Action                         |
+| -------------------- | ------------------------------ |
+| Arrow Up and Down    | Add or subtract `step`         |
+| Page Up and Down     | Add or subtract ten steps      |
+| Home and End         | Go to `min` or `max`, when set |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

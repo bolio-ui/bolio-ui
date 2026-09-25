@@ -1810,6 +1810,77 @@
     "path": "/docs/components/note#notetypes"
   },
   {
+    "title": "Number Input",
+    "component": true,
+    "path": "/docs/components/number-input"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input General",
+    "component": false,
+    "path": "/docs/components/number-input#general"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Step and precision",
+    "component": false,
+    "path": "/docs/components/number-input#step-and-precision"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Without controls",
+    "component": false,
+    "path": "/docs/components/number-input#without-controls"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Error",
+    "component": false,
+    "path": "/docs/components/number-input#error"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Controlled",
+    "component": false,
+    "path": "/docs/components/number-input#controlled"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Disabled and read only",
+    "component": false,
+    "path": "/docs/components/number-input#disabled-and-read-only"
+  },
+  {
+    "head": "Number Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/number-input#apis"
+  },
+  {
+    "head": "Number Input",
+    "title": "NumberInput Props",
+    "component": false,
+    "path": "/docs/components/number-input#numberinput.props"
+  },
+  {
+    "head": "Number Input",
+    "title": "Typing and limits",
+    "component": false,
+    "path": "/docs/components/number-input#typing-and-limits"
+  },
+  {
+    "head": "Number Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/number-input#ref"
+  },
+  {
+    "head": "Number Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/number-input#accessibility"
+  },
+  {
     "title": "Page",
     "component": true,
     "path": "/docs/components/page"
