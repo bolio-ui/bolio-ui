@@ -32,6 +32,7 @@ const {
   Keyboard,
   Link,
   Loading,
+  Menu,
   Modal,
   Note,
   Page,
@@ -155,6 +156,14 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Keyboard', () => <Keyboard>K</Keyboard>],
   ['Link', () => <Link href="/">Home</Link>],
   ['Loading', () => <Loading />],
+  [
+    'Menu',
+    () => (
+      <Menu trigger={<Button>Options</Button>}>
+        <Menu.Item>Edit</Menu.Item>
+      </Menu>
+    )
+  ],
   [
     'Modal',
     () => (

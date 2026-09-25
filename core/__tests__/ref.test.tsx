@@ -32,6 +32,7 @@ const {
   Keyboard,
   Link,
   Loading,
+  Menu,
   Modal,
   Note,
   Page,
@@ -161,6 +162,14 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'A'
   ],
   ['Loading', (ref) => <Loading ref={ref} />],
+  [
+    'Menu',
+    (ref) => (
+      <Menu ref={ref} trigger={<Button>Options</Button>}>
+        <Menu.Item>Edit</Menu.Item>
+      </Menu>
+    )
+  ],
   [
     'Modal',
     (ref) => (

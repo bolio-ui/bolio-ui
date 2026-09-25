@@ -249,6 +249,11 @@
               "path": "/docs/components/loading.mdx"
             },
             {
+              "title": "Menu",
+              "keywords": "menu, dropdown menu, context menu, actions, submenu, checkbox item, radio item, shortcut",
+              "path": "/docs/components/menu.mdx"
+            },
+            {
               "title": "Modal",
               "keywords": "modal, dialog, backdrop, actions, customized, loading, overlong",
               "path": "/docs/components/modal.mdx"
