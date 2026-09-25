@@ -182,6 +182,13 @@ export type { SpacerProps } from './Spacer'
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 
+export { default as Stepper } from './Stepper'
+export type {
+  StepperProps,
+  StepperOrientation,
+  StepperStepProps
+} from './Stepper'
+
 export { default as Table } from './Table'
 export type { TableProps, TableColumnProps } from './Table'
 

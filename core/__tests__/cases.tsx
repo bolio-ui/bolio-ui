@@ -49,6 +49,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Stepper,
   Table,
   Tabs,
   Tag,
@@ -225,6 +226,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
   ['Spacer', () => <Spacer h={1} />],
   ['Spinner', () => <Spinner />],
+  [
+    'Stepper',
+    () => (
+      <Stepper active={1} aria-label="Checkout">
+        <Stepper.Step label="Cart" />
+        <Stepper.Step label="Payment" />
+      </Stepper>
+    )
+  ],
   [
     'Table',
     () => (

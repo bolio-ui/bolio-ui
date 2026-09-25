@@ -49,6 +49,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Stepper,
   Table,
   Tabs,
   Tag,
@@ -225,6 +226,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spinner', (ref) => <Spinner ref={ref} />],
+  [
+    'Stepper',
+    (ref) => (
+      <Stepper ref={ref} active={0}>
+        <Stepper.Step label="Cart" />
+      </Stepper>
+    ),
+    'OL'
+  ],
   [
     'Table',
     (ref) => (

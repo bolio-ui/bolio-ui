@@ -2576,6 +2576,65 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "title": "Stepper",
+    "component": true,
+    "path": "/docs/components/stepper"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper General",
+    "component": false,
+    "path": "/docs/components/stepper#general"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Clickable steps",
+    "component": false,
+    "path": "/docs/components/stepper#clickable-steps"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Error",
+    "component": false,
+    "path": "/docs/components/stepper#error"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Vertical",
+    "component": false,
+    "path": "/docs/components/stepper#vertical"
+  },
+  {
+    "head": "Stepper",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/stepper#apis"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Props",
+    "component": false,
+    "path": "/docs/components/stepper#stepper.props"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Step Props",
+    "component": false,
+    "path": "/docs/components/stepper#stepper.step.props"
+  },
+  {
+    "head": "Stepper",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/stepper#ref"
+  },
+  {
+    "head": "Stepper",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/stepper#accessibility"
+  },
+  {
     "title": "Table",
     "component": true,
     "path": "/docs/components/table"
