@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from './css-transition'
 import useCurrentState from '../utils/use-current-state'
@@ -33,8 +33,13 @@ function BackdropComponent({
   const [, setIsContentMouseDown, IsContentMouseDownRef] =
     useCurrentState(false)
 
+  const contentRef = useRef<HTMLDivElement>(null)
+
   const clickHandler = (event: MouseEvent<HTMLElement>) => {
     if (IsContentMouseDownRef.current) return
+    // a click that comes from the content is not a click on the backdrop. It
+    // has no mousedown when it is made with the keyboard, or by code
+    if (contentRef.current?.contains(event.target as Node)) return
     if (onClick) onClick(event)
   }
 
@@ -56,6 +61,7 @@ function BackdropComponent({
       >
         <div className={useClasses('layer', layerClassName)} />
         <div
+          ref={contentRef}
           onClick={onContentClick}
           className={useClasses('position', positionClassName)}
           onMouseDown={() => setIsContentMouseDown(true)}

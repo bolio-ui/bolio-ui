@@ -76,3 +76,34 @@ describe('grouped components follow their group', () => {
     expect(screen.getByText('Alone')).toBeVisible()
   })
 })
+
+describe('Checkbox.Group without a value', () => {
+  it('renders, warns once, and keeps its own state', () => {
+    const errors = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined)
+    const onChange = jest.fn()
+    wrap(
+      // @ts-expect-error the type requires value, but JavaScript can leave it out
+      <Checkbox.Group onChange={onChange}>
+        <Checkbox value="a">A</Checkbox>
+        <Checkbox value="b">B</Checkbox>
+      </Checkbox.Group>
+    )
+    const [a, b] = screen.getAllByRole('checkbox') as HTMLInputElement[]
+    expect(a.checked).toBe(false)
+
+    fireEvent.click(a)
+    fireEvent.click(b)
+    expect(a.checked).toBe(true)
+    expect(b.checked).toBe(true)
+    expect(onChange).toHaveBeenLastCalledWith(['a', 'b'])
+
+    // the missing value is reported, and once, not on every render
+    const warnings = errors.mock.calls
+      .map((call) => String(call[0]))
+      .filter((message) => message.includes('"value" is required'))
+    expect(warnings).toHaveLength(1)
+    errors.mockRestore()
+  })
+})
