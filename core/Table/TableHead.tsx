@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { TableAbstractColumn, TableDataItemBase } from './TableTypes'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   width: number
@@ -8,7 +9,10 @@ interface Props<TableDataItem extends TableDataItemBase> {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
+type NativeAttrs = Omit<
+  React.HTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
 export type TableHeadProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
 

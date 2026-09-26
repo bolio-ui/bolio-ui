@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   block?: boolean
@@ -13,7 +14,7 @@ interface Props {
   onTabChange?: (index: number) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CodeProps = Props & NativeAttrs
 
 const CodeComponent = React.forwardRef<

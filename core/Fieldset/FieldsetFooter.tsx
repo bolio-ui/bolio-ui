@@ -1,12 +1,13 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type FieldsetFooterProps = Props & NativeAttrs
 
 function FieldsetFooterComponent({

@@ -2,12 +2,13 @@ import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import { useModalContext } from './ModalContext'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ModalTitleProps = Props & NativeAttrs
 
 function ModalTitleComponent({

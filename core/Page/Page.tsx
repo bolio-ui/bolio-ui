@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import PageContent from './PageContent'
 import { hasChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 export type PageRenderMode = 'default' | 'effect' | 'effect-seo'
 
@@ -44,7 +45,7 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
   )
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PageProps = Props & NativeAttrs
 const PageComponent = React.forwardRef<
   HTMLElement,

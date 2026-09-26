@@ -8,6 +8,7 @@ import {
 } from './GridTypes'
 import useScale from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type GridBreakpointsValue = number | boolean
 export interface GridBasicComponentProps {
@@ -33,7 +34,7 @@ const defaultProps = {
 }
 
 type NativeAttrs = Omit<
-  React.HTMLAttributes<any>,
+  React.HTMLAttributes<AnyElement>,
   keyof GridBasicComponentProps
 >
 export type GridBasicItemProps = GridBasicComponentProps & NativeAttrs
@@ -88,7 +89,7 @@ const GridBasicItem = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const classes = useMemo(() => {
-      const aligns: { [key: string]: any } = {
+      const aligns: { [key: string]: unknown } = {
         justify,
         direction,
         alignItems,

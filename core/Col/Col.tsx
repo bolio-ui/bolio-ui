@@ -1,5 +1,6 @@
 import React from 'react'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   span?: number
@@ -8,7 +9,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ColProps = Props & NativeAttrs
 
 const Col = React.forwardRef<HTMLElement, React.PropsWithChildren<ColProps>>(

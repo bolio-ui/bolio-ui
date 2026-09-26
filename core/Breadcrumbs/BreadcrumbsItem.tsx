@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
 import BreadcrumbsSeparator from './BreadcrumbsSeparator'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   href?: string
@@ -12,7 +13,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.AnchorHTMLAttributes<AnyElement>, keyof Props>
 type NativeLinkAttrs = Omit<NativeAttrs, keyof LinkBasicProps>
 export type BreadcrumbsItemProps = Props & NativeLinkAttrs
 

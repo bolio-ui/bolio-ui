@@ -45,7 +45,7 @@ export const pickChild = (
 export const pickChildByProps = (
   children: ReactNode | undefined,
   key: string,
-  value: any
+  value: unknown
 ): [ReactNode | undefined, ReactNode | undefined] => {
   const target: ReactNode[] = []
   const isArray = Array.isArray(value)

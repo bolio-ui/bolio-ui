@@ -5,6 +5,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type ProgressColors = {
   [key: number]: string
@@ -21,7 +22,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.ProgressHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ProgressHTMLAttributes<AnyElement>, keyof Props>
 export type ProgressProps = Props & NativeAttrs
 
 const getCurrentColor = (

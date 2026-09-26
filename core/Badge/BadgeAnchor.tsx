@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
 import Badge from './Badge'
+import type { AnyElement } from '../utils/types'
 
 export type BadgeAnchorPlacement =
   'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
@@ -10,7 +11,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type BadgeAnchorProps = Props & NativeAttrs
 
 type TransformStyles = {

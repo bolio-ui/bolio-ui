@@ -1,6 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   left: number
@@ -8,7 +9,7 @@ interface Props {
   isClick?: boolean
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SliderDotProps = Props & NativeAttrs
 
 const SliderDot = React.forwardRef<

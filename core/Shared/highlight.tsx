@@ -3,6 +3,7 @@ import { isUnplacedRect, ReactiveDomReact } from '../utils/layouts'
 import usePrevious from '../utils/use-previous'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 type Props = {
   rect: ReactiveDomReact
@@ -20,7 +21,7 @@ type HighlightPosition = {
   transition: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type HighlightProps = Props & NativeAttrs
 
 const Highlight: React.FC<HighlightProps> = ({

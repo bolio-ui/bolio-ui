@@ -16,6 +16,7 @@ import { getColors } from './styles'
 import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type SliderTypes = NormalTypes
 interface Props {
@@ -32,7 +33,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SliderProps = Props & NativeAttrs
 
 const getRefWidth = (

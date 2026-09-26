@@ -13,6 +13,7 @@ import { TriggerTypes, Placement, SnippetTypes } from '../utils/prop-types'
 import { withScale } from '../use-scale'
 import { getRect } from './helper'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type TooltipOnVisibleChange = (visible: boolean) => void
 export type TooltipTypes = SnippetTypes
@@ -38,7 +39,7 @@ interface Props {
   onVisibleChange?: TooltipOnVisibleChange
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type TooltipProps = Props & NativeAttrs
 
 // a child that takes focus by itself gets the aria attributes; anything else

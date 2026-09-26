@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo } from 'react'
 import { NormalTypes } from '../utils/prop-types'
 import TextChild from './Child'
 import { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 export type TextTypes = NormalTypes
 interface Props {
@@ -25,7 +26,7 @@ interface Props {
 
 type ElementMap = { [key in keyof React.JSX.IntrinsicElements]?: boolean }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type TextProps = Props & NativeAttrs
 
 type TextRenderableElements = Array<keyof React.JSX.IntrinsicElements>

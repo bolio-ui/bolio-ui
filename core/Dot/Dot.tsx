@@ -4,6 +4,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemes } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type DotTypes = NormalTypes
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
   color?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type DotProps = Props & NativeAttrs
 
 const getColor = (type: DotTypes, theme: BolioUIThemes): string => {

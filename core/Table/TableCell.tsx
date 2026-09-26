@@ -4,6 +4,7 @@ import {
   TableAbstractColumn,
   TableOnCellClick
 } from './TableTypes'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   columns: Array<TableAbstractColumn<TableDataItem>>
@@ -19,7 +20,10 @@ export type TableCellData<TableDataItem> = {
   rowValue: TableDataItem
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
+type NativeAttrs = Omit<
+  React.HTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
 export type TableCellProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
 
@@ -57,7 +61,6 @@ const TableCell = <TableDataItem extends TableDataItemBase>({
       })}
     </>
   )
-  /* eslint-enable */
 }
 
 export default TableCell

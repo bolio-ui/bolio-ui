@@ -3,13 +3,14 @@ import useTheme from '../use-theme'
 import BreadcrumbsSeparator from './BreadcrumbsSeparator'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   separator?: string | ReactNode
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type BreadcrumbsProps = Props & NativeAttrs
 
 const BreadcrumbsComponent = React.forwardRef<

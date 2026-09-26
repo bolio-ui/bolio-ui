@@ -5,6 +5,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
+import type { AnyElement } from '../utils/types'
 
 export type BadgeTypes = NormalTypes
 
@@ -17,7 +18,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type BadgeProps = Props & NativeAttrs
 
 export type BadgeColors = { bg: string; border: string; color: string }

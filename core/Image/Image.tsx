@@ -10,6 +10,7 @@ import ImageSkeleton from './ImageSkeleton'
 import { transformDataSource } from './helpers'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   src: string
@@ -18,7 +19,7 @@ interface Props {
   maxDelay?: number
 }
 
-type NativeAttrs = Omit<React.ImgHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ImgHTMLAttributes<AnyElement>, keyof Props>
 export type ImageProps = Props & NativeAttrs
 
 const ImageComponent = React.forwardRef<

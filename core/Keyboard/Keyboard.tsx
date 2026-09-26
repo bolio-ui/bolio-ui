@@ -1,6 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   command?: boolean
@@ -10,7 +11,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.KeygenHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.KeygenHTMLAttributes<AnyElement>, keyof Props>
 export type KeyboardProps = Props & NativeAttrs
 
 const KeyboardComponent = React.forwardRef<

@@ -5,6 +5,7 @@ import RatingIcon from './RatingIcon'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type RatingTypes = NormalTypes
 export type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
@@ -22,7 +23,7 @@ interface Props {
   onLockedChange?: (locked: boolean) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type RatingProps = Props & NativeAttrs
 
 const getColor = (type: RatingTypes, palette: BolioUIThemesPalette): string => {

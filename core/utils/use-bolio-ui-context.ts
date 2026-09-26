@@ -12,11 +12,11 @@ export const defaultToastLayout: Required<ToastLayout> = {
 
 export type UpdateToastsFunction = (
   fn: (toasts: Array<Toast>) => Array<Toast>
-) => any
+) => void
 export type UpdateToastsLayoutFunction = (
   fn: (layout: Required<ToastLayout>) => Required<ToastLayout>
-) => any
-export type UpdateToastsIDFunction = (fn: () => string | null) => any
+) => void
+export type UpdateToastsIDFunction = (fn: () => string | null) => void
 
 export interface BolioUIContextParams {
   toasts: Array<Toast>

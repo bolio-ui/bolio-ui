@@ -29,7 +29,9 @@ function withScale<T, P = {}>(
   Render: React.ForwardRefExoticComponent<P & React.RefAttributes<T>>
 ): ScaleComponent<T, P>
 function withScale<T, P = {}>(
-  Render: React.ComponentType<any>
+  Render:
+    | React.ComponentType<P & { ref?: React.Ref<T> }>
+    | React.ForwardRefExoticComponent<P & React.RefAttributes<T>>
 ): ScaleComponent<T, P> {
   const ScaleFC = forwardRef<T, React.PropsWithChildren<P & ScaleProps>>(
     ({ children, ...props }, ref) => {

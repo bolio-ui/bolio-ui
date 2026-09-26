@@ -9,6 +9,7 @@ import {
   TableRowClassNameHandler
 } from './TableTypes'
 import { joinClasses } from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   hover: boolean
@@ -20,7 +21,10 @@ interface Props<TableDataItem extends TableDataItemBase> {
   rowClassName: TableRowClassNameHandler<TableDataItem>
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
+type NativeAttrs = Omit<
+  React.HTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
 export type TableBodyProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
 

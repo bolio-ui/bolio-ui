@@ -4,6 +4,7 @@ import { useProportions } from '../utils/calculations'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value?: number
@@ -12,7 +13,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CapacityProps = Props & NativeAttrs
 
 const getColor = (val: number, palette: BolioUIThemesPalette): string => {

@@ -16,8 +16,9 @@ import { Props, defaultProps } from './InputProps'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import useDefaultProps from '../utils/use-default-props'
+import type { AnyElement } from '../utils/types'
 
-type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
 export type InputProps = Props & NativeAttrs
 
 const simulateChangeEvent = (

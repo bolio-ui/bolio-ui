@@ -10,6 +10,7 @@ import {
 import useCurrentState from '../utils/use-current-state'
 import { pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   page?: number
@@ -20,7 +21,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PaginationProps = Props & NativeAttrs
 
 const PaginationComponent = React.forwardRef<
@@ -46,7 +47,7 @@ const PaginationComponent = React.forwardRef<
     const [, nextChildren] = pickChild(children, PaginationNext)
 
     const [prevItem, nextItem] = useMemo(() => {
-      const hasChildren = (c: any) => React.Children.count(c) > 0
+      const hasChildren = (c: React.ReactNode) => React.Children.count(c) > 0
       const prevDefault = <PaginationPrevious>prev</PaginationPrevious>
       const nextDefault = <PaginationNext>next</PaginationNext>
       return [

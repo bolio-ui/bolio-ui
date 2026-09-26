@@ -15,7 +15,7 @@ export const deepDuplicable = <T extends Record<string, unknown>>(
   if (!isObject(target) || !isObject(source)) return source as T
 
   const sourceKeys = Object.keys(source) as Array<keyof T>
-  const result = {} as any
+  const result = {} as Record<keyof T, unknown>
   for (const key of sourceKeys) {
     const sourceValue = source[key]
     const targetValue = target[key]
@@ -32,7 +32,7 @@ export const deepDuplicable = <T extends Record<string, unknown>>(
       result[key] = sourceValue
     }
   }
-  return result
+  return result as T
 }
 
 const getPresets = (): Array<BolioUIThemes> => {
