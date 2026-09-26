@@ -34,7 +34,7 @@ const useClipboard = (
     try {
       window.document.execCommand('copy')
     } catch {
-      options.onError && options.onError()
+      if (options.onError) options.onError()
     }
 
     selection.removeAllRanges()

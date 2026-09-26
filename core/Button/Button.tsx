@@ -131,7 +131,7 @@ const ButtonComponent = React.forwardRef<
       setDripY(event.clientY - rect.top)
     }
 
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   const childrenWithIcon = useMemo(

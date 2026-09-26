@@ -100,34 +100,34 @@ const InputComponent = React.forwardRef<
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled || readOnly) return
     setSelfValue(event.target.value)
-    onChange && onChange(event)
+    if (onChange) onChange(event)
   }
 
   const clearHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     setSelfValue('')
-    onClearClick && onClearClick(event)
+    if (onClearClick) onClearClick(event)
     /* istanbul ignore next */
     if (!inputRef.current) return
 
     const changeEvent = simulateChangeEvent(inputRef.current, event)
     changeEvent.target.value = ''
-    onChange && onChange(changeEvent)
+    if (onChange) onChange(changeEvent)
     inputRef.current.focus()
   }
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     setHover(true)
-    onFocus && onFocus(e)
+    if (onFocus) onFocus(e)
   }
 
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     setHover(false)
-    onBlur && onBlur(e)
+    if (onBlur) onBlur(e)
   }
 
   const iconClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) return
-    onIconClick && onIconClick(e)
+    if (onIconClick) onIconClick(e)
   }
 
   const iconProps = useMemo(

@@ -32,7 +32,7 @@ function PopoverItemComponent({
   const classes = useClasses('item', { line, title }, className)
 
   const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    onClick && onClick(event)
+    if (onClick) onClick(event)
     if (dontCloseByClick) {
       return event.stopPropagation()
     }

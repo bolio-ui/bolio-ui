@@ -74,7 +74,7 @@ function SelectOptionComponent({
     event.nativeEvent.stopImmediatePropagation()
     event.preventDefault()
     if (isDisabled || isLabel) return
-    updateValue && updateValue(identValue)
+    if (updateValue) updateValue(identValue)
   }
 
   return (

@@ -142,7 +142,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
       if (isDisabled(date)) return
       setFocused(date)
       if (customValue === undefined) setSelfValue(date)
-      onChange && onChange(date)
+      if (onChange) onChange(date)
     }
 
     const keyDownHandler = (

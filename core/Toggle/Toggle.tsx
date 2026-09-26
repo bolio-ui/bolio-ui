@@ -69,7 +69,7 @@ const ToggleComponent = React.forwardRef<
         }
 
         setSelfChecked(!selfChecked)
-        onChange && onChange(selfEvent)
+        if (onChange) onChange(selfEvent)
       },
       [disabled, selfChecked, onChange]
     )

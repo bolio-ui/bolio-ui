@@ -88,11 +88,11 @@ const CheckboxComponent = React.forwardRef<
           nativeEvent: ev
         }
         if (inGroup && updateState) {
-          updateState && updateState(value, !selfChecked)
+          if (updateState) updateState(value, !selfChecked)
         }
 
         setSelfChecked(!selfChecked)
-        onChange && onChange(selfEvent)
+        if (onChange) onChange(selfEvent)
       },
       [isDisabled, selfChecked, inGroup, updateState, onChange, value]
     )

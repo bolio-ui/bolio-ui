@@ -65,7 +65,7 @@ const FieldsetComponent = React.forwardRef<
       }
 
       useEffect(() => {
-        register && register({ value, label })
+        if (register) register({ value, label })
       }, [])
 
       useEffect(() => {

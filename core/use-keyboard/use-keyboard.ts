@@ -59,7 +59,7 @@ const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
     if (preventDefault) {
       event.preventDefault()
     }
-    handler && handler(event)
+    if (handler) handler(event)
   }
 
   useEffect(() => {

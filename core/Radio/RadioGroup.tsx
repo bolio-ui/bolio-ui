@@ -33,7 +33,7 @@ function RadioGroupComponent({
 
   const updateState = (nextValue: string | number) => {
     setSelfVal(nextValue)
-    onChange && onChange(nextValue)
+    if (onChange) onChange(nextValue)
   }
 
   const providerValue = useMemo(() => {

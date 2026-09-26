@@ -36,7 +36,7 @@ function PaginationItem({
 
   const clickHandler = (event: React.MouseEvent) => {
     if (disabled) return
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   return (

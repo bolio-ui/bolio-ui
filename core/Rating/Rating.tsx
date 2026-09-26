@@ -69,13 +69,13 @@ const RatingComponent = React.forwardRef<
 
     const lockedChangeHandler = (next: boolean) => {
       setIsLocked(next)
-      onLockedChange && onLockedChange(next)
+      if (onLockedChange) onLockedChange(next)
     }
 
     const valueChangeHandler = (next: number) => {
       setValue(next)
       const emitValue = next > count ? count : next
-      onValueChange && onValueChange(emitValue)
+      if (onValueChange) onValueChange(emitValue)
     }
 
     const clickHandler = (index: number) => {

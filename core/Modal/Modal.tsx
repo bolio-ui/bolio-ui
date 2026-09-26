@@ -67,7 +67,7 @@ const ModalComponent = React.forwardRef<
     const hasActions =
       ActionsChildren && React.Children.count(ActionsChildren) > 0
     const closeModal = () => {
-      onClose && onClose()
+      if (onClose) onClose()
       setVisible(false)
       setBodyHidden(false)
     }
@@ -80,7 +80,7 @@ const ModalComponent = React.forwardRef<
 
     const { bindings } = useKeyboard(
       () => {
-        keyboard && closeModal()
+        if (keyboard) closeModal()
       },
       KeyCode.Escape,
       {

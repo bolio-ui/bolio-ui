@@ -35,7 +35,7 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
   const theme = useTheme()
   const { columns } = useTableContext<TableDataItem>()
   const rowClickHandler = (row: TableDataItem, index: number) => {
-    onRow && onRow(row, index)
+    if (onRow) onRow(row, index)
   }
 
   return (

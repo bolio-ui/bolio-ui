@@ -16,7 +16,7 @@ function InputIconClear({ onClick, disabled, visible }: Props) {
     event.preventDefault()
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   return (
