@@ -8,7 +8,7 @@ import {
   TableOnRowClick,
   TableRowClassNameHandler
 } from './TableTypes'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   hover: boolean
@@ -45,7 +45,7 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
         return (
           <tr
             key={`tbody-row-${index}`}
-            className={useClasses({ hover }, className)}
+            className={joinClasses({ hover }, className)}
             onClick={() => rowClickHandler(row, index)}
           >
             <TableCell<TableDataItem>

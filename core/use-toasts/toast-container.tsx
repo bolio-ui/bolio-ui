@@ -4,7 +4,7 @@ import usePortal from '../utils/use-portal'
 import useTheme from '../use-theme'
 import { useBolioUIContext } from '../utils/use-bolio-ui-context'
 import ToastItem from './toast-item'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 import { isLeftPlacement, isTopPlacement } from './helpers'
 import useCurrentState from '../utils/use-current-state'
 
@@ -31,7 +31,7 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   )
   const classNames = useMemo(
     () =>
-      useClasses('toasts', {
+      joinClasses('toasts', {
         top: isTopPlacement(toastLayout.placement),
         left: isLeftPlacement(toastLayout.placement)
       }),

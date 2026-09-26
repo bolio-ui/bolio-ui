@@ -5,7 +5,7 @@ import useResize from '../utils/use-resize'
 import CssTransition from './css-transition'
 import useClickAnyWhere from '../utils/use-click-anywhere'
 import useDOMObserver from '../utils/use-dom-observer'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { getRefRect } from '../utils/layouts'
 import useClasses from '../use-classes'
 
@@ -39,15 +39,13 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
       disableMatchWidth ? 'disable-match' : 'width-match'
     )
 
-    if (!parent) return null
-
     /* istanbul ignore next */
-    if (process.env.NODE_ENV !== 'production') {
+    if (parent && process.env.NODE_ENV !== 'production') {
       if (getPopupContainer && getPopupContainer()) {
         const el = getPopupContainer()
         const style = window.getComputedStyle(el as HTMLDivElement)
         if (style.position === 'static') {
-          useWarning(
+          logWarning(
             'The element specified by "getPopupContainer" must have "position" set.'
           )
         }
@@ -55,6 +53,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
     }
 
     const updateRect = () => {
+      if (!parent) return
       const {
         top,
         left,
@@ -93,7 +92,8 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
       event.preventDefault()
     }
 
-    if (!el) return null
+    // after every hook: there is nothing to place without a parent
+    if (!parent || !el) return null
     return createPortal(
       <CssTransition visible={visible}>
         <div

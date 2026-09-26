@@ -1,6 +1,6 @@
 const warningStack: { [key: string]: boolean } = {}
 
-const useWarning = (message: string, component?: string) => {
+const logWarning = (message: string, component?: string) => {
   const tag = component ? ` [${component}]` : ' '
   const log = `[Bolio UI]${tag}: ${message}`
 
@@ -15,4 +15,4 @@ const useWarning = (message: string, component?: string) => {
   console.warn(log)
 }
 
-export default useWarning
+export default logWarning

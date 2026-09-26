@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
 import {
   addDays,
   addMonths,
@@ -226,7 +226,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
                         aria-current={
                           isSameDay(date, today) ? 'date' : undefined
                         }
-                        className={useClasses({
+                        className={joinClasses({
                           selected: Boolean(
                             selected && isSameDay(date, selected)
                           ),

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useTableContext } from './TableContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { TableColumnRender, TableDataItemBase } from './TableTypes'
 
 // module level, so the effect below does not run again on every render
@@ -28,7 +28,7 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
   const { updateColumn } = useTableContext<TableDataItem>()
   const safeProp = String(prop).trim()
   if (!safeProp) {
-    useWarning('The props "prop" is required.', 'Table.Column')
+    logWarning('The props "prop" is required.', 'Table.Column')
   }
 
   useEffect(() => {

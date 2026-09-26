@@ -1,5 +1,5 @@
 import usePortal from '../utils/use-portal'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { useCallback } from 'react'
 
 export type UseClipboardOptions = {
@@ -11,7 +11,7 @@ export type UseClipboardResult = {
 }
 
 const defaultOptions: UseClipboardOptions = {
-  onError: () => useWarning('Failed to copy.', 'use-clipboard')
+  onError: () => logWarning('Failed to copy.', 'use-clipboard')
 }
 
 const useClipboard = (

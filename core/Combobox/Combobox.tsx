@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
 
 export type ComboboxOption = {
   value: string
@@ -180,7 +180,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
                 role="option"
                 aria-selected={option.value === selected}
                 aria-disabled={option.disabled || undefined}
-                className={useClasses({
+                className={joinClasses({
                   active: index === activeIndex,
                   selected: option.value === selected,
                   disabled: option.disabled

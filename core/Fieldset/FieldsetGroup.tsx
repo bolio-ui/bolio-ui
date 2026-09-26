@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import useCurrentState from '../utils/use-current-state'
 import { FieldsetContext, FieldItem } from './FieldsetContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
@@ -31,7 +31,7 @@ function FieldsetGroupComponent({
   const register = (newItem: FieldItem) => {
     const hasItem = ref.current.find((item) => item.value === newItem.value)
     if (hasItem) {
-      useWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
+      logWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
     }
     setItems([...ref.current, newItem])
   }
