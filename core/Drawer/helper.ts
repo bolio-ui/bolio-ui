@@ -1,7 +1,4 @@
-import { tuple } from '../utils/prop-types'
-
-const drawerPlacement = tuple('top', 'right', 'bottom', 'left')
-export type DrawerPlacement = (typeof drawerPlacement)[number]
+export type DrawerPlacement = 'top' | 'right' | 'bottom' | 'left'
 
 export type DrawerTranslateItem = {
   initial: string

@@ -5,7 +5,7 @@ const useDefaultProps = <
   props: T,
   defaultProps: D
 ): T & Required<D> => {
-  let nextProps = {} as T
+  const nextProps = {} as T
   const propsKeys: Array<keyof T> = Object.keys(props || {})
   const defaultKeys: Array<keyof T> = Object.keys(defaultProps || {})
 

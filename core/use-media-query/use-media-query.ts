@@ -1,13 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
-import { tuple } from '../utils/prop-types'
 import { BreakpointsItem, BolioUIThemesBreakpoints } from '../Themes/Presets'
 
-const breakpoints = tuple('xs', 'sm', 'md', 'lg', 'xl', 'mobile')
-export type ResponsiveBreakpoint = (typeof breakpoints)[number]
+export type ResponsiveBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'mobile'
 
-const matchType = tuple('up', 'down', 'default')
-export type ResponsiveMatchType = (typeof matchType)[number]
+export type ResponsiveMatchType = 'up' | 'down' | 'default'
 export type ResponsiveOptions = {
   match?: ResponsiveMatchType
   ssrMatchMedia?: (query: string) => { matches: boolean }

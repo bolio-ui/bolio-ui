@@ -123,4 +123,6 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
   }
 )
 
+Dropdown.displayName = 'BolioUIDropdown'
+
 export default Dropdown

@@ -6,20 +6,13 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import { NormalTypes, tuple } from '../utils/prop-types'
+import { NormalTypes } from '../utils/prop-types'
 import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
-const resizeTypes = tuple(
-  'none',
-  'both',
-  'horizontal',
-  'vertical',
-  'initial',
-  'inherit'
-)
-export type TextareaResizes = (typeof resizeTypes)[number]
+export type TextareaResizes =
+  'none' | 'both' | 'horizontal' | 'vertical' | 'initial' | 'inherit'
 export type TextareaTypes = NormalTypes
 interface Props {
   value?: string
