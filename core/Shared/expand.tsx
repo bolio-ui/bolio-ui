@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useRealShape from '../utils/use-real-shape'
+import useLatest from '../utils/use-latest'
 import useClasses from '../use-classes'
 
 export type ExpandProps = {
@@ -23,7 +24,12 @@ function Expand({
   const classes = useClasses('container', { expanded: selfExpanded })
 
   useEffect(() => setHeight(`${state.height}px`), [state.height])
+
+  // the next effect runs when `isExpanded` changes, and reads the height and
+  // the delay of that moment
+  const latest = useLatest({ delay, shapeHeight: state.height })
   useEffect(() => {
+    const { delay, shapeHeight } = latest.current
     // show element or reset height.
     // force an update once manually, even if the element does not change.
     // (the height of the element might be "auto")
@@ -31,7 +37,7 @@ function Expand({
       setVisible(isExpanded)
     } else {
       updateShape()
-      setHeight(`${state.height}px`)
+      setHeight(`${shapeHeight}px`)
     }
 
     // show expand animation
@@ -58,7 +64,7 @@ function Expand({
       clearTimeout(leaveTimer.current)
       clearTimeout(resetTimer.current)
     }
-  }, [isExpanded])
+  }, [isExpanded, updateShape, latest])
 
   return (
     <div className={classes}>

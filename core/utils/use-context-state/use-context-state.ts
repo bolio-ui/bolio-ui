@@ -1,5 +1,12 @@
-import { Dispatch, MutableRefObject, SetStateAction, useMemo } from 'react'
+import {
+  Dispatch,
+  MutableRefObject,
+  SetStateAction,
+  useCallback,
+  useMemo
+} from 'react'
 import useCurrentState from '../use-current-state'
+import useLatest from '../use-latest'
 import { capitalize } from '../collections'
 
 export type ContextStateOnChange<T> = <K extends keyof T>(
@@ -36,15 +43,23 @@ const useContextState = <S extends Record<string, unknown>>(
 ): ContextStatesType<S> => {
   const [state, setState, stateRef] = useCurrentState(initialState)
 
-  const update: ContextHandlerWhere<S> = (key, next) => {
-    const allowChange = options?.filter ? options?.filter(key, next) : true
-    if (!allowChange) return
-    setState((last) => ({ ...last, [key]: next }))
-    if (options?.onChange) options?.onChange(key, next)
-  }
-  const makeUpdates = () => {
+  // the memo below keeps `update` between renders, so it reads the options
+  // of the latest render
+  const latestOptions = useLatest(options)
+  const update: ContextHandlerWhere<S> = useCallback(
+    (key, next) => {
+      const { filter, onChange } = latestOptions.current || {}
+      const allowChange = filter ? filter(key, next) : true
+      if (!allowChange) return
+      setState((last) => ({ ...last, [key]: next }))
+      if (onChange) onChange(key, next)
+    },
+    [latestOptions, setState]
+  )
+
+  const stateMemo = useMemo<ContextStates<S>>(() => {
     const keys = Object.keys(state) as Array<keyof S>
-    return keys.reduce<ContextHandler<S>>((pre, current) => {
+    const updates = keys.reduce<ContextHandler<S>>((pre, current) => {
       const updateHandler = {
         [`set${capitalize(current)}`]: (nextValue: S[typeof current]) => {
           update(current, nextValue)
@@ -52,17 +67,12 @@ const useContextState = <S extends Record<string, unknown>>(
       }
       return { ...pre, ...updateHandler }
     }, {} as ContextHandler<S>)
-  }
-  const updates: ContextHandler<S> = makeUpdates()
-
-  const stateMemo = useMemo<ContextStates<S>>(
-    () => ({
+    return {
       update,
       ...state,
       ...updates
-    }),
-    [state]
-  )
+    }
+  }, [state, update])
 
   return [stateMemo, setState, stateRef]
 }

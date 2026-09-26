@@ -130,13 +130,10 @@ const InputComponent = React.forwardRef<
     if (onIconClick) onIconClick(e)
   }
 
-  const iconProps = useMemo(
-    () => ({
-      clickable: iconClickable,
-      onClick: iconClickHandler
-    }),
-    [iconClickable, iconClickHandler]
-  )
+  const iconProps = {
+    clickable: iconClickable,
+    onClick: iconClickHandler
+  }
 
   useEffect(() => {
     if (isControlledComponent) {

@@ -118,7 +118,7 @@ const SliderComponent = React.forwardRef<
         setValue(currentValue)
         if (onChange) onChange(currentValue)
       },
-      [max, min, step, sideWidthRef]
+      [max, min, step, sideWidthRef, onChange]
     )
 
     const { bg } = useMemo(
@@ -187,8 +187,10 @@ const SliderComponent = React.forwardRef<
       setValue(customValue)
     }, [customValue, value])
 
+    // the drag offset starts from the initial value, only on mount
     useEffect(() => {
       if (initialValue) setLastOffsetManually(initialValue)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

@@ -4,6 +4,7 @@ import usePortal from '../utils/use-portal'
 import useResize from '../utils/use-resize'
 import CssTransition from './css-transition'
 import useClickAnyWhere from '../utils/use-click-anywhere'
+import useLatest from '../utils/use-latest'
 import useDOMObserver from '../utils/use-dom-observer'
 import logWarning from '../utils/log-warning'
 import { getRefRect } from '../utils/layouts'
@@ -73,15 +74,15 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
     useDOMObserver(parent, () => {
       updateRect()
     })
+    const latestUpdate = useLatest(updateRect)
     useEffect(() => {
-      if (!parent || !parent.current) return
-      parent.current.addEventListener('mouseenter', updateRect)
+      const element = parent && parent.current
+      if (!element) return
+      const listener = () => latestUpdate.current()
+      element.addEventListener('mouseenter', listener)
       /* istanbul ignore next */
-      return () => {
-        if (!parent || !parent.current) return
-        parent.current.removeEventListener('mouseenter', updateRect)
-      }
-    }, [parent])
+      return () => element.removeEventListener('mouseenter', listener)
+    }, [parent, latestUpdate])
 
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation()

@@ -39,7 +39,7 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
       className,
       renderHandler
     })
-  }, [children, label, prop, width, className, renderHandler])
+  }, [children, label, safeProp, width, className, renderHandler, updateColumn])
 
   return null
 }

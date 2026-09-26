@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom'
 import useTheme from '../use-theme'
 import usePortal from '../utils/use-portal'
 import useResize from '../utils/use-resize'
+import useLatest from '../utils/use-latest'
 import CssTransition from '../Shared/css-transition'
 import useClickAnyWhere from '../utils/use-click-anywhere'
 import { getColors } from './styles'
@@ -81,9 +82,10 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   useResize(updateRect)
   useClickAnyWhere(() => updateRect())
 
+  const latestUpdate = useLatest(updateRect)
   useEffect(() => {
-    updateRect()
-  }, [visible])
+    latestUpdate.current()
+  }, [visible, latestUpdate])
 
   // The trigger can sit inside a `position: fixed` header, whose viewport
   // position stays put while the page scrolls underneath it — but `getRect`
@@ -92,14 +94,14 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   // scroll, not just on resize/click.
   useEffect(() => {
     if (!visible) return
-    const handleScroll = () => updateRect()
+    const handleScroll = () => latestUpdate.current()
     window.addEventListener('scroll', handleScroll, {
       passive: true,
       capture: true
     })
     return () =>
       window.removeEventListener('scroll', handleScroll, { capture: true })
-  }, [visible])
+  }, [visible, latestUpdate])
 
   const preventHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()

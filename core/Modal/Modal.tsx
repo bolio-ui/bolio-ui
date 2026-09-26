@@ -1,4 +1,11 @@
-import React, { MouseEvent, useEffect, useId, useMemo, useState } from 'react'
+import React, {
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState
+} from 'react'
 import { createPortal } from 'react-dom'
 import usePortal from '../utils/use-portal'
 import ModalWrapper from './ModalWrapper'
@@ -66,11 +73,11 @@ const ModalComponent = React.forwardRef<
     )
     const hasActions =
       ActionsChildren && React.Children.count(ActionsChildren) > 0
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
       if (onClose) onClose()
       setVisible(false)
       setBodyHidden(false)
-    }
+    }, [onClose, setBodyHidden])
 
     useEffect(() => {
       if (typeof customVisible === 'undefined') return
@@ -99,7 +106,7 @@ const ModalComponent = React.forwardRef<
         titleId,
         descriptionId
       }),
-      []
+      [closeModal, titleId, descriptionId]
     )
 
     if (!portal) return null

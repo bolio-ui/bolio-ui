@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import PaginationPrevious from './PaginationPrevious'
 import PaginationNext from './PaginationNext'
 import PaginationPages from './PaginationPages'
@@ -55,14 +55,17 @@ const PaginationComponent = React.forwardRef<
       ]
     }, [prevChildren, nextChildren])
 
-    const update = (type: PaginationUpdateType) => {
-      if (type === 'prev' && pageRef.current > 1) {
-        setPage((last) => last - 1)
-      }
-      if (type === 'next' && pageRef.current < count) {
-        setPage((last) => last + 1)
-      }
-    }
+    const update = useCallback(
+      (type: PaginationUpdateType) => {
+        if (type === 'prev' && pageRef.current > 1) {
+          setPage((last) => last - 1)
+        }
+        if (type === 'next' && pageRef.current < count) {
+          setPage((last) => last + 1)
+        }
+      },
+      [count, pageRef, setPage]
+    )
 
     const values = useMemo<PaginationConfig>(
       () => ({
@@ -70,7 +73,7 @@ const PaginationComponent = React.forwardRef<
         isLast: page >= count,
         update
       }),
-      [page, count]
+      [page, count, update]
     )
 
     useEffect(() => {

@@ -1,5 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react'
 import useCurrentState from './use-current-state'
+import useLatest from './use-latest'
 
 export type DraggingEvent = {
   startX: number
@@ -18,39 +19,45 @@ const useDrag = (
   const [, setStartX, startXRef] = useCurrentState<number>(0)
   const [, setCurrentX, currentXRef] = useCurrentState<number>(0)
 
-  const getCustomEvent = () => ({
-    startX: startXRef.current,
-    currentX: currentXRef.current
-  })
-
-  const elementMouseDownHandler = (event: MouseEvent | TouchEvent) => {
-    event.stopPropagation()
-    event.stopImmediatePropagation()
-    onDragging.current = true
-    if (!elementRef || !elementRef.current) return
-    setStartX(elementRef.current.getBoundingClientRect().x)
-    dragStartHandler(getCustomEvent())
-  }
-
-  const globalDraggingHandler = (event: MouseEvent | TouchEvent) => {
-    if (!onDragging.current) return
-    if (event.type === 'touchmove') {
-      setCurrentX((event as TouchEvent).changedTouches[0].clientX)
-    } else {
-      setCurrentX((event as MouseEvent).clientX)
-    }
-    draggingHandler(getCustomEvent())
-  }
-  const globalDragEndHandler = () => {
-    if (!onDragging.current) return
-    onDragging.current = false
-    dragEndHandler(getCustomEvent())
-  }
+  // the listeners are added once, but call the current handlers
+  const draggingRef = useLatest(draggingHandler)
+  const dragStartRef = useLatest(dragStartHandler)
+  const dragEndRef = useLatest(dragEndHandler)
 
   useEffect(() => {
-    if (!elementRef || !elementRef.current) return
-    elementRef.current.addEventListener('mousedown', elementMouseDownHandler)
-    elementRef.current.addEventListener('touchstart', elementMouseDownHandler)
+    const element = elementRef && elementRef.current
+    if (!element) return
+
+    const getCustomEvent = () => ({
+      startX: startXRef.current,
+      currentX: currentXRef.current
+    })
+
+    const elementMouseDownHandler = (event: MouseEvent | TouchEvent) => {
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+      onDragging.current = true
+      setStartX(element.getBoundingClientRect().x)
+      dragStartRef.current(getCustomEvent())
+    }
+
+    const globalDraggingHandler = (event: MouseEvent | TouchEvent) => {
+      if (!onDragging.current) return
+      if (event.type === 'touchmove') {
+        setCurrentX((event as TouchEvent).changedTouches[0].clientX)
+      } else {
+        setCurrentX((event as MouseEvent).clientX)
+      }
+      draggingRef.current(getCustomEvent())
+    }
+    const globalDragEndHandler = () => {
+      if (!onDragging.current) return
+      onDragging.current = false
+      dragEndRef.current(getCustomEvent())
+    }
+
+    element.addEventListener('mousedown', elementMouseDownHandler)
+    element.addEventListener('touchstart', elementMouseDownHandler)
 
     window.addEventListener('mousemove', globalDraggingHandler)
     window.addEventListener('touchmove', globalDraggingHandler)
@@ -63,17 +70,19 @@ const useDrag = (
       window.removeEventListener('mouseup', globalDragEndHandler)
       window.removeEventListener('touchend', globalDragEndHandler)
 
-      if (!elementRef || !elementRef.current) return
-      elementRef.current.removeEventListener(
-        'mousedown',
-        elementMouseDownHandler
-      )
-      elementRef.current.removeEventListener(
-        'touchstart',
-        elementMouseDownHandler
-      )
+      element.removeEventListener('mousedown', elementMouseDownHandler)
+      element.removeEventListener('touchstart', elementMouseDownHandler)
     }
-  }, [elementRef])
+  }, [
+    elementRef,
+    startXRef,
+    currentXRef,
+    setStartX,
+    setCurrentX,
+    draggingRef,
+    dragStartRef,
+    dragEndRef
+  ])
 }
 
 export default useDrag

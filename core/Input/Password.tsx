@@ -36,16 +36,13 @@ const InputPasswordComponent = React.forwardRef<
       }
     }
 
-    const inputProps = useMemo(
-      () => ({
-        ...props,
-        ref: inputRef,
-        iconClickable: true,
-        onIconClick: iconClickHandler,
-        htmlType: visible ? 'text' : 'password'
-      }),
-      [props, iconClickHandler, visible, inputRef]
-    )
+    const inputProps = {
+      ...props,
+      ref: inputRef,
+      iconClickable: true,
+      onIconClick: iconClickHandler,
+      htmlType: visible ? 'text' : 'password'
+    }
 
     const icon = useMemo(() => {
       if (hideToggle) return null

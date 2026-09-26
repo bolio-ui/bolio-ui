@@ -68,7 +68,8 @@ export const createBolioUIContext = <
       filter: onChangeBefore ? onChangeBefore : () => true
     })
 
-    useImperativeHandle(ref, () => statesRef.current, [statesRef.current])
+    const statesSnapshot = statesRef.current
+    useImperativeHandle(ref, () => statesSnapshot, [statesSnapshot])
 
     return <Context.Provider value={states}>{children}</Context.Provider>
   })

@@ -28,13 +28,16 @@ function FieldsetGroupComponent({
   const [items, setItems, ref] = useCurrentState<FieldItem[]>([])
   const classes = useClasses('group', className)
 
-  const register = (newItem: FieldItem) => {
-    const hasItem = ref.current.find((item) => item.value === newItem.value)
-    if (hasItem) {
-      logWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
-    }
-    setItems([...ref.current, newItem])
-  }
+  const register = useCallback(
+    (newItem: FieldItem) => {
+      const hasItem = ref.current.find((item) => item.value === newItem.value)
+      if (hasItem) {
+        logWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
+      }
+      setItems([...ref.current, newItem])
+    },
+    [ref, setItems]
+  )
 
   const providerValue = useMemo(
     () => ({
@@ -42,7 +45,7 @@ function FieldsetGroupComponent({
       inGroup: true,
       register
     }),
-    [selfVal]
+    [selfVal, register]
   )
 
   const clickHandle = useCallback(

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import Collapse from './Collapse'
 import useCurrentState from '../utils/use-current-state'
 import { setChildrenIndex } from '../utils/collections'
@@ -25,26 +25,29 @@ function CollapseGroupComponent({
   const [state, setState, stateRef] = useCurrentState<Array<number>>([])
   const classes = useClasses('collapse-group', className)
 
-  const updateValues = (currentIndex: number, nextState: boolean) => {
-    const hasChild = stateRef.current.find((val) => val === currentIndex)
-    if (accordion) {
-      if (nextState) return setState([currentIndex])
-      return setState([])
-    }
+  const updateValues = useCallback(
+    (currentIndex: number, nextState: boolean) => {
+      const hasChild = stateRef.current.find((val) => val === currentIndex)
+      if (accordion) {
+        if (nextState) return setState([currentIndex])
+        return setState([])
+      }
 
-    if (nextState) {
-      if (hasChild) return
-      return setState([...stateRef.current, currentIndex])
-    }
-    setState(stateRef.current.filter((item) => item !== currentIndex))
-  }
+      if (nextState) {
+        if (hasChild) return
+        return setState([...stateRef.current, currentIndex])
+      }
+      setState(stateRef.current.filter((item) => item !== currentIndex))
+    },
+    [accordion, stateRef, setState]
+  )
 
   const initialValue = useMemo<CollapseConfig>(
     () => ({
       values: state,
       updateValues
     }),
-    [state.join(',')]
+    [state, updateValues]
   )
   const hasIndexChildren = useMemo(
     () => setChildrenIndex(children, [Collapse]),

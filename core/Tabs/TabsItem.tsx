@@ -191,6 +191,9 @@ function TabsItemComponent({
       value,
       props: { value, label, disabled, ...getAllScaleProps() }
     })
+    // register and getAllScaleProps are new functions on every render, and
+    // registering changes the state of Tabs: they must not run this again
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, label, disabled, isDirect])
 
   return isActive ? <>{children}</> : null
