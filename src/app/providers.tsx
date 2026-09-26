@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { SerwistProvider } from '@serwist/turbopack/react'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
 import { StyledJsxRegistry } from 'core/Next'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
@@ -97,7 +98,13 @@ function MdxGlobalStyles() {
   )
 }
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  disableServiceWorker
+}: {
+  children: React.ReactNode
+  disableServiceWorker: boolean
+}) {
   const pathname = usePathname()
   const [themeType, setThemeType] = useState<ThemeType>('dark')
 
@@ -136,18 +143,25 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }, [pathname])
 
   return (
-    <StyledJsxRegistry>
-      <BolioUIProvider themeType={themeType}>
-        <SettingsContext.Provider value={{ themeType, switchTheme }}>
-          <Analytics />
-          <CssBaseline />
-          <KBarProvider>
-            <Navigation />
-            {children}
-          </KBarProvider>
-        </SettingsContext.Provider>
-        <MdxGlobalStyles />
-      </BolioUIProvider>
-    </StyledJsxRegistry>
+    <SerwistProvider
+      swUrl="/serwist/sw.js"
+      disable={disableServiceWorker}
+      cacheOnNavigation
+      reloadOnOnline
+    >
+      <StyledJsxRegistry>
+        <BolioUIProvider themeType={themeType}>
+          <SettingsContext.Provider value={{ themeType, switchTheme }}>
+            <Analytics />
+            <CssBaseline />
+            <KBarProvider>
+              <Navigation />
+              {children}
+            </KBarProvider>
+          </SettingsContext.Provider>
+          <MdxGlobalStyles />
+        </BolioUIProvider>
+      </StyledJsxRegistry>
+    </SerwistProvider>
   )
 }
