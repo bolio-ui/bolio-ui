@@ -81,6 +81,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Providers is a Client Component and cannot read process.env itself
+  // (only NEXT_PUBLIC_ vars are exposed to the client bundle), so the flag
+  // is resolved here and passed down.
+  const disableServiceWorker = process.env.ENVIRONMENT === 'develop'
+
   return (
     // the theme script changes <html> and <body> before React hydrates them
     <html lang="en" suppressHydrationWarning>
@@ -90,7 +95,9 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <Providers>{children}</Providers>
+        <Providers disableServiceWorker={disableServiceWorker}>
+          {children}
+        </Providers>
       </body>
     </html>
   )

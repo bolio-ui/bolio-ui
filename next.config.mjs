@@ -1,6 +1,6 @@
 import { createRequire } from 'module'
 import createMDX from '@next/mdx'
-import withSerwistInit from '@serwist/next'
+import { withSerwist } from '@serwist/turbopack'
 
 const require = createRequire(import.meta.url)
 
@@ -13,15 +13,6 @@ const withMDX = createMDX({
     remarkPlugins: ['remark-gfm'],
     rehypePlugins: ['@mapbox/rehype-prism', 'rehype-join-line']
   }
-})
-
-// The service worker source is src/app/sw.ts, built into public/sw.js
-const withSerwist = withSerwistInit({
-  swSrc: 'src/app/sw.ts',
-  swDest: 'public/sw.js',
-  cacheOnNavigation: true,
-  reloadOnOnline: true,
-  disable: process.env.ENVIRONMENT === 'develop'
 })
 
 const nextConfig = {
