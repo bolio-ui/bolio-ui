@@ -114,7 +114,7 @@ const SelectComponent = React.forwardRef<
         if (!last.includes(next)) return [...last, next]
         return last.filter((item) => item !== next)
       })
-      onChange && onChange(valueRef.current as string | string[])
+      if (onChange) onChange(valueRef.current as string | string[])
       if (!multiple) {
         updateVisible(false)
       }

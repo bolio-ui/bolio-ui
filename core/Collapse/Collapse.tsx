@@ -65,7 +65,7 @@ const CollapseComponent = React.forwardRef<
     const clickHandler = () => {
       const next = !visibleRef.current
       setVisible(next)
-      updateValues && updateValues(index, next)
+      if (updateValues) updateValues(index, next)
     }
 
     const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {

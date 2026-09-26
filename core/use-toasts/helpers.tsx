@@ -12,7 +12,7 @@ export const makeToastActions = (
     event: React.MouseEvent<HTMLButtonElement>,
     userHandler: ToastAction['handler']
   ) => {
-    userHandler && userHandler(event, cancelHandle)
+    if (userHandler) userHandler(event, cancelHandle)
   }
   if (!actions || !actions.length) return null
   return actions.map((action, index) => (

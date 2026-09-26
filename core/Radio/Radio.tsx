@@ -100,9 +100,9 @@ const RadioComponent = React.forwardRef<
       }
       setSelfChecked(!selfChecked)
       if (inGroup) {
-        updateState && updateState(radioValue as string | number)
+        if (updateState) updateState(radioValue as string | number)
       }
-      onChange && onChange(selfEvent)
+      if (onChange) onChange(selfEvent)
     }
 
     useEffect(() => {

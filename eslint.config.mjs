@@ -66,7 +66,6 @@ export default [
     files: ['core/**'],
     linterOptions: { reportUnusedDisableDirectives: false },
     rules: {
-      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       'react-hooks/rules-of-hooks': 'off',
       'react-hooks/exhaustive-deps': 'off'

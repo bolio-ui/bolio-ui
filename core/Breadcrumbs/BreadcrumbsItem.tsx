@@ -40,7 +40,7 @@ const BreadcrumbsItem = React.forwardRef<
     const classes = useClasses('breadcrumbs-item', className)
 
     const clickHandler = (event: React.MouseEvent) => {
-      onClick && onClick(event)
+      if (onClick) onClick(event)
     }
 
     if (!isLink) {

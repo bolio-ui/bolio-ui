@@ -29,7 +29,7 @@ const ModalWrapper = React.forwardRef<
     const activeElement = document.activeElement
     const isChild = isChildElement(modalContent.current, activeElement)
     if (isChild) return
-    tabStart.current && tabStart.current.focus()
+    if (tabStart.current) tabStart.current.focus()
   }, [visible])
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -38,11 +38,11 @@ const ModalWrapper = React.forwardRef<
     const activeElement = document.activeElement
     if (event.shiftKey) {
       if (activeElement === tabStart.current) {
-        tabEnd.current && tabEnd.current.focus()
+        if (tabEnd.current) tabEnd.current.focus()
       }
     } else {
       if (activeElement === tabEnd.current) {
-        tabStart.current && tabStart.current.focus()
+        if (tabStart.current) tabStart.current.focus()
       }
     }
   }

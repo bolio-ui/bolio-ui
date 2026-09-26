@@ -32,7 +32,7 @@ function ButtonDropdownItem({
   const colors = getColor(theme.palette, type, disabled)
   const clickHandler = (event: MouseEvent<HTMLButtonElement>) => {
     if (disabled || loading) return
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   const cursor = useMemo(() => {

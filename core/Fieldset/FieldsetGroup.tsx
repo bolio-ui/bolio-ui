@@ -48,7 +48,7 @@ function FieldsetGroupComponent({
   const clickHandle = useCallback(
     (nextValue: string) => {
       setSelfVal(nextValue)
-      onChange && onChange(nextValue)
+      if (onChange) onChange(nextValue)
     },
     [onChange]
   )

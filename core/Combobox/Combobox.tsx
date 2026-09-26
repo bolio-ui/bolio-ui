@@ -101,17 +101,17 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       if (!isControlled) setSelfValue(option.value)
       setText(getLabel(option))
       setOpen(false)
-      onChange && onChange(option.value)
+      if (onChange) onChange(option.value)
     }
 
     const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
       const next = event.target.value
       setText(next)
       setOpen(true)
-      onInputChange && onInputChange(next)
+      if (onInputChange) onInputChange(next)
       if (next === '' && selected !== null) {
         if (!isControlled) setSelfValue(null)
-        onChange && onChange(null)
+        if (onChange) onChange(null)
       }
     }
 
@@ -127,7 +127,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     }
 
     const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      onKeyDown && onKeyDown(event)
+      if (onKeyDown) onKeyDown(event)
       if (event.defaultPrevented) return
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault()
@@ -145,7 +145,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     }
 
     const blurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
-      onBlur && onBlur(event)
+      if (onBlur) onBlur(event)
       setOpen(false)
       setText(selectedLabel)
     }

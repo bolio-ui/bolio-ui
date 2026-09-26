@@ -42,7 +42,7 @@ function TabsItemCellComponent({
 
   const clickHandler = () => {
     if (disabled) return
-    onClick && onClick(value)
+    if (onClick) onClick(value)
   }
 
   const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {

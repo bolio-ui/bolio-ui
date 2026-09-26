@@ -36,7 +36,7 @@ function CheckboxGroupComponent({
     const removed = selfVal.filter((v) => v !== val)
     const next = checked ? [...removed, val] : removed
     setSelfVal(next)
-    onChange && onChange(next)
+    if (onChange) onChange(next)
   }
 
   const providerValue = useMemo(() => {

@@ -45,7 +45,7 @@ const DrawerComponent = React.forwardRef<
     const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
 
     const closeDrawer = () => {
-      onClose && onClose()
+      if (onClose) onClose()
       setVisible(false)
       setBodyHidden(false)
     }
@@ -58,7 +58,7 @@ const DrawerComponent = React.forwardRef<
 
     const { bindings } = useKeyboard(
       () => {
-        keyboard && closeDrawer()
+        if (keyboard) closeDrawer()
       },
       KeyCode.Escape,
       {

@@ -116,7 +116,7 @@ const SliderComponent = React.forwardRef<
           sideWidthRef.current
         )
         setValue(currentValue)
-        onChange && onChange(currentValue)
+        if (onChange) onChange(currentValue)
       },
       [max, min, step, sideWidthRef]
     )
@@ -165,7 +165,7 @@ const SliderComponent = React.forwardRef<
       if (next === value) return
       setValue(next)
       setLastOffsetManually(next)
-      onChange && onChange(next)
+      if (onChange) onChange(next)
     }
 
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -188,7 +188,7 @@ const SliderComponent = React.forwardRef<
     }, [customValue, value])
 
     useEffect(() => {
-      initialValue && setLastOffsetManually(initialValue)
+      if (initialValue) setLastOffsetManually(initialValue)
     }, [])
 
     return (

@@ -124,7 +124,7 @@ const TabsComponent = React.forwardRef<
 
     const clickHandler = (value: string) => {
       setSelfValue(value)
-      onChange && onChange(value)
+      if (onChange) onChange(value)
     }
 
     const tabItemMouseOverHandler = (event: MouseEvent<HTMLDivElement>) => {

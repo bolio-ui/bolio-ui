@@ -71,7 +71,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
     const commit = (date: Date | null) => {
       if (!isControlled) setSelfValue(date)
-      onChange && onChange(date)
+      if (onChange) onChange(date)
     }
 
     const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +83,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
     }
 
     const blurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
-      onBlur && onBlur(event)
+      if (onBlur) onBlur(event)
       setText(selectedText)
     }
 

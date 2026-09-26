@@ -70,15 +70,15 @@ const TextareaComponent = React.forwardRef<
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (disabled || readOnly) return
       setSelfValue(event.target.value)
-      onChange && onChange(event)
+      if (onChange) onChange(event)
     }
     const focusHandler = (e: React.FocusEvent<HTMLTextAreaElement>) => {
       setHover(true)
-      onFocus && onFocus(e)
+      if (onFocus) onFocus(e)
     }
     const blurHandler = (e: React.FocusEvent<HTMLTextAreaElement>) => {
       setHover(false)
-      onBlur && onBlur(e)
+      if (onBlur) onBlur(e)
     }
 
     useEffect(() => {

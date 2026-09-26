@@ -35,7 +35,7 @@ function BackdropComponent({
 
   const clickHandler = (event: MouseEvent<HTMLElement>) => {
     if (IsContentMouseDownRef.current) return
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   const mouseUpHandler = () => {

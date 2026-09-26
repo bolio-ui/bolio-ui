@@ -74,7 +74,7 @@ const PaginationComponent = React.forwardRef<
     )
 
     useEffect(() => {
-      onChange && onChange(page)
+      if (onChange) onChange(page)
     }, [onChange, page])
 
     useEffect(() => {

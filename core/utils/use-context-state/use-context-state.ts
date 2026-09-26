@@ -40,7 +40,7 @@ const useContextState = <S extends Record<string, unknown>>(
     const allowChange = options?.filter ? options?.filter(key, next) : true
     if (!allowChange) return
     setState((last) => ({ ...last, [key]: next }))
-    options?.onChange && options?.onChange(key, next)
+    if (options?.onChange) options?.onChange(key, next)
   }
   const makeUpdates = () => {
     const keys = Object.keys(state) as Array<keyof S>
