@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import Ellipsis from '../Shared/ellipsis'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
@@ -42,7 +42,7 @@ function SelectOptionComponent({
 
   if (!isLabel && identValue === undefined) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useWarning('The props "value" is required.', 'Select Option')
+    logWarning('The props "value" is required.', 'Select Option')
   }
 
   const selected = useMemo(() => {

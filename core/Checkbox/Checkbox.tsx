@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useCheckbox } from './CheckboxContext'
 import CheckboxIcon from './CheckboxIcon'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
 import useTheme from '../use-theme'
@@ -58,18 +58,17 @@ const CheckboxComponent = React.forwardRef<
     const classes = useClasses('checkbox', className)
 
     if (inGroup && checked) {
-      useWarning(
+      logWarning(
         'Remove props "checked" when [Checkbox] component is in the group.',
         'Checkbox'
       )
     }
-    if (inGroup) {
-      useEffect(() => {
-        const next = values.includes(value)
-        if (next === selfChecked) return
-        setSelfChecked(next)
-      }, [selfChecked, value, values])
-    }
+    useEffect(() => {
+      if (!inGroup) return
+      const next = values.includes(value)
+      if (next === selfChecked) return
+      setSelfChecked(next)
+    }, [inGroup, selfChecked, value, values])
 
     const fill = useMemo(
       () => getColors(theme.palette, type),

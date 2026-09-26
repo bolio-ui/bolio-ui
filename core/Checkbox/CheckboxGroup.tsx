@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { CheckboxContext } from './CheckboxContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
@@ -29,7 +29,7 @@ function CheckboxGroupComponent({
 
   if (!value) {
     value = []
-    useWarning('Props "value" is required.', 'Checkbox Group')
+    logWarning('Props "value" is required.', 'Checkbox Group')
   }
 
   const updateState = (val: string, checked: boolean) => {

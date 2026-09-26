@@ -3,7 +3,7 @@ import useTheme from '../use-theme'
 import { useRadioContext } from './RadioContext'
 import RadioDescription from './RadioDescription'
 import { pickChild } from '../utils/collections'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
 import useScale, { withScale } from '../use-scale'
@@ -65,18 +65,20 @@ const RadioComponent = React.forwardRef<
 
     if (inGroup) {
       if (checked !== undefined) {
-        useWarning('Remove props "checked" if in the Radio.Group.', 'Radio')
+        logWarning('Remove props "checked" if in the Radio.Group.', 'Radio')
       }
       if (radioValue === undefined) {
-        useWarning(
+        logWarning(
           'Props "value" must be deinfed if in the Radio.Group.',
           'Radio'
         )
       }
-      useEffect(() => {
-        setSelfChecked(groupValue === radioValue)
-      }, [groupValue, radioValue])
     }
+
+    useEffect(() => {
+      if (!inGroup) return
+      setSelfChecked(groupValue === radioValue)
+    }, [inGroup, groupValue, radioValue])
 
     const { label, border, bg } = useMemo(
       () => getColors(theme.palette, type),

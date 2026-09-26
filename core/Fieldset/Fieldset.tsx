@@ -6,7 +6,7 @@ import FieldsetFooter from './FieldsetFooter'
 import FieldsetContent from './FieldsetContent'
 import { hasChild, pickChild } from '../utils/collections'
 import { useFieldset } from './FieldsetContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
@@ -55,7 +55,7 @@ const FieldsetComponent = React.forwardRef<
 
     if (inGroup) {
       if (!label) {
-        useWarning(
+        logWarning(
           'Props "label" is required when in a group.',
           'Fieldset Group'
         )
@@ -63,19 +63,21 @@ const FieldsetComponent = React.forwardRef<
       if (!value || value === '') {
         value = label
       }
-
-      useEffect(() => {
-        if (register) register({ value, label })
-      }, [])
-
-      useEffect(() => {
-        // In a few cases, the user will set Fieldset state manually.
-        // If the user incorrectly set the state, Group component should ignore it.
-        /* istanbul ignore if */
-        if (!currentValue || currentValue === '') return
-        setHidden(currentValue !== value)
-      }, [currentValue, value])
     }
+
+    useEffect(() => {
+      if (!inGroup) return
+      if (register) register({ value, label })
+    }, [])
+
+    useEffect(() => {
+      if (!inGroup) return
+      // In a few cases, the user will set Fieldset state manually.
+      // If the user incorrectly set the state, Group component should ignore it.
+      /* istanbul ignore if */
+      if (!currentValue || currentValue === '') return
+      setHidden(currentValue !== value)
+    }, [inGroup, currentValue, value])
 
     const content = useMemo(
       () => (

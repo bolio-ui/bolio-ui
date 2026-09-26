@@ -21,7 +21,9 @@ const classObjectToString = (className: classNamesObject) => {
 const isObjectClassName = (value: className): value is classNamesObject =>
   typeof value === 'object' && !Array.isArray(value)
 
-const useClasses = (...classNames: Array<className>): string => {
+// A plain function, so it can be called in loops and callbacks. It is
+// exported as `useClasses` too, the name the package has always used.
+export const joinClasses = (...classNames: Array<className>): string => {
   const len = classNames.length
   let classes = ''
   if (len === 0) return classes
@@ -36,5 +38,7 @@ const useClasses = (...classNames: Array<className>): string => {
   }
   return classes.trim()
 }
+
+const useClasses = joinClasses
 
 export default useClasses

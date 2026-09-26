@@ -4,7 +4,7 @@ import { NormalTypes } from '../utils/prop-types'
 import RatingIcon from './RatingIcon'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
 
 export type RatingTypes = NormalTypes
 export type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
@@ -134,7 +134,7 @@ const RatingComponent = React.forwardRef<
       >
         {[...Array(count)].map((_, index) => (
           <div
-            className={useClasses('icon-box', {
+            className={joinClasses('icon-box', {
               hovered: index + 1 <= value
             })}
             key={index}

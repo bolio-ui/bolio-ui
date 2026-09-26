@@ -4,7 +4,7 @@ import useTheme from '../use-theme'
 import Expand from '../Shared/expand'
 import { useCollapseContext } from './CollapseContext'
 import useCurrentState from '../utils/use-current-state'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
@@ -53,7 +53,7 @@ const CollapseComponent = React.forwardRef<
 
     if (!title) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useWarning('"title" is required.', 'Collapse')
+      logWarning('"title" is required.', 'Collapse')
     }
 
     useEffect(() => {
