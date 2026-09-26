@@ -15,6 +15,11 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CheckboxGroupProps = Props & NativeAttrs
 
+// Without `value` the group starts empty and keeps its own state. It has to
+// be the same array on every render: the effect below sets the state
+// whenever `value` changes, and a new array each time made it loop
+const noValue: string[] = []
+
 function CheckboxGroupComponent({
   disabled = false,
   onChange,
@@ -29,7 +34,7 @@ function CheckboxGroupComponent({
   const classes = useClasses('group', className)
 
   if (!value) {
-    value = []
+    value = noValue
     logWarning('Props "value" is required.', 'Checkbox Group')
   }
 
