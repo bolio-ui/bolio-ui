@@ -36,7 +36,6 @@ function TabsItemCellComponent({
   const classes = useClasses('tab', {
     active,
     disabled,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     [activeClassName!]: active,
     'hide-border': hideBorder
   })

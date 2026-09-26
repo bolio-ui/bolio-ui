@@ -3,7 +3,6 @@ import React from 'react'
 import * as Bolio from '..'
 
 const {
-  BolioUIProvider,
   Avatar,
   Badge,
   Breadcrumbs,

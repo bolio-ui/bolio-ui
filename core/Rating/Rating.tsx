@@ -1,16 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { BolioUIThemesPalette } from '../Themes'
-import { NormalTypes, tupleNumber } from '../utils/prop-types'
+import { NormalTypes } from '../utils/prop-types'
 import RatingIcon from './RatingIcon'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
 export type RatingTypes = NormalTypes
-const ratingCountTuple = tupleNumber(2, 3, 4, 5, 6, 7, 8, 9, 10)
-const ratingValueTuple = tupleNumber(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-export type RatingValue = (typeof ratingValueTuple)[number]
-export type RatingCount = (typeof ratingCountTuple)[number]
+export type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+export type RatingCount = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
 interface Props {
   type?: RatingTypes

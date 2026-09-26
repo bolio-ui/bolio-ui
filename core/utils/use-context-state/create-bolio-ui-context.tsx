@@ -72,6 +72,7 @@ export const createBolioUIContext = <
 
     return <Context.Provider value={states}>{children}</Context.Provider>
   })
+  BolioUIContext.displayName = `BolioUI${capitalize(name)}Provider`
 
   type ResultType = BolioUINamedProvider<typeof BolioUIContext, N> &
     BolioUINamedContext<ContextStates<S>, N>

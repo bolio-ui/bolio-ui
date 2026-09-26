@@ -33,7 +33,7 @@ const useClipboard = (
     selection.addRange(range)
     try {
       window.document.execCommand('copy')
-    } catch (e) {
+    } catch {
       options.onError && options.onError()
     }
 

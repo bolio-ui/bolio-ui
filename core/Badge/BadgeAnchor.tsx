@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
-import { tuple } from '../utils/prop-types'
 import Badge from './Badge'
 
-const placement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
-
-export type BadgeAnchorPlacement = (typeof placement)[number]
+export type BadgeAnchorPlacement =
+  'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 
 interface Props {
   placement?: BadgeAnchorPlacement

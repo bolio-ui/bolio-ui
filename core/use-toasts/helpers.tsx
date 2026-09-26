@@ -2,7 +2,7 @@ import { Toast, ToastAction } from './use-toast'
 import React from 'react'
 import Button from '../Button'
 import { BolioUIThemesPalette } from '../Themes'
-import { NormalTypes, tuple } from '../utils/prop-types'
+import { NormalTypes } from '../utils/prop-types'
 
 export const makeToastActions = (
   actions: Toast['actions'],
@@ -60,8 +60,8 @@ export const getColors = (
   }
 }
 
-const toastPlacement = tuple('topLeft', 'topRight', 'bottomLeft', 'bottomRight')
-export type ToastPlacement = (typeof toastPlacement)[number]
+export type ToastPlacement =
+  'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 
 export const isTopPlacement = (placement: ToastPlacement) =>
   `${placement}`.toLowerCase().startsWith('top')

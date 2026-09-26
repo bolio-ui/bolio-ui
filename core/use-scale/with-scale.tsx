@@ -20,7 +20,8 @@ export type ScaleComponent<T, P> = React.ForwardRefExoticComponent<
     React.RefAttributes<T>
 >
 
-/* eslint-disable @typescript-eslint/ban-types */
+// `P = {}` means no props besides the scale ones
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 function withScale<T, P = {}>(
   Render: React.ComponentType<P & { ref?: React.Ref<T> }>
 ): ScaleComponent<T, P>

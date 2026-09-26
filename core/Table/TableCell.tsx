@@ -30,7 +30,6 @@ const TableCell = <TableDataItem extends TableDataItemBase>({
   emptyText,
   onCellClick
 }: TableCellProps<TableDataItem>) => {
-  /* eslint-disable react/jsx-no-useless-fragment */
   return (
     <>
       {columns.map((column, index) => {

@@ -62,7 +62,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --max-warnings=0",
+    "lint": "eslint src core --max-warnings=0",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "jest",
     "test:react18": "[ -d compat/.work/react18/node_modules ] || npm install --prefix compat/.work/react18 --no-audit --no-fund; jest --config jest.react18.config.js",
