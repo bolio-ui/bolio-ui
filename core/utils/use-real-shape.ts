@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useState } from 'react'
+import { MutableRefObject, useCallback, useEffect, useState } from 'react'
 
 export type ShapeType = {
   width: number
@@ -38,11 +38,13 @@ const useRealShape = <T extends HTMLElement>(
     width: 0,
     height: 0
   })
-  const update = () => {
+  const update = useCallback(() => {
     const { width, height } = getRealShape(ref.current)
     setState({ width, height })
-  }
-  useEffect(() => update(), [ref.current])
+  }, [ref])
+  // measure again when the element is attached, or replaced
+  const element = ref.current
+  useEffect(() => update(), [element, update])
 
   return [state, update]
 }

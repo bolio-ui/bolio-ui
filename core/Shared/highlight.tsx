@@ -45,7 +45,7 @@ const Highlight: React.FC<HighlightProps> = ({
       top: `${rect.elementTop + (rect.height - height) / 2}px`,
       transition: isFirstVisible ? 'opacity' : 'opacity, width, left, top'
     }
-  }, [rect, hoverWidthRatio, hoverHeightRatio])
+  }, [rect, hoverWidthRatio, hoverHeightRatio, isFirstVisible])
 
   return (
     <div ref={ref} className={useClasses('highlight', className)} {...props}>

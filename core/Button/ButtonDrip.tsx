@@ -21,12 +21,10 @@ const ButtonDrip: React.FC<ButtonDrip> = ({
   const left = Number.isNaN(+x) ? 0 : x - 10
 
   useEffect(() => {
-    if (!dripRef.current) return
-    dripRef.current.addEventListener('animationend', onCompleted)
-    return () => {
-      if (!dripRef.current) return
-      dripRef.current.removeEventListener('animationend', onCompleted)
-    }
+    const drip = dripRef.current
+    if (!drip) return
+    drip.addEventListener('animationend', onCompleted)
+    return () => drip.removeEventListener('animationend', onCompleted)
   })
 
   return (

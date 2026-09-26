@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RadioContext } from './RadioContext'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
@@ -31,10 +31,13 @@ function RadioGroupComponent({
     initialValue
   )
 
-  const updateState = (nextValue: string | number) => {
-    setSelfVal(nextValue)
-    if (onChange) onChange(nextValue)
-  }
+  const updateState = useCallback(
+    (nextValue: string | number) => {
+      setSelfVal(nextValue)
+      if (onChange) onChange(nextValue)
+    },
+    [onChange]
+  )
 
   const providerValue = useMemo(() => {
     return {
@@ -43,7 +46,7 @@ function RadioGroupComponent({
       inGroup: true,
       value: selfVal
     }
-  }, [disabled, selfVal])
+  }, [updateState, disabled, selfVal])
 
   useEffect(() => {
     if (value === undefined) return

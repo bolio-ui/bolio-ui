@@ -1,6 +1,7 @@
 import { KeyMod } from './codes'
 import React, { useEffect } from 'react'
 import { getActiveModMap, getCtrlKeysByPlatform } from './helper'
+import useLatest from '../utils/use-latest'
 
 export type KeyboardOptions = {
   disableGlobalEvent?: boolean
@@ -62,14 +63,18 @@ const useKeyboard: UseKeyboard = (handler, keyBindings, options = {}) => {
     if (handler) handler(event)
   }
 
+  // the listener is added once, but has to use the current handler and keys
+  const latest = useLatest(eventHandler)
+
   useEffect(() => {
+    const listener = (e: KeyboardEvent) => latest.current(e)
     if (!disableGlobalEvent) {
-      document.addEventListener(event, eventHandler)
+      document.addEventListener(event, listener)
     }
     return () => {
-      document.removeEventListener(event, eventHandler)
+      document.removeEventListener(event, listener)
     }
-  }, [disableGlobalEvent])
+  }, [disableGlobalEvent, event, latest])
 
   const elementBindingHandler = (
     elementEventType: 'keydown' | 'keypress' | 'keyup',

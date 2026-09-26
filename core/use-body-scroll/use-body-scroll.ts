@@ -44,10 +44,7 @@ function useBodyScroll(
   const bodyRef = useRef<HTMLElement | null>(null)
   const elRef = elementRef || bodyRef
   const [hidden, setHidden] = useState<boolean>(false)
-  const safeOptions = {
-    ...defaultOptions,
-    ...(options || {})
-  }
+  const { delayReset } = { ...defaultOptions, ...(options || {}) }
 
   useEffect(() => {
     if (!elementRef && !bodyRef.current) bodyRef.current = document.body
@@ -80,8 +77,8 @@ function useBodyScroll(
     const timer = window.setTimeout(() => {
       reset(elRef.current!)
       window.clearTimeout(timer)
-    }, safeOptions.delayReset)
-  }, [hidden, elRef])
+    }, delayReset)
+  }, [hidden, elRef, elementRef, delayReset])
 
   return [hidden, setHidden]
 }

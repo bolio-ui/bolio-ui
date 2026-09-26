@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Tooltip, { TooltipTypes } from '../Tooltip'
 import { Placement, TriggerTypes } from '../utils/prop-types'
 import { getReactNode } from '../utils/collections'
@@ -6,6 +6,7 @@ import useScale, { withScale } from '../use-scale'
 import { PopoverContext, PopoverConfig } from './PopoverContext'
 import useClasses from '../use-classes'
 import useDefaultProps from '../utils/use-default-props'
+import useLatest from '../utils/use-latest'
 
 export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
@@ -65,27 +66,31 @@ const PopoverComponent = React.forwardRef<
   const { SCALES } = useScale()
   const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
-  const onChildClick = () => {
+  const onPopoverVisibleChange = useCallback(
+    (next: boolean) => {
+      setVisible(next)
+      onVisibleChange(next)
+    },
+    [onVisibleChange]
+  )
+  const onChildClick = useCallback(() => {
     onPopoverVisibleChange(false)
-  }
+  }, [onPopoverVisibleChange])
   const value = useMemo<PopoverConfig>(
     () => ({
       onItemClick: onChildClick,
       disableItemsAutoClose
     }),
-    [disableItemsAutoClose]
+    [onChildClick, disableItemsAutoClose]
   )
   const classes = useClasses('popover', portalClassName)
 
-  const onPopoverVisibleChange = (next: boolean) => {
-    setVisible(next)
-    onVisibleChange(next)
-  }
-
+  // runs when `visible` changes, not when the handler does
+  const latestChange = useLatest(onPopoverVisibleChange)
   useEffect(() => {
     if (customVisible === undefined) return
-    onPopoverVisibleChange(customVisible)
-  }, [customVisible])
+    latestChange.current(customVisible)
+  }, [customVisible, latestChange])
 
   return (
     <PopoverContext.Provider value={value}>

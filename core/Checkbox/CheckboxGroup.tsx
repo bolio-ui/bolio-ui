@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { CheckboxContext } from './CheckboxContext'
 import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
@@ -32,12 +32,15 @@ function CheckboxGroupComponent({
     logWarning('Props "value" is required.', 'Checkbox Group')
   }
 
-  const updateState = (val: string, checked: boolean) => {
-    const removed = selfVal.filter((v) => v !== val)
-    const next = checked ? [...removed, val] : removed
-    setSelfVal(next)
-    if (onChange) onChange(next)
-  }
+  const updateState = useCallback(
+    (val: string, checked: boolean) => {
+      const removed = selfVal.filter((v) => v !== val)
+      const next = checked ? [...removed, val] : removed
+      setSelfVal(next)
+      if (onChange) onChange(next)
+    },
+    [selfVal, onChange]
+  )
 
   const providerValue = useMemo(() => {
     return {
@@ -46,7 +49,7 @@ function CheckboxGroupComponent({
       inGroup: true,
       values: selfVal
     }
-  }, [disabled, selfVal])
+  }, [updateState, disabled, selfVal])
 
   useEffect(() => {
     setSelfVal(value)

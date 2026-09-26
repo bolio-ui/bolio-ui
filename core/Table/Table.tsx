@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -75,23 +76,26 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
     Array<TableAbstractColumn<TableDataItem>>
   >([])
   const [data, setData] = useState<Array<TableDataItem>>(initialData)
-  const updateColumn = (column: TableAbstractColumn<TableDataItem>) => {
-    setColumns((last) => {
-      const hasColumn = last.find((item) => item.prop === column.prop)
-      if (!hasColumn) return [...last, column]
-      return last.map((item) => {
-        if (item.prop !== column.prop) return item
-        return column
+  const updateColumn = useCallback(
+    (column: TableAbstractColumn<TableDataItem>) => {
+      setColumns((last) => {
+        const hasColumn = last.find((item) => item.prop === column.prop)
+        if (!hasColumn) return [...last, column]
+        return last.map((item) => {
+          if (item.prop !== column.prop) return item
+          return column
+        })
       })
-    })
-  }
+    },
+    []
+  )
 
   const contextValue = useMemo<TableConfig<TableDataItem>>(
     () => ({
       columns,
       updateColumn
     }),
-    [columns]
+    [columns, updateColumn]
   )
 
   useEffect(() => {

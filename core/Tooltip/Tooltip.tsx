@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import TooltipContent, { TooltipIconOffset } from './TooltipContent'
 import useClickAway from '../utils/use-click-away'
+import useLatest from '../utils/use-latest'
 import { TriggerTypes, Placement, SnippetTypes } from '../utils/prop-types'
 import { withScale } from '../use-scale'
 import { getRect } from './helper'
@@ -84,14 +85,16 @@ const TooltipComponent = React.forwardRef<
 
     const [visible, setVisible] = useState<boolean>(initialVisible)
 
+    // measured again once the element is attached
+    const triggerElement = innerRef.current
     const iconOffset = useMemo<TooltipIconOffset>(() => {
-      if (!innerRef.current) return { x: '0.75em', y: '0.75em' }
+      if (!triggerElement) return { x: '0.75em', y: '0.75em' }
       const rect = getRect(innerRef)
       return {
         x: `${rect.width ? rect.width / 2 : 0}px`,
         y: `${rect.height ? rect.height / 2 : 0}px`
       }
-    }, [innerRef.current])
+    }, [triggerElement])
 
     const contentProps = {
       type,
@@ -170,10 +173,12 @@ const TooltipComponent = React.forwardRef<
         : triggerProps
 
     useClickAway(innerRef, () => trigger === 'click' && changeVisible(false))
+    // runs when `visible` changes, not on every render
+    const latestChange = useLatest(changeVisible)
     useEffect(() => {
       if (customVisible === undefined) return
-      changeVisible(customVisible)
-    }, [customVisible])
+      latestChange.current(customVisible)
+    }, [customVisible, latestChange])
 
     return (
       <div

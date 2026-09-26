@@ -43,7 +43,7 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   const colgroup = useMemo(() => {
     if (!isScalableWidth) return <colgroup />
     return makeColgroup(width, columns)
-  }, [isScalableWidth, width])
+  }, [isScalableWidth, width, columns])
 
   return (
     <>

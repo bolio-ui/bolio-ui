@@ -52,7 +52,7 @@ function CssTransition({
       clearTimeout(timer)
       clearTimeout(clearClassesTimer)
     }
-  }, [visible, renderable])
+  }, [visible, renderable, enterTime, leaveTime, clearTime, name])
 
   if (!React.isValidElement(children) || !renderable) return null
 

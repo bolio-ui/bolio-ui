@@ -65,9 +65,11 @@ const FieldsetComponent = React.forwardRef<
       }
     }
 
+    // registers in its group once, when it mounts
     useEffect(() => {
       if (!inGroup) return
       if (register) register({ value, label })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
