@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   caption?: ReactNode | string
@@ -9,7 +10,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type DisplayProps = Props & NativeAttrs
 
 const DisplayComponent = React.forwardRef<

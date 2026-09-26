@@ -21,6 +21,7 @@ import {
 } from './TableTypes'
 import useScale, { ScaleProps, withScale } from '../use-scale'
 import TableColumn from './TableColumn'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   data?: Array<TableDataItem>
@@ -42,7 +43,10 @@ const defaultProps = {
   rowClassName: () => ''
 }
 
-type NativeAttrs = Omit<React.TableHTMLAttributes<any>, keyof Props<any>>
+type NativeAttrs = Omit<
+  React.TableHTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
 export type TableProps<TableDataItem extends TableDataItemBase> =
   Props<TableDataItem> & NativeAttrs
 
@@ -105,7 +109,10 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
   useResize(() => updateShape())
 
   return (
-    <TableContext.Provider value={contextValue}>
+    // the context is typed for any row: each Table provides its own
+    <TableContext.Provider
+      value={contextValue as unknown as TableConfig<TableDataItemBase>}
+    >
       <table ref={tableRef} className={className} {...props}>
         <TableHead columns={columns} width={width} />
         <TableBody<TableDataItem>
@@ -139,8 +146,9 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
 
 TableComponent.displayName = 'BolioUITable'
 TableComponent.Column = TableColumn
-const Table = withScale(React.forwardRef(TableComponent) as any) as any
-Table.Column = TableColumn
+
+// a generic function cannot be expressed by forwardRef and withScale, which
+// is why the result gets its type here
 type TableType = {
   <TableDataItem extends TableDataItemBase>(
     props: React.PropsWithChildren<TableProps<TableDataItem>> &
@@ -150,4 +158,9 @@ type TableType = {
   displayName?: string
 }
 
-export default Table as TableType
+const Table = withScale(
+  React.forwardRef(TableComponent)
+) as unknown as TableType
+Table.Column = TableColumn
+
+export default Table

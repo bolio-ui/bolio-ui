@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
 import Dropdown from '../Shared/dropdown'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   visible: boolean
@@ -12,7 +13,7 @@ interface Props {
   getPopupContainer?: () => HTMLElement | null
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SelectDropdownProps = Props & NativeAttrs
 
 const SelectDropdown = React.forwardRef<

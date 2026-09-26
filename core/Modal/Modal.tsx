@@ -19,6 +19,7 @@ import { hasChild, pickChild } from '../utils/collections'
 import useBodyScroll from '../utils/use-body-scroll'
 import useScale, { withScale } from '../use-scale'
 import useKeyboard, { KeyCode } from '../use-keyboard'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   disableBackdropClick?: boolean
@@ -33,7 +34,7 @@ interface Props {
   layerClassName?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ModalProps = Props & NativeAttrs
 
 const ModalComponent = React.forwardRef<

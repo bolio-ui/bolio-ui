@@ -5,6 +5,7 @@ import { FieldsetContext, FieldItem } from './FieldsetContext'
 import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value: string
@@ -12,7 +13,7 @@ interface Props {
   onChange?: (value: string) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type FieldsetGroupProps = Props & NativeAttrs
 
 function FieldsetGroupComponent({

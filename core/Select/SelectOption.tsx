@@ -5,6 +5,7 @@ import logWarning from '../utils/log-warning'
 import Ellipsis from '../Shared/ellipsis'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value?: string
@@ -15,7 +16,7 @@ interface Props {
   preventAllEvents?: boolean
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SelectOptionProps = Props & NativeAttrs
 
 function SelectOptionComponent({
@@ -41,7 +42,6 @@ function SelectOptionComponent({
   const classes = useClasses('option', { divider, label }, className)
 
   if (!isLabel && identValue === undefined) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     logWarning('The props "value" is required.', 'Select Option')
   }
 

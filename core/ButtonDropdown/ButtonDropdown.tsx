@@ -16,6 +16,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { pickChild, pickChildByProps } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type ButtonDropdownTypes = NormalTypes
 
@@ -28,7 +29,7 @@ interface Props {
   icon?: React.ReactNode
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ButtonDropdownProps = Props & NativeAttrs
 
 const stopPropagation = (event: MouseEvent<HTMLElement>) => {

@@ -7,6 +7,7 @@ import { getColors } from './styles'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type CheckboxTypes = NormalTypes
 export interface CheckboxEventTarget {
@@ -29,7 +30,7 @@ interface Props {
   value?: string
 }
 
-type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
 export type CheckboxProps = Props & NativeAttrs
 
 const CheckboxComponent = React.forwardRef<

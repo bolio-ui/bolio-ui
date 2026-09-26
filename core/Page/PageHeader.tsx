@@ -1,13 +1,14 @@
 import React from 'react'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   center?: boolean
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PageHeaderProps = Props & NativeAttrs
 
 function PageHeaderComponent({

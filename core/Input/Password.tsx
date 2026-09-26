@@ -3,12 +3,16 @@ import { Props } from './InputProps'
 import PasswordIcon from './PasswordIcon'
 import Input from './Input'
 import { useScale, withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface PasswordProps extends Props {
   hideToggle?: boolean
 }
 
-type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof PasswordProps>
+type NativeAttrs = Omit<
+  React.InputHTMLAttributes<AnyElement>,
+  keyof PasswordProps
+>
 export type InputPasswordProps = PasswordProps & NativeAttrs
 
 const InputPasswordComponent = React.forwardRef<

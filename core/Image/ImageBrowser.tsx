@@ -7,9 +7,10 @@ import { getBrowserColors, BrowserColors } from './styles'
 import { getHostFromUrl } from './helpers'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type ImageAnchorProps = Omit<
-  React.AnchorHTMLAttributes<any>,
+  React.AnchorHTMLAttributes<AnyElement>,
   keyof LinkProps
 >
 
@@ -22,7 +23,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ImageBrowserProps = Props & NativeAttrs
 
 const getTitle = (title: string, colors: BrowserColors) => (

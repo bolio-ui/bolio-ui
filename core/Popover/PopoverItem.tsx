@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import { usePopoverContext } from './PopoverContext'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   line?: boolean
@@ -11,7 +12,7 @@ interface Props {
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PopoverItemProps = Props & NativeAttrs
 
 function PopoverItemComponent({

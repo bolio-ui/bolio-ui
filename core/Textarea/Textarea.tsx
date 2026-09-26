@@ -10,6 +10,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type TextareaResizes =
   'none' | 'both' | 'horizontal' | 'vertical' | 'initial' | 'inherit'
@@ -28,7 +29,7 @@ interface Props {
   resize?: TextareaResizes
 }
 
-type NativeAttrs = Omit<React.TextareaHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.TextareaHTMLAttributes<AnyElement>, keyof Props>
 export type TextareaProps = Props & NativeAttrs
 
 const TextareaComponent = React.forwardRef<

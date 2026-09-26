@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import * as Bolio from '..'
+import type { AnyElement } from '../utils/types'
 
 const {
   BolioUIProvider,
@@ -60,7 +61,8 @@ const {
   Tooltip
 } = Bolio
 
-type Ref = React.RefObject<any>
+// an element, or the handle of a component that has none (Select)
+type Ref = React.RefObject<AnyElement>
 
 // The ref points at the element that receives the native props: the root element,
 // or the native input for form controls (Checkbox, Radio, Toggle). Select keeps its

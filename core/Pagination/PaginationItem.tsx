@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   active?: boolean
@@ -9,7 +10,7 @@ interface Props {
   onClick?: (e: React.MouseEvent) => void
 }
 
-type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<AnyElement>, keyof Props>
 export type PaginationItemProps = Props & NativeAttrs
 
 function PaginationItem({

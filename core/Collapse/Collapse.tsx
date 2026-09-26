@@ -7,6 +7,7 @@ import useCurrentState from '../utils/use-current-state'
 import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   title: string
@@ -17,7 +18,7 @@ interface Props {
   index?: number
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CollapseProps = Props & NativeAttrs
 
 const CollapseComponent = React.forwardRef<
@@ -52,7 +53,6 @@ const CollapseComponent = React.forwardRef<
     )
 
     if (!title) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       logWarning('"title" is required.', 'Collapse')
     }
 

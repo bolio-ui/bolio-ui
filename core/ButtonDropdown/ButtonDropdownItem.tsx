@@ -4,6 +4,7 @@ import { getColor } from './styles'
 import { useButtonDropdown } from './ButtonDropdownContext'
 import Loading from '../Loading'
 import { NormalTypes } from '../utils/prop-types'
+import type { AnyElement } from '../utils/types'
 
 export type ButtonDropdownItemTypes = NormalTypes
 
@@ -14,7 +15,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<AnyElement>, keyof Props>
 export type ButtonDropdownItemProps = Props & NativeAttrs
 
 function ButtonDropdownItem({

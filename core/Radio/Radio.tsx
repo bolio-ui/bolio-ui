@@ -8,6 +8,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type RadioTypes = NormalTypes
 export interface RadioEventTarget {
@@ -29,7 +30,7 @@ interface Props {
   onChange?: (e: RadioEvent) => void
 }
 
-type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
 export type RadioProps = Props & NativeAttrs
 
 const RadioComponent = React.forwardRef<

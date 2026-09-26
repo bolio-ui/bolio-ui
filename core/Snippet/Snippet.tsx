@@ -7,6 +7,7 @@ import useClipboard from '../utils/use-clipboard'
 import useToasts from '../use-toasts'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type ToastTypes = NormalTypes
 
@@ -25,7 +26,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SnippetProps = Props & NativeAttrs
 
 const textArrayToString = (text: string[]): string => {

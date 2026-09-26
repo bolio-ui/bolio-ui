@@ -5,13 +5,14 @@ import { setChildrenIndex } from '../utils/collections'
 import { CollapseContext, CollapseConfig } from './CollapseContext'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   accordion?: boolean
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CollapseGroupProps = Props & NativeAttrs
 
 function CollapseGroupComponent({

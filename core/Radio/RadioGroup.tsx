@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RadioContext } from './RadioContext'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value?: string | number
@@ -12,7 +13,7 @@ interface Props {
   useRow?: boolean
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type RadioGroupProps = Props & NativeAttrs
 
 function RadioGroupComponent({

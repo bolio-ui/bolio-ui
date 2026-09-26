@@ -4,6 +4,7 @@ import LinkIcon from './Icon'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export interface Props {
   href?: string
@@ -14,7 +15,7 @@ export interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.AnchorHTMLAttributes<AnyElement>, keyof Props>
 export type LinkProps = Props & NativeAttrs
 
 const LinkComponent = React.forwardRef<

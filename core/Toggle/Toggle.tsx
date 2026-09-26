@@ -4,6 +4,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type ToggleTypes = NormalTypes
 export interface ToggleEventTarget {
@@ -25,7 +26,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.LabelHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.LabelHTMLAttributes<AnyElement>, keyof Props>
 export type ToggleProps = Props & NativeAttrs
 
 export type ToggleSize = {

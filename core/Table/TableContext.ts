@@ -12,8 +12,9 @@ const defaultContext = {
 }
 
 export const TableContext =
-  React.createContext<TableConfig<any>>(defaultContext)
+  React.createContext<TableConfig<TableDataItemBase>>(defaultContext)
 
 export const useTableContext = <
   T extends TableDataItemBase
->(): TableConfig<T> => React.useContext<TableConfig<T>>(TableContext)
+>(): TableConfig<T> =>
+  React.useContext(TableContext) as unknown as TableConfig<T>

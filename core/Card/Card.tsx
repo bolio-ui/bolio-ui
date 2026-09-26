@@ -8,6 +8,7 @@ import Image from '../Image'
 import { hasChild, pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   hoverable?: boolean
@@ -21,7 +22,7 @@ interface Props {
   type?: CardTypes
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CardProps = Props & NativeAttrs
 
 const CardComponent = React.forwardRef<

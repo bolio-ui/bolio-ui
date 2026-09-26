@@ -21,6 +21,7 @@ import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type SelectRef = {
   focus: () => void
@@ -47,7 +48,7 @@ interface Props {
   getPopupContainer?: () => HTMLElement | null
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SelectProps = Props & NativeAttrs
 
 const noop = () => {}
@@ -175,8 +176,13 @@ const SelectComponent = React.forwardRef<
     const selectedChild = useMemo(() => {
       const [, optionChildren] = pickChildByProps(children, 'value', value)
       return React.Children.map(optionChildren, (child) => {
-        if (!React.isValidElement<{ value: string }>(child)) return null
-        const el = React.cloneElement(child as React.ReactElement<any>, {
+        if (
+          !React.isValidElement<{ value: string; preventAllEvents?: boolean }>(
+            child
+          )
+        )
+          return null
+        const el = React.cloneElement(child, {
           preventAllEvents: true
         })
         if (!multiple) return el

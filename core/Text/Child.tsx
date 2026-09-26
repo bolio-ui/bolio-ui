@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 export interface Props {
   tag: keyof React.JSX.IntrinsicElements
@@ -24,7 +25,7 @@ const getTypeColor = (type: NormalTypes, palette: BolioUIThemesPalette) => {
   return colors[type] || colors.default
 }
 
-type NativeAttrs = Omit<React.DetailsHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.DetailsHTMLAttributes<AnyElement>, keyof Props>
 export type TextChildProps = Props & NativeAttrs
 
 const TextChild = React.forwardRef<

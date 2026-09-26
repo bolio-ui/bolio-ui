@@ -3,6 +3,7 @@ import { CheckboxContext } from './CheckboxContext'
 import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value: string[]
@@ -11,7 +12,7 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CheckboxGroupProps = Props & NativeAttrs
 
 function CheckboxGroupComponent({

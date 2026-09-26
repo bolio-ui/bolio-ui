@@ -4,6 +4,7 @@ import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type LoadingTypes = NormalTypes
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
   spaceRatio?: number
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type LoadingProps = Props & NativeAttrs
 
 const getIconBgColor = (

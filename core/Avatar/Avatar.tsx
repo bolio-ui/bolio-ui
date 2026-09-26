@@ -3,6 +3,7 @@ import AvatarSkeleton from './AvatarSkeleton'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   src?: string
@@ -13,7 +14,9 @@ interface Props {
 }
 
 type NativeAttrs = Omit<
-  Partial<React.ImgHTMLAttributes<any> & React.HTMLAttributes<any>>,
+  Partial<
+    React.ImgHTMLAttributes<AnyElement> & React.HTMLAttributes<AnyElement>
+  >,
   keyof Props
 >
 export type AvatarProps = Props & NativeAttrs

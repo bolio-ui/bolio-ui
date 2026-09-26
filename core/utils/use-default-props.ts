@@ -1,7 +1,6 @@
-const useDefaultProps = <
-  T extends Record<string | number, any>,
-  D extends Partial<T>
->(
+import type { AnyObject } from './types'
+
+const useDefaultProps = <T extends AnyObject, D extends Partial<T>>(
   props: T,
   defaultProps: D
 ): T & Required<D> => {

@@ -75,7 +75,7 @@ const isRefTarget = (
     | FocusEvent<HTMLElement>
     | MutableRefObject<HTMLElement | null>
 ): eventOrRef is MutableRefObject<HTMLElement | null> => {
-  return typeof (eventOrRef as any)?.target === 'undefined'
+  return typeof (eventOrRef as { target?: unknown })?.target === 'undefined'
 }
 export const useRect = (
   initialState?: ReactiveDomReact | (() => ReactiveDomReact)

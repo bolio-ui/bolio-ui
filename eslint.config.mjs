@@ -58,15 +58,5 @@ export default [
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-var-requires': 'off'
     }
-  },
-  {
-    // core was not linted before. These rules still fail there and are
-    // turned on one at a time, each in the pull request that fixes it.
-    // Remove this block, and the disable directives it hides, when empty.
-    files: ['core/**'],
-    linterOptions: { reportUnusedDisableDirectives: false },
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'off'
-    }
   }
 ]
