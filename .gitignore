@@ -19,6 +19,9 @@ examples/**/.cache
 # next.js
 /.next/
 /out/
+# rewritten by `next dev` and `next build` with different content
+# (.next/dev/types vs .next/types); not worth tracking
+next-env.d.ts
 
 # production
 /build
