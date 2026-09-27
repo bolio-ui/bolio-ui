@@ -5,6 +5,7 @@ import { ButtonGroupContext, ButtonGroupConfig } from './ButtonGroupContext'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import styles from './ButtonGroup.module.css'
 
 interface Props {
   disabled?: boolean
@@ -61,6 +62,7 @@ const ButtonGroupComponent = React.forwardRef<
     vertical = defaultProps.vertical,
     children,
     className = defaultProps.className,
+    style,
     ...props
   } = groupProps
 
@@ -79,60 +81,28 @@ const ButtonGroupComponent = React.forwardRef<
   }, [theme.palette, ghost, type])
 
   const classes = useClasses(
-    'btn-group',
+    styles.btnGroup,
     {
-      vertical: vertical,
-      horizontal: !vertical
+      [styles.vertical]: vertical,
+      [styles.horizontal]: !vertical
     },
     className
   )
 
+  const groupStyle: React.CSSProperties = {
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'min-content'),
+    margin: `${SCALES.mt(0.313)} ${SCALES.mr(0.313)} ${SCALES.mb(0.313)} ${SCALES.ml(0.313)}`,
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    '--btn-group-border': border,
+    '--btn-group-radius': theme.layout.radius,
+    ...style
+  } as React.CSSProperties
+
   return (
     <ButtonGroupContext.Provider value={initialValue}>
-      <div ref={ref} className={classes} {...props}>
+      <div ref={ref} className={classes} {...props} style={groupStyle}>
         {children}
-        <style jsx>{`
-          .btn-group {
-            display: inline-flex;
-            border-radius: ${theme.layout.radius};
-            border: 1px solid ${border};
-            background-color: transparent;
-            overflow: hidden;
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'min-content')};
-            margin: ${SCALES.mt(0.313)} ${SCALES.mr(0.313)} ${SCALES.mb(0.313)}
-              ${SCALES.ml(0.313)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-          }
-          .vertical {
-            flex-direction: column;
-          }
-          .btn-group :global(.btn) {
-            border: none;
-          }
-          .btn-group :global(.btn .text) {
-            top: 0;
-          }
-          .horizontal :global(.btn:not(:first-child)) {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            border-left: 1px solid ${border};
-          }
-          .horizontal :global(.btn:not(:last-child)) {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          .vertical :global(.btn:not(:first-child)) {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-top: 1px solid ${border};
-          }
-          .vertical :global(.btn:not(:last-child)) {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-        `}</style>
       </div>
     </ButtonGroupContext.Provider>
   )
