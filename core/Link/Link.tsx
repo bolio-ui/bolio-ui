@@ -43,7 +43,7 @@ const LinkComponent = React.forwardRef<
     const linkColor = color || block ? theme.palette.link : 'inherit'
     const hoverColor = color || block ? theme.palette.primary : 'inherit'
     const decoration = underline ? 'underline' : 'none'
-    const classes = useClasses(styles.link, className)
+    const classes = useClasses('link', styles.link, className)
 
     const linkStyle: React.CSSProperties = {
       color: linkColor,

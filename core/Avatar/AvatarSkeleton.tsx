@@ -13,12 +13,12 @@ const AvatarSkeleton: React.FC<AvatarSkeletonProps> = React.memo(
     const theme = useTheme()
     return (
       <div
+        {...props}
         className={styles.skeleton}
         style={{
           backgroundImage: `linear-gradient(270deg, ${theme.palette.accents_1}, ${theme.palette.accents_2}, ${theme.palette.accents_2}, ${theme.palette.accents_1})`,
           opacity
         }}
-        {...props}
       />
     )
   }
