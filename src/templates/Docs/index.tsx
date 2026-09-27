@@ -193,6 +193,30 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
         .page-content {
           animation: fadeIn 180ms ease;
         }
+        /* Docs prose reads better with a softer palette and a smaller type
+           scale than the marketing-sized headings CssBaseline ships by
+           default — :global is required here since h2/h3/p/li come from
+           the MDX children, not this component's own JSX. */
+        .page-content :global(h2) {
+          font-size: 2rem;
+        }
+        .page-content :global(h3) {
+          font-size: 1.375rem;
+        }
+        .page-content :global(h4) {
+          font-size: 1.125rem;
+        }
+        .page-content :global(p),
+        .page-content :global(li) {
+          color: ${theme.palette.accents_7};
+          line-height: 1.75em;
+        }
+        .page-content :global(p) {
+          margin: 1.25em 0;
+        }
+        .page-content :global(li) {
+          margin-bottom: 0.75em;
+        }
         @keyframes fadeIn {
           from {
             opacity: 0;
