@@ -2,6 +2,7 @@ import React from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './SliderDot.module.css'
 
 interface Props {
   left: number
@@ -22,58 +23,28 @@ const SliderDot = React.forwardRef<
       disabled = false,
       left = 0,
       isClick = false,
+      style,
       ...props
     }: React.PropsWithChildren<SliderDotProps>,
     ref: React.Ref<HTMLDivElement>
   ) => {
     const theme = useTheme()
-    const classes = useClasses('dot', { disabled, click: isClick })
+    const classes = useClasses(styles.dot, {
+      [styles.disabled]: disabled,
+      [styles.click]: isClick
+    })
+
+    const dotStyle = {
+      left: `${left}%`,
+      backgroundColor: disabled ? theme.palette.accents_2 : theme.palette.primary,
+      color: disabled ? theme.palette.accents_4 : theme.palette.background,
+      '--slider-dot-focus-color': theme.palette.foreground,
+      ...style
+    } as React.CSSProperties
 
     return (
-      <div className={classes} ref={ref} {...props}>
+      <div className={classes} ref={ref} {...props} style={dotStyle}>
         {children}
-        <style jsx>{`
-          .dot {
-            position: absolute;
-            left: ${left}%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            height: calc(var(--slider-font-size) * 1.25);
-            min-width: calc(var(--slider-font-size) * 1.25);
-            line-height: calc(var(--slider-font-size) * 1.25);
-            border-radius: calc(var(--slider-font-size) * 0.625);
-            user-select: none;
-            font-weight: 700;
-            font-size: calc(var(--slider-font-size) * 0.75);
-            z-index: 100;
-            background-color: ${theme.palette.primary};
-            color: ${theme.palette.background};
-            text-align: center;
-            padding: 0 calc(0.57 * var(--slider-font-size));
-          }
-
-          .dot:focus-visible {
-            outline: 2px solid ${theme.palette.foreground};
-            outline-offset: 2px;
-          }
-          .dot.disabled {
-            cursor: not-allowed !important;
-            background-color: ${theme.palette.accents_2};
-            color: ${theme.palette.accents_4};
-          }
-
-          .dot.click {
-            transition: all 200ms ease;
-          }
-
-          .dot:hover {
-            cursor: grab;
-          }
-
-          .dot:active {
-            cursor: grabbing;
-          }
-        `}</style>
       </div>
     )
   }
