@@ -11,6 +11,7 @@ import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Textarea.module.css'
 
 export type TextareaResizes =
   'none' | 'both' | 'horizontal' | 'vertical' | 'initial' | 'inherit'
@@ -66,7 +67,11 @@ const TextareaComponent = React.forwardRef<
       [theme.palette, type]
     )
 
-    const classes = useClasses('wrapper', { hover, disabled }, className)
+    const classes = useClasses(
+      styles.wrapper,
+      { [styles.hover]: hover, [styles.disabled]: disabled },
+      className
+    )
 
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (disabled || readOnly) return
@@ -96,8 +101,26 @@ const TextareaComponent = React.forwardRef<
       ...controlledValue
     }
 
+    const wrapperStyle = {
+      '--textarea-radius': theme.layout.radius,
+      '--textarea-border': colors.borderColor,
+      '--textarea-color': colors.color,
+      '--textarea-hover-border': colors.hoverBorder,
+      '--textarea-hover-bg': colors.hoverBgColor,
+      '--textarea-disabled-bg': theme.palette.accents_2,
+      '--textarea-disabled-border': theme.palette.accents_3,
+      '--textarea-bg': colors.bgColor,
+      '--textarea-font-family': theme.font.sans,
+      '--textarea-font-size': SCALES.font(0.875),
+      '--textarea-resize': resize,
+      '--textarea-autofill-bg': theme.palette.background,
+      width: SCALES.width(1, 'initial'),
+      height: SCALES.height(1, 'auto'),
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    } as React.CSSProperties
+
     return (
-      <div className={classes}>
+      <div className={classes} style={wrapperStyle}>
         <textarea
           ref={textareaRef}
           disabled={disabled}
@@ -107,69 +130,12 @@ const TextareaComponent = React.forwardRef<
           onBlur={blurHandler}
           onChange={changeHandler}
           {...textareaProps}
+          className={styles.textarea}
+          style={{
+            padding: `${SCALES.pt(0.5)} ${SCALES.pr(0.5)} ${SCALES.pb(0.5)} ${SCALES.pl(0.5)}`,
+            ...(textareaProps as { style?: React.CSSProperties }).style
+          }}
         />
-        <style jsx>{`
-          .wrapper {
-            display: inline-flex;
-            box-sizing: border-box;
-            user-select: none;
-            border-radius: ${theme.layout.radius};
-            border: 1px solid ${colors.borderColor};
-            color: ${colors.color};
-            transition:
-              border 0.2s ease 0s,
-              color 0.2s ease 0s;
-            min-width: 12.5rem;
-            max-width: 95vw;
-            --textarea-font-size: ${SCALES.font(0.875)};
-            --textarea-height: ${SCALES.height(1, 'auto')};
-            width: ${SCALES.width(1, 'initial')};
-            height: var(--textarea-height);
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .wrapper.hover {
-            border-color: ${colors.hoverBorder};
-            background-color: ${colors.hoverBgColor};
-          }
-
-          .wrapper.disabled {
-            background-color: ${theme.palette.accents_2};
-            border-color: ${theme.palette.accents_3};
-            cursor: not-allowed;
-          }
-
-          textarea {
-            background-color: ${colors.bgColor};
-            box-shadow: none;
-            display: block;
-            font-family: ${theme.font.sans};
-            font-size: var(--textarea-font-size);
-            width: 100%;
-            /* height: var(--textarea-height); */
-            border: none;
-            outline: none;
-            padding: ${SCALES.pt(0.5)} ${SCALES.pr(0.5)} ${SCALES.pb(0.5)}
-              ${SCALES.pl(0.5)};
-            resize: ${resize};
-            border-radius: ${theme.layout.radius};
-          }
-          .disabled > textarea {
-            cursor: not-allowed;
-          }
-          textarea.active,
-          textarea:hover {
-            border-color: ${colors.hoverBorder};
-            background: ${colors.hoverBgColor};
-          }
-          textarea:-webkit-autofill,
-          textarea:-webkit-autofill:hover,
-          textarea:-webkit-autofill:active,
-          textarea:-webkit-autofill:focus {
-            -webkit-box-shadow: 0 0 0 30px ${theme.palette.background} inset !important;
-          }
-        `}</style>
       </div>
     )
   }
