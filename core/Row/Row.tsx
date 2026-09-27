@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import styles from './Row.module.css'
 
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 type Align = 'top' | 'middle' | 'bottom'
@@ -50,6 +51,7 @@ const Row = React.forwardRef<HTMLElement, React.PropsWithChildren<RowProps>>(
       justify = defaultProps.justify,
       align = defaultProps.align,
       className = defaultProps.className,
+      style,
       ...props
     },
     ref
@@ -62,21 +64,23 @@ const Row = React.forwardRef<HTMLElement, React.PropsWithChildren<RowProps>>(
       [justify, align]
     )
 
+    const rowStyle = {
+      marginLeft: `calc(${gap} * ${theme.layout.gap} / 2)`,
+      marginRight: `calc(${gap} * ${theme.layout.gap} / 2)`,
+      '--row-gap': `calc(${gap} * ${theme.layout.gap})`,
+      justifyContent: justifyValue,
+      alignItems: alignValue,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <Component ref={ref} className={useClasses('row', className)} {...props}>
+      <Component
+        ref={ref}
+        className={useClasses('row', styles.row, className)}
+        {...props}
+        style={rowStyle}
+      >
         {children}
-        <style jsx>{`
-          .row {
-            display: flex;
-            position: relative;
-            box-sizing: border-box;
-            margin-left: calc(${gap} * ${theme.layout.gap} / 2);
-            margin-right: calc(${gap} * ${theme.layout.gap} / 2);
-            --row-gap: calc(${gap} * ${theme.layout.gap});
-            justify-content: ${justifyValue};
-            align-items: ${alignValue};
-          }
-        `}</style>
       </Component>
     )
   }

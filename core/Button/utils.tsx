@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react'
 import ButtonIcon from './ButtonIcon'
 import { ButtonProps } from './Button'
 import { ButtonGroupConfig } from '../ButtonGroup/ButtonGroupContext'
-import useClasses from '../use-classes'
 
 export const getButtonChildrenWithIcon = (
   auto = false,
@@ -19,9 +18,6 @@ export const getButtonChildrenWithIcon = (
     ? `calc(var(--bolio-ui-button-height) / 2 + var(--bolio-ui-button-icon-padding) * .5)`
     : 0
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const classes = useClasses('text', isRight ? 'right' : 'left')
-
   if (!hasIcon) return <div className="text">{children}</div>
   if (React.Children.count(children) === 0) {
     return (
@@ -33,16 +29,15 @@ export const getButtonChildrenWithIcon = (
   return (
     <>
       <ButtonIcon isRight={isRight}>{hasIcon}</ButtonIcon>
-      <div className={classes}>
+      <div
+        className="text"
+        style={
+          isRight
+            ? { paddingRight: paddingForAutoMode }
+            : { paddingLeft: paddingForAutoMode }
+        }
+      >
         {children}
-        <style jsx>{`
-          .left {
-            padding-left: ${paddingForAutoMode};
-          }
-          .right {
-            padding-right: ${paddingForAutoMode};
-          }
-        `}</style>
       </div>
     </>
   )

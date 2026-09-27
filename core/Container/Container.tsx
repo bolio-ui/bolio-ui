@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import styles from './Container.module.css'
 
 type Justify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
 type Align = 'top' | 'middle' | 'bottom'
@@ -55,6 +56,7 @@ const Container = React.forwardRef<
       align = defaultProps.align,
       fluid = defaultProps.fluid,
       className = defaultProps.className,
+      style,
       ...props
     },
     ref
@@ -67,29 +69,21 @@ const Container = React.forwardRef<
       [justify, align]
     )
 
-    const fluidWidth = fluid
-      ? ''
-      : 'max-width: ' + theme.layout.pageWidthWithMargin
+    const containerStyle = {
+      maxWidth: fluid ? undefined : theme.layout.pageWidthWithMargin,
+      justifyContent: justifyValue,
+      alignItems: alignValue,
+      ...style
+    } as React.CSSProperties
 
     return (
       <Component
         ref={ref}
-        className={useClasses('container', className)}
+        className={useClasses('container', styles.container, className)}
         {...props}
+        style={containerStyle}
       >
         {children}
-        <style jsx>{`
-          .container {
-            /* width: 100%; */
-            ${fluidWidth};
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            justify-content: ${justifyValue};
-            align-items: ${alignValue};
-          }
-        `}</style>
       </Component>
     )
   }

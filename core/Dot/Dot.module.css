@@ -1,0 +1,21 @@
+.dot {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon {
+  width: 0.625em;
+  height: 0.625em;
+  min-width: calc(0.625 * 12px);
+  min-height: calc(0.625 * 12px);
+  line-height: 0.625em;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.label {
+  margin-left: 0.5em;
+  font-size: 1em;
+  line-height: 1em;
+  text-transform: capitalize;
+}

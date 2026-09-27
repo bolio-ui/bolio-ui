@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import styles from './ButtonDrip.module.css'
 
 interface Props {
   x: number
@@ -28,7 +29,7 @@ const ButtonDrip: React.FC<ButtonDrip> = ({
   })
 
   return (
-    <div ref={dripRef} className="drip">
+    <div ref={dripRef} className={styles.drip}>
       <svg width="20" height="20" viewBox="0 0 20 20" style={{ top, left }}>
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g fill={color}>
@@ -36,41 +37,6 @@ const ButtonDrip: React.FC<ButtonDrip> = ({
           </g>
         </g>
       </svg>
-
-      <style jsx>{`
-        .drip {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-        }
-
-        svg {
-          position: absolute;
-          animation: 350ms ease-in expand;
-          animation-fill-mode: forwards;
-          width: 1rem;
-          height: 1rem;
-        }
-
-        @keyframes expand {
-          0% {
-            opacity: 0;
-            transform: scale(1);
-          }
-          30% {
-            opacity: 1;
-          }
-          80% {
-            opacity: 0.5;
-          }
-          100% {
-            transform: scale(28);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   )
 }

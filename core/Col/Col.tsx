@@ -1,6 +1,7 @@
 import React from 'react'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Col.module.css'
 
 interface Props {
   span?: number
@@ -20,24 +21,27 @@ const Col = React.forwardRef<HTMLElement, React.PropsWithChildren<ColProps>>(
       span = 12,
       offset = 0,
       className = '',
+      style,
       ...props
     },
     ref
   ) => {
     const Component = component as React.ElementType
 
+    const colStyle = {
+      width: `${(100 / 12) * span}%`,
+      marginLeft: `${(100 / 12) * offset}%`,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <Component ref={ref} className={useClasses('col', className)} {...props}>
+      <Component
+        ref={ref}
+        className={useClasses('col', styles.col, className)}
+        {...props}
+        style={colStyle}
+      >
         {children}
-        <style jsx>{`
-          .col {
-            box-sizing: border-box;
-            padding-left: calc(var(--row-gap) / 2);
-            padding-right: calc(var(--row-gap) / 2);
-            width: ${(100 / 12) * span}%;
-            margin-left: ${(100 / 12) * offset}%;
-          }
-        `}</style>
       </Component>
     )
   }
