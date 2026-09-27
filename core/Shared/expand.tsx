@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useRealShape from '../utils/use-real-shape'
 import useLatest from '../utils/use-latest'
-import useClasses from '../use-classes'
 
 export type ExpandProps = {
   isExpanded?: boolean
@@ -21,7 +20,6 @@ function Expand({
   const leaveTimer = useRef<number | undefined>(undefined)
   const resetTimer = useRef<number | undefined>(undefined)
   const [state, updateShape] = useRealShape<HTMLDivElement>(contentRef)
-  const classes = useClasses('container', { expanded: selfExpanded })
 
   useEffect(() => setHeight(`${state.height}px`), [state.height])
 
@@ -66,26 +64,18 @@ function Expand({
     }
   }, [isExpanded, updateShape, latest])
 
-  return (
-    <div className={classes}>
-      <div ref={contentRef} className="content">
-        {children}
-      </div>
-      <style jsx>{`
-        .container {
-          padding: 0;
-          margin: 0;
-          height: 0;
-          overflow: hidden;
-          visibility: ${visible ? 'visible' : 'hidden'};
-          transition: height ${delay}ms ease;
-        }
+  const containerStyle: React.CSSProperties = {
+    padding: 0,
+    margin: 0,
+    overflow: 'hidden',
+    transition: `height ${delay}ms ease`,
+    height: selfExpanded ? height : 0,
+    visibility: selfExpanded ? 'visible' : visible ? 'visible' : 'hidden'
+  }
 
-        .expanded {
-          height: ${height};
-          visibility: visible;
-        }
-      `}</style>
+  return (
+    <div style={containerStyle}>
+      <div ref={contentRef}>{children}</div>
     </div>
   )
 }

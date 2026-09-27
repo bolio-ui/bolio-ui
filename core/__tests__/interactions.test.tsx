@@ -128,16 +128,14 @@ describe('interactions keep working', () => {
     fireEvent.click(header)
     await settle()
     expect(header).toHaveAttribute('aria-expanded', 'true')
-    expect(screen.getByText('Body').closest('.container')).toHaveClass(
-      'expanded'
-    )
+    const container = screen.getByText('Body').parentElement
+      ?.parentElement as HTMLElement
+    expect(container.style.visibility).toBe('visible')
 
     fireEvent.click(header)
     await settle()
     expect(header).toHaveAttribute('aria-expanded', 'false')
-    expect(screen.getByText('Body').closest('.container')).not.toHaveClass(
-      'expanded'
-    )
+    expect(container.style.visibility).toBe('hidden')
   })
 
   it('Collapse.Group in accordion mode keeps one open', async () => {
