@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './Code.module.css'
 
@@ -132,7 +132,7 @@ const CodeComponent = React.forwardRef<
                   aria-selected={index === activeTab}
                   aria-controls={`${id}-panel`}
                   tabIndex={index === activeTab ? 0 : -1}
-                  className={useClasses(styles.name, styles.tab, {
+                  className={joinClasses(styles.name, styles.tab, {
                     [styles.active]: index === activeTab
                   })}
                   style={{
@@ -149,7 +149,7 @@ const CodeComponent = React.forwardRef<
           ) : (
             name && (
               <div
-                className={useClasses(styles.name, styles.active)}
+                className={joinClasses(styles.name, styles.active)}
                 style={{ ...nameStyle, backgroundColor: tab }}
               >
                 {name}

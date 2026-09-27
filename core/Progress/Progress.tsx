@@ -79,7 +79,11 @@ const ProgressComponent = React.forwardRef<
       colors
     )
     const fixed = fixedTop || fixedBottom
-    const classes = useClasses(styles.progress, { [styles.fixed]: fixed }, className)
+    const classes = useClasses(
+      styles.progress,
+      { [styles.fixed]: fixed },
+      className
+    )
 
     const progressStyle: React.CSSProperties = {
       backgroundColor: theme.palette.accents_2,

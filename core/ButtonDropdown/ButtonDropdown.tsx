@@ -107,7 +107,9 @@ const ButtonDropdownComponent = React.forwardRef<
     const rootStyle = {
       '--dropdown-radius': theme.layout.radius,
       '--bolio-ui-dropdown-height': SCALES.height(2.5),
-      '--bolio-ui-dropdown-min-width': auto ? 'min-content' : SCALES.width(10.5),
+      '--bolio-ui-dropdown-min-width': auto
+        ? 'min-content'
+        : SCALES.width(10.5),
       '--bolio-ui-dropdown-padding': `${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)} ${paddingLeft}`,
       '--bolio-ui-dropdown-font-size': SCALES.font(0.875),
       ...style

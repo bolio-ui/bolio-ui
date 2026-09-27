@@ -199,12 +199,17 @@ const NumberInputComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <div className={useClasses(styles.withLabel, className)} style={withLabelStyle}>
+      <div
+        className={useClasses(styles.withLabel, className)}
+        style={withLabelStyle}
+      >
         {children && (
           <InputBlockLabel htmlFor={inputId}>{children}</InputBlockLabel>
         )}
         <div
-          className={useClasses(styles.numberInput, { [styles.disabled]: disabled })}
+          className={useClasses(styles.numberInput, {
+            [styles.disabled]: disabled
+          })}
           style={numberInputStyle}
         >
           {!hideControls && control(-1)}

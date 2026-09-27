@@ -111,7 +111,11 @@ const ToggleComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <label className={`${styles.label} ${className}`.trim()} {...props} style={labelStyle}>
+      <label
+        className={`${styles.label} ${className}`.trim()}
+        {...props}
+        style={labelStyle}
+      >
         <input
           ref={ref}
           type="checkbox"

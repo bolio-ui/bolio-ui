@@ -28,7 +28,14 @@ const CapacityComponent = React.forwardRef<
   React.PropsWithChildren<CapacityProps>
 >(
   (
-    { value = 0, limit = 100, color: userColor, className = '', style, ...props },
+    {
+      value = 0,
+      limit = 100,
+      color: userColor,
+      className = '',
+      style,
+      ...props
+    },
     ref
   ) => {
     const theme = useTheme()

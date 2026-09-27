@@ -104,9 +104,16 @@ const CollapseComponent = React.forwardRef<
           aria-expanded={visible}
           onClick={clickHandler}
           onKeyDown={keyDownHandler}
-          style={{ '--collapse-focus-color': theme.palette.primary } as React.CSSProperties}
+          style={
+            {
+              '--collapse-focus-color': theme.palette.primary
+            } as React.CSSProperties
+          }
         >
-          <div className={styles.title} style={{ color: theme.palette.foreground }}>
+          <div
+            className={styles.title}
+            style={{ color: theme.palette.foreground }}
+          >
             <h3>{title}</h3> <CollapseIcon active={visible} />
           </div>
           {subtitle && (

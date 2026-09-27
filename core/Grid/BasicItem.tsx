@@ -6,7 +6,7 @@ import {
   GridAlignContent
 } from './GridTypes'
 import useScale from '../use-scale'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './BasicItem.module.css'
 
@@ -105,7 +105,7 @@ const GridBasicItem = React.forwardRef<
           return `${pre} ${name}`
         return pre
       }, '')
-      return useClasses(styles.item, classString, className)
+      return joinClasses(styles.item, classString, className)
     }, [
       justify,
       direction,

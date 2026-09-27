@@ -83,7 +83,10 @@ const ImageComponent = React.forwardRef<
     }
 
     return (
-      <div className={useClasses('image', styles.image, className)} style={imageStyle}>
+      <div
+        className={useClasses('image', styles.image, className)}
+        style={imageStyle}
+      >
         {showSkeleton && showAnimation && (
           <ImageSkeleton opacity={loading ? 1 : 0} />
         )}

@@ -96,9 +96,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
       top: rect.top + 2,
       left: rect.left,
       zIndex: 1100,
-      ...(disableMatchWidth
-        ? { minWidth: rect.width }
-        : { width: rect.width })
+      ...(disableMatchWidth ? { minWidth: rect.width } : { width: rect.width })
     }
 
     return createPortal(

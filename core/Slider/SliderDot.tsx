@@ -36,7 +36,9 @@ const SliderDot = React.forwardRef<
 
     const dotStyle = {
       left: `${left}%`,
-      backgroundColor: disabled ? theme.palette.accents_2 : theme.palette.primary,
+      backgroundColor: disabled
+        ? theme.palette.accents_2
+        : theme.palette.primary,
       color: disabled ? theme.palette.accents_4 : theme.palette.background,
       '--slider-dot-focus-color': theme.palette.foreground,
       ...style

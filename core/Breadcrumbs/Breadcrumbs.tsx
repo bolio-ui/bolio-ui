@@ -56,7 +56,11 @@ const BreadcrumbsComponent = React.forwardRef<
   })
 
   return (
-    <nav ref={ref} className={`${styles.nav} ${className}`.trim()} style={navStyle}>
+    <nav
+      ref={ref}
+      className={`${styles.nav} ${className}`.trim()}
+      style={navStyle}
+    >
       {withSeparatorChildren}
     </nav>
   )

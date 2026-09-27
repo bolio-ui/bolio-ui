@@ -58,7 +58,9 @@ const LinkComponent = React.forwardRef<
         ? `${SCALES.pt(0.15)} ${SCALES.pr(0.4)} ${SCALES.pb(0.15)} ${SCALES.pl(0.4)}`
         : `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
       '--link-decoration': decoration,
-      '--link-hover-bg': block ? addColorAlpha(theme.palette.link, 0.1) : 'unset',
+      '--link-hover-bg': block
+        ? addColorAlpha(theme.palette.link, 0.1)
+        : 'unset',
       '--link-hover-color': hoverColor,
       ...style
     } as React.CSSProperties

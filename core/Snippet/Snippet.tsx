@@ -110,7 +110,9 @@ const SnippetComponent = React.forwardRef<
       height: SCALES.height(1, 'auto'),
       padding: `${SCALES.pt(0.667)} ${SCALES.pr(2.667)} ${SCALES.pb(0.667)} ${SCALES.pl(0.667)}`,
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
-      ...({ '--snippet-symbol': JSON.stringify(symbolBefore) } as React.CSSProperties),
+      ...({
+        '--snippet-symbol': JSON.stringify(symbolBefore)
+      } as React.CSSProperties),
       ...styleProp
     }
 

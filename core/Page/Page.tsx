@@ -3,7 +3,7 @@ import useTheme from '../use-theme'
 import PageContent from './PageContent'
 import { hasChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './Page.module.css'
 
@@ -103,7 +103,7 @@ const PageComponent = React.forwardRef<
 
     return (
       <section
-        className={useClasses(styles.section, className)}
+        className={joinClasses(styles.section, className)}
         ref={ref}
         {...props}
         style={sectionStyle}

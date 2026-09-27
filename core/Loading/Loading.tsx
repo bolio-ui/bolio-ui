@@ -76,12 +76,16 @@ const LoadingComponent = React.forwardRef<
     }
 
     return (
-      <div ref={ref} role="status" className={classes} {...props} style={containerStyle}>
+      <div
+        ref={ref}
+        role="status"
+        className={classes}
+        {...props}
+        style={containerStyle}
+      >
         <span className={styles.loading}>
           {children && (
-            <label style={{ color: theme.palette.accents_5 }}>
-              {children}
-            </label>
+            <label style={{ color: theme.palette.accents_5 }}>{children}</label>
           )}
           <i style={dotStyle} />
           <i style={dotStyle} />

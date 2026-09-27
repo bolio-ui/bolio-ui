@@ -32,7 +32,13 @@ const SpinnerComponent = React.forwardRef<
   } as React.CSSProperties
 
   return (
-    <div ref={ref} role="status" className={classes} {...props} style={spinnerStyle}>
+    <div
+      ref={ref}
+      role="status"
+      className={classes}
+      {...props}
+      style={spinnerStyle}
+    >
       <div className={styles.container}>
         {[...new Array(12)].map((_, index) => (
           <span key={`spinner-${index}`} />

@@ -99,7 +99,11 @@ const StepperStep = React.forwardRef<HTMLLIElement, StepperStepProps>(
 
     const content = (
       <>
-        <span className={styles.indicator} style={indicatorStyle} aria-hidden="true">
+        <span
+          className={styles.indicator}
+          style={indicatorStyle}
+          aria-hidden="true"
+        >
           {icon ??
             (error ? '!' : state === 'completed' ? <Check /> : index + 1)}
         </span>

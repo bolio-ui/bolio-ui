@@ -38,7 +38,10 @@ function AvatarGroupComponent({
       {count && (
         <span
           className={styles.count}
-          style={{ fontSize: SCALES.font(0.875), color: theme.palette.accents_7 }}
+          style={{
+            fontSize: SCALES.font(0.875),
+            color: theme.palette.accents_7
+          }}
         >
           +{count}
         </span>

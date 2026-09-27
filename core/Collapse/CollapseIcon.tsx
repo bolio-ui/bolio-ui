@@ -16,7 +16,10 @@ function CollapseIcon({ active }: Props) {
       fill="none"
       shapeRendering="geometricPrecision"
       className={styles.svg}
-      style={{ color: 'currentColor', transform: `rotateZ(${active ? '-180deg' : '0'})` }}
+      style={{
+        color: 'currentColor',
+        transform: `rotateZ(${active ? '-180deg' : '0'})`
+      }}
     >
       <path d="M6 9l6 6 6-6" />
     </svg>

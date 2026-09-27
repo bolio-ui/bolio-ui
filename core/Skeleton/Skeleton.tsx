@@ -35,7 +35,11 @@ const SkeletonComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const hasChildren = children !== undefined && children !== null
-    const classes = useClasses(styles.skeleton, { [styles.circle]: circle }, className)
+    const classes = useClasses(
+      styles.skeleton,
+      { [styles.circle]: circle },
+      className
+    )
 
     if (hasChildren && !loading) return <>{children}</>
 

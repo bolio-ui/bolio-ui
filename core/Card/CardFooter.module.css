@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: inherit;
+  background-color: inherit;
+}
+
+.autoMargin :global(*) {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: var(--card-footer-gap);
+}
