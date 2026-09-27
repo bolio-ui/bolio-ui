@@ -128,9 +128,17 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
     height: SCALES.height(1, 'auto')
   } as React.CSSProperties
 
+  // Popover reuses this component and needs its own item padding: it used
+  // to override `.inner`'s padding with a `:global(.tooltip-content.popover
+  // > .inner)` selector, which can't reach across the portal boundary as a
+  // CSS custom property (no shared DOM ancestor to inherit from), so the
+  // same "popover" marker class is checked here directly instead.
+  const isPopover = className?.split(' ').includes('popover')
   const innerStyle: React.CSSProperties = {
     fontSize: SCALES.font(1),
-    padding: `${SCALES.pt(0.65)} ${SCALES.pr(0.9)} ${SCALES.pb(0.65)} ${SCALES.pl(0.9)}`
+    padding: isPopover
+      ? `${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)} ${SCALES.pl(0)}`
+      : `${SCALES.pt(0.65)} ${SCALES.pr(0.9)} ${SCALES.pb(0.65)} ${SCALES.pl(0.9)}`
   }
 
   if (!parent || !el) return null

@@ -1,0 +1,23 @@
+.item {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+  transition:
+    color,
+    background-color 150ms linear;
+  line-height: 1.25em;
+}
+
+.item:hover {
+  color: var(--popover-item-hover-color);
+}
+
+.item.line {
+  line-height: 0;
+  padding: 0;
+}
+
+.item.title {
+  font-weight: 500;
+}
