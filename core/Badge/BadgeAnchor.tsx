@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
 import Badge from './Badge'
 import type { AnyElement } from '../utils/types'
+import styles from './BadgeAnchor.module.css'
 
 export type BadgeAnchorPlacement =
   'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
@@ -64,30 +65,21 @@ function BadgeAnchor({
   )
 
   return (
-    <div className="anchor">
+    <div className={styles.anchor}>
       {withoutBadgeChildren}
-      <sup>{badgeChldren}</sup>
-
-      <style jsx>{`
-        .anchor {
-          position: relative;
-          display: inline-flex;
-          vertical-align: middle;
-          flex-shrink: 0;
-          box-sizing: border-box;
-        }
-
-        sup {
-          position: absolute;
-          top: ${top || 'auto'};
-          left: ${left || 'auto'};
-          right: ${right || 'auto'};
-          bottom: ${bottom || 'auto'};
-          transform: ${value};
-          transform-origin: ${origin};
-          z-index: 1;
-        }
-      `}</style>
+      <sup
+        className={styles.sup}
+        style={{
+          top: top || 'auto',
+          left: left || 'auto',
+          right: right || 'auto',
+          bottom: bottom || 'auto',
+          transform: value,
+          transformOrigin: origin
+        }}
+      >
+        {badgeChldren}
+      </sup>
     </div>
   )
 }

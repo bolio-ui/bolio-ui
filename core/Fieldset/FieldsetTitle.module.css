@@ -1,0 +1,9 @@
+.title {
+  line-height: 1.5;
+  display: inline-flex;
+  word-break: break-word;
+  font-weight: 600;
+  letter-spacing: -0.020625em;
+  font-size: 1.25em;
+  width: auto;
+}

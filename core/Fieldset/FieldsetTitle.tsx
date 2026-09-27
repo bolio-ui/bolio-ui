@@ -1,5 +1,6 @@
 import React from 'react'
 import useClasses from '../use-classes'
+import styles from './FieldsetTitle.module.css'
 
 interface Props {
   className?: string
@@ -13,25 +14,12 @@ function FieldsetTitle({
   children,
   ...props
 }: React.PropsWithChildren<FieldsetTitleProps>) {
-  const classes = useClasses('title', className)
+  const classes = useClasses('title', styles.title, className)
 
   return (
-    <>
-      <div className={classes} {...props}>
-        {children}
-      </div>
-      <style jsx>{`
-        .title {
-          line-height: 1.5;
-          display: inline-flex;
-          word-break: break-word;
-          font-weight: 600;
-          letter-spacing: -0.020625em;
-          font-size: 1.25em;
-          width: auto;
-        }
-      `}</style>
-    </>
+    <div className={classes} {...props}>
+      {children}
+    </div>
   )
 }
 
