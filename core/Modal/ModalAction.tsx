@@ -1,10 +1,10 @@
 import React, { MouseEvent, useImperativeHandle, useMemo, useRef } from 'react'
-import css from 'styled-jsx/css'
 import useTheme from '../use-theme'
 import { useModalContext } from './ModalContext'
 import Button, { ButtonProps } from '../Button'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import styles from './ModalAction.module.css'
 
 type ModalActionEvent = MouseEvent<HTMLButtonElement> & {
   close: () => void
@@ -56,29 +56,25 @@ const ModalActionComponent = React.forwardRef<
     return disabled ? theme.palette.accents_1 : theme.palette.background
   }, [theme.palette, disabled])
 
-  const { className: resolveClassName, styles } = css.resolve`
-    button.btn {
-      font-size: ${SCALES.font(0.75)};
-      border: none;
-      color: ${color};
-      background-color: ${theme.palette.background};
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      justify-content: center;
-      flex: 1;
-      height: ${SCALES.height(3.5625)};
-      border-radius: 0;
-      min-width: 0;
-    }
-    button.btn:hover,
-    button.btn:focus {
-      color: ${disabled ? color : theme.palette.foreground};
-      background-color: ${disabled ? bgColor : theme.palette.accents_1};
-    }
-  `
-  const classes = useClasses(resolveClassName, className)
+  const classes = useClasses(styles.action, className)
+
+  const actionStyle = {
+    fontSize: SCALES.font(0.75),
+    border: 'none',
+    color,
+    backgroundColor: theme.palette.background,
+    display: 'flex',
+    WebkitBoxAlign: 'center',
+    alignItems: 'center',
+    WebkitBoxPack: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    height: SCALES.height(3.5625),
+    borderRadius: 0,
+    minWidth: 0,
+    '--modal-action-hover-color': disabled ? color : theme.palette.foreground,
+    '--modal-action-hover-bg': disabled ? bgColor : theme.palette.accents_1
+  } as React.CSSProperties
 
   const overrideProps = {
     ...props,
@@ -92,9 +88,12 @@ const ModalActionComponent = React.forwardRef<
       onClick={clickHandler}
       disabled={disabled}
       {...overrideProps}
+      style={{
+        ...actionStyle,
+        ...(overrideProps as { style?: React.CSSProperties }).style
+      }}
     >
       {children}
-      {styles}
     </Button>
   )
 })

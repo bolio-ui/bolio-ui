@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useTheme from '../use-theme'
+import styles from './ModalActions.module.css'
 
 const ModalActionsComponent: React.FC<React.PropsWithChildren<unknown>> = ({
   children,
@@ -16,34 +17,22 @@ const ModalActionsComponent: React.FC<React.PropsWithChildren<unknown>> = ({
 
   return (
     <>
-      <div />
-      <footer ref={ref} {...props}>
+      <div className={styles.spacer} style={{ height }} />
+      <footer
+        ref={ref}
+        {...props}
+        className={styles.footer}
+        style={
+          {
+            borderTop: `1px solid ${theme.palette.border}`,
+            borderBottomLeftRadius: theme.layout.radius,
+            borderBottomRightRadius: theme.layout.radius,
+            '--modal-actions-border': theme.palette.border
+          } as React.CSSProperties
+        }
+      >
         {children}
       </footer>
-      <style jsx>{`
-        footer {
-          display: flex;
-          overflow: hidden;
-          width: 100%;
-          height: auto;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          border-top: 1px solid ${theme.palette.border};
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
-        }
-
-        footer > :global(button.btn + button.btn) {
-          border-left: 1px solid ${theme.palette.border};
-        }
-
-        div {
-          height: ${height};
-          flex-shrink: 0;
-        }
-      `}</style>
     </>
   )
 }
