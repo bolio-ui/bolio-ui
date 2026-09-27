@@ -1,0 +1,25 @@
+.button {
+  position: relative;
+  -webkit-appearance: button;
+  text-rendering: auto;
+  display: inline-flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  width: 100%;
+  height: var(--bolio-ui-dropdown-height);
+  min-width: var(--bolio-ui-dropdown-min-width);
+  padding: var(--bolio-ui-dropdown-padding);
+  font-size: var(--bolio-ui-dropdown-font-size);
+  font-weight: bold;
+}
+
+.button:hover {
+  border-color: var(--dropdown-item-hover-border);
+  background-color: var(--dropdown-item-hover-bg);
+}
