@@ -25,6 +25,7 @@ function ButtonDropdownItem({
   className = '',
   main = false,
   type: selfType = 'default' as ButtonDropdownItemTypes,
+  style,
   ...props
 }: ButtonDropdownItemProps) {
   const theme = useTheme()
@@ -47,7 +48,8 @@ function ButtonDropdownItem({
     backgroundColor: colors.bgColor,
     color: colors.color,
     '--dropdown-item-hover-border': colors.hoverBorder,
-    '--dropdown-item-hover-bg': colors.hoverBgColor
+    '--dropdown-item-hover-bg': colors.hoverBgColor,
+    ...style
   } as React.CSSProperties
 
   return (

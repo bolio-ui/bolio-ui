@@ -30,6 +30,7 @@ const StepperComponent = React.forwardRef<
       orientation = 'horizontal',
       className = '',
       children,
+      style,
       ...props
     },
     ref
@@ -44,7 +45,8 @@ const StepperComponent = React.forwardRef<
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
       width: SCALES.width(1, 'auto'),
       fontSize: SCALES.font(0.875),
-      color: theme.palette.foreground
+      color: theme.palette.foreground,
+      ...style
     }
 
     return (

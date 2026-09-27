@@ -27,6 +27,7 @@ const SkeletonComponent = React.forwardRef<
       loading = true,
       className = '',
       children,
+      style,
       ...props
     },
     ref
@@ -45,7 +46,8 @@ const SkeletonComponent = React.forwardRef<
 
     const skeletonStyle: React.CSSProperties = {
       width,
-      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
     }
 
     const shapeStyle = {

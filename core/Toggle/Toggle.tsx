@@ -49,6 +49,7 @@ const ToggleComponent = React.forwardRef<
       className = '',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      style,
       ...props
     },
     ref
@@ -105,7 +106,8 @@ const ToggleComponent = React.forwardRef<
       '--toggle-disabled-inner-bg': theme.palette.accents_2,
       '--toggle-disabled-checked-border': theme.palette.accents_4,
       '--toggle-disabled-checked-bg': theme.palette.accents_4,
-      '--toggle-checked-bg': bg
+      '--toggle-checked-bg': bg,
+      ...style
     } as React.CSSProperties
 
     return (

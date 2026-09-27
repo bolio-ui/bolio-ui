@@ -14,6 +14,7 @@ export type FieldsetContentProps = Props & NativeAttrs
 function FieldsetContentComponent({
   className = '',
   children,
+  style,
   ...props
 }: React.PropsWithChildren<FieldsetContentProps>) {
   const { SCALES } = useScale()
@@ -23,7 +24,8 @@ function FieldsetContentComponent({
     width: SCALES.width(1, '100%'),
     height: SCALES.height(1, 'auto'),
     padding: `${SCALES.pt(1.3)} ${SCALES.pr(1.3)} ${SCALES.pb(1.3)} ${SCALES.pl(1.3)}`,
-    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...style
   }
 
   return (

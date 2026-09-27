@@ -55,6 +55,7 @@ const RatingComponent = React.forwardRef<
       onValueChange,
       locked = false,
       onLockedChange,
+      style,
       ...props
     },
     ref
@@ -133,7 +134,8 @@ const RatingComponent = React.forwardRef<
       width: SCALES.width(1, 'auto'),
       height: SCALES.height(1, 'auto'),
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
-      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
     } as React.CSSProperties
 
     return (

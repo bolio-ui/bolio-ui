@@ -22,6 +22,7 @@ function FieldsetGroupComponent({
   children,
   value,
   onChange,
+  style,
   ...props
 }: React.PropsWithChildren<FieldsetGroupProps>) {
   const theme = useTheme()
@@ -68,7 +69,8 @@ function FieldsetGroupComponent({
     '--fieldset-group-border': theme.palette.border,
     '--fieldset-group-radius': theme.layout.radius,
     '--fieldset-group-active-bg': theme.palette.background,
-    '--fieldset-group-active-color': theme.palette.foreground
+    '--fieldset-group-active-color': theme.palette.foreground,
+    ...style
   } as React.CSSProperties
 
   return (

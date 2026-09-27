@@ -51,6 +51,7 @@ const ButtonDropdownComponent = React.forwardRef<
       disabled = false,
       loading = false,
       icon,
+      style,
       ...props
     },
     ref
@@ -108,7 +109,8 @@ const ButtonDropdownComponent = React.forwardRef<
       '--bolio-ui-dropdown-height': SCALES.height(2.5),
       '--bolio-ui-dropdown-min-width': auto ? 'min-content' : SCALES.width(10.5),
       '--bolio-ui-dropdown-padding': `${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)} ${paddingLeft}`,
-      '--bolio-ui-dropdown-font-size': SCALES.font(0.875)
+      '--bolio-ui-dropdown-font-size': SCALES.font(0.875),
+      ...style
     } as React.CSSProperties
 
     return (

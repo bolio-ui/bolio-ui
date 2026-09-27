@@ -11,6 +11,7 @@ export type PageFooterProps = Props & NativeAttrs
 
 function PageFooterComponent({
   children,
+  style,
   ...props
 }: React.PropsWithChildren<PageFooterProps>) {
   const { SCALES } = useScale()
@@ -20,7 +21,8 @@ function PageFooterComponent({
     width: SCALES.width(1, '100%'),
     height: SCALES.height(1, 'auto'),
     padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
-    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...style
   }
 
   return (

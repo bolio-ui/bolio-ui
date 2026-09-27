@@ -14,6 +14,7 @@ export type FieldsetFooterProps = Props & NativeAttrs
 function FieldsetFooterComponent({
   className = '',
   children,
+  style,
   ...props
 }: React.PropsWithChildren<FieldsetFooterProps>) {
   const theme = useTheme()
@@ -29,7 +30,8 @@ function FieldsetFooterComponent({
     width: SCALES.width(1, 'auto'),
     height: SCALES.height(2.875),
     padding: `${SCALES.pt(0.625)} ${SCALES.pr(1.31)} ${SCALES.pb(0.625)} ${SCALES.pl(1.31)}`,
-    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...style
   }
 
   return (

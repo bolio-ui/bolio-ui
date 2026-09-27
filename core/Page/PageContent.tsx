@@ -12,6 +12,7 @@ export type PageContentProps = Props & NativeAttrs
 function PageContentComponent({
   className,
   children,
+  style,
   ...props
 }: React.PropsWithChildren<PageContentProps>) {
   const { SCALES } = useScale()
@@ -21,7 +22,8 @@ function PageContentComponent({
     width: SCALES.width(1, '100%'),
     height: SCALES.height(1, '100%'),
     padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
-    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...style
   }
 
   return (
