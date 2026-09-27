@@ -36,19 +36,18 @@ const getOwnerScrollbarWidth = (element: Element): number => {
 }
 
 function useBodyScroll(
-  elementRef?: RefObject<HTMLElement> | null,
+  elementRef?: RefObject<HTMLElement | null> | null,
   options?: BodyScrollOptions
 ): [boolean, Dispatch<SetStateAction<boolean>>] {
-  if (typeof document === 'undefined') return [false, (t: unknown) => t]
-
-  const elRef = elementRef || useRef<HTMLElement>(document.body)
+  // The page body is the target when there is no ref. Hooks run on the
+  // server too, where there is no document: it is only read in the effect.
+  const bodyRef = useRef<HTMLElement | null>(null)
+  const elRef = elementRef || bodyRef
   const [hidden, setHidden] = useState<boolean>(false)
-  const safeOptions = {
-    ...defaultOptions,
-    ...(options || {})
-  }
+  const { delayReset } = { ...defaultOptions, ...(options || {}) }
 
   useEffect(() => {
+    if (!elementRef && !bodyRef.current) bodyRef.current = document.body
     if (!elRef || !elRef.current) return
     const lastOverflow = elRef.current.style.overflow
     if (hidden) {
@@ -78,8 +77,8 @@ function useBodyScroll(
     const timer = window.setTimeout(() => {
       reset(elRef.current!)
       window.clearTimeout(timer)
-    }, safeOptions.delayReset)
-  }, [hidden, elRef])
+    }, delayReset)
+  }, [hidden, elRef, elementRef, delayReset])
 
   return [hidden, setHidden]
 }

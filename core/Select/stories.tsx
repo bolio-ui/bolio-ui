@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Select from '.'
 import Grid from '../Grid'
 import Code from '../Code'
@@ -8,7 +8,7 @@ export default {
   component: Select
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const handler = (val) => console.log(val)
   return (
     <Grid.Container gap={2}>
@@ -22,7 +22,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Default">
@@ -69,7 +69,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const Disable: Story = () => (
+export const Disable: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Select one" disabled>
@@ -80,7 +80,7 @@ export const Disable: Story = () => (
   </Grid.Container>
 )
 
-export const DisabledOption: Story = () => (
+export const DisabledOption: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Select one">
@@ -93,7 +93,7 @@ export const DisabledOption: Story = () => (
   </Grid.Container>
 )
 
-export const WithoutIcon: Story = () => (
+export const WithoutIcon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Select one" pure>
@@ -104,7 +104,7 @@ export const WithoutIcon: Story = () => (
   </Grid.Container>
 )
 
-export const Labels: Story = () => (
+export const Labels: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Technologies">
@@ -119,7 +119,7 @@ export const Labels: Story = () => (
   </Grid.Container>
 )
 
-export const Divider: Story = () => (
+export const Divider: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Technologies">
@@ -133,7 +133,7 @@ export const Divider: Story = () => (
   </Grid.Container>
 )
 
-export const Multiple: Story = () => (
+export const Multiple: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select
@@ -156,7 +156,7 @@ export const Multiple: Story = () => (
   </Grid.Container>
 )
 
-export const MultipleWithoutClear: Story = () => (
+export const MultipleWithoutClear: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select
@@ -180,7 +180,7 @@ export const MultipleWithoutClear: Story = () => (
   </Grid.Container>
 )
 
-export const Component: Story = () => (
+export const Component: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Value one" initialValue="1">
@@ -195,7 +195,7 @@ export const Component: Story = () => (
   </Grid.Container>
 )
 
-export const OverWidth: Story = () => (
+export const OverWidth: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Select placeholder="Choose one" value="1" width="150px">

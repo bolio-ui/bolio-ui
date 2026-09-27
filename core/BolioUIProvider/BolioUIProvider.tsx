@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useMemo, useState } from 'react'
+import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react'
 import {
   BolioUIContent,
   defaultToastLayout,
@@ -29,14 +29,20 @@ const BolioUIProvider: React.FC<PropsWithChildren<BolioUIProviderProps>> = ({
   >([])
   const [toastLayout, setToastLayout, toastLayoutRef] =
     useCurrentState<BolioUIContextParams['toastLayout']>(defaultToastLayout)
-  const updateToasts: UpdateToastsFunction = (fn) => {
-    const nextToasts = fn(toastsRef.current)
-    setToasts(nextToasts)
-  }
-  const updateToastLayout: UpdateToastsLayoutFunction = (fn) => {
-    const nextLayout = fn(toastLayoutRef.current)
-    setToastLayout(nextLayout)
-  }
+  const updateToasts: UpdateToastsFunction = useCallback(
+    (fn) => {
+      const nextToasts = fn(toastsRef.current)
+      setToasts(nextToasts)
+    },
+    [toastsRef, setToasts]
+  )
+  const updateToastLayout: UpdateToastsLayoutFunction = useCallback(
+    (fn) => {
+      const nextLayout = fn(toastLayoutRef.current)
+      setToastLayout(nextLayout)
+    },
+    [toastLayoutRef, setToastLayout]
+  )
   const updateLastToastId: UpdateToastsIDFunction = (fn) => {
     setLastUpdateToastId(fn())
   }
@@ -50,7 +56,7 @@ const BolioUIProvider: React.FC<PropsWithChildren<BolioUIProviderProps>> = ({
       updateToastLayout,
       updateLastToastId
     }),
-    [toasts, toastLayout, lastUpdateToastId]
+    [toasts, toastLayout, lastUpdateToastId, updateToasts, updateToastLayout]
   )
 
   return (

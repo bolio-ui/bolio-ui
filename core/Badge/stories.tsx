@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import { useTheme } from '../use-theme/theme-context'
 import Badge from '.'
 import Grid from '../Grid'
@@ -11,7 +11,7 @@ export default {
   component: Badge
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Badge>Default</Badge>
@@ -19,7 +19,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Badge>Default</Badge>
@@ -45,7 +45,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const CustomColor: Story = () => {
+export const CustomColor: StoryFn = () => {
   const theme = useTheme()
   return (
     <Grid.Container gap={2}>
@@ -69,7 +69,7 @@ export const CustomColor: Story = () => {
   )
 }
 
-export const Anchor: Story = () => (
+export const Anchor: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Badge.Anchor>

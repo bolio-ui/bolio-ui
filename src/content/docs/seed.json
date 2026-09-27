@@ -1,0 +1,3887 @@
+[
+  {
+    "title": "Avatar",
+    "component": true,
+    "path": "/docs/components/avatar"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar General",
+    "component": false,
+    "path": "/docs/components/avatar#general"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Text",
+    "component": false,
+    "path": "/docs/components/avatar#text"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Group",
+    "component": false,
+    "path": "/docs/components/avatar#group"
+  },
+  {
+    "head": "Avatar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/avatar#apis"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Props",
+    "component": false,
+    "path": "/docs/components/avatar#avatar.props"
+  },
+  {
+    "head": "Avatar",
+    "title": "Avatar Group Props",
+    "component": false,
+    "path": "/docs/components/avatar#avatar.group.props"
+  },
+  {
+    "title": "Badge",
+    "component": true,
+    "path": "/docs/components/badge"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge General",
+    "component": false,
+    "path": "/docs/components/badge#general"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Type",
+    "component": false,
+    "path": "/docs/components/badge#type"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Custom Color",
+    "component": false,
+    "path": "/docs/components/badge#custom-color"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor",
+    "component": false,
+    "path": "/docs/components/badge#anchor"
+  },
+  {
+    "head": "Badge",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/badge#apis"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Props",
+    "component": false,
+    "path": "/docs/components/badge#badge.props"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor Props",
+    "component": false,
+    "path": "/docs/components/badge#badge.anchor.props"
+  },
+  {
+    "head": "Badge",
+    "title": "Types Badge",
+    "component": false,
+    "path": "/docs/components/badge#badgetypes"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Anchor Placement",
+    "component": false,
+    "path": "/docs/components/badge#anchorplacement"
+  },
+  {
+    "title": "Breadcrumbs",
+    "component": true,
+    "path": "/docs/components/breadcrumbs"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs General",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#general"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Separator",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#separator"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Icons",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#icons"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs With NextJS",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#with-next-js"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#apis"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.props"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Item Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.item.props"
+  },
+  {
+    "head": "Breadcrumbs",
+    "title": "Breadcrumbs Separator Props",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
+  },
+  {
+    "title": "Button",
+    "component": true,
+    "path": "/docs/components/button"
+  },
+  {
+    "head": "Button",
+    "title": "Button General",
+    "component": false,
+    "path": "/docs/components/button#general"
+  },
+  {
+    "head": "Button",
+    "title": "Button Loading",
+    "component": false,
+    "path": "/docs/components/button#loading"
+  },
+  {
+    "head": "Button",
+    "title": "Button Disabled",
+    "component": false,
+    "path": "/docs/components/button#disabled"
+  },
+  {
+    "head": "Button",
+    "title": "Button Shadow",
+    "component": false,
+    "path": "/docs/components/button#shadow"
+  },
+  {
+    "head": "Button",
+    "title": "Button Type Colors",
+    "component": false,
+    "path": "/docs/components/button#type-colors"
+  },
+  {
+    "head": "Button",
+    "title": "Button Lighted",
+    "component": false,
+    "path": "/docs/components/button#lighted"
+  },
+  {
+    "head": "Button",
+    "title": "Button Ghost",
+    "component": false,
+    "path": "/docs/components/button#ghost"
+  },
+  {
+    "head": "Button",
+    "title": "Button Subtle",
+    "component": false,
+    "path": "/docs/components/button#subtle"
+  },
+  {
+    "head": "Button",
+    "title": "Button Rounded",
+    "component": false,
+    "path": "/docs/components/button#rounded"
+  },
+  {
+    "head": "Button",
+    "title": "Button Scale",
+    "component": false,
+    "path": "/docs/components/button#scale"
+  },
+  {
+    "head": "Button",
+    "title": "Button With Icons",
+    "component": false,
+    "path": "/docs/components/button#with-icons"
+  },
+  {
+    "head": "Button",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button#apis"
+  },
+  {
+    "head": "Button",
+    "title": "Button Props",
+    "component": false,
+    "path": "/docs/components/button#button.props"
+  },
+  {
+    "head": "Button",
+    "title": "Button Types",
+    "component": false,
+    "path": "/docs/components/button#buttontypes"
+  },
+  {
+    "title": "Button Dropdown",
+    "component": true,
+    "path": "/docs/components/button-dropdown"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown General",
+    "component": false,
+    "path": "/docs/components/button-dropdown#general"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Loading",
+    "component": false,
+    "path": "/docs/components/button-dropdown#loading"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Disabled",
+    "component": false,
+    "path": "/docs/components/button-dropdown#disabled"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Types",
+    "component": false,
+    "path": "/docs/components/button-dropdown#types"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Multiple Types",
+    "component": false,
+    "path": "/docs/components/button-dropdown#multiple-type"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Custom Right Icon",
+    "component": false,
+    "path": "/docs/components/button-dropdown#custom-right-icon"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button-dropdown#apis"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Props",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdown.props"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Items Props",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdown.item.props"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Types Button Dropdown",
+    "component": false,
+    "path": "/docs/components/button-dropdown#buttondropdowntypes"
+  },
+  {
+    "title": "Button Group",
+    "component": true,
+    "path": "/docs/components/button-group"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group General",
+    "component": false,
+    "path": "/docs/components/button-group#general"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Variant",
+    "component": false,
+    "path": "/docs/components/button-group#variant"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Sizes",
+    "component": false,
+    "path": "/docs/components/button-group#sizes"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Vertical",
+    "component": false,
+    "path": "/docs/components/button-group#vertical"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Disabled",
+    "component": false,
+    "path": "/docs/components/button-group#disabled"
+  },
+  {
+    "head": "Button Group",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/button-group#apis"
+  },
+  {
+    "head": "Button Group",
+    "title": "Button Group Props",
+    "component": false,
+    "path": "/docs/components/button-group#buttongroup.props"
+  },
+  {
+    "head": "Button Group",
+    "title": "Types - Button Group",
+    "component": false,
+    "path": "/docs/components/button-group#buttontypes"
+  },
+  {
+    "title": "Calendar",
+    "component": true,
+    "path": "/docs/components/calendar"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar General",
+    "component": false,
+    "path": "/docs/components/calendar#general"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Min and max",
+    "component": false,
+    "path": "/docs/components/calendar#min-and-max"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Locale and first day of the week",
+    "component": false,
+    "path": "/docs/components/calendar#locale-and-first-day-of-the-week"
+  },
+  {
+    "head": "Calendar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/calendar#apis"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Props",
+    "component": false,
+    "path": "/docs/components/calendar#calendar.props"
+  },
+  {
+    "head": "Calendar",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/calendar#ref"
+  },
+  {
+    "head": "Calendar",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/calendar#accessibility"
+  },
+  {
+    "title": "Capacity",
+    "component": true,
+    "path": "/docs/components/capacity"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity General",
+    "component": false,
+    "path": "/docs/components/capacity#general"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity Fixed Color",
+    "component": false,
+    "path": "/docs/components/capacity#fixed-color"
+  },
+  {
+    "head": "Capacity",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/capacity#apis"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity Props",
+    "component": false,
+    "path": "/docs/components/capacity#capacity.props"
+  },
+  {
+    "title": "Card",
+    "component": true,
+    "path": "/docs/components/card"
+  },
+  {
+    "head": "Card",
+    "title": "Card General",
+    "component": false,
+    "path": "/docs/components/card#general"
+  },
+  {
+    "head": "Card",
+    "title": "Card Hoverable",
+    "component": false,
+    "path": "/docs/components/card#hoverable"
+  },
+  {
+    "head": "Card",
+    "title": "Card Bordered",
+    "component": false,
+    "path": "/docs/components/card#bordered"
+  },
+  {
+    "head": "Card",
+    "title": "Card Shadow",
+    "component": false,
+    "path": "/docs/components/card#shadow"
+  },
+  {
+    "head": "Card",
+    "title": "Card Types",
+    "component": false,
+    "path": "/docs/components/card#types"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Footer",
+    "component": false,
+    "path": "/docs/components/card#with-footer"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Image",
+    "component": false,
+    "path": "/docs/components/card#with-image"
+  },
+  {
+    "head": "Card",
+    "title": "Card With Divider",
+    "component": false,
+    "path": "/docs/components/card#with-divider"
+  },
+  {
+    "head": "Card",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/card#apis"
+  },
+  {
+    "head": "Card",
+    "title": "Card Props",
+    "component": false,
+    "path": "/docs/components/card#card.props"
+  },
+  {
+    "head": "Card",
+    "title": "Card Content Props",
+    "component": false,
+    "path": "/docs/components/card#card.content.props"
+  },
+  {
+    "head": "Card",
+    "title": "Card Footer Props",
+    "component": false,
+    "path": "/docs/components/card#card.footer.props"
+  },
+  {
+    "head": "Card",
+    "title": "Types - Card",
+    "component": false,
+    "path": "/docs/components/card#cardtype"
+  },
+  {
+    "title": "Checkbox",
+    "component": true,
+    "path": "/docs/components/checkbox"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox General",
+    "component": false,
+    "path": "/docs/components/checkbox#general"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Sizes",
+    "component": false,
+    "path": "/docs/components/checkbox#sizes"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Type",
+    "component": false,
+    "path": "/docs/components/checkbox#type"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Disabled",
+    "component": false,
+    "path": "/docs/components/checkbox#disable"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Group",
+    "component": false,
+    "path": "/docs/components/checkbox#group"
+  },
+  {
+    "head": "Checkbox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/checkbox#apis"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Group Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.group.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Types - Checkbox",
+    "component": false,
+    "path": "/docs/components/checkbox#checkboxtypes"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Event",
+    "component": false,
+    "path": "/docs/components/checkbox#checkboxevent"
+  },
+  {
+    "title": "Code",
+    "component": true,
+    "path": "/docs/components/code"
+  },
+  {
+    "head": "Code",
+    "title": "Code General",
+    "component": false,
+    "path": "/docs/components/code#general"
+  },
+  {
+    "head": "Code",
+    "title": "Code Block",
+    "component": false,
+    "path": "/docs/components/code#code-block"
+  },
+  {
+    "head": "Code",
+    "title": "Code Width",
+    "component": false,
+    "path": "/docs/components/code#width"
+  },
+  {
+    "head": "Code",
+    "title": "Code Name",
+    "component": false,
+    "path": "/docs/components/code#name"
+  },
+  {
+    "head": "Code",
+    "title": "Code Tabs",
+    "component": false,
+    "path": "/docs/components/code#tabs"
+  },
+  {
+    "head": "Code",
+    "title": "Code Classic Style",
+    "component": false,
+    "path": "/docs/components/code#classic-style"
+  },
+  {
+    "head": "Code",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/code#apis"
+  },
+  {
+    "head": "Code",
+    "title": "Code Props",
+    "component": false,
+    "path": "/docs/components/code#code.props"
+  },
+  {
+    "title": "Col",
+    "component": true,
+    "path": "/docs/components/col"
+  },
+  {
+    "head": "Col",
+    "title": "Col General",
+    "component": false,
+    "path": "/docs/components/col#general"
+  },
+  {
+    "head": "Col",
+    "title": "Col Offset",
+    "component": false,
+    "path": "/docs/components/col#offset"
+  },
+  {
+    "head": "Col",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/col#apis"
+  },
+  {
+    "head": "Col",
+    "title": "Col Props",
+    "component": false,
+    "path": "/docs/components/col#col.props"
+  },
+  {
+    "head": "Col",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/col#ref"
+  },
+  {
+    "title": "Collapse",
+    "component": true,
+    "path": "/docs/components/collapse"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse General",
+    "component": false,
+    "path": "/docs/components/collapse#general"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Expanded",
+    "component": false,
+    "path": "/docs/components/collapse#expanded"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Subtitle",
+    "component": false,
+    "path": "/docs/components/collapse#subtitle"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Shadow",
+    "component": false,
+    "path": "/docs/components/collapse#shadow"
+  },
+  {
+    "head": "Collapse",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/collapse#apis"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Props",
+    "component": false,
+    "path": "/docs/components/collapse#collapse.props"
+  },
+  {
+    "head": "Collapse",
+    "title": "Collapse Group Props",
+    "component": false,
+    "path": "/docs/components/collapse#collapse.group.props"
+  },
+  {
+    "title": "Combobox",
+    "component": true,
+    "path": "/docs/components/combobox"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox General",
+    "component": false,
+    "path": "/docs/components/combobox#general"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Initial value and disabled options",
+    "component": false,
+    "path": "/docs/components/combobox#initial-value-and-disabled-options"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Empty text",
+    "component": false,
+    "path": "/docs/components/combobox#empty-text"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Disabled",
+    "component": false,
+    "path": "/docs/components/combobox#disabled"
+  },
+  {
+    "head": "Combobox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/combobox#apis"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Props",
+    "component": false,
+    "path": "/docs/components/combobox#combobox.props"
+  },
+  {
+    "head": "Combobox",
+    "title": "ComboboxOption",
+    "component": false,
+    "path": "/docs/components/combobox#comboboxoption"
+  },
+  {
+    "head": "Combobox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/combobox#ref"
+  },
+  {
+    "head": "Combobox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/combobox#accessibility"
+  },
+  {
+    "title": "Container",
+    "component": true,
+    "path": "/docs/components/container"
+  },
+  {
+    "head": "Container",
+    "title": "Container General",
+    "component": false,
+    "path": "/docs/components/container#general"
+  },
+  {
+    "head": "Container",
+    "title": "Container Fluid",
+    "component": false,
+    "path": "/docs/components/container#fluid"
+  },
+  {
+    "head": "Container",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/container#apis"
+  },
+  {
+    "head": "Container",
+    "title": "Container Props",
+    "component": false,
+    "path": "/docs/components/container#container.props"
+  },
+  {
+    "head": "Container",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/container#ref"
+  },
+  {
+    "title": "DatePicker",
+    "component": true,
+    "path": "/docs/components/date-picker"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker General",
+    "component": false,
+    "path": "/docs/components/date-picker#general"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Initial value",
+    "component": false,
+    "path": "/docs/components/date-picker#initial-value"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Min and max",
+    "component": false,
+    "path": "/docs/components/date-picker#min-and-max"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Disabled",
+    "component": false,
+    "path": "/docs/components/date-picker#disabled"
+  },
+  {
+    "head": "DatePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-picker#apis"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Props",
+    "component": false,
+    "path": "/docs/components/date-picker#datepicker.props"
+  },
+  {
+    "head": "DatePicker",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/date-picker#typing"
+  },
+  {
+    "head": "DatePicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/date-picker#ref"
+  },
+  {
+    "head": "DatePicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/date-picker#accessibility"
+  },
+  {
+    "title": "Description",
+    "component": true,
+    "path": "/docs/components/description"
+  },
+  {
+    "head": "Description",
+    "title": "Description General",
+    "component": false,
+    "path": "/docs/components/description#general"
+  },
+  {
+    "head": "Description",
+    "title": "Description With Component",
+    "component": false,
+    "path": "/docs/components/description#with-component"
+  },
+  {
+    "head": "Description",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/description#apis"
+  },
+  {
+    "head": "Description",
+    "title": "Description Props",
+    "component": false,
+    "path": "/docs/components/description#description.props"
+  },
+  {
+    "title": "Display",
+    "component": true,
+    "path": "/docs/components/display"
+  },
+  {
+    "head": "Display",
+    "title": "Display General",
+    "component": false,
+    "path": "/docs/components/display#general"
+  },
+  {
+    "head": "Display",
+    "title": "Display With Code",
+    "component": false,
+    "path": "/docs/components/display#with-code"
+  },
+  {
+    "head": "Display",
+    "title": "Display With Snippet",
+    "component": false,
+    "path": "/docs/components/display#with-snippet"
+  },
+  {
+    "head": "Display",
+    "title": "Display Component Caption",
+    "component": false,
+    "path": "/docs/components/display#component-caption"
+  },
+  {
+    "head": "Display",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/display#apis"
+  },
+  {
+    "head": "Display",
+    "title": "Display Props",
+    "component": false,
+    "path": "/docs/components/display#display.props"
+  },
+  {
+    "title": "Divider",
+    "component": true,
+    "path": "/docs/components/divider"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider General",
+    "component": false,
+    "path": "/docs/components/divider#general"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider With Text",
+    "component": false,
+    "path": "/docs/components/divider#with-text"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Space",
+    "component": false,
+    "path": "/docs/components/divider#space"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Types",
+    "component": false,
+    "path": "/docs/components/divider#types"
+  },
+  {
+    "head": "Divider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/divider#apis"
+  },
+  {
+    "head": "Divider",
+    "title": "Divider Props",
+    "component": false,
+    "path": "/docs/components/divider#divider.props"
+  },
+  {
+    "head": "Divider",
+    "title": "Types - Divider",
+    "component": false,
+    "path": "/docs/components/divider#dividertypes"
+  },
+  {
+    "head": "Divider",
+    "title": "Align - Divider",
+    "component": false,
+    "path": "/docs/components/divider#divideralign"
+  },
+  {
+    "title": "Dot",
+    "component": true,
+    "path": "/docs/components/dot"
+  },
+  {
+    "head": "Dot",
+    "title": "Dot General",
+    "component": false,
+    "path": "/docs/components/dot#general"
+  },
+  {
+    "head": "Dot",
+    "title": "Dot With Text",
+    "component": false,
+    "path": "/docs/components/dot#with-text"
+  },
+  {
+    "head": "Dot",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/dot#apis"
+  },
+  {
+    "head": "Dot",
+    "title": "Dot Props",
+    "component": false,
+    "path": "/docs/components/dot#dot.props"
+  },
+  {
+    "head": "Dot",
+    "title": "Types - Dot",
+    "component": false,
+    "path": "/docs/components/dot#dottypes"
+  },
+  {
+    "title": "Drawer",
+    "component": true,
+    "path": "/docs/components/drawer"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer General",
+    "component": false,
+    "path": "/docs/components/drawer#general"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Placement",
+    "component": false,
+    "path": "/docs/components/drawer#placement"
+  },
+  {
+    "head": "Drawer",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/drawer#apis"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Props",
+    "component": false,
+    "path": "/docs/components/drawer#drawer.props"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Title Props",
+    "component": false,
+    "path": "/docs/components/drawer#drawer.title.props"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Subtitle Props",
+    "component": false,
+    "path": "/docs/components/drawer#drawer.subtitle.props"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Content Props",
+    "component": false,
+    "path": "/docs/components/drawer#drawer.content.props"
+  },
+  {
+    "head": "Drawer",
+    "title": "Placement - Drawer",
+    "component": false,
+    "path": "/docs/components/drawer#drawerplacement"
+  },
+  {
+    "title": "Fieldset",
+    "component": true,
+    "path": "/docs/components/fieldset"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset General",
+    "component": false,
+    "path": "/docs/components/fieldset#general"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Custom Text",
+    "component": false,
+    "path": "/docs/components/fieldset#custom-text"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Tabs",
+    "component": false,
+    "path": "/docs/components/fieldset#tabs"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset With Divider",
+    "component": false,
+    "path": "/docs/components/fieldset#with-divider"
+  },
+  {
+    "head": "Fieldset",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/fieldset#apis"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.props"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Content Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.content.props"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Footer Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.footer.props"
+  },
+  {
+    "head": "Fieldset",
+    "title": "Fieldset Group Props",
+    "component": false,
+    "path": "/docs/components/fieldset#fieldset.group.props"
+  },
+  {
+    "title": "Grid",
+    "component": true,
+    "path": "/docs/components/grid"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid General",
+    "component": false,
+    "path": "/docs/components/grid#general"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Fluid Layout",
+    "component": false,
+    "path": "/docs/components/grid#fluid-layout"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Responsive Layout",
+    "component": false,
+    "path": "/docs/components/grid#responsive-layout"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Hide Elements",
+    "component": false,
+    "path": "/docs/components/grid#hide-elements"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Auto Width",
+    "component": false,
+    "path": "/docs/components/grid#auto-width"
+  },
+  {
+    "head": "Grid",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/grid#apis"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Props",
+    "component": false,
+    "path": "/docs/components/grid#grid.props"
+  },
+  {
+    "head": "Grid",
+    "title": "Grid Container Props",
+    "component": false,
+    "path": "/docs/components/grid#grid.container.props"
+  },
+  {
+    "head": "Grid",
+    "title": "Justify - Grid",
+    "component": false,
+    "path": "/docs/components/grid#justify"
+  },
+  {
+    "head": "Grid",
+    "title": "AlignItems - Grid",
+    "component": false,
+    "path": "/docs/components/grid#alignitems"
+  },
+  {
+    "head": "Grid",
+    "title": "AlignContent - Grid",
+    "component": false,
+    "path": "/docs/components/grid#aligncontent"
+  },
+  {
+    "head": "Grid",
+    "title": "Direction - Grid",
+    "component": false,
+    "path": "/docs/components/grid#direction"
+  },
+  {
+    "head": "Grid",
+    "title": "Wrap - Grid",
+    "component": false,
+    "path": "/docs/components/grid#wrap"
+  },
+  {
+    "title": "Icons",
+    "component": true,
+    "path": "/docs/components/icons"
+  },
+  {
+    "head": "Icons",
+    "title": "Icons Import",
+    "component": false,
+    "path": "/docs/components/icons#import"
+  },
+  {
+    "head": "Icons",
+    "title": "Icons Color",
+    "component": false,
+    "path": "/docs/components/icons#color"
+  },
+  {
+    "head": "Icons",
+    "title": "Icons Sizes",
+    "component": false,
+    "path": "/docs/components/icons#sizes"
+  },
+  {
+    "head": "Icons",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/icons#apis"
+  },
+  {
+    "head": "Icons",
+    "title": "Icons Props",
+    "component": false,
+    "path": "/docs/components/icons#icon.props"
+  },
+  {
+    "title": "Image",
+    "component": true,
+    "path": "/docs/components/image"
+  },
+  {
+    "head": "Image",
+    "title": "Image General",
+    "component": false,
+    "path": "/docs/components/image#general"
+  },
+  {
+    "head": "Image",
+    "title": "Image Skeleton",
+    "component": false,
+    "path": "/docs/components/image#skeleton"
+  },
+  {
+    "head": "Image",
+    "title": "Image Browser",
+    "component": false,
+    "path": "/docs/components/image#browser"
+  },
+  {
+    "head": "Image",
+    "title": "Image Browser Invert",
+    "component": false,
+    "path": "/docs/components/image#browser-invert"
+  },
+  {
+    "head": "Image",
+    "title": "Image Compose",
+    "component": false,
+    "path": "/docs/components/image#compose"
+  },
+  {
+    "head": "Image",
+    "title": "Image SVG",
+    "component": false,
+    "path": "/docs/components/image#svg"
+  },
+  {
+    "head": "Image",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/image#apis"
+  },
+  {
+    "head": "Image",
+    "title": "Image Props",
+    "component": false,
+    "path": "/docs/components/image#image.props"
+  },
+  {
+    "head": "Image",
+    "title": "Image Browser Props",
+    "component": false,
+    "path": "/docs/components/image#image.browser.props"
+  },
+  {
+    "title": "Input",
+    "component": true,
+    "path": "/docs/components/input"
+  },
+  {
+    "head": "Input",
+    "title": "Input General",
+    "component": false,
+    "path": "/docs/components/input#general"
+  },
+  {
+    "head": "Input",
+    "title": "Input Sizes",
+    "component": false,
+    "path": "/docs/components/input#sizes"
+  },
+  {
+    "head": "Input",
+    "title": "Input Set Width",
+    "component": false,
+    "path": "/docs/components/input#set-width"
+  },
+  {
+    "head": "Input",
+    "title": "Input Unwritable",
+    "component": false,
+    "path": "/docs/components/input#unwritable"
+  },
+  {
+    "head": "Input",
+    "title": "Input Inline Label",
+    "component": false,
+    "path": "/docs/components/input#inline-label"
+  },
+  {
+    "head": "Input",
+    "title": "Input Block Label",
+    "component": false,
+    "path": "/docs/components/input#block-label"
+  },
+  {
+    "head": "Input",
+    "title": "Input Type",
+    "component": false,
+    "path": "/docs/components/input#type"
+  },
+  {
+    "head": "Input",
+    "title": "Input Rounded",
+    "component": false,
+    "path": "/docs/components/input#rounded"
+  },
+  {
+    "head": "Input",
+    "title": "Input Icon",
+    "component": false,
+    "path": "/docs/components/input#icon"
+  },
+  {
+    "head": "Input",
+    "title": "Input Clearable",
+    "component": false,
+    "path": "/docs/components/input#clearable"
+  },
+  {
+    "head": "Input",
+    "title": "Input Password",
+    "component": false,
+    "path": "/docs/components/input#password"
+  },
+  {
+    "head": "Input",
+    "title": "Input Get Change",
+    "component": false,
+    "path": "/docs/components/input#get-change"
+  },
+  {
+    "head": "Input",
+    "title": "Input Imperative API",
+    "component": false,
+    "path": "/docs/components/input#imperative-api"
+  },
+  {
+    "head": "Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/input#apis"
+  },
+  {
+    "head": "Input",
+    "title": "Input Props",
+    "component": false,
+    "path": "/docs/components/input#input.props"
+  },
+  {
+    "head": "Input",
+    "title": "Input Password Props",
+    "component": false,
+    "path": "/docs/components/input#input.password.props"
+  },
+  {
+    "head": "Input",
+    "title": "Types - Input",
+    "component": false,
+    "path": "/docs/components/input#inputtypes"
+  },
+  {
+    "head": "Input",
+    "title": "useInput - Input",
+    "component": false,
+    "path": "/docs/components/input#useinput"
+  },
+  {
+    "title": "Keyboard",
+    "component": true,
+    "path": "/docs/components/keyboard"
+  },
+  {
+    "head": "Keyboard",
+    "title": "Keyboard General",
+    "component": false,
+    "path": "/docs/components/keyboard#general"
+  },
+  {
+    "head": "Keyboard",
+    "title": "Keyboard Modifiers",
+    "component": false,
+    "path": "/docs/components/keyboard#modifiers"
+  },
+  {
+    "head": "Keyboard",
+    "title": "Keyboard Combination",
+    "component": false,
+    "path": "/docs/components/keyboard#combination"
+  },
+  {
+    "head": "Keyboard",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/keyboard#apis"
+  },
+  {
+    "head": "Keyboard",
+    "title": "Keyboard Props",
+    "component": false,
+    "path": "/docs/components/keyboard#keyboard.props"
+  },
+  {
+    "title": "Link",
+    "component": true,
+    "path": "/docs/components/link"
+  },
+  {
+    "head": "Link",
+    "title": "Link General",
+    "component": false,
+    "path": "/docs/components/link#general"
+  },
+  {
+    "head": "Link",
+    "title": "Link Highlight",
+    "component": false,
+    "path": "/docs/components/link#highlight"
+  },
+  {
+    "head": "Link",
+    "title": "Link With Icon",
+    "component": false,
+    "path": "/docs/components/link#with-icon"
+  },
+  {
+    "head": "Link",
+    "title": "Link Variant",
+    "component": false,
+    "path": "/docs/components/link#variant"
+  },
+  {
+    "head": "Link",
+    "title": "Link Block",
+    "component": false,
+    "path": "/docs/components/link#block"
+  },
+  {
+    "head": "Link",
+    "title": "Link With the Next.js router",
+    "component": false,
+    "path": "/docs/components/link#with-the-next-js-router"
+  },
+  {
+    "head": "Link",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/link#apis"
+  },
+  {
+    "head": "Link",
+    "title": "Link Props",
+    "component": false,
+    "path": "/docs/components/link#link.props"
+  },
+  {
+    "title": "Loading",
+    "component": true,
+    "path": "/docs/components/loading"
+  },
+  {
+    "head": "Loading",
+    "title": "Loading General",
+    "component": false,
+    "path": "/docs/components/loading#general"
+  },
+  {
+    "head": "Loading",
+    "title": "Loading With Text",
+    "component": false,
+    "path": "/docs/components/loading#with-text"
+  },
+  {
+    "head": "Loading",
+    "title": "Loading Types",
+    "component": false,
+    "path": "/docs/components/loading#types"
+  },
+  {
+    "head": "Loading",
+    "title": "Loading Spaces",
+    "component": false,
+    "path": "/docs/components/loading#spaces"
+  },
+  {
+    "head": "Loading",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/loading#apis"
+  },
+  {
+    "head": "Loading",
+    "title": "Loading Props",
+    "component": false,
+    "path": "/docs/components/loading#loading.props"
+  },
+  {
+    "head": "Loading",
+    "title": "Types - Loading",
+    "component": false,
+    "path": "/docs/components/loading#loadingtypes"
+  },
+  {
+    "title": "Menu",
+    "component": true,
+    "path": "/docs/components/menu"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu General",
+    "component": false,
+    "path": "/docs/components/menu#general"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Labels and dividers",
+    "component": false,
+    "path": "/docs/components/menu#labels-and-dividers"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Submenus",
+    "component": false,
+    "path": "/docs/components/menu#submenus"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Checkbox and radio items",
+    "component": false,
+    "path": "/docs/components/menu#checkbox-and-radio-items"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Controlled",
+    "component": false,
+    "path": "/docs/components/menu#controlled"
+  },
+  {
+    "head": "Menu",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/menu#apis"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Item Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.item.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu CheckboxItem Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.checkboxitem.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu RadioGroup Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.radiogroup.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu RadioItem Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.radioitem.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Sub Props",
+    "component": false,
+    "path": "/docs/components/menu#menu.sub.props"
+  },
+  {
+    "head": "Menu",
+    "title": "Menu Label and Menu Divider",
+    "component": false,
+    "path": "/docs/components/menu#menu.label-and-menu.divider"
+  },
+  {
+    "head": "Menu",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/menu#ref"
+  },
+  {
+    "head": "Menu",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/menu#accessibility"
+  },
+  {
+    "title": "Modal",
+    "component": true,
+    "path": "/docs/components/modal"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal General",
+    "component": false,
+    "path": "/docs/components/modal#general"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal With useModal",
+    "component": false,
+    "path": "/docs/components/modal#with-use-modal"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Without Actions",
+    "component": false,
+    "path": "/docs/components/modal#without-actions"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Disable Action",
+    "component": false,
+    "path": "/docs/components/modal#disable-action"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Customized",
+    "component": false,
+    "path": "/docs/components/modal#customized"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal",
+    "component": false,
+    "path": "/docs/components/modal#loading"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Overlong",
+    "component": false,
+    "path": "/docs/components/modal#overlong"
+  },
+  {
+    "head": "Modal",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/modal#apis"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Props",
+    "component": false,
+    "path": "/docs/components/modal#modal.props"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Title Props",
+    "component": false,
+    "path": "/docs/components/modal#modal.title.props"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Subtitle Props",
+    "component": false,
+    "path": "/docs/components/modal#modal.subtitle.props"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Content Props",
+    "component": false,
+    "path": "/docs/components/modal#modal.content.props"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Action Props",
+    "component": false,
+    "path": "/docs/components/modal#modal.action.props"
+  },
+  {
+    "head": "Modal",
+    "title": "useModal - Modal",
+    "component": false,
+    "path": "/docs/components/modal#usemodal"
+  },
+  {
+    "head": "Modal",
+    "title": "Action Event - Modal",
+    "component": false,
+    "path": "/docs/components/modal#modalactionevent"
+  },
+  {
+    "title": "Note",
+    "component": true,
+    "path": "/docs/components/note"
+  },
+  {
+    "head": "Note",
+    "title": "Note General",
+    "component": false,
+    "path": "/docs/components/note#general"
+  },
+  {
+    "head": "Note",
+    "title": "Note Types",
+    "component": false,
+    "path": "/docs/components/note#types"
+  },
+  {
+    "head": "Note",
+    "title": "Note Hidden Label",
+    "component": false,
+    "path": "/docs/components/note#hidden-label"
+  },
+  {
+    "head": "Note",
+    "title": "Note Custom Label",
+    "component": false,
+    "path": "/docs/components/note#custom-label"
+  },
+  {
+    "head": "Note",
+    "title": "Note Filled Variant",
+    "component": false,
+    "path": "/docs/components/note#filled-variant"
+  },
+  {
+    "head": "Note",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/note#apis"
+  },
+  {
+    "head": "Note",
+    "title": "Note Props",
+    "component": false,
+    "path": "/docs/components/note#note.props"
+  },
+  {
+    "head": "Note",
+    "title": "Types - Note",
+    "component": false,
+    "path": "/docs/components/note#notetypes"
+  },
+  {
+    "title": "Number Input",
+    "component": true,
+    "path": "/docs/components/number-input"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input General",
+    "component": false,
+    "path": "/docs/components/number-input#general"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Step and precision",
+    "component": false,
+    "path": "/docs/components/number-input#step-and-precision"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Without controls",
+    "component": false,
+    "path": "/docs/components/number-input#without-controls"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Error",
+    "component": false,
+    "path": "/docs/components/number-input#error"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Controlled",
+    "component": false,
+    "path": "/docs/components/number-input#controlled"
+  },
+  {
+    "head": "Number Input",
+    "title": "Number Input Disabled and read only",
+    "component": false,
+    "path": "/docs/components/number-input#disabled-and-read-only"
+  },
+  {
+    "head": "Number Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/number-input#apis"
+  },
+  {
+    "head": "Number Input",
+    "title": "NumberInput Props",
+    "component": false,
+    "path": "/docs/components/number-input#numberinput.props"
+  },
+  {
+    "head": "Number Input",
+    "title": "Typing and limits",
+    "component": false,
+    "path": "/docs/components/number-input#typing-and-limits"
+  },
+  {
+    "head": "Number Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/number-input#ref"
+  },
+  {
+    "head": "Number Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/number-input#accessibility"
+  },
+  {
+    "title": "Page",
+    "component": true,
+    "path": "/docs/components/page"
+  },
+  {
+    "head": "Page",
+    "title": "Page General",
+    "component": false,
+    "path": "/docs/components/page#general"
+  },
+  {
+    "head": "Page",
+    "title": "Page Content",
+    "component": false,
+    "path": "/docs/components/page#content"
+  },
+  {
+    "head": "Page",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/page#apis"
+  },
+  {
+    "head": "Page",
+    "title": "Page Props",
+    "component": false,
+    "path": "/docs/components/page#page.props"
+  },
+  {
+    "head": "Page",
+    "title": "Page Header Props",
+    "component": false,
+    "path": "/docs/components/page#page.header.props"
+  },
+  {
+    "head": "Page",
+    "title": "Page Content Props",
+    "component": false,
+    "path": "/docs/components/page#page.content.props"
+  },
+  {
+    "head": "Page",
+    "title": "Page Footer Props",
+    "component": false,
+    "path": "/docs/components/page#page.footer.props"
+  },
+  {
+    "head": "Page",
+    "title": "Render Mode - Page",
+    "component": false,
+    "path": "/docs/components/page#pagerendermode"
+  },
+  {
+    "title": "Pagination",
+    "component": true,
+    "path": "/docs/components/pagination"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination General",
+    "component": false,
+    "path": "/docs/components/pagination#general"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination Limit",
+    "component": false,
+    "path": "/docs/components/pagination#limit"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination Icon",
+    "component": false,
+    "path": "/docs/components/pagination#icon"
+  },
+  {
+    "head": "Pagination",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/pagination#apis"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination Props",
+    "component": false,
+    "path": "/docs/components/pagination#pagination.props"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination Previous Props",
+    "component": false,
+    "path": "/docs/components/pagination#pagination.previous.props"
+  },
+  {
+    "head": "Pagination",
+    "title": "Pagination Next Props",
+    "component": false,
+    "path": "/docs/components/pagination#pagination.next.props"
+  },
+  {
+    "title": "Popover",
+    "component": true,
+    "path": "/docs/components/popover"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover General",
+    "component": false,
+    "path": "/docs/components/popover#general"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover Preset Item",
+    "component": false,
+    "path": "/docs/components/popover#preset-item"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover Close Manual",
+    "component": false,
+    "path": "/docs/components/popover#close-manual"
+  },
+  {
+    "head": "Popover",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/popover#apis"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover Props",
+    "component": false,
+    "path": "/docs/components/popover#popover.props"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover Item Props",
+    "component": false,
+    "path": "/docs/components/popover#popover.item"
+  },
+  {
+    "head": "Popover",
+    "title": "Placement - Popover",
+    "component": false,
+    "path": "/docs/components/popover#placement"
+  },
+  {
+    "title": "Progress",
+    "component": true,
+    "path": "/docs/components/progress"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress General",
+    "component": false,
+    "path": "/docs/components/progress#general"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Custom Max",
+    "component": false,
+    "path": "/docs/components/progress#custom-max"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Dynamic Colors",
+    "component": false,
+    "path": "/docs/components/progress#dynamic-colors"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Type",
+    "component": false,
+    "path": "/docs/components/progress#type"
+  },
+  {
+    "head": "Progress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/progress#apis"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Props",
+    "component": false,
+    "path": "/docs/components/progress#progress.props"
+  },
+  {
+    "head": "Progress",
+    "title": "Types - Progress",
+    "component": false,
+    "path": "/docs/components/progress#progresstypes"
+  },
+  {
+    "title": "Radio",
+    "component": true,
+    "path": "/docs/components/radio"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio General",
+    "component": false,
+    "path": "/docs/components/radio#general"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Group",
+    "component": false,
+    "path": "/docs/components/radio#group"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Type",
+    "component": false,
+    "path": "/docs/components/radio#type"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Description",
+    "component": false,
+    "path": "/docs/components/radio#description"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Disabled",
+    "component": false,
+    "path": "/docs/components/radio#disabled"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Row",
+    "component": false,
+    "path": "/docs/components/radio#row"
+  },
+  {
+    "head": "Radio",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/radio#apis"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Group Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.group.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Description Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.description.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Types - Radio",
+    "component": false,
+    "path": "/docs/components/radio#radiotypes"
+  },
+  {
+    "title": "Rating",
+    "component": true,
+    "path": "/docs/components/rating"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Default",
+    "component": false,
+    "path": "/docs/components/rating#default"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Types",
+    "component": false,
+    "path": "/docs/components/rating#types"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Custom Amount",
+    "component": false,
+    "path": "/docs/components/rating#custom-amount"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Icon",
+    "component": false,
+    "path": "/docs/components/rating#icon"
+  },
+  {
+    "head": "Rating",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/rating#apis"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Props",
+    "component": false,
+    "path": "/docs/components/rating#rating.props"
+  },
+  {
+    "head": "Rating",
+    "title": "Types - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingtypes"
+  },
+  {
+    "head": "Rating",
+    "title": "Count - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingcount"
+  },
+  {
+    "head": "Rating",
+    "title": "Value - Rating",
+    "component": false,
+    "path": "/docs/components/rating#ratingvalue"
+  },
+  {
+    "title": "Row",
+    "component": true,
+    "path": "/docs/components/row"
+  },
+  {
+    "head": "Row",
+    "title": "Row General",
+    "component": false,
+    "path": "/docs/components/row#general"
+  },
+  {
+    "head": "Row",
+    "title": "Row Justify",
+    "component": false,
+    "path": "/docs/components/row#justify"
+  },
+  {
+    "head": "Row",
+    "title": "Row Align",
+    "component": false,
+    "path": "/docs/components/row#align"
+  },
+  {
+    "head": "Row",
+    "title": "Row Gap",
+    "component": false,
+    "path": "/docs/components/row#gap"
+  },
+  {
+    "head": "Row",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/row#apis"
+  },
+  {
+    "head": "Row",
+    "title": "Row Props",
+    "component": false,
+    "path": "/docs/components/row#row.props"
+  },
+  {
+    "head": "Row",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/row#ref"
+  },
+  {
+    "title": "Section",
+    "component": true,
+    "path": "/docs/components/section"
+  },
+  {
+    "head": "Section",
+    "title": "Section General",
+    "component": false,
+    "path": "/docs/components/section#general"
+  },
+  {
+    "head": "Section",
+    "title": "Section Background",
+    "component": false,
+    "path": "/docs/components/section#background"
+  },
+  {
+    "head": "Section",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/section#apis"
+  },
+  {
+    "head": "Section",
+    "title": "Section Props",
+    "component": false,
+    "path": "/docs/components/section#section.props"
+  },
+  {
+    "head": "Section",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/section#ref"
+  },
+  {
+    "title": "Select",
+    "component": true,
+    "path": "/docs/components/select"
+  },
+  {
+    "head": "Select",
+    "title": "Select General",
+    "component": false,
+    "path": "/docs/components/select#general"
+  },
+  {
+    "head": "Select",
+    "title": "Select Types",
+    "component": false,
+    "path": "/docs/components/select#type"
+  },
+  {
+    "head": "Select",
+    "title": "Select Disabled",
+    "component": false,
+    "path": "/docs/components/select#disabled"
+  },
+  {
+    "head": "Select",
+    "title": "Select Disabled Option",
+    "component": false,
+    "path": "/docs/components/select#disabled-option"
+  },
+  {
+    "head": "Select",
+    "title": "Select Without Icon",
+    "component": false,
+    "path": "/docs/components/select#without-icon"
+  },
+  {
+    "head": "Select",
+    "title": "Select Labels",
+    "component": false,
+    "path": "/docs/components/select#labels"
+  },
+  {
+    "head": "Select",
+    "title": "Select Divider",
+    "component": false,
+    "path": "/docs/components/select#divider"
+  },
+  {
+    "head": "Select",
+    "title": "Select Multiple",
+    "component": false,
+    "path": "/docs/components/select#multiple"
+  },
+  {
+    "head": "Select",
+    "title": "Select Multiple Without Clear",
+    "component": false,
+    "path": "/docs/components/select#multiple-without-clear"
+  },
+  {
+    "head": "Select",
+    "title": "Select Compose",
+    "component": false,
+    "path": "/docs/components/select#compose"
+  },
+  {
+    "head": "Select",
+    "title": "Select Over Width",
+    "component": false,
+    "path": "/docs/components/select#over-width"
+  },
+  {
+    "head": "Select",
+    "title": "Select Set parent element",
+    "component": false,
+    "path": "/docs/components/select#set-parent-element"
+  },
+  {
+    "head": "Select",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/select#apis"
+  },
+  {
+    "head": "Select",
+    "title": "Select Props",
+    "component": false,
+    "path": "/docs/components/select#select.props"
+  },
+  {
+    "head": "Select",
+    "title": "Select Option Props",
+    "component": false,
+    "path": "/docs/components/select#select.option.props"
+  },
+  {
+    "head": "Select",
+    "title": "SelectRef - Select",
+    "component": false,
+    "path": "/docs/components/select#selectref"
+  },
+  {
+    "head": "Select",
+    "title": "Types - Select",
+    "component": false,
+    "path": "/docs/components/select#selecttypes"
+  },
+  {
+    "title": "Slider",
+    "component": true,
+    "path": "/docs/components/slider"
+  },
+  {
+    "head": "Select",
+    "title": "Select General",
+    "component": false,
+    "path": "/docs/components/slider#general"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Types",
+    "component": false,
+    "path": "/docs/components/slider#type"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Disabled",
+    "component": false,
+    "path": "/docs/components/slider#disabled"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Step",
+    "component": false,
+    "path": "/docs/components/slider#step"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Range",
+    "component": false,
+    "path": "/docs/components/slider#range"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Event",
+    "component": false,
+    "path": "/docs/components/slider#event"
+  },
+  {
+    "head": "Select",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/slider#apis"
+  },
+  {
+    "head": "Select",
+    "title": "Slider Props",
+    "component": false,
+    "path": "/docs/components/slider#slider.props"
+  },
+  {
+    "head": "Select",
+    "title": "Types - Slider",
+    "component": false,
+    "path": "/docs/components/slider#slidertypes"
+  },
+  {
+    "title": "Skeleton",
+    "component": true,
+    "path": "/docs/components/skeleton"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton General",
+    "component": false,
+    "path": "/docs/components/skeleton#general"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Lines",
+    "component": false,
+    "path": "/docs/components/skeleton#lines"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Circle",
+    "component": false,
+    "path": "/docs/components/skeleton#circle"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton With content",
+    "component": false,
+    "path": "/docs/components/skeleton#with-content"
+  },
+  {
+    "head": "Skeleton",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/skeleton#apis"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Skeleton Props",
+    "component": false,
+    "path": "/docs/components/skeleton#skeleton.props"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/skeleton#ref"
+  },
+  {
+    "head": "Skeleton",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/skeleton#accessibility"
+  },
+  {
+    "title": "Snippet",
+    "component": true,
+    "path": "/docs/components/snippet"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet General",
+    "component": false,
+    "path": "/docs/components/snippet#general"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Width",
+    "component": false,
+    "path": "/docs/components/snippet#width"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Types",
+    "component": false,
+    "path": "/docs/components/snippet#types"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Rounded",
+    "component": false,
+    "path": "/docs/components/snippet#rounded"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Multi Line",
+    "component": false,
+    "path": "/docs/components/snippet#multi-line"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Without Copy",
+    "component": false,
+    "path": "/docs/components/snippet#without-copy"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Custom Symbol",
+    "component": false,
+    "path": "/docs/components/snippet#custom-symbol"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Custom Toast",
+    "component": false,
+    "path": "/docs/components/snippet#custom-toast"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Filled",
+    "component": false,
+    "path": "/docs/components/snippet#filled"
+  },
+  {
+    "head": "Snippet",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/snippet#apis"
+  },
+  {
+    "head": "Snippet",
+    "title": "Snippet Props",
+    "component": false,
+    "path": "/docs/components/snippet#snippet.props"
+  },
+  {
+    "head": "Snippet",
+    "title": "Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#snippettypes"
+  },
+  {
+    "head": "Snippet",
+    "title": "Copy Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#copytypes"
+  },
+  {
+    "head": "Snippet",
+    "title": "Toast Types - Snippet",
+    "component": false,
+    "path": "/docs/components/snippet#toasttypes"
+  },
+  {
+    "title": "Spacer",
+    "component": true,
+    "path": "/docs/components/spacer"
+  },
+  {
+    "head": "Spacer",
+    "title": "Spacer Vertical",
+    "component": false,
+    "path": "/docs/components/spacer#vertical"
+  },
+  {
+    "head": "Spacer",
+    "title": "Spacer Horizontal",
+    "component": false,
+    "path": "/docs/components/spacer#horizontal"
+  },
+  {
+    "head": "Spacer",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/spacer#apis"
+  },
+  {
+    "head": "Spacer",
+    "title": "Spacer Props",
+    "component": false,
+    "path": "/docs/components/spacer#spacer.props"
+  },
+  {
+    "title": "Spinner",
+    "component": true,
+    "path": "/docs/components/spinner"
+  },
+  {
+    "head": "Spinner",
+    "title": "Spinner General",
+    "component": false,
+    "path": "/docs/components/spinner#general"
+  },
+  {
+    "head": "Spinner",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/spinner#apis"
+  },
+  {
+    "head": "Spinner",
+    "title": "Spinner Props",
+    "component": false,
+    "path": "/docs/components/spinner#spinner.props"
+  },
+  {
+    "title": "Stepper",
+    "component": true,
+    "path": "/docs/components/stepper"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper General",
+    "component": false,
+    "path": "/docs/components/stepper#general"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Clickable steps",
+    "component": false,
+    "path": "/docs/components/stepper#clickable-steps"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Error",
+    "component": false,
+    "path": "/docs/components/stepper#error"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Vertical",
+    "component": false,
+    "path": "/docs/components/stepper#vertical"
+  },
+  {
+    "head": "Stepper",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/stepper#apis"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Props",
+    "component": false,
+    "path": "/docs/components/stepper#stepper.props"
+  },
+  {
+    "head": "Stepper",
+    "title": "Stepper Step Props",
+    "component": false,
+    "path": "/docs/components/stepper#stepper.step.props"
+  },
+  {
+    "head": "Stepper",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/stepper#ref"
+  },
+  {
+    "head": "Stepper",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/stepper#accessibility"
+  },
+  {
+    "title": "Table",
+    "component": true,
+    "path": "/docs/components/table"
+  },
+  {
+    "head": "Table",
+    "title": "Table General",
+    "component": false,
+    "path": "/docs/components/table#general"
+  },
+  {
+    "head": "Table",
+    "title": "Table Compose",
+    "component": false,
+    "path": "/docs/components/table#compose"
+  },
+  {
+    "head": "Table",
+    "title": "Table Width",
+    "component": false,
+    "path": "/docs/components/table#width"
+  },
+  {
+    "head": "Table",
+    "title": "Table Actions",
+    "component": false,
+    "path": "/docs/components/table#actions"
+  },
+  {
+    "head": "Table",
+    "title": "Table Update Row",
+    "component": false,
+    "path": "/docs/components/table#update-row"
+  },
+  {
+    "head": "Table",
+    "title": "Table Custom Head",
+    "component": false,
+    "path": "/docs/components/table#custom-head"
+  },
+  {
+    "head": "Table",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/table#apis"
+  },
+  {
+    "head": "Table",
+    "title": "Table Props",
+    "component": false,
+    "path": "/docs/components/table#table.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table Column Props",
+    "component": false,
+    "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table OnRowClick",
+    "component": false,
+    "path": "/docs/components/table#tableonrowclick"
+  },
+  {
+    "head": "Table",
+    "title": "Table OnCellClick",
+    "component": false,
+    "path": "/docs/components/table#tableoncellclick"
+  },
+  {
+    "head": "Table",
+    "title": "Table RowClassNameHandler",
+    "component": false,
+    "path": "/docs/components/table#tablerowclassnamehandler"
+  },
+  {
+    "head": "Table",
+    "title": "Table ColumnRender",
+    "component": false,
+    "path": "/docs/components/table#tablecolumnrender"
+  },
+  {
+    "title": "Tabs",
+    "component": true,
+    "path": "/docs/components/tabs"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs General",
+    "component": false,
+    "path": "/docs/components/tabs#general"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Disabled",
+    "component": false,
+    "path": "/docs/components/tabs#disabled"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Hide Divider",
+    "component": false,
+    "path": "/docs/components/tabs#hide-divider"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Hide Border",
+    "component": false,
+    "path": "/docs/components/tabs#hide-border"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs With Icon",
+    "component": false,
+    "path": "/docs/components/tabs#with-icon"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Scroll Behavior",
+    "component": false,
+    "path": "/docs/components/tabs#scroll-behavior"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Imperatively",
+    "component": false,
+    "path": "/docs/components/tabs#imperatively"
+  },
+  {
+    "head": "Tabs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tabs#apis"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Props",
+    "component": false,
+    "path": "/docs/components/tabs#tabs.props"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Item Props",
+    "component": false,
+    "path": "/docs/components/tabs#tabs.item.props"
+  },
+  {
+    "title": "Tag",
+    "component": true,
+    "path": "/docs/components/tag"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag General",
+    "component": false,
+    "path": "/docs/components/tag#general"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag Types",
+    "component": false,
+    "path": "/docs/components/tag#types"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag Invert",
+    "component": false,
+    "path": "/docs/components/tag#invert"
+  },
+  {
+    "head": "Tag",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tag#apis"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag Props",
+    "component": false,
+    "path": "/docs/components/tag#tag.props"
+  },
+  {
+    "head": "Tag",
+    "title": "Types - Tag",
+    "component": false,
+    "path": "/docs/components/tag#tagtypes"
+  },
+  {
+    "title": "Text",
+    "component": true,
+    "path": "/docs/components/text"
+  },
+  {
+    "head": "Text",
+    "title": "Text Headings",
+    "component": false,
+    "path": "/docs/components/text#headings"
+  },
+  {
+    "head": "Text",
+    "title": "Text Paragraph",
+    "component": false,
+    "path": "/docs/components/text#paragraph"
+  },
+  {
+    "head": "Text",
+    "title": "Text Small",
+    "component": false,
+    "path": "/docs/components/text#small"
+  },
+  {
+    "head": "Text",
+    "title": "Text Blockquote",
+    "component": false,
+    "path": "/docs/components/text#blockquote"
+  },
+  {
+    "head": "Text",
+    "title": "Text Types",
+    "component": false,
+    "path": "/docs/components/text#types"
+  },
+  {
+    "head": "Text",
+    "title": "Text Sizes",
+    "component": false,
+    "path": "/docs/components/text#sizes"
+  },
+  {
+    "head": "Text",
+    "title": "Text Compose",
+    "component": false,
+    "path": "/docs/components/text#compose"
+  },
+  {
+    "head": "Text",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/text#apis"
+  },
+  {
+    "head": "Text",
+    "title": "Text Props",
+    "component": false,
+    "path": "/docs/components/text#text.props"
+  },
+  {
+    "head": "Text",
+    "title": "Types - Text",
+    "component": false,
+    "path": "/docs/components/text#texttypes"
+  },
+  {
+    "title": "Textarea",
+    "component": true,
+    "path": "/docs/components/textarea"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea General",
+    "component": false,
+    "path": "/docs/components/textarea#general"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Disabled",
+    "component": false,
+    "path": "/docs/components/textarea#disabled"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Types",
+    "component": false,
+    "path": "/docs/components/textarea#type"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Get Change",
+    "component": false,
+    "path": "/docs/components/textarea#get-change"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea With useInput",
+    "component": false,
+    "path": "/docs/components/textarea#with-use-input"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Imperative API",
+    "component": false,
+    "path": "/docs/components/textarea#imperative-api"
+  },
+  {
+    "head": "Textarea",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/textarea#apis"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Props",
+    "component": false,
+    "path": "/docs/components/textarea#textarea.props"
+  },
+  {
+    "head": "Textarea",
+    "title": "useInput - Textarea",
+    "component": false,
+    "path": "/docs/components/textarea#useinput"
+  },
+  {
+    "head": "Textarea",
+    "title": "Types - Textarea",
+    "component": false,
+    "path": "/docs/components/textarea#textareatypes"
+  },
+  {
+    "head": "Textarea",
+    "title": "CSSResize - Textarea",
+    "component": false,
+    "path": "/docs/components/textarea#cssresize"
+  },
+  {
+    "title": "Toggle",
+    "component": true,
+    "path": "/docs/components/toggle"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle General",
+    "component": false,
+    "path": "/docs/components/toggle#general"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Types",
+    "component": false,
+    "path": "/docs/components/toggle#type"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Disabled",
+    "component": false,
+    "path": "/docs/components/toggle#disabled"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Get Change",
+    "component": false,
+    "path": "/docs/components/toggle#get-change"
+  },
+  {
+    "head": "Toggle",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/toggle#apis"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Props",
+    "component": false,
+    "path": "/docs/components/toggle#toggle.props"
+  },
+  {
+    "head": "Toggle",
+    "title": "Event - Toggle",
+    "component": false,
+    "path": "/docs/components/toggle#toggleevent"
+  },
+  {
+    "head": "Toggle",
+    "title": "Types - Toggle",
+    "component": false,
+    "path": "/docs/components/toggle#toggletypes"
+  },
+  {
+    "title": "Tooltip",
+    "component": true,
+    "path": "/docs/components/tooltip"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip General",
+    "component": false,
+    "path": "/docs/components/tooltip#general"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Trigger",
+    "component": false,
+    "path": "/docs/components/tooltip#trigger"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip With Components",
+    "component": false,
+    "path": "/docs/components/tooltip#with-components"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Custom Content",
+    "component": false,
+    "path": "/docs/components/tooltip#custom-content"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Types",
+    "component": false,
+    "path": "/docs/components/tooltip#types"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Variant",
+    "component": false,
+    "path": "/docs/components/tooltip#variant"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Placements",
+    "component": false,
+    "path": "/docs/components/tooltip#placements"
+  },
+  {
+    "head": "Tooltip",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tooltip#apis"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Tooltip Props",
+    "component": false,
+    "path": "/docs/components/tooltip#tooltip.props"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Types - Tooltip",
+    "component": false,
+    "path": "/docs/components/tooltip#tooltiptypes"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Placement - Tooltip",
+    "component": false,
+    "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "title": "useBodyScroll",
+    "component": true,
+    "path": "/docs/hooks/use-body-scroll"
+  },
+  {
+    "head": "useBodyScroll",
+    "title": "useBodyScroll General",
+    "component": false,
+    "path": "/docs/hooks/use-body-scroll#general"
+  },
+  {
+    "head": "useBodyScroll",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-body-scroll#apis"
+  },
+  {
+    "title": "useClasses",
+    "component": true,
+    "path": "/docs/hooks/use-classes"
+  },
+  {
+    "head": "useClasses",
+    "title": "Basic usage",
+    "component": false,
+    "path": "/docs/hooks/use-classes#basic-usage"
+  },
+  {
+    "head": "useClasses",
+    "title": "Parse Object",
+    "component": false,
+    "path": "/docs/hooks/use-classes#parse-object"
+  },
+  {
+    "head": "useClasses",
+    "title": "Boundary Scenes",
+    "component": false,
+    "path": "/docs/hooks/use-classes#boundary-scenes"
+  },
+  {
+    "head": "useClasses",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-classes#apis"
+  },
+  {
+    "title": "useClickAway",
+    "component": true,
+    "path": "/docs/hooks/use-click-away"
+  },
+  {
+    "head": "useClickAway",
+    "title": "useClickAway General",
+    "component": false,
+    "path": "/docs/hooks/use-click-away#general"
+  },
+  {
+    "head": "useClickAway",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-click-away#apis"
+  },
+  {
+    "title": "useClipboard",
+    "component": true,
+    "path": "/docs/hooks/use-clipboard"
+  },
+  {
+    "head": "useClipboard",
+    "title": "useClipboard General",
+    "component": false,
+    "path": "/docs/hooks/use-clipboard#general"
+  },
+  {
+    "head": "useClipboard",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-clipboard#apis"
+  },
+  {
+    "title": "useCurrentState",
+    "component": true,
+    "path": "/docs/hooks/use-current-state"
+  },
+  {
+    "head": "useCurrentState",
+    "title": "useCurrentState General",
+    "component": false,
+    "path": "/docs/hooks/use-current-state#general"
+  },
+  {
+    "head": "useCurrentState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-current-state#apis"
+  },
+  {
+    "title": "useInput",
+    "component": true,
+    "path": "/docs/hooks/use-input"
+  },
+  {
+    "head": "useInput",
+    "title": "useInput General",
+    "component": false,
+    "path": "/docs/hooks/use-input#general"
+  },
+  {
+    "head": "useInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-input#apis"
+  },
+  {
+    "head": "useInput",
+    "title": "Keyboard Options",
+    "component": false,
+    "path": "/docs/hooks/use-input#keyboardoptions"
+  },
+  {
+    "title": "useKeyboard",
+    "component": true,
+    "path": "/docs/hooks/use-keyboard"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "useKeyboard General",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#general"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "useKeyboard Element Event",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#element-event"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#apis"
+  },
+  {
+    "head": "useKeyboard",
+    "title": "Keyboard Options",
+    "component": false,
+    "path": "/docs/hooks/use-keyboard#keyboardoptions"
+  },
+  {
+    "title": "useMediaQuery",
+    "component": true,
+    "path": "/docs/hooks/use-media-query"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "useMediaQuery General",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#general"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "useMediaQuery Match Type",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#match-type"
+  },
+  {
+    "head": "useMediaQuery",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-media-query#apis"
+  },
+  {
+    "title": "useModal",
+    "component": true,
+    "path": "/docs/hooks/use-modal"
+  },
+  {
+    "head": "useModal",
+    "title": "useModal General",
+    "component": false,
+    "path": "/docs/hooks/use-modal#general"
+  },
+  {
+    "head": "useModal",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-modal#apis"
+  },
+  {
+    "title": "useScale",
+    "component": true,
+    "path": "/docs/hooks/use-scale"
+  },
+  {
+    "head": "useScale",
+    "title": "Scale the width",
+    "component": false,
+    "path": "/docs/hooks/use-scale#scale-the-width"
+  },
+  {
+    "head": "useScale",
+    "title": "Unconventional defaults",
+    "component": false,
+    "path": "/docs/hooks/use-scale#unconventional-defaults"
+  },
+  {
+    "head": "useScale",
+    "title": "Get native props",
+    "component": false,
+    "path": "/docs/hooks/use-scale#get-native-props"
+  },
+  {
+    "head": "useScale",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scale#apis"
+  },
+  {
+    "head": "useScale",
+    "title": "withScale",
+    "component": false,
+    "path": "/docs/hooks/use-scale#withscale"
+  },
+  {
+    "title": "useTabs",
+    "component": true,
+    "path": "/docs/hooks/use-tabs"
+  },
+  {
+    "head": "useTabs",
+    "title": "useTabs General",
+    "component": false,
+    "path": "/docs/hooks/use-tabs#general"
+  },
+  {
+    "head": "useTabs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-tabs#apis"
+  },
+  {
+    "title": "useTheme",
+    "component": true,
+    "path": "/docs/hooks/use-theme"
+  },
+  {
+    "head": "useTheme",
+    "title": "useTheme General",
+    "component": false,
+    "path": "/docs/hooks/use-theme#general"
+  },
+  {
+    "head": "useTheme",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-theme#apis"
+  },
+  {
+    "head": "useTheme",
+    "title": "Get preset types",
+    "component": false,
+    "path": "/docs/hooks/use-theme#get-preset-types"
+  },
+  {
+    "title": "useToast",
+    "component": true,
+    "path": "/docs/hooks/use-toast"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast General",
+    "component": false,
+    "path": "/docs/hooks/use-toast#general"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Multiline",
+    "component": false,
+    "path": "/docs/hooks/use-toast#multiline"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Action",
+    "component": false,
+    "path": "/docs/hooks/use-toast#action"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Cancel",
+    "component": false,
+    "path": "/docs/hooks/use-toast#cancel"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast ReactNode",
+    "component": false,
+    "path": "/docs/hooks/use-toast#react-node"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Type",
+    "component": false,
+    "path": "/docs/hooks/use-toast#type"
+  },
+  {
+    "head": "useToast",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-toast#apis"
+  },
+  {
+    "head": "useToast",
+    "title": "useToasts",
+    "component": false,
+    "path": "/docs/hooks/use-toast#usetoasts"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Layout",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastlayout"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Input",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastinput"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Placement",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastplacement"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Action",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toastaction"
+  },
+  {
+    "head": "useToast",
+    "title": "Toast Types",
+    "component": false,
+    "path": "/docs/hooks/use-toast#toasttypes"
+  },
+  {
+    "title": "About Bolio UI",
+    "component": true,
+    "path": "/docs/guide/about-bolio-ui"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Components library",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#components-library"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Browser support",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#browser-support"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Releases cycle",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#releases-cycle"
+  },
+  {
+    "head": "About Bolio UI",
+    "title": "Project maintenance",
+    "component": false,
+    "path": "/docs/guide/about-bolio-ui#project-maintenance"
+  },
+  {
+    "title": "Example with Gatsby",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-gatsby"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#generate-new-application"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#installation"
+  },
+  {
+    "head": "Example with Gatsby",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-gatsby#setup"
+  },
+  {
+    "title": "Example with Next.js",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-nextjs"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Server Render",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#server-render"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Next.js",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#next-js"
+  },
+  {
+    "head": "Example with Next.js",
+    "title": "Custom Server",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-nextjs#custom-server"
+  },
+  {
+    "title": "Example with RedwoodJS",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#get-started-with-an-example"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#generate-new-application"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#installation"
+  },
+  {
+    "head": "Example with RedwoodJS",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodjs#setup"
+  },
+  {
+    "title": "Example with Remix",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-remix"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#generate-new-application"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#installation"
+  },
+  {
+    "head": "Example with Remix",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-remix#setup"
+  },
+  {
+    "title": "Example with Vite",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-vite"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#generate-new-application"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#installation"
+  },
+  {
+    "head": "Example with Vite",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-vite#setup"
+  },
+  {
+    "title": "Contribute",
+    "component": true,
+    "path": "/docs/guide/contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "Ways to contribute",
+    "component": false,
+    "path": "/docs/guide/contribute#ways-to-contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "How to contribute?",
+    "component": false,
+    "path": "/docs/guide/contribute#how-to-contribute"
+  },
+  {
+    "head": "Contribute",
+    "title": "npm scripts",
+    "component": false,
+    "path": "/docs/guide/contribute#npm-scripts"
+  },
+  {
+    "title": "Customize Themes",
+    "component": true,
+    "path": "/docs/guide/customize-themes"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/customize-themes#usage"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Theme Generator",
+    "component": false,
+    "path": "/docs/guide/customize-themes#theme-generator"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Switch themes",
+    "component": false,
+    "path": "/docs/guide/customize-themes#switch-themes"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Customizing theme",
+    "component": false,
+    "path": "/docs/guide/customize-themes#customizing-theme"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Get types",
+    "component": false,
+    "path": "/docs/guide/customize-themes#get-types"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Customizer",
+    "component": false,
+    "path": "/docs/guide/customize-themes#customizer"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Build components",
+    "component": false,
+    "path": "/docs/guide/customize-themes#build-components"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Fonts",
+    "component": false,
+    "path": "/docs/guide/customize-themes#fonts"
+  },
+  {
+    "head": "Customize Themes",
+    "title": "Themes APIs",
+    "component": false,
+    "path": "/docs/guide/customize-themes#themes-ap-is"
+  },
+  {
+    "title": "Default Theme",
+    "component": true,
+    "path": "/docs/guide/default-theme"
+  },
+  {
+    "head": "Default Theme",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/default-theme#usage"
+  },
+  {
+    "head": "Default Theme",
+    "title": "Colors",
+    "component": false,
+    "path": "/docs/guide/default-theme#colors"
+  },
+  {
+    "title": "Getting Started",
+    "component": true,
+    "path": "/docs/guide/getting-started"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/getting-started#install"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/getting-started#setup"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Using Bolio UI components",
+    "component": false,
+    "path": "/docs/guide/getting-started#using-bolio-ui-components"
+  },
+  {
+    "head": "Getting Started",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/guide/getting-started#apis"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Bolio UIProvider Props",
+    "component": false,
+    "path": "/docs/guide/getting-started#boliouiprovider.props"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Community",
+    "component": false,
+    "path": "/docs/guide/getting-started#community"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Contributing",
+    "component": false,
+    "path": "/docs/guide/getting-started#contributing"
+  },
+  {
+    "title": "Migrating to v2",
+    "component": true,
+    "path": "/docs/guide/migration-v1-to-v2"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Requirements",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#requirements"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Breaking changes",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#breaking-changes"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Changes in behavior",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#changes-in-behavior"
+  },
+  {
+    "head": "Migrating to v2",
+    "title": "Checklist",
+    "component": false,
+    "path": "/docs/guide/migration-v1-to-v2#checklist"
+  },
+  {
+    "title": "Page structure",
+    "component": true,
+    "path": "/docs/guide/page-structure"
+  },
+  {
+    "head": "Page structure",
+    "title": "Page structure General",
+    "component": false,
+    "path": "/docs/guide/page-structure#general"
+  },
+  {
+    "head": "Page structure",
+    "title": "Rules that keep it working",
+    "component": false,
+    "path": "/docs/guide/page-structure#rules-that-keep-it-working"
+  },
+  {
+    "title": "Refs and accessibility",
+    "component": true,
+    "path": "/docs/guide/refs-and-accessibility"
+  },
+  {
+    "head": "Refs and accessibility",
+    "title": "Refs",
+    "component": false,
+    "path": "/docs/guide/refs-and-accessibility#refs"
+  },
+  {
+    "head": "Refs and accessibility",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/guide/refs-and-accessibility#accessibility"
+  }
+]

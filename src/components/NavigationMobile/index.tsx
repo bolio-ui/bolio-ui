@@ -1,9 +1,10 @@
 import React from 'react'
-import NextLink from 'next/link'
-import { useTheme, Text, Link } from 'core'
+import { useTheme, Text } from 'core'
 import { ChevronRight } from '@bolio-ui/icons'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { menuMobile } from 'src/data/menuMobile'
+import { isPlainLeftClick } from 'src/utils/client-navigation'
+import { versions } from 'src/data/versions'
 
 interface Props {
   expanded: boolean
@@ -11,7 +12,14 @@ interface Props {
 
 const MenuMobile: React.FC<Props> = ({ expanded }) => {
   const theme = useTheme()
-  const { pathname } = useRouter()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const navigate = (event: React.MouseEvent, url: string) => {
+    if (!isPlainLeftClick(event)) return
+    event.preventDefault()
+    router.push(url)
+  }
   const [expandedGroupName, setExpandedGroupName] = React.useState<
     string | null
   >(null)
@@ -54,21 +62,28 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
                   <div key={section.name}>
                     <span className="section-name">{section.name}</span>
                     {section.children.map((item) => {
-                      const Component = item.target ? Link : NextLink
-                      return (
-                        <Component
+                      const className = `section-item ${
+                        pathname === item.url ? 'active' : ''
+                      }`
+                      return item.target ? (
+                        <a
+                          key={item.url}
                           href={item.url || '/'}
                           target={item.target}
-                          key={item.url}
+                          rel="noreferrer"
+                          className={className}
                         >
-                          <a
-                            className={`section-item ${
-                              pathname === item.url ? 'active' : ''
-                            }`}
-                          >
-                            {item.name}
-                          </a>
-                        </Component>
+                          {item.name}
+                        </a>
+                      ) : (
+                        <a
+                          key={item.url}
+                          href={item.url || '/'}
+                          className={className}
+                          onClick={(event) => navigate(event, item.url || '/')}
+                        >
+                          {item.name}
+                        </a>
                       )
                     })}
                   </div>
@@ -77,6 +92,42 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
             )}
           </div>
         ))}
+
+        <div
+          className="fadein"
+          style={{ animationDelay: `${(menuMobile.length + 1) * 50}ms` }}
+        >
+          <div className="group">
+            <span className="section-name">Version</span>
+            {versions.map(({ label, version, url, current }) => {
+              const className = `section-item ${current ? 'active' : ''}`
+              const text = `${label} (v${version})`
+              const ariaLabel = `Bolio UI ${label} documentation`
+              return current ? (
+                <a
+                  href={url}
+                  key={label}
+                  className={className}
+                  aria-label={ariaLabel}
+                  onClick={(event) => navigate(event, url)}
+                >
+                  {text}
+                </a>
+              ) : (
+                <a
+                  href={url}
+                  key={label}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={className}
+                  aria-label={ariaLabel}
+                >
+                  {text}
+                </a>
+              )
+            })}
+          </div>
+        </div>
       </div>
 
       <style jsx>{`

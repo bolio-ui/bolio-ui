@@ -9,6 +9,18 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
+    name: 'Migrating to v2',
+    url: '/docs/guide/migration-v1-to-v2'
+  },
+  {
+    name: 'Refs and accessibility',
+    url: '/docs/guide/refs-and-accessibility'
+  },
+  {
+    name: 'Page structure',
+    url: '/docs/guide/page-structure'
+  },
+  {
     name: 'About Bolio UI',
     url: '/docs/guide/about-bolio-ui'
   },
@@ -92,6 +104,10 @@ export const components = [
     url: '/docs/components/button-group'
   },
   {
+    name: 'Calendar',
+    url: '/docs/components/calendar'
+  },
+  {
     name: 'Capacity',
     url: '/docs/components/capacity'
   },
@@ -108,8 +124,24 @@ export const components = [
     url: '/docs/components/code'
   },
   {
+    name: 'Col',
+    url: '/docs/components/col'
+  },
+  {
     name: 'Collapse',
     url: '/docs/components/collapse'
+  },
+  {
+    name: 'Combobox',
+    url: '/docs/components/combobox'
+  },
+  {
+    name: 'Container',
+    url: '/docs/components/container'
+  },
+  {
+    name: 'DatePicker',
+    url: '/docs/components/date-picker'
   },
   {
     name: 'Description',
@@ -164,12 +196,20 @@ export const components = [
     url: '/docs/components/loading'
   },
   {
+    name: 'Menu',
+    url: '/docs/components/menu'
+  },
+  {
     name: 'Modal',
     url: '/docs/components/modal'
   },
   {
     name: 'Note',
     url: '/docs/components/note'
+  },
+  {
+    name: 'Number Input',
+    url: '/docs/components/number-input'
   },
   {
     name: 'Page',
@@ -196,8 +236,20 @@ export const components = [
     url: '/docs/components/rating'
   },
   {
+    name: 'Row',
+    url: '/docs/components/row'
+  },
+  {
     name: 'Select',
     url: '/docs/components/select'
+  },
+  {
+    name: 'Skeleton',
+    url: '/docs/components/skeleton'
+  },
+  {
+    name: 'Section',
+    url: '/docs/components/section'
   },
   {
     name: 'Slider',
@@ -214,6 +266,10 @@ export const components = [
   {
     name: 'Spinner',
     url: '/docs/components/spinner'
+  },
+  {
+    name: 'Stepper',
+    url: '/docs/components/stepper'
   },
   {
     name: 'Table',

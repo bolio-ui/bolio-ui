@@ -2,53 +2,29 @@ import * as React from 'react'
 import { createPortal } from 'react-dom'
 import cn from 'classnames'
 import { isMacOs } from 'react-device-detect'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useTheme, useBodyScroll, useClickAway, Keyboard } from 'core'
-import AutoSuggest, {
-  ChangeEvent,
-  OnSuggestionSelected,
-  RenderSuggestionsContainerParams,
-  RenderInputComponentProps
-} from 'react-autosuggest'
-import { SearchByAlgolia, Close } from 'src/components/Icons'
+import { Close } from 'src/components/Icons'
 import { addColorAlpha } from 'core/utils/color'
-import {
-  connectAutoComplete,
-  connectStateResults
-} from 'react-instantsearch-dom'
 import { isEmpty } from 'lodash'
-import { AutocompleteProvided } from 'react-instantsearch-core'
 import Suggestion from './suggestion'
+import { searchDocs } from 'src/utils/local-search'
 import { VisualState, useKBar } from 'kbar'
-import Blockholder from 'src/components/Blockholder'
 import useIsMounted from 'src/utils/use-is-mounted'
 import usePortal from 'core/utils/use-portal'
-import withDeaults from 'src/utils/with-defaults'
 import { useIsMobile } from 'src/utils/use-media-query'
 
-interface Props extends AutocompleteProvided {
-  hits?: ReadonlyArray<string>
-  refine?: (value: string) => void
+interface Props {
   offsetTop?: number
 }
 
-const defaultProps = {
-  offsetTop: 0
-}
-
-interface SuggestionsFetchRequestedParams {
-  value: string
-}
-
-interface OnSuggestionSelectedParams {
-  url: string
-}
-
-const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
+const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
   const theme = useTheme()
 
   const [value, setValue] = React.useState('')
   const [isFocused, setIsFocused] = React.useState(false)
+  const [highlighted, setHighlighted] = React.useState(0)
+  const listId = React.useId()
   const [, setBodyHidden] = useBodyScroll(null, { scrollLayer: true })
   const router = useRouter()
 
@@ -61,6 +37,10 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   })
 
   const isMobile = useIsMobile()
+  const hits = React.useMemo(
+    () => searchDocs(value, isMobile ? 6 : 8),
+    [value, isMobile]
+  )
 
   const { query } = useKBar()
   const isMounted = useIsMounted()
@@ -69,7 +49,7 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
 
   useClickAway(inputRef, () => {
     setIsFocused(false)
-    inputRef && inputRef?.current?.blur()
+    inputRef.current?.blur()
   })
 
   React.useEffect(() => {
@@ -86,188 +66,89 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
     }
   }, [hits, value, isFocused, isMobile, setBodyHidden])
 
-  const onChange = (_: unknown, { newValue }: ChangeEvent) => {
-    setValue(newValue)
-  }
+  const isOpen = isFocused && hits.length > 0
 
-  const inputProps = {
-    value,
-    onChange,
-    ref: inputRef,
-    type: 'search',
-    onFocus: () => setIsFocused(true),
-    onBlur: () => setIsFocused(false)
-  }
+  // the first suggestion is highlighted again for every new search
+  React.useEffect(() => setHighlighted(0), [value])
 
-  const onSuggestionsFetchRequested = ({
-    value
-  }: SuggestionsFetchRequestedParams) => {
-    refine(value)
-  }
-
-  const onSuggestionSelected: OnSuggestionSelected<OnSuggestionSelectedParams> =
-    (_, { suggestion, method }) => {
-      if (method === 'enter') {
-        onClear()
-        router.push(suggestion.url)
-      }
-    }
-
-  const getSuggestionValue = () => value
-
-  const renderSuggestion = (
-    hit,
-    { isHighlighted }: { isHighlighted: boolean }
-  ) => <Suggestion highlighted={isHighlighted} hit={hit} />
-
+  // Leaving the field or picking a suggestion clears the search
   const onClear = () => {
-    refine('')
     setValue('')
-    inputRef && inputRef?.current?.blur()
+    inputRef.current?.blur()
   }
 
-  const renderInput = React.useCallback(
-    (inputProps: RenderInputComponentProps) => {
-      const onClear = () => {
-        refine('')
-        setValue('')
-        inputRef && inputRef?.current?.blur()
-      }
-
-      const handleKeyboardClick = () => {
-        query.setVisualState((vs) =>
-          [VisualState.animatingOut, VisualState.hidden].includes(vs)
-            ? VisualState.animatingIn
-            : VisualState.animatingOut
-        )
-      }
-
-      return (
-        <label className="search__input-container">
-          <input
-            className="search__input"
-            {...inputProps}
-            placeholder="Search..."
-          />
-          {!value ? (
-            <span className="search__placeholder-container">
-              <Keyboard
-                className="search__placeholder-kbd"
-                command={isMacOs}
-                ctrl={!isMacOs}
-                onClick={handleKeyboardClick}
-                style={{ borderRadius: 20 }}
-              >
-                K
-              </Keyboard>
-            </span>
-          ) : (
-            <span className="search__reset-container" onClick={onClear}>
-              <Close size={16} fill={theme.palette.accents_6} />
-            </span>
-          )}
-        </label>
-      )
-    },
-    [value, theme.palette.accents_6, refine, query]
-  )
-
-  const renderSuggestionsContainer = ({
-    containerProps,
-    children
-  }: RenderSuggestionsContainerParams) =>
-    suggestionsPortal ? (
-      createPortal(
-        <div className={'suggest__suggestion-sticky'}>
-          <div {...containerProps}>
-            <a
-              href="https://www.algolia.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="react-autosuggest__suggestions-header"
-            >
-              <SearchByAlgolia fill={theme.palette.accents_6} />
-            </a>
-            {children}
-          </div>
-        </div>,
-        suggestionsPortal
-      )
-    ) : (
-      <div {...containerProps}>
-        <a
-          href="https://www.algolia.com/"
-          target="_blank"
-          rel="noreferrer"
-          className="react-autosuggest__suggestions-header"
-        >
-          <SearchByAlgolia fill={theme.palette.accents_6} />
-        </a>
-        {children}
-      </div>
-    )
-
-  const NoResults = connectStateResults(
-    ({ searchState, searchResults, searching }) => {
-      const open =
-        searchState &&
-        searchState.query &&
-        !searching &&
-        searchResults &&
-        searchResults.nbHits === 0
-      const NoResultsContainer = () => (
-        <div className={'suggest__suggestion-sticky'}>
-          <div className="no-results">
-            <span>
-              No results for <span>"{value}"</span>
-            </span>
-            <br />
-            <span>Try again with a different keyword</span>
-          </div>
-        </div>
-      )
-      // if (accents_0 && open) {
-      //   if (!noResultsPortal) return null
-      //   return createPortal(<NoResultsContainer />, noResultsPortal)
-      // }
-      if (open) {
-        if (!noResultsPortal) return null
-        return createPortal(<NoResultsContainer />, noResultsPortal)
-      }
-      return open ? <NoResultsContainer /> : null
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') return onClear()
+    if (!isOpen) return
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      const step = event.key === 'ArrowDown' ? 1 : -1
+      setHighlighted((index) => (index + step + hits.length) % hits.length)
     }
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      const { path } = hits[highlighted]
+      onClear()
+      router.push(path)
+    }
+  }
+
+  const handleKeyboardClick = () => {
+    query.setVisualState((vs) =>
+      [VisualState.animatingOut, VisualState.hidden].includes(vs)
+        ? VisualState.animatingIn
+        : VisualState.animatingOut
+    )
+  }
+
+  const suggestions = (
+    <div
+      id={listId}
+      role="listbox"
+      aria-label="Search results"
+      className={cn('react-autosuggest__suggestions-container', {
+        'react-autosuggest__suggestions-container--open': isOpen
+      })}
+      // keeps the focus in the field while a suggestion is clicked
+      onMouseDown={(event) => event.preventDefault()}
+    >
+      {isOpen && (
+        <ul className="react-autosuggest__suggestions-list">
+          {hits.map((hit, index) => (
+            <li
+              key={hit.path}
+              id={`${listId}-${index}`}
+              role="option"
+              aria-selected={index === highlighted}
+              className="react-autosuggest__suggestion"
+              onMouseEnter={() => setHighlighted(index)}
+              onClick={onClear}
+            >
+              <Suggestion
+                highlighted={index === highlighted}
+                hit={hit}
+                query={value}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   )
 
-  if (!isMounted) {
-    return (
-      <>
-        <Blockholder
-          className="search__placeholder-block"
-          alt="search placeholder"
-          height="38px"
-        />
-        <style jsx global>{`
-          .search__placeholder-block {
-            max-width: 200px;
-          }
-          @media only screen and (max-width: ${theme.breakpoints.md.max}) {
-            .search__placeholder-block {
-              max-width: 228px;
-            }
-          }
-          @media only screen and (max-width: ${theme.breakpoints.xs.max}) {
-            .search__placeholder-block {
-              max-width: 64vw;
-            }
-          }
-          @media only screen and (min-width: ${theme.breakpoints.xs
-              .min}) and (max-width: ${theme.breakpoints.md.max}) {
-            .search__placeholder-block {
-              max-width: 248px;
-            }
-          }
-        `}</style>
-      </>
+  const NoResults = () => {
+    if (!value || hits.length > 0 || !noResultsPortal) return null
+    return createPortal(
+      <div className={'suggest__suggestion-sticky'}>
+        <div className="no-results">
+          <span>
+            No results for <span>"{value}"</span>
+          </span>
+          <br />
+          <span>Try again with a different keyword</span>
+        </div>
+      </div>,
+      noResultsPortal
     )
   }
 
@@ -279,18 +160,64 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
           'has-value': !!value.length
         })}
       >
-        <AutoSuggest
-          highlightFirstSuggestion={true}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={onClear}
-          onSuggestionSelected={onSuggestionSelected}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          renderInputComponent={renderInput}
-          renderSuggestionsContainer={renderSuggestionsContainer}
-          suggestions={hits}
-          inputProps={inputProps}
-        />
+        <div className="react-autosuggest__container">
+          <label className="search__input-container">
+            <input
+              ref={inputRef}
+              className="react-autosuggest__input"
+              type="search"
+              role="combobox"
+              aria-label="Search the docs"
+              aria-autocomplete="list"
+              aria-expanded={isOpen}
+              aria-controls={listId}
+              aria-activedescendant={
+                isOpen ? `${listId}-${highlighted}` : undefined
+              }
+              autoComplete="off"
+              placeholder="Search..."
+              value={value}
+              onChange={(event) => setValue(event.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => {
+                setIsFocused(false)
+                setValue('')
+              }}
+              onKeyDown={onKeyDown}
+            />
+            {!value ? (
+              <span className="search__placeholder-container">
+                <Keyboard
+                  className="search__placeholder-kbd"
+                  command={isMounted && isMacOs}
+                  ctrl={!(isMounted && isMacOs)}
+                  onClick={handleKeyboardClick}
+                  // the server does not know the OS: shown once it is known
+                  style={{
+                    borderRadius: 20,
+                    visibility: isMounted ? 'visible' : 'hidden'
+                  }}
+                >
+                  K
+                </Keyboard>
+              </span>
+            ) : (
+              <span className="search__reset-container" onClick={onClear}>
+                <Close size={16} fill={theme.palette.accents_6} />
+              </span>
+            )}
+          </label>
+          {/* the list only opens on typing, so it is created after mount */}
+          {isMounted &&
+            (suggestionsPortal
+              ? createPortal(
+                  <div className="suggest__suggestion-sticky">
+                    {suggestions}
+                  </div>,
+                  suggestionsPortal
+                )
+              : suggestions)}
+        </div>
 
         <NoResults />
       </div>
@@ -356,9 +283,11 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
           align-items: center;
           z-index: 9999;
           background: ${addColorAlpha(theme.palette.background, 0.7)};
-          box-shadow: ${theme.type === 'dark'
-            ? '0px 5px 20px -5px rgba(0, 0, 0, 0.1)'
-            : 'none'};
+          box-shadow: ${
+            theme.type === 'dark'
+              ? '0px 5px 20px -5px rgba(0, 0, 0, 0.1)'
+              : 'none'
+          };
           border-radius: 20px;
         }
         .react-autosuggest__input {
@@ -420,10 +349,6 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
 
         .react-autosuggest__suggestions-container::-webkit-scrollbar {
           width: 0px;
-        }
-        .react-autosuggest__suggestions-header {
-          padding: 14px;
-          width: 100%;
         }
         .react-autosuggest__suggestions-container--open {
           display: block;
@@ -510,8 +435,9 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
             right: 0;
           }
         }
-        @media only screen and (min-width: ${theme.breakpoints.xs
-            .min}) and (max-width: ${theme.breakpoints.lg.max}) {
+        @media only screen and (min-width: ${
+            theme.breakpoints.xs.min
+          }) and (max-width: ${theme.breakpoints.lg.max}) {
           .react-autosuggest__suggestions-container,
           .no-results {
             top: 60px;
@@ -527,6 +453,4 @@ const Autocomplete: React.FC<Props> = ({ hits, refine, offsetTop }) => {
   )
 }
 
-const MemoAutocomplete = React.memo(Autocomplete)
-
-export default connectAutoComplete(withDeaults(MemoAutocomplete, defaultProps))
+export default React.memo(Autocomplete)

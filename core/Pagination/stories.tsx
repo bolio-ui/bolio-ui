@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Pagination from '.'
 import Grid from '../Grid'
 import {
@@ -15,7 +15,7 @@ export default {
   component: Pagination
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Pagination count={20} initialPage={3} />
@@ -23,7 +23,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Limit: Story = () => (
+export const Limit: StoryFn = () => (
   <Grid.Container gap={2} direction="column">
     <Grid>
       <Pagination count={10} limit={10} />
@@ -43,7 +43,7 @@ export const Limit: Story = () => (
   </Grid.Container>
 )
 
-export const Icon: Story = () => (
+export const Icon: StoryFn = () => (
   <Grid.Container gap={2} direction="column">
     <Grid>
       <Pagination count={5}>

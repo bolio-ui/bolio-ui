@@ -1,6 +1,7 @@
 module.exports = (plop) => {
   plop.setGenerator('component', {
-    description: 'Create a component',
+    description:
+      'Create a component in core/ (remember to export it in core/index.ts)',
     prompts: [
       {
         type: 'input',
@@ -11,22 +12,22 @@ module.exports = (plop) => {
     actions: [
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/index.tsx',
+        path: '../core/{{pascalCase name}}/{{pascalCase name}}.tsx',
         templateFile: 'templates/Component.tsx.hbs'
       },
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/styles.ts',
-        templateFile: 'templates/styles.ts.hbs'
+        path: '../core/{{pascalCase name}}/index.ts',
+        templateFile: 'templates/index.ts.hbs'
       },
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/stories.tsx',
+        path: '../core/{{pascalCase name}}/stories.tsx',
         templateFile: 'templates/stories.tsx.hbs'
       },
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/test.tsx',
+        path: '../core/{{pascalCase name}}/__tests__/{{pascalCase name}}.test.tsx',
         templateFile: 'templates/test.tsx.hbs'
       }
     ]

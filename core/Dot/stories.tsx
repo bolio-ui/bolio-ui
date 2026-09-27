@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Dot from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Dot
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Dot />
@@ -33,7 +33,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Text: Story = () => (
+export const Text: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Dot>Canceled</Dot>

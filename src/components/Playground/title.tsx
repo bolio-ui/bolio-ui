@@ -7,10 +7,6 @@ export type TitleProps = {
   desc?: React.ReactNode | string
 }
 
-const defaultProps = {
-  desc: ''
-}
-
 const replaceCode = (desc: string): string => {
   if (!desc.includes('`')) return desc
   let count = 0
@@ -21,7 +17,7 @@ const replaceCode = (desc: string): string => {
   })
 }
 
-function Title({ title, desc }: TitleProps & typeof defaultProps) {
+function Title({ title, desc = '' }: TitleProps) {
   const isStringDesc = typeof desc === 'string'
   return (
     <>
@@ -59,6 +55,5 @@ function Title({ title, desc }: TitleProps & typeof defaultProps) {
   )
 }
 
-Title.defaultProps = defaultProps
 Title.displayName = 'BolioUIPlayGroundTitle'
 export default React.memo(Title)

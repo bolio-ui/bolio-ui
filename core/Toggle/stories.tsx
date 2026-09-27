@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Toggle from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Toggle
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Toggle />
@@ -18,7 +18,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Toggle scale={2} initialChecked />
@@ -44,7 +44,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Toggle disabled />

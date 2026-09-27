@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import ButtonDropdown from '.'
 import Grid from '../Grid'
 import { Plus } from '@bolio-ui/icons'
@@ -8,7 +8,7 @@ export default {
   component: ButtonDropdown
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown>
@@ -20,7 +20,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Loading: Story = () => (
+export const Loading: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown loading>
@@ -32,7 +32,7 @@ export const Loading: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown disabled>
@@ -44,7 +44,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown type="primary" scale={0.5}>
@@ -79,7 +79,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const MultipleType: Story = () => (
+export const MultipleType: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown scale={2 / 3} auto>
@@ -92,7 +92,7 @@ export const MultipleType: Story = () => (
   </Grid.Container>
 )
 
-export const CustomIcon: Story = () => (
+export const CustomIcon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <ButtonDropdown scale={2 / 3} auto icon={<Plus />}>

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Avatar from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Avatar
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   return (
     <Grid.Container gap={2}>
       <Grid>
@@ -47,7 +47,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Text: Story = () => (
+export const Text: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Avatar text="BA" width={1.5} height={1.5} />
@@ -70,7 +70,7 @@ export const Text: Story = () => (
   </Grid.Container>
 )
 
-export const Group: Story = () => {
+export const Group: StoryFn = () => {
   return (
     <Grid.Container gap={2} direction="column">
       <Grid>

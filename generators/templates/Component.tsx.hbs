@@ -1,9 +1,37 @@
-import * as S from './styles'
+import React from 'react'
+import useScale, { withScale } from '../use-scale'
 
-const {{pascalCase name}} = () => (
-  <S.Wrapper>
-    <h1>{{pascalCase name}}</h1>
-  </S.Wrapper>
-)
+interface Props {
+  className?: string
+}
 
+type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
+export type {{pascalCase name}}Props = Props & NativeAttrs
+
+const {{pascalCase name}}Component: React.FC<React.PropsWithChildren<{{pascalCase name}}Props>> = ({
+  children,
+  className = '',
+  ...props
+}) => {
+  const { SCALES } = useScale()
+
+  return (
+    <div className={className} {...props}>
+      {children}
+      <style jsx>{`
+        div {
+          width: ${SCALES.width(1, 'auto')};
+          height: ${SCALES.height(1, 'auto')};
+          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
+            ${SCALES.pl(0)};
+          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+            ${SCALES.ml(0)};
+        }
+      `}</style>
+    </div>
+  )
+}
+
+{{pascalCase name}}Component.displayName = 'BolioUI{{pascalCase name}}'
+const {{pascalCase name}} = withScale({{pascalCase name}}Component)
 export default {{pascalCase name}}

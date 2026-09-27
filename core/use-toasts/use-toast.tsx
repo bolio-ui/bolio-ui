@@ -57,6 +57,7 @@ const useToasts = (layout?: ToastLayout): ToastHooksResult => {
   const { updateToasts, toasts, updateToastLayout, updateLastToastId } =
     useBolioUIContext()
 
+  // the layout given to the hook applies when the component mounts
   useEffect(() => {
     if (!layout) return
     updateToastLayout(() =>
@@ -67,6 +68,7 @@ const useToasts = (layout?: ToastLayout): ToastHooksResult => {
           }
         : defaultToastLayout
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const cancel = (internalId: string) => {

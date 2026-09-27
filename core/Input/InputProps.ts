@@ -45,6 +45,5 @@ export const defaultProps = {
   autoComplete: 'off',
   className: '',
   placeholder: '',
-  initialValue: '',
-  crossOrigin: '' as CrossOrigin
+  initialValue: ''
 }

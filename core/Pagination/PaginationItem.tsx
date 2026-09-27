@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   active?: boolean
@@ -9,7 +10,7 @@ interface Props {
   onClick?: (e: React.MouseEvent) => void
 }
 
-type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<AnyElement>, keyof Props>
 export type PaginationItemProps = Props & NativeAttrs
 
 function PaginationItem({
@@ -36,12 +37,17 @@ function PaginationItem({
 
   const clickHandler = (event: React.MouseEvent) => {
     if (disabled) return
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   return (
     <li>
-      <button className={classes} onClick={clickHandler} {...props}>
+      <button
+        className={classes}
+        aria-current={active ? 'page' : undefined}
+        onClick={clickHandler}
+        {...props}
+      >
         {children}
       </button>
       <style jsx>{`

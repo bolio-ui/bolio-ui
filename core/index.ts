@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-/// <reference types="styled-jsx" />
+/// <reference types="styled-jsx/global" />
 
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
@@ -30,6 +30,9 @@ export type {
 export { default as ButtonGroup } from './ButtonGroup'
 export type { ButtonGroupProps } from './ButtonGroup'
 
+export { default as Calendar } from './Calendar'
+export type { CalendarProps } from './Calendar'
+
 export { default as Capacity } from './Capacity'
 export type { CapacityProps } from './Capacity'
 
@@ -48,8 +51,14 @@ export type { ColProps } from './Col'
 export { default as Collapse } from './Collapse'
 export type { CollapseProps, CollapseGroupProps } from './Collapse'
 
+export { default as Combobox } from './Combobox'
+export type { ComboboxProps, ComboboxOption } from './Combobox'
+
 export { default as Container } from './Container'
 export type { ContainerProps } from './Container'
+
+export { default as DatePicker } from './DatePicker'
+export type { DatePickerProps } from './DatePicker'
 
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
@@ -94,6 +103,18 @@ export type { LinkProps } from './Link'
 export { default as Loading } from './Loading'
 export type { LoadingProps } from './Loading'
 
+export { default as Menu } from './Menu'
+export type {
+  MenuProps,
+  MenuItemProps,
+  MenuCheckboxItemProps,
+  MenuRadioItemProps,
+  MenuRadioGroupProps,
+  MenuLabelProps,
+  MenuDividerProps,
+  MenuSubProps
+} from './Menu'
+
 export { default as Modal } from './Modal'
 export type {
   ModalProps,
@@ -105,6 +126,9 @@ export type {
 
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
+
+export { default as NumberInput } from './NumberInput'
+export type { NumberInputProps } from './NumberInput'
 
 export { default as Page } from './Page'
 export type {
@@ -146,6 +170,9 @@ export type { SectionProps } from './Section'
 export { default as Select } from './Select'
 export type { SelectProps, SelectOptionProps } from './Select'
 
+export { default as Skeleton } from './Skeleton'
+export type { SkeletonProps } from './Skeleton'
+
 export { default as Slider } from './Slider'
 export type { SliderProps } from './Slider'
 
@@ -157,6 +184,13 @@ export type { SpacerProps } from './Spacer'
 
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
+
+export { default as Stepper } from './Stepper'
+export type {
+  StepperProps,
+  StepperOrientation,
+  StepperStepProps
+} from './Stepper'
 
 export { default as Table } from './Table'
 export type { TableProps, TableColumnProps } from './Table'

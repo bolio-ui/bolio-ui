@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Tag from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Tag
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tag>Status: Unstable</Tag>
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tag>Default</Tag>
@@ -44,7 +44,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const TypesInvert: Story = () => (
+export const TypesInvert: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tag invert>Default</Tag>

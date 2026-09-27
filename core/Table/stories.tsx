@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Table from '.'
 import Code from '../Code'
@@ -10,7 +10,7 @@ export default {
   component: Table
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const data = [
     {
       property: 'type',
@@ -41,7 +41,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Compose: Story = () => {
+export const Compose: StoryFn = () => {
   const data = [
     {
       property: 'type',
@@ -72,7 +72,7 @@ export const Compose: Story = () => {
   )
 }
 
-export const Width: Story = () => {
+export const Width: StoryFn = () => {
   const data = [
     {
       property: 'type',
@@ -103,7 +103,7 @@ export const Width: Story = () => {
   )
 }
 
-export const Actions: Story = () => {
+export const Actions: StoryFn = () => {
   const dataSource = [
     { property: 'type', description: 'Content type', operation: '' },
     { property: 'Component', description: 'DOM element to use', operation: '' },
@@ -140,7 +140,7 @@ export const Actions: Story = () => {
   )
 }
 
-export const UpdateRow: Story = () => {
+export const UpdateRow: StoryFn = () => {
   const dataSource = [
     { property: 'type', description: 'Content type', operation: '' },
     { property: 'Component', description: 'DOM element to use', operation: '' },
@@ -185,7 +185,7 @@ export const UpdateRow: Story = () => {
   )
 }
 
-export const CustomHead: Story = () => {
+export const CustomHead: StoryFn = () => {
   const data = [
     {
       property: 'type',

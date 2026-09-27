@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Fieldset from '.'
 import Button from '../Button'
 import Text from '../Text'
@@ -10,7 +10,7 @@ export default {
   component: Fieldset
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Fieldset>
@@ -33,7 +33,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const CustomText: Story = () => (
+export const CustomText: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Fieldset>
@@ -54,7 +54,7 @@ export const CustomText: Story = () => (
   </Grid.Container>
 )
 
-export const Tabs: Story = () => {
+export const Tabs: StoryFn = () => {
   const handler = (v: string) => console.log(v)
   return (
     <Grid.Container gap={2}>
@@ -107,7 +107,7 @@ export const Tabs: Story = () => {
   )
 }
 
-export const WithDivider: Story = () => (
+export const WithDivider: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Fieldset>

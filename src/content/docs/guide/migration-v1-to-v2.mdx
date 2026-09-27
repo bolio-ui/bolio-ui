@@ -1,0 +1,129 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Migrating to v2',
+  description: 'What changes from v1 to v2 and what to do about it.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Migrating to v2
+
+Version 2 works with React 18 and 19 and with the Next.js App Router. This page lists what changes and what to do about it.
+The documentation of v1 stays available at <a href="https://v1.bolio-ui.com" rel="noreferrer" target="_blank">v1.bolio-ui.com</a>.
+
+While v2 is in alpha, install it with the `next` tag:
+
+```bash
+yarn add @bolio-ui/core@next
+```
+
+<Spacer h={2} />
+
+### Requirements
+
+- • React 18.2 or later, including React 19. React 16 and 17 are no longer supported.
+- • TypeScript users need `@types/react` 18 or 19.
+- • Next.js 14, 15 and 16 are tested, with the Pages Router and with the App Router.
+- • Vite 8 with React 19 and plain Node (16, 18, 20, 22 and 24, with `require`, `import` and server rendering) are tested too.
+- • The package is written in ES2019 syntax (v1 was ES5). Every browser that receives updates supports it. If you must support older ones, transpile `@bolio-ui/core` in your build.
+
+<Spacer h={2} />
+
+### Breaking changes
+
+#### `CssBaseline.flush` and `CssBaseline.flushToHTML` were removed
+
+Bolio UI used to bundle a private copy of styled-jsx, and Next.js could not read its styles, so `_document` had to call `CssBaseline.flush()`.
+Version 2 uses the real `styled-jsx` package, which Next.js already collects. In the Pages Router you can delete the custom code from `_document`:
+
+```jsx
+// v1: pages/_document.js
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>{CssBaseline.flush()}</Head>
+        ...
+
+// v2: nothing to add. Remove the call, or the whole custom _document if it was only for this.
+```
+
+In a custom server, use a `styled-jsx` registry. See <a href="/docs/guide/bolio-ui-plus-nextjs">Bolio UI plus Next.js</a>.
+
+#### App Router needs the styles registry
+
+The App Router does not add styled-jsx styles to the HTML by itself. Wrap your app with `StyledJsxRegistry` in `app/layout.js`:
+
+```jsx
+import { BolioUIProvider } from '@bolio-ui/core'
+import { StyledJsxRegistry } from '@bolio-ui/core/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <StyledJsxRegistry>
+          <BolioUIProvider>{children}</BolioUIProvider>
+        </StyledJsxRegistry>
+      </body>
+    </html>
+  )
+}
+```
+
+You do not need `'use client'` to use the components in Server Components. The entry files of the package already have it.
+
+#### `styled-jsx` is a dependency
+
+The package now depends on `styled-jsx` (5.0.7 or later) instead of bundling a copy. If your app already uses Next.js, both share the same copy.
+
+#### Package entry points
+
+The package has an `exports` map. These paths work:
+
+| Path | What it is |
+| ---- | ---------- |
+| `@bolio-ui/core` | All components and hooks |
+| `@bolio-ui/core/next` | `StyledJsxRegistry` for the Next.js App Router |
+| `@bolio-ui/core/dist/*` | Deep imports of the CommonJS build, as before. They work in Node and in bundlers |
+| `@bolio-ui/core/esm/*` | Deep imports of the ES modules build, as before. They are for bundlers: Node cannot load them as they are, so in Node import the package root or `dist/*` |
+
+Other paths are no longer resolved.
+
+<Spacer h={2} />
+
+### Changes in behavior
+
+- • **Container** no longer renders a stray `gap="0"` attribute in the DOM.
+- • **Toggle, Checkbox and Radio** can be reached with the Tab key and show a focus ring. The native `input` of Toggle and Radio was hidden with `visibility: hidden` and is not hidden anymore, so a CSS selector or a test that relies on that may need a change.
+- • **Tabs** items have `role="tab"` instead of `role="button"`, inside a `role="tablist"`. The content has `role="tabpanel"`.
+- • **Pagination** puts its items in a list and marks the current page with `aria-current="page"`.
+- • **Slider** thumb has `role="slider"` and answers to the keyboard.
+- • **Tooltip** opens when its trigger gets the focus and closes with Escape. **Popover** closes with Escape.
+- • **Refs**: every component forwards its `ref` now. See <a href="/docs/guide/refs-and-accessibility">Refs and accessibility</a>.
+- • **Types**: `Table` accepts `ref` and the scale props, and `Container` types its `fluid` prop.
+- • **Button** types with `-light`, like `primary-light`, have a tinted background. Before they looked like the filled ones. `subtle` is a new variant with no background. **Tag, Badge, Note, Snippet, Card and Tooltip** take the same `light`, `subtle`, `ghost` and `filled` props, and their default look is the same as before.
+- • **Tooltip and Popover** describe their trigger to a screen reader (`aria-describedby`, or `aria-expanded` and `aria-controls` for a click trigger). A text trigger of a click Popover is a button that opens with Enter or Space.
+- • **Rating** is a `radiogroup` with one tab stop, and answers to the arrow keys, Home and End.
+- • **Input** links its label with `htmlFor`, sets `aria-invalid` and is described by its error message. A clickable icon is a real `button`, so the password toggle works with the keyboard and is named Show password or Hide password. It does not render an empty `crossorigin` attribute anymore.
+- • **Tabs** renders the headers of its direct `Tabs.Item` children on the server. Before, they appeared only after the page loaded.
+- • **Code** takes `tabs`, `activeTab` and `onTabChange`, and shows the name of the file as a tab.
+- • **Modal and Drawer** are not closed by a click that comes from inside them and has no pointer press before it, like Enter or Space on a focused button. Before, that closed them, whatever the button did.
+- • **Checkbox.Group** without `value` starts empty and keeps its own state. Before, it froze the page in an endless render loop.
+- • **Hooks**: `useKeyboard` and `useClipboard` call the handler of the latest render, where they kept the one of the first. The setter of `useCurrentState` is the same function on every render. `useBodyScroll` accepts the ref that `useRef(null)` gives with the React 19 types.
+- • **Package**: `@babel/runtime` is not a dependency anymore. Shared code is in `chunk-*.js` files next to the components, and the deep imports keep working.
+
+<Spacer h={2} />
+
+### Checklist
+
+1. Update React to 18.2 or later.
+2. Install `@bolio-ui/core@next`.
+3. Remove `CssBaseline.flush()` from your custom server or `_document`.
+4. In the App Router, add `StyledJsxRegistry` to the root layout.
+5. Update `@types/react` to 18 or 19 if you use TypeScript.
+6. Search your tests and styles for the changes listed under behavior.
+
+export default Docs.withMeta(meta)

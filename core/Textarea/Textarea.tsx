@@ -6,20 +6,14 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import { NormalTypes, tuple } from '../utils/prop-types'
+import { NormalTypes } from '../utils/prop-types'
 import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
-const resizeTypes = tuple(
-  'none',
-  'both',
-  'horizontal',
-  'vertical',
-  'initial',
-  'inherit'
-)
-export type TextareaResizes = typeof resizeTypes[number]
+export type TextareaResizes =
+  'none' | 'both' | 'horizontal' | 'vertical' | 'initial' | 'inherit'
 export type TextareaTypes = NormalTypes
 interface Props {
   value?: string
@@ -35,7 +29,7 @@ interface Props {
   resize?: TextareaResizes
 }
 
-type NativeAttrs = Omit<React.TextareaHTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.TextareaHTMLAttributes<AnyElement>, keyof Props>
 export type TextareaProps = Props & NativeAttrs
 
 const TextareaComponent = React.forwardRef<
@@ -62,7 +56,7 @@ const TextareaComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const textareaRef = useRef<HTMLTextAreaElement>(null)
-    useImperativeHandle(ref, () => textareaRef.current)
+    useImperativeHandle(ref, () => textareaRef.current as HTMLTextAreaElement)
     const isControlledComponent = useMemo(() => value !== undefined, [value])
     const [selfValue, setSelfValue] = useState<string>(initialValue)
     const [hover, setHover] = useState<boolean>(false)
@@ -77,15 +71,15 @@ const TextareaComponent = React.forwardRef<
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (disabled || readOnly) return
       setSelfValue(event.target.value)
-      onChange && onChange(event)
+      if (onChange) onChange(event)
     }
     const focusHandler = (e: React.FocusEvent<HTMLTextAreaElement>) => {
       setHover(true)
-      onFocus && onFocus(e)
+      if (onFocus) onFocus(e)
     }
     const blurHandler = (e: React.FocusEvent<HTMLTextAreaElement>) => {
       setHover(false)
-      onBlur && onBlur(e)
+      if (onBlur) onBlur(e)
     }
 
     useEffect(() => {
@@ -122,7 +116,9 @@ const TextareaComponent = React.forwardRef<
             border-radius: ${theme.layout.radius};
             border: 1px solid ${colors.borderColor};
             color: ${colors.color};
-            transition: border 0.2s ease 0s, color 0.2s ease 0s;
+            transition:
+              border 0.2s ease 0s,
+              color 0.2s ease 0s;
             min-width: 12.5rem;
             max-width: 95vw;
             --textarea-font-size: ${SCALES.font(0.875)};

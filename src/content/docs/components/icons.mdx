@@ -1,0 +1,114 @@
+import Docs from 'src/templates/Docs'
+import { Smile } from '@bolio-ui/icons'
+import { Grid, Tabs, Snippet } from 'core'
+import {
+  Layout,
+  Playground,
+  PlaygroundTitle,
+  Attributes,
+  IconsGallery
+} from 'src/components'
+
+export const meta = {
+  title: 'Icons',
+  description: 'Display semantic vector graphics in SVG format.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 19
+}
+
+## Icons
+
+Display semantic vector graphics in SVG format.
+
+<Grid.Container gap={4}>
+  <Grid md={12}>
+    <PlaygroundTitle
+      title="Installation"
+      desc="Install the package in your project directory."
+    />
+    <Tabs
+      initialValue="yarn"
+      hideDivider
+      hideBorder
+      align="flex-start"
+      width="100%"
+    >
+      <Tabs.Item label="Yarn" value="yarn">
+        <Snippet width="100%">yarn add @bolio-ui/icons</Snippet>
+      </Tabs.Item>
+      <Tabs.Item label="npm" value="npm">
+        <Snippet width="100%">npm i @bolio-ui/icons</Snippet>
+      </Tabs.Item>
+    </Tabs>
+  </Grid>
+</Grid.Container>
+
+<Playground
+  title="Import"
+  desc="The basic `Icon` usage."
+  scope={{ Smile, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Color"
+  desc="You can apply a color with the `color` prop."
+  scope={{ Smile, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile color="purple" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Sizes"
+  desc="You can apply size with the `fontSize` prop."
+  scope={{ Smile, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Smile fontSize={16} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={20} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={24} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={28} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={32} />
+  </Grid>
+  <Grid>
+    <Smile fontSize={36} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<IconsGallery />
+
+<Attributes edit="/content/docs/components/icons.mdx">
+<Attributes.Title>Icon.Props</Attributes.Title>
+
+| Attribute    | Description  | Type            | Accepted values                  | Default |
+| ------------ | ------------ | --------------- | -------------------------------- | ------- |
+| **color**    | Icon color   | `string`        | -                                | -       |
+| **fontSize** | Icon size    | `number`        | -                                | -       |
+| ...          | Native props | `SVGAttributes` | `'id', 'name', 'className', ...` | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

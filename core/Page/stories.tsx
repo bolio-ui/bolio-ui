@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Page from '.'
 import Button from '../Button'
@@ -10,7 +10,7 @@ export default {
   component: Page
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const Child = () => (
     <>
       <h2>Hi my dear!</h2>
@@ -34,7 +34,7 @@ export const Default: Story = () => {
   )
 }
 
-export const Content: Story = () => {
+export const Content: StoryFn = () => {
   const [visible, setVisible] = React.useState(false)
   return (
     <Grid.Container gap={2}>

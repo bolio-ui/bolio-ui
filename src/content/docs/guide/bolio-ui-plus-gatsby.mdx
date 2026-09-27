@@ -1,0 +1,87 @@
+import Docs from 'src/templates/Docs'
+import { Link, Tabs, Spacer, Snippet } from 'core'
+
+export const meta = {
+  title: 'Example with Gatsby',
+  description: 'Set up Bolio UI in a Gatsby application.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Example with Gatsby
+
+<Spacer h={2} />
+
+### Get started with an example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-gatsby">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://www.gatsbyjs.com/docs/quick-start/"> Gatsby quick start</Link> guide to create new Gatsby application:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn create gatsby" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm init gatsby" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={2} />
+
+### Installation
+
+Install dependencies:
+
+<Spacer h={3} />
+
+<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
+  <Tabs.Item label="Yarn" value="yarn">
+    <Snippet text="yarn add @bolio-ui/core" />
+  </Tabs.Item>
+  <Tabs.Item label="Npm" value="npm">
+    <Snippet text="npm install @bolio-ui/core" />
+  </Tabs.Item>
+</Tabs>
+
+<Spacer h={2} />
+
+### Setup
+
+Gatsby has no root component, so wrap the app with `wrapRootElement` to set up the `BolioUIProvider` and the `CssBaseline` on every page.
+
+Create `gatsby-browser.tsx` (or `.js`):
+
+```jsx
+import * as React from 'react'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+
+export const wrapRootElement = ({ element }) => (
+  <BolioUIProvider>
+    <CssBaseline />
+    {element}
+  </BolioUIProvider>
+)
+```
+
+Then create `gatsby-ssr.tsx` (or `.js`) to render the same wrapper on the server:
+
+```jsx
+export { wrapRootElement } from './gatsby-browser'
+```
+
+Ready to go! Start the development server:
+
+<Snippet text="npm run develop" />
+
+export default Docs.withMeta(meta)

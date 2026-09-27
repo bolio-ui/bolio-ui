@@ -2,6 +2,7 @@ import {
   Dispatch,
   MutableRefObject,
   SetStateAction,
+  useCallback,
   useEffect,
   useRef,
   useState
@@ -27,14 +28,16 @@ const useCurrentState = <S>(
     ref.current = state
   }, [state])
 
-  const setValue = (val: SetStateAction<S>) => {
+  // only uses the ref and the state setter, so it is the same function on
+  // every render and can be a dependency without making anything rerun
+  const setValue = useCallback((val: SetStateAction<S>) => {
     const result =
       typeof val === 'function'
         ? (val as (prevState: S) => S)(ref.current)
         : val
     ref.current = result
     setState(result)
-  }
+  }, [])
 
   return [state, setValue, ref]
 }

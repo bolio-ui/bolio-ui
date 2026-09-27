@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Input from '.'
 import Grid from '../Grid'
 import Text from '../Text'
@@ -9,7 +9,7 @@ export default {
   component: Input
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input placeholder="Placeholder Text" />
@@ -17,7 +17,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Sizes: Story = () => (
+export const Sizes: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input scale={1 / 3} placeholder="Scale 1/3" />
@@ -34,7 +34,7 @@ export const Sizes: Story = () => (
   </Grid.Container>
 )
 
-export const SetWidth: Story = () => (
+export const SetWidth: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input placeholder="Placeholder Text" width="100%" />
@@ -42,7 +42,7 @@ export const SetWidth: Story = () => (
   </Grid.Container>
 )
 
-export const Unwritable: Story = () => (
+export const Unwritable: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input disabled placeholder="Disabled" />
@@ -53,7 +53,7 @@ export const Unwritable: Story = () => (
   </Grid.Container>
 )
 
-export const BlockLabel: Story = () => (
+export const BlockLabel: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input placeholder="Block Label">
@@ -66,7 +66,7 @@ export const BlockLabel: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input placeholder="Default" />
@@ -92,7 +92,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const Rounded: Story = () => (
+export const Rounded: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input placeholder="Default" rounded />
@@ -118,7 +118,7 @@ export const Rounded: Story = () => (
   </Grid.Container>
 )
 
-export const Icon: Story = () => (
+export const Icon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input icon={<Instagram />} placeholder="Instagram" />
@@ -129,7 +129,7 @@ export const Icon: Story = () => (
   </Grid.Container>
 )
 
-export const Clearable: Story = () => (
+export const Clearable: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input
@@ -141,7 +141,7 @@ export const Clearable: Story = () => (
   </Grid.Container>
 )
 
-export const Password: Story = () => (
+export const Password: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Input.Password initialValue="123456abc" />

@@ -1,0 +1,106 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Skeleton, Grid, Text, Button } from 'core'
+
+export const meta = {
+  title: 'Skeleton',
+  description:
+    'A placeholder in the shape of the content while it loads, so the layout does not jump.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 50
+}
+
+## Skeleton
+
+A placeholder in the shape of the content while it loads, so the layout does
+not jump when the content arrives.
+
+<Playground
+  desc="A line fills its container by default. Set the size with `width` and `height`."
+  scope={{ Skeleton, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <Skeleton width="60%" />
+  </Grid>
+  <Grid>
+    <Skeleton height="120px" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Lines"
+  desc="Use `lines` for a paragraph. The last line is shorter, like real text."
+  scope={{ Skeleton }}
+  code={`
+<Skeleton lines={3} />
+`}
+/>
+
+<Playground
+  title="Circle"
+  desc="Use `circle` for an avatar. It is as tall as it is wide unless `height` is set."
+  scope={{ Skeleton, Grid }}
+  code={`
+<Grid.Container gap={2} alignItems="center">
+  <Grid>
+    <Skeleton circle width="48px" />
+  </Grid>
+  <Grid xs>
+    <Skeleton lines={2} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="With content"
+  desc="Wrap the content and pass `loading`: the placeholder shows while it is `true`, and the content after."
+  scope={{ Skeleton, Text, Button, Grid }}
+  code={`
+() => {
+  const [loading, setLoading] = React.useState(true)
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Skeleton lines={2} loading={loading}>
+          <Text my={0}>The content shows up here once it has loaded.</Text>
+        </Skeleton>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.75} onClick={() => setLoading(!loading)}>
+          {loading ? 'Show content' : 'Show placeholder'}
+        </Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/skeleton.mdx">
+<Attributes.Title>Skeleton.Props</Attributes.Title>
+
+| Attribute   | Description                                                   | Type               | Accepted values            | Default |
+| ----------- | ------------------------------------------------------------- | ------------------ | -------------------------- | ------- |
+| **width**   | width of the placeholder; a number is a multiple of the theme unit | `string` / `number` | `'60%'`, `'48px'`, ... | `100%`, `2.5em` for a circle |
+| **height**  | height of each line; a number is a multiple of the theme unit | `string` / `number` | `'120px'`, ...             | `1em`, the width for a circle |
+| **lines**   | number of lines; the last one is shorter                      | `number`           | -                          | `1`     |
+| **circle**  | round shape, for avatars                                      | `boolean`          | -                          | `false` |
+| **loading** | with children, shows the placeholder while `true`             | `boolean`          | -                          | `true`  |
+| ...         | native props, passed to the root element                      | `HTMLAttributes`   | `'id', 'className', ...`   | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element of the placeholder. With children and `loading={false}`, the children render alone and the `ref` is not used.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The placeholder has `aria-hidden`, so screen readers skip it. When it wraps content, the wrapper has `aria-busy="true"` while loading. With `prefers-reduced-motion`, the shimmer stops and the shapes stay still.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

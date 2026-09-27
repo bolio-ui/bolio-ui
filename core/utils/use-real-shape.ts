@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useState } from 'react'
+import { MutableRefObject, useCallback, useEffect, useState } from 'react'
 
 export type ShapeType = {
   width: number
@@ -17,32 +17,34 @@ export const getRealShape = (el: HTMLElement | null): ShapeType => {
     const strVal = str.includes('px')
       ? +str.split('px')[0]
       : str.includes('%')
-      ? +str.split('%')[0] * parentNum * 0.01
-      : str
+        ? +str.split('%')[0] * parentNum * 0.01
+        : str
 
     return Number.isNaN(+strVal) ? 0 : +strVal
   }
 
   return {
     width: getCSSStyleVal(`${width}`, rect.width),
-    height: getCSSStyleVal(`${height}`, rect.height),
+    height: getCSSStyleVal(`${height}`, rect.height)
   }
 }
 
 export type ShapeResult = [ShapeType, () => void]
 
 const useRealShape = <T extends HTMLElement>(
-  ref: MutableRefObject<T | null>,
+  ref: MutableRefObject<T | null>
 ): ShapeResult => {
   const [state, setState] = useState<ShapeType>({
     width: 0,
-    height: 0,
+    height: 0
   })
-  const update = () => {
+  const update = useCallback(() => {
     const { width, height } = getRealShape(ref.current)
     setState({ width, height })
-  }
-  useEffect(() => update(), [ref.current])
+  }, [ref])
+  // measure again when the element is attached, or replaced
+  const element = ref.current
+  useEffect(() => update(), [element, update])
 
   return [state, update]
 }

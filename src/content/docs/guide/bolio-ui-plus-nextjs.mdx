@@ -1,0 +1,123 @@
+import Docs from 'src/templates/Docs'
+import { Link, Spacer } from 'core'
+
+export const meta = {
+  title: 'Example with Next.js',
+  description:
+    'Bolio UI is totally compatible with Next.js you just need to customize the _app.jsx entry file to load the provider.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Example with Next.js
+
+<Spacer h={2} />
+
+### Get started with an example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-nextjs-ts-app">this example</Link>.
+
+<Spacer h={2} />
+
+### Server Render
+
+All Components of `@bolio-ui/core` are compatible with **Server Render**. In fact, the page you see now is rendered by the server.
+
+Server-side rendering (SSR) is the process of rendering web pages on a server and passing them to the browser (client-side),
+instead of rendering them in the browser. SSR sends a fully rendered page to the client; the client's JavaScript
+bundle takes over and enables the SPA framework to operate, the best option to use server side render in React.js is using <Link target="_blank" rel="nofollow" color icon href="https://nextjs.org">Next.js</Link>.
+
+If you are worried about losing the advantages of a Single Page Application by implementing server-side rendering, you can use the `hybrid render` application.
+Please read <Link target="_blank" rel="nofollow" color icon href="https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support">
+the post from the Next.js team</Link> to learn more.
+
+<Spacer h={2} />
+
+### Next.js
+
+Bolio UI works with the Pages Router and with the App Router.
+
+#### Pages Router
+
+Next.js already adds the styles rendered on the server to the HTML, so you don't need a custom `_document`. Set up the `BolioUIProvider` and `CssBaseline` in `pages/_app.js`:
+
+```jsx
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </BolioUIProvider>
+  )
+}
+
+export default MyApp
+```
+
+<Spacer h={2} />
+
+#### App Router
+
+The App Router doesn't add the styles of styled-jsx to the HTML on its own. Wrap the app with `StyledJsxRegistry` in `app/layout.js`:
+
+```jsx
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+import { StyledJsxRegistry } from '@bolio-ui/core/next'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <StyledJsxRegistry>
+          <BolioUIProvider>
+            <CssBaseline />
+            {children}
+          </BolioUIProvider>
+        </StyledJsxRegistry>
+      </body>
+    </html>
+  )
+}
+```
+
+The components are Client Components, so you can use them in Server Components without adding `'use client'`.
+
+<Spacer h={2} />
+
+### Custom Server
+
+In a custom server, collect the styles with a `styled-jsx` registry, as shown below.
+
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom/server'
+import { StyleRegistry, createStyleRegistry } from 'styled-jsx'
+import App from './app'
+
+export default (req, res) => {
+  const registry = createStyleRegistry()
+  const app = ReactDOM.renderToString(
+    <StyleRegistry registry={registry}>
+      <App />
+    </StyleRegistry>
+  )
+  const styles = registry.styles()
+  const html = ReactDOM.renderToStaticMarkup(
+    <html>
+      <head>{styles}</head>
+      <body>
+        <div id="root" dangerouslySetInnerHTML={{ __html: app }} />
+      </body>
+    </html>
+  )
+  res.end('<!doctype html>' + html)
+}
+```
+
+export default Docs.withMeta(meta)

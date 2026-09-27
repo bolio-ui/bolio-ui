@@ -4,9 +4,10 @@ import usePortal from '../utils/use-portal'
 import useTheme from '../use-theme'
 import { useBolioUIContext } from '../utils/use-bolio-ui-context'
 import ToastItem from './toast-item'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
 import { isLeftPlacement, isTopPlacement } from './helpers'
 import useCurrentState from '../utils/use-current-state'
+import useLatest from '../utils/use-latest'
 
 const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   const theme = useTheme()
@@ -31,11 +32,11 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   )
   const classNames = useMemo(
     () =>
-      useClasses('toasts', {
+      joinClasses('toasts', {
         top: isTopPlacement(toastLayout.placement),
         left: isLeftPlacement(toastLayout.placement)
       }),
-    [memoizedLayout]
+    [toastLayout.placement]
   )
 
   const hoverHandler = (isHovering: boolean) => {
@@ -44,7 +45,7 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
       return updateToasts((last) =>
         last.map((toast) => {
           if (!toast.visible) return toast
-          toast._timeout && window.clearTimeout(toast._timeout)
+          if (toast._timeout) window.clearTimeout(toast._timeout)
           return {
             ...toast,
             timeout: null
@@ -56,14 +57,17 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
     updateToasts((last) =>
       last.map((toast, index) => {
         if (!toast.visible) return toast
-        toast._timeout && window.clearTimeout(toast._timeout)
+        if (toast._timeout) window.clearTimeout(toast._timeout)
         return {
           ...toast,
           _timeout: (() => {
-            const timer = window.setTimeout(() => {
-              toast.cancel()
-              window.clearTimeout(timer)
-            }, toast.delay + index * 100)
+            const timer = window.setTimeout(
+              () => {
+                toast.cancel()
+                window.clearTimeout(timer)
+              },
+              toast.delay + index * 100
+            )
             return timer
           })()
         }
@@ -71,6 +75,8 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
     )
   }
 
+  // runs when the toasts change, and uses the hover handler of that moment
+  const latestHover = useLatest(hoverHandler)
   useEffect(() => {
     const index = toasts.findIndex(
       (r) => r._internalIdent === lastUpdateToastId
@@ -79,8 +85,8 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
     if (!toast || toast.visible || !hoveringRef.current) return
     const hasVisible = toasts.find((r, i) => i < index && r.visible)
     if (hasVisible || !hoveringRef.current) return
-    hoverHandler(false)
-  }, [toasts, lastUpdateToastId])
+    latestHover.current(false)
+  }, [toasts, lastUpdateToastId, hoveringRef, latestHover])
 
   useEffect(() => {
     let timeout: null | number = null
@@ -88,16 +94,16 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
       if (toasts.length === 0) return
       timeout = window.setTimeout(() => {
         const allInvisible = !toasts.find((r) => r.visible)
-        allInvisible && updateToasts(() => [])
-        timeout && clearTimeout(timeout)
+        if (allInvisible) updateToasts(() => [])
+        if (timeout) clearTimeout(timeout)
       }, 350)
     }, 5000)
 
     return () => {
-      timer && clearInterval(timer)
-      timeout && clearTimeout(timeout)
+      if (timer) clearInterval(timer)
+      if (timeout) clearTimeout(timeout)
     }
-  }, [toasts])
+  }, [toasts, updateToasts])
 
   if (!portal) return null
   if (!toasts || toasts.length === 0) return null

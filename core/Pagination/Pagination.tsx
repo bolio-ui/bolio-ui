@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import PaginationPrevious from './PaginationPrevious'
 import PaginationNext from './PaginationNext'
 import PaginationPages from './PaginationPages'
@@ -10,6 +10,7 @@ import {
 import useCurrentState from '../utils/use-current-state'
 import { pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   page?: number
@@ -20,95 +21,114 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PaginationProps = Props & NativeAttrs
 
-function PaginationComponent({
-  page: customPage,
-  initialPage = 1,
-  count = 1,
-  limit = 7,
-  children,
-  onChange,
-  className = '',
-  ...props
-}: React.PropsWithChildren<PaginationProps>) {
-  const { SCALES } = useScale()
-  const [page, setPage, pageRef] = useCurrentState(initialPage)
-  const [, prevChildren] = pickChild(children, PaginationPrevious)
-  const [, nextChildren] = pickChild(children, PaginationNext)
+const PaginationComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<PaginationProps>
+>(
+  (
+    {
+      page: customPage,
+      initialPage = 1,
+      count = 1,
+      limit = 7,
+      children,
+      onChange,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const { SCALES } = useScale()
+    const [page, setPage, pageRef] = useCurrentState(initialPage)
+    const [, prevChildren] = pickChild(children, PaginationPrevious)
+    const [, nextChildren] = pickChild(children, PaginationNext)
 
-  const [prevItem, nextItem] = useMemo(() => {
-    const hasChildren = (c: any) => React.Children.count(c) > 0
-    const prevDefault = <PaginationPrevious>prev</PaginationPrevious>
-    const nextDefault = <PaginationNext>next</PaginationNext>
-    return [
-      hasChildren(prevChildren) ? prevChildren : prevDefault,
-      hasChildren(nextChildren) ? nextChildren : nextDefault
-    ]
-  }, [prevChildren, nextChildren])
+    const [prevItem, nextItem] = useMemo(() => {
+      const hasChildren = (c: React.ReactNode) => React.Children.count(c) > 0
+      const prevDefault = <PaginationPrevious>prev</PaginationPrevious>
+      const nextDefault = <PaginationNext>next</PaginationNext>
+      return [
+        hasChildren(prevChildren) ? prevChildren : prevDefault,
+        hasChildren(nextChildren) ? nextChildren : nextDefault
+      ]
+    }, [prevChildren, nextChildren])
 
-  const update = (type: PaginationUpdateType) => {
-    if (type === 'prev' && pageRef.current > 1) {
-      setPage((last) => last - 1)
-    }
-    if (type === 'next' && pageRef.current < count) {
-      setPage((last) => last + 1)
-    }
+    const update = useCallback(
+      (type: PaginationUpdateType) => {
+        if (type === 'prev' && pageRef.current > 1) {
+          setPage((last) => last - 1)
+        }
+        if (type === 'next' && pageRef.current < count) {
+          setPage((last) => last + 1)
+        }
+      },
+      [count, pageRef, setPage]
+    )
+
+    const values = useMemo<PaginationConfig>(
+      () => ({
+        isFirst: page <= 1,
+        isLast: page >= count,
+        update
+      }),
+      [page, count, update]
+    )
+
+    useEffect(() => {
+      if (onChange) onChange(page)
+    }, [onChange, page])
+
+    useEffect(() => {
+      if (customPage !== undefined) {
+        setPage(customPage)
+      }
+    }, [customPage, setPage])
+
+    return (
+      <PaginationContext.Provider value={values}>
+        <nav ref={ref} className={className} aria-label="Pagination" {...props}>
+          <ul>
+            {prevItem}
+            <PaginationPages
+              count={count}
+              current={page}
+              limit={limit}
+              setPage={setPage}
+            />
+            {nextItem}
+          </ul>
+        </nav>
+        <style jsx>{`
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+
+          nav {
+            font-variant: tabular-nums;
+            font-feature-settings: 'tnum';
+            --pagination-size: ${SCALES.font(2)};
+            font-size: ${SCALES.font(0.875)};
+            width: ${SCALES.width(1, 'auto')};
+            height: ${SCALES.height(1, 'auto')};
+            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
+              ${SCALES.pl(0)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
+
+          nav :global(button:last-of-type) {
+            margin-right: 0;
+          }
+        `}</style>
+      </PaginationContext.Provider>
+    )
   }
-
-  const values = useMemo<PaginationConfig>(
-    () => ({
-      isFirst: page <= 1,
-      isLast: page >= count,
-      update
-    }),
-    [page, count]
-  )
-
-  useEffect(() => {
-    onChange && onChange(page)
-  }, [onChange, page])
-
-  useEffect(() => {
-    if (customPage !== undefined) {
-      setPage(customPage)
-    }
-  }, [customPage, setPage])
-
-  return (
-    <PaginationContext.Provider value={values}>
-      <nav className={className} {...props}>
-        {prevItem}
-        <PaginationPages
-          count={count}
-          current={page}
-          limit={limit}
-          setPage={setPage}
-        />
-        {nextItem}
-      </nav>
-      <style jsx>{`
-        nav {
-          font-variant: tabular-nums;
-          font-feature-settings: 'tnum';
-          --pagination-size: ${SCALES.font(2)};
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        nav :global(button:last-of-type) {
-          margin-right: 0;
-        }
-      `}</style>
-    </PaginationContext.Provider>
-  )
-}
+)
 
 PaginationComponent.displayName = 'BolioUIPagination'
 const Pagination = withScale(PaginationComponent)

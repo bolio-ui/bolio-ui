@@ -19,7 +19,7 @@ const defaultRect: ReactiveDomReact = {
 }
 
 export const getRect = (
-  ref: MutableRefObject<HTMLElement | null>
+  ref?: MutableRefObject<HTMLElement | null>
 ): ReactiveDomReact => {
   if (!ref || !ref.current) return defaultRect
   const rect = ref.current.getBoundingClientRect()

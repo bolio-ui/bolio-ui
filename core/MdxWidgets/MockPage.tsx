@@ -22,7 +22,7 @@ const MockPage: React.FC<React.PropsWithChildren<Props>> = ({
 
   const clickHandler = () => {
     setVisible(false)
-    onClose && onClose()
+    if (onClose) onClose()
   }
   return (
     <section onClick={clickHandler} className={visible ? 'active' : ''}>

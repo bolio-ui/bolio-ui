@@ -1,0 +1,84 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Row, Col, Card, Text } from 'core'
+
+export const meta = {
+  title: 'Row',
+  description: 'A flex row that holds columns.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 46
+}
+
+## Row
+
+A flex row that holds <a href="/docs/components/col">columns</a>. Each `Col` takes a number of twelfths of the row, so the spans in a row should add up to 12 or less.
+
+<Playground
+  desc="Three columns of the same size."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row>
+  <Col span={4}><Card><Text small>span 4</Text></Card></Col>
+  <Col span={4}><Card><Text small>span 4</Text></Card></Col>
+  <Col span={4}><Card><Text small>span 4</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Playground
+  title="Justify"
+  desc="`justify` places the columns when they do not fill the row."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row justify="space-between">
+  <Col span={3}><Card><Text small>span 3</Text></Card></Col>
+  <Col span={3}><Card><Text small>span 3</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Playground
+  title="Align"
+  desc="`align` sets where the columns sit when the row is taller than them."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row align="middle" style={{ height: 120 }}>
+  <Col span={6}><Card><Text small>short</Text></Card></Col>
+  <Col span={6}><Card><Text small>a taller<br />cell</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Playground
+  title="Gap"
+  desc="`gap` adds space around the content of the columns."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row gap={2}>
+  <Col span={6}><Card><Text small>gap 2</Text></Card></Col>
+  <Col span={6}><Card><Text small>gap 2</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Attributes edit="/content/docs/components/row.mdx">
+<Attributes.Title>Row.Props</Attributes.Title>
+
+| Attribute     | Description                                              | Type                          | Accepted values                                            | Default |
+| ------------- | -------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------- | ------- |
+| **justify**   | horizontal alignment of the columns                      | `string`                      | `start`, `end`, `center`, `space-around`, `space-between`  | `start` |
+| **align**     | vertical alignment of the columns                        | `string`                      | `top`, `middle`, `bottom`                                  | `top`   |
+| **gap**       | space around the content of the columns, in theme gaps   | `number`                      | -                                                          | `0`     |
+| **component** | the element to render                                    | `keyof JSX.IntrinsicElements` | `'div', 'ul', 'section', ...`                              | `div`   |
+| ...           | native props                                             | `HTMLAttributes`              | `'id', 'className', ...`                                   | -       |
+
+The row does not wrap. If the spans add up to more than 12, the columns get narrower instead of going to the next line. Use a new `Row` for the next line, or use `Grid`, which wraps.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

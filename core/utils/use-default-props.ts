@@ -1,8 +1,10 @@
-const useDefaultProps = <T extends Record<string | number, any>, D extends Partial<T>>(
+import type { AnyObject } from './types'
+
+const useDefaultProps = <T extends AnyObject, D extends Partial<T>>(
   props: T,
-  defaultProps: D,
+  defaultProps: D
 ): T & Required<D> => {
-  let nextProps = {} as T
+  const nextProps = {} as T
   const propsKeys: Array<keyof T> = Object.keys(props || {})
   const defaultKeys: Array<keyof T> = Object.keys(defaultProps || {})
 
@@ -12,7 +14,9 @@ const useDefaultProps = <T extends Record<string | number, any>, D extends Parti
 
   for (const defaultName of defaultKeys) {
     if (props[defaultName] === undefined) {
-      nextProps[defaultName] = defaultProps[defaultName] as T[keyof T]
+      nextProps[defaultName] = defaultProps[
+        defaultName
+      ] as unknown as T[keyof T]
     }
   }
   return nextProps as T & Required<D>

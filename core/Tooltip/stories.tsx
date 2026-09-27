@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Tooltip from '.'
 import Grid from '../Grid'
 import Button from '../Button'
@@ -12,7 +12,7 @@ export default {
   component: Tooltip
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip text={'Push to Git and your website is live.'}>Tooltip</Tooltip>
@@ -20,7 +20,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Trigger: Story = () => (
+export const Trigger: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip
@@ -34,7 +34,7 @@ export const Trigger: Story = () => (
   </Grid.Container>
 )
 
-export const WithComponents: Story = () => (
+export const WithComponents: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip text={'Push to Git and your website is live.'} type="dark">
@@ -58,7 +58,7 @@ export const WithComponents: Story = () => (
   </Grid.Container>
 )
 
-export const CustomContent: Story = () => (
+export const CustomContent: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip
@@ -86,7 +86,7 @@ export const CustomContent: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip text="Perfect for working with a CMS." type="dark">
@@ -116,7 +116,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const Variants: Story = () => (
+export const Variants: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Tooltip text="Push to Git and your website is live." type="lite">
@@ -131,7 +131,7 @@ export const Variants: Story = () => (
   </Grid.Container>
 )
 
-export const Placements: Story = () => {
+export const Placements: StoryFn = () => {
   const text = 'HTTP is stateless, but not sessionless'
   return (
     <Grid.Container gap={2} justify="center" alignItems="center">

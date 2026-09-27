@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Textarea from '.'
 import Grid from '../Grid'
@@ -10,7 +10,7 @@ export default {
   component: Textarea
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Textarea placeholder="Enter a message." />
@@ -18,7 +18,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Textarea
@@ -30,7 +30,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Textarea height="65px" value="Default" />
@@ -56,7 +56,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const GetChange: Story = () => {
+export const GetChange: StoryFn = () => {
   const [value, setValue] = useState()
   const handler = (e) => {
     setValue(e.target.value)
@@ -76,7 +76,7 @@ export const GetChange: Story = () => {
   )
 }
 
-export const WithUseInput: Story = () => {
+export const WithUseInput: StoryFn = () => {
   const { setState, reset, bindings } = useInput(
     'This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a separate page. Note that documentation for past versions is snapshotted at the time of the release, and isn’t being continuously updated.'
   )

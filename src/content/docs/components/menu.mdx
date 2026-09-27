@@ -1,0 +1,231 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Menu, Button, Grid } from 'core'
+
+export const meta = {
+  title: 'Menu',
+  description:
+    'A list of actions that opens from a button, with submenus, checkbox and radio items and keyboard support.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 49
+}
+
+## Menu
+
+A list of actions that opens from a button. Use it for commands, like editing
+or sharing something. To pick a value for a form, use `Select` or `Combobox`.
+
+<Playground
+  desc="Pass the element that opens the menu in `trigger`. A `shortcut` is shown next to the item."
+  scope={{ Menu, Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Menu trigger={<Button auto>Options</Button>}>
+      <Menu.Item shortcut="⌘E">Edit</Menu.Item>
+      <Menu.Item shortcut="⌘D">Duplicate</Menu.Item>
+      <Menu.Item disabled>Archive</Menu.Item>
+      <Menu.Divider />
+      <Menu.Item type="error">Delete</Menu.Item>
+    </Menu>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Labels and dividers"
+  desc="Group the items with `Menu.Label` and separate the groups with `Menu.Divider`."
+  scope={{ Menu, Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Menu trigger={<Button auto>Account</Button>}>
+      <Menu.Label>Profile</Menu.Label>
+      <Menu.Item>Settings</Menu.Item>
+      <Menu.Item>Billing</Menu.Item>
+      <Menu.Divider />
+      <Menu.Label>Team</Menu.Label>
+      <Menu.Item>Invite people</Menu.Item>
+      <Menu.Divider />
+      <Menu.Item>Log out</Menu.Item>
+    </Menu>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Submenus"
+  desc="`Menu.Sub` opens a menu next to its item on hover, on click or with the right arrow. Submenus can be nested."
+  scope={{ Menu, Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Menu trigger={<Button auto>File</Button>}>
+      <Menu.Item>New</Menu.Item>
+      <Menu.Item>Open</Menu.Item>
+      <Menu.Sub label="Share">
+        <Menu.Item>Email</Menu.Item>
+        <Menu.Item>Copy link</Menu.Item>
+        <Menu.Sub label="More">
+          <Menu.Item>Embed</Menu.Item>
+          <Menu.Item>Export</Menu.Item>
+        </Menu.Sub>
+      </Menu.Sub>
+      <Menu.Divider />
+      <Menu.Item>Close</Menu.Item>
+    </Menu>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Checkbox and radio items"
+  desc="`Menu.CheckboxItem` turns an option on or off. `Menu.RadioItem` picks one value of its `Menu.RadioGroup`. Both keep the menu open."
+  scope={{ Menu, Button, Grid }}
+  code={`
+() => {
+  const [grid, setGrid] = React.useState(true)
+  const [ruler, setRuler] = React.useState(false)
+  const [sort, setSort] = React.useState('name')
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Menu trigger={<Button auto>View</Button>}>
+          <Menu.CheckboxItem checked={grid} onChange={setGrid}>
+            Show grid
+          </Menu.CheckboxItem>
+          <Menu.CheckboxItem checked={ruler} onChange={setRuler}>
+            Show ruler
+          </Menu.CheckboxItem>
+          <Menu.Divider />
+          <Menu.Label>Sort by</Menu.Label>
+          <Menu.RadioGroup aria-label="Sort by" value={sort} onChange={setSort}>
+            <Menu.RadioItem value="name">Name</Menu.RadioItem>
+            <Menu.RadioItem value="date">Date</Menu.RadioItem>
+            <Menu.RadioItem value="size">Size</Menu.RadioItem>
+          </Menu.RadioGroup>
+        </Menu>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Control when the menu is open with `visible` and `onVisibleChange`."
+  scope={{ Menu, Button, Grid }}
+  code={`
+() => {
+  const [visible, setVisible] = React.useState(false)
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Menu
+          visible={visible}
+          onVisibleChange={setVisible}
+          trigger={<Button auto>{visible ? 'Open' : 'Closed'}</Button>}
+        >
+          <Menu.Item>Edit</Menu.Item>
+          <Menu.Item>Duplicate</Menu.Item>
+        </Menu>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/menu.mdx">
+<Attributes.Title>Menu.Props</Attributes.Title>
+
+| Attribute             | Description                                          | Type                           | Accepted values                   | Default |
+| --------------------- | ---------------------------------------------------- | ------------------------------ | --------------------------------- | ------- |
+| **trigger**           | the element that opens the menu, usually a `Button`  | `ReactElement`                 | -                                 | -       |
+| **visible**           | open state, to control the menu                      | `boolean`                      | -                                 | -       |
+| **initialVisible**    | open state at the start                              | `boolean`                      | -                                 | `false` |
+| **onVisibleChange**   | called when the menu wants to open or close          | `(visible: boolean) => void`   | -                                 | -       |
+| **getPopupContainer** | element that receives the menu, `document.body` when missing | `() => HTMLElement`    | -                                 | -       |
+| ...                   | native props, passed to the element around the trigger | `HTMLAttributes`            | `'id', 'className', ...`          | -       |
+
+<Attributes.Title>Menu.Item.Props</Attributes.Title>
+
+| Attribute            | Description                                     | Type                       | Accepted values          | Default   |
+| -------------------- | ----------------------------------------------- | -------------------------- | ------------------------ | --------- |
+| **onClick**          | called when the item is chosen, by click or key | `(event) => void`          | -                        | -         |
+| **icon**             | shown before the label                          | `ReactNode`                | -                        | -         |
+| **shortcut**         | shown after the label, only for the eye         | `string`                   | -                        | -         |
+| **type**             | color of the item                               | `string`                   | `'default', 'error'`     | `default` |
+| **disabled**         | the item cannot be chosen or focused            | `boolean`                  | -                        | `false`   |
+| **disableAutoClose** | keep the menu open after the item is chosen     | `boolean`                  | -                        | `false`   |
+| ...                  | native props                                    | `HTMLAttributes`           | `'aria-keyshortcuts', ...` | -       |
+
+<Attributes.Title>Menu.CheckboxItem.Props</Attributes.Title>
+
+Accepts the props of `Menu.Item`, except `onClick`, plus:
+
+| Attribute            | Description                                 | Type                          | Accepted values | Default |
+| -------------------- | ------------------------------------------- | ----------------------------- | --------------- | ------- |
+| **checked**          | whether the option is on                    | `boolean`                     | -               | `false` |
+| **onChange**         | called with the new state                   | `(checked: boolean) => void`  | -               | -       |
+| **disableAutoClose** | keep the menu open after the item is chosen | `boolean`                     | -               | `true`  |
+
+<Attributes.Title>Menu.RadioGroup.Props</Attributes.Title>
+
+| Attribute    | Description                                    | Type                      | Accepted values          | Default |
+| ------------ | ---------------------------------------------- | ------------------------- | ------------------------ | ------- |
+| **value**    | the value of the checked item                  | `string`                  | -                        | -       |
+| **onChange** | called with the value of the chosen item       | `(value: string) => void` | -                        | -       |
+| ...          | native props, name the group with `aria-label` | `HTMLAttributes`          | `'aria-label', ...`      | -       |
+
+<Attributes.Title>Menu.RadioItem.Props</Attributes.Title>
+
+Accepts the props of `Menu.Item`, except `onClick`, plus:
+
+| Attribute            | Description                                 | Type      | Accepted values | Default |
+| -------------------- | ------------------------------------------- | --------- | --------------- | ------- |
+| **value**            | the value this item checks in its group     | `string`  | -               | -       |
+| **disableAutoClose** | keep the menu open after the item is chosen | `boolean` | -               | `true`  |
+
+<Attributes.Title>Menu.Sub.Props</Attributes.Title>
+
+| Attribute    | Description                         | Type             | Accepted values | Default |
+| ------------ | ----------------------------------- | ---------------- | --------------- | ------- |
+| **label**    | text of the item that opens it      | `ReactNode`      | -               | -       |
+| **icon**     | shown before the label              | `ReactNode`      | -               | -       |
+| **disabled** | the submenu cannot be opened        | `boolean`        | -               | `false` |
+| ...          | native props, passed to the item    | `HTMLAttributes` | -               | -       |
+
+<Attributes.Title>Menu.Label and Menu.Divider</Attributes.Title>
+
+Both accept native props. `Menu.Label` is a title for the items below it, and `Menu.Divider` is a line between groups.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` of `Menu` points at the element around the trigger. The `ref` of each item, of `Menu.Label` and of `Menu.Divider` points at its own element, and the `ref` of `Menu.Sub` at the item that opens it.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The trigger gets `aria-haspopup="menu"` and `aria-expanded`. The list is a `menu`, named by the trigger, with `menuitem`, `menuitemcheckbox` and `menuitemradio` items. A radio group is a `group`; name it with `aria-label`. The `shortcut` is only visual: to announce it, pass `aria-keyshortcuts`, like `aria-keyshortcuts="Meta+E"`.
+
+| Key                   | Action                                                     |
+| --------------------- | ---------------------------------------------------------- |
+| Arrow Down and Up     | On the trigger, open on the first or the last item. In the menu, move between the items |
+| Enter and Space       | Choose the focused item, or open its submenu               |
+| Home and End          | Go to the first or the last item                           |
+| Arrow Right           | Open the submenu of the focused item                       |
+| Arrow Left            | Close the submenu and go back to its item                  |
+| Escape                | Close the submenu, or the menu and focus the trigger       |
+| Tab                   | Close the menu and focus the trigger                       |
+| Letters               | Go to the next item that starts with what was typed        |
+
+Disabled items are skipped by the keyboard.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

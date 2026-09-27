@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { CheckboxContext } from './CheckboxContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value: string[]
@@ -11,8 +12,13 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type CheckboxGroupProps = Props & NativeAttrs
+
+// Without `value` the group starts empty and keeps its own state. It has to
+// be the same array on every render: the effect below sets the state
+// whenever `value` changes, and a new array each time made it loop
+const noValue: string[] = []
 
 function CheckboxGroupComponent({
   disabled = false,
@@ -28,16 +34,19 @@ function CheckboxGroupComponent({
   const classes = useClasses('group', className)
 
   if (!value) {
-    value = []
-    useWarning('Props "value" is required.', 'Checkbox Group')
+    value = noValue
+    logWarning('Props "value" is required.', 'Checkbox Group')
   }
 
-  const updateState = (val: string, checked: boolean) => {
-    const removed = selfVal.filter((v) => v !== val)
-    const next = checked ? [...removed, val] : removed
-    setSelfVal(next)
-    onChange && onChange(next)
-  }
+  const updateState = useCallback(
+    (val: string, checked: boolean) => {
+      const removed = selfVal.filter((v) => v !== val)
+      const next = checked ? [...removed, val] : removed
+      setSelfVal(next)
+      if (onChange) onChange(next)
+    },
+    [selfVal, onChange]
+  )
 
   const providerValue = useMemo(() => {
     return {
@@ -46,7 +55,7 @@ function CheckboxGroupComponent({
       inGroup: true,
       values: selfVal
     }
-  }, [disabled, selfVal])
+  }, [updateState, disabled, selfVal])
 
   useEffect(() => {
     setSelfVal(value)

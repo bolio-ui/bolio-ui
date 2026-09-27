@@ -1,11 +1,5 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import useTheme from '../use-theme'
-import flush, { flushToHTML } from 'styled-jsx/server'
-
-export type FlushToReact = <T>(opts?: {
-  nonce?: string
-}) => Array<ReactElement<T>>
-export type FlushToHTML = (opts?: { nonce?: string }) => string
 
 const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
   children
@@ -37,12 +31,15 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           padding: 0;
           min-height: 100%;
           position: relative;
-          overflow-x: hidden;
+          /* clip, not hidden: overflow-x:hidden forces overflow-y into a
+             scroll container too (a CSS quirk), which breaks
+             position:sticky for every element down the tree. */
+          overflow-x: clip;
           font-family: ${theme.font.sans};
         }
 
         #__next {
-          overflow-x: hidden;
+          overflow-x: clip;
         }
 
         *,
@@ -309,15 +306,4 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
   )
 }
 
-type MemoCssBaselineComponent<P = {}> = React.NamedExoticComponent<P> & {
-  flush: FlushToReact
-  flushToHTML: FlushToHTML
-}
-
-const MemoCssBaseline = React.memo(CssBaseline) as MemoCssBaselineComponent<
-  React.PropsWithChildren<unknown>
->
-MemoCssBaseline.flush = flush
-MemoCssBaseline.flushToHTML = flushToHTML
-
-export default MemoCssBaseline
+export default React.memo(CssBaseline)

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Popover from '.'
 import Link from '../Link'
@@ -10,7 +10,7 @@ export default {
   component: Popover
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   const content = () => (
     <div style={{ padding: '0 10px' }}>
       <Link href="#">A hyperlink</Link>
@@ -29,7 +29,7 @@ export const Default: Story = () => {
   )
 }
 
-export const PresetItem: Story = () => {
+export const PresetItem: StoryFn = () => {
   const content = () => (
     <>
       <Popover.Item title>
@@ -58,7 +58,7 @@ export const PresetItem: Story = () => {
   )
 }
 
-export const CloseManual: Story = () => {
+export const CloseManual: StoryFn = () => {
   const [visible, setVisible] = useState(false)
   const changeHandler = (next) => {
     setVisible(next)

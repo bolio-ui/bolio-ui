@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo } from 'react'
 import { NormalTypes } from '../utils/prop-types'
 import TextChild from './Child'
 import { withScale } from '../use-scale'
+import type { AnyElement } from '../utils/types'
 
 export type TextTypes = NormalTypes
 interface Props {
@@ -23,12 +24,12 @@ interface Props {
   type?: TextTypes
 }
 
-type ElementMap = { [key in keyof JSX.IntrinsicElements]?: boolean }
+type ElementMap = { [key in keyof React.JSX.IntrinsicElements]?: boolean }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type TextProps = Props & NativeAttrs
 
-type TextRenderableElements = Array<keyof JSX.IntrinsicElements>
+type TextRenderableElements = Array<keyof React.JSX.IntrinsicElements>
 
 const getModifierChild = (
   tags: TextRenderableElements,
@@ -41,57 +42,65 @@ const getModifierChild = (
   )
 }
 
-function TextComponent({
-  h1 = false,
-  h2 = false,
-  h3 = false,
-  h4 = false,
-  h5 = false,
-  h6 = false,
-  p = false,
-  b = false,
-  small = false,
-  i = false,
-  span = false,
-  del = false,
-  em = false,
-  blockquote = false,
-  children,
-  className = '',
-  ...props
-}: React.PropsWithChildren<TextProps>) {
-  const elements: ElementMap = { h1, h2, h3, h4, h5, h6, p, blockquote }
-  const inlineElements: ElementMap = { span, small, b, em, i, del }
+const TextComponent = React.forwardRef<
+  HTMLElement,
+  React.PropsWithChildren<TextProps>
+>(
+  (
+    {
+      h1 = false,
+      h2 = false,
+      h3 = false,
+      h4 = false,
+      h5 = false,
+      h6 = false,
+      p = false,
+      b = false,
+      small = false,
+      i = false,
+      span = false,
+      del = false,
+      em = false,
+      blockquote = false,
+      children,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const elements: ElementMap = { h1, h2, h3, h4, h5, h6, p, blockquote }
+    const inlineElements: ElementMap = { span, small, b, em, i, del }
 
-  const names = Object.keys(elements).filter(
-    (name: keyof JSX.IntrinsicElements) => elements[name]
-  ) as TextRenderableElements
+    const names = Object.keys(elements).filter(
+      (name: keyof React.JSX.IntrinsicElements) => elements[name]
+    ) as TextRenderableElements
 
-  const inlineNames = Object.keys(inlineElements).filter(
-    (name: keyof JSX.IntrinsicElements) => inlineElements[name]
-  ) as TextRenderableElements
+    const inlineNames = Object.keys(inlineElements).filter(
+      (name: keyof React.JSX.IntrinsicElements) => inlineElements[name]
+    ) as TextRenderableElements
 
-  const tag = useMemo(() => {
-    if (names[0]) return names[0]
-    if (inlineNames[0]) return inlineNames[0]
-    return 'p' as keyof JSX.IntrinsicElements
-  }, [names, inlineNames])
+    const tag = useMemo(() => {
+      if (names[0]) return names[0]
+      if (inlineNames[0]) return inlineNames[0]
+      return 'p' as keyof React.JSX.IntrinsicElements
+    }, [names, inlineNames])
 
-  const renderableChildElements = inlineNames.filter(
-    (name: keyof JSX.IntrinsicElements) => name !== tag
-  ) as TextRenderableElements
+    const renderableChildElements = inlineNames.filter(
+      (name: keyof React.JSX.IntrinsicElements) => name !== tag
+    ) as TextRenderableElements
 
-  const modifers = useMemo(() => {
-    if (!renderableChildElements.length) return children
-    return getModifierChild(renderableChildElements, children)
-  }, [renderableChildElements, children])
+    const modifers = useMemo(() => {
+      if (!renderableChildElements.length) return children
+      return getModifierChild(renderableChildElements, children)
+    }, [renderableChildElements, children])
 
-  return (
-    <TextChild className={className} tag={tag} {...props}>
-      {modifers}
-    </TextChild>
-  )
-}
+    return (
+      <TextChild ref={ref} className={className} tag={tag} {...props}>
+        {modifers}
+      </TextChild>
+    )
+  }
+)
 
 TextComponent.displayName = 'BolioUIText'
 const Text = withScale(TextComponent)

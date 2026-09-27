@@ -9,27 +9,18 @@ interface Props {
   name?: string
 }
 
-const defaultProps = {
-  visible: false,
-  enterTime: 60,
-  leaveTime: 60,
-  clearTime: 60,
-  className: '',
-  name: 'transition'
-}
-
 export type CssTransitionProps = Props
 
 function CssTransition({
   children,
-  className,
-  visible,
-  enterTime,
-  leaveTime,
-  clearTime,
-  name,
+  className = '',
+  visible = false,
+  enterTime = 60,
+  leaveTime = 60,
+  clearTime = 60,
+  name = 'transition',
   ...props
-}: React.PropsWithChildren<CssTransitionProps> & typeof defaultProps) {
+}: React.PropsWithChildren<CssTransitionProps>) {
   const [classes, setClasses] = useState<string>('')
   const [renderable, setRenderable] = useState<boolean>(visible)
 
@@ -61,16 +52,17 @@ function CssTransition({
       clearTimeout(timer)
       clearTimeout(clearClassesTimer)
     }
-  }, [visible, renderable])
+  }, [visible, renderable, enterTime, leaveTime, clearTime, name])
 
-  if (!React.isValidElement(children) || !renderable) return null
+  if (!React.isValidElement<{ className?: string }>(children) || !renderable)
+    return null
 
-  return React.cloneElement(children, {
+  const element = children
+  return React.cloneElement(element, {
     ...props,
-    className: `${children.props.className} ${className} ${classes}`
+    className: `${element.props.className} ${className} ${classes}`
   })
 }
 
-CssTransition.defaultProps = defaultProps
 CssTransition.displayName = 'BolioUICssTransition'
 export default CssTransition

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import NextLink from 'next/link'
 import Breadcrumbs from '.'
 import Grid from '../Grid'
@@ -9,7 +9,7 @@ export default {
   component: Breadcrumbs
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>
@@ -21,7 +21,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Separator: Story = () => (
+export const Separator: StoryFn = () => (
   <Grid.Container gap={2} direction="column">
     <Grid>
       <Breadcrumbs separator="-">
@@ -42,7 +42,7 @@ export const Separator: Story = () => (
   </Grid.Container>
 )
 
-export const Icons: Story = () => (
+export const Icons: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>
@@ -58,7 +58,7 @@ export const Icons: Story = () => (
   </Grid.Container>
 )
 
-export const WithNextjs: Story = () => (
+export const WithNextjs: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Breadcrumbs>

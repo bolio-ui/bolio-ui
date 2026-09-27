@@ -1,0 +1,159 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Note, Grid } from 'core'
+
+export const meta = {
+  title: 'Note',
+  description:
+    'Display text that requires attention or provides additional information.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 25
+}
+
+## Note
+
+Display text that requires attention or provides additional information.
+
+<Playground
+  desc="Show a piece of text or components."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Note>Check payment pending.</Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Types"
+  desc="You can apply a types differents with the `type` prop."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Note>Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="primary">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="success">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="warning">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="error">Check payment pending.</Note>
+  </Grid>
+  <Grid>
+    <Note type="info">Check payment pending.</Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Hidden Label"
+  desc="`Note` component with a show/hide label."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label={false}>Demo note!</Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Custom Label"
+  desc="You can change custom label of the `Note` with the property `label`."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label="custom">Customize a note.</Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Filled Variant"
+  desc="You can change the filled variant of the `Note` with the property `filled`."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Note label="custom" filled>
+      Customize a note.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="primary" label="primary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary" label="secondary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="success" label="success" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="warning" label="warning" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="error" label="error" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+  <Grid>
+    <Note type="secondary" filled>
+      Check payment pending.
+    </Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/note.mdx">
+<Attributes.Title>Note.Props</Attributes.Title>
+
+| Attribute  | Description               | Type                 | Accepted values          | Default   |
+| ---------- | ------------------------- | -------------------- | ------------------------ | --------- |
+| **type**   | note type                        | `NoteTypes`           | [NoteTypes](#nodetypes)  | `default` |
+| **label**  | show label or custom text        | `boolean` / `string`  | -                        | -         |
+| **filled** | filled variant: fill color       | `boolean`             | -                        | `false`   |
+| **light**  | light variant: tinted background | `boolean`             | -                        | `false`   |
+| **subtle** | subtle variant: no border        | `boolean`             | -                        | `false`   |
+| ...        | native props                     | `HTMLAttributes`      | `'id', 'className', ...` | -         |
+
+<Attributes.Title>NoteTypes</Attributes.Title>
+
+```ts
+type NoteTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Loading from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Loading
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Loading />
@@ -15,7 +15,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const WithText: Story = () => (
+export const WithText: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Loading>Loading</Loading>
@@ -23,7 +23,7 @@ export const WithText: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={3} md={3}>
       <Loading />
@@ -49,7 +49,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const Spaces: Story = () => (
+export const Spaces: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={6} md={6}>
       <Loading spaceRatio={10} />

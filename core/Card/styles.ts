@@ -1,5 +1,6 @@
 import { CardTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type CardStyles = {
   color: string
@@ -7,11 +8,35 @@ export type CardStyles = {
   borderColor: string
 }
 
+export interface CardVariantProps {
+  isShadow?: boolean
+  filled?: boolean
+  ghost?: boolean
+  subtle?: boolean
+}
+
 export const getStyles = (
   type: CardTypes,
   palette: BolioUIThemesPalette,
-  isShadow?: boolean
+  { isShadow, filled, ghost, subtle }: CardVariantProps = {}
 ): CardStyles => {
+  // Card's own default is already the "light" variant (tinted bg, dark
+  // text), so the other 3 only need to be layered on top for semantic colors.
+  if (isSemanticColorType(type)) {
+    if (subtle) {
+      const { bg, border, color } = getVariantColors(palette, type, 'subtle')
+      return { color, bgColor: bg, borderColor: border }
+    }
+    if (ghost) {
+      const { bg, border, color } = getVariantColors(palette, type, 'outline')
+      return { color, bgColor: bg, borderColor: border }
+    }
+    if (filled) {
+      const { bg, border, color } = getVariantColors(palette, type, 'filled')
+      return { color, bgColor: bg, borderColor: border }
+    }
+  }
+
   const colors: { [key in CardTypes]: CardStyles } = {
     default: {
       color: palette.foreground,

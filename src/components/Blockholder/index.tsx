@@ -1,5 +1,4 @@
 import React from 'react'
-import withDefaults from 'src/utils/with-defaults'
 
 export interface Props {
   className?: string
@@ -8,18 +7,11 @@ export interface Props {
   alt?: string
 }
 
-const defaultProps = {
-  className: '',
-  width: '100%',
-  height: '100%',
-  alt: 'block placeholder'
-}
-
 const PlaceholderBlock: React.FC<Props> = ({
-  className,
-  width,
-  height,
-  alt,
+  className = '',
+  width = '100%',
+  height = '100%',
+  alt = 'block placeholder',
   ...props
 }) => {
   return (
@@ -49,4 +41,4 @@ const PlaceholderBlock: React.FC<Props> = ({
   )
 }
 
-export default withDefaults(PlaceholderBlock, defaultProps)
+export default PlaceholderBlock

@@ -1,0 +1,118 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Stepper, Button, Grid } from 'core'
+
+export const meta = {
+  title: 'Stepper',
+  description:
+    'Shows the steps of a flow and which one the user is on, like a checkout or a signup.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 51
+}
+
+## Stepper
+
+Shows the steps of a flow and which one the user is on, like a checkout or a
+signup. The steps before `active` are completed.
+
+<Playground
+  desc="Pass the index of the current step in `active` and name the list with `aria-label`."
+  scope={{ Stepper }}
+  code={`
+<Stepper active={1} aria-label="Checkout">
+  <Stepper.Step label="Cart" description="Review the items" />
+  <Stepper.Step label="Shipping" description="Where to deliver" />
+  <Stepper.Step label="Payment" description="Card or invoice" />
+</Stepper>
+`}
+/>
+
+<Playground
+  title="Clickable steps"
+  desc="With `onStepClick`, each step is a button that receives its index. A step with `disabled` cannot be clicked."
+  scope={{ Stepper, Button, Grid }}
+  code={`
+() => {
+  const [active, setActive] = React.useState(0)
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Stepper active={active} onStepClick={setActive} aria-label="Signup">
+          <Stepper.Step label="Account" />
+          <Stepper.Step label="Profile" />
+          <Stepper.Step label="Confirm" />
+        </Stepper>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.75} disabled={active === 0} onClick={() => setActive(active - 1)}>
+          Back
+        </Button>{' '}
+        <Button auto scale={0.75} type="secondary" disabled={active === 3} onClick={() => setActive(active + 1)}>
+          Next
+        </Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Error"
+  desc="Mark a step that failed with `error`. It shows in red whether it is done or not."
+  scope={{ Stepper }}
+  code={`
+<Stepper active={2} aria-label="Deploy">
+  <Stepper.Step label="Build" description="2m 14s" />
+  <Stepper.Step label="Test" description="3 failed" error />
+  <Stepper.Step label="Release" />
+</Stepper>
+`}
+/>
+
+<Playground
+  title="Vertical"
+  desc='Use `orientation="vertical"` for narrow spaces or long descriptions.'
+  scope={{ Stepper }}
+  code={`
+<Stepper active={1} orientation="vertical" aria-label="Onboarding">
+  <Stepper.Step label="Create a project" description="Name it and pick a region" />
+  <Stepper.Step label="Invite the team" description="They get an email with a link" />
+  <Stepper.Step label="Deploy" description="Push to the main branch" />
+</Stepper>
+`}
+/>
+
+<Attributes edit="/content/docs/components/stepper.mdx">
+<Attributes.Title>Stepper.Props</Attributes.Title>
+
+| Attribute       | Description                                         | Type                      | Accepted values              | Default      |
+| --------------- | --------------------------------------------------- | ------------------------- | ---------------------------- | ------------ |
+| **active**      | index of the current step, from `0`                 | `number`                  | -                            | -            |
+| **onStepClick** | called with the index of the clicked step; turns the steps into buttons | `(index: number) => void` | -    | -            |
+| **orientation** | direction of the steps                              | `string`                  | `'horizontal', 'vertical'`   | `horizontal` |
+| ...             | native props, passed to the `ol`                    | `OlHTMLAttributes`        | `'aria-label', 'id', ...`    | -            |
+
+<Attributes.Title>Stepper.Step.Props</Attributes.Title>
+
+| Attribute       | Description                                            | Type             | Accepted values | Default |
+| --------------- | ------------------------------------------------------ | ---------------- | --------------- | ------- |
+| **label**       | name of the step                                       | `ReactNode`      | -               | -       |
+| **description** | text below the label                                   | `ReactNode`      | -               | -       |
+| **icon**        | replaces the number, the check and the error mark      | `ReactNode`      | -               | -       |
+| **error**       | the step failed                                        | `boolean`        | -               | `false` |
+| **disabled**    | the step cannot be clicked, with `onStepClick`         | `boolean`        | -               | `false` |
+| ...             | native props, passed to the `li`                       | `LiHTMLAttributes` | -             | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` of `Stepper` points at the `ol`, and the `ref` of each step at its `li`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The steps are an ordered list, so a screen reader hears how many there are and the position of each. Name the list with `aria-label`. The current step has `aria-current="step"`, and completed and failed steps say so in text, not only in color. With `onStepClick`, each step is a real button, reached with Tab.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

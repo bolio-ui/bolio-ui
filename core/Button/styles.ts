@@ -2,6 +2,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import { ButtonTypes } from '../utils/prop-types'
 import { ButtonProps } from './Button'
 import { addColorAlpha } from '../utils/color'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export interface ButtonColorGroup {
   bg: string
@@ -12,48 +13,30 @@ export interface ButtonColorGroup {
 export const getButtonGhostColors = (
   palette: BolioUIThemesPalette,
   type: ButtonTypes
-): ButtonColorGroup | null => {
-  const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
-    primary: {
-      bg: palette.background,
-      border: palette.primary,
-      color: palette.primary
-    },
-    secondary: {
-      bg: palette.background,
-      border: palette.secondary,
-      color: palette.secondary
-    },
-    success: {
-      bg: palette.background,
-      border: palette.success,
-      color: palette.success
-    },
-    warning: {
-      bg: palette.background,
-      border: palette.warning,
-      color: palette.warning
-    },
-    error: {
-      bg: palette.background,
-      border: palette.error,
-      color: palette.error
-    },
-    info: {
-      bg: palette.background,
-      border: palette.info,
-      color: palette.info
-    }
-  }
+): ButtonColorGroup | null =>
+  isSemanticColorType(type) ? getVariantColors(palette, type, 'outline') : null
 
-  return colors[type] || null
-}
+// A tinted background with the type's own theme "Lighter" token, distinct
+// from the solid "filled" look (unlike a plain type, whose bg is the full color).
+export const getButtonLightColors = (
+  palette: BolioUIThemesPalette,
+  type: ButtonTypes
+): ButtonColorGroup | null =>
+  isSemanticColorType(type) ? getVariantColors(palette, type, 'light') : null
+
+// No background at all until you look at the drip/ghost states: just the
+// type's color as text, for the quietest of the four variants.
+export const getButtonSubtleColors = (
+  palette: BolioUIThemesPalette,
+  type: ButtonTypes
+): ButtonColorGroup | null =>
+  isSemanticColorType(type) ? getVariantColors(palette, type, 'subtle') : null
 
 export const getButtonColors = (
   palette: BolioUIThemesPalette,
   props: ButtonProps
 ): ButtonColorGroup => {
-  const { type, disabled, ghost } = props
+  const { type, disabled, ghost, subtle } = props
   const colors: { [key in ButtonTypes]?: ButtonColorGroup } = {
     default: {
       bg: palette.accents_2,
@@ -103,18 +86,16 @@ export const getButtonColors = (
       color: palette.accents_4
     }
 
-  /**
-   * The '-light' type is the same color as the common type,
-   * only hover's color is different.
-   * e.g.
-   *   Color['success'] === Color['success-light']
-   *   Color['warning'] === Color['warning-light']
-   */
   const withoutLightType = type?.replace('-light', '') as ButtonTypes
+  const isLight = type?.endsWith('-light')
   const defaultColor = colors.default as ButtonColorGroup
 
   if (ghost)
     return getButtonGhostColors(palette, withoutLightType) || defaultColor
+  if (subtle)
+    return getButtonSubtleColors(palette, withoutLightType) || defaultColor
+  if (isLight)
+    return getButtonLightColors(palette, withoutLightType) || defaultColor
   return colors[withoutLightType] || defaultColor
 }
 
@@ -280,7 +261,9 @@ export const getButtonDripColor = (
   palette: BolioUIThemesPalette,
   props: ButtonProps
 ) => {
-  const { type } = props
+  const { type, subtle } = props
+  if (subtle) return addColorAlpha(getButtonColors(palette, props).color, 0.25)
+
   const isLightHover = type?.endsWith('light')
   const hoverColors = getButtonHoverColors(palette, props)
   return isLightHover

@@ -1,0 +1,200 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Radio, Grid, Code } from 'core'
+import { useState } from 'react'
+
+export const meta = {
+  title: 'Radio',
+  description: 'Provides single user input from a selection of options.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 29
+}
+
+## Radio
+
+Provides single user input from a selection of options.
+
+<Playground
+  desc="The basic `Radio` usage."
+  scope={{ Radio, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio checked={false}>Option 1</Radio>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Group"
+  desc="A group of radio components."
+  scope={{ Radio, useState, Grid }}
+  code={`
+() => {
+  const [state, setState] = useState('1')
+  const handler = (val) => {
+    setState(val)
+    console.log(val)
+  }
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Radio.Group value={state} onChange={handler}>
+          <Radio value="1">Option 1</Radio>
+          <Radio value="2">Option 2</Radio>
+        </Radio.Group>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Type"
+  desc="Differentiate states by color."
+  scope={{ Radio, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio checked={false}>Default</Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="primary">
+      Primary
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="secondary">
+      Secondary
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="success">
+      Success
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="warning">
+      Warning
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="error">
+      Error
+    </Radio>
+  </Grid>
+  <Grid>
+    <Radio checked={false} type="info">
+      Info
+    </Radio>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Description"
+  desc="`Description` can be combined with other components."
+  scope={{ Radio, Code, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" onChange={(val) => console.log(val)}>
+      <Radio value="1">
+        Option 1
+        <Radio.Description>
+          Example description for Option 1
+        </Radio.Description>
+      </Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Disable all radios."
+  scope={{ Radio, useState, Code, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" disabled>
+      <Radio value="1">Option 1</Radio>
+      <Radio value="2">Option 2</Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Row"
+  desc="Horizontal arrangement."
+  scope={{ Radio, Code, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Radio.Group value="1" useRow>
+      <Radio value="1">
+        Option 1<Radio.Desc>Description for Option1</Radio.Desc>
+      </Radio>
+      <Radio value="2">
+        Option 2<Radio.Desc>Description for Option2</Radio.Desc>
+      </Radio>
+    </Radio.Group>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/radio.mdx">
+<Attributes.Title>Radio.Props</Attributes.Title>
+
+| Attribute    | Description                   | Type                                           | Accepted values           | Default   |
+| ------------ | ----------------------------- | ---------------------------------------------- | ------------------------- | --------- |
+| **checked**  | selected or not (in single)   | `boolean`                                      | -                         | `false`   |
+| **value**    | unique ident value (in group) | `string`                                       | -                         | -         |
+| **id**       | native attr                   | `string`                                       | -                         | -         |
+| **disabled** | disable current radio         | `boolean`                                      | -                         | `false`   |
+| **type**     | current type                  | `RadioTypes`                                   | [RadioTypes](#radiotypes) | `default` |
+| **onChange** | change event                  | `(e: RadioEvent) => void`                      | -                         | -         |
+| **ref**      | forwardRef                    | <Code>Ref&lt;HTMLInputElement &#124; null&gt;</Code> | -                         | -         |
+| ...          | native props                  | `InputHTMLAttributes`                          | `'id', 'className', ...`  | -         |
+
+<Attributes.Title>Radio.Group.Props</Attributes.Title>
+
+| Attribute        | Description          | Type                      | Accepted values          | Default |
+| ---------------- | -------------------- | ------------------------- | ------------------------ | ------- |
+| **initialValue** | initial value        | `string`                  | -                        | -       |
+| **value**        | selected child radio | `string`                  | -                        | -       |
+| **useRow**       | horizontal layout    | `boolean`                 | -                        | `false` |
+| **disabled**     | disable all radios   | `boolean`                 | -                        | `false` |
+| **onChange**     | change event         | `(value: string) => void` | -                        | -       |
+| ...              | native props         | `HTMLAttributes`          | `'id', 'className', ...` | -       |
+
+<Attributes.Title alias="Radio.Desc">Radio.Description.Props</Attributes.Title>
+
+| Attribute | Description  | Type             | Accepted values          | Default |
+| --------- | ------------ | ---------------- | ------------------------ | ------- |
+| ...       | native props | `HTMLAttributes` | `'id', 'className', ...` | -       |
+
+<Attributes.Title>RadioTypes</Attributes.Title>
+
+```ts
+type RadioTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

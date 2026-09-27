@@ -15,6 +15,8 @@ function PasswordIcon({ visible }: Props) {
       fill="none"
       shapeRendering="geometricPrecision"
       style={{ color: 'currentColor' }}
+      role="img"
+      aria-label={visible ? 'Hide password' : 'Show password'}
     >
       {!visible ? (
         <>

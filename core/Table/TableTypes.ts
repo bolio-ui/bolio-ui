@@ -1,14 +1,15 @@
 import React from 'react'
+import type { AnyObject } from '../utils/types'
 
-export type TableDataItemBase = Record<string, any>
+export type TableDataItemBase = AnyObject
 
 export type TableColumnRender<Item extends TableDataItemBase> = (
   value: Item[keyof Item],
   rowData: Item,
   rowIndex: number
-) => JSX.Element | void
+) => React.JSX.Element | void
 
-export type TableAbstractColumn<TableDataItem> = {
+export type TableAbstractColumn<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
   label: React.ReactNode | string
   className: string

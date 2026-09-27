@@ -19,6 +19,9 @@ examples/**/.cache
 # next.js
 /.next/
 /out/
+# rewritten by `next dev` and `next build` with different content
+# (.next/dev/types vs .next/types); not worth tracking
+next-env.d.ts
 
 # production
 /build
@@ -47,12 +50,16 @@ yarn-error.log*
 .vercel
 
 # sw stuff
-sw.*
-workbox-*
-swe-worker-*
+/public/sw.*
+/public/workbox-*
+/public/swe-worker-*
 
 # storybook
 storybook-static
 
 # Local Netlify folder
 .netlify
+compat/.work
+
+# typescript
+*.tsbuildinfo

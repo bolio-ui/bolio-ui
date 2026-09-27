@@ -1,0 +1,38 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+import { Colors } from 'src/components'
+
+export const meta = {
+  title: 'Default Theme',
+  description:
+    'You can use any color anywhere, all colors change with the theme.',
+  sidebar: 'guide',
+  group: 'Theme'
+}
+
+## Default Theme
+
+<Spacer h={2} />
+
+### Usage
+
+You can use any color anywhere, all colors change with the theme.
+If you want to customize your colors, please read [use-theme](/docs/hooks/use-theme) to learn more.
+
+```jsx
+import { useTheme, Text } from '@bolio-ui/core'
+
+const TextCustomComponent = () => {
+  const { palette } = useTheme()
+
+  return <Text style={{ color: palette.accents_1 }}>TextCustomComponent</Text>
+}
+```
+
+<Spacer h={2} />
+
+### Colors
+
+<Colors />
+
+export default Docs.withMeta(meta)

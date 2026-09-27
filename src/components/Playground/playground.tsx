@@ -5,7 +5,6 @@ import Title from './title'
 
 const DynamicLive = dynamic(() => import('./dynamic-live'), {
   ssr: false,
-  // eslint-disable-next-line react/display-name
   loading: () => (
     <div style={{ padding: '20pt 0' }}>
       <Loading spaceRatio={5} />
@@ -22,18 +21,12 @@ export type PlaygroundProps = {
   }
 }
 
-const defaultProps = {
-  desc: '',
-  code: '',
-  bindings: {}
-}
-
 function Playground({
   title: inputTitle,
-  code: inputCode,
-  desc,
+  code: inputCode = '',
+  desc = '',
   scope
-}: PlaygroundProps & typeof defaultProps) {
+}: PlaygroundProps) {
   const code = inputCode.trim()
   const title = inputTitle || 'General'
 
@@ -45,6 +38,5 @@ function Playground({
   )
 }
 
-Playground.defaultProps = defaultProps
 Playground.displayName = 'BolioUIPlayground'
 export default React.memo(Playground)

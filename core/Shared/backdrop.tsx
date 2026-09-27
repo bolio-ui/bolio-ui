@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from './css-transition'
 import useCurrentState from '../utils/use-current-state'
@@ -14,37 +14,33 @@ interface Props {
   layerClassName?: string
 }
 
-const defaultProps = {
-  onClick: () => {},
-  visible: false,
-  // onContentClick: () => {},
-  backdropClassName: '',
-  positionClassName: '',
-  layerClassName: ''
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>
 export type BackdropProps = Props & NativeAttrs
 
 function BackdropComponent({
   children,
-  onClick,
-  visible,
+  onClick = () => {},
+  visible = false,
   width,
   onContentClick,
-  backdropClassName,
-  positionClassName,
-  layerClassName,
+  backdropClassName = '',
+  positionClassName = '',
+  layerClassName = '',
   ...props
-}: React.PropsWithChildren<BackdropProps> & typeof defaultProps) {
+}: React.PropsWithChildren<BackdropProps>) {
   const theme = useTheme()
 
   const [, setIsContentMouseDown, IsContentMouseDownRef] =
     useCurrentState(false)
 
+  const contentRef = useRef<HTMLDivElement>(null)
+
   const clickHandler = (event: MouseEvent<HTMLElement>) => {
     if (IsContentMouseDownRef.current) return
-    onClick && onClick(event)
+    // a click that comes from the content is not a click on the backdrop. It
+    // has no mousedown when it is made with the keyboard, or by code
+    if (contentRef.current?.contains(event.target as Node)) return
+    if (onClick) onClick(event)
   }
 
   const mouseUpHandler = () => {
@@ -65,6 +61,7 @@ function BackdropComponent({
       >
         <div className={useClasses('layer', layerClassName)} />
         <div
+          ref={contentRef}
           onClick={onContentClick}
           className={useClasses('position', positionClassName)}
           onMouseDown={() => setIsContentMouseDown(true)}
@@ -133,7 +130,6 @@ function BackdropComponent({
   )
 }
 
-BackdropComponent.defaultProps = defaultProps
 BackdropComponent.displayName = 'BolioUIBackdrop'
 const Backdrop = React.memo(BackdropComponent)
 export default Backdrop

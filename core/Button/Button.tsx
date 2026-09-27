@@ -19,10 +19,12 @@ import {
   getButtonHoverColors
 } from './styles'
 import useClasses from '../use-classes'
+import useDefaultProps from '../utils/use-default-props'
 
 interface Props {
   type?: ButtonTypes
   ghost?: boolean
+  subtle?: boolean
   rounded?: boolean
   loading?: boolean
   shadow?: boolean
@@ -40,6 +42,7 @@ const defaultProps = {
   type: 'default' as ButtonTypes,
   htmlType: 'button' as React.ButtonHTMLAttributes<unknown>['type'],
   ghost: false,
+  subtle: false,
   rounded: false,
   loading: false,
   shadow: false,
@@ -59,13 +62,16 @@ const ButtonComponent = React.forwardRef<
   const theme = useTheme()
   const { SCALES } = useScale()
   const buttonRef = useRef<HTMLButtonElement>(null)
-  useImperativeHandle(ref, () => buttonRef.current)
+  useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement)
 
   const [dripShow, setDripShow] = useState<boolean>(false)
   const [dripX, setDripX] = useState<number>(0)
   const [dripY, setDripY] = useState<number>(0)
   const groupConfig = useButtonGroupContext()
-  const filteredProps = filterPropsWithGroup(btnProps, groupConfig)
+  const filteredProps = filterPropsWithGroup(
+    useDefaultProps(btnProps, defaultProps),
+    groupConfig
+  )
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const {
@@ -75,6 +81,7 @@ const ButtonComponent = React.forwardRef<
     loading,
     shadow,
     ghost,
+    subtle,
     rounded,
     effect,
     onClick,
@@ -124,7 +131,7 @@ const ButtonComponent = React.forwardRef<
       setDripY(event.clientY - rect.top)
     }
 
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   const childrenWithIcon = useMemo(
@@ -172,8 +179,11 @@ const ButtonComponent = React.forwardRef<
           justify-content: center;
           text-align: center;
           white-space: nowrap;
-          transition: background-color 200ms ease 0ms, box-shadow 200ms ease 0ms,
-            border 200ms ease 0ms, color 200ms ease 0ms;
+          transition:
+            background-color 200ms ease 0ms,
+            box-shadow 200ms ease 0ms,
+            border 200ms ease 0ms,
+            color 200ms ease 0ms;
           position: relative;
           overflow: hidden;
           color: ${color};
@@ -228,7 +238,6 @@ const ButtonComponent = React.forwardRef<
   )
 })
 
-ButtonComponent.defaultProps = defaultProps
 ButtonComponent.displayName = 'BolioUIButton'
 const Button = withScale(ButtonComponent)
 export default Button

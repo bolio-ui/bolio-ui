@@ -4,9 +4,15 @@ import { Loading } from 'core'
 
 const DynamicLive = dynamic(() => import('./dynamic-live'), {
   ssr: false,
-  // eslint-disable-next-line react/display-name
   loading: () => (
-    <div style={{ padding: '20pt 0' }}>
+    <div
+      style={{
+        minHeight: 340,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
       <Loading spaceRatio={5} />
     </div>
   )
@@ -21,21 +27,14 @@ export type PlaygroundHorizontalProps = {
   }
 }
 
-const defaultProps = {
-  desc: '',
-  code: '',
-  bindings: {}
-}
-
 function PlaygroundHorizontal({
-  code: inputCode,
+  code: inputCode = '',
   scope
-}: PlaygroundHorizontalProps & typeof defaultProps) {
+}: PlaygroundHorizontalProps) {
   const code = inputCode.trim()
 
   return <DynamicLive code={code} scope={scope} />
 }
 
-PlaygroundHorizontal.defaultProps = defaultProps
 PlaygroundHorizontal.displayName = 'BolioUIPlaygroundHorizontal'
 export default React.memo(PlaygroundHorizontal)

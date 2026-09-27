@@ -1,0 +1,158 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Avatar, Grid } from 'core'
+
+export const meta = {
+  title: 'Avatar',
+  description:
+    'Avatars represent a user or a team. Stacked avatars represent a group of people.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 1
+}
+
+## Avatar
+
+Avatars represent a user or a team. Stacked avatars represent a group of people.
+
+<Playground
+  desc="The `Avatar` contains circle and square."
+  scope={{ Avatar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Avatar
+      src="https://i.pravatar.cc/150?img=60"
+      isSquare
+      width={1.5}
+      height={1.5}
+    />
+  </Grid>
+  <Grid>
+    <Avatar text="Bill" isSquare width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar
+      src="https://i.pravatar.cc/150?img=30"
+      isSquare
+      width={1.5}
+      height={1.5}
+    />
+  </Grid>
+  <Grid>
+    <Avatar text="Max" isSquare width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar
+      src="https://i.pravatar.cc/150?img=20"
+      isSquare
+      width={1.5}
+      height={1.5}
+    />
+  </Grid>
+  <Grid>
+    <Avatar text="Jane" isSquare width={1.5} height={1.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Text"
+  desc="Display text in the avatar box."
+  scope={{ Avatar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Avatar text="BA" width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar text="ES" width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar text="MB" width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar text="WL" width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar text="ML" width={1.5} height={1.5} />
+  </Grid>
+  <Grid>
+    <Avatar text="TR" width={1.5} height={1.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Group"
+  desc="Multiple avatars can overlap and stack together."
+  scope={{ Avatar, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <Avatar.Group>
+      <Avatar
+        src="https://i.pravatar.cc/150?img=60"
+        width={1.5}
+        height={1.5}
+        stacked
+      />
+      <Avatar
+        src="https://i.pravatar.cc/150?img=30"
+        width={1.5}
+        height={1.5}
+        stacked
+      />
+      <Avatar
+        src="https://i.pravatar.cc/150?img=20"
+        width={1.5}
+        height={1.5}
+        stacked
+      />
+      <Avatar
+        src="https://i.pravatar.cc/150?img=10"
+        width={1.5}
+        height={1.5}
+        stacked
+      />
+    </Avatar.Group>
+  </Grid>
+  <Grid>
+    <Avatar.Group count={6}>
+      <Avatar
+        src="https://i.pravatar.cc/150?img=60"
+        width={1.5}
+        height={1.5}
+        stacked
+      />
+      <Avatar text="C" width={1.5} height={1.5} stacked />
+      <Avatar text="Mag" width={1.5} height={1.5} stacked />
+    </Avatar.Group>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/avatar.mdx">
+<Attributes.Title>Avatar.Props</Attributes.Title>
+
+| Attribute    | Description                        | Type                | Accepted values                          | Default |
+| ------------ | ---------------------------------- | ------------------- | ---------------------------------------- | ------- |
+| **src**      | image src                          | `string`            | -                                        | -       |
+| **stacked**  | stacked display group              | `boolean`           | -                                        | `false` |
+| **text**     | display text when image is missing | `string`            | -                                        | -       |
+| **isSquare** | avatar shape                       | `boolean`           | -                                        | `false` |
+| ...          | native props                       | `ImgHTMLAttributes` | `'alt', 'crossOrigin', 'className', ...` | -       |
+
+<Attributes.Title>Avatar.Group.Props</Attributes.Title>
+
+| Attribute | Description        | Type             | Accepted values                  | Default |
+| --------- | ------------------ | ---------------- | -------------------------------- | ------- |
+| **count** | show total members | `number`         | -                                | -       |
+| ...       | native props       | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

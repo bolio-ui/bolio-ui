@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { TableAbstractColumn, TableDataItemBase } from './TableTypes'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   width: number
@@ -8,14 +9,14 @@ interface Props<TableDataItem extends TableDataItemBase> {
   className?: string
 }
 
-const defaultProps = {
-  className: ''
-}
+type NativeAttrs = Omit<
+  React.HTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
+export type TableHeadProps<TableDataItem extends TableDataItemBase> =
+  Props<TableDataItem> & NativeAttrs
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
-export type TableHeadProps<TableDataItem> = Props<TableDataItem> & NativeAttrs
-
-const makeColgroup = <TableDataItem,>(
+const makeColgroup = <TableDataItem extends TableDataItemBase>(
   width: number,
   columns: Array<TableAbstractColumn<TableDataItem>>
 ) => {
@@ -38,8 +39,7 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   props: TableHeadProps<TableDataItem>
 ) => {
   const theme = useTheme()
-  const { columns, width } = props as TableHeadProps<TableDataItem> &
-    typeof defaultProps
+  const { columns, width } = props
   const isScalableWidth = useMemo(
     () => columns.find((item) => !!item.width),
     [columns]
@@ -47,7 +47,7 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   const colgroup = useMemo(() => {
     if (!isScalableWidth) return <colgroup />
     return makeColgroup(width, columns)
-  }, [isScalableWidth, width])
+  }, [isScalableWidth, width, columns])
 
   return (
     <>
@@ -56,7 +56,7 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
         <tr>
           {columns.map((column, index) => (
             <th
-              key={`table-th-${column.prop}-${index}`}
+              key={`table-th-${String(column.prop)}-${index}`}
               className={column.className}
             >
               <div className="thead-box">{column.label}</div>
@@ -114,6 +114,5 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
   )
 }
 
-TableHead.defaultProps = defaultProps
 TableHead.displayName = 'BolioUITableHead'
 export default TableHead

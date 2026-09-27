@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Text from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Text
 } as Meta
 
-export const Heading: Story = () => (
+export const Heading: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text h1>Hello my friend, have fun with Bolio UI 🥷🏼</Text>
@@ -15,7 +15,7 @@ export const Heading: Story = () => (
   </Grid.Container>
 )
 
-export const Paragraph: Story = () => (
+export const Paragraph: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text p>
@@ -28,7 +28,7 @@ export const Paragraph: Story = () => (
   </Grid.Container>
 )
 
-export const Small: Story = () => (
+export const Small: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text small>
@@ -45,7 +45,7 @@ export const Small: Story = () => (
   </Grid.Container>
 )
 
-export const Blockquote: Story = () => (
+export const Blockquote: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text blockquote my={0}>
@@ -56,7 +56,7 @@ export const Blockquote: Story = () => (
   </Grid.Container>
 )
 
-export const Types: Story = () => (
+export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text b i style={{ letterSpacing: '0.6px' }}>
@@ -100,7 +100,7 @@ export const Types: Story = () => (
   </Grid.Container>
 )
 
-export const Sizes: Story = () => (
+export const Sizes: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text font="12px" mt={0}>
@@ -115,7 +115,7 @@ export const Sizes: Story = () => (
   </Grid.Container>
 )
 
-export const Compose: Story = () => (
+export const Compose: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Text p mt={0}>

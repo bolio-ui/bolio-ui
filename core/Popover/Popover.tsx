@@ -1,10 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Tooltip, { TooltipTypes } from '../Tooltip'
 import { Placement, TriggerTypes } from '../utils/prop-types'
 import { getReactNode } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import { PopoverContext, PopoverConfig } from './PopoverContext'
 import useClasses from '../use-classes'
+import useDefaultProps from '../utils/use-default-props'
+import useLatest from '../utils/use-latest'
 
 export type PopoverTriggerTypes = TriggerTypes
 export type PopoverPlacement = Placement
@@ -44,47 +46,56 @@ const defaultProps = {
 
 export type PopoverProps = Props
 
-const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
-  content,
-  children,
-  trigger,
-  placement,
-  initialVisible,
-  portalClassName,
-  disableItemsAutoClose,
-  onVisibleChange,
-  visible: customVisible,
-  type = 'default' as TooltipTypes,
-  ...props
-}: React.PropsWithChildren<PopoverProps> & typeof defaultProps) => {
+const PopoverComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<PopoverProps>
+>((popoverProps, ref) => {
+  const {
+    content,
+    children,
+    trigger,
+    placement,
+    initialVisible,
+    portalClassName,
+    disableItemsAutoClose,
+    onVisibleChange,
+    visible: customVisible,
+    type = 'default' as TooltipTypes,
+    ...props
+  } = useDefaultProps(popoverProps, defaultProps)
   const { SCALES } = useScale()
   const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
-  const onChildClick = () => {
+  const onPopoverVisibleChange = useCallback(
+    (next: boolean) => {
+      setVisible(next)
+      onVisibleChange(next)
+    },
+    [onVisibleChange]
+  )
+  const onChildClick = useCallback(() => {
     onPopoverVisibleChange(false)
-  }
+  }, [onPopoverVisibleChange])
   const value = useMemo<PopoverConfig>(
     () => ({
       onItemClick: onChildClick,
       disableItemsAutoClose
     }),
-    [disableItemsAutoClose]
+    [onChildClick, disableItemsAutoClose]
   )
   const classes = useClasses('popover', portalClassName)
 
-  const onPopoverVisibleChange = (next: boolean) => {
-    setVisible(next)
-    onVisibleChange(next)
-  }
-
+  // runs when `visible` changes, not when the handler does
+  const latestChange = useLatest(onPopoverVisibleChange)
   useEffect(() => {
     if (customVisible === undefined) return
-    onPopoverVisibleChange(customVisible)
-  }, [customVisible])
+    latestChange.current(customVisible)
+  }, [customVisible, latestChange])
 
   return (
     <PopoverContext.Provider value={value}>
       <Tooltip
+        ref={ref}
         initialVisible={false}
         text={textNode}
         trigger={trigger}
@@ -96,18 +107,17 @@ const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
         {...props}
       >
         {children}
-        <style jsx>{`
-          :global(.tooltip-content.popover > .inner) {
-            padding: ${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)}
-              ${SCALES.pl(0)};
-          }
-        `}</style>
       </Tooltip>
+      <style jsx>{`
+        :global(.tooltip-content.popover > .inner) {
+          padding: ${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)}
+            ${SCALES.pl(0)};
+        }
+      `}</style>
     </PopoverContext.Provider>
   )
-}
+})
 
-PopoverComponent.defaultProps = defaultProps
 PopoverComponent.displayName = 'BolioUIPopover'
 const Popover = withScale(PopoverComponent)
 export default Popover

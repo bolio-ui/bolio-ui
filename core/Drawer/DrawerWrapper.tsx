@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
 import useScale from '../use-scale'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
@@ -14,17 +14,15 @@ interface Props {
 
 export type DrawerWrapperProps = Props
 
-function DrawerWrapper({
-  className = '',
-  children,
-  visible = false,
-  placement,
-  ...props
-}: React.PropsWithChildren<DrawerWrapperProps>) {
+const DrawerWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<DrawerWrapperProps>
+>(({ className = '', children, visible = false, placement, ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
   const modalContent = useRef<HTMLDivElement>(null)
+  useImperativeHandle(ref, () => modalContent.current as HTMLDivElement)
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
   const transform = useMemo(() => getDrawerTransform(placement), [placement])
@@ -35,7 +33,7 @@ function DrawerWrapper({
     const activeElement = document.activeElement
     const isChild = isChildElement(modalContent.current, activeElement)
     if (isChild) return
-    tabStart.current && tabStart.current.focus()
+    if (tabStart.current) tabStart.current.focus()
   }, [visible])
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -44,11 +42,11 @@ function DrawerWrapper({
     const activeElement = document.activeElement
     if (event.shiftKey) {
       if (activeElement === tabStart.current) {
-        tabEnd.current && tabEnd.current.focus()
+        if (tabEnd.current) tabEnd.current.focus()
       }
     } else {
       if (activeElement === tabEnd.current) {
-        tabStart.current && tabStart.current.focus()
+        if (tabStart.current) tabStart.current.focus()
       }
     }
   }
@@ -58,6 +56,7 @@ function DrawerWrapper({
       <div
         className={classes}
         role="dialog"
+        aria-modal="true"
         tabIndex={-1}
         onKeyDown={onKeyDown}
         ref={modalContent}
@@ -96,7 +95,9 @@ function DrawerWrapper({
             opacity: 0;
             outline: none;
             transform: ${transform.initial};
-            transition: opacity, transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
+            transition:
+              opacity,
+              transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
             font-size: ${SCALES.font(1)};
             --modal-wrapper-padding-left: ${SCALES.pl(1.3125)};
             --modal-wrapper-padding-right: ${SCALES.pr(1.3125)};
@@ -146,7 +147,9 @@ function DrawerWrapper({
           .wrapper-leave {
             opacity: 1;
             transform: ${transform.visible};
-            transition: opacity, transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
+            transition:
+              opacity,
+              transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
           }
           .wrapper-leave-active {
             opacity: 0.4;
@@ -163,7 +166,7 @@ function DrawerWrapper({
       </div>
     </CssTransition>
   )
-}
+})
 
 DrawerWrapper.displayName = 'BolioUIDrawerWrapper'
 export default DrawerWrapper

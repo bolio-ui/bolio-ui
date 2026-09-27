@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import useTheme from '../use-theme'
 import Progress from '.'
@@ -10,7 +10,7 @@ export default {
   component: Progress
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Progress value={50} />
@@ -18,7 +18,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const CustomMax: Story = () => (
+export const CustomMax: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Progress value={45} max={50} />
@@ -26,7 +26,7 @@ export const CustomMax: Story = () => (
   </Grid.Container>
 )
 
-export const DynamicColors: Story = () => {
+export const DynamicColors: StoryFn = () => {
   const theme = useTheme()
 
   const [value, setValue] = useState(20)
@@ -57,7 +57,7 @@ export const DynamicColors: Story = () => {
   )
 }
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid xs={12} md={12}>
       <Progress value={3} />

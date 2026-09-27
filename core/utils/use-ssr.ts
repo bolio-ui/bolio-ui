@@ -14,7 +14,7 @@ const useSSR = (): SSRState => {
 
   return {
     isBrowser: browser,
-    isServer: !browser,
+    isServer: !browser
   }
 }
 

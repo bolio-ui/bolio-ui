@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
 import Radio from '.'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Radio
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Radio checked={false}>Option 1</Radio>
@@ -16,7 +16,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const Text: Story = () => {
+export const Text: StoryFn = () => {
   const [state, setState] = useState('1')
   const handler = (val) => {
     setState(val)
@@ -34,7 +34,7 @@ export const Text: Story = () => {
   )
 }
 
-export const Type: Story = () => (
+export const Type: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Radio checked={false}>Default</Radio>
@@ -72,7 +72,7 @@ export const Type: Story = () => (
   </Grid.Container>
 )
 
-export const Description: Story = () => (
+export const Description: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Radio.Group value="1" onChange={(val) => console.log(val)}>
@@ -87,7 +87,7 @@ export const Description: Story = () => (
   </Grid.Container>
 )
 
-export const Disabled: Story = () => (
+export const Disabled: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Radio.Group value="1" disabled>
@@ -98,7 +98,7 @@ export const Disabled: Story = () => (
   </Grid.Container>
 )
 
-export const Row: Story = () => (
+export const Row: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Radio.Group value="1" useRow>

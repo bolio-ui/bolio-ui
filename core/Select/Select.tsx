@@ -1,5 +1,6 @@
 import React, {
   CSSProperties,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -20,6 +21,7 @@ import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type SelectRef = {
   focus: () => void
@@ -46,20 +48,10 @@ interface Props {
   getPopupContainer?: () => HTMLElement | null
 }
 
-const defaultProps = {
-  disabled: false,
-  type: 'default' as SelectTypes,
-  icon: SelectIcon as React.ComponentType,
-  pure: false,
-  multiple: false,
-  clearable: true,
-  className: '',
-  disableMatchWidth: false,
-  onDropdownVisibleChange: () => {}
-}
-
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SelectProps = Props & NativeAttrs
+
+const noop = () => {}
 
 const SelectComponent = React.forwardRef<
   SelectRef,
@@ -83,7 +75,9 @@ const SelectComponent = React.forwardRef<
       dropdownStyle,
       disableMatchWidth = false,
       getPopupContainer,
-      onDropdownVisibleChange = () => {},
+      onDropdownVisibleChange = noop,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
       ...props
     }: React.PropsWithChildren<SelectProps>,
     selectRef
@@ -113,22 +107,28 @@ const SelectComponent = React.forwardRef<
       [theme.palette, type, disabled]
     )
 
-    const updateVisible = (next: boolean) => {
-      onDropdownVisibleChange(next)
-      setVisible(next)
-    }
+    const updateVisible = useCallback(
+      (next: boolean) => {
+        onDropdownVisibleChange(next)
+        setVisible(next)
+      },
+      [onDropdownVisibleChange]
+    )
 
-    const updateValue = (next: string) => {
-      setValue((last) => {
-        if (!Array.isArray(last)) return next
-        if (!last.includes(next)) return [...last, next]
-        return last.filter((item) => item !== next)
-      })
-      onChange && onChange(valueRef.current as string | string[])
-      if (!multiple) {
-        updateVisible(false)
-      }
-    }
+    const updateValue = useCallback(
+      (next: string) => {
+        setValue((last) => {
+          if (!Array.isArray(last)) return next
+          if (!last.includes(next)) return [...last, next]
+          return last.filter((item) => item !== next)
+        })
+        if (onChange) onChange(valueRef.current as string | string[])
+        if (!multiple) {
+          updateVisible(false)
+        }
+      },
+      [setValue, onChange, valueRef, multiple, updateVisible]
+    )
 
     const initialValue: SelectConfig = useMemo(
       () => ({
@@ -139,7 +139,7 @@ const SelectComponent = React.forwardRef<
         ref,
         disableAll: disabled
       }),
-      [visible, disabled, ref, value, multiple]
+      [visible, disabled, ref, value, updateValue, updateVisible]
     )
 
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -161,7 +161,7 @@ const SelectComponent = React.forwardRef<
     useEffect(() => {
       if (customValue === undefined) return
       setValue(customValue)
-    }, [customValue])
+    }, [customValue, setValue])
 
     useImperativeHandle(
       selectRef,
@@ -176,8 +176,15 @@ const SelectComponent = React.forwardRef<
     const selectedChild = useMemo(() => {
       const [, optionChildren] = pickChildByProps(children, 'value', value)
       return React.Children.map(optionChildren, (child) => {
-        if (!React.isValidElement(child)) return null
-        const el = React.cloneElement(child, { preventAllEvents: true })
+        if (
+          !React.isValidElement<{ value: string; preventAllEvents?: boolean }>(
+            child
+          )
+        )
+          return null
+        const el = React.cloneElement(child, {
+          preventAllEvents: true
+        })
         if (!multiple) return el
         return (
           <SelectMultipleValue
@@ -188,7 +195,7 @@ const SelectComponent = React.forwardRef<
           </SelectMultipleValue>
         )
       })
-    }, [value, children, multiple])
+    }, [value, children, multiple, clearable, disabled, updateValue])
 
     const onInputBlur = () => {
       updateVisible(false)
@@ -214,6 +221,11 @@ const SelectComponent = React.forwardRef<
         >
           <SelectInput
             ref={inputRef}
+            ariaLabel={
+              ariaLabel ||
+              (typeof placeholder === 'string' ? placeholder : undefined)
+            }
+            ariaLabelledby={ariaLabelledby}
             visible={visible}
             onBlur={onInputBlur}
             onFocus={() => setSelectFocus(true)}
@@ -252,7 +264,9 @@ const SelectComponent = React.forwardRef<
               cursor: ${disabled ? 'not-allowed' : 'pointer'};
               max-width: 90vw;
               overflow: hidden;
-              transition: border 150ms ease-in 0s, color 200ms ease-out 0s,
+              transition:
+                border 150ms ease-in 0s,
+                color 200ms ease-out 0s,
                 box-shadow 200ms ease 0s;
               border: 1px solid ${colors.borderColor};
               border-radius: ${theme.layout.radius};
@@ -333,7 +347,6 @@ const SelectComponent = React.forwardRef<
   }
 )
 
-SelectComponent.defaultProps = defaultProps
 SelectComponent.displayName = 'BolioUISelect'
 const Select = withScale(SelectComponent)
 export default Select

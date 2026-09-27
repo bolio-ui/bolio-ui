@@ -1,0 +1,437 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, Grid, Row, Code } from 'core'
+import { Zap, ZapOff, AlertCircle, XSquare } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Button',
+  description: 'A set of related buttons.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 4
+}
+
+## Button
+
+Used to trigger an operation.
+
+<Playground
+  title="General"
+  desc="The basic `Button` contains an animation effect."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button>Button</Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Loading"
+  desc="Show running status."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button loading>Button</Button>
+  </Grid>
+  <Grid>
+    <Button loading scale={0.75}>
+      Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button loading auto type="primary" scale={2 / 3}>
+      Button
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Do not respond to any action."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button disabled>Button</Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Shadow"
+  desc="The shadow highlights the level of the button."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button shadow type="secondary">
+      Button Shadow
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Type Colors"
+  desc="You can change the color of the `Button` with the property `type`."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button auto type="primary">
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="secondary">
+      Secondary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="success">
+      Success
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="warning">
+      Warning
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="error">
+      Error
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="info">
+      Info
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="abort">
+      Abort
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Lighted"
+  desc="Different state."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button auto type="primary-light">
+      Primary Light
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="secondary-light">
+      Secondary Light
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="success-light">
+      Success Light
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="warning-light">
+      Warning Light
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="error-light">
+      Error Light
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto type="info-light">
+      Info Light
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Ghost"
+  desc="The opposite color."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button type="primary" ghost auto>
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="secondary" ghost auto>
+      Secondary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="success" ghost auto>
+      Success
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="warning" ghost auto>
+      Warning
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="error" ghost auto>
+      Error
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="info" ghost auto>
+      Info
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Subtle"
+  desc="No background until you look at the color of the text, the quietest of the four variants."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button type="primary" subtle auto>
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="secondary" subtle auto>
+      Secondary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="success" subtle auto>
+      Success
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="warning" subtle auto>
+      Warning
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="error" subtle auto>
+      Error
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="info" subtle auto>
+      Info
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Rounded"
+  desc="You can completely round the corners of any type of `Button` with the `rounded` property."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button type="primary" rounded auto>
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="secondary" rounded auto>
+      Secondary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="success" rounded auto>
+      Success
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="warning" rounded auto>
+      Warning
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="error" rounded auto>
+      Error
+    </Button>
+  </Grid>
+  <Grid>
+    <Button type="info" rounded auto>
+      Info
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Scale"
+  desc="Buttons of different sizes."
+  scope={{ Button, Grid, Row }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button auto scale={0.25}>
+      0.25
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto scale={0.35}>
+      0.35
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto scale={1 / 2}>
+      1 / 2
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto scale={0.75}>
+      0.75
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto padding={0}>
+      NoPadding
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto font={0.25}>
+      Small Font
+    </Button>
+  </Grid>
+  <Grid>
+    <Button auto pl={0} ml="25px">
+      Offset
+    </Button>
+  </Grid>
+  <Grid xs={12}>
+    <Button width="100%">Full Width</Button>
+  </Grid>
+  <Grid xs={12}>
+    <Row>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+      <Button auto width="30%" mx="5px">
+        proportion
+      </Button>
+    </Row>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="With Icons"
+  desc="The `color` and `size` of the icon will be set automatically."
+  scope={{ Button, Grid, Zap, ZapOff, AlertCircle, XSquare }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button iconRight={<Zap />} auto scale={2 / 3} />
+  </Grid>
+  <Grid>
+    <Button iconRight={<ZapOff />} auto scale={2 / 3} px={0.6} />
+  </Grid>
+  <Grid>
+    <Button icon={<AlertCircle />} auto>
+      Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button iconRight={<AlertCircle />} type="success" scale={0.85}>
+      Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button icon={<AlertCircle />} type="warning" scale={0.85}>
+      Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button icon={<AlertCircle />} type="secondary">
+      Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button icon={<XSquare />} type="error" ghost>
+      Remove Button
+    </Button>
+  </Grid>
+  <Grid>
+    <Button icon={<XSquare />} disabled>
+      Remove Button
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/button.mdx">
+<Attributes.Title>Button.Props</Attributes.Title>
+
+| Attribute     | Description                               | Type                                            | Accepted values             | Default   |
+| ------------- | ----------------------------------------- | ----------------------------------------------- | --------------------------- | --------- |
+| **type**      | button type                               | `ButtonTypes`                                   | [ButtonTypes](#buttontypes) | `default` |
+| **ghost**     | the opposite color                        | `boolean`                                       | -                           | `false`   |
+| **subtle**    | no background, only the type's color      | `boolean`                                       | -                           | `false`   |
+| **rounded**   | rounded button                            | `boolean`                                       | -                           | `false`   |
+| **loading**   | display loading indicator                 | `boolean`                                       | -                           | `false`   |
+| **shadow**    | display shadow                            | `boolean`                                       | -                           | `false`   |
+| **auto**      | autoscale width                           | `boolean`                                       | -                           | `false`   |
+| **effect**    | display animation                         | `boolean`                                       | -                           | `true`    |
+| **disabled**  | disable button                            | `boolean`                                       | -                           | `false`   |
+| **onClick**   | click handler                             | `MouseEventHandler`                             | -                           | -         |
+| **icon**      | show icon in button                       | `ReactNode`                                     | -                           | -         |
+| **iconRight** | show icon on the other side of the button | `ReactNode`                                     | -                           | -         |
+| **htmlType**  | native type of button element             | `ButtonHTMLAttributes.type`                     | -                           | `button`  |
+| **ref**       | forwardRef                                | <Code>Ref&lt;HTMLButtonElement &#124; null&gt;</Code> | -                           | -         |
+| ...           | native props                              | `ButtonHTMLAttributes`                          | `'id', 'className', ...`    | -         |
+
+<Attributes.Title>ButtonTypes</Attributes.Title>
+
+```ts
+type ButtonTypes =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+  | 'abort'
+  | 'primary-light'
+  | 'secondary-light'
+  | 'success-light'
+  | 'warning-light'
+  | 'error-light'
+  | 'info-light'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

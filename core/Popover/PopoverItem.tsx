@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import { usePopoverContext } from './PopoverContext'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   line?: boolean
@@ -11,7 +12,7 @@ interface Props {
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type PopoverItemProps = Props & NativeAttrs
 
 function PopoverItemComponent({
@@ -32,7 +33,7 @@ function PopoverItemComponent({
   const classes = useClasses('item', { line, title }, className)
 
   const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    onClick && onClick(event)
+    if (onClick) onClick(event)
     if (dontCloseByClick) {
       return event.stopPropagation()
     }
@@ -50,7 +51,9 @@ function PopoverItemComponent({
             justify-content: flex-start;
             align-items: center;
             color: ${theme.palette.accents_5};
-            transition: color, background-color 150ms linear;
+            transition:
+              color,
+              background-color 150ms linear;
             line-height: 1.25em;
             font-size: ${SCALES.font(0.875)};
             width: ${SCALES.width(1, 'auto')};

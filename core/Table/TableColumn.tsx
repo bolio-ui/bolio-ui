@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import { useTableContext } from './TableContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import { TableColumnRender, TableDataItemBase } from './TableTypes'
 
-const defaultProps = {
-  className: '',
-  render: () => {}
-}
+// module level, so the effect below does not run again on every render
+const defaultRender = () => {}
 
-export type TableColumnProps<TableDataItem> = {
+export type TableColumnProps<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
   label?: string
   width?: number
@@ -24,14 +22,13 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
     prop,
     label,
     width,
-    className,
-    render: renderHandler
-  } = columnProps as React.PropsWithChildren<TableColumnProps<TableDataItem>> &
-    typeof defaultProps
+    className = '',
+    render: renderHandler = defaultRender
+  } = columnProps
   const { updateColumn } = useTableContext<TableDataItem>()
-  const safeProp = `${prop}`.trim()
+  const safeProp = String(prop).trim()
   if (!safeProp) {
-    useWarning('The props "prop" is required.', 'Table.Column')
+    logWarning('The props "prop" is required.', 'Table.Column')
   }
 
   useEffect(() => {
@@ -42,11 +39,10 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
       className,
       renderHandler
     })
-  }, [children, label, prop, width, className, renderHandler])
+  }, [children, label, safeProp, width, className, renderHandler, updateColumn])
 
   return null
 }
 
-TableColumn.defaultProps = defaultProps
 TableColumn.displayName = 'BolioUITableColumn'
 export default TableColumn

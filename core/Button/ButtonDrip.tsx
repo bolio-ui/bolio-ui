@@ -7,31 +7,24 @@ interface Props {
   color: string
 }
 
-const defaultProps = {
-  x: 0,
-  y: 0
-}
-
 export type ButtonDrip = Props
 
 const ButtonDrip: React.FC<ButtonDrip> = ({
-  x,
-  y,
+  x = 0,
+  y = 0,
   color,
   onCompleted
-}: ButtonDrip & typeof defaultProps) => {
+}: ButtonDrip) => {
   const dripRef = useRef<HTMLDivElement>(null)
 
   const top = Number.isNaN(+y) ? 0 : y - 10
   const left = Number.isNaN(+x) ? 0 : x - 10
 
   useEffect(() => {
-    if (!dripRef.current) return
-    dripRef.current.addEventListener('animationend', onCompleted)
-    return () => {
-      if (!dripRef.current) return
-      dripRef.current.removeEventListener('animationend', onCompleted)
-    }
+    const drip = dripRef.current
+    if (!drip) return
+    drip.addEventListener('animationend', onCompleted)
+    return () => drip.removeEventListener('animationend', onCompleted)
   })
 
   return (
@@ -82,6 +75,5 @@ const ButtonDrip: React.FC<ButtonDrip> = ({
   )
 }
 
-ButtonDrip.defaultProps = defaultProps
 ButtonDrip.displayName = 'BolioUItButtonDrip'
 export default ButtonDrip

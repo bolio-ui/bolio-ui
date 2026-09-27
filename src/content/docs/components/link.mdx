@@ -1,0 +1,161 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, Code, Grid } from 'core'
+import { useRouter } from 'next/navigation'
+
+export const meta = {
+  title: 'Link',
+  description: 'Hyperlinks between pages.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 22
+}
+
+## Link
+
+Hyperlinks between pages.
+
+<Playground
+  scope={{ Link, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#">
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Highlight"
+  desc="Distinguish links with different colors."
+  scope={{ Link, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" color>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="With Icon"
+  desc="Show an icon in the link."
+  scope={{ Link, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" icon>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+  <Grid>
+    <Link href="#" icon color>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variant"
+  desc="Different styles of links."
+  scope={{ Link, Text, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Text>
+      <Link href="#">
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" color>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" underline>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+  <Grid>
+    <Text>
+      <Link href="#" color underline>
+        Is a reference to the data you can follow directly by tapping.
+      </Link>
+    </Text>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Block"
+  desc="Display as a separate block."
+  scope={{ Link, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Link href="#" block>
+      Is a reference to the data you can follow directly by tapping.
+    </Link>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="With the Next.js router"
+  desc="Keep the `href`, so the link works in a new tab, and navigate with the router on click."
+  scope={{ Link, Grid, useRouter }}
+  code={`
+() => {
+  const router = useRouter()
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Link
+          block
+          href="/docs/components/button"
+          onClick={(event) => {
+            event.preventDefault()
+            router.push('/docs/components/button')
+          }}
+        >
+          Docs of Button
+        </Link>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/link.mdx">
+<Attributes.Title>Link.Props</Attributes.Title>
+
+| Attribute     | Description                 | Type                                            | Accepted values        | Default |
+| ------------- | --------------------------- | ----------------------------------------------- | ---------------------- | ------- |
+| **href**      | link url                    | `string`                                        | -                      | -       |
+| **color**     | display color for link      | `boolean`                                       | -                      | `false` |
+| **icon**      | show icon                   | `boolean`                                       | -                      | `false` |
+| **underline** | display underline           | `boolean`                                       | -                      | `false` |
+| **block**     | display as a separate block | `boolean`                                       | -                      | `false` |
+| **ref**       | forwardRef                  | <Code>Ref&lt;HTMLAnchorElement &#124; null&gt;</Code> | -                      | -       |
+| ...           | native props                | `AnchorHTMLAttributes`                          | `'rel', 'target', ...` | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

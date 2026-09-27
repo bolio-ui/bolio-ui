@@ -4,13 +4,20 @@ import useTheme from '../use-theme'
 export interface InputBlockLabelLabel {
   children?: ReactNode
   error?: boolean
+  id?: string
+  htmlFor?: string
 }
 
-function InputBlockLabelComponent({ children, error }: InputBlockLabelLabel) {
+function InputBlockLabelComponent({
+  children,
+  error,
+  id,
+  htmlFor
+}: InputBlockLabelLabel) {
   const theme = useTheme()
 
   return (
-    <label>
+    <label id={id} htmlFor={htmlFor}>
       {children}
       <style jsx>{`
         label {

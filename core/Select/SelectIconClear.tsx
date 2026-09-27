@@ -12,7 +12,7 @@ function SelectIconClear({ onClick }: Props) {
     event.preventDefault()
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   return (

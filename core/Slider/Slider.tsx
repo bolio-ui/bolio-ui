@@ -2,6 +2,7 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState
@@ -15,6 +16,7 @@ import { getColors } from './styles'
 import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 export type SliderTypes = NormalTypes
 interface Props {
@@ -31,10 +33,12 @@ interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SliderProps = Props & NativeAttrs
 
-const getRefWidth = (elementRef: RefObject<HTMLElement> | null): number => {
+const getRefWidth = (
+  elementRef: RefObject<HTMLElement | null> | null
+): number => {
   if (!elementRef || !elementRef.current) return 0
   const rect = elementRef.current.getBoundingClientRect()
   return rect.width || rect.right - rect.left
@@ -58,139 +62,182 @@ const getValue = (
     : Number.parseFloat(slideDistance.toFixed(1))
 }
 
-function SliderComponent({
-  hideValue = false,
-  disabled = false,
-  type = 'default' as SliderTypes,
-  step = 1,
-  max = 100,
-  min = 0,
-  initialValue = 0,
-  value: customValue,
-  onChange,
-  className = '',
-  showMarkers = false,
-  ...props
-}: React.PropsWithChildren<SliderProps>) {
-  const theme = useTheme()
-  const { SCALES } = useScale()
-  const [value, setValue] = useState<number>(initialValue)
-  const [, setSliderWidth, sideWidthRef] = useCurrentState<number>(0)
-  const [, setLastDargOffset, lastDargOffsetRef] = useCurrentState<number>(0)
-  const [isClick, setIsClick] = useState<boolean>(false)
-
-  const sliderRef = useRef<HTMLDivElement>(null)
-  const dotRef = useRef<HTMLDivElement>(null)
-
-  const currentRatio = useMemo(
-    () => ((value - min) / (max - min)) * 100,
-    [value, max, min]
-  )
-
-  const setLastOffsetManually = (val: number) => {
-    const width = getRefWidth(sliderRef)
-    const shouldOffset = ((val - min) / (max - min)) * width
-    setLastDargOffset(shouldOffset)
-  }
-
-  const updateValue = useCallback(
-    (offset) => {
-      const currentValue = getValue(
-        max,
-        min,
-        step,
-        offset,
-        sideWidthRef.current
-      )
-      setValue(currentValue)
-      onChange && onChange(currentValue)
+const SliderComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<SliderProps>
+>(
+  (
+    {
+      hideValue = false,
+      disabled = false,
+      type = 'default' as SliderTypes,
+      step = 1,
+      max = 100,
+      min = 0,
+      initialValue = 0,
+      value: customValue,
+      onChange,
+      className = '',
+      showMarkers = false,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      ...props
     },
-    [max, min, step, sideWidthRef]
-  )
+    ref
+  ) => {
+    const theme = useTheme()
+    const { SCALES } = useScale()
+    const [value, setValue] = useState<number>(initialValue)
+    const [, setSliderWidth, sideWidthRef] = useCurrentState<number>(0)
+    const [, setLastDargOffset, lastDargOffsetRef] = useCurrentState<number>(0)
+    const [isClick, setIsClick] = useState<boolean>(false)
 
-  const { bg } = useMemo(
-    () => getColors(theme.palette, type),
-    [theme.palette, type]
-  )
+    const sliderRef = useRef<HTMLDivElement>(null)
+    useImperativeHandle(ref, () => sliderRef.current as HTMLDivElement)
+    const dotRef = useRef<HTMLDivElement>(null)
 
-  const dragHandler = (event: DraggingEvent) => {
-    if (disabled) return
-    const currentOffset = event.currentX - event.startX
-    const offset = currentOffset + lastDargOffsetRef.current
-    updateValue(offset)
-  }
+    const currentRatio = useMemo(
+      () => ((value - min) / (max - min)) * 100,
+      [value, max, min]
+    )
 
-  const dragStartHandler = () => {
-    setIsClick(false)
-    setSliderWidth(getRefWidth(sliderRef))
-  }
+    const setLastOffsetManually = (val: number) => {
+      const width = getRefWidth(sliderRef)
+      const shouldOffset = ((val - min) / (max - min)) * width
+      setLastDargOffset(shouldOffset)
+    }
 
-  const dragEndHandler = (event: DraggingEvent) => {
-    if (disabled) return
-    const offset = event.currentX - event.startX
-    const currentOffset = offset + lastDargOffsetRef.current
-    const boundOffset =
-      currentOffset < 0 ? 0 : Math.min(currentOffset, sideWidthRef.current)
-    setLastDargOffset(boundOffset)
-  }
+    const updateValue = useCallback(
+      (offset: number) => {
+        const currentValue = getValue(
+          max,
+          min,
+          step,
+          offset,
+          sideWidthRef.current
+        )
+        setValue(currentValue)
+        if (onChange) onChange(currentValue)
+      },
+      [max, min, step, sideWidthRef, onChange]
+    )
 
-  const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (disabled) return
-    if (!sliderRef || !sliderRef.current) return
-    setIsClick(true)
-    setSliderWidth(getRefWidth(sliderRef))
-    const clickOffset =
-      event.clientX - sliderRef.current.getBoundingClientRect().x
-    setLastDargOffset(clickOffset)
-    updateValue(clickOffset)
-  }
+    const { bg } = useMemo(
+      () => getColors(theme.palette, type),
+      [theme.palette, type]
+    )
 
-  useDrag(dotRef, dragHandler, dragStartHandler, dragEndHandler)
+    const dragHandler = (event: DraggingEvent) => {
+      if (disabled) return
+      const currentOffset = event.currentX - event.startX
+      const offset = currentOffset + lastDargOffsetRef.current
+      updateValue(offset)
+    }
 
-  useEffect(() => {
-    if (customValue === undefined) return
-    if (customValue === value) return
-    setValue(customValue)
-  }, [customValue, value])
+    const dragStartHandler = () => {
+      setIsClick(false)
+      setSliderWidth(getRefWidth(sliderRef))
+    }
 
-  useEffect(() => {
-    initialValue && setLastOffsetManually(initialValue)
-  }, [])
+    const dragEndHandler = (event: DraggingEvent) => {
+      if (disabled) return
+      const offset = event.currentX - event.startX
+      const currentOffset = offset + lastDargOffsetRef.current
+      const boundOffset =
+        currentOffset < 0 ? 0 : Math.min(currentOffset, sideWidthRef.current)
+      setLastDargOffset(boundOffset)
+    }
 
-  return (
-    <div
-      className={useClasses('slider', className)}
-      onClick={clickHandler}
-      ref={sliderRef}
-      {...props}
-    >
-      <SliderDot
-        disabled={disabled}
-        ref={dotRef}
-        isClick={isClick}
-        left={currentRatio}
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (disabled) return
+      const nextByKey: Record<string, number> = {
+        ArrowRight: value + step,
+        ArrowUp: value + step,
+        ArrowLeft: value - step,
+        ArrowDown: value - step,
+        PageUp: value + step * 10,
+        PageDown: value - step * 10,
+        Home: min,
+        End: max
+      }
+      if (!(event.key in nextByKey)) return
+      event.preventDefault()
+      const next = Math.min(max, Math.max(min, nextByKey[event.key]))
+      if (next === value) return
+      setValue(next)
+      setLastOffsetManually(next)
+      if (onChange) onChange(next)
+    }
+
+    const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+      if (disabled) return
+      if (!sliderRef || !sliderRef.current) return
+      setIsClick(true)
+      setSliderWidth(getRefWidth(sliderRef))
+      const clickOffset =
+        event.clientX - sliderRef.current.getBoundingClientRect().x
+      setLastDargOffset(clickOffset)
+      updateValue(clickOffset)
+    }
+
+    useDrag(dotRef, dragHandler, dragStartHandler, dragEndHandler)
+
+    useEffect(() => {
+      if (customValue === undefined) return
+      if (customValue === value) return
+      setValue(customValue)
+    }, [customValue, value])
+
+    // the drag offset starts from the initial value, only on mount
+    useEffect(() => {
+      if (initialValue) setLastOffsetManually(initialValue)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    return (
+      <div
+        className={useClasses('slider', className)}
+        onClick={clickHandler}
+        ref={sliderRef}
+        {...props}
       >
-        {hideValue || value}
-      </SliderDot>
-      {showMarkers && <SliderMark max={max} min={min} step={step} />}
-      <style jsx>{`
-        .slider {
-          border-radius: 50px;
-          background-color: ${disabled ? theme.palette.accents_2 : bg};
-          position: relative;
-          cursor: ${disabled ? 'not-allow' : 'pointer'};
-          --slider-font-size: ${SCALES.font(1)};
-          width: ${SCALES.width(1, '100%')};
-          height: ${SCALES.height(0.5)};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-      `}</style>
-    </div>
-  )
-}
+        <SliderDot
+          disabled={disabled}
+          ref={dotRef}
+          isClick={isClick}
+          left={currentRatio}
+          role="slider"
+          tabIndex={disabled ? -1 : 0}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          aria-disabled={disabled || undefined}
+          onKeyDown={keyDownHandler}
+        >
+          {hideValue || value}
+        </SliderDot>
+        {showMarkers && <SliderMark max={max} min={min} step={step} />}
+        <style jsx>{`
+          .slider {
+            border-radius: 50px;
+            background-color: ${disabled ? theme.palette.accents_2 : bg};
+            position: relative;
+            cursor: ${disabled ? 'not-allow' : 'pointer'};
+            --slider-font-size: ${SCALES.font(1)};
+            width: ${SCALES.width(1, '100%')};
+            height: ${SCALES.height(0.5)};
+            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
+              ${SCALES.pl(0)};
+            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
+              ${SCALES.ml(0)};
+          }
+        `}</style>
+      </div>
+    )
+  }
+)
 
 SliderComponent.displayName = 'BolioUISlider'
 const Slider = withScale(SliderComponent)

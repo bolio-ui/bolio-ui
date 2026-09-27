@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Spacer from '.'
 import Grid from '../Grid'
 
@@ -7,7 +7,7 @@ export default {
   component: Spacer
 } as Meta
 
-export const Vertical: Story = () => (
+export const Vertical: StoryFn = () => (
   <Grid.Container>
     <Grid xs={12} style={{ background: '#444', borderRadius: '15px' }}>
       <Spacer h={2} />
@@ -23,7 +23,7 @@ export const Vertical: Story = () => (
   </Grid.Container>
 )
 
-export const Horizontal: Story = () => (
+export const Horizontal: StoryFn = () => (
   <Grid.Container>
     <Grid xs={4} style={{ background: '#444', borderRadius: '15px' }} />
     <Spacer w={5} />

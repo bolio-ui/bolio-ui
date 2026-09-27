@@ -8,7 +8,8 @@ import {
   TableOnRowClick,
   TableRowClassNameHandler
 } from './TableTypes'
-import useClasses from '../use-classes'
+import { joinClasses } from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   hover: boolean
@@ -20,12 +21,12 @@ interface Props<TableDataItem extends TableDataItemBase> {
   rowClassName: TableRowClassNameHandler<TableDataItem>
 }
 
-const defaultProps = {
-  className: ''
-}
-
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
-export type TableBodyProps<TableDataItem> = Props<TableDataItem> & NativeAttrs
+type NativeAttrs = Omit<
+  React.HTMLAttributes<AnyElement>,
+  keyof Props<TableDataItemBase>
+>
+export type TableBodyProps<TableDataItem extends TableDataItemBase> =
+  Props<TableDataItem> & NativeAttrs
 
 const TableBody = <TableDataItem extends TableDataItemBase>({
   data,
@@ -34,11 +35,11 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
   onRow,
   onCell,
   rowClassName
-}: TableBodyProps<TableDataItem> & typeof defaultProps) => {
+}: TableBodyProps<TableDataItem>) => {
   const theme = useTheme()
   const { columns } = useTableContext<TableDataItem>()
   const rowClickHandler = (row: TableDataItem, index: number) => {
-    onRow && onRow(row, index)
+    if (onRow) onRow(row, index)
   }
 
   return (
@@ -48,7 +49,7 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
         return (
           <tr
             key={`tbody-row-${index}`}
-            className={useClasses({ hover }, className)}
+            className={joinClasses({ hover }, className)}
             onClick={() => rowClickHandler(row, index)}
           >
             <TableCell<TableDataItem>
@@ -88,6 +89,5 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
   )
 }
 
-TableBody.defaultProps = defaultProps
 TableBody.displayName = 'BolioUITableBody'
 export default TableBody

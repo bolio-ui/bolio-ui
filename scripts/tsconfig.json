@@ -8,6 +8,7 @@
       "core/*": ["core/*"]
     },
     "declaration": true,
+    "types": ["node"],
     "emitDeclarationOnly": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -18,22 +19,15 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es2019"],
     "skipLibCheck": true,
     "allowJs": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "plugins": [
-      {
-        "transform": "typescript-transform-paths",
-        "afterDeclarations": true,
-        "exclude": ["**/node_modules/**"]
-      }
-    ]
+    "isolatedModules": true
   },
-  "files": ["../core/index.ts"],
+  "files": ["../core/index.ts", "../core/Next/index.ts"],
   "exclude": ["node_modules", "lib", "es"]
 }

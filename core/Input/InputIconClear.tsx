@@ -16,7 +16,7 @@ function InputIconClear({ onClick, disabled, visible }: Props) {
     event.preventDefault()
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
-    onClick && onClick(event)
+    if (onClick) onClick(event)
   }
 
   return (
@@ -58,9 +58,9 @@ function InputIconClear({ onClick, disabled, visible }: Props) {
         }
 
         .clear-icon:hover {
-          color: ${disabled
-            ? theme.palette.accents_3
-            : theme.palette.foreground};
+          color: ${
+            disabled ? theme.palette.accents_3 : theme.palette.foreground
+          };
         }
 
         svg {

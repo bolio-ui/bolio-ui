@@ -5,6 +5,10 @@ import { addColorAlpha } from 'core/utils/color'
 import makeCodeTheme from './code-theme'
 import Editor from './editor'
 
+// Component is read by react-live but missing from its types. React 19 does
+// not apply its defaultProps ('div') on function components, so it is passed.
+const Preview = LivePreview as unknown as React.FC<{ Component: string }>
+
 export interface Props {
   code: string
   scope: {
@@ -17,14 +21,15 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
   const codeTheme = makeCodeTheme(theme)
   return (
     <>
-      <LiveProvider code={code} scope={scope} theme={codeTheme}>
+      {/* react-live 2 sets language in defaultProps, which React 19 ignores */}
+      <LiveProvider language="jsx" code={code} scope={scope} theme={codeTheme}>
         <Grid.Container gap={2} justify="flex-start">
           <Grid xs={12} sm={6} md={7}>
             <Editor />
           </Grid>
           <Grid xs={12} sm={6} md={5} justify="center" alignItems="center">
             <div className="wrapper">
-              <LivePreview />
+              <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
           </Grid>

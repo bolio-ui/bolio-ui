@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
 import { isChildElement } from '../utils/collections'
@@ -10,17 +10,17 @@ interface Props {
   visible?: boolean
 }
 
-export type ModalWrapperProps = Props
+type NativeAttrs = Omit<React.HTMLAttributes<HTMLDivElement>, keyof Props>
+export type ModalWrapperProps = Props & NativeAttrs
 
-function ModalWrapper({
-  className = '',
-  children,
-  visible = false,
-  ...props
-}: React.PropsWithChildren<ModalWrapperProps>) {
+const ModalWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<ModalWrapperProps>
+>(({ className = '', children, visible = false, ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
   const modalContent = useRef<HTMLDivElement>(null)
+  useImperativeHandle(ref, () => modalContent.current as HTMLDivElement)
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
 
@@ -29,7 +29,7 @@ function ModalWrapper({
     const activeElement = document.activeElement
     const isChild = isChildElement(modalContent.current, activeElement)
     if (isChild) return
-    tabStart.current && tabStart.current.focus()
+    if (tabStart.current) tabStart.current.focus()
   }, [visible])
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -38,11 +38,11 @@ function ModalWrapper({
     const activeElement = document.activeElement
     if (event.shiftKey) {
       if (activeElement === tabStart.current) {
-        tabEnd.current && tabEnd.current.focus()
+        if (tabEnd.current) tabEnd.current.focus()
       }
     } else {
       if (activeElement === tabEnd.current) {
-        tabStart.current && tabStart.current.focus()
+        if (tabStart.current) tabStart.current.focus()
       }
     }
   }
@@ -52,6 +52,7 @@ function ModalWrapper({
       <div
         className={useClasses('wrapper', className)}
         role="dialog"
+        aria-modal="true"
         tabIndex={-1}
         onKeyDown={onKeyDown}
         ref={modalContent}
@@ -86,7 +87,8 @@ function ModalWrapper({
             opacity: 0;
             outline: none;
             transform: translate3d(0px, -30px, 0px);
-            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+            transition:
+              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s,
               transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0s;
             width: 100%;
             font-size: ${SCALES.font(1)};
@@ -130,7 +132,7 @@ function ModalWrapper({
       </div>
     </CssTransition>
   )
-}
+})
 
 ModalWrapper.displayName = 'BolioUIModalWrapper'
 export default ModalWrapper

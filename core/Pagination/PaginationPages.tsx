@@ -95,8 +95,8 @@ function PaginationPages({ limit, count, current, setPage }: Props) {
       {showBeforeEllipsis && showAfterEllipsis
         ? middlePages
         : showBeforeEllipsis
-        ? endPages
-        : startPages}
+          ? endPages
+          : startPages}
       {showAfterEllipsis && (
         <PaginationEllipsis
           key="pagination-ellipsis-after"

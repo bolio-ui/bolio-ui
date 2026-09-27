@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react'
+import type { StoryFn, Meta } from '@storybook/react-vite'
 import Description from '.'
 import Code from '../Code'
 import Grid from '../Grid'
@@ -8,7 +8,7 @@ export default {
   component: Description
 } as Meta
 
-export const Default: Story = () => (
+export const Default: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Description title="Section Title" content="Data about this section." />
@@ -16,7 +16,7 @@ export const Default: Story = () => (
   </Grid.Container>
 )
 
-export const WithComponent: Story = () => (
+export const WithComponent: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
       <Description

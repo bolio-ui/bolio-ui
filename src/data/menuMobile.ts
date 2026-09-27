@@ -11,6 +11,21 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Migrating to v2',
+            url: '/docs/guide/migration-v1-to-v2',
+            group: 'Guide'
+          },
+          {
+            name: 'Refs and accessibility',
+            url: '/docs/guide/refs-and-accessibility',
+            group: 'Guide'
+          },
+          {
+            name: 'Page structure',
+            url: '/docs/guide/page-structure',
+            group: 'Guide'
+          },
+          {
             name: 'About Bolio UI',
             url: '/docs/guide/about-bolio-ui',
             group: 'Guide'
@@ -70,6 +85,11 @@ export const menuMobile = [
             name: 'Customize Themes',
             url: '/docs/guide/customize-themes',
             group: 'Theme'
+          },
+          {
+            name: 'Theme Generator',
+            url: '/theme-generator',
+            group: 'Theme'
           }
         ]
       }
@@ -112,6 +132,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Calendar',
+            url: '/docs/components/calendar',
+            group: 'Components'
+          },
+          {
             name: 'Capacity',
             url: '/docs/components/capacity',
             group: 'Components'
@@ -132,8 +157,28 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Col',
+            url: '/docs/components/col',
+            group: 'Components'
+          },
+          {
             name: 'Collapse',
             url: '/docs/components/collapse',
+            group: 'Components'
+          },
+          {
+            name: 'Combobox',
+            url: '/docs/components/combobox',
+            group: 'Components'
+          },
+          {
+            name: 'Container',
+            url: '/docs/components/container',
+            group: 'Components'
+          },
+          {
+            name: 'DatePicker',
+            url: '/docs/components/date-picker',
             group: 'Components'
           },
           {
@@ -202,6 +247,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Menu',
+            url: '/docs/components/menu',
+            group: 'Components'
+          },
+          {
             name: 'Modal',
             url: '/docs/components/modal',
             group: 'Components'
@@ -209,6 +259,11 @@ export const menuMobile = [
           {
             name: 'Note',
             url: '/docs/components/note',
+            group: 'Components'
+          },
+          {
+            name: 'Number Input',
+            url: '/docs/components/number-input',
             group: 'Components'
           },
           {
@@ -242,8 +297,23 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Row',
+            url: '/docs/components/row',
+            group: 'Components'
+          },
+          {
             name: 'Select',
             url: '/docs/components/select',
+            group: 'Components'
+          },
+          {
+            name: 'Skeleton',
+            url: '/docs/components/skeleton',
+            group: 'Components'
+          },
+          {
+            name: 'Section',
+            url: '/docs/components/section',
             group: 'Components'
           },
           {
@@ -264,6 +334,11 @@ export const menuMobile = [
           {
             name: 'Spinner',
             url: '/docs/components/spinner',
+            group: 'Components'
+          },
+          {
+            name: 'Stepper',
+            url: '/docs/components/stepper',
             group: 'Components'
           },
           {

@@ -1,0 +1,55 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Row, Col, Card, Text } from 'core'
+
+export const meta = {
+  title: 'Col',
+  description: 'A column inside a Row, sized in twelfths.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 47
+}
+
+## Col
+
+A column inside a <a href="/docs/components/row">Row</a>, sized in twelfths of the row.
+
+<Playground
+  desc="`span` is the number of twelfths, from 1 to 12."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row>
+  <Col span={4}><Card><Text small>span 4</Text></Card></Col>
+  <Col span={8}><Card><Text small>span 8</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Playground
+  title="Offset"
+  desc="`offset` leaves empty twelfths before the column."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row>
+  <Col span={4} offset={4}><Card><Text small>span 4, offset 4</Text></Card></Col>
+</Row>
+`}
+/>
+
+<Attributes edit="/content/docs/components/col.mdx">
+<Attributes.Title>Col.Props</Attributes.Title>
+
+| Attribute     | Description                                | Type                          | Accepted values               | Default |
+| ------------- | ------------------------------------------ | ----------------------------- | ----------------------------- | ------- |
+| **span**      | how many twelfths of the row it takes      | `number`                      | `1` to `12`                   | `12`    |
+| **offset**    | how many twelfths to leave before it       | `number`                      | `0` to `11`                   | `0`     |
+| **component** | the element to render                      | `keyof JSX.IntrinsicElements` | `'div', 'li', 'section', ...` | `div`   |
+| ...           | native props                               | `HTMLAttributes`              | `'id', 'className', ...`      | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

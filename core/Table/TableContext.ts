@@ -1,7 +1,7 @@
 import React from 'react'
-import { TableAbstractColumn } from './TableTypes'
+import { TableAbstractColumn, TableDataItemBase } from './TableTypes'
 
-export interface TableConfig<T> {
+export interface TableConfig<T extends TableDataItemBase> {
   columns: Array<TableAbstractColumn<T>>
   updateColumn: (column: TableAbstractColumn<T>) => void
 }
@@ -12,7 +12,9 @@ const defaultContext = {
 }
 
 export const TableContext =
-  React.createContext<TableConfig<any>>(defaultContext)
+  React.createContext<TableConfig<TableDataItemBase>>(defaultContext)
 
-export const useTableContext = <T>(): TableConfig<T> =>
-  React.useContext<TableConfig<T>>(TableContext)
+export const useTableContext = <
+  T extends TableDataItemBase
+>(): TableConfig<T> =>
+  React.useContext(TableContext) as unknown as TableConfig<T>

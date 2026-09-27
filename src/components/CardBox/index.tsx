@@ -15,7 +15,7 @@ export type ProjectCardProps = Props
 
 const renderIcon = (icon: Icon, color) => {
   const CurrentIcon = Icons[icon]
-  return <CurrentIcon fontSize={26} color={color} /> || null
+  return <CurrentIcon fontSize={26} color={color} />
 }
 
 function CardBox({ title, description, icon, hover = false }: Props) {
@@ -28,19 +28,19 @@ function CardBox({ title, description, icon, hover = false }: Props) {
           className={`${hover && 'card-box'}`}
           padding={1}
           style={{
-            backgroundColor: 'transparent',
-            backdropFilter: 'saturate(180%) blur(10px)'
+            backgroundColor: theme.palette.accents_1,
+            border: `1px solid ${theme.palette.border}`
           }}
         >
           <Row align="middle">
             <Badge
               style={{
-                background: 'rgba(194, 95, 255, 0.2) none repeat scroll 0% 0%',
+                background: `${theme.palette.primary}33`,
                 borderRadius: '50%',
                 padding: 12
               }}
             >
-              {renderIcon(icon, theme.palette.secondary)}
+              {renderIcon(icon, theme.palette.primary)}
             </Badge>
 
             <Text font={1.2} b my={0} ml={0.8}>
@@ -59,9 +59,11 @@ function CardBox({ title, description, icon, hover = false }: Props) {
           width: 100%;
         }
         .card-wrapper :global(.card-box):hover {
-          box-shadow: ${theme.type === 'dark'
-            ? `0 0 0 1px ${theme.palette.foreground}`
-            : '0px 4px 8px rgba(0,0,0,0.12)'};
+          box-shadow: ${
+            theme.type === 'dark'
+              ? `0 0 0 1px ${theme.palette.foreground}`
+              : '0px 4px 8px rgba(0,0,0,0.12)'
+          };
         }
       `}</style>
     </>

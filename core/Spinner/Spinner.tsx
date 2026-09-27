@@ -3,12 +3,13 @@ import useTheme from '../use-theme'
 import { BolioUIThemes } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   className?: string
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type SpinnerProps = Props & NativeAttrs
 
 const getSpans = (theme: BolioUIThemes) => {
@@ -99,14 +100,17 @@ const getSpans = (theme: BolioUIThemes) => {
   ))
 }
 
-function SpinnerComponent({ className = '', ...props }: SpinnerProps) {
+const SpinnerComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<SpinnerProps>
+>(({ className = '', ...props }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
   const classes = useClasses('spinner', className)
 
   return (
-    <div className={classes} {...props}>
+    <div ref={ref} role="status" className={classes} {...props}>
       <div className="container">{getSpans(theme)}</div>
       <style jsx>{`
         .spinner {
@@ -130,7 +134,7 @@ function SpinnerComponent({ className = '', ...props }: SpinnerProps) {
       `}</style>
     </div>
   )
-}
+})
 
 SpinnerComponent.displayName = 'BolioUISpinner'
 const Spinner = withScale(SpinnerComponent)

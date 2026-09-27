@@ -1,0 +1,91 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Keyboard, Grid } from 'core'
+
+export const meta = {
+  title: 'Keyboard',
+  description: 'Display keyboard input that triggers an action.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 21
+}
+
+## Keyboard
+
+Display keyboard input that triggers an action.
+
+The `Keyboard` can only display layout styles, if you need to bind the keyboard events, please read subsection [useKeyboard](/docs/hooks/use-keyboard).
+
+<Playground
+  scope={{ Keyboard, Grid }}
+  desc="The basic `Keyboard` usage."
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Keyboard>C</Keyboard>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Modifiers"
+  desc="You can apply a modifiers with the `command`, `shift`, `option`, `ctrl` prop."
+  scope={{ Keyboard, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Keyboard command mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard shift mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard option mr="10px" />
+  </Grid>
+  <Grid>
+    <Keyboard ctrl mr="10px" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Combination"
+  desc="You can apply a combination with the `option ctrl` prop for example."
+  scope={{ Keyboard, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Keyboard command mr="10px">
+      f
+    </Keyboard>
+  </Grid>
+  <Grid>
+    <Keyboard shift mr="10px">
+      e
+    </Keyboard>
+  </Grid>
+  <Grid>
+    <Keyboard option ctrl mr="10px">
+      b
+    </Keyboard>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/keyboard.mdx">
+<Attributes.Title>Keyboard.Props</Attributes.Title>
+
+| Attribute   | Description      | Type                   | Accepted values               | Default |
+| ----------- | ---------------- | ---------------------- | ----------------------------- | ------- |
+| **command** | show command key | `boolean`              | -                             | `false` |
+| **shift**   | show shift key   | `boolean`              | -                             | `false` |
+| **option**  | show option key  | `boolean`              | -                             | `false` |
+| **ctrl**    | show ctrl key    | `boolean`              | -                             | `false` |
+| ...         | native props     | `KeygenHTMLAttributes` | `'keyType', 'className', ...` | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

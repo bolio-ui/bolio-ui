@@ -9,7 +9,7 @@ export const transformDataSource = (src: string) => {
 export const getHostFromUrl = (url: string) => {
   try {
     return new URL(url).host
-  } catch (e) {
+  } catch {
     return url
   }
 }

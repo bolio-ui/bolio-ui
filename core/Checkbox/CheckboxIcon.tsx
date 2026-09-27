@@ -1,22 +1,14 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import useScale from '../use-scale'
 
 interface Props {
   disabled?: boolean
   checked?: boolean
   fill?: string
-  bg?: string
 }
 
-function CheckboxIconComponent({ fill, bg, disabled, checked }: Props) {
+function CheckboxIconComponent({ fill: propsFill, disabled, checked }: Props) {
   const { SCALES } = useScale()
-
-  const { propsFill } = useMemo(() => {
-    return {
-      propsFill: fill,
-      propsBg: bg
-    }
-  }, [bg, fill])
 
   return (
     <>

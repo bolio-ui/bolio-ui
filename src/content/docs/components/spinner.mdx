@@ -1,0 +1,40 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Spinner, Grid } from 'core'
+
+export const meta = {
+  title: 'Spinner',
+  description: 'Indicate an action running in the background.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 35
+}
+
+## Spinner
+
+Indicate an action running in the background.
+
+As an indicator of load waiting, see also component [Loading](/docs/components/loading).
+
+<Playground
+  desc="The basic `Spinner` usage."
+  scope={{ Spinner, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Spinner scale={2} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/spinner.mdx">
+<Attributes.Title>Spinner.Props</Attributes.Title>
+
+| Attribute | Description  | Type             | Accepted values          | Default |
+| --------- | ------------ | ---------------- | ------------------------ | ------- |
+| ...       | native props | `HTMLAttributes` | `'id', 'className', ...` | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

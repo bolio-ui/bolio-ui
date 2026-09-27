@@ -47,12 +47,22 @@ const getGroupBorderColors = (
   return colors[withoutLightType] || (colors.default as string)
 }
 
-function ButtonGroupComponent(groupProps: ButtonGroupProps) {
+const ButtonGroupComponent = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<ButtonGroupProps>
+>((groupProps, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
-  const { disabled, type, ghost, vertical, children, className, ...props } =
-    groupProps
+  const {
+    disabled = defaultProps.disabled,
+    type = defaultProps.type,
+    ghost = defaultProps.ghost,
+    vertical = defaultProps.vertical,
+    children,
+    className = defaultProps.className,
+    ...props
+  } = groupProps
 
   const initialValue = useMemo<ButtonGroupConfig>(
     () => ({
@@ -65,8 +75,8 @@ function ButtonGroupComponent(groupProps: ButtonGroupProps) {
   )
 
   const border = useMemo(() => {
-    return getGroupBorderColors(theme.palette, groupProps)
-  }, [theme.palette, groupProps])
+    return getGroupBorderColors(theme.palette, { ghost, type })
+  }, [theme.palette, ghost, type])
 
   const classes = useClasses(
     'btn-group',
@@ -79,7 +89,7 @@ function ButtonGroupComponent(groupProps: ButtonGroupProps) {
 
   return (
     <ButtonGroupContext.Provider value={initialValue}>
-      <div className={classes} {...props}>
+      <div ref={ref} className={classes} {...props}>
         {children}
         <style jsx>{`
           .btn-group {
@@ -126,9 +136,8 @@ function ButtonGroupComponent(groupProps: ButtonGroupProps) {
       </div>
     </ButtonGroupContext.Provider>
   )
-}
+})
 
-ButtonGroupComponent.defaultProps = defaultProps
 ButtonGroupComponent.displayName = 'BolioUIButtonGroup'
 const ButtonGroup = withScale(ButtonGroupComponent)
 export default ButtonGroup

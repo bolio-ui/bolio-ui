@@ -2,9 +2,10 @@ import React, { useCallback, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import useCurrentState from '../utils/use-current-state'
 import { FieldsetContext, FieldItem } from './FieldsetContext'
-import useWarning from '../utils/use-warning'
+import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value: string
@@ -12,7 +13,7 @@ interface Props {
   onChange?: (value: string) => void
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type FieldsetGroupProps = Props & NativeAttrs
 
 function FieldsetGroupComponent({
@@ -28,13 +29,16 @@ function FieldsetGroupComponent({
   const [items, setItems, ref] = useCurrentState<FieldItem[]>([])
   const classes = useClasses('group', className)
 
-  const register = (newItem: FieldItem) => {
-    const hasItem = ref.current.find((item) => item.value === newItem.value)
-    if (hasItem) {
-      useWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
-    }
-    setItems([...ref.current, newItem])
-  }
+  const register = useCallback(
+    (newItem: FieldItem) => {
+      const hasItem = ref.current.find((item) => item.value === newItem.value)
+      if (hasItem) {
+        logWarning('The "value" of each "Fieldset" must be unique.', 'Fieldset')
+      }
+      setItems([...ref.current, newItem])
+    },
+    [ref, setItems]
+  )
 
   const providerValue = useMemo(
     () => ({
@@ -42,13 +46,13 @@ function FieldsetGroupComponent({
       inGroup: true,
       register
     }),
-    [selfVal]
+    [selfVal, register]
   )
 
   const clickHandle = useCallback(
     (nextValue: string) => {
       setSelfVal(nextValue)
-      onChange && onChange(nextValue)
+      if (onChange) onChange(nextValue)
     },
     [onChange]
   )

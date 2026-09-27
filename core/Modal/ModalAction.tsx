@@ -38,14 +38,14 @@ const ModalActionComponent = React.forwardRef<
 
   const btnRef = useRef<HTMLButtonElement>(null)
   const { close } = useModalContext()
-  useImperativeHandle(ref, () => btnRef.current)
+  useImperativeHandle(ref, () => btnRef.current as HTMLButtonElement)
 
   const clickHandler = (event: MouseEvent<HTMLButtonElement>) => {
     if (disabled) return
     const actionEvent = Object.assign({}, event, {
       close: () => close && close()
     })
-    onClick && onClick(actionEvent)
+    if (onClick) onClick(actionEvent)
   }
 
   const color = useMemo(() => {

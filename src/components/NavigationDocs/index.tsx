@@ -1,11 +1,10 @@
 import React from 'react'
-import NextLink from 'next/link'
-import { useTheme, Grid, Card, Row, Text } from 'core'
+import { useRouter } from 'next/navigation'
+import { Button, useTheme } from 'core'
 import {
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
 } from '@bolio-ui/icons'
-import { useIsMobile } from 'src/utils/use-media-query'
 
 export interface NavigationDocsProps {
   next: Docs
@@ -17,75 +16,70 @@ export interface Docs {
   url: string
 }
 
-function NavigationDocs({ next, previous }: NavigationDocsProps) {
-  const theme = useTheme()
-  const isMobile = useIsMobile()
+const DocsPageLink: React.FC<{
+  docs: Docs
+  direction: 'previous' | 'next'
+}> = ({ docs, direction }) => {
+  const router = useRouter()
+  const isPrevious = direction === 'previous'
 
   return (
-    <Grid.Container gap={2} justify="center" style={{ margin: '25px 0' }}>
-      <Grid xs={6} sm={6} md={6} justify="flex-start">
-        {previous && previous.url && (
-          <NextLink href={previous.url} passHref>
-            <Card
-              padding={isMobile ? 0 : 1}
-              mt={2}
-              style={{
-                backgroundColor: 'transparent',
-                backdropFilter: 'saturate(180%) blur(10px)',
-                cursor: 'pointer'
-              }}
-              hoverable
-              width="100%"
-            >
-              <Row align="middle" justify="space-between">
-                <ChevronLeftIcon />
-                <div style={{ textAlign: 'right' }}>
-                  <Text my={0}>Previous</Text>
-                  <Text
-                    font={0.9}
-                    my={0}
-                    style={{ color: theme.palette.accents_4 }}
-                  >
-                    {previous.name}
-                  </Text>
-                </div>
-              </Row>
-            </Card>
-          </NextLink>
-        )}
-      </Grid>
-      <Grid xs={6} sm={6} md={6} justify="flex-end">
-        {next && next.url && (
-          <NextLink href={next.url} passHref>
-            <Card
-              mt={2}
-              padding={isMobile ? 0 : 1}
-              style={{
-                backgroundColor: 'transparent',
-                backdropFilter: 'saturate(180%) blur(10px)',
-                cursor: 'pointer'
-              }}
-              hoverable
-              width="100%"
-            >
-              <Row align="middle" justify="space-between">
-                <div style={{ textAlign: 'left' }}>
-                  <Text my={0}>Next</Text>
-                  <Text
-                    font={0.9}
-                    my={0}
-                    style={{ color: theme.palette.accents_4 }}
-                  >
-                    {next.name}
-                  </Text>
-                </div>
-                <ChevronRightIcon />
-              </Row>
-            </Card>
-          </NextLink>
-        )}
-      </Grid>
-    </Grid.Container>
+    <Button
+      type="primary"
+      subtle
+      auto
+      scale={0.75}
+      className={`docs-page-link ${direction}`}
+      onClick={() => router.push(docs.url)}
+      icon={isPrevious && <ChevronLeftIcon fontSize={14} />}
+      iconRight={!isPrevious && <ChevronRightIcon fontSize={14} />}
+    >
+      {docs.name}
+    </Button>
+  )
+}
+
+function NavigationDocs({ next, previous }: NavigationDocsProps) {
+  const theme = useTheme()
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        margin: '25px 0'
+      }}
+    >
+      {previous && previous.url && (
+        <DocsPageLink docs={previous} direction="previous" />
+      )}
+      {next && next.url && (
+        <div style={{ marginLeft: 'auto' }}>
+          <DocsPageLink docs={next} direction="next" />
+        </div>
+      )}
+      <style jsx>{`
+        :global(.docs-page-link.btn) {
+          transition:
+            background-color 200ms ease,
+            transform 200ms ease;
+        }
+        :global(.docs-page-link.btn:hover) {
+          background-color: ${theme.palette.primary}40;
+          transform: translateY(-1px);
+        }
+        :global(.docs-page-link.btn svg) {
+          transition: transform 200ms ease;
+        }
+        :global(.docs-page-link.previous.btn:hover svg) {
+          transform: translateX(-3px);
+        }
+        :global(.docs-page-link.next.btn:hover svg) {
+          transform: translateX(3px);
+        }
+      `}</style>
+    </div>
   )
 }
 

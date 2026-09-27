@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RadioContext } from './RadioContext'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import type { AnyElement } from '../utils/types'
 
 interface Props {
   value?: string | number
@@ -12,7 +13,7 @@ interface Props {
   useRow?: boolean
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type RadioGroupProps = Props & NativeAttrs
 
 function RadioGroupComponent({
@@ -31,10 +32,13 @@ function RadioGroupComponent({
     initialValue
   )
 
-  const updateState = (nextValue: string | number) => {
-    setSelfVal(nextValue)
-    onChange && onChange(nextValue)
-  }
+  const updateState = useCallback(
+    (nextValue: string | number) => {
+      setSelfVal(nextValue)
+      if (onChange) onChange(nextValue)
+    },
+    [onChange]
+  )
 
   const providerValue = useMemo(() => {
     return {
@@ -43,7 +47,7 @@ function RadioGroupComponent({
       inGroup: true,
       value: selfVal
     }
-  }, [disabled, selfVal])
+  }, [updateState, disabled, selfVal])
 
   useEffect(() => {
     if (value === undefined) return

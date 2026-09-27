@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom'
 import useTheme from '../use-theme'
 import usePortal from '../utils/use-portal'
 import useResize from '../utils/use-resize'
+import useLatest from '../utils/use-latest'
 import CssTransition from '../Shared/css-transition'
 import useClickAnyWhere from '../utils/use-click-anywhere'
 import { getColors } from './styles'
@@ -32,6 +33,11 @@ interface Props {
   offset: number
   className?: string
   iconOffset: TooltipIconOffset
+  id?: string
+  role?: string
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
 }
 export type TooltipIconOffset = {
   x: string
@@ -47,7 +53,12 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   placement,
   type,
   className,
-  hideArrow
+  hideArrow,
+  id,
+  role,
+  light = false,
+  ghost = false,
+  subtle = false
 }) => {
   const theme = useTheme()
   const { SCALES } = useScale()
@@ -57,13 +68,11 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
 
   const [rect, setRect] = useState<TooltipPosition>(defaultTooltipPosition)
   const colors = useMemo(
-    () => getColors(type, theme.palette),
-    [type, theme.palette]
+    () => getColors(type, theme.palette, { light, ghost, subtle }),
+    [type, theme.palette, light, ghost, subtle]
   )
   const hasShadow = type === 'default'
   const classes = useClasses('tooltip-content', className)
-
-  if (!parent) return null
 
   const updateRect = () => {
     const position = getPosition(placement, getRect(parent), offset)
@@ -73,19 +82,42 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   useResize(updateRect)
   useClickAnyWhere(() => updateRect())
 
+  const latestUpdate = useLatest(updateRect)
   useEffect(() => {
-    updateRect()
-  }, [visible])
+    latestUpdate.current()
+  }, [visible, latestUpdate])
+
+  // The trigger can sit inside a `position: fixed` header, whose viewport
+  // position stays put while the page scrolls underneath it — but `getRect`
+  // bakes in `scrollTop` to place the portal in document coordinates, so the
+  // popover drifts away from a fixed trigger unless it's recomputed on every
+  // scroll, not just on resize/click.
+  useEffect(() => {
+    if (!visible) return
+    const handleScroll = () => latestUpdate.current()
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+      capture: true
+    })
+    return () =>
+      window.removeEventListener('scroll', handleScroll, { capture: true })
+  }, [visible, latestUpdate])
 
   const preventHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
   }
 
-  if (!el) return null
+  if (!parent || !el) return null
   return createPortal(
     <CssTransition visible={visible}>
-      <div className={classes} ref={selfRef} onClick={preventHandler}>
+      <div
+        id={id}
+        role={role}
+        className={classes}
+        ref={selfRef}
+        onClick={preventHandler}
+      >
         <div className="inner">
           {!hideArrow && (
             <TooltipIcon placement={placement} shadow={hasShadow} />
@@ -104,12 +136,13 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
             transform: ${rect.transform};
             background-color: var(--tooltip-content-bg);
             color: ${colors.color};
+            border: 1px solid ${colors.borderColor};
             border-radius: ${theme.layout.radius};
             padding: 0;
             z-index: 1000;
-            box-shadow: ${hasShadow
-              ? theme.expressiveness.shadowMedium
-              : 'none'};
+            box-shadow: ${
+              hasShadow ? theme.expressiveness.shadowMedium : 'none'
+            };
             width: ${SCALES.width(1, 'auto')};
             height: ${SCALES.height(1, 'auto')};
           }
