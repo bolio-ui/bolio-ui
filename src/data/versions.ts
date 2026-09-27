@@ -12,6 +12,7 @@ export const currentVersion = process.env.NEXT_PUBLIC_VERSION || ''
 // Each major has its own deployed docs site. Add a line here when a new major
 // is released and its site is live.
 const previousVersions: DocsVersion[] = [
+  { label: '2.x', version: '2.0.0-alpha.2', url: 'https://v2.bolio-ui.com' },
   { label: '1.x', version: '1.1.8', url: 'https://v1.bolio-ui.com' }
 ]
 
