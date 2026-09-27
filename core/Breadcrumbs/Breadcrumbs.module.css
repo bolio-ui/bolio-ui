@@ -1,0 +1,29 @@
+.nav {
+  line-height: inherit;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.nav :global(.link:hover) {
+  color: var(--breadcrumbs-hover-color);
+}
+
+.nav > :global(span:last-of-type) {
+  color: var(--breadcrumbs-last-color);
+}
+
+.nav > :global(.separator:last-child) {
+  display: none;
+}
+
+.nav :global(svg) {
+  width: 1em;
+  height: 1em;
+  margin: 0 4px;
+}
+
+.nav :global(.breadcrumbs-item) {
+  display: inline-flex;
+  align-items: center;
+}

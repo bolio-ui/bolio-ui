@@ -4,6 +4,7 @@ import BreadcrumbsSeparator from './BreadcrumbsSeparator'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
 import type { AnyElement } from '../utils/types'
+import styles from './Breadcrumbs.module.css'
 
 interface Props {
   separator?: string | ReactNode
@@ -16,13 +17,25 @@ export type BreadcrumbsProps = Props & NativeAttrs
 const BreadcrumbsComponent = React.forwardRef<
   HTMLElement,
   React.PropsWithChildren<BreadcrumbsProps>
->(({ separator = '/', children, className = '' }, ref) => {
+>(({ separator = '/', children, className = '', style }, ref) => {
   const theme = useTheme()
   const { SCALES } = useScale()
 
   const hoverColor = useMemo(() => {
     return addColorAlpha(theme.palette.link, 0.85)
   }, [theme.palette.link])
+
+  const navStyle: React.CSSProperties = {
+    color: theme.palette.accents_5,
+    fontSize: SCALES.font(1),
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto'),
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    '--breadcrumbs-hover-color': hoverColor,
+    '--breadcrumbs-last-color': theme.palette.accents_7,
+    ...style
+  } as React.CSSProperties
 
   const childrenArray = React.Children.toArray(children)
   const withSeparatorChildren = childrenArray.map((item, index) => {
@@ -43,47 +56,8 @@ const BreadcrumbsComponent = React.forwardRef<
   })
 
   return (
-    <nav ref={ref} className={className}>
+    <nav ref={ref} className={`${styles.nav} ${className}`.trim()} style={navStyle}>
       {withSeparatorChildren}
-      <style jsx>{`
-        nav {
-          line-height: inherit;
-          color: ${theme.palette.accents_5};
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          font-size: ${SCALES.font(1)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        nav :global(.link:hover) {
-          color: ${hoverColor};
-        }
-
-        nav > :global(span:last-of-type) {
-          color: ${theme.palette.accents_7};
-        }
-
-        nav > :global(.separator:last-child) {
-          display: none;
-        }
-
-        nav :global(svg) {
-          width: 1em;
-          height: 1em;
-          margin: 0 4px;
-        }
-
-        nav :global(.breadcrumbs-item) {
-          display: inline-flex;
-          align-items: center;
-        }
-      `}</style>
     </nav>
   )
 })
