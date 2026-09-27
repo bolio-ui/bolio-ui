@@ -22,7 +22,8 @@ import TooltipIcon from './TooltipIcon'
 import { Placement, SnippetTypes } from '../utils/prop-types'
 import useScale from '../use-scale'
 import { getRect } from './helper'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
+import styles from './TooltipContent.module.css'
 
 interface Props {
   parent?: MutableRefObject<HTMLElement | null> | undefined
@@ -72,7 +73,11 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
     [type, theme.palette, light, ghost, subtle]
   )
   const hasShadow = type === 'default'
-  const classes = useClasses('tooltip-content', className)
+  const classes = useClasses(
+    'tooltip-content',
+    styles.tooltipContent,
+    className
+  )
 
   const updateRect = () => {
     const position = getPosition(placement, getRect(parent), offset)
@@ -108,6 +113,26 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
     event.nativeEvent.stopImmediatePropagation()
   }
 
+  const contentStyle = {
+    '--tooltip-icon-offset-x': iconOffset.x,
+    '--tooltip-icon-offset-y': iconOffset.y,
+    '--tooltip-content-bg': colors.bgColor,
+    top: rect.top,
+    left: rect.left,
+    transform: rect.transform,
+    color: colors.color,
+    border: `1px solid ${colors.borderColor}`,
+    borderRadius: theme.layout.radius,
+    boxShadow: hasShadow ? theme.expressiveness.shadowMedium : 'none',
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto')
+  } as React.CSSProperties
+
+  const innerStyle: React.CSSProperties = {
+    fontSize: SCALES.font(1),
+    padding: `${SCALES.pt(0.65)} ${SCALES.pr(0.9)} ${SCALES.pb(0.65)} ${SCALES.pl(0.9)}`
+  }
+
   if (!parent || !el) return null
   return createPortal(
     <CssTransition visible={visible}>
@@ -117,45 +142,14 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
         className={classes}
         ref={selfRef}
         onClick={preventHandler}
+        style={contentStyle}
       >
-        <div className="inner">
+        <div className={joinClasses('inner', styles.inner)} style={innerStyle}>
           {!hideArrow && (
             <TooltipIcon placement={placement} shadow={hasShadow} />
           )}
           {children}
         </div>
-        <style jsx>{`
-          .tooltip-content {
-            --tooltip-icon-offset-x: ${iconOffset.x};
-            --tooltip-icon-offset-y: ${iconOffset.y};
-            --tooltip-content-bg: ${colors.bgColor};
-            box-sizing: border-box;
-            position: absolute;
-            top: ${rect.top};
-            left: ${rect.left};
-            transform: ${rect.transform};
-            background-color: var(--tooltip-content-bg);
-            color: ${colors.color};
-            border: 1px solid ${colors.borderColor};
-            border-radius: ${theme.layout.radius};
-            padding: 0;
-            z-index: 1000;
-            box-shadow: ${
-              hasShadow ? theme.expressiveness.shadowMedium : 'none'
-            };
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-          }
-
-          .inner {
-            box-sizing: border-box;
-            position: relative;
-            font-size: ${SCALES.font(1)};
-            padding: ${SCALES.pt(0.65)} ${SCALES.pr(0.9)} ${SCALES.pb(0.65)}
-              ${SCALES.pl(0.9)};
-            height: 100%;
-          }
-        `}</style>
       </div>
     </CssTransition>,
     el

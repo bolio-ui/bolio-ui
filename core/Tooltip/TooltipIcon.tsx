@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { getIconPosition } from './placement'
 import { Placement } from '../utils/prop-types'
+import styles from './TooltipIcon.module.css'
 
 interface Props {
   placement: Placement
@@ -19,24 +20,10 @@ const TooltipIcon: React.FC<Props> = ({ placement }) => {
   )
 
   return (
-    <span>
-      <style jsx>{`
-        span {
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 6px 7px 6px 0;
-          border-color: transparent var(--tooltip-content-bg) transparent
-            transparent;
-          position: absolute;
-          left: ${left};
-          top: ${top};
-          right: ${right};
-          bottom: ${bottom};
-          transform: ${transform};
-        }
-      `}</style>
-    </span>
+    <span
+      className={styles.icon}
+      style={{ left, top, right, bottom, transform }}
+    />
   )
 }
 
