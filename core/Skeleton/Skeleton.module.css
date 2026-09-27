@@ -1,0 +1,43 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  box-sizing: border-box;
+}
+
+.shape {
+  display: block;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-shimmer-1) 25%,
+    var(--skeleton-shimmer-2) 37%,
+    var(--skeleton-shimmer-1) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonShimmer 1.4s ease infinite;
+}
+
+.shape:last-child:not(:first-child) {
+  width: 60%;
+}
+
+.circle .shape {
+  border-radius: 50%;
+}
+
+@keyframes skeletonShimmer {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+    background: var(--skeleton-shimmer-2);
+  }
+}
