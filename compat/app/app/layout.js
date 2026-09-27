@@ -1,3 +1,4 @@
+import '@bolio-ui/core/styles.css'
 import { StyledJsxRegistry } from '@bolio-ui/core/next'
 
 export const metadata = { title: 'Bolio UI compat' }

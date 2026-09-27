@@ -12,14 +12,10 @@ import ButtonLoading from './ButtonLoading'
 import { ButtonTypes } from '../utils/prop-types'
 import { filterPropsWithGroup, getButtonChildrenWithIcon } from './utils'
 import { useButtonGroupContext } from '../ButtonGroup/ButtonGroupContext'
-import {
-  getButtonColors,
-  getButtonCursor,
-  getButtonDripColor,
-  getButtonHoverColors
-} from './styles'
+import { getButtonColors, getButtonCursor, getButtonDripColor } from './styles'
 import useClasses from '../use-classes'
 import useDefaultProps from '../utils/use-default-props'
+import styles from './Button.module.css'
 
 interface Props {
   type?: ButtonTypes
@@ -99,11 +95,6 @@ const ButtonComponent = React.forwardRef<
     [theme.palette, filteredProps]
   )
 
-  const hover = useMemo(
-    () => getButtonHoverColors(theme.palette, filteredProps),
-    [theme.palette, filteredProps]
-  )
-
   const { cursor, events } = useMemo(
     () => getButtonCursor(disabled, loading),
     [disabled, loading]
@@ -147,11 +138,32 @@ const ButtonComponent = React.forwardRef<
     auto ? SCALES.pr(1.15) : SCALES.pr(1.15)
   ]
 
+  const dynamicStyle = {
+    borderRadius: rounded ? '25px' : theme.layout.radius,
+    fontSize: SCALES.font(0.875),
+    color,
+    backgroundColor: bg,
+    border: `1px solid ${border}`,
+    cursor,
+    pointerEvents: events,
+    boxShadow: shadow ? '0 4px 10px 0' + bg : 'none',
+    '--bolio-ui-button-icon-padding': SCALES.pl(0.75),
+    '--bolio-ui-button-height': SCALES.height(2.5),
+    '--bolio-ui-button-color': color,
+    '--bolio-ui-button-bg': bg,
+    minWidth: auto ? 'min-content' : SCALES.width(10.5),
+    width: auto ? 'auto' : 'initial',
+    height: SCALES.height(2.5),
+    padding: `${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)} ${paddingLeft}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+  } as React.CSSProperties
+
   return (
     <button
       ref={buttonRef}
       type={htmlType}
-      className={useClasses('btn', className)}
+      className={useClasses('btn', styles.root, className)}
+      style={dynamicStyle}
       disabled={disabled}
       onClick={clickHandler}
       {...props}
@@ -166,74 +178,6 @@ const ButtonComponent = React.forwardRef<
           onCompleted={dripCompletedHandle}
         />
       )}
-      <style jsx>{`
-        .btn {
-          box-sizing: border-box;
-          display: inline-block;
-          border-radius: ${rounded ? '25px' : theme.layout.radius};
-          font-weight: bold;
-          font-size: ${SCALES.font(0.875)};
-          user-select: none;
-          outline: none;
-          text-transform: capitalize;
-          justify-content: center;
-          text-align: center;
-          white-space: nowrap;
-          transition:
-            background-color 200ms ease 0ms,
-            box-shadow 200ms ease 0ms,
-            border 200ms ease 0ms,
-            color 200ms ease 0ms;
-          position: relative;
-          overflow: hidden;
-          color: ${color};
-          background-color: ${bg};
-          border: 1px solid ${border};
-          cursor: ${cursor};
-          pointer-events: ${events};
-          box-shadow: ${shadow ? '0 4px 10px 0' + bg : 'none'};
-          --bolio-ui-button-icon-padding: ${SCALES.pl(0.75)};
-          --bolio-ui-button-height: ${SCALES.height(2.5)};
-          --bolio-ui-button-color: ${color};
-          --bolio-ui-button-bg: ${bg};
-          min-width: ${auto ? 'min-content' : SCALES.width(10.5)};
-          width: ${auto ? 'auto' : 'initial'};
-          height: ${SCALES.height(2.5)};
-          padding: ${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)}
-            ${paddingLeft};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        .btn:hover,
-        .btn:focus {
-          /* color: ${hover.color}; */
-          /* --bolio-ui-button-color: ${hover.color}; */
-          /* background-color: ${hover.bg}; */
-          /* border-color: ${hover.border}; */
-          cursor: ${cursor};
-          pointer-events: ${events};
-        }
-        .btn:active {
-          transform: scale(0.98, 0.98);
-        }
-
-        .btn :global(.text) {
-          position: relative;
-          z-index: 1;
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          line-height: inherit;
-        }
-
-        .btn :global(.text p),
-        .btn :global(.text pre),
-        .btn :global(.text div) {
-          margin: 0;
-        }
-      `}</style>
     </button>
   )
 })

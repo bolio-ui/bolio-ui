@@ -1,0 +1,38 @@
+.root {
+  box-sizing: border-box;
+  display: inline-block;
+  font-weight: bold;
+  user-select: none;
+  outline: none;
+  text-transform: capitalize;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color 200ms ease 0ms,
+    box-shadow 200ms ease 0ms,
+    border 200ms ease 0ms,
+    color 200ms ease 0ms;
+  position: relative;
+  overflow: hidden;
+}
+
+.root:active {
+  transform: scale(0.98, 0.98);
+}
+
+.root :global(.text) {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: inherit;
+}
+
+.root :global(.text p),
+.root :global(.text pre),
+.root :global(.text div) {
+  margin: 0;
+}
