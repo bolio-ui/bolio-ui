@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import useTheme from '../use-theme'
 import {
   GridJustify,
   GridDirection,
@@ -9,6 +8,7 @@ import {
 import useScale from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './BasicItem.module.css'
 
 export type GridBreakpointsValue = number | boolean
 export interface GridBasicComponentProps {
@@ -46,7 +46,7 @@ type ItemLayoutValue = {
   display: string
 }
 const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
-  const display = val === 0 ? 'display: none;' : 'display: block;'
+  const display = val === 0 ? 'none' : 'block'
   if (typeof val === 'number') {
     const width = (100 / 12) * val
     const ratio = width > 100 ? '100%' : width < 0 ? '0' : `${width}%`
@@ -82,31 +82,42 @@ const GridBasicItem = React.forwardRef<
       alignContent,
       children,
       className = defaultProps.className,
+      style,
       ...props
     },
     ref
   ) => {
-    const theme = useTheme()
     const { SCALES } = useScale()
     const classes = useMemo(() => {
       const aligns: { [key: string]: unknown } = {
-        justify,
-        direction,
-        alignItems,
-        alignContent,
-        xs,
-        sm,
-        md,
-        lg,
-        xl
+        [styles.justify]: justify,
+        [styles.direction]: direction,
+        [styles.alignItems]: alignItems,
+        [styles.alignContent]: alignContent,
+        [styles.xs]: xs,
+        [styles.sm]: sm,
+        [styles.md]: md,
+        [styles.lg]: lg,
+        [styles.xl]: xl
       }
       const classString = Object.keys(aligns).reduce((pre, name) => {
         if (aligns[name] !== undefined && aligns[name] !== false)
           return `${pre} ${name}`
         return pre
       }, '')
-      return classString.trim()
-    }, [justify, direction, alignItems, alignContent, xs, sm, md, lg, xl])
+      return useClasses(styles.item, classString, className)
+    }, [
+      justify,
+      direction,
+      alignItems,
+      alignContent,
+      xs,
+      sm,
+      md,
+      lg,
+      xl,
+      className
+    ])
 
     const layout = useMemo<{
       [key in ['xs', 'sm', 'md', 'lg', 'xl'][number]]: ItemLayoutValue
@@ -121,69 +132,39 @@ const GridBasicItem = React.forwardRef<
       [xs, sm, md, lg, xl]
     )
 
+    const itemStyle = {
+      '--grid-font-size': SCALES.font(1, 'inherit'),
+      '--grid-height': SCALES.height(1, 'auto'),
+      '--grid-justify': justify,
+      '--grid-direction': direction,
+      '--grid-align-content': alignContent,
+      '--grid-align-items': alignItems,
+      '--grid-xs-grow': layout.xs.grow,
+      '--grid-xs-max-width': layout.xs.width,
+      '--grid-xs-basis': layout.xs.basis,
+      '--grid-xs-display': layout.xs.display,
+      '--grid-sm-grow': layout.sm.grow,
+      '--grid-sm-max-width': layout.sm.width,
+      '--grid-sm-basis': layout.sm.basis,
+      '--grid-sm-display': layout.sm.display,
+      '--grid-md-grow': layout.md.grow,
+      '--grid-md-max-width': layout.md.width,
+      '--grid-md-basis': layout.md.basis,
+      '--grid-md-display': layout.md.display,
+      '--grid-lg-grow': layout.lg.grow,
+      '--grid-lg-max-width': layout.lg.width,
+      '--grid-lg-basis': layout.lg.basis,
+      '--grid-lg-display': layout.lg.display,
+      '--grid-xl-grow': layout.xl.grow,
+      '--grid-xl-max-width': layout.xl.width,
+      '--grid-xl-basis': layout.xl.basis,
+      '--grid-xl-display': layout.xl.display,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <div
-        ref={ref}
-        className={useClasses('item', classes, className)}
-        {...props}
-      >
+      <div ref={ref} className={classes} {...props} style={itemStyle}>
         {children}
-        <style jsx>{`
-          .item {
-            font-size: ${SCALES.font(1, 'inherit')};
-            height: ${SCALES.height(1, 'auto')};
-          }
-          .justify {
-            justify-content: ${justify};
-          }
-          .direction {
-            flex-direction: ${direction};
-          }
-          .alignContent {
-            align-content: ${alignContent};
-          }
-          .alignItems {
-            align-items: ${alignItems};
-          }
-          .xs {
-            flex-grow: ${layout.xs.grow};
-            max-width: ${layout.xs.width};
-            flex-basis: ${layout.xs.basis};
-            ${layout.xs.display}
-          }
-          @media only screen and (min-width: ${theme.breakpoints.sm.min}) {
-            .sm {
-              flex-grow: ${layout.sm.grow};
-              max-width: ${layout.sm.width};
-              flex-basis: ${layout.sm.basis};
-              ${layout.sm.display}
-            }
-          }
-          @media only screen and (min-width: ${theme.breakpoints.md.min}) {
-            .md {
-              flex-grow: ${layout.md.grow};
-              max-width: ${layout.md.width};
-              flex-basis: ${layout.md.basis};
-              ${layout.md.display}
-            }
-          }
-          @media only screen and (min-width: ${theme.breakpoints.lg.min}) {
-            .lg {
-              flex-grow: ${layout.lg.grow};
-              max-width: ${layout.lg.width};
-              flex-basis: ${layout.lg.basis};
-              ${layout.lg.display}
-            }
-          }
-          @media only screen and (min-width: ${theme.breakpoints.xl.min}) {
-            .xl {
-              flex-grow: ${layout.xl.grow};
-              max-width: ${layout.xl.width};
-              flex-basis: ${layout.xl.basis};
-              ${layout.xl.display}
-            }
-          }
-        `}</style>
       </div>
     )
   }
