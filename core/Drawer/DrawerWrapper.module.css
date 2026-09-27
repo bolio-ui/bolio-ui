@@ -1,0 +1,86 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  vertical-align: middle;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  opacity: 0;
+  outline: none;
+  transform: var(--drawer-wrapper-transform-initial);
+  transition:
+    opacity,
+    transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
+}
+
+.top,
+.bottom {
+  width: var(--drawer-wrapper-top-bottom-width);
+  height: var(--drawer-wrapper-top-bottom-height);
+}
+
+.left,
+.right {
+  width: var(--drawer-wrapper-left-right-width);
+  height: var(--drawer-wrapper-left-right-height);
+}
+
+.top {
+  bottom: auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.left {
+  right: auto;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.bottom {
+  top: auto;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.right {
+  left: auto;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+:global(.wrapper-enter) {
+  opacity: 0;
+  transform: var(--drawer-wrapper-transform-hidden);
+}
+
+:global(.wrapper-enter-active) {
+  opacity: 1;
+  transform: var(--drawer-wrapper-transform-visible);
+}
+
+:global(.wrapper-leave) {
+  opacity: 1;
+  transform: var(--drawer-wrapper-transform-visible);
+  transition:
+    opacity,
+    transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
+}
+
+:global(.wrapper-leave-active) {
+  opacity: 0.4;
+  transform: var(--drawer-wrapper-transform-hidden);
+}
+
+.hideTab {
+  outline: none;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
