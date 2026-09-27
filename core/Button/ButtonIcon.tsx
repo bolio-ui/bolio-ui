@@ -1,6 +1,7 @@
 import React from 'react'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './ButtonIcon.module.css'
 
 interface Props {
   isRight?: boolean
@@ -19,44 +20,14 @@ function ButtonIcon({
   ...props
 }: ButtonIconProps) {
   const classes = useClasses(
-    'icon',
-    { right: isRight, single: isSingle },
+    styles.icon,
+    { [styles.right]: isRight, [styles.single]: isSingle },
     className
   )
 
   return (
     <span className={classes} {...props}>
       {children}
-      <style jsx>{`
-        .icon {
-          position: absolute;
-          left: var(--bolio-ui-button-icon-padding);
-          right: auto;
-          top: 50%;
-          transform: translateY(-50%);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: var(--bolio-ui-button-color);
-          z-index: 1;
-        }
-
-        .right {
-          right: var(--bolio-ui-button-icon-padding);
-          left: auto;
-        }
-
-        .icon :global(svg) {
-          background: transparent;
-          height: calc(var(--bolio-ui-button-height) / 2.35);
-          width: calc(var(--bolio-ui-button-height) / 2.35);
-        }
-
-        .single {
-          position: static;
-          transform: none;
-        }
-      `}</style>
     </span>
   )
 }

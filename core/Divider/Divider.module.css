@@ -1,0 +1,31 @@
+.divider {
+  max-width: 100%;
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  padding: 0 0.75em;
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: capitalize;
+  z-index: 10;
+}
+
+.start {
+  transform: translateY(-50%);
+  left: 7%;
+}
+
+.end {
+  transform: translateY(-50%);
+  left: auto;
+  right: 7%;
+}

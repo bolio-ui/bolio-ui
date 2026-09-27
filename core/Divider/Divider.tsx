@@ -5,6 +5,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Divider.module.css'
 
 export type DividerTypes = SnippetTypes
 
@@ -42,6 +43,7 @@ const DividerComponent = React.forwardRef<
       align = 'center' as DividerAlign,
       children,
       className = '',
+      style,
       ...props
     },
     ref
@@ -49,7 +51,7 @@ const DividerComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
 
-    const classes = useClasses('divider', className)
+    const classes = useClasses('divider', styles.divider, className)
 
     const color = useMemo(
       () => getColor(type, theme.palette),
@@ -58,59 +60,41 @@ const DividerComponent = React.forwardRef<
 
     const alignClassName = useMemo(() => {
       if (!align || align === 'center') return ''
-      if (align === 'left' || align === 'start') return 'start'
-      return 'end'
+      if (align === 'left' || align === 'start') return styles.start
+      return styles.end
     }, [align])
 
-    const alignClasses = useClasses('text', alignClassName)
+    const alignClasses = useClasses('text', styles.text, alignClassName)
     const textColor = type === 'default' ? theme.palette.foreground : color
 
+    const dividerStyle: React.CSSProperties = {
+      backgroundColor: color,
+      fontSize: SCALES.font(1),
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(0.0625),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0.5)} ${SCALES.mr(0)} ${SCALES.mb(0.5)} ${SCALES.ml(0)}`,
+      ...style
+    }
+
+    const textStyle: React.CSSProperties = {
+      backgroundColor: theme.palette.background,
+      color: textColor
+    }
+
     return (
-      <div ref={ref} role="separator" className={classes} {...props}>
-        {children && <span className={alignClasses}>{children}</span>}
-        <style jsx>{`
-          .divider {
-            max-width: 100%;
-            background-color: ${color};
-            position: relative;
-            font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(0.0625)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0.5)} ${SCALES.mr(0)} ${SCALES.mb(0.5)}
-              ${SCALES.ml(0)};
-          }
-
-          .text {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            min-height: 100%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            transform: translate(-50%, -50%);
-            padding: 0 0.75em;
-            font-size: inherit;
-            font-weight: bold;
-            text-transform: capitalize;
-            background-color: ${theme.palette.background};
-            color: ${textColor};
-            z-index: 10;
-          }
-
-          .text.start {
-            transform: translateY(-50%);
-            left: 7%;
-          }
-
-          .text.end {
-            transform: translateY(-50%);
-            left: auto;
-            right: 7%;
-          }
-        `}</style>
+      <div
+        ref={ref}
+        role="separator"
+        className={classes}
+        {...props}
+        style={dividerStyle}
+      >
+        {children && (
+          <span className={alignClasses} style={textStyle}>
+            {children}
+          </span>
+        )}
       </div>
     )
   }

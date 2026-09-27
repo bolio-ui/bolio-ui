@@ -155,7 +155,8 @@ const ButtonComponent = React.forwardRef<
     width: auto ? 'auto' : 'initial',
     height: SCALES.height(2.5),
     padding: `${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)} ${paddingLeft}`,
-    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...(props.style as React.CSSProperties | undefined)
   } as React.CSSProperties
 
   return (
@@ -163,10 +164,10 @@ const ButtonComponent = React.forwardRef<
       ref={buttonRef}
       type={htmlType}
       className={useClasses('btn', styles.root, className)}
-      style={dynamicStyle}
       disabled={disabled}
       onClick={clickHandler}
       {...props}
+      style={dynamicStyle}
     >
       {loading && <ButtonLoading color={color} />}
       {childrenWithIcon}
