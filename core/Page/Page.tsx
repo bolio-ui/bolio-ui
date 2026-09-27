@@ -3,7 +3,9 @@ import useTheme from '../use-theme'
 import PageContent from './PageContent'
 import { hasChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
+import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Page.module.css'
 
 export type PageRenderMode = 'default' | 'effect' | 'effect-seo'
 
@@ -29,8 +31,8 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
   )
   return (
     <span>
-      <style jsx>{`
-        :global(body) {
+      <style>{`
+        body {
           background-image:
             radial-gradient(#e3e3e3 ${dotSize}, transparent 0),
             radial-gradient(#e3e3e3 ${dotSize}, transparent 0);
@@ -59,6 +61,7 @@ const PageComponent = React.forwardRef<
       className,
       dotSize = '1px' as CSSProperties['fontSize'],
       dotSpace = 1,
+      style,
       ...props
     },
     ref
@@ -84,45 +87,29 @@ const PageComponent = React.forwardRef<
       if (!renderSEO) return null
 
       return (
-        <div className="hidden" aria-hidden="true">
+        <div className={styles.hidden} aria-hidden="true">
           {children}
-          <style jsx>{`
-            .hidden {
-              opacity: 0;
-              display: none;
-            }
-          `}</style>
         </div>
       )
     }
 
     const hasContent = hasChild(children, PageContent)
 
+    const sectionStyle: React.CSSProperties = {
+      fontSize: SCALES.font(1),
+      height: SCALES.height(1, 'auto'),
+      ...style
+    }
+
     return (
-      <section className={className} ref={ref} {...props}>
+      <section
+        className={useClasses(styles.section, className)}
+        ref={ref}
+        {...props}
+        style={sectionStyle}
+      >
         {hasContent ? children : <PageContent>{children}</PageContent>}
         {showDot && <DotStyles dotSize={dotSize} dotSpace={dotSpace} />}
-        <style jsx>{`
-          section {
-            max-width: 100vw;
-            min-height: 100vh;
-            box-sizing: border-box;
-            position: relative;
-            font-size: ${SCALES.font(1)};
-            /* width: ${SCALES.width(1, 'calc(100% - 100pt)')}; */
-            height: ${SCALES.height(1, 'auto')};
-            /* padding: ${SCALES.pt(0)} ${SCALES.pr(1.34)} ${SCALES.pb(0)}
-            ${SCALES.pl(1.34)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0, 'auto')} ${SCALES.mb(0)}
-            ${SCALES.ml(0, 'auto')}; */
-
-            align-content: space-between;
-            flex-wrap: wrap;
-            display: flex;
-            position: relative;
-            min-height: 100vh;
-          }
-        `}</style>
       </section>
     )
   }

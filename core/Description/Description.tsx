@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Description.module.css'
 
 interface Props {
   title?: ReactNode | string
@@ -22,6 +23,7 @@ const DescriptionComponent = React.forwardRef<
       title = 'Title' as ReactNode | string,
       content = '' as ReactNode | string,
       className = '',
+      style,
       ...props
     },
     ref
@@ -29,48 +31,21 @@ const DescriptionComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
 
-    const classes = useClasses('description', className)
+    const classes = useClasses(styles.description, className)
+
+    const descriptionStyle: React.CSSProperties = {
+      fontSize: SCALES.font(1),
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    }
 
     return (
-      <dl ref={ref} className={classes} {...props}>
-        <dt>{title}</dt>
-        <dd>{content}</dd>
-
-        <style jsx>{`
-          .description {
-            font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          dt {
-            font-size: 0.75em;
-            line-height: 1em;
-            margin-bottom: 0.5em;
-            text-transform: uppercase;
-            white-space: nowrap;
-            color: ${theme.palette.accents_5};
-            font-weight: 500;
-            display: flex;
-          }
-
-          dd {
-            font-size: 0.875em;
-            margin: 0;
-            line-height: 1.1em;
-            color: ${theme.palette.foreground};
-            font-weight: 500;
-          }
-
-          dd :global(p),
-          dt :global(p) {
-            margin: 0;
-          }
-        `}</style>
+      <dl ref={ref} className={classes} {...props} style={descriptionStyle}>
+        <dt style={{ color: theme.palette.accents_5 }}>{title}</dt>
+        <dd style={{ color: theme.palette.foreground }}>{content}</dd>
       </dl>
     )
   }
