@@ -87,7 +87,8 @@ The package has an `exports` map. These paths work:
 | ---- | ---------- |
 | `@bolio-ui/core` | All components and hooks |
 | `@bolio-ui/core/next` | `StyledJsxRegistry` for the Next.js App Router |
-| `@bolio-ui/core/dist/*` and `@bolio-ui/core/esm/*` | Deep imports, as before |
+| `@bolio-ui/core/dist/*` | Deep imports of the CommonJS build, as before. They work in Node and in bundlers |
+| `@bolio-ui/core/esm/*` | Deep imports of the ES modules build, as before. They are for bundlers: Node cannot load them as they are, so in Node import the package root or `dist/*` |
 
 Other paths are no longer resolved.
 
