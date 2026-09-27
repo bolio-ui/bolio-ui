@@ -76,7 +76,10 @@ const cssModules: NonNullable<Options['esbuildPlugins']>[number] = {
             root: process.cwd()
           })
         ]).process(source, { from: path })
-        const componentName = basename(dirname(path))
+        const folderName = basename(dirname(path))
+        const fileName = basename(path, '.module.css')
+        const componentName =
+          fileName === folderName ? folderName : `${folderName}-${fileName}`
         perComponent.set(
           componentName,
           `@layer ${componentName} {\n${result.css}\n}\n`

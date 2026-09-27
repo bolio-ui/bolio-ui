@@ -1,0 +1,13 @@
+.radioGroup {
+  display: flex;
+}
+
+.radioGroup :global(.radio) {
+  --radio-size: var(--radio-group-item-size);
+  margin-top: var(--radio-group-margin-top);
+  margin-left: var(--radio-group-margin-left);
+}
+
+.radioGroup :global(.radio:first-of-type) {
+  margin: 0;
+}
