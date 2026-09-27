@@ -8,6 +8,7 @@ import useToasts from '../use-toasts'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Snippet.module.css'
 
 export type ToastTypes = NormalTypes
 
@@ -55,6 +56,7 @@ const SnippetComponent = React.forwardRef<
       text,
       copy: copyType,
       className = '',
+      style: styleProp,
       ...props
     },
     ref
@@ -95,8 +97,30 @@ const SnippetComponent = React.forwardRef<
       setToast({ text: toastText, type: toastType })
     }
 
+    const fontSize = SCALES.font(0.8125)
+    const borderRadius = rounded ? '25px' : theme.layout.radius
+
+    const snippetStyle: React.CSSProperties = {
+      color: style.color,
+      backgroundColor: style.bgColor,
+      border: `1px solid ${style.border}`,
+      borderRadius,
+      fontSize,
+      width: SCALES.width(1, 'initial'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0.667)} ${SCALES.pr(2.667)} ${SCALES.pb(0.667)} ${SCALES.pl(0.667)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...({ '--snippet-symbol': JSON.stringify(symbolBefore) } as React.CSSProperties),
+      ...styleProp
+    }
+
     return (
-      <div ref={ref} className={useClasses('snippet', className)} {...props}>
+      <div
+        ref={ref}
+        className={useClasses(styles.snippet, className)}
+        {...props}
+        style={snippetStyle}
+      >
         {isMultiLine ? (
           (text as string[]).map((t, index) => (
             <pre key={`snippet-${index}-${t}`}>{t}</pre>
@@ -105,73 +129,20 @@ const SnippetComponent = React.forwardRef<
           <pre ref={preRef}>{children || text}</pre>
         )}
         {showCopyIcon && (
-          <div className="copy" onClick={clickHandler}>
+          <div
+            className={styles.copy}
+            onClick={clickHandler}
+            style={{
+              backgroundColor: style.bgColor,
+              alignItems: isMultiLine ? 'flex-start' : 'center',
+              width: `calc(3.281 * ${fontSize})`,
+              borderRadius,
+              paddingTop: isMultiLine ? SCALES.pt(0.667) : 0
+            }}
+          >
             <SnippetIcon />
           </div>
         )}
-        <style jsx>{`
-          .snippet {
-            position: relative;
-            max-width: 100%;
-            color: ${style.color};
-            background-color: ${style.bgColor};
-            border: 1px solid ${style.border};
-            border-radius: ${rounded ? '25px' : theme.layout.radius};
-            --snippet-font-size: ${SCALES.font(0.8125)};
-            --snippet-padding-top: ${SCALES.pt(0.667)};
-            font-size: var(--snippet-font-size);
-            width: ${SCALES.width(1, 'initial')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0.667)} ${SCALES.pr(2.667)} ${SCALES.pb(0.667)}
-              ${SCALES.pl(0.667)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          pre {
-            margin: 0;
-            padding: 0;
-            border: none;
-            background-color: transparent;
-            color: ${style.color};
-            font-size: inherit;
-          }
-
-          pre::before {
-            content: '${symbolBefore}';
-            user-select: none;
-          }
-
-          pre :global(*) {
-            margin: 0;
-            padding: 0;
-            font-size: inherit;
-            color: inherit;
-          }
-
-          .copy {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background-color: ${style.bgColor};
-            display: inline-flex;
-            justify-content: center;
-            align-items: ${isMultiLine ? 'flex-start' : 'center'};
-            width: calc(3.281 * var(--snippet-font-size));
-            color: inherit;
-            transition: opacity 150ms ease 0s;
-            border-radius: ${rounded ? '25px' : theme.layout.radius};
-            cursor: pointer;
-            user-select: none;
-            padding-top: ${isMultiLine ? 'var(--snippet-padding-top)' : 0};
-            opacity: 0.65;
-          }
-
-          .copy:hover {
-            opacity: 1;
-          }
-        `}</style>
       </div>
     )
   }

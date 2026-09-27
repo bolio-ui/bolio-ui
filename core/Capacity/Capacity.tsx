@@ -5,6 +5,7 @@ import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Capacity.module.css'
 
 interface Props {
   value?: number
@@ -27,45 +28,39 @@ const CapacityComponent = React.forwardRef<
   React.PropsWithChildren<CapacityProps>
 >(
   (
-    { value = 0, limit = 100, color: userColor, className = '', ...props },
+    { value = 0, limit = 100, color: userColor, className = '', style, ...props },
     ref
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
 
     const percentValue = useProportions(value, limit)
-    const classes = useClasses('capacity', className)
+    const classes = useClasses(styles.capacity, className)
 
     const color = useMemo(() => {
       if (userColor && userColor !== '') return userColor
       return getColor(percentValue, theme.palette)
     }, [userColor, percentValue, theme.palette])
 
-    return (
-      <div ref={ref} className={classes} title={`${percentValue}%`} {...props}>
-        <span />
-        <style jsx>{`
-          .capacity {
-            width: ${SCALES.width(3.125)};
-            height: ${SCALES.height(0.625)};
-            border-radius: ${theme.layout.radius};
-            overflow: hidden;
-            background-color: ${theme.palette.accents_2};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
+    const capacityStyle: React.CSSProperties = {
+      width: SCALES.width(3.125),
+      height: SCALES.height(0.625),
+      borderRadius: theme.layout.radius,
+      backgroundColor: theme.palette.accents_2,
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    }
 
-          span {
-            width: ${percentValue}%;
-            background-color: ${color};
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: block;
-          }
-        `}</style>
+    return (
+      <div
+        ref={ref}
+        className={classes}
+        title={`${percentValue}%`}
+        {...props}
+        style={capacityStyle}
+      >
+        <span style={{ width: `${percentValue}%`, backgroundColor: color }} />
       </div>
     )
   }
