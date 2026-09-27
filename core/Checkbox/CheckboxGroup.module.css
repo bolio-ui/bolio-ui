@@ -1,0 +1,8 @@
+.group :global(label) {
+  margin-right: var(--checkbox-group-gap);
+  --checkbox-size: var(--checkbox-group-item-size);
+}
+
+.group :global(label:last-of-type) {
+  margin-right: 0;
+}

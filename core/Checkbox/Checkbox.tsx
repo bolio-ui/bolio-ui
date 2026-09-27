@@ -8,6 +8,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Checkbox.module.css'
 
 export type CheckboxTypes = NormalTypes
 export interface CheckboxEventTarget {
@@ -56,7 +57,7 @@ const CheckboxComponent = React.forwardRef<
     const [selfChecked, setSelfChecked] = useState<boolean>(initialChecked)
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
     const isDisabled = inGroup ? disabledAll || disabled : disabled
-    const classes = useClasses('checkbox', className)
+    const classes = useClasses(styles.checkbox, className)
 
     if (inGroup && checked) {
       logWarning(
@@ -102,8 +103,19 @@ const CheckboxComponent = React.forwardRef<
       setSelfChecked(checked)
     }, [checked])
 
+    const checkboxStyle = {
+      '--checkbox-size': SCALES.font(1),
+      '--checkbox-focus-color': theme.palette.primary,
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
+      opacity: isDisabled ? 0.75 : 1,
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'var(--checkbox-size)'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    } as React.CSSProperties
+
     return (
-      <label className={classes}>
+      <label className={classes} style={checkboxStyle}>
         <CheckboxIcon fill={fill} disabled={isDisabled} checked={selfChecked} />
         <input
           ref={ref}
@@ -112,52 +124,14 @@ const CheckboxComponent = React.forwardRef<
           checked={selfChecked}
           onChange={changeHandle}
           {...props}
+          className={styles.input}
         />
-        <span className="text">{children}</span>
-        <style jsx>{`
-          .checkbox {
-            --checkbox-size: ${SCALES.font(1)};
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
-            opacity: ${isDisabled ? 0.75 : 1};
-            line-height: var(--checkbox-size);
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'var(--checkbox-size)')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .text {
-            font-size: var(--checkbox-size);
-            line-height: var(--checkbox-size);
-            padding-left: calc(var(--checkbox-size) * 0.5);
-            user-select: none;
-            cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
-          }
-
-          .checkbox:focus-within {
-            border-radius: 4px;
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 2px;
-          }
-
-          input {
-            opacity: 0;
-            outline: none;
-            position: absolute;
-            width: 0;
-            height: 0;
-            margin: 0;
-            padding: 0;
-            z-index: -1;
-            font-size: 0;
-            background-color: transparent;
-          }
-        `}</style>
+        <span
+          className={styles.text}
+          style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
+        >
+          {children}
+        </span>
       </label>
     )
   }

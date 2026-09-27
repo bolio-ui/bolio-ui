@@ -8,6 +8,7 @@ import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Collapse.module.css'
 
 interface Props {
   title: string
@@ -34,6 +35,7 @@ const CollapseComponent = React.forwardRef<
       shadow = false,
       className = '',
       index,
+      style,
       ...props
     },
     ref
@@ -44,13 +46,6 @@ const CollapseComponent = React.forwardRef<
     const { values, updateValues } = useCollapseContext()
     const [visible, setVisible, visibleRef] =
       useCurrentState<boolean>(initialVisible)
-    const classes = useClasses(
-      'collapse',
-      {
-        shadow
-      },
-      className
-    )
 
     if (!title) {
       logWarning('"title" is required.', 'Collapse')
@@ -74,90 +69,65 @@ const CollapseComponent = React.forwardRef<
       clickHandler()
     }
 
+    const collapseStyle: React.CSSProperties = shadow
+      ? {
+          boxShadow: theme.expressiveness.shadowSmall,
+          border: 'none',
+          borderRadius: theme.layout.radius,
+          padding: theme.layout.gap,
+          fontSize: SCALES.font(1),
+          width: SCALES.width(1, 'auto'),
+          height: SCALES.height(1, 'auto'),
+          margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+        }
+      : {
+          borderTop: `1px solid ${theme.palette.border}`,
+          borderBottom: `1px solid ${theme.palette.border}`,
+          fontSize: SCALES.font(1),
+          width: SCALES.width(1, 'auto'),
+          height: SCALES.height(1, 'auto'),
+          padding: `${SCALES.pt(1.2)} ${SCALES.pr(0)} ${SCALES.pb(1.2)} ${SCALES.pl(0)}`,
+          margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+        }
+
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div
+        ref={ref}
+        className={useClasses('collapse', className)}
+        {...props}
+        style={{ ...collapseStyle, ...style }}
+      >
         <div
-          className="view"
+          className={styles.view}
           role="button"
           tabIndex={0}
           aria-expanded={visible}
           onClick={clickHandler}
           onKeyDown={keyDownHandler}
+          style={{ '--collapse-focus-color': theme.palette.primary } as React.CSSProperties}
         >
-          <div className="title">
+          <div className={styles.title} style={{ color: theme.palette.foreground }}>
             <h3>{title}</h3> <CollapseIcon active={visible} />
           </div>
-          {subtitle && <div className="subtitle">{subtitle}</div>}
+          {subtitle && (
+            <div
+              className={styles.subtitle}
+              style={{ color: theme.palette.accents_5 }}
+            >
+              {subtitle}
+            </div>
+          )}
         </div>
         <Expand isExpanded={visible}>
-          <div className="content">{children}</div>
+          <div
+            className={styles.content}
+            style={{
+              padding: `${SCALES.pt(1.2)} ${SCALES.pr(0)} ${SCALES.pb(1.2)} ${SCALES.pl(0)}`
+            }}
+          >
+            {children}
+          </div>
         </Expand>
-        <style jsx>{`
-          .collapse {
-            border-top: 1px solid ${theme.palette.border};
-            border-bottom: 1px solid ${theme.palette.border};
-            font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(1.2)} ${SCALES.pr(0)} ${SCALES.pb(1.2)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .shadow {
-            box-shadow: ${theme.expressiveness.shadowSmall};
-            border: none;
-            border-radius: ${theme.layout.radius};
-            padding: ${theme.layout.gap};
-          }
-
-          .view {
-            cursor: pointer;
-            outline: none;
-          }
-
-          .view:focus-visible {
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 4px;
-          }
-
-          .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: ${theme.palette.foreground};
-          }
-
-          .title h3 {
-            margin: 0;
-            font-size: 1.5em;
-          }
-
-          .subtitle {
-            color: ${theme.palette.accents_5};
-            margin: 0;
-          }
-
-          .subtitle > :global(*) {
-            margin: 0;
-          }
-
-          .content {
-            font-size: inherit;
-            line-height: 1.6em;
-            padding: ${SCALES.pt(1.2)} ${SCALES.pr(0)} ${SCALES.pb(1.2)}
-              ${SCALES.pl(0)};
-          }
-
-          .content > :global(*:first-child) {
-            margin-top: 0;
-          }
-
-          .content > :global(*:last-child) {
-            margin-bottom: 0;
-          }
-        `}</style>
       </div>
     )
   }

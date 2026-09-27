@@ -4,6 +4,7 @@ import logWarning from '../utils/log-warning'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './CheckboxGroup.module.css'
 
 interface Props {
   value: string[]
@@ -26,12 +27,13 @@ function CheckboxGroupComponent({
   value,
   children,
   className = '',
+  style,
   ...props
 }: CheckboxGroupProps) {
   const { SCALES } = useScale()
 
   const [selfVal, setSelfVal] = useState<string[]>([])
-  const classes = useClasses('group', className)
+  const classes = useClasses(styles.group, className)
 
   if (!value) {
     value = noValue
@@ -61,27 +63,20 @@ function CheckboxGroupComponent({
     setSelfVal(value)
   }, [value])
 
+  const groupStyle = {
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto'),
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    '--checkbox-group-gap': `calc(${SCALES.font(1)} * 2)`,
+    '--checkbox-group-item-size': SCALES.font(1),
+    ...style
+  } as React.CSSProperties
+
   return (
     <CheckboxContext.Provider value={providerValue}>
-      <div className={classes} {...props}>
+      <div className={classes} {...props} style={groupStyle}>
         {children}
-        <style jsx>{`
-          .group {
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .group :global(label) {
-            margin-right: calc(${SCALES.font(1)} * 2);
-            --checkbox-size: ${SCALES.font(1)};
-          }
-          .group :global(label:last-of-type) {
-            margin-right: 0;
-          }
-        `}</style>
       </div>
     </CheckboxContext.Provider>
   )
