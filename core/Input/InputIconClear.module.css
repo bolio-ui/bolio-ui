@@ -1,0 +1,30 @@
+.clearIcon {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: calc(var(--input-height) - 2px);
+  flex-shrink: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: color 150ms ease 0s;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.clearIcon:hover {
+  color: var(--clear-icon-hover-color);
+}
+
+.svg {
+  color: currentColor;
+  width: calc(var(--input-height) - 2px);
+  height: calc(var(--input-height) - 2px);
+  transform: scale(0.44);
+}

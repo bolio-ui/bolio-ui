@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import useTheme from '../use-theme'
+import styles from './InputLabel.module.css'
 
 export interface InputLabel {
   isRight?: boolean
@@ -9,39 +10,23 @@ export interface InputLabel {
 function InputLabel({ children, isRight }: InputLabel) {
   const theme = useTheme()
 
-  return (
-    <span className={isRight ? 'right' : ''}>
-      {children}
-      <style jsx>{`
-        span {
-          display: inline-flex;
-          width: initial;
-          height: 100%;
-          align-items: center;
-          pointer-events: none;
-          margin: 0;
-          padding: 0 ${theme.layout.gapHalf};
-          color: ${theme.palette.accents_4};
-          background-color: ${theme.palette.accents_1};
-          border-top-left-radius: ${theme.layout.radius};
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-top: 1px solid ${theme.palette.border};
-          border-left: 1px solid ${theme.palette.border};
-          border-bottom: 1px solid ${theme.palette.border};
-          border-right: 1px solid ${theme.palette.border};
-          font-size: inherit;
-          line-height: 1;
-        }
+  const labelStyle: React.CSSProperties = {
+    padding: `0 ${theme.layout.gapHalf}`,
+    color: theme.palette.accents_4,
+    backgroundColor: theme.palette.accents_1,
+    borderTopLeftRadius: isRight ? 0 : theme.layout.radius,
+    borderBottomLeftRadius: isRight ? 0 : theme.layout.radius,
+    borderTopRightRadius: isRight ? theme.layout.radius : 0,
+    borderBottomRightRadius: isRight ? theme.layout.radius : 0,
+    borderTop: `1px solid ${theme.palette.border}`,
+    borderLeft: `1px solid ${theme.palette.border}`,
+    borderBottom: `1px solid ${theme.palette.border}`,
+    borderRight: `1px solid ${theme.palette.border}`
+  }
 
-        span.right {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          border-top-right-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
-          border-left: 1px solid ${theme.palette.border};
-          border-right: 1px solid ${theme.palette.border};
-        }
-      `}</style>
+  return (
+    <span className={styles.span} style={labelStyle}>
+      {children}
     </span>
   )
 }
