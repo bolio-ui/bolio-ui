@@ -1,0 +1,23 @@
+.toasts {
+  position: fixed;
+  width: auto;
+  max-width: 100%;
+  right: var(--toasts-gap);
+  bottom: var(--toasts-gap);
+  z-index: 2000;
+  transition: all 400ms ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  bottom: unset;
+  flex-direction: column-reverse;
+  top: var(--toasts-gap);
+}
+
+.left {
+  right: unset;
+  left: var(--toasts-gap);
+}

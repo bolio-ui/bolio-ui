@@ -1,0 +1,57 @@
+.toast {
+  max-height: var(--toast-item-max-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--toast-item-color);
+  background-color: var(--toast-item-bg);
+  border: 0;
+  border-radius: var(--toast-item-radius);
+  opacity: 1;
+  box-shadow: var(--toast-item-shadow);
+  transition: all 350ms cubic-bezier(0.1, 0.2, 0.1, 1);
+  overflow: hidden;
+}
+
+.message {
+  align-items: center;
+  height: 100%;
+  font-size: 0.875em;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  max-height: 100%;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.1rem;
+}
+
+:global(.toast-enter) {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  transform: var(--toast-item-enter-transform);
+}
+
+:global(.toast-enter-active) {
+  opacity: 1;
+  height: auto;
+  margin: var(--toast-item-margin);
+  padding: var(--toast-item-padding);
+  transform: translate(0, 0);
+}
+
+:global(.toast-leave) {
+  opacity: 1;
+  transform: translate(0, 0);
+  height: auto;
+  margin: var(--toast-item-margin);
+  padding: var(--toast-item-padding);
+}
+
+:global(.toast-leave-active) {
+  opacity: 0;
+  transform: var(--toast-item-leave-transform);
+}
