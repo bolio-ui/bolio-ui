@@ -65,12 +65,6 @@ module.exports = async () => {
           commonjs: 'react-dom',
           amd: 'react-dom'
         }
-      },
-      function (context, request, done) {
-        if (/^styled-jsx/.test(request)) {
-          return done(null, 'commonjs ' + request)
-        }
-        done()
       }
     ],
 
@@ -81,8 +75,7 @@ module.exports = async () => {
           exclude: /(node_modules)/,
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/env', '@babel/react', '@babel/typescript'],
-            plugins: ['styled-jsx/babel']
+            presets: ['@babel/env', '@babel/react', '@babel/typescript']
           }
         }
       ]

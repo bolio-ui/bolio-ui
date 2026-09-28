@@ -43,9 +43,10 @@ Bolio UI works with the Pages Router and with the App Router.
 
 #### Pages Router
 
-Next.js already adds the styles rendered on the server to the HTML, so you don't need a custom `_document`. Set up the `BolioUIProvider` and `CssBaseline` in `pages/_app.js`:
+Next.js already adds the styles to the HTML, so you don't need a custom `_document`. Import the stylesheet once and set up the `BolioUIProvider` and `CssBaseline` in `pages/_app.js`:
 
 ```jsx
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function MyApp({ Component, pageProps }) {
@@ -64,22 +65,20 @@ export default MyApp
 
 #### App Router
 
-The App Router doesn't add the styles of styled-jsx to the HTML on its own. Wrap the app with `StyledJsxRegistry` in `app/layout.js`:
+Import the stylesheet once in `app/layout.js`:
 
 ```jsx
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
-import { StyledJsxRegistry } from '@bolio-ui/core/next'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StyledJsxRegistry>
-          <BolioUIProvider>
-            <CssBaseline />
-            {children}
-          </BolioUIProvider>
-        </StyledJsxRegistry>
+        <BolioUIProvider>
+          <CssBaseline />
+          {children}
+        </BolioUIProvider>
       </body>
     </html>
   )
@@ -92,25 +91,17 @@ The components are Client Components, so you can use them in Server Components w
 
 ### Custom Server
 
-In a custom server, collect the styles with a `styled-jsx` registry, as shown below.
+The stylesheet is a plain CSS file, not injected at render time, so a custom server needs nothing beyond serving `@bolio-ui/core/styles.css` (or letting your bundler include it) and rendering the app normally:
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import { StyleRegistry, createStyleRegistry } from 'styled-jsx'
 import App from './app'
 
 export default (req, res) => {
-  const registry = createStyleRegistry()
-  const app = ReactDOM.renderToString(
-    <StyleRegistry registry={registry}>
-      <App />
-    </StyleRegistry>
-  )
-  const styles = registry.styles()
+  const app = ReactDOM.renderToString(<App />)
   const html = ReactDOM.renderToStaticMarkup(
     <html>
-      <head>{styles}</head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: app }} />
       </body>

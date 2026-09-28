@@ -35,9 +35,8 @@ if (!find(['package.json']))
 const pkg = JSON.parse(read('package.json'))
 const deps = { ...pkg.dependencies, ...pkg.devDependencies }
 
-const coreImport =
-  "import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'"
-const nextImport = "import { StyledJsxRegistry } from '@bolio-ui/core/next'"
+const coreImport = `import '@bolio-ui/core/styles.css'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'`
 const provider = ['<BolioUIProvider><CssBaseline />', '</BolioUIProvider>']
 
 const gatsbyBrowser = `import * as React from 'react'
@@ -71,17 +70,11 @@ const getSetup = () => {
       ['src/app', 'app'].flatMap((base) => withExt(`${base}/layout`))
     )
     if (layout) {
-      const hasRegistry = read(layout).includes('StyledJsxRegistry')
       return {
         file: layout,
         target: '{children}',
-        wrapper: hasRegistry
-          ? provider
-          : [
-              '<StyledJsxRegistry><BolioUIProvider><CssBaseline />',
-              '</BolioUIProvider></StyledJsxRegistry>'
-            ],
-        imports: hasRegistry ? [coreImport] : [coreImport, nextImport]
+        wrapper: provider,
+        imports: [coreImport]
       }
     }
     const app = find(

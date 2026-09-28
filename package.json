@@ -34,11 +34,6 @@
       "module": "./esm/index.js",
       "default": "./dist/index.js"
     },
-    "./next": {
-      "types": "./esm/Next/index.d.ts",
-      "module": "./esm/Next/index.js",
-      "default": "./dist/Next/index.js"
-    },
     "./styles.css": "./dist/styles.css",
     "./css/*": "./dist/css/*",
     "./dist/index.js": "./dist/index.js",
@@ -48,13 +43,6 @@
     "./esm/*/index.js": "./esm/*/index.js",
     "./esm/*": "./esm/*/index.js",
     "./package.json": "./package.json"
-  },
-  "typesVersions": {
-    "*": {
-      "next": [
-        "esm/Next/index.d.ts"
-      ]
-    }
   },
   "files": [
     "/dist",
@@ -85,9 +73,6 @@
     "re-build": "rm -rf .next _static node_modules && yarn install && yarn build",
     "release": "yarn build && yarn build:package && npm publish --access public",
     "release:next": "yarn build:package && npm publish --access public --tag next"
-  },
-  "dependencies": {
-    "styled-jsx": "^5.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
