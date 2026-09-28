@@ -1,0 +1,87 @@
+.tab {
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: 0;
+  white-space: nowrap;
+  background-color: transparent;
+  color: var(--tabs-item-color);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-size: var(--tabs-item-font-size);
+  line-height: normal;
+  width: var(--tabs-item-width);
+  height: var(--tabs-item-height);
+  padding: var(--tabs-item-padding-top) var(--tabs-item-padding-right)
+    var(--tabs-item-padding-bottom) var(--tabs-item-padding-left);
+  margin: var(--tabs-item-margin-top) var(--tabs-item-margin-right)
+    var(--tabs-item-margin-bottom) var(--tabs-item-margin-left);
+  z-index: 1;
+}
+
+.tab:hover {
+  color: var(--tabs-item-hover-color);
+}
+
+.tab:after {
+  position: absolute;
+  content: '';
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  transform: scaleX(0.75);
+  background-color: var(--tabs-item-after-bg);
+  transition:
+    opacity,
+    transform 200ms ease-in;
+  opacity: 0;
+}
+
+.active:after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.tab :global(svg) {
+  max-height: 1em;
+  margin-right: 5px;
+}
+
+.tab:first-of-type {
+  margin-left: 0;
+}
+
+.active {
+  color: var(--tabs-item-active-color);
+}
+
+.disabled {
+  color: var(--tabs-item-disabled-color);
+  cursor: not-allowed;
+}
+
+.hideBorder:before {
+  display: block;
+  content: var(--tabs-item-hide-border-content);
+  font-weight: 500;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--tabs-item-focus-outline);
+  outline-offset: -2px;
+}
+
+.hideBorder:after {
+  display: none;
+}
+
+.hideBorder.active {
+  font-weight: 500;
+}
