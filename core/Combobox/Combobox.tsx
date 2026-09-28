@@ -2,6 +2,7 @@ import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
+import styles from './Combobox.module.css'
 
 export type ComboboxOption = {
   value: string
@@ -150,8 +151,35 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       setText(selectedLabel)
     }
 
+    const comboboxStyle = {
+      '--combobox-font-size': SCALES.font(1),
+      '--combobox-width': SCALES.width(1, 'initial'),
+      '--combobox-height': SCALES.height(1, 'auto'),
+      '--combobox-padding-top': SCALES.pt(0),
+      '--combobox-padding-right': SCALES.pr(0),
+      '--combobox-padding-bottom': SCALES.pb(0),
+      '--combobox-padding-left': SCALES.pl(0),
+      '--combobox-margin-top': SCALES.mt(0),
+      '--combobox-margin-right': SCALES.mr(0),
+      '--combobox-margin-bottom': SCALES.mb(0),
+      '--combobox-margin-left': SCALES.ml(0),
+      '--combobox-text-color': theme.palette.foreground,
+      '--combobox-bg': theme.palette.background,
+      '--combobox-border-color': theme.palette.border,
+      '--combobox-radius': theme.layout.radius,
+      '--combobox-focus-border-color': theme.palette.primary,
+      '--combobox-disabled-color': theme.palette.accents_4,
+      '--combobox-disabled-bg': theme.palette.accents_1,
+      '--combobox-shadow': theme.expressiveness.shadowMedium,
+      '--combobox-active-bg': theme.palette.accents_2,
+      '--combobox-empty-color': theme.palette.accents_5
+    } as React.CSSProperties
+
     return (
-      <div className={useClasses('combobox', className)}>
+      <div
+        className={useClasses(styles.combobox, className)}
+        style={comboboxStyle}
+      >
         <input
           ref={ref}
           type="text"
@@ -169,10 +197,11 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
           onChange={inputHandler}
           onKeyDown={keyDownHandler}
           onBlur={blurHandler}
+          className={styles.input}
           {...props}
         />
         {expanded && (
-          <ul id={listId} role="listbox">
+          <ul id={listId} role="listbox" className={styles.list}>
             {visible.map((option, index) => (
               <li
                 key={option.value}
@@ -180,10 +209,10 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
                 role="option"
                 aria-selected={option.value === selected}
                 aria-disabled={option.disabled || undefined}
-                className={joinClasses({
-                  active: index === activeIndex,
-                  selected: option.value === selected,
-                  disabled: option.disabled
+                className={joinClasses(styles.option, {
+                  [styles.active]: index === activeIndex,
+                  [styles.selected]: option.value === selected,
+                  [styles.disabled]: option.disabled
                 })}
                 onMouseDown={(event) => {
                   event.preventDefault()
@@ -197,101 +226,15 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
           </ul>
         )}
         {open && visible.length === 0 && (
-          <div className="empty">{emptyText}</div>
+          <div className={styles.empty}>{emptyText}</div>
         )}
-        <div role="status" className="sr-only">
+        <div role="status" className={styles.srOnly}>
           {expanded
             ? `${visible.length} result${
                 visible.length === 1 ? '' : 's'
               } available`
             : ''}
         </div>
-        <style jsx>{`
-          .combobox {
-            position: relative;
-            display: inline-block;
-            font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'initial')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          input {
-            box-sizing: border-box;
-            width: 100%;
-            min-width: 12.5em;
-            height: 2.5em;
-            padding: 0 0.875em;
-            font: inherit;
-            color: ${theme.palette.foreground};
-            background-color: ${theme.palette.background};
-            border: 1px solid ${theme.palette.border};
-            border-radius: ${theme.layout.radius};
-            outline: none;
-            transition: border-color 0.15s ease;
-          }
-          input:focus {
-            border-color: ${theme.palette.primary};
-          }
-          input:disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_4};
-            background-color: ${theme.palette.accents_1};
-          }
-          ul,
-          .empty {
-            position: absolute;
-            top: calc(100% + 4px);
-            left: 0;
-            right: 0;
-            z-index: 1100;
-            box-sizing: border-box;
-            background-color: ${theme.palette.background};
-            border: 1px solid ${theme.palette.border};
-            border-radius: ${theme.layout.radius};
-            box-shadow: ${theme.expressiveness.shadowMedium};
-          }
-          ul {
-            max-height: 15em;
-            overflow-y: auto;
-            margin: 0;
-            padding: 0.25em;
-            list-style: none;
-          }
-          li {
-            padding: 0.5em 0.75em;
-            border-radius: 4px;
-            cursor: pointer;
-            color: ${theme.palette.foreground};
-          }
-          li.active {
-            background-color: ${theme.palette.accents_2};
-          }
-          li.selected {
-            font-weight: 600;
-          }
-          li.disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_4};
-          }
-          .empty {
-            padding: 0.75em;
-            color: ${theme.palette.accents_5};
-          }
-          .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-            border: 0;
-          }
-        `}</style>
       </div>
     )
   }
