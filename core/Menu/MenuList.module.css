@@ -1,0 +1,20 @@
+.menuList {
+  box-sizing: border-box;
+  min-width: 12em;
+  padding: 0.25em;
+  font-size: var(--menu-list-font-size);
+  color: var(--menu-list-color);
+  background-color: var(--menu-list-bg);
+  border: 1px solid var(--menu-list-border-color);
+  border-radius: var(--menu-list-radius);
+  box-shadow: var(--menu-list-shadow);
+  outline: none;
+}
+
+.sub {
+  position: absolute;
+  top: calc(-0.25em - 1px);
+  left: calc(100% + 0.25em);
+  z-index: 1;
+  font-size: 1em;
+}
