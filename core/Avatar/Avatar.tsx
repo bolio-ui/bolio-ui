@@ -47,7 +47,7 @@ const AvatarComponent = React.forwardRef<
     const showText = !src
     const radius = isSquare ? theme.layout.radius : '50%'
     const marginLeft = stacked ? SCALES.ml(-0.625) : SCALES.ml(0)
-    const classes = useClasses('avatar', className)
+    const classes = useClasses('avatar', styles.avatar, className)
 
     const width = getScaleProps(['width', 'w'])
     const height = getScaleProps(['height', 'h'])
