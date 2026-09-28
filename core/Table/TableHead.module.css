@@ -1,0 +1,44 @@
+.thead {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: inherit;
+}
+
+.th {
+  padding: 0 0.5em;
+  font-size: calc(0.75 * var(--table-font-size));
+  font-weight: normal;
+  text-align: left;
+  letter-spacing: 0;
+  vertical-align: middle;
+  min-height: calc(2.5 * var(--table-font-size));
+  color: var(--table-head-text-color);
+  background: var(--table-head-bg);
+  border-bottom: 1px solid var(--table-head-border-color);
+  border-top: 1px solid var(--table-head-border-color);
+  border-radius: 0;
+}
+
+.th:first-child {
+  border-bottom: 1px solid var(--table-head-border-color);
+  border-left: 1px solid var(--table-head-border-color);
+  border-top: 1px solid var(--table-head-border-color);
+  border-top-left-radius: var(--table-head-radius);
+  border-bottom-left-radius: var(--table-head-radius);
+}
+
+.th:last-child {
+  border-bottom: 1px solid var(--table-head-border-color);
+  border-right: 1px solid var(--table-head-border-color);
+  border-top: 1px solid var(--table-head-border-color);
+  border-top-right-radius: var(--table-head-radius);
+  border-bottom-right-radius: var(--table-head-radius);
+}
+
+.theadBox {
+  display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+  min-height: calc(2.5 * var(--table-font-size));
+  text-transform: uppercase;
+}

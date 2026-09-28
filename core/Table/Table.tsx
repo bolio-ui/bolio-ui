@@ -22,6 +22,8 @@ import {
 import useScale, { ScaleProps, withScale } from '../use-scale'
 import TableColumn from './TableColumn'
 import type { AnyElement } from '../utils/types'
+import useClasses from '../use-classes'
+import styles from './Table.module.css'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   data?: Array<TableDataItem>
@@ -68,6 +70,7 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
     onChange,
     className = defaultProps.className,
     rowClassName = defaultProps.rowClassName,
+    style,
     ...props
   } = tableProps
   /* eslint-enable @typescript-eslint/no-unused-vars */
@@ -108,12 +111,32 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
   }, [customData])
   useResize(() => updateShape())
 
+  const tableStyle = {
+    '--table-font-size': SCALES.font(1),
+    '--table-width': SCALES.width(1, '100%'),
+    '--table-height': SCALES.height(1, 'auto'),
+    '--table-padding-top': SCALES.pt(0),
+    '--table-padding-right': SCALES.pr(0),
+    '--table-padding-bottom': SCALES.pb(0),
+    '--table-padding-left': SCALES.pl(0),
+    '--table-margin-top': SCALES.mt(0),
+    '--table-margin-right': SCALES.mr(0),
+    '--table-margin-bottom': SCALES.mb(0),
+    '--table-margin-left': SCALES.ml(0),
+    ...style
+  } as React.CSSProperties
+
   return (
     // the context is typed for any row: each Table provides its own
     <TableContext.Provider
       value={contextValue as unknown as TableConfig<TableDataItemBase>}
     >
-      <table ref={tableRef} className={className} {...props}>
+      <table
+        ref={tableRef}
+        className={useClasses(styles.table, className)}
+        {...props}
+        style={tableStyle}
+      >
         <TableHead columns={columns} width={width} />
         <TableBody<TableDataItem>
           data={data}
@@ -124,21 +147,6 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
           rowClassName={rowClassName}
         />
         {children}
-
-        <style jsx>{`
-          table {
-            border-collapse: separate;
-            border-spacing: 0;
-            --table-font-size: ${SCALES.font(1)};
-            font-size: var(--table-font-size);
-            width: ${SCALES.width(1, '100%')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-        `}</style>
       </table>
     </TableContext.Provider>
   )

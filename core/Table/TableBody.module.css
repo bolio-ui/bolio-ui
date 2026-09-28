@@ -1,0 +1,24 @@
+.tr {
+  transition: background-color 0.25s ease;
+  font-size: inherit;
+}
+
+.hover:hover {
+  background-color: var(--table-body-hover-bg);
+}
+
+.tr :global(td) {
+  padding: 0 0.5em;
+  border-bottom: 1px solid var(--table-body-border-color);
+  color: var(--table-body-text-color);
+  font-size: calc(0.875 * var(--table-font-size));
+  text-align: left;
+}
+
+.tr :global(.cell) {
+  min-height: calc(3.125 * var(--table-font-size));
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-flow: row wrap;
+}

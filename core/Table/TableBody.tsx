@@ -10,6 +10,7 @@ import {
 } from './TableTypes'
 import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './TableBody.module.css'
 
 interface Props<TableDataItem extends TableDataItemBase> {
   hover: boolean
@@ -42,6 +43,12 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
     if (onRow) onRow(row, index)
   }
 
+  const trStyle = {
+    '--table-body-hover-bg': theme.palette.accents_1,
+    '--table-body-border-color': theme.palette.border,
+    '--table-body-text-color': theme.palette.accents_6
+  } as React.CSSProperties
+
   return (
     <tbody>
       {data.map((row, index) => {
@@ -49,8 +56,13 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
         return (
           <tr
             key={`tbody-row-${index}`}
-            className={joinClasses({ hover }, className)}
+            className={joinClasses(
+              styles.tr,
+              { [styles.hover]: hover },
+              className
+            )}
             onClick={() => rowClickHandler(row, index)}
+            style={trStyle}
           >
             <TableCell<TableDataItem>
               columns={columns}
@@ -62,29 +74,6 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
           </tr>
         )
       })}
-      <style jsx>{`
-        tr {
-          transition: background-color 0.25s ease;
-          font-size: inherit;
-        }
-        tr.hover:hover {
-          background-color: ${theme.palette.accents_1};
-        }
-        tr :global(td) {
-          padding: 0 0.5em;
-          border-bottom: 1px solid ${theme.palette.border};
-          color: ${theme.palette.accents_6};
-          font-size: calc(0.875 * var(--table-font-size));
-          text-align: left;
-        }
-        tr :global(.cell) {
-          min-height: calc(3.125 * var(--table-font-size));
-          display: flex;
-          -webkit-box-align: center;
-          align-items: center;
-          flex-flow: row wrap;
-        }
-      `}</style>
     </tbody>
   )
 }
