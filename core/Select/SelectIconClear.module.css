@@ -1,0 +1,23 @@
+.clearIcon {
+  padding: 0 0 0 0.5em;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: color 150ms ease 0s;
+  color: var(--select-clear-icon-color);
+  visibility: visible;
+  opacity: 1;
+}
+
+.clearIcon:hover {
+  color: var(--select-clear-icon-hover-color);
+}
+
+.clearIcon svg {
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+}

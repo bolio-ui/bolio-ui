@@ -1,0 +1,12 @@
+.input {
+  position: fixed;
+  top: -10000px;
+  left: -10000px;
+  opacity: 0;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  font-size: 0;
+  border: none;
+}

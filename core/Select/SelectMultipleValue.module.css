@@ -1,0 +1,21 @@
+.item {
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  line-height: 1;
+  padding: 0 0.5em;
+  font-size: var(--select-font-size);
+  height: calc(var(--select-font-size) * 2);
+  border-radius: var(--select-multiple-value-radius);
+  background-color: var(--select-multiple-value-bg);
+  color: var(--select-multiple-value-color);
+}
+
+.item > :global(div:not(.clear-icon)),
+.item > :global(div:not(.clear-icon):hover) {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
+import { joinClasses } from '../use-classes'
+import styles from './SelectIconClear.module.css'
 
 interface Props {
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
@@ -16,7 +18,16 @@ function SelectIconClear({ onClick }: Props) {
   }
 
   return (
-    <div onClick={clickHandler} className="clear-icon">
+    <div
+      onClick={clickHandler}
+      className={joinClasses('clear-icon', styles.clearIcon)}
+      style={
+        {
+          '--select-clear-icon-color': theme.palette.accents_5,
+          '--select-clear-icon-hover-color': theme.palette.foreground
+        } as React.CSSProperties
+      }
+    >
       <svg
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -29,32 +40,6 @@ function SelectIconClear({ onClick }: Props) {
         <path d="M18 6L6 18" />
         <path d="M6 6l12 12" />
       </svg>
-
-      <style jsx>{`
-        .clear-icon {
-          padding: 0 0 0 0.5em;
-          margin: 0;
-          display: inline-flex;
-          align-items: center;
-          height: 100%;
-          cursor: pointer;
-          box-sizing: border-box;
-          transition: color 150ms ease 0s;
-          color: ${theme.palette.accents_5};
-          visibility: visible;
-          opacity: 1;
-        }
-
-        .clear-icon:hover {
-          color: ${theme.palette.foreground};
-        }
-
-        svg {
-          color: currentColor;
-          width: 1em;
-          height: 1em;
-        }
-      `}</style>
     </div>
   )
 }
