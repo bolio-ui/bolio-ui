@@ -50,7 +50,7 @@ const platforms = [
 
 const guides = [
   'Getting Started',
-  'Migrating to v2',
+  'Migrating to v3',
   'Page structure',
   'Contribute'
 ]

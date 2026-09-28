@@ -3822,33 +3822,27 @@
     "path": "/docs/guide/getting-started#contributing"
   },
   {
-    "title": "Migrating to v2",
+    "title": "Migrating to v3",
     "component": true,
-    "path": "/docs/guide/migration-v1-to-v2"
+    "path": "/docs/guide/migration-v2-to-v3"
   },
   {
-    "head": "Migrating to v2",
-    "title": "Requirements",
-    "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#requirements"
-  },
-  {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
     "title": "Breaking changes",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#breaking-changes"
+    "path": "/docs/guide/migration-v2-to-v3#breaking-changes"
   },
   {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
     "title": "Changes in behavior",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#changes-in-behavior"
+    "path": "/docs/guide/migration-v2-to-v3#changes-in-behavior"
   },
   {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
     "title": "Checklist",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#checklist"
+    "path": "/docs/guide/migration-v2-to-v3#checklist"
   },
   {
     "title": "Page structure",
