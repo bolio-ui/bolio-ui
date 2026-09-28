@@ -1,0 +1,78 @@
+.datepicker {
+  position: relative;
+  display: inline-block;
+  font-size: var(--datepicker-font-size);
+  width: var(--datepicker-width);
+  height: var(--datepicker-height);
+  padding: var(--datepicker-padding-top) var(--datepicker-padding-right)
+    var(--datepicker-padding-bottom) var(--datepicker-padding-left);
+  margin: var(--datepicker-margin-top) var(--datepicker-margin-right)
+    var(--datepicker-margin-bottom) var(--datepicker-margin-left);
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 12.5em;
+  height: 2.5em;
+  padding: 0 2.75em 0 0.875em;
+  font: inherit;
+  color: var(--datepicker-text-color);
+  background-color: var(--datepicker-bg);
+  border: 1px solid var(--datepicker-border-color);
+  border-radius: var(--datepicker-radius);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--datepicker-focus-border-color);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--datepicker-disabled-color);
+  background-color: var(--datepicker-disabled-bg);
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  color: var(--datepicker-toggle-color);
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: var(--datepicker-radius);
+}
+
+.toggle:hover:not(:disabled) {
+  color: var(--datepicker-toggle-hover-color);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--datepicker-focus-border-color);
+  outline-offset: -2px;
+}
+
+.toggle:disabled {
+  cursor: not-allowed;
+  color: var(--datepicker-toggle-disabled-color);
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1100;
+  padding: 0.75em;
+  background-color: var(--datepicker-bg);
+  border: 1px solid var(--datepicker-border-color);
+  border-radius: var(--datepicker-radius);
+  box-shadow: var(--datepicker-shadow);
+}

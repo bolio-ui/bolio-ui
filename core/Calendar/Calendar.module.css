@@ -1,0 +1,89 @@
+.calendar {
+  display: inline-block;
+  font-size: var(--calendar-font-size);
+  color: var(--calendar-text-color);
+  width: var(--calendar-width);
+  height: var(--calendar-height);
+  padding: var(--calendar-padding-top) var(--calendar-padding-right)
+    var(--calendar-padding-bottom) var(--calendar-padding-left);
+  margin: var(--calendar-margin-top) var(--calendar-margin-right)
+    var(--calendar-margin-bottom) var(--calendar-margin-left);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.title {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.th {
+  padding: 0.25em 0;
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--calendar-weekday-color);
+}
+
+.th abbr {
+  text-decoration: none;
+}
+
+.td {
+  padding: 1px;
+  text-align: center;
+}
+
+.button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--calendar-radius);
+}
+
+.navButton {
+  width: 2em;
+  height: 2em;
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.dayButton {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--calendar-hover-bg);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--calendar-focus-outline);
+  outline-offset: 1px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  color: var(--calendar-disabled-color);
+}
+
+.today {
+  border-color: var(--calendar-today-border);
+}
+
+.selected,
+.selected:hover:not(:disabled) {
+  color: var(--calendar-selected-color);
+  background-color: var(--calendar-selected-bg);
+  border-color: var(--calendar-selected-bg);
+}
