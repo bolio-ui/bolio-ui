@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { ButtonDropdown, Grid } from 'core'
 import { Playground, Attributes } from 'src/components'
-import { Plus } from '@bolio-ui/icons'
+import { Plus, Copy, FileText } from '@bolio-ui/icons'
 
 export const meta = {
   title: 'Button Dropdown',
@@ -154,26 +154,72 @@ Display related but alternate actions for a button.
 `}
 />
 
+<Playground
+  title="Item Icons"
+  desc="Use `icon` on an item to show an icon before its label. Items in the list align to the left and the list grows to fit them."
+  scope={{ ButtonDropdown, Grid, Copy, FileText }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <ButtonDropdown scale={2 / 3} auto>
+      <ButtonDropdown.Item main icon={<Copy />}>Copy Markdown</ButtonDropdown.Item>
+      <ButtonDropdown.Item icon={<FileText />}>View as Markdown</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Alignment"
+  desc="Use `align` to place the label of the main button at the `start`, `center` or `end`. It shows when the button is wider than its text."
+  scope={{ ButtonDropdown, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={8}>
+    <ButtonDropdown align="start" style={{ width: '100%' }}>
+      <ButtonDropdown.Item main>Start</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid xs={24} sm={8}>
+    <ButtonDropdown align="center" style={{ width: '100%' }}>
+      <ButtonDropdown.Item main>Center</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+  <Grid xs={24} sm={8}>
+    <ButtonDropdown align="end" style={{ width: '100%' }}>
+      <ButtonDropdown.Item main>End</ButtonDropdown.Item>
+      <ButtonDropdown.Item>Secondary Button</ButtonDropdown.Item>
+    </ButtonDropdown>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
 <Attributes edit="/content/docs/components/button-dropdown.mdx">
 <Attributes.Title>ButtonDropdown.Props</Attributes.Title>
 
-| Attribute    | Description               | Type                  | Accepted values                             | Default              |
-| ------------ | ------------------------- | --------------------- | ------------------------------------------- | -------------------- |
-| **type**     | button type               | `ButtonDropdownTypes` | [ButtonDropdownTypes](#buttondropdowntypes) | `default`            |
-| **loading**  | display loading indicator | `boolean`             | -                                           | `false`              |
-| **auto**     | autoscale width           | `boolean`             | -                                           | `false`              |
-| **disabled** | disable button            | `boolean`             | -                                           | `false`              |
-| **icon**     | custom right icon         | `ReactNode`           | -                                           | `ButtonDropdownIcon` |
-| ...          | native props              | `HTMLAttributes`      | `'autoFocus', 'name', 'className', ...`     | -                    |
+| Attribute    | Description                 | Type                           | Accepted values                             | Default              |
+| ------------ | --------------------------- | ------------------------------ | ------------------------------------------- | -------------------- |
+| **type**     | button type                 | `ButtonDropdownTypes`          | [ButtonDropdownTypes](#buttondropdowntypes) | `default`            |
+| **loading**  | display loading indicator   | `boolean`                      | -                                           | `false`              |
+| **auto**     | autoscale width             | `boolean`                      | -                                           | `false`              |
+| **align**    | main button label alignment | `'start' \| 'center' \| 'end'` | -                                           | `center`             |
+| **disabled** | disable button              | `boolean`                      | -                                           | `false`              |
+| **icon**     | custom right icon           | `ReactNode`                    | -                                           | `ButtonDropdownIcon` |
+| ...          | native props                | `HTMLAttributes`               | `'autoFocus', 'name', 'className', ...`     | -                    |
 
 <Attributes.Title>ButtonDropdown.Item.Props</Attributes.Title>
 
-| Attribute   | Description     | Type                   | Accepted values                             | Default   |
-| ----------- | --------------- | ---------------------- | ------------------------------------------- | --------- |
-| **type**    | button type     | `ButtonDropdownTypes`  | [ButtonDropdownTypes](#buttondropdowntypes) | `default` |
-| **main**    | the main action | `boolean`              | -                                           | `false`   |
-| **onClick** | event handler   | `MouseEventHandler`    | -                                           | -         |
-| ...         | native props    | `ButtonHTMLAttributes` | `'id', 'name', 'className', ...`            | -         |
+| Attribute   | Description           | Type                   | Accepted values                             | Default   |
+| ----------- | --------------------- | ---------------------- | ------------------------------------------- | --------- |
+| **type**    | button type           | `ButtonDropdownTypes`  | [ButtonDropdownTypes](#buttondropdowntypes) | `default` |
+| **main**    | the main action       | `boolean`              | -                                           | `false`   |
+| **icon**    | icon before the label | `ReactNode`            | -                                           | -         |
+| **onClick** | event handler         | `MouseEventHandler`    | -                                           | -         |
+| ...         | native props          | `ButtonHTMLAttributes` | `'id', 'name', 'className', ...`            | -         |
 
 <Attributes.Title>ButtonDropdownTypes</Attributes.Title>
 

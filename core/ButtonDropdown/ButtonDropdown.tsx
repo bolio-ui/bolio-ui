@@ -11,7 +11,10 @@ import useClickAway from '../utils/use-click-away'
 import { getColor } from './styles'
 import ButtonDropdownIcon from './Icon'
 import ButtonDropdownItem from './ButtonDropdownItem'
-import { ButtonDropdownContext } from './ButtonDropdownContext'
+import {
+  ButtonDropdownContext,
+  ButtonDropdownAlign
+} from './ButtonDropdownContext'
 import { NormalTypes } from '../utils/prop-types'
 import { pickChild, pickChildByProps } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
@@ -24,6 +27,8 @@ export type ButtonDropdownTypes = NormalTypes
 interface Props {
   type?: ButtonDropdownTypes
   auto?: boolean
+  // where the label of the main button sits when it is wider than its text
+  align?: ButtonDropdownAlign
   loading?: boolean
   disabled?: boolean
   className?: string
@@ -47,6 +52,7 @@ const ButtonDropdownComponent = React.forwardRef<
       children,
       type = 'default' as ButtonDropdownTypes,
       auto = false,
+      align = 'center',
       className = '',
       disabled = false,
       loading = false,
@@ -84,7 +90,9 @@ const ButtonDropdownComponent = React.forwardRef<
       type,
       auto,
       disabled,
-      loading
+      loading,
+      align,
+      close: () => setVisible(false)
     }
     const bgColor = useMemo(() => {
       if (disabled || loading) return theme.palette.accents_2
@@ -106,6 +114,8 @@ const ButtonDropdownComponent = React.forwardRef<
 
     const rootStyle = {
       '--dropdown-radius': theme.layout.radius,
+      '--dropdown-border-color':
+        type === 'default' ? theme.palette.border : colors.borderColor,
       '--bolio-ui-dropdown-height': SCALES.height(2.5),
       '--bolio-ui-dropdown-min-width': auto
         ? 'min-content'
@@ -166,9 +176,10 @@ const ButtonDropdownComponent = React.forwardRef<
             <div
               className={styles.content}
               style={{
-                boxShadow: theme.expressiveness.shadowSmall,
-                transform: `translateY(${theme.layout.gapHalf})`,
-                backgroundColor: theme.palette.background
+                boxShadow: theme.expressiveness.shadowMedium,
+                transform: 'translateY(4px)',
+                backgroundColor:
+                  type === 'default' ? theme.palette.background : colors.bgColor
               }}
             >
               {itemChildrenWithoutMain}

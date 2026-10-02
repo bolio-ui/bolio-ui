@@ -138,12 +138,15 @@ const ButtonComponent = React.forwardRef<
     auto ? SCALES.pr(1.15) : SCALES.pr(1.15)
   ]
 
+  // Inside a ButtonGroup the group draws the outer border, the dividers and
+  // the corners; inline values would win over its CSS and double them up.
+  const inGroup = groupConfig.isButtonGroup
   const dynamicStyle = {
-    borderRadius: rounded ? '25px' : theme.layout.radius,
+    borderRadius: inGroup ? undefined : rounded ? '25px' : theme.layout.radius,
     fontSize: SCALES.font(0.875),
     color,
     backgroundColor: bg,
-    border: `1px solid ${border}`,
+    border: inGroup && ghost ? undefined : `1px solid ${border}`,
     cursor,
     pointerEvents: events,
     boxShadow: shadow ? '0 4px 10px 0' + bg : 'none',

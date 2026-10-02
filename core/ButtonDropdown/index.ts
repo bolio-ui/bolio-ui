@@ -7,6 +7,7 @@ type ButtonDropdownType = typeof ButtonDropdown & {
 ;(ButtonDropdown as ButtonDropdownType).Item = ButtonDropdownItem
 
 export type { ButtonDropdownProps, ButtonDropdownTypes } from './ButtonDropdown'
+export type { ButtonDropdownAlign } from './ButtonDropdownContext'
 export type {
   ButtonDropdownItemProps,
   ButtonDropdownItemTypes

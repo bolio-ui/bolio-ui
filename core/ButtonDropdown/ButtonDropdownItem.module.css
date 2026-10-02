@@ -17,9 +17,31 @@
   padding: var(--bolio-ui-dropdown-padding);
   font-size: var(--bolio-ui-dropdown-font-size);
   font-weight: bold;
+  gap: 0.5em;
+  white-space: nowrap;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon :global(svg) {
+  width: 1.125em;
+  height: 1.125em;
 }
 
 .button:hover {
   border-color: var(--dropdown-item-hover-border);
   background-color: var(--dropdown-item-hover-bg);
+}
+
+.option {
+  background-color: transparent;
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+.option:hover {
+  border-color: transparent;
 }

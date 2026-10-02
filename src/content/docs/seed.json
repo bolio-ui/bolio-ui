@@ -284,6 +284,18 @@
   },
   {
     "head": "Button Dropdown",
+    "title": "Button Dropdown Item Icons",
+    "component": false,
+    "path": "/docs/components/button-dropdown#item-icons"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Alignment",
+    "component": false,
+    "path": "/docs/components/button-dropdown#alignment"
+  },
+  {
+    "head": "Button Dropdown",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button-dropdown#apis"
