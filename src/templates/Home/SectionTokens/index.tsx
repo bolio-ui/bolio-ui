@@ -53,7 +53,7 @@ function SectionTokens() {
         <div className="typefaces">
           <div>
             <span className="typeface" style={{ fontFamily: theme.font.sans }}>
-              {familyName(theme.font.sans)}
+              Onest
             </span>
             <span className="note">Structure · 400 / 600</span>
           </div>

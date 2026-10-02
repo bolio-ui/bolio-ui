@@ -2,8 +2,11 @@ import React from 'react'
 import type { Metadata, Viewport } from 'next'
 import { palette as darkPalette } from 'core/Themes/Presets/Dark'
 import { palette as lightPalette } from 'core/Themes/Presets/Default'
+import { Onest } from 'next/font/google'
 import Favicon from 'src/components/Favicon'
 import Providers from './providers'
+
+const sans = Onest({ subsets: ['latin'], variable: '--font-sans' })
 
 const title = 'Bolio UI - Amazing, modern and creative tools for React UI'
 const description =
@@ -89,7 +92,7 @@ export default function RootLayout({
 
   return (
     // the theme script changes <html> and <body> before React hydrates them
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={sans.variable} suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themePendingStyle }} />
         <Favicon />

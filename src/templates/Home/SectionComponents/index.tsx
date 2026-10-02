@@ -6,6 +6,29 @@ import Eyebrow from 'src/components/Eyebrow'
 
 type Icon = keyof typeof Icons
 
+const glows = new WeakMap<
+  HTMLElement,
+  { x: number; y: number; tx: number; ty: number; raf: number }
+>()
+
+function followPointer(el: HTMLElement, tx: number, ty: number) {
+  const glow = glows.get(el) ?? { x: 50, y: 0, tx, ty, raf: 0 }
+  glows.set(el, glow)
+  glow.tx = tx
+  glow.ty = ty
+  if (glow.raf) return
+  const step = () => {
+    glow.x += (glow.tx - glow.x) * 0.12
+    glow.y += (glow.ty - glow.y) * 0.12
+    el.style.setProperty('--x', `${glow.x}%`)
+    el.style.setProperty('--y', `${glow.y}%`)
+    const moving =
+      Math.abs(glow.tx - glow.x) > 0.05 || Math.abs(glow.ty - glow.y) > 0.05
+    glow.raf = moving ? requestAnimationFrame(step) : 0
+  }
+  glow.raf = requestAnimationFrame(step)
+}
+
 // Wireframes are built from three primitives: .line, .box and .active.
 const cards: Array<{
   title: string
@@ -205,6 +228,15 @@ function SectionComponents() {
                 key={card.title}
                 href={`/docs/components/${card.title.toLowerCase()}`}
                 className="card"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  followPointer(
+                    e.currentTarget,
+                    ((e.clientX - rect.left) / rect.width) * 100,
+                    ((e.clientY - rect.top) / rect.height) * 100
+                  )
+                }}
+                onMouseLeave={(e) => followPointer(e.currentTarget, 50, 0)}
               >
                 <div className="preview">{card.preview}</div>
                 <div className="body">
@@ -247,6 +279,11 @@ function SectionComponents() {
           border: 1px solid ${theme.palette.border};
           border-radius: ${theme.layout.radius};
           background-color: ${theme.palette.accents_1};
+          background-image: radial-gradient(
+            340px at var(--x, 50%) var(--y, 0%),
+            ${theme.palette.primary}1a,
+            ${theme.palette.primary}00 62%
+          );
           color: ${theme.palette.foreground};
           overflow: hidden;
           transition: border-color 200ms ease;
@@ -261,12 +298,7 @@ function SectionComponents() {
           height: 180px;
           padding: 24px;
           box-sizing: border-box;
-          border-bottom: 1px solid ${theme.palette.border};
-          background: radial-gradient(
-            ellipse at top,
-            ${theme.palette.primary}1f,
-            transparent 60%
-          );
+          box-shadow: inset 0 -1px 0 ${theme.palette.accents_2};
         }
         .body {
           padding: 16px 20px 20px;
