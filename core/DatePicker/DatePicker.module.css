@@ -49,6 +49,8 @@
   background: transparent;
   border: 0;
   border-radius: var(--datepicker-radius);
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .toggle:hover:not(:disabled) {

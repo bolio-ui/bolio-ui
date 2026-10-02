@@ -49,6 +49,8 @@
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--calendar-radius);
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .navButton {

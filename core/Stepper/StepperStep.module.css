@@ -25,6 +25,8 @@
   color: inherit;
   background: none;
   border: 0;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 button.head {
