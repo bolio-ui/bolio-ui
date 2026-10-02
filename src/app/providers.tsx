@@ -116,9 +116,8 @@ export default function Providers({
     if (themes.includes(theme)) setThemeType(theme)
   }, [])
 
-  // The page is served in dark. When the saved theme is light, the script in
-  // the root layout keeps it hidden on a light background until that theme is
-  // rendered.
+  // The script in the root layout keeps the page hidden, on the right
+  // theme's background, until this mounts and its styles are applied.
   useEffect(() => {
     const root = document.documentElement
     const pending = root.getAttribute('data-theme-pending')

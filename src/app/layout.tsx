@@ -50,9 +50,12 @@ export const viewport: Viewport = {
   themeColor: '#000'
 }
 
-// The page is served in dark. When the saved theme is light, this keeps it
-// hidden on a light background until Providers renders that theme. The colors
-// are the themes' own backgrounds, so nothing changes color when React loads.
+// This keeps the page hidden, on the right theme's own background, until
+// Providers has mounted and its stylesheet has applied. Without it, a stale
+// cache or a slow network can show the page briefly unstyled (components
+// with no layout, no colors): styles no longer render inline like they used
+// to, they load from a separate stylesheet. The colors are the themes' own
+// backgrounds, so nothing changes color when React loads.
 const themeScript = `
 (function(){
   var theme = 'dark';
@@ -62,9 +65,7 @@ const themeScript = `
   var background = theme === 'light' ? '${lightPalette.background}' : '${darkPalette.background}';
   document.documentElement.style.background = background;
   document.body.style.background = background;
-  if (theme === 'light') {
-    document.documentElement.setAttribute('data-theme-pending', theme);
-  }
+  document.documentElement.setAttribute('data-theme-pending', theme);
 })()`
 
 const themePendingStyle = `

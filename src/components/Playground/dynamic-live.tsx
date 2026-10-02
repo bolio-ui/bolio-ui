@@ -41,7 +41,7 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
     >
       <Tabs initialValue="1" hideDivider hideBorder>
         <Tabs.Item label="Preview" value="1">
-          <Card bordered style={{ background: 'none' }}>
+          <Card bordered style={{ backgroundColor: 'transparent' }}>
             <div className="wrapper">
               <Preview Component="div" />
               <LiveError className="live-error" />
@@ -49,7 +49,7 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
           </Card>
         </Tabs.Item>
         <Tabs.Item label="See code" value="2">
-          <Card bordered style={{ background: 'none' }} mb={1}>
+          <Card bordered style={{ backgroundColor: 'transparent' }} mb={1}>
             <div className="wrapper">
               <Preview Component="div" />
               <LiveError className="live-error" />
