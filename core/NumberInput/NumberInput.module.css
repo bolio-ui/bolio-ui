@@ -14,9 +14,13 @@
   transition: border 0.2s ease;
 }
 
-.numberInput:hover,
-.numberInput:focus-within {
+.numberInput:hover {
   border-color: var(--input-hover-border);
+  background: var(--input-hover-bg);
+}
+
+.numberInput:focus-within {
+  border-color: var(--input-focus-border);
 }
 
 .numberInput.disabled {
@@ -34,6 +38,10 @@
   background: transparent;
   border: none;
   outline: none;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-color);
 }
 
 .input:disabled {

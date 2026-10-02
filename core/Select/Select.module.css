@@ -30,13 +30,16 @@
     var(--select-multiple-padding-top) var(--select-padding-left);
 }
 
-.select.active,
 .select:hover {
   border-color: var(--select-hover-border);
   background-color: var(--select-hover-bg-color);
 }
 
-.select.active.icon,
+.select.active {
+  border-color: var(--select-focus-border);
+}
+
+.select.active .icon,
 .select:hover .icon {
   color: var(--select-color);
 }
@@ -64,7 +67,7 @@
 }
 
 .placeholder {
-  color: var(--select-color);
+  color: var(--select-placeholder-color);
   font-size: var(--select-placeholder-font-size);
 }
 
@@ -79,5 +82,5 @@
   transition: transform 200ms ease;
   display: flex;
   align-items: center;
-  color: var(--select-color);
+  color: var(--select-icon-color);
 }

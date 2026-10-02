@@ -5,26 +5,30 @@
   border-radius: var(--textarea-radius);
   border: 1px solid var(--textarea-border);
   color: var(--textarea-color);
+  background-color: var(--textarea-bg);
   transition:
     border 0.2s ease 0s,
+    background-color 0.2s ease 0s,
     color 0.2s ease 0s;
   min-width: 12.5rem;
   max-width: 95vw;
 }
 
-.wrapper.hover {
+.wrapper:hover {
   border-color: var(--textarea-hover-border);
   background-color: var(--textarea-hover-bg);
 }
 
+.wrapper.hover {
+  border-color: var(--textarea-focus-border);
+}
+
 .wrapper.disabled {
-  background-color: var(--textarea-disabled-bg);
-  border-color: var(--textarea-disabled-border);
   cursor: not-allowed;
 }
 
 .textarea {
-  background-color: var(--textarea-bg);
+  background-color: transparent;
   box-shadow: none;
   display: block;
   font-family: var(--textarea-font-family);
@@ -34,16 +38,15 @@
   outline: none;
   resize: var(--textarea-resize);
   border-radius: var(--textarea-radius);
+  color: inherit;
+}
+
+.textarea::placeholder {
+  color: var(--textarea-placeholder-color);
 }
 
 .disabled > .textarea {
   cursor: not-allowed;
-}
-
-.textarea.active,
-.textarea:hover {
-  border-color: var(--textarea-hover-border);
-  background: var(--textarea-hover-bg);
 }
 
 .textarea:-webkit-autofill,
@@ -51,4 +54,5 @@
 .textarea:-webkit-autofill:active,
 .textarea:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 30px var(--textarea-autofill-bg) inset !important;
+  -webkit-text-fill-color: var(--textarea-autofill-color) !important;
 }

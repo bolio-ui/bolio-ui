@@ -1,5 +1,4 @@
 import React from 'react'
-import useTheme from '../use-theme'
 import useClasses from '../use-classes'
 import styles from './InputIconClear.module.css'
 
@@ -7,10 +6,10 @@ interface Props {
   visible: boolean
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   disabled?: boolean
+  hoverColor: string
 }
 
-function InputIconClear({ onClick, disabled, visible }: Props) {
-  const theme = useTheme()
+function InputIconClear({ onClick, disabled, visible, hoverColor }: Props) {
   const classes = useClasses(styles.clearIcon, { [styles.visible]: visible })
 
   const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -22,10 +21,7 @@ function InputIconClear({ onClick, disabled, visible }: Props) {
 
   const iconStyle = {
     cursor: disabled ? 'not-allowed' : 'pointer',
-    color: theme.palette.accents_3,
-    '--clear-icon-hover-color': disabled
-      ? theme.palette.accents_3
-      : theme.palette.foreground
+    '--clear-icon-hover-color': hoverColor
   } as React.CSSProperties
 
   return (

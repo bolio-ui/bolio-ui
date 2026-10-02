@@ -14,15 +14,26 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 12.5em;
-  height: 2.5em;
-  padding: 0 2.75em 0 0.875em;
+  height: var(--datepicker-input-height);
+  padding: 0 var(--datepicker-input-height) 0 0.875em;
   font: inherit;
-  color: var(--datepicker-text-color);
-  background-color: var(--datepicker-bg);
-  border: 1px solid var(--datepicker-border-color);
+  color: var(--datepicker-field-color);
+  background-color: var(--datepicker-field-bg);
+  border: 1px solid var(--datepicker-field-border);
   border-radius: var(--datepicker-radius);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--datepicker-placeholder-color);
+}
+
+.input:hover {
+  border-color: var(--datepicker-field-hover-border);
+  background-color: var(--datepicker-field-hover-bg);
 }
 
 .input:focus {
@@ -31,8 +42,6 @@
 
 .input:disabled {
   cursor: not-allowed;
-  color: var(--datepicker-disabled-color);
-  background-color: var(--datepicker-disabled-bg);
 }
 
 .toggle {
@@ -42,8 +51,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5em;
-  height: 2.5em;
+  width: var(--datepicker-input-height);
+  height: var(--datepicker-input-height);
   color: var(--datepicker-toggle-color);
   cursor: pointer;
   background: transparent;
@@ -75,6 +84,6 @@
   padding: 0.75em;
   background-color: var(--datepicker-bg);
   border: 1px solid var(--datepicker-border-color);
-  border-radius: var(--datepicker-radius);
+  border-radius: var(--datepicker-popup-radius);
   box-shadow: var(--datepicker-shadow);
 }

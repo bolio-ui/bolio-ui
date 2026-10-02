@@ -17,6 +17,11 @@ interface Props {
   // decimal places kept; the ones of `step` when missing
   precision?: number
   type?: NormalTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   disabled?: boolean
   readOnly?: boolean
   hideControls?: boolean
@@ -60,6 +65,11 @@ const NumberInputComponent = React.forwardRef<
       step = 1,
       precision,
       type = 'default',
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       disabled = false,
       readOnly = false,
       hideControls = false,
@@ -82,7 +92,12 @@ const NumberInputComponent = React.forwardRef<
       [props['aria-describedby'], error && errorMessage ? errorId : undefined]
         .filter(Boolean)
         .join(' ') || undefined
-    const colors = getColors(theme.palette, type, disabled)
+    const colors = getColors(theme.palette, type, disabled, {
+      filled,
+      light,
+      ghost,
+      subtle
+    })
     const places = precision ?? decimalsOf(step)
 
     const isControlled = customValue !== undefined
@@ -189,12 +204,15 @@ const NumberInputComponent = React.forwardRef<
 
     const numberInputStyle = {
       '--input-border': colors.borderColor,
-      '--input-radius': theme.layout.radius,
+      '--input-radius': rounded ? '25px' : theme.layout.radius,
       '--input-bg': colors.bgColor,
       '--input-hover-border': colors.hoverBorder,
+      '--input-hover-bg': colors.hoverBgColor,
+      '--input-focus-border': colors.focusBorder,
+      '--input-placeholder-color': colors.placeholderColor,
       '--input-color': colors.color,
-      '--control-color': theme.palette.accents_5,
-      '--control-hover-color': theme.palette.foreground,
+      '--control-color': colors.iconColor,
+      '--control-hover-color': colors.color,
       '--control-disabled-color': theme.palette.accents_3
     } as React.CSSProperties
 

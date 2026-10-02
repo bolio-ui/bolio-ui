@@ -218,3 +218,33 @@ export const OverWidth: StoryFn = () => (
     </Grid>
   </Grid.Container>
 )
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <Select
+            type={type}
+            placeholder={`${type} ${variant}`}
+            {...{ [variant]: true }}
+          >
+            <Select.Option value="1">Option 1</Select.Option>
+          </Select>
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <Select type="primary" filled disabled placeholder="Disabled" />
+    </Grid>
+  </Grid.Container>
+)

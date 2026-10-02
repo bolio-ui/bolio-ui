@@ -19,9 +19,9 @@ function InputLabel({ children, isRight }: InputLabel) {
     borderTopRightRadius: isRight ? theme.layout.radius : 0,
     borderBottomRightRadius: isRight ? theme.layout.radius : 0,
     borderTop: `1px solid ${theme.palette.border}`,
-    borderLeft: `1px solid ${theme.palette.border}`,
     borderBottom: `1px solid ${theme.palette.border}`,
-    borderRight: `1px solid ${theme.palette.border}`
+    borderLeft: isRight ? 'none' : `1px solid ${theme.palette.border}`,
+    borderRight: isRight ? `1px solid ${theme.palette.border}` : 'none'
   }
 
   return (

@@ -743,6 +743,12 @@
   },
   {
     "head": "Combobox",
+    "title": "Combobox Variants",
+    "component": false,
+    "path": "/docs/components/combobox#variants"
+  },
+  {
+    "head": "Combobox",
     "title": "Combobox Disabled",
     "component": false,
     "path": "/docs/components/combobox#disabled"
@@ -834,6 +840,12 @@
     "title": "DatePicker Min and max",
     "component": false,
     "path": "/docs/components/date-picker#min-and-max"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Variants",
+    "component": false,
+    "path": "/docs/components/date-picker#variants"
   },
   {
     "head": "DatePicker",
@@ -1373,6 +1385,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Variants",
+    "component": false,
+    "path": "/docs/components/input#variants"
+  },
+  {
+    "head": "Input",
     "title": "Input Icon",
     "component": false,
     "path": "/docs/components/input#icon"
@@ -1846,6 +1864,12 @@
   },
   {
     "head": "Number Input",
+    "title": "Number Input Variants",
+    "component": false,
+    "path": "/docs/components/number-input#variants"
+  },
+  {
+    "head": "Number Input",
     "title": "Number Input Disabled and read only",
     "component": false,
     "path": "/docs/components/number-input#disabled-and-read-only"
@@ -2302,6 +2326,12 @@
     "title": "Select Types",
     "component": false,
     "path": "/docs/components/select#type"
+  },
+  {
+    "head": "Select",
+    "title": "Select Variants",
+    "component": false,
+    "path": "/docs/components/select#variants"
   },
   {
     "head": "Select",
@@ -2981,6 +3011,18 @@
     "title": "Textarea Types",
     "component": false,
     "path": "/docs/components/textarea#type"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Variants",
+    "component": false,
+    "path": "/docs/components/textarea#variants"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Rounded",
+    "component": false,
+    "path": "/docs/components/textarea#rounded"
   },
   {
     "head": "Textarea",

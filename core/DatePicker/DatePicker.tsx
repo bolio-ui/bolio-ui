@@ -1,5 +1,7 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import useTheme from '../use-theme'
+import { getColors } from '../Input/styles'
+import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import useClickAway from '../utils/use-click-away'
@@ -17,6 +19,12 @@ interface Props {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   placeholder?: string
   disabled?: boolean
+  type?: NormalTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   calendarLabel?: string
   className?: string
 }
@@ -39,6 +47,12 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       weekStartsOn,
       placeholder = 'YYYY-MM-DD',
       disabled = false,
+      type = 'default',
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       calendarLabel = 'Choose date',
       className = '',
       onBlur,
@@ -48,6 +62,12 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const colors = getColors(theme.palette, type, disabled, {
+      filled,
+      light,
+      ghost,
+      subtle
+    })
 
     const isControlled = customValue !== undefined
     const [selfValue, setSelfValue] = useState<Date | null>(initialValue)
@@ -103,7 +123,8 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
     }
 
     const datepickerStyle = {
-      '--datepicker-font-size': SCALES.font(1),
+      '--datepicker-font-size': SCALES.font(0.875),
+      '--datepicker-input-height': SCALES.height(2.25),
       '--datepicker-width': SCALES.width(1, 'initial'),
       '--datepicker-height': SCALES.height(1, 'auto'),
       '--datepicker-padding-top': SCALES.pt(0),
@@ -117,13 +138,18 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       '--datepicker-text-color': theme.palette.foreground,
       '--datepicker-bg': theme.palette.background,
       '--datepicker-border-color': theme.palette.border,
-      '--datepicker-radius': theme.layout.radius,
-      '--datepicker-focus-border-color': theme.palette.primary,
-      '--datepicker-disabled-color': theme.palette.accents_4,
-      '--datepicker-disabled-bg': theme.palette.accents_1,
-      '--datepicker-toggle-color': theme.palette.accents_5,
-      '--datepicker-toggle-hover-color': theme.palette.foreground,
-      '--datepicker-toggle-disabled-color': theme.palette.accents_3,
+      '--datepicker-radius': rounded ? '25px' : theme.layout.radius,
+      '--datepicker-popup-radius': theme.layout.radius,
+      '--datepicker-field-color': colors.color,
+      '--datepicker-field-bg': colors.bgColor,
+      '--datepicker-field-border': colors.borderColor,
+      '--datepicker-field-hover-bg': colors.hoverBgColor,
+      '--datepicker-field-hover-border': colors.hoverBorder,
+      '--datepicker-focus-border-color': colors.focusBorder,
+      '--datepicker-placeholder-color': colors.placeholderColor,
+      '--datepicker-toggle-color': colors.iconColor,
+      '--datepicker-toggle-hover-color': colors.color,
+      '--datepicker-toggle-disabled-color': colors.iconColor,
       '--datepicker-shadow': theme.expressiveness.shadowMedium
     } as React.CSSProperties
 

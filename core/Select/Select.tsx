@@ -16,7 +16,7 @@ import SelectDropdown from './SelectDropdown'
 import SelectMultipleValue from './SelectMultipleValue'
 import Grid from '../Grid'
 import { SelectContext, SelectConfig } from './SelectContext'
-import { getColors } from './styles'
+import { getColors } from '../Input/styles'
 import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
 import useScale, { withScale } from '../use-scale'
@@ -33,6 +33,11 @@ export type SelectTypes = NormalTypes
 interface Props {
   disabled?: boolean
   type?: SelectTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   value?: string | string[]
   initialValue?: string | string[]
   placeholder?: React.ReactNode | string
@@ -62,6 +67,11 @@ const SelectComponent = React.forwardRef<
     {
       children,
       type = 'default' as SelectTypes,
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       disabled = false,
       initialValue: init,
       value: customValue,
@@ -105,8 +115,14 @@ const SelectComponent = React.forwardRef<
     }, [value])
 
     const colors = useMemo(
-      () => getColors(theme.palette, type, disabled),
-      [theme.palette, type, disabled]
+      () =>
+        getColors(theme.palette, type, disabled, {
+          filled,
+          light,
+          ghost,
+          subtle
+        }),
+      [theme.palette, type, disabled, filled, light, ghost, subtle]
     )
 
     const updateVisible = useCallback(
@@ -215,7 +231,7 @@ const SelectComponent = React.forwardRef<
     const selectStyle = {
       '--select-cursor': disabled ? 'not-allowed' : 'pointer',
       '--select-border-color': colors.borderColor,
-      '--select-radius': theme.layout.radius,
+      '--select-radius': rounded ? '25px' : theme.layout.radius,
       '--select-bg-color': colors.bgColor,
       '--select-font-size': SCALES.font(0.875),
       '--select-height': SCALES.height(2.25),
@@ -231,6 +247,9 @@ const SelectComponent = React.forwardRef<
       '--select-multiple-padding-top': SCALES.pt(0.334),
       '--select-hover-border': colors.hoverBorder,
       '--select-hover-bg-color': colors.hoverBgColor,
+      '--select-focus-border': colors.focusBorder,
+      '--select-placeholder-color': colors.placeholderColor,
+      '--select-icon-color': colors.iconColor,
       '--select-color': colors.color,
       '--select-placeholder-font-size': SCALES.font(0.775),
       '--select-icon-right': theme.layout.gapQuarter,

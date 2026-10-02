@@ -28,6 +28,11 @@ interface Props {
   onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void
   className?: string
   resize?: TextareaResizes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
 }
 
 type NativeAttrs = Omit<React.TextareaHTMLAttributes<AnyElement>, keyof Props>
@@ -50,6 +55,11 @@ const TextareaComponent = React.forwardRef<
       value,
       placeholder,
       resize = 'none' as TextareaResizes,
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       ...props
     }: React.PropsWithChildren<TextareaProps>,
     ref: React.Ref<HTMLTextAreaElement | null>
@@ -63,8 +73,14 @@ const TextareaComponent = React.forwardRef<
     const [hover, setHover] = useState<boolean>(false)
 
     const colors = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
+      () =>
+        getColors(theme.palette, type, disabled, {
+          filled,
+          light,
+          ghost,
+          subtle
+        }),
+      [theme.palette, type, disabled, filled, light, ghost, subtle]
     )
 
     const classes = useClasses(
@@ -102,18 +118,22 @@ const TextareaComponent = React.forwardRef<
     }
 
     const wrapperStyle = {
-      '--textarea-radius': theme.layout.radius,
+      '--textarea-radius': rounded ? '25px' : theme.layout.radius,
       '--textarea-border': colors.borderColor,
       '--textarea-color': colors.color,
       '--textarea-hover-border': colors.hoverBorder,
       '--textarea-hover-bg': colors.hoverBgColor,
-      '--textarea-disabled-bg': theme.palette.accents_2,
-      '--textarea-disabled-border': theme.palette.accents_3,
+      '--textarea-focus-border': colors.focusBorder,
       '--textarea-bg': colors.bgColor,
+      '--textarea-placeholder-color': colors.placeholderColor,
       '--textarea-font-family': theme.font.sans,
       '--textarea-font-size': SCALES.font(0.875),
       '--textarea-resize': resize,
-      '--textarea-autofill-bg': theme.palette.background,
+      '--textarea-autofill-bg':
+        colors.bgColor === 'transparent'
+          ? theme.palette.background
+          : colors.bgColor,
+      '--textarea-autofill-color': colors.color,
       width: SCALES.width(1, 'initial'),
       height: SCALES.height(1, 'auto'),
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`

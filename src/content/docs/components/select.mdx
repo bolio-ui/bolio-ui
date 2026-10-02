@@ -89,6 +89,170 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
 />
 
 <Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ Select, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Select type="primary" filled placeholder="Primary filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" filled placeholder="Secondary filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" filled placeholder="Success filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" filled placeholder="Warning filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" filled placeholder="Error filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" filled placeholder="Info filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" light placeholder="Primary light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" light placeholder="Secondary light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" light placeholder="Success light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" light placeholder="Warning light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" light placeholder="Error light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" light placeholder="Info light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" ghost placeholder="Primary ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" ghost placeholder="Secondary ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" ghost placeholder="Success ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" ghost placeholder="Warning ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" ghost placeholder="Error ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" ghost placeholder="Info ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" subtle placeholder="Primary subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" subtle placeholder="Secondary subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" subtle placeholder="Success subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" subtle placeholder="Warning subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" subtle placeholder="Error subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" subtle placeholder="Info subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ Select, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Select type="primary" filled placeholder="Primary filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" filled placeholder="Secondary filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" filled placeholder="Success filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" filled placeholder="Warning filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" filled placeholder="Error filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" filled placeholder="Info filled"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" light placeholder="Primary light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" light placeholder="Secondary light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" light placeholder="Success light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" light placeholder="Warning light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" light placeholder="Error light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" light placeholder="Info light"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" ghost placeholder="Primary ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" ghost placeholder="Secondary ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" ghost placeholder="Success ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" ghost placeholder="Warning ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" ghost placeholder="Error ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" ghost placeholder="Info ghost"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="primary" subtle placeholder="Primary subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="secondary" subtle placeholder="Secondary subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="success" subtle placeholder="Success subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="warning" subtle placeholder="Warning subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="error" subtle placeholder="Error subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+  <Grid>
+    <Select type="info" subtle placeholder="Info subtle"><Select.Option value="1">Option 1</Select.Option><Select.Option value="2">Option 2</Select.Option></Select>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Disabled"
   desc="Disable all options."
   scope={{ Select, Grid }}
@@ -329,6 +493,16 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
 | **multiple**                | support multiple selection                               | `boolean`                                           | -                           | `false`         |
 | **clearable**               | add clear icon on multiple selection (ignored otherwise) | `boolean`                                           | -                           | `true`          |
 | **disabled**                | disable current radio                                    | `boolean`                                           | -                           | `false`         |
+| **rounded**                 | round the corners                                        | `boolean`                                           | -                           | `false`         |
+| **filled**                  | filled variant                                           | `boolean`                                           | -                           | `false`         |
+| **light**                   | light variant                                            | `boolean`                                           | -                           | `false`         |
+| **ghost**                   | outline variant                                          | `boolean`                                           | -                           | `false`         |
+| **subtle**                  | subtle variant                                           | `boolean`                                           | -                           | `false`         |
+| **rounded**                 | round the corners                                        | `boolean`                                           | -                           | `false`         |
+| **filled**                  | filled variant                                           | `boolean`                                           | -                           | `false`         |
+| **light**                   | light variant                                            | `boolean`                                           | -                           | `false`         |
+| **ghost**                   | outline variant                                          | `boolean`                                           | -                           | `false`         |
+| **subtle**                  | subtle variant                                           | `boolean`                                           | -                           | `false`         |
 | **onChange**                | selected value                                           | <Code>(val: string &#124; string[]) => void </Code> | -                           | -               |
 | **dropdownClassName**       | className of dropdown menu                               | `string`                                            | -                           | -               |
 | **dropdownStyle**           | style of dropdown menu                                   | `object`                                            | -                           | -               |
@@ -362,13 +536,7 @@ type SelectRef = {
 
 ```ts
 type SelectTypes =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
+  'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
 ```
 
 </Attributes>

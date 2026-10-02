@@ -148,3 +148,32 @@ export const Password: StoryFn = () => (
     </Grid>
   </Grid.Container>
 )
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <Input
+            type={type}
+            placeholder={`${type} ${variant}`}
+            clearable
+            {...{ [variant]: true }}
+          />
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <Input type="primary" filled disabled placeholder="Disabled" />
+    </Grid>
+  </Grid.Container>
+)

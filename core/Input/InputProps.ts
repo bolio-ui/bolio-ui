@@ -30,6 +30,10 @@ export interface Props {
   borderColor?: string
   hoverBorder?: string
   rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   error?: boolean
   errorMessage?: string
   crossOrigin?: CrossOrigin
@@ -39,6 +43,10 @@ export const defaultProps = {
   disabled: false,
   readOnly: false,
   clearable: false,
+  filled: false,
+  light: false,
+  ghost: false,
+  subtle: false,
   iconClickable: false,
   type: 'default' as InputTypes,
   htmlType: 'text',

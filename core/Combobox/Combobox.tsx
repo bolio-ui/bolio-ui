@@ -1,5 +1,7 @@
 import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
+import { getColors } from '../Input/styles'
+import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
 import styles from './Combobox.module.css'
@@ -18,6 +20,12 @@ interface Props {
   onInputChange?: (text: string) => void
   placeholder?: string
   disabled?: boolean
+  type?: NormalTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   emptyText?: string
   filter?: (option: ComboboxOption, text: string) => boolean
   className?: string
@@ -48,6 +56,12 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       onInputChange,
       placeholder,
       disabled = false,
+      type = 'default',
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       emptyText = 'No results',
       filter = defaultFilter,
       className = '',
@@ -59,6 +73,12 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const colors = getColors(theme.palette, type, disabled, {
+      filled,
+      light,
+      ghost,
+      subtle
+    })
     const baseId = useId()
     const listId = `${baseId}-list`
     const optionId = (index: number) => `${baseId}-option-${index}`
@@ -152,7 +172,8 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     }
 
     const comboboxStyle = {
-      '--combobox-font-size': SCALES.font(1),
+      '--combobox-font-size': SCALES.font(0.875),
+      '--combobox-input-height': SCALES.height(2.25),
       '--combobox-width': SCALES.width(1, 'initial'),
       '--combobox-height': SCALES.height(1, 'auto'),
       '--combobox-padding-top': SCALES.pt(0),
@@ -166,10 +187,16 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       '--combobox-text-color': theme.palette.foreground,
       '--combobox-bg': theme.palette.background,
       '--combobox-border-color': theme.palette.border,
-      '--combobox-radius': theme.layout.radius,
-      '--combobox-focus-border-color': theme.palette.primary,
+      '--combobox-radius': rounded ? '25px' : theme.layout.radius,
+      '--combobox-popup-radius': theme.layout.radius,
+      '--combobox-field-color': colors.color,
+      '--combobox-field-bg': colors.bgColor,
+      '--combobox-field-border': colors.borderColor,
+      '--combobox-field-hover-bg': colors.hoverBgColor,
+      '--combobox-field-hover-border': colors.hoverBorder,
+      '--combobox-focus-border-color': colors.focusBorder,
+      '--combobox-placeholder-color': colors.placeholderColor,
       '--combobox-disabled-color': theme.palette.accents_4,
-      '--combobox-disabled-bg': theme.palette.accents_1,
       '--combobox-shadow': theme.expressiveness.shadowMedium,
       '--combobox-active-bg': theme.palette.accents_2,
       '--combobox-empty-color': theme.palette.accents_5

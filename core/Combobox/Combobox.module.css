@@ -14,15 +14,26 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 12.5em;
-  height: 2.5em;
+  height: var(--combobox-input-height);
   padding: 0 0.875em;
   font: inherit;
-  color: var(--combobox-text-color);
-  background-color: var(--combobox-bg);
-  border: 1px solid var(--combobox-border-color);
+  color: var(--combobox-field-color);
+  background-color: var(--combobox-field-bg);
+  border: 1px solid var(--combobox-field-border);
   border-radius: var(--combobox-radius);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--combobox-placeholder-color);
+}
+
+.input:hover {
+  border-color: var(--combobox-field-hover-border);
+  background-color: var(--combobox-field-hover-bg);
 }
 
 .input:focus {
@@ -31,8 +42,6 @@
 
 .input:disabled {
   cursor: not-allowed;
-  color: var(--combobox-disabled-color);
-  background-color: var(--combobox-disabled-bg);
 }
 
 .list,
@@ -45,7 +54,7 @@
   box-sizing: border-box;
   background-color: var(--combobox-bg);
   border: 1px solid var(--combobox-border-color);
-  border-radius: var(--combobox-radius);
+  border-radius: var(--combobox-popup-radius);
   box-shadow: var(--combobox-shadow);
 }
 
@@ -74,7 +83,7 @@
 
 .disabled {
   cursor: not-allowed;
-  color: var(--combobox-disabled-color);
+  color: var(--combobox-empty-color);
 }
 
 .empty {

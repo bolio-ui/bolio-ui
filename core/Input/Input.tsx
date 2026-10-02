@@ -60,6 +60,10 @@ const InputComponent = React.forwardRef<
     children,
     disabled,
     rounded,
+    filled,
+    light,
+    ghost,
+    subtle,
     backgroundColor,
     borderColor,
     hoverBorder,
@@ -95,8 +99,14 @@ const InputComponent = React.forwardRef<
   )
 
   const colors = useMemo(
-    () => getColors(theme.palette, type, disabled),
-    [theme.palette, type, disabled]
+    () =>
+      getColors(theme.palette, type, disabled, {
+        filled,
+        light,
+        ghost,
+        subtle
+      }),
+    [theme.palette, type, disabled, filled, light, ghost, subtle]
   )
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,18 +170,23 @@ const InputComponent = React.forwardRef<
   } as React.CSSProperties
 
   const inputWrapperStyle = {
-    borderRadius: rounded ? '25px' : theme.layout.radius,
-    border: `1px solid ${borderColor ? borderColor : colors.borderColor}`,
-    background: backgroundColor ? backgroundColor : colors.bgColor,
+    color: colors.iconColor,
+    '--input-radius': rounded ? '25px' : theme.layout.radius,
+    '--input-border': borderColor ? borderColor : colors.borderColor,
+    '--input-bg': backgroundColor ? backgroundColor : colors.bgColor,
     '--input-hover-border': hoverBorder ? hoverBorder : colors.hoverBorder,
-    '--input-hover-bg': backgroundColor ? backgroundColor : colors.hoverBgColor
+    '--input-hover-bg': backgroundColor ? backgroundColor : colors.hoverBgColor,
+    '--input-focus-border': colors.focusBorder
   } as React.CSSProperties
 
   const inputStyle = {
     fontSize: SCALES.font(0.875),
     color: colors.color,
-    '--input-placeholder-color': theme.palette.accents_6,
-    '--input-autofill-bg': theme.palette.background,
+    '--input-placeholder-color': colors.placeholderColor,
+    '--input-autofill-bg':
+      colors.bgColor === 'transparent'
+        ? theme.palette.background
+        : colors.bgColor,
     '--input-color': colors.color
   } as React.CSSProperties
 
@@ -224,6 +239,7 @@ const InputComponent = React.forwardRef<
                 inputRef.current && inputRef.current.value !== ''
               )}
               disabled={disabled || readOnly}
+              hoverColor={colors.color}
               onClick={clearHandler}
             />
           )}
