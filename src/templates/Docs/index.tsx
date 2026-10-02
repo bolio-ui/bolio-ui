@@ -16,6 +16,7 @@ import Sidebar from 'src/components/Sidebar'
 import SidebarHeading from 'src/components/SidebarHeading'
 import MadeDesigned from 'src/components/MadeDesigned'
 import NavigationDocs from 'src/components/NavigationDocs'
+import PageActions from 'src/components/PageActions'
 import { guide, components, hooks } from 'src/data/sidebar'
 
 export interface Meta {
@@ -95,6 +96,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
             {/* key remounts only this thin wrapper on navigation, so the
                 new content fades in instead of popping in abruptly. The
                 sidebar, Contents and backgrounds above are unaffected. */}
+            <PageActions />
             <div key={pathname} className="page-content">
               {children}
             </div>
