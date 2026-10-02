@@ -170,7 +170,7 @@ const InputComponent = React.forwardRef<
   const inputStyle = {
     fontSize: SCALES.font(0.875),
     color: colors.color,
-    '--input-placeholder-color': theme.palette.accents_3,
+    '--input-placeholder-color': theme.palette.accents_6,
     '--input-autofill-bg': theme.palette.background,
     '--input-color': colors.color
   } as React.CSSProperties
