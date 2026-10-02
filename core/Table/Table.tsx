@@ -21,9 +21,18 @@ import {
 } from './TableTypes'
 import useScale, { ScaleProps, withScale } from '../use-scale'
 import TableColumn from './TableColumn'
+import Pagination from '../Pagination'
 import type { AnyElement } from '../utils/types'
 import useClasses from '../use-classes'
 import styles from './Table.module.css'
+
+export type TablePagination = {
+  pageSize: number
+  page?: number
+  onPageChange?: (page: number) => void
+  // rows on the server: `data` is already the current page
+  total?: number
+}
 
 interface Props<TableDataItem extends TableDataItemBase> {
   data?: Array<TableDataItem>
@@ -33,6 +42,7 @@ interface Props<TableDataItem extends TableDataItemBase> {
   onRow?: TableOnRowClick<TableDataItem>
   onCell?: TableOnCellClick<TableDataItem>
   onChange?: TableOnChange<TableDataItem>
+  pagination?: TablePagination
   className?: string
   rowClassName?: TableRowClassNameHandler<TableDataItem>
 }
@@ -68,6 +78,7 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
     onRow,
     onCell,
     onChange,
+    pagination,
     className = defaultProps.className,
     rowClassName = defaultProps.rowClassName,
     style,
@@ -111,6 +122,22 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
   }, [customData])
   useResize(() => updateShape())
 
+  const [selfPage, setSelfPage] = useState(1)
+  const pageSize = pagination ? Math.max(1, pagination.pageSize) : 0
+  const totalRows = pagination?.total ?? data.length
+  const pageCount = pagination ? Math.ceil(totalRows / pageSize) : 0
+  const page = Math.min(pagination?.page ?? selfPage, Math.max(pageCount, 1))
+  const rows =
+    pagination && pagination.total === undefined
+      ? data.slice((page - 1) * pageSize, page * pageSize)
+      : data
+
+  const pageChangeHandler = (next: number) => {
+    if (next === page) return
+    setSelfPage(next)
+    if (pagination?.onPageChange) pagination.onPageChange(next)
+  }
+
   const tableStyle = {
     '--table-font-size': SCALES.font(1),
     '--table-width': SCALES.width(1, '100%'),
@@ -139,7 +166,7 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
       >
         <TableHead columns={columns} width={width} />
         <TableBody<TableDataItem>
-          data={data}
+          data={rows}
           hover={hover}
           emptyText={emptyText}
           onRow={onRow}
@@ -148,6 +175,15 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
         />
         {children}
       </table>
+      {pageCount > 1 && (
+        <div className={styles.footer}>
+          <Pagination
+            count={pageCount}
+            page={page}
+            onChange={pageChangeHandler}
+          />
+        </div>
+      )}
     </TableContext.Provider>
   )
 }

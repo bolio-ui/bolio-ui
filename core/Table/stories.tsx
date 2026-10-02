@@ -219,3 +219,16 @@ export const CustomHead: StoryFn = () => {
     </Table>
   )
 }
+
+export const Pagination: StoryFn = () => {
+  const data = Array.from({ length: 23 }, (_, index) => ({
+    id: index + 1,
+    name: `Item ${index + 1}`
+  }))
+  return (
+    <Table data={data} pagination={{ pageSize: 5 }}>
+      <Table.Column prop="id" label="id" />
+      <Table.Column prop="name" label="name" />
+    </Table>
+  )
+}

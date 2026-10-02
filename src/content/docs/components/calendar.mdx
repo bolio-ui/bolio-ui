@@ -56,21 +56,82 @@ A month grid to pick a day with the mouse or the keyboard. `DatePicker` uses it,
 `}
 />
 
+<Playground
+  title="Multiple"
+  desc="With `mode` set to `multiple` each click adds or removes a day, and `value` is an array. Use `maxSelected` to limit how many."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar mode="multiple" defaultMonth={new Date(2026, 0, 1)} maxSelected={5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Range"
+  desc="With `mode` set to `range` the first click sets the start and the second the end. `value` is `[start, end]`."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar mode="range" defaultMonth={new Date(2026, 0, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disable dates"
+  desc="`shouldDisableDate` receives each day and returns `true` to block it, like weekends or holidays."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar defaultMonth={new Date(2026, 0, 1)} shouldDisableDate={(date) => date.getDay() === 0 || date.getDay() === 6} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Outside days and week numbers"
+  desc="`showOutsideDays` fills the grid with days of the neighbor months, and `showWeekNumbers` adds the ISO week of each row."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar defaultMonth={new Date(2026, 0, 1)} weekStartsOn={1} showOutsideDays showWeekNumbers />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
 <Attributes edit="/content/docs/components/calendar.mdx">
 <Attributes.Title>Calendar.Props</Attributes.Title>
 
-| Attribute         | Description                                       | Type                        | Accepted values                  | Default          |
-| ----------------- | ------------------------------------------------- | --------------------------- | -------------------------------- | ---------------- |
-| **value**         | selected day, to control the component            | `Date` / `null`             | -                                | -                |
-| **onChange**      | called with the day the user picked               | `(date: Date) => void`      | -                                | -                |
-| **min**           | first day that can be picked                      | `Date`                      | -                                | -                |
-| **max**           | last day that can be picked                       | `Date`                      | -                                | -                |
-| **locale**        | language of the month and weekday names           | `string`                    | any `Intl` locale                | `en-US`          |
-| **weekStartsOn**  | first day of the week, 0 is Sunday                | `number`                    | `0` to `6`                       | `0`              |
-| **autoFocus**     | move the focus to the day when it is shown       | `boolean`                   | -                                | `false`          |
-| **previousLabel** | name of the previous month button                 | `string`                    | -                                | `Previous month` |
-| **nextLabel**     | name of the next month button                     | `string`                    | -                                | `Next month`     |
-| ...               | native props                                      | `HTMLAttributes`            | `'id', 'className', ...`         | -                |
+| Attribute             | Description                                               | Type                                        | Accepted values                 | Default          |
+| --------------------- | --------------------------------------------------------- | ------------------------------------------- | ------------------------------- | ---------------- |
+| **value**             | selected day, days or range, to control the component     | `Date` / `null`, `Date[]` or `[Date, Date]` | -                               | -                |
+| **onChange**          | called with what the user picked, in the shape of `value` | `(value) => void`                           | -                               | -                |
+| **min**               | first day that can be picked                              | `Date`                                      | -                               | -                |
+| **max**               | last day that can be picked                               | `Date`                                      | -                               | -                |
+| **locale**            | language of the month and weekday names                   | `string`                                    | any `Intl` locale               | `en-US`          |
+| **weekStartsOn**      | first day of the week, 0 is Sunday                        | `number`                                    | `0` to `6`                      | `0`              |
+| **mode**              | how many days can be picked                               | `string`                                    | `'single', 'multiple', 'range'` | `single`         |
+| **maxSelected**       | most days in `multiple` mode                              | `number`                                    | -                               | -                |
+| **shouldDisableDate** | disable the days where it returns `true`                  | `(date: Date) => boolean`                   | -                               | -                |
+| **showOutsideDays**   | show days of the neighbor months                          | `boolean`                                   | -                               | `false`          |
+| **showWeekNumbers**   | show the ISO week of each row                             | `boolean`                                   | -                               | `false`          |
+| **month**             | visible month, to control it                              | `Date`                                      | -                               | -                |
+| **defaultMonth**      | visible month at the start                                | `Date`                                      | -                               | the selected day |
+| **onMonthChange**     | called with the first day of the new month                | `(month: Date) => void`                     | -                               | -                |
+| **weekLabel**         | name of the week number column                            | `string`                                    | -                               | `Week`           |
+| **autoFocus**         | move the focus to the day when it is shown                | `boolean`                                   | -                               | `false`          |
+| **previousLabel**     | name of the previous month button                         | `string`                                    | -                               | `Previous month` |
+| **nextLabel**         | name of the next month button                             | `string`                                    | -                               | `Next month`     |
+| ...                   | native props                                              | `HTMLAttributes`                            | `'id', 'className', ...`        | -                |
 
 <Attributes.Title>Ref</Attributes.Title>
 
@@ -80,13 +141,13 @@ The `ref` points at the root element.
 
 The days are a `grid` named by the month, with a single tab stop on the focused day. The selected day has `aria-selected` and today has `aria-current="date"`.
 
-| Key                      | Action                                  |
-| ------------------------ | --------------------------------------- |
-| Arrow keys               | Move by one day, or one week            |
-| Home and End             | Go to the first and to the last day of the week |
-| Page Up and Page Down    | Go to the previous and to the next month |
-| Shift and Page Up or Down | Go to the previous and to the next year |
-| Enter and Space          | Pick the day                            |
+| Key                       | Action                                          |
+| ------------------------- | ----------------------------------------------- |
+| Arrow keys                | Move by one day, or one week                    |
+| Home and End              | Go to the first and to the last day of the week |
+| Page Up and Page Down     | Go to the previous and to the next month        |
+| Shift and Page Up or Down | Go to the previous and to the next year         |
+| Enter and Space           | Pick the day                                    |
 
 </Attributes>
 

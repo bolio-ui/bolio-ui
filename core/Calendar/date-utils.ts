@@ -47,3 +47,11 @@ export const fromISO = (text: string): Date | null => {
     date.getDate() === day
   return isReal ? date : null
 }
+
+// ISO 8601 week number: the week belongs to the year of its Thursday.
+export const getISOWeek = (date: Date) => {
+  const thursday = addDays(date, 3 - ((date.getDay() + 6) % 7))
+  const firstThursday = new Date(thursday.getFullYear(), 0, 4)
+  const weekOne = addDays(firstThursday, 3 - ((firstThursday.getDay() + 6) % 7))
+  return 1 + Math.round((thursday.getTime() - weekOne.getTime()) / 6048e5)
+}

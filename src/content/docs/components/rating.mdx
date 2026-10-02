@@ -6,7 +6,7 @@ import { Umbrella, Zap } from '@bolio-ui/icons'
 
 export const meta = {
   title: 'Rating',
-  description: 'Display an indicator of rankings with stars.',
+  description: 'Pick or show a score with stars or any other icon.',
   sidebar: 'components',
   group: 'Components',
   index: 30
@@ -14,31 +14,21 @@ export const meta = {
 
 ## Rating
 
-Display an indicator of rankings with stars.
+Pick or show a score with stars or any other icon. The value only changes when the user clicks or uses the arrow keys, and hovering shows a preview.
 
 <Playground
   title="Default"
-  desc="A default rating component with initializers and callbacks."
+  desc="Control it with `value` and `onChange`, or start it with `initialValue`."
   scope={{ Rating, Grid, useState }}
   code={`
 () => {
-  const [value, setValue] = useState(1)
-  const [locked, setLocked] = useState(false)
+  const [value, setValue] = useState(3)
   return (
     <Grid.Container gap={2}>
       <Grid>
-        <Rating
-          onLockedChange={setLocked}
-          value={value}
-          onValueChange={setValue}
-        />
+        <Rating value={value} onChange={setValue} />
       </Grid>
-      <Grid>
-        Selection: {value}
-      </Grid>
-      <Grid>
-        Locked: {locked ? 'true' : 'false'}
-      </Grid>
+      <Grid>Selection: {value}</Grid>
     </Grid.Container>
   )
 }
@@ -47,30 +37,81 @@ Display an indicator of rankings with stars.
 
 <Playground
   title="Types"
-  desc="Pass the property `type` to the Rating component."
+  desc="Pass the property `type` to change the color."
   scope={{ Rating, Grid }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Rating />
+    <Rating type="default" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="primary" />
+    <Rating type="primary" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="secondary" />
+    <Rating type="secondary" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="success" />
+    <Rating type="success" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="error" />
+    <Rating type="warning" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="warning" />
+    <Rating type="error" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating type="info" />
+    <Rating type="info" initialValue={3} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="`outline` shows only the border of the empty icons, `filled` fills them with a soft color."
+  scope={{ Rating, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Rating variant="outline" initialValue={3} />
+  </Grid>
+  <Grid>
+    <Rating variant="filled" initialValue={3} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Precision"
+  desc="With `precision={0.5}` each icon can be picked by its half."
+  scope={{ Rating, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Rating precision={0.5} initialValue={2.5} />
+  </Grid>
+  <Grid>
+    <Rating precision={0.5} readOnly value={3.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="States"
+  desc="`readOnly` shows a score without picking, `disabled` blocks it, and `clearable` lets a second click on the same value clear it."
+  scope={{ Rating, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Rating readOnly value={4} />
+  </Grid>
+  <Grid>
+    <Rating disabled value={4} />
+  </Grid>
+  <Grid>
+    <Rating clearable initialValue={2} />
   </Grid>
 </Grid.Container>
 `}
@@ -78,18 +119,15 @@ Display an indicator of rankings with stars.
 
 <Playground
   title="Custom Amount"
-  desc="Customize the amount of stars."
+  desc="Customize the amount of icons with `count`."
   scope={{ Rating, Grid }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Rating count={2} />
+    <Rating count={3} initialValue={2} />
   </Grid>
   <Grid>
-    <Rating value={3} count={6} />
-  </Grid>
-  <Grid>
-    <Rating value={4} count={8} />
+    <Rating count={10} initialValue={7} />
   </Grid>
 </Grid.Container>
 `}
@@ -97,15 +135,15 @@ Display an indicator of rankings with stars.
 
 <Playground
   title="Icon"
-  desc="Customize the icons of a rating."
+  desc="Use `icon` for the filled state and `emptyIcon` for the empty one. With `highlightSelectedOnly` only the picked icon is lit, good for faces or emojis."
   scope={{ Rating, Umbrella, Zap, Grid }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Rating value={4} count={6} type="success" icon={<Umbrella />} />
+    <Rating initialValue={4} type="success" icon={<Umbrella />} />
   </Grid>
   <Grid>
-    <Rating count={7} type="error" icon={<Zap />} />
+    <Rating initialValue={3} type="error" icon={<Zap />} highlightSelectedOnly />
   </Grid>
 </Grid.Container>
 `}
@@ -114,42 +152,35 @@ Display an indicator of rankings with stars.
 <Attributes edit="/content/docs/components/rating.mdx">
 <Attributes.Title>Rating.Props</Attributes.Title>
 
-| Attribute          | Description         | Type                    | Accepted values             | Default   |
-| ------------------ | ------------------- | ----------------------- | --------------------------- | --------- |
-| **type**           | rating type         | `RatingTypes`           | [RatingTypes](#ratingtypes) | `default` |
-| **icon**           | custom icon         | `JSX.Element`           | -                           | -         |
-| **count**          | rating star count   | `number`                | [RatingCount](#ratingcount) | `5`       |
-| **value**          | star values         | `number`                | [RatingValue](#ratingvalue) | -         |
-| **initialValue**   | initial star values | `number`                | [RatingValue](#ratingvalue) | `1`       |
-| **onValueChange**  | value change event  | `(value?: any) => void` | -                           | -         |
-| **locked**         | lock state          | `boolean`               | -                           | `false`   |
-| **onLockedChange** | locked change event | `(value?: any) => void` | -                           | -         |
-| ...                | native props        | `HTMLAttributes`        | -                           | -         |
+| Attribute                 | Description                                         | Type                                       | Accepted values             | Default   |
+| ------------------------- | --------------------------------------------------- | ------------------------------------------ | --------------------------- | --------- |
+| **value**                 | current score, to control the component             | `number`                                   | `0` to `count`              | -         |
+| **initialValue**          | score at the start                                  | `number`                                   | `0` to `count`              | `0`       |
+| **onChange**              | called with the score the user picked               | `(value: number) => void`                  | -                           | -         |
+| **onHoverChange**         | called with the previewed score, or `null` on leave | `(value: number \| null) => void`          | -                           | -         |
+| **count**                 | amount of icons                                     | `number`                                   | -                           | `5`       |
+| **precision**             | step of the score                                   | `RatingPrecision`                          | `1`, `0.5`                  | `1`       |
+| **type**                  | color of the icons                                  | `RatingTypes`                              | [RatingTypes](#ratingtypes) | `default` |
+| **variant**               | look of the empty icons                             | `RatingVariants`                           | `'outline', 'filled'`       | `outline` |
+| **icon**                  | icon of the filled state                            | `React.ReactNode`                          | -                           | star      |
+| **emptyIcon**             | icon of the empty state                             | `React.ReactNode`                          | -                           | `icon`    |
+| **readOnly**              | show the score without picking                      | `boolean`                                  | -                           | `false`   |
+| **disabled**              | block the component                                 | `boolean`                                  | -                           | `false`   |
+| **clearable**             | a click on the current score clears it              | `boolean`                                  | -                           | `false`   |
+| **highlightSelectedOnly** | light only the icon of the score                    | `boolean`                                  | -                           | `false`   |
+| **getLabel**              | accessible name of each score                       | `(value: number, count: number) => string` | -                           | `3 of 5`  |
+| ...                       | native props                                        | `HTMLAttributes`                           | -                           | -         |
 
 <Attributes.Title>RatingTypes</Attributes.Title>
 
 ```ts
 type RatingTypes =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
+  'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
 ```
 
-<Attributes.Title>RatingCount</Attributes.Title>
+<Attributes.Title>Accessibility</Attributes.Title>
 
-```ts
-type RatingCount = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-```
-
-<Attributes.Title>RatingValue</Attributes.Title>
-
-```ts
-type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-```
+The component is a group of native radio buttons, so the arrow keys move the score and Tab leaves the group. Give it an `aria-label`. With `readOnly` or `disabled` it becomes an image named by `getLabel`.
 
 </Attributes>
 

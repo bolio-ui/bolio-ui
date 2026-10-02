@@ -9,3 +9,9 @@
   margin: var(--table-margin-top) var(--table-margin-right)
     var(--table-margin-bottom) var(--table-margin-left);
 }
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}

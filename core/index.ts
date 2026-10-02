@@ -27,7 +27,7 @@ export { default as ButtonGroup } from './ButtonGroup'
 export type { ButtonGroupProps } from './ButtonGroup'
 
 export { default as Calendar } from './Calendar'
-export type { CalendarProps } from './Calendar'
+export type { CalendarProps, DateRange } from './Calendar'
 
 export { default as Capacity } from './Capacity'
 export type { CapacityProps } from './Capacity'
@@ -155,7 +155,12 @@ export type {
 } from './Radio'
 
 export { default as Rating } from './Rating'
-export type { RatingProps } from './Rating'
+export type {
+  RatingProps,
+  RatingTypes,
+  RatingVariants,
+  RatingPrecision
+} from './Rating'
 
 export { default as Row } from './Row'
 export type { RowProps } from './Row'

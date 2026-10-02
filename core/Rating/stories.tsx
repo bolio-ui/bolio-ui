@@ -10,46 +10,69 @@ export default {
 } as Meta
 
 export const Default: StoryFn = () => {
-  const [value, setValue] = useState(1)
-  const [locked, setLocked] = useState(false)
-
+  const [value, setValue] = useState(3)
   return (
     <Grid.Container gap={2}>
       <Grid>
-        <Rating
-          onLockedChange={setLocked}
-          value={value}
-          onValueChange={setValue}
-        />
+        <Rating value={value} onChange={setValue} />
       </Grid>
       <Grid>Selection: {value}</Grid>
-      <Grid>Locked: {locked ? 'true' : 'false'}</Grid>
     </Grid.Container>
   )
 }
 
 export const Types: StoryFn = () => (
   <Grid.Container gap={2}>
+    {(
+      [
+        'default',
+        'primary',
+        'secondary',
+        'success',
+        'warning',
+        'error',
+        'info'
+      ] as const
+    ).map((type) => (
+      <Grid key={type}>
+        <Rating type={type} initialValue={3} />
+      </Grid>
+    ))}
+  </Grid.Container>
+)
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
     <Grid>
-      <Rating />
+      <Rating variant="outline" initialValue={3} />
     </Grid>
     <Grid>
-      <Rating type="primary" />
+      <Rating variant="filled" initialValue={3} />
+    </Grid>
+  </Grid.Container>
+)
+
+export const HalfPrecision: StoryFn = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating precision={0.5} initialValue={2.5} />
     </Grid>
     <Grid>
-      <Rating type="secondary" />
+      <Rating precision={0.5} readOnly value={3.5} />
+    </Grid>
+  </Grid.Container>
+)
+
+export const States: StoryFn = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating readOnly value={4} />
     </Grid>
     <Grid>
-      <Rating type="success" />
+      <Rating disabled value={4} />
     </Grid>
     <Grid>
-      <Rating type="error" />
-    </Grid>
-    <Grid>
-      <Rating type="warning" />
-    </Grid>
-    <Grid>
-      <Rating type="info" />
+      <Rating clearable initialValue={2} />
     </Grid>
   </Grid.Container>
 )
@@ -57,13 +80,10 @@ export const Types: StoryFn = () => (
 export const CustomAmount: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Rating count={2} />
+      <Rating count={3} initialValue={2} />
     </Grid>
     <Grid>
-      <Rating value={3} count={6} />
-    </Grid>
-    <Grid>
-      <Rating value={4} count={8} />
+      <Rating count={10} initialValue={7} />
     </Grid>
   </Grid.Container>
 )
@@ -71,10 +91,14 @@ export const CustomAmount: StoryFn = () => (
 export const Icon: StoryFn = () => (
   <Grid.Container gap={2}>
     <Grid>
-      <Rating value={4} count={6} type="success" icon={<Umbrella />} />
+      <Rating initialValue={4} type="success" icon={<Umbrella />} />
     </Grid>
     <Grid>
-      <Rating count={7} type="error" icon={<Zap />} />
+      <Rating initialValue={5} type="error" icon={<Zap />} />
     </Grid>
   </Grid.Container>
+)
+
+export const HighlightSelectedOnly: StoryFn = () => (
+  <Rating highlightSelectedOnly initialValue={3} icon={<Zap />} />
 )

@@ -3,7 +3,7 @@ import Rating from './Rating'
 export type {
   RatingProps,
   RatingTypes,
-  RatingCount,
-  RatingValue
+  RatingVariants,
+  RatingPrecision
 } from './Rating'
 export default Rating

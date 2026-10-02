@@ -42,7 +42,11 @@ function Sidebar({ sidebar }: SidebarProps) {
     >
       {items.map((item, index) => {
         return (
-          <Grid.Container gap={2} key={`${item.name}-${index}`}>
+          <Grid.Container
+            gap={2}
+            key={`${item.name}-${index}`}
+            style={!item.url && index > 0 ? { marginTop: 16 } : undefined}
+          >
             {!item.url && <ActiveCategory name={item.name} icon={item.icon} />}
             {item.url && (
               <ActiveLink

@@ -384,6 +384,30 @@
   },
   {
     "head": "Calendar",
+    "title": "Calendar Multiple",
+    "component": false,
+    "path": "/docs/components/calendar#multiple"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Range",
+    "component": false,
+    "path": "/docs/components/calendar#range"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Disable dates",
+    "component": false,
+    "path": "/docs/components/calendar#disable-dates"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Outside days and week numbers",
+    "component": false,
+    "path": "/docs/components/calendar#outside-days-and-week-numbers"
+  },
+  {
+    "head": "Calendar",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/calendar#apis"
@@ -2241,6 +2265,24 @@
   },
   {
     "head": "Rating",
+    "title": "Rating Variants",
+    "component": false,
+    "path": "/docs/components/rating#variants"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Precision",
+    "component": false,
+    "path": "/docs/components/rating#precision"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating States",
+    "component": false,
+    "path": "/docs/components/rating#states"
+  },
+  {
+    "head": "Rating",
     "title": "Rating Custom Amount",
     "component": false,
     "path": "/docs/components/rating#custom-amount"
@@ -2271,15 +2313,9 @@
   },
   {
     "head": "Rating",
-    "title": "Count - Rating",
+    "title": "Accessibility",
     "component": false,
-    "path": "/docs/components/rating#ratingcount"
-  },
-  {
-    "head": "Rating",
-    "title": "Value - Rating",
-    "component": false,
-    "path": "/docs/components/rating#ratingvalue"
+    "path": "/docs/components/rating#accessibility"
   },
   {
     "title": "Row",
@@ -2831,6 +2867,18 @@
   },
   {
     "head": "Table",
+    "title": "Table Pagination",
+    "component": false,
+    "path": "/docs/components/table#pagination"
+  },
+  {
+    "head": "Table",
+    "title": "Table Server Pagination",
+    "component": false,
+    "path": "/docs/components/table#server-pagination"
+  },
+  {
+    "head": "Table",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/table#apis"
@@ -2846,6 +2894,12 @@
     "title": "Table Column Props",
     "component": false,
     "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table TablePagination",
+    "component": false,
+    "path": "/docs/components/table#tablepagination"
   },
   {
     "head": "Table",

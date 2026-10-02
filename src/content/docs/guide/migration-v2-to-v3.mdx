@@ -95,6 +95,17 @@ The package does not depend on `styled-jsx` anymore. If nothing else in your app
 
 Other paths are no longer resolved.
 
+#### `Rating` was rebuilt
+
+The old Rating changed its value on hover and then locked on click. Now the value only changes on click or with the arrow keys, and hover shows a preview.
+
+- • `onValueChange` is now `onChange`.
+- • `locked` and `onLockedChange` are gone. Use `readOnly` or `disabled`.
+- • `initialValue` now defaults to `0`, not `1`.
+- • The default color is the warning color, not gray.
+- • The types `RatingCount` and `RatingValue` are gone: `count` and `value` are plain numbers.
+- • New props: `precision`, `variant`, `emptyIcon`, `clearable`, `highlightSelectedOnly`, `onHoverChange` and `getLabel`.
+
 <Spacer h={2} />
 
 ### Changes in behavior

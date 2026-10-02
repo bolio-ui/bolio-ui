@@ -179,6 +179,50 @@ Display tabular data in format.
 `}
 />
 
+<Playground
+  title="pagination"
+  desc="Set `pagination` with a `pageSize` and the table slices `data` and shows a `Pagination` below it. The footer only appears when there is more than one page. `onRow` and `onCell` receive the index inside the current page."
+  scope={{ Table }}
+  code={`
+() => {
+  const data = Array.from({ length: 23 }, (_, index) => ({
+    id: index + 1,
+    name: 'Item ' + (index + 1),
+  }))
+  return (
+    <Table data={data} pagination={{ pageSize: 5 }}>
+      <Table.Column prop="id" label="id" />
+      <Table.Column prop="name" label="name" />
+    </Table>
+  )
+}
+`}
+/>
+
+<Playground
+  title="server pagination"
+  desc="With `total`, `data` is already the current page: the table only shows the `Pagination`. Control `page` and load the rows in `onPageChange`."
+  scope={{ Table, useState }}
+  code={`
+() => {
+  const [page, setPage] = useState(1)
+  const rows = Array.from({ length: 5 }, (_, index) => {
+    const id = (page - 1) * 5 + index + 1
+    return { id, name: 'Item ' + id }
+  })
+  return (
+    <Table
+      data={rows}
+      pagination={{ pageSize: 5, total: 50, page, onPageChange: setPage }}
+    >
+      <Table.Column prop="id" label="id" />
+      <Table.Column prop="name" label="name" />
+    </Table>
+  )
+}
+`}
+/>
+
 <PlaygroundTitle
   title="TypeScript Example"
   desc="Get a better experience in TS by specifying a generic type."
@@ -218,6 +262,7 @@ const MyComponent = () => (
 | **onRow**        | callback row's content by click              | [TableOnRowClick](#tableonrowclick)                   | -                  | -       |
 | **onCell**       | callback cell's content by click             | [TableOnCellClick](#tableoncellclick)                 | -                  | -       |
 | **onChange**     | data change event                            | `(data: T) => void`                                   | -                  | -       |
+| **pagination**   | split the rows in pages                      | [TablePagination](#tablepagination)                   | -                  | -       |
 | **rowClassName** | set className to each row                    | [TableRowClassNameHandler](#tablerowclassnamehandler) | -                  | -       |
 | ...              | native props                                 | `TableHTMLAttributes`                                 | `'id', 'name' ...` | -       |
 
@@ -230,6 +275,15 @@ const MyComponent = () => (
 | **width**          | width number (px)                      | `number`                                | -               | -       |
 | **className**      | set className to each column           | `string`                                | -               | -       |
 | **render**         | render returns elements in all columns | [TableColumnRender](#tablecolumnrender) | -               | -       |
+
+<Attributes.Title>TablePagination</Attributes.Title>
+
+| Attribute        | Description                                    | Type                     | Accepted values | Default |
+| ---------------- | ---------------------------------------------- | ------------------------ | --------------- | ------- |
+| **pageSize**     | rows in each page                              | `number`                 | -               | -       |
+| **page**         | current page, to control it                    | `number`                 | -               | `1`     |
+| **onPageChange** | called with the page the user picked           | `(page: number) => void` | -               | -       |
+| **total**        | all the rows on the server, `data` is the page | `number`                 | -               | -       |
 
 <Attributes.Title>TableOnRowClick</Attributes.Title>
 

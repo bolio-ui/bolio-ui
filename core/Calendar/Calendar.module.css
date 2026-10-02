@@ -89,3 +89,31 @@
   background-color: var(--calendar-selected-bg);
   border-color: var(--calendar-selected-bg);
 }
+
+.outside:not(.selected) {
+  color: var(--calendar-outside-color);
+}
+
+.inRange,
+.rangeStart,
+.rangeEnd {
+  background-color: var(--calendar-range-bg);
+}
+
+.rangeStart {
+  border-top-left-radius: var(--calendar-radius);
+  border-bottom-left-radius: var(--calendar-radius);
+}
+
+.rangeEnd {
+  border-top-right-radius: var(--calendar-radius);
+  border-bottom-right-radius: var(--calendar-radius);
+}
+
+.weekNumber {
+  padding: 0 0.5em 0 0;
+  font-size: 0.75em;
+  font-weight: 400;
+  text-align: center;
+  color: var(--calendar-week-color);
+}
