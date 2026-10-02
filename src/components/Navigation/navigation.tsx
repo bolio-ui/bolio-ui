@@ -30,10 +30,18 @@ import SearchInput from 'src/components/Search/instant-search'
 
 // Plain links, not Tabs: they navigate between pages
 const navLinks = [
-  { label: 'Guide', href: '/docs/guide/getting-started' },
-  { label: 'Components', href: '/docs/components/avatar' },
-  { label: 'Hooks', href: '/docs/hooks/use-body-scroll' },
-  { label: 'Theme Generator', href: '/theme-generator' }
+  { label: 'Guide', href: '/docs/guide/getting-started', base: '/docs/guide' },
+  {
+    label: 'Components',
+    href: '/docs/components/overview',
+    base: '/docs/components'
+  },
+  { label: 'Hooks', href: '/docs/hooks/use-body-scroll', base: '/docs/hooks' },
+  {
+    label: 'Theme Generator',
+    href: '/theme-generator',
+    base: '/theme-generator'
+  }
 ]
 
 const Navigation: React.FC = () => {
@@ -74,18 +82,21 @@ const Navigation: React.FC = () => {
                       <Logo name="Bolio UI" />
                     </div>
                     <div className="tabs">
-                      {navLinks.map(({ label, href }) => (
-                        <NextLink
-                          key={href}
-                          href={href}
-                          className={
-                            pathname === href ? 'nav-link active' : 'nav-link'
-                          }
-                          aria-current={pathname === href ? 'page' : undefined}
-                        >
-                          {label}
-                        </NextLink>
-                      ))}
+                      {navLinks.map(({ label, href, base }) => {
+                        const active = pathname.startsWith(base)
+                        return (
+                          <NextLink
+                            key={href}
+                            href={href}
+                            className={active ? 'nav-link active' : 'nav-link'}
+                            aria-current={active ? 'page' : undefined}
+                          >
+                            <span className="nav-label" data-label={label}>
+                              {label}
+                            </span>
+                          </NextLink>
+                        )
+                      })}
                     </div>
                   </div>
                 </Grid>
@@ -305,7 +316,7 @@ const Navigation: React.FC = () => {
           display: flex;
           align-items: center;
           padding: 0 ${theme.layout.gap} 0 calc(${theme.layout.gap} + 12px);
-          margin-bottom: 3px;
+          margin-top: 1px;
         }
         /* same look as the Tabs they replaced, hover highlight included */
         .tabs :global(.nav-link) {
@@ -328,16 +339,31 @@ const Navigation: React.FC = () => {
           content: '';
           position: absolute;
           z-index: -1;
-          inset: 15% -7.5%;
+          inset: 15% 0;
           border-radius: 5px;
           background: ${theme.palette.accents_2};
           opacity: 0;
           transition: opacity 0.15s ease;
         }
+        /* the bold text is reserved in a hidden copy, so the item keeps its
+           width when it becomes active */
+        .tabs :global(.nav-label) {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .tabs :global(.nav-label::after) {
+          content: attr(data-label);
+          height: 0;
+          font-weight: 500;
+          visibility: hidden;
+          overflow: hidden;
+        }
         .tabs :global(.nav-link:hover) {
           color: ${theme.palette.foreground};
         }
-        .tabs :global(.nav-link:hover::before) {
+        .tabs :global(.nav-link:hover::before),
+        .tabs :global(.nav-link.active::before) {
           opacity: 0.8;
         }
         .tabs :global(.nav-link.active) {

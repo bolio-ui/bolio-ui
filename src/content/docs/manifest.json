@@ -104,6 +104,11 @@
           "open": true,
           "routes": [
             {
+              "title": "Overview",
+              "keywords": "overview, all components, components list, categories",
+              "path": "/docs/components/overview.mdx"
+            },
+            {
               "title": "Avatar",
               "keywords": "avatar, avatar text, avatar group, group",
               "path": "/docs/components/avatar.mdx"

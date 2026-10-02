@@ -80,6 +80,10 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Overview',
+    url: '/docs/components/overview'
+  },
+  {
     name: 'Avatar',
     url: '/docs/components/avatar'
   },

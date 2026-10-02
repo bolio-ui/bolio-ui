@@ -1905,6 +1905,59 @@
     "path": "/docs/components/number-input#accessibility"
   },
   {
+    "title": "Overview",
+    "component": true,
+    "path": "/docs/components/overview"
+  },
+  {
+    "head": "Overview",
+    "title": "Layout",
+    "component": false,
+    "path": "/docs/components/overview#layout"
+  },
+  {
+    "head": "Overview",
+    "title": "Typography",
+    "component": false,
+    "path": "/docs/components/overview#typography"
+  },
+  {
+    "head": "Overview",
+    "title": "Buttons",
+    "component": false,
+    "path": "/docs/components/overview#buttons"
+  },
+  {
+    "head": "Overview",
+    "title": "Forms",
+    "component": false,
+    "path": "/docs/components/overview#forms"
+  },
+  {
+    "head": "Overview",
+    "title": "Data Display",
+    "component": false,
+    "path": "/docs/components/overview#data.display"
+  },
+  {
+    "head": "Overview",
+    "title": "Feedback",
+    "component": false,
+    "path": "/docs/components/overview#feedback"
+  },
+  {
+    "head": "Overview",
+    "title": "Overlays",
+    "component": false,
+    "path": "/docs/components/overview#overlays"
+  },
+  {
+    "head": "Overview",
+    "title": "Navigation",
+    "component": false,
+    "path": "/docs/components/overview#navigation"
+  },
+  {
     "title": "Page",
     "component": true,
     "path": "/docs/components/page"
