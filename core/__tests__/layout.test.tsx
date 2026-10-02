@@ -2,11 +2,6 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { BolioUIProvider, Col, Container, Display, Row, Section } from '..'
 
-const css = () =>
-  Array.from(document.head.querySelectorAll('style'))
-    .map((el) => (el.textContent || '').replace(/\s+/g, ''))
-    .join('\n')
-
 const wrap = (ui: React.ReactElement) =>
   render(<BolioUIProvider>{ui}</BolioUIProvider>)
 
@@ -72,7 +67,9 @@ describe('layout components', () => {
 
   it('Section paints its background', () => {
     wrap(<Section bg="#eee">section</Section>)
-    expect(css()).toContain('background-color:#eee')
+    expect(screen.getByText('section').style.backgroundColor).toBe(
+      'rgb(238, 238, 238)'
+    )
     expect(screen.getByText('section').tagName).toBe('SECTION')
   })
 

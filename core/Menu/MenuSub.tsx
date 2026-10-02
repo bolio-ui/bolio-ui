@@ -2,6 +2,7 @@ import React, { useContext, useId, useRef } from 'react'
 import { MenuListContext } from './MenuContext'
 import MenuList, { MenuFocus } from './MenuList'
 import { MenuItemBase } from './MenuItem'
+import styles from './MenuSub.module.css'
 
 interface Props {
   label: React.ReactNode
@@ -58,7 +59,7 @@ const MenuSub = React.forwardRef<
   }
 
   return (
-    <div className="menu-sub" role="none">
+    <div className={styles.menuSub} role="none">
       <MenuItemBase
         ref={setRefs}
         id={triggerId}
@@ -84,7 +85,7 @@ const MenuSub = React.forwardRef<
         }}
         onMouseEnter={() => !disabled && !open && openWith('list')}
         trailing={
-          <span className="chevron">
+          <span className={styles.chevron}>
             <Chevron />
           </span>
         }
@@ -103,16 +104,6 @@ const MenuSub = React.forwardRef<
           {children}
         </MenuList>
       )}
-      <style jsx>{`
-        .menu-sub {
-          position: relative;
-        }
-        .chevron {
-          display: inline-flex;
-          margin-left: auto;
-          padding-left: 1em;
-        }
-      `}</style>
     </div>
   )
 })

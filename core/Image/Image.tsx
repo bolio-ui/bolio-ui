@@ -11,6 +11,7 @@ import { transformDataSource } from './helpers'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Image.module.css'
 
 interface Props {
   src: string
@@ -27,7 +28,14 @@ const ImageComponent = React.forwardRef<
   React.PropsWithChildren<ImageProps>
 >(
   (
-    { src, disableSkeleton = false, className = '', maxDelay = 3000, ...props },
+    {
+      src,
+      disableSkeleton = false,
+      className = '',
+      maxDelay = 3000,
+      style,
+      ...props
+    },
     ref
   ) => {
     const { SCALES, getScaleProps } = useScale()
@@ -66,33 +74,34 @@ const ImageComponent = React.forwardRef<
       return () => clearTimeout(timer)
     }, [loading, maxDelay, showAnimation])
 
+    const imageStyle: React.CSSProperties = {
+      borderRadius: theme.layout.radius,
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0, 'auto')} ${SCALES.mb(0)} ${SCALES.ml(0, 'auto')}`,
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`
+    }
+
     return (
-      <div className={useClasses('image', className)}>
+      <div
+        className={useClasses('image', styles.image, className)}
+        style={imageStyle}
+      >
         {showSkeleton && showAnimation && (
           <ImageSkeleton opacity={loading ? 1 : 0} />
         )}
-        <img ref={imageRef} onLoad={imageLoaded} src={url} {...props} />
-        <style jsx>{`
-          .image {
-            position: relative;
-            border-radius: ${theme.layout.radius};
-            overflow: hidden;
-            max-width: 100%;
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0, 'auto')} ${SCALES.mb(0)}
-              ${SCALES.ml(0, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-          }
-
-          img {
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            object-fit: scale-down;
-            display: inline-block;
-          }
-        `}</style>
+        <img
+          ref={imageRef}
+          onLoad={imageLoaded}
+          src={url}
+          {...props}
+          className={styles.img}
+          style={{
+            width: SCALES.width(1, 'auto'),
+            height: SCALES.height(1, 'auto'),
+            ...style
+          }}
+        />
       </div>
     )
   }

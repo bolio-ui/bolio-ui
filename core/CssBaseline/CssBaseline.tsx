@@ -9,7 +9,9 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
   return (
     <>
       {children}
-      <style global jsx>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         html,
         body {
           background-color: ${theme.palette.background};
@@ -230,7 +232,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           display: none;
         }
 
-        pre :global(p) {
+        pre p {
           margin: 0;
         }
 
@@ -289,11 +291,11 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           border: 1px solid ${theme.palette.border};
         }
 
-        blockquote :global(*:first-child) {
+        blockquote *:first-child {
           margin-top: 0;
         }
 
-        blockquote :global(*:last-child) {
+        blockquote *:last-child {
           margin-bottom: 0;
         }
 
@@ -301,7 +303,9 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           background-color: ${theme.palette.selection};
           color: ${theme.palette.foreground};
         }
-      `}</style>
+      `
+        }}
+      />
     </>
   )
 }

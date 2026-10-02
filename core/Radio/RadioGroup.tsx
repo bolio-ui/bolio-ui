@@ -3,6 +3,7 @@ import { RadioContext } from './RadioContext'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './RadioGroup.module.css'
 
 interface Props {
   value?: string | number
@@ -24,6 +25,7 @@ function RadioGroupComponent({
   className = '',
   initialValue,
   useRow = false,
+  style,
   ...props
 }: React.PropsWithChildren<RadioGroupProps>) {
   const { SCALES } = useScale()
@@ -54,34 +56,27 @@ function RadioGroupComponent({
     setSelfVal(value)
   }, [value])
 
+  const groupStyle = {
+    flexDirection: useRow ? 'col' : 'column',
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto'),
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    '--radio-group-item-size': SCALES.font(1),
+    '--radio-group-margin-top': useRow ? 0 : SCALES.font(1),
+    '--radio-group-margin-left': useRow ? SCALES.font(1) : 0,
+    ...style
+  } as React.CSSProperties
+
   return (
     <RadioContext.Provider value={providerValue}>
-      <div className={useClasses('radio-group', className)} {...props}>
+      <div
+        className={useClasses(styles.radioGroup, className)}
+        {...props}
+        style={groupStyle}
+      >
         {children}
       </div>
-      <style jsx>{`
-        .radio-group {
-          display: flex;
-          flex-direction: ${useRow ? 'col' : 'column'};
-          --radio-group-gap: ${SCALES.font(1)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        .radio-group :global(.radio) {
-          margin-top: ${useRow ? 0 : 'var(--radio-group-gap)'};
-          margin-left: ${useRow ? 'var(--radio-group-gap)' : 0};
-          --radio-size: ${SCALES.font(1)};
-        }
-
-        .radio-group :global(.radio:first-of-type) {
-          margin: 0;
-        }
-      `}</style>
     </RadioContext.Provider>
   )
 }

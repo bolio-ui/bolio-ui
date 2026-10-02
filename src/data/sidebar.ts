@@ -9,8 +9,8 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
-    name: 'Migrating to v2',
-    url: '/docs/guide/migration-v1-to-v2'
+    name: 'Migrating to v3',
+    url: '/docs/guide/migration-v2-to-v3'
   },
   {
     name: 'Refs and accessibility',

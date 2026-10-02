@@ -10,6 +10,7 @@ import {
   startOfDay,
   toISO
 } from './date-utils'
+import styles from './Calendar.module.css'
 
 interface Props {
   value?: Date | null
@@ -43,6 +44,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
       previousLabel = 'Previous month',
       nextLabel = 'Next month',
       className = '',
+      style,
       ...props
     },
     ref
@@ -170,11 +172,41 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
       setFocused(clampDate(targets[event.key], minDay, maxDay))
     }
 
+    const calendarStyle = {
+      '--calendar-font-size': SCALES.font(1),
+      '--calendar-text-color': theme.palette.foreground,
+      '--calendar-width': SCALES.width(1, 'auto'),
+      '--calendar-height': SCALES.height(1, 'auto'),
+      '--calendar-padding-top': SCALES.pt(0),
+      '--calendar-padding-right': SCALES.pr(0),
+      '--calendar-padding-bottom': SCALES.pb(0),
+      '--calendar-padding-left': SCALES.pl(0),
+      '--calendar-margin-top': SCALES.mt(0),
+      '--calendar-margin-right': SCALES.mr(0),
+      '--calendar-margin-bottom': SCALES.mb(0),
+      '--calendar-margin-left': SCALES.ml(0),
+      '--calendar-weekday-color': theme.palette.accents_5,
+      '--calendar-radius': theme.layout.radius,
+      '--calendar-hover-bg': theme.palette.accents_2,
+      '--calendar-focus-outline': theme.palette.primary,
+      '--calendar-disabled-color': theme.palette.accents_3,
+      '--calendar-today-border': theme.palette.accents_4,
+      '--calendar-selected-color': theme.palette.background,
+      '--calendar-selected-bg': theme.palette.primary,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <div ref={ref} className={useClasses('calendar', className)} {...props}>
-        <div className="header">
+      <div
+        ref={ref}
+        className={useClasses(styles.calendar, className)}
+        style={calendarStyle}
+        {...props}
+      >
+        <div className={styles.header}>
           <button
             type="button"
+            className={joinClasses(styles.button, styles.navButton)}
             aria-label={previousLabel}
             disabled={previousDisabled}
             onClick={() =>
@@ -183,11 +215,12 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
           >
             ‹
           </button>
-          <div id={headingId} className="title" aria-live="polite">
+          <div id={headingId} className={styles.title} aria-live="polite">
             {formats.month.format(focused)}
           </div>
           <button
             type="button"
+            className={joinClasses(styles.button, styles.navButton)}
             aria-label={nextLabel}
             disabled={nextDisabled}
             onClick={() =>
@@ -197,11 +230,21 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
             ›
           </button>
         </div>
-        <table ref={gridRef} role="grid" aria-labelledby={headingId}>
+        <table
+          ref={gridRef}
+          role="grid"
+          aria-labelledby={headingId}
+          className={styles.table}
+        >
           <thead>
             <tr role="row">
               {weekdays.map((weekday) => (
-                <th key={weekday.long} role="columnheader" scope="col">
+                <th
+                  key={weekday.long}
+                  role="columnheader"
+                  scope="col"
+                  className={styles.th}
+                >
                   <abbr title={weekday.long}>{weekday.short}</abbr>
                 </th>
               ))}
@@ -215,6 +258,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
                     <td
                       key={cell}
                       role="gridcell"
+                      className={styles.td}
                       aria-selected={Boolean(
                         selected && isSameDay(date, selected)
                       )}
@@ -226,12 +270,16 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
                         aria-current={
                           isSameDay(date, today) ? 'date' : undefined
                         }
-                        className={joinClasses({
-                          selected: Boolean(
-                            selected && isSameDay(date, selected)
-                          ),
-                          today: isSameDay(date, today)
-                        })}
+                        className={joinClasses(
+                          styles.button,
+                          styles.dayButton,
+                          {
+                            [styles.selected]: Boolean(
+                              selected && isSameDay(date, selected)
+                            ),
+                            [styles.today]: isSameDay(date, today)
+                          }
+                        )}
                         tabIndex={isSameDay(date, focused) ? 0 : -1}
                         disabled={isDisabled(date)}
                         onClick={() => select(date)}
@@ -241,90 +289,18 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
                       </button>
                     </td>
                   ) : (
-                    <td key={cell} role="gridcell" aria-hidden="true" />
+                    <td
+                      key={cell}
+                      role="gridcell"
+                      className={styles.td}
+                      aria-hidden="true"
+                    />
                   )
                 )}
               </tr>
             ))}
           </tbody>
         </table>
-        <style jsx>{`
-          .calendar {
-            display: inline-block;
-            font-size: ${SCALES.font(1)};
-            color: ${theme.palette.foreground};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.5em;
-          }
-          .title {
-            font-weight: 600;
-            text-transform: capitalize;
-          }
-          table {
-            border-collapse: collapse;
-          }
-          th {
-            padding: 0.25em 0;
-            font-size: 0.75em;
-            font-weight: 500;
-            color: ${theme.palette.accents_5};
-          }
-          th abbr {
-            text-decoration: none;
-          }
-          td {
-            padding: 1px;
-            text-align: center;
-          }
-          button {
-            font: inherit;
-            color: inherit;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid transparent;
-            border-radius: ${theme.layout.radius};
-          }
-          .header button {
-            width: 2em;
-            height: 2em;
-            font-size: 1.25em;
-            line-height: 1;
-          }
-          td button {
-            width: 2.5em;
-            height: 2.5em;
-          }
-          button:hover:not(:disabled) {
-            background-color: ${theme.palette.accents_2};
-          }
-          button:focus-visible {
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 1px;
-          }
-          button:disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_3};
-          }
-          .today {
-            border-color: ${theme.palette.accents_4};
-          }
-          .selected,
-          .selected:hover:not(:disabled) {
-            color: ${theme.palette.background};
-            background-color: ${theme.palette.primary};
-            border-color: ${theme.palette.primary};
-          }
-        `}</style>
       </div>
     )
   }

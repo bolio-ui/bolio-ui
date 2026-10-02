@@ -38,6 +38,7 @@ const TextChild = React.forwardRef<
       tag,
       className = '',
       type = 'default' as NormalTypes,
+      style,
       ...props
     },
     ref
@@ -82,50 +83,36 @@ const TextChild = React.forwardRef<
       () => getTypeColor(type, theme.palette),
       [type, theme.palette]
     )
-    const classNames = useMemo<string>(() => {
-      const keys = [
-        { value: mx, className: 'mx' },
-        { value: my, className: 'my' },
-        { value: px, className: 'px' },
-        { value: py, className: 'py' },
-        { value: font, className: 'font' }
-      ]
-      const scaleClassNames = keys.reduce((pre, next) => {
-        if (typeof next.value === 'undefined') return pre
-        return `${pre} ${next.className}`
-      }, '')
-      return `${scaleClassNames} ${className}`.trim()
-    }, [mx, my, px, py, font, className])
+
+    const childStyle: React.CSSProperties = {
+      color,
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      ...(typeof font !== 'undefined' && {
+        fontSize: SCALES.font(1, 'inherit')
+      }),
+      ...(typeof mx !== 'undefined' && {
+        marginLeft: SCALES.ml(0, 'revert'),
+        marginRight: SCALES.mr(0, 'revert')
+      }),
+      ...(typeof my !== 'undefined' && {
+        marginTop: SCALES.mt(0, 'revert'),
+        marginBottom: SCALES.mb(0, 'revert')
+      }),
+      ...(typeof px !== 'undefined' && {
+        paddingLeft: SCALES.pl(0, 'revert'),
+        paddingRight: SCALES.pr(0, 'revert')
+      }),
+      ...(typeof py !== 'undefined' && {
+        paddingTop: SCALES.pt(0, 'revert'),
+        paddingBottom: SCALES.pb(0, 'revert')
+      }),
+      ...style
+    }
 
     return (
-      <Component ref={ref} className={classNames} {...props}>
+      <Component ref={ref} className={className} {...props} style={childStyle}>
         {children}
-        <style jsx>{`
-          ${tag} {
-            color: ${color};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-          }
-          .font {
-            font-size: ${SCALES.font(1, 'inherit')};
-          }
-          .mx {
-            margin-left: ${SCALES.ml(0, 'revert')};
-            margin-right: ${SCALES.mr(0, 'revert')};
-          }
-          .my {
-            margin-top: ${SCALES.mt(0, 'revert')};
-            margin-bottom: ${SCALES.mb(0, 'revert')};
-          }
-          .px {
-            padding-left: ${SCALES.pl(0, 'revert')};
-            padding-right: ${SCALES.pr(0, 'revert')};
-          }
-          .py {
-            padding-top: ${SCALES.pt(0, 'revert')};
-            padding-bottom: ${SCALES.pb(0, 'revert')};
-          }
-        `}</style>
       </Component>
     )
   }

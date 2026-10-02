@@ -1,0 +1,6 @@
+.icon {
+  margin: 0 0 -1px 0.1875em;
+  display: inline-flex;
+  align-self: center;
+  color: currentColor;
+}

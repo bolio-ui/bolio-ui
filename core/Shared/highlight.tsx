@@ -31,6 +31,7 @@ const Highlight: React.FC<HighlightProps> = ({
   hoverWidthRatio = 1,
   activeOpacity = 0.8,
   className,
+  style,
   ...props
 }) => {
   const theme = useTheme()
@@ -48,23 +49,27 @@ const Highlight: React.FC<HighlightProps> = ({
     }
   }, [rect, hoverWidthRatio, hoverHeightRatio, isFirstVisible])
 
+  const highlightStyle: React.CSSProperties = {
+    background: theme.palette.accents_2,
+    position: 'absolute',
+    borderRadius: 5,
+    width: position.width,
+    left: position.left,
+    height: position.height,
+    top: position.top,
+    opacity: visible ? activeOpacity : 0,
+    transition: '0.15s ease',
+    transitionProperty: position.transition,
+    ...style
+  }
+
   return (
-    <div ref={ref} className={useClasses('highlight', className)} {...props}>
-      <style jsx>{`
-        .highlight {
-          background: ${theme.palette.accents_2};
-          position: absolute;
-          border-radius: 5px;
-          width: ${position.width};
-          left: ${position.left};
-          height: ${position.height};
-          top: ${position.top};
-          opacity: ${visible ? activeOpacity : 0};
-          transition: 0.15s ease;
-          transition-property: ${position.transition};
-        }
-      `}</style>
-    </div>
+    <div
+      ref={ref}
+      className={useClasses('highlight', className)}
+      {...props}
+      style={highlightStyle}
+    />
   )
 }
 

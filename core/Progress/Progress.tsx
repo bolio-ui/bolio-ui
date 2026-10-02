@@ -6,6 +6,7 @@ import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Progress.module.css'
 
 export type ProgressColors = {
   [key: number]: string
@@ -62,6 +63,7 @@ const ProgressComponent = React.forwardRef<
       colors,
       fixedTop = false,
       fixedBottom = false,
+      style,
       ...props
     },
     ref
@@ -77,57 +79,36 @@ const ProgressComponent = React.forwardRef<
       colors
     )
     const fixed = fixedTop || fixedBottom
-    const classes = useClasses('progress', { fixed }, className)
+    const classes = useClasses(
+      styles.progress,
+      { [styles.fixed]: fixed },
+      className
+    )
+
+    const progressStyle: React.CSSProperties = {
+      backgroundColor: theme.palette.accents_2,
+      borderRadius: theme.layout.radius,
+      width: SCALES.width(1, '100%'),
+      height: SCALES.height(0.625),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      top: fixed ? (fixedTop ? 0 : 'unset') : undefined,
+      bottom: fixed ? (fixedBottom ? 0 : 'unset') : undefined,
+      ...style
+    }
 
     return (
-      <div ref={ref} className={classes}>
-        <div className="inner" title={`${percentValue}%`} />
+      <div ref={ref} className={classes} style={progressStyle}>
+        <div
+          className={styles.inner}
+          title={`${percentValue}%`}
+          style={{
+            borderRadius: theme.layout.radius,
+            backgroundColor: currentColor,
+            width: `${percentValue}%`
+          }}
+        />
         <progress className={className} value={value} max={max} {...props} />
-        <style jsx>{`
-          progress {
-            position: fixed;
-            top: -1000px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-          }
-
-          .progress {
-            position: relative;
-            background-color: ${theme.palette.accents_2};
-            border-radius: ${theme.layout.radius};
-            width: ${SCALES.width(1, '100%')};
-            height: ${SCALES.height(0.625)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .fixed {
-            position: fixed;
-            top: ${fixedTop ? 0 : 'unset'};
-            bottom: ${fixedBottom ? 0 : 'unset'};
-            left: 0;
-            border-radius: 0;
-          }
-
-          .fixed > .inner {
-            border-radius: 0;
-          }
-
-          .inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            bottom: 0;
-            transition: all 100ms ease-in;
-            border-radius: ${theme.layout.radius};
-            background-color: ${currentColor};
-            width: ${percentValue}%;
-          }
-        `}</style>
       </div>
     )
   }

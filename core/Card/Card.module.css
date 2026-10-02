@@ -1,0 +1,17 @@
+.card {
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+.card :global(img) {
+  width: 100%;
+}
+
+.card :global(.image) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

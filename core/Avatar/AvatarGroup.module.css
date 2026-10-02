@@ -1,0 +1,14 @@
+.avatarGroup {
+  display: flex;
+  align-items: center;
+}
+
+.avatarGroup :global(.avatar) {
+  margin-left: var(--avatar-group-overlap);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 5.5px;
+}

@@ -1,0 +1,13 @@
+.tooltipContent {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: var(--tooltip-content-bg);
+  padding: 0;
+  z-index: 1000;
+}
+
+.inner {
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+}

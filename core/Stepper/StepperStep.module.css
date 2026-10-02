@@ -1,0 +1,101 @@
+.step {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.last {
+  flex: 0 0 auto;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+}
+
+button.head {
+  cursor: pointer;
+}
+
+button.head:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button.head:focus-visible {
+  outline: 2px solid var(--stepper-focus-color);
+  outline-offset: 2px;
+}
+
+.indicator {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2em;
+  height: 2em;
+  font-weight: 600;
+  border-radius: 50%;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3em;
+}
+
+.label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 0.875em;
+}
+
+.connector {
+  flex: 1;
+  height: 2px;
+  min-width: 1.5em;
+  margin: 0 0.75em;
+}
+
+.vertical .connector {
+  flex: none;
+  width: 2px;
+  height: auto;
+  min-width: 0;
+  min-height: 1.5em;
+  margin: 0.25em 0 0.25em calc(1em - 1px);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -50,7 +50,7 @@ const platforms = [
 
 const guides = [
   'Getting Started',
-  'Migrating to v2',
+  'Migrating to v3',
   'Page structure',
   'Contribute'
 ]
@@ -377,7 +377,7 @@ function SectionCapabilities() {
           transition: border-color 200ms ease;
         }
         .panel :global(.card:hover) {
-          border-color: ${theme.palette.accents_4};
+          border-color: ${theme.palette.accents_3};
         }
         .card-bar {
           display: flex;

@@ -51,7 +51,8 @@ Go to the root of your application and do this:
 // NAME: /src/app.js
 import * as React from 'react'
 
-// 1. import `BolioUIProvider` and `CssBaseline`
+// 1. import the styles once, `BolioUIProvider` and `CssBaseline`
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function App({ Component }) {
@@ -75,7 +76,8 @@ Add this to the root of your app. Use the file of the router you have: `pages/_a
 
 ```tsx
 // NAME: pages/_app.tsx
-// 1. import `BolioUIProvider` and `CssBaseline`
+// 1. import the styles once, `BolioUIProvider` and `CssBaseline`
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function MyApp({ Component, pageProps }) {
@@ -93,21 +95,18 @@ export default MyApp
 
 ```tsx
 // NAME: app/layout.tsx
-// 1. import `BolioUIProvider`, `CssBaseline` and the styles registry
+// 1. import the styles once, `BolioUIProvider` and `CssBaseline`
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
-import { StyledJsxRegistry } from '@bolio-ui/core/next'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* 2. The registry adds the styles rendered on the server to the HTML */}
-        <StyledJsxRegistry>
-          <BolioUIProvider>
-            <CssBaseline />
-            {children}
-          </BolioUIProvider>
-        </StyledJsxRegistry>
+        <BolioUIProvider>
+          <CssBaseline />
+          {children}
+        </BolioUIProvider>
       </body>
     </html>
   )
@@ -116,9 +115,9 @@ export default function RootLayout({ children }) {
 
 </CodeTabs>
 
-The Pages Router doesn't need a custom `_document`, Next.js already adds the styles to the HTML.
+Neither router needs a custom `_document` or a styles registry: the CSS ships as a plain stylesheet, not injected at render time.
 
-> For more information about Next.js + Bolio UI SSR check out the [documentation](/docs/guide/bolio-ui-plus-nextjs).
+> For more information about Next.js + Bolio UI check out the [documentation](/docs/guide/bolio-ui-plus-nextjs).
 
 <Spacer h={2} />
 

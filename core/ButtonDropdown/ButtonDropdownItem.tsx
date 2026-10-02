@@ -5,6 +5,7 @@ import { useButtonDropdown } from './ButtonDropdownContext'
 import Loading from '../Loading'
 import { NormalTypes } from '../utils/prop-types'
 import type { AnyElement } from '../utils/types'
+import styles from './ButtonDropdownItem.module.css'
 
 export type ButtonDropdownItemTypes = NormalTypes
 
@@ -24,6 +25,7 @@ function ButtonDropdownItem({
   className = '',
   main = false,
   type: selfType = 'default' as ButtonDropdownItemTypes,
+  style,
   ...props
 }: ButtonDropdownItemProps) {
   const theme = useTheme()
@@ -41,39 +43,23 @@ function ButtonDropdownItem({
     return disabled ? 'not-allowed' : 'pointer'
   }, [loading, disabled])
 
-  return (
-    <button className={className} onClick={clickHandler} {...props}>
-      {loading ? <Loading /> : children}
-      <style jsx>{`
-        button {
-          position: relative;
-          -webkit-appearance: button;
-          text-rendering: auto;
-          display: inline-flex;
-          flex: 1;
-          justify-content: center;
-          align-items: center;
-          vertical-align: middle;
-          text-align: center;
-          cursor: ${cursor};
-          box-sizing: border-box;
-          margin: 0;
-          border: none;
-          background-color: ${colors.bgColor};
-          color: ${colors.color};
-          width: 100%;
-          height: var(--bolio-ui-dropdown-height);
-          min-width: var(--bolio-ui-dropdown-min-width);
-          padding: var(--bolio-ui-dropdown-padding);
-          font-size: var(--bolio-ui-dropdown-font-size);
-          font-weight: bold;
-        }
+  const buttonStyle = {
+    cursor,
+    backgroundColor: colors.bgColor,
+    color: colors.color,
+    '--dropdown-item-hover-border': colors.hoverBorder,
+    '--dropdown-item-hover-bg': colors.hoverBgColor,
+    ...style
+  } as React.CSSProperties
 
-        button:hover {
-          border-color: ${colors.hoverBorder};
-          background-color: ${colors.hoverBgColor};
-        }
-      `}</style>
+  return (
+    <button
+      className={`${styles.button} ${className}`.trim()}
+      onClick={clickHandler}
+      {...props}
+      style={buttonStyle}
+    >
+      {loading ? <Loading /> : children}
     </button>
   )
 }

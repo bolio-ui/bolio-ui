@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './FieldsetSubtitle.module.css'
 
 interface Props {
   className?: string
@@ -13,19 +14,9 @@ function FieldsetSubtitle({
   ...props
 }: React.PropsWithChildren<FieldsetSubtitleProps>) {
   return (
-    <>
-      <div className={className} {...props}>
-        {children}
-      </div>
-      <style jsx>{`
-        div {
-          font-size: 0.875em;
-          line-height: 1.6;
-          letter-spacing: -0.005625em;
-          margin: 0.75em 0;
-        }
-      `}</style>
-    </>
+    <div className={`${styles.subtitle} ${className}`.trim()} {...props}>
+      {children}
+    </div>
   )
 }
 

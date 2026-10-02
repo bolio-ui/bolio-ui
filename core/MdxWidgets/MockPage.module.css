@@ -1,0 +1,17 @@
+.section {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--mock-page-bg);
+  z-index: 5000;
+  top: -5000px;
+  left: -5000px;
+  display: none;
+}
+
+.active {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: block;
+}

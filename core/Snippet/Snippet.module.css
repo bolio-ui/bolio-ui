@@ -1,0 +1,42 @@
+.snippet {
+  position: relative;
+  max-width: 100%;
+}
+
+.snippet pre {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+.snippet pre::before {
+  content: var(--snippet-symbol);
+  user-select: none;
+}
+
+.snippet pre :global(*) {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.copy {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: inline-flex;
+  justify-content: center;
+  transition: opacity 150ms ease 0s;
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.65;
+}
+
+.copy:hover {
+  opacity: 1;
+}

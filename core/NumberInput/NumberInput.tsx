@@ -5,6 +5,7 @@ import useClasses from '../use-classes'
 import InputBlockLabel from '../Input/InputBlockLabel'
 import { getColors } from '../Input/styles'
 import { NormalTypes } from '../utils/prop-types'
+import styles from './NumberInput.module.css'
 
 interface Props {
   value?: number | null
@@ -159,7 +160,7 @@ const NumberInputComponent = React.forwardRef<
         // the spinbutton pattern keeps these out of the tab order: the
         // arrow keys do the same from the input
         tabIndex={-1}
-        className="control"
+        className={styles.control}
         aria-label={direction === 1 ? 'Increase' : 'Decrease'}
         aria-controls={inputId}
         disabled={disabled || readOnly || (direction === 1 ? atMax : atMin)}
@@ -179,12 +180,38 @@ const NumberInputComponent = React.forwardRef<
       </button>
     )
 
+    const withLabelStyle: React.CSSProperties = {
+      '--input-height': SCALES.height(2.25),
+      fontSize: SCALES.font(0.875),
+      width: SCALES.width(1, 'initial'),
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+    } as React.CSSProperties
+
+    const numberInputStyle = {
+      '--input-border': colors.borderColor,
+      '--input-radius': theme.layout.radius,
+      '--input-bg': colors.bgColor,
+      '--input-hover-border': colors.hoverBorder,
+      '--input-color': colors.color,
+      '--control-color': theme.palette.accents_5,
+      '--control-hover-color': theme.palette.foreground,
+      '--control-disabled-color': theme.palette.accents_3
+    } as React.CSSProperties
+
     return (
-      <div className={useClasses('with-label', className)}>
+      <div
+        className={useClasses(styles.withLabel, className)}
+        style={withLabelStyle}
+      >
         {children && (
           <InputBlockLabel htmlFor={inputId}>{children}</InputBlockLabel>
         )}
-        <div className={useClasses('number-input', { disabled })}>
+        <div
+          className={useClasses(styles.numberInput, {
+            [styles.disabled]: disabled
+          })}
+          style={numberInputStyle}
+        >
           {!hideControls && control(-1)}
           <input
             ref={ref}
@@ -205,6 +232,11 @@ const NumberInputComponent = React.forwardRef<
             aria-valuemax={max}
             aria-invalid={error || undefined}
             aria-describedby={describedBy}
+            className={styles.input}
+            style={{
+              textAlign: hideControls ? 'left' : 'center',
+              ...(props as { style?: React.CSSProperties }).style
+            }}
           />
           {!hideControls && control(1)}
         </div>
@@ -213,72 +245,6 @@ const NumberInputComponent = React.forwardRef<
             {errorMessage}
           </InputBlockLabel>
         )}
-        <style jsx>{`
-          .with-label {
-            display: inline-block;
-            box-sizing: border-box;
-            --input-height: ${SCALES.height(2.25)};
-            font-size: ${SCALES.font(0.875)};
-            width: ${SCALES.width(1, 'initial')};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .number-input {
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            height: var(--input-height);
-            border: 1px solid ${colors.borderColor};
-            border-radius: ${theme.layout.radius};
-            background: ${colors.bgColor};
-            transition: border 0.2s ease;
-          }
-          .number-input:hover,
-          .number-input:focus-within {
-            border-color: ${colors.hoverBorder};
-          }
-          .number-input.disabled {
-            cursor: not-allowed;
-          }
-          input {
-            flex: 1;
-            width: 100%;
-            min-width: 4em;
-            margin: 0 0.625em;
-            padding: 0;
-            font: inherit;
-            text-align: ${hideControls ? 'left' : 'center'};
-            color: ${colors.color};
-            background: transparent;
-            border: none;
-            outline: none;
-          }
-          input:disabled {
-            cursor: not-allowed;
-          }
-          .control {
-            display: inline-flex;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: center;
-            width: calc(var(--input-height) - 2px);
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font: inherit;
-            color: ${theme.palette.accents_5};
-            background: none;
-            border: 0;
-            cursor: pointer;
-          }
-          .control:hover:not(:disabled) {
-            color: ${theme.palette.foreground};
-          }
-          .control:disabled {
-            color: ${theme.palette.accents_3};
-            cursor: not-allowed;
-          }
-        `}</style>
       </div>
     )
   }

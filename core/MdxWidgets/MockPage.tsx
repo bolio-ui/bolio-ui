@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../use-theme/theme-context'
+import { joinClasses } from '../use-classes'
+import styles from './MockPage.module.css'
 
 interface Props {
   visible: boolean
@@ -25,27 +27,14 @@ const MockPage: React.FC<React.PropsWithChildren<Props>> = ({
     if (onClose) onClose()
   }
   return (
-    <section onClick={clickHandler} className={visible ? 'active' : ''}>
+    <section
+      onClick={clickHandler}
+      className={joinClasses(styles.section, visible && styles.active)}
+      style={
+        { '--mock-page-bg': theme.palette.background } as React.CSSProperties
+      }
+    >
       {children}
-      <style jsx>{`
-        section {
-          position: fixed;
-          width: 100vw;
-          height: 100vh;
-          background-color: ${theme.palette.background};
-          z-index: 5000;
-          top: -5000px;
-          left: -5000px;
-          display: none;
-        }
-
-        .active {
-          top: 0;
-          left: 0;
-          bottom: 0;
-          display: block;
-        }
-      `}</style>
     </section>
   )
 }

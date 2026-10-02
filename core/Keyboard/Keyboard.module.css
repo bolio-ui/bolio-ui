@@ -1,0 +1,17 @@
+.kbd {
+  line-height: 2em;
+  text-align: center;
+  display: inline-block;
+  min-width: 2em;
+  min-height: 2em;
+}
+
+.kbd span {
+  line-height: 2em;
+  font-size: 1em;
+  text-align: center;
+}
+
+.kbd span + span {
+  margin-left: 0.3em;
+}

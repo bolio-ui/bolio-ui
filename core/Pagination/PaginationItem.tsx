@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './PaginationItem.module.css'
 
 interface Props {
   active?: boolean
@@ -18,6 +19,7 @@ function PaginationItem({
   children,
   disabled,
   onClick,
+  style,
   ...props
 }: PaginationItemProps) {
   const theme = useTheme()
@@ -30,9 +32,9 @@ function PaginationItem({
     [theme.palette.primary]
   )
 
-  const classes = useClasses({
-    active,
-    disabled
+  const classes = useClasses(styles.button, {
+    [styles.active]: active,
+    [styles.disabled]: disabled
   })
 
   const clickHandler = (event: React.MouseEvent) => {
@@ -40,74 +42,32 @@ function PaginationItem({
     if (onClick) onClick(event)
   }
 
+  const buttonStyle = {
+    '--pagination-color': theme.palette.primary,
+    '--pagination-radius': theme.layout.radius,
+    '--pagination-bg': theme.palette.background,
+    '--pagination-hover-bg': hover,
+    '--pagination-active-bg': theme.palette.primary,
+    '--pagination-active-color': theme.palette.background,
+    '--pagination-active-shadow': theme.expressiveness.shadowSmall,
+    '--pagination-active-hover-bg': activeHover,
+    '--pagination-active-hover-shadow': theme.expressiveness.shadowMedium,
+    '--pagination-disabled-color': theme.palette.accents_4,
+    '--pagination-disabled-hover-bg': theme.palette.accents_2,
+    ...style
+  } as React.CSSProperties
+
   return (
-    <li>
+    <li className={styles.li}>
       <button
         className={classes}
         aria-current={active ? 'page' : undefined}
         onClick={clickHandler}
         {...props}
+        style={buttonStyle}
       >
         {children}
       </button>
-      <style jsx>{`
-        li {
-          margin-right: 0.428em;
-          display: inline-block;
-        }
-        button {
-          border: none;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          box-sizing: border-box;
-          text-transform: capitalize;
-          user-select: none;
-          white-space: nowrap;
-          text-align: center;
-          vertical-align: middle;
-          box-shadow: none;
-          outline: none;
-          height: var(--pagination-size);
-          min-width: var(--pagination-size);
-          font-size: inherit;
-          cursor: pointer;
-          color: ${theme.palette.primary};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.background};
-          transition: all linear 200ms 0ms;
-        }
-
-        button:hover {
-          background-color: ${hover};
-        }
-
-        .active {
-          font-weight: bold;
-          background-color: ${theme.palette.primary};
-          color: ${theme.palette.background};
-          box-shadow: ${theme.expressiveness.shadowSmall};
-        }
-
-        .active:hover {
-          background-color: ${activeHover};
-          box-shadow: ${theme.expressiveness.shadowMedium};
-        }
-
-        .disabled {
-          color: ${theme.palette.accents_4};
-          cursor: not-allowed;
-        }
-
-        .disabled:hover {
-          background-color: ${theme.palette.accents_2};
-        }
-
-        button :global(svg) {
-          width: 1.3em;
-          height: 1.3em;
-        }
-      `}</style>
     </li>
   )
 }

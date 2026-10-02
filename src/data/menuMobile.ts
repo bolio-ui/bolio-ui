@@ -11,8 +11,8 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
-            name: 'Migrating to v2',
-            url: '/docs/guide/migration-v1-to-v2',
+            name: 'Migrating to v3',
+            url: '/docs/guide/migration-v2-to-v3',
             group: 'Guide'
           },
           {

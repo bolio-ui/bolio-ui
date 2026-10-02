@@ -1,7 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-/// <reference types="styled-jsx/global" />
-
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 

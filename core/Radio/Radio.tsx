@@ -9,6 +9,7 @@ import { getColors } from './styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Radio.module.css'
 
 export type RadioTypes = NormalTypes
 export interface RadioEventTarget {
@@ -113,9 +114,25 @@ const RadioComponent = React.forwardRef<
       setSelfChecked(Boolean(checked))
     }, [checked])
 
+    const radioStyle = {
+      width: SCALES.width(1, 'initial'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      '--radio-own-size': SCALES.font(1),
+      '--radio-focus-color': theme.palette.primary,
+      '--radio-label-color': isDisabled ? theme.palette.accents_4 : label,
+      '--radio-cursor': isDisabled ? 'not-allowed' : 'pointer',
+      '--radio-border': border,
+      '--radio-point-bg': isDisabled ? theme.palette.accents_4 : bg
+    } as React.CSSProperties
+
     return (
-      <div className={useClasses('radio', className)}>
-        <label>
+      <div
+        className={useClasses('radio', styles.radio, className)}
+        style={radioStyle}
+      >
+        <label className={styles.label}>
           <input
             ref={ref}
             type="radio"
@@ -123,83 +140,18 @@ const RadioComponent = React.forwardRef<
             checked={selfChecked}
             onChange={changeHandler}
             {...props}
+            className={styles.input}
           />
-          <span className="name">
-            <span className={useClasses('point', { active: selfChecked })} />
+          <span className={styles.name}>
+            <span
+              className={useClasses(styles.point, {
+                [styles.active]: selfChecked
+              })}
+            />
             {withoutDescChildren}
           </span>
           {DescChildren && DescChildren}
         </label>
-        <style jsx>{`
-          input {
-            opacity: 0;
-            overflow: hidden;
-            width: 1px;
-            height: 1px;
-            margin: 0;
-            top: 0;
-            left: 0;
-            position: absolute;
-            font-size: 0;
-          }
-          input:focus-visible + .name {
-            border-radius: 4px;
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 2px;
-          }
-          .radio {
-            display: flex;
-            align-items: flex-start;
-            position: relative;
-            --radio-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'initial')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          label {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            color: ${isDisabled ? theme.palette.accents_4 : label};
-            cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
-          }
-          .name {
-            font-size: var(--radio-size);
-            font-weight: bold;
-            user-select: none;
-            display: inline-flex;
-            align-items: center;
-          }
-          .point {
-            height: var(--radio-size);
-            width: var(--radio-size);
-            border-radius: 50%;
-            border: 1px solid ${border};
-            transition: all 0.2s ease 0s;
-            position: relative;
-            display: inline-block;
-            transform: scale(0.875);
-            margin-right: calc(var(--radio-size) * 0.375);
-          }
-          .point:before {
-            content: '';
-            position: absolute;
-            left: -1px;
-            top: -1px;
-            transform: scale(0);
-            height: var(--radio-size);
-            width: var(--radio-size);
-            border-radius: 50%;
-            background-color: ${isDisabled ? theme.palette.accents_4 : bg};
-          }
-          .active:before {
-            transform: scale(0.875);
-            transition: all 0.2s ease 0s;
-          }
-        `}</style>
       </div>
     )
   }

@@ -17,6 +17,7 @@ import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Slider.module.css'
 
 export type SliderTypes = NormalTypes
 interface Props {
@@ -81,6 +82,7 @@ const SliderComponent = React.forwardRef<
       showMarkers = false,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      style,
       ...props
     },
     ref
@@ -194,12 +196,24 @@ const SliderComponent = React.forwardRef<
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const sliderStyle = {
+      backgroundColor: disabled ? theme.palette.accents_2 : bg,
+      cursor: disabled ? 'not-allow' : 'pointer',
+      '--slider-font-size': SCALES.font(1),
+      width: SCALES.width(1, '100%'),
+      height: SCALES.height(0.5),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    } as React.CSSProperties
+
     return (
       <div
-        className={useClasses('slider', className)}
+        className={useClasses(styles.slider, className)}
         onClick={clickHandler}
         ref={sliderRef}
         {...props}
+        style={sliderStyle}
       >
         <SliderDot
           disabled={disabled}
@@ -219,21 +233,6 @@ const SliderComponent = React.forwardRef<
           {hideValue || value}
         </SliderDot>
         {showMarkers && <SliderMark max={max} min={min} step={step} />}
-        <style jsx>{`
-          .slider {
-            border-radius: 50px;
-            background-color: ${disabled ? theme.palette.accents_2 : bg};
-            position: relative;
-            cursor: ${disabled ? 'not-allow' : 'pointer'};
-            --slider-font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, '100%')};
-            height: ${SCALES.height(0.5)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-        `}</style>
       </div>
     )
   }

@@ -14,6 +14,7 @@ import { withScale } from '../use-scale'
 import { getRect } from './helper'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Tooltip.module.css'
 
 export type TooltipOnVisibleChange = (visible: boolean) => void
 export type TooltipTypes = SnippetTypes
@@ -184,7 +185,7 @@ const TooltipComponent = React.forwardRef<
     return (
       <div
         ref={innerRef}
-        className={useClasses('tooltip', className)}
+        className={useClasses(styles.tooltip, className)}
         onClick={clickEventHandler}
         onMouseEnter={() => mouseEventHandler(true)}
         onMouseLeave={() => mouseEventHandler(false)}
@@ -198,12 +199,6 @@ const TooltipComponent = React.forwardRef<
           ? React.cloneElement(focusableChild, triggerProps)
           : children}
         <TooltipContent {...contentProps}>{text}</TooltipContent>
-        <style jsx>{`
-          .tooltip {
-            width: max-content;
-            display: inline-block;
-          }
-        `}</style>
       </div>
     )
   }

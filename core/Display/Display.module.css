@@ -1,0 +1,28 @@
+.display {
+  display: block;
+  max-width: 100%;
+}
+
+.content {
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.content :global(pre) {
+  margin: 0;
+  transition: min-width ease 0.2s;
+}
+
+.content :global(img) {
+  display: block;
+}
+
+.caption {
+  font-size: inherit;
+  line-height: 1.5em;
+  text-align: center;
+  max-width: 85%;
+}

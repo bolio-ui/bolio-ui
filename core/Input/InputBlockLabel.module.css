@@ -1,0 +1,14 @@
+.label {
+  display: block;
+  font-weight: normal;
+  padding: 0 0 0 1px;
+  line-height: 1.5;
+}
+
+.label > :global(*:first-child) {
+  margin-top: 0;
+}
+
+.label > :global(*:last-child) {
+  margin-bottom: 0;
+}

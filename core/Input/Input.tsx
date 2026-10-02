@@ -17,6 +17,7 @@ import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import useDefaultProps from '../utils/use-default-props'
 import type { AnyElement } from '../utils/types'
+import styles from './Input.module.css'
 
 type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
 export type InputProps = Props & NativeAttrs
@@ -84,12 +85,12 @@ const InputComponent = React.forwardRef<
   const [hover, setHover] = useState<boolean>(false)
   const isControlledComponent = useMemo(() => value !== undefined, [value])
   const labelClasses = useMemo(
-    () => (labelRight ? 'right-label' : label ? 'left-label' : ''),
+    () => (labelRight ? styles.rightLabel : label ? styles.leftLabel : ''),
     [label, labelRight]
   )
 
   const iconClasses = useMemo(
-    () => (iconRight ? 'right-icon' : icon ? 'left-icon' : ''),
+    () => (iconRight ? styles.rightIcon : icon ? styles.leftIcon : ''),
     [icon, iconRight]
   )
 
@@ -150,25 +151,57 @@ const InputComponent = React.forwardRef<
     ...controlledValue
   }
 
+  const withLabelStyle: React.CSSProperties = {
+    '--input-height': SCALES.height(2.25),
+    fontSize: SCALES.font(0.875),
+    width: SCALES.width(1, 'initial'),
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`
+  } as React.CSSProperties
+
+  const inputWrapperStyle = {
+    borderRadius: rounded ? '25px' : theme.layout.radius,
+    border: `1px solid ${borderColor ? borderColor : colors.borderColor}`,
+    background: backgroundColor ? backgroundColor : colors.bgColor,
+    '--input-hover-border': hoverBorder ? hoverBorder : colors.hoverBorder,
+    '--input-hover-bg': backgroundColor ? backgroundColor : colors.hoverBgColor
+  } as React.CSSProperties
+
+  const inputStyle = {
+    fontSize: SCALES.font(0.875),
+    color: colors.color,
+    '--input-placeholder-color': theme.palette.accents_3,
+    '--input-autofill-bg': theme.palette.background,
+    '--input-color': colors.color
+  } as React.CSSProperties
+
   return (
-    <div className="with-label">
+    <div className={styles.withLabel} style={withLabelStyle}>
       {children && (
         <InputBlockLabel htmlFor={inputId}>{children}</InputBlockLabel>
       )}
-      <div className={useClasses('input-container', className)}>
+      <div
+        className={useClasses(styles.inputContainer, className)}
+        style={{ width: SCALES.width(1, 'initial') }}
+      >
         {label && <InputLabel>{label}</InputLabel>}
         <div
           className={useClasses(
-            'input-wrapper',
-            { hover, disabled },
+            styles.inputWrapper,
+            { [styles.hover]: hover, [styles.disabled]: disabled },
             labelClasses
           )}
+          style={inputWrapperStyle}
         >
           {icon && <InputIcon icon={icon} {...iconProps} />}
           <input
             type={htmlType}
             ref={inputRef}
-            className={useClasses({ disabled }, iconClasses)}
+            className={useClasses(
+              styles.input,
+              { [styles.disabled]: disabled },
+              iconClasses
+            )}
             placeholder={placeholder}
             disabled={disabled}
             readOnly={readOnly}
@@ -180,6 +213,10 @@ const InputComponent = React.forwardRef<
             id={inputId}
             aria-invalid={error || undefined}
             aria-describedby={describedBy}
+            style={{
+              ...inputStyle,
+              ...(inputProps as { style?: React.CSSProperties }).style
+            }}
           />
           {clearable && (
             <InputClearIcon
@@ -199,114 +236,6 @@ const InputComponent = React.forwardRef<
           {errorMessage}
         </InputBlockLabel>
       )}
-      <style jsx>{`
-        .with-label {
-          display: inline-block;
-          box-sizing: border-box;
-          -webkit-box-align: center;
-          --input-height: ${SCALES.height(2.25)};
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'initial')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        .input-container {
-          display: inline-flex;
-          align-items: center;
-          width: ${SCALES.width(1, 'initial')};
-          height: var(--input-height);
-        }
-
-        .input-wrapper {
-          display: inline-flex;
-          vertical-align: middle;
-          align-items: center;
-          height: 100%;
-          flex: 1;
-          user-select: none;
-          border-radius: ${rounded ? '25px' : theme.layout.radius};
-          border: 1px solid ${borderColor ? borderColor : colors.borderColor};
-          transition:
-            border 0.2s ease 0s,
-            color 0.2s ease 0s;
-          background: ${backgroundColor ? backgroundColor : colors.bgColor};
-        }
-
-        .input-wrapper.active,
-        .input-wrapper:hover {
-          border: 1px solid ${hoverBorder ? hoverBorder : colors.hoverBorder};
-          background: ${
-            backgroundColor ? backgroundColor : colors.hoverBgColor
-          };
-        }
-
-        .input-wrapper.left-label {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-
-        .input-wrapper.right-label {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-
-        .input-wrapper.disabled {
-          cursor: not-allowed;
-        }
-
-        input.disabled {
-          cursor: not-allowed;
-        }
-
-        .input-wrapper.hover {
-          border-color: ${colors.hoverBorder};
-        }
-
-        input {
-          margin: 0.25em 0.625em;
-          padding: 0 4px;
-          box-shadow: none;
-          font-size: ${SCALES.font(0.875)};
-          background-color: transparent;
-          border: none;
-          color: ${colors.color};
-          outline: none;
-          border-radius: 0;
-          width: 100%;
-          min-width: 0;
-          -webkit-appearance: none;
-        }
-
-        input.left-icon {
-          margin-left: 0;
-        }
-
-        input.right-icon {
-          margin-right: 0;
-        }
-
-        ::placeholder,
-        ::-moz-placeholder,
-        :-ms-input-placeholder,
-        ::-webkit-input-placeholder {
-          color: ${theme.palette.accents_3};
-        }
-
-        ::-ms-reveal {
-          display: none !important;
-        }
-
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:active,
-        input:-webkit-autofill:focus {
-          -webkit-box-shadow: 0 0 0 30px ${theme.palette.background} inset !important;
-          -webkit-text-fill-color: ${colors.color} !important;
-        }
-      `}</style>
     </div>
   )
 })

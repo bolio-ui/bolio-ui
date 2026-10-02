@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './SelectIcon.module.css'
 
 function SelectIconComponent() {
   return (
@@ -9,17 +10,9 @@ function SelectIconComponent() {
       strokeLinejoin="round"
       fill="none"
       shapeRendering="geometricPrecision"
+      className={styles.icon}
     >
       <path d="M6 9l6 6 6-6" />
-      <style jsx>{`
-        svg {
-          color: inherit;
-          stroke: currentColor;
-          transition: all 200ms ease;
-          width: 1.214em;
-          height: 1.214em;
-        }
-      `}</style>
     </svg>
   )
 }

@@ -1,0 +1,69 @@
+.input {
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 0;
+}
+
+.input:focus-visible + .name {
+  border-radius: 4px;
+  outline: 2px solid var(--radio-focus-color);
+  outline-offset: 2px;
+}
+
+.radio {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  --radio-size: var(--radio-own-size);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--radio-label-color);
+  cursor: var(--radio-cursor);
+}
+
+.name {
+  font-size: var(--radio-size);
+  font-weight: bold;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.point {
+  height: var(--radio-size);
+  width: var(--radio-size);
+  border-radius: 50%;
+  border: 1px solid var(--radio-border);
+  transition: all 0.2s ease 0s;
+  position: relative;
+  display: inline-block;
+  transform: scale(0.875);
+  margin-right: calc(var(--radio-size) * 0.375);
+}
+
+.point:before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  transform: scale(0);
+  height: var(--radio-size);
+  width: var(--radio-size);
+  border-radius: 50%;
+  background-color: var(--radio-point-bg);
+}
+
+.active:before {
+  transform: scale(0.875);
+  transition: all 0.2s ease 0s;
+}

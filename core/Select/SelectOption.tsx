@@ -6,6 +6,7 @@ import Ellipsis from '../Shared/ellipsis'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './SelectOption.module.css'
 
 interface Props {
   value?: string
@@ -27,6 +28,7 @@ function SelectOptionComponent({
   divider = false,
   label = false,
   preventAllEvents = false,
+  style,
   ...props
 }: React.PropsWithChildren<SelectOptionProps>) {
   const theme = useTheme()
@@ -39,7 +41,11 @@ function SelectOptionComponent({
     [disabled, disableAll]
   )
   const isLabel = useMemo(() => label || divider, [label, divider])
-  const classes = useClasses('option', { divider, label }, className)
+  const classes = useClasses(
+    styles.option,
+    { [styles.divider]: divider, [styles.label]: label },
+    className
+  )
 
   if (!isLabel && identValue === undefined) {
     logWarning('The props "value" is required.', 'Select Option')
@@ -77,62 +83,46 @@ function SelectOptionComponent({
     if (updateValue) updateValue(identValue)
   }
 
+  const optionStyle = {
+    '--select-option-bg': bgColor,
+    '--select-option-color': color,
+    '--select-option-cursor': isDisabled ? 'not-allowed' : 'pointer',
+    '--select-font-size': SCALES.font(0.75),
+    '--select-option-width': SCALES.width(1, '100%'),
+    '--select-option-height': SCALES.height(2.25),
+    '--select-option-padding-top': SCALES.pt(0),
+    '--select-option-padding-right': SCALES.pr(0.667),
+    '--select-option-padding-bottom': SCALES.pb(0),
+    '--select-option-padding-left': SCALES.pl(0.667),
+    '--select-option-margin-top': SCALES.mt(0),
+    '--select-option-margin-right': SCALES.mr(0),
+    '--select-option-margin-bottom': SCALES.mb(0),
+    '--select-option-margin-left': SCALES.ml(0),
+    '--select-option-hover-bg': hoverBgColor,
+    '--select-option-hover-color': theme.palette.accents_7,
+    '--select-option-divider-border': theme.palette.accents_3,
+    '--select-option-divider-height': SCALES.height(1, 0),
+    '--select-option-divider-padding-top': SCALES.pt(0),
+    '--select-option-divider-padding-right': SCALES.pr(0),
+    '--select-option-divider-padding-bottom': SCALES.pb(0),
+    '--select-option-divider-padding-left': SCALES.pl(0),
+    '--select-option-divider-margin-top': SCALES.mt(0.5),
+    '--select-option-divider-margin-right': SCALES.mr(0),
+    '--select-option-divider-margin-bottom': SCALES.mb(0.5),
+    '--select-option-divider-margin-left': SCALES.ml(0),
+    '--select-option-label-color': theme.palette.accents_7,
+    '--select-option-label-font-size': SCALES.font(0.875),
+    ...style
+  } as React.CSSProperties
+
   return (
-    <div className={classes} onClick={clickHandler} {...props}>
+    <div
+      className={classes}
+      onClick={clickHandler}
+      style={optionStyle}
+      {...props}
+    >
       <Ellipsis height={SCALES.height(2.25)}>{children}</Ellipsis>
-      <style jsx>{`
-        .option {
-          display: flex;
-          max-width: 100%;
-          box-sizing: border-box;
-          justify-content: flex-start;
-          align-items: center;
-          font-weight: normal;
-          background-color: ${bgColor};
-          color: ${color};
-          user-select: none;
-          border: 0;
-          cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
-          transition:
-            background 0.2s ease 0s,
-            border-color 0.2s ease 0s;
-          --select-font-size: ${SCALES.font(0.75)};
-          font-size: var(--select-font-size);
-          width: ${SCALES.width(1, '100%')};
-          height: ${SCALES.height(2.25)};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0.667)} ${SCALES.pb(0)}
-            ${SCALES.pl(0.667)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        .option:hover {
-          background-color: ${hoverBgColor};
-          color: ${theme.palette.accents_7};
-        }
-
-        .divider {
-          line-height: 0;
-          overflow: hidden;
-          border-top: 1px solid ${theme.palette.accents_3};
-          width: ${SCALES.width(1, '100%')};
-          height: ${SCALES.height(1, 0)};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0.5)} ${SCALES.mr(0)} ${SCALES.mb(0.5)}
-            ${SCALES.ml(0)};
-        }
-
-        .label {
-          color: ${theme.palette.accents_7};
-          border-bottom: 1px solid ${theme.palette.accents_3};
-          text-transform: capitalize;
-          cursor: default;
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, '100%')};
-          font-weight: 500;
-        }
-      `}</style>
     </div>
   )
 }

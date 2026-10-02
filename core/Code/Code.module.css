@@ -1,0 +1,95 @@
+.pre {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.pre pre {
+  max-width: 100%;
+  font-size: inherit;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  line-height: 1.5em;
+}
+
+.pre .dark {
+  color: white;
+  background: black;
+}
+
+.pre .dark code {
+  color: white;
+}
+
+.pre header {
+  height: 2.5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pre .traffic {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.pre .traffic span {
+  border-radius: 50%;
+  width: 0.75em;
+  height: 0.75em;
+  max-width: 12px;
+  max-height: 12px;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.pre .traffic .close {
+  background-color: #ff5f56;
+}
+
+.pre .traffic .mini {
+  background-color: #ffbd2e;
+}
+
+.pre .traffic .full {
+  background-color: #27c93f;
+}
+
+.pre .tabs {
+  display: flex;
+  max-width: 100%;
+}
+
+.pre .tab {
+  min-width: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.pre .tab span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pre .name {
+  margin-bottom: -1px;
+  border: none;
+  background-color: transparent;
+  height: auto;
+  line-height: 1.35em;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  white-space: nowrap;
+}
+
+.pre .tab:hover,
+.pre .tab.active {
+  color: var(--code-tab-hover-color);
+}
+
+.pre .tab:focus-visible {
+  outline: 2px solid var(--code-tab-focus-color);
+  outline-offset: -2px;
+}

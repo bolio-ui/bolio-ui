@@ -2,6 +2,7 @@ import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import styles from './Skeleton.module.css'
 
 interface Props {
   // number of text lines; the last one is shorter
@@ -26,6 +27,7 @@ const SkeletonComponent = React.forwardRef<
       loading = true,
       className = '',
       children,
+      style,
       ...props
     },
     ref
@@ -33,7 +35,11 @@ const SkeletonComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const hasChildren = children !== undefined && children !== null
-    const classes = useClasses('skeleton', { circle }, className)
+    const classes = useClasses(
+      styles.skeleton,
+      { [styles.circle]: circle },
+      className
+    )
 
     if (hasChildren && !loading) return <>{children}</>
 
@@ -41,6 +47,19 @@ const SkeletonComponent = React.forwardRef<
     // a circle is as tall as it is wide unless `height` says otherwise
     const height = SCALES.height(1, circle ? width : '1em')
     const count = circle ? 1 : Math.max(1, Math.floor(lines))
+
+    const skeletonStyle: React.CSSProperties = {
+      width,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    }
+
+    const shapeStyle = {
+      height,
+      borderRadius: theme.layout.radius,
+      '--skeleton-shimmer-1': theme.palette.accents_1,
+      '--skeleton-shimmer-2': theme.palette.accents_2
+    } as React.CSSProperties
 
     return (
       <div
@@ -50,59 +69,16 @@ const SkeletonComponent = React.forwardRef<
         aria-busy={hasChildren || undefined}
         aria-hidden={hasChildren ? undefined : true}
         {...props}
+        style={skeletonStyle}
       >
         {[...Array(count)].map((_, index) => (
           <span
             key={index}
-            className="shape"
+            className={styles.shape}
+            style={shapeStyle}
             aria-hidden={hasChildren || undefined}
           />
         ))}
-        <style jsx>{`
-          .skeleton {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5em;
-            box-sizing: border-box;
-            width: ${width};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .shape {
-            display: block;
-            width: 100%;
-            height: ${height};
-            border-radius: ${theme.layout.radius};
-            background: linear-gradient(
-              90deg,
-              ${theme.palette.accents_1} 25%,
-              ${theme.palette.accents_2} 37%,
-              ${theme.palette.accents_1} 63%
-            );
-            background-size: 400% 100%;
-            animation: shimmer 1.4s ease infinite;
-          }
-          .shape:last-child:not(:first-child) {
-            width: 60%;
-          }
-          .circle .shape {
-            border-radius: 50%;
-          }
-          @keyframes shimmer {
-            from {
-              background-position: 100% 50%;
-            }
-            to {
-              background-position: 0 50%;
-            }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .shape {
-              animation: none;
-              background: ${theme.palette.accents_2};
-            }
-          }
-        `}</style>
       </div>
     )
   }

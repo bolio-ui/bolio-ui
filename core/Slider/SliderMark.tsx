@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
+import styles from './SliderMark.module.css'
 
 interface Props {
   max: number
@@ -29,18 +30,12 @@ function SliderMark({ step, max, min }: Props) {
   return (
     <>
       {marks.map((val, index) => (
-        <span key={`${val}-${index}`} style={{ left: `${val}%` }} />
+        <span
+          key={`${val}-${index}`}
+          className={styles.span}
+          style={{ left: `${val}%`, backgroundColor: theme.palette.background }}
+        />
       ))}
-      <style jsx>{`
-        span {
-          position: absolute;
-          width: 2px;
-          height: 100%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          background-color: ${theme.palette.background};
-        }
-      `}</style>
     </>
   )
 }

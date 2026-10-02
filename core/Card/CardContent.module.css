@@ -1,0 +1,7 @@
+.content > :global(p:first-child) {
+  margin-top: 0;
+}
+
+.content > :global(p:last-child) {
+  margin-bottom: 0;
+}

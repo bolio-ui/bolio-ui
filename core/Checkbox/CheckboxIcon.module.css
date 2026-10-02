@@ -1,0 +1,6 @@
+.svg {
+  display: inline-flex;
+  width: calc(0.86 * var(--checkbox-size));
+  height: calc(0.86 * var(--checkbox-size));
+  user-select: none;
+}

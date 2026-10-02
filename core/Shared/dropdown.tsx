@@ -8,7 +8,6 @@ import useLatest from '../utils/use-latest'
 import useDOMObserver from '../utils/use-dom-observer'
 import logWarning from '../utils/log-warning'
 import { getRefRect } from '../utils/layouts'
-import useClasses from '../use-classes'
 
 interface Props {
   parent?: MutableRefObject<HTMLElement | null> | undefined
@@ -35,10 +34,6 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
   ({ children, parent, visible, disableMatchWidth, getPopupContainer }) => {
     const el = usePortal('dropdown', getPopupContainer)
     const [rect, setRect] = useState<ReactiveDomReact>(defaultRect)
-    const classes = useClasses(
-      'dropdown',
-      disableMatchWidth ? 'disable-match' : 'width-match'
-    )
 
     /* istanbul ignore next */
     if (parent && process.env.NODE_ENV !== 'production') {
@@ -95,28 +90,24 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
 
     // after every hook: there is nothing to place without a parent
     if (!parent || !el) return null
+
+    const dropdownStyle: React.CSSProperties = {
+      position: 'absolute',
+      top: rect.top + 2,
+      left: rect.left,
+      zIndex: 1100,
+      ...(disableMatchWidth ? { minWidth: rect.width } : { width: rect.width })
+    }
+
     return createPortal(
       <CssTransition visible={visible}>
         <div
-          className={classes}
+          className=""
           onClick={clickHandler}
           onMouseDown={mouseDownHandler}
+          style={dropdownStyle}
         >
           {children}
-          <style jsx>{`
-            .dropdown {
-              position: absolute;
-              top: ${rect.top + 2}px;
-              left: ${rect.left}px;
-              z-index: 1100;
-            }
-            .width-match {
-              width: ${rect.width}px;
-            }
-            .disable-match {
-              min-width: ${rect.width}px;
-            }
-          `}</style>
         </div>
       </CssTransition>,
       el

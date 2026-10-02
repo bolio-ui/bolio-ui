@@ -1,0 +1,32 @@
+.checkbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: var(--checkbox-size);
+}
+
+.text {
+  font-size: var(--checkbox-size);
+  line-height: var(--checkbox-size);
+  padding-left: calc(var(--checkbox-size) * 0.5);
+  user-select: none;
+}
+
+.checkbox:focus-within {
+  border-radius: 4px;
+  outline: 2px solid var(--checkbox-focus-color);
+  outline-offset: 2px;
+}
+
+.input {
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  font-size: 0;
+  background-color: transparent;
+}

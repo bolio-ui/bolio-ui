@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { SerwistProvider } from '@serwist/turbopack/react'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
-import { StyledJsxRegistry } from 'core/Next'
 import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
 import Navigation from 'src/components/Navigation'
@@ -23,7 +22,9 @@ function MdxGlobalStyles() {
   const comment = isDark ? theme.palette.accents_5 : theme.palette.accents_3
 
   return (
-    <style global jsx>{`
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
       pre {
         background-color: ${theme.palette.pre};
       }
@@ -94,7 +95,9 @@ function MdxGlobalStyles() {
       span.plain-text {
         color: #ffffff;
       }
-    `}</style>
+    `
+      }}
+    />
   )
 }
 
@@ -149,19 +152,17 @@ export default function Providers({
       cacheOnNavigation
       reloadOnOnline
     >
-      <StyledJsxRegistry>
-        <BolioUIProvider themeType={themeType}>
-          <SettingsContext.Provider value={{ themeType, switchTheme }}>
-            <Analytics />
-            <CssBaseline />
-            <KBarProvider>
-              <Navigation />
-              {children}
-            </KBarProvider>
-          </SettingsContext.Provider>
-          <MdxGlobalStyles />
-        </BolioUIProvider>
-      </StyledJsxRegistry>
+      <BolioUIProvider themeType={themeType}>
+        <SettingsContext.Provider value={{ themeType, switchTheme }}>
+          <Analytics />
+          <CssBaseline />
+          <KBarProvider>
+            <Navigation />
+            {children}
+          </KBarProvider>
+        </SettingsContext.Provider>
+        <MdxGlobalStyles />
+      </BolioUIProvider>
     </SerwistProvider>
   )
 }

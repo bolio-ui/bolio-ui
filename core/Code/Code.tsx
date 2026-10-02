@@ -2,7 +2,9 @@ import React, { useMemo } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import { addColorAlpha } from '../utils/color'
+import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Code.module.css'
 
 interface Props {
   block?: boolean
@@ -77,16 +79,47 @@ const CodeComponent = React.forwardRef<
         </code>
       )
 
+    const nameStyle: React.CSSProperties = {
+      borderRight: `1px solid ${theme.palette.accents_2}`,
+      color: theme.palette.accents_5,
+      fontSize: SCALES.font(0.8125),
+      padding: `${SCALES.font(0.32)} ${SCALES.font(0.5)} ${SCALES.font(0.32)} ${SCALES.font(0.5)}`
+    }
+
     return (
-      <div ref={ref as React.Ref<HTMLDivElement>} className="pre">
-        <header>
-          <div className="traffic">
-            <span className="close" />
-            <span className="mini" />
-            <span className="full" />
+      <div
+        ref={ref as React.Ref<HTMLDivElement>}
+        className={styles.pre}
+        style={
+          {
+            border: `1px solid ${border}`,
+            fontSize: SCALES.font(0.875),
+            width: SCALES.width(1, 'initial'),
+            height: SCALES.height(1, 'auto'),
+            margin: `${SCALES.mt(1.3)} ${SCALES.mr(0)} ${SCALES.mb(1.3)} ${SCALES.ml(0)}`,
+            borderRadius: theme.layout.radius,
+            backgroundColor: background,
+            '--code-tab-hover-color': theme.palette.foreground,
+            '--code-tab-focus-color': theme.palette.accents_5
+          } as React.CSSProperties
+        }
+      >
+        <header
+          style={{
+            borderBottom: `1px solid ${theme.palette.accents_2}`,
+            backgroundColor: theme.palette.border
+          }}
+        >
+          <div
+            className={styles.traffic}
+            style={{ padding: `0 ${theme.layout.gapHalf}` }}
+          >
+            <span className={styles.close} />
+            <span className={styles.mini} />
+            <span className={styles.full} />
           </div>
           {hasTabs ? (
-            <div role="tablist" className="tabs">
+            <div role="tablist" className={styles.tabs}>
               {tabs.map((label, index) => (
                 <button
                   key={`${label}-${index}`}
@@ -99,7 +132,13 @@ const CodeComponent = React.forwardRef<
                   aria-selected={index === activeTab}
                   aria-controls={`${id}-panel`}
                   tabIndex={index === activeTab ? 0 : -1}
-                  className={`name tab${index === activeTab ? ' active' : ''}`}
+                  className={joinClasses(styles.name, styles.tab, {
+                    [styles.active]: index === activeTab
+                  })}
+                  style={{
+                    ...nameStyle,
+                    backgroundColor: index === activeTab ? tab : undefined
+                  }}
                   onClick={() => onTabChange?.(index)}
                   onKeyDown={(event) => moveTab(event, index)}
                 >
@@ -108,11 +147,21 @@ const CodeComponent = React.forwardRef<
               ))}
             </div>
           ) : (
-            name && <div className="name active">{name}</div>
+            name && (
+              <div
+                className={joinClasses(styles.name, styles.active)}
+                style={{ ...nameStyle, backgroundColor: tab }}
+              >
+                {name}
+              </div>
+            )
           )}
         </header>
         <pre
           className={className}
+          style={{
+            padding: `${SCALES.pt(1.1)} ${SCALES.pr(1)} ${SCALES.pb(1.1)} ${SCALES.pl(1)}`
+          }}
           {...(hasTabs && {
             role: 'tabpanel',
             id: `${id}-panel`,
@@ -122,111 +171,6 @@ const CodeComponent = React.forwardRef<
         >
           {children}
         </pre>
-        <style jsx>{`
-          .pre {
-            max-width: 100%;
-            border: 1px solid ${border};
-            font-size: ${SCALES.font(0.875)};
-            width: ${SCALES.width(1, 'initial')};
-            height: ${SCALES.height(1, 'auto')};
-            margin: ${SCALES.mt(1.3)} ${SCALES.mr(0)} ${SCALES.mb(1.3)}
-              ${SCALES.ml(0)};
-            border-radius: ${theme.layout.radius};
-            background-color: ${background};
-            overflow: hidden;
-          }
-          pre {
-            max-width: 100%;
-            font-size: inherit;
-            border: none;
-            border-radius: 0;
-            margin: 0;
-            line-height: 1.5em;
-            padding: ${SCALES.pt(1.1)} ${SCALES.pr(1)} ${SCALES.pb(1.1)}
-              ${SCALES.pl(1)};
-          }
-          .dark {
-            color: white;
-            background: black;
-          }
-          .dark code {
-            color: white;
-          }
-          header {
-            height: 2.5em;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid ${theme.palette.accents_2};
-            background-color: ${theme.palette.border};
-          }
-          .traffic {
-            display: flex;
-            align-items: center;
-            padding: 0 ${theme.layout.gapHalf};
-            user-select: none;
-          }
-          .traffic span {
-            border-radius: 50%;
-            width: 0.75em;
-            height: 0.75em;
-            max-width: 12px;
-            max-height: 12px;
-            display: inline-block;
-            margin-right: 0.5em;
-          }
-          .traffic .close {
-            background-color: #ff5f56;
-          }
-          .traffic .mini {
-            background-color: #ffbd2e;
-          }
-          .traffic .full {
-            background-color: #27c93f;
-          }
-          .tabs {
-            display: flex;
-            max-width: 100%;
-          }
-          .tab {
-            min-width: 0;
-          }
-          .tab span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          .name {
-            margin-bottom: -1px;
-            border: none;
-            border-right: 1px solid ${theme.palette.accents_2};
-            background-color: transparent;
-            color: ${theme.palette.accents_5};
-            height: auto;
-            line-height: 1.35em;
-            display: inline-flex;
-            align-items: center;
-            font-size: ${SCALES.font(0.8125)};
-            padding: ${SCALES.font(0.32)} ${SCALES.font(0.5)}
-              ${SCALES.font(0.32)} ${SCALES.font(0.5)};
-            width: auto;
-            white-space: nowrap;
-          }
-          .name.active {
-            background-color: ${tab};
-          }
-          .tab {
-            font-family: inherit;
-            cursor: pointer;
-          }
-          .tab:hover,
-          .tab.active {
-            color: ${theme.palette.foreground};
-          }
-          .tab:focus-visible {
-            outline: 2px solid ${theme.palette.accents_5};
-            outline-offset: -2px;
-          }
-        `}</style>
       </div>
     )
   }

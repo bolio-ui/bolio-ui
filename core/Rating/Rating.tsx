@@ -6,6 +6,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Rating.module.css'
 
 export type RatingTypes = NormalTypes
 export type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
@@ -54,6 +55,7 @@ const RatingComponent = React.forwardRef<
       onValueChange,
       locked = false,
       onLockedChange,
+      style,
       ...props
     },
     ref
@@ -126,18 +128,30 @@ const RatingComponent = React.forwardRef<
       setValue(customValue < 0 ? 0 : customValue)
     }, [customValue])
 
+    const ratingStyle = {
+      '--rating-font-size': SCALES.font(1),
+      '--rating-color': color,
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    } as React.CSSProperties
+
     return (
       <div
         ref={ref}
         role="radiogroup"
-        className={useClasses('rating', className)}
+        className={useClasses(styles.rating, className)}
         {...props}
+        style={ratingStyle}
       >
         {[...Array(count)].map((_, index) => (
           <div
-            className={joinClasses('icon-box', {
-              hovered: index + 1 <= value
+            className={joinClasses(styles.iconBox, {
+              [styles.hovered]: index + 1 <= value
             })}
+            style={{ cursor: isLocked ? 'default' : 'pointer' }}
             key={index}
             role="radio"
             aria-checked={index + 1 === value}
@@ -150,43 +164,6 @@ const RatingComponent = React.forwardRef<
             {icon}
           </div>
         ))}
-        <style jsx>{`
-          .rating {
-            box-sizing: border-box;
-            display: inline-flex;
-            align-items: center;
-            --rating-font-size: ${SCALES.font(1)};
-            font-size: var(--rating-font-size);
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .icon-box {
-            box-sizing: border-box;
-            color: ${color};
-            width: calc(var(--rating-font-size) * 1.5);
-            height: calc(var(--rating-font-size) * 1.5);
-            margin-right: calc(var(--rating-font-size) * 1 / 5);
-            cursor: ${isLocked ? 'default' : 'pointer'};
-          }
-          .icon-box :global(svg) {
-            width: 100%;
-            height: 100%;
-            fill: transparent;
-            transform: scale(1);
-            transition:
-              transform,
-              color,
-              fill 30ms linear;
-          }
-          .hovered :global(svg) {
-            fill: ${color};
-            transform: scale(0.9);
-          }
-        `}</style>
       </div>
     )
   }
