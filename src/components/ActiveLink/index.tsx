@@ -69,6 +69,13 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
           :global(p.sidebar-item.sidebar-item:hover) {
             color: var(--sidebar-item-hover-color);
           }
+          :global(a:has(> p.sidebar-item):focus-visible) {
+            outline: none;
+          }
+          :global(a:focus-visible > p.sidebar-item.sidebar-item) {
+            outline: 2px solid var(--sidebar-item-hover-color);
+            outline-offset: -2px;
+          }
         `}</style>
       </Link>
     )
@@ -84,6 +91,13 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
         }
         :global(p.sidebar-item.sidebar-item:hover) {
           color: var(--sidebar-item-hover-color);
+        }
+        :global(a:has(> p.sidebar-item):focus-visible) {
+          outline: none;
+        }
+        :global(a:focus-visible > p.sidebar-item.sidebar-item) {
+          outline: 2px solid var(--sidebar-item-hover-color);
+          outline-offset: -2px;
         }
       `}</style>
     </NextLink>
