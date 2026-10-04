@@ -22,6 +22,7 @@ interface Props {
   hideDivider?: boolean
   hideBorder?: boolean
   highlight?: boolean
+  slide?: boolean
   onChange?: (val: string) => void
   className?: string
   leftSpace?: CSSProperties['marginLeft']
@@ -63,6 +64,7 @@ const TabsComponent = React.forwardRef<
       className = '',
       leftSpace = '12px' as CSSProperties['marginLeft'],
       highlight = true,
+      slide = false,
       hoverHeightRatio = 0.7,
       hoverWidthRatio = 1.15,
       activeClassName = '',
@@ -81,6 +83,11 @@ const TabsComponent = React.forwardRef<
       userCustomInitialValue
     )
     const headerRef = useRef<HTMLDivElement | null>(null)
+    const listRef = useRef<HTMLDivElement | null>(null)
+    const [indicator, setIndicator] = useState<{
+      left: number
+      width: number
+    } | null>(null)
     const [displayHighlight, setDisplayHighlight] = useState<boolean>(false)
     const { rect, setRect } = useRect()
 
@@ -123,6 +130,16 @@ const TabsComponent = React.forwardRef<
       if (typeof value === 'undefined') return
       setSelfValue(value)
     }, [value])
+
+    useEffect(() => {
+      if (!slide) return
+      const active = listRef.current?.querySelector<HTMLElement>(
+        '[role="tab"][aria-selected="true"]'
+      )
+      setIndicator(
+        active ? { left: active.offsetLeft, width: active.offsetWidth } : null
+      )
+    }, [slide, selfValue, directKey])
 
     const clickHandler = (value: string) => {
       setSelfValue(value)
@@ -173,8 +190,10 @@ const TabsComponent = React.forwardRef<
             />
             <div
               role="tablist"
+              ref={listRef}
               className={useClasses(styles.scrollContainer, {
-                [styles.hideDivider]: hideDivider
+                [styles.hideDivider]: hideDivider,
+                [styles.slide]: slide
               })}
               style={
                 {
@@ -184,6 +203,16 @@ const TabsComponent = React.forwardRef<
                 } as React.CSSProperties
               }
             >
+              {slide && indicator && (
+                <span
+                  className={styles.indicator}
+                  style={{
+                    width: indicator.width,
+                    transform: `translateX(${indicator.left}px)`,
+                    backgroundColor: theme.palette.foreground
+                  }}
+                />
+              )}
               {headers.map(({ value, props: itemProps }) => (
                 <TabsItemCell
                   key={value}

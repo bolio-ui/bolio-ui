@@ -65,6 +65,12 @@
   },
   {
     "head": "Badge",
+    "title": "Badge Pulse",
+    "component": false,
+    "path": "/docs/components/badge#pulse"
+  },
+  {
+    "head": "Badge",
     "title": "Badge Anchor",
     "component": false,
     "path": "/docs/components/badge#anchor"
@@ -204,6 +210,12 @@
     "title": "Button Subtle",
     "component": false,
     "path": "/docs/components/button#subtle"
+  },
+  {
+    "head": "Button",
+    "title": "Button Spotlight",
+    "component": false,
+    "path": "/docs/components/button#spotlight"
   },
   {
     "head": "Button",
@@ -526,6 +538,36 @@
   },
   {
     "head": "Card",
+    "title": "Card Spotlight",
+    "component": false,
+    "path": "/docs/components/card#spotlight"
+  },
+  {
+    "head": "Card",
+    "title": "Card Glass",
+    "component": false,
+    "path": "/docs/components/card#glass"
+  },
+  {
+    "head": "Card",
+    "title": "Card Interactive",
+    "component": false,
+    "path": "/docs/components/card#interactive"
+  },
+  {
+    "head": "Card",
+    "title": "Card Metric",
+    "component": false,
+    "path": "/docs/components/card#metric"
+  },
+  {
+    "head": "Card",
+    "title": "Card Pricing",
+    "component": false,
+    "path": "/docs/components/card#pricing"
+  },
+  {
+    "head": "Card",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/card#apis"
@@ -818,6 +860,47 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/combobox#accessibility"
+  },
+  {
+    "title": "Command",
+    "component": true,
+    "path": "/docs/components/command"
+  },
+  {
+    "head": "Command",
+    "title": "Command General",
+    "component": false,
+    "path": "/docs/components/command#general"
+  },
+  {
+    "head": "Command",
+    "title": "Command With Shortcut",
+    "component": false,
+    "path": "/docs/components/command#with-shortcut"
+  },
+  {
+    "head": "Command",
+    "title": "Command With Shortcut",
+    "component": false,
+    "path": "/docs/components/command#with-shortcut"
+  },
+  {
+    "head": "Command",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/command#apis"
+  },
+  {
+    "head": "Command",
+    "title": "Command Props",
+    "component": false,
+    "path": "/docs/components/command#command.props"
+  },
+  {
+    "head": "Command",
+    "title": "CommandItem",
+    "component": false,
+    "path": "/docs/components/command#commanditem"
   },
   {
     "title": "Container",
@@ -1131,6 +1214,35 @@
     "path": "/docs/components/drawer#drawerplacement"
   },
   {
+    "title": "Empty State",
+    "component": true,
+    "path": "/docs/components/empty-state"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State General",
+    "component": false,
+    "path": "/docs/components/empty-state#general"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State In a Card",
+    "component": false,
+    "path": "/docs/components/empty-state#in-a-card"
+  },
+  {
+    "head": "Empty State",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/empty-state#apis"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Props",
+    "component": false,
+    "path": "/docs/components/empty-state#emptystate.props"
+  },
+  {
     "title": "Fieldset",
     "component": true,
     "path": "/docs/components/fieldset"
@@ -1379,6 +1491,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Floating Label",
+    "component": false,
+    "path": "/docs/components/input#floating-label"
+  },
+  {
+    "head": "Input",
     "title": "Input Sizes",
     "component": false,
     "path": "/docs/components/input#sizes"
@@ -1619,6 +1737,35 @@
     "title": "Types - Loading",
     "component": false,
     "path": "/docs/components/loading#loadingtypes"
+  },
+  {
+    "title": "Marquee",
+    "component": true,
+    "path": "/docs/components/marquee"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee General",
+    "component": false,
+    "path": "/docs/components/marquee#general"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Reverse",
+    "component": false,
+    "path": "/docs/components/marquee#reverse"
+  },
+  {
+    "head": "Marquee",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/marquee#apis"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Props",
+    "component": false,
+    "path": "/docs/components/marquee#marquee.props"
   },
   {
     "title": "Menu",
@@ -2162,6 +2309,18 @@
     "title": "Progress Dynamic Colors",
     "component": false,
     "path": "/docs/components/progress#dynamic-colors"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Segmented",
+    "component": false,
+    "path": "/docs/components/progress#segmented"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Circular",
+    "component": false,
+    "path": "/docs/components/progress#circular"
   },
   {
     "head": "Progress",
@@ -2778,6 +2937,35 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "title": "Stat",
+    "component": true,
+    "path": "/docs/components/stat"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat General",
+    "component": false,
+    "path": "/docs/components/stat#general"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat With Extra",
+    "component": false,
+    "path": "/docs/components/stat#with-extra"
+  },
+  {
+    "head": "Stat",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/stat#apis"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat Props",
+    "component": false,
+    "path": "/docs/components/stat#stat.props"
+  },
+  {
     "title": "Stepper",
     "component": true,
     "path": "/docs/components/stepper"
@@ -2953,6 +3141,12 @@
     "title": "Tabs Disabled",
     "component": false,
     "path": "/docs/components/tabs#disabled"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Slide",
+    "component": false,
+    "path": "/docs/components/tabs#slide"
   },
   {
     "head": "Tabs",
@@ -3192,6 +3386,41 @@
     "path": "/docs/components/textarea#cssresize"
   },
   {
+    "title": "Timeline",
+    "component": true,
+    "path": "/docs/components/timeline"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline General",
+    "component": false,
+    "path": "/docs/components/timeline#general"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline With Icons",
+    "component": false,
+    "path": "/docs/components/timeline#with-icons"
+  },
+  {
+    "head": "Timeline",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/timeline#apis"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Props",
+    "component": false,
+    "path": "/docs/components/timeline#timeline.props"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Item Props",
+    "component": false,
+    "path": "/docs/components/timeline#timeline.item.props"
+  },
+  {
     "title": "Toggle",
     "component": true,
     "path": "/docs/components/toggle"
@@ -3207,6 +3436,12 @@
     "title": "Toggle Types",
     "component": false,
     "path": "/docs/components/toggle#type"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle With Icons",
+    "component": false,
+    "path": "/docs/components/toggle#with-icons"
   },
   {
     "head": "Toggle",

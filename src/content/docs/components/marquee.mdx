@@ -1,0 +1,66 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Marquee, Tag, Card, Text } from 'core'
+
+export const meta = {
+  title: 'Marquee',
+  description: 'Loop content horizontally without end.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 56
+}
+
+## Marquee
+
+Loop content horizontally without end.
+
+<Playground
+  title="General"
+  desc="Pauses on hover and stops when the user prefers reduced motion."
+  scope={{ Marquee, Tag }}
+  code={`
+<Marquee duration={20}>
+  <Tag>React</Tag>
+  <Tag>Next.js</Tag>
+  <Tag>Gatsby</Tag>
+  <Tag>RedwoodJS</Tag>
+  <Tag>Vite</Tag>
+  <Tag>Remix</Tag>
+</Marquee>
+`}
+/>
+
+<Playground
+  title="Reverse"
+  desc="Use `reverse` to run the other way, for example in a second row."
+  scope={{ Marquee, Card, Text }}
+  code={`
+<Marquee reverse duration={25} gap="1rem">
+  <Card bordered width="260px">
+    <Text my={0}>“Easy to theme and clear docs.”</Text>
+  </Card>
+  <Card bordered width="260px">
+    <Text my={0}>“We shipped our dashboard in a week.”</Text>
+  </Card>
+  <Card bordered width="260px">
+    <Text my={0}>“The best defaults I have used.”</Text>
+  </Card>
+</Marquee>
+`}
+/>
+
+<Attributes edit="/content/docs/components/marquee.mdx">
+<Attributes.Title>Marquee.Props</Attributes.Title>
+
+| Attribute        | Description                | Type             | Accepted values | Default |
+| ---------------- | -------------------------- | ---------------- | --------------- | ------- |
+| **duration**     | seconds for one full loop  | `number`         | -               | `30`    |
+| **pauseOnHover** | pause while hovering       | `boolean`        | -               | `true`  |
+| **reverse**      | run in the other direction | `boolean`        | -               | `false` |
+| **gap**          | space between items        | `string`         | -               | `2rem`  |
+| ...              | native props               | `HTMLAttributes` | -               | -       |
+
+
+</Attributes>
+
+export default Docs.withMeta(meta)

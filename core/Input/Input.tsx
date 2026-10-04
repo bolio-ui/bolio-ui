@@ -69,6 +69,7 @@ const InputComponent = React.forwardRef<
     hoverBorder,
     error,
     errorMessage,
+    floating,
     ...props
   } = useDefaultProps(inputComponentProps, defaultProps)
   const theme = useTheme()
@@ -190,9 +191,11 @@ const InputComponent = React.forwardRef<
     '--input-color': colors.color
   } as React.CSSProperties
 
+  const floatingLabel = floating && children
+
   return (
     <div className={styles.withLabel} style={withLabelStyle}>
-      {children && (
+      {children && !floatingLabel && (
         <InputBlockLabel htmlFor={inputId}>{children}</InputBlockLabel>
       )}
       <div
@@ -217,7 +220,7 @@ const InputComponent = React.forwardRef<
               { [styles.disabled]: disabled },
               iconClasses
             )}
-            placeholder={placeholder}
+            placeholder={floatingLabel ? ' ' : placeholder}
             disabled={disabled}
             readOnly={readOnly}
             onFocus={focusHandler}
@@ -242,6 +245,23 @@ const InputComponent = React.forwardRef<
               hoverColor={colors.color}
               onClick={clearHandler}
             />
+          )}
+          {floatingLabel && (
+            <label
+              htmlFor={inputId}
+              className={styles.floating}
+              style={
+                {
+                  left: icon ? '2.5em' : '0.75em',
+                  '--input-floating-bg':
+                    colors.bgColor === 'transparent'
+                      ? theme.palette.background
+                      : colors.bgColor
+                } as React.CSSProperties
+              }
+            >
+              {children}
+            </label>
           )}
           {iconRight && <InputIcon icon={iconRight} {...iconProps} />}
         </div>

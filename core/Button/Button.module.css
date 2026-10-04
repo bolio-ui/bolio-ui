@@ -36,3 +36,11 @@
 .root :global(.text div) {
   margin: 0;
 }
+
+.spotlight:hover {
+  background-image: radial-gradient(
+    80px circle at var(--x, 50%) var(--y, 50%),
+    color-mix(in srgb, currentColor 18%, transparent),
+    transparent 100%
+  );
+}

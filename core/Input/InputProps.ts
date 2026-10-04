@@ -36,6 +36,7 @@ export interface Props {
   subtle?: boolean
   error?: boolean
   errorMessage?: string
+  floating?: boolean
   crossOrigin?: CrossOrigin
 }
 

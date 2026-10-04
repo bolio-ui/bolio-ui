@@ -24,6 +24,8 @@ interface Props {
   onChange?: (ev: ToggleEvent) => void
   disabled?: boolean
   type?: ToggleTypes
+  icon?: React.ReactNode
+  checkedIcon?: React.ReactNode
   className?: string
 }
 
@@ -46,6 +48,8 @@ const ToggleComponent = React.forwardRef<
       disabled = false,
       onChange,
       type = 'default' as ToggleTypes,
+      icon,
+      checkedIcon,
       className = '',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
@@ -107,6 +111,7 @@ const ToggleComponent = React.forwardRef<
       '--toggle-disabled-checked-border': theme.palette.accents_4,
       '--toggle-disabled-checked-bg': theme.palette.accents_4,
       '--toggle-checked-bg': bg,
+      '--toggle-icon-color': theme.palette.accents_6,
       ...style
     } as React.CSSProperties
 
@@ -128,7 +133,9 @@ const ToggleComponent = React.forwardRef<
           className={styles.input}
         />
         <div className={classes}>
-          <span className={styles.inner} />
+          <span className={styles.inner}>
+            {selfChecked ? (checkedIcon ?? icon) : icon}
+          </span>
         </div>
       </label>
     )

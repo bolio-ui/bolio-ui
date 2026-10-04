@@ -61,6 +61,25 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
 />
 
 <Playground
+  title="Slide"
+  desc="The `slide` prop replaces the per tab underline with a single indicator that slides to the selected tab."
+  scope={{ Tabs, Grid }}
+  code={`
+<Tabs initialValue="1" slide>
+  <Tabs.Item label="Overview" value="1">
+    A summary of the project.
+  </Tabs.Item>
+  <Tabs.Item label="Activity" value="2">
+    Everything that changed this week.
+  </Tabs.Item>
+  <Tabs.Item label="Settings" value="3">
+    Names, members and billing.
+  </Tabs.Item>
+</Tabs>
+`}
+/>
+
+<Playground
   title="Hide Divider"
   desc="`Tabs` component with a hide divider functionality."
   scope={{ Tabs, Text, Grid }}
@@ -227,6 +246,7 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
 | **value**            | current selected value                  | `string`                | -                               | -       |
 | **hideDivider**      | hide default divider                    | `boolean`               | -                               | `false` |
 | **hideBorder**       | hide border on active                   | `boolean`               | -                               | `false` |
+| **slide**            | sliding indicator under the active tab  | `boolean`               | -                               | `false` |
 | **leftSpace**        | space area on the left side             | `CSSProperties`         | -                               | `12px`  |
 | **onChange**         | change event                            | `(val: string) => void` | -                               | -       |
 | **align**            | horizontal alignment of each child item | `justifyContent`        | -                               | `left`  |

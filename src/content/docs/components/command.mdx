@@ -1,0 +1,95 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Command, Button, Keyboard, useKeyboard, KeyCode, KeyMod } from 'core'
+import { useState } from 'react'
+import { Home, Settings } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Command',
+  description: 'A searchable list of actions, opened with a shortcut.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 57
+}
+
+## Command
+
+A searchable list of actions, opened with a shortcut.
+
+<Playground
+  title="General"
+  desc="Type to filter, use the arrow keys to move and Enter to run the action."
+  scope={{ Command, Button, useState, Home, Settings }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  const items = [
+    { value: 'home', label: 'Go to home', icon: <Home />, onSelect: () => console.log('home') },
+    { value: 'settings', label: 'Open settings', icon: <Settings />, hint: 'G S', onSelect: () => console.log('settings') },
+    { value: 'theme', label: 'Switch theme', hint: 'T', onSelect: () => console.log('theme') }
+  ]
+  return (
+    <>
+      <Button auto onClick={() => setOpen(true)}>Open command</Button>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="With Shortcut"
+  desc="Open it with Cmd+K, or Ctrl+K on Windows and Linux, using `useKeyboard`."
+  scope={{ Command, Keyboard, useKeyboard, KeyCode, KeyMod, useState }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  useKeyboard(
+    (event) => {
+      event.preventDefault()
+      setOpen(true)
+    },
+    [KeyCode.KEY_K, KeyMod.CtrlCmd]
+  )
+  const items = [
+    { value: 'new', label: 'New project', onSelect: () => console.log('new') },
+    { value: 'invite', label: 'Invite a teammate', onSelect: () => console.log('invite') }
+  ]
+  return (
+    <>
+      <Keyboard command>K</Keyboard>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/command.mdx">
+<Attributes.Title>Command.Props</Attributes.Title>
+
+| Attribute       | Description                         | Type                 | Accepted values | Default                        |
+| --------------- | ----------------------------------- | -------------------- | --------------- | ------------------------------ |
+| **visible**     | show the palette                    | `boolean`            | -               | -                              |
+| **onClose**     | called on Esc, backdrop or selection | `() => void`        | -               | -                              |
+| **items**       | actions to list                     | `CommandItem[]`      | -               | -                              |
+| **placeholder** | placeholder of the search field     | `string`             | -               | `Type a command or search`     |
+| **emptyText**   | shown when nothing matches          | `string`             | -               | `No results. Try another word.` |
+
+
+<Attributes.Title>CommandItem</Attributes.Title>
+
+```ts
+interface CommandItem {
+  value: string
+  label: string
+  icon?: React.ReactNode
+  hint?: React.ReactNode
+  onSelect?: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

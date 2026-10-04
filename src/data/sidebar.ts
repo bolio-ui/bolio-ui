@@ -140,6 +140,10 @@ export const components = [
     url: '/docs/components/combobox'
   },
   {
+    name: 'Command',
+    url: '/docs/components/command'
+  },
+  {
     name: 'Container',
     url: '/docs/components/container'
   },
@@ -166,6 +170,10 @@ export const components = [
   {
     name: 'Drawer',
     url: '/docs/components/drawer'
+  },
+  {
+    name: 'Empty State',
+    url: '/docs/components/empty-state'
   },
   {
     name: 'Fieldset',
@@ -198,6 +206,10 @@ export const components = [
   {
     name: 'Loading',
     url: '/docs/components/loading'
+  },
+  {
+    name: 'Marquee',
+    url: '/docs/components/marquee'
   },
   {
     name: 'Menu',
@@ -272,6 +284,10 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Stat',
+    url: '/docs/components/stat'
+  },
+  {
     name: 'Stepper',
     url: '/docs/components/stepper'
   },
@@ -286,6 +302,10 @@ export const components = [
   {
     name: 'Tag',
     url: '/docs/components/tag'
+  },
+  {
+    name: 'Timeline',
+    url: '/docs/components/timeline'
   },
   {
     name: 'Text',

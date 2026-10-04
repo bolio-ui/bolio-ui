@@ -15,3 +15,28 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+.spotlight:hover {
+  background-image: radial-gradient(
+    240px circle at var(--x, 50%) var(--y, 0%),
+    color-mix(in srgb, currentColor 12%, transparent),
+    transparent 70%
+  );
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

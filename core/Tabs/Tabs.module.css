@@ -41,3 +41,22 @@
 .content {
   padding-top: 0.625rem;
 }
+
+.slide {
+  position: relative;
+}
+
+.slide :global([role='tab']):after {
+  display: none;
+}
+
+.indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  border-radius: 4px;
+  transition:
+    transform 250ms ease,
+    width 250ms ease;
+}

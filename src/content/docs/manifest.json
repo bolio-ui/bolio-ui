@@ -179,6 +179,11 @@
               "path": "/docs/components/combobox.mdx"
             },
             {
+              "title": "Command",
+              "keywords": "command, command palette, cmd k, search, shortcuts, actions",
+              "path": "/docs/components/command.mdx"
+            },
+            {
               "title": "Container",
               "keywords": "container, page width, max width, center, fluid, layout",
               "path": "/docs/components/container.mdx"
@@ -212,6 +217,11 @@
               "title": "Drawer",
               "keywords": "drawer, placement, modal",
               "path": "/docs/components/drawer.mdx"
+            },
+            {
+              "title": "Empty State",
+              "keywords": "empty state, no results, blank, placeholder, call to action",
+              "path": "/docs/components/empty-state.mdx"
             },
             {
               "title": "Fieldset",
@@ -252,6 +262,11 @@
               "title": "Loading",
               "keywords": "loading, spinner, loadable, progress",
               "path": "/docs/components/loading.mdx"
+            },
+            {
+              "title": "Marquee",
+              "keywords": "marquee, ticker, logos, testimonials, carousel, loop",
+              "path": "/docs/components/marquee.mdx"
             },
             {
               "title": "Menu",
@@ -339,6 +354,11 @@
               "path": "/docs/components/spinner.mdx"
             },
             {
+              "title": "Stat",
+              "keywords": "stat, metric, kpi, number, trend, dashboard",
+              "path": "/docs/components/stat.mdx"
+            },
+            {
               "title": "Stepper",
               "keywords": "stepper, steps, wizard, progress, checkout, onboarding, timeline, vertical",
               "path": "/docs/components/stepper.mdx"
@@ -367,6 +387,11 @@
               "title": "Textarea",
               "keywords": "textarea, disabled, types, get change, imperative",
               "path": "/docs/components/textarea.mdx"
+            },
+            {
+              "title": "Timeline",
+              "keywords": "timeline, changelog, history, activity, steps, events",
+              "path": "/docs/components/timeline.mdx"
             },
             {
               "title": "Toggle",

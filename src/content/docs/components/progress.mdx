@@ -75,6 +75,35 @@ Display progress relative to a limit or related to a task.
 />
 
 <Playground
+  title="Segmented"
+  desc="Split the bar in blocks with `segments`."
+  scope={{ Progress, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12}>
+    <Progress segments={10} value={60} type="primary" />
+  </Grid>
+  <Grid xs={12}>
+    <Progress segments={5} value={80} type="success" scale={1.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Circular"
+  desc="Use `circular` for a ring. The size follows `width` and `scale`."
+  scope={{ Progress, Grid }}
+  code={`
+<Grid.Container gap={2} alignItems="center">
+  <Grid><Progress circular value={25} /></Grid>
+  <Grid><Progress circular value={60} type="primary" width="4em" /></Grid>
+  <Grid><Progress circular value={90} type="success" width="5em" /></Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Type"
   desc="We prepared some different styles in advance."
   scope={{ Progress, Grid }}
@@ -114,6 +143,8 @@ Display progress relative to a limit or related to a task.
 | **max**         | max value              | `number`                    | -                               | 100       |
 | **fixedTop**    | fix progress to top    | `boolean`                   | -                               | `false`   |
 | **fixedBottom** | fix progress to bottom | `boolean`                   | -                               | `false`   |
+| **segments**    | split the bar in blocks | `number`                    | -                               | -         |
+| **circular**    | show a ring instead of a bar | `boolean`              | -                               | `false`   |
 | **colors**      | custom colors          | `{ [key: number]: string }` | -                               | -         |
 | **type**        | predefined state types | `ProgressTypes`             | [ProgressTypes](#progresstypes) | `default` |
 | ...             | native props           | `ProgressHTMLAttributes`    | `'aria-busy', ...`              | -         |

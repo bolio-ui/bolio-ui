@@ -19,6 +19,9 @@ interface Props {
   filled?: boolean
   ghost?: boolean
   subtle?: boolean
+  spotlight?: boolean
+  glass?: boolean
+  interactive?: boolean
   className?: string
   type?: CardTypes
 }
@@ -41,8 +44,12 @@ const CardComponent = React.forwardRef<
       filled = false,
       ghost = false,
       subtle = false,
+      spotlight = false,
+      glass = false,
+      interactive = false,
       type = 'default' as CardTypes,
       style,
+      onMouseMove,
       ...props
     },
     ref
@@ -52,8 +59,10 @@ const CardComponent = React.forwardRef<
 
     const hoverShadow = useMemo(() => {
       if (shadow) return theme.expressiveness.shadowMedium
-      return hoverable ? theme.expressiveness.shadowSmall : 'none'
-    }, [hoverable, shadow, theme.expressiveness])
+      return hoverable || interactive
+        ? theme.expressiveness.shadowSmall
+        : 'none'
+    }, [hoverable, interactive, shadow, theme.expressiveness])
 
     const { color, bgColor, borderColor } = useMemo(
       () =>
@@ -84,7 +93,9 @@ const CardComponent = React.forwardRef<
       borderRadius: rounded ? '25px' : theme.layout.radius,
       boxShadow: shadow ? theme.expressiveness.shadowSmall : 'none',
       color,
-      backgroundColor: bgColor,
+      backgroundColor: glass
+        ? `color-mix(in srgb, ${bgColor} 55%, transparent)`
+        : bgColor,
       border: showBorder ? '1px solid' + borderColor : 'none',
       width: SCALES.width(1, 'auto'),
       height: SCALES.height(1, 'auto'),
@@ -97,7 +108,31 @@ const CardComponent = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={useClasses('card', styles.card, className)}
+        className={useClasses(
+          'card',
+          styles.card,
+          {
+            [styles.spotlight]: spotlight,
+            [styles.glass]: glass,
+            [styles.interactive]: interactive
+          },
+          className
+        )}
+        tabIndex={interactive ? 0 : undefined}
+        onMouseMove={(event) => {
+          if (spotlight) {
+            const rect = event.currentTarget.getBoundingClientRect()
+            event.currentTarget.style.setProperty(
+              '--x',
+              `${event.clientX - rect.left}px`
+            )
+            event.currentTarget.style.setProperty(
+              '--y',
+              `${event.clientY - rect.top}px`
+            )
+          }
+          onMouseMove?.(event)
+        }}
         {...props}
         style={cardStyle}
       >

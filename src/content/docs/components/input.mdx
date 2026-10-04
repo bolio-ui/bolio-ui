@@ -30,6 +30,22 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 />
 
 <Playground
+  title="Floating Label"
+  desc="With `floating` the label sits inside the field and moves up when you type or focus. It replaces the placeholder."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input floating width="100%">Email</Input>
+  </Grid>
+  <Grid>
+    <Input floating width="100%" initialValue="bolio@ui.dev">Email</Input>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Sizes"
   desc="Inputs of different sizes."
   scope={{ Input, Grid }}
@@ -369,6 +385,7 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 | **subtle**        | subtle variant                | `boolean`                                            | -                                 | `false`   |
 | **label**         | text label for input          | `string`                                             | -                                 | -         |
 | **labelRight**    | text label at right for input | `string`                                             | -                                 | -         |
+| **floating**      | label inside the field that moves up on focus | `boolean`                         | -                                 | `false`   |
 | **icon**          | icon for input                | `React.ReactNode`                                    | -                                 | -         |
 | **iconRight**     | icon at right for input       | `React.ReactNode`                                    | -                                 | -         |
 | **iconClickable** | icons are clickable           | `boolean`                                            | -                                 | `false`   |

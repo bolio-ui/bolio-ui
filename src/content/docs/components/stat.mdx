@@ -1,0 +1,72 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Stat, Grid, Card } from 'core'
+
+export const meta = {
+  title: 'Stat',
+  description: 'Show a number with its label and trend.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 53
+}
+
+## Stat
+
+Show a number with its label and trend.
+
+<Playground
+  title="General"
+  desc="The basic `Stat` usage. A trend that starts with `-` is shown as a drop."
+  scope={{ Stat, Grid, Card }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Stat label="Revenue" value="$48,200" change="+12.4% this month" />
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Stat label="Active users" value="3,842" change="+4.1% this week" />
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Stat label="Churn" value="1.8%" change="-0.3% this month" />
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="With Extra"
+  desc="Use `extra` for a small chart or an icon on the right."
+  scope={{ Stat, Card, Progress }}
+  code={`
+<Card bordered width="320px">
+  <Stat
+    label="Storage"
+    value="72%"
+    change="+6% this month"
+    extra={<Progress circular value={72} type="primary" scale={1.2} />}
+  />
+</Card>
+`}
+/>
+
+<Attributes edit="/content/docs/components/stat.mdx">
+<Attributes.Title>Stat.Props</Attributes.Title>
+
+| Attribute  | Description                                | Type             | Accepted values | Default |
+| ---------- | ------------------------------------------ | ---------------- | --------------- | ------- |
+| **label**  | what the number measures                   | `ReactNode`      | -               | -       |
+| **value**  | the number                                 | `ReactNode`      | -               | -       |
+| **change** | trend text, a leading `-` is shown as drop | `string`         | -               | -       |
+| **extra**  | chart or icon on the right                 | `ReactNode`      | -               | -       |
+| ...        | native props                               | `HTMLAttributes` | -               | -       |
+
+
+</Attributes>
+
+export default Docs.withMeta(meta)

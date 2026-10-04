@@ -1,0 +1,65 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  padding: 0 0 1.5em 2.25em;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+/* the line runs from one marker to the next */
+.item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 0.6875em;
+  top: 1.5em;
+  bottom: 0.25em;
+  width: 1px;
+  background: var(--timeline-line);
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375em;
+  height: 1.375em;
+  border-radius: 50%;
+  font-size: 0.875em;
+}
+
+.dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.time {
+  font-size: 0.8125em;
+}
+
+.body {
+  margin-top: 0.25em;
+  font-size: 0.875em;
+  line-height: 1.6;
+}

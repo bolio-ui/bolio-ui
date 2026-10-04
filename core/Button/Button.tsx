@@ -26,6 +26,7 @@ interface Props {
   shadow?: boolean
   auto?: boolean
   effect?: boolean
+  spotlight?: boolean
   disabled?: boolean
   htmlType?: React.ButtonHTMLAttributes<unknown>['type']
   icon?: React.ReactNode
@@ -44,6 +45,7 @@ const defaultProps = {
   shadow: false,
   auto: false,
   effect: true,
+  spotlight: false,
   disabled: false,
   className: ''
 }
@@ -80,6 +82,7 @@ const ButtonComponent = React.forwardRef<
     subtle,
     rounded,
     effect,
+    spotlight,
     onClick,
     auto,
     icon,
@@ -166,10 +169,29 @@ const ButtonComponent = React.forwardRef<
     <button
       ref={buttonRef}
       type={htmlType}
-      className={useClasses('btn', styles.root, className)}
+      className={useClasses(
+        'btn',
+        styles.root,
+        { [styles.spotlight]: spotlight },
+        className
+      )}
       disabled={disabled}
       onClick={clickHandler}
       {...props}
+      onMouseMove={(event) => {
+        if (spotlight) {
+          const rect = event.currentTarget.getBoundingClientRect()
+          event.currentTarget.style.setProperty(
+            '--x',
+            `${event.clientX - rect.left}px`
+          )
+          event.currentTarget.style.setProperty(
+            '--y',
+            `${event.clientY - rect.top}px`
+          )
+        }
+        props.onMouseMove?.(event)
+      }}
       style={dynamicStyle}
     >
       {loading && <ButtonLoading color={color} />}

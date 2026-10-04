@@ -13,6 +13,7 @@ export type BadgeTypes = NormalTypes
 interface Props {
   type?: BadgeTypes
   dot?: boolean
+  pulse?: boolean
   ghost?: boolean
   light?: boolean
   subtle?: boolean
@@ -57,6 +58,7 @@ const BadgeComponent = React.forwardRef<
       className = '',
       children,
       dot = false,
+      pulse = false,
       ghost = false,
       light = false,
       subtle = false,
@@ -73,9 +75,14 @@ const BadgeComponent = React.forwardRef<
       [type, theme.palette, ghost, light, subtle]
     )
 
-    const classes = useClasses(styles.badge, { [styles.dot]: dot }, className)
+    const classes = useClasses(
+      styles.badge,
+      { [styles.dot]: dot, [styles.pulse]: pulse },
+      className
+    )
 
-    const badgeStyle: React.CSSProperties = {
+    const badgeStyle = {
+      '--badge-pulse-color': bg,
       backgroundColor: bg,
       color,
       border: `1px solid ${border}`,
@@ -85,7 +92,7 @@ const BadgeComponent = React.forwardRef<
       padding: dot ? `${SCALES.py(0.25)} ${SCALES.px(0.25)}` : SCALES.pt(0.5),
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
       ...style
-    }
+    } as React.CSSProperties
 
     return (
       <span ref={ref} className={classes} {...props} style={badgeStyle}>

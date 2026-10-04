@@ -1,0 +1,62 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { EmptyState, Button, Card, Grid } from 'core'
+import { Inbox, Search } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Empty State',
+  description: 'Explain an empty area and how to leave it.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 54
+}
+
+## Empty State
+
+Explain an empty area and how to leave it.
+
+<Playground
+  title="General"
+  desc="Say what is missing and offer the next step with `action`."
+  scope={{ EmptyState, Button, Inbox }}
+  code={`
+<EmptyState
+  icon={<Inbox />}
+  title="No messages yet"
+  description="Messages from your team show up here. Invite someone to start a conversation."
+  action={<Button type="primary" auto>Invite a teammate</Button>}
+/>
+`}
+/>
+
+<Playground
+  title="In a Card"
+  desc="Inside a `Card`, for a list or table that has no rows."
+  scope={{ EmptyState, Button, Card, Search }}
+  code={`
+<Card bordered width="100%">
+  <EmptyState
+    icon={<Search />}
+    title="No results for “invoice”"
+    description="Check the spelling or clear the filters to see every document."
+    action={<Button auto>Clear filters</Button>}
+  />
+</Card>
+`}
+/>
+
+<Attributes edit="/content/docs/components/empty-state.mdx">
+<Attributes.Title>EmptyState.Props</Attributes.Title>
+
+| Attribute       | Description                    | Type             | Accepted values | Default |
+| --------------- | ------------------------------ | ---------------- | --------------- | ------- |
+| **title**       | what is empty                  | `ReactNode`      | -               | -       |
+| **description** | how to leave the empty state   | `ReactNode`      | -               | -       |
+| **icon**        | icon above the title           | `ReactNode`      | -               | -       |
+| **action**      | usually a `Button`             | `ReactNode`      | -               | -       |
+| ...             | native props                   | `HTMLAttributes` | -               | -       |
+
+
+</Attributes>
+
+export default Docs.withMeta(meta)
