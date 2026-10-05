@@ -384,6 +384,11 @@
               "path": "/docs/components/tag.mdx"
             },
             {
+              "title": "Tags Input",
+              "keywords": "tags input, tags, chips, multi value, token field, keywords, emails, labels",
+              "path": "/docs/components/tags-input.mdx"
+            },
+            {
               "title": "Text",
               "keywords": "text, heading, paragraph, small, blockquote, types, sizes, compose",
               "path": "/docs/components/text.mdx"

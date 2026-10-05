@@ -362,6 +362,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Tags Input',
+            url: '/docs/components/tags-input',
+            group: 'Components'
+          },
+          {
             name: 'Text',
             url: '/docs/components/text',
             group: 'Components'

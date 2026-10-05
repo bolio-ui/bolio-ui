@@ -212,6 +212,9 @@ export type { TabsProps } from './Tabs'
 export { default as Tag } from './Tag'
 export type { TagProps } from './Tag'
 
+export { default as TagsInput } from './TagsInput'
+export type { TagsInputProps } from './TagsInput'
+
 export { default as Text } from './Text'
 export type { TextProps } from './Text'
 

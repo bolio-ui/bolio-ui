@@ -54,6 +54,7 @@ const {
   Table,
   Tabs,
   Tag,
+  TagsInput,
   Text,
   Textarea,
   Toggle,
@@ -268,6 +269,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Tag', () => <Tag>Tag</Tag>],
+  [
+    'TagsInput',
+    () => <TagsInput aria-label="Skills" initialValue={['React']} />
+  ],
   ['Text', () => <Text h1>Title</Text>],
   ['Textarea', () => <Textarea placeholder="write" />],
   ['Toggle', () => <Toggle />],

@@ -56,6 +56,7 @@ const {
   Table,
   Tabs,
   Tag,
+  TagsInput,
   Text,
   Textarea,
   Toggle,
@@ -268,6 +269,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Tag', (ref) => <Tag ref={ref}>Tag</Tag>],
+  ['TagsInput', (ref) => <TagsInput ref={ref} aria-label="Skills" />, 'INPUT'],
   ['Text', (ref) => <Text ref={ref}>Text</Text>],
   ['Textarea', (ref) => <Textarea ref={ref} placeholder="write" />, 'TEXTAREA'],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],

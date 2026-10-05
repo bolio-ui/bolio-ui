@@ -1,0 +1,96 @@
+.withLabel {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375em;
+  box-sizing: border-box;
+  min-height: var(--input-height);
+  padding: 0.25em 0.625em;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  cursor: text;
+  transition: border 0.2s ease;
+}
+
+.field:hover {
+  border-color: var(--input-hover-border);
+  background: var(--input-hover-bg);
+}
+
+.field:focus-within {
+  border-color: var(--input-focus-border);
+}
+
+.field.disabled {
+  cursor: not-allowed;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.125em 0.25em 0.125em 0.625em;
+  line-height: 1.5;
+  color: var(--tag-color);
+  background: var(--tag-bg);
+  border-radius: calc(var(--input-radius) - 2px);
+  overflow-wrap: anywhere;
+}
+
+.remove {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.125em;
+  font: inherit;
+  color: var(--tag-remove-color);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.remove:hover:not(:disabled) {
+  color: var(--tag-remove-hover-color);
+}
+
+.remove:focus-visible {
+  outline: 2px solid var(--input-focus-border);
+}
+
+.remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.input {
+  flex: 1;
+  min-width: 6em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--input-color);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}

@@ -3309,6 +3309,77 @@
     "path": "/docs/components/tag#tagtypes"
   },
   {
+    "title": "Tags Input",
+    "component": true,
+    "path": "/docs/components/tags-input"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input General",
+    "component": false,
+    "path": "/docs/components/tags-input#general"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Controlled",
+    "component": false,
+    "path": "/docs/components/tags-input#controlled"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Limit and duplicates",
+    "component": false,
+    "path": "/docs/components/tags-input#limit-and-duplicates"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Variants",
+    "component": false,
+    "path": "/docs/components/tags-input#variants"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Error",
+    "component": false,
+    "path": "/docs/components/tags-input#error"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Disabled and read only",
+    "component": false,
+    "path": "/docs/components/tags-input#disabled-and-read-only"
+  },
+  {
+    "head": "Tags Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tags-input#apis"
+  },
+  {
+    "head": "Tags Input",
+    "title": "TagsInput Props",
+    "component": false,
+    "path": "/docs/components/tags-input#tagsinput.props"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Adding and removing tags",
+    "component": false,
+    "path": "/docs/components/tags-input#adding-and-removing-tags"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tags-input#ref"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tags-input#accessibility"
+  },
+  {
     "title": "Text",
     "component": true,
     "path": "/docs/components/text"

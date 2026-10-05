@@ -1,0 +1,158 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { TagsInput, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Tags Input',
+  description:
+    'A field where each entry becomes a tag, for lists like skills, topics or email addresses.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 59
+}
+
+## Tags Input
+
+A field where each entry becomes a tag. Enter or a comma ends a tag, and the
+remove button or Backspace takes it out.
+
+<Playground
+  desc="Name the field with `aria-label`, or with a label passed as children."
+  scope={{ TagsInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <TagsInput aria-label="Skills" placeholder="Add a skill" initialValue={['React', 'TypeScript']} />
+  </Grid>
+  <Grid>
+    <TagsInput placeholder="Add a topic">Topics</TagsInput>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and `onChange` to keep the tags in your own state. `onChange` receives the whole list."
+  scope={{ TagsInput, Grid, Text }}
+  code={`
+() => {
+  const [tags, setTags] = React.useState(['design'])
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <TagsInput aria-label="Topics" value={tags} onChange={setTags} />
+      </Grid>
+      <Grid>
+        <Text p>{tags.length} tags: {tags.join(', ')}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Limit and duplicates"
+  desc="`max` ignores the tags past it. A tag already in the list is skipped, unless `allowDuplicates` is set."
+  scope={{ TagsInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <TagsInput aria-label="Up to 3 tags" max={3} placeholder="Up to 3 tags" initialValue={['one']} />
+  </Grid>
+  <Grid>
+    <TagsInput aria-label="Repeated tags" allowDuplicates placeholder="Repeats allowed" initialValue={['go', 'go']} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ TagsInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <TagsInput type="primary" filled aria-label="Filled" initialValue={['one', 'two']} />
+  </Grid>
+  <Grid>
+    <TagsInput type="success" light aria-label="Light" initialValue={['one', 'two']} />
+  </Grid>
+  <Grid>
+    <TagsInput type="warning" subtle aria-label="Subtle" initialValue={['one', 'two']} />
+  </Grid>
+  <Grid>
+    <TagsInput type="info" ghost rounded aria-label="Ghost" initialValue={['one', 'two']} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Error"
+  desc="`error` marks the field as invalid and shows `errorMessage` below it."
+  scope={{ TagsInput }}
+  code={`
+<TagsInput error errorMessage="Add at least one tag." aria-label="Tags" />
+`}
+/>
+
+<Playground
+  title="Disabled and read only"
+  desc="Both lock the field and the remove buttons."
+  scope={{ TagsInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <TagsInput disabled aria-label="Disabled" initialValue={['one', 'two']} />
+  </Grid>
+  <Grid>
+    <TagsInput readOnly aria-label="Read only" initialValue={['one', 'two']} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/tags-input.mdx">
+<Attributes.Title>TagsInput.Props</Attributes.Title>
+
+| Attribute           | Description                                              | Type                         | Accepted values                                                       | Default   |
+| ------------------- | -------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------- | --------- |
+| **value**           | tags, to control the field                               | `string[]`                   | -                                                                     | -         |
+| **initialValue**    | tags on the first render                                 | `string[]`                   | -                                                                     | `[]`      |
+| **onChange**        | called with the whole list when a tag is added or removed | `(tags: string[]) => void`  | -                                                                     | -         |
+| **max**             | most tags the field holds; the next ones are ignored     | `number`                     | -                                                                     | -         |
+| **allowDuplicates** | accepts a tag that is already in the list                | `boolean`                    | -                                                                     | `false`   |
+| **type**            | color of the field                                       | `string`                     | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default` |
+| **rounded**         | rounded corners                                          | `boolean`                    | -                                                                     | `false`   |
+| **filled**          | filled surface                                           | `boolean`                    | -                                                                     | `false`   |
+| **light**           | light surface                                            | `boolean`                    | -                                                                     | `false`   |
+| **ghost**           | ghost surface                                            | `boolean`                    | -                                                                     | `false`   |
+| **subtle**          | subtle surface                                           | `boolean`                    | -                                                                     | `false`   |
+| **disabled**        | locks the field                                          | `boolean`                    | -                                                                     | `false`   |
+| **readOnly**        | shows the tags without changing them                     | `boolean`                    | -                                                                     | `false`   |
+| **error**           | marks the field as invalid                               | `boolean`                    | -                                                                     | `false`   |
+| **errorMessage**    | text shown below the field with `error`                  | `string`                     | -                                                                     | -         |
+| ...                 | native props, passed to the `input`                      | `InputHTMLAttributes`        | `'placeholder', 'aria-label', 'id', ...`                              | -         |
+
+<Attributes.Title>Adding and removing tags</Attributes.Title>
+
+- • **Enter** turns the text into a tag. With an empty field, Enter works as usual, so a form can still submit.
+- • **A comma** ends a tag, typed or pasted, so `a, b, c` becomes three tags.
+- • **Leaving the field** adds the text that is still in it.
+- • **Backspace** on an empty field removes the last tag, and each tag also has a remove button.
+- • Spaces around a tag are trimmed, and empty tags are ignored.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The field is a native text input, so a label passed as children, or `aria-label`, names it. Each remove button is named after its tag, like "Remove React", and sits in the tab order. `error` sets `aria-invalid` and links the message with `aria-describedby`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

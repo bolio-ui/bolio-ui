@@ -312,6 +312,10 @@ export const components = [
     url: '/docs/components/timeline'
   },
   {
+    name: 'Tags Input',
+    url: '/docs/components/tags-input'
+  },
+  {
     name: 'Text',
     url: '/docs/components/text'
   },
