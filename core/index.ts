@@ -50,6 +50,9 @@ export type { ColProps } from './Col'
 export { default as Collapse } from './Collapse'
 export type { CollapseProps, CollapseGroupProps } from './Collapse'
 
+export { default as ColorPicker } from './ColorPicker'
+export type { ColorPickerProps } from './ColorPicker'
+
 export { default as Combobox } from './Combobox'
 export type { ComboboxProps, ComboboxOption } from './Combobox'
 

@@ -172,6 +172,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Color Picker',
+            url: '/docs/components/color-picker',
+            group: 'Components'
+          },
+          {
             name: 'Combobox',
             url: '/docs/components/combobox',
             group: 'Components'

@@ -934,6 +934,65 @@
     "path": "/docs/components/collapse#accessibility"
   },
   {
+    "title": "Color Picker",
+    "component": true,
+    "path": "/docs/components/color-picker"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker General",
+    "component": false,
+    "path": "/docs/components/color-picker#general"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker With swatches",
+    "component": false,
+    "path": "/docs/components/color-picker#with-swatches"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker Controlled",
+    "component": false,
+    "path": "/docs/components/color-picker#controlled"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker Disabled",
+    "component": false,
+    "path": "/docs/components/color-picker#disabled"
+  },
+  {
+    "head": "Color Picker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-picker#apis"
+  },
+  {
+    "head": "Color Picker",
+    "title": "ColorPicker Props",
+    "component": false,
+    "path": "/docs/components/color-picker#colorpicker.props"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Hex field",
+    "component": false,
+    "path": "/docs/components/color-picker#hex-field"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-picker#ref"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-picker#accessibility"
+  },
+  {
     "title": "Combobox",
     "component": true,
     "path": "/docs/components/combobox"

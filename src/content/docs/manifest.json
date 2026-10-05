@@ -179,6 +179,11 @@
               "path": "/docs/components/collapse.mdx"
             },
             {
+              "title": "Color Picker",
+              "keywords": "color picker, color, hex, hue, saturation, brightness, swatches, palette, eyedropper",
+              "path": "/docs/components/color-picker.mdx"
+            },
+            {
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"

@@ -145,6 +145,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'Color Picker',
+    url: '/docs/components/color-picker',
+    tag: 'New'
+  },
+  {
     name: 'Combobox',
     url: '/docs/components/combobox'
   },
