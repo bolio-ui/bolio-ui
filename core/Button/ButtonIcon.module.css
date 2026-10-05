@@ -5,10 +5,11 @@
   flex-shrink: 0;
   color: var(--bolio-ui-button-color);
   z-index: 1;
+  font-size: calc(var(--bolio-ui-button-height) / 2.35);
 }
 
 .icon :global(svg) {
   background: transparent;
-  height: calc(var(--bolio-ui-button-height) / 2.35);
-  width: calc(var(--bolio-ui-button-height) / 2.35);
+  height: 1em;
+  width: 1em;
 }

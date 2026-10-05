@@ -74,7 +74,7 @@ const AccentSelect: React.FC = () => {
         scale={0.75}
         rounded
         subtle
-        icon={<Droplet fontSize={14} />}
+        icon={<Droplet />}
         aria-label="Change theme color"
       >
         Theme

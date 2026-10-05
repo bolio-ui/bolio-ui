@@ -49,7 +49,7 @@ const VersionSelect: React.FC = () => {
         auto
         scale={0.6}
         type="abort"
-        iconRight={<ChevronDown fontSize={14} />}
+        iconRight={<ChevronDown />}
         aria-label="Select documentation version"
       >
         v{currentVersion}

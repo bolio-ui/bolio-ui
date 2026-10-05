@@ -104,14 +104,7 @@ const Navigation: React.FC = () => {
                         target="_blank"
                       >
                         <Button
-                          icon={
-                            <Heart
-                              fill="red"
-                              stroke="red"
-                              height={12}
-                              width={12}
-                            />
-                          }
+                          icon={<Heart fill="red" stroke="red" />}
                           auto
                           scale={0.75}
                           type="secondary-light"
