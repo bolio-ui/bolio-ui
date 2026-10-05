@@ -1,6 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Popover, Grid, Spacer, Link } from 'core'
+import { Popover, Grid, Spacer, Link, Text, Button } from 'core'
+import { Bell } from '@bolio-ui/icons'
 import { useState } from 'react'
 
 export const meta = {
@@ -105,6 +106,31 @@ The floating box popped by clicking or hovering.
         </Popover>
       </Grid>
     </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Notifications"
+  desc="A `Popover` can hold a small panel with a state and an action, like a list of notifications."
+  scope={{ Popover, Button, Text, Bell }}
+  code={`
+() => {
+  const [unread, setUnread] = React.useState(3)
+  const content = () => (
+    <div style={{ padding: '0 12px', maxWidth: 260 }}>
+      <Text small b>{unread ? unread + ' unread' : 'You are all caught up'}</Text>
+      <Text small type="secondary" p>Ana commented on Pricing.md</Text>
+      <Text small type="secondary" p>Rui invited you to Billing</Text>
+      <Text small type="secondary" p>Your export is ready</Text>
+      <Button auto scale={0.6} disabled={!unread} onClick={() => setUnread(0)}>Mark all as read</Button>
+    </div>
+  )
+  return (
+    <Popover content={content}>
+      <Button auto icon={<Bell />}>Notifications</Button>
+    </Popover>
   )
 }
 `}

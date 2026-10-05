@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Checkbox, Grid, Code } from 'core'
+import { Checkbox, Grid, Code, Button } from 'core'
 
 export const meta = {
   title: 'Checkbox',
@@ -132,6 +132,29 @@ Displays a boolean value.
           <Checkbox value="check3">Checkbox option 3</Checkbox>
           <Checkbox value="check4">Checkbox option 4</Checkbox>
         </Checkbox.Group>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Accept terms"
+  desc="Keep the action disabled until the box is checked, so the next step is clear."
+  scope={{ Checkbox, Grid, Button }}
+  code={`
+() => {
+  const [accepted, setAccepted] = React.useState(false)
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Checkbox checked={accepted} onChange={(event) => setAccepted(event.target.checked)}>
+          I accept the terms of use
+        </Checkbox>
+      </Grid>
+      <Grid>
+        <Button auto type="primary" disabled={!accepted}>Create account</Button>
       </Grid>
     </Grid.Container>
   )

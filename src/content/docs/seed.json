@@ -24,6 +24,12 @@
   },
   {
     "head": "Avatar",
+    "title": "Avatar Team members",
+    "component": false,
+    "path": "/docs/components/avatar#team-members"
+  },
+  {
+    "head": "Avatar",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/avatar#apis"
@@ -373,6 +379,12 @@
   },
   {
     "head": "Button Group",
+    "title": "Button Group Editor toolbar",
+    "component": false,
+    "path": "/docs/components/button-group#editor-toolbar"
+  },
+  {
+    "head": "Button Group",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button-group#apis"
@@ -654,6 +666,12 @@
     "title": "Checkbox Group",
     "component": false,
     "path": "/docs/components/checkbox#group"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Accept terms",
+    "component": false,
+    "path": "/docs/components/checkbox#accept-terms"
   },
   {
     "head": "Checkbox",
@@ -2238,6 +2256,12 @@
   },
   {
     "head": "Note",
+    "title": "Note Page alerts",
+    "component": false,
+    "path": "/docs/components/note#page-alerts"
+  },
+  {
+    "head": "Note",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/note#apis"
@@ -2462,6 +2486,12 @@
   },
   {
     "head": "Pagination",
+    "title": "Pagination Paginated list",
+    "component": false,
+    "path": "/docs/components/pagination#paginated-list"
+  },
+  {
+    "head": "Pagination",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/pagination#apis"
@@ -2574,6 +2604,12 @@
   },
   {
     "head": "Popover",
+    "title": "Popover Notifications",
+    "component": false,
+    "path": "/docs/components/popover#notifications"
+  },
+  {
+    "head": "Popover",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/popover#apis"
@@ -2639,6 +2675,12 @@
   },
   {
     "head": "Progress",
+    "title": "Progress Upload progress",
+    "component": false,
+    "path": "/docs/components/progress#upload-progress"
+  },
+  {
+    "head": "Progress",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/progress#apis"
@@ -2695,6 +2737,12 @@
     "title": "Radio Row",
     "component": false,
     "path": "/docs/components/radio#row"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Pick a plan",
+    "component": false,
+    "path": "/docs/components/radio#pick-a-plan"
   },
   {
     "head": "Radio",
@@ -3069,55 +3117,61 @@
     "path": "/docs/components/slider"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Select General",
     "component": false,
     "path": "/docs/components/slider#general"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Types",
     "component": false,
     "path": "/docs/components/slider#type"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Disabled",
     "component": false,
     "path": "/docs/components/slider#disabled"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Step",
     "component": false,
     "path": "/docs/components/slider#step"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Range",
     "component": false,
     "path": "/docs/components/slider#range"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Event",
     "component": false,
     "path": "/docs/components/slider#event"
   },
   {
-    "head": "Select",
+    "head": "Slider",
+    "title": "Slider Budget",
+    "component": false,
+    "path": "/docs/components/slider#budget"
+  },
+  {
+    "head": "Slider",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/slider#apis"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Props",
     "component": false,
     "path": "/docs/components/slider#slider.props"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Types - Slider",
     "component": false,
     "path": "/docs/components/slider#slidertypes"
@@ -3637,6 +3691,12 @@
   },
   {
     "head": "Tag",
+    "title": "Tag Article header",
+    "component": false,
+    "path": "/docs/components/tag#article-header"
+  },
+  {
+    "head": "Tag",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/tag#apis"
@@ -3953,6 +4013,12 @@
     "title": "Toggle Get Change",
     "component": false,
     "path": "/docs/components/toggle#get-change"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Notification settings",
+    "component": false,
+    "path": "/docs/components/toggle#notification-settings"
   },
   {
     "head": "Toggle",

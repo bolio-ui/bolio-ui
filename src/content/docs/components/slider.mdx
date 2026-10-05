@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Slider, Grid } from 'core'
+import { Slider, Grid, Text } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -129,6 +129,27 @@ Display the current value and an inputable range.
     <Grid.Container gap={2}>
       <Grid xs={12} md={12}>
         <Slider value={value} onChange={handler} width="50%" />
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Budget"
+  desc="Show the chosen value as text next to the `Slider`, and set `min`, `max` and `step` to the values that make sense."
+  scope={{ Slider, Grid, Text }}
+  code={`
+() => {
+  const [budget, setBudget] = React.useState(500)
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Text my={0}>Monthly budget: <b>{'$' + budget}</b></Text>
+      </Grid>
+      <Grid>
+        <Slider value={budget} onChange={setBudget} min={100} max={1000} step={50} hideValue />
       </Grid>
     </Grid.Container>
   )

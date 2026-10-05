@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Toggle, Grid } from 'core'
+import { Toggle, Grid, Card, Text } from 'core'
 import { Sun, Moon } from '@bolio-ui/icons'
 
 export const meta = {
@@ -108,6 +108,37 @@ Displays a boolean value.
         <Toggle onChange={handler} scale={2} />
       </Grid>
     </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Notification settings"
+  desc="Put the label and what it does on the left and the `Toggle` on the right, and name each switch with `aria-label`."
+  scope={{ Toggle, Card, Text }}
+  code={`
+() => {
+  const [prefs, setPrefs] = React.useState({ email: true, push: false, news: false })
+  const rows = [
+    ['email', 'Email', 'Comments and mentions'],
+    ['push', 'Push', 'Alerts on your phone'],
+    ['news', 'Newsletter', 'One email a month']
+  ]
+  const update = (key) => (event) =>
+    setPrefs((last) => ({ ...last, [key]: event.target.checked }))
+  return (
+    <Card bordered width="100%">
+      {rows.map(([key, label, hint]) => (
+        <div key={key} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 0' }}>
+          <div>
+            <Text p my={0}><b>{label}</b></Text>
+            <Text small type="secondary">{hint}</Text>
+          </div>
+          <Toggle checked={prefs[key]} onChange={update(key)} aria-label={label} />
+        </div>
+      ))}
+    </Card>
   )
 }
 `}

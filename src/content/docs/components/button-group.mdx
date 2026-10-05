@@ -1,6 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Button, Grid, ButtonGroup } from 'core'
+import { Bold, Italic, Underline } from '@bolio-ui/icons'
 
 export const meta = {
   title: 'Button Group',
@@ -122,6 +123,26 @@ A set of related buttons.
     </ButtonGroup>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Editor toolbar"
+  desc="Icon only buttons need a name for screen readers, so give each one an `aria-label`."
+  scope={{ Button, ButtonGroup, Bold, Italic, Underline }}
+  code={`
+() => {
+  const [on, setOn] = React.useState({ bold: true, italic: false, underline: false })
+  const toggle = (key) => () => setOn((last) => ({ ...last, [key]: !last[key] }))
+  const style = (key) => (on[key] ? 'primary' : 'default')
+  return (
+    <ButtonGroup>
+      <Button icon={<Bold />} aria-label="Bold" aria-pressed={on.bold} type={style('bold')} onClick={toggle('bold')} />
+      <Button icon={<Italic />} aria-label="Italic" aria-pressed={on.italic} type={style('italic')} onClick={toggle('italic')} />
+      <Button icon={<Underline />} aria-label="Underline" aria-pressed={on.underline} type={style('underline')} onClick={toggle('underline')} />
+    </ButtonGroup>
+  )
+}
 `}
 />
 

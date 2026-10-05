@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Radio, Grid, Code } from 'core'
+import { Radio, Grid, Code, Button } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -148,6 +148,39 @@ Provides single user input from a selection of options.
     </Radio.Group>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Pick a plan"
+  desc="Describe each option under its name, and let the button repeat the choice."
+  scope={{ Radio, Grid, Button }}
+  code={`
+() => {
+  const plans = {
+    free: ['Free', '$0 a month', '1 project'],
+    pro: ['Pro', '$12 a month', 'Unlimited projects'],
+    team: ['Team', '$36 a month', 'Up to 10 members']
+  }
+  const [plan, setPlan] = React.useState('pro')
+  return (
+    <Grid.Container direction="column" gap={2}>
+      <Grid>
+        <Radio.Group value={plan} onChange={setPlan}>
+          {Object.entries(plans).map(([key, [name, price, hint]]) => (
+            <Radio key={key} value={key}>
+              {name}
+              <Radio.Description>{price}. {hint}.</Radio.Description>
+            </Radio>
+          ))}
+        </Radio.Group>
+      </Grid>
+      <Grid>
+        <Button auto type="primary">Continue with {plans[plan][0]}</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 
