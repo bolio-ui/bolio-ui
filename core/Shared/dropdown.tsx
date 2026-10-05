@@ -21,19 +21,26 @@ interface ReactiveDomReact {
   left: number
   right: number
   width: number
+  elementTop: number
 }
 
 const defaultRect: ReactiveDomReact = {
   top: -1000,
   left: -1000,
   right: -1000,
-  width: 0
+  width: 0,
+  elementTop: -1000
 }
+
+const GAP = 2
 
 const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
   ({ children, parent, visible, disableMatchWidth, getPopupContainer }) => {
     const el = usePortal('dropdown', getPopupContainer)
     const [rect, setRect] = useState<ReactiveDomReact>(defaultRect)
+    const [menu, setMenu] = useState<HTMLDivElement | null>(null)
+    // Menu height when it opens upwards, null when it opens downwards.
+    const [flipHeight, setFlipHeight] = useState<number | null>(null)
 
     /* istanbul ignore next */
     if (parent && process.env.NODE_ENV !== 'production') {
@@ -54,9 +61,10 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
         top,
         left,
         right,
-        width: nativeWidth
+        width: nativeWidth,
+        elementTop
       } = getRefRect(parent, getPopupContainer)
-      setRect({ top, left, right, width: nativeWidth })
+      setRect({ top, left, right, width: nativeWidth, elementTop })
     }
 
     useResize(updateRect)
@@ -88,12 +96,25 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
       event.preventDefault()
     }
 
+    // Open upwards when the menu does not fit below the trigger but fits better above.
+    useEffect(() => {
+      const trigger = parent?.current
+      if (!visible || !trigger || !menu) return setFlipHeight(null)
+      const { top, bottom } = trigger.getBoundingClientRect()
+      const height = menu.offsetHeight
+      const below = window.innerHeight - bottom
+      setFlipHeight(height + GAP > below && top > below ? height : null)
+    }, [visible, parent, menu, rect])
+
     // after every hook: there is nothing to place without a parent
     if (!parent || !el) return null
 
     const dropdownStyle: React.CSSProperties = {
       position: 'absolute',
-      top: rect.top + 2,
+      top:
+        flipHeight === null
+          ? rect.top + GAP
+          : rect.elementTop - flipHeight - GAP,
       left: rect.left,
       zIndex: 1100,
       ...(disableMatchWidth ? { minWidth: rect.width } : { width: rect.width })
@@ -102,6 +123,7 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
     return createPortal(
       <CssTransition visible={visible}>
         <div
+          ref={setMenu}
           className=""
           onClick={clickHandler}
           onMouseDown={mouseDownHandler}
