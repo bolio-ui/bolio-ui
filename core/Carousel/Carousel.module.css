@@ -1,0 +1,124 @@
+.carousel {
+  box-sizing: border-box;
+  color: var(--carousel-color);
+}
+
+.viewport {
+  position: relative;
+  display: flex;
+  gap: var(--carousel-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-radius: var(--carousel-radius);
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.viewport:focus-visible {
+  outline: 2px solid var(--carousel-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    scroll-behavior: auto;
+  }
+}
+
+.slide {
+  flex: 0 0
+    calc(
+      (100% - (var(--carousel-visible) - 1) * var(--carousel-gap)) /
+        var(--carousel-visible)
+    );
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em;
+  margin-top: 0.75em;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25em;
+  height: 2.25em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--carousel-border);
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.control:hover:not(:disabled) {
+  background: var(--carousel-hover-bg);
+}
+
+.control:focus-visible,
+.indicator:focus-visible {
+  outline: 2px solid var(--carousel-focus);
+  outline-offset: 2px;
+}
+
+.control:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.indicators {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+
+/* the dot is drawn inside a larger button, so it is easy to hit */
+.indicator {
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.indicator::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  content: '';
+  background: var(--carousel-dot);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease;
+}
+
+.indicator[aria-current] {
+  cursor: default;
+}
+
+.indicator[aria-current]::before {
+  background: var(--carousel-dot-active);
+}

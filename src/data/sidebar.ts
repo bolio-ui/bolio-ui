@@ -123,6 +123,11 @@ export const components = [
     url: '/docs/components/card'
   },
   {
+    name: 'Carousel',
+    url: '/docs/components/carousel',
+    tag: 'New'
+  },
+  {
     name: 'Checkbox',
     url: '/docs/components/checkbox'
   },

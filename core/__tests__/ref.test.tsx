@@ -14,6 +14,7 @@ const {
   Calendar,
   Capacity,
   Card,
+  Carousel,
   Checkbox,
   Code,
   Col,
@@ -104,6 +105,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Calendar', (ref) => <Calendar ref={ref} />],
   ['Capacity', (ref) => <Capacity ref={ref} value={50} />],
   ['Card', (ref) => <Card ref={ref}>Content</Card>],
+  [
+    'Carousel',
+    (ref) => (
+      <Carousel ref={ref} aria-label="Highlights">
+        <div>One</div>
+      </Carousel>
+    ),
+    'DIV'
+  ],
   ['Checkbox', (ref) => <Checkbox ref={ref}>Check</Checkbox>, 'INPUT'],
   ['Code', (ref) => <Code ref={ref}>yarn add</Code>],
   ['Col', (ref) => <Col ref={ref}>col</Col>],

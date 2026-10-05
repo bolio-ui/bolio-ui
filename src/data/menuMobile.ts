@@ -147,6 +147,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Carousel',
+            url: '/docs/components/carousel',
+            group: 'Components'
+          },
+          {
             name: 'Checkbox',
             url: '/docs/components/checkbox',
             group: 'Components'

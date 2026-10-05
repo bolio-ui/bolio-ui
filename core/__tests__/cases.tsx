@@ -12,6 +12,7 @@ const {
   Calendar,
   Capacity,
   Card,
+  Carousel,
   Checkbox,
   Code,
   Collapse,
@@ -99,6 +100,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Calendar', () => <Calendar value={new Date(2026, 0, 15)} />],
   ['Capacity', () => <Capacity value={50} />],
   ['Card', () => <Card>Content</Card>],
+  [
+    'Carousel',
+    () => (
+      <Carousel aria-label="Highlights">
+        <div>One</div>
+        <div>Two</div>
+      </Carousel>
+    )
+  ],
   ['Checkbox', () => <Checkbox>Check</Checkbox>],
   ['Code', () => <Code>yarn add</Code>],
   [

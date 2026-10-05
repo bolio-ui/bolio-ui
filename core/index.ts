@@ -35,6 +35,9 @@ export type { CapacityProps } from './Capacity'
 export { default as Card } from './Card'
 export type { CardProps, CardContentProps, CardFooterProps } from './Card'
 
+export { default as Carousel } from './Carousel'
+export type { CarouselProps } from './Carousel'
+
 export { default as Checkbox } from './Checkbox'
 export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
 

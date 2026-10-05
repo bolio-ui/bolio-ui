@@ -1,0 +1,247 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Carousel, Card, Text, Avatar, Button, Grid, Image, useTheme } from 'core'
+
+export const meta = {
+  title: 'Carousel',
+  description:
+    'A row of slides that scrolls and snaps, with buttons and dots to move between them.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 64
+}
+
+## Carousel
+
+A row of slides that scrolls and snaps into place. It is plain scrolling with
+`scroll-snap`, so touch, trackpad and keyboard work as the browser does them,
+and the buttons and dots move the same scroll.
+
+<Playground
+  desc="Each child is a slide. Name the carousel with `aria-label`."
+  scope={{ Carousel, Card, Text }}
+  code={`
+<Carousel aria-label="Product highlights">
+  {[
+    ['Themes', 'Dark and light, and your brand color in one line.'],
+    ['Accessible', 'Keyboard and screen reader support in every component.'],
+    ['Typed', 'Props and refs are typed for TypeScript.']
+  ].map(([title, text]) => (
+    <Card key={title} bordered width="100%" style={{ minHeight: 120 }}>
+      <Text h4 my={0}>{title}</Text>
+      <Text p type="secondary">{text}</Text>
+    </Card>
+  ))}
+</Carousel>
+`}
+/>
+
+<Playground
+  title="Several slides"
+  desc="`slidesToShow` sets how many are in view, and `gap` the space between them. The dots count the positions the first slide can take."
+  scope={{ Carousel, Card, Text }}
+  code={`
+<Carousel aria-label="Plans" slidesToShow={3} gap="0.75rem">
+  {['Free', 'Starter', 'Pro', 'Team', 'Business'].map((name, index) => (
+    <Card key={name} bordered width="100%">
+      <Text p my={0}><b>{name}</b></Text>
+      <Text small type="secondary">{'$' + index * 12 + ' a month'}</Text>
+    </Card>
+  ))}
+</Carousel>
+`}
+/>
+
+<Playground
+  title="Photo gallery"
+  desc="Use `Image` with a fixed height and `objectFit: 'cover'` so every photo fills its slide the same way, and describe each one in `alt`."
+  scope={{ Carousel, Image, Text, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const photos = [
+    ['/img/jpg/docs/lake-sunrise.jpg', 'A mountain lake at sunrise', 'Lake at sunrise'],
+    ['/img/jpg/docs/forest-lake.jpg', 'A forest lake under the clouds', 'Forest lake'],
+    ['/img/jpg/docs/autumn-canyon.jpg', 'A river in a canyon in autumn', 'Autumn canyon'],
+    ['/img/jpg/docs/mountain-reflection.jpg', 'Snowy mountains reflected in a lake', 'Mountain reflection'],
+    ['/img/jpg/docs/moonlit-peaks.jpg', 'Snowy mountains under the moon', 'Moonlit peaks']
+  ]
+  return (
+    <Carousel aria-label="Photo gallery">
+      {photos.map(([src, alt, caption]) => (
+        <div key={src}>
+          <Image
+            src={src}
+            alt={alt}
+            width="100%"
+            height="240px"
+            style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+          />
+          <Text small type="secondary">{caption}</Text>
+        </div>
+      ))}
+    </Carousel>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Several photos"
+  desc="Show a few photos at once and let the rest scroll in. A smaller height keeps the row compact."
+  scope={{ Carousel, Image, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const photos = [
+    ['/img/jpg/docs/lake-sunrise.jpg', 'A mountain lake at sunrise'],
+    ['/img/jpg/docs/forest-lake.jpg', 'A forest lake under the clouds'],
+    ['/img/jpg/docs/autumn-canyon.jpg', 'A river in a canyon in autumn'],
+    ['/img/jpg/docs/mountain-reflection.jpg', 'Snowy mountains reflected in a lake'],
+    ['/img/jpg/docs/moonlit-peaks.jpg', 'Snowy mountains under the moon']
+  ]
+  return (
+    <Carousel aria-label="More photos" slidesToShow={3} gap="0.75rem">
+      {photos.map(([src, alt]) => (
+        <Image
+          key={src}
+          src={src}
+          alt={alt}
+          width="100%"
+          height="140px"
+          style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+        />
+      ))}
+    </Carousel>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Destination cards"
+  desc="A photo, a name and a price in each `Card`, with two cards in view. Put the name and the price on separate lines."
+  scope={{ Carousel, Card, Image, Text, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const places = [
+    ['/img/jpg/docs/lake-sunrise.jpg', 'A mountain lake at sunrise', 'Lake at sunrise', 'From $420'],
+    ['/img/jpg/docs/forest-lake.jpg', 'A forest lake under the clouds', 'Forest lake', 'From $380'],
+    ['/img/jpg/docs/autumn-canyon.jpg', 'A river in a canyon in autumn', 'Autumn canyon', 'From $510'],
+    ['/img/jpg/docs/mountain-reflection.jpg', 'Snowy mountains reflected in a lake', 'Mountain reflection', 'From $460']
+  ]
+  return (
+    <Carousel aria-label="Trips" slidesToShow={2}>
+      {places.map(([src, alt, name, price]) => (
+        <Card key={name} bordered width="100%">
+          <Image
+            src={src}
+            alt={alt}
+            width="100%"
+            height="140px"
+            style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+          />
+          <Text p my={0} style={{ marginTop: 12 }}><b>{name}</b></Text>
+          <Text small type="secondary">{price}</Text>
+        </Card>
+      ))}
+    </Carousel>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Use `value` for the first slide in view and `onChange` to hear about it, both from the buttons and from the scroll."
+  scope={{ Carousel, Card, Text, Button, Grid }}
+  code={`
+() => {
+  const [index, setIndex] = React.useState(0)
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Carousel aria-label="Steps" value={index} onChange={setIndex}>
+          {['Create an account', 'Invite your team', 'Deploy', 'Share the link'].map((step) => (
+            <Card key={step} bordered width="100%" style={{ minHeight: 96 }}>
+              <Text b>{step}</Text>
+            </Card>
+          ))}
+        </Carousel>
+      </Grid>
+      <Grid>
+        <Grid.Container gap={1} alignItems="center">
+          <Grid>
+            <Text small type="secondary">Slide {index + 1} of 4</Text>
+          </Grid>
+          <Grid>
+            <Button auto scale={0.6} onClick={() => setIndex(3)}>Jump to the last</Button>
+          </Grid>
+        </Grid.Container>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Customer quotes"
+  desc="One quote at a time, with who said it. Hide the buttons with `controls` when the dots are enough."
+  scope={{ Carousel, Card, Text, Avatar }}
+  code={`
+<Carousel aria-label="What customers say" controls={false}>
+  {[
+    ['AL', 'Ada Lovelace', 'We shipped our dashboard in a week.'],
+    ['GH', 'Grace Hopper', 'The best defaults I have used.'],
+    ['LT', 'Linus Torvalds', 'Easy to theme, and the docs are clear.']
+  ].map(([text, name, quote]) => (
+    <Card key={name} bordered width="100%">
+      <Text p my={0}>{quote}</Text>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12 }}>
+        <Avatar text={text} />
+        <Text small b>{name}</Text>
+      </div>
+    </Card>
+  ))}
+</Carousel>
+`}
+/>
+
+<Attributes edit="/content/docs/components/carousel.mdx">
+<Attributes.Title>Carousel.Props</Attributes.Title>
+
+| Attribute          | Description                                                       | Type                                          | Accepted values           | Default             |
+| ------------------ | ----------------------------------------------------------------- | --------------------------------------------- | ------------------------- | ------------------- |
+| **slidesToShow**   | slides in view at once                                            | `number`                                      | -                         | `1`                 |
+| **gap**            | space between the slides                                          | `string`                                      | any CSS length            | `1rem`              |
+| **controls**       | show the previous and next buttons                                | `boolean`                                     | -                         | `true`              |
+| **indicators**     | show a dot for each position                                      | `boolean`                                     | -                         | `true`              |
+| **value**          | index of the first slide in view, to control it                   | `number`                                      | -                         | -                   |
+| **initialValue**   | index of the first slide in view on the first render              | `number`                                      | -                         | `0`                 |
+| **onChange**       | called with the index of the slide the scroll rests on            | `(index: number) => void`                     | -                         | -                   |
+| **previousLabel**  | name of the previous button                                       | `string`                                      | -                         | `Previous slide`    |
+| **nextLabel**      | name of the next button                                           | `string`                                      | -                         | `Next slide`        |
+| **slideLabel**     | name of each slide for screen readers                             | `(index: number, count: number) => string`    | -                         | `1 of 5`            |
+| **indicatorLabel** | name of each dot                                                  | `(index: number) => string`                   | -                         | `Go to slide 1`     |
+| ...                | native props, passed to the root `div`                            | `HTMLAttributes`                              | `'aria-label', 'id', ...` | -                   |
+
+<Attributes.Title>Behavior</Attributes.Title>
+
+- • **Scroll**: swiping, the trackpad, the arrow keys on the focused list and the buttons all move the same scroll. `onChange` is called once the scroll stops, not on every pixel.
+- • **Motion**: the scroll is smooth, unless the user asked for less motion in the system.
+- • **Ends**: the buttons are disabled on the first and the last position. There is no loop.
+- • **Controls**: when every slide fits, the buttons and dots are not shown.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The root is a `region` with `aria-roledescription="carousel"`, and each slide is a `group` named by its position, like "2 of 5". Name the carousel with `aria-label`. The scrolling list can be focused, so the keyboard can scroll it, and the buttons and dots are real buttons with names you can translate. The dot of the current position has `aria-current`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

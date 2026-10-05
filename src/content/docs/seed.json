@@ -633,6 +633,83 @@
     "path": "/docs/components/card#cardtype"
   },
   {
+    "title": "Carousel",
+    "component": true,
+    "path": "/docs/components/carousel"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel General",
+    "component": false,
+    "path": "/docs/components/carousel#general"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Several slides",
+    "component": false,
+    "path": "/docs/components/carousel#several-slides"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Photo gallery",
+    "component": false,
+    "path": "/docs/components/carousel#photo-gallery"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Several photos",
+    "component": false,
+    "path": "/docs/components/carousel#several-photos"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Destination cards",
+    "component": false,
+    "path": "/docs/components/carousel#destination-cards"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Controlled",
+    "component": false,
+    "path": "/docs/components/carousel#controlled"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Customer quotes",
+    "component": false,
+    "path": "/docs/components/carousel#customer-quotes"
+  },
+  {
+    "head": "Carousel",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/carousel#apis"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Props",
+    "component": false,
+    "path": "/docs/components/carousel#carousel.props"
+  },
+  {
+    "head": "Carousel",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/carousel#behavior"
+  },
+  {
+    "head": "Carousel",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/carousel#ref"
+  },
+  {
+    "head": "Carousel",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/carousel#accessibility"
+  },
+  {
     "title": "Checkbox",
     "component": true,
     "path": "/docs/components/checkbox"
