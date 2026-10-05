@@ -11,21 +11,13 @@ import {
   useTheme,
   useBodyScroll
 } from 'core'
-import {
-  Sun,
-  Moon,
-  Heart,
-  Github,
-  Instagram,
-  Twitter,
-  Menu,
-  X
-} from '@bolio-ui/icons'
+import { Heart, Menu, X } from '@bolio-ui/icons'
 import { useMediaQuery } from 'src/utils/use-media-query'
-import { useSettings } from 'src/utils/use-settings'
 import Logo from 'src/components/Logo'
 import NavigationMobile from 'src/components/NavigationMobile'
 import VersionSelect from 'src/components/VersionSelect'
+import AccentSelect from 'src/components/AccentSelect'
+import ThemeModeSelect from 'src/components/ThemeModeSelect'
 import SearchInput from 'src/components/Search/instant-search'
 
 // Plain links, not Tabs: they navigate between pages
@@ -46,7 +38,6 @@ const navLinks = [
 
 const Navigation: React.FC = () => {
   const theme = useTheme()
-  const settings = useSettings()
   const pathname = usePathname()
   const [expanded, setExpanded] = useState<boolean>(false)
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
@@ -104,82 +95,10 @@ const Navigation: React.FC = () => {
                 <Grid xs={6} md={6} justify="flex-end">
                   <div className="controls">
                     <>
-                      <Link
-                        href="https://github.com/bolio-ui/bolio-ui"
-                        target="_blank"
-                        aria-label="Link to Github Bolio UI"
-                      >
-                        <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          className="theme-button"
-                          aria-label="Github Bolio UI"
-                          type="abort"
-                        >
-                          <Github fontSize={16} />
-                        </Button>
-                      </Link>
-                      <Link
-                        href="https://www.twitter.com/bolio_ui/"
-                        target="_blank"
-                        aria-label="Link to Twitter Bolio UI"
-                      >
-                        <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          className="theme-button"
-                          aria-label="Twitter Bolio UI"
-                          type="abort"
-                        >
-                          <Twitter fontSize={16} />
-                        </Button>
-                      </Link>
-                      <Link
-                        href="https://www.instagram.com/bolio.ui/"
-                        target="_blank"
-                        aria-label="Link to Instagram Bolio UI"
-                      >
-                        <Button
-                          w="28px"
-                          h="28px"
-                          py={0}
-                          px={0}
-                          className="theme-button"
-                          aria-label="Instagram Bolio UI"
-                          type="abort"
-                        >
-                          <Instagram fontSize={16} />
-                        </Button>
-                      </Link>
-                      <Button
-                        w="28px"
-                        h="28px"
-                        py={0}
-                        px={0}
-                        aria-label="Toggle Dark mode"
-                        className="theme-button"
-                        type="abort"
-                        onClick={() =>
-                          settings.switchTheme(
-                            theme.type === 'dark' ? 'light' : 'dark'
-                          )
-                        }
-                      >
-                        {theme.type === 'dark' ? (
-                          <Sun fontSize={16} />
-                        ) : (
-                          <Moon fontSize={16} />
-                        )}
-                      </Button>
-                      <Spacer w={0.5} />
                       <VersionSelect />
-                      <Spacer w={0.5} />
                       <SearchInput />
-                      <Spacer w={1} />
+                      <ThemeModeSelect />
+                      <AccentSelect />
                       <Link
                         href="https://www.patreon.com/brunnoandrade"
                         target="_blank"
@@ -216,26 +135,7 @@ const Navigation: React.FC = () => {
                     <SearchInput />
                     <Spacer w={1} />
                     <div className="controls">
-                      <Button
-                        w="28px"
-                        h="28px"
-                        py={0}
-                        px={0}
-                        aria-label="Toggle Dark mode"
-                        className="theme-button"
-                        type="abort"
-                        onClick={() =>
-                          settings.switchTheme(
-                            theme.type === 'dark' ? 'light' : 'dark'
-                          )
-                        }
-                      >
-                        {theme.type === 'dark' ? (
-                          <Sun fontSize={16} />
-                        ) : (
-                          <Moon fontSize={16} />
-                        )}
-                      </Button>
+                      <ThemeModeSelect />
                       <Button
                         className="menu-toggle"
                         auto
@@ -384,6 +284,7 @@ const Navigation: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          gap: 8px;
           height: 50px;
         }
         .controls :global(.menu-toggle) {

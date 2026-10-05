@@ -35,6 +35,20 @@ function Footer() {
                 >
                   GitHub
                 </Link>
+                <Link
+                  href="https://www.twitter.com/bolio_ui/"
+                  target="_blank"
+                  aria-label="Link to Twitter Bolio UI"
+                >
+                  Twitter
+                </Link>
+                <Link
+                  href="https://www.instagram.com/bolio.ui/"
+                  target="_blank"
+                  aria-label="Link to Instagram Bolio UI"
+                >
+                  Instagram
+                </Link>
               </Row>
             </div>
           </Grid>

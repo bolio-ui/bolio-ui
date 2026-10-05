@@ -16,7 +16,7 @@ import {
   Grid,
   Spinner
 } from 'core'
-import { useSettings } from 'src/utils/use-settings'
+import { mix, useSettings } from 'src/utils/use-settings'
 import * as Icons from '@bolio-ui/icons'
 
 type Icon = keyof typeof Icons
@@ -544,8 +544,17 @@ export const FollowersCard = () => {
         }
         .border-gradient {
           background:
-            linear-gradient(#c25fff, #7828c9) padding-box,
-            linear-gradient(to right, #c25fff, #7828c9) border-box;
+            linear-gradient(
+                ${theme.palette.code},
+                ${mix(theme.palette.code, 0, 0.35)}
+              )
+              padding-box,
+            linear-gradient(
+                to right,
+                ${theme.palette.code},
+                ${mix(theme.palette.code, 0, 0.35)}
+              )
+              border-box;
           border-radius: 50em;
           border: 2px solid transparent;
         }
@@ -616,7 +625,7 @@ export const Player = () => {
           <Text my={0}>1:25</Text>
           <Text my={0}>3:18</Text>
         </Row>
-        <Capacity color="#c25fff" width="100%" value={45} />
+        <Capacity color={theme.palette.code} width="100%" value={45} />
         <Spacer h={1.5} />
         <Row align="middle" justify="space-between">
           <Button

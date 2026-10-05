@@ -63,7 +63,9 @@ const themeScript = `
 (function(){
   var theme = 'dark';
   try {
-    if (window.localStorage.getItem('theme') === 'light') theme = 'light';
+    var saved = window.localStorage.getItem('theme');
+    if (saved === 'light') theme = 'light';
+    if (saved === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'light';
   } catch (e) {}
   var background = theme === 'light' ? '${lightPalette.background}' : '${darkPalette.background}';
   document.documentElement.style.background = background;

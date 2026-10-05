@@ -1,10 +1,19 @@
 'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { SerwistProvider } from '@serwist/turbopack/react'
 import { BolioUIProvider, CssBaseline, useTheme } from 'core'
-import { SettingsContext, themes, ThemeType } from 'src/utils/use-settings'
+import { ThemeContext } from 'core/use-theme/theme-context'
+import {
+  accents,
+  AccentName,
+  mix,
+  SettingsContext,
+  themes,
+  ThemePreference,
+  ThemeType
+} from 'src/utils/use-settings'
 import { KBarWrapper as KBarProvider } from 'src/components'
 import Navigation from 'src/components/Navigation'
 import Analytics from 'src/components/Analytics'
@@ -101,6 +110,35 @@ function MdxGlobalStyles() {
   )
 }
 
+// Applies the chosen accent over the active theme's palette. The first accent
+// is the preset palette itself.
+function AccentTheme({
+  accent,
+  children
+}: {
+  accent: AccentName
+  children: React.ReactNode
+}) {
+  const theme = useTheme()
+  const value = useMemo(() => {
+    if (accent === accents[0].name) return theme
+    const { color } = accents.find((item) => item.name === accent) ?? accents[0]
+    return {
+      ...theme,
+      palette: {
+        ...theme.palette,
+        primary: color,
+        primaryLight: mix(color, 255, 0.8),
+        primaryLighter: mix(color, 255, 0.5),
+        primaryDark: mix(color, 0, 0.7),
+        link: color
+      }
+    }
+  }, [theme, accent])
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+}
+
 export default function Providers({
   children,
   disableServiceWorker
@@ -109,11 +147,27 @@ export default function Providers({
   disableServiceWorker: boolean
 }) {
   const pathname = usePathname()
-  const [themeType, setThemeType] = useState<ThemeType>('dark')
+  const [themePreference, setThemePreference] =
+    useState<ThemePreference>('dark')
+  const [systemType, setSystemType] = useState<ThemeType>('dark')
+  const themeType = themePreference === 'system' ? systemType : themePreference
+  const [accent, setAccent] = useState<AccentName>(accents[0].name)
 
   useEffect(() => {
-    const theme = window.localStorage.getItem('theme') as ThemeType
-    if (themes.includes(theme)) setThemeType(theme)
+    const query = window.matchMedia('(prefers-color-scheme: dark)')
+    const update = () => setSystemType(query.matches ? 'dark' : 'light')
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem('accent')
+    const found = accents.find((item) => item.name === saved)
+    if (found) setAccent(found.name)
+    const theme = window.localStorage.getItem('theme') as ThemePreference
+    if (theme === 'system' || themes.includes(theme as ThemeType))
+      setThemePreference(theme)
   }, [])
 
   // The script in the root layout keeps the page hidden, on the right
@@ -128,10 +182,15 @@ export default function Providers({
     document.body.removeAttribute('style')
   }, [themeType])
 
-  const switchTheme = useCallback((theme: ThemeType) => {
-    setThemeType(theme)
+  const switchTheme = useCallback((theme: ThemePreference) => {
+    setThemePreference(theme)
     if (typeof window !== 'undefined' && window.localStorage)
       window.localStorage.setItem('theme', theme)
+  }, [])
+
+  const switchAccent = useCallback((next: AccentName) => {
+    setAccent(next)
+    window.localStorage.setItem('accent', next)
   }, [])
 
   // Analytics already counts the first page, so only later navigations are sent
@@ -152,15 +211,25 @@ export default function Providers({
       reloadOnOnline
     >
       <BolioUIProvider themeType={themeType}>
-        <SettingsContext.Provider value={{ themeType, switchTheme }}>
-          <Analytics />
-          <CssBaseline />
-          <KBarProvider>
-            <Navigation />
-            {children}
-          </KBarProvider>
+        <SettingsContext.Provider
+          value={{
+            themeType,
+            themePreference,
+            switchTheme,
+            accent,
+            switchAccent
+          }}
+        >
+          <AccentTheme accent={accent}>
+            <Analytics />
+            <CssBaseline />
+            <KBarProvider>
+              <Navigation />
+              {children}
+            </KBarProvider>
+            <MdxGlobalStyles />
+          </AccentTheme>
         </SettingsContext.Provider>
-        <MdxGlobalStyles />
       </BolioUIProvider>
     </SerwistProvider>
   )
