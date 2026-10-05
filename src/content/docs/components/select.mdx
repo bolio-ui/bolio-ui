@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Select, Grid, Code, Modal, useModal, Button } from 'core'
+import { Select, Grid, Code, Modal, useModal, Button, Text } from 'core'
 
 export const meta = {
   title: 'Select',
@@ -476,6 +476,39 @@ The Select contain an additional Hooks, see subsection [useModal](/docs/hooks/us
     </Grid.Container>
   )
 }`}
+/>
+
+<Playground
+  title="Filter bar"
+  desc="Keep the chosen values in state and say what they produce. A `Select` per filter reads better than one long list."
+  scope={{ Select, Grid, Text }}
+  code={`
+() => {
+  const [status, setStatus] = React.useState('open')
+  const [sort, setSort] = React.useState('recent')
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Select value={status} onChange={setStatus}>
+          <Select.Option value="open">Open</Select.Option>
+          <Select.Option value="closed">Closed</Select.Option>
+          <Select.Option value="all">All</Select.Option>
+        </Select>
+      </Grid>
+      <Grid>
+        <Select value={sort} onChange={setSort}>
+          <Select.Option value="recent">Most recent</Select.Option>
+          <Select.Option value="oldest">Oldest</Select.Option>
+          <Select.Option value="comments">Most comments</Select.Option>
+        </Select>
+      </Grid>
+      <Grid>
+        <Text small type="secondary">Showing {status} issues, {sort}.</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
 />
 
 <Attributes edit="/content/docs/components/select.mdx">

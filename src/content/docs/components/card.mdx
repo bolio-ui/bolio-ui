@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Card, Link, Image, Text, Divider, Code, Grid } from 'core'
+import { Card, Link, Image, Text, Divider, Code, Grid, Avatar, Button } from 'core'
 
 export const meta = {
   title: 'Card',
@@ -348,6 +348,34 @@ A common container component.
     </Card>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Profile"
+  desc="A person with their contact and the two actions people take next."
+  scope={{ Card, Avatar, Text, Divider, Button, Grid }}
+  code={`
+<Card bordered width="320px">
+  <Grid.Container gap={1} alignItems="center">
+    <Grid>
+      <Avatar text="AL" />
+    </Grid>
+    <Grid>
+      <Text h5 my={0}>Ada Lovelace</Text>
+      <Text small type="secondary">ada@example.com</Text>
+    </Grid>
+  </Grid.Container>
+  <Divider />
+  <Grid.Container gap={1}>
+    <Grid>
+      <Button auto scale={0.75} type="primary">Message</Button>
+    </Grid>
+    <Grid>
+      <Button auto scale={0.75}>View profile</Button>
+    </Grid>
+  </Grid.Container>
+</Card>
 `}
 />
 

@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Tabs, Grid, Text, Button, Code, useTabs } from 'core'
+import { Tabs, Grid, Text, Button, Code, useTabs, Input, Spacer } from 'core'
 import { useState } from 'react'
 import { Instagram, Facebook } from '@bolio-ui/icons'
 
@@ -234,6 +234,32 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
     </Grid.Container>
   )
 }
+`}
+/>
+
+<Playground
+  title="Settings page"
+  desc="Group a page by topic. Each tab holds the fields and the action for that topic only."
+  scope={{ Tabs, Input, Text, Button, Spacer }}
+  code={`
+<Tabs initialValue="profile">
+  <Tabs.Item label="Profile" value="profile">
+    <Spacer h={1} />
+    <Input floating width="100%" initialValue="Ada Lovelace">Name</Input>
+    <Spacer h={1} />
+    <Button auto type="primary">Save profile</Button>
+  </Tabs.Item>
+  <Tabs.Item label="Billing" value="billing">
+    <Spacer h={1} />
+    <Text p>You are on the Pro plan. The next charge of $12 is on Nov 3.</Text>
+    <Button auto>Manage plan</Button>
+  </Tabs.Item>
+  <Tabs.Item label="Team" value="team">
+    <Spacer h={1} />
+    <Text p>3 members have access to this workspace.</Text>
+    <Button auto>Invite a teammate</Button>
+  </Tabs.Item>
+</Tabs>
 `}
 />
 

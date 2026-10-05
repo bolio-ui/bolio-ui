@@ -237,6 +237,12 @@
   },
   {
     "head": "Button",
+    "title": "Button Save with feedback",
+    "component": false,
+    "path": "/docs/components/button#save-with-feedback"
+  },
+  {
+    "head": "Button",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button#apis"
@@ -577,6 +583,12 @@
     "title": "Card Pricing",
     "component": false,
     "path": "/docs/components/card#pricing"
+  },
+  {
+    "head": "Card",
+    "title": "Card Profile",
+    "component": false,
+    "path": "/docs/components/card#profile"
   },
   {
     "head": "Card",
@@ -1789,6 +1801,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Login form",
+    "component": false,
+    "path": "/docs/components/input#login-form"
+  },
+  {
+    "head": "Input",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/input#apis"
@@ -2128,6 +2146,12 @@
     "title": "Modal Overlong",
     "component": false,
     "path": "/docs/components/modal#overlong"
+  },
+  {
+    "head": "Modal",
+    "title": "Modal Confirm a destructive action",
+    "component": false,
+    "path": "/docs/components/modal#confirm-a-destructive-action"
   },
   {
     "head": "Modal",
@@ -3005,6 +3029,12 @@
   },
   {
     "head": "Select",
+    "title": "Select Filter bar",
+    "component": false,
+    "path": "/docs/components/select#filter-bar"
+  },
+  {
+    "head": "Select",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/select#apis"
@@ -3453,6 +3483,12 @@
   },
   {
     "head": "Table",
+    "title": "Table orders",
+    "component": false,
+    "path": "/docs/components/table#orders"
+  },
+  {
+    "head": "Table",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/table#apis"
@@ -3551,6 +3587,12 @@
     "title": "Tabs Imperatively",
     "component": false,
     "path": "/docs/components/tabs#imperatively"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Settings page",
+    "component": false,
+    "path": "/docs/components/tabs#settings-page"
   },
   {
     "head": "Tabs",

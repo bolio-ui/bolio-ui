@@ -416,6 +416,33 @@ Used to trigger an operation.
 `}
 />
 
+<Playground
+  title="Save with feedback"
+  desc="Show progress while the action runs and the result when it ends. The button is disabled after saving so it cannot run twice."
+  scope={{ Button, Grid }}
+  code={`
+() => {
+  const [state, setState] = React.useState('idle')
+  const save = () => {
+    setState('saving')
+    setTimeout(() => setState('saved'), 1500)
+  }
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Button auto type="primary" loading={state === 'saving'} disabled={state === 'saved'} onClick={save}>
+          {state === 'saved' ? 'Saved' : 'Save changes'}
+        </Button>
+      </Grid>
+      <Grid>
+        <Button auto onClick={() => setState('idle')}>Reset</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/button.mdx">
 <Attributes.Title>Button.Props</Attributes.Title>
 

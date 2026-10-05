@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Instagram, Facebook } from '@bolio-ui/icons'
-import { Input, Grid, Button, Code, Text, Dot } from 'core'
+import { Input, Grid, Button, Code, Text, Dot, Spacer } from 'core'
 
 export const meta = {
   title: 'Input',
@@ -361,6 +361,37 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
         <Button auto type="secondary" scale={1/3} onClick={setChange}>set value</Button>
       </Grid>
     </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Login form"
+  desc="Validate on submit and say what to fix, under the field. The `error` type turns the field red."
+  scope={{ Input, Button, Text, Spacer }}
+  code={`
+() => {
+  const [email, setEmail] = React.useState('')
+  const [submitted, setSubmitted] = React.useState(false)
+  const invalid = submitted && !/^\\S+@\\S+\\.\\S+$/.test(email)
+  return (
+    <form
+      style={{ maxWidth: 320 }}
+      onSubmit={(event) => {
+        event.preventDefault()
+        setSubmitted(true)
+      }}
+    >
+      <Input floating width="100%" type={invalid ? 'error' : 'default'} value={email} onChange={(event) => setEmail(event.target.value)}>
+        Email
+      </Input>
+      {invalid && <Text small type="error">Enter an email like name@company.com.</Text>}
+      <Spacer h={1} />
+      <Input.Password floating width="100%">Password</Input.Password>
+      <Spacer h={1.5} />
+      <Button type="primary" htmlType="submit" width="100%">Sign in</Button>
+    </form>
   )
 }
 `}
