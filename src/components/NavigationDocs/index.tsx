@@ -25,7 +25,7 @@ const DocsPageLink: React.FC<{
 
   return (
     <Button
-      type="primary"
+      type="default"
       subtle
       auto
       scale={0.75}

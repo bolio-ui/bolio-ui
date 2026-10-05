@@ -24,85 +24,93 @@ import * as gtag from 'src/utils/gtag'
 // active one (see the render below).
 function MdxGlobalStyles() {
   const theme = useTheme()
-  // The code blocks are dark in both themes, but the dark theme's low accents
-  // are near black: it uses lighter grays for comments and plain code.
+  // Code blocks follow the theme: light surface in light mode, dark in dark mode.
   const isDark = theme.type === 'dark'
-  const plainCode = isDark ? theme.palette.accents_7 : theme.palette.accents_4
-  const comment = isDark ? theme.palette.accents_5 : theme.palette.accents_3
+  const { palette } = theme
+  const fg = isDark ? '#ffffff' : palette.accents_8
+  const plainCode = isDark ? palette.accents_7 : palette.accents_5
+  const comment = isDark ? palette.accents_5 : palette.accents_4
+  const surface = isDark ? palette.pre : palette.accents_1
+  const accent = isDark ? palette.primary : palette.primaryDark
+  const keyword = isDark ? palette.secondaryLighter : palette.secondaryDark
+  const string = isDark ? palette.successLight : palette.successDark
+  const className = isDark ? palette.warningLighter : palette.warningDark
+  const tag = isDark ? palette.error : palette.errorDark
+  const attrName = isDark ? palette.warning : palette.warningDark
 
   return (
     <style
       dangerouslySetInnerHTML={{
         __html: `
       pre {
-        background-color: ${theme.palette.pre};
+        background-color: ${surface};
       }
       pre code {
-        color: #ffffff;
+        color: ${fg};
       }
       .pre header .name.active {
-        background-color: ${theme.palette.pre};
-        color: rgba(255, 255, 255, 0.7);
+        background-color: ${surface};
+        color: ${isDark ? 'rgba(255, 255, 255, 0.7)' : palette.accents_5};
       }
       .linked-heading {
         scroll-margin-top: 75px;
       }
       .tag {
-        color: ${theme.palette.error};
+        color: ${tag};
       }
       .punctuation {
-        color: #ffffff;
+        color: ${fg};
       }
       .attr-name {
-        color: ${theme.palette.warning};
+        color: ${attrName};
       }
       .attr-value {
-        color: ${theme.palette.error};
+        color: ${tag};
       }
       .language-javascript {
         color: ${plainCode};
       }
       .method.function.property-access {
-        color: ${theme.palette.primary};
+        color: ${accent};
       }
       .property-access {
-        color: #ffffff;
+        color: ${fg};
       }
       .literal-property.property {
-        color: #ffffff;
+        color: ${fg};
       }
       .function {
-        color: ${theme.palette.primary};
+        color: ${accent};
       }
       .parameter {
-        color: #ffffff;
+        color: ${fg};
       }
       span.class-name {
-        color: ${theme.palette.warningLighter};
+        color: ${className};
       }
       span.maybe-class-name {
-        color: #ffffff;
+        color: ${fg};
       }
       span.token.string {
-        color: ${theme.palette.successLight};
+        color: ${string};
       }
       span.token.comment {
         color: ${comment};
       }
       span.operator {
-        color: #ffffff;
+        color: ${fg};
       }
       span.constant {
-        color: #ffffff;
+        color: ${fg};
       }
       span.number {
-        color: #ffffff;
+        color: ${fg};
       }
       span.keyword {
-        color: ${theme.palette.secondaryLighter};
+        color: ${keyword};
       }
       span.plain-text {
-        color: #ffffff;
+        color: ${fg};
       }
     `
       }}
@@ -130,8 +138,7 @@ function AccentTheme({
         primary: color,
         primaryLight: mix(color, 255, 0.8),
         primaryLighter: mix(color, 255, 0.5),
-        primaryDark: mix(color, 0, 0.7),
-        link: color
+        primaryDark: mix(color, 0, 0.7)
       }
     }
   }, [theme, accent])

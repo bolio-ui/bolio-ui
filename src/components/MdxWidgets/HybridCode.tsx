@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo, useRef } from 'react'
-import { Code, CodeProps, useClipboard, useToasts } from 'core'
+import { Code, CodeProps, useClipboard, useTheme, useToasts } from 'core'
 import { Copy } from '@bolio-ui/icons'
 
 export type HybridCodeProps = CodeProps
@@ -65,6 +65,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   ...tabProps
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const theme = useTheme()
   const { copy } = useClipboard()
   const { setToast } = useToasts()
 
@@ -84,7 +85,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         aria-label="Copy code"
         onClick={copyHandler}
       >
-        <Copy fontSize={16} color="#FFFFFF" />
+        <Copy fontSize={16} color={theme.palette.accents_5} />
       </button>
       <style jsx>{`
         .hybrid-code {

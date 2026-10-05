@@ -5,6 +5,7 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
   children
 }) => {
   const theme = useTheme()
+  const isDark = theme.type === 'dark'
   return (
     <div className="attr">
       {children}
@@ -40,11 +41,11 @@ const AttributesTable: React.FC<React.PropsWithChildren<unknown>> = ({
         }
         .attr th {
           height: 2.5rem;
-          color: #ffffff;
+          color: ${isDark ? '#ffffff' : theme.palette.accents_8};
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0;
-          background: ${theme.palette.pre};
+          background: ${isDark ? theme.palette.pre : theme.palette.accents_2};
         }
         .attr th:nth-child(1) {
           border-radius: 4px 0 0 4px;

@@ -195,10 +195,14 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         }
 
         code {
-          color: ${theme.palette.code};
+          color: ${theme.palette.primary};
           font-family: ${theme.font.mono};
           font-size: 0.9em;
           white-space: pre-wrap;
+        }
+
+        a code {
+          color: inherit;
         }
 
         code:before,

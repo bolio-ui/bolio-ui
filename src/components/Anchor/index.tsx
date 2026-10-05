@@ -59,7 +59,8 @@ const Anchor: React.FC<React.PropsWithChildren<Props>> = ({
           justify-content: center;
           align-items: center;
           overflow: hidden;
-          left: -1.5em;
+          left: 100%;
+          margin-left: 0.5em;
           top: 50%;
           transform: translateY(-50%);
           position: absolute;
