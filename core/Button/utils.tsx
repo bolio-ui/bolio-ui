@@ -4,7 +4,6 @@ import { ButtonProps } from './Button'
 import { ButtonGroupConfig } from '../ButtonGroup/ButtonGroupContext'
 
 export const getButtonChildrenWithIcon = (
-  auto = false,
   children: ReactNode,
   icons: {
     icon?: React.ReactNode
@@ -14,31 +13,16 @@ export const getButtonChildrenWithIcon = (
   const { icon, iconRight } = icons
   const hasIcon = icon || iconRight
   const isRight = Boolean(iconRight)
-  const paddingForAutoMode = auto
-    ? `calc(var(--bolio-ui-button-height) / 2 + var(--bolio-ui-button-icon-padding) * .5)`
-    : 0
 
   if (!hasIcon) return <div className="text">{children}</div>
   if (React.Children.count(children) === 0) {
-    return (
-      <ButtonIcon isRight={isRight} isSingle>
-        {hasIcon}
-      </ButtonIcon>
-    )
+    return <ButtonIcon>{hasIcon}</ButtonIcon>
   }
   return (
     <>
-      <ButtonIcon isRight={isRight}>{hasIcon}</ButtonIcon>
-      <div
-        className="text"
-        style={
-          isRight
-            ? { paddingRight: paddingForAutoMode }
-            : { paddingLeft: paddingForAutoMode }
-        }
-      >
-        {children}
-      </div>
+      {!isRight && <ButtonIcon>{hasIcon}</ButtonIcon>}
+      <div className="text">{children}</div>
+      {isRight && <ButtonIcon>{hasIcon}</ButtonIcon>}
     </>
   )
 }

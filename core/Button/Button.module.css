@@ -1,6 +1,8 @@
 .root {
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
   font-weight: bold;
   user-select: none;
   outline: none;

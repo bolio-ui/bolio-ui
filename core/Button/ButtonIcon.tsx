@@ -4,26 +4,14 @@ import type { AnyElement } from '../utils/types'
 import styles from './ButtonIcon.module.css'
 
 interface Props {
-  isRight?: boolean
-  isSingle?: boolean
   className?: string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type ButtonIconProps = Props & NativeAttrs
 
-function ButtonIcon({
-  isRight = false,
-  isSingle,
-  children,
-  className = '',
-  ...props
-}: ButtonIconProps) {
-  const classes = useClasses(
-    styles.icon,
-    { [styles.right]: isRight, [styles.single]: isSingle },
-    className
-  )
+function ButtonIcon({ children, className = '', ...props }: ButtonIconProps) {
+  const classes = useClasses(styles.icon, className)
 
   return (
     <span className={classes} {...props}>

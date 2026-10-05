@@ -130,16 +130,18 @@ const ButtonComponent = React.forwardRef<
 
   const childrenWithIcon = useMemo(
     () =>
-      getButtonChildrenWithIcon(auto, children, {
+      getButtonChildrenWithIcon(children, {
         icon,
         iconRight
       }),
-    [auto, children, icon, iconRight]
+    [children, icon, iconRight]
   )
-  const [paddingLeft, paddingRight] = [
-    auto ? SCALES.pl(1.15) : SCALES.pl(1.15),
-    auto ? SCALES.pr(1.15) : SCALES.pr(1.15)
-  ]
+  // A button with only an icon is square, so the icon sits in the middle
+  const iconOnly =
+    Boolean(icon || iconRight) && React.Children.count(children) === 0
+  const [paddingLeft, paddingRight] = iconOnly
+    ? [SCALES.pl(0), SCALES.pr(0)]
+    : [SCALES.pl(1.15), SCALES.pr(1.15)]
 
   // Inside a ButtonGroup the group draws the outer border, the dividers and
   // the corners; inline values would win over its CSS and double them up.
@@ -153,12 +155,15 @@ const ButtonComponent = React.forwardRef<
     cursor,
     pointerEvents: events,
     boxShadow: shadow ? '0 4px 10px 0' + bg : 'none',
-    '--bolio-ui-button-icon-padding': SCALES.pl(0.75),
     '--bolio-ui-button-height': SCALES.height(2.5),
     '--bolio-ui-button-color': color,
     '--bolio-ui-button-bg': bg,
-    minWidth: auto ? 'min-content' : SCALES.width(10.5),
-    width: auto ? 'auto' : 'initial',
+    minWidth: iconOnly
+      ? SCALES.width(2.5)
+      : auto
+        ? 'min-content'
+        : SCALES.width(10.5),
+    width: iconOnly ? SCALES.width(2.5) : auto ? 'auto' : 'initial',
     height: SCALES.height(2.5),
     padding: `${SCALES.pt(0)} ${paddingRight} ${SCALES.pb(0)} ${paddingLeft}`,
     margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
