@@ -239,7 +239,7 @@ const SelectComponent = React.forwardRef<
       '--select-padding-top': SCALES.pt(0),
       '--select-padding-right': SCALES.pr(0.334),
       '--select-padding-bottom': SCALES.pb(0),
-      '--select-padding-left': SCALES.pl(0.667),
+      '--select-padding-left': SCALES.pl(0.875),
       '--select-margin-top': SCALES.mt(0),
       '--select-margin-right': SCALES.mr(0),
       '--select-margin-bottom': SCALES.mb(0),
@@ -251,7 +251,7 @@ const SelectComponent = React.forwardRef<
       '--select-placeholder-color': colors.placeholderColor,
       '--select-icon-color': colors.iconColor,
       '--select-color': colors.color,
-      '--select-placeholder-font-size': SCALES.font(0.775),
+      '--select-placeholder-font-size': SCALES.font(0.875),
       '--select-icon-right': theme.layout.gapQuarter,
       '--select-icon-rotate': visible ? '180deg' : '0deg',
       ...style
@@ -292,6 +292,7 @@ const SelectComponent = React.forwardRef<
           <SelectDropdown
             ref={dropdownRef}
             visible={visible}
+            colors={colors}
             className={dropdownClassName}
             dropdownStyle={dropdownStyle}
             disableMatchWidth={disableMatchWidth}

@@ -2,12 +2,14 @@ import React, { CSSProperties, useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
 import Dropdown from '../Shared/dropdown'
+import type { InputColor } from '../Input/styles'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './SelectDropdown.module.css'
 
 interface Props {
   visible: boolean
+  colors: InputColor
   className?: string
   dropdownStyle?: CSSProperties
   disableMatchWidth?: boolean
@@ -24,6 +26,7 @@ const SelectDropdown = React.forwardRef<
   (
     {
       visible,
+      colors,
       children,
       className = '',
       dropdownStyle = {},
@@ -55,8 +58,10 @@ const SelectDropdown = React.forwardRef<
           style={
             {
               '--select-dropdown-radius': theme.layout.radius,
-              '--select-dropdown-shadow': theme.expressiveness.shadowLarge,
-              '--select-dropdown-bg': theme.palette.accents_2,
+              '--select-dropdown-shadow': theme.expressiveness.shadowMedium,
+              '--select-dropdown-bg': colors.bgColor,
+              '--select-dropdown-border': colors.borderColor,
+              '--select-dropdown-color': colors.color,
               ...dropdownStyle
             } as React.CSSProperties
           }
