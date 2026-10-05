@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Section, Container, Text, useTheme } from 'core'
+import { Section, Container, Text, Button, useTheme } from 'core'
 
 export const meta = {
   title: 'Section',
@@ -37,6 +37,34 @@ A band of the page that groups related content, with an optional background. It 
         <Text>A band with a background.</Text>
       </Container>
     </Section>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Landing page bands"
+  desc="Stack Sections to split a page into bands. Alternate the background to mark where one ends."
+  scope={{ Section, Container, Text, Button, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <>
+      <Section style={{ padding: '32px 0' }}>
+        <Container>
+          <Text h3>Everything you need to ship</Text>
+          <Text p type="secondary">Forms, tables and dialogs that work with your theme from the first line.</Text>
+        </Container>
+      </Section>
+      <Section bg={theme.palette.accents_1} style={{ padding: '32px 0' }}>
+        <Container>
+          <Text h3>Start with the free plan</Text>
+          <Text p type="secondary">No card needed. Upgrade when your team grows.</Text>
+          <Button auto type="primary">Start for free</Button>
+        </Container>
+      </Section>
+    </>
   )
 }
 `}

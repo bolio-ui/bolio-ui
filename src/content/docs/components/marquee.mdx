@@ -49,6 +49,30 @@ Loop content horizontally without end.
 `}
 />
 
+<Playground
+  title="Two rows"
+  desc="Run a second row in the other direction, with the same `duration`, so the two feel like one band."
+  scope={{ Marquee, Tag }}
+  code={`
+<div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+  <Marquee duration={30}>
+    <Tag>Acme</Tag>
+    <Tag>Globex</Tag>
+    <Tag>Initech</Tag>
+    <Tag>Umbrella</Tag>
+    <Tag>Hooli</Tag>
+  </Marquee>
+  <Marquee reverse duration={30}>
+    <Tag>Stark</Tag>
+    <Tag>Wayne</Tag>
+    <Tag>Wonka</Tag>
+    <Tag>Cyberdyne</Tag>
+    <Tag>Soylent</Tag>
+  </Marquee>
+</div>
+`}
+/>
+
 <Attributes edit="/content/docs/components/marquee.mdx">
 <Attributes.Title>Marquee.Props</Attributes.Title>
 

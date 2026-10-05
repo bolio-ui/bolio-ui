@@ -1,8 +1,8 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Command, Button, Keyboard, useKeyboard, KeyCode, KeyMod } from 'core'
+import { Command, Button, Keyboard, useKeyboard, KeyCode, KeyMod, Grid, Text } from 'core'
 import { useState } from 'react'
-import { Home, Settings } from '@bolio-ui/icons'
+import { Home, Settings, Search, Plus, UserPlus, CreditCard, LogOut } from '@bolio-ui/icons'
 
 export const meta = {
   title: 'Command',
@@ -59,6 +59,39 @@ A searchable list of actions, opened with a shortcut.
   return (
     <>
       <Keyboard command>K</Keyboard>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="App command palette"
+  desc="List the actions people reach for most, with a short hint of the shortcut on the right."
+  scope={{ Command, Button, Grid, Text, useState, Search, Plus, UserPlus, CreditCard, Settings, LogOut }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  const [last, setLast] = useState('nothing yet')
+  const run = (name) => () => setLast(name)
+  const items = [
+    { value: 'new', label: 'Create project', icon: <Plus />, hint: 'N', onSelect: run('created a project') },
+    { value: 'invite', label: 'Invite a teammate', icon: <UserPlus />, onSelect: run('opened the invite form') },
+    { value: 'billing', label: 'Go to billing', icon: <CreditCard />, hint: 'G B', onSelect: run('went to billing') },
+    { value: 'settings', label: 'Open settings', icon: <Settings />, hint: 'G S', onSelect: run('opened settings') },
+    { value: 'signout', label: 'Sign out', icon: <LogOut />, onSelect: run('signed out') }
+  ]
+  return (
+    <>
+      <Grid.Container gap={2} alignItems="center">
+        <Grid>
+          <Button auto icon={<Search />} onClick={() => setOpen(true)}>Search or run a command</Button>
+        </Grid>
+        <Grid>
+          <Text small type="secondary">Last action: {last}</Text>
+        </Grid>
+      </Grid.Container>
       <Command visible={open} onClose={() => setOpen(false)} items={items} />
     </>
   )

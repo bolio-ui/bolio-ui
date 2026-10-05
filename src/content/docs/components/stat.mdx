@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Stat, Grid, Card, Progress } from 'core'
+import { Stat, Grid, Card, Progress, SegmentedControl } from 'core'
 
 export const meta = {
   title: 'Stat',
@@ -52,6 +52,56 @@ Show a number with its label and trend.
     extra={<Progress circular value={72} type="primary" scale={1.2} />}
   />
 </Card>
+`}
+/>
+
+<Playground
+  title="Dashboard with a period"
+  desc="Pair the `Stat` cards with a `SegmentedControl` that changes the period they show."
+  scope={{ Stat, Grid, Card, SegmentedControl }}
+  code={`
+() => {
+  const periods = {
+    week: [
+      ['Revenue', '$11,300', '+3.2% vs last week'],
+      ['Active users', '2,914', '+1.1% vs last week'],
+      ['Churn', '0.4%', '-0.1% vs last week']
+    ],
+    month: [
+      ['Revenue', '$48,200', '+12.4% vs last month'],
+      ['Active users', '3,842', '+4.1% vs last month'],
+      ['Churn', '1.8%', '-0.3% vs last month']
+    ],
+    year: [
+      ['Revenue', '$512,900', '+31.0% vs last year'],
+      ['Active users', '3,842', '+58.2% vs last year'],
+      ['Churn', '6.2%', '-1.4% vs last year']
+    ]
+  }
+  const [period, setPeriod] = React.useState('month')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <SegmentedControl value={period} onChange={setPeriod} aria-label="Period">
+          <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+          <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+          <SegmentedControl.Item value="year">Year</SegmentedControl.Item>
+        </SegmentedControl>
+      </Grid>
+      <Grid>
+        <Grid.Container gap={2}>
+          {periods[period].map(([label, value, change]) => (
+            <Grid key={label} xs={12} md={4}>
+              <Card bordered width="100%">
+                <Stat label={label} value={value} change={change} />
+              </Card>
+            </Grid>
+          ))}
+        </Grid.Container>
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 

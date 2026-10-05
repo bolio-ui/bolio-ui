@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Container, Card, Text } from 'core'
+import { Container, Card, Text, Button, Grid } from 'core'
 
 export const meta = {
   title: 'Container',
@@ -35,6 +35,26 @@ Limit the width of the page and center its content. Put a `Row` inside it to bui
   <Card>
     <Text>This one has no maximum width.</Text>
   </Card>
+</Container>
+`}
+/>
+
+<Playground
+  title="Centered hero"
+  desc="Center a headline and its actions in the page, with the width of the Container as the limit."
+  scope={{ Container, Text, Button, Grid }}
+  code={`
+<Container style={{ textAlign: 'center', padding: '24px 0' }}>
+  <Text h2>Build your interface faster</Text>
+  <Text p type="secondary">Accessible components, themes that follow your brand and docs you can copy from.</Text>
+  <Grid.Container gap={1} justify="center">
+    <Grid>
+      <Button auto type="primary">Get started</Button>
+    </Grid>
+    <Grid>
+      <Button auto>View on GitHub</Button>
+    </Grid>
+  </Grid.Container>
 </Container>
 `}
 />

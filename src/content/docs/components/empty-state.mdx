@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { EmptyState, Button, Card, Grid } from 'core'
-import { Inbox, Search } from '@bolio-ui/icons'
+import { Inbox, Search, FolderPlus, AlertCircle } from '@bolio-ui/icons'
 
 export const meta = {
   title: 'Empty State',
@@ -40,6 +40,47 @@ Explain an empty area and how to leave it.
     title="No results for “invoice”"
     description="Check the spelling or clear the filters to see every document."
     action={<Button auto>Clear filters</Button>}
+  />
+</Card>
+`}
+/>
+
+<Playground
+  title="Onboarding"
+  desc="On a first visit, offer the main action and a second way in."
+  scope={{ EmptyState, Button, Card, Grid, FolderPlus }}
+  code={`
+<Card bordered width="100%">
+  <EmptyState
+    icon={<FolderPlus />}
+    title="Create your first project"
+    description="Projects keep your files, members and deploys in one place. It takes under a minute."
+    action={
+      <Grid.Container gap={1} justify="center">
+        <Grid>
+          <Button type="primary" auto>New project</Button>
+        </Grid>
+        <Grid>
+          <Button auto>Import from GitHub</Button>
+        </Grid>
+      </Grid.Container>
+    }
+  />
+</Card>
+`}
+/>
+
+<Playground
+  title="Error"
+  desc="When a request fails, say what happened and what to do next."
+  scope={{ EmptyState, Button, Card, AlertCircle }}
+  code={`
+<Card bordered width="100%">
+  <EmptyState
+    icon={<AlertCircle />}
+    title="We could not load your invoices"
+    description="Check your connection and try again. Your data is safe."
+    action={<Button auto>Try again</Button>}
   />
 </Card>
 `}

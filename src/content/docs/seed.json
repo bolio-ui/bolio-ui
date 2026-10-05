@@ -479,6 +479,12 @@
   },
   {
     "head": "Capacity",
+    "title": "Capacity Plan usage",
+    "component": false,
+    "path": "/docs/components/capacity#plan-usage"
+  },
+  {
+    "head": "Capacity",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/capacity#apis"
@@ -739,6 +745,12 @@
   },
   {
     "head": "Col",
+    "title": "Col Sidebar layout",
+    "component": false,
+    "path": "/docs/components/col#sidebar-layout"
+  },
+  {
+    "head": "Col",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/col#apis"
@@ -904,6 +916,12 @@
   },
   {
     "head": "Command",
+    "title": "Command App command palette",
+    "component": false,
+    "path": "/docs/components/command#app-command-palette"
+  },
+  {
+    "head": "Command",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/command#apis"
@@ -936,6 +954,12 @@
     "title": "Container Fluid",
     "component": false,
     "path": "/docs/components/container#fluid"
+  },
+  {
+    "head": "Container",
+    "title": "Container Centered hero",
+    "component": false,
+    "path": "/docs/components/container#centered-hero"
   },
   {
     "head": "Container",
@@ -1110,6 +1134,12 @@
   },
   {
     "head": "Description",
+    "title": "Description Account details",
+    "component": false,
+    "path": "/docs/components/description#account-details"
+  },
+  {
+    "head": "Description",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/description#apis"
@@ -1233,6 +1263,12 @@
   },
   {
     "head": "Dot",
+    "title": "Dot Service status",
+    "component": false,
+    "path": "/docs/components/dot#service-status"
+  },
+  {
+    "head": "Dot",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/dot#apis"
@@ -1265,6 +1301,12 @@
     "title": "Drawer Placement",
     "component": false,
     "path": "/docs/components/drawer#placement"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Edit profile",
+    "component": false,
+    "path": "/docs/components/drawer#edit-profile"
   },
   {
     "head": "Drawer",
@@ -1318,6 +1360,18 @@
     "title": "Empty State In a Card",
     "component": false,
     "path": "/docs/components/empty-state#in-a-card"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Onboarding",
+    "component": false,
+    "path": "/docs/components/empty-state#onboarding"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Error",
+    "component": false,
+    "path": "/docs/components/empty-state#error"
   },
   {
     "head": "Empty State",
@@ -1914,6 +1968,12 @@
     "title": "Marquee Reverse",
     "component": false,
     "path": "/docs/components/marquee#reverse"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Two rows",
+    "component": false,
+    "path": "/docs/components/marquee#two-rows"
   },
   {
     "head": "Marquee",
@@ -2779,6 +2839,12 @@
   },
   {
     "head": "Section",
+    "title": "Section Landing page bands",
+    "component": false,
+    "path": "/docs/components/section#landing-page-bands"
+  },
+  {
+    "head": "Section",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/section#apis"
@@ -3187,6 +3253,12 @@
   },
   {
     "head": "Spacer",
+    "title": "Spacer Spacing a form",
+    "component": false,
+    "path": "/docs/components/spacer#spacing-a-form"
+  },
+  {
+    "head": "Spacer",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/spacer#apis"
@@ -3207,6 +3279,18 @@
     "title": "Spinner General",
     "component": false,
     "path": "/docs/components/spinner#general"
+  },
+  {
+    "head": "Spinner",
+    "title": "Spinner Loading a panel",
+    "component": false,
+    "path": "/docs/components/spinner#loading-a-panel"
+  },
+  {
+    "head": "Spinner",
+    "title": "Spinner Inline with text",
+    "component": false,
+    "path": "/docs/components/spinner#inline-with-text"
   },
   {
     "head": "Spinner",
@@ -3236,6 +3320,12 @@
     "title": "Stat With Extra",
     "component": false,
     "path": "/docs/components/stat#with-extra"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat Dashboard with a period",
+    "component": false,
+    "path": "/docs/components/stat#dashboard-with-a-period"
   },
   {
     "head": "Stat",
@@ -3756,6 +3846,18 @@
     "title": "Timeline With Icons",
     "component": false,
     "path": "/docs/components/timeline#with-icons"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Order tracking",
+    "component": false,
+    "path": "/docs/components/timeline#order-tracking"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Activity feed",
+    "component": false,
+    "path": "/docs/components/timeline#activity-feed"
   },
   {
     "head": "Timeline",

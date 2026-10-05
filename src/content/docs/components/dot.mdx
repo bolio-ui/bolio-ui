@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Dot, Grid } from 'core'
+import { Dot, Grid, Card } from 'core'
 
 export const meta = {
   title: 'Dot',
@@ -72,6 +72,27 @@ Display an indicator of standardization status.
     <Dot type="info">Info</Dot>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Service status"
+  desc="Use the type of the `Dot` to show the state at a glance, and put the detail in the text."
+  scope={{ Dot, Grid, Card }}
+  code={`
+<Card bordered width="100%">
+  <Grid.Container direction="column" gap={1}>
+    {[
+      ['success', 'API', 'Operational'],
+      ['warning', 'Webhooks', 'Delayed by 4 minutes'],
+      ['error', 'Payments', 'Down since 09:12']
+    ].map(([type, name, state]) => (
+      <Grid key={name}>
+        <Dot type={type}>{name}: {state}</Dot>
+      </Grid>
+    ))}
+  </Grid.Container>
+</Card>
 `}
 />
 

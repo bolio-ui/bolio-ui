@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Spacer, Grid } from 'core'
+import { Spacer, Grid, Input, Button, useTheme } from 'core'
 
 export const meta = {
   title: 'Spacer',
@@ -17,34 +17,61 @@ Provide empty space.
 <Playground
   title="Vertical"
   desc="The basic `Spacer` vertical usage."
-  scope={{ Spacer, Grid }}
+  scope={{ Spacer, Grid, useTheme }}
   code={`
-<Grid.Container>
-  <Grid xs={12} style={{ background: '#444', borderRadius: '15px' }}>
-    <Spacer h={3} />
-  </Grid>
-  <Spacer h={2} />
-  <Grid xs={12} style={{ background: '#666', borderRadius: '15px' }}>
-    <Spacer h={3} />
-  </Grid>
-  <Spacer h={2} />
-  <Grid xs={12} style={{ background: '#999', borderRadius: '15px' }}>
-    <Spacer h={3} />
-  </Grid>
-</Grid.Container>
+() => {
+  const theme = useTheme()
+  const block = (color) => ({ background: color, borderRadius: theme.layout.radius })
+  return (
+    <Grid.Container>
+      <Grid xs={12} style={block(theme.palette.accents_2)}>
+        <Spacer h={3} />
+      </Grid>
+      <Spacer h={2} />
+      <Grid xs={12} style={block(theme.palette.accents_3)}>
+        <Spacer h={3} />
+      </Grid>
+      <Spacer h={2} />
+      <Grid xs={12} style={block(theme.palette.accents_4)}>
+        <Spacer h={3} />
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 
 <Playground
   title="Horizontal"
   desc="The basic `Spacer` horizontal usage."
-  scope={{ Spacer, Grid }}
+  scope={{ Spacer, Grid, useTheme }}
   code={`
-<Grid.Container>
-  <Grid xs={5} style={{ background: '#999', borderRadius: '15px' }} />
-  <Spacer w={2} />
-  <Grid xs={5} style={{ background: '#999', borderRadius: '15px' }} />
-</Grid.Container>
+() => {
+  const theme = useTheme()
+  const block = { background: theme.palette.accents_3, borderRadius: theme.layout.radius }
+  return (
+    <Grid.Container>
+      <Grid xs={5} style={block} />
+      <Spacer w={2} />
+      <Grid xs={5} style={block} />
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Spacing a form"
+  desc="Use a smaller Spacer between related fields and a larger one before the action."
+  scope={{ Spacer, Input, Button }}
+  code={`
+<div style={{ maxWidth: 320 }}>
+  <Input floating width="100%">Email</Input>
+  <Spacer h={1} />
+  <Input.Password floating width="100%">Password</Input.Password>
+  <Spacer h={1.5} />
+  <Button type="primary" width="100%">Sign in</Button>
+</div>
 `}
 />
 
