@@ -10,10 +10,8 @@
   font-size: 0;
 }
 
-.input:focus-visible + .name {
-  border-radius: 4px;
-  outline: 2px solid var(--radio-focus-color);
-  outline-offset: 2px;
+.input:focus-visible + .name .point {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--radio-color) 30%, transparent);
 }
 
 .radio {
@@ -33,37 +31,47 @@
 
 .name {
   font-size: var(--radio-size);
-  font-weight: bold;
+  font-weight: 500;
+  line-height: 1.25;
   user-select: none;
   display: inline-flex;
   align-items: center;
 }
 
 .point {
-  height: var(--radio-size);
-  width: var(--radio-size);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: calc(var(--radio-size) * 1.125);
+  width: calc(var(--radio-size) * 1.125);
   border-radius: 50%;
-  border: 1px solid var(--radio-border);
-  transition: all 0.2s ease 0s;
-  position: relative;
-  display: inline-block;
-  transform: scale(0.875);
-  margin-right: calc(var(--radio-size) * 0.375);
+  border: 1.5px solid var(--radio-border);
+  background-color: var(--radio-bg);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  display: inline-grid;
+  place-items: center;
+  margin-right: calc(var(--radio-size) * 0.5);
 }
 
 .point:before {
   content: '';
-  position: absolute;
-  left: -1px;
-  top: -1px;
+  width: 50%;
+  height: 50%;
   transform: scale(0);
-  height: var(--radio-size);
-  width: var(--radio-size);
   border-radius: 50%;
-  background-color: var(--radio-point-bg);
+  background-color: var(--radio-color);
+  transition: transform 0.2s ease;
+}
+
+.label:hover .point {
+  border-color: var(--radio-hover-border);
+}
+
+.active {
+  border-color: var(--radio-color);
 }
 
 .active:before {
-  transform: scale(0.875);
-  transition: all 0.2s ease 0s;
+  transform: scale(1);
 }

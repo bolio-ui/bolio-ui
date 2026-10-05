@@ -1,52 +1,18 @@
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import { NormalTypes } from '../utils/prop-types'
 
-export type RadioColor = {
-  label: string
-  border: string
-  bg: string
-}
-
-export const getColors = (
+export const getColor = (
   palette: BolioUIThemesPalette,
   status?: NormalTypes
-): RadioColor => {
-  const colors: { [key in NormalTypes]: RadioColor } = {
-    default: {
-      label: palette.foreground,
-      border: palette.border,
-      bg: palette.foreground
-    },
-    primary: {
-      label: palette.primary,
-      border: palette.primary,
-      bg: palette.primary
-    },
-    secondary: {
-      label: palette.secondary,
-      border: palette.secondary,
-      bg: palette.secondary
-    },
-    success: {
-      label: palette.success,
-      border: palette.success,
-      bg: palette.success
-    },
-    warning: {
-      label: palette.warning,
-      border: palette.warning,
-      bg: palette.warning
-    },
-    error: {
-      label: palette.error,
-      border: palette.error,
-      bg: palette.error
-    },
-    info: {
-      label: palette.info,
-      border: palette.info,
-      bg: palette.info
-    }
+): string => {
+  const colors: { [key in NormalTypes]: string } = {
+    default: palette.accents_8,
+    primary: palette.primary,
+    secondary: palette.secondary,
+    success: palette.success,
+    warning: palette.warning,
+    error: palette.error,
+    info: palette.info
   }
 
   if (!status) return colors.default

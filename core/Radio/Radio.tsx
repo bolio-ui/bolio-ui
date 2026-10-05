@@ -5,7 +5,7 @@ import RadioDescription from './RadioDescription'
 import { pickChild } from '../utils/collections'
 import logWarning from '../utils/log-warning'
 import { NormalTypes } from '../utils/prop-types'
-import { getColors } from './styles'
+import { getColor } from './styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
@@ -82,8 +82,8 @@ const RadioComponent = React.forwardRef<
       setSelfChecked(groupValue === radioValue)
     }, [inGroup, groupValue, radioValue])
 
-    const { label, border, bg } = useMemo(
-      () => getColors(theme.palette, type),
+    const color = useMemo(
+      () => getColor(theme.palette, type),
       [theme.palette, type]
     )
 
@@ -96,13 +96,13 @@ const RadioComponent = React.forwardRef<
       if (isDisabled) return
       const selfEvent: RadioEvent = {
         target: {
-          checked: !selfChecked
+          checked: true
         },
-        stopPropagation: event.stopPropagation,
-        preventDefault: event.preventDefault,
+        stopPropagation: event.stopPropagation.bind(event),
+        preventDefault: event.preventDefault.bind(event),
         nativeEvent: event
       }
-      setSelfChecked(!selfChecked)
+      setSelfChecked(true)
       if (inGroup) {
         if (updateState) updateState(radioValue as string | number)
       }
@@ -120,11 +120,20 @@ const RadioComponent = React.forwardRef<
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
       '--radio-own-size': SCALES.font(1),
-      '--radio-focus-color': theme.palette.primary,
-      '--radio-label-color': isDisabled ? theme.palette.accents_4 : label,
+      '--radio-label-color': isDisabled
+        ? theme.palette.accents_4
+        : theme.palette.foreground,
       '--radio-cursor': isDisabled ? 'not-allowed' : 'pointer',
-      '--radio-border': border,
-      '--radio-point-bg': isDisabled ? theme.palette.accents_4 : bg
+      '--radio-color': isDisabled ? theme.palette.accents_3 : color,
+      '--radio-border': selfChecked
+        ? 'var(--radio-color)'
+        : isDisabled
+          ? theme.palette.accents_2
+          : `color-mix(in srgb, var(--radio-color) 55%, ${theme.palette.background})`,
+      '--radio-hover-border': isDisabled ? undefined : 'var(--radio-color)',
+      '--radio-bg': isDisabled
+        ? theme.palette.accents_1
+        : theme.palette.background
     } as React.CSSProperties
 
     return (
