@@ -35,10 +35,9 @@
 }
 
 .input {
-  flex: 1;
+  flex: none;
   box-sizing: border-box;
-  width: 100%;
-  min-width: 6.5em;
+  width: 7em;
   height: 100%;
   padding: 0;
   font: inherit;
@@ -66,9 +65,9 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
   width: calc(var(--daterange-input-height) - 2px);
   height: 100%;
-  margin: 0;
   padding: 0;
   color: var(--daterange-toggle-color);
   cursor: pointer;
