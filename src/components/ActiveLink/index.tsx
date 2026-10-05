@@ -39,7 +39,8 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
         {
           fontWeight: isActive ? 'bold' : undefined,
           cursor: 'pointer',
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
           textAlign: 'left',
           padding: '6px 12px',
           borderRadius: theme.layout.radius,
