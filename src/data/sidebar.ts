@@ -97,11 +97,13 @@ export const components = [
   },
   {
     name: 'Button',
-    url: '/docs/components/button'
+    url: '/docs/components/button',
+    tag: 'Updated'
   },
   {
     name: 'Button Dropdown',
-    url: '/docs/components/button-dropdown'
+    url: '/docs/components/button-dropdown',
+    tag: 'Updated'
   },
   {
     name: 'Button Group',
@@ -133,7 +135,8 @@ export const components = [
   },
   {
     name: 'Collapse',
-    url: '/docs/components/collapse'
+    url: '/docs/components/collapse',
+    tag: 'Updated'
   },
   {
     name: 'Combobox',
@@ -173,7 +176,8 @@ export const components = [
   },
   {
     name: 'Empty State',
-    url: '/docs/components/empty-state'
+    url: '/docs/components/empty-state',
+    tag: 'New'
   },
   {
     name: 'Fieldset',
@@ -209,7 +213,8 @@ export const components = [
   },
   {
     name: 'Marquee',
-    url: '/docs/components/marquee'
+    url: '/docs/components/marquee',
+    tag: 'New'
   },
   {
     name: 'Menu',
@@ -245,7 +250,8 @@ export const components = [
   },
   {
     name: 'Radio',
-    url: '/docs/components/radio'
+    url: '/docs/components/radio',
+    tag: 'Updated'
   },
   {
     name: 'Rating',
@@ -257,7 +263,8 @@ export const components = [
   },
   {
     name: 'Segmented Control',
-    url: '/docs/components/segmented-control'
+    url: '/docs/components/segmented-control',
+    tag: 'New'
   },
   {
     name: 'Select',
@@ -289,7 +296,8 @@ export const components = [
   },
   {
     name: 'Stat',
-    url: '/docs/components/stat'
+    url: '/docs/components/stat',
+    tag: 'New'
   },
   {
     name: 'Stepper',
@@ -309,11 +317,13 @@ export const components = [
   },
   {
     name: 'Timeline',
-    url: '/docs/components/timeline'
+    url: '/docs/components/timeline',
+    tag: 'New'
   },
   {
     name: 'Tags Input',
-    url: '/docs/components/tags-input'
+    url: '/docs/components/tags-input',
+    tag: 'New'
   },
   {
     name: 'Text',

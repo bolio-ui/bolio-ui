@@ -53,6 +53,7 @@ function Sidebar({ sidebar }: SidebarProps) {
                 href={item.url}
                 text={item.name}
                 target={item.target}
+                tag={item.tag}
               />
             )}
           </Grid.Container>
