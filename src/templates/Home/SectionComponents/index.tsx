@@ -3,9 +3,15 @@ import NextLink from 'next/link'
 import { useTheme, Section, Container, Text } from 'core'
 import * as Icons from '@bolio-ui/icons'
 import Eyebrow from 'src/components/Eyebrow'
+import docsManifest from 'src/content/docs/manifest.json'
 import styles from './SectionComponents.module.css'
 
 type Icon = keyof typeof Icons
+
+const countRoutes = (title: string) =>
+  docsManifest.routes[0].routes
+    .find((group) => group.title === title)
+    ?.routes?.filter((route) => route.title !== 'Overview').length ?? 0
 
 const glows = new WeakMap<
   HTMLElement,
@@ -236,7 +242,8 @@ function SectionComponents() {
           <div>
             <Eyebrow>Components</Eyebrow>
             <Text h2 my={0}>
-              51 components. 13 hooks. 1 theme.
+              {countRoutes('Components')} components. {countRoutes('Hooks')}{' '}
+              hooks. Custom themes.
             </Text>
           </div>
           <NextLink href="/docs/components" className={styles.all}>
