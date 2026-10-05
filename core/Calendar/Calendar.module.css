@@ -10,11 +10,21 @@
     var(--calendar-margin-bottom) var(--calendar-margin-left);
 }
 
+.months {
+  display: flex;
+  gap: 1.5em;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5em;
+}
+
+.navSpacer {
+  flex-shrink: 0;
+  width: 2.5em;
 }
 
 .title {

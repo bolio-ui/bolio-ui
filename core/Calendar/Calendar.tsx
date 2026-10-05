@@ -24,6 +24,9 @@ interface BaseProps {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   showOutsideDays?: boolean
   showWeekNumbers?: boolean
+  // months shown side by side; the days of the neighbor months are hidden
+  // when there is more than one
+  numberOfMonths?: number
   month?: Date
   defaultMonth?: Date
   onMonthChange?: (month: Date) => void
@@ -83,6 +86,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
       weekStartsOn = 0,
       showOutsideDays = false,
       showWeekNumbers = false,
+      numberOfMonths = 1,
       month: customMonth,
       defaultMonth,
       onMonthChange,
@@ -126,7 +130,17 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
       )
     )
 
-    const gridRef = useRef<HTMLTableElement>(null)
+    // the first month shown, as year * 12 + month; the focused day stays in view
+    const count = Math.max(1, Math.floor(numberOfMonths))
+    const focusedIndex = focused.getFullYear() * 12 + focused.getMonth()
+    const [viewStart, setViewStart] = useState(focusedIndex)
+    let first = viewStart
+    if (focusedIndex < first) first = focusedIndex
+    else if (focusedIndex > first + count - 1)
+      first = focusedIndex - (count - 1)
+    if (first !== viewStart) setViewStart(first)
+
+    const gridRef = useRef<HTMLDivElement>(null)
     // The DOM focus only follows the focused day after the keyboard or on mount.
     const moveFocus = useRef(autoFocus)
 
@@ -142,6 +156,7 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
     useEffect(() => {
       if (monthTime === null) return
       const target = new Date(monthTime)
+      setViewStart(target.getFullYear() * 12 + target.getMonth())
       setFocused((last) =>
         last.getFullYear() === target.getFullYear() &&
         last.getMonth() === target.getMonth()
@@ -189,39 +204,48 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
       [formats, weekStartsOn]
     )
 
-    const year = focused.getFullYear()
-    const month = focused.getMonth()
-    const weeks = useMemo(() => {
-      const offset = (new Date(year, month, 1).getDay() - weekStartsOn + 7) % 7
-      const total = new Date(year, month + 1, 0).getDate()
-      const cells: Array<Date | null> = [
-        ...Array.from({ length: offset }, (_, index) =>
-          showOutsideDays ? new Date(year, month, index - offset + 1) : null
-        ),
-        ...Array.from(
-          { length: total },
-          (_, index) => new Date(year, month, index + 1)
-        )
-      ]
-      while (cells.length % 7)
-        cells.push(
-          showOutsideDays
-            ? new Date(year, month, cells.length - offset + 1)
-            : null
-        )
-      return Array.from({ length: cells.length / 7 }, (_, index) =>
-        cells.slice(index * 7, index * 7 + 7)
-      )
-    }, [year, month, weekStartsOn, showOutsideDays])
+    const outsideDays = showOutsideDays && count === 1
+    const monthViews = useMemo(
+      () =>
+        Array.from({ length: count }, (_, step) => {
+          const index = first + step
+          const year = Math.floor(index / 12)
+          const month = index % 12
+          const offset =
+            (new Date(year, month, 1).getDay() - weekStartsOn + 7) % 7
+          const total = new Date(year, month + 1, 0).getDate()
+          const cells: Array<Date | null> = [
+            ...Array.from({ length: offset }, (_, cell) =>
+              outsideDays ? new Date(year, month, cell - offset + 1) : null
+            ),
+            ...Array.from(
+              { length: total },
+              (_, cell) => new Date(year, month, cell + 1)
+            )
+          ]
+          while (cells.length % 7)
+            cells.push(
+              outsideDays
+                ? new Date(year, month, cells.length - offset + 1)
+                : null
+            )
+          const weeks = Array.from({ length: cells.length / 7 }, (_, row) =>
+            cells.slice(row * 7, row * 7 + 7)
+          )
+          return { year, month, date: new Date(year, month, 1), weeks }
+        }),
+      [first, count, weekStartsOn, outsideDays]
+    )
+    const firstMonth = monthViews[0]
+    const lastMonthView = monthViews[count - 1]
 
-    const lastMonth = useRef(`${year}-${month}`)
+    const lastMonth = useRef(first)
     useEffect(() => {
-      const key = `${year}-${month}`
-      if (key === lastMonth.current) return
-      lastMonth.current = key
-      if (onMonthChange) onMonthChange(new Date(year, month, 1))
+      if (first === lastMonth.current) return
+      lastMonth.current = first
+      if (onMonthChange) onMonthChange(firstMonth.date)
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [year, month])
+    }, [first])
 
     const isDisabled = (date: Date) =>
       Boolean(
@@ -232,11 +256,17 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
 
     const today = new Date()
     const previousDisabled = Boolean(
-      minDay && new Date(year, month, 0) < minDay
+      minDay && new Date(firstMonth.year, firstMonth.month, 0) < minDay
     )
     const nextDisabled = Boolean(
-      maxDay && new Date(year, month + 1, 1) > maxDay
+      maxDay &&
+      new Date(lastMonthView.year, lastMonthView.month + 1, 1) > maxDay
     )
+
+    const goToMonth = (step: number) => {
+      setViewStart(first + step)
+      setFocused(clampDate(addMonths(focused, step), minDay, maxDay))
+    }
 
     const commit = (next: CalendarValue) => {
       if (customValue === undefined) setSelfValue(next)
@@ -334,135 +364,153 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
         style={calendarStyle}
         {...props}
       >
-        <div className={styles.header}>
-          <button
-            type="button"
-            className={joinClasses(styles.button, styles.navButton)}
-            aria-label={previousLabel}
-            disabled={previousDisabled}
-            onClick={() =>
-              setFocused(clampDate(addMonths(focused, -1), minDay, maxDay))
-            }
-          >
-            ‹
-          </button>
-          <div id={headingId} className={styles.title} aria-live="polite">
-            {formats.month.format(focused)}
-          </div>
-          <button
-            type="button"
-            className={joinClasses(styles.button, styles.navButton)}
-            aria-label={nextLabel}
-            disabled={nextDisabled}
-            onClick={() =>
-              setFocused(clampDate(addMonths(focused, 1), minDay, maxDay))
-            }
-          >
-            ›
-          </button>
-        </div>
-        <table
+        <div
           ref={gridRef}
-          role="grid"
-          aria-labelledby={headingId}
-          className={styles.table}
-          aria-multiselectable={mode !== 'single' || undefined}
+          className={styles.months}
           onMouseLeave={() => setHovered(null)}
         >
-          <thead>
-            <tr role="row">
-              {showWeekNumbers && (
-                <th role="columnheader" className={styles.th} />
-              )}
-              {weekdays.map((weekday) => (
-                <th
-                  key={weekday.long}
-                  role="columnheader"
-                  scope="col"
-                  className={styles.th}
+          {monthViews.map(({ month, date: monthDate, weeks }, step) => (
+            <div key={step} className={styles.month}>
+              <div className={styles.header}>
+                {step === 0 ? (
+                  <button
+                    type="button"
+                    className={joinClasses(styles.button, styles.navButton)}
+                    aria-label={previousLabel}
+                    disabled={previousDisabled}
+                    onClick={() => goToMonth(-1)}
+                  >
+                    ‹
+                  </button>
+                ) : (
+                  <span className={styles.navSpacer} aria-hidden="true" />
+                )}
+                <div
+                  id={`${headingId}-${step}`}
+                  className={styles.title}
+                  aria-live="polite"
                 >
-                  <abbr title={weekday.long}>{weekday.short}</abbr>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {weeks.map((week, index) => {
-              const reference = week.find(Boolean) as Date
-              const weekNumber = getISOWeek(
-                addDays(reference, 3 - week.indexOf(reference))
-              )
-              return (
-                <tr key={index} role="row">
-                  {showWeekNumbers && (
-                    <th
-                      role="rowheader"
-                      scope="row"
-                      className={styles.weekNumber}
-                      aria-label={`${weekLabel} ${weekNumber}`}
-                    >
-                      {weekNumber}
-                    </th>
-                  )}
-                  {week.map((date, cell) => {
-                    if (!date)
-                      return (
-                        <td
-                          key={cell}
-                          role="gridcell"
-                          className={styles.td}
-                          aria-hidden="true"
-                        />
-                      )
-                    const selectedDay = isSelected(date)
-                    const outside = date.getMonth() !== month
+                  {formats.month.format(monthDate)}
+                </div>
+                {step === count - 1 ? (
+                  <button
+                    type="button"
+                    className={joinClasses(styles.button, styles.navButton)}
+                    aria-label={nextLabel}
+                    disabled={nextDisabled}
+                    onClick={() => goToMonth(1)}
+                  >
+                    ›
+                  </button>
+                ) : (
+                  <span className={styles.navSpacer} aria-hidden="true" />
+                )}
+              </div>
+              <table
+                role="grid"
+                aria-labelledby={`${headingId}-${step}`}
+                className={styles.table}
+                aria-multiselectable={mode !== 'single' || undefined}
+              >
+                <thead>
+                  <tr role="row">
+                    {showWeekNumbers && (
+                      <th role="columnheader" className={styles.th} />
+                    )}
+                    {weekdays.map((weekday) => (
+                      <th
+                        key={weekday.long}
+                        role="columnheader"
+                        scope="col"
+                        className={styles.th}
+                      >
+                        <abbr title={weekday.long}>{weekday.short}</abbr>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {weeks.map((week, index) => {
+                    const reference = week.find(Boolean) as Date
+                    const weekNumber = getISOWeek(
+                      addDays(reference, 3 - week.indexOf(reference))
+                    )
                     return (
-                      <td
-                        key={cell}
-                        role="gridcell"
-                        className={joinClasses(styles.td, {
-                          [styles.inRange]: isInRange(date),
-                          [styles.rangeStart]: Boolean(
-                            low && isSameDay(date, low) && high
-                          ),
-                          [styles.rangeEnd]: Boolean(
-                            high && isSameDay(date, high) && low
+                      <tr key={index} role="row">
+                        {showWeekNumbers && (
+                          <th
+                            role="rowheader"
+                            scope="row"
+                            className={styles.weekNumber}
+                            aria-label={`${weekLabel} ${weekNumber}`}
+                          >
+                            {weekNumber}
+                          </th>
+                        )}
+                        {week.map((date, cell) => {
+                          if (!date)
+                            return (
+                              <td
+                                key={cell}
+                                role="gridcell"
+                                className={styles.td}
+                                aria-hidden="true"
+                              />
+                            )
+                          const selectedDay = isSelected(date)
+                          const outside = date.getMonth() !== month
+                          return (
+                            <td
+                              key={cell}
+                              role="gridcell"
+                              className={joinClasses(styles.td, {
+                                [styles.inRange]: isInRange(date),
+                                [styles.rangeStart]: Boolean(
+                                  low && isSameDay(date, low) && high
+                                ),
+                                [styles.rangeEnd]: Boolean(
+                                  high && isSameDay(date, high) && low
+                                )
+                              })}
+                              aria-selected={selectedDay || isInRange(date)}
+                            >
+                              <button
+                                type="button"
+                                data-date={toISO(date)}
+                                aria-label={formats.day.format(date)}
+                                aria-current={
+                                  isSameDay(date, today) ? 'date' : undefined
+                                }
+                                className={joinClasses(
+                                  styles.button,
+                                  styles.dayButton,
+                                  {
+                                    [styles.selected]: selectedDay,
+                                    [styles.today]: isSameDay(date, today),
+                                    [styles.outside]: outside
+                                  }
+                                )}
+                                tabIndex={isSameDay(date, focused) ? 0 : -1}
+                                disabled={isDisabled(date)}
+                                onClick={() => select(date)}
+                                onMouseEnter={() => isRange && setHovered(date)}
+                                onKeyDown={(event) =>
+                                  keyDownHandler(event, date)
+                                }
+                              >
+                                {date.getDate()}
+                              </button>
+                            </td>
                           )
                         })}
-                        aria-selected={selectedDay || isInRange(date)}
-                      >
-                        <button
-                          type="button"
-                          data-date={toISO(date)}
-                          aria-label={formats.day.format(date)}
-                          aria-current={
-                            isSameDay(date, today) ? 'date' : undefined
-                          }
-                          className={joinClasses(
-                            styles.button,
-                            styles.dayButton,
-                            {
-                              [styles.selected]: selectedDay,
-                              [styles.today]: isSameDay(date, today),
-                              [styles.outside]: outside
-                            }
-                          )}
-                          tabIndex={isSameDay(date, focused) ? 0 : -1}
-                          disabled={isDisabled(date)}
-                          onClick={() => select(date)}
-                          onMouseEnter={() => isRange && setHovered(date)}
-                          onKeyDown={(event) => keyDownHandler(event, date)}
-                        >
-                          {date.getDate()}
-                        </button>
-                      </td>
+                      </tr>
                     )
                   })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }

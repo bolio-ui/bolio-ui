@@ -13,7 +13,7 @@ export const meta = {
 
 ## DateRangePicker
 
-Two inputs to type a start and an end date, with one calendar to pick the
+Two inputs to type a start and an end date, with a calendar of two months to pick the
 range. The text is a date in the `YYYY-MM-DD` format, which is the same in every country.
 
 <Playground
@@ -148,7 +148,7 @@ The `ref` points at the group `div`.
 
 <Attributes.Title>Accessibility</Attributes.Title>
 
-The group is named by `aria-label`, and each input has its own name, `Start date` and `End date`, which you can translate with `startLabel` and `endLabel`. The calendar button has `aria-haspopup="dialog"` and `aria-expanded`. The calendar opens in a dialog with the focus on the day of the start. Escape closes it and puts the focus back on the button, and picking the end puts the focus on the end input. See <a href="/docs/components/calendar">Calendar</a> for the keys.
+The group is named by `aria-label`, and each input has its own name, `Start date` and `End date`, which you can translate with `startLabel` and `endLabel`. The calendar button has `aria-haspopup="dialog"` and `aria-expanded`. The calendar opens in a dialog that shows two months side by side, with the focus on the day of the start. Escape closes it and puts the focus back on the button, and picking the end puts the focus on the end input. See <a href="/docs/components/calendar">Calendar</a> for the keys.
 
 </Attributes>
 

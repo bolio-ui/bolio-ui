@@ -327,3 +327,101 @@ describe('<Calendar /> modes and options', () => {
     expect(screen.getByRole('grid')).toHaveAccessibleName('June 2026')
   })
 })
+
+describe('<Calendar /> numberOfMonths', () => {
+  const jan = new Date(2026, 0, 1)
+
+  it('shows consecutive months, each a named grid, with one tab stop', () => {
+    wrap(<Calendar numberOfMonths={2} defaultMonth={jan} />)
+    const grids = screen.getAllByRole('grid')
+    expect(grids).toHaveLength(2)
+    expect(grids[0]).toHaveAccessibleName('January 2026')
+    expect(grids[1]).toHaveAccessibleName('February 2026')
+    const stops = screen
+      .getAllByRole('button', { name: /2026$/ })
+      .filter((button) => button.getAttribute('tabindex') === '0')
+    expect(stops).toHaveLength(1)
+  })
+
+  it('has one previous button before the first month and one next after the last', () => {
+    wrap(<Calendar numberOfMonths={2} defaultMonth={jan} />)
+    expect(
+      screen.getAllByRole('button', { name: 'Previous month' })
+    ).toHaveLength(1)
+    expect(screen.getAllByRole('button', { name: 'Next month' })).toHaveLength(
+      1
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Next month' }))
+    const grids = screen.getAllByRole('grid')
+    expect(grids[0]).toHaveAccessibleName('February 2026')
+    expect(grids[1]).toHaveAccessibleName('March 2026')
+    fireEvent.click(screen.getByRole('button', { name: 'Previous month' }))
+    expect(screen.getAllByRole('grid')[0]).toHaveAccessibleName('January 2026')
+  })
+
+  it('moves the focus into the second month and shifts the view past it', () => {
+    wrap(
+      <Calendar numberOfMonths={2} value={new Date(2026, 0, 31)} autoFocus />
+    )
+    const last = day(/January 31, 2026/)
+    expect(last).toHaveFocus()
+    fireEvent.keyDown(last, { key: 'ArrowRight' })
+    expect(day(/February 1, 2026/)).toHaveFocus()
+    expect(screen.getAllByRole('grid')[0]).toHaveAccessibleName('January 2026')
+    fireEvent.keyDown(day(/February 1, 2026/), { key: 'PageDown' })
+    fireEvent.keyDown(day(/March 1, 2026/), { key: 'PageDown' })
+    expect(day(/April 1, 2026/)).toHaveFocus()
+    expect(screen.getAllByRole('grid')[1]).toHaveAccessibleName('April 2026')
+  })
+
+  it('selects a range that crosses the months and highlights both sides', () => {
+    const onChange = jest.fn()
+    wrap(
+      <Calendar
+        mode="range"
+        numberOfMonths={2}
+        defaultMonth={jan}
+        onChange={onChange}
+      />
+    )
+    fireEvent.click(day(/January 30, 2026/))
+    fireEvent.click(day(/February 3, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([
+      new Date(2026, 0, 30),
+      new Date(2026, 1, 3)
+    ])
+    expect(day(/January 31, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+    expect(day(/February 2, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+  })
+
+  it('previews the range in the other month while hovering', () => {
+    wrap(<Calendar mode="range" numberOfMonths={2} defaultMonth={jan} />)
+    fireEvent.click(day(/January 30, 2026/))
+    fireEvent.mouseEnter(day(/February 4, 2026/))
+    expect(day(/February 2, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+  })
+
+  it('reports the first month and hides the neighbor days', () => {
+    const onMonthChange = jest.fn()
+    wrap(
+      <Calendar
+        numberOfMonths={2}
+        showOutsideDays
+        defaultMonth={jan}
+        onMonthChange={onMonthChange}
+      />
+    )
+    expect(screen.getAllByRole('button', { name: /2026$/ })).toHaveLength(59)
+    fireEvent.click(screen.getByRole('button', { name: 'Next month' }))
+    expect(onMonthChange).toHaveBeenCalledWith(new Date(2026, 1, 1))
+  })
+})

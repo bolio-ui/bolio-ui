@@ -245,6 +245,7 @@ const DateRangePickerComponent = React.forwardRef<
           >
             <Calendar
               mode="range"
+              numberOfMonths={2}
               autoFocus
               value={range}
               min={min}

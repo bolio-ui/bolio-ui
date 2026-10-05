@@ -108,6 +108,19 @@ A month grid to pick a day with the mouse or the keyboard. `DatePicker` uses it,
 `}
 />
 
+<Playground
+  title="Several months"
+  desc="`numberOfMonths` shows the months side by side. A range can cross from one to the next, and the days of the neighbor months are hidden."
+  scope={{ Calendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Calendar mode="range" numberOfMonths={2} defaultMonth={new Date(2026, 0, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
 <Attributes edit="/content/docs/components/calendar.mdx">
 <Attributes.Title>Calendar.Props</Attributes.Title>
 
@@ -123,6 +136,7 @@ A month grid to pick a day with the mouse or the keyboard. `DatePicker` uses it,
 | **maxSelected**       | most days in `multiple` mode                              | `number`                                    | -                               | -                |
 | **shouldDisableDate** | disable the days where it returns `true`                  | `(date: Date) => boolean`                   | -                               | -                |
 | **showOutsideDays**   | show days of the neighbor months                          | `boolean`                                   | -                               | `false`          |
+| **numberOfMonths**    | months shown side by side; hides the neighbor days if more than one | `number`                          | -                               | `1`              |
 | **showWeekNumbers**   | show the ISO week of each row                             | `boolean`                                   | -                               | `false`          |
 | **month**             | visible month, to control it                              | `Date`                                      | -                               | -                |
 | **defaultMonth**      | visible month at the start                                | `Date`                                      | -                               | the selected day |

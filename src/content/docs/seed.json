@@ -432,6 +432,12 @@
   },
   {
     "head": "Calendar",
+    "title": "Calendar Several months",
+    "component": false,
+    "path": "/docs/components/calendar#several-months"
+  },
+  {
+    "head": "Calendar",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/calendar#apis"

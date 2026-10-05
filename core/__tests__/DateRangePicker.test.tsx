@@ -81,13 +81,36 @@ describe('<DateRangePicker />', () => {
     expect(end()).toHaveValue('2026-01-25')
   })
 
+  it('shows two months side by side in the calendar', () => {
+    setup({ initialValue: [jan(10), jan(12)] })
+    fireEvent.click(screen.getByRole('button', { name: 'Choose dates' }))
+    const grids = within(screen.getByRole('dialog')).getAllByRole('grid')
+    expect(grids).toHaveLength(2)
+    expect(grids[0]).toHaveAccessibleName('January 2026')
+    expect(grids[1]).toHaveAccessibleName('February 2026')
+  })
+
+  it('picks a range that crosses into the second month', () => {
+    const onChange = jest.fn()
+    setup({ initialValue: [jan(10), jan(12)], onChange })
+    fireEvent.click(screen.getByRole('button', { name: 'Choose dates' }))
+    const dialog = screen.getByRole('dialog')
+    fireEvent.click(day(dialog, jan(28)))
+    fireEvent.click(day(dialog, new Date(2026, 1, 3)))
+    expect(iso(onChange.mock.lastCall[0])).toEqual(['2026-01-28', '2026-02-03'])
+    expect(end()).toHaveValue('2026-02-03')
+  })
+
   it('closes on Escape and returns the focus to the button', () => {
     setup({ initialValue: [jan(10), jan(12)] })
     const toggle = screen.getByRole('button', { name: 'Choose dates' })
     fireEvent.click(toggle)
-    fireEvent.keyDown(within(screen.getByRole('dialog')).getByRole('grid'), {
-      key: 'Escape'
-    })
+    fireEvent.keyDown(
+      within(screen.getByRole('dialog')).getAllByRole('grid')[0],
+      {
+        key: 'Escape'
+      }
+    )
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     expect(toggle).toHaveFocus()
   })
