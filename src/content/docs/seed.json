@@ -934,6 +934,71 @@
     "path": "/docs/components/collapse#accessibility"
   },
   {
+    "title": "Color Input",
+    "component": true,
+    "path": "/docs/components/color-input"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input General",
+    "component": false,
+    "path": "/docs/components/color-input#general"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input With swatches",
+    "component": false,
+    "path": "/docs/components/color-input#with-swatches"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Brand colors",
+    "component": false,
+    "path": "/docs/components/color-input#brand-colors"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Variants",
+    "component": false,
+    "path": "/docs/components/color-input#variants"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Disabled",
+    "component": false,
+    "path": "/docs/components/color-input#disabled"
+  },
+  {
+    "head": "Color Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-input#apis"
+  },
+  {
+    "head": "Color Input",
+    "title": "ColorInput Props",
+    "component": false,
+    "path": "/docs/components/color-input#colorinput.props"
+  },
+  {
+    "head": "Color Input",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/color-input#typing"
+  },
+  {
+    "head": "Color Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-input#ref"
+  },
+  {
+    "head": "Color Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-input#accessibility"
+  },
+  {
     "title": "Color Picker",
     "component": true,
     "path": "/docs/components/color-picker"

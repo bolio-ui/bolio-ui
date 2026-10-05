@@ -179,6 +179,11 @@
               "path": "/docs/components/collapse.mdx"
             },
             {
+              "title": "Color Input",
+              "keywords": "color input, color field, hex, swatch, popover, color picker field, brand color",
+              "path": "/docs/components/color-input.mdx"
+            },
+            {
               "title": "Color Picker",
               "keywords": "color picker, color, hex, hue, saturation, brightness, swatches, palette, eyedropper",
               "path": "/docs/components/color-picker.mdx"

@@ -15,6 +15,7 @@ const {
   Carousel,
   Checkbox,
   Code,
+  ColorInput,
   ColorPicker,
   Collapse,
   Combobox,
@@ -127,6 +128,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
         Body
       </Collapse>
     )
+  ],
+  [
+    'ColorInput',
+    () => <ColorInput aria-label="Brand color" initialValue="#2563eb" />
   ],
   [
     'ColorPicker',

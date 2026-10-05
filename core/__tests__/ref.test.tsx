@@ -17,6 +17,7 @@ const {
   Carousel,
   Checkbox,
   Code,
+  ColorInput,
   ColorPicker,
   Col,
   Collapse,
@@ -125,6 +126,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         Body
       </Collapse>
     )
+  ],
+  [
+    'ColorInput',
+    (ref) => <ColorInput ref={ref} aria-label="Brand color" />,
+    'INPUT'
   ],
   [
     'ColorPicker',

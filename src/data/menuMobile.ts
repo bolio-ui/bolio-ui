@@ -172,6 +172,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Color Input',
+            url: '/docs/components/color-input',
+            group: 'Components'
+          },
+          {
             name: 'Color Picker',
             url: '/docs/components/color-picker',
             group: 'Components'

@@ -145,6 +145,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'Color Input',
+    url: '/docs/components/color-input',
+    tag: 'New'
+  },
+  {
     name: 'Color Picker',
     url: '/docs/components/color-picker',
     tag: 'New'
