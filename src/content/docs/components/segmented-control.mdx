@@ -1,0 +1,121 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { SegmentedControl, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Segmented Control',
+  description:
+    'A row of options where exactly one is selected, for switching a view or a setting in place.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 58
+}
+
+## Segmented Control
+
+A row of options where exactly one is selected. Use it to switch a view or a
+setting in place, like a period or a layout.
+
+<Playground
+  desc="Give each item a `value`, start on one with `initialValue` and name the group with `aria-label`."
+  scope={{ SegmentedControl }}
+  code={`
+<SegmentedControl initialValue="week" aria-label="Period">
+  <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+  <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+  <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+</SegmentedControl>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and `onChange` to keep the selection in your own state."
+  scope={{ SegmentedControl, Grid, Text }}
+  code={`
+() => {
+  const [view, setView] = React.useState('list')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <SegmentedControl value={view} onChange={setView} aria-label="View">
+          <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+          <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+          <SegmentedControl.Item value="board">Board</SegmentedControl.Item>
+        </SegmentedControl>
+      </Grid>
+      <Grid>
+        <Text p>Showing the {view} view.</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Full width"
+  desc="With `fullWidth`, the group fills its container and the items share the space."
+  scope={{ SegmentedControl }}
+  code={`
+<SegmentedControl fullWidth initialValue="yearly" aria-label="Billing">
+  <SegmentedControl.Item value="monthly">Monthly</SegmentedControl.Item>
+  <SegmentedControl.Item value="yearly">Yearly</SegmentedControl.Item>
+</SegmentedControl>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Disable one item, or the whole group."
+  scope={{ SegmentedControl, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <SegmentedControl initialValue="list" aria-label="View">
+      <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+      <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+      <SegmentedControl.Item value="board" disabled>Board</SegmentedControl.Item>
+    </SegmentedControl>
+  </Grid>
+  <Grid>
+    <SegmentedControl disabled initialValue="list" aria-label="View">
+      <SegmentedControl.Item value="list">List</SegmentedControl.Item>
+      <SegmentedControl.Item value="grid">Grid</SegmentedControl.Item>
+    </SegmentedControl>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/segmented-control.mdx">
+<Attributes.Title>SegmentedControl.Props</Attributes.Title>
+
+| Attribute        | Description                                  | Type                                | Accepted values           | Default |
+| ---------------- | -------------------------------------------- | ----------------------------------- | ------------------------- | ------- |
+| **value**        | selected item, to control it                 | `string` &#124; `number`            | -                         | -       |
+| **initialValue** | item selected on the first render            | `string` &#124; `number`            | -                         | -       |
+| **onChange**     | called with the `value` of the chosen item   | `(value: string \| number) => void` | -                         | -       |
+| **disabled**     | disables every item                          | `boolean`                           | -                         | `false` |
+| **fullWidth**    | fills the width of the container             | `boolean`                           | -                         | `false` |
+| ...              | native props, passed to the `div`            | `HTMLAttributes`                    | `'aria-label', 'id', ...` | -       |
+
+<Attributes.Title>SegmentedControl.Item.Props</Attributes.Title>
+
+| Attribute    | Description                                  | Type                     | Accepted values | Default |
+| ------------ | -------------------------------------------- | ------------------------ | --------------- | ------- |
+| **value**    | identifies the item in `value` and `onChange` | `string` &#124; `number` | -               | -       |
+| **disabled** | the item cannot be chosen                    | `boolean`                | -               | `false` |
+| ...          | native props, passed to the radio `input`    | `InputHTMLAttributes`    | `'id', ...`     | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` of `SegmentedControl` points at the `div`, and the `ref` of each item at its radio `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The group is a `radiogroup` and each item is a native radio, so a screen reader announces the name of the group, the option and its position. Name the group with `aria-label`. Tab moves focus into the group on the selected item, and the arrow keys move between the items and select the one in focus. The selected item is not shown by color alone: it also gets a raised background.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

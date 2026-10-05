@@ -43,6 +43,7 @@ const {
   Rating,
   Row,
   Section,
+  SegmentedControl,
   Select,
   Skeleton,
   Slider,
@@ -213,6 +214,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Section', () => <Section>Section</Section>],
+  [
+    'SegmentedControl',
+    () => (
+      <SegmentedControl initialValue="a" aria-label="Period">
+        <SegmentedControl.Item value="a">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="b">Week</SegmentedControl.Item>
+      </SegmentedControl>
+    )
+  ],
   [
     'Select',
     () => (

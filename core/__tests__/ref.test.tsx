@@ -45,6 +45,7 @@ const {
   Rating,
   Row,
   Section,
+  SegmentedControl,
   Select,
   Skeleton,
   Slider,
@@ -217,6 +218,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],
+  [
+    'SegmentedControl',
+    (ref) => (
+      <SegmentedControl ref={ref}>
+        <SegmentedControl.Item value="a">Day</SegmentedControl.Item>
+      </SegmentedControl>
+    ),
+    'DIV'
+  ],
   [
     'Select',
     (ref) => (

@@ -256,6 +256,10 @@ export const components = [
     url: '/docs/components/row'
   },
   {
+    name: 'Segmented Control',
+    url: '/docs/components/segmented-control'
+  },
+  {
     name: 'Select',
     url: '/docs/components/select'
   },

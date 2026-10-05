@@ -171,6 +171,13 @@ export type { RowProps } from './Row'
 export { default as Section } from './Section'
 export type { SectionProps } from './Section'
 
+export { default as SegmentedControl } from './SegmentedControl'
+export type {
+  SegmentedControlProps,
+  SegmentedControlItemProps,
+  SegmentedControlValue
+} from './SegmentedControl'
+
 export { default as Select } from './Select'
 export type { SelectProps, SelectOptionProps } from './Select'
 

@@ -302,6 +302,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Segmented Control',
+            url: '/docs/components/segmented-control',
+            group: 'Components'
+          },
+          {
             name: 'Select',
             url: '/docs/components/select',
             group: 'Components'

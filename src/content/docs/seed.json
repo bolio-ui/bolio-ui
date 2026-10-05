@@ -2571,6 +2571,65 @@
     "path": "/docs/components/section#ref"
   },
   {
+    "title": "Segmented Control",
+    "component": true,
+    "path": "/docs/components/segmented-control"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control General",
+    "component": false,
+    "path": "/docs/components/segmented-control#general"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Controlled",
+    "component": false,
+    "path": "/docs/components/segmented-control#controlled"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Full width",
+    "component": false,
+    "path": "/docs/components/segmented-control#full-width"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Disabled",
+    "component": false,
+    "path": "/docs/components/segmented-control#disabled"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/segmented-control#apis"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "SegmentedControl Props",
+    "component": false,
+    "path": "/docs/components/segmented-control#segmentedcontrol.props"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "SegmentedControl Item Props",
+    "component": false,
+    "path": "/docs/components/segmented-control#segmentedcontrol.item.props"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/segmented-control#ref"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/segmented-control#accessibility"
+  },
+  {
     "title": "Select",
     "component": true,
     "path": "/docs/components/select"

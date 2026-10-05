@@ -329,6 +329,11 @@
               "path": "/docs/components/section.mdx"
             },
             {
+              "title": "Segmented Control",
+              "keywords": "segmented control, segmented, toggle group, switch, tabs, radio, options, view switch, period",
+              "path": "/docs/components/segmented-control.mdx"
+            },
+            {
               "title": "Select",
               "keywords": "select, types, disabled, option, without Icon, labels, divider, multiple, clear, compose, over width",
               "path": "/docs/components/select.mdx"
