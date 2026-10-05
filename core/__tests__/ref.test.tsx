@@ -63,7 +63,8 @@ const {
   Text,
   Textarea,
   Toggle,
-  Tooltip
+  Tooltip,
+  Tree
 } = Bolio
 
 // an element, or the handle of a component that has none (Select)
@@ -294,6 +295,13 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         <span>Hover</span>
       </Tooltip>
     )
+  ],
+  [
+    'Tree',
+    (ref) => (
+      <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
+    ),
+    'UL'
   ]
 ]
 

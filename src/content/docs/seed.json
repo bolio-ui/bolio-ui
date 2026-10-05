@@ -3906,6 +3906,65 @@
     "path": "/docs/components/tooltip#placement"
   },
   {
+    "title": "Tree",
+    "component": true,
+    "path": "/docs/components/tree"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree General",
+    "component": false,
+    "path": "/docs/components/tree#general"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Controlled",
+    "component": false,
+    "path": "/docs/components/tree#controlled"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Icons and disabled nodes",
+    "component": false,
+    "path": "/docs/components/tree#icons-and-disabled-nodes"
+  },
+  {
+    "head": "Tree",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tree#apis"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Props",
+    "component": false,
+    "path": "/docs/components/tree#tree.props"
+  },
+  {
+    "head": "Tree",
+    "title": "TreeNodeData",
+    "component": false,
+    "path": "/docs/components/tree#treenodedata"
+  },
+  {
+    "head": "Tree",
+    "title": "Keyboard",
+    "component": false,
+    "path": "/docs/components/tree#keyboard"
+  },
+  {
+    "head": "Tree",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tree#ref"
+  },
+  {
+    "head": "Tree",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tree#accessibility"
+  },
+  {
     "title": "useBodyScroll",
     "component": true,
     "path": "/docs/hooks/use-body-scroll"

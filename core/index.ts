@@ -237,6 +237,9 @@ export type { TextareaProps } from './Textarea'
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 
+export { default as Tree } from './Tree'
+export type { TreeProps, TreeNodeData } from './Tree'
+
 export { default as Toggle } from './Toggle'
 export type { ToggleProps } from './Toggle'
 

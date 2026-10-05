@@ -400,6 +400,11 @@ export const menuMobile = [
             name: 'Tooltip',
             url: '/docs/components/tooltip',
             group: 'Components'
+          },
+          {
+            name: 'Tree',
+            url: '/docs/components/tree',
+            group: 'Components'
           }
         ]
       }

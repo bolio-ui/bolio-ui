@@ -427,6 +427,11 @@
               "title": "Tooltip",
               "keywords": "tooltip, trigger, with components, custom content, types, variant, placements",
               "path": "/docs/components/tooltip.mdx"
+            },
+            {
+              "title": "Tree",
+              "keywords": "tree, tree view, nested list, file tree, hierarchy, folders, expand, collapse, categories",
+              "path": "/docs/components/tree.mdx"
             }
           ]
         },

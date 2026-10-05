@@ -61,7 +61,8 @@ const {
   Text,
   Textarea,
   Toggle,
-  Tooltip
+  Tooltip,
+  Tree
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
@@ -288,6 +289,18 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       <Tooltip text="Tip">
         <span>Hover</span>
       </Tooltip>
+    )
+  ],
+  [
+    'Tree',
+    () => (
+      <Tree
+        aria-label="Files"
+        data={[
+          { value: 'a', label: 'A', children: [{ value: 'b', label: 'B' }] }
+        ]}
+        initialExpanded={['a']}
+      />
     )
   ]
 ]

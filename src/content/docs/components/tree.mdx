@@ -1,0 +1,167 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Tree, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'Tree',
+  description:
+    'A list of nodes that open to show their children, for files, categories or any nested data.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 63
+}
+
+## Tree
+
+A list of nodes that open to show their children, for files, categories or any
+nested data. Pass the nodes in `data`. Clicking a node selects it, and a node
+with children also opens or closes.
+
+<Playground
+  desc="Each node has a unique `value` and a `label`, and `children` for the nodes inside it. Name the tree with `aria-label`."
+  scope={{ Tree }}
+  code={`
+<Tree
+  aria-label="Project files"
+  initialExpanded={['src']}
+  data={[
+    {
+      value: 'src',
+      label: 'src',
+      children: [
+        {
+          value: 'components',
+          label: 'components',
+          children: [
+            { value: 'button', label: 'Button.tsx' },
+            { value: 'input', label: 'Input.tsx' }
+          ]
+        },
+        { value: 'index', label: 'index.ts' }
+      ]
+    },
+    { value: 'package', label: 'package.json' },
+    { value: 'readme', label: 'README.md' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Use `value` and `onChange` for the selected node, and `expanded` and `onExpandedChange` for the open ones."
+  scope={{ Tree, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('index')
+  const [expanded, setExpanded] = React.useState(['src'])
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Tree
+          aria-label="Project files"
+          value={value}
+          onChange={setValue}
+          expanded={expanded}
+          onExpandedChange={setExpanded}
+          data={[
+            {
+              value: 'src',
+              label: 'src',
+              children: [
+                { value: 'index', label: 'index.ts' },
+                { value: 'app', label: 'App.tsx' }
+              ]
+            },
+            { value: 'package', label: 'package.json' }
+          ]}
+        />
+      </Grid>
+      <Grid>
+        <Text p>Selected: {value}. Open: {expanded.join(', ') || 'none'}.</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Icons and disabled nodes"
+  desc="`icon` shows any element before the label. A node with `disabled` is skipped by the keyboard and cannot be selected."
+  scope={{ Tree }}
+  code={`
+() => {
+  const icon = (path) => (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d={path} />
+    </svg>
+  )
+  const folder = icon('M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z')
+  const file = icon('M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5')
+  return (
+    <Tree
+      aria-label="Documents"
+      initialExpanded={['docs']}
+      data={[
+        {
+          value: 'docs',
+          label: 'Documents',
+          icon: folder,
+          children: [
+            { value: 'contract', label: 'Contract.pdf', icon: file },
+            { value: 'invoice', label: 'Invoice.pdf', icon: file },
+            { value: 'draft', label: 'Draft.docx', icon: file, disabled: true }
+          ]
+        },
+        { value: 'photos', label: 'Photos', icon: folder, children: [{ value: 'trip', label: 'Trip.png', icon: file }] }
+      ]}
+    />
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/tree.mdx">
+<Attributes.Title>Tree.Props</Attributes.Title>
+
+| Attribute            | Description                                              | Type                                             | Accepted values           | Default |
+| -------------------- | -------------------------------------------------------- | ------------------------------------------------ | ------------------------- | ------- |
+| **data**             | the nodes of the first level                             | `TreeNodeData[]`                                 | -                         | -       |
+| **value**            | selected node, to control it                             | `string` / `null`                                | -                         | -       |
+| **initialValue**     | node selected on the first render                        | `string` / `null`                                | -                         | `null`  |
+| **onChange**         | called with the `value` and the node that was selected   | <Code>(value: string, node: TreeNodeData) =&gt; void</Code> | -              | -       |
+| **expanded**         | `value` of the open nodes, to control them               | `string[]`                                       | -                         | -       |
+| **initialExpanded**  | `value` of the nodes open on the first render            | `string[]`                                       | -                         | `[]`    |
+| **onExpandedChange** | called with the `value` of every open node               | `(expanded: string[]) => void`                   | -                         | -       |
+| ...                  | native props, passed to the `ul`                         | `HTMLAttributes`                                 | `'aria-label', 'id', ...` | -       |
+
+<Attributes.Title>TreeNodeData</Attributes.Title>
+
+| Attribute    | Description                                          | Type             | Accepted values | Default |
+| ------------ | ---------------------------------------------------- | ---------------- | --------------- | ------- |
+| **value**    | identifies the node, unique in the whole tree        | `string`         | -               | -       |
+| **label**    | content of the node                                  | `ReactNode`      | -               | -       |
+| **icon**     | shown before the label                               | `ReactNode`      | -               | -       |
+| **disabled** | the node cannot be selected and is skipped by the keys | `boolean`      | -               | `false` |
+| **children** | the nodes inside this one                            | `TreeNodeData[]` | -               | -       |
+
+<Attributes.Title>Keyboard</Attributes.Title>
+
+- • **Up and Down** move the focus to the previous and the next node in view.
+- • **Right** opens a closed node, and on an open one goes to its first child.
+- • **Left** closes an open node, and on a closed one goes to its parent.
+- • **Home and End** go to the first and the last node in view.
+- • **Enter and Space** select the node, and a node with children also opens or closes.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `ul` of the tree.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The tree follows the ARIA tree pattern: `tree`, `treeitem` and `group`, with `aria-expanded` on the nodes that have children, `aria-selected`, `aria-level` and `aria-disabled`. Each node is named by its own label, not by the text of its children. Only one node is in the tab order, the selected one or the first, and the arrow keys move the focus between the others. Name the tree with `aria-label`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
