@@ -192,6 +192,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Context Menu',
+            url: '/docs/components/context-menu',
+            group: 'Components'
+          },
+          {
             name: 'DatePicker',
             url: '/docs/components/date-picker',
             group: 'Components'

@@ -167,6 +167,11 @@ export const components = [
     url: '/docs/components/container'
   },
   {
+    name: 'Context Menu',
+    url: '/docs/components/context-menu',
+    tag: 'New'
+  },
+  {
     name: 'DatePicker',
     url: '/docs/components/date-picker'
   },

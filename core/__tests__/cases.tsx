@@ -20,6 +20,7 @@ const {
   Collapse,
   Combobox,
   Container,
+  ContextMenu,
   CssBaseline,
   DatePicker,
   DateRangePicker,
@@ -147,6 +148,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Container', () => <Container>Content</Container>],
+  [
+    'ContextMenu',
+    () => <ContextMenu content={<Menu.Item>Copy</Menu.Item>}>Area</ContextMenu>
+  ],
   ['CssBaseline', () => <CssBaseline />],
   ['DatePicker', () => <DatePicker aria-label="Birthday" />],
   ['DateRangePicker', () => <DateRangePicker aria-label="Stay" />],

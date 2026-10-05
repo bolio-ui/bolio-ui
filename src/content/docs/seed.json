@@ -1211,6 +1211,59 @@
     "path": "/docs/components/container#ref"
   },
   {
+    "title": "Context Menu",
+    "component": true,
+    "path": "/docs/components/context-menu"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu General",
+    "component": false,
+    "path": "/docs/components/context-menu#general"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu Files",
+    "component": false,
+    "path": "/docs/components/context-menu#files"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu Disabled",
+    "component": false,
+    "path": "/docs/components/context-menu#disabled"
+  },
+  {
+    "head": "Context Menu",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/context-menu#apis"
+  },
+  {
+    "head": "Context Menu",
+    "title": "ContextMenu Props",
+    "component": false,
+    "path": "/docs/components/context-menu#contextmenu.props"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/context-menu#behavior"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/context-menu#ref"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/context-menu#accessibility"
+  },
+  {
     "title": "DatePicker",
     "component": true,
     "path": "/docs/components/date-picker"

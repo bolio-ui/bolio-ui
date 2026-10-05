@@ -23,6 +23,7 @@ const {
   Collapse,
   Combobox,
   Container,
+  ContextMenu,
   DatePicker,
   DateRangePicker,
   Description,
@@ -149,6 +150,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'INPUT'
   ],
   ['Container', (ref) => <Container ref={ref}>Content</Container>],
+  [
+    'ContextMenu',
+    (ref) => (
+      <ContextMenu ref={ref} content={<Menu.Item>Copy</Menu.Item>}>
+        Area
+      </ContextMenu>
+    ),
+    'DIV'
+  ],
   [
     'DatePicker',
     (ref) => <DatePicker ref={ref} aria-label="Birthday" />,

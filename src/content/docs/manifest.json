@@ -204,6 +204,11 @@
               "path": "/docs/components/container.mdx"
             },
             {
+              "title": "Context Menu",
+              "keywords": "context menu, right click, contextmenu, menu, actions, popup menu, shift f10",
+              "path": "/docs/components/context-menu.mdx"
+            },
+            {
               "title": "DatePicker",
               "keywords": "date picker, datepicker, date, calendar, input date, day",
               "path": "/docs/components/date-picker.mdx"
