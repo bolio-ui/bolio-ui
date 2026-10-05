@@ -31,15 +31,15 @@ describe('semantics', () => {
     expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 
-  it('Collapse header works with the keyboard and exposes its state', () => {
+  it('Collapse header is a native button inside a heading and exposes its state', () => {
     wrap(<Collapse title="Title">Body</Collapse>)
     const header = screen.getByRole('button')
+    expect(header.parentElement?.tagName).toBe('H3')
     expect(header).toHaveAttribute('aria-expanded', 'false')
-    expect(header).toHaveAttribute('tabindex', '0')
 
-    fireEvent.keyDown(header, { key: 'Enter' })
+    fireEvent.click(header)
     expect(header).toHaveAttribute('aria-expanded', 'true')
-    fireEvent.keyDown(header, { key: ' ' })
+    fireEvent.click(header)
     expect(header).toHaveAttribute('aria-expanded', 'false')
   })
 

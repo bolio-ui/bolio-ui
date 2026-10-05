@@ -780,6 +780,12 @@
   },
   {
     "head": "Collapse",
+    "title": "Collapse Controlled and disabled",
+    "component": false,
+    "path": "/docs/components/collapse#controlled-and-disabled"
+  },
+  {
+    "head": "Collapse",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/collapse#apis"
@@ -795,6 +801,12 @@
     "title": "Collapse Group Props",
     "component": false,
     "path": "/docs/components/collapse#collapse.group.props"
+  },
+  {
+    "head": "Collapse",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/collapse#accessibility"
   },
   {
     "title": "Combobox",

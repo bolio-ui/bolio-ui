@@ -1,21 +1,41 @@
 .view {
   cursor: pointer;
-  outline: none;
 }
 
-.view:focus-visible {
+.title {
+  margin: 0;
+  font-size: 1em;
+}
+
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.trigger:focus-visible {
   outline: 2px solid var(--collapse-focus-color);
   outline-offset: 4px;
 }
 
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.title h3 {
-  margin: 0;
+.label {
   font-size: 1.5em;
 }
 

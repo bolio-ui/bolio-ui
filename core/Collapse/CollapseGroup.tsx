@@ -21,6 +21,7 @@ function CollapseGroupComponent({
   accordion = true,
   className = '',
   style,
+  onKeyDown,
   ...props
 }: React.PropsWithChildren<CollapseGroupProps>) {
   const { SCALES } = useScale()
@@ -57,6 +58,32 @@ function CollapseGroupComponent({
     [children]
   )
 
+  // arrows, Home and End move focus between the headers of the group
+  const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (onKeyDown) onKeyDown(event)
+    const { key } = event
+    if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)) return
+    const triggers = Array.from(
+      event.currentTarget.querySelectorAll<HTMLButtonElement>(
+        '[data-collapse-trigger]'
+      )
+    ).filter((trigger) => !trigger.disabled)
+    const current = triggers.indexOf(event.target as HTMLButtonElement)
+    if (current < 0) return
+
+    event.preventDefault()
+    const last = triggers.length - 1
+    const next =
+      key === 'Home'
+        ? 0
+        : key === 'End'
+          ? last
+          : key === 'ArrowDown'
+            ? (current + 1) % triggers.length
+            : (current + last) % triggers.length
+    triggers[next].focus()
+  }
+
   const groupStyle: React.CSSProperties = {
     width: SCALES.width(1, 'auto'),
     height: SCALES.height(1, 'auto'),
@@ -67,7 +94,12 @@ function CollapseGroupComponent({
 
   return (
     <CollapseContext.Provider value={initialValue}>
-      <div className={classes} {...props} style={groupStyle}>
+      <div
+        className={classes}
+        {...props}
+        onKeyDown={keyDownHandler}
+        style={groupStyle}
+      >
         {hasIndexChildren}
       </div>
     </CollapseContext.Provider>
