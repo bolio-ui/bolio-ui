@@ -111,7 +111,8 @@ export const components = [
   },
   {
     name: 'Calendar',
-    url: '/docs/components/calendar'
+    url: '/docs/components/calendar',
+    tag: 'Updated'
   },
   {
     name: 'Capacity',
@@ -156,7 +157,8 @@ export const components = [
   },
   {
     name: 'DateRangePicker',
-    url: '/docs/components/date-range-picker'
+    url: '/docs/components/date-range-picker',
+    tag: 'New'
   },
   {
     name: 'Description',
@@ -251,7 +253,8 @@ export const components = [
   },
   {
     name: 'Pin Input',
-    url: '/docs/components/pin-input'
+    url: '/docs/components/pin-input',
+    tag: 'New'
   },
   {
     name: 'Popover',
