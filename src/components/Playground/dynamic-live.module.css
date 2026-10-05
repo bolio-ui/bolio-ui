@@ -18,4 +18,5 @@
   color: var(--live-error);
   font-size: 12px;
   background-color: var(--live-error-bg);
+  background-clip: padding-box;
 }

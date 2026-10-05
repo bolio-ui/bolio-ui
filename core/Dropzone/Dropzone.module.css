@@ -25,13 +25,14 @@
   padding: 1.5em;
   text-align: center;
   color: var(--dropzone-color);
-  background: var(--dropzone-bg);
+  background-color: var(--dropzone-bg);
   border: 1px dashed var(--dropzone-border);
   border-radius: var(--dropzone-radius);
   cursor: pointer;
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease;
+  background-clip: padding-box;
 }
 
 .dropzone:hover .content {
@@ -40,7 +41,7 @@
 
 .dragging .content {
   border-color: var(--dropzone-active);
-  background: color-mix(in srgb, var(--dropzone-active) 8%, var(--dropzone-bg));
+  background-color: color-mix(in srgb, var(--dropzone-active) 8%, var(--dropzone-bg));
 }
 
 .input:focus-visible + .content {
@@ -83,9 +84,10 @@
   height: 6em;
   overflow: hidden;
   color: var(--dropzone-tile-color);
-  background: var(--dropzone-tile-bg);
+  background-color: var(--dropzone-tile-bg);
   border: 1px solid var(--dropzone-border);
   border-radius: var(--dropzone-radius);
+  background-clip: padding-box;
 }
 
 .preview {
@@ -107,7 +109,7 @@
   font-weight: 600;
   line-height: 1.4;
   color: var(--dropzone-badge-color);
-  background: var(--dropzone-badge-bg);
+  background-color: var(--dropzone-badge-bg);
   border-radius: 4px;
 }
 
@@ -125,11 +127,12 @@
   font: inherit;
   color: var(--dropzone-remove-color);
   cursor: pointer;
-  background: var(--dropzone-remove-bg);
+  background-color: var(--dropzone-remove-bg);
   border: 1px solid var(--dropzone-border);
   border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
+  background-clip: padding-box;
 }
 
 .remove:hover:not(:disabled) {

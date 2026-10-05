@@ -25,6 +25,7 @@
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
+  background-clip: padding-box;
 }
 
 .input::placeholder {
@@ -56,6 +57,7 @@
   border: 1px solid var(--combobox-border-color);
   border-radius: var(--combobox-popup-radius);
   box-shadow: var(--combobox-shadow);
+  background-clip: padding-box;
 }
 
 .list {

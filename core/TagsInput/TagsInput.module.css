@@ -13,14 +13,15 @@
   padding: 0.25em 0.625em;
   border: 1px solid var(--input-border);
   border-radius: var(--input-radius);
-  background: var(--input-bg);
+  background-color: var(--input-bg);
   cursor: text;
   transition: border 0.2s ease;
+  background-clip: padding-box;
 }
 
 .field:hover {
   border-color: var(--input-hover-border);
-  background: var(--input-hover-bg);
+  background-color: var(--input-hover-bg);
 }
 
 .field:focus-within {
@@ -40,7 +41,7 @@
   padding: 0.125em 0.25em 0.125em 0.625em;
   line-height: 1.5;
   color: var(--tag-color);
-  background: var(--tag-bg);
+  background-color: var(--tag-bg);
   border-radius: calc(var(--input-radius) - 2px);
   overflow-wrap: anywhere;
 }
@@ -54,12 +55,13 @@
   padding: 0.125em;
   font: inherit;
   color: var(--tag-remove-color);
-  background: none;
+  background-color: none;
   border: 0;
   border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
+  background-clip: padding-box;
 }
 
 .remove:hover:not(:disabled) {
@@ -82,7 +84,7 @@
   padding: 0;
   font: inherit;
   color: var(--input-color);
-  background: transparent;
+  background-color: transparent;
   border: none;
   outline: none;
 }

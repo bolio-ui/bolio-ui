@@ -4,7 +4,8 @@
   box-sizing: border-box;
   gap: 2px;
   padding: 3px;
-  background: var(--segmented-bg);
+  background-color: var(--segmented-bg);
   border: 1px solid var(--segmented-border);
   border-radius: var(--segmented-radius);
+  background-clip: padding-box;
 }

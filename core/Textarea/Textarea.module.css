@@ -12,6 +12,7 @@
     color 0.2s ease 0s;
   min-width: 12.5rem;
   max-width: 95vw;
+  background-clip: padding-box;
 }
 
 .wrapper:hover {

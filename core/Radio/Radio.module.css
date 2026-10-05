@@ -52,6 +52,7 @@
   display: inline-grid;
   place-items: center;
   margin-right: calc(var(--radio-size) * 0.5);
+  background-clip: padding-box;
 }
 
 .point:before {

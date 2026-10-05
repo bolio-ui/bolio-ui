@@ -79,6 +79,7 @@
   color: var(--cap-foreground);
   overflow: hidden;
   transition: border-color 200ms ease;
+  background-clip: padding-box;
 }
 
 .card:hover {
@@ -139,6 +140,7 @@
   font-family: var(--cap-mono);
   font-size: 0.8rem;
   white-space: pre-wrap;
+  background-clip: padding-box;
 }
 
 .componentsGrid {

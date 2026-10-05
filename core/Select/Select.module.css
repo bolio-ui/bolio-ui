@@ -14,13 +14,14 @@
   border: 1px solid var(--select-border-color);
   border-radius: var(--select-radius);
   background-color: var(--select-bg-color);
-  min-width: 11.5em;
+  min-width: 12.5em;
   width: var(--select-width);
   height: var(--select-height);
   padding: var(--select-padding-top) var(--select-padding-right)
     var(--select-padding-bottom) var(--select-padding-left);
   margin: var(--select-margin-top) var(--select-margin-right)
     var(--select-margin-bottom) var(--select-margin-left);
+  background-clip: padding-box;
 }
 
 .multiple {
@@ -64,6 +65,7 @@
   padding: 0;
   margin: 0;
   color: inherit;
+  font-weight: inherit;
 }
 
 .placeholder {

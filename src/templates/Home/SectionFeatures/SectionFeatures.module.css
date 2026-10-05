@@ -15,6 +15,7 @@
   background-color: var(--features-bg);
   font-family: var(--features-mono);
   font-size: 0.8rem;
+  background-clip: padding-box;
 }
 
 .entryTitle {

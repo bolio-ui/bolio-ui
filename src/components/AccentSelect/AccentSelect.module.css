@@ -13,11 +13,12 @@
   padding: 6px 4px;
   border: 0;
   border-radius: 8px;
-  background: transparent;
+  background-color: transparent;
   color: var(--accent-color);
   font: inherit;
   font-size: 0.75rem;
   cursor: pointer;
+  background-clip: padding-box;
 }
 
 .accent:hover,

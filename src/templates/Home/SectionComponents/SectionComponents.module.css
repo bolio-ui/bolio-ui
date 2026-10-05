@@ -31,6 +31,7 @@
   color: var(--c-foreground);
   overflow: hidden;
   transition: border-color 200ms ease;
+  background-clip: padding-box;
 }
 .card:hover {
   border-color: var(--c-accents_4);
@@ -92,6 +93,7 @@
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
   background-color: var(--c-background);
+  background-clip: padding-box;
 }
 .preview :global(.box.active) {
   border-color: var(--c-primary);

@@ -35,6 +35,7 @@
   border: 1px solid transparent;
   background-color: var(--toggle-bg);
   padding: 0;
+  background-clip: padding-box;
 }
 
 .inner {

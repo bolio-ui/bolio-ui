@@ -21,6 +21,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         html {
           font-size: 16px;
           --bolioui-icons-background: ${theme.palette.background};
+          box-sizing: border-box;
         }
 
         body {

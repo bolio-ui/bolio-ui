@@ -10,13 +10,14 @@
   height: var(--input-height);
   border: 1px solid var(--input-border);
   border-radius: var(--input-radius);
-  background: var(--input-bg);
+  background-color: var(--input-bg);
   transition: border 0.2s ease;
+  background-clip: padding-box;
 }
 
 .numberInput:hover {
   border-color: var(--input-hover-border);
-  background: var(--input-hover-bg);
+  background-color: var(--input-hover-bg);
 }
 
 .numberInput:focus-within {
@@ -35,7 +36,7 @@
   padding: 0;
   font: inherit;
   color: var(--input-color);
-  background: transparent;
+  background-color: transparent;
   border: none;
   outline: none;
 }
@@ -59,7 +60,7 @@
   padding: 0;
   font: inherit;
   color: var(--control-color);
-  background: none;
+  background-color: none;
   border: 0;
   appearance: none;
   -webkit-appearance: none;

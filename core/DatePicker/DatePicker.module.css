@@ -25,6 +25,7 @@
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
+  background-clip: padding-box;
 }
 
 .input::placeholder {
@@ -55,11 +56,12 @@
   height: var(--datepicker-input-height);
   color: var(--datepicker-toggle-color);
   cursor: pointer;
-  background: transparent;
+  background-color: transparent;
   border: 0;
   border-radius: var(--datepicker-radius);
   appearance: none;
   -webkit-appearance: none;
+  background-clip: padding-box;
 }
 
 .toggle:hover:not(:disabled) {
@@ -86,4 +88,5 @@
   border: 1px solid var(--datepicker-border-color);
   border-radius: var(--datepicker-popup-radius);
   box-shadow: var(--datepicker-shadow);
+  background-clip: padding-box;
 }

@@ -122,7 +122,7 @@
   width: 96px;
   padding: 2px 0;
   border: none;
-  background: none;
+  background-color: none;
   color: var(--tg-foreground);
   font-weight: 600;
   font-size: 14px;
@@ -138,10 +138,11 @@
   left: 0;
   z-index: 50;
   padding: 12px;
-  background: var(--tg-background);
+  background-color: var(--tg-background);
   border: 1px solid var(--tg-border);
   border-radius: var(--tg-radius);
   box-shadow: var(--tg-shadow);
+  background-clip: padding-box;
 }
 
 /* ThemeBox */
@@ -217,10 +218,11 @@
   padding: 6px 12px 6px 6px;
   border: 1px solid var(--tg-border);
   border-radius: 100px;
-  background: none;
+  background-color: none;
   color: var(--tg-foreground);
   font-size: 13px;
   cursor: pointer;
+  background-clip: padding-box;
 }
 
 .preset:hover {

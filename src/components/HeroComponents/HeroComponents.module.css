@@ -58,6 +58,7 @@
       border-box;
   border-radius: 50em;
   border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .playerCard {

@@ -21,15 +21,16 @@
   box-sizing: border-box;
   border: 1px solid var(--input-border);
   border-radius: var(--input-radius);
-  background: var(--input-bg);
+  background-color: var(--input-bg);
   transition:
     border 0.2s ease 0s,
     color 0.2s ease 0s;
+  background-clip: padding-box;
 }
 
 .inputWrapper:hover {
   border-color: var(--input-hover-border);
-  background: var(--input-hover-bg);
+  background-color: var(--input-hover-bg);
 }
 
 .inputWrapper.leftLabel {
@@ -100,7 +101,7 @@
   transform: translateY(-50%);
   padding: 0 4px;
   color: var(--input-placeholder-color, inherit);
-  background: var(--input-floating-bg);
+  background-color: var(--input-floating-bg);
   pointer-events: none;
   transition:
     top 0.15s ease,
