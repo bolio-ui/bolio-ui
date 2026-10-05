@@ -155,6 +155,10 @@ export const components = [
     url: '/docs/components/date-picker'
   },
   {
+    name: 'DateRangePicker',
+    url: '/docs/components/date-range-picker'
+  },
+  {
     name: 'Description',
     url: '/docs/components/description'
   },

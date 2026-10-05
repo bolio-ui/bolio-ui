@@ -56,6 +56,9 @@ export type { ContainerProps } from './Container'
 export { default as DatePicker } from './DatePicker'
 export type { DatePickerProps } from './DatePicker'
 
+export { default as DateRangePicker } from './DateRangePicker'
+export type { DateRangePickerProps } from './DateRangePicker'
+
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
 

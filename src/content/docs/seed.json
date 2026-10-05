@@ -1015,6 +1015,77 @@
     "path": "/docs/components/date-picker#accessibility"
   },
   {
+    "title": "DateRangePicker",
+    "component": true,
+    "path": "/docs/components/date-range-picker"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker General",
+    "component": false,
+    "path": "/docs/components/date-range-picker#general"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Initial value",
+    "component": false,
+    "path": "/docs/components/date-range-picker#initial-value"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Controlled",
+    "component": false,
+    "path": "/docs/components/date-range-picker#controlled"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Min and max",
+    "component": false,
+    "path": "/docs/components/date-range-picker#min-and-max"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Variants",
+    "component": false,
+    "path": "/docs/components/date-range-picker#variants"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Disabled",
+    "component": false,
+    "path": "/docs/components/date-range-picker#disabled"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-range-picker#apis"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Props",
+    "component": false,
+    "path": "/docs/components/date-range-picker#daterangepicker.props"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/date-range-picker#typing"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/date-range-picker#ref"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/date-range-picker#accessibility"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"

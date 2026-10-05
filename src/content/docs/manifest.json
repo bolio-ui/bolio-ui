@@ -194,6 +194,11 @@
               "path": "/docs/components/date-picker.mdx"
             },
             {
+              "title": "DateRangePicker",
+              "keywords": "date range picker, daterangepicker, date range, range, period, start date, end date, calendar, booking",
+              "path": "/docs/components/date-range-picker.mdx"
+            },
+            {
               "title": "Description",
               "keywords": "description, with component",
               "path": "/docs/components/description.mdx"

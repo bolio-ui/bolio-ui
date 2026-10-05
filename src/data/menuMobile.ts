@@ -182,6 +182,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'DateRangePicker',
+            url: '/docs/components/date-range-picker',
+            group: 'Components'
+          },
+          {
             name: 'Description',
             url: '/docs/components/description',
             group: 'Components'

@@ -21,6 +21,7 @@ const {
   Combobox,
   Container,
   DatePicker,
+  DateRangePicker,
   Description,
   Display,
   Divider,
@@ -127,6 +128,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'DatePicker',
     (ref) => <DatePicker ref={ref} aria-label="Birthday" />,
     'INPUT'
+  ],
+  [
+    'DateRangePicker',
+    (ref) => <DateRangePicker ref={ref} aria-label="Stay" />,
+    'DIV'
   ],
   ['Description', (ref) => <Description ref={ref} title="T" content="C" />],
   ['Display', (ref) => <Display ref={ref}>Content</Display>],
