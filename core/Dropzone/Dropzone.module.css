@@ -1,0 +1,157 @@
+.dropzone {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  font-size: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  box-sizing: border-box;
+  min-height: 8em;
+  padding: 1.5em;
+  text-align: center;
+  color: var(--dropzone-color);
+  background: var(--dropzone-bg);
+  border: 1px dashed var(--dropzone-border);
+  border-radius: var(--dropzone-radius);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.dropzone:hover .content {
+  border-color: var(--dropzone-hover-border);
+}
+
+.dragging .content {
+  border-color: var(--dropzone-active);
+  background: color-mix(in srgb, var(--dropzone-active) 8%, var(--dropzone-bg));
+}
+
+.input:focus-visible + .content {
+  border-color: var(--dropzone-active);
+  outline: 2px solid var(--dropzone-active);
+  outline-offset: 2px;
+}
+
+.disabled .content {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.disabled:hover .content {
+  border-color: var(--dropzone-border);
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  margin: 0.75em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thumbnail {
+  width: 6em;
+  margin: 0;
+  padding: 0;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 6em;
+  height: 6em;
+  overflow: hidden;
+  color: var(--dropzone-tile-color);
+  background: var(--dropzone-tile-bg);
+  border: 1px solid var(--dropzone-border);
+  border-radius: var(--dropzone-radius);
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fileIcon {
+  flex-shrink: 0;
+}
+
+.format {
+  position: absolute;
+  bottom: 0.375em;
+  left: 0.375em;
+  padding: 0.125em 0.4em;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--dropzone-badge-color);
+  background: var(--dropzone-badge-bg);
+  border-radius: 4px;
+}
+
+.remove {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75em;
+  height: 1.75em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--dropzone-remove-color);
+  cursor: pointer;
+  background: var(--dropzone-remove-bg);
+  border: 1px solid var(--dropzone-border);
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.remove:hover:not(:disabled) {
+  color: var(--dropzone-remove-hover-color);
+}
+
+.remove:focus-visible {
+  outline: 2px solid var(--dropzone-active);
+  outline-offset: 1px;
+}
+
+.remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.name {
+  display: block;
+  margin-top: 0.375em;
+  overflow: hidden;
+  font-size: 0.8125em;
+  color: var(--dropzone-name-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -229,6 +229,11 @@
               "path": "/docs/components/empty-state.mdx"
             },
             {
+              "title": "Dropzone",
+              "keywords": "dropzone, file upload, upload, drag and drop, drop files, file input, attachments, files",
+              "path": "/docs/components/dropzone.mdx"
+            },
+            {
               "title": "Fieldset",
               "keywords": "fieldset, text, tabs, divider",
               "path": "/docs/components/fieldset.mdx"

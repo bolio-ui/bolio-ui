@@ -77,6 +77,13 @@ export type { EmptyStateProps } from './EmptyState'
 export { default as Drawer } from './Drawer'
 export type { DrawerProps } from './Drawer'
 
+export { default as Dropzone } from './Dropzone'
+export type {
+  DropzoneProps,
+  FileRejection,
+  FileRejectionReason
+} from './Dropzone'
+
 export { default as Fieldset } from './Fieldset'
 export type {
   FieldsetProps,

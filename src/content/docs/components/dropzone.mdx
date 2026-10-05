@@ -1,0 +1,144 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Dropzone, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'Dropzone',
+  description:
+    'An area to drop files or click to choose them, with limits for type, size and number.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 62
+}
+
+## Dropzone
+
+An area to drop files or click to choose them. It checks the type, the size and
+the number of files, and hands them to `onDrop`. Uploading and listing the files
+is up to you.
+
+<Playground
+  desc="Pass the files you want to keep from `onDrop`, which receives the ones that passed and the ones that did not."
+  scope={{ Dropzone, Grid, Text }}
+  code={`
+() => {
+  const [names, setNames] = React.useState([])
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Dropzone multiple onDrop={(accepted) => setNames(accepted.map((file) => file.name))} />
+      </Grid>
+      <Grid>
+        <Text p>{names.length ? names.join(', ') : 'No files yet.'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Limits and rejected files"
+  desc="`accept`, `maxSize` and `maxFiles` decide what passes. A rejected file comes back with the `reason`: `file-type`, `file-too-large` or `too-many-files`."
+  scope={{ Dropzone, Grid, Text }}
+  code={`
+() => {
+  const [result, setResult] = React.useState('Drop up to 2 images of 1 MB.')
+  const onDrop = (accepted, rejected) =>
+    setResult(
+      accepted.length + ' accepted. ' +
+        rejected.map((item) => item.file.name + ': ' + item.reason).join('; ')
+    )
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Dropzone multiple accept="image/*" maxSize={1024 * 1024} maxFiles={2} onDrop={onDrop}>
+          Drop up to 2 images of 1 MB
+        </Dropzone>
+      </Grid>
+      <Grid>
+        <Text p>{result}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Thumbnails"
+  desc="With `thumbnails`, the accepted files stay below the area as tiles. Each tile has the format of the file, a preview when it is an image, a file icon when it is not, and a button to remove it."
+  scope={{ Dropzone }}
+  code={`
+<Dropzone thumbnails multiple maxFiles={6} accept="image/*,.pdf,.csv,.zip">
+  Drop images, PDFs, CSVs or ZIPs
+</Dropzone>
+`}
+/>
+
+<Playground
+  title="Custom content"
+  desc="The children replace the default text. Name the area with them, or with `aria-label`."
+  scope={{ Dropzone, Text }}
+  code={`
+<Dropzone accept=".pdf">
+  <Text b>Upload your contract</Text>
+  <Text small>PDF, one file</Text>
+</Dropzone>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="A disabled area ignores drops and cannot open the file picker."
+  scope={{ Dropzone }}
+  code={`
+<Dropzone disabled>Uploads are off</Dropzone>
+`}
+/>
+
+<Attributes edit="/content/docs/components/dropzone.mdx">
+<Attributes.Title>Dropzone.Props</Attributes.Title>
+
+| Attribute    | Description                                                              | Type                                                      | Accepted values                               | Default |
+| ------------ | ------------------------------------------------------------------------ | --------------------------------------------------------- | --------------------------------------------- | ------- |
+| **onDrop**   | called with the accepted files and the rejected ones, from a drop or from the picker | <Code>(accepted: File[], rejected: FileRejection[]) =&gt; void</Code> | -                         | -       |
+| **accept**   | types that pass, in the format of the `accept` of a file input           | `string`                                                  | `'.pdf', 'image/*', 'image/png', ...`, separated by commas | -       |
+| **multiple** | accepts more than one file                                               | `boolean`                                                 | -                                             | `false` |
+| **maxSize**  | largest size of a file, in bytes                                         | `number`                                                  | -                                             | -       |
+| **maxFiles** | most files in one drop, with `multiple`                                  | `number`                                                  | -                                             | -       |
+| **thumbnails** | keeps the accepted files and shows them as tiles below the area | `boolean`                                             | -                                             | `false` |
+| **value**    | the files shown with `thumbnails`, to control them                       | `File[]`                                                  | -                                             | -       |
+| **onChange** | called with the whole list when a file is added or removed, with `thumbnails` | <Code>(files: File[]) =&gt; void</Code>              | -                                             | -       |
+| **removeLabel** | name of the remove button of a file, for screen readers               | <Code>(file: File) =&gt; string</Code>                    | -                                             | `Remove <name>` |
+| **disabled** | ignores drops and blocks the picker                                      | `boolean`                                                 | -                                             | `false` |
+| ...          | native props, passed to the `input`                                      | `InputHTMLAttributes`                                     | `'name', 'aria-label', 'required', ...`       | -       |
+
+<Attributes.Title>Rejected files</Attributes.Title>
+
+`rejected` is a list of `{ file, reason }`. Each file gets only the first reason that applies, checked in this order:
+
+- • **file-type**: the file does not match `accept`.
+- • **file-too-large**: the file is bigger than `maxSize`.
+- • **too-many-files**: there are already as many accepted files as the limit, which is `1` without `multiple` and `maxFiles` with it.
+
+`onDrop` is called on every drop or choice, even when every file was rejected. The file picker is cleared after each choice, so the same file can be chosen again.
+
+<Attributes.Title>Thumbnail behavior</Attributes.Title>
+
+- • **Format**: the tile shows the extension of the file in capitals, like `PNG` or `PDF`. A file without an extension uses the subtype of its type.
+- • **Preview**: only images are shown as they are. Other formats, like PDF, CSV or ZIP, cannot be drawn by the browser, so they get a file icon.
+- • **Limits**: with `multiple`, new files are added to the ones already there, and `maxFiles` counts all of them. Without it, a new file replaces the current one.
+- • **Control**: the list is kept for you. Use `value` and `onChange` to own it, for example to clear it after an upload. `onDrop` is still called on every drop with the files of that drop.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the file `input`. Extra props go to the `input` too, while `className` and `style` go to the wrapper of the area and the thumbnails.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The area is a label around a native file input, so it is reached with Tab and opened with Enter or Space, and its content names the input. A dragged file highlights the area, but the drag is only a shortcut: the picker does the same for people who use the keyboard or a screen reader. The thumbnails are a list, each with the name of the file as text and a remove button named after it, and the preview of an image is decorative. Show the result of `onDrop` as text on the page, for example the rejected files and why.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

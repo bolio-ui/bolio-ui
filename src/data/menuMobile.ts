@@ -212,6 +212,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Dropzone',
+            url: '/docs/components/dropzone',
+            group: 'Components'
+          },
+          {
             name: 'Fieldset',
             url: '/docs/components/fieldset',
             group: 'Components'

@@ -27,6 +27,7 @@ const {
   Divider,
   Dot,
   Drawer,
+  Dropzone,
   Fieldset,
   Grid,
   Image,
@@ -146,6 +147,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         Content
       </Drawer>
     )
+  ],
+  [
+    'Dropzone',
+    (ref) => <Dropzone ref={ref} aria-label="Attachments" />,
+    'INPUT'
   ],
   [
     'Fieldset',

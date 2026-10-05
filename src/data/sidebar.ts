@@ -184,6 +184,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'Dropzone',
+    url: '/docs/components/dropzone',
+    tag: 'New'
+  },
+  {
     name: 'Fieldset',
     url: '/docs/components/fieldset'
   },

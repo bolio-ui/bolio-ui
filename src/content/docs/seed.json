@@ -1332,6 +1332,77 @@
     "path": "/docs/components/empty-state#emptystate.props"
   },
   {
+    "title": "Dropzone",
+    "component": true,
+    "path": "/docs/components/dropzone"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone General",
+    "component": false,
+    "path": "/docs/components/dropzone#general"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Limits and rejected files",
+    "component": false,
+    "path": "/docs/components/dropzone#limits-and-rejected-files"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Thumbnails",
+    "component": false,
+    "path": "/docs/components/dropzone#thumbnails"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Custom content",
+    "component": false,
+    "path": "/docs/components/dropzone#custom-content"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Disabled",
+    "component": false,
+    "path": "/docs/components/dropzone#disabled"
+  },
+  {
+    "head": "Dropzone",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/dropzone#apis"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Props",
+    "component": false,
+    "path": "/docs/components/dropzone#dropzone.props"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Rejected files",
+    "component": false,
+    "path": "/docs/components/dropzone#rejected-files"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Thumbnail behavior",
+    "component": false,
+    "path": "/docs/components/dropzone#thumbnail-behavior"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/dropzone#ref"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/dropzone#accessibility"
+  },
+  {
     "title": "Fieldset",
     "component": true,
     "path": "/docs/components/fieldset"

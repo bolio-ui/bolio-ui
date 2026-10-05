@@ -25,6 +25,7 @@ const {
   Divider,
   Dot,
   Drawer,
+  Dropzone,
   Fieldset,
   Grid,
   Image,
@@ -140,6 +141,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Drawer>
     )
   ],
+  ['Dropzone', () => <Dropzone aria-label="Attachments" />],
   [
     'Fieldset',
     () => (
