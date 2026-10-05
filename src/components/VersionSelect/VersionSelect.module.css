@@ -1,0 +1,12 @@
+.version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.versionNumber {
+  flex: 1;
+  color: var(--version-color);
+  font-size: 0.875rem;
+}

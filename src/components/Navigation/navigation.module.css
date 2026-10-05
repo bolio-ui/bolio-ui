@@ -1,0 +1,146 @@
+.wrapper {
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  z-index: 99;
+}
+
+.sticky {
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.desktop {
+  display: contents;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1280px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: contents;
+  }
+}
+
+.wrapper :global(.theme-button) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: flex-start;
+}
+
+.logoWrapper {
+  margin-top: 8px;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--nav-gap) 0 calc(var(--nav-gap) + 12px);
+  margin-top: 1px;
+}
+
+/* same look as the Tabs they replaced, hover highlight included */
+.navLink {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--nav-muted);
+  font-size: 0.875rem;
+  line-height: normal;
+  padding: 0.875rem 0.55rem;
+  margin: 0 0.2rem;
+  text-decoration: none;
+}
+
+.navLink:first-child {
+  margin-left: 0;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 15% 0;
+  border-radius: 5px;
+  background: var(--nav-hover-bg);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* the bold text is reserved in a hidden copy, so the item keeps its
+   width when it becomes active */
+.navLabel {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navLabel::after {
+  content: attr(data-label);
+  height: 0;
+  font-weight: 500;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.navLink:hover {
+  color: var(--nav-foreground);
+}
+
+.navLink:hover::before,
+.navLink.active::before {
+  opacity: 0.8;
+}
+
+.navLink.active {
+  color: var(--nav-foreground);
+  font-weight: 500;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--nav-primary);
+  outline-offset: -2px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .tabs {
+    display: none;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 50px;
+}
+
+.menuToggle {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { ButtonDropdown } from 'core'
 import { Copy, Check, FileText, ExternalLink } from '@bolio-ui/icons'
+import styles from './PageActions.module.css'
 
 const PageActions: React.FC = () => {
   const pathname = usePathname()
@@ -30,7 +31,7 @@ const PageActions: React.FC = () => {
     )
 
   return (
-    <div className="page-actions">
+    <div className={styles.pageActions}>
       <ButtonDropdown scale={0.6}>
         <ButtonDropdown.Item
           main
@@ -59,12 +60,6 @@ const PageActions: React.FC = () => {
           Open in Claude
         </ButtonDropdown.Item>
       </ButtonDropdown>
-      <style jsx>{`
-        .page-actions {
-          display: flex;
-          justify-content: flex-end;
-        }
-      `}</style>
     </div>
   )
 }

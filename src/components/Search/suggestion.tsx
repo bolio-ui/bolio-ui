@@ -6,6 +6,7 @@ import { File, Hash, ArrowRight } from '@bolio-ui/icons'
 import { addColorAlpha } from 'core/utils/color'
 import { includes } from 'lodash'
 import { DocHit, splitMatches } from 'src/utils/local-search'
+import styles from './suggestion.module.css'
 
 interface Props {
   hit: DocHit
@@ -32,86 +33,41 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
       href={hit.path}
       style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}
     >
-      <span className={cn('suggestion__container', { highlighted })}>
-        <div className="suggestion__icon-container">
+      <span
+        className={cn(styles.container, { [styles.highlighted]: highlighted })}
+        style={
+          {
+            '--suggestion-border': addColorAlpha(theme.palette.border, 0.6),
+            '--suggestion-icon-gap': `calc(${theme.layout.gapQuarter} * 0.5)`,
+            '--suggestion-muted': theme.palette.accents_6,
+            '--suggestion-highlight': addColorAlpha(
+              theme.palette.foreground,
+              0.1
+            ),
+            '--suggestion-foreground': theme.palette.foreground
+          } as React.CSSProperties
+        }
+      >
+        <div className={styles.iconContainer}>
           {!hit.component || includes(hit.path, '#') ? (
             <Hash stroke={theme.palette.accents_6} />
           ) : (
             <File stroke={theme.palette.accents_6} />
           )}
         </div>
-        <div className="suggestion__data-container">
+        <div className={styles.dataContainer}>
           {hit.head && (
-            <span className="suggestion__title">
+            <span className={styles.title}>
               <Highlighted text={hit.head} query={query} />
             </span>
           )}
-          <span className="suggestion__content">
+          <span className={styles.content}>
             <Highlighted text={hit.title} query={query} />
           </span>
         </div>
         <div>
           <ArrowRight stroke={theme.palette.accents_6} fontSize={16} />
         </div>
-
-        <style jsx>
-          {`
-            .suggestion__container {
-              display: flex;
-              align-items: center;
-              cursor: pointer;
-              padding: 8px;
-              justify-content: space-between;
-              border-bottom: 1px solid
-                ${addColorAlpha(theme.palette.border, 0.6)};
-              min-height: 40px;
-              transition: all 0.2s ease;
-            }
-            .suggestion__container,
-            .suggestion__icon-container {
-              display: flex;
-              align-items: center;
-            }
-            .suggestion__icon-container {
-              margin-right: calc(${theme.layout.gapQuarter} * 0.5);
-            }
-            .suggestion__data-container {
-              width: 100%;
-            }
-            .suggestion__title {
-              font-size: 0.735rem;
-              line-height: 2px;
-              font-weight: 500;
-              margin-bottom: 4px;
-              margin-left: 5px;
-              display: flex;
-              color: ${theme.palette.accents_6};
-            }
-            .suggestion__container:hover,
-            .suggestion__container.highlighted {
-              border-radius: 4px;
-              background: ${addColorAlpha(theme.palette.foreground, 0.1)};
-            }
-            .suggestion__container:active {
-              transform: scale(0.97);
-            }
-            :global(.suggestion__title mark) {
-              background-color: transparent;
-              color: ${theme.palette.accents_6};
-            }
-            .suggestion__content {
-              font-size: 0.875rem;
-              display: block;
-              line-height: 1.4;
-              color: ${theme.palette.accents_6};
-              margin-left: 5px;
-            }
-            :global(.suggestion__content mark) {
-              background-color: transparent;
-              color: ${theme.palette.foreground};
-            }
-          `}
-        </style>
       </span>
     </NextLink>
   )

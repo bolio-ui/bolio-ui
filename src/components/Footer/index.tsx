@@ -3,6 +3,7 @@ import { Section, Text, Container, Grid, Row, Link, useTheme } from 'core'
 import { Github, Instagram, Twitter } from '@bolio-ui/icons'
 import Logo from 'src/components/Logo'
 import FooterMeta from './FooterMeta'
+import styles from './Footer.module.css'
 
 const socials = [
   {
@@ -26,12 +27,21 @@ function Footer() {
   const theme = useTheme()
 
   return (
-    <Section py={2} style={{ borderTop: `1px solid ${theme.palette.border}` }}>
+    <Section
+      py={2}
+      style={
+        {
+          borderTop: `1px solid ${theme.palette.border}`,
+          '--footer-muted': theme.palette.accents_5,
+          '--footer-foreground': theme.palette.foreground
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
         <Grid.Container gap={2} alignItems="center">
           <Grid xs={12} md={6}>
             <Logo name="Bolio UI" />
-            <div className="footer-tagline">
+            <div className={styles.tagline}>
               <Text
                 font={0.85}
                 my={0}
@@ -39,7 +49,7 @@ function Footer() {
               >
                 Amazing, modern and creative tools for React UI.
               </Text>
-              <div className="footer-social">
+              <div className={styles.social}>
                 {socials.map(({ label, href, Icon }) => (
                   <Link
                     key={label}
@@ -55,7 +65,7 @@ function Footer() {
             </div>
           </Grid>
           <Grid xs={12} md={6}>
-            <div className="footer-links">
+            <div className={styles.links}>
               <Row justify="end" style={{ flexWrap: 'wrap', gap: 24 }}>
                 <Link href="/docs/guide/getting-started">Guide</Link>
                 <Link href="/docs/components/avatar">Components</Link>
@@ -75,37 +85,6 @@ function Footer() {
           <FooterMeta />
         </div>
       </Container>
-      <style jsx>{`
-        .footer-tagline {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 8px 16px;
-          margin-top: 4px;
-        }
-        .footer-social {
-          display: flex;
-          gap: 12px;
-          color: ${theme.palette.accents_5};
-        }
-        /* Link sets its color inline (inherit), so the hover goes on the icon */
-        .footer-social :global(a) {
-          display: flex;
-        }
-        .footer-social :global(svg) {
-          transition: color 200ms ease;
-        }
-        .footer-social :global(a:hover svg) {
-          color: ${theme.palette.foreground};
-        }
-        .footer-links :global(a) {
-          color: ${theme.palette.accents_5};
-          transition: color 200ms ease;
-        }
-        .footer-links :global(a:hover) {
-          color: ${theme.palette.foreground};
-        }
-      `}</style>
     </Section>
   )
 }

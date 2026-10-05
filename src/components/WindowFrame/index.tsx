@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTheme } from 'core'
+import styles from './WindowFrame.module.css'
 
 interface Props {
   children: React.ReactNode
@@ -9,37 +10,24 @@ function WindowFrame({ children }: Props) {
   const theme = useTheme()
 
   return (
-    <div className="window-frame">
-      <div className="window-frame-bar">
-        <span className="dot" />
-        <span className="dot" />
-        <span className="dot" />
+    <div
+      className={styles.frame}
+      style={
+        {
+          '--frame-border': theme.palette.border,
+          '--frame-radius': theme.layout.radius,
+          '--frame-bg': theme.palette.accents_1,
+          '--frame-dot': theme.palette.accents_4,
+          '--frame-gap': theme.layout.gap
+        } as React.CSSProperties
+      }
+    >
+      <div className={styles.bar}>
+        <span className={styles.dot} />
+        <span className={styles.dot} />
+        <span className={styles.dot} />
       </div>
-      <div className="window-frame-content">{children}</div>
-      <style jsx>{`
-        .window-frame {
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.accents_1};
-          overflow: hidden;
-        }
-        .window-frame-bar {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 10px 14px;
-          border-bottom: 1px solid ${theme.palette.border};
-        }
-        .dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: ${theme.palette.accents_4};
-        }
-        .window-frame-content {
-          padding: ${theme.layout.gap};
-        }
-      `}</style>
+      <div className={styles.content}>{children}</div>
     </div>
   )
 }

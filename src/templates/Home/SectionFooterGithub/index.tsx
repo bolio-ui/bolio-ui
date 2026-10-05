@@ -3,6 +3,7 @@ import NextLink from 'next/link'
 import { Section, Container, Text, useTheme } from 'core'
 import { ArrowRight } from '@bolio-ui/icons'
 import Eyebrow from 'src/components/Eyebrow'
+import styles from './SectionFooterGithub.module.css'
 
 const stats = [
   { label: 'components', value: '51' },
@@ -16,9 +17,19 @@ function SectionFooterGithub() {
   const theme = useTheme()
 
   return (
-    <Section py={5}>
+    <Section
+      py={5}
+      style={
+        {
+          '--footer-border': theme.palette.border,
+          '--footer-foreground': theme.palette.foreground,
+          '--footer-mono': theme.font.mono,
+          '--footer-muted': theme.palette.accents_5
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
-        <div className="head">
+        <div className={styles.head}>
           <div>
             <Eyebrow>
               <span style={{ color: theme.palette.warning }}>
@@ -29,15 +40,15 @@ function SectionFooterGithub() {
               Start coding in seconds with Bolio UI
             </Text>
           </div>
-          <NextLink href="/docs/guide/getting-started" className="cta">
+          <NextLink href="/docs/guide/getting-started" className={styles.cta}>
             Get started
             <ArrowRight fontSize={18} />
           </NextLink>
         </div>
-        <div className="stats">
+        <div className={styles.stats}>
           {stats.map((stat, index) => (
-            <div key={stat.label} className="stat">
-              <span className="stat-label">{stat.label}</span>
+            <div key={stat.label} className={styles.stat}>
+              <span className={styles.statLabel}>{stat.label}</span>
               <span
                 style={{
                   color:
@@ -52,55 +63,6 @@ function SectionFooterGithub() {
           ))}
         </div>
       </Container>
-      <style jsx>{`
-        .head {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 32px;
-          margin-bottom: 96px;
-        }
-        .head :global(.cta) {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-shrink: 0;
-          width: 340px;
-          padding-bottom: 12px;
-          border-bottom: 1px solid ${theme.palette.border};
-          color: ${theme.palette.foreground};
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          transition: border-color 200ms ease;
-        }
-        .head :global(.cta:hover) {
-          border-color: ${theme.palette.foreground};
-        }
-        .stats {
-          border-top: 1px solid ${theme.palette.border};
-        }
-        .stat {
-          display: flex;
-          justify-content: space-between;
-          padding: 10px 0;
-          border-bottom: 1px solid ${theme.palette.border};
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-        }
-        .stat-label {
-          color: ${theme.palette.accents_5};
-        }
-        @media (max-width: ${theme.breakpoints.sm.max}) {
-          .head {
-            flex-direction: column;
-            margin-bottom: 48px;
-          }
-          .head :global(.cta) {
-            width: 100%;
-          }
-        }
-      `}</style>
     </Section>
   )
 }

@@ -1,0 +1,35 @@
+.hybridCode {
+  position: relative;
+}
+
+.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.named {
+  top: 36px;
+}
+
+.hybridCode:hover .copy,
+.copy:focus-visible {
+  opacity: 0.7;
+}
+
+.copy:hover {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .copy {
+    opacity: 0.7;
+  }
+}

@@ -14,6 +14,7 @@ import {
 import * as Icons from '@bolio-ui/icons'
 import Eyebrow from 'src/components/Eyebrow'
 import WindowFrame from 'src/components/WindowFrame'
+import styles from './SectionPlayground.module.css'
 
 type Icon = keyof typeof Icons
 
@@ -154,7 +155,7 @@ function SectionPlayground() {
     setOption(item.content.options[0])
   }
 
-  const muted = (text: string) => <span className="muted">{text}</span>
+  const muted = (text: string) => <span className={styles.muted}>{text}</span>
   const string = (text: string) => (
     <span style={{ color: theme.palette.success }}>{`'${text}'`}</span>
   )
@@ -162,9 +163,19 @@ function SectionPlayground() {
   const { content } = preset
 
   return (
-    <Section py={5}>
+    <Section
+      py={5}
+      style={
+        {
+          '--play-muted': theme.palette.accents_5,
+          '--play-foreground': theme.palette.foreground,
+          '--play-mono': theme.font.mono,
+          '--play-primary': theme.palette.primary
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
-        <div className="head">
+        <div className={styles.head}>
           <div>
             <Eyebrow>Theming</Eyebrow>
             <Text h2 my={0} mb={1}>
@@ -179,14 +190,17 @@ function SectionPlayground() {
               from the default light and dark themes or create your own.
             </Text>
           </div>
-          <NextLink href="/docs/guide/customize-themes" className="learn">
+          <NextLink
+            href="/docs/guide/customize-themes"
+            className={styles.learn}
+          >
             Customize themes →
           </NextLink>
         </div>
 
-        <div className="playground">
-          <div className="demo">
-            <div className="presets" role="tablist">
+        <div className={styles.playground}>
+          <div className={styles.demo}>
+            <div className={styles.presets} role="tablist">
               {presets.map((item) => {
                 const PresetIcon = Icons[item.icon]
                 return (
@@ -194,7 +208,7 @@ function SectionPlayground() {
                     key={item.id}
                     role="tab"
                     aria-selected={item === preset}
-                    className={`preset ${item === preset ? 'active' : ''}`}
+                    className={`${styles.preset} ${item === preset ? styles.active : ''}`}
                     onClick={() => selectPreset(item)}
                   >
                     <PresetIcon fontSize={36} />
@@ -209,7 +223,7 @@ function SectionPlayground() {
               themeType={previewTheme.type}
             >
               <div
-                className="preview"
+                className={styles.preview}
                 style={{ fontFamily: previewTheme.font.sans }}
               >
                 <Card
@@ -219,18 +233,18 @@ function SectionPlayground() {
                     borderRadius: previewTheme.layout.radius
                   }}
                 >
-                  <div className="product">
+                  <div className={styles.product}>
                     <Image
                       key={content.image}
                       src={content.image}
                       alt={content.title}
                       width={240}
                       height={320}
-                      className="product-image"
+                      className={styles.productImage}
                       style={{ borderRadius: previewTheme.layout.radius }}
                     />
                     <div>
-                      <div className="product-title">
+                      <div className={styles.productTitle}>
                         <Text h4 my={0}>
                           {content.title}
                         </Text>
@@ -258,7 +272,7 @@ function SectionPlayground() {
                           {content.meta[2]}
                         </Text>
                       </Text>
-                      <div className="options">
+                      <div className={styles.options}>
                         {content.options.map((item) => (
                           <Button
                             key={item}
@@ -271,7 +285,7 @@ function SectionPlayground() {
                           </Button>
                         ))}
                       </div>
-                      <div className="actions">
+                      <div className={styles.actions}>
                         <Button auto scale={0.75} type="primary">
                           {content.actions[0]}
                         </Button>
@@ -287,7 +301,7 @@ function SectionPlayground() {
           </div>
 
           <WindowFrame>
-            <pre className="code" ref={codeRef}>
+            <pre className={styles.code} ref={codeRef}>
               {muted("import { Themes } from '@bolio-ui/core'")}
               {presets.map((item) => {
                 const config = item.config(isLight)
@@ -297,7 +311,7 @@ function SectionPlayground() {
                     ref={(el) => {
                       blocksRef.current[item.id] = el
                     }}
-                    className={`block ${item === preset ? 'active' : ''}`}
+                    className={`${styles.block} ${item === preset ? styles.active : ''}`}
                   >
                     {muted('const')} {item.id} {muted('= Themes.')}
                     <span style={{ color: theme.palette.primary }}>
@@ -326,131 +340,6 @@ function SectionPlayground() {
           </WindowFrame>
         </div>
       </Container>
-      <style jsx>{`
-        .playground {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 32px;
-          align-items: start;
-          margin-top: 40px;
-        }
-        .demo {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 24px;
-          min-width: 0;
-        }
-        .presets {
-          display: flex;
-          gap: 32px;
-        }
-        .preset {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-          padding: 0;
-          border: 0;
-          background: none;
-          font: inherit;
-          font-size: 0.9rem;
-          color: ${theme.palette.accents_5};
-          cursor: pointer;
-          transition: color 200ms ease;
-        }
-        .preset:hover,
-        .preset.active {
-          color: ${theme.palette.foreground};
-        }
-        .preview {
-          width: 100%;
-        }
-        .preview :global(p),
-        .preview :global(small) {
-          font-family: inherit;
-        }
-        .product {
-          display: grid;
-          grid-template-columns: 160px minmax(0, 1fr);
-          gap: 20px;
-        }
-        .product :global(.product-image) {
-          width: 100%;
-          height: 100%;
-          max-height: 220px;
-          object-fit: cover;
-        }
-        .product-title {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 8px;
-        }
-        .options,
-        .actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: 12px;
-        }
-        .actions {
-          margin-top: 20px;
-        }
-        .head {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          gap: 24px;
-        }
-        .head :global(.learn) {
-          flex-shrink: 0;
-          margin-bottom: 1rem;
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-          color: ${theme.palette.primary};
-        }
-        .code {
-          position: relative;
-          height: 360px;
-          margin: 0;
-          padding: 0;
-          border: 0;
-          overflow: hidden;
-          background: none;
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-          line-height: 1.7;
-          white-space: pre-wrap;
-          color: ${theme.palette.foreground};
-        }
-        .block {
-          margin-top: 24px;
-          opacity: 0.35;
-          transition: opacity 200ms ease;
-        }
-        .block.active {
-          opacity: 1;
-        }
-        .code :global(.muted) {
-          color: ${theme.palette.accents_5};
-        }
-        @media (max-width: ${theme.breakpoints.sm.max}) {
-          .head {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .playground {
-            grid-template-columns: minmax(0, 1fr);
-          }
-          .presets {
-            gap: 20px;
-          }
-          .product {
-            grid-template-columns: minmax(0, 1fr);
-          }
-        }
-      `}</style>
     </Section>
   )
 }

@@ -18,6 +18,7 @@ import {
 } from 'core'
 import { mix, useSettings } from 'src/utils/use-settings'
 import * as Icons from '@bolio-ui/icons'
+import styles from './HeroComponents.module.css'
 
 type Icon = keyof typeof Icons
 
@@ -25,7 +26,7 @@ export const ProfileCard = () => {
   const theme = useTheme()
   return (
     <>
-      <Card className="profile_card_hero" width="100%" bordered>
+      <Card className={styles.profileCard} width="100%" bordered>
         <Row align="middle">
           <Col span={4}>
             <Avatar
@@ -97,29 +98,6 @@ export const ProfileCard = () => {
           </Button>
         </Row>
       </Card>
-      <style global jsx>{`
-        .profile_card_hero {
-          width: 100%;
-          animation: levitating 12s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -134,33 +112,10 @@ export const Search = () => {
         height={1.1}
         font={1}
         width="100%"
-        className="search_hero"
+        className={styles.search}
         borderColor={theme.palette.accents_2}
         hoverBorder={theme.palette.accents_3}
       />
-      <style global jsx>{`
-        .search_hero {
-          margin-top: 6px;
-          animation: levitating 6s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -179,30 +134,8 @@ export const Toogle = () => {
         onChange={() =>
           settings.switchTheme(theme.type === 'dark' ? 'light' : 'dark')
         }
-        className="toogle_hero"
+        className={styles.toggle}
       />
-      <style global jsx>{`
-        .toogle_hero {
-          animation: levitating 9s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -210,31 +143,9 @@ export const Toogle = () => {
 export const ButtonLoading = () => {
   return (
     <>
-      <Card className="button_hero" bordered>
+      <Card className={styles.button} bordered>
         <Spinner />
       </Card>
-      <style global jsx>{`
-        .button_hero {
-          animation: levitating 9s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -245,34 +156,12 @@ export const ButtonIcon = () => {
       <Button
         icon={<Icons.Sliders />}
         auto
-        className="button_icon_hero"
+        className={styles.buttonIcon}
         style={{
           border: 'none'
         }}
         aria-label="Button Icon"
       />
-      <style global jsx>{`
-        .button_icon_hero {
-          animation: levitating 9s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -301,8 +190,8 @@ export const InfoCard = ({
   const theme = useTheme()
   return (
     <>
-      <div className="info_card_hero">
-        <div className="info_card_container">
+      <div className={styles.infoCard}>
+        <div className={styles.infoContainer}>
           <img
             src={src}
             alt="img"
@@ -311,9 +200,9 @@ export const InfoCard = ({
               width: '100%',
               height: '185px'
             }}
-            className="info_card_image"
+            className={styles.infoImage}
           />
-          <div className="info_card_content">
+          <div className={styles.infoContent}>
             <Badge
               style={{
                 borderRadius: '50%',
@@ -336,50 +225,6 @@ export const InfoCard = ({
           </div>
         </div>
       </div>
-      <style global jsx>{`
-        .info_card_hero {
-          width: 100%;
-          animation: levitating 12s ease-in-out infinite;
-        }
-
-        .info_card_container {
-          position: relative;
-        }
-
-        .info_card_image {
-          border-radius: 8px;
-          opacity: 0.2;
-          display: block;
-          width: 100%;
-          height: auto;
-          transition: 0.5s ease;
-          backface-visibility: hidden;
-        }
-
-        .info_card_content {
-          padding: 20px;
-          transition: 0.5s ease;
-          position: absolute;
-          top: 0%;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -387,8 +232,8 @@ export const InfoCard = ({
 export const InfoUsersCard = ({ title, subtitle, src }: InfoCardProps) => {
   return (
     <>
-      <div className="info_users_card_hero">
-        <div className="info_users_card_container">
+      <div className={styles.infoCard}>
+        <div className={styles.infoContainer}>
           <img
             src={src}
             alt="img"
@@ -397,9 +242,9 @@ export const InfoUsersCard = ({ title, subtitle, src }: InfoCardProps) => {
               width: '100%',
               height: '185px'
             }}
-            className="info_card_image"
+            className={styles.infoImage}
           />
-          <div className="info_users_card_content">
+          <div className={styles.infoContent}>
             <Text font="14px" my={0}>
               {title}
             </Text>
@@ -424,50 +269,6 @@ export const InfoUsersCard = ({ title, subtitle, src }: InfoCardProps) => {
           </div>
         </div>
       </div>
-      <style global jsx>{`
-        .info_users_card_hero {
-          width: 100%;
-          animation: levitating 12s ease-in-out infinite;
-        }
-
-        .info_users_card_container {
-          position: relative;
-        }
-
-        .info_users_card_image {
-          border-radius: 8px;
-          opacity: 0.2;
-          display: block;
-          width: 100%;
-          height: auto;
-          transition: 0.5s ease;
-          backface-visibility: hidden;
-        }
-
-        .info_users_card_content {
-          padding: 20px;
-          transition: 0.5s ease;
-          position: absolute;
-          top: 0%;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -476,12 +277,20 @@ export const FollowersCard = () => {
   const theme = useTheme()
   return (
     <>
-      <Card className="followers_card_hero" width="100%" bordered>
+      <Card className={styles.followersCard} width="100%" bordered>
         <Grid.Container>
           <Grid xs={12} md={12}>
             <Row align="middle">
               <div style={{ marginRight: 15 }}>
-                <div className="border-gradient">
+                <div
+                  className={styles.borderGradient}
+                  style={
+                    {
+                      '--hero-code': theme.palette.code,
+                      '--hero-code-dark': mix(theme.palette.code, 0, 0.35)
+                    } as React.CSSProperties
+                  }
+                >
                   <Badge.Anchor>
                     <Badge scale={1 / 2} type="default">
                       12
@@ -537,45 +346,6 @@ export const FollowersCard = () => {
           </Grid>
         </Grid.Container>
       </Card>
-      <style global jsx>{`
-        .followers_card_hero {
-          width: 100%;
-          animation: levitating 3s ease-in-out infinite;
-        }
-        .border-gradient {
-          background:
-            linear-gradient(
-                ${theme.palette.code},
-                ${mix(theme.palette.code, 0, 0.35)}
-              )
-              padding-box,
-            linear-gradient(
-                to right,
-                ${theme.palette.code},
-                ${mix(theme.palette.code, 0, 0.35)}
-              )
-              border-box;
-          border-radius: 50em;
-          border: 2px solid transparent;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }
@@ -584,7 +354,7 @@ export const Player = () => {
   const theme = useTheme()
   return (
     <>
-      <Card className="player_card_hero" width="100%" bordered>
+      <Card className={styles.playerCard} width="100%" bordered>
         <Row justify="space-between">
           <Button
             icon={<Icons.ArrowLeft stroke={theme.palette.foreground} />}
@@ -666,29 +436,6 @@ export const Player = () => {
           />
         </Row>
       </Card>
-      <style global jsx>{`
-        .player_card_hero {
-          width: 100%;
-          animation: levitating 9s ease-in-out infinite;
-        }
-        @keyframes levitating {
-          0% {
-            transform: translateX(0);
-          }
-          30% {
-            transform: translateX(-10px);
-          }
-          50% {
-            transform: translateX(4px);
-          }
-          70% {
-            transform: translateX(-15px);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   )
 }

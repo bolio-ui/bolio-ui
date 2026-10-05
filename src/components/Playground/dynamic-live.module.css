@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.wrapper > :global(div) {
+  width: 100%;
+  background-color: transparent;
+}
+
+.wrapper > :global(.live-error) {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 2px var(--live-error) dotted;
+  border-radius: var(--live-radius);
+  color: var(--live-error);
+  font-size: 12px;
+  background-color: var(--live-error-bg);
+}

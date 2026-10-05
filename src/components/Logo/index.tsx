@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, Text, useTheme } from 'core'
+import { Link, Text } from 'core'
+import styles from './Logo.module.css'
 
 interface Props {
   name: string
@@ -8,8 +9,6 @@ interface Props {
 export type HeroProps = Props
 
 function Logo({ name }: Props) {
-  const theme = useTheme()
-
   return (
     <Link href="/" aria-label="bolio ui">
       <Text b>
@@ -32,19 +31,8 @@ function Logo({ name }: Props) {
             fill="currentColor"
           />
         </svg>
-        <div className="container">{name}</div>
+        <div className={styles.container}>{name}</div>
       </Text>
-      <style jsx>{`
-        .container {
-          padding-left: 1px;
-          display: inline-flex;
-        }
-        @media only screen and (max-width: ${theme.breakpoints.xs.max}) {
-          .container {
-            display: none;
-          }
-        }
-      `}</style>
     </Link>
   )
 }

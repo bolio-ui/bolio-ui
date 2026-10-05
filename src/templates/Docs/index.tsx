@@ -18,6 +18,7 @@ import MadeDesigned from 'src/components/MadeDesigned'
 import NavigationDocs from 'src/components/NavigationDocs'
 import PageActions from 'src/components/PageActions'
 import { guide, components, hooks } from 'src/data/sidebar'
+import styles from './Docs.module.css'
 
 export interface Meta {
   title: string
@@ -82,28 +83,36 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const nextPost = pages[currentPostIndex + 1] ?? null
   const prevPost = pages[currentPostIndex - 1] ?? null
 
+  // The layout renders siblings, so each one that needs the theme gets the
+  // values as custom properties.
+  const themed = {
+    '--docs-border': theme.palette.border,
+    '--docs-gap': theme.layout.gap,
+    '--docs-text': theme.palette.accents_7
+  } as React.CSSProperties
+
   return (
     <>
       {/* A dashboard-style rail: pinned to the real edge of the viewport and
           full height, not centered inside the 1300px content container —
           otherwise it floats with a huge empty gutter on wide screens. */}
-      <aside className="docs-sidebar-left">
+      <aside className={styles.sidebarLeft} style={themed}>
         <Sidebar sidebar={sidebar} />
       </aside>
-      <div className="docs-main">
-        <div className="docs-shell">
-          <div className="docs-content">
+      <div className={styles.main}>
+        <div className={styles.shell}>
+          <div className={styles.content}>
             {/* key remounts only this thin wrapper on navigation, so the
                 new content fades in instead of popping in abruptly. The
                 sidebar, Contents and backgrounds above are unaffected. */}
             <PageActions />
-            <div key={pathname} className="page-content">
+            <div key={pathname} className={styles.pageContent} style={themed}>
               {children}
             </div>
             <NavigationDocs previous={prevPost} next={nextPost} />
           </div>
-          <aside className="docs-sidebar-right">
-            <div className="docs-sidebar-right-sticky">
+          <aside className={styles.sidebarRight} style={themed}>
+            <div className={styles.sidebarRightSticky}>
               <SidebarHeading headings={headings} />
             </div>
           </aside>
@@ -112,127 +121,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       {/* Sibling of .docs-main, not a child of it — the only piece that
           keeps reaching the real right edge of the screen even past 1300px,
           while everything else caps and centers. */}
-      <div className="docs-footer">
-        <div className="docs-footer-inner">
+      <div className={styles.footer} style={themed}>
+        <div className={styles.footerInner}>
           <MadeDesigned />
         </div>
       </div>
-      <style jsx>{`
-        .docs-sidebar-left {
-          position: fixed;
-          /* Above 1300px the whole shell caps and centers like the rest of
-             the site, but the sidebar is position:fixed (viewport-relative,
-             not container-relative) so it needs its own matching offset
-             instead of a wrapping Container — a Container here can't align
-             with a fixed element and reintroduces the old gap/overlap bug. */
-          left: max(0px, calc((100vw - 1300px) / 2));
-          top: 60px;
-          bottom: 0;
-          width: 260px;
-          padding: 24px;
-          box-sizing: border-box;
-          border-right: 1px solid ${theme.palette.border};
-          z-index: 2;
-        }
-        .docs-main {
-          margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
-          max-width: 1040px;
-        }
-        .docs-shell {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) 250px;
-          grid-template-areas: 'content sidebar-right';
-        }
-        .docs-sidebar-right {
-          grid-area: sidebar-right;
-          box-sizing: border-box;
-          border-left: 1px solid ${theme.palette.border};
-        }
-        .docs-sidebar-right-sticky {
-          position: sticky;
-          top: 60px;
-          padding: 24px;
-          box-sizing: border-box;
-        }
-        .docs-content {
-          grid-area: content;
-          box-sizing: border-box;
-          min-width: 0;
-          padding: 30px 32px 0;
-        }
-        .docs-footer {
-          margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
-          border-top: 1px solid ${theme.palette.border};
-        }
-        .docs-footer-inner {
-          padding: ${theme.layout.gap} 24px 1.5rem;
-        }
-        @media (max-width: calc(${theme.breakpoints.lg.min} - 1px)) {
-          .docs-sidebar-left {
-            display: none;
-          }
-          .docs-main {
-            margin-left: 0;
-            max-width: none;
-          }
-          .docs-shell {
-            grid-template-columns: minmax(0, 1fr);
-            grid-template-areas: 'content';
-          }
-          .docs-sidebar-right {
-            display: none;
-          }
-          .docs-content {
-            padding: 30px 16px 0;
-          }
-          .docs-footer {
-            margin-left: 0;
-          }
-          .docs-footer-inner {
-            padding: ${theme.layout.gap} 16px 2rem;
-          }
-        }
-        .page-content {
-          animation: fadeIn 180ms ease;
-        }
-        /* Docs prose reads better with a softer palette and a smaller type
-           scale than the marketing-sized headings CssBaseline ships by
-           default — :global is required here since h2/h3/p/li come from
-           the MDX children, not this component's own JSX. */
-        .page-content :global(h2) {
-          font-size: 2rem;
-        }
-        .page-content :global(h3) {
-          font-size: 1.375rem;
-        }
-        .page-content :global(h4) {
-          font-size: 1.125rem;
-        }
-        .page-content :global(p),
-        .page-content :global(li) {
-          color: ${theme.palette.accents_7};
-          line-height: 1.75em;
-        }
-        .page-content :global(p) {
-          margin: 1.25em 0;
-        }
-        .page-content :global(li) {
-          margin-bottom: 0.75em;
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .page-content {
-            animation: none;
-          }
-        }
-      `}</style>
     </>
   )
 }

@@ -1,0 +1,17 @@
+.title {
+  margin-bottom: 30px;
+  line-height: 1;
+  font-size: 1.3rem;
+  margin-top: 55px;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.withDesc {
+  margin-bottom: 0;
+}
+
+.title > :global(code),
+.title > :global(pre) {
+  text-transform: none;
+}

@@ -1,0 +1,17 @@
+.item {
+  color: var(--sidebar-item-color);
+  background-color: var(--sidebar-item-bg);
+}
+
+.item:hover {
+  color: var(--sidebar-item-hover-color);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible > .item {
+  outline: 2px solid var(--sidebar-item-hover-color);
+  outline-offset: -2px;
+}

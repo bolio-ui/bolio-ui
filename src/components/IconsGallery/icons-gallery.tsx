@@ -2,20 +2,12 @@ import React, { useState } from 'react'
 import { useTheme, Input, useInput, Modal, useModal, Snippet } from 'core'
 import * as Icons from '@bolio-ui/icons'
 import IconsCell, { getImportString } from './icons-cell'
+import styles from './icons-gallery.module.css'
 
 const ImportSnippet: React.FC<React.PropsWithChildren<unknown>> = ({
   children
 }) => {
-  return (
-    <Snippet>
-      {children}
-      <style jsx>{`
-        :global(pre:before) {
-          display: none;
-        }
-      `}</style>
-    </Snippet>
-  )
+  return <Snippet className={styles.snippet}>{children}</Snippet>
 }
 
 const IconsGallery: React.FC<unknown> = () => {
@@ -39,15 +31,23 @@ const IconsGallery: React.FC<unknown> = () => {
   }
 
   return (
-    <>
-      <h3 className="title">{'Icons Gallery'}</h3>
+    <div
+      className={styles.gallery}
+      style={
+        {
+          '--gallery-bg': theme.palette.pre,
+          '--gallery-radius': theme.layout.radius
+        } as React.CSSProperties
+      }
+    >
+      <h3 className={styles.title}>{'Icons Gallery'}</h3>
       <Input
         width="100%"
         icon={<Icons.Search />}
         placeholder={'Search icon...'}
         {...bindings}
       />
-      <div className="icons-grid">
+      <div className={styles.grid}>
         {icons.map(([name, component], index) => (
           <IconsCell
             name={name}
@@ -66,26 +66,7 @@ const IconsGallery: React.FC<unknown> = () => {
           <ImportSnippet>{importStr.single}</ImportSnippet>
         </Modal.Content>
       </Modal>
-      <style jsx>{`
-        .title {
-          line-height: 1;
-          margin-top: 75px;
-          margin-bottom: 30px;
-        }
-        :global(input) {
-          margin-bottom: 4px !important;
-        }
-        .icons-grid {
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 8pt;
-          justify-content: space-around;
-          background-color: ${theme.palette.pre};
-          border-radius: ${theme.layout.radius};
-          padding: 10px;
-        }
-      `}</style>
-    </>
+    </div>
   )
 }
 

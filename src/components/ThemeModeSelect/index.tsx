@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Popover } from 'core'
 import { Sun, Moon, Monitor, Check } from '@bolio-ui/icons'
 import { ThemePreference, useSettings } from 'src/utils/use-settings'
+import styles from './ThemeModeSelect.module.css'
 
 const options: {
   value: ThemePreference
@@ -22,34 +23,16 @@ const ThemeModeSelect: React.FC = () => {
         <Popover.Item key={value}>
           <button
             type="button"
-            className="mode"
+            className={styles.mode}
             aria-pressed={themePreference === value}
             onClick={() => switchTheme(value)}
           >
             {icon}
-            <span className="label">{label}</span>
+            <span className={styles.label}>{label}</span>
             {themePreference === value && <Check fontSize={14} />}
           </button>
         </Popover.Item>
       ))}
-      <style jsx>{`
-        .mode {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          min-width: 140px;
-          padding: 0;
-          border: 0;
-          background: transparent;
-          color: inherit;
-          font: inherit;
-          cursor: pointer;
-        }
-        .label {
-          flex: 1;
-          text-align: left;
-        }
-      `}</style>
     </>
   )
 

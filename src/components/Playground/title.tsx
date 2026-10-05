@@ -1,6 +1,7 @@
 import React from 'react'
 import Anchor from '../Anchor'
 import { kebabCase, isString } from 'lodash'
+import styles from './title.module.css'
 
 export type TitleProps = {
   title: React.ReactNode | string
@@ -24,7 +25,7 @@ function Title({ title, desc = '' }: TitleProps) {
       <h3
         id={`${isString(title) && kebabCase(title)}`}
         data-name={title}
-        className="linked-heading"
+        className={`linked-heading ${styles.title} ${desc ? styles.withDesc : ''}`}
       >
         <Anchor>{title}</Anchor>
       </h3>
@@ -32,25 +33,6 @@ function Title({ title, desc = '' }: TitleProps) {
         <p dangerouslySetInnerHTML={{ __html: replaceCode(desc) }} />
       )}
       {desc && !isStringDesc && <p>{desc}</p>}
-      <style jsx>{`
-        h3 {
-          margin-bottom: ${desc ? 0 : '30px'};
-          line-height: 1;
-          font-size: 1.3rem;
-          margin-top: 55px;
-          text-transform: capitalize;
-          position: relative;
-        }
-
-        h3 > p {
-          margin: 0;
-        }
-
-        h3 > :global(code),
-        h3 > :global(pre) {
-          text-transform: none;
-        }
-      `}</style>
     </>
   )
 }

@@ -1,0 +1,7 @@
+.wrapper {
+  width: 100%;
+}
+
+.cardBox:hover {
+  box-shadow: var(--cardbox-shadow);
+}

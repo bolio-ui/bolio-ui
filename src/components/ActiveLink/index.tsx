@@ -3,6 +3,7 @@ import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme, Text, Link } from 'core'
 import ComponentTag from '../ComponentTag'
+import styles from './ActiveLink.module.css'
 
 export interface Props {
   onAcitve?: () => void
@@ -21,7 +22,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
   const activeBg =
     theme.type === 'dark' ? theme.palette.accents_4 : theme.palette.accents_2
 
-  // color/background-color are declared ONLY in the stylesheet below (never
+  // color/background-color are declared ONLY in ActiveLink.module.css (never
   // as inline style): an inline style for a property always wins over a
   // stylesheet's `:hover` rule for that same property, hover or not — that
   // silently defeated every earlier attempt at a hover effect here. Per-item
@@ -33,7 +34,7 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
       font="14px"
       my={0}
       mb={0.25}
-      className="sidebar-item"
+      className={styles.item}
       style={
         {
           fontWeight: isActive ? 'bold' : undefined,
@@ -61,47 +62,24 @@ const ActiveLink: React.FC<Props> = React.memo(({ href, text, target }) => {
 
   if (target) {
     return (
-      <Link href={href} target={target} style={linkStyle}>
+      <Link
+        href={href}
+        target={target}
+        className={styles.link}
+        style={linkStyle}
+      >
         {label}
-        <style jsx>{`
-          :global(p.sidebar-item.sidebar-item) {
-            color: var(--sidebar-item-color);
-            background-color: var(--sidebar-item-bg);
-          }
-          :global(p.sidebar-item.sidebar-item:hover) {
-            color: var(--sidebar-item-hover-color);
-          }
-          :global(a:has(> p.sidebar-item):focus-visible) {
-            outline: none;
-          }
-          :global(a:focus-visible > p.sidebar-item.sidebar-item) {
-            outline: 2px solid var(--sidebar-item-hover-color);
-            outline-offset: -2px;
-          }
-        `}</style>
       </Link>
     )
   }
 
   return (
-    <NextLink href={href} style={{ ...linkStyle, textDecoration: 'none' }}>
+    <NextLink
+      href={href}
+      className={styles.link}
+      style={{ ...linkStyle, textDecoration: 'none' }}
+    >
       {label}
-      <style jsx>{`
-        :global(p.sidebar-item.sidebar-item) {
-          color: var(--sidebar-item-color);
-          background-color: var(--sidebar-item-bg);
-        }
-        :global(p.sidebar-item.sidebar-item:hover) {
-          color: var(--sidebar-item-hover-color);
-        }
-        :global(a:has(> p.sidebar-item):focus-visible) {
-          outline: none;
-        }
-        :global(a:focus-visible > p.sidebar-item.sidebar-item) {
-          outline: 2px solid var(--sidebar-item-hover-color);
-          outline-offset: -2px;
-        }
-      `}</style>
     </NextLink>
   )
 })

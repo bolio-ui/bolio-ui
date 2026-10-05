@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useTheme } from 'core'
 import AnchorIcon from './anchor-icon'
+import styles from './Anchor.module.css'
 
 export interface Props {
   pure?: boolean
@@ -27,57 +28,20 @@ const Anchor: React.FC<React.PropsWithChildren<Props>> = ({
   }, [])
 
   return (
-    <span className="parent" ref={ref}>
+    <span
+      className={styles.parent}
+      ref={ref}
+      style={
+        { '--anchor-icon': theme.palette.accents_5 } as React.CSSProperties
+      }
+    >
       <Link href={`#${id}`}>{children}</Link>
-      <span className="virtual" id={id} />
+      <span className={styles.virtual} id={id} />
       {!pure && (
-        <span className="icon">
+        <span className={styles.icon}>
           <AnchorIcon />
         </span>
       )}
-      <style jsx>{`
-        .parent {
-          position: relative;
-          color: inherit;
-        }
-
-        .parent :global(a) {
-          color: inherit;
-        }
-
-        .virtual {
-          position: absolute;
-          top: -65px;
-          left: 0;
-          opacity: 0;
-          pointer-events: none;
-          visibility: hidden;
-        }
-
-        .icon {
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          left: 100%;
-          margin-left: 0.5em;
-          top: 50%;
-          transform: translateY(-50%);
-          position: absolute;
-          opacity: 0;
-          visibility: hidden;
-          font-size: inherit;
-          width: 0.8em;
-          height: 0.8em;
-          margin-top: 1px;
-          color: ${theme.palette.accents_5};
-        }
-
-        .parent:hover > .icon {
-          opacity: 1;
-          visibility: visible;
-        }
-      `}</style>
     </span>
   )
 }

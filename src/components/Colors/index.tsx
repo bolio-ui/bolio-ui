@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card, Grid, useTheme } from 'core'
+import { Card, Grid } from 'core'
 import { CardTypes } from 'core/utils/prop-types'
+import styles from './Colors.module.css'
 
 const types = [
   'default',
@@ -15,10 +16,8 @@ const types = [
 ]
 
 const Colors: React.FC<React.PropsWithChildren<unknown>> = () => {
-  const theme = useTheme()
-
   return (
-    <div className="colors">
+    <div className={styles.colors}>
       <Grid.Container gap={1} pl={0} mr="10px">
         {types.map((type, index) => {
           return (
@@ -30,19 +29,6 @@ const Colors: React.FC<React.PropsWithChildren<unknown>> = () => {
           )
         })}
       </Grid.Container>
-      <style jsx>{`
-        .colors {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        .color-card {
-          display: flex;
-          width: 9rem;
-          margin-right: ${theme.layout.gapHalf};
-          margin-bottom: ${theme.layout.gapHalf};
-        }
-      `}</style>
     </div>
   )
 }

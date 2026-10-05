@@ -1,0 +1,22 @@
+.link {
+  transition:
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.link:hover {
+  background-color: var(--docs-link-hover);
+  transform: translateY(-1px);
+}
+
+.link svg {
+  transition: transform 200ms ease;
+}
+
+.previous:hover svg {
+  transform: translateX(-3px);
+}
+
+.next:hover svg {
+  transform: translateX(3px);
+}

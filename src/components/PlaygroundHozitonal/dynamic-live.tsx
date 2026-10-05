@@ -4,6 +4,7 @@ import { Grid, useTheme } from 'core'
 import { addColorAlpha } from 'core/utils/color'
 import makeCodeTheme from './code-theme'
 import Editor from './editor'
+import styles from './dynamic-live.module.css'
 
 // Component is read by react-live but missing from its types. React 19 does
 // not apply its defaultProps ('div') on function components, so it is passed.
@@ -28,33 +29,24 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
             <Editor />
           </Grid>
           <Grid xs={12} sm={6} md={5} justify="center" alignItems="center">
-            <div className="wrapper">
+            <div
+              className={styles.wrapper}
+              style={
+                {
+                  '--live-radius': theme.layout.radius,
+                  '--live-error': theme.palette.error,
+                  '--live-error-bg': addColorAlpha(
+                    theme.palette.secondaryDark,
+                    0.1
+                  )
+                } as React.CSSProperties
+              }
+            >
               <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
           </Grid>
         </Grid.Container>
-        <style jsx>{`
-          .wrapper {
-            width: 100%;
-          }
-          .wrapper > :global(div) {
-            width: 100%;
-            background-color: transparent;
-          }
-          .wrapper > :global(.live-error) {
-            padding: 10px 12px 0 12px;
-            margin-bottom: 0;
-            border: 0;
-            border-radius: ${theme.layout.radius};
-            color: ${theme.palette.error};
-            font-size: 12px;
-            background-color: ${addColorAlpha(
-              theme.palette.secondaryDark,
-              0.1
-            )};
-          }
-        `}</style>
       </LiveProvider>
     </>
   )

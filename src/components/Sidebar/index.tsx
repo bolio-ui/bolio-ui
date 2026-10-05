@@ -3,6 +3,7 @@ import { useTheme, Grid } from 'core'
 import { guide, components, hooks } from 'src/data/sidebar'
 import ActiveLink from '../ActiveLink'
 import ActiveCategory from '../ActiveCategory'
+import styles from './Sidebar.module.css'
 
 export interface SidebarProps {
   sidebar: string
@@ -35,7 +36,8 @@ function Sidebar({ sidebar }: SidebarProps) {
   return (
     <div
       ref={boxRef}
-      className="sides box"
+      className={styles.box}
+      style={{ '--sidebar-gap': theme.layout.gap } as React.CSSProperties}
       onScroll={(event) => {
         scrollPositions[sidebar] = event.currentTarget.scrollTop
       }}
@@ -58,24 +60,6 @@ function Sidebar({ sidebar }: SidebarProps) {
           </Grid.Container>
         )
       })}
-      <style jsx>{`
-        .sides {
-          width: 100%;
-          padding-bottom: ${theme.layout.gap};
-        }
-        .box {
-          overflow-y: auto;
-          overflow-x: hidden;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .box::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   )
 }

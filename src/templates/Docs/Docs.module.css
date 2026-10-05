@@ -1,0 +1,138 @@
+.sidebarLeft {
+  position: fixed;
+  /* Above 1300px the whole shell caps and centers like the rest of
+     the site, but the sidebar is position:fixed (viewport-relative,
+     not container-relative) so it needs its own matching offset
+     instead of a wrapping Container — a Container here can't align
+     with a fixed element and reintroduces the old gap/overlap bug. */
+  left: max(0px, calc((100vw - 1300px) / 2));
+  top: 60px;
+  bottom: 0;
+  width: 260px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-right: 1px solid var(--docs-border);
+  z-index: 2;
+}
+
+.main {
+  margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+  max-width: 1040px;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  grid-template-areas: 'content sidebar-right';
+}
+
+.sidebarRight {
+  grid-area: sidebar-right;
+  box-sizing: border-box;
+  border-left: 1px solid var(--docs-border);
+}
+
+.sidebarRightSticky {
+  position: sticky;
+  top: 60px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.content {
+  grid-area: content;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 30px 32px 0;
+}
+
+.footer {
+  margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+  border-top: 1px solid var(--docs-border);
+}
+
+.footerInner {
+  padding: var(--docs-gap) 24px 1.5rem;
+}
+
+@media (max-width: 1279px) {
+  .sidebarLeft {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'content';
+  }
+
+  .sidebarRight {
+    display: none;
+  }
+
+  .content {
+    padding: 30px 16px 0;
+  }
+
+  .footer {
+    margin-left: 0;
+  }
+
+  .footerInner {
+    padding: var(--docs-gap) 16px 2rem;
+  }
+}
+
+.pageContent {
+  animation: fadeIn 180ms ease;
+}
+
+/* Docs prose reads better with a softer palette and a smaller type
+   scale than the marketing-sized headings CssBaseline ships by
+   default — :global is required here since h2/h3/p/li come from
+   the MDX children, not this component's own JSX. */
+.pageContent :global(h2) {
+  font-size: 2rem;
+}
+
+.pageContent :global(h3) {
+  font-size: 1.375rem;
+}
+
+.pageContent :global(h4) {
+  font-size: 1.125rem;
+}
+
+.pageContent :global(p),
+.pageContent :global(li) {
+  color: var(--docs-text);
+  line-height: 1.75em;
+}
+
+.pageContent :global(p) {
+  margin: 1.25em 0;
+}
+
+.pageContent :global(li) {
+  margin-bottom: 0.75em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageContent {
+    animation: none;
+  }
+}

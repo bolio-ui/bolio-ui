@@ -12,6 +12,7 @@ import KBarOption from './option'
 import KBarSearch from './search'
 import KBarResults from './results'
 import generateStyles from './styles'
+import classes from './KBar.module.css'
 import { Action, ResultHandlers, ResultState } from './types'
 
 // kbar 0.1.0-beta.6 types its components without `children`
@@ -28,7 +29,7 @@ const KBar: React.FC<unknown> = () => {
 
   return (
     <KBarPortal>
-      <Backdrop className="backdrop" visible={visible}>
+      <Backdrop className={classes.backdrop} visible={visible}>
         <KBarPositioner>
           <Animator style={styles.container}>
             <KBarSearch placeholder="What do you need?" />
@@ -45,13 +46,6 @@ const KBar: React.FC<unknown> = () => {
           </Animator>
         </KBarPositioner>
       </Backdrop>
-      <style jsx>
-        {`
-          :global(.backdrop .content) {
-            height: 100%;
-          }
-        `}
-      </style>
     </KBarPortal>
   )
 }

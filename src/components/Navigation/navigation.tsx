@@ -19,6 +19,7 @@ import VersionSelect from 'src/components/VersionSelect'
 import AccentSelect from 'src/components/AccentSelect'
 import ThemeModeSelect from 'src/components/ThemeModeSelect'
 import SearchInput from 'src/components/Search/instant-search'
+import styles from './navigation.module.css'
 
 // Plain links, not Tabs: they navigate between pages
 const navLinks = [
@@ -60,29 +61,49 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav className="menu_wrapper">
+      <nav className={styles.wrapper}>
         <Container>
-          <div className="menu_sticky">
+          <div
+            className={styles.sticky}
+            style={
+              {
+                '--nav-bg': theme.palette.background,
+                '--nav-border': theme.palette.border,
+                '--nav-gap': theme.layout.gap,
+                '--nav-muted': theme.palette.accents_5,
+                '--nav-hover-bg': theme.palette.accents_2,
+                '--nav-foreground': theme.palette.foreground,
+                '--nav-primary': theme.palette.primary
+              } as React.CSSProperties
+            }
+          >
             <Grid.Container gap={1} justify="center">
               {/* Both layouts come in the server HTML and CSS shows the one
                   for the screen, so the navbar is ready on the first paint */}
-              <div className="nav-desktop">
+              <div className={styles.desktop}>
                 <Grid xs={6} md={6} justify="flex-start">
-                  <div className="brand">
-                    <div className="logo-wrapper">
+                  <div className={styles.brand}>
+                    <div className={styles.logoWrapper}>
                       <Logo name="Bolio UI" />
                     </div>
-                    <div className="tabs">
+                    <div className={styles.tabs}>
                       {navLinks.map(({ label, href, base }) => {
                         const active = pathname.startsWith(base)
                         return (
                           <NextLink
                             key={href}
                             href={href}
-                            className={active ? 'nav-link active' : 'nav-link'}
+                            className={
+                              active
+                                ? `${styles.navLink} ${styles.active}`
+                                : styles.navLink
+                            }
                             aria-current={active ? 'page' : undefined}
                           >
-                            <span className="nav-label" data-label={label}>
+                            <span
+                              className={styles.navLabel}
+                              data-label={label}
+                            >
                               {label}
                             </span>
                           </NextLink>
@@ -93,7 +114,7 @@ const Navigation: React.FC = () => {
                 </Grid>
 
                 <Grid xs={6} md={6} justify="flex-end">
-                  <div className="controls">
+                  <div className={styles.controls}>
                     <>
                       <VersionSelect />
                       <SearchInput />
@@ -118,7 +139,7 @@ const Navigation: React.FC = () => {
                   </div>
                 </Grid>
               </div>
-              <div className="nav-mobile">
+              <div className={styles.mobile}>
                 <Grid xs={2} md={4} style={{ marginTop: '8px' }}>
                   <Logo name="Bolio UI" />
                 </Grid>
@@ -127,10 +148,10 @@ const Navigation: React.FC = () => {
                   <Row justify="end" align="middle">
                     <SearchInput />
                     <Spacer w={1} />
-                    <div className="controls">
+                    <div className={styles.controls}>
                       <ThemeModeSelect />
                       <Button
-                        className="menu-toggle"
+                        className={styles.menuToggle}
                         auto
                         type="abort"
                         aria-label={expanded ? 'Close menu' : 'Open menu'}
@@ -152,140 +173,6 @@ const Navigation: React.FC = () => {
         </Container>
       </nav>
       <NavigationMobile expanded={expanded} />
-      <style jsx>{`
-        .menu_wrapper {
-          height: 60px;
-          position: relative;
-          overflow: hidden;
-          z-index: 99;
-        }
-        .menu_sticky {
-          z-index: 1;
-          position: fixed;
-          z-index: 1100;
-          top: 0;
-          right: 0;
-          left: 0;
-          background-color: ${theme.palette.background};
-          border-bottom: 1px solid ${theme.palette.border};
-          padding-left: 15px;
-          padding-right: 15px;
-        }
-        .nav-desktop {
-          display: contents;
-        }
-        .nav-mobile {
-          display: none;
-        }
-        @media only screen and (max-width: 1280px) {
-          .nav-desktop {
-            display: none;
-          }
-          .nav-mobile {
-            display: contents;
-          }
-        }
-        .menu_wrapper :global(.theme-button) {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 2.25rem;
-          height: 2.25rem;
-          padding: 0;
-        }
-
-        .brand {
-          display: flex;
-          align-items: flex-start;
-        }
-        .logo-wrapper {
-          margin-top: 8px;
-        }
-        .logo {
-          padding: 0 ${theme.layout.gap};
-          margin-bottom: 3px;
-        }
-        .tabs {
-          display: flex;
-          align-items: center;
-          padding: 0 ${theme.layout.gap} 0 calc(${theme.layout.gap} + 12px);
-          margin-top: 1px;
-        }
-        /* same look as the Tabs they replaced, hover highlight included */
-        .tabs :global(.nav-link) {
-          position: relative;
-          z-index: 0;
-          display: flex;
-          align-items: center;
-          white-space: nowrap;
-          color: ${theme.palette.accents_5};
-          font-size: 0.875rem;
-          line-height: normal;
-          padding: 0.875rem 0.55rem;
-          margin: 0 0.2rem;
-          text-decoration: none;
-        }
-        .tabs :global(.nav-link:first-child) {
-          margin-left: 0;
-        }
-        .tabs :global(.nav-link::before) {
-          content: '';
-          position: absolute;
-          z-index: -1;
-          inset: 15% 0;
-          border-radius: 5px;
-          background: ${theme.palette.accents_2};
-          opacity: 0;
-          transition: opacity 0.15s ease;
-        }
-        /* the bold text is reserved in a hidden copy, so the item keeps its
-           width when it becomes active */
-        .tabs :global(.nav-label) {
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .tabs :global(.nav-label::after) {
-          content: attr(data-label);
-          height: 0;
-          font-weight: 500;
-          visibility: hidden;
-          overflow: hidden;
-        }
-        .tabs :global(.nav-link:hover) {
-          color: ${theme.palette.foreground};
-        }
-        .tabs :global(.nav-link:hover::before),
-        .tabs :global(.nav-link.active::before) {
-          opacity: 0.8;
-        }
-        .tabs :global(.nav-link.active) {
-          color: ${theme.palette.foreground};
-          font-weight: 500;
-        }
-        .tabs :global(.nav-link:focus-visible) {
-          outline: 2px solid ${theme.palette.primary};
-          outline-offset: -2px;
-        }
-        @media only screen and (max-width: ${theme.breakpoints.md.max}) {
-          .tabs {
-            display: none;
-          }
-        }
-
-        .controls {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 8px;
-          height: 50px;
-        }
-        .controls :global(.menu-toggle) {
-          display: flex;
-          align-items: center;
-          height: 50px;
-        }
-      `}</style>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Anchor from '../Anchor'
 import { Code, useTheme } from 'core'
+import styles from './attributes-title.module.css'
 
 export interface AttributesTitleProps {
   alias?: string
@@ -23,32 +24,20 @@ const AttributesTitle: React.FC<React.PropsWithChildren<AttributesTitleProps>> =
 
     return (
       <>
-        <h4 className="title">
+        <h4
+          className={`title ${styles.title}`}
+          style={
+            {
+              '--title-gap': theme.layout.gapHalf,
+              '--title-radius': theme.layout.radius,
+              '--title-alias': theme.palette.accents_4,
+              '--title-bracket': theme.palette.accents_6
+            } as React.CSSProperties
+          }
+        >
           <Anchor pure>{children}</Anchor>
           {getAlias(alias)}
         </h4>
-
-        <style jsx>{`
-          h4 {
-            display: inline-flex;
-            align-items: center;
-            padding-right: ${theme.layout.gapHalf};
-            border-radius: ${theme.layout.radius};
-            margin-bottom: 0;
-          }
-
-          h4 :global(small) {
-            font-size: 0.65em;
-            padding-left: 0.65rem;
-            color: ${theme.palette.accents_4};
-            align-self: flex-end;
-            line-height: 1.6rem;
-          }
-
-          h4 :global(span) {
-            color: ${theme.palette.accents_6};
-          }
-        `}</style>
       </>
     )
   })

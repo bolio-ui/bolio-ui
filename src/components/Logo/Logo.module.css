@@ -1,0 +1,10 @@
+.container {
+  padding-left: 1px;
+  display: inline-flex;
+}
+
+@media only screen and (max-width: 650px) {
+  .container {
+    display: none;
+  }
+}

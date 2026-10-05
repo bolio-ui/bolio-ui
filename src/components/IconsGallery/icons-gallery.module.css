@@ -1,0 +1,23 @@
+.title {
+  line-height: 1;
+  margin-top: 75px;
+  margin-bottom: 30px;
+}
+
+.gallery input {
+  margin-bottom: 4px !important;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8pt;
+  justify-content: space-around;
+  background-color: var(--gallery-bg);
+  border-radius: var(--gallery-radius);
+  padding: 10px;
+}
+
+.snippet :global(pre)::before {
+  display: none;
+}
