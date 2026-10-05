@@ -147,6 +147,9 @@ export type {
   PaginationPreviousProps
 } from './Pagination'
 
+export { default as PinInput } from './PinInput'
+export type { PinInputProps } from './PinInput'
+
 export { default as Popover } from './Popover'
 export type { PopoverProps, PopoverItemProps } from './Popover'
 

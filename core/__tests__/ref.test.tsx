@@ -40,6 +40,7 @@ const {
   NumberInput,
   Page,
   Pagination,
+  PinInput,
   Popover,
   Progress,
   Radio,
@@ -202,6 +203,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Pagination', (ref) => <Pagination ref={ref} count={5} initialPage={1} />],
+  ['PinInput', (ref) => <PinInput ref={ref} aria-label="Code" />, 'DIV'],
   [
     'Popover',
     (ref) => (

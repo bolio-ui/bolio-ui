@@ -2324,6 +2324,71 @@
     "path": "/docs/components/pagination#pagination.next.props"
   },
   {
+    "title": "Pin Input",
+    "component": true,
+    "path": "/docs/components/pin-input"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input General",
+    "component": false,
+    "path": "/docs/components/pin-input#general"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Controlled",
+    "component": false,
+    "path": "/docs/components/pin-input#controlled"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Masked",
+    "component": false,
+    "path": "/docs/components/pin-input#masked"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Variants",
+    "component": false,
+    "path": "/docs/components/pin-input#variants"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Error and disabled",
+    "component": false,
+    "path": "/docs/components/pin-input#error-and-disabled"
+  },
+  {
+    "head": "Pin Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/pin-input#apis"
+  },
+  {
+    "head": "Pin Input",
+    "title": "PinInput Props",
+    "component": false,
+    "path": "/docs/components/pin-input#pininput.props"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Typing and pasting",
+    "component": false,
+    "path": "/docs/components/pin-input#typing-and-pasting"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pin-input#ref"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pin-input#accessibility"
+  },
+  {
     "title": "Popover",
     "component": true,
     "path": "/docs/components/popover"

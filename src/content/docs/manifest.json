@@ -304,6 +304,11 @@
               "path": "/docs/components/pagination.mdx"
             },
             {
+              "title": "Pin Input",
+              "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
+              "path": "/docs/components/pin-input.mdx"
+            },
+            {
               "title": "Popover",
               "keywords": "popover, tooltip, preset item, close manual",
               "path": "/docs/components/popover.mdx"

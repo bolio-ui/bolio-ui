@@ -282,6 +282,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Pin Input',
+            url: '/docs/components/pin-input',
+            group: 'Components'
+          },
+          {
             name: 'Popover',
             url: '/docs/components/popover',
             group: 'Components'

@@ -1,0 +1,148 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { PinInput, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Pin Input',
+  description:
+    'A row of boxes to type a short code, like a verification code or a PIN.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 61
+}
+
+## Pin Input
+
+A row of boxes to type a short code, like a verification code or a PIN. Each
+character goes to its own box and the focus moves ahead by itself.
+
+<Playground
+  desc="Name the group with `aria-label`. With `numeric`, only digits are accepted."
+  scope={{ PinInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <PinInput aria-label="Verification code" numeric />
+  </Grid>
+  <Grid>
+    <PinInput aria-label="Invite code" length={4} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Use `value` and `onChange` to keep the code in your own state, and `onComplete` to react when every box is filled."
+  scope={{ PinInput, Grid, Text }}
+  code={`
+() => {
+  const [code, setCode] = React.useState('')
+  const [done, setDone] = React.useState(false)
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <PinInput
+          aria-label="Verification code"
+          length={4}
+          numeric
+          value={code}
+          onChange={(next) => { setCode(next); setDone(false) }}
+          onComplete={() => setDone(true)}
+        />
+      </Grid>
+      <Grid>
+        <Text p>{done ? 'Code ' + code + ' is complete.' : 'Typed so far: ' + (code || 'nothing')}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Masked"
+  desc="With `mask`, the characters are hidden, like in a password."
+  scope={{ PinInput }}
+  code={`
+<PinInput aria-label="PIN" length={4} mask numeric />
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the boxes."
+  scope={{ PinInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <PinInput type="primary" filled length={4} aria-label="Filled" initialValue="12" />
+  </Grid>
+  <Grid>
+    <PinInput type="success" light length={4} aria-label="Light" initialValue="12" />
+  </Grid>
+  <Grid>
+    <PinInput type="info" ghost rounded length={4} aria-label="Ghost" initialValue="12" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Error and disabled"
+  desc="`error` turns the boxes red and marks them as invalid. `disabled` locks them."
+  scope={{ PinInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <PinInput error length={4} aria-label="Wrong code" initialValue="1234" />
+  </Grid>
+  <Grid>
+    <PinInput disabled length={4} aria-label="Locked code" initialValue="1234" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/pin-input.mdx">
+<Attributes.Title>PinInput.Props</Attributes.Title>
+
+| Attribute        | Description                                                  | Type                                          | Accepted values                                                            | Default                    |
+| ---------------- | ------------------------------------------------------------ | --------------------------------------------- | -------------------------------------------------------------------------- | -------------------------- |
+| **length**       | number of boxes                                              | `number`                                      | -                                                                          | `6`                        |
+| **value**        | the code, to control the component                           | `string`                                      | -                                                                          | -                          |
+| **initialValue** | the code at the start                                        | `string`                                      | -                                                                          | `''`                       |
+| **onChange**     | called with the code each time it changes                    | `(value: string) => void`                     | -                                                                          | -                          |
+| **onComplete**   | called with the code when every box is filled                | `(value: string) => void`                     | -                                                                          | -                          |
+| **numeric**      | accepts only digits and opens the numeric keyboard           | `boolean`                                     | -                                                                          | `false`                    |
+| **mask**         | hides the characters                                         | `boolean`                                     | -                                                                          | `false`                    |
+| **boxLabel**     | name of each box for screen readers                          | `(index: number, length: number) => string`   | -                                                                          | `Character 1 of 6`         |
+| **disabled**     | disable the component                                        | `boolean`                                     | -                                                                          | `false`                    |
+| **error**        | red boxes, marked as invalid                                 | `boolean`                                     | -                                                                          | `false`                    |
+| **type**         | color of the boxes                                           | `NormalTypes`                                 | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`                  |
+| **rounded**      | round the corners                                            | `boolean`                                     | -                                                                          | `false`                    |
+| **filled**       | filled variant                                               | `boolean`                                     | -                                                                          | `false`                    |
+| **light**        | light variant                                                | `boolean`                                     | -                                                                          | `false`                    |
+| **ghost**        | outline variant                                              | `boolean`                                     | -                                                                          | `false`                    |
+| **subtle**       | subtle variant                                               | `boolean`                                     | -                                                                          | `false`                    |
+| ...              | native props, passed to the group `div`                      | `HTMLAttributes`                              | `'aria-label', 'id', ...`                                                  | -                          |
+
+<Attributes.Title>Typing and pasting</Attributes.Title>
+
+- • **A character** fills its box and moves the focus to the next one. Typing over a filled box replaces its character.
+- • **Backspace** clears the box. On an empty box, it goes back to the previous one and clears it.
+- • **Paste** fills the boxes from the one that received it, and what does not fit is dropped. The first box accepts the one time code that a phone offers from a text message in the same way.
+- • **Left and Right arrows** move between the boxes.
+- • The code has no gaps, so a click on a box past the end goes to the first empty one.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the group `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The boxes are native text inputs in a group named by `aria-label`, and each one has its own name, like "Character 3 of 6", which you can translate with `boxLabel`. The first box has `autocomplete="one-time-code"`, so phones can offer the code from a message. `error` sets `aria-invalid` on every box.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

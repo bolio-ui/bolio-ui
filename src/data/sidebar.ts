@@ -245,6 +245,10 @@ export const components = [
     url: '/docs/components/pagination'
   },
   {
+    name: 'Pin Input',
+    url: '/docs/components/pin-input'
+  },
+  {
     name: 'Popover',
     url: '/docs/components/popover'
   },
