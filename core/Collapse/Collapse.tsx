@@ -143,7 +143,7 @@ const CollapseComponent = React.forwardRef<
             id={panelId}
             className={styles.content}
             style={{
-              padding: `${SCALES.pt(1.2)} ${SCALES.pr(0)} ${SCALES.pb(1.2)} ${SCALES.pl(0)}`
+              padding: `${SCALES.pt(0.6)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`
             }}
           >
             {children}
