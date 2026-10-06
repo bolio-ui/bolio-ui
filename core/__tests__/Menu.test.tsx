@@ -72,6 +72,19 @@ describe('<Menu />', () => {
     expect(focused()).toBe(menu)
   })
 
+  it('focuses the menu without scrolling the page', () => {
+    const trigger = setup()
+    const focus = jest.spyOn(HTMLElement.prototype, 'focus')
+    fireEvent.click(trigger, { detail: 1 })
+    const opened = focus.mock.instances.findIndex(
+      (element) =>
+        (element as unknown as HTMLElement).getAttribute('role') === 'menu'
+    )
+    expect(opened).toBeGreaterThanOrEqual(0)
+    expect(focus.mock.calls[opened][0]).toEqual({ preventScroll: true })
+    focus.mockRestore()
+  })
+
   it('opens from the keyboard on the first or the last item', async () => {
     const trigger = setup()
     fireEvent.keyDown(trigger, { key: 'ArrowDown' })

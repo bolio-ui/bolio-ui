@@ -47,10 +47,13 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
     )
 
   useEffect(() => {
-    if (focus === 'list') return listRef.current?.focus()
+    // Without scrolling: the browser would scroll the page to show a menu that
+    // is still below the trigger, before the dropdown can place it above.
+    const options = { preventScroll: true }
+    if (focus === 'list') return listRef.current?.focus(options)
     const items = getItems()
     const target = focus === 'first' ? items[0] : items[items.length - 1]
-    ;(target ?? listRef.current)?.focus()
+    ;(target ?? listRef.current)?.focus(options)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
