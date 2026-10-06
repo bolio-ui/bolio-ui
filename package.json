@@ -70,8 +70,8 @@
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
     "re-build": "rm -rf .next _static node_modules && yarn install && yarn build",
-    "release": "yarn build && yarn build:package && npm publish --access public",
-    "release:next": "yarn build:package && npm publish --access public --tag next"
+    "release": "yarn build && yarn build:package && npm publish --access public --registry https://registry.npmjs.org/",
+    "release:next": "yarn build:package && npm publish --access public --tag next --registry https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
