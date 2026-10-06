@@ -42,3 +42,44 @@
   min-height: calc(2.5 * var(--table-font-size));
   text-transform: uppercase;
 }
+
+.selectCell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sortButton:hover {
+  color: var(--table-head-sorted-color);
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--table-head-focus-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sortIcon {
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.sorted {
+  color: var(--table-head-sorted-color);
+  opacity: 1;
+}

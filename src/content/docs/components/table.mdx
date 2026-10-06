@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, PlaygroundTitle, Attributes } from 'src/components'
-import { Table, Spacer, Code, Text, Button, Dot } from 'core'
+import { Table, Spacer, Code, Text, Button, Dot, Grid } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -275,6 +275,110 @@ const MyComponent = () => (
 `}
 />
 
+<Playground
+  title="sorting"
+  desc="Add `sortable` to a column and its header becomes a button. A click sorts ascending, the next descending, and the third goes back to the order of the data. Numbers are compared by value."
+  scope={{ Table }}
+  code={`
+() => {
+  const invoices = [
+    { id: 'INV-014', customer: 'Ana Souza', amount: 129, due: '2026-11-03' },
+    { id: 'INV-009', customer: 'Rui Pires', amount: 1450, due: '2026-10-21' },
+    { id: 'INV-021', customer: 'Marta Lima', amount: 89.9, due: '2026-12-01' },
+    { id: 'INV-003', customer: 'Joao Reis', amount: 300, due: '2026-10-30' }
+  ]
+  const money = (value) => <span>{'$' + value.toFixed(2)}</span>
+  return (
+    <Table data={invoices} initialSort={{ prop: 'due', direction: 'asc' }}>
+      <Table.Column prop="id" label="invoice" sortable />
+      <Table.Column prop="customer" label="customer" sortable />
+      <Table.Column prop="amount" label="amount" sortable render={money} />
+      <Table.Column prop="due" label="due date" sortable />
+    </Table>
+  )
+}
+`}
+/>
+
+<Playground
+  title="selection"
+  desc="`selectable` adds a checkbox to each row and one in the header for the rows in view. Give each row a stable `rowKey`, and control `selectedKeys` to clear the selection after an action."
+  scope={{ Table, Button, Text, Grid }}
+  code={`
+() => {
+  const [rows, setRows] = React.useState([
+    { id: 1, name: 'Ana Souza', role: 'Owner' },
+    { id: 2, name: 'Rui Pires', role: 'Editor' },
+    { id: 3, name: 'Marta Lima', role: 'Editor' },
+    { id: 4, name: 'Joao Reis', role: 'Viewer' }
+  ])
+  const [selected, setSelected] = React.useState([])
+  const remove = () => {
+    setRows((last) => last.filter((row) => !selected.includes(row.id)))
+    setSelected([])
+  }
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Grid.Container gap={1} alignItems="center">
+          <Grid>
+            <Button auto type="error" scale={0.75} disabled={!selected.length} onClick={remove}>
+              {selected.length ? 'Remove ' + selected.length + ' members' : 'Remove members'}
+            </Button>
+          </Grid>
+          <Grid>
+            <Text small type="secondary">{selected.length} of {rows.length} selected</Text>
+          </Grid>
+        </Grid.Container>
+      </Grid>
+      <Grid>
+        <Table data={rows} selectable rowKey="id" selectedKeys={selected} onSelectionChange={setSelected}>
+          <Table.Column prop="name" label="name" />
+          <Table.Column prop="role" label="role" />
+        </Table>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="data table"
+  desc="Sorting, selection and pagination together. The rows are sorted before they are split in pages, and the selection is kept when you change the page."
+  scope={{ Table, Text, Grid }}
+  code={`
+() => {
+  const rows = Array.from({ length: 14 }, (_, index) => ({
+    id: index + 1,
+    name: 'Customer ' + (index + 1),
+    orders: ((index * 7) % 11) + 1
+  }))
+  const [selected, setSelected] = React.useState([])
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Text small type="secondary">{selected.length} selected</Text>
+      </Grid>
+      <Grid>
+        <Table
+          data={rows}
+          selectable
+          rowKey="id"
+          selectedKeys={selected}
+          onSelectionChange={setSelected}
+          pagination={{ pageSize: 5 }}
+        >
+          <Table.Column prop="name" label="customer" sortable />
+          <Table.Column prop="orders" label="orders" sortable />
+        </Table>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/table.mdx">
 <Attributes.Title>Table.Props</Attributes.Title>
 
@@ -289,6 +393,16 @@ const MyComponent = () => (
 | **onChange**     | data change event                            | `(data: T) => void`                                   | -                  | -       |
 | **pagination**   | split the rows in pages                      | [TablePagination](#tablepagination)                   | -                  | -       |
 | **rowClassName** | set className to each row                    | [TableRowClassNameHandler](#tablerowclassnamehandler) | -                  | -       |
+| **sort**         | the column the rows are sorted by, to control it | [TableSort](#tablesort) / `null`                  | -                  | -       |
+| **initialSort**  | sort on the first render                     | [TableSort](#tablesort) / `null`                      | -                  | `null`  |
+| **onSortChange** | called with the new sort, or `null` when it is cleared | `(sort: TableSort \| null) => void`        | -                  | -       |
+| **selectable**   | a checkbox on each row, and one in the header | `boolean`                                            | -                  | `false` |
+| **rowKey**       | what identifies a row: a prop, or a function. The position in `data` when missing | `keyof T` / `(row: T) => string \| number` | -        | -       |
+| **selectedKeys** | keys of the selected rows, to control them   | `Array<string \| number>`                             | -                  | -       |
+| **initialSelectedKeys** | keys of the rows selected on the first render | `Array<string \| number>`                       | -                  | `[]`    |
+| **onSelectionChange** | called with the keys and the rows selected | `(keys, rows: T[]) => void`                         | -                  | -       |
+| **selectRowLabel** | name of the checkbox of a row, for screen readers | `string`                                         | -                  | `Select row` |
+| **selectAllLabel** | name of the checkbox in the header         | `string`                                              | -                  | `Select all rows` |
 | ...              | native props                                 | `TableHTMLAttributes`                                 | `'id', 'name' ...` | -       |
 
 <Attributes.Title>Table.Column.Props</Attributes.Title>
@@ -299,7 +413,22 @@ const MyComponent = () => (
 | **label**          | table-column's label                   | `string`                                | -               | -       |
 | **width**          | width number (px)                      | `number`                                | -               | -       |
 | **className**      | set className to each column           | `string`                                | -               | -       |
+| **sortable**       | the header becomes a button that sorts the rows | `boolean`                      | -               | `false` |
+| **sorter**         | how two rows compare, when the default order does not fit | `(a: T, b: T) => number` | -               | -       |
 | **render**         | render returns elements in all columns | [TableColumnRender](#tablecolumnrender) | -               | -       |
+
+<Attributes.Title>TableSort</Attributes.Title>
+
+```ts
+type TableSort = { prop: string; direction: 'asc' | 'desc' }
+```
+
+<Attributes.Title>Sorting and selection</Attributes.Title>
+
+- • **Order**: numbers are compared by value, and any other value as text, where `item 2` comes before `item 10`. Use `sorter` on a column for anything else. The header has `aria-sort`, and the sorted column shows an arrow.
+- • **Server rows**: with `pagination.total`, the rows are the ones of the server, so the table does not sort them. It only calls `onSortChange`, and you send the new order with the data.
+- • **Selection keys**: the selection is kept by key, so it survives a sort and a change of page. `onSelectionChange` receives the rows that are in `data`, which are only the current page when the rows are on the server.
+- • **Select all**: the checkbox in the header selects the rows in view, the current page. It is checked when all of them are selected, and in between when only some are.
 
 <Attributes.Title>TablePagination</Attributes.Title>
 

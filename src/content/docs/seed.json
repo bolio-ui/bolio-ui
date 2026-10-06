@@ -3797,6 +3797,24 @@
   },
   {
     "head": "Table",
+    "title": "Table sorting",
+    "component": false,
+    "path": "/docs/components/table#sorting"
+  },
+  {
+    "head": "Table",
+    "title": "Table selection",
+    "component": false,
+    "path": "/docs/components/table#selection"
+  },
+  {
+    "head": "Table",
+    "title": "Table data table",
+    "component": false,
+    "path": "/docs/components/table#data-table"
+  },
+  {
+    "head": "Table",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/table#apis"
@@ -3812,6 +3830,18 @@
     "title": "Table Column Props",
     "component": false,
     "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table TableSort",
+    "component": false,
+    "path": "/docs/components/table#tablesort"
+  },
+  {
+    "head": "Table",
+    "title": "Sorting and selection",
+    "component": false,
+    "path": "/docs/components/table#sorting-and-selection"
   },
   {
     "head": "Table",

@@ -341,7 +341,8 @@ export const components = [
   },
   {
     name: 'Table',
-    url: '/docs/components/table'
+    url: '/docs/components/table',
+    tag: 'Updated'
   },
   {
     name: 'Tabs',

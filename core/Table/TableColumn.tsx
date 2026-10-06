@@ -11,6 +11,10 @@ export type TableColumnProps<TableDataItem extends TableDataItemBase> = {
   label?: string
   width?: number
   className?: string
+  // the header becomes a button that sorts the rows by this column
+  sortable?: boolean
+  // how two rows compare, when the default order of the values does not fit
+  sorter?: (a: TableDataItem, b: TableDataItem) => number
   render?: TableColumnRender<TableDataItem>
 }
 
@@ -23,6 +27,8 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
     label,
     width,
     className = '',
+    sortable = false,
+    sorter,
     render: renderHandler = defaultRender
   } = columnProps
   const { updateColumn } = useTableContext<TableDataItem>()
@@ -37,9 +43,21 @@ const TableColumn = <TableDataItem extends TableDataItemBase>(
       prop: safeProp,
       width,
       className,
+      sortable,
+      sorter,
       renderHandler
     })
-  }, [children, label, safeProp, width, className, renderHandler, updateColumn])
+  }, [
+    children,
+    label,
+    safeProp,
+    width,
+    className,
+    sortable,
+    sorter,
+    renderHandler,
+    updateColumn
+  ])
 
   return null
 }

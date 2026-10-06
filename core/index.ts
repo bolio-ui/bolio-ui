@@ -226,7 +226,13 @@ export type {
 } from './Stepper'
 
 export { default as Table } from './Table'
-export type { TableProps, TableColumnProps } from './Table'
+export type {
+  TableProps,
+  TableColumnProps,
+  TableKey,
+  TableSort,
+  TableSortDirection
+} from './Table'
 
 export { default as Tabs } from './Tabs'
 export type { TabsProps } from './Tabs'
