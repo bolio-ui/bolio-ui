@@ -1,0 +1,120 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ImageZoom, Grid, useTheme } from 'core'
+
+export const meta = {
+  title: 'Image Zoom',
+  description:
+    'A picture that opens in a larger view above the page when it is clicked.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 69
+}
+
+## Image Zoom
+
+A picture that opens in a larger view above the page when it is clicked. The view
+is a native `dialog`: it keeps the focus inside, closes with Escape, and gives the
+focus back to the picture.
+
+<Playground
+  desc="Describe the picture in `alt`, which also names the button. The size props are the ones of `Image`."
+  scope={{ ImageZoom, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <ImageZoom
+      src="/img/jpg/docs/lake-sunrise.jpg"
+      alt="A mountain lake at sunrise"
+      width="240px"
+      height="150px"
+      style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+    />
+  )
+}
+`}
+/>
+
+<Playground
+  title="Larger image and caption"
+  desc="`zoomSrc` is a larger version, loaded only when the view opens, so the page stays light. `caption` goes under the picture."
+  scope={{ ImageZoom, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <ImageZoom
+      src="/img/jpg/docs/autumn-canyon.jpg"
+      zoomSrc="/img/jpg/docs/autumn-canyon.jpg"
+      alt="A river in a canyon in autumn"
+      caption="The river at the bottom of the canyon, in October"
+      width="240px"
+      height="150px"
+      style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+    />
+  )
+}
+`}
+/>
+
+<Playground
+  title="Gallery"
+  desc="Several pictures, each with its own view. A click on the dark area, or on the close button, closes it."
+  scope={{ ImageZoom, Grid, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const photos = [
+    ['/img/jpg/docs/forest-lake.jpg', 'A forest lake under the clouds'],
+    ['/img/jpg/docs/mountain-reflection.jpg', 'Snowy mountains reflected in a lake'],
+    ['/img/jpg/docs/moonlit-peaks.jpg', 'Snowy mountains under the moon']
+  ]
+  return (
+    <Grid.Container gap={1}>
+      {photos.map(([src, alt]) => (
+        <Grid key={src}>
+          <ImageZoom
+            src={src}
+            alt={alt}
+            width="160px"
+            height="100px"
+            style={{ objectFit: 'cover', borderRadius: theme.layout.radius }}
+          />
+        </Grid>
+      ))}
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/image-zoom.mdx">
+<Attributes.Title>ImageZoom.Props</Attributes.Title>
+
+| Attribute        | Description                                                  | Type        | Accepted values                  | Default |
+| ---------------- | ------------------------------------------------------------ | ----------- | -------------------------------- | ------- |
+| **src**          | the picture                                                  | `string`    | -                                | -       |
+| **alt**          | what the picture shows, and the name of the button           | `string`    | -                                | -       |
+| **zoomSrc**      | a larger version, loaded when the view opens                 | `string`    | -                                | `src`   |
+| **caption**      | text under the picture in the view                           | `ReactNode` | -                                | -       |
+| **closeLabel**   | name of the close button                                     | `string`    | -                                | `Close` |
+| ...              | the props of <a href="/docs/components/image">Image</a>, like `width`, `height` and `style` | `ImageProps` | - | -       |
+
+<Attributes.Title>Behavior</Attributes.Title>
+
+- • **Closing**: Escape, the close button and a click on the dark area close it. A click on the picture does not.
+- • **Page**: it does not scroll while the view is open.
+- • **Size**: the picture in the view fits the screen, in the proportion it has.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the button that opens the view.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The picture is a button with `aria-haspopup="dialog"`, named by `alt`. The view is a modal `dialog` named by the same text. The focus goes to the close button when it opens, stays inside while it is open, and goes back to the picture when it closes. Always write a useful `alt`: it is what a screen reader reads for both the thumbnail and the larger picture.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -109,6 +109,9 @@ export type { GridProps, GridContainerProps } from './Grid'
 export { default as Image } from './Image'
 export type { ImageProps, ImageBrowserProps } from './Image'
 
+export { default as ImageZoom } from './ImageZoom'
+export type { ImageZoomProps } from './ImageZoom'
+
 export { default as Input } from './Input'
 export type { InputProps, InputPasswordProps } from './Input'
 

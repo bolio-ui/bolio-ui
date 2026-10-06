@@ -35,6 +35,7 @@ const {
   Fieldset,
   Grid,
   Image,
+  ImageZoom,
   Input,
   Keyboard,
   Link,
@@ -204,6 +205,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Image', (ref) => <Image ref={ref} src="/logo.svg" alt="logo" />],
+  [
+    'ImageZoom',
+    (ref) => <ImageZoom ref={ref} src="/a.jpg" alt="A photo" />,
+    'BUTTON'
+  ],
   ['Input', (ref) => <Input ref={ref} placeholder="type" />, 'INPUT'],
   ['Keyboard', (ref) => <Keyboard ref={ref}>K</Keyboard>],
   [

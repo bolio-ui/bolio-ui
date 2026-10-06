@@ -257,6 +257,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Image Zoom',
+            url: '/docs/components/image-zoom',
+            group: 'Components'
+          },
+          {
             name: 'Input',
             url: '/docs/components/input',
             group: 'Components'

@@ -33,6 +33,7 @@ const {
   Fieldset,
   Grid,
   Image,
+  ImageZoom,
   Input,
   Keyboard,
   Link,
@@ -187,6 +188,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Image', () => <Image src="/logo.svg" alt="logo" width={20} height={20} />],
+  ['ImageZoom', () => <ImageZoom src="/a.jpg" alt="A photo" />],
   ['Input', () => <Input placeholder="type" />],
   ['Input.Password', () => <Input.Password placeholder="secret" />],
   ['Keyboard', () => <Keyboard>K</Keyboard>],

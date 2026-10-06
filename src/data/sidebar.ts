@@ -227,6 +227,11 @@ export const components = [
     url: '/docs/components/image'
   },
   {
+    name: 'Image Zoom',
+    url: '/docs/components/image-zoom',
+    tag: 'New'
+  },
+  {
     name: 'Input',
     url: '/docs/components/input'
   },

@@ -1977,6 +1977,59 @@
     "path": "/docs/components/image#image.browser.props"
   },
   {
+    "title": "Image Zoom",
+    "component": true,
+    "path": "/docs/components/image-zoom"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom General",
+    "component": false,
+    "path": "/docs/components/image-zoom#general"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom Larger image and caption",
+    "component": false,
+    "path": "/docs/components/image-zoom#larger-image-and-caption"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom Gallery",
+    "component": false,
+    "path": "/docs/components/image-zoom#gallery"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/image-zoom#apis"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "ImageZoom Props",
+    "component": false,
+    "path": "/docs/components/image-zoom#imagezoom.props"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/image-zoom#behavior"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/image-zoom#ref"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/image-zoom#accessibility"
+  },
+  {
     "title": "Input",
     "component": true,
     "path": "/docs/components/input"

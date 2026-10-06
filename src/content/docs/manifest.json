@@ -274,6 +274,11 @@
               "path": "/docs/components/image.mdx"
             },
             {
+              "title": "Image Zoom",
+              "keywords": "image zoom, lightbox, zoom, enlarge image, gallery, dialog, thumbnail",
+              "path": "/docs/components/image-zoom.mdx"
+            },
+            {
               "title": "Input",
               "keywords": "input, sizes, set width, unwritable, inline label, block label, types, icon, clearable, password, get change, imperative api",
               "path": "/docs/components/input.mdx"
