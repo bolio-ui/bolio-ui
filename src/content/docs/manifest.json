@@ -394,6 +394,11 @@
               "path": "/docs/components/spinner.mdx"
             },
             {
+              "title": "Splitter",
+              "keywords": "splitter, resizable panels, split view, divider, drag to resize, layout, panes",
+              "path": "/docs/components/splitter.mdx"
+            },
+            {
               "title": "Stat",
               "keywords": "stat, metric, kpi, number, trend, dashboard",
               "path": "/docs/components/stat.mdx"

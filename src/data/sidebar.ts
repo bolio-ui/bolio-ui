@@ -331,6 +331,11 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Splitter',
+    url: '/docs/components/splitter',
+    tag: 'New'
+  },
+  {
     name: 'Stat',
     url: '/docs/components/stat',
     tag: 'New'

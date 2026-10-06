@@ -218,6 +218,13 @@ export type { SpacerProps } from './Spacer'
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 
+export { default as Splitter } from './Splitter'
+export type {
+  SplitterProps,
+  SplitterPanelProps,
+  SplitterDirection
+} from './Splitter'
+
 export { default as Stepper } from './Stepper'
 export type {
   StepperProps,

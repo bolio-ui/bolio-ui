@@ -59,6 +59,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Splitter,
   Stepper,
   Table,
   Tabs,
@@ -288,6 +289,16 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spinner', (ref) => <Spinner ref={ref} />],
+  [
+    'Splitter',
+    (ref) => (
+      <Splitter ref={ref}>
+        <Splitter.Panel>A</Splitter.Panel>
+        <Splitter.Panel>B</Splitter.Panel>
+      </Splitter>
+    ),
+    'DIV'
+  ],
   [
     'Stepper',
     (ref) => (

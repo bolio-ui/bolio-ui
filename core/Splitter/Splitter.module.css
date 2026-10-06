@@ -1,0 +1,74 @@
+.splitter {
+  display: grid;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+.horizontal {
+  grid-template-columns: var(--splitter-template);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.vertical {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: var(--splitter-template);
+}
+
+/* the panels share the room in proportion to their size, and the lines keep
+   their own width */
+.panel {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.handle {
+  position: relative;
+  background: var(--splitter-line);
+  outline: none;
+  touch-action: none;
+  transition: background-color 0.15s ease;
+}
+
+.horizontal > .handle {
+  width: 1px;
+  cursor: col-resize;
+}
+
+.vertical > .handle {
+  height: 1px;
+  cursor: row-resize;
+}
+
+/* a wider area to grab, around the line */
+.handle::before {
+  position: absolute;
+  content: '';
+}
+
+.horizontal > .handle::before {
+  inset: 0 -4px;
+}
+
+.vertical > .handle::before {
+  inset: -4px 0;
+}
+
+.handle:hover,
+.handle:focus-visible,
+.handle:active {
+  background: var(--splitter-active);
+}
+
+.horizontal > .handle:hover,
+.horizontal > .handle:focus-visible,
+.horizontal > .handle:active {
+  box-shadow: 0 0 0 1px var(--splitter-active);
+}
+
+.vertical > .handle:hover,
+.vertical > .handle:focus-visible,
+.vertical > .handle:active {
+  box-shadow: 0 0 0 1px var(--splitter-active);
+}

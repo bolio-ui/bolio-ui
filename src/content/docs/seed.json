@@ -3649,6 +3649,65 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "title": "Splitter",
+    "component": true,
+    "path": "/docs/components/splitter"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter General",
+    "component": false,
+    "path": "/docs/components/splitter#general"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Vertical",
+    "component": false,
+    "path": "/docs/components/splitter#vertical"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Limits and three panels",
+    "component": false,
+    "path": "/docs/components/splitter#limits-and-three-panels"
+  },
+  {
+    "head": "Splitter",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/splitter#apis"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Props",
+    "component": false,
+    "path": "/docs/components/splitter#splitter.props"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Panel Props",
+    "component": false,
+    "path": "/docs/components/splitter#splitter.panel.props"
+  },
+  {
+    "head": "Splitter",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/splitter#behavior"
+  },
+  {
+    "head": "Splitter",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/splitter#ref"
+  },
+  {
+    "head": "Splitter",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/splitter#accessibility"
+  },
+  {
     "title": "Stat",
     "component": true,
     "path": "/docs/components/stat"

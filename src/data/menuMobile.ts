@@ -377,6 +377,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Splitter',
+            url: '/docs/components/splitter',
+            group: 'Components'
+          },
+          {
             name: 'Stepper',
             url: '/docs/components/stepper',
             group: 'Components'

@@ -57,6 +57,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Splitter,
   Stepper,
   Table,
   Tabs,
@@ -270,6 +271,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
   ['Spacer', () => <Spacer h={1} />],
   ['Spinner', () => <Spinner />],
+  [
+    'Splitter',
+    () => (
+      <Splitter aria-label="Layout">
+        <Splitter.Panel defaultSize={30}>A</Splitter.Panel>
+        <Splitter.Panel>B</Splitter.Panel>
+      </Splitter>
+    )
+  ],
   [
     'Stepper',
     () => (
