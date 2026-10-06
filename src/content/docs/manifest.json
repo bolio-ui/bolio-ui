@@ -384,6 +384,11 @@
               "path": "/docs/components/skeleton.mdx"
             },
             {
+              "title": "Slider",
+              "keywords": "slider, range, drag, value, step, type, disabled, markers, min, max",
+              "path": "/docs/components/slider.mdx"
+            },
+            {
               "title": "Snippet",
               "keywords": "snippet, width, types, multi line, copy, custom symbol, toast, filled",
               "path": "/docs/components/snippet.mdx"

@@ -187,6 +187,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Command',
+            url: '/docs/components/command',
+            group: 'Components'
+          },
+          {
             name: 'Container',
             url: '/docs/components/container',
             group: 'Components'
@@ -229,6 +234,11 @@ export const menuMobile = [
           {
             name: 'Drawer',
             url: '/docs/components/drawer',
+            group: 'Components'
+          },
+          {
+            name: 'Empty State',
+            url: '/docs/components/empty-state',
             group: 'Components'
           },
           {
@@ -279,6 +289,11 @@ export const menuMobile = [
           {
             name: 'Loading',
             url: '/docs/components/loading',
+            group: 'Components'
+          },
+          {
+            name: 'Marquee',
+            url: '/docs/components/marquee',
             group: 'Components'
           },
           {
@@ -387,6 +402,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Stat',
+            url: '/docs/components/stat',
+            group: 'Components'
+          },
+          {
             name: 'Stepper',
             url: '/docs/components/stepper',
             group: 'Components'
@@ -404,6 +424,11 @@ export const menuMobile = [
           {
             name: 'Tag',
             url: '/docs/components/tag',
+            group: 'Components'
+          },
+          {
+            name: 'Timeline',
+            url: '/docs/components/timeline',
             group: 'Components'
           },
           {
