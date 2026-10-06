@@ -105,3 +105,9 @@
   box-shadow: var(--daterange-shadow);
   background-clip: padding-box;
 }
+
+/* a field near the right edge: the popup grows to the left */
+.alignEnd {
+  right: 0;
+  left: auto;
+}

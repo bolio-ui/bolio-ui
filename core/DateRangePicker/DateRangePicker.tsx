@@ -3,12 +3,16 @@ import useTheme from '../use-theme'
 import { getColors } from '../Input/styles'
 import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
 import useClickAway from '../utils/use-click-away'
 import Calendar from '../Calendar'
 import type { DateRange } from '../Calendar'
 import { fromISO, startOfDay, toISO } from '../Calendar/date-utils'
 import styles from './DateRangePicker.module.css'
+
+// the width of the popup in em, with the calendar of two months and of one
+const TWO_MONTHS_EM = 46
+const ONE_MONTH_EM = 22
 
 interface Props {
   value?: DateRange
@@ -89,6 +93,8 @@ const DateRangePickerComponent = React.forwardRef<
 
     const [texts, setTexts] = useState({ start: startText, end: endText })
     const [open, setOpen] = useState(false)
+    // set when the popup opens, from the room there is to the right of the field
+    const [fit, setFit] = useState({ months: 2, alignEnd: false })
 
     useEffect(() => {
       setTexts({ start: startText, end: endText })
@@ -124,6 +130,24 @@ const DateRangePickerComponent = React.forwardRef<
       }
 
     const blurHandler = () => setTexts({ start: startText, end: endText })
+
+    // Two months do not fit a small screen, or a field near the right edge, so
+    // the calendar shows one month, and sits against the right side of the field
+    // when even that is too wide.
+    const toggle = () => {
+      const root = rootRef.current
+      if (!open && root) {
+        const em = parseFloat(getComputedStyle(root).fontSize) || 16
+        const room =
+          document.documentElement.clientWidth -
+          root.getBoundingClientRect().left
+        setFit({
+          months: room >= TWO_MONTHS_EM * em ? 2 : 1,
+          alignEnd: room < ONE_MONTH_EM * em
+        })
+      }
+      setOpen((last) => !last)
+    }
 
     const pick = (next: DateRange) => {
       commit(next)
@@ -218,7 +242,7 @@ const DateRangePickerComponent = React.forwardRef<
             aria-haspopup="dialog"
             aria-expanded={open}
             disabled={disabled}
-            onClick={() => setOpen((last) => !last)}
+            onClick={toggle}
           >
             <svg
               viewBox="0 0 24 24"
@@ -240,12 +264,14 @@ const DateRangePickerComponent = React.forwardRef<
           <div
             role="dialog"
             aria-label={calendarLabel}
-            className={styles.popup}
+            className={joinClasses(styles.popup, {
+              [styles.alignEnd]: fit.alignEnd
+            })}
             onKeyDown={keyDownHandler}
           >
             <Calendar
               mode="range"
-              numberOfMonths={2}
+              numberOfMonths={fit.months}
               autoFocus
               value={range}
               min={min}

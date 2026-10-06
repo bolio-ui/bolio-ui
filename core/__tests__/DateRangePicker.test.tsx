@@ -4,6 +4,30 @@ import axe from 'axe-core'
 import { BolioUIProvider, DateRangePicker } from '..'
 import { toISO } from '../Calendar/date-utils'
 
+// jsdom has no layout: the screen is 1280px wide and the field sits at the left
+let screenWidth = 1280
+let fieldLeft = 0
+beforeEach(() => {
+  screenWidth = 1280
+  fieldLeft = 0
+  Object.defineProperty(document.documentElement, 'clientWidth', {
+    configurable: true,
+    get: () => screenWidth
+  })
+  jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(
+    () =>
+      ({
+        left: fieldLeft,
+        right: fieldLeft,
+        top: 0,
+        bottom: 0,
+        width: 0,
+        height: 0
+      }) as DOMRect
+  )
+})
+afterEach(() => jest.restoreAllMocks())
+
 type Props = React.ComponentProps<typeof DateRangePicker>
 
 const setup = (props: Partial<Props> = {}) =>
@@ -99,6 +123,42 @@ describe('<DateRangePicker />', () => {
     fireEvent.click(day(dialog, new Date(2026, 1, 3)))
     expect(iso(onChange.mock.lastCall[0])).toEqual(['2026-01-28', '2026-02-03'])
     expect(end()).toHaveValue('2026-02-03')
+  })
+
+  it('shows one month when there is not room for two', () => {
+    screenWidth = 500
+    fieldLeft = 44
+    setup({ initialValue: [jan(10), jan(12)] })
+    fireEvent.click(screen.getByRole('button', { name: 'Choose dates' }))
+    const dialog = screen.getByRole('dialog')
+    expect(within(dialog).getAllByRole('grid')).toHaveLength(1)
+    expect(dialog).not.toHaveClass('alignEnd')
+  })
+
+  it('sits against the right of the field when not even one month fits', () => {
+    screenWidth = 390
+    fieldLeft = 200
+    setup({ initialValue: [jan(10), jan(12)] })
+    fireEvent.click(screen.getByRole('button', { name: 'Choose dates' }))
+    const dialog = screen.getByRole('dialog')
+    expect(within(dialog).getAllByRole('grid')).toHaveLength(1)
+    expect(dialog).toHaveClass('alignEnd')
+  })
+
+  it('goes back to two months when it opens again with room', () => {
+    screenWidth = 500
+    setup({ initialValue: [jan(10), jan(12)] })
+    const toggle = screen.getByRole('button', { name: 'Choose dates' })
+    fireEvent.click(toggle)
+    expect(
+      within(screen.getByRole('dialog')).getAllByRole('grid')
+    ).toHaveLength(1)
+    fireEvent.click(toggle)
+    screenWidth = 1280
+    fireEvent.click(toggle)
+    expect(
+      within(screen.getByRole('dialog')).getAllByRole('grid')
+    ).toHaveLength(2)
   })
 
   it('closes on Escape and returns the focus to the button', () => {
