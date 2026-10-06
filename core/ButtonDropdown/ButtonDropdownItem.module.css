@@ -1,7 +1,6 @@
 .button {
   position: relative;
   -webkit-appearance: button;
-  text-rendering: auto;
   display: inline-flex;
   flex: 1;
   justify-content: center;
