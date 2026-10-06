@@ -2067,6 +2067,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Date and time",
+    "component": false,
+    "path": "/docs/components/input#date-and-time"
+  },
+  {
+    "head": "Input",
     "title": "Input Imperative API",
     "component": false,
     "path": "/docs/components/input#imperative-api"
