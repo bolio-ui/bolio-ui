@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './ellipsis.module.css'
 
 export type EllipsisProps = {
   height: string
@@ -9,17 +10,8 @@ const Ellipsis: React.FC<React.PropsWithChildren<EllipsisProps>> = ({
   height
 }) => {
   return (
-    <span>
+    <span className={styles.ellipsis} style={{ lineHeight: height }}>
       {children}
-      <style jsx>{`
-        span {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          line-height: ${height};
-          min-width: 0;
-        }
-      `}</style>
     </span>
   )
 }

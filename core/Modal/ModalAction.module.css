@@ -1,0 +1,5 @@
+.action.btn:hover,
+.action.btn:focus {
+  color: var(--modal-action-hover-color);
+  background-color: var(--modal-action-hover-bg);
+}

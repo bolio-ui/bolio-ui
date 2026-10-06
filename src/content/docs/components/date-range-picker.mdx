@@ -1,0 +1,155 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { DateRangePicker, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'DateRangePicker',
+  description:
+    'Two inputs to type a start and an end date, with one calendar to pick the range.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 60
+}
+
+## DateRangePicker
+
+Two inputs to type a start and an end date, with a calendar of two months to pick the
+range. The text is a date in the `YYYY-MM-DD` format, which is the same in every country.
+
+<Playground
+  desc="Name the group with `aria-label`. In the calendar, the first click sets the start, the second sets the end and closes it."
+  scope={{ DateRangePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DateRangePicker aria-label="Stay" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Initial value"
+  desc="Start with a range using `initialValue`, a pair of dates. Use `value` and `onChange` to control it."
+  scope={{ DateRangePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DateRangePicker
+      aria-label="Stay"
+      initialValue={[new Date(2026, 0, 10), new Date(2026, 0, 15)]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="`onChange` receives the pair `[start, end]`. While the range is being picked, `end` is `null`."
+  scope={{ DateRangePicker, Grid, Text }}
+  code={`
+() => {
+  const [range, setRange] = React.useState([null, null])
+  const format = (date) => (date ? date.toDateString() : '...')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <DateRangePicker aria-label="Stay" value={range} onChange={setRange} />
+      </Grid>
+      <Grid>
+        <Text p>From {format(range[0])} to {format(range[1])}.</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="A date outside the limits cannot be typed, and its day is disabled in the calendar."
+  scope={{ DateRangePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DateRangePicker
+      aria-label="Trip dates"
+      initialValue={[new Date(2026, 0, 12), new Date(2026, 0, 15)]}
+      min={new Date(2026, 0, 10)}
+      max={new Date(2026, 0, 20)}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ DateRangePicker, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <DateRangePicker type="primary" filled aria-label="Filled" />
+  </Grid>
+  <Grid>
+    <DateRangePicker type="success" light aria-label="Light" />
+  </Grid>
+  <Grid>
+    <DateRangePicker type="info" ghost rounded aria-label="Ghost" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Locks both inputs and the calendar button."
+  scope={{ DateRangePicker }}
+  code={`
+<DateRangePicker disabled aria-label="Stay" />
+`}
+/>
+
+<Attributes edit="/content/docs/components/date-range-picker.mdx">
+<Attributes.Title>DateRangePicker.Props</Attributes.Title>
+
+| Attribute            | Description                                                                 | Type                                                                | Accepted values                                                            | Default        |
+| -------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
+| **value**            | selected range, to control the component                                    | <Code>[Date &#124; null, Date &#124; null]</Code>                   | -                                                                          | -              |
+| **initialValue**     | range at the start                                                          | <Code>[Date &#124; null, Date &#124; null]</Code>                   | -                                                                          | `[null, null]` |
+| **onChange**         | called with `[start, end]`, with `end` as `null` while the range is picked  | <Code>(range: [Date &#124; null, Date &#124; null]) =&gt; void</Code> | -                                                                        | -              |
+| **min**              | first date that can be picked                                               | `Date`                                                              | -                                                                          | -              |
+| **max**              | last date that can be picked                                                | `Date`                                                              | -                                                                          | -              |
+| **locale**           | language of the calendar                                                    | `string`                                                            | any `Intl` locale                                                          | `en-US`        |
+| **weekStartsOn**     | first day of the week in the calendar, 0 is Sunday                          | `number`                                                            | `0` to `6`                                                                 | `0`            |
+| **startPlaceholder** | text shown when the start input is empty                                    | `string`                                                            | -                                                                          | `YYYY-MM-DD`   |
+| **endPlaceholder**   | text shown when the end input is empty                                      | `string`                                                            | -                                                                          | `YYYY-MM-DD`   |
+| **startLabel**       | name of the start input                                                     | `string`                                                            | -                                                                          | `Start date`   |
+| **endLabel**         | name of the end input                                                       | `string`                                                            | -                                                                          | `End date`     |
+| **calendarLabel**    | name of the calendar button and of its dialog                               | `string`                                                            | -                                                                          | `Choose dates` |
+| **disabled**         | disable the component                                                       | `boolean`                                                           | -                                                                          | `false`        |
+| **type**             | color of the field                                                          | `NormalTypes`                                                       | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`      |
+| **rounded**          | round the corners                                                           | `boolean`                                                           | -                                                                          | `false`        |
+| **filled**           | filled variant                                                              | `boolean`                                                           | -                                                                          | `false`        |
+| **light**            | light variant                                                               | `boolean`                                                           | -                                                                          | `false`        |
+| **ghost**            | outline variant                                                             | `boolean`                                                           | -                                                                          | `false`        |
+| **subtle**           | subtle variant                                                              | `boolean`                                                           | -                                                                          | `false`        |
+| ...                  | native props, passed to the group `div`                                     | `HTMLAttributes`                                                    | `'aria-label', 'id', ...`                                                  | -              |
+
+<Attributes.Title>Typing</Attributes.Title>
+
+Each input changes the range only for a real date inside `min` and `max`. The end cannot come before the start, so that text is not accepted. When an input loses the focus, it goes back to the last valid date. An empty text clears that edge of the range.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the group `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The group is named by `aria-label`, and each input has its own name, `Start date` and `End date`, which you can translate with `startLabel` and `endLabel`. The calendar button has `aria-haspopup="dialog"` and `aria-expanded`. The calendar opens in a dialog that shows two months side by side, with the focus on the day of the start. Escape closes it and puts the focus back on the button, and picking the end puts the focus on the end input. See <a href="/docs/components/calendar">Calendar</a> for the keys.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

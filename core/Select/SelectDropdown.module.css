@@ -1,0 +1,13 @@
+.selectDropdown {
+  border-radius: var(--select-dropdown-radius);
+  border: 1px solid var(--select-dropdown-border);
+  box-shadow: var(--select-dropdown-shadow);
+  background-color: var(--select-dropdown-bg);
+  color: var(--select-dropdown-color);
+  max-height: 15em;
+  overflow-y: auto;
+  overflow-anchor: none;
+  padding: 0.25em;
+  scroll-behavior: smooth;
+  background-clip: padding-box;
+}

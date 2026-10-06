@@ -1,0 +1,114 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ColorPicker, Grid, Text, Button, useTheme } from 'core'
+
+export const meta = {
+  title: 'Color Picker',
+  description:
+    'A panel to pick a color by saturation, brightness and hue, with a hex field and optional swatches.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 65
+}
+
+## Color Picker
+
+A panel to pick a color. Drag in the square for the saturation and the
+brightness, use the bar for the hue, or type the hex code. For a field that
+opens this panel in a popover, see <a href="/docs/components/color-input">Color Input</a>.
+
+<Playground
+  desc="Start with a color using `initialValue`, and name the group with `aria-label`."
+  scope={{ ColorPicker }}
+  code={`
+<ColorPicker aria-label="Brand color" initialValue="#2563eb" />
+`}
+/>
+
+<Playground
+  title="With swatches"
+  desc="`swatches` adds colors to pick with one click, like the ones a team already uses."
+  scope={{ ColorPicker }}
+  code={`
+<ColorPicker
+  aria-label="Label color"
+  initialValue="#16a34a"
+  swatches={['#dc2626', '#f59e0b', '#16a34a', '#2563eb', '#7c3aed']}
+/>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Use `value` and `onChange` to keep the color in your own state, for example to show a preview or to reset it."
+  scope={{ ColorPicker, Grid, Text, Button, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const [color, setColor] = React.useState('#f59e0b')
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <ColorPicker aria-label="Highlight color" value={color} onChange={setColor} />
+      </Grid>
+      <Grid>
+        <div
+          style={{
+            width: 96,
+            height: 96,
+            borderRadius: theme.layout.radius,
+            border: '1px solid ' + theme.palette.border,
+            backgroundColor: color
+          }}
+        />
+        <Text small type="secondary">{color}</Text>
+        <div>
+          <Button auto scale={0.6} onClick={() => setColor('#f59e0b')}>Reset</Button>
+        </div>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="A disabled picker shows the color and cannot change it."
+  scope={{ ColorPicker }}
+  code={`
+<ColorPicker aria-label="Brand color" disabled initialValue="#2563eb" />
+`}
+/>
+
+<Attributes edit="/content/docs/components/color-picker.mdx">
+<Attributes.Title>ColorPicker.Props</Attributes.Title>
+
+| Attribute        | Description                                                  | Type                    | Accepted values           | Default                       |
+| ---------------- | ------------------------------------------------------------ | ----------------------- | ------------------------- | ----------------------------- |
+| **value**        | the color, to control the component                          | `string`                | `'#rrggbb'`, `'#rgb'`     | -                             |
+| **initialValue** | the color on the first render                                | `string`                | `'#rrggbb'`, `'#rgb'`     | `#000000`                     |
+| **onChange**     | called with the color as `#rrggbb` in lowercase              | `(hex: string) => void` | -                         | -                             |
+| **swatches**     | colors to pick with one click                                | `string[]`              | -                         | -                             |
+| **hexInput**     | show the field for the hex code                              | `boolean`               | -                         | `true`                        |
+| **disabled**     | disable the component                                        | `boolean`               | -                         | `false`                       |
+| **panelLabel**   | name of the square, for screen readers                       | `string`                | -                         | `Saturation and brightness`   |
+| **hueLabel**     | name of the hue bar                                          | `string`                | -                         | `Hue`                         |
+| **hexLabel**     | name of the hex field                                        | `string`                | -                         | `Hex color`                   |
+| ...              | native props, passed to the root `div`                       | `HTMLAttributes`        | `'aria-label', 'id', ...` | -                             |
+
+<Attributes.Title>Hex field</Attributes.Title>
+
+The field changes the color as soon as it holds six digits, with or without the `#`. A short code like `#abc` is read when the field loses the focus, and becomes `#aabbcc`. Any other text is dropped on blur, and the field goes back to the current color.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The square is a `slider` named by `panelLabel`, whose value reads like "40% saturation, 80% brightness". With the focus on it, Left and Right change the saturation and Up and Down the brightness, by 1%, or by 10% with Shift. The hue bar is a native range input, and the swatches are buttons named by their code, with `aria-pressed` on the one in use. The color is never conveyed by the swatch alone, because the hex code is also a text.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

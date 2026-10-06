@@ -6,6 +6,7 @@ import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 import type { AnyElement } from '../utils/types'
+import styles from './Note.module.css'
 
 export type NoteTypes = NormalTypes
 interface Props {
@@ -65,6 +66,7 @@ export const NoteComponent = React.forwardRef<
       light = false,
       subtle = false,
       className = '',
+      style,
       ...props
     },
     ref
@@ -77,42 +79,32 @@ export const NoteComponent = React.forwardRef<
       [type, filled, light, subtle, theme]
     )
 
+    const noteStyle: React.CSSProperties = {
+      border: `1px solid ${borderColor}`,
+      color,
+      backgroundColor: bgColor,
+      borderRadius: theme.layout.radius,
+      fontSize: SCALES.font(0.875),
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0.667)} ${SCALES.pr(1.32)} ${SCALES.pb(0.667)} ${SCALES.pl(1.32)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    }
+
     return (
-      <div ref={ref} className={useClasses('note', className)} {...props}>
+      <div
+        ref={ref}
+        className={useClasses(styles.note, className)}
+        {...props}
+        style={noteStyle}
+      >
         {label && (
-          <span className="label">
+          <span className={styles.label}>
             <b>{label}:</b>
           </span>
         )}
         {children}
-
-        <style jsx>{`
-          .note {
-            line-height: 1.8;
-            border: 1px solid ${borderColor};
-            color: ${color};
-            background-color: ${bgColor};
-            border-radius: ${theme.layout.radius};
-            font-size: ${SCALES.font(0.875)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0.667)} ${SCALES.pr(1.32)} ${SCALES.pb(0.667)}
-              ${SCALES.pl(1.32)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .note :global(p) {
-            margin: 0;
-          }
-
-          .label {
-            text-transform: uppercase;
-            user-select: none;
-            line-height: 1.5;
-            padding-right: 0.38em;
-          }
-        `}</style>
       </div>
     )
   }

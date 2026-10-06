@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Spinner, Grid } from 'core'
+import { Spinner, Grid, Card, Button, Text } from 'core'
 
 export const meta = {
   title: 'Spinner',
@@ -23,6 +23,54 @@ As an indicator of load waiting, see also component [Loading](/docs/components/l
 <Grid.Container gap={2}>
   <Grid>
     <Spinner scale={2} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Loading a panel"
+  desc="Show the `Spinner` where the content will appear, and swap it for the content when it arrives."
+  scope={{ Spinner, Card, Button, Text, Grid }}
+  code={`
+() => {
+  const [loading, setLoading] = React.useState(false)
+  const refresh = () => {
+    setLoading(true)
+    setTimeout(() => setLoading(false), 1500)
+  }
+  return (
+    <Card bordered width="100%">
+      <Grid.Container justify="space-between" alignItems="center">
+        <Grid>
+          <Text b>Recent invoices</Text>
+        </Grid>
+        <Grid>
+          <Button auto scale={0.75} disabled={loading} onClick={refresh}>
+            Refresh
+          </Button>
+        </Grid>
+      </Grid.Container>
+      <div style={{ minHeight: 96, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {loading ? <Spinner scale={1.5} /> : <Text p>3 invoices are waiting for payment.</Text>}
+      </div>
+    </Card>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Inline with text"
+  desc="A small `Spinner` next to a short message tells what is running."
+  scope={{ Spinner, Text, Grid }}
+  code={`
+<Grid.Container gap={1} alignItems="center">
+  <Grid>
+    <Spinner scale={0.8} />
+  </Grid>
+  <Grid>
+    <Text small type="secondary">Saving your changes</Text>
   </Grid>
 </Grid.Container>
 `}

@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Capacity, Grid, useTheme } from 'core'
+import { Capacity, Grid, Card, Text, useTheme } from 'core'
 
 export const meta = {
   title: 'Capacity',
@@ -66,6 +66,35 @@ Display an capacity indicator.
     </Grid.Container>
   )
 }
+`}
+/>
+
+<Playground
+  title="Plan usage"
+  desc="Pair each `Capacity` with a label and the numbers. `limit` is the full bar, and the color changes by itself as it fills."
+  scope={{ Capacity, Grid, Card, Text }}
+  code={`
+<Card bordered width="100%">
+  <Grid.Container direction="column" gap={1.5}>
+    {[
+      ['Projects', 3, 10],
+      ['Members', 7, 10],
+      ['Storage (GB)', 9.4, 10]
+    ].map(([label, value, limit]) => (
+      <Grid key={label}>
+        <Grid.Container justify="space-between">
+          <Grid>
+            <Text small>{label}</Text>
+          </Grid>
+          <Grid>
+            <Text small type="secondary">{value} of {limit}</Text>
+          </Grid>
+        </Grid.Container>
+        <Capacity value={value} limit={limit} width="100%" />
+      </Grid>
+    ))}
+  </Grid.Container>
+</Card>
 `}
 />
 

@@ -4,6 +4,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Avatar.module.css'
 
 interface Props {
   src?: string
@@ -46,7 +47,7 @@ const AvatarComponent = React.forwardRef<
     const showText = !src
     const radius = isSquare ? theme.layout.radius : '50%'
     const marginLeft = stacked ? SCALES.ml(-0.625) : SCALES.ml(0)
-    const classes = useClasses('avatar', className)
+    const classes = useClasses('avatar', styles.avatar, className)
 
     const width = getScaleProps(['width', 'w'])
     const height = getScaleProps(['height', 'h'])
@@ -79,8 +80,17 @@ const AvatarComponent = React.forwardRef<
       return () => clearTimeout(timer)
     }, [loading, showAnimation])
 
+    const avatarStyle: React.CSSProperties = {
+      borderRadius: radius,
+      backgroundColor: theme.palette.accents_2,
+      width: SCALES.width(1.75) || SCALES.height(1.75),
+      height: SCALES.height(1.75) || SCALES.width(1.75),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${marginLeft}`
+    }
+
     return (
-      <span ref={ref} className={classes}>
+      <span ref={ref} className={classes} style={avatarStyle}>
         {!showText && (
           <>
             {showSkeleton && showAnimation && (
@@ -91,58 +101,22 @@ const AvatarComponent = React.forwardRef<
               src={src}
               ref={imageRef}
               onLoad={imageLoaded}
-              className="avatar-img"
+              className={styles.avatarImg}
+              style={{ borderRadius: radius }}
               draggable={false}
               {...props}
             />
           </>
         )}
         {showText && (
-          <span className="avatar-text" {...props}>
+          <span
+            className={styles.avatarText}
+            style={{ fontSize: SCALES.font(1) }}
+            {...props}
+          >
             {safeText(text)}
           </span>
         )}
-
-        <style jsx>{`
-          .avatar {
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            border-radius: ${radius};
-            vertical-align: top;
-            background-color: ${theme.palette.accents_2};
-            box-sizing: border-box;
-            width: ${SCALES.width(1.75) || SCALES.height(1.75)};
-            height: ${SCALES.height(1.75) || SCALES.width(1.75)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${marginLeft};
-          }
-
-          .avatar-img {
-            display: inline-block;
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            border-radius: ${radius};
-            user-select: none;
-            text-align: center;
-          }
-
-          .avatar-text {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            font-size: ${SCALES.font(1)};
-            font-weight: bold;
-            text-align: center;
-            transform: translate(-50%, -50%) scale(0.65);
-            white-space: nowrap;
-            user-select: none;
-            text-transform: none;
-          }
-        `}</style>
       </span>
     )
   }

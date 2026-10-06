@@ -58,6 +58,170 @@ An input to type a date, with a calendar to pick it. The text is a date in the `
 />
 
 <Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker type="primary" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" subtle />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ DatePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DatePicker type="primary" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" filled />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" light />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" ghost />
+  </Grid>
+  <Grid>
+    <DatePicker type="primary" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="secondary" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="success" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="warning" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="error" subtle />
+  </Grid>
+  <Grid>
+    <DatePicker type="info" subtle />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Disabled"
   desc="Disable the input and the calendar button."
   scope={{ DatePicker, Grid }}
@@ -73,19 +237,30 @@ An input to type a date, with a calendar to pick it. The text is a date in the `
 <Attributes edit="/content/docs/components/date-picker.mdx">
 <Attributes.Title>DatePicker.Props</Attributes.Title>
 
-| Attribute         | Description                                                 | Type                        | Accepted values            | Default       |
-| ----------------- | ----------------------------------------------------------- | --------------------------- | -------------------------- | ------------- |
-| **value**         | selected date, to control the component                     | `Date` / `null`             | -                          | -             |
-| **initialValue**  | date at the start                                           | `Date` / `null`             | -                          | `null`        |
-| **onChange**      | called with the date, or `null` when the text is emptied    | <Code>(date: Date &#124; null) =&gt; void</Code> | -                       | -             |
-| **min**           | first date that can be picked                               | `Date`                      | -                          | -             |
-| **max**           | last date that can be picked                                | `Date`                      | -                          | -             |
-| **locale**        | language of the calendar                                    | `string`                    | any `Intl` locale          | `en-US`       |
-| **weekStartsOn**  | first day of the week in the calendar, 0 is Sunday          | `number`                    | `0` to `6`                 | `0`           |
-| **placeholder**   | text shown when the input is empty                          | `string`                    | -                          | `YYYY-MM-DD`  |
-| **calendarLabel** | name of the calendar button and of its dialog               | `string`                    | -                          | `Choose date` |
-| **disabled**      | disable the component                                       | `boolean`                   | -                          | `false`       |
-| ...               | native props, passed to the input                           | `InputHTMLAttributes`       | `'aria-label', 'name', ...` | -            |
+| Attribute         | Description                                              | Type                                             | Accepted values                                                            | Default       |
+| ----------------- | -------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------- | ------------- |
+| **value**         | selected date, to control the component                  | `Date` / `null`                                  | -                                                                          | -             |
+| **initialValue**  | date at the start                                        | `Date` / `null`                                  | -                                                                          | `null`        |
+| **onChange**      | called with the date, or `null` when the text is emptied | <Code>(date: Date &#124; null) =&gt; void</Code> | -                                                                          | -             |
+| **min**           | first date that can be picked                            | `Date`                                           | -                                                                          | -             |
+| **max**           | last date that can be picked                             | `Date`                                           | -                                                                          | -             |
+| **locale**        | language of the calendar                                 | `string`                                         | any `Intl` locale                                                          | `en-US`       |
+| **weekStartsOn**  | first day of the week in the calendar, 0 is Sunday       | `number`                                         | `0` to `6`                                                                 | `0`           |
+| **placeholder**   | text shown when the input is empty                       | `string`                                         | -                                                                          | `YYYY-MM-DD`  |
+| **calendarLabel** | name of the calendar button and of its dialog            | `string`                                         | -                                                                          | `Choose date` |
+| **disabled**      | disable the component                                    | `boolean`                                        | -                                                                          | `false`       |
+| **rounded**       | round the corners                                        | `boolean`                                        | -                                                                          | `false`       |
+| **filled**        | filled variant                                           | `boolean`                                        | -                                                                          | `false`       |
+| **light**         | light variant                                            | `boolean`                                        | -                                                                          | `false`       |
+| **ghost**         | outline variant                                          | `boolean`                                        | -                                                                          | `false`       |
+| **subtle**        | subtle variant                                           | `boolean`                                        | -                                                                          | `false`       |
+| **type**          | color of the field                                       | `NormalTypes`                                    | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`     |
+| **rounded**       | round the corners                                        | `boolean`                                        | -                                                                          | `false`       |
+| **filled**        | filled variant                                           | `boolean`                                        | -                                                                          | `false`       |
+| **light**         | light variant                                            | `boolean`                                        | -                                                                          | `false`       |
+| **ghost**         | outline variant                                          | `boolean`                                        | -                                                                          | `false`       |
+| **subtle**        | subtle variant                                           | `boolean`                                        | -                                                                          | `false`       |
+| ...               | native props, passed to the input                        | `InputHTMLAttributes`                            | `'aria-label', 'name', ...`                                                | -             |
 
 <Attributes.Title>Typing</Attributes.Title>
 

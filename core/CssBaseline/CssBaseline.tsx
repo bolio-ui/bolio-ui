@@ -9,7 +9,9 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
   return (
     <>
       {children}
-      <style global jsx>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         html,
         body {
           background-color: ${theme.palette.background};
@@ -19,6 +21,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         html {
           font-size: 16px;
           --bolioui-icons-background: ${theme.palette.background};
+          box-sizing: border-box;
         }
 
         body {
@@ -193,10 +196,14 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         }
 
         code {
-          color: ${theme.palette.code};
+          color: ${theme.palette.primary};
           font-family: ${theme.font.mono};
           font-size: 0.9em;
           white-space: pre-wrap;
+        }
+
+        a code {
+          color: inherit;
         }
 
         code:before,
@@ -230,7 +237,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           display: none;
         }
 
-        pre :global(p) {
+        pre p {
           margin: 0;
         }
 
@@ -289,11 +296,11 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           border: 1px solid ${theme.palette.border};
         }
 
-        blockquote :global(*:first-child) {
+        blockquote *:first-child {
           margin-top: 0;
         }
 
-        blockquote :global(*:last-child) {
+        blockquote *:last-child {
           margin-bottom: 0;
         }
 
@@ -301,7 +308,9 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           background-color: ${theme.palette.selection};
           color: ${theme.palette.foreground};
         }
-      `}</style>
+      `
+        }}
+      />
     </>
   )
 }

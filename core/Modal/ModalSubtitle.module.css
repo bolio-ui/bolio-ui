@@ -1,0 +1,8 @@
+.subtitle {
+  font-weight: normal;
+  display: inline-block;
+  text-align: center;
+  word-break: break-word;
+  text-transform: uppercase;
+  line-height: 1.5em;
+}

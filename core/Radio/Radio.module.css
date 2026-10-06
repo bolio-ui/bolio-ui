@@ -1,0 +1,78 @@
+.input {
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 0;
+}
+
+.input:focus-visible + .name .point {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--radio-color) 30%, transparent);
+}
+
+.radio {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  --radio-size: var(--radio-own-size);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--radio-label-color);
+  cursor: var(--radio-cursor);
+}
+
+.name {
+  font-size: var(--radio-size);
+  font-weight: 500;
+  line-height: 1.25;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.point {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: calc(var(--radio-size) * 1.125);
+  width: calc(var(--radio-size) * 1.125);
+  border-radius: 50%;
+  border: 1.5px solid var(--radio-border);
+  background-color: var(--radio-bg);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  display: inline-grid;
+  place-items: center;
+  margin-right: calc(var(--radio-size) * 0.5);
+  background-clip: padding-box;
+}
+
+.point:before {
+  content: '';
+  width: 50%;
+  height: 50%;
+  transform: scale(0);
+  border-radius: 50%;
+  background-color: var(--radio-color);
+  transition: transform 0.2s ease;
+}
+
+.label:hover .point {
+  border-color: var(--radio-hover-border);
+}
+
+.active {
+  border-color: var(--radio-color);
+}
+
+.active:before {
+  transform: scale(1);
+}

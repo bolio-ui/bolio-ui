@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Progress, Grid, useTheme, Button } from 'core'
+import { Progress, Grid, useTheme, Button, Text } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -75,6 +75,35 @@ Display progress relative to a limit or related to a task.
 />
 
 <Playground
+  title="Segmented"
+  desc="Split the bar in blocks with `segments`."
+  scope={{ Progress, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12}>
+    <Progress segments={10} value={60} type="primary" />
+  </Grid>
+  <Grid xs={12}>
+    <Progress segments={5} value={80} type="success" scale={1.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Circular"
+  desc="Use `circular` for a ring. The size follows `width` and `scale`."
+  scope={{ Progress, Grid }}
+  code={`
+<Grid.Container gap={2} alignItems="center">
+  <Grid><Progress circular value={25} /></Grid>
+  <Grid><Progress circular value={60} type="primary" width="4em" /></Grid>
+  <Grid><Progress circular value={90} type="success" width="5em" /></Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Type"
   desc="We prepared some different styles in advance."
   scope={{ Progress, Grid }}
@@ -105,6 +134,43 @@ Display progress relative to a limit or related to a task.
 `}
 />
 
+<Playground
+  title="Upload progress"
+  desc="Say what is being sent and how far it is, and change the type when it finishes."
+  scope={{ Progress, Grid, Text, Button }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(0)
+  const upload = () => {
+    setValue(10)
+    const timer = setInterval(() => {
+      setValue((last) => {
+        if (last >= 100) {
+          clearInterval(timer)
+          return 100
+        }
+        return last + 10
+      })
+    }, 300)
+  }
+  const label = value === 100 ? 'Upload complete' : value ? 'Uploading report.pdf, ' + value + '%' : 'report.pdf is ready to upload'
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Text small>{label}</Text>
+      </Grid>
+      <Grid>
+        <Progress value={value} type={value === 100 ? 'success' : 'primary'} />
+      </Grid>
+      <Grid>
+        <Button auto scale={0.75} onClick={upload} disabled={value > 0 && value < 100}>Upload</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/progress.mdx">
 <Attributes.Title>Progress.Props</Attributes.Title>
 
@@ -114,6 +180,8 @@ Display progress relative to a limit or related to a task.
 | **max**         | max value              | `number`                    | -                               | 100       |
 | **fixedTop**    | fix progress to top    | `boolean`                   | -                               | `false`   |
 | **fixedBottom** | fix progress to bottom | `boolean`                   | -                               | `false`   |
+| **segments**    | split the bar in blocks | `number`                    | -                               | -         |
+| **circular**    | show a ring instead of a bar | `boolean`              | -                               | `false`   |
 | **colors**      | custom colors          | `{ [key: number]: string }` | -                               | -         |
 | **type**        | predefined state types | `ProgressTypes`             | [ProgressTypes](#progresstypes) | `default` |
 | ...             | native props           | `ProgressHTMLAttributes`    | `'aria-busy', ...`              | -         |

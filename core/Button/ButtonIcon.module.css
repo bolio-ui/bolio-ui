@@ -1,0 +1,15 @@
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--bolio-ui-button-color);
+  z-index: 1;
+  font-size: calc(var(--bolio-ui-button-height) / 2.35);
+}
+
+.icon :global(svg) {
+  background: transparent;
+  height: 1em;
+  width: 1em;
+}

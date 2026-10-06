@@ -1,0 +1,19 @@
+.title {
+  display: inline-flex;
+  align-items: center;
+  padding-right: var(--title-gap);
+  border-radius: var(--title-radius);
+  margin-bottom: 0;
+}
+
+.title :global(small) {
+  font-size: 0.65em;
+  padding-left: 0.65rem;
+  color: var(--title-alias);
+  align-self: flex-end;
+  line-height: 1.6rem;
+}
+
+.title :global(span) {
+  color: var(--title-bracket);
+}

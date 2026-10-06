@@ -1,0 +1,57 @@
+.groupTabs {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin-bottom: -1px;
+}
+
+.groupContent {
+  border-top-left-radius: 0;
+  overflow: hidden;
+}
+
+.groupContent :global(.fieldset) {
+  border-top-left-radius: 0;
+}
+
+.button {
+  height: 2.7em;
+  line-height: 2.7em;
+  text-align: center;
+  user-select: none;
+  color: var(--fieldset-group-color);
+  background-color: var(--fieldset-group-bg);
+  font-size: 0.875em;
+  white-space: nowrap;
+  text-transform: capitalize;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0 1.45em;
+  overflow: hidden;
+  transition: all 0.2s ease 0s;
+  border-radius: 0;
+  border: 1px solid var(--fieldset-group-border);
+  text-decoration: none;
+  outline: none;
+  background-clip: padding-box;
+}
+
+.button.active {
+  border-bottom-color: transparent;
+  background-color: var(--fieldset-group-active-bg);
+  color: var(--fieldset-group-active-color);
+  cursor: default;
+}
+
+.button:first-of-type {
+  border-top-left-radius: var(--fieldset-group-radius);
+}
+
+.button:last-of-type {
+  border-top-right-radius: var(--fieldset-group-radius);
+}
+
+.button + .button {
+  border-left: 0;
+}

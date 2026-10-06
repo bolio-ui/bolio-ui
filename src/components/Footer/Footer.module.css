@@ -1,0 +1,35 @@
+.tagline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 4px;
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+  color: var(--footer-muted);
+}
+
+/* Link sets its color inline (inherit), so the hover goes on the icon */
+.social :global(a) {
+  display: flex;
+}
+
+.social :global(svg) {
+  transition: color 200ms ease;
+}
+
+.social :global(a:hover svg) {
+  color: var(--footer-foreground);
+}
+
+.links :global(a) {
+  color: var(--footer-muted);
+  transition: color 200ms ease;
+}
+
+.links :global(a:hover) {
+  color: var(--footer-foreground);
+}

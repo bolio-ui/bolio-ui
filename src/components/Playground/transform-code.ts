@@ -12,6 +12,12 @@ export const transformLiveCode = (rawCode: string): string => {
     .replace(/^\s*import\s+(?:[\s\S]*?from\s*)?['"][^'"]+['"]\s*;?\s*$/gm, '')
     .trim()
 
+  // An arrow function or a JSX expression is the example itself. Its inner
+  // `const Name =` lines are not top-level declarations (the MDX build also
+  // strips the indentation, so they cannot be told apart by it).
+  if (/^(?:async\s+)?(?:\([^)]*\)|\w+)\s*=>|^</.test(code))
+    return `render(${code})`
+
   // A top-level `function Name` or `const Name =` component declaration:
   // render the last one declared, passing the function itself — react-live
   // already auto-instantiates a function result as `<Name />`, the same way

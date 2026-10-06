@@ -1,8 +1,11 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import useTheme from '../use-theme'
+import { getColors } from '../Input/styles'
+import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import useClickAway from '../utils/use-click-away'
+import styles from './DatePicker.module.css'
 import Calendar from '../Calendar'
 import { fromISO, startOfDay, toISO } from '../Calendar/date-utils'
 
@@ -16,6 +19,12 @@ interface Props {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   placeholder?: string
   disabled?: boolean
+  type?: NormalTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   calendarLabel?: string
   className?: string
 }
@@ -38,6 +47,12 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       weekStartsOn,
       placeholder = 'YYYY-MM-DD',
       disabled = false,
+      type = 'default',
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       calendarLabel = 'Choose date',
       className = '',
       onBlur,
@@ -47,6 +62,12 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const colors = getColors(theme.palette, type, disabled, {
+      filled,
+      light,
+      ghost,
+      subtle
+    })
 
     const isControlled = customValue !== undefined
     const [selfValue, setSelfValue] = useState<Date | null>(initialValue)
@@ -101,8 +122,43 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       buttonRef.current?.focus()
     }
 
+    const datepickerStyle = {
+      '--datepicker-font-size': SCALES.font(0.875),
+      '--datepicker-input-height': SCALES.height(2.25),
+      '--datepicker-width': SCALES.width(1, 'initial'),
+      '--datepicker-height': SCALES.height(1, 'auto'),
+      '--datepicker-padding-top': SCALES.pt(0),
+      '--datepicker-padding-right': SCALES.pr(0),
+      '--datepicker-padding-bottom': SCALES.pb(0),
+      '--datepicker-padding-left': SCALES.pl(0),
+      '--datepicker-margin-top': SCALES.mt(0),
+      '--datepicker-margin-right': SCALES.mr(0),
+      '--datepicker-margin-bottom': SCALES.mb(0),
+      '--datepicker-margin-left': SCALES.ml(0),
+      '--datepicker-text-color': theme.palette.foreground,
+      '--datepicker-bg': theme.palette.background,
+      '--datepicker-border-color': theme.palette.border,
+      '--datepicker-radius': rounded ? '25px' : theme.layout.radius,
+      '--datepicker-popup-radius': theme.layout.radius,
+      '--datepicker-field-color': colors.color,
+      '--datepicker-field-bg': colors.bgColor,
+      '--datepicker-field-border': colors.borderColor,
+      '--datepicker-field-hover-bg': colors.hoverBgColor,
+      '--datepicker-field-hover-border': colors.hoverBorder,
+      '--datepicker-focus-border-color': colors.focusBorder,
+      '--datepicker-placeholder-color': colors.placeholderColor,
+      '--datepicker-toggle-color': colors.iconColor,
+      '--datepicker-toggle-hover-color': colors.color,
+      '--datepicker-toggle-disabled-color': colors.iconColor,
+      '--datepicker-shadow': theme.expressiveness.shadowMedium
+    } as React.CSSProperties
+
     return (
-      <div ref={rootRef} className={useClasses('datepicker', className)}>
+      <div
+        ref={rootRef}
+        className={useClasses(styles.datepicker, className)}
+        style={datepickerStyle}
+      >
         <input
           ref={inputRef}
           type="text"
@@ -113,12 +169,13 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
           disabled={disabled}
           onChange={inputHandler}
           onBlur={blurHandler}
+          className={styles.input}
           {...props}
         />
         <button
           ref={buttonRef}
           type="button"
-          className="toggle"
+          className={styles.toggle}
           aria-label={calendarLabel}
           aria-haspopup="dialog"
           aria-expanded={open}
@@ -144,7 +201,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
           <div
             role="dialog"
             aria-label={calendarLabel}
-            className="popup"
+            className={styles.popup}
             onKeyDown={keyDownHandler}
           >
             <Calendar
@@ -158,78 +215,6 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
             />
           </div>
         )}
-        <style jsx>{`
-          .datepicker {
-            position: relative;
-            display: inline-block;
-            font-size: ${SCALES.font(1)};
-            width: ${SCALES.width(1, 'initial')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          input {
-            box-sizing: border-box;
-            width: 100%;
-            min-width: 12.5em;
-            height: 2.5em;
-            padding: 0 2.75em 0 0.875em;
-            font: inherit;
-            color: ${theme.palette.foreground};
-            background-color: ${theme.palette.background};
-            border: 1px solid ${theme.palette.border};
-            border-radius: ${theme.layout.radius};
-            outline: none;
-            transition: border-color 0.15s ease;
-          }
-          input:focus {
-            border-color: ${theme.palette.primary};
-          }
-          input:disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_4};
-            background-color: ${theme.palette.accents_1};
-          }
-          .toggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5em;
-            height: 2.5em;
-            color: ${theme.palette.accents_5};
-            cursor: pointer;
-            background: transparent;
-            border: 0;
-            border-radius: ${theme.layout.radius};
-          }
-          .toggle:hover:not(:disabled) {
-            color: ${theme.palette.foreground};
-          }
-          .toggle:focus-visible {
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: -2px;
-          }
-          .toggle:disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_3};
-          }
-          .popup {
-            position: absolute;
-            top: calc(100% + 4px);
-            left: 0;
-            z-index: 1100;
-            padding: 0.75em;
-            background-color: ${theme.palette.background};
-            border: 1px solid ${theme.palette.border};
-            border-radius: ${theme.layout.radius};
-            box-shadow: ${theme.expressiveness.shadowMedium};
-          }
-        `}</style>
       </div>
     )
   }

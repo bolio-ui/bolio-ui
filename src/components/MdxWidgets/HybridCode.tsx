@@ -1,6 +1,7 @@
 import React, { ReactNode, useMemo, useRef } from 'react'
-import { Code, CodeProps, useClipboard, useToasts } from 'core'
+import { Code, CodeProps, useClipboard, useTheme, useToasts } from 'core'
 import { Copy } from '@bolio-ui/icons'
+import styles from './HybridCode.module.css'
 
 export type HybridCodeProps = CodeProps
 export const FILE_NAME_PREFIX = '// NAME:'
@@ -65,6 +66,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   ...tabProps
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const theme = useTheme()
   const { copy } = useClipboard()
   const { setToast } = useToasts()
 
@@ -74,50 +76,22 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   }
 
   return (
-    <div className="hybrid-code" ref={ref}>
+    <div className={styles.hybridCode} ref={ref}>
       <Code block name={name} {...tabProps}>
         {children}
       </Code>
       <button
         type="button"
-        className={name || tabProps.tabs?.length ? 'copy named' : 'copy'}
+        className={
+          name || tabProps.tabs?.length
+            ? `${styles.copy} ${styles.named}`
+            : styles.copy
+        }
         aria-label="Copy code"
         onClick={copyHandler}
       >
-        <Copy fontSize={16} color="#FFFFFF" />
+        <Copy fontSize={16} color={theme.palette.accents_5} />
       </button>
-      <style jsx>{`
-        .hybrid-code {
-          position: relative;
-        }
-        .copy {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          display: inline-flex;
-          padding: 4px;
-          border: none;
-          border-radius: 4px;
-          background: transparent;
-          cursor: pointer;
-          opacity: 0;
-        }
-        .copy.named {
-          top: 36px;
-        }
-        .hybrid-code:hover .copy,
-        .copy:focus-visible {
-          opacity: 0.7;
-        }
-        .copy:hover {
-          opacity: 1;
-        }
-        @media (hover: none) {
-          .copy {
-            opacity: 0.7;
-          }
-        }
-      `}</style>
     </div>
   )
 }

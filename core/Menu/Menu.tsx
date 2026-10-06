@@ -5,6 +5,7 @@ import useClickAway from '../utils/use-click-away'
 import Dropdown from '../Shared/dropdown'
 import { MenuContext } from './MenuContext'
 import MenuList, { MenuFocus } from './MenuList'
+import styles from './Menu.module.css'
 
 type TriggerProps = {
   id?: string
@@ -90,7 +91,11 @@ const MenuComponent = React.forwardRef<
 
     return (
       <MenuContext.Provider value={{ close }}>
-        <div ref={setRefs} className={useClasses('menu', className)} {...props}>
+        <div
+          ref={setRefs}
+          className={useClasses(styles.menu, className)}
+          {...props}
+        >
           {React.cloneElement(trigger, {
             id: triggerId,
             'aria-haspopup': 'menu',
@@ -114,11 +119,6 @@ const MenuComponent = React.forwardRef<
               {children}
             </MenuList>
           </Dropdown>
-          <style jsx>{`
-            .menu {
-              display: inline-block;
-            }
-          `}</style>
         </div>
       </MenuContext.Provider>
     )

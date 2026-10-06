@@ -14,18 +14,24 @@ const {
   Calendar,
   Capacity,
   Card,
+  Carousel,
   Checkbox,
   Code,
+  ColorInput,
+  ColorPicker,
   Col,
   Collapse,
   Combobox,
   Container,
+  ContextMenu,
   DatePicker,
+  DateRangePicker,
   Description,
   Display,
   Divider,
   Dot,
   Drawer,
+  Dropzone,
   Fieldset,
   Grid,
   Image,
@@ -39,12 +45,14 @@ const {
   NumberInput,
   Page,
   Pagination,
+  PinInput,
   Popover,
   Progress,
   Radio,
   Rating,
   Row,
   Section,
+  SegmentedControl,
   Select,
   Skeleton,
   Slider,
@@ -55,10 +63,12 @@ const {
   Table,
   Tabs,
   Tag,
+  TagsInput,
   Text,
   Textarea,
   Toggle,
-  Tooltip
+  Tooltip,
+  Tree
 } = Bolio
 
 // an element, or the handle of a component that has none (Select)
@@ -98,6 +108,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Calendar', (ref) => <Calendar ref={ref} />],
   ['Capacity', (ref) => <Capacity ref={ref} value={50} />],
   ['Card', (ref) => <Card ref={ref}>Content</Card>],
+  [
+    'Carousel',
+    (ref) => (
+      <Carousel ref={ref} aria-label="Highlights">
+        <div>One</div>
+      </Carousel>
+    ),
+    'DIV'
+  ],
   ['Checkbox', (ref) => <Checkbox ref={ref}>Check</Checkbox>, 'INPUT'],
   ['Code', (ref) => <Code ref={ref}>yarn add</Code>],
   ['Col', (ref) => <Col ref={ref}>col</Col>],
@@ -108,6 +127,16 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         Body
       </Collapse>
     )
+  ],
+  [
+    'ColorInput',
+    (ref) => <ColorInput ref={ref} aria-label="Brand color" />,
+    'INPUT'
+  ],
+  [
+    'ColorPicker',
+    (ref) => <ColorPicker ref={ref} aria-label="Brand color" />,
+    'DIV'
   ],
   [
     'Combobox',
@@ -122,9 +151,23 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ],
   ['Container', (ref) => <Container ref={ref}>Content</Container>],
   [
+    'ContextMenu',
+    (ref) => (
+      <ContextMenu ref={ref} content={<Menu.Item>Copy</Menu.Item>}>
+        Area
+      </ContextMenu>
+    ),
+    'DIV'
+  ],
+  [
     'DatePicker',
     (ref) => <DatePicker ref={ref} aria-label="Birthday" />,
     'INPUT'
+  ],
+  [
+    'DateRangePicker',
+    (ref) => <DateRangePicker ref={ref} aria-label="Stay" />,
+    'DIV'
   ],
   ['Description', (ref) => <Description ref={ref} title="T" content="C" />],
   ['Display', (ref) => <Display ref={ref}>Content</Display>],
@@ -137,6 +180,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         Content
       </Drawer>
     )
+  ],
+  [
+    'Dropzone',
+    (ref) => <Dropzone ref={ref} aria-label="Attachments" />,
+    'INPUT'
   ],
   [
     'Fieldset',
@@ -194,6 +242,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Pagination', (ref) => <Pagination ref={ref} count={5} initialPage={1} />],
+  ['PinInput', (ref) => <PinInput ref={ref} aria-label="Code" />, 'DIV'],
   [
     'Popover',
     (ref) => (
@@ -217,6 +266,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],
+  [
+    'SegmentedControl',
+    (ref) => (
+      <SegmentedControl ref={ref}>
+        <SegmentedControl.Item value="a">Day</SegmentedControl.Item>
+      </SegmentedControl>
+    ),
+    'DIV'
+  ],
   [
     'Select',
     (ref) => (
@@ -258,6 +316,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Tag', (ref) => <Tag ref={ref}>Tag</Tag>],
+  ['TagsInput', (ref) => <TagsInput ref={ref} aria-label="Skills" />, 'INPUT'],
   ['Text', (ref) => <Text ref={ref}>Text</Text>],
   ['Textarea', (ref) => <Textarea ref={ref} placeholder="write" />, 'TEXTAREA'],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],
@@ -268,6 +327,13 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         <span>Hover</span>
       </Tooltip>
     )
+  ],
+  [
+    'Tree',
+    (ref) => (
+      <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
+    ),
+    'UL'
   ]
 ]
 

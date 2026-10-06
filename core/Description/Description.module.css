@@ -1,0 +1,21 @@
+.description dt {
+  font-size: 0.75em;
+  line-height: 1em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 500;
+  display: flex;
+}
+
+.description dd {
+  font-size: 0.875em;
+  margin: 0;
+  line-height: 1.1em;
+  font-weight: 500;
+}
+
+.description dd :global(p),
+.description dt :global(p) {
+  margin: 0;
+}

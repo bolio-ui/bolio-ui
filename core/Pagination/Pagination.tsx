@@ -11,6 +11,7 @@ import useCurrentState from '../utils/use-current-state'
 import { pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import type { AnyElement } from '../utils/types'
+import styles from './Pagination.module.css'
 
 interface Props {
   page?: number
@@ -37,6 +38,7 @@ const PaginationComponent = React.forwardRef<
       children,
       onChange,
       className = '',
+      style,
       ...props
     },
     ref
@@ -87,10 +89,26 @@ const PaginationComponent = React.forwardRef<
       }
     }, [customPage, setPage])
 
+    const navStyle = {
+      '--pagination-size': SCALES.font(2),
+      fontSize: SCALES.font(0.875),
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    } as React.CSSProperties
+
     return (
       <PaginationContext.Provider value={values}>
-        <nav ref={ref} className={className} aria-label="Pagination" {...props}>
-          <ul>
+        <nav
+          ref={ref}
+          className={`${styles.nav} ${className}`.trim()}
+          aria-label="Pagination"
+          {...props}
+          style={navStyle}
+        >
+          <ul className={styles.list}>
             {prevItem}
             <PaginationPages
               count={count}
@@ -101,30 +119,6 @@ const PaginationComponent = React.forwardRef<
             {nextItem}
           </ul>
         </nav>
-        <style jsx>{`
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-          }
-
-          nav {
-            font-variant: tabular-nums;
-            font-feature-settings: 'tnum';
-            --pagination-size: ${SCALES.font(2)};
-            font-size: ${SCALES.font(0.875)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          nav :global(button:last-of-type) {
-            margin-right: 0;
-          }
-        `}</style>
       </PaginationContext.Provider>
     )
   }

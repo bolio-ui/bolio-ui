@@ -1,8 +1,6 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 import GridBasicItem, { GridBasicItemProps } from './BasicItem'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
 
 interface Props {
   className?: string
@@ -13,25 +11,21 @@ export type GridProps = Props & GridBasicItemProps
 const GridComponent = React.forwardRef<
   HTMLDivElement,
   React.PropsWithChildren<GridProps>
->(({ children, className = '', ...props }, ref) => {
+>(({ children, className = '', style, ...props }, ref) => {
   const { SCALES } = useScale()
 
   const gridGapUnit = 'var(--grid-gap-unit)'
 
-  const { className: resolveClassName, styles } = css.resolve`
-    div {
-      margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)};
-      box-sizing: border-box;
-      padding: ${SCALES.pt(0, gridGapUnit)} ${SCALES.pr(0, gridGapUnit)}
-        ${SCALES.pb(0, gridGapUnit)} ${SCALES.pl(0, gridGapUnit)};
-    }
-  `
-  const classes = useClasses(resolveClassName, className)
+  const gridStyle: React.CSSProperties = {
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    boxSizing: 'border-box',
+    padding: `${SCALES.pt(0, gridGapUnit)} ${SCALES.pr(0, gridGapUnit)} ${SCALES.pb(0, gridGapUnit)} ${SCALES.pl(0, gridGapUnit)}`,
+    ...style
+  }
 
   return (
-    <GridBasicItem ref={ref} className={classes} {...props}>
+    <GridBasicItem ref={ref} className={className} style={gridStyle} {...props}>
       {children}
-      {styles}
     </GridBasicItem>
   )
 })

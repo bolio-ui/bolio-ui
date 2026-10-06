@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './CollapseIcon.module.css'
 
 interface Props {
   active?: boolean
@@ -14,18 +15,13 @@ function CollapseIcon({ active }: Props) {
       strokeLinejoin="round"
       fill="none"
       shapeRendering="geometricPrecision"
-      style={{ color: 'currentColor' }}
+      className={styles.svg}
+      style={{
+        color: 'currentColor',
+        transform: `rotateZ(${active ? '-180deg' : '0'})`
+      }}
     >
       <path d="M6 9l6 6 6-6" />
-
-      <style jsx>{`
-        svg {
-          transition: transform 200ms ease;
-          transform: rotateZ(${active ? '-180deg' : '0'});
-          width: 1.5em;
-          height: 1.5em;
-        }
-      `}</style>
     </svg>
   )
 }

@@ -24,6 +24,12 @@
   },
   {
     "head": "Avatar",
+    "title": "Avatar Team members",
+    "component": false,
+    "path": "/docs/components/avatar#team-members"
+  },
+  {
+    "head": "Avatar",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/avatar#apis"
@@ -62,6 +68,12 @@
     "title": "Badge Custom Color",
     "component": false,
     "path": "/docs/components/badge#custom-color"
+  },
+  {
+    "head": "Badge",
+    "title": "Badge Pulse",
+    "component": false,
+    "path": "/docs/components/badge#pulse"
   },
   {
     "head": "Badge",
@@ -207,6 +219,12 @@
   },
   {
     "head": "Button",
+    "title": "Button Spotlight",
+    "component": false,
+    "path": "/docs/components/button#spotlight"
+  },
+  {
+    "head": "Button",
     "title": "Button Rounded",
     "component": false,
     "path": "/docs/components/button#rounded"
@@ -222,6 +240,12 @@
     "title": "Button With Icons",
     "component": false,
     "path": "/docs/components/button#with-icons"
+  },
+  {
+    "head": "Button",
+    "title": "Button Save with feedback",
+    "component": false,
+    "path": "/docs/components/button#save-with-feedback"
   },
   {
     "head": "Button",
@@ -284,6 +308,18 @@
   },
   {
     "head": "Button Dropdown",
+    "title": "Button Dropdown Item Icons",
+    "component": false,
+    "path": "/docs/components/button-dropdown#item-icons"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Button Dropdown Alignment",
+    "component": false,
+    "path": "/docs/components/button-dropdown#alignment"
+  },
+  {
+    "head": "Button Dropdown",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button-dropdown#apis"
@@ -343,6 +379,12 @@
   },
   {
     "head": "Button Group",
+    "title": "Button Group Editor toolbar",
+    "component": false,
+    "path": "/docs/components/button-group#editor-toolbar"
+  },
+  {
+    "head": "Button Group",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/button-group#apis"
@@ -384,6 +426,36 @@
   },
   {
     "head": "Calendar",
+    "title": "Calendar Multiple",
+    "component": false,
+    "path": "/docs/components/calendar#multiple"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Range",
+    "component": false,
+    "path": "/docs/components/calendar#range"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Disable dates",
+    "component": false,
+    "path": "/docs/components/calendar#disable-dates"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Outside days and week numbers",
+    "component": false,
+    "path": "/docs/components/calendar#outside-days-and-week-numbers"
+  },
+  {
+    "head": "Calendar",
+    "title": "Calendar Several months",
+    "component": false,
+    "path": "/docs/components/calendar#several-months"
+  },
+  {
+    "head": "Calendar",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/calendar#apis"
@@ -422,6 +494,12 @@
     "title": "Capacity Fixed Color",
     "component": false,
     "path": "/docs/components/capacity#fixed-color"
+  },
+  {
+    "head": "Capacity",
+    "title": "Capacity Plan usage",
+    "component": false,
+    "path": "/docs/components/capacity#plan-usage"
   },
   {
     "head": "Capacity",
@@ -490,6 +568,42 @@
   },
   {
     "head": "Card",
+    "title": "Card Spotlight",
+    "component": false,
+    "path": "/docs/components/card#spotlight"
+  },
+  {
+    "head": "Card",
+    "title": "Card Glass",
+    "component": false,
+    "path": "/docs/components/card#glass"
+  },
+  {
+    "head": "Card",
+    "title": "Card Interactive",
+    "component": false,
+    "path": "/docs/components/card#interactive"
+  },
+  {
+    "head": "Card",
+    "title": "Card Metric",
+    "component": false,
+    "path": "/docs/components/card#metric"
+  },
+  {
+    "head": "Card",
+    "title": "Card Pricing",
+    "component": false,
+    "path": "/docs/components/card#pricing"
+  },
+  {
+    "head": "Card",
+    "title": "Card Profile",
+    "component": false,
+    "path": "/docs/components/card#profile"
+  },
+  {
+    "head": "Card",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/card#apis"
@@ -517,6 +631,83 @@
     "title": "Types - Card",
     "component": false,
     "path": "/docs/components/card#cardtype"
+  },
+  {
+    "title": "Carousel",
+    "component": true,
+    "path": "/docs/components/carousel"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel General",
+    "component": false,
+    "path": "/docs/components/carousel#general"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Several slides",
+    "component": false,
+    "path": "/docs/components/carousel#several-slides"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Photo gallery",
+    "component": false,
+    "path": "/docs/components/carousel#photo-gallery"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Several photos",
+    "component": false,
+    "path": "/docs/components/carousel#several-photos"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Destination cards",
+    "component": false,
+    "path": "/docs/components/carousel#destination-cards"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Controlled",
+    "component": false,
+    "path": "/docs/components/carousel#controlled"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Customer quotes",
+    "component": false,
+    "path": "/docs/components/carousel#customer-quotes"
+  },
+  {
+    "head": "Carousel",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/carousel#apis"
+  },
+  {
+    "head": "Carousel",
+    "title": "Carousel Props",
+    "component": false,
+    "path": "/docs/components/carousel#carousel.props"
+  },
+  {
+    "head": "Carousel",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/carousel#behavior"
+  },
+  {
+    "head": "Carousel",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/carousel#ref"
+  },
+  {
+    "head": "Carousel",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/carousel#accessibility"
   },
   {
     "title": "Checkbox",
@@ -552,6 +743,12 @@
     "title": "Checkbox Group",
     "component": false,
     "path": "/docs/components/checkbox#group"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Accept terms",
+    "component": false,
+    "path": "/docs/components/checkbox#accept-terms"
   },
   {
     "head": "Checkbox",
@@ -655,6 +852,12 @@
   },
   {
     "head": "Col",
+    "title": "Col Sidebar layout",
+    "component": false,
+    "path": "/docs/components/col#sidebar-layout"
+  },
+  {
+    "head": "Col",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/col#apis"
@@ -702,6 +905,12 @@
   },
   {
     "head": "Collapse",
+    "title": "Collapse Controlled and disabled",
+    "component": false,
+    "path": "/docs/components/collapse#controlled-and-disabled"
+  },
+  {
+    "head": "Collapse",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/collapse#apis"
@@ -717,6 +926,136 @@
     "title": "Collapse Group Props",
     "component": false,
     "path": "/docs/components/collapse#collapse.group.props"
+  },
+  {
+    "head": "Collapse",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/collapse#accessibility"
+  },
+  {
+    "title": "Color Input",
+    "component": true,
+    "path": "/docs/components/color-input"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input General",
+    "component": false,
+    "path": "/docs/components/color-input#general"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input With swatches",
+    "component": false,
+    "path": "/docs/components/color-input#with-swatches"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Brand colors",
+    "component": false,
+    "path": "/docs/components/color-input#brand-colors"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Variants",
+    "component": false,
+    "path": "/docs/components/color-input#variants"
+  },
+  {
+    "head": "Color Input",
+    "title": "Color Input Disabled",
+    "component": false,
+    "path": "/docs/components/color-input#disabled"
+  },
+  {
+    "head": "Color Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-input#apis"
+  },
+  {
+    "head": "Color Input",
+    "title": "ColorInput Props",
+    "component": false,
+    "path": "/docs/components/color-input#colorinput.props"
+  },
+  {
+    "head": "Color Input",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/color-input#typing"
+  },
+  {
+    "head": "Color Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-input#ref"
+  },
+  {
+    "head": "Color Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-input#accessibility"
+  },
+  {
+    "title": "Color Picker",
+    "component": true,
+    "path": "/docs/components/color-picker"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker General",
+    "component": false,
+    "path": "/docs/components/color-picker#general"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker With swatches",
+    "component": false,
+    "path": "/docs/components/color-picker#with-swatches"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker Controlled",
+    "component": false,
+    "path": "/docs/components/color-picker#controlled"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Color Picker Disabled",
+    "component": false,
+    "path": "/docs/components/color-picker#disabled"
+  },
+  {
+    "head": "Color Picker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-picker#apis"
+  },
+  {
+    "head": "Color Picker",
+    "title": "ColorPicker Props",
+    "component": false,
+    "path": "/docs/components/color-picker#colorpicker.props"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Hex field",
+    "component": false,
+    "path": "/docs/components/color-picker#hex-field"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-picker#ref"
+  },
+  {
+    "head": "Color Picker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-picker#accessibility"
   },
   {
     "title": "Combobox",
@@ -740,6 +1079,12 @@
     "title": "Combobox Empty text",
     "component": false,
     "path": "/docs/components/combobox#empty-text"
+  },
+  {
+    "head": "Combobox",
+    "title": "Combobox Variants",
+    "component": false,
+    "path": "/docs/components/combobox#variants"
   },
   {
     "head": "Combobox",
@@ -778,6 +1123,53 @@
     "path": "/docs/components/combobox#accessibility"
   },
   {
+    "title": "Command",
+    "component": true,
+    "path": "/docs/components/command"
+  },
+  {
+    "head": "Command",
+    "title": "Command General",
+    "component": false,
+    "path": "/docs/components/command#general"
+  },
+  {
+    "head": "Command",
+    "title": "Command With Shortcut",
+    "component": false,
+    "path": "/docs/components/command#with-shortcut"
+  },
+  {
+    "head": "Command",
+    "title": "Command With Shortcut",
+    "component": false,
+    "path": "/docs/components/command#with-shortcut"
+  },
+  {
+    "head": "Command",
+    "title": "Command App command palette",
+    "component": false,
+    "path": "/docs/components/command#app-command-palette"
+  },
+  {
+    "head": "Command",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/command#apis"
+  },
+  {
+    "head": "Command",
+    "title": "Command Props",
+    "component": false,
+    "path": "/docs/components/command#command.props"
+  },
+  {
+    "head": "Command",
+    "title": "CommandItem",
+    "component": false,
+    "path": "/docs/components/command#commanditem"
+  },
+  {
     "title": "Container",
     "component": true,
     "path": "/docs/components/container"
@@ -796,6 +1188,12 @@
   },
   {
     "head": "Container",
+    "title": "Container Centered hero",
+    "component": false,
+    "path": "/docs/components/container#centered-hero"
+  },
+  {
+    "head": "Container",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/container#apis"
@@ -811,6 +1209,59 @@
     "title": "Ref",
     "component": false,
     "path": "/docs/components/container#ref"
+  },
+  {
+    "title": "Context Menu",
+    "component": true,
+    "path": "/docs/components/context-menu"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu General",
+    "component": false,
+    "path": "/docs/components/context-menu#general"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu Files",
+    "component": false,
+    "path": "/docs/components/context-menu#files"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Context Menu Disabled",
+    "component": false,
+    "path": "/docs/components/context-menu#disabled"
+  },
+  {
+    "head": "Context Menu",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/context-menu#apis"
+  },
+  {
+    "head": "Context Menu",
+    "title": "ContextMenu Props",
+    "component": false,
+    "path": "/docs/components/context-menu#contextmenu.props"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/context-menu#behavior"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/context-menu#ref"
+  },
+  {
+    "head": "Context Menu",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/context-menu#accessibility"
   },
   {
     "title": "DatePicker",
@@ -834,6 +1285,12 @@
     "title": "DatePicker Min and max",
     "component": false,
     "path": "/docs/components/date-picker#min-and-max"
+  },
+  {
+    "head": "DatePicker",
+    "title": "DatePicker Variants",
+    "component": false,
+    "path": "/docs/components/date-picker#variants"
   },
   {
     "head": "DatePicker",
@@ -872,6 +1329,77 @@
     "path": "/docs/components/date-picker#accessibility"
   },
   {
+    "title": "DateRangePicker",
+    "component": true,
+    "path": "/docs/components/date-range-picker"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker General",
+    "component": false,
+    "path": "/docs/components/date-range-picker#general"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Initial value",
+    "component": false,
+    "path": "/docs/components/date-range-picker#initial-value"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Controlled",
+    "component": false,
+    "path": "/docs/components/date-range-picker#controlled"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Min and max",
+    "component": false,
+    "path": "/docs/components/date-range-picker#min-and-max"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Variants",
+    "component": false,
+    "path": "/docs/components/date-range-picker#variants"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Disabled",
+    "component": false,
+    "path": "/docs/components/date-range-picker#disabled"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-range-picker#apis"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "DateRangePicker Props",
+    "component": false,
+    "path": "/docs/components/date-range-picker#daterangepicker.props"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Typing",
+    "component": false,
+    "path": "/docs/components/date-range-picker#typing"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/date-range-picker#ref"
+  },
+  {
+    "head": "DateRangePicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/date-range-picker#accessibility"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"
@@ -887,6 +1415,12 @@
     "title": "Description With Component",
     "component": false,
     "path": "/docs/components/description#with-component"
+  },
+  {
+    "head": "Description",
+    "title": "Description Account details",
+    "component": false,
+    "path": "/docs/components/description#account-details"
   },
   {
     "head": "Description",
@@ -1013,6 +1547,12 @@
   },
   {
     "head": "Dot",
+    "title": "Dot Service status",
+    "component": false,
+    "path": "/docs/components/dot#service-status"
+  },
+  {
+    "head": "Dot",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/dot#apis"
@@ -1045,6 +1585,12 @@
     "title": "Drawer Placement",
     "component": false,
     "path": "/docs/components/drawer#placement"
+  },
+  {
+    "head": "Drawer",
+    "title": "Drawer Edit profile",
+    "component": false,
+    "path": "/docs/components/drawer#edit-profile"
   },
   {
     "head": "Drawer",
@@ -1081,6 +1627,118 @@
     "title": "Placement - Drawer",
     "component": false,
     "path": "/docs/components/drawer#drawerplacement"
+  },
+  {
+    "title": "Empty State",
+    "component": true,
+    "path": "/docs/components/empty-state"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State General",
+    "component": false,
+    "path": "/docs/components/empty-state#general"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State In a Card",
+    "component": false,
+    "path": "/docs/components/empty-state#in-a-card"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Onboarding",
+    "component": false,
+    "path": "/docs/components/empty-state#onboarding"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Error",
+    "component": false,
+    "path": "/docs/components/empty-state#error"
+  },
+  {
+    "head": "Empty State",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/empty-state#apis"
+  },
+  {
+    "head": "Empty State",
+    "title": "Empty State Props",
+    "component": false,
+    "path": "/docs/components/empty-state#emptystate.props"
+  },
+  {
+    "title": "Dropzone",
+    "component": true,
+    "path": "/docs/components/dropzone"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone General",
+    "component": false,
+    "path": "/docs/components/dropzone#general"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Limits and rejected files",
+    "component": false,
+    "path": "/docs/components/dropzone#limits-and-rejected-files"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Thumbnails",
+    "component": false,
+    "path": "/docs/components/dropzone#thumbnails"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Custom content",
+    "component": false,
+    "path": "/docs/components/dropzone#custom-content"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Disabled",
+    "component": false,
+    "path": "/docs/components/dropzone#disabled"
+  },
+  {
+    "head": "Dropzone",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/dropzone#apis"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Dropzone Props",
+    "component": false,
+    "path": "/docs/components/dropzone#dropzone.props"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Rejected files",
+    "component": false,
+    "path": "/docs/components/dropzone#rejected-files"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Thumbnail behavior",
+    "component": false,
+    "path": "/docs/components/dropzone#thumbnail-behavior"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/dropzone#ref"
+  },
+  {
+    "head": "Dropzone",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/dropzone#accessibility"
   },
   {
     "title": "Fieldset",
@@ -1331,6 +1989,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Floating Label",
+    "component": false,
+    "path": "/docs/components/input#floating-label"
+  },
+  {
+    "head": "Input",
     "title": "Input Sizes",
     "component": false,
     "path": "/docs/components/input#sizes"
@@ -1373,6 +2037,12 @@
   },
   {
     "head": "Input",
+    "title": "Input Variants",
+    "component": false,
+    "path": "/docs/components/input#variants"
+  },
+  {
+    "head": "Input",
     "title": "Input Icon",
     "component": false,
     "path": "/docs/components/input#icon"
@@ -1400,6 +2070,12 @@
     "title": "Input Imperative API",
     "component": false,
     "path": "/docs/components/input#imperative-api"
+  },
+  {
+    "head": "Input",
+    "title": "Input Login form",
+    "component": false,
+    "path": "/docs/components/input#login-form"
   },
   {
     "head": "Input",
@@ -1567,6 +2243,41 @@
     "path": "/docs/components/loading#loadingtypes"
   },
   {
+    "title": "Marquee",
+    "component": true,
+    "path": "/docs/components/marquee"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee General",
+    "component": false,
+    "path": "/docs/components/marquee#general"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Reverse",
+    "component": false,
+    "path": "/docs/components/marquee#reverse"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Two rows",
+    "component": false,
+    "path": "/docs/components/marquee#two-rows"
+  },
+  {
+    "head": "Marquee",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/marquee#apis"
+  },
+  {
+    "head": "Marquee",
+    "title": "Marquee Props",
+    "component": false,
+    "path": "/docs/components/marquee#marquee.props"
+  },
+  {
     "title": "Menu",
     "component": true,
     "path": "/docs/components/menu"
@@ -1710,6 +2421,12 @@
   },
   {
     "head": "Modal",
+    "title": "Modal Confirm a destructive action",
+    "component": false,
+    "path": "/docs/components/modal#confirm-a-destructive-action"
+  },
+  {
+    "head": "Modal",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/modal#apis"
@@ -1793,6 +2510,12 @@
   },
   {
     "head": "Note",
+    "title": "Note Page alerts",
+    "component": false,
+    "path": "/docs/components/note#page-alerts"
+  },
+  {
+    "head": "Note",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/note#apis"
@@ -1846,6 +2569,12 @@
   },
   {
     "head": "Number Input",
+    "title": "Number Input Variants",
+    "component": false,
+    "path": "/docs/components/number-input#variants"
+  },
+  {
+    "head": "Number Input",
     "title": "Number Input Disabled and read only",
     "component": false,
     "path": "/docs/components/number-input#disabled-and-read-only"
@@ -1879,6 +2608,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/number-input#accessibility"
+  },
+  {
+    "title": "Overview",
+    "component": true,
+    "path": "/docs/components/overview"
+  },
+  {
+    "head": "Overview",
+    "title": "Layout",
+    "component": false,
+    "path": "/docs/components/overview#layout"
+  },
+  {
+    "head": "Overview",
+    "title": "Typography",
+    "component": false,
+    "path": "/docs/components/overview#typography"
+  },
+  {
+    "head": "Overview",
+    "title": "Buttons",
+    "component": false,
+    "path": "/docs/components/overview#buttons"
+  },
+  {
+    "head": "Overview",
+    "title": "Forms",
+    "component": false,
+    "path": "/docs/components/overview#forms"
+  },
+  {
+    "head": "Overview",
+    "title": "Data Display",
+    "component": false,
+    "path": "/docs/components/overview#data.display"
+  },
+  {
+    "head": "Overview",
+    "title": "Feedback",
+    "component": false,
+    "path": "/docs/components/overview#feedback"
+  },
+  {
+    "head": "Overview",
+    "title": "Overlays",
+    "component": false,
+    "path": "/docs/components/overview#overlays"
+  },
+  {
+    "head": "Overview",
+    "title": "Navigation",
+    "component": false,
+    "path": "/docs/components/overview#navigation"
   },
   {
     "title": "Page",
@@ -1958,6 +2740,12 @@
   },
   {
     "head": "Pagination",
+    "title": "Pagination Paginated list",
+    "component": false,
+    "path": "/docs/components/pagination#paginated-list"
+  },
+  {
+    "head": "Pagination",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/pagination#apis"
@@ -1981,6 +2769,71 @@
     "path": "/docs/components/pagination#pagination.next.props"
   },
   {
+    "title": "Pin Input",
+    "component": true,
+    "path": "/docs/components/pin-input"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input General",
+    "component": false,
+    "path": "/docs/components/pin-input#general"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Controlled",
+    "component": false,
+    "path": "/docs/components/pin-input#controlled"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Masked",
+    "component": false,
+    "path": "/docs/components/pin-input#masked"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Variants",
+    "component": false,
+    "path": "/docs/components/pin-input#variants"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Pin Input Error and disabled",
+    "component": false,
+    "path": "/docs/components/pin-input#error-and-disabled"
+  },
+  {
+    "head": "Pin Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/pin-input#apis"
+  },
+  {
+    "head": "Pin Input",
+    "title": "PinInput Props",
+    "component": false,
+    "path": "/docs/components/pin-input#pininput.props"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Typing and pasting",
+    "component": false,
+    "path": "/docs/components/pin-input#typing-and-pasting"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pin-input#ref"
+  },
+  {
+    "head": "Pin Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pin-input#accessibility"
+  },
+  {
     "title": "Popover",
     "component": true,
     "path": "/docs/components/popover"
@@ -2002,6 +2855,12 @@
     "title": "Popover Close Manual",
     "component": false,
     "path": "/docs/components/popover#close-manual"
+  },
+  {
+    "head": "Popover",
+    "title": "Popover Notifications",
+    "component": false,
+    "path": "/docs/components/popover#notifications"
   },
   {
     "head": "Popover",
@@ -2052,9 +2911,27 @@
   },
   {
     "head": "Progress",
+    "title": "Progress Segmented",
+    "component": false,
+    "path": "/docs/components/progress#segmented"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Circular",
+    "component": false,
+    "path": "/docs/components/progress#circular"
+  },
+  {
+    "head": "Progress",
     "title": "Progress Type",
     "component": false,
     "path": "/docs/components/progress#type"
+  },
+  {
+    "head": "Progress",
+    "title": "Progress Upload progress",
+    "component": false,
+    "path": "/docs/components/progress#upload-progress"
   },
   {
     "head": "Progress",
@@ -2117,6 +2994,12 @@
   },
   {
     "head": "Radio",
+    "title": "Radio Pick a plan",
+    "component": false,
+    "path": "/docs/components/radio#pick-a-plan"
+  },
+  {
+    "head": "Radio",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/radio#apis"
@@ -2164,6 +3047,24 @@
   },
   {
     "head": "Rating",
+    "title": "Rating Variants",
+    "component": false,
+    "path": "/docs/components/rating#variants"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating Precision",
+    "component": false,
+    "path": "/docs/components/rating#precision"
+  },
+  {
+    "head": "Rating",
+    "title": "Rating States",
+    "component": false,
+    "path": "/docs/components/rating#states"
+  },
+  {
+    "head": "Rating",
     "title": "Rating Custom Amount",
     "component": false,
     "path": "/docs/components/rating#custom-amount"
@@ -2194,15 +3095,9 @@
   },
   {
     "head": "Rating",
-    "title": "Count - Rating",
+    "title": "Accessibility",
     "component": false,
-    "path": "/docs/components/rating#ratingcount"
-  },
-  {
-    "head": "Rating",
-    "title": "Value - Rating",
-    "component": false,
-    "path": "/docs/components/rating#ratingvalue"
+    "path": "/docs/components/rating#accessibility"
   },
   {
     "title": "Row",
@@ -2270,6 +3165,12 @@
   },
   {
     "head": "Section",
+    "title": "Section Landing page bands",
+    "component": false,
+    "path": "/docs/components/section#landing-page-bands"
+  },
+  {
+    "head": "Section",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/section#apis"
@@ -2287,6 +3188,65 @@
     "path": "/docs/components/section#ref"
   },
   {
+    "title": "Segmented Control",
+    "component": true,
+    "path": "/docs/components/segmented-control"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control General",
+    "component": false,
+    "path": "/docs/components/segmented-control#general"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Controlled",
+    "component": false,
+    "path": "/docs/components/segmented-control#controlled"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Full width",
+    "component": false,
+    "path": "/docs/components/segmented-control#full-width"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Segmented Control Disabled",
+    "component": false,
+    "path": "/docs/components/segmented-control#disabled"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/segmented-control#apis"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "SegmentedControl Props",
+    "component": false,
+    "path": "/docs/components/segmented-control#segmentedcontrol.props"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "SegmentedControl Item Props",
+    "component": false,
+    "path": "/docs/components/segmented-control#segmentedcontrol.item.props"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/segmented-control#ref"
+  },
+  {
+    "head": "Segmented Control",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/segmented-control#accessibility"
+  },
+  {
     "title": "Select",
     "component": true,
     "path": "/docs/components/select"
@@ -2302,6 +3262,12 @@
     "title": "Select Types",
     "component": false,
     "path": "/docs/components/select#type"
+  },
+  {
+    "head": "Select",
+    "title": "Select Variants",
+    "component": false,
+    "path": "/docs/components/select#variants"
   },
   {
     "head": "Select",
@@ -2365,6 +3331,12 @@
   },
   {
     "head": "Select",
+    "title": "Select Filter bar",
+    "component": false,
+    "path": "/docs/components/select#filter-bar"
+  },
+  {
+    "head": "Select",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/select#apis"
@@ -2399,55 +3371,61 @@
     "path": "/docs/components/slider"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Select General",
     "component": false,
     "path": "/docs/components/slider#general"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Types",
     "component": false,
     "path": "/docs/components/slider#type"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Disabled",
     "component": false,
     "path": "/docs/components/slider#disabled"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Step",
     "component": false,
     "path": "/docs/components/slider#step"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Range",
     "component": false,
     "path": "/docs/components/slider#range"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Event",
     "component": false,
     "path": "/docs/components/slider#event"
   },
   {
-    "head": "Select",
+    "head": "Slider",
+    "title": "Slider Budget",
+    "component": false,
+    "path": "/docs/components/slider#budget"
+  },
+  {
+    "head": "Slider",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/slider#apis"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Slider Props",
     "component": false,
     "path": "/docs/components/slider#slider.props"
   },
   {
-    "head": "Select",
+    "head": "Slider",
     "title": "Types - Slider",
     "component": false,
     "path": "/docs/components/slider#slidertypes"
@@ -2613,6 +3591,12 @@
   },
   {
     "head": "Spacer",
+    "title": "Spacer Spacing a form",
+    "component": false,
+    "path": "/docs/components/spacer#spacing-a-form"
+  },
+  {
+    "head": "Spacer",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/spacer#apis"
@@ -2636,6 +3620,18 @@
   },
   {
     "head": "Spinner",
+    "title": "Spinner Loading a panel",
+    "component": false,
+    "path": "/docs/components/spinner#loading-a-panel"
+  },
+  {
+    "head": "Spinner",
+    "title": "Spinner Inline with text",
+    "component": false,
+    "path": "/docs/components/spinner#inline-with-text"
+  },
+  {
+    "head": "Spinner",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/spinner#apis"
@@ -2645,6 +3641,41 @@
     "title": "Spinner Props",
     "component": false,
     "path": "/docs/components/spinner#spinner.props"
+  },
+  {
+    "title": "Stat",
+    "component": true,
+    "path": "/docs/components/stat"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat General",
+    "component": false,
+    "path": "/docs/components/stat#general"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat With Extra",
+    "component": false,
+    "path": "/docs/components/stat#with-extra"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat Dashboard with a period",
+    "component": false,
+    "path": "/docs/components/stat#dashboard-with-a-period"
+  },
+  {
+    "head": "Stat",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/stat#apis"
+  },
+  {
+    "head": "Stat",
+    "title": "Stat Props",
+    "component": false,
+    "path": "/docs/components/stat#stat.props"
   },
   {
     "title": "Stepper",
@@ -2748,6 +3779,24 @@
   },
   {
     "head": "Table",
+    "title": "Table Pagination",
+    "component": false,
+    "path": "/docs/components/table#pagination"
+  },
+  {
+    "head": "Table",
+    "title": "Table Server Pagination",
+    "component": false,
+    "path": "/docs/components/table#server-pagination"
+  },
+  {
+    "head": "Table",
+    "title": "Table orders",
+    "component": false,
+    "path": "/docs/components/table#orders"
+  },
+  {
+    "head": "Table",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/table#apis"
@@ -2763,6 +3812,12 @@
     "title": "Table Column Props",
     "component": false,
     "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table TablePagination",
+    "component": false,
+    "path": "/docs/components/table#tablepagination"
   },
   {
     "head": "Table",
@@ -2807,6 +3862,12 @@
   },
   {
     "head": "Tabs",
+    "title": "Tabs Slide",
+    "component": false,
+    "path": "/docs/components/tabs#slide"
+  },
+  {
+    "head": "Tabs",
     "title": "Tabs Hide Divider",
     "component": false,
     "path": "/docs/components/tabs#hide-divider"
@@ -2834,6 +3895,12 @@
     "title": "Tabs Imperatively",
     "component": false,
     "path": "/docs/components/tabs#imperatively"
+  },
+  {
+    "head": "Tabs",
+    "title": "Tabs Settings page",
+    "component": false,
+    "path": "/docs/components/tabs#settings-page"
   },
   {
     "head": "Tabs",
@@ -2878,6 +3945,12 @@
   },
   {
     "head": "Tag",
+    "title": "Tag Article header",
+    "component": false,
+    "path": "/docs/components/tag#article-header"
+  },
+  {
+    "head": "Tag",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/tag#apis"
@@ -2893,6 +3966,77 @@
     "title": "Types - Tag",
     "component": false,
     "path": "/docs/components/tag#tagtypes"
+  },
+  {
+    "title": "Tags Input",
+    "component": true,
+    "path": "/docs/components/tags-input"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input General",
+    "component": false,
+    "path": "/docs/components/tags-input#general"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Controlled",
+    "component": false,
+    "path": "/docs/components/tags-input#controlled"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Limit and duplicates",
+    "component": false,
+    "path": "/docs/components/tags-input#limit-and-duplicates"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Variants",
+    "component": false,
+    "path": "/docs/components/tags-input#variants"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Error",
+    "component": false,
+    "path": "/docs/components/tags-input#error"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Tags Input Disabled and read only",
+    "component": false,
+    "path": "/docs/components/tags-input#disabled-and-read-only"
+  },
+  {
+    "head": "Tags Input",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tags-input#apis"
+  },
+  {
+    "head": "Tags Input",
+    "title": "TagsInput Props",
+    "component": false,
+    "path": "/docs/components/tags-input#tagsinput.props"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Adding and removing tags",
+    "component": false,
+    "path": "/docs/components/tags-input#adding-and-removing-tags"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tags-input#ref"
+  },
+  {
+    "head": "Tags Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tags-input#accessibility"
   },
   {
     "title": "Text",
@@ -2984,6 +4128,18 @@
   },
   {
     "head": "Textarea",
+    "title": "Textarea Variants",
+    "component": false,
+    "path": "/docs/components/textarea#variants"
+  },
+  {
+    "head": "Textarea",
+    "title": "Textarea Rounded",
+    "component": false,
+    "path": "/docs/components/textarea#rounded"
+  },
+  {
+    "head": "Textarea",
     "title": "Textarea Get Change",
     "component": false,
     "path": "/docs/components/textarea#get-change"
@@ -3031,6 +4187,53 @@
     "path": "/docs/components/textarea#cssresize"
   },
   {
+    "title": "Timeline",
+    "component": true,
+    "path": "/docs/components/timeline"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline General",
+    "component": false,
+    "path": "/docs/components/timeline#general"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline With Icons",
+    "component": false,
+    "path": "/docs/components/timeline#with-icons"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Order tracking",
+    "component": false,
+    "path": "/docs/components/timeline#order-tracking"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Activity feed",
+    "component": false,
+    "path": "/docs/components/timeline#activity-feed"
+  },
+  {
+    "head": "Timeline",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/timeline#apis"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Props",
+    "component": false,
+    "path": "/docs/components/timeline#timeline.props"
+  },
+  {
+    "head": "Timeline",
+    "title": "Timeline Item Props",
+    "component": false,
+    "path": "/docs/components/timeline#timeline.item.props"
+  },
+  {
     "title": "Toggle",
     "component": true,
     "path": "/docs/components/toggle"
@@ -3049,6 +4252,12 @@
   },
   {
     "head": "Toggle",
+    "title": "Toggle With Icons",
+    "component": false,
+    "path": "/docs/components/toggle#with-icons"
+  },
+  {
+    "head": "Toggle",
     "title": "Toggle Disabled",
     "component": false,
     "path": "/docs/components/toggle#disabled"
@@ -3058,6 +4267,12 @@
     "title": "Toggle Get Change",
     "component": false,
     "path": "/docs/components/toggle#get-change"
+  },
+  {
+    "head": "Toggle",
+    "title": "Toggle Notification settings",
+    "component": false,
+    "path": "/docs/components/toggle#notification-settings"
   },
   {
     "head": "Toggle",
@@ -3153,6 +4368,65 @@
     "title": "Placement - Tooltip",
     "component": false,
     "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "title": "Tree",
+    "component": true,
+    "path": "/docs/components/tree"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree General",
+    "component": false,
+    "path": "/docs/components/tree#general"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Controlled",
+    "component": false,
+    "path": "/docs/components/tree#controlled"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Icons and disabled nodes",
+    "component": false,
+    "path": "/docs/components/tree#icons-and-disabled-nodes"
+  },
+  {
+    "head": "Tree",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tree#apis"
+  },
+  {
+    "head": "Tree",
+    "title": "Tree Props",
+    "component": false,
+    "path": "/docs/components/tree#tree.props"
+  },
+  {
+    "head": "Tree",
+    "title": "TreeNodeData",
+    "component": false,
+    "path": "/docs/components/tree#treenodedata"
+  },
+  {
+    "head": "Tree",
+    "title": "Keyboard",
+    "component": false,
+    "path": "/docs/components/tree#keyboard"
+  },
+  {
+    "head": "Tree",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tree#ref"
+  },
+  {
+    "head": "Tree",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tree#accessibility"
   },
   {
     "title": "useBodyScroll",
@@ -3822,33 +5096,33 @@
     "path": "/docs/guide/getting-started#contributing"
   },
   {
-    "title": "Migrating to v2",
+    "title": "Migrating to v3",
     "component": true,
-    "path": "/docs/guide/migration-v1-to-v2"
+    "path": "/docs/guide/migration-v2-to-v3"
   },
   {
-    "head": "Migrating to v2",
-    "title": "Requirements",
-    "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#requirements"
-  },
-  {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
     "title": "Breaking changes",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#breaking-changes"
+    "path": "/docs/guide/migration-v2-to-v3#breaking-changes"
   },
   {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
     "title": "Changes in behavior",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#changes-in-behavior"
+    "path": "/docs/guide/migration-v2-to-v3#changes-in-behavior"
   },
   {
-    "head": "Migrating to v2",
+    "head": "Migrating to v3",
+    "title": "New components",
+    "component": false,
+    "path": "/docs/guide/migration-v2-to-v3#new-components"
+  },
+  {
+    "head": "Migrating to v3",
     "title": "Checklist",
     "component": false,
-    "path": "/docs/guide/migration-v1-to-v2#checklist"
+    "path": "/docs/guide/migration-v2-to-v3#checklist"
   },
   {
     "title": "Page structure",

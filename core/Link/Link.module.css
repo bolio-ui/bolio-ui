@@ -1,0 +1,18 @@
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: inherit;
+  text-decoration: none;
+  transition: color 200ms ease 0ms;
+}
+
+.link:hover,
+.link:active,
+.link:focus {
+  text-decoration: var(--link-decoration);
+}
+
+.link:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-color);
+}

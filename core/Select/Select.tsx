@@ -16,12 +16,13 @@ import SelectDropdown from './SelectDropdown'
 import SelectMultipleValue from './SelectMultipleValue'
 import Grid from '../Grid'
 import { SelectContext, SelectConfig } from './SelectContext'
-import { getColors } from './styles'
+import { getColors } from '../Input/styles'
 import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
+import useClasses, { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Select.module.css'
 
 export type SelectRef = {
   focus: () => void
@@ -32,6 +33,11 @@ export type SelectTypes = NormalTypes
 interface Props {
   disabled?: boolean
   type?: SelectTypes
+  rounded?: boolean
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
   value?: string | string[]
   initialValue?: string | string[]
   placeholder?: React.ReactNode | string
@@ -61,6 +67,11 @@ const SelectComponent = React.forwardRef<
     {
       children,
       type = 'default' as SelectTypes,
+      rounded = false,
+      filled = false,
+      light = false,
+      ghost = false,
+      subtle = false,
       disabled = false,
       initialValue: init,
       value: customValue,
@@ -78,6 +89,7 @@ const SelectComponent = React.forwardRef<
       onDropdownVisibleChange = noop,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      style,
       ...props
     }: React.PropsWithChildren<SelectProps>,
     selectRef
@@ -103,8 +115,14 @@ const SelectComponent = React.forwardRef<
     }, [value])
 
     const colors = useMemo(
-      () => getColors(theme.palette, type, disabled),
-      [theme.palette, type, disabled]
+      () =>
+        getColors(theme.palette, type, disabled, {
+          filled,
+          light,
+          ghost,
+          subtle
+        }),
+      [theme.palette, type, disabled, filled, light, ghost, subtle]
     )
 
     const updateVisible = useCallback(
@@ -202,13 +220,42 @@ const SelectComponent = React.forwardRef<
       setSelectFocus(false)
     }
     const classes = useClasses(
-      'select',
+      styles.select,
       {
-        active: selectFocus || visible,
-        multiple
+        [styles.active]: selectFocus || visible,
+        [styles.multiple]: multiple
       },
       className
     )
+
+    const selectStyle = {
+      '--select-cursor': disabled ? 'not-allowed' : 'pointer',
+      '--select-border-color': colors.borderColor,
+      '--select-radius': rounded ? '25px' : theme.layout.radius,
+      '--select-bg-color': colors.bgColor,
+      '--select-font-size': SCALES.font(0.875),
+      '--select-height': SCALES.height(2.25),
+      '--select-width': SCALES.width(1, 'initial'),
+      '--select-padding-top': SCALES.pt(0),
+      '--select-padding-right': SCALES.pr(0.334),
+      '--select-padding-bottom': SCALES.pb(0),
+      '--select-padding-left': SCALES.pl(0.875),
+      '--select-margin-top': SCALES.mt(0),
+      '--select-margin-right': SCALES.mr(0),
+      '--select-margin-bottom': SCALES.mb(0),
+      '--select-margin-left': SCALES.ml(0),
+      '--select-multiple-padding-top': SCALES.pt(0.334),
+      '--select-hover-border': colors.hoverBorder,
+      '--select-hover-bg-color': colors.hoverBgColor,
+      '--select-focus-border': colors.focusBorder,
+      '--select-placeholder-color': colors.placeholderColor,
+      '--select-icon-color': colors.iconColor,
+      '--select-color': colors.color,
+      '--select-placeholder-font-size': SCALES.font(0.875),
+      '--select-icon-right': theme.layout.gapQuarter,
+      '--select-icon-rotate': visible ? '180deg' : '0deg',
+      ...style
+    } as React.CSSProperties
 
     return (
       <SelectContext.Provider value={initialValue}>
@@ -218,6 +265,7 @@ const SelectComponent = React.forwardRef<
           onClick={clickHandler}
           onMouseDown={mouseDownHandler}
           {...props}
+          style={selectStyle}
         >
           <SelectInput
             ref={inputRef}
@@ -231,17 +279,20 @@ const SelectComponent = React.forwardRef<
             onFocus={() => setSelectFocus(true)}
           />
           {isEmpty && (
-            <span className="value placeholder">
+            <span className={joinClasses(styles.value, styles.placeholder)}>
               <Ellipsis height="var(--select-height)">{placeholder}</Ellipsis>
             </span>
           )}
-          {value && !multiple && <span className="value">{selectedChild}</span>}
+          {value && !multiple && (
+            <span className={styles.value}>{selectedChild}</span>
+          )}
           {value && multiple && (
             <Grid.Container gap={0.5}>{selectedChild}</Grid.Container>
           )}
           <SelectDropdown
             ref={dropdownRef}
             visible={visible}
+            colors={colors}
             className={dropdownClassName}
             dropdownStyle={dropdownStyle}
             disableMatchWidth={disableMatchWidth}
@@ -250,97 +301,10 @@ const SelectComponent = React.forwardRef<
             {children}
           </SelectDropdown>
           {!pure && (
-            <div className="icon">
+            <div className={styles.icon}>
               <Icon />
             </div>
           )}
-          <style jsx>{`
-            .select {
-              display: inline-flex;
-              align-items: center;
-              user-select: none;
-              white-space: nowrap;
-              position: relative;
-              cursor: ${disabled ? 'not-allowed' : 'pointer'};
-              max-width: 90vw;
-              overflow: hidden;
-              transition:
-                border 150ms ease-in 0s,
-                color 200ms ease-out 0s,
-                box-shadow 200ms ease 0s;
-              border: 1px solid ${colors.borderColor};
-              border-radius: ${theme.layout.radius};
-              background-color: ${colors.bgColor};
-              --select-font-size: ${SCALES.font(0.875)};
-              --select-height: ${SCALES.height(2.25)};
-              min-width: 11.5em;
-              width: ${SCALES.width(1, 'initial')};
-              height: var(--select-height);
-              padding: ${SCALES.pt(0)} ${SCALES.pr(0.334)} ${SCALES.pb(0)}
-                ${SCALES.pl(0.667)};
-              margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-                ${SCALES.ml(0)};
-            }
-
-            .multiple {
-              height: auto;
-              min-height: var(--select-height);
-              padding: ${SCALES.pt(0.334)} ${SCALES.pr(0.334)}
-                ${SCALES.pb(0.334)} ${SCALES.pl(0.667)};
-            }
-
-            .select.active,
-            .select:hover {
-              border-color: ${colors.hoverBorder};
-              background-color: ${colors.hoverBgColor};
-            }
-
-            .select.active.icon,
-            .select:hover .icon {
-              color: ${colors.color};
-            }
-
-            .value {
-              display: inline-flex;
-              flex: 1;
-              height: 100%;
-              align-items: center;
-              line-height: 1;
-              padding: 0;
-              margin-right: 1.25em;
-              font-size: var(--select-font-size);
-              color: ${colors.color};
-              width: calc(100% - 1.25em);
-            }
-
-            .value > :global(div),
-            .value > :global(div:hover) {
-              border-radius: 0;
-              background-color: transparent;
-              padding: 0;
-              margin: 0;
-              color: inherit;
-            }
-
-            .placeholder {
-              color: ${colors.color};
-              font-size: ${SCALES.font(0.775)};
-            }
-
-            .icon {
-              position: absolute;
-              right: ${theme.layout.gapQuarter};
-              font-size: var(--select-font-size);
-              top: 50%;
-              bottom: 0;
-              transform: translateY(-50%) rotate(${visible ? '180' : '0'}deg);
-              pointer-events: none;
-              transition: transform 200ms ease;
-              display: flex;
-              align-items: center;
-              color: ${colors.color};
-            }
-          `}</style>
         </div>
       </SelectContext.Provider>
     )

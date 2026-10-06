@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './Icon.module.css'
 
 interface Props {
   color?: string
@@ -18,14 +19,9 @@ function ButtonDropdownIcon({ color, height }: Props) {
       strokeLinejoin="round"
       fill="none"
       shapeRendering="geometricPrecision"
+      className={styles.icon}
     >
       <path d="M6 9l6 6 6-6" />
-
-      <style jsx>{`
-        svg {
-          transform: scale(0.6);
-        }
-      `}</style>
     </svg>
   )
 }

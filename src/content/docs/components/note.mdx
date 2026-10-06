@@ -129,6 +129,25 @@ Display text that requires attention or provides additional information.
 `}
 />
 
+<Playground
+  title="Page alerts"
+  desc="Say what happened in the label and what to do in the text. Use the type that matches how urgent it is."
+  scope={{ Note, Grid }}
+  code={`
+<Grid.Container direction="column" gap={1}>
+  <Grid>
+    <Note type="success" label="Saved">Your changes are live.</Note>
+  </Grid>
+  <Grid>
+    <Note type="warning" label="Plan limit">You used 9 of 10 projects. Upgrade to add more.</Note>
+  </Grid>
+  <Grid>
+    <Note type="error" label="Payment failed">We could not charge your card. Update it to keep your plan.</Note>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
 <Attributes edit="/content/docs/components/note.mdx">
 <Attributes.Title>Note.Props</Attributes.Title>
 

@@ -36,6 +36,30 @@ A column inside a <a href="/docs/components/row">Row</a>, sized in twelfths of t
 `}
 />
 
+<Playground
+  title="Sidebar layout"
+  desc="A narrow column for navigation and a wide one for the content, side by side."
+  scope={{ Row, Col, Card, Text }}
+  code={`
+<Row gap={1}>
+  <Col span={3}>
+    <Card bordered width="100%">
+      <Text b>Settings</Text>
+      <Text small type="secondary">Profile</Text>
+      <Text small type="secondary">Billing</Text>
+      <Text small type="secondary">Team</Text>
+    </Card>
+  </Col>
+  <Col span={9}>
+    <Card bordered width="100%">
+      <Text b>Profile</Text>
+      <Text p>Update your name, photo and the email we use to contact you.</Text>
+    </Card>
+  </Col>
+</Row>
+`}
+/>
+
 <Attributes edit="/content/docs/components/col.mdx">
 <Attributes.Title>Col.Props</Attributes.Title>
 

@@ -20,9 +20,9 @@
               "path": "/docs/guide/getting-started.mdx"
             },
             {
-              "title": "Migrating to v2",
-              "keywords": "migrate, migration, upgrade, v1, v2, breaking changes, bolio ui",
-              "path": "/docs/guide/migration-v1-to-v2.mdx"
+              "title": "Migrating to v3",
+              "keywords": "migrate, migration, upgrade, v2, v3, styled-jsx, css modules, breaking changes, bolio ui",
+              "path": "/docs/guide/migration-v2-to-v3.mdx"
             },
             {
               "title": "Refs and accessibility",
@@ -104,6 +104,11 @@
           "open": true,
           "routes": [
             {
+              "title": "Overview",
+              "keywords": "overview, all components, components list, categories",
+              "path": "/docs/components/overview.mdx"
+            },
+            {
               "title": "Avatar",
               "keywords": "avatar, avatar text, avatar group, group",
               "path": "/docs/components/avatar.mdx"
@@ -149,6 +154,11 @@
               "path": "/docs/components/card.mdx"
             },
             {
+              "title": "Carousel",
+              "keywords": "carousel, slider, slides, scroll snap, gallery, testimonials, swipe, slideshow",
+              "path": "/docs/components/carousel.mdx"
+            },
+            {
               "title": "Checkbox",
               "keywords": "checkbox, check, radio, selectable, checkbox, box",
               "path": "/docs/components/checkbox.mdx"
@@ -169,9 +179,24 @@
               "path": "/docs/components/collapse.mdx"
             },
             {
+              "title": "Color Input",
+              "keywords": "color input, color field, hex, swatch, popover, color picker field, brand color",
+              "path": "/docs/components/color-input.mdx"
+            },
+            {
+              "title": "Color Picker",
+              "keywords": "color picker, color, hex, hue, saturation, brightness, swatches, palette, eyedropper",
+              "path": "/docs/components/color-picker.mdx"
+            },
+            {
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"
+            },
+            {
+              "title": "Command",
+              "keywords": "command, command palette, cmd k, search, shortcuts, actions",
+              "path": "/docs/components/command.mdx"
             },
             {
               "title": "Container",
@@ -179,9 +204,19 @@
               "path": "/docs/components/container.mdx"
             },
             {
+              "title": "Context Menu",
+              "keywords": "context menu, right click, contextmenu, menu, actions, popup menu, shift f10",
+              "path": "/docs/components/context-menu.mdx"
+            },
+            {
               "title": "DatePicker",
               "keywords": "date picker, datepicker, date, calendar, input date, day",
               "path": "/docs/components/date-picker.mdx"
+            },
+            {
+              "title": "DateRangePicker",
+              "keywords": "date range picker, daterangepicker, date range, range, period, start date, end date, calendar, booking",
+              "path": "/docs/components/date-range-picker.mdx"
             },
             {
               "title": "Description",
@@ -207,6 +242,16 @@
               "title": "Drawer",
               "keywords": "drawer, placement, modal",
               "path": "/docs/components/drawer.mdx"
+            },
+            {
+              "title": "Empty State",
+              "keywords": "empty state, no results, blank, placeholder, call to action",
+              "path": "/docs/components/empty-state.mdx"
+            },
+            {
+              "title": "Dropzone",
+              "keywords": "dropzone, file upload, upload, drag and drop, drop files, file input, attachments, files",
+              "path": "/docs/components/dropzone.mdx"
             },
             {
               "title": "Fieldset",
@@ -249,6 +294,11 @@
               "path": "/docs/components/loading.mdx"
             },
             {
+              "title": "Marquee",
+              "keywords": "marquee, ticker, logos, testimonials, carousel, loop",
+              "path": "/docs/components/marquee.mdx"
+            },
+            {
               "title": "Menu",
               "keywords": "menu, dropdown menu, context menu, actions, submenu, checkbox item, radio item, shortcut",
               "path": "/docs/components/menu.mdx"
@@ -277,6 +327,11 @@
               "title": "Pagination",
               "keywords": "pagination, paginate, table pagination, pages, navigate, limit",
               "path": "/docs/components/pagination.mdx"
+            },
+            {
+              "title": "Pin Input",
+              "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
+              "path": "/docs/components/pin-input.mdx"
             },
             {
               "title": "Popover",
@@ -309,6 +364,11 @@
               "path": "/docs/components/section.mdx"
             },
             {
+              "title": "Segmented Control",
+              "keywords": "segmented control, segmented, toggle group, switch, tabs, radio, options, view switch, period",
+              "path": "/docs/components/segmented-control.mdx"
+            },
+            {
               "title": "Select",
               "keywords": "select, types, disabled, option, without Icon, labels, divider, multiple, clear, compose, over width",
               "path": "/docs/components/select.mdx"
@@ -334,6 +394,11 @@
               "path": "/docs/components/spinner.mdx"
             },
             {
+              "title": "Stat",
+              "keywords": "stat, metric, kpi, number, trend, dashboard",
+              "path": "/docs/components/stat.mdx"
+            },
+            {
               "title": "Stepper",
               "keywords": "stepper, steps, wizard, progress, checkout, onboarding, timeline, vertical",
               "path": "/docs/components/stepper.mdx"
@@ -354,6 +419,11 @@
               "path": "/docs/components/tag.mdx"
             },
             {
+              "title": "Tags Input",
+              "keywords": "tags input, tags, chips, multi value, token field, keywords, emails, labels",
+              "path": "/docs/components/tags-input.mdx"
+            },
+            {
               "title": "Text",
               "keywords": "text, heading, paragraph, small, blockquote, types, sizes, compose",
               "path": "/docs/components/text.mdx"
@@ -364,6 +434,11 @@
               "path": "/docs/components/textarea.mdx"
             },
             {
+              "title": "Timeline",
+              "keywords": "timeline, changelog, history, activity, steps, events",
+              "path": "/docs/components/timeline.mdx"
+            },
+            {
               "title": "Toggle",
               "keywords": "toggle, types, disabled, get change",
               "path": "/docs/components/toggle.mdx"
@@ -372,6 +447,11 @@
               "title": "Tooltip",
               "keywords": "tooltip, trigger, with components, custom content, types, variant, placements",
               "path": "/docs/components/tooltip.mdx"
+            },
+            {
+              "title": "Tree",
+              "keywords": "tree, tree view, nested list, file tree, hierarchy, folders, expand, collapse, categories",
+              "path": "/docs/components/tree.mdx"
             }
           ]
         },

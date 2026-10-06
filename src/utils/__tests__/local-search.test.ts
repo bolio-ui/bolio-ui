@@ -24,11 +24,11 @@ describe('searchDocs', () => {
       path: '/docs/hooks/use-clipboard'
     })
     expect(searchDocs('migrating', 8)[0]).toMatchObject({
-      path: '/docs/guide/migration-v1-to-v2'
+      path: '/docs/guide/migration-v2-to-v3'
     })
     expect(
       searchDocs('breaking changes', 8).some(
-        (hit) => hit.path === '/docs/guide/migration-v1-to-v2#breaking-changes'
+        (hit) => hit.path === '/docs/guide/migration-v2-to-v3#breaking-changes'
       )
     ).toBe(true)
   })

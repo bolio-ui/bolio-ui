@@ -1,0 +1,15 @@
+.sectionList {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sectionTitle {
+  padding: 4px 16px;
+  color: var(--results-title);
+  opacity: 0.4;
+  font-size: 12px;
+  font-weight: 500;
+}

@@ -1,7 +1,7 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
 import { Instagram, Facebook } from '@bolio-ui/icons'
-import { Input, Grid, Button, Code, Text, Dot } from 'core'
+import { Input, Grid, Button, Code, Text, Dot, Spacer } from 'core'
 
 export const meta = {
   title: 'Input',
@@ -24,6 +24,22 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 <Grid.Container gap={2}>
   <Grid>
     <Input placeholder="Placeholder Text" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Floating Label"
+  desc="With `floating` the label sits inside the field and moves up when you type or focus. It replaces the placeholder."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input floating width="100%">Email</Input>
+  </Grid>
+  <Grid>
+    <Input floating width="100%" initialValue="bolio@ui.dev">Email</Input>
   </Grid>
 </Grid.Container>
 `}
@@ -177,6 +193,88 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 />
 
 <Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` to change the surface of any colored `Input`."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input type="primary" placeholder="Primary filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info filled" filled />
+  </Grid>
+  <Grid>
+    <Input type="primary" placeholder="Primary light" light />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary light" light />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success light" light />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning light" light />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error light" light />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info light" light />
+  </Grid>
+  <Grid>
+    <Input type="primary" placeholder="Primary ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info ghost" ghost />
+  </Grid>
+  <Grid>
+    <Input type="primary" placeholder="Primary subtle" subtle />
+  </Grid>
+  <Grid>
+    <Input type="secondary" placeholder="Secondary subtle" subtle />
+  </Grid>
+  <Grid>
+    <Input type="success" placeholder="Success subtle" subtle />
+  </Grid>
+  <Grid>
+    <Input type="warning" placeholder="Warning subtle" subtle />
+  </Grid>
+  <Grid>
+    <Input type="error" placeholder="Error subtle" subtle />
+  </Grid>
+  <Grid>
+    <Input type="info" placeholder="Info subtle" subtle />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Icon"
   desc="Specify an icon component."
   scope={{ Input, Instagram, Facebook, Grid }}
@@ -268,29 +366,65 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 `}
 />
 
+<Playground
+  title="Login form"
+  desc="Validate on submit and say what to fix, under the field. The `error` type turns the field red."
+  scope={{ Input, Button, Text, Spacer }}
+  code={`
+() => {
+  const [email, setEmail] = React.useState('')
+  const [submitted, setSubmitted] = React.useState(false)
+  const invalid = submitted && !/^\\S+@\\S+\\.\\S+$/.test(email)
+  return (
+    <form
+      style={{ maxWidth: 320 }}
+      onSubmit={(event) => {
+        event.preventDefault()
+        setSubmitted(true)
+      }}
+    >
+      <Input floating width="100%" type={invalid ? 'error' : 'default'} value={email} onChange={(event) => setEmail(event.target.value)}>
+        Email
+      </Input>
+      {invalid && <Text small type="error">Enter an email like name@company.com.</Text>}
+      <Spacer h={1} />
+      <Input.Password floating width="100%">Password</Input.Password>
+      <Spacer h={1.5} />
+      <Button type="primary" htmlType="submit" width="100%">Sign in</Button>
+    </form>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/input.mdx">
 <Attributes.Title>Input.Props</Attributes.Title>
 
-| Attribute         | Description                   | Type                                           | Accepted values                   | Default   |
-| ----------------- | ----------------------------- | ---------------------------------------------- | --------------------------------- | --------- |
-| **value**         | input value                   | `string`                                       | -                                 | -         |
-| **initialValue**  | initial value                 | `string`                                       | -                                 | -         |
-| **placeholder**   | placeholder                   | `string`                                       | -                                 | -         |
-| **type**          | current type                  | `InputTypes`                                   | [InputTypes](#inputtypes)         | `default` |
-| **htmlType**      | native type attr              | `string`                                       | -                                 | `text`    |
-| **readOnly**      | native attr                   | `boolean`                                      | -                                 | `false`   |
-| **disabled**      | disable input                 | `boolean`                                      | -                                 | `false`   |
-| **clearable**     | show clear icon               | `boolean`                                      | -                                 | `false`   |
-| **label**         | text label for input          | `string`                                       | -                                 | -         |
-| **labelRight**    | text label at right for input | `string`                                       | -                                 | -         |
-| **icon**          | icon for input                | `React.ReactNode`                              | -                                 | -         |
-| **iconRight**     | icon at right for input       | `React.ReactNode`                              | -                                 | -         |
-| **iconClickable** | icons are clickable           | `boolean`                                      | -                                 | `false`   |
-| **onIconClick**   | click icon event              | `(e: React.ChangeEvent) => void`               | -                                 | -         |
-| **onChange**      | change event                  | `(e: React.ChangeEvent) => void`               | -                                 | -         |
-| **onClearClick**  | clear icon event              | `(e: React.MouseEvent) => void`                | -                                 | -         |
+| Attribute         | Description                   | Type                                                 | Accepted values                   | Default   |
+| ----------------- | ----------------------------- | ---------------------------------------------------- | --------------------------------- | --------- |
+| **value**         | input value                   | `string`                                             | -                                 | -         |
+| **initialValue**  | initial value                 | `string`                                             | -                                 | -         |
+| **placeholder**   | placeholder                   | `string`                                             | -                                 | -         |
+| **type**          | current type                  | `InputTypes`                                         | [InputTypes](#inputtypes)         | `default` |
+| **htmlType**      | native type attr              | `string`                                             | -                                 | `text`    |
+| **readOnly**      | native attr                   | `boolean`                                            | -                                 | `false`   |
+| **disabled**      | disable input                 | `boolean`                                            | -                                 | `false`   |
+| **clearable**     | show clear icon               | `boolean`                                            | -                                 | `false`   |
+| **filled**        | filled variant                | `boolean`                                            | -                                 | `false`   |
+| **light**         | light variant                 | `boolean`                                            | -                                 | `false`   |
+| **ghost**         | outline variant               | `boolean`                                            | -                                 | `false`   |
+| **subtle**        | subtle variant                | `boolean`                                            | -                                 | `false`   |
+| **label**         | text label for input          | `string`                                             | -                                 | -         |
+| **labelRight**    | text label at right for input | `string`                                             | -                                 | -         |
+| **floating**      | label inside the field that moves up on focus | `boolean`                         | -                                 | `false`   |
+| **icon**          | icon for input                | `React.ReactNode`                                    | -                                 | -         |
+| **iconRight**     | icon at right for input       | `React.ReactNode`                                    | -                                 | -         |
+| **iconClickable** | icons are clickable           | `boolean`                                            | -                                 | `false`   |
+| **onIconClick**   | click icon event              | `(e: React.ChangeEvent) => void`                     | -                                 | -         |
+| **onChange**      | change event                  | `(e: React.ChangeEvent) => void`                     | -                                 | -         |
+| **onClearClick**  | clear icon event              | `(e: React.MouseEvent) => void`                      | -                                 | -         |
 | **ref**           | forwardRef                    | <Code>Ref&lt;HTMLInputElement &#124; null&gt;</Code> | -                                 | -         |
-| ...               | native props                  | `InputHTMLAttributes`                          | `'alt', 'type', 'className', ...` | -         |
+| ...               | native props                  | `InputHTMLAttributes`                                | `'alt', 'type', 'className', ...` | -         |
 
 <Attributes.Title>Input.Password.Props</Attributes.Title>
 
@@ -303,13 +437,7 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 
 ```ts
 type InputTypes =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
+  'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
 ```
 
 <Attributes.Title>useInput</Attributes.Title>

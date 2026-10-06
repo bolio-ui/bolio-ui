@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
 import { MenuContext, MenuListContext, MenuRadioContext } from './MenuContext'
+import styles from './MenuItem.module.css'
 
 type ItemType = 'default' | 'error'
 
@@ -68,6 +69,7 @@ export const MenuItemBase = React.forwardRef<
       onMouseMove,
       className = '',
       children,
+      style,
       ...props
     },
     ref
@@ -75,7 +77,11 @@ export const MenuItemBase = React.forwardRef<
     const theme = useTheme()
     const { close } = useContext(MenuContext)
     const { setOpenSub } = useContext(MenuListContext)
-    const classes = useClasses('menu-item', type, className)
+    const classes = useClasses(
+      styles.menuItem,
+      type === 'error' && styles.error,
+      className
+    )
 
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
       if (disabled) return
@@ -94,6 +100,17 @@ export const MenuItemBase = React.forwardRef<
         event.currentTarget.focus()
     }
 
+    const itemStyle = {
+      '--menu-item-color': theme.palette.foreground,
+      '--menu-item-focus-bg': theme.palette.accents_2,
+      '--menu-item-error-color': theme.palette.error,
+      '--menu-item-error-focus-bg': theme.palette.errorLight,
+      '--menu-item-error-focus-color': theme.palette.errorDark,
+      '--menu-item-disabled-color': theme.palette.accents_4,
+      '--menu-item-shortcut-color': theme.palette.accents_5,
+      ...style
+    } as React.CSSProperties
+
     return (
       <div
         ref={ref}
@@ -104,70 +121,23 @@ export const MenuItemBase = React.forwardRef<
         className={classes}
         onClick={clickHandler}
         onMouseMove={mouseMoveHandler}
+        style={itemStyle}
         {...props}
       >
         {indicator && (
-          <span className="indicator">
+          <span className={styles.indicator}>
             {checked && (indicator === 'check' ? <Check /> : <Dot />)}
           </span>
         )}
-        {icon && <span className="icon">{icon}</span>}
-        <span className="label">{children}</span>
+        {icon && <span className={styles.icon}>{icon}</span>}
+        <span className={styles.label}>{children}</span>
         {/* visual only: `aria-keyshortcuts` is how to announce it */}
         {shortcut && (
-          <span className="shortcut" aria-hidden="true">
+          <span className={styles.shortcut} aria-hidden="true">
             {shortcut}
           </span>
         )}
         {trailing}
-        <style jsx>{`
-          .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-            box-sizing: border-box;
-            min-height: 2.25em;
-            padding: 0.375em 0.75em;
-            border-radius: 4px;
-            line-height: 1.25em;
-            color: ${theme.palette.foreground};
-            cursor: pointer;
-            user-select: none;
-            outline: none;
-          }
-          .menu-item:focus,
-          .menu-item[aria-expanded='true'] {
-            background-color: ${theme.palette.accents_2};
-          }
-          .menu-item.error {
-            color: ${theme.palette.error};
-          }
-          .menu-item.error:focus {
-            background-color: ${theme.palette.errorLight};
-            color: ${theme.palette.errorDark};
-          }
-          .menu-item[aria-disabled='true'] {
-            color: ${theme.palette.accents_4};
-            cursor: not-allowed;
-          }
-          .indicator,
-          .icon {
-            display: inline-flex;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: center;
-            width: 1em;
-          }
-          .label {
-            flex: 1;
-            white-space: nowrap;
-          }
-          .shortcut {
-            padding-left: 1.5em;
-            font-size: 0.875em;
-            color: ${theme.palette.accents_5};
-          }
-        `}</style>
       </div>
     )
   }
@@ -256,25 +226,22 @@ export type MenuLabelProps = React.HTMLAttributes<HTMLDivElement>
 export const MenuLabel = React.forwardRef<
   HTMLDivElement,
   React.PropsWithChildren<MenuLabelProps>
->(({ className = '', children, ...props }, ref) => {
+>(({ className = '', children, style, ...props }, ref) => {
   const theme = useTheme()
   return (
     <div
       ref={ref}
       role="presentation"
-      className={`menu-label ${className}`}
+      className={useClasses(styles.menuLabel, className)}
+      style={
+        {
+          '--menu-label-color': theme.palette.accents_5,
+          ...style
+        } as React.CSSProperties
+      }
       {...props}
     >
       {children}
-      <style jsx>{`
-        .menu-label {
-          padding: 0.375em 0.75em;
-          font-size: 0.8125em;
-          font-weight: 500;
-          color: ${theme.palette.accents_5};
-          user-select: none;
-        }
-      `}</style>
     </div>
   )
 })
@@ -283,23 +250,21 @@ MenuLabel.displayName = 'BolioUIMenuLabel'
 export type MenuDividerProps = React.HTMLAttributes<HTMLDivElement>
 
 export const MenuDivider = React.forwardRef<HTMLDivElement, MenuDividerProps>(
-  ({ className = '', ...props }, ref) => {
+  ({ className = '', style, ...props }, ref) => {
     const theme = useTheme()
     return (
       <div
         ref={ref}
         role="separator"
-        className={`menu-divider ${className}`}
+        className={useClasses(styles.menuDivider, className)}
+        style={
+          {
+            '--menu-divider-color': theme.palette.border,
+            ...style
+          } as React.CSSProperties
+        }
         {...props}
-      >
-        <style jsx>{`
-          .menu-divider {
-            height: 1px;
-            margin: 0.25em -0.25em;
-            background-color: ${theme.palette.border};
-          }
-        `}</style>
-      </div>
+      />
     )
   }
 )

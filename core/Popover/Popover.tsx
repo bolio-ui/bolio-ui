@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Tooltip, { TooltipTypes } from '../Tooltip'
 import { Placement, TriggerTypes } from '../utils/prop-types'
 import { getReactNode } from '../utils/collections'
-import useScale, { withScale } from '../use-scale'
+import { withScale } from '../use-scale'
 import { PopoverContext, PopoverConfig } from './PopoverContext'
 import useClasses from '../use-classes'
 import useDefaultProps from '../utils/use-default-props'
@@ -63,7 +63,6 @@ const PopoverComponent = React.forwardRef<
     type = 'default' as TooltipTypes,
     ...props
   } = useDefaultProps(popoverProps, defaultProps)
-  const { SCALES } = useScale()
   const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
   const onPopoverVisibleChange = useCallback(
@@ -108,12 +107,6 @@ const PopoverComponent = React.forwardRef<
       >
         {children}
       </Tooltip>
-      <style jsx>{`
-        :global(.tooltip-content.popover > .inner) {
-          padding: ${SCALES.pt(0.9)} ${SCALES.pr(0)} ${SCALES.pb(0.9)}
-            ${SCALES.pl(0)};
-        }
-      `}</style>
     </PopoverContext.Provider>
   )
 })

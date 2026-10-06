@@ -11,8 +11,8 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
-            name: 'Migrating to v2',
-            url: '/docs/guide/migration-v1-to-v2',
+            name: 'Migrating to v3',
+            url: '/docs/guide/migration-v2-to-v3',
             group: 'Guide'
           },
           {
@@ -147,6 +147,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Carousel',
+            url: '/docs/components/carousel',
+            group: 'Components'
+          },
+          {
             name: 'Checkbox',
             url: '/docs/components/checkbox',
             group: 'Components'
@@ -167,6 +172,16 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Color Input',
+            url: '/docs/components/color-input',
+            group: 'Components'
+          },
+          {
+            name: 'Color Picker',
+            url: '/docs/components/color-picker',
+            group: 'Components'
+          },
+          {
             name: 'Combobox',
             url: '/docs/components/combobox',
             group: 'Components'
@@ -177,8 +192,18 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Context Menu',
+            url: '/docs/components/context-menu',
+            group: 'Components'
+          },
+          {
             name: 'DatePicker',
             url: '/docs/components/date-picker',
+            group: 'Components'
+          },
+          {
+            name: 'DateRangePicker',
+            url: '/docs/components/date-range-picker',
             group: 'Components'
           },
           {
@@ -204,6 +229,11 @@ export const menuMobile = [
           {
             name: 'Drawer',
             url: '/docs/components/drawer',
+            group: 'Components'
+          },
+          {
+            name: 'Dropzone',
+            url: '/docs/components/dropzone',
             group: 'Components'
           },
           {
@@ -277,6 +307,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Pin Input',
+            url: '/docs/components/pin-input',
+            group: 'Components'
+          },
+          {
             name: 'Popover',
             url: '/docs/components/popover',
             group: 'Components'
@@ -299,6 +334,11 @@ export const menuMobile = [
           {
             name: 'Row',
             url: '/docs/components/row',
+            group: 'Components'
+          },
+          {
+            name: 'Segmented Control',
+            url: '/docs/components/segmented-control',
             group: 'Components'
           },
           {
@@ -357,6 +397,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Tags Input',
+            url: '/docs/components/tags-input',
+            group: 'Components'
+          },
+          {
             name: 'Text',
             url: '/docs/components/text',
             group: 'Components'
@@ -374,6 +419,11 @@ export const menuMobile = [
           {
             name: 'Tooltip',
             url: '/docs/components/tooltip',
+            group: 'Components'
+          },
+          {
+            name: 'Tree',
+            url: '/docs/components/tree',
             group: 'Components'
           }
         ]

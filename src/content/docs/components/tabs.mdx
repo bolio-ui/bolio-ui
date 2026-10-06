@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Tabs, Grid, Text, Button, Code, useTabs } from 'core'
+import { Tabs, Grid, Text, Button, Code, useTabs, Input, Spacer } from 'core'
 import { useState } from 'react'
 import { Instagram, Facebook } from '@bolio-ui/icons'
 
@@ -57,6 +57,25 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
     </Tabs>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Slide"
+  desc="The `slide` prop replaces the per tab underline with a single indicator that slides to the selected tab."
+  scope={{ Tabs, Grid }}
+  code={`
+<Tabs initialValue="1" slide>
+  <Tabs.Item label="Overview" value="1">
+    A summary of the project.
+  </Tabs.Item>
+  <Tabs.Item label="Activity" value="2">
+    Everything that changed this week.
+  </Tabs.Item>
+  <Tabs.Item label="Settings" value="3">
+    Names, members and billing.
+  </Tabs.Item>
+</Tabs>
 `}
 />
 
@@ -218,6 +237,32 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
 `}
 />
 
+<Playground
+  title="Settings page"
+  desc="Group a page by topic. Each tab holds the fields and the action for that topic only."
+  scope={{ Tabs, Input, Text, Button, Spacer }}
+  code={`
+<Tabs initialValue="profile">
+  <Tabs.Item label="Profile" value="profile">
+    <Spacer h={1} />
+    <Input floating width="100%" initialValue="Ada Lovelace">Name</Input>
+    <Spacer h={1} />
+    <Button auto type="primary">Save profile</Button>
+  </Tabs.Item>
+  <Tabs.Item label="Billing" value="billing">
+    <Spacer h={1} />
+    <Text p>You are on the Pro plan. The next charge of $12 is on Nov 3.</Text>
+    <Button auto>Manage plan</Button>
+  </Tabs.Item>
+  <Tabs.Item label="Team" value="team">
+    <Spacer h={1} />
+    <Text p>3 members have access to this workspace.</Text>
+    <Button auto>Invite a teammate</Button>
+  </Tabs.Item>
+</Tabs>
+`}
+/>
+
 <Attributes edit="/content/docs/components/tabs.mdx">
 <Attributes.Title>Tabs.Props</Attributes.Title>
 
@@ -227,6 +272,7 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
 | **value**            | current selected value                  | `string`                | -                               | -       |
 | **hideDivider**      | hide default divider                    | `boolean`               | -                               | `false` |
 | **hideBorder**       | hide border on active                   | `boolean`               | -                               | `false` |
+| **slide**            | sliding indicator under the active tab  | `boolean`               | -                               | `false` |
 | **leftSpace**        | space area on the left side             | `CSSProperties`         | -                               | `12px`  |
 | **onChange**         | change event                            | `(val: string) => void` | -                               | -       |
 | **align**            | horizontal alignment of each child item | `justifyContent`        | -                               | `left`  |

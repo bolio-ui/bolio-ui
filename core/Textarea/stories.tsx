@@ -103,3 +103,41 @@ export const WithUseInput: StoryFn = () => {
     </Grid.Container>
   )
 }
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <Textarea
+            type={type}
+            height="65px"
+            placeholder={`${type} ${variant}`}
+            {...{ [variant]: true }}
+          />
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <Textarea
+        type="primary"
+        filled
+        disabled
+        height="65px"
+        placeholder="Disabled"
+      />
+    </Grid>
+    <Grid>
+      <Textarea type="primary" rounded height="65px" placeholder="Rounded" />
+    </Grid>
+  </Grid.Container>
+)

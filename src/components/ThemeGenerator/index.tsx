@@ -12,6 +12,7 @@ import {
   useTheme,
   useToasts
 } from 'core'
+import styles from './ThemeGenerator.module.css'
 
 const HEX_PATTERN = /^#[0-9a-fA-F]{6}$/
 
@@ -173,7 +174,15 @@ const ShadeStrip: React.FC<{ hex: string; compact?: boolean }> = ({
   const shades = useMemo(() => buildShades(hex), [hex])
 
   return (
-    <div className="strip">
+    <div
+      className={`${styles.strip} ${compact ? styles.compact : ''}`}
+      style={
+        {
+          '--tg-radius': theme.layout.radius,
+          '--tg-border': theme.palette.border
+        } as React.CSSProperties
+      }
+    >
       {shades.map((shade, index) => {
         const label = TOKEN_LABEL_BY_INDEX[index]
         const isBase = index === 6
@@ -181,52 +190,15 @@ const ShadeStrip: React.FC<{ hex: string; compact?: boolean }> = ({
         return (
           <div
             key={`${shade}-${index}`}
-            className={`tile ${isBase ? 'active' : ''}`}
+            className={`${styles.tile} ${isBase ? styles.active : ''}`}
             style={{ background: shade, color: textColor }}
             title={`${label ? `${label} · ` : ''}${shade}`}
           >
-            <span className="index">{index}</span>
-            {!compact && label && <span className="label">{label}</span>}
+            <span className={styles.index}>{index}</span>
+            {!compact && label && <span className={styles.label}>{label}</span>}
           </div>
         )
       })}
-      <style jsx>{`
-        .strip {
-          display: flex;
-          width: 100%;
-          border-radius: ${theme.layout.radius};
-          overflow: hidden;
-          border: 1px solid ${theme.palette.border};
-        }
-        .tile {
-          flex: 1;
-          min-width: 0;
-          height: ${compact ? '48px' : '96px'};
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 4px;
-          position: relative;
-        }
-        .tile.active {
-          box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.9);
-          z-index: 1;
-        }
-        .index {
-          font-size: ${compact ? '12px' : '16px'};
-          font-weight: 700;
-          color: inherit;
-        }
-        .label {
-          font-size: 11px;
-          font-weight: 600;
-          color: inherit;
-          opacity: 0.8;
-          text-transform: uppercase;
-          letter-spacing: 0.02em;
-        }
-      `}</style>
     </div>
   )
 }
@@ -288,10 +260,13 @@ const ColorPickerPanel: React.FC<{
   }
 
   return (
-    <div className="picker-panel">
+    <div
+      className={styles.pickerPanel}
+      style={{ '--tg-radius': theme.layout.radius } as React.CSSProperties}
+    >
       <div
         ref={svRef}
-        className="sv"
+        className={styles.sv}
         style={{
           background: `linear-gradient(to top, #000, transparent), linear-gradient(to right, #fff, transparent), hsl(${hsv.h}, 100%, 50%)`
         }}
@@ -299,67 +274,21 @@ const ColorPickerPanel: React.FC<{
         onPointerMove={svPointerMove}
       >
         <span
-          className="handle"
+          className={styles.handle}
           style={{ left: `${hsv.s * 100}%`, top: `${(1 - hsv.v) * 100}%` }}
         />
       </div>
       <div
         ref={hueRef}
-        className="hue"
+        className={styles.hue}
         onPointerDown={huePointerDown}
         onPointerMove={huePointerMove}
       >
         <span
-          className="handle"
+          className={styles.handle}
           style={{ left: `${(hsv.h / 360) * 100}%`, top: '50%' }}
         />
       </div>
-      <style jsx>{`
-        .picker-panel {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          width: 220px;
-        }
-        .sv {
-          position: relative;
-          width: 100%;
-          height: 140px;
-          border-radius: ${theme.layout.radius};
-          cursor: crosshair;
-          touch-action: none;
-        }
-        .hue {
-          position: relative;
-          width: 100%;
-          height: 14px;
-          border-radius: 100px;
-          cursor: pointer;
-          touch-action: none;
-          background: linear-gradient(
-            to right,
-            #f00,
-            #ff0,
-            #0f0,
-            #0ff,
-            #00f,
-            #f0f,
-            #f00
-          );
-        }
-        .handle {
-          position: absolute;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          border: 2px solid #fff;
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.3),
-            0 1px 4px rgba(0, 0, 0, 0.4);
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-        }
-      `}</style>
     </div>
   )
 }
@@ -386,20 +315,32 @@ const ColorField: React.FC<{
   }
 
   return (
-    <div className="field" ref={containerRef}>
+    <div
+      className={styles.field}
+      ref={containerRef}
+      style={
+        {
+          '--tg-border': theme.palette.border,
+          '--tg-radius': theme.layout.radius,
+          '--tg-foreground': theme.palette.foreground,
+          '--tg-background': theme.palette.background,
+          '--tg-shadow': theme.expressiveness.shadowMedium
+        } as React.CSSProperties
+      }
+    >
       <button
         type="button"
-        className="swatch"
+        className={styles.fieldSwatch}
         style={{ background: value }}
         onClick={() => setOpen((prev) => !prev)}
         aria-label={`Pick the ${label} color`}
       />
-      <div className="info">
+      <div className={styles.info}>
         <Text small style={{ color: theme.palette.accents_5 }}>
           {label}
         </Text>
         <input
-          className="hex-input"
+          className={styles.hexInput}
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           onBlur={commitDraft}
@@ -408,53 +349,10 @@ const ColorField: React.FC<{
         />
       </div>
       {open && (
-        <div className="popover">
+        <div className={styles.popover}>
           <ColorPickerPanel value={value} onChange={onChange} />
         </div>
       )}
-      <style jsx>{`
-        .field {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        .swatch {
-          width: 44px;
-          height: 44px;
-          padding: 0;
-          border: 2px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          cursor: pointer;
-        }
-        .info {
-          display: flex;
-          flex-direction: column;
-        }
-        .hex-input {
-          width: 96px;
-          padding: 2px 0;
-          border: none;
-          background: none;
-          color: ${theme.palette.foreground};
-          font-weight: 600;
-          font-size: 14px;
-        }
-        .hex-input:focus {
-          outline: none;
-        }
-        .popover {
-          position: absolute;
-          top: calc(100% + 8px);
-          left: 0;
-          z-index: 50;
-          padding: 12px;
-          background: ${theme.palette.background};
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          box-shadow: ${theme.expressiveness.shadowMedium};
-        }
-      `}</style>
     </div>
   )
 }
@@ -469,7 +367,7 @@ const ThemeBox: React.FC<React.PropsWithChildren<{ label: string }>> = ({
 
   return (
     <div
-      className="theme-box"
+      className={styles.themeBox}
       style={{
         background: theme.palette.background,
         color: theme.palette.foreground,
@@ -480,13 +378,6 @@ const ThemeBox: React.FC<React.PropsWithChildren<{ label: string }>> = ({
         {label}
       </Text>
       {children}
-      <style jsx>{`
-        .theme-box {
-          border: 1px solid;
-          border-radius: 8px;
-          padding: 16px;
-        }
-      `}</style>
     </div>
   )
 }
@@ -503,8 +394,11 @@ const VariantsPreview: React.FC = () => {
   const theme = useTheme()
 
   return (
-    <div className="variants">
-      <div className="variants-header">
+    <div
+      className={styles.variants}
+      style={{ '--tg-muted': theme.palette.accents_5 } as React.CSSProperties}
+    >
+      <div className={styles.variantsHeader}>
         <span />
         <span>Filled</span>
         <span>Light</span>
@@ -512,7 +406,7 @@ const VariantsPreview: React.FC = () => {
         <span>Subtle</span>
       </div>
       {VARIANT_ROWS.map((row) => (
-        <div className="variants-row" key={row.type}>
+        <div className={styles.variantsRow} key={row.type}>
           <Text small style={{ color: theme.palette.accents_5 }}>
             {row.label}
           </Text>
@@ -534,30 +428,6 @@ const VariantsPreview: React.FC = () => {
           </Button>
         </div>
       ))}
-      <style jsx>{`
-        .variants {
-          margin-top: 12px;
-        }
-        .variants-header,
-        .variants-row {
-          display: grid;
-          grid-template-columns: 88px repeat(4, 1fr);
-          gap: 12px;
-          align-items: center;
-        }
-        .variants-header {
-          margin-bottom: 8px;
-        }
-        .variants-header span {
-          font-size: 12px;
-          font-weight: 600;
-          color: ${theme.palette.accents_5};
-          text-transform: uppercase;
-        }
-        .variants-row {
-          margin-bottom: 12px;
-        }
-      `}</style>
     </div>
   )
 }
@@ -657,8 +527,18 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
   }
 
   return (
-    <div className="theme-generator">
-      <div className="section fields">
+    <div
+      style={
+        {
+          '--tg-section-gap': `calc(${theme.layout.gap} * ${compact ? 1 : 2})`,
+          '--tg-gap-half': theme.layout.gapHalf,
+          '--tg-border': theme.palette.border,
+          '--tg-foreground': theme.palette.foreground,
+          '--tg-hover-border': theme.palette.accents_4
+        } as React.CSSProperties
+      }
+    >
+      <div className={`${styles.section} ${styles.fields}`}>
         <ColorField label="Primary" value={primary} onChange={setPrimary} />
         <ColorField
           label="Secondary"
@@ -672,18 +552,18 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
         )}
       </div>
 
-      <div className="section">
+      <div className={styles.section}>
         <SectionHeading>Presets</SectionHeading>
-        <div className="presets">
+        <div className={styles.presets}>
           {PRESETS.map((preset) => (
             <button
               key={preset.name}
-              className="preset"
+              className={styles.preset}
               onClick={() => applyPreset(preset)}
               aria-label={`Use the ${preset.name} preset`}
             >
               <span
-                className="swatch"
+                className={styles.presetSwatch}
                 style={{
                   background: `linear-gradient(135deg, ${preset.primary} 50%, ${preset.secondary} 50%)`
                 }}
@@ -694,18 +574,18 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
         </div>
       </div>
 
-      <div className="section">
+      <div className={styles.section}>
         <SectionHeading>Shades</SectionHeading>
-        <div className="shade-strips">
+        <div className={styles.shadeStrips}>
           <ShadeStrip hex={primary} compact={compact} />
           <ShadeStrip hex={secondary} compact={compact} />
         </div>
       </div>
 
       {!compact && (
-        <div className="section">
+        <div className={styles.section}>
           <SectionHeading>Variants preview</SectionHeading>
-          <div className="variants-preview">
+          <div className={styles.variantsPreview}>
             <BolioUIProvider
               themes={[lightPreviewTheme]}
               themeType="theme-generator-preview-light"
@@ -727,8 +607,8 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
       )}
 
       {!compact && (
-        <div className="section">
-          <div className="code-header">
+        <div className={styles.section}>
+          <div className={styles.codeHeader}>
             <SectionHeading>Usage with BolioUIProvider</SectionHeading>
             <Button auto scale={0.6} type="abort" onClick={copyCode}>
               Copy
@@ -737,66 +617,6 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
           <Snippet text={code} symbol="" width="100%" />
         </div>
       )}
-
-      <style jsx>{`
-        .section {
-          margin-top: calc(${theme.layout.gap} * ${compact ? 1 : 2});
-        }
-        .section:first-child {
-          margin-top: 0;
-        }
-        .fields {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 24px;
-        }
-        .shade-strips {
-          display: flex;
-          flex-direction: column;
-          gap: ${theme.layout.gapHalf};
-          margin-top: ${theme.layout.gapHalf};
-        }
-        .variants-preview {
-          display: flex;
-          flex-direction: column;
-          gap: ${theme.layout.gapHalf};
-          margin-top: ${theme.layout.gapHalf};
-        }
-        .presets {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: ${theme.layout.gapHalf};
-        }
-        .preset {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 12px 6px 6px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: 100px;
-          background: none;
-          color: ${theme.palette.foreground};
-          font-size: 13px;
-          cursor: pointer;
-        }
-        .preset:hover {
-          border-color: ${theme.palette.accents_4};
-        }
-        .swatch {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          flex-shrink: 0;
-        }
-        .code-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: ${theme.layout.gapHalf};
-        }
-      `}</style>
     </div>
   )
 }

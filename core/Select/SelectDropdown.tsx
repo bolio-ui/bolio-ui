@@ -2,11 +2,14 @@ import React, { CSSProperties, useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
 import Dropdown from '../Shared/dropdown'
+import type { InputColor } from '../Input/styles'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './SelectDropdown.module.css'
 
 interface Props {
   visible: boolean
+  colors: InputColor
   className?: string
   dropdownStyle?: CSSProperties
   disableMatchWidth?: boolean
@@ -23,6 +26,7 @@ const SelectDropdown = React.forwardRef<
   (
     {
       visible,
+      colors,
       children,
       className = '',
       dropdownStyle = {},
@@ -34,7 +38,7 @@ const SelectDropdown = React.forwardRef<
     const theme = useTheme()
     const internalDropdownRef = useRef<HTMLDivElement | null>(null)
     const { ref } = useSelectContext()
-    const classes = useClasses('select-dropdown', className)
+    const classes = useClasses(styles.selectDropdown, className)
 
     useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
       dropdownRef,
@@ -51,21 +55,18 @@ const SelectDropdown = React.forwardRef<
         <div
           ref={internalDropdownRef}
           className={classes}
-          style={dropdownStyle}
+          style={
+            {
+              '--select-dropdown-radius': theme.layout.radius,
+              '--select-dropdown-shadow': theme.expressiveness.shadowMedium,
+              '--select-dropdown-bg': colors.bgColor,
+              '--select-dropdown-border': colors.borderColor,
+              '--select-dropdown-color': colors.color,
+              ...dropdownStyle
+            } as React.CSSProperties
+          }
         >
           {children}
-          <style jsx>{`
-            .select-dropdown {
-              border-radius: ${theme.layout.radius};
-              box-shadow: ${theme.expressiveness.shadowLarge};
-              background-color: ${theme.palette.accents_2};
-              max-height: 17em;
-              overflow-y: auto;
-              overflow-anchor: none;
-              padding: 0.38em 0;
-              scroll-behavior: smooth;
-            }
-          `}</style>
         </div>
       </Dropdown>
     )

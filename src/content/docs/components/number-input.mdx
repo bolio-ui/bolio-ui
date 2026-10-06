@@ -104,6 +104,88 @@ stays within `min` and `max`.
 />
 
 <Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type` to change the surface of the field."
+  scope={{ NumberInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <NumberInput type="primary" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="secondary" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="success" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="warning" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="error" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="info" filled initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="primary" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="secondary" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="success" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="warning" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="error" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="info" light initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="primary" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="secondary" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="success" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="warning" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="error" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="info" ghost initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="primary" subtle initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="secondary" subtle initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="success" subtle initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="warning" subtle initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="error" subtle initialValue={5} />
+  </Grid>
+  <Grid>
+    <NumberInput type="info" subtle initialValue={5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Disabled and read only"
   scope={{ NumberInput, Grid }}
   code={`
@@ -121,23 +203,28 @@ stays within `min` and `max`.
 <Attributes edit="/content/docs/components/number-input.mdx">
 <Attributes.Title>NumberInput.Props</Attributes.Title>
 
-| Attribute        | Description                                               | Type                                             | Accepted values                   | Default   |
-| ---------------- | --------------------------------------------------------- | ------------------------------------------------ | --------------------------------- | --------- |
-| **value**        | the number, to control the field                          | `number` / `null`                                | -                                 | -         |
-| **initialValue** | the number at the start                                   | `number` / `null`                                | -                                 | `null`    |
-| **onChange**     | called with the number, or `null` when the field is empty | <Code>(value: number &#124; null) =&gt; void</Code> | -                              | -         |
-| **min**          | lowest value                                              | `number`                                         | -                                 | -         |
-| **max**          | highest value                                             | `number`                                         | -                                 | -         |
-| **step**         | how much a button or an arrow key adds                    | `number`                                         | -                                 | `1`       |
-| **precision**    | decimal places kept                                       | `number`                                         | -                                 | the ones of `step` |
-| **type**         | color of the field                                        | `NormalTypes`                                    | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default` |
-| **hideControls** | hide the buttons                                          | `boolean`                                        | -                                 | `false`   |
-| **error**        | mark the value as invalid                                 | `boolean`                                        | -                                 | `false`   |
-| **errorMessage** | text shown below the field with `error`                   | `string`                                         | -                                 | -         |
-| **disabled**     | disable the field                                         | `boolean`                                        | -                                 | `false`   |
-| **readOnly**     | show the value without letting it change                  | `boolean`                                        | -                                 | `false`   |
-| **children**     | label shown above the field                               | `ReactNode`                                      | -                                 | -         |
-| ...              | native props, passed to the input                         | `InputHTMLAttributes`                            | `'aria-label', 'name', 'placeholder', ...` | - |
+| Attribute        | Description                                               | Type                                                | Accepted values                                                            | Default            |
+| ---------------- | --------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------- | ------------------ |
+| **value**        | the number, to control the field                          | `number` / `null`                                   | -                                                                          | -                  |
+| **initialValue** | the number at the start                                   | `number` / `null`                                   | -                                                                          | `null`             |
+| **onChange**     | called with the number, or `null` when the field is empty | <Code>(value: number &#124; null) =&gt; void</Code> | -                                                                          | -                  |
+| **min**          | lowest value                                              | `number`                                            | -                                                                          | -                  |
+| **max**          | highest value                                             | `number`                                            | -                                                                          | -                  |
+| **step**         | how much a button or an arrow key adds                    | `number`                                            | -                                                                          | `1`                |
+| **precision**    | decimal places kept                                       | `number`                                            | -                                                                          | the ones of `step` |
+| **type**         | color of the field                                        | `NormalTypes`                                       | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`          |
+| **hideControls** | hide the buttons                                          | `boolean`                                           | -                                                                          | `false`            |
+| **error**        | mark the value as invalid                                 | `boolean`                                           | -                                                                          | `false`            |
+| **errorMessage** | text shown below the field with `error`                   | `string`                                            | -                                                                          | -                  |
+| **disabled**     | disable the field                                         | `boolean`                                           | -                                                                          | `false`            |
+| **rounded**      | round the corners                                         | `boolean`                                           | -                                                                          | `false`            |
+| **filled**       | filled variant                                            | `boolean`                                           | -                                                                          | `false`            |
+| **light**        | light variant                                             | `boolean`                                           | -                                                                          | `false`            |
+| **ghost**        | outline variant                                           | `boolean`                                           | -                                                                          | `false`            |
+| **subtle**       | subtle variant                                            | `boolean`                                           | -                                                                          | `false`            |
+| **readOnly**     | show the value without letting it change                  | `boolean`                                           | -                                                                          | `false`            |
+| **children**     | label shown above the field                               | `ReactNode`                                         | -                                                                          | -                  |
+| ...              | native props, passed to the input                         | `InputHTMLAttributes`                               | `'aria-label', 'name', 'placeholder', ...`                                 | -                  |
 
 <Attributes.Title>Typing and limits</Attributes.Title>
 
@@ -151,11 +238,11 @@ The `ref` points at the `input`.
 
 The input has `role="spinbutton"` with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`. The buttons are named Increase and Decrease and stay out of the tab order, since the keys do the same from the input. With `error`, the input has `aria-invalid` and is described by the message.
 
-| Key                  | Action                         |
-| -------------------- | ------------------------------ |
-| Arrow Up and Down    | Add or subtract `step`         |
-| Page Up and Down     | Add or subtract ten steps      |
-| Home and End         | Go to `min` or `max`, when set |
+| Key               | Action                         |
+| ----------------- | ------------------------------ |
+| Arrow Up and Down | Add or subtract `step`         |
+| Page Up and Down  | Add or subtract ten steps      |
+| Home and End      | Go to `min` or `max`, when set |
 
 </Attributes>
 

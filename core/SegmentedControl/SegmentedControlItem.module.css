@@ -1,0 +1,62 @@
+.item {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  font-size: 0;
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  box-sizing: border-box;
+  padding: 0 0.875em;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--segmented-color);
+  border-radius: calc(var(--segmented-radius) - 2px);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.text:hover {
+  color: var(--segmented-hover-color);
+}
+
+.input:checked + .text {
+  color: var(--segmented-active-color);
+  background: var(--segmented-active-bg);
+  box-shadow: var(--segmented-shadow);
+}
+
+.input:focus-visible + .text {
+  box-shadow: 0 0 0 2px var(--segmented-focus);
+}
+
+.input:disabled + .text {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input:disabled + .text:hover {
+  color: var(--segmented-color);
+}
+
+.input:disabled:checked + .text:hover {
+  color: var(--segmented-active-color);
+}

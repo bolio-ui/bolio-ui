@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Section, Container, Text, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
 import CardPlatforms from 'src/components/CardPlatforms'
+import styles from './SectionCapabilities.module.css'
 
 const components = [
   {
@@ -50,7 +51,7 @@ const platforms = [
 
 const guides = [
   'Getting Started',
-  'Migrating to v2',
+  'Migrating to v3',
   'Page structure',
   'Contribute'
 ]
@@ -87,21 +88,36 @@ function SectionCapabilities() {
   const colors = ['primary', 'secondary'] as const
 
   return (
-    <Section py={5}>
+    <Section
+      py={5}
+      style={
+        {
+          '--cap-mono': theme.font.mono,
+          '--cap-muted': theme.palette.accents_5,
+          '--cap-strong': theme.palette.accents_6,
+          '--cap-foreground': theme.palette.foreground,
+          '--cap-border': theme.palette.border,
+          '--cap-radius': theme.layout.radius,
+          '--cap-bg': theme.palette.accents_1,
+          '--cap-page-bg': theme.palette.background,
+          '--cap-hover-border': theme.palette.accents_3
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
-        <div className="capabilities">
-          <nav className="rail">
-            <Text className="rail-title" font={0.75} my={0} mb={1.5}>
+        <div className={styles.capabilities}>
+          <nav className={styles.rail}>
+            <Text className={styles.railTitle} font={0.75} my={0} mb={1.5}>
               What you get
             </Text>
             {panels.map((panel, index) => (
               <a
                 key={panel.id}
                 href={`#capability-${panel.id}`}
-                className={`rail-item ${active === index ? 'active' : ''}`}
+                className={`${styles.railItem} ${active === index ? styles.active : ''}`}
               >
                 <span
-                  className="rail-bar"
+                  className={styles.railBar}
                   style={{ backgroundColor: panel.color }}
                 />
                 {panel.label}
@@ -109,10 +125,10 @@ function SectionCapabilities() {
             ))}
           </nav>
 
-          <div className="panels">
+          <div className={styles.panels}>
             <div
               id="capability-docs"
-              className="panel"
+              className={styles.panel}
               ref={(el) => {
                 panelsRef.current[0] = el
               }}
@@ -121,19 +137,22 @@ function SectionCapabilities() {
               <Text h2 my={0} mb={1}>
                 Docs you can copy from.
               </Text>
-              <Text font={1.2} mt={0} className="panel-description">
+              <Text font={1.2} mt={0} className={styles.panelDescription}>
                 A guide for every framework, a props table for each component
                 and examples you paste straight into your project.
               </Text>
-              <NextLink href="/docs/guide/getting-started" className="card">
-                <div className="card-bar">
-                  <span className="muted">docs</span>
-                  <span className="muted">/</span>
+              <NextLink
+                href="/docs/guide/getting-started"
+                className={styles.card}
+              >
+                <div className={styles.cardBar}>
+                  <span className={styles.muted}>docs</span>
+                  <span className={styles.muted}>/</span>
                   <span>getting-started</span>
                 </div>
-                <div className="docs-body">
-                  <div className="docs-sidebar">
-                    <span className="docs-sidebar-title">Guide</span>
+                <div className={styles.docsBody}>
+                  <div className={styles.docsSidebar}>
+                    <span className={styles.docsSidebarTitle}>Guide</span>
                     {guides.map((guide, index) => (
                       <span
                         key={guide}
@@ -148,16 +167,16 @@ function SectionCapabilities() {
                       </span>
                     ))}
                   </div>
-                  <div className="docs-reading">
+                  <div className={styles.docsReading}>
                     <Text h4 my={0}>
                       Getting Started
                     </Text>
-                    <Text my={0} className="muted-text">
+                    <Text my={0} className={styles.mutedText}>
                       Install Bolio UI, wrap your app with the provider and
                       start using components right away.
                     </Text>
-                    <pre className="code">
-                      <span className="muted-text">
+                    <pre className={styles.code}>
+                      <span className={styles.mutedText}>
                         yarn add @bolio-ui/core
                       </span>
                       {'\n'}
@@ -172,7 +191,7 @@ function SectionCapabilities() {
 
             <div
               id="capability-components"
-              className="panel"
+              className={styles.panel}
               ref={(el) => {
                 panelsRef.current[1] = el
               }}
@@ -185,19 +204,19 @@ function SectionCapabilities() {
               <Text h2 my={0} mb={1}>
                 Build even faster with Bolio UI.
               </Text>
-              <Text font={1.2} mt={0} className="panel-description">
+              <Text font={1.2} mt={0} className={styles.panelDescription}>
                 Premade responsive components designed and built by Bolio UI,
                 ready for your next website.
               </Text>
-              <NextLink href="/docs/components" className="card">
-                <div className="card-bar">
-                  <span className="muted">docs</span>
-                  <span className="muted">/</span>
+              <NextLink href="/docs/components" className={styles.card}>
+                <div className={styles.cardBar}>
+                  <span className={styles.muted}>docs</span>
+                  <span className={styles.muted}>/</span>
                   <span>components</span>
                 </div>
-                <div className="components-grid">
+                <div className={styles.componentsGrid}>
                   {components.map((component) => (
-                    <div key={component.title} className="component-item">
+                    <div key={component.title} className={styles.componentItem}>
                       <Image
                         src={component.image}
                         alt={`${component.title} component`}
@@ -216,7 +235,7 @@ function SectionCapabilities() {
 
             <div
               id="capability-theme"
-              className="panel"
+              className={styles.panel}
               ref={(el) => {
                 panelsRef.current[2] = el
               }}
@@ -229,38 +248,40 @@ function SectionCapabilities() {
               <Text h2 my={0} mb={1}>
                 Your colors, on every component.
               </Text>
-              <Text font={1.2} mt={0} className="panel-description">
+              <Text font={1.2} mt={0} className={styles.panelDescription}>
                 Pick a primary and a secondary color. Bolio UI derives the
                 shades it actually uses and previews them in light and dark.
               </Text>
-              <NextLink href="/theme-generator" className="card">
-                <div className="card-bar">
+              <NextLink href="/theme-generator" className={styles.card}>
+                <div className={styles.cardBar}>
                   <span>theme-generator</span>
                 </div>
-                <div className="theme-body">
-                  <div className="theme-fields">
+                <div className={styles.themeBody}>
+                  <div className={styles.themeFields}>
                     {colors.map((name) => (
-                      <span key={name} className="theme-field">
+                      <span key={name} className={styles.themeField}>
                         <span
-                          className="dot"
+                          className={styles.dot}
                           style={{ backgroundColor: theme.palette[name] }}
                         />
-                        <span className="muted-text">{name}</span>
+                        <span className={styles.mutedText}>{name}</span>
                         <span>{theme.palette[name]}</span>
                       </span>
                     ))}
                   </div>
                   {colors.map((name) => (
-                    <div key={name} className="theme-shades">
+                    <div key={name} className={styles.themeShades}>
                       {shades.map((shade) => (
-                        <span key={shade} className="shade">
+                        <span key={shade} className={styles.shade}>
                           <span
-                            className="swatch"
+                            className={styles.swatch}
                             style={{
                               backgroundColor: theme.palette[`${name}${shade}`]
                             }}
                           />
-                          <span className="muted">{shade || 'Base'}</span>
+                          <span className={styles.muted}>
+                            {shade || 'Base'}
+                          </span>
                         </span>
                       ))}
                     </div>
@@ -271,7 +292,7 @@ function SectionCapabilities() {
 
             <div
               id="capability-platforms"
-              className="panel"
+              className={styles.panel}
               ref={(el) => {
                 panelsRef.current[3] = el
               }}
@@ -282,18 +303,18 @@ function SectionCapabilities() {
               <Text h2 my={0} mb={1}>
                 Prepared to get started?
               </Text>
-              <Text font={1.2} mt={0} className="panel-description">
+              <Text font={1.2} mt={0} className={styles.panelDescription}>
                 Bolio UI is compatible with a wide range platforms. You can
                 begin using it right away with Next.js, Gatsby.js, RedwoodJS,
                 Vite, or Remix by following the introductory guide.
               </Text>
-              <div className="card">
-                <div className="card-bar">
-                  <span className="muted">docs</span>
-                  <span className="muted">/</span>
+              <div className={styles.card}>
+                <div className={styles.cardBar}>
+                  <span className={styles.muted}>docs</span>
+                  <span className={styles.muted}>/</span>
                   <span>frameworks</span>
                 </div>
-                <div className="platforms-grid">
+                <div className={styles.platformsGrid}>
                   {platforms.map((platform) => (
                     <CardPlatforms key={platform.title} {...platform} />
                   ))}
@@ -303,253 +324,6 @@ function SectionCapabilities() {
           </div>
         </div>
       </Container>
-      <style jsx>{`
-        .capabilities {
-          display: grid;
-          grid-template-columns: 240px minmax(0, 1fr);
-          gap: 48px;
-        }
-        .rail {
-          position: sticky;
-          top: 120px;
-          align-self: start;
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-        .rail :global(.rail-title) {
-          font-family: ${theme.font.mono};
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: ${theme.palette.accents_5};
-        }
-        .rail-item {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          text-align: left;
-          gap: 10px;
-          font-size: 1.25rem;
-          color: ${theme.palette.foreground};
-          opacity: 0.38;
-          transition:
-            opacity 260ms cubic-bezier(0.23, 1, 0.32, 1),
-            transform 260ms cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .rail-item.active {
-          opacity: 1;
-          transform: translateX(6px);
-        }
-        .rail-bar {
-          width: 46px;
-          height: 2px;
-          transform-origin: left center;
-          transform: scaleX(0.25);
-          opacity: 0.35;
-          transition:
-            transform 260ms cubic-bezier(0.23, 1, 0.32, 1),
-            opacity 260ms linear;
-        }
-        .rail-item.active .rail-bar {
-          transform: scaleX(1);
-          opacity: 1;
-        }
-        .panels {
-          display: flex;
-          flex-direction: column;
-          gap: 160px;
-        }
-        .panel {
-          scroll-margin-top: 120px;
-        }
-        .panel :global(.panel-description) {
-          max-width: 600px;
-          color: ${theme.palette.accents_6};
-        }
-        .panel :global(.card) {
-          display: block;
-          margin-top: 32px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.accents_1};
-          color: ${theme.palette.foreground};
-          overflow: hidden;
-          transition: border-color 200ms ease;
-        }
-        .panel :global(.card:hover) {
-          border-color: ${theme.palette.accents_4};
-        }
-        .card-bar {
-          display: flex;
-          gap: 8px;
-          padding: 12px 16px;
-          border-bottom: 1px solid ${theme.palette.border};
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-        }
-        .muted {
-          color: ${theme.palette.accents_5};
-        }
-        .panel :global(.muted-text) {
-          color: ${theme.palette.accents_6};
-        }
-        .docs-body {
-          display: grid;
-          grid-template-columns: 180px minmax(0, 1fr);
-          gap: 24px;
-          padding: 24px;
-        }
-        .docs-sidebar {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          font-size: 0.85rem;
-        }
-        .docs-sidebar-title {
-          font-family: ${theme.font.mono};
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: ${theme.palette.accents_5};
-        }
-        .docs-reading {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-        .code {
-          margin: 0;
-          padding: 16px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.background};
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-          white-space: pre-wrap;
-        }
-        .components-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 16px;
-          padding: 24px;
-        }
-        .platforms-grid {
-          display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 16px;
-          padding: 24px;
-        }
-        .component-item :global(img) {
-          border-radius: ${theme.layout.radius};
-        }
-        .theme-body {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          padding: 24px;
-        }
-        .theme-fields {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        .theme-field {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 6px 12px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-        }
-        .dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-        }
-        .theme-shades {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 8px;
-        }
-        .shade {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          font-family: ${theme.font.mono};
-          font-size: 0.7rem;
-        }
-        .swatch {
-          height: 36px;
-          border-radius: ${theme.layout.radius};
-        }
-        .theme-previews {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 8px;
-        }
-        .theme-preview {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 16px;
-          border: 1px solid;
-          border-radius: ${theme.layout.radius};
-          font-family: ${theme.font.mono};
-          font-size: 0.7rem;
-        }
-        .preview-row {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .preview-button {
-          padding: 4px 12px;
-          border: 1px solid transparent;
-          border-radius: 999px;
-          font-family: ${theme.font.sans};
-          font-size: 0.75rem;
-          color: #fff;
-        }
-        .preview-toggle {
-          position: relative;
-          width: 26px;
-          height: 14px;
-          margin-left: auto;
-          border-radius: 999px;
-        }
-        .preview-toggle::after {
-          content: '';
-          position: absolute;
-          top: 2px;
-          right: 2px;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #fff;
-        }
-        @media (max-width: ${theme.breakpoints.sm.max}) {
-          .capabilities {
-            grid-template-columns: minmax(0, 1fr);
-          }
-          .rail {
-            display: none;
-          }
-          .panels {
-            gap: 80px;
-          }
-          .docs-body {
-            grid-template-columns: minmax(0, 1fr);
-          }
-          .docs-sidebar {
-            display: none;
-          }
-          .platforms-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-        }
-      `}</style>
     </Section>
   )
 }

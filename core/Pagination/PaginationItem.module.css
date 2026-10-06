@@ -1,0 +1,57 @@
+.li {
+  margin-right: 0.428em;
+  display: inline-block;
+}
+
+.button {
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: none;
+  outline: none;
+  height: var(--pagination-size);
+  min-width: var(--pagination-size);
+  font-size: inherit;
+  cursor: pointer;
+  color: var(--pagination-color);
+  border-radius: var(--pagination-radius);
+  background-color: var(--pagination-bg);
+  transition: all linear 200ms 0ms;
+}
+
+.button:hover {
+  background-color: var(--pagination-hover-bg);
+}
+
+.active {
+  font-weight: bold;
+  background-color: var(--pagination-active-bg);
+  color: var(--pagination-active-color);
+  box-shadow: var(--pagination-active-shadow);
+}
+
+.active:hover {
+  background-color: var(--pagination-active-hover-bg);
+  box-shadow: var(--pagination-active-hover-shadow);
+}
+
+.disabled {
+  color: var(--pagination-disabled-color);
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: var(--pagination-disabled-hover-bg);
+}
+
+.button :global(svg) {
+  width: 1.3em;
+  height: 1.3em;
+}

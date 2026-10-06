@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Drawer, Button, Grid } from 'core'
+import { Drawer, Button, Grid, Input, Spacer } from 'core'
 
 export const meta = {
   title: 'Drawer',
@@ -90,6 +90,40 @@ An interactive element fixed to the edge of the screen.
         </Drawer.Content>
       </Drawer>
     </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Edit profile"
+  desc="A form in a Drawer keeps the page behind it in view. Put the confirm button first and a way out next to it."
+  scope={{ Drawer, Button, Grid, Input, Spacer }}
+  code={`
+() => {
+  const [open, setOpen] = React.useState(false)
+  return (
+    <>
+      <Button auto onClick={() => setOpen(true)}>Edit profile</Button>
+      <Drawer visible={open} onClose={() => setOpen(false)} placement="right">
+        <Drawer.Title>Edit profile</Drawer.Title>
+        <Drawer.Subtitle>Changes show on your public page.</Drawer.Subtitle>
+        <Drawer.Content>
+          <Input floating width="100%" initialValue="Ada Lovelace">Name</Input>
+          <Spacer h={1} />
+          <Input floating width="100%" initialValue="ada@example.com">Email</Input>
+          <Spacer h={1.5} />
+          <Grid.Container gap={1}>
+            <Grid>
+              <Button auto type="primary" onClick={() => setOpen(false)}>Save changes</Button>
+            </Grid>
+            <Grid>
+              <Button auto onClick={() => setOpen(false)}>Cancel</Button>
+            </Grid>
+          </Grid.Container>
+        </Drawer.Content>
+      </Drawer>
+    </>
   )
 }
 `}

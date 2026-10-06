@@ -6,6 +6,7 @@ import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Progress.module.css'
 
 export type ProgressColors = {
   [key: number]: string
@@ -17,6 +18,8 @@ interface Props {
   max?: number
   fixedTop?: boolean
   fixedBottom?: boolean
+  segments?: number
+  circular?: boolean
   colors?: ProgressColors
   type?: ProgressTypes
   className?: string
@@ -62,6 +65,9 @@ const ProgressComponent = React.forwardRef<
       colors,
       fixedTop = false,
       fixedBottom = false,
+      segments,
+      circular = false,
+      style,
       ...props
     },
     ref
@@ -77,57 +83,100 @@ const ProgressComponent = React.forwardRef<
       colors
     )
     const fixed = fixedTop || fixedBottom
-    const classes = useClasses('progress', { fixed }, className)
+    const classes = useClasses(
+      styles.progress,
+      { [styles.fixed]: fixed },
+      className
+    )
+
+    const hidden = (
+      <progress className={className} value={value} max={max} {...props} />
+    )
+
+    if (circular) {
+      const size = SCALES.width(1, '3em')
+      return (
+        <div
+          ref={ref}
+          className={`${styles.circular} ${className}`.trim()}
+          style={{
+            width: size,
+            height: size,
+            margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+            ...style
+          }}
+        >
+          <svg viewBox="0 0 36 36" width="100%" height="100%">
+            <circle
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              strokeWidth="3"
+              stroke={theme.palette.accents_2}
+            />
+            <circle
+              className={styles.arc}
+              cx="18"
+              cy="18"
+              r="16"
+              fill="none"
+              strokeWidth="3"
+              strokeLinecap="round"
+              stroke={currentColor}
+              pathLength={100}
+              strokeDasharray={`${percentValue} 100`}
+            >
+              <title>{`${percentValue}%`}</title>
+            </circle>
+          </svg>
+          {hidden}
+        </div>
+      )
+    }
+
+    const progressStyle: React.CSSProperties = {
+      backgroundColor: segments ? 'transparent' : theme.palette.accents_2,
+      borderRadius: theme.layout.radius,
+      width: SCALES.width(1, '100%'),
+      height: SCALES.height(0.625),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      top: fixed ? (fixedTop ? 0 : 'unset') : undefined,
+      bottom: fixed ? (fixedBottom ? 0 : 'unset') : undefined,
+      ...style
+    }
 
     return (
-      <div ref={ref} className={classes}>
-        <div className="inner" title={`${percentValue}%`} />
-        <progress className={className} value={value} max={max} {...props} />
-        <style jsx>{`
-          progress {
-            position: fixed;
-            top: -1000px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-          }
-
-          .progress {
-            position: relative;
-            background-color: ${theme.palette.accents_2};
-            border-radius: ${theme.layout.radius};
-            width: ${SCALES.width(1, '100%')};
-            height: ${SCALES.height(0.625)};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .fixed {
-            position: fixed;
-            top: ${fixedTop ? 0 : 'unset'};
-            bottom: ${fixedBottom ? 0 : 'unset'};
-            left: 0;
-            border-radius: 0;
-          }
-
-          .fixed > .inner {
-            border-radius: 0;
-          }
-
-          .inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            bottom: 0;
-            transition: all 100ms ease-in;
-            border-radius: ${theme.layout.radius};
-            background-color: ${currentColor};
-            width: ${percentValue}%;
-          }
-        `}</style>
+      <div ref={ref} className={classes} style={progressStyle}>
+        {segments ? (
+          <div className={styles.segments} title={`${percentValue}%`}>
+            {[...Array(Math.max(1, Math.floor(segments)))].map((_, index) => (
+              <span
+                key={index}
+                className={styles.segment}
+                style={{
+                  borderRadius: theme.layout.radius,
+                  backgroundColor:
+                    index < Math.round((percentValue / 100) * segments)
+                      ? currentColor
+                      : theme.palette.accents_2
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <div
+            className={styles.inner}
+            title={`${percentValue}%`}
+            style={{
+              borderRadius: theme.layout.radius,
+              backgroundColor: currentColor,
+              width: `${percentValue}%`
+            }}
+          />
+        )}
+        {hidden}
       </div>
     )
   }

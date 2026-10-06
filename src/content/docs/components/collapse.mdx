@@ -138,6 +138,31 @@ Display large amounts of text in collapsible sections. Commonly referred to as a
 `}
 />
 
+<Playground
+  title="Controlled and disabled"
+  desc="Pass `visible` and `onVisibleChange` to control a section. A section with `disabled` cannot be toggled."
+  scope={{ Collapse, Text, Grid }}
+  code={`
+() => {
+  const [visible, setVisible] = React.useState(true)
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Collapse title="Controlled" visible={visible} onVisibleChange={setVisible}>
+          <Text>The section is {visible ? 'open' : 'closed'}.</Text>
+        </Collapse>
+      </Grid>
+      <Grid>
+        <Collapse title="Disabled" disabled>
+          <Text>Nobody sees this.</Text>
+        </Collapse>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/collapse.mdx">
 <Attributes.Title>Collapse.Props</Attributes.Title>
 
@@ -146,6 +171,9 @@ Display large amounts of text in collapsible sections. Commonly referred to as a
 | **title**(required) | collapse title   | `string`         | -                                | -       |
 | **subtitle**        | description      | `string`         | -                                | -       |
 | **initialVisible**  | initial expanded | `boolean`        | -                                | `false` |
+| **visible**         | expanded, to control it | `boolean` | -                                | -       |
+| **onVisibleChange** | called with the next state when the header is clicked | `(visible: boolean) => void` | -  | -       |
+| **disabled**        | the section cannot be toggled | `boolean`   | -                                | `false` |
 | **shadow**          | show shadow card | `boolean`        | -                                | `false` |
 | ...                 | native props     | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
 
@@ -155,6 +183,10 @@ Display large amounts of text in collapsible sections. Commonly referred to as a
 | ------------- | -------------- | ---------------- | -------------------------------- | ------- |
 | **accordion** | accordion mode | `boolean`        | -                                | `true`  |
 | ...           | native props   | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The title is a heading with a real button inside, so a screen reader announces it as a heading and as a button that is expanded or collapsed, and `aria-controls` points at the content. Enter and Space toggle a section. In a `Collapse.Group`, the Up and Down arrows move focus between the titles, wrapping at the ends, and Home and End go to the first and the last. Disabled sections are skipped.
 
 </Attributes>
 

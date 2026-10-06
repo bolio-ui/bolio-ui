@@ -245,6 +245,31 @@ Used to trigger an operation.
 />
 
 <Playground
+  title="Spotlight"
+  desc="The `spotlight` prop adds a glow that follows the pointer on hover."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button spotlight auto>
+      Default
+    </Button>
+  </Grid>
+  <Grid>
+    <Button spotlight type="primary" auto>
+      Primary
+    </Button>
+  </Grid>
+  <Grid>
+    <Button spotlight ghost type="secondary" auto>
+      Ghost
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Rounded"
   desc="You can completely round the corners of any type of `Button` with the `rounded` property."
   scope={{ Button, Grid }}
@@ -391,6 +416,33 @@ Used to trigger an operation.
 `}
 />
 
+<Playground
+  title="Save with feedback"
+  desc="Show progress while the action runs and the result when it ends. The button is disabled after saving so it cannot run twice."
+  scope={{ Button, Grid }}
+  code={`
+() => {
+  const [state, setState] = React.useState('idle')
+  const save = () => {
+    setState('saving')
+    setTimeout(() => setState('saved'), 1500)
+  }
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Button auto type="primary" loading={state === 'saving'} disabled={state === 'saved'} onClick={save}>
+          {state === 'saved' ? 'Saved' : 'Save changes'}
+        </Button>
+      </Grid>
+      <Grid>
+        <Button auto onClick={() => setState('idle')}>Reset</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/components/button.mdx">
 <Attributes.Title>Button.Props</Attributes.Title>
 
@@ -404,6 +456,7 @@ Used to trigger an operation.
 | **shadow**    | display shadow                            | `boolean`                                       | -                           | `false`   |
 | **auto**      | autoscale width                           | `boolean`                                       | -                           | `false`   |
 | **effect**    | display animation                         | `boolean`                                       | -                           | `true`    |
+| **spotlight** | glow that follows the pointer on hover    | `boolean`                                       | -                           | `false`   |
 | **disabled**  | disable button                            | `boolean`                                       | -                           | `false`   |
 | **onClick**   | click handler                             | `MouseEventHandler`                             | -                           | -         |
 | **icon**      | show icon in button                       | `ReactNode`                                     | -                           | -         |

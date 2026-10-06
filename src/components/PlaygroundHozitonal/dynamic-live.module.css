@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+}
+
+.wrapper > :global(div) {
+  width: 100%;
+  background-color: transparent;
+}
+
+.wrapper > :global(.live-error) {
+  padding: 10px 12px 0 12px;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: var(--live-radius);
+  color: var(--live-error);
+  font-size: 12px;
+  background-color: var(--live-error-bg);
+  background-clip: padding-box;
+}

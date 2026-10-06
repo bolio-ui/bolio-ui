@@ -1,0 +1,115 @@
+.withLabel {
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-box-align: center;
+}
+
+.inputContainer {
+  display: inline-flex;
+  align-items: center;
+  height: var(--input-height);
+}
+
+.inputWrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+  user-select: none;
+  box-sizing: border-box;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background-color: var(--input-bg);
+  transition:
+    border 0.2s ease 0s,
+    color 0.2s ease 0s;
+  background-clip: padding-box;
+}
+
+.inputWrapper:hover {
+  border-color: var(--input-hover-border);
+  background-color: var(--input-hover-bg);
+}
+
+.inputWrapper.leftLabel {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.inputWrapper.rightLabel {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.inputWrapper.disabled {
+  cursor: not-allowed;
+}
+
+.input.disabled {
+  cursor: not-allowed;
+}
+
+.inputWrapper.hover {
+  border-color: var(--input-focus-border);
+}
+
+.input {
+  margin: 0.25em 0.625em;
+  padding: 0 4px;
+  box-shadow: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  width: 100%;
+  min-width: 0;
+  -webkit-appearance: none;
+}
+
+.input.leftIcon {
+  margin-left: 0;
+}
+
+.input.rightIcon {
+  margin-right: 0;
+}
+
+.input::placeholder,
+.input::-moz-placeholder,
+.input:-ms-input-placeholder,
+.input::-webkit-input-placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.input::-ms-reveal {
+  display: none !important;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:active,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px var(--input-autofill-bg) inset !important;
+  -webkit-text-fill-color: var(--input-color) !important;
+}
+
+.floating {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 4px;
+  color: var(--input-placeholder-color, inherit);
+  background-color: var(--input-floating-bg);
+  pointer-events: none;
+  transition:
+    top 0.15s ease,
+    transform 0.15s ease;
+}
+
+.input:focus ~ .floating,
+.input:not(:placeholder-shown) ~ .floating {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Popover, Link, useTheme } from 'core'
 import { ChevronDown, Check, ExternalLink } from '@bolio-ui/icons'
 import { currentVersion, versions } from 'src/data/versions'
+import styles from './VersionSelect.module.css'
 
 const VersionSelect: React.FC = () => {
   const theme = useTheme()
@@ -15,9 +16,16 @@ const VersionSelect: React.FC = () => {
             target={current ? undefined : '_blank'}
             aria-label={`Bolio UI ${label} documentation`}
           >
-            <span className="version">
+            <span
+              className={styles.version}
+              style={
+                {
+                  '--version-color': theme.palette.accents_5
+                } as React.CSSProperties
+              }
+            >
               <b>{label}</b>
-              <span className="version-number">v{version}</span>
+              <span className={styles.versionNumber}>v{version}</span>
               {current ? (
                 <Check fontSize={14} />
               ) : (
@@ -27,19 +35,6 @@ const VersionSelect: React.FC = () => {
           </Link>
         </Popover.Item>
       ))}
-      <style jsx>{`
-        .version {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          min-width: 180px;
-        }
-        .version-number {
-          flex: 1;
-          color: ${theme.palette.accents_5};
-          font-size: 0.875rem;
-        }
-      `}</style>
     </>
   )
 
@@ -49,7 +44,7 @@ const VersionSelect: React.FC = () => {
         auto
         scale={0.6}
         type="abort"
-        iconRight={<ChevronDown fontSize={14} />}
+        iconRight={<ChevronDown />}
         aria-label="Select documentation version"
       >
         v{currentVersion}

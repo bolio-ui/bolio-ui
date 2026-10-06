@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Modal, Button, Code, useModal, Grid } from 'core'
+import { Modal, Button, Code, useModal, Grid, Text } from 'core'
 import { useState } from 'react'
 
 export const meta = {
@@ -278,6 +278,47 @@ The Modal contain an additional Hooks, see subsection [useModal](/docs/hooks/use
           <Modal.Action>Accepted</Modal.Action>
         </Modal>
       </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Confirm a destructive action"
+  desc="Name the action on both buttons, say what is lost, and show progress on the one that runs it."
+  scope={{ Modal, Button, Grid, Text, useModal }}
+  code={`
+() => {
+  const { setVisible, bindings } = useModal()
+  const [deleting, setDeleting] = React.useState(false)
+  const [done, setDone] = React.useState(false)
+  const remove = () => {
+    setDeleting(true)
+    setTimeout(() => {
+      setDeleting(false)
+      setDone(true)
+      setVisible(false)
+    }, 1200)
+  }
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Button auto type="error" ghost onClick={() => { setDone(false); setVisible(true) }}>
+          Delete project
+        </Button>
+      </Grid>
+      <Grid>
+        {done && <Text small type="secondary">Project deleted.</Text>}
+      </Grid>
+      <Modal {...bindings}>
+        <Modal.Title>Delete this project?</Modal.Title>
+        <Modal.Content>
+          <p>All 14 files and 3 members lose access. This cannot be undone.</p>
+        </Modal.Content>
+        <Modal.Action passive onClick={() => setVisible(false)}>Keep project</Modal.Action>
+        <Modal.Action loading={deleting} onClick={remove}>Delete project</Modal.Action>
+      </Modal>
     </Grid.Container>
   )
 }

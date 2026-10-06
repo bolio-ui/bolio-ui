@@ -14,23 +14,20 @@ function Separator({ children, className = '' }: BreadcrumbsSeparatorProps) {
   const { SCALES } = useScale()
   const classes = useClasses('separator', className)
 
+  const separatorStyle: React.CSSProperties = {
+    display: 'inline-flex',
+    userSelect: 'none',
+    pointerEvents: 'none',
+    alignItems: 'center',
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto'),
+    padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0.5)} ${SCALES.mb(0)} ${SCALES.ml(0.5)}`
+  }
+
   return (
-    <div className={classes}>
+    <div className={classes} style={separatorStyle}>
       {children}
-      <style jsx>{`
-        .separator {
-          display: inline-flex;
-          user-select: none;
-          pointer-events: none;
-          align-items: center;
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-            ${SCALES.pl(0)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0.5)} ${SCALES.mb(0)}
-            ${SCALES.ml(0.5)};
-        }
-      `}</style>
     </div>
   )
 }

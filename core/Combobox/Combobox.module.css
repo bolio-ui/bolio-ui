@@ -1,0 +1,106 @@
+.combobox {
+  position: relative;
+  display: inline-block;
+  font-size: var(--combobox-font-size);
+  width: var(--combobox-width);
+  height: var(--combobox-height);
+  padding: var(--combobox-padding-top) var(--combobox-padding-right)
+    var(--combobox-padding-bottom) var(--combobox-padding-left);
+  margin: var(--combobox-margin-top) var(--combobox-margin-right)
+    var(--combobox-margin-bottom) var(--combobox-margin-left);
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 12.5em;
+  height: var(--combobox-input-height);
+  padding: 0 0.875em;
+  font: inherit;
+  color: var(--combobox-field-color);
+  background-color: var(--combobox-field-bg);
+  border: 1px solid var(--combobox-field-border);
+  border-radius: var(--combobox-radius);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+  background-clip: padding-box;
+}
+
+.input::placeholder {
+  color: var(--combobox-placeholder-color);
+}
+
+.input:hover {
+  border-color: var(--combobox-field-hover-border);
+  background-color: var(--combobox-field-hover-bg);
+}
+
+.input:focus {
+  border-color: var(--combobox-focus-border-color);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.list,
+.empty {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  box-sizing: border-box;
+  background-color: var(--combobox-bg);
+  border: 1px solid var(--combobox-border-color);
+  border-radius: var(--combobox-popup-radius);
+  box-shadow: var(--combobox-shadow);
+  background-clip: padding-box;
+}
+
+.list {
+  max-height: 15em;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25em;
+  list-style: none;
+}
+
+.option {
+  padding: 0.5em 0.75em;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--combobox-text-color);
+}
+
+.active {
+  background-color: var(--combobox-active-bg);
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: var(--combobox-empty-color);
+}
+
+.empty {
+  padding: 0.75em;
+  color: var(--combobox-empty-color);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

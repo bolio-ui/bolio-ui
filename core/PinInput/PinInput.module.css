@@ -1,0 +1,38 @@
+.pin {
+  display: inline-flex;
+  gap: 0.5em;
+  box-sizing: border-box;
+}
+
+.box {
+  box-sizing: border-box;
+  width: var(--pin-size);
+  height: var(--pin-size);
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  text-align: center;
+  color: var(--input-color);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  background-clip: padding-box;
+}
+
+.box:hover {
+  border-color: var(--input-hover-border);
+  background-color: var(--input-hover-bg);
+}
+
+.box:focus {
+  border-color: var(--input-focus-border);
+}
+
+.box:disabled {
+  cursor: not-allowed;
+}

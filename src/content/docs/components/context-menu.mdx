@@ -1,0 +1,125 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ContextMenu, Menu, Card, Text, Grid } from 'core'
+
+export const meta = {
+  title: 'Context Menu',
+  description:
+    'A menu of actions that opens at the pointer when the user right clicks an area.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 67
+}
+
+## Context Menu
+
+A menu of actions that opens at the pointer when the user right clicks an area.
+It is a <a href="/docs/components/menu">Menu</a> placed at the cursor, so it has
+the same items, submenus and keys.
+
+<Playground
+  desc="Wrap the area and pass the items in `content`. The area has to be focusable to open the menu from the keyboard, so give it `tabIndex={0}`."
+  scope={{ ContextMenu, Menu, Card }}
+  code={`
+<ContextMenu
+  tabIndex={0}
+  content={
+    <>
+      <Menu.Item shortcut="⌘C">Copy</Menu.Item>
+      <Menu.Item shortcut="⌘V">Paste</Menu.Item>
+      <Menu.Divider />
+      <Menu.Item type="error">Delete</Menu.Item>
+    </>
+  }
+>
+  <Card bordered style={{ minHeight: 140 }}>
+    Right click anywhere in this card
+  </Card>
+</ContextMenu>
+`}
+/>
+
+<Playground
+  title="Files"
+  desc="Give each row its own menu, with a submenu for the less common actions, and tell what happened."
+  scope={{ ContextMenu, Menu, Card, Text, Grid }}
+  code={`
+() => {
+  const [last, setLast] = React.useState('Right click a file.')
+  const files = ['Contract.pdf', 'Invoice.pdf', 'Photo.png']
+  return (
+    <Grid.Container direction="column" gap={1}>
+      <Grid>
+        <Card bordered width="100%">
+          {files.map((file) => (
+            <ContextMenu
+              key={file}
+              tabIndex={0}
+              style={{ padding: '6px 0' }}
+              content={
+                <>
+                  <Menu.Item onClick={() => setLast('Opened ' + file)}>Open</Menu.Item>
+                  <Menu.Item onClick={() => setLast('Renamed ' + file)}>Rename</Menu.Item>
+                  <Menu.Sub label="Share">
+                    <Menu.Item onClick={() => setLast('Emailed ' + file)}>Email</Menu.Item>
+                    <Menu.Item onClick={() => setLast('Copied the link to ' + file)}>Copy link</Menu.Item>
+                  </Menu.Sub>
+                  <Menu.Divider />
+                  <Menu.Item type="error" onClick={() => setLast('Deleted ' + file)}>Delete</Menu.Item>
+                </>
+              }
+            >
+              <Text my={0}>{file}</Text>
+            </ContextMenu>
+          ))}
+        </Card>
+      </Grid>
+      <Grid>
+        <Text small type="secondary">{last}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="With `disabled`, a right click opens the menu of the browser, as if there were no Context Menu."
+  scope={{ ContextMenu, Menu, Card }}
+  code={`
+<ContextMenu disabled content={<Menu.Item>Never shown</Menu.Item>}>
+  <Card bordered>The menu of the browser opens here</Card>
+</ContextMenu>
+`}
+/>
+
+<Attributes edit="/content/docs/components/context-menu.mdx">
+<Attributes.Title>ContextMenu.Props</Attributes.Title>
+
+| Attribute           | Description                                                     | Type                         | Accepted values                          | Default |
+| ------------------- | --------------------------------------------------------------- | ---------------------------- | ---------------------------------------- | ------- |
+| **content**         | the items of the menu                                           | `ReactNode`                  | `Menu.Item`, `Menu.Sub`, `Menu.Divider`, ... | -       |
+| **disabled**        | leave the right click to the browser                            | `boolean`                    | -                                        | `false` |
+| **onVisibleChange** | called with `true` when the menu opens and `false` when it closes | `(visible: boolean) => void` | -                                        | -       |
+| ...                 | native props, passed to the area `div`                          | `HTMLAttributes`             | `'tabIndex', 'id', 'style', ...`         | -       |
+
+<Attributes.Title>Behavior</Attributes.Title>
+
+- • **Position**: the menu opens at the pointer and flips to the other side when there is no room.
+- • **Another right click** moves the menu to the new point.
+- • **Closing**: choosing an item, Escape, a click outside and a scroll of the page all close it. The focus goes back to the area.
+- • **Items** are the ones of <a href="/docs/components/menu">Menu</a>, with the same keys: arrows, Home, End, Enter, Space and the first letters.
+- • **onContextMenu**: a handler you pass to the area runs first, and calling `preventDefault` there keeps the menu closed.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the area `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The right click is not the only way in. The keyboard opens a context menu with Shift and F10, or with the menu key, on a focused element, and the browser sends the same event with the position of that element. For that, the area, or something inside it, has to be focusable: use `tabIndex={0}` on the area when it has nothing focusable. The menu is a `menu` with `menuitem` children, as in Menu. Touch screens have no right click, so keep a visible way to reach the same actions, like a button with a Menu.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

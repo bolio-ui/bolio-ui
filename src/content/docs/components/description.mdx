@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Description, Code, Grid } from 'core'
+import { Description, Code, Grid, Card, Badge } from 'core'
 
 export const meta = {
   title: 'Description',
@@ -43,6 +43,30 @@ Display brief information with a title and description.
     />
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Account details"
+  desc="Lay several `Description` items in a grid to show the fields of a record."
+  scope={{ Description, Grid, Card, Badge }}
+  code={`
+<Card bordered width="100%">
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={6}>
+      <Description title="Owner" content="Ada Lovelace" />
+    </Grid>
+    <Grid xs={12} md={6}>
+      <Description title="Email" content="ada@example.com" />
+    </Grid>
+    <Grid xs={12} md={6}>
+      <Description title="Plan" content={<Badge type="primary">Pro</Badge>} />
+    </Grid>
+    <Grid xs={12} md={6}>
+      <Description title="Renews on" content="Nov 3, 2026" />
+    </Grid>
+  </Grid.Container>
+</Card>
 `}
 />
 

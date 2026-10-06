@@ -1,43 +1,40 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { BolioUIThemesPalette } from '../Themes'
+import React, { useId, useState } from 'react'
 import { NormalTypes } from '../utils/prop-types'
 import RatingIcon from './RatingIcon'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
-import useClasses, { joinClasses } from '../use-classes'
+import { joinClasses } from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Rating.module.css'
 
 export type RatingTypes = NormalTypes
-export type RatingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-export type RatingCount = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+// how the empty icons look: only the outline, or filled with a soft color
+export type RatingVariants = 'outline' | 'filled'
+export type RatingPrecision = 1 | 0.5
 
 interface Props {
   type?: RatingTypes
+  variant?: RatingVariants
   className?: string
-  icon?: React.JSX.Element
-  count?: RatingCount | number
-  value?: RatingValue | number
-  initialValue?: RatingValue
-  onValueChange?: (value: number) => void
-  locked?: boolean
-  onLockedChange?: (locked: boolean) => void
+  icon?: React.ReactNode
+  emptyIcon?: React.ReactNode
+  count?: number
+  value?: number
+  initialValue?: number
+  onChange?: (value: number) => void
+  onHoverChange?: (value: number | null) => void
+  precision?: RatingPrecision
+  readOnly?: boolean
+  disabled?: boolean
+  clearable?: boolean
+  highlightSelectedOnly?: boolean
+  getLabel?: (value: number, count: number) => string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type RatingProps = Props & NativeAttrs
 
-const getColor = (type: RatingTypes, palette: BolioUIThemesPalette): string => {
-  const colors: { [key in RatingTypes]?: string } = {
-    default: palette.accents_6,
-    primary: palette.primary,
-    secondary: palette.secondary,
-    success: palette.success,
-    warning: palette.warning,
-    error: palette.error,
-    info: palette.info
-  }
-  return colors[type] || (colors.default as string)
-}
+const defaultGetLabel = (value: number, count: number) => `${value} of ${count}`
 
 const RatingComponent = React.forwardRef<
   HTMLDivElement,
@@ -46,147 +43,172 @@ const RatingComponent = React.forwardRef<
   (
     {
       type = 'default' as RatingTypes,
+      variant = 'outline' as RatingVariants,
       className = '',
-      icon = (<RatingIcon />) as React.JSX.Element,
-      count = 5 as RatingCount,
+      icon = <RatingIcon />,
+      emptyIcon,
+      count = 5,
       value: customValue,
-      initialValue = 1 as RatingValue,
-      onValueChange,
-      locked = false,
-      onLockedChange,
+      initialValue = 0,
+      onChange,
+      onHoverChange,
+      precision = 1 as RatingPrecision,
+      readOnly = false,
+      disabled = false,
+      clearable = false,
+      highlightSelectedOnly = false,
+      getLabel = defaultGetLabel,
+      style,
       ...props
     },
     ref
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const name = useId()
 
-    const color = useMemo(
-      () => getColor(type, theme.palette),
-      [type, theme.palette]
+    const [selfValue, setSelfValue] = useState(initialValue)
+    const [hovered, setHovered] = useState<number | null>(null)
+
+    const round = (next: number) =>
+      Math.min(Math.max(Math.round(next / precision) * precision, 0), count)
+    const value = round(customValue !== undefined ? customValue : selfValue)
+    const shown = hovered ?? value
+    const interactive = !readOnly && !disabled
+
+    const palette = theme.palette
+    const colors: { [key in RatingTypes]: string } = {
+      default: palette.warning,
+      primary: palette.primary,
+      secondary: palette.secondary,
+      success: palette.success,
+      warning: palette.warning,
+      error: palette.error,
+      info: palette.info
+    }
+
+    const commit = (next: number) => {
+      if (customValue === undefined) setSelfValue(next)
+      if (onChange) onChange(next)
+    }
+
+    const hover = (next: number | null) => {
+      if (next === hovered) return
+      setHovered(next)
+      if (onHoverChange) onHoverChange(next)
+    }
+
+    const fillOf = (index: number) => {
+      if (highlightSelectedOnly) return Math.ceil(shown) === index ? 1 : 0
+      return Math.min(Math.max(shown - (index - 1), 0), 1)
+    }
+
+    const steps = precision === 0.5 ? [0.5, 1] : [1]
+
+    const ratingStyle = {
+      '--rating-font-size': SCALES.font(1),
+      '--rating-color': colors[type] || colors.default,
+      '--rating-empty-color':
+        variant === 'filled' ? palette.accents_2 : palette.accents_4,
+      '--rating-empty-fill': variant === 'filled' ? 'currentColor' : 'none',
+      '--rating-focus-outline': palette.primary,
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    } as React.CSSProperties
+
+    const items = Array.from({ length: count }, (_, index) => index + 1)
+    const layers = (index: number) => (
+      <>
+        <span className={joinClasses(styles.layer, styles.empty)}>
+          {emptyIcon ?? icon}
+        </span>
+        <span
+          className={joinClasses(styles.layer, styles.filled)}
+          style={{ clipPath: `inset(0 ${(1 - fillOf(index)) * 100}% 0 0)` }}
+        >
+          {icon}
+        </span>
+      </>
     )
-    const [value, setValue] = useState<number>(initialValue)
-    const [isLocked, setIsLocked] = useState<boolean>(locked)
 
-    const lockedChangeHandler = (next: boolean) => {
-      setIsLocked(next)
-      if (onLockedChange) onLockedChange(next)
+    if (!interactive) {
+      return (
+        <div
+          ref={ref}
+          role="img"
+          aria-label={getLabel(value, count)}
+          aria-disabled={disabled || undefined}
+          className={joinClasses(
+            styles.rating,
+            { [styles.disabled]: disabled },
+            className
+          )}
+          {...props}
+          style={ratingStyle}
+        >
+          {items.map((index) => (
+            <span key={index} className={styles.item} aria-hidden="true">
+              {layers(index)}
+            </span>
+          ))}
+        </div>
+      )
     }
-
-    const valueChangeHandler = (next: number) => {
-      setValue(next)
-      const emitValue = next > count ? count : next
-      if (onValueChange) onValueChange(emitValue)
-    }
-
-    const clickHandler = (index: number) => {
-      if (isLocked) return lockedChangeHandler(false)
-      valueChangeHandler(index)
-      lockedChangeHandler(true)
-    }
-
-    const mouseEnterHandler = (index: number) => {
-      if (isLocked) return
-      valueChangeHandler(index)
-    }
-
-    // the checked star is the one in the tab order; with no value, the first
-    const focusIndex = value >= 1 && value <= count ? value : 1
-
-    const keyDownHandler = (
-      event: React.KeyboardEvent<HTMLDivElement>,
-      index: number
-    ) => {
-      const nextByKey: Record<string, number> = {
-        ArrowRight: index + 1,
-        ArrowUp: index + 1,
-        ArrowLeft: index - 1,
-        ArrowDown: index - 1,
-        Home: 1,
-        End: count
-      }
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        return clickHandler(index)
-      }
-      if (!(event.key in nextByKey)) return
-      event.preventDefault()
-      const next = Math.min(Math.max(nextByKey[event.key], 1), count)
-      valueChangeHandler(next)
-      lockedChangeHandler(true)
-      const radios =
-        event.currentTarget.parentElement?.querySelectorAll<HTMLElement>(
-          '[role="radio"]'
-        )
-      radios?.[next - 1]?.focus()
-    }
-
-    useEffect(() => {
-      if (typeof customValue === 'undefined') return
-      setValue(customValue < 0 ? 0 : customValue)
-    }, [customValue])
 
     return (
       <div
         ref={ref}
         role="radiogroup"
-        className={useClasses('rating', className)}
+        className={joinClasses(styles.rating, className)}
+        onMouseLeave={() => hover(null)}
         {...props}
+        style={ratingStyle}
       >
-        {[...Array(count)].map((_, index) => (
-          <div
-            className={joinClasses('icon-box', {
-              hovered: index + 1 <= value
+        <input
+          type="radio"
+          className={styles.input}
+          name={name}
+          value={0}
+          checked={value === 0}
+          aria-label={getLabel(0, count)}
+          onChange={() => commit(0)}
+        />
+        {items.map((index) => (
+          <span key={index} className={styles.item}>
+            {layers(index)}
+            {steps.map((step) => {
+              const stepValue = index - 1 + step
+              return (
+                <label
+                  key={step}
+                  className={joinClasses(styles.hit, {
+                    [styles.half]: precision === 0.5 && step === 0.5,
+                    [styles.full]: precision === 0.5 && step === 1
+                  })}
+                  onMouseEnter={() => hover(stepValue)}
+                >
+                  <input
+                    type="radio"
+                    className={styles.input}
+                    name={name}
+                    value={stepValue}
+                    checked={value === stepValue}
+                    aria-label={getLabel(stepValue, count)}
+                    onChange={() => commit(stepValue)}
+                    onClick={() => {
+                      if (clearable && value === stepValue) commit(0)
+                    }}
+                    onFocus={() => hover(stepValue)}
+                    onBlur={() => hover(null)}
+                  />
+                </label>
+              )
             })}
-            key={index}
-            role="radio"
-            aria-checked={index + 1 === value}
-            aria-label={`${index + 1} of ${count}`}
-            tabIndex={index + 1 === focusIndex ? 0 : -1}
-            onKeyDown={(event) => keyDownHandler(event, index + 1)}
-            onMouseEnter={() => mouseEnterHandler(index + 1)}
-            onClick={() => clickHandler(index + 1)}
-          >
-            {icon}
-          </div>
+          </span>
         ))}
-        <style jsx>{`
-          .rating {
-            box-sizing: border-box;
-            display: inline-flex;
-            align-items: center;
-            --rating-font-size: ${SCALES.font(1)};
-            font-size: var(--rating-font-size);
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .icon-box {
-            box-sizing: border-box;
-            color: ${color};
-            width: calc(var(--rating-font-size) * 1.5);
-            height: calc(var(--rating-font-size) * 1.5);
-            margin-right: calc(var(--rating-font-size) * 1 / 5);
-            cursor: ${isLocked ? 'default' : 'pointer'};
-          }
-          .icon-box :global(svg) {
-            width: 100%;
-            height: 100%;
-            fill: transparent;
-            transform: scale(1);
-            transition:
-              transform,
-              color,
-              fill 30ms linear;
-          }
-          .hovered :global(svg) {
-            fill: ${color};
-            transform: scale(0.9);
-          }
-        `}</style>
       </div>
     )
   }

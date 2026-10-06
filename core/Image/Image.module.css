@@ -1,0 +1,10 @@
+.image {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.img {
+  object-fit: scale-down;
+  display: inline-block;
+}

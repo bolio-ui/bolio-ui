@@ -9,8 +9,8 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
-    name: 'Migrating to v2',
-    url: '/docs/guide/migration-v1-to-v2'
+    name: 'Migrating to v3',
+    url: '/docs/guide/migration-v2-to-v3'
   },
   {
     name: 'Refs and accessibility',
@@ -80,6 +80,10 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Overview',
+    url: '/docs/components/overview'
+  },
+  {
     name: 'Avatar',
     url: '/docs/components/avatar'
   },
@@ -93,11 +97,13 @@ export const components = [
   },
   {
     name: 'Button',
-    url: '/docs/components/button'
+    url: '/docs/components/button',
+    tag: 'Updated'
   },
   {
     name: 'Button Dropdown',
-    url: '/docs/components/button-dropdown'
+    url: '/docs/components/button-dropdown',
+    tag: 'Updated'
   },
   {
     name: 'Button Group',
@@ -105,7 +111,8 @@ export const components = [
   },
   {
     name: 'Calendar',
-    url: '/docs/components/calendar'
+    url: '/docs/components/calendar',
+    tag: 'Updated'
   },
   {
     name: 'Capacity',
@@ -114,6 +121,11 @@ export const components = [
   {
     name: 'Card',
     url: '/docs/components/card'
+  },
+  {
+    name: 'Carousel',
+    url: '/docs/components/carousel',
+    tag: 'New'
   },
   {
     name: 'Checkbox',
@@ -129,19 +141,44 @@ export const components = [
   },
   {
     name: 'Collapse',
-    url: '/docs/components/collapse'
+    url: '/docs/components/collapse',
+    tag: 'Updated'
+  },
+  {
+    name: 'Color Input',
+    url: '/docs/components/color-input',
+    tag: 'New'
+  },
+  {
+    name: 'Color Picker',
+    url: '/docs/components/color-picker',
+    tag: 'New'
   },
   {
     name: 'Combobox',
     url: '/docs/components/combobox'
   },
   {
+    name: 'Command',
+    url: '/docs/components/command'
+  },
+  {
     name: 'Container',
     url: '/docs/components/container'
   },
   {
+    name: 'Context Menu',
+    url: '/docs/components/context-menu',
+    tag: 'New'
+  },
+  {
     name: 'DatePicker',
     url: '/docs/components/date-picker'
+  },
+  {
+    name: 'DateRangePicker',
+    url: '/docs/components/date-range-picker',
+    tag: 'New'
   },
   {
     name: 'Description',
@@ -162,6 +199,16 @@ export const components = [
   {
     name: 'Drawer',
     url: '/docs/components/drawer'
+  },
+  {
+    name: 'Empty State',
+    url: '/docs/components/empty-state',
+    tag: 'New'
+  },
+  {
+    name: 'Dropzone',
+    url: '/docs/components/dropzone',
+    tag: 'New'
   },
   {
     name: 'Fieldset',
@@ -196,6 +243,11 @@ export const components = [
     url: '/docs/components/loading'
   },
   {
+    name: 'Marquee',
+    url: '/docs/components/marquee',
+    tag: 'New'
+  },
+  {
     name: 'Menu',
     url: '/docs/components/menu'
   },
@@ -220,6 +272,11 @@ export const components = [
     url: '/docs/components/pagination'
   },
   {
+    name: 'Pin Input',
+    url: '/docs/components/pin-input',
+    tag: 'New'
+  },
+  {
     name: 'Popover',
     url: '/docs/components/popover'
   },
@@ -229,7 +286,8 @@ export const components = [
   },
   {
     name: 'Radio',
-    url: '/docs/components/radio'
+    url: '/docs/components/radio',
+    tag: 'Updated'
   },
   {
     name: 'Rating',
@@ -238,6 +296,11 @@ export const components = [
   {
     name: 'Row',
     url: '/docs/components/row'
+  },
+  {
+    name: 'Segmented Control',
+    url: '/docs/components/segmented-control',
+    tag: 'New'
   },
   {
     name: 'Select',
@@ -268,6 +331,11 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Stat',
+    url: '/docs/components/stat',
+    tag: 'New'
+  },
+  {
     name: 'Stepper',
     url: '/docs/components/stepper'
   },
@@ -284,6 +352,16 @@ export const components = [
     url: '/docs/components/tag'
   },
   {
+    name: 'Timeline',
+    url: '/docs/components/timeline',
+    tag: 'New'
+  },
+  {
+    name: 'Tags Input',
+    url: '/docs/components/tags-input',
+    tag: 'New'
+  },
+  {
     name: 'Text',
     url: '/docs/components/text'
   },
@@ -298,6 +376,11 @@ export const components = [
   {
     name: 'Tooltip',
     url: '/docs/components/tooltip'
+  },
+  {
+    name: 'Tree',
+    url: '/docs/components/tree',
+    tag: 'New'
   }
 ]
 

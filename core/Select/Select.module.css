@@ -1,0 +1,88 @@
+.select {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  cursor: var(--select-cursor);
+  max-width: 90vw;
+  overflow: hidden;
+  transition:
+    border 150ms ease-in 0s,
+    color 200ms ease-out 0s,
+    box-shadow 200ms ease 0s;
+  border: 1px solid var(--select-border-color);
+  border-radius: var(--select-radius);
+  background-color: var(--select-bg-color);
+  min-width: 12.5em;
+  width: var(--select-width);
+  height: var(--select-height);
+  padding: var(--select-padding-top) var(--select-padding-right)
+    var(--select-padding-bottom) var(--select-padding-left);
+  margin: var(--select-margin-top) var(--select-margin-right)
+    var(--select-margin-bottom) var(--select-margin-left);
+  background-clip: padding-box;
+}
+
+.multiple {
+  height: auto;
+  min-height: var(--select-height);
+  padding: var(--select-multiple-padding-top) var(--select-padding-right)
+    var(--select-multiple-padding-top) var(--select-padding-left);
+}
+
+.select:hover {
+  border-color: var(--select-hover-border);
+  background-color: var(--select-hover-bg-color);
+}
+
+.select.active {
+  border-color: var(--select-focus-border);
+}
+
+.select.active .icon,
+.select:hover .icon {
+  color: var(--select-color);
+}
+
+.value {
+  display: inline-flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  line-height: 1;
+  padding: 0;
+  margin-right: 1.25em;
+  font-size: var(--select-font-size);
+  color: var(--select-color);
+  width: calc(100% - 1.25em);
+}
+
+.value > :global(div),
+.value > :global(div:hover) {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.placeholder {
+  color: var(--select-placeholder-color);
+  font-size: var(--select-placeholder-font-size);
+}
+
+.icon {
+  position: absolute;
+  right: var(--select-icon-right);
+  font-size: var(--select-font-size);
+  top: 50%;
+  bottom: 0;
+  transform: translateY(-50%) rotate(var(--select-icon-rotate));
+  pointer-events: none;
+  transition: transform 200ms ease;
+  display: flex;
+  align-items: center;
+  color: var(--select-icon-color);
+}

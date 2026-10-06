@@ -1,0 +1,14 @@
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+@media (max-width: 899px) {
+  .center,
+  .right {
+    text-align: left;
+  }
+}

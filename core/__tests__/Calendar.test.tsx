@@ -241,3 +241,187 @@ describe('<DatePicker />', () => {
     expect(screen.getByRole('button', { name: 'Choose date' })).toBeDisabled()
   })
 })
+
+describe('<Calendar /> modes and options', () => {
+  const jan = new Date(2026, 0, 15)
+
+  it('toggles days in multiple mode and respects maxSelected', () => {
+    const onChange = jest.fn()
+    wrap(
+      <Calendar
+        mode="multiple"
+        defaultMonth={jan}
+        maxSelected={2}
+        onChange={onChange}
+      />
+    )
+    fireEvent.click(day(/January 20, 2026/))
+    fireEvent.click(day(/January 10, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([
+      new Date(2026, 0, 10),
+      new Date(2026, 0, 20)
+    ])
+    fireEvent.click(day(/January 25, 2026/))
+    expect(onChange).toHaveBeenCalledTimes(2)
+    fireEvent.click(day(/January 10, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([new Date(2026, 0, 20)])
+  })
+
+  it('picks a start and an end in range mode', () => {
+    const onChange = jest.fn()
+    wrap(<Calendar mode="range" defaultMonth={jan} onChange={onChange} />)
+    fireEvent.click(day(/January 10, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([new Date(2026, 0, 10), null])
+    fireEvent.click(day(/January 14, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([
+      new Date(2026, 0, 10),
+      new Date(2026, 0, 14)
+    ])
+    expect(day(/January 12, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+    fireEvent.click(day(/January 20, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([new Date(2026, 0, 20), null])
+  })
+
+  it('disables days with shouldDisableDate', () => {
+    const onChange = jest.fn()
+    wrap(
+      <Calendar
+        defaultMonth={jan}
+        onChange={onChange}
+        shouldDisableDate={(date) => date.getDay() === 0}
+      />
+    )
+    expect(day(/January 18, 2026/)).toBeDisabled()
+    expect(day(/January 19, 2026/)).toBeEnabled()
+  })
+
+  it('shows days of the neighbor months and goes to them when picked', () => {
+    wrap(<Calendar defaultMonth={jan} showOutsideDays />)
+    // January 2026 starts on a Thursday: 4 leading days from December
+    fireEvent.click(day(/December 28, 2025/))
+    expect(screen.getByRole('grid')).toHaveAccessibleName('December 2025')
+  })
+
+  it('shows ISO week numbers', () => {
+    wrap(<Calendar defaultMonth={jan} weekStartsOn={1} showWeekNumbers />)
+    expect(screen.getByRole('rowheader', { name: 'Week 3' })).toHaveTextContent(
+      '3'
+    )
+  })
+
+  it('reports and follows the visible month', () => {
+    const onMonthChange = jest.fn()
+    const { rerender } = wrap(
+      <Calendar month={jan} onMonthChange={onMonthChange} />
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Next month' }))
+    expect(onMonthChange).toHaveBeenCalledWith(new Date(2026, 1, 1))
+    rerender(
+      <BolioUIProvider>
+        <Calendar month={new Date(2026, 5, 1)} onMonthChange={onMonthChange} />
+      </BolioUIProvider>
+    )
+    expect(screen.getByRole('grid')).toHaveAccessibleName('June 2026')
+  })
+})
+
+describe('<Calendar /> numberOfMonths', () => {
+  const jan = new Date(2026, 0, 1)
+
+  it('shows consecutive months, each a named grid, with one tab stop', () => {
+    wrap(<Calendar numberOfMonths={2} defaultMonth={jan} />)
+    const grids = screen.getAllByRole('grid')
+    expect(grids).toHaveLength(2)
+    expect(grids[0]).toHaveAccessibleName('January 2026')
+    expect(grids[1]).toHaveAccessibleName('February 2026')
+    const stops = screen
+      .getAllByRole('button', { name: /2026$/ })
+      .filter((button) => button.getAttribute('tabindex') === '0')
+    expect(stops).toHaveLength(1)
+  })
+
+  it('has one previous button before the first month and one next after the last', () => {
+    wrap(<Calendar numberOfMonths={2} defaultMonth={jan} />)
+    expect(
+      screen.getAllByRole('button', { name: 'Previous month' })
+    ).toHaveLength(1)
+    expect(screen.getAllByRole('button', { name: 'Next month' })).toHaveLength(
+      1
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Next month' }))
+    const grids = screen.getAllByRole('grid')
+    expect(grids[0]).toHaveAccessibleName('February 2026')
+    expect(grids[1]).toHaveAccessibleName('March 2026')
+    fireEvent.click(screen.getByRole('button', { name: 'Previous month' }))
+    expect(screen.getAllByRole('grid')[0]).toHaveAccessibleName('January 2026')
+  })
+
+  it('moves the focus into the second month and shifts the view past it', () => {
+    wrap(
+      <Calendar numberOfMonths={2} value={new Date(2026, 0, 31)} autoFocus />
+    )
+    const last = day(/January 31, 2026/)
+    expect(last).toHaveFocus()
+    fireEvent.keyDown(last, { key: 'ArrowRight' })
+    expect(day(/February 1, 2026/)).toHaveFocus()
+    expect(screen.getAllByRole('grid')[0]).toHaveAccessibleName('January 2026')
+    fireEvent.keyDown(day(/February 1, 2026/), { key: 'PageDown' })
+    fireEvent.keyDown(day(/March 1, 2026/), { key: 'PageDown' })
+    expect(day(/April 1, 2026/)).toHaveFocus()
+    expect(screen.getAllByRole('grid')[1]).toHaveAccessibleName('April 2026')
+  })
+
+  it('selects a range that crosses the months and highlights both sides', () => {
+    const onChange = jest.fn()
+    wrap(
+      <Calendar
+        mode="range"
+        numberOfMonths={2}
+        defaultMonth={jan}
+        onChange={onChange}
+      />
+    )
+    fireEvent.click(day(/January 30, 2026/))
+    fireEvent.click(day(/February 3, 2026/))
+    expect(onChange).toHaveBeenLastCalledWith([
+      new Date(2026, 0, 30),
+      new Date(2026, 1, 3)
+    ])
+    expect(day(/January 31, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+    expect(day(/February 2, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+  })
+
+  it('previews the range in the other month while hovering', () => {
+    wrap(<Calendar mode="range" numberOfMonths={2} defaultMonth={jan} />)
+    fireEvent.click(day(/January 30, 2026/))
+    fireEvent.mouseEnter(day(/February 4, 2026/))
+    expect(day(/February 2, 2026/).closest('td')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
+  })
+
+  it('reports the first month and hides the neighbor days', () => {
+    const onMonthChange = jest.fn()
+    wrap(
+      <Calendar
+        numberOfMonths={2}
+        showOutsideDays
+        defaultMonth={jan}
+        onMonthChange={onMonthChange}
+      />
+    )
+    expect(screen.getAllByRole('button', { name: /2026$/ })).toHaveLength(59)
+    fireEvent.click(screen.getByRole('button', { name: 'Next month' }))
+    expect(onMonthChange).toHaveBeenCalledWith(new Date(2026, 1, 1))
+  })
+})

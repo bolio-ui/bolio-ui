@@ -1,7 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-/// <reference types="styled-jsx/global" />
-
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
@@ -31,13 +27,16 @@ export { default as ButtonGroup } from './ButtonGroup'
 export type { ButtonGroupProps } from './ButtonGroup'
 
 export { default as Calendar } from './Calendar'
-export type { CalendarProps } from './Calendar'
+export type { CalendarProps, DateRange } from './Calendar'
 
 export { default as Capacity } from './Capacity'
 export type { CapacityProps } from './Capacity'
 
 export { default as Card } from './Card'
 export type { CardProps, CardContentProps, CardFooterProps } from './Card'
+
+export { default as Carousel } from './Carousel'
+export type { CarouselProps } from './Carousel'
 
 export { default as Checkbox } from './Checkbox'
 export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
@@ -51,6 +50,12 @@ export type { ColProps } from './Col'
 export { default as Collapse } from './Collapse'
 export type { CollapseProps, CollapseGroupProps } from './Collapse'
 
+export { default as ColorInput } from './ColorInput'
+export type { ColorInputProps } from './ColorInput'
+
+export { default as ColorPicker } from './ColorPicker'
+export type { ColorPickerProps } from './ColorPicker'
+
 export { default as Combobox } from './Combobox'
 export type { ComboboxProps, ComboboxOption } from './Combobox'
 
@@ -59,6 +64,9 @@ export type { ContainerProps } from './Container'
 
 export { default as DatePicker } from './DatePicker'
 export type { DatePickerProps } from './DatePicker'
+
+export { default as DateRangePicker } from './DateRangePicker'
+export type { DateRangePickerProps } from './DateRangePicker'
 
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
@@ -72,8 +80,18 @@ export type { DividerProps } from './Divider'
 export { default as Dot } from './Dot'
 export type { DotProps } from './Dot'
 
+export { default as EmptyState } from './EmptyState'
+export type { EmptyStateProps } from './EmptyState'
+
 export { default as Drawer } from './Drawer'
 export type { DrawerProps } from './Drawer'
+
+export { default as Dropzone } from './Dropzone'
+export type {
+  DropzoneProps,
+  FileRejection,
+  FileRejectionReason
+} from './Dropzone'
 
 export { default as Fieldset } from './Fieldset'
 export type {
@@ -145,6 +163,9 @@ export type {
   PaginationPreviousProps
 } from './Pagination'
 
+export { default as PinInput } from './PinInput'
+export type { PinInputProps } from './PinInput'
+
 export { default as Popover } from './Popover'
 export type { PopoverProps, PopoverItemProps } from './Popover'
 
@@ -159,13 +180,25 @@ export type {
 } from './Radio'
 
 export { default as Rating } from './Rating'
-export type { RatingProps } from './Rating'
+export type {
+  RatingProps,
+  RatingTypes,
+  RatingVariants,
+  RatingPrecision
+} from './Rating'
 
 export { default as Row } from './Row'
 export type { RowProps } from './Row'
 
 export { default as Section } from './Section'
 export type { SectionProps } from './Section'
+
+export { default as SegmentedControl } from './SegmentedControl'
+export type {
+  SegmentedControlProps,
+  SegmentedControlItemProps,
+  SegmentedControlValue
+} from './SegmentedControl'
 
 export { default as Select } from './Select'
 export type { SelectProps, SelectOptionProps } from './Select'
@@ -201,6 +234,9 @@ export type { TabsProps } from './Tabs'
 export { default as Tag } from './Tag'
 export type { TagProps } from './Tag'
 
+export { default as TagsInput } from './TagsInput'
+export type { TagsInputProps } from './TagsInput'
+
 export { default as Text } from './Text'
 export type { TextProps } from './Text'
 
@@ -209,6 +245,9 @@ export type { TextareaProps } from './Textarea'
 
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
+
+export { default as Tree } from './Tree'
+export type { TreeProps, TreeNodeData } from './Tree'
 
 export { default as Toggle } from './Toggle'
 export type { ToggleProps } from './Toggle'
@@ -239,6 +278,9 @@ export { default as useModal } from './use-modal'
 export { default as useTabs } from './use-tabs'
 export { default as useClickAway } from './use-click-away'
 export { default as useCurrentState } from './use-current-state'
+export { default as ContextMenu } from './ContextMenu'
+export type { ContextMenuProps } from './ContextMenu'
+
 export { default as CssBaseline } from './CssBaseline'
 export { default as useTheme } from './use-theme'
 export { default as useClasses } from './use-classes'
@@ -255,3 +297,15 @@ export { useRect } from './utils/layouts'
 export type { ReactiveDomReact } from './utils/layouts'
 export { default as Highlight } from './Shared/highlight'
 export type { HighlightProps } from './Shared/highlight'
+
+export { default as Marquee } from './Marquee'
+export type { MarqueeProps } from './Marquee'
+
+export { default as Stat } from './Stat'
+export type { StatProps } from './Stat'
+
+export { default as Timeline } from './Timeline'
+export type { TimelineProps, TimelineItemProps } from './Timeline'
+
+export { default as Command } from './Command'
+export type { CommandProps, CommandItem } from './Command'

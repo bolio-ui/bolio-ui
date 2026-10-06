@@ -53,3 +53,38 @@ export const Disabled: StoryFn = () => (
     </Grid>
   </Grid.Container>
 )
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <Combobox
+            type={type}
+            placeholder={`${type} ${variant}`}
+            options={[{ value: 'react' }]}
+            {...{ [variant]: true }}
+          />
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <Combobox
+        type="primary"
+        filled
+        disabled
+        placeholder="Disabled"
+        options={[]}
+      />
+    </Grid>
+  </Grid.Container>
+)

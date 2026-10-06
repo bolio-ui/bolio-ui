@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale from '../use-scale'
 import { MenuContext, MenuListContext } from './MenuContext'
+import { joinClasses } from '../use-classes'
+import styles from './MenuList.module.css'
 
 export type MenuFocus = 'first' | 'last' | 'list'
 
@@ -121,6 +123,15 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
     if (isCharacter) typeahead(event.key, items, index)
   }
 
+  const listStyle = {
+    '--menu-list-font-size': SCALES.font(0.875),
+    '--menu-list-color': theme.palette.foreground,
+    '--menu-list-bg': theme.palette.background,
+    '--menu-list-border-color': theme.palette.border,
+    '--menu-list-radius': theme.layout.radius,
+    '--menu-list-shadow': theme.expressiveness.shadowMedium
+  } as React.CSSProperties
+
   return (
     <MenuListContext.Provider value={{ openSub, setOpenSub }}>
       <div
@@ -130,31 +141,11 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
         tabIndex={-1}
         aria-labelledby={labelledBy}
         aria-orientation="vertical"
-        className={`menu-list ${isSub ? 'sub' : ''} ${className}`}
+        className={joinClasses(styles.menuList, isSub && styles.sub, className)}
         onKeyDown={keyDownHandler}
+        style={listStyle}
       >
         {children}
-        <style jsx>{`
-          .menu-list {
-            box-sizing: border-box;
-            min-width: 12em;
-            padding: 0.25em;
-            font-size: ${SCALES.font(0.875)};
-            color: ${theme.palette.foreground};
-            background-color: ${theme.palette.background};
-            border: 1px solid ${theme.palette.border};
-            border-radius: ${theme.layout.radius};
-            box-shadow: ${theme.expressiveness.shadowMedium};
-            outline: none;
-          }
-          .sub {
-            position: absolute;
-            top: calc(-0.25em - 1px);
-            left: calc(100% + 0.25em);
-            z-index: 1;
-            font-size: 1em;
-          }
-        `}</style>
       </div>
     </MenuListContext.Provider>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import useScale from '../use-scale'
+import styles from './CheckboxIcon.module.css'
 
 interface Props {
   disabled?: boolean
@@ -9,17 +10,17 @@ interface Props {
 
 function CheckboxIconComponent({ fill: propsFill, disabled, checked }: Props) {
   const { SCALES } = useScale()
+  const iconStyle: React.CSSProperties = {
+    height: SCALES.font(1),
+    width: SCALES.font(1),
+    opacity: disabled ? 0.4 : 1,
+    cursor: disabled ? 'not-allowed' : 'pointer'
+  }
 
   return (
     <>
       {checked ? (
-        <svg
-          viewBox="0 0 24 24"
-          style={{
-            height: SCALES.font(1),
-            width: SCALES.font(1)
-          }}
-        >
+        <svg viewBox="0 0 24 24" className={styles.svg} style={iconStyle}>
           <g
             stroke={propsFill}
             strokeWidth="0.5"
@@ -32,13 +33,7 @@ function CheckboxIconComponent({ fill: propsFill, disabled, checked }: Props) {
           </g>
         </svg>
       ) : (
-        <svg
-          viewBox="0 0 24 24"
-          style={{
-            height: SCALES.font(1),
-            width: SCALES.font(1)
-          }}
-        >
+        <svg viewBox="0 0 24 24" className={styles.svg} style={iconStyle}>
           <g
             stroke={propsFill}
             strokeWidth="0.5"
@@ -51,16 +46,6 @@ function CheckboxIconComponent({ fill: propsFill, disabled, checked }: Props) {
           </g>
         </svg>
       )}
-      <style jsx>{`
-        svg {
-          display: inline-flex;
-          width: calc(0.86 * var(--checkbox-size));
-          height: calc(0.86 * var(--checkbox-size));
-          user-select: none;
-          opacity: ${disabled ? 0.4 : 1};
-          cursor: ${disabled ? 'not-allowed' : 'pointer'};
-        }
-      `}</style>
     </>
   )
 }

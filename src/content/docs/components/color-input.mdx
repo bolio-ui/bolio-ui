@@ -1,0 +1,137 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ColorInput, Grid, useTheme } from 'core'
+
+export const meta = {
+  title: 'Color Input',
+  description:
+    'A field for a hex color, with a swatch that opens a color picker in a popover.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 66
+}
+
+## Color Input
+
+A field for a hex color. The swatch on the left shows the color and opens a
+<a href="/docs/components/color-picker">Color Picker</a> in a popover. You can
+also type the code.
+
+<Playground
+  desc="Name the field with a label passed as children. Without a visible label, use `aria-label`."
+  scope={{ ColorInput }}
+  code={`
+<ColorInput initialValue="#2563eb">Brand color</ColorInput>
+`}
+/>
+
+<Playground
+  title="With swatches"
+  desc="`swatches` shows colors to pick with one click inside the popover."
+  scope={{ ColorInput }}
+  code={`
+<ColorInput
+  aria-label="Label color"
+  initialValue="#16a34a"
+  swatches={['#dc2626', '#f59e0b', '#16a34a', '#2563eb', '#7c3aed']}
+/>
+`}
+/>
+
+<Playground
+  title="Brand colors"
+  desc="Two labeled fields side by side, with a preview that follows them as they change."
+  scope={{ ColorInput, Grid, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const [primary, setPrimary] = React.useState('#2563eb')
+  const [secondary, setSecondary] = React.useState('#7c3aed')
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <ColorInput value={primary} onChange={setPrimary}>Primary</ColorInput>
+      </Grid>
+      <Grid>
+        <ColorInput value={secondary} onChange={setSecondary}>Secondary</ColorInput>
+      </Grid>
+      <Grid xs={12}>
+        <div
+          style={{
+            width: '100%',
+            height: 56,
+            borderRadius: theme.layout.radius,
+            border: '1px solid ' + theme.palette.border,
+            background: 'linear-gradient(90deg, ' + primary + ', ' + secondary + ')'
+          }}
+        />
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type`, and `rounded`, to change the surface of the field."
+  scope={{ ColorInput, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <ColorInput aria-label="Filled" type="primary" filled initialValue="#2563eb" />
+  </Grid>
+  <Grid>
+    <ColorInput aria-label="Light" type="success" light initialValue="#16a34a" />
+  </Grid>
+  <Grid>
+    <ColorInput aria-label="Ghost" type="info" ghost rounded initialValue="#0ea5e9" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Disabled"
+  desc="Shows the color and blocks the field and the swatch."
+  scope={{ ColorInput }}
+  code={`
+<ColorInput aria-label="Brand color" disabled initialValue="#2563eb" />
+`}
+/>
+
+<Attributes edit="/content/docs/components/color-input.mdx">
+<Attributes.Title>ColorInput.Props</Attributes.Title>
+
+| Attribute         | Description                                              | Type                    | Accepted values                                                            | Default        |
+| ----------------- | -------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------- | -------------- |
+| **value**         | the color, to control the component                      | `string`                | `'#rrggbb'`, `'#rgb'`                                                      | -              |
+| **initialValue**  | the color on the first render                            | `string`                | `'#rrggbb'`, `'#rgb'`                                                      | `#000000`      |
+| **onChange**      | called with the color as `#rrggbb` in lowercase          | `(hex: string) => void` | -                                                                          | -              |
+| **swatches**      | colors to pick with one click in the popover             | `string[]`              | -                                                                          | -              |
+| **placeholder**   | text shown when the field is empty                       | `string`                | -                                                                          | `#000000`      |
+| **pickerLabel**   | name of the swatch button and of the dialog              | `string`                | -                                                                          | `Choose color` |
+| **disabled**      | disable the component                                    | `boolean`               | -                                                                          | `false`        |
+| **type**          | color of the field                                       | `NormalTypes`           | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`      |
+| **rounded**       | round the corners                                        | `boolean`               | -                                                                          | `false`        |
+| **filled**        | filled variant                                           | `boolean`               | -                                                                          | `false`        |
+| **light**         | light variant                                            | `boolean`               | -                                                                          | `false`        |
+| **ghost**         | outline variant                                          | `boolean`               | -                                                                          | `false`        |
+| **subtle**        | subtle variant                                           | `boolean`               | -                                                                          | `false`        |
+| ...               | native props, passed to the input                        | `InputHTMLAttributes`   | `'aria-label', 'name', ...`                                                | -              |
+
+<Attributes.Title>Typing</Attributes.Title>
+
+The color changes as soon as the text holds six digits, with or without the `#`. A short code like `#abc` is read when the field loses the focus, and becomes `#aabbcc`. Any other text is dropped on blur, and the field goes back to the current color. The field always holds a color, so it cannot be left empty.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The field is named by its label, or by `aria-label`. The swatch is a button with `aria-haspopup="dialog"` and `aria-expanded`, named by `pickerLabel`. The picker opens in a dialog with the focus on its square. Escape closes it and puts the focus back on the swatch. The code is also a text in the field, so the color is not conveyed by the swatch alone. See <a href="/docs/components/color-picker">Color Picker</a> for the keys.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

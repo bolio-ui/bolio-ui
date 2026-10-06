@@ -5,6 +5,7 @@ import {
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
 } from '@bolio-ui/icons'
+import styles from './NavigationDocs.module.css'
 
 export interface NavigationDocsProps {
   next: Docs
@@ -20,16 +21,22 @@ const DocsPageLink: React.FC<{
   docs: Docs
   direction: 'previous' | 'next'
 }> = ({ docs, direction }) => {
+  const theme = useTheme()
   const router = useRouter()
   const isPrevious = direction === 'previous'
 
   return (
     <Button
-      type="primary"
+      type="default"
       subtle
       auto
       scale={0.75}
-      className={`docs-page-link ${direction}`}
+      className={`${styles.link} ${styles[direction]}`}
+      style={
+        {
+          '--docs-link-hover': `${theme.palette.primary}40`
+        } as React.CSSProperties
+      }
       onClick={() => router.push(docs.url)}
       icon={isPrevious && <ChevronLeftIcon fontSize={14} />}
       iconRight={!isPrevious && <ChevronRightIcon fontSize={14} />}
@@ -40,8 +47,6 @@ const DocsPageLink: React.FC<{
 }
 
 function NavigationDocs({ next, previous }: NavigationDocsProps) {
-  const theme = useTheme()
-
   return (
     <div
       style={{
@@ -59,26 +64,6 @@ function NavigationDocs({ next, previous }: NavigationDocsProps) {
           <DocsPageLink docs={next} direction="next" />
         </div>
       )}
-      <style jsx>{`
-        :global(.docs-page-link.btn) {
-          transition:
-            background-color 200ms ease,
-            transform 200ms ease;
-        }
-        :global(.docs-page-link.btn:hover) {
-          background-color: ${theme.palette.primary}40;
-          transform: translateY(-1px);
-        }
-        :global(.docs-page-link.btn svg) {
-          transition: transform 200ms ease;
-        }
-        :global(.docs-page-link.previous.btn:hover svg) {
-          transform: translateX(-3px);
-        }
-        :global(.docs-page-link.next.btn:hover svg) {
-          transform: translateX(3px);
-        }
-      `}</style>
     </div>
   )
 }

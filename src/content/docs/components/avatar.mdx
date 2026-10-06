@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Avatar, Grid } from 'core'
+import { Avatar, Grid, Text, Tag, Card } from 'core'
 
 export const meta = {
   title: 'Avatar',
@@ -132,6 +132,27 @@ Avatars represent a user or a team. Stacked avatars represent a group of people.
     </Avatar.Group>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Team members"
+  desc="Pair each `Avatar` with a name and a role, so a list of people reads in one pass."
+  scope={{ Avatar, Card, Text, Tag }}
+  code={`
+<Card bordered width="100%">
+  {[
+    ['AL', 'Ada Lovelace', 'Owner'],
+    ['GH', 'Grace Hopper', 'Editor'],
+    ['LT', 'Linus Torvalds', 'Viewer']
+  ].map(([text, name, role]) => (
+    <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '6px 0' }}>
+      <Avatar text={text} />
+      <Text b style={{ flex: 1 }}>{name}</Text>
+      <Tag>{role}</Tag>
+    </div>
+  ))}
+</Card>
 `}
 />
 

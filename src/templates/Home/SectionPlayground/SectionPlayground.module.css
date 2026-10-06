@@ -1,0 +1,144 @@
+.playground {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.presets {
+  display: flex;
+  gap: 32px;
+}
+
+.preset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--play-muted);
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.preset:hover,
+.preset.active {
+  color: var(--play-foreground);
+}
+
+.preview {
+  width: 100%;
+}
+
+.preview :global(p),
+.preview :global(small) {
+  font-family: inherit;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.productTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.options,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.learn {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+  font-family: var(--play-mono);
+  font-size: 0.8rem;
+  color: var(--play-primary);
+}
+
+.code {
+  position: relative;
+  height: 360px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: none;
+  font-family: var(--play-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  color: var(--play-foreground);
+}
+
+.block {
+  margin-top: 24px;
+  opacity: 0.35;
+  transition: opacity 200ms ease;
+}
+
+.block.active {
+  opacity: 1;
+}
+
+.muted {
+  color: var(--play-muted);
+}
+
+@media (max-width: 900px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .playground {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .presets {
+    gap: 20px;
+  }
+
+  .product {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

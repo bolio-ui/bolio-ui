@@ -9,6 +9,7 @@ import { hasChild, pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Card.module.css'
 
 interface Props {
   hoverable?: boolean
@@ -18,6 +19,9 @@ interface Props {
   filled?: boolean
   ghost?: boolean
   subtle?: boolean
+  spotlight?: boolean
+  glass?: boolean
+  interactive?: boolean
   className?: string
   type?: CardTypes
 }
@@ -40,7 +44,12 @@ const CardComponent = React.forwardRef<
       filled = false,
       ghost = false,
       subtle = false,
+      spotlight = false,
+      glass = false,
+      interactive = false,
       type = 'default' as CardTypes,
+      style,
+      onMouseMove,
       ...props
     },
     ref
@@ -50,8 +59,10 @@ const CardComponent = React.forwardRef<
 
     const hoverShadow = useMemo(() => {
       if (shadow) return theme.expressiveness.shadowMedium
-      return hoverable ? theme.expressiveness.shadowSmall : 'none'
-    }, [hoverable, shadow, theme.expressiveness])
+      return hoverable || interactive
+        ? theme.expressiveness.shadowSmall
+        : 'none'
+    }, [hoverable, interactive, shadow, theme.expressiveness])
 
     const { color, bgColor, borderColor } = useMemo(
       () =>
@@ -78,8 +89,53 @@ const CardComponent = React.forwardRef<
     )
     const hasContent = hasChild(withoutImageChildren, CardContent)
 
+    const cardStyle = {
+      borderRadius: rounded ? '25px' : theme.layout.radius,
+      boxShadow: shadow ? theme.expressiveness.shadowSmall : 'none',
+      color,
+      backgroundColor: glass
+        ? `color-mix(in srgb, ${bgColor} 55%, transparent)`
+        : bgColor,
+      border: showBorder ? '1px solid' + borderColor : 'none',
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1, 'auto'),
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      '--card-hover-shadow': hoverShadow,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <div ref={ref} className={useClasses('card', className)} {...props}>
+      <div
+        ref={ref}
+        className={useClasses(
+          'card',
+          styles.card,
+          {
+            [styles.spotlight]: spotlight,
+            [styles.glass]: glass,
+            [styles.interactive]: interactive
+          },
+          className
+        )}
+        tabIndex={interactive ? 0 : undefined}
+        onMouseMove={(event) => {
+          if (spotlight) {
+            const rect = event.currentTarget.getBoundingClientRect()
+            event.currentTarget.style.setProperty(
+              '--x',
+              `${event.clientX - rect.left}px`
+            )
+            event.currentTarget.style.setProperty(
+              '--y',
+              `${event.clientY - rect.top}px`
+            )
+          }
+          onMouseMove?.(event)
+        }}
+        {...props}
+        style={cardStyle}
+      >
         {imageChildren}
         {hasContent ? (
           withoutImageChildren
@@ -87,37 +143,6 @@ const CardComponent = React.forwardRef<
           <CardContent>{withoutImageChildren}</CardContent>
         )}
         {footerChildren}
-        <style jsx>{`
-          .card {
-            background: ${theme.palette.background};
-            transition: all 0.2s ease;
-            border-radius: ${rounded ? '25px' : theme.layout.radius};
-            box-shadow: ${shadow ? theme.expressiveness.shadowSmall : 'none'};
-            box-sizing: border-box;
-            color: ${color};
-            background-color: ${bgColor};
-            border: ${showBorder ? '1px solid' + borderColor : 'none'};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          .card:hover {
-            box-shadow: ${hoverShadow};
-          }
-
-          .card :global(img) {
-            width: 100%;
-          }
-
-          .card :global(.image) {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-        `}</style>
       </div>
     )
   }

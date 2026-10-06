@@ -1,0 +1,84 @@
+.rating {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--rating-font-size) * 0.2);
+  font-size: var(--rating-font-size);
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.item {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: calc(var(--rating-font-size) * 1.5);
+  height: calc(var(--rating-font-size) * 1.5);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transition: clip-path 100ms linear;
+}
+
+.layer :global(svg) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.empty {
+  color: var(--rating-empty-color);
+}
+
+.empty :global(svg) {
+  fill: var(--rating-empty-fill);
+}
+
+.filled {
+  color: var(--rating-color);
+}
+
+.filled :global(svg) {
+  fill: currentColor;
+}
+
+.hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.hit.half {
+  width: 50%;
+}
+
+.hit.full {
+  left: 50%;
+  width: 50%;
+}
+
+.hit:has(:focus-visible) {
+  outline: 2px solid var(--rating-focus-outline);
+  outline-offset: 1px;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

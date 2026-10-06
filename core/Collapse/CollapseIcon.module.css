@@ -1,0 +1,5 @@
+.svg {
+  transition: transform 200ms ease;
+  width: 1.5em;
+  height: 1.5em;
+}

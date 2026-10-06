@@ -9,6 +9,7 @@ const root = '<rootDir>/compat/.work/react18/node_modules'
 module.exports = {
   ...base,
   moduleNameMapper: {
+    ...base.moduleNameMapper,
     '^react$': `${root}/react`,
     '^react-dom$': `${root}/react-dom`,
     '^react-dom/(.*)$': `${root}/react-dom/$1`,

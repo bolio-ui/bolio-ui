@@ -1,0 +1,72 @@
+.attr :global(.pre) {
+  margin-top: 12px !important;
+}
+
+.attr table {
+  margin-top: 12px;
+  margin-right: var(--attr-gap);
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.attr :global(h4.title) {
+  margin-top: calc(var(--attr-gap) * 2.2);
+}
+
+.attr :global(h4.title:first-of-type) {
+  margin-top: 0;
+}
+
+.attr thead th td {
+  height: 2.5rem;
+}
+
+.attr tbody tr td {
+  height: 3.333rem;
+}
+
+.attr th,
+.attr td {
+  padding: 0 0.625rem;
+  text-align: left;
+}
+
+.attr th {
+  height: 2.5rem;
+  color: var(--attr-th-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  background: var(--attr-th-bg);
+}
+
+.attr th:nth-child(1) {
+  border-radius: 4px 0 0 4px;
+}
+
+.attr th:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.attr tr td {
+  color: var(--attr-td-color);
+  font-size: 0.875rem;
+  height: 2.5rem;
+}
+
+.attr td:nth-child(1) {
+  border-left: 1px solid transparent;
+}
+
+@media only screen and (max-width: 650px) {
+  .attr {
+    overflow-x: scroll;
+  }
+
+  .attr::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+  }
+}

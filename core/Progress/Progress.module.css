@@ -1,0 +1,62 @@
+.progress {
+  position: relative;
+}
+
+.progress progress {
+  position: fixed;
+  top: -1000px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  border-radius: 0;
+}
+
+.fixed > .inner {
+  border-radius: 0;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  bottom: 0;
+  transition: all 100ms ease-in;
+}
+
+.segments {
+  display: flex;
+  gap: 3px;
+  height: 100%;
+}
+
+.segment {
+  flex: 1;
+  transition: background-color 100ms ease-in;
+}
+
+.circular {
+  position: relative;
+  display: inline-block;
+}
+
+.circular svg {
+  transform: rotate(-90deg);
+}
+
+.arc {
+  transition: stroke-dasharray 200ms ease-in;
+}
+
+.circular progress {
+  position: fixed;
+  top: -1000px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

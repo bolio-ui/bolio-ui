@@ -1,0 +1,7 @@
+.icon {
+  color: inherit;
+  stroke: currentColor;
+  transition: all 200ms ease;
+  width: 1.214em;
+  height: 1.214em;
+}

@@ -8,6 +8,7 @@ import { joinClasses } from '../use-classes'
 import { isLeftPlacement, isTopPlacement } from './helpers'
 import useCurrentState from '../utils/use-current-state'
 import useLatest from '../utils/use-latest'
+import styles from './toast-container.module.css'
 
 const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   const theme = useTheme()
@@ -32,10 +33,11 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
   )
   const classNames = useMemo(
     () =>
-      joinClasses('toasts', {
-        top: isTopPlacement(toastLayout.placement),
-        left: isLeftPlacement(toastLayout.placement)
-      }),
+      joinClasses(
+        styles.toasts,
+        isTopPlacement(toastLayout.placement) && styles.top,
+        isLeftPlacement(toastLayout.placement) && styles.left
+      ),
     [toastLayout.placement]
   )
 
@@ -113,31 +115,9 @@ const ToastContainer: React.FC<React.PropsWithChildren<unknown>> = () => {
       className={classNames}
       onMouseEnter={() => hoverHandler(true)}
       onMouseLeave={() => hoverHandler(false)}
+      style={{ '--toasts-gap': theme.layout.gap } as React.CSSProperties}
     >
       {toastElements}
-      <style jsx>{`
-        .toasts {
-          position: fixed;
-          width: auto;
-          max-width: 100%;
-          right: ${theme.layout.gap};
-          bottom: ${theme.layout.gap};
-          z-index: 2000;
-          transition: all 400ms ease;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-        }
-        .top {
-          bottom: unset;
-          flex-direction: column-reverse;
-          top: ${theme.layout.gap};
-        }
-        .left {
-          right: unset;
-          left: ${theme.layout.gap};
-        }
-      `}</style>
     </div>,
     portal
   )

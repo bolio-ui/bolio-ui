@@ -1,0 +1,128 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Command, Button, Keyboard, useKeyboard, KeyCode, KeyMod, Grid, Text } from 'core'
+import { useState } from 'react'
+import { Home, Settings, Search, Plus, UserPlus, CreditCard, LogOut } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Command',
+  description: 'A searchable list of actions, opened with a shortcut.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 57
+}
+
+## Command
+
+A searchable list of actions, opened with a shortcut.
+
+<Playground
+  title="General"
+  desc="Type to filter, use the arrow keys to move and Enter to run the action."
+  scope={{ Command, Button, useState, Home, Settings }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  const items = [
+    { value: 'home', label: 'Go to home', icon: <Home />, onSelect: () => console.log('home') },
+    { value: 'settings', label: 'Open settings', icon: <Settings />, hint: 'G S', onSelect: () => console.log('settings') },
+    { value: 'theme', label: 'Switch theme', hint: 'T', onSelect: () => console.log('theme') }
+  ]
+  return (
+    <>
+      <Button auto onClick={() => setOpen(true)}>Open command</Button>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="With Shortcut"
+  desc="Open it with Cmd+K, or Ctrl+K on Windows and Linux, using `useKeyboard`."
+  scope={{ Command, Keyboard, useKeyboard, KeyCode, KeyMod, useState }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  useKeyboard(
+    (event) => {
+      event.preventDefault()
+      setOpen(true)
+    },
+    [KeyCode.KEY_K, KeyMod.CtrlCmd]
+  )
+  const items = [
+    { value: 'new', label: 'New project', onSelect: () => console.log('new') },
+    { value: 'invite', label: 'Invite a teammate', onSelect: () => console.log('invite') }
+  ]
+  return (
+    <>
+      <Keyboard command>K</Keyboard>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="App command palette"
+  desc="List the actions people reach for most, with a short hint of the shortcut on the right."
+  scope={{ Command, Button, Grid, Text, useState, Search, Plus, UserPlus, CreditCard, Settings, LogOut }}
+  code={`
+() => {
+  const [open, setOpen] = useState(false)
+  const [last, setLast] = useState('nothing yet')
+  const run = (name) => () => setLast(name)
+  const items = [
+    { value: 'new', label: 'Create project', icon: <Plus />, hint: 'N', onSelect: run('created a project') },
+    { value: 'invite', label: 'Invite a teammate', icon: <UserPlus />, onSelect: run('opened the invite form') },
+    { value: 'billing', label: 'Go to billing', icon: <CreditCard />, hint: 'G B', onSelect: run('went to billing') },
+    { value: 'settings', label: 'Open settings', icon: <Settings />, hint: 'G S', onSelect: run('opened settings') },
+    { value: 'signout', label: 'Sign out', icon: <LogOut />, onSelect: run('signed out') }
+  ]
+  return (
+    <>
+      <Grid.Container gap={2} alignItems="center">
+        <Grid>
+          <Button auto icon={<Search />} onClick={() => setOpen(true)}>Search or run a command</Button>
+        </Grid>
+        <Grid>
+          <Text small type="secondary">Last action: {last}</Text>
+        </Grid>
+      </Grid.Container>
+      <Command visible={open} onClose={() => setOpen(false)} items={items} />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/command.mdx">
+<Attributes.Title>Command.Props</Attributes.Title>
+
+| Attribute       | Description                         | Type                 | Accepted values | Default                        |
+| --------------- | ----------------------------------- | -------------------- | --------------- | ------------------------------ |
+| **visible**     | show the palette                    | `boolean`            | -               | -                              |
+| **onClose**     | called on Esc, backdrop or selection | `() => void`        | -               | -                              |
+| **items**       | actions to list                     | `CommandItem[]`      | -               | -                              |
+| **placeholder** | placeholder of the search field     | `string`             | -               | `Type a command or search`     |
+| **emptyText**   | shown when nothing matches          | `string`             | -               | `No results. Try another word.` |
+
+
+<Attributes.Title>CommandItem</Attributes.Title>
+
+```ts
+interface CommandItem {
+  value: string
+  label: string
+  icon?: React.ReactNode
+  hint?: React.ReactNode
+  onSelect?: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

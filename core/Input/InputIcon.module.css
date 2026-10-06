@@ -1,0 +1,23 @@
+.inputIcon {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: calc(var(--input-height) - 2px);
+  flex-shrink: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  position: relative;
+}
+
+.inputIcon :global(svg) {
+  width: calc(var(--input-height) - 2px);
+  height: calc(var(--input-height) - 2px);
+  transform: scale(0.44);
+}

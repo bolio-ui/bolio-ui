@@ -1,0 +1,85 @@
+.tree {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--tree-color);
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.375em;
+  box-sizing: border-box;
+  padding: 0.375em 0.5em 0.375em calc(0.5em + var(--tree-level) * 1.25em);
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--tree-radius);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.row:hover {
+  background: var(--tree-hover-bg);
+}
+
+.selected,
+.selected:hover {
+  color: var(--tree-selected-color);
+  background: var(--tree-selected-bg);
+}
+
+.item:focus-visible > .row {
+  outline: 2px solid var(--tree-focus);
+  outline-offset: -2px;
+}
+
+.disabled,
+.disabled:hover {
+  color: var(--tree-disabled-color);
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.chevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+}
+
+.chevronIcon {
+  transition: transform 0.15s ease;
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--tree-icon-color);
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './Blockholder.module.css'
 
 export interface Props {
   className?: string
@@ -15,28 +16,16 @@ const PlaceholderBlock: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <div className={className} style={{ width, height }} {...props}>
+    <div
+      className={`${styles.block} ${className}`}
+      style={{ width, height }}
+      {...props}
+    >
       <img
+        className={styles.img}
         alt={alt}
         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       />
-      <style jsx>
-        {`
-          div {
-            position: relative;
-            display: flex;
-            width: ${width};
-            height: ${height};
-          }
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-          }
-        `}
-      </style>
     </div>
   )
 }

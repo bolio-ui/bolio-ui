@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+}
+
+.area {
+  height: 300px;
+  overflow: auto;
+  border-bottom-left-radius: var(--editor-radius);
+  border-bottom-right-radius: var(--editor-radius);
+}
+
+.header {
+  height: 2.5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--editor-border);
+  border-top-left-radius: var(--editor-radius);
+  border-top-right-radius: var(--editor-radius);
+}
+
+.traffic {
+  width: auto;
+  position: absolute;
+  left: var(--editor-gap-half);
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  font-size: inherit;
+}
+
+.traffic span {
+  border-radius: 50%;
+  width: 0.75em;
+  height: 0.75em;
+  max-width: 20px;
+  max-height: 20px;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.close {
+  background-color: #ff5f56;
+}
+
+.mini {
+  background-color: #ffbd2e;
+}
+
+.full {
+  background-color: #27c93f;
+}

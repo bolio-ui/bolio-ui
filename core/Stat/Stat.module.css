@@ -1,0 +1,27 @@
+.stat {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: 0.875em;
+}
+
+.value {
+  font-size: 1.75em;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.change {
+  font-size: 0.8125em;
+}
+
+.extra {
+  display: flex;
+  align-items: center;
+}

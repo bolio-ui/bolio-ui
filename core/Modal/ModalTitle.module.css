@@ -1,0 +1,11 @@
+.title {
+  line-height: 1.6;
+  font-weight: normal;
+  text-align: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+  text-transform: capitalize;
+}

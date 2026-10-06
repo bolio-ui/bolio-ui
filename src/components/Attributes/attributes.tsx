@@ -38,7 +38,6 @@ const Attributes: React.FC<React.PropsWithChildren<AttributesProps>> =
         {apiTitles}
         <Link
           href={link}
-          color
           target="_blank"
           rel="nofollow"
           mt={2}

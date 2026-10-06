@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Pagination, Grid } from 'core'
+import { Pagination, Grid, Text } from 'core'
 import {
   ChevronRight,
   ChevronLeft,
@@ -105,6 +105,37 @@ Navigation and identification between multiple pages.
     </Pagination>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Paginated list"
+  desc="Compute the page of items from `page`, and show the range next to the list."
+  scope={{ Pagination, Grid, Text }}
+  code={`
+() => {
+  const customers = Array.from({ length: 23 }, (_, index) => 'Customer ' + (index + 1))
+  const size = 5
+  const [page, setPage] = React.useState(1)
+  const shown = customers.slice((page - 1) * size, page * size)
+  return (
+    <Grid.Container direction="column" gap={1}>
+      {shown.map((name) => (
+        <Grid key={name}>
+          <Text my={0}>{name}</Text>
+        </Grid>
+      ))}
+      <Grid>
+        <Text small type="secondary">
+          {(page - 1) * size + 1} to {Math.min(page * size, customers.length)} of {customers.length}
+        </Text>
+      </Grid>
+      <Grid>
+        <Pagination count={Math.ceil(customers.length / size)} page={page} onChange={setPage} />
+      </Grid>
+    </Grid.Container>
+  )
+}
 `}
 />
 

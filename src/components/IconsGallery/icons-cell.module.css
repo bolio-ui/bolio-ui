@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-grow: 0;
+  flex-basis: 125px;
+  min-width: 0px;
+  height: 95px;
+  margin: 12px 5px;
+  border-radius: var(--cell-radius);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  background-color: #716e96;
+  color: white;
+}
+
+.item > :global(small) {
+  display: inline-block;
+  width: 90%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item:hover {
+  box-shadow: var(--cell-shadow);
+}
+
+@media only screen and (max-width: 650px) {
+  .item {
+    flex-basis: 30%;
+  }
+}

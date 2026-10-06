@@ -1,9 +1,7 @@
 import React, { useMemo } from 'react'
 import GridBasicItem, { GridBasicItemProps } from './BasicItem'
 import { GridWrap } from './GridTypes'
-import css from 'styled-jsx/css'
 import useScale, { withScale } from '../use-scale'
-import useClasses from '../use-classes'
 
 interface Props {
   gap?: number
@@ -18,27 +16,36 @@ const GridContainerComponent = React.forwardRef<
   React.PropsWithChildren<GridContainerProps>
 >(
   (
-    { gap = 0, wrap = 'wrap' as GridWrap, children, className = '', ...props },
+    {
+      gap = 0,
+      wrap = 'wrap' as GridWrap,
+      children,
+      className = '',
+      style,
+      ...props
+    },
     ref
   ) => {
     const { unit, SCALES } = useScale()
     const gapUnit = useMemo(() => `calc(${gap} * ${unit} * 1/3)`, [gap, unit])
 
-    const { className: resolveClassName, styles } = css.resolve`
-      div {
-        --grid-gap-unit: ${gapUnit};
-        display: flex;
-        flex-wrap: ${wrap};
-        box-sizing: border-box;
-        width: ${SCALES.width(1, '100%')};
-      }
-    `
-    const classes = useClasses(resolveClassName, className)
+    const containerStyle = {
+      '--grid-gap-unit': gapUnit,
+      display: 'flex',
+      flexWrap: wrap,
+      boxSizing: 'border-box',
+      width: SCALES.width(1, '100%'),
+      ...style
+    } as React.CSSProperties
 
     return (
-      <GridBasicItem ref={ref} className={classes} {...props}>
+      <GridBasicItem
+        ref={ref}
+        className={className}
+        style={containerStyle}
+        {...props}
+      >
         {children}
-        {styles}
       </GridBasicItem>
     )
   }

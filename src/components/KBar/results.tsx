@@ -1,10 +1,10 @@
 import * as React from 'react'
-import cn from 'classnames'
 import { matchSorter } from 'match-sorter'
 import { VisualState, useKBar } from 'kbar'
 import { groupBy, isEmpty } from 'lodash'
 import { useTheme } from 'core'
 import { Action, ResultState, KBarResultsProps, ResultHandlers } from './types'
+import styles from './results.module.css'
 
 function useMatches(term: string, actions: Action[]) {
   // TODO: we can throttle this if needed
@@ -165,16 +165,24 @@ export default function KBarResults(props: KBarResultsProps) {
   }
   let idx = -1
   return (
-    <div className={cn('kbar-section', props.className)} style={props.style}>
+    <div
+      className={props.className}
+      style={
+        {
+          '--results-title': theme?.palette?.accents_8,
+          ...props.style
+        } as React.CSSProperties
+      }
+    >
       {!isEmpty(groupedMatches)
         ? Object.keys(groupedMatches).map((section, sectionIndex) => {
             return (
               <ul
                 key={`${section}_${sectionIndex}`}
-                className="kbar-section-list"
+                className={styles.sectionList}
               >
                 {section && section !== 'undefined' ? (
-                  <b className="kbar-section-list__title">{section}</b>
+                  <b className={styles.sectionTitle}>{section}</b>
                 ) : null}
                 {groupedMatches[section].map((action) => {
                   idx = idx + 1
@@ -184,24 +192,6 @@ export default function KBarResults(props: KBarResultsProps) {
             )
           })
         : null}
-      <style jsx>
-        {`
-          .kbar-section-list {
-            display: flex;
-            width: 100%;
-            margin: 0;
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .kbar-section-list__title {
-            padding: 4px 16px;
-            color: ${theme?.palette?.accents_8};
-            opacity: 0.4;
-            font-size: 12px;
-            font-weight: 500;
-          }
-        `}
-      </style>
     </div>
   )
 }

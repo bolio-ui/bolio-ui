@@ -1,0 +1,108 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Timeline } from 'core'
+import { GitCommit, Check, Package, Truck, MapPin, MessageSquare, UserPlus, FileText } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'Timeline',
+  description: 'List events in order, such as a changelog or an activity feed.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 55
+}
+
+## Timeline
+
+List events in order, such as a changelog or an activity feed.
+
+<Playground
+  title="General"
+  desc="The basic `Timeline` usage."
+  scope={{ Timeline }}
+  code={`
+<Timeline>
+  <Timeline.Item title="Order placed" time="Mon, 9:41">
+    We received your order and are preparing it.
+  </Timeline.Item>
+  <Timeline.Item title="Shipped" time="Tue, 14:05">
+    The package left the warehouse.
+  </Timeline.Item>
+  <Timeline.Item title="Delivered" time="Thu, 10:12" />
+</Timeline>
+`}
+/>
+
+<Playground
+  title="With Icons"
+  desc="Replace the dot with any icon using `icon`."
+  scope={{ Timeline, GitCommit, Check }}
+  code={`
+<Timeline>
+  <Timeline.Item icon={<GitCommit />} title="v2.1.0" time="Oct 2">
+    Added spotlight to Card and Button.
+  </Timeline.Item>
+  <Timeline.Item icon={<GitCommit />} title="v2.0.1" time="Sep 21">
+    Fixed ButtonGroup ghost borders.
+  </Timeline.Item>
+  <Timeline.Item icon={<Check />} title="v2.0.0" time="Sep 1">
+    First stable release.
+  </Timeline.Item>
+</Timeline>
+`}
+/>
+
+<Playground
+  title="Order tracking"
+  desc="Use an icon for each stage, and write the time in the same format on every item."
+  scope={{ Timeline, Package, Truck, MapPin, Check }}
+  code={`
+<Timeline>
+  <Timeline.Item icon={<Package />} title="Order packed" time="Mon, 09:41">
+    Your 2 items are ready at the warehouse.
+  </Timeline.Item>
+  <Timeline.Item icon={<Truck />} title="On the way" time="Tue, 14:05">
+    The carrier picked up the package in Lisbon.
+  </Timeline.Item>
+  <Timeline.Item icon={<MapPin />} title="Out for delivery" time="Thu, 08:30">
+    Arrives today between 10:00 and 13:00.
+  </Timeline.Item>
+  <Timeline.Item icon={<Check />} title="Delivered" time="Thu, 10:12" />
+</Timeline>
+`}
+/>
+
+<Playground
+  title="Activity feed"
+  desc="Name who did what in the title and keep the detail short."
+  scope={{ Timeline, MessageSquare, UserPlus, FileText }}
+  code={`
+<Timeline>
+  <Timeline.Item icon={<MessageSquare />} title="Ana commented" time="2 min ago">
+    “The new pricing table looks good to ship.”
+  </Timeline.Item>
+  <Timeline.Item icon={<FileText />} title="Rui edited Pricing.md" time="1 hour ago" />
+  <Timeline.Item icon={<UserPlus />} title="Marta joined the team" time="Yesterday" />
+</Timeline>
+`}
+/>
+
+<Attributes edit="/content/docs/components/timeline.mdx">
+<Attributes.Title>Timeline.Props</Attributes.Title>
+
+| Attribute | Description  | Type            | Accepted values | Default |
+| --------- | ------------ | --------------- | --------------- | ------- |
+| ...       | native props | `HTMLAttributes` | -              | -       |
+
+
+<Attributes.Title>Timeline.Item.Props</Attributes.Title>
+
+| Attribute | Description                  | Type             | Accepted values | Default |
+| --------- | ---------------------------- | ---------------- | --------------- | ------- |
+| **title** | event title                  | `ReactNode`      | -               | -       |
+| **time**  | date or time beside the title | `ReactNode`     | -               | -       |
+| **icon**  | replaces the default dot     | `ReactNode`      | -               | -       |
+| ...       | native props                 | `HTMLAttributes` | -               | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

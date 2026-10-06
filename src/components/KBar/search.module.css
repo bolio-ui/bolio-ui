@@ -1,0 +1,19 @@
+.input {
+  padding: 14px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: var(--search-color);
+}
+
+.input:focus::placeholder {
+  opacity: 1;
+  transition: opacity 0.25s ease 0s;
+}
+
+.input::placeholder {
+  color: var(--search-placeholder);
+  transition: opacity 0.25s ease 0s;
+}

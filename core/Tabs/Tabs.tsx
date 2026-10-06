@@ -14,6 +14,7 @@ import { useRect } from '../utils/layouts'
 import { isBolioUIElement } from '../utils/collections'
 import useClasses from '../use-classes'
 import TabsItem, { TabsItemCell } from './TabsItem'
+import styles from './Tabs.module.css'
 
 interface Props {
   initialValue?: string
@@ -21,6 +22,7 @@ interface Props {
   hideDivider?: boolean
   hideBorder?: boolean
   highlight?: boolean
+  slide?: boolean
   onChange?: (val: string) => void
   className?: string
   leftSpace?: CSSProperties['marginLeft']
@@ -62,11 +64,13 @@ const TabsComponent = React.forwardRef<
       className = '',
       leftSpace = '12px' as CSSProperties['marginLeft'],
       highlight = true,
+      slide = false,
       hoverHeightRatio = 0.7,
       hoverWidthRatio = 1.15,
       activeClassName = '',
       activeStyles,
       align = 'left',
+      style,
       ...props
     },
     ref
@@ -79,6 +83,11 @@ const TabsComponent = React.forwardRef<
       userCustomInitialValue
     )
     const headerRef = useRef<HTMLDivElement | null>(null)
+    const listRef = useRef<HTMLDivElement | null>(null)
+    const [indicator, setIndicator] = useState<{
+      left: number
+      width: number
+    } | null>(null)
     const [displayHighlight, setDisplayHighlight] = useState<boolean>(false)
     const { rect, setRect } = useRect()
 
@@ -122,6 +131,16 @@ const TabsComponent = React.forwardRef<
       setSelfValue(value)
     }, [value])
 
+    useEffect(() => {
+      if (!slide) return
+      const active = listRef.current?.querySelector<HTMLElement>(
+        '[role="tab"][aria-selected="true"]'
+      )
+      setIndicator(
+        active ? { left: active.offsetLeft, width: active.offsetWidth } : null
+      )
+    }, [slide, selfValue, directKey])
+
     const clickHandler = (value: string) => {
       setSelfValue(value)
       if (onChange) onChange(value)
@@ -135,10 +154,31 @@ const TabsComponent = React.forwardRef<
       }
     }
 
+    const tabsStyle = {
+      '--tabs-font-size': SCALES.font(1),
+      '--tabs-width': SCALES.width(1, 'initial'),
+      '--tabs-height': SCALES.height(1, 'auto'),
+      '--tabs-padding-top': SCALES.pt(0),
+      '--tabs-padding-right': SCALES.pr(0),
+      '--tabs-padding-bottom': SCALES.pb(0),
+      '--tabs-padding-left': SCALES.pl(0),
+      '--tabs-margin-top': SCALES.mt(0),
+      '--tabs-margin-right': SCALES.mr(0),
+      '--tabs-margin-bottom': SCALES.mb(0),
+      '--tabs-margin-left': SCALES.ml(0),
+      ...style
+    } as React.CSSProperties
+
     return (
       <TabsContext.Provider value={initialValue}>
-        <div className={useClasses('tabs', className)} ref={ref} {...props}>
+        <div
+          className={useClasses(styles.tabs, className)}
+          ref={ref}
+          {...props}
+          style={tabsStyle}
+        >
           <header
+            className={styles.header}
             ref={headerRef}
             onMouseLeave={() => setDisplayHighlight(false)}
           >
@@ -150,10 +190,29 @@ const TabsComponent = React.forwardRef<
             />
             <div
               role="tablist"
-              className={useClasses('scroll-container', {
-                'hide-divider': hideDivider
+              ref={listRef}
+              className={useClasses(styles.scrollContainer, {
+                [styles.hideDivider]: hideDivider,
+                [styles.slide]: slide
               })}
+              style={
+                {
+                  '--tabs-align': align,
+                  '--tabs-border-color': theme.palette.border,
+                  '--tabs-left-space': leftSpace
+                } as React.CSSProperties
+              }
             >
+              {slide && indicator && (
+                <span
+                  className={styles.indicator}
+                  style={{
+                    width: indicator.width,
+                    transform: `translateX(${indicator.left}px)`,
+                    backgroundColor: theme.palette.foreground
+                  }}
+                />
+              )}
               {headers.map(({ value, props: itemProps }) => (
                 <TabsItemCell
                   key={value}
@@ -167,49 +226,9 @@ const TabsComponent = React.forwardRef<
               ))}
             </div>
           </header>
-          <div className="content" role="tabpanel">
+          <div className={styles.content} role="tabpanel">
             {children}
           </div>
-          <style jsx>{`
-            .tabs {
-              font-size: ${SCALES.font(1)};
-              width: ${SCALES.width(1, 'initial')};
-              height: ${SCALES.height(1, 'auto')};
-              padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-                ${SCALES.pl(0)};
-              margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-                ${SCALES.ml(0)};
-            }
-            header {
-              display: flex;
-              flex-wrap: nowrap;
-              align-items: center;
-              overflow-y: hidden;
-              overflow-x: scroll;
-              scrollbar-width: none;
-              position: relative;
-            }
-            .scroll-container {
-              width: 100%;
-              height: 100%;
-              flex: 1;
-              display: flex;
-              flex-wrap: nowrap;
-              align-items: center;
-              justify-content: ${align};
-              border-bottom: 1px solid ${theme.palette.border};
-              padding-left: ${leftSpace};
-            }
-            header::-webkit-scrollbar {
-              display: none;
-            }
-            .hide-divider {
-              border-color: transparent;
-            }
-            .content {
-              padding-top: 0.625rem;
-            }
-          `}</style>
         </div>
       </TabsContext.Provider>
     )

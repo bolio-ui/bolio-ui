@@ -1,90 +1,121 @@
 import { NormalTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
+import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
+// Single source of colors for every field (Input, Textarea, NumberInput,
+// Select, Combobox, DatePicker).
 export type InputColor = {
   color: string
   bgColor: string
   borderColor: string
   hoverBgColor: string
   hoverBorder: string
+  focusBorder: string
+  placeholderColor: string
+  iconColor: string
+}
+
+export interface InputVariantProps {
+  filled?: boolean
+  light?: boolean
+  ghost?: boolean
+  subtle?: boolean
 }
 
 export const getColors = (
   palette: BolioUIThemesPalette,
   status?: NormalTypes,
   disabled?: boolean,
-  readOnly?: boolean
+  { filled, light, ghost, subtle }: InputVariantProps = {}
 ): InputColor => {
-  const colors: { [key in NormalTypes]: InputColor } = {
-    default: {
-      color: palette.foreground,
+  if (disabled)
+    return {
+      color: palette.accents_4,
       bgColor: palette.accents_1,
-      borderColor: palette.accents_2,
+      borderColor: palette.border,
       hoverBgColor: palette.accents_1,
-      hoverBorder: palette.accents_4
-    },
-    primary: {
-      color: palette.primaryDark,
-      bgColor: palette.primaryLight,
-      borderColor: palette.primary,
-      hoverBgColor: palette.primaryLight,
-      hoverBorder: palette.primary
-    },
-    secondary: {
-      color: palette.secondaryDark,
-      bgColor: palette.secondaryLight,
-      borderColor: palette.secondary,
-      hoverBgColor: palette.secondaryLight,
-      hoverBorder: palette.secondary
-    },
-    success: {
-      color: palette.successDark,
-      bgColor: palette.successLight,
-      borderColor: palette.success,
-      hoverBgColor: palette.successLight,
-      hoverBorder: palette.success
-    },
-    warning: {
-      color: palette.warningDark,
-      bgColor: palette.warningLight,
-      borderColor: palette.warning,
-      hoverBgColor: palette.warningLight,
-      hoverBorder: palette.warning
-    },
-    error: {
-      color: palette.errorDark,
-      bgColor: palette.errorLight,
-      borderColor: palette.error,
-      hoverBgColor: palette.errorLight,
-      hoverBorder: palette.error
-    },
-    info: {
-      color: palette.infoDark,
-      bgColor: palette.infoLight,
-      borderColor: palette.info,
-      hoverBgColor: palette.infoLight,
-      hoverBorder: palette.info
+      hoverBorder: palette.border,
+      focusBorder: palette.border,
+      placeholderColor: palette.accents_4,
+      iconColor: palette.accents_3
+    }
+
+  if (!status || !isSemanticColorType(status))
+    return {
+      color: palette.foreground,
+      bgColor: palette.background,
+      borderColor: palette.border,
+      hoverBgColor: palette.background,
+      hoverBorder: palette.accents_4,
+      focusBorder: palette.primary,
+      placeholderColor: palette.accents_6,
+      iconColor: palette.accents_5
+    }
+
+  const base = palette[status]
+  const dark = palette[`${status}Dark`]
+
+  if (subtle) {
+    const { bg, color } = getVariantColors(palette, status, 'subtle')
+    return {
+      color,
+      bgColor: bg,
+      borderColor: palette[`${status}Light`],
+      hoverBgColor: palette[`${status}Light`],
+      hoverBorder: base,
+      focusBorder: dark,
+      placeholderColor: color,
+      iconColor: color
+    }
+  }
+  if (light) {
+    const { bg, border, color } = getVariantColors(palette, status, 'light')
+    return {
+      color,
+      bgColor: bg,
+      borderColor: border,
+      hoverBgColor: bg,
+      hoverBorder: base,
+      focusBorder: dark,
+      placeholderColor: color,
+      iconColor: color
+    }
+  }
+  if (ghost) {
+    const { bg, border, color } = getVariantColors(palette, status, 'outline')
+    return {
+      color,
+      bgColor: bg,
+      borderColor: border,
+      hoverBgColor: bg,
+      hoverBorder: dark,
+      focusBorder: dark,
+      placeholderColor: palette[`${status}Light`],
+      iconColor: color
+    }
+  }
+  if (filled) {
+    const { bg, border, color } = getVariantColors(palette, status, 'filled')
+    return {
+      color,
+      bgColor: bg,
+      borderColor: border,
+      hoverBgColor: bg,
+      hoverBorder: dark,
+      focusBorder: dark,
+      placeholderColor: 'rgba(255, 255, 255, 0.7)',
+      iconColor: color
     }
   }
 
-  if (disabled)
-    return {
-      color: palette.accents_6,
-      bgColor: palette.accents_2,
-      borderColor: palette.accents_3,
-      hoverBgColor: palette.accents_2,
-      hoverBorder: palette.accents_3
-    }
-
-  if (readOnly)
-    return {
-      color: palette.foreground,
-      bgColor: palette.accents_1,
-      borderColor: palette.accents_2,
-      hoverBgColor: palette.accents_1,
-      hoverBorder: palette.accents_4
-    }
-
-  if (!status) return colors.default
-  return colors[status]
+  return {
+    color: dark,
+    bgColor: palette[`${status}Light`],
+    borderColor: base,
+    hoverBgColor: palette[`${status}Light`],
+    hoverBorder: base,
+    focusBorder: dark,
+    placeholderColor: palette.accents_6,
+    iconColor: dark
+  }
 }

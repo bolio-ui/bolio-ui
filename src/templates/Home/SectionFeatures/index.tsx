@@ -1,6 +1,7 @@
 import React from 'react'
 import { Section, Container, Text, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
+import styles from './SectionFeatures.module.css'
 
 function SectionFeatures() {
   const theme = useTheme()
@@ -38,7 +39,19 @@ function SectionFeatures() {
   ]
 
   return (
-    <Section py={5}>
+    <Section
+      py={5}
+      style={
+        {
+          '--features-border': theme.palette.border,
+          '--features-radius': theme.layout.radius,
+          '--features-bg': theme.palette.accents_1,
+          '--features-mono': theme.font.mono,
+          '--features-strong': theme.palette.accents_6,
+          '--features-muted': theme.palette.accents_5
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
         <Eyebrow>
           <span style={{ color: theme.palette.accents_5 }}>
@@ -48,12 +61,12 @@ function SectionFeatures() {
         <Text h2 my={0} mb={2}>
           Set it once. Every component follows.
         </Text>
-        <div className="features">
-          <div className="entry">
-            <span className="entry-title">Theme</span>
+        <div className={styles.features}>
+          <div className={styles.entry}>
+            <span className={styles.entryTitle}>Theme</span>
             {themeEntries.map((entry) => (
-              <div key={entry.label} className="entry-row">
-                <span className="muted">{entry.label}</span>
+              <div key={entry.label} className={styles.entryRow}>
+                <span className={styles.muted}>{entry.label}</span>
                 <span
                   style={{ color: entry.color || theme.palette.foreground }}
                 >
@@ -62,17 +75,17 @@ function SectionFeatures() {
               </div>
             ))}
           </div>
-          <div className="rows">
+          <div className={styles.rows}>
             {features.map((feature) => (
-              <div key={feature.label} className="row">
+              <div key={feature.label} className={styles.row}>
                 <span
-                  className="row-label"
+                  className={styles.rowLabel}
                   style={{ color: theme.palette.warning }}
                 >
                   {feature.label}
                 </span>
                 <span
-                  className="row-tag"
+                  className={styles.rowTag}
                   style={{ color: feature.tagColor || theme.palette.accents_5 }}
                 >
                   {feature.tag}
@@ -83,71 +96,6 @@ function SectionFeatures() {
           </div>
         </div>
       </Container>
-      <style jsx>{`
-        .features {
-          display: grid;
-          grid-template-columns: 280px minmax(0, 1fr);
-          gap: 48px;
-          align-items: start;
-        }
-        .entry {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 24px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.accents_1};
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-        }
-        .entry-title {
-          margin-bottom: 4px;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: ${theme.palette.accents_6};
-        }
-        .entry-row {
-          display: flex;
-          justify-content: space-between;
-          gap: 16px;
-        }
-        .muted {
-          color: ${theme.palette.accents_5};
-        }
-        .rows {
-          border-top: 1px solid ${theme.palette.border};
-        }
-        .row {
-          display: grid;
-          grid-template-columns: 160px 180px minmax(0, 1fr);
-          gap: 16px;
-          align-items: baseline;
-          padding: 14px 0;
-          border-bottom: 1px solid ${theme.palette.border};
-        }
-        .row-label,
-        .row-tag {
-          font-family: ${theme.font.mono};
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-        }
-        .row-tag {
-          text-transform: none;
-          letter-spacing: 0;
-        }
-        @media (max-width: ${theme.breakpoints.sm.max}) {
-          .features {
-            grid-template-columns: minmax(0, 1fr);
-            gap: 32px;
-          }
-          .row {
-            grid-template-columns: minmax(0, 1fr);
-            gap: 4px;
-          }
-        }
-      `}</style>
     </Section>
   )
 }

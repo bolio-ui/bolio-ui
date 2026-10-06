@@ -2,11 +2,6 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { BolioUIProvider, Col, Container, Display, Row, Section } from '..'
 
-const css = () =>
-  Array.from(document.head.querySelectorAll('style'))
-    .map((el) => (el.textContent || '').replace(/\s+/g, ''))
-    .join('\n')
-
 const wrap = (ui: React.ReactElement) =>
   render(<BolioUIProvider>{ui}</BolioUIProvider>)
 
@@ -17,14 +12,16 @@ describe('layout components', () => {
         col
       </Col>
     )
-    expect(css()).toContain('width:50%')
-    expect(css()).toContain('margin-left:25%')
+    const col = screen.getByText('col')
+    expect(col.style.width).toBe('50%')
+    expect(col.style.marginLeft).toBe('25%')
   })
 
   it('Col spans the whole row by default', () => {
     wrap(<Col>col</Col>)
-    expect(css()).toContain('width:100%')
-    expect(css()).toContain('margin-left:0%')
+    const col = screen.getByText('col')
+    expect(col.style.width).toBe('100%')
+    expect(col.style.marginLeft).toBe('0%')
   })
 
   it('Row is a flex row that aligns its columns', () => {
@@ -33,14 +30,16 @@ describe('layout components', () => {
         row
       </Row>
     )
-    expect(css()).toContain('display:flex')
-    expect(css()).toContain('justify-content:space-between')
-    expect(css()).toContain('align-items:flex-end')
+    const row = screen.getByText('row')
+    expect(row.className).toContain('row')
+    expect(row.style.justifyContent).toBe('space-between')
+    expect(row.style.alignItems).toBe('flex-end')
   })
 
   it('Row gap sets the space that its columns use as padding', () => {
     wrap(<Row gap={2}>row</Row>)
-    expect(css()).toMatch(/--row-gap:calc\(2\*/)
+    const row = screen.getByText('row')
+    expect(row.style.getPropertyValue('--row-gap')).toMatch(/calc\(2 \*/)
   })
 
   it('Row and Col can render another element', () => {
@@ -55,19 +54,22 @@ describe('layout components', () => {
 
   it('Container limits and centers the content', () => {
     wrap(<Container>content</Container>)
-    expect(css()).toContain('max-width:')
-    expect(css()).toContain('margin-left:auto')
+    const container = screen.getByText('content')
+    expect(container.className).toContain('container')
+    expect(container.style.maxWidth).not.toBe('')
   })
 
   it('Container fluid has no maximum width and no stray CSS', () => {
     wrap(<Container fluid>content</Container>)
-    expect(css()).not.toContain('max-width:')
-    expect(css()).not.toContain('false')
+    const container = screen.getByText('content')
+    expect(container.style.maxWidth).toBe('')
   })
 
   it('Section paints its background', () => {
     wrap(<Section bg="#eee">section</Section>)
-    expect(css()).toContain('background-color:#eee')
+    expect(screen.getByText('section').style.backgroundColor).toBe(
+      'rgb(238, 238, 238)'
+    )
     expect(screen.getByText('section').tagName).toBe('SECTION')
   })
 

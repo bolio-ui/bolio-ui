@@ -2,6 +2,7 @@ import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import type { AnyElement } from '../utils/types'
+import styles from './FieldsetFooter.module.css'
 
 interface Props {
   className?: string
@@ -13,36 +14,33 @@ export type FieldsetFooterProps = Props & NativeAttrs
 function FieldsetFooterComponent({
   className = '',
   children,
+  style,
   ...props
 }: React.PropsWithChildren<FieldsetFooterProps>) {
   const theme = useTheme()
   const { SCALES } = useScale()
 
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: theme.palette.accents_1,
+    borderTop: `1px solid ${theme.palette.border}`,
+    borderBottomLeftRadius: theme.layout.radius,
+    borderBottomRightRadius: theme.layout.radius,
+    color: theme.palette.accents_6,
+    fontSize: SCALES.font(0.875),
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(2.875),
+    padding: `${SCALES.pt(0.625)} ${SCALES.pr(1.31)} ${SCALES.pb(0.625)} ${SCALES.pl(1.31)}`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    ...style
+  }
+
   return (
-    <footer className={className} {...props}>
+    <footer
+      className={`${styles.footer} ${className}`.trim()}
+      {...props}
+      style={footerStyle}
+    >
       {children}
-      <style jsx>{`
-        footer {
-          background-color: ${theme.palette.accents_1};
-          border-top: 1px solid ${theme.palette.border};
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          overflow: hidden;
-          color: ${theme.palette.accents_6};
-          padding: ${theme.layout.gapHalf} ${theme.layout.gap};
-          box-sizing: border-box;
-          font-size: ${SCALES.font(0.875)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(2.875)};
-          padding: ${SCALES.pt(0.625)} ${SCALES.pr(1.31)} ${SCALES.pb(0.625)}
-            ${SCALES.pl(1.31)};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-      `}</style>
     </footer>
   )
 }

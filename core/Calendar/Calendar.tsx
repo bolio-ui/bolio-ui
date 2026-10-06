@@ -1,48 +1,101 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
+import type { ScaleComponent } from '../use-scale/with-scale'
 import useClasses, { joinClasses } from '../use-classes'
 import {
   addDays,
   addMonths,
   clampDate,
+  getISOWeek,
   isSameDay,
   startOfDay,
   toISO
 } from './date-utils'
+import styles from './Calendar.module.css'
 
-interface Props {
-  value?: Date | null
-  onChange?: (date: Date) => void
+export type DateRange = [Date | null, Date | null]
+
+interface BaseProps {
   min?: Date
   max?: Date
+  shouldDisableDate?: (date: Date) => boolean
   locale?: string
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  showOutsideDays?: boolean
+  showWeekNumbers?: boolean
+  // months shown side by side; the days of the neighbor months are hidden
+  // when there is more than one
+  numberOfMonths?: number
+  month?: Date
+  defaultMonth?: Date
+  onMonthChange?: (month: Date) => void
   autoFocus?: boolean
   previousLabel?: string
   nextLabel?: string
+  weekLabel?: string
   className?: string
+}
+
+interface SingleProps {
+  mode?: 'single'
+  value?: Date | null
+  onChange?: (date: Date) => void
+}
+
+interface MultipleProps {
+  mode: 'multiple'
+  value?: Date[]
+  onChange?: (dates: Date[]) => void
+  maxSelected?: number
+}
+
+interface RangeProps {
+  mode: 'range'
+  value?: DateRange
+  onChange?: (range: DateRange) => void
 }
 
 type NativeAttrs = Omit<
   React.HTMLAttributes<HTMLDivElement>,
-  keyof Props | 'onChange'
+  keyof BaseProps | keyof SingleProps | keyof MultipleProps | 'onChange'
 >
-export type CalendarProps = Props & NativeAttrs
+export type CalendarProps = BaseProps &
+  (SingleProps | MultipleProps | RangeProps) &
+  NativeAttrs
 
-const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
+type CalendarValue = Date | null | Date[] | DateRange
+type ImplProps = BaseProps & {
+  mode?: 'single' | 'multiple' | 'range'
+  value?: CalendarValue
+  onChange?: (value: never) => void
+  maxSelected?: number
+} & NativeAttrs
+
+const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
   (
     {
+      mode = 'single',
       value: customValue,
       onChange,
+      maxSelected,
       min,
       max,
+      shouldDisableDate,
       locale = 'en-US',
       weekStartsOn = 0,
+      showOutsideDays = false,
+      showWeekNumbers = false,
+      numberOfMonths = 1,
+      month: customMonth,
+      defaultMonth,
+      onMonthChange,
       autoFocus = false,
       previousLabel = 'Previous month',
       nextLabel = 'Next month',
+      weekLabel = 'Week',
       className = '',
+      style,
       ...props
     },
     ref
@@ -54,21 +107,63 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
     const minDay = useMemo(() => (min ? startOfDay(min) : undefined), [min])
     const maxDay = useMemo(() => (max ? startOfDay(max) : undefined), [max])
 
-    const [selfValue, setSelfValue] = useState<Date | null>(null)
-    const selected = customValue !== undefined ? customValue : selfValue
+    const [selfValue, setSelfValue] = useState<CalendarValue>(
+      mode === 'multiple' ? [] : mode === 'range' ? [null, null] : null
+    )
+    const current = customValue !== undefined ? customValue : selfValue
+    const isRange = mode === 'range'
+    const [rangeStart, rangeEnd] = isRange ? (current as DateRange) : []
+    const selectedDays: Date[] = isRange
+      ? ([rangeStart, rangeEnd].filter(Boolean) as Date[])
+      : mode === 'multiple'
+        ? (current as Date[])
+        : current
+          ? [current as Date]
+          : []
+    const anchor = selectedDays[0] || null
+    const [hovered, setHovered] = useState<Date | null>(null)
     const [focused, setFocused] = useState(() =>
-      clampDate(startOfDay(selected || new Date()), minDay, maxDay)
+      clampDate(
+        startOfDay(anchor || customMonth || defaultMonth || new Date()),
+        minDay,
+        maxDay
+      )
     )
 
-    const gridRef = useRef<HTMLTableElement>(null)
+    // the first month shown, as year * 12 + month; the focused day stays in view
+    const count = Math.max(1, Math.floor(numberOfMonths))
+    const focusedIndex = focused.getFullYear() * 12 + focused.getMonth()
+    const [viewStart, setViewStart] = useState(focusedIndex)
+    let first = viewStart
+    if (focusedIndex < first) first = focusedIndex
+    else if (focusedIndex > first + count - 1)
+      first = focusedIndex - (count - 1)
+    if (first !== viewStart) setViewStart(first)
+
+    const gridRef = useRef<HTMLDivElement>(null)
     // The DOM focus only follows the focused day after the keyboard or on mount.
     const moveFocus = useRef(autoFocus)
 
-    const time = selected ? selected.getTime() : null
+    const time = anchor ? anchor.getTime() : null
     useEffect(() => {
       if (time === null) return
       setFocused(clampDate(startOfDay(new Date(time)), minDay, maxDay))
     }, [time, minDay, maxDay])
+
+    const monthTime = customMonth
+      ? new Date(customMonth.getFullYear(), customMonth.getMonth(), 1).getTime()
+      : null
+    useEffect(() => {
+      if (monthTime === null) return
+      const target = new Date(monthTime)
+      setViewStart(target.getFullYear() * 12 + target.getMonth())
+      setFocused((last) =>
+        last.getFullYear() === target.getFullYear() &&
+        last.getMonth() === target.getMonth()
+          ? last
+          : clampDate(target, minDay, maxDay)
+      )
+    }, [monthTime, minDay, maxDay])
 
     useEffect(() => {
       if (!moveFocus.current) return
@@ -109,41 +204,106 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
       [formats, weekStartsOn]
     )
 
-    const year = focused.getFullYear()
-    const month = focused.getMonth()
-    const weeks = useMemo(() => {
-      const offset = (new Date(year, month, 1).getDay() - weekStartsOn + 7) % 7
-      const total = new Date(year, month + 1, 0).getDate()
-      const cells: Array<Date | null> = [
-        ...Array.from({ length: offset }, () => null),
-        ...Array.from(
-          { length: total },
-          (_, index) => new Date(year, month, index + 1)
-        )
-      ]
-      while (cells.length % 7) cells.push(null)
-      return Array.from({ length: cells.length / 7 }, (_, index) =>
-        cells.slice(index * 7, index * 7 + 7)
-      )
-    }, [year, month, weekStartsOn])
+    const outsideDays = showOutsideDays && count === 1
+    const monthViews = useMemo(
+      () =>
+        Array.from({ length: count }, (_, step) => {
+          const index = first + step
+          const year = Math.floor(index / 12)
+          const month = index % 12
+          const offset =
+            (new Date(year, month, 1).getDay() - weekStartsOn + 7) % 7
+          const total = new Date(year, month + 1, 0).getDate()
+          const cells: Array<Date | null> = [
+            ...Array.from({ length: offset }, (_, cell) =>
+              outsideDays ? new Date(year, month, cell - offset + 1) : null
+            ),
+            ...Array.from(
+              { length: total },
+              (_, cell) => new Date(year, month, cell + 1)
+            )
+          ]
+          while (cells.length % 7)
+            cells.push(
+              outsideDays
+                ? new Date(year, month, cells.length - offset + 1)
+                : null
+            )
+          const weeks = Array.from({ length: cells.length / 7 }, (_, row) =>
+            cells.slice(row * 7, row * 7 + 7)
+          )
+          return { year, month, date: new Date(year, month, 1), weeks }
+        }),
+      [first, count, weekStartsOn, outsideDays]
+    )
+    const firstMonth = monthViews[0]
+    const lastMonthView = monthViews[count - 1]
+
+    const lastMonth = useRef(first)
+    useEffect(() => {
+      if (first === lastMonth.current) return
+      lastMonth.current = first
+      if (onMonthChange) onMonthChange(firstMonth.date)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [first])
 
     const isDisabled = (date: Date) =>
-      Boolean((minDay && date < minDay) || (maxDay && date > maxDay))
+      Boolean(
+        (minDay && date < minDay) ||
+        (maxDay && date > maxDay) ||
+        (shouldDisableDate && shouldDisableDate(date))
+      )
 
     const today = new Date()
     const previousDisabled = Boolean(
-      minDay && new Date(year, month, 0) < minDay
+      minDay && new Date(firstMonth.year, firstMonth.month, 0) < minDay
     )
     const nextDisabled = Boolean(
-      maxDay && new Date(year, month + 1, 1) > maxDay
+      maxDay &&
+      new Date(lastMonthView.year, lastMonthView.month + 1, 1) > maxDay
     )
+
+    const goToMonth = (step: number) => {
+      setViewStart(first + step)
+      setFocused(clampDate(addMonths(focused, step), minDay, maxDay))
+    }
+
+    const commit = (next: CalendarValue) => {
+      if (customValue === undefined) setSelfValue(next)
+      if (onChange) (onChange as (value: CalendarValue) => void)(next)
+    }
 
     const select = (date: Date) => {
       if (isDisabled(date)) return
       setFocused(date)
-      if (customValue === undefined) setSelfValue(date)
-      if (onChange) onChange(date)
+      if (isRange) {
+        const start = rangeStart as Date | null
+        const startsNew = !start || rangeEnd || date < start
+        return commit(startsNew ? [date, null] : [start, date])
+      }
+      if (mode === 'multiple') {
+        const list = current as Date[]
+        if (list.some((item) => isSameDay(item, date)))
+          return commit(list.filter((item) => !isSameDay(item, date)))
+        if (maxSelected !== undefined && list.length >= maxSelected) return
+        return commit([...list, date].sort((a, b) => +a - +b))
+      }
+      commit(date)
     }
+
+    const isSelected = (date: Date) =>
+      selectedDays.some((item) => isSameDay(item, date))
+
+    // while the range has only a start, the hovered day previews the end
+    const previewEnd = isRange ? rangeEnd || hovered : null
+    const [low, high] =
+      rangeStart && previewEnd
+        ? rangeStart <= previewEnd
+          ? [rangeStart, previewEnd]
+          : [previewEnd, rangeStart]
+        : [null, null]
+    const isInRange = (date: Date) =>
+      Boolean(low && high && date > low && date < high)
 
     const keyDownHandler = (
       event: React.KeyboardEvent<HTMLButtonElement>,
@@ -170,166 +330,195 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, CalendarProps>(
       setFocused(clampDate(targets[event.key], minDay, maxDay))
     }
 
+    const calendarStyle = {
+      '--calendar-font-size': SCALES.font(1),
+      '--calendar-text-color': theme.palette.foreground,
+      '--calendar-width': SCALES.width(1, 'auto'),
+      '--calendar-height': SCALES.height(1, 'auto'),
+      '--calendar-padding-top': SCALES.pt(0),
+      '--calendar-padding-right': SCALES.pr(0),
+      '--calendar-padding-bottom': SCALES.pb(0),
+      '--calendar-padding-left': SCALES.pl(0),
+      '--calendar-margin-top': SCALES.mt(0),
+      '--calendar-margin-right': SCALES.mr(0),
+      '--calendar-margin-bottom': SCALES.mb(0),
+      '--calendar-margin-left': SCALES.ml(0),
+      '--calendar-weekday-color': theme.palette.accents_5,
+      '--calendar-radius': theme.layout.radius,
+      '--calendar-hover-bg': theme.palette.accents_2,
+      '--calendar-focus-outline': theme.palette.primary,
+      '--calendar-disabled-color': theme.palette.accents_3,
+      '--calendar-today-border': theme.palette.accents_4,
+      '--calendar-selected-color': '#fff',
+      '--calendar-selected-bg': theme.palette.primary,
+      '--calendar-range-bg': `color-mix(in srgb, ${theme.palette.primary} 18%, transparent)`,
+      '--calendar-outside-color': theme.palette.accents_4,
+      '--calendar-week-color': theme.palette.accents_4,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <div ref={ref} className={useClasses('calendar', className)} {...props}>
-        <div className="header">
-          <button
-            type="button"
-            aria-label={previousLabel}
-            disabled={previousDisabled}
-            onClick={() =>
-              setFocused(clampDate(addMonths(focused, -1), minDay, maxDay))
-            }
-          >
-            ‹
-          </button>
-          <div id={headingId} className="title" aria-live="polite">
-            {formats.month.format(focused)}
-          </div>
-          <button
-            type="button"
-            aria-label={nextLabel}
-            disabled={nextDisabled}
-            onClick={() =>
-              setFocused(clampDate(addMonths(focused, 1), minDay, maxDay))
-            }
-          >
-            ›
-          </button>
-        </div>
-        <table ref={gridRef} role="grid" aria-labelledby={headingId}>
-          <thead>
-            <tr role="row">
-              {weekdays.map((weekday) => (
-                <th key={weekday.long} role="columnheader" scope="col">
-                  <abbr title={weekday.long}>{weekday.short}</abbr>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {weeks.map((week, index) => (
-              <tr key={index} role="row">
-                {week.map((date, cell) =>
-                  date ? (
-                    <td
-                      key={cell}
-                      role="gridcell"
-                      aria-selected={Boolean(
-                        selected && isSameDay(date, selected)
-                      )}
-                    >
-                      <button
-                        type="button"
-                        data-date={toISO(date)}
-                        aria-label={formats.day.format(date)}
-                        aria-current={
-                          isSameDay(date, today) ? 'date' : undefined
-                        }
-                        className={joinClasses({
-                          selected: Boolean(
-                            selected && isSameDay(date, selected)
-                          ),
-                          today: isSameDay(date, today)
-                        })}
-                        tabIndex={isSameDay(date, focused) ? 0 : -1}
-                        disabled={isDisabled(date)}
-                        onClick={() => select(date)}
-                        onKeyDown={(event) => keyDownHandler(event, date)}
-                      >
-                        {date.getDate()}
-                      </button>
-                    </td>
-                  ) : (
-                    <td key={cell} role="gridcell" aria-hidden="true" />
-                  )
+      <div
+        ref={ref}
+        className={useClasses(styles.calendar, className)}
+        style={calendarStyle}
+        {...props}
+      >
+        <div
+          ref={gridRef}
+          className={styles.months}
+          onMouseLeave={() => setHovered(null)}
+        >
+          {monthViews.map(({ month, date: monthDate, weeks }, step) => (
+            <div key={step} className={styles.month}>
+              <div className={styles.header}>
+                {step === 0 ? (
+                  <button
+                    type="button"
+                    className={joinClasses(styles.button, styles.navButton)}
+                    aria-label={previousLabel}
+                    disabled={previousDisabled}
+                    onClick={() => goToMonth(-1)}
+                  >
+                    ‹
+                  </button>
+                ) : (
+                  <span className={styles.navSpacer} aria-hidden="true" />
                 )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <style jsx>{`
-          .calendar {
-            display: inline-block;
-            font-size: ${SCALES.font(1)};
-            color: ${theme.palette.foreground};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, 'auto')};
-            padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.5em;
-          }
-          .title {
-            font-weight: 600;
-            text-transform: capitalize;
-          }
-          table {
-            border-collapse: collapse;
-          }
-          th {
-            padding: 0.25em 0;
-            font-size: 0.75em;
-            font-weight: 500;
-            color: ${theme.palette.accents_5};
-          }
-          th abbr {
-            text-decoration: none;
-          }
-          td {
-            padding: 1px;
-            text-align: center;
-          }
-          button {
-            font: inherit;
-            color: inherit;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid transparent;
-            border-radius: ${theme.layout.radius};
-          }
-          .header button {
-            width: 2em;
-            height: 2em;
-            font-size: 1.25em;
-            line-height: 1;
-          }
-          td button {
-            width: 2.5em;
-            height: 2.5em;
-          }
-          button:hover:not(:disabled) {
-            background-color: ${theme.palette.accents_2};
-          }
-          button:focus-visible {
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 1px;
-          }
-          button:disabled {
-            cursor: not-allowed;
-            color: ${theme.palette.accents_3};
-          }
-          .today {
-            border-color: ${theme.palette.accents_4};
-          }
-          .selected,
-          .selected:hover:not(:disabled) {
-            color: ${theme.palette.background};
-            background-color: ${theme.palette.primary};
-            border-color: ${theme.palette.primary};
-          }
-        `}</style>
+                <div
+                  id={`${headingId}-${step}`}
+                  className={styles.title}
+                  aria-live="polite"
+                >
+                  {formats.month.format(monthDate)}
+                </div>
+                {step === count - 1 ? (
+                  <button
+                    type="button"
+                    className={joinClasses(styles.button, styles.navButton)}
+                    aria-label={nextLabel}
+                    disabled={nextDisabled}
+                    onClick={() => goToMonth(1)}
+                  >
+                    ›
+                  </button>
+                ) : (
+                  <span className={styles.navSpacer} aria-hidden="true" />
+                )}
+              </div>
+              <table
+                role="grid"
+                aria-labelledby={`${headingId}-${step}`}
+                className={styles.table}
+                aria-multiselectable={mode !== 'single' || undefined}
+              >
+                <thead>
+                  <tr role="row">
+                    {showWeekNumbers && (
+                      <th role="columnheader" className={styles.th} />
+                    )}
+                    {weekdays.map((weekday) => (
+                      <th
+                        key={weekday.long}
+                        role="columnheader"
+                        scope="col"
+                        className={styles.th}
+                      >
+                        <abbr title={weekday.long}>{weekday.short}</abbr>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {weeks.map((week, index) => {
+                    const reference = week.find(Boolean) as Date
+                    const weekNumber = getISOWeek(
+                      addDays(reference, 3 - week.indexOf(reference))
+                    )
+                    return (
+                      <tr key={index} role="row">
+                        {showWeekNumbers && (
+                          <th
+                            role="rowheader"
+                            scope="row"
+                            className={styles.weekNumber}
+                            aria-label={`${weekLabel} ${weekNumber}`}
+                          >
+                            {weekNumber}
+                          </th>
+                        )}
+                        {week.map((date, cell) => {
+                          if (!date)
+                            return (
+                              <td
+                                key={cell}
+                                role="gridcell"
+                                className={styles.td}
+                                aria-hidden="true"
+                              />
+                            )
+                          const selectedDay = isSelected(date)
+                          const outside = date.getMonth() !== month
+                          return (
+                            <td
+                              key={cell}
+                              role="gridcell"
+                              className={joinClasses(styles.td, {
+                                [styles.inRange]: isInRange(date),
+                                [styles.rangeStart]: Boolean(
+                                  low && isSameDay(date, low) && high
+                                ),
+                                [styles.rangeEnd]: Boolean(
+                                  high && isSameDay(date, high) && low
+                                )
+                              })}
+                              aria-selected={selectedDay || isInRange(date)}
+                            >
+                              <button
+                                type="button"
+                                data-date={toISO(date)}
+                                aria-label={formats.day.format(date)}
+                                aria-current={
+                                  isSameDay(date, today) ? 'date' : undefined
+                                }
+                                className={joinClasses(
+                                  styles.button,
+                                  styles.dayButton,
+                                  {
+                                    [styles.selected]: selectedDay,
+                                    [styles.today]: isSameDay(date, today),
+                                    [styles.outside]: outside
+                                  }
+                                )}
+                                tabIndex={isSameDay(date, focused) ? 0 : -1}
+                                disabled={isDisabled(date)}
+                                onClick={() => select(date)}
+                                onMouseEnter={() => isRange && setHovered(date)}
+                                onKeyDown={(event) =>
+                                  keyDownHandler(event, date)
+                                }
+                              >
+                                {date.getDate()}
+                              </button>
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
 )
 
 CalendarComponent.displayName = 'BolioUICalendar'
-const Calendar = withScale(CalendarComponent)
+const Calendar = withScale(CalendarComponent) as ScaleComponent<
+  HTMLDivElement,
+  CalendarProps
+>
 export default Calendar

@@ -12,18 +12,24 @@ const {
   Calendar,
   Capacity,
   Card,
+  Carousel,
   Checkbox,
   Code,
+  ColorInput,
+  ColorPicker,
   Collapse,
   Combobox,
   Container,
+  ContextMenu,
   CssBaseline,
   DatePicker,
+  DateRangePicker,
   Description,
   Display,
   Divider,
   Dot,
   Drawer,
+  Dropzone,
   Fieldset,
   Grid,
   Image,
@@ -37,12 +43,14 @@ const {
   NumberInput,
   Page,
   Pagination,
+  PinInput,
   Popover,
   Progress,
   Radio,
   Rating,
   Row,
   Section,
+  SegmentedControl,
   Select,
   Skeleton,
   Slider,
@@ -53,10 +61,12 @@ const {
   Table,
   Tabs,
   Tag,
+  TagsInput,
   Text,
   Textarea,
   Toggle,
-  Tooltip
+  Tooltip,
+  Tree
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
@@ -93,6 +103,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Calendar', () => <Calendar value={new Date(2026, 0, 15)} />],
   ['Capacity', () => <Capacity value={50} />],
   ['Card', () => <Card>Content</Card>],
+  [
+    'Carousel',
+    () => (
+      <Carousel aria-label="Highlights">
+        <div>One</div>
+        <div>Two</div>
+      </Carousel>
+    )
+  ],
   ['Checkbox', () => <Checkbox>Check</Checkbox>],
   ['Code', () => <Code>yarn add</Code>],
   [
@@ -112,6 +131,14 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   [
+    'ColorInput',
+    () => <ColorInput aria-label="Brand color" initialValue="#2563eb" />
+  ],
+  [
+    'ColorPicker',
+    () => <ColorPicker aria-label="Brand color" initialValue="#2563eb" />
+  ],
+  [
     'Combobox',
     () => (
       <Combobox
@@ -121,8 +148,13 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Container', () => <Container>Content</Container>],
+  [
+    'ContextMenu',
+    () => <ContextMenu content={<Menu.Item>Copy</Menu.Item>}>Area</ContextMenu>
+  ],
   ['CssBaseline', () => <CssBaseline />],
   ['DatePicker', () => <DatePicker aria-label="Birthday" />],
+  ['DateRangePicker', () => <DateRangePicker aria-label="Stay" />],
   ['Description', () => <Description title="T" content="C" />],
   ['Display', () => <Display caption="Caption">Content</Display>],
   ['Divider', () => <Divider />],
@@ -135,6 +167,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Drawer>
     )
   ],
+  ['Dropzone', () => <Dropzone aria-label="Attachments" />],
   [
     'Fieldset',
     () => (
@@ -185,6 +218,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Pagination', () => <Pagination count={5} initialPage={1} />],
+  ['PinInput', () => <PinInput aria-label="Code" numeric initialValue="12" />],
   [
     'Popover',
     () => (
@@ -213,6 +247,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Section', () => <Section>Section</Section>],
+  [
+    'SegmentedControl',
+    () => (
+      <SegmentedControl initialValue="a" aria-label="Period">
+        <SegmentedControl.Item value="a">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="b">Week</SegmentedControl.Item>
+      </SegmentedControl>
+    )
+  ],
   [
     'Select',
     () => (
@@ -258,6 +301,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Tag', () => <Tag>Tag</Tag>],
+  [
+    'TagsInput',
+    () => <TagsInput aria-label="Skills" initialValue={['React']} />
+  ],
   ['Text', () => <Text h1>Title</Text>],
   ['Textarea', () => <Textarea placeholder="write" />],
   ['Toggle', () => <Toggle />],
@@ -267,6 +314,18 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       <Tooltip text="Tip">
         <span>Hover</span>
       </Tooltip>
+    )
+  ],
+  [
+    'Tree',
+    () => (
+      <Tree
+        aria-label="Files"
+        data={[
+          { value: 'a', label: 'A', children: [{ value: 'b', label: 'B' }] }
+        ]}
+        initialExpanded={['a']}
+      />
     )
   ]
 ]

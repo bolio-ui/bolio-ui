@@ -31,15 +31,15 @@ describe('semantics', () => {
     expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 
-  it('Collapse header works with the keyboard and exposes its state', () => {
+  it('Collapse header is a native button inside a heading and exposes its state', () => {
     wrap(<Collapse title="Title">Body</Collapse>)
     const header = screen.getByRole('button')
+    expect(header.parentElement?.tagName).toBe('H3')
     expect(header).toHaveAttribute('aria-expanded', 'false')
-    expect(header).toHaveAttribute('tabindex', '0')
 
-    fireEvent.keyDown(header, { key: 'Enter' })
+    fireEvent.click(header)
     expect(header).toHaveAttribute('aria-expanded', 'true')
-    fireEvent.keyDown(header, { key: ' ' })
+    fireEvent.click(header)
     expect(header).toHaveAttribute('aria-expanded', 'false')
   })
 
@@ -244,35 +244,19 @@ describe('semantics', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true')
   })
 
-  it('Rating is a radio group that moves with the arrow keys', () => {
-    const onValueChange = jest.fn()
-    wrap(
-      <Rating
-        aria-label="Score"
-        initialValue={3}
-        onValueChange={onValueChange}
-      />
-    )
+  it('Rating is a radio group of native radios', () => {
+    const onChange = jest.fn()
+    wrap(<Rating aria-label="Score" initialValue={3} onChange={onChange} />)
     expect(
       screen.getByRole('radiogroup', { name: 'Score' })
     ).toBeInTheDocument()
+    // the 5 values and the empty one
     const radios = screen.getAllByRole('radio')
-    expect(radios).toHaveLength(5)
-    expect(radios[2]).toHaveAttribute('aria-checked', 'true')
-    expect(radios[2]).toHaveAttribute('tabindex', '0')
-    expect(radios[0]).toHaveAttribute('tabindex', '-1')
-
-    fireEvent.keyDown(radios[2], { key: 'ArrowRight' })
-    expect(radios[3]).toHaveAttribute('aria-checked', 'true')
-    expect(radios[3]).toHaveFocus()
-    expect(onValueChange).toHaveBeenLastCalledWith(4)
-
-    fireEvent.keyDown(radios[3], { key: 'End' })
-    expect(radios[4]).toHaveAttribute('aria-checked', 'true')
-    fireEvent.keyDown(radios[4], { key: 'ArrowRight' })
-    expect(radios[4]).toHaveAttribute('aria-checked', 'true')
-    fireEvent.keyDown(radios[4], { key: 'Home' })
-    expect(radios[0]).toHaveAttribute('aria-checked', 'true')
+    expect(radios).toHaveLength(6)
+    expect(screen.getByRole('radio', { name: '3 of 5' })).toBeChecked()
+    fireEvent.click(screen.getByRole('radio', { name: '4 of 5' }))
+    expect(onChange).toHaveBeenLastCalledWith(4)
+    expect(screen.getByRole('radio', { name: '4 of 5' })).toBeChecked()
   })
 
   it('Input is named by its label and described by its error', () => {

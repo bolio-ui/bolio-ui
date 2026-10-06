@@ -3,8 +3,38 @@ import NextLink from 'next/link'
 import { useTheme, Section, Container, Text } from 'core'
 import * as Icons from '@bolio-ui/icons'
 import Eyebrow from 'src/components/Eyebrow'
+import docsManifest from 'src/content/docs/manifest.json'
+import styles from './SectionComponents.module.css'
 
 type Icon = keyof typeof Icons
+
+const countRoutes = (title: string) =>
+  docsManifest.routes[0].routes
+    .find((group) => group.title === title)
+    ?.routes?.filter((route) => route.title !== 'Overview').length ?? 0
+
+const glows = new WeakMap<
+  HTMLElement,
+  { x: number; y: number; tx: number; ty: number; raf: number }
+>()
+
+function followPointer(el: HTMLElement, tx: number, ty: number) {
+  const glow = glows.get(el) ?? { x: 50, y: 0, tx, ty, raf: 0 }
+  glows.set(el, glow)
+  glow.tx = tx
+  glow.ty = ty
+  if (glow.raf) return
+  const step = () => {
+    glow.x += (glow.tx - glow.x) * 0.12
+    glow.y += (glow.ty - glow.y) * 0.12
+    el.style.setProperty('--x', `${glow.x}%`)
+    el.style.setProperty('--y', `${glow.y}%`)
+    const moving =
+      Math.abs(glow.tx - glow.x) > 0.05 || Math.abs(glow.ty - glow.y) > 0.05
+    glow.raf = moving ? requestAnimationFrame(step) : 0
+  }
+  glow.raf = requestAnimationFrame(step)
+}
 
 // Wireframes are built from three primitives: .line, .box and .active.
 const cards: Array<{
@@ -184,350 +214,75 @@ function SectionComponents() {
   const theme = useTheme()
 
   return (
-    <Section py={5}>
+    <Section
+      py={5}
+      style={
+        {
+          '--mono': theme.font.mono,
+          '--c-primary': theme.palette.primary,
+          '--c-border': theme.palette.border,
+          '--radius': theme.layout.radius,
+          '--c-accents_1': theme.palette.accents_1,
+          '--c-primary-1a': `${theme.palette.primary}1a`,
+          '--c-primary-00': `${theme.palette.primary}00`,
+          '--c-foreground': theme.palette.foreground,
+          '--c-accents_4': theme.palette.accents_4,
+          '--c-accents_2': theme.palette.accents_2,
+          '--c-accents_5': theme.palette.accents_5,
+          '--c-accents_3': theme.palette.accents_3,
+          '--c-background': theme.palette.background,
+          '--c-primary-33': `${theme.palette.primary}33`,
+          '--c-primary-1f': `${theme.palette.primary}1f`,
+          '--c-accents_6': theme.palette.accents_6
+        } as React.CSSProperties
+      }
+    >
       <Container style={{ maxWidth: 1300 }}>
-        <div className="head">
+        <div className={styles.head}>
           <div>
             <Eyebrow>Components</Eyebrow>
             <Text h2 my={0}>
-              51 components. 13 hooks. 1 theme.
+              {countRoutes('Components')} components. {countRoutes('Hooks')}{' '}
+              hooks. Custom themes.
             </Text>
           </div>
-          <NextLink href="/docs/components" className="all">
+          <NextLink href="/docs/components" className={styles.all}>
             All components →
           </NextLink>
         </div>
-        <div className="grid">
+        <div className={styles.grid}>
           {cards.map((card) => {
             const CardIcon = Icons[card.icon]
             return (
               <NextLink
                 key={card.title}
                 href={`/docs/components/${card.title.toLowerCase()}`}
-                className="card"
+                className={styles.card}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  followPointer(
+                    e.currentTarget,
+                    ((e.clientX - rect.left) / rect.width) * 100,
+                    ((e.clientY - rect.top) / rect.height) * 100
+                  )
+                }}
+                onMouseLeave={(e) => followPointer(e.currentTarget, 50, 0)}
               >
-                <div className="preview">{card.preview}</div>
-                <div className="body">
-                  <div className="title">
-                    <span className="icon">
+                <div className={styles.preview}>{card.preview}</div>
+                <div className={styles.body}>
+                  <div className={styles.title}>
+                    <span className={styles.icon}>
                       <CardIcon fontSize={16} />
                     </span>
                     {card.title}
                   </div>
-                  <p className="description">{card.description}</p>
+                  <p className={styles.description}>{card.description}</p>
                 </div>
               </NextLink>
             )
           })}
         </div>
       </Container>
-      <style jsx>{`
-        .head {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          gap: 24px;
-          margin-bottom: 40px;
-        }
-        .head :global(.all) {
-          flex-shrink: 0;
-          font-family: ${theme.font.mono};
-          font-size: 0.8rem;
-          color: ${theme.palette.primary};
-        }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 16px;
-        }
-        .grid :global(.card) {
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.accents_1};
-          color: ${theme.palette.foreground};
-          overflow: hidden;
-          transition: border-color 200ms ease;
-        }
-        .grid :global(.card:hover) {
-          border-color: ${theme.palette.accents_4};
-        }
-        .preview {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 180px;
-          padding: 24px;
-          box-sizing: border-box;
-          border-bottom: 1px solid ${theme.palette.border};
-          background: radial-gradient(
-            ellipse at top,
-            ${theme.palette.primary}1f,
-            transparent 60%
-          );
-        }
-        .body {
-          padding: 16px 20px 20px;
-        }
-        .title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-family: ${theme.font.mono};
-          font-size: 0.85rem;
-          font-weight: 600;
-        }
-        .icon {
-          display: inline-flex;
-          padding: 6px;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-        }
-        .description {
-          margin: 12px 0 0;
-          font-size: 0.85rem;
-          line-height: 1.6;
-          color: ${theme.palette.accents_5};
-        }
-
-        /* Wireframe primitives */
-        .preview :global(.line) {
-          display: block;
-          height: 4px;
-          border-radius: 2px;
-          background-color: ${theme.palette.accents_3};
-        }
-        .preview :global(.line.strong) {
-          background-color: ${theme.palette.accents_5};
-        }
-        .preview :global(.accent) {
-          background-color: ${theme.palette.primary};
-        }
-        .preview :global(.accent-bg) {
-          background-color: ${theme.palette.primary} !important;
-        }
-        .preview :global(.accent-border) {
-          border-color: ${theme.palette.primary} !important;
-        }
-        .preview :global(.box) {
-          display: flex;
-          border: 1px solid ${theme.palette.border};
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.background};
-        }
-        .preview :global(.box.active) {
-          border-color: ${theme.palette.primary};
-          box-shadow: 0 0 24px ${theme.palette.primary}33;
-        }
-        .preview :global(.w-20) {
-          width: 20%;
-        }
-        .preview :global(.w-30) {
-          width: 30%;
-        }
-        .preview :global(.w-40) {
-          width: 40%;
-        }
-        .preview :global(.w-50) {
-          width: 50%;
-        }
-        .preview :global(.w-60) {
-          width: 60%;
-        }
-        .preview :global(.w-70) {
-          width: 70%;
-        }
-        .preview :global(.w-80) {
-          width: 80%;
-        }
-        .preview :global(.w-100) {
-          width: 100%;
-        }
-
-        /* Wireframe layouts */
-        .preview :global(.stack) {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          width: 100%;
-        }
-        .preview :global(.stack.narrow) {
-          width: 70%;
-        }
-        .preview :global(.stack-row) {
-          display: flex;
-          gap: 12px;
-          width: 100%;
-          justify-content: center;
-        }
-        .preview :global(.pill) {
-          flex: 1;
-          max-width: 90px;
-          height: 32px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 999px;
-        }
-        .preview :global(.pill.small) {
-          flex: none;
-          width: 36px;
-          height: 14px;
-        }
-        .preview :global(.pill.filled) {
-          border-color: ${theme.palette.primary};
-          background-color: ${theme.palette.primary};
-        }
-        .preview :global(.field) {
-          align-items: center;
-          justify-content: space-between;
-          height: 30px;
-          padding: 0 12px;
-        }
-        .preview :global(.caret) {
-          width: 2px;
-          height: 14px;
-          margin-right: auto;
-          margin-left: 4px;
-          background-color: ${theme.palette.primary};
-        }
-        .preview :global(.menu) {
-          flex-direction: column;
-          gap: 10px;
-          padding: 12px;
-        }
-        .preview :global(.option) {
-          display: flex;
-          margin: 0 -6px;
-          padding: 6px;
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.primary}1f;
-        }
-        .preview :global(.backdrop) {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-          border-radius: ${theme.layout.radius};
-          background-color: ${theme.palette.accents_2};
-        }
-        .preview :global(.dialog) {
-          flex-direction: column;
-          gap: 8px;
-          width: 60%;
-          padding: 12px;
-        }
-        .preview :global(.dialog-actions) {
-          display: flex;
-          justify-content: flex-end;
-          gap: 6px;
-          margin-top: 4px;
-        }
-        .preview :global(.tabs) {
-          display: flex;
-          gap: 20px;
-          border-bottom: 1px solid ${theme.palette.border};
-        }
-        .preview :global(.tab) {
-          display: flex;
-          width: 48px;
-          padding-bottom: 10px;
-          margin-bottom: -1px;
-          border-bottom: 2px solid transparent;
-        }
-        .preview :global(.tab-active) {
-          border-bottom-color: ${theme.palette.primary};
-        }
-        .preview :global(.panel) {
-          flex-direction: column;
-          gap: 8px;
-          padding: 12px;
-        }
-        .preview :global(.profile) {
-          flex: 1;
-          max-width: 90px;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-          padding: 14px 10px;
-        }
-        .preview :global(.circle) {
-          width: 26px;
-          height: 26px;
-          border: 1px solid ${theme.palette.accents_4};
-          border-radius: 50%;
-        }
-        .preview :global(.switch) {
-          position: relative;
-          width: 24px;
-          height: 12px;
-          border-radius: 999px;
-          background-color: ${theme.palette.accents_3};
-        }
-        .preview :global(.switch)::after {
-          content: '';
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: ${theme.palette.accents_6};
-        }
-        .preview :global(.switch.on) {
-          background-color: ${theme.palette.primary};
-        }
-        .preview :global(.switch.on)::after {
-          left: 14px;
-          background-color: ${theme.palette.background};
-        }
-        .preview :global(.track) {
-          display: block;
-          height: 8px;
-          border-radius: 999px;
-          background-color: ${theme.palette.accents_2};
-          overflow: hidden;
-        }
-        .preview :global(.fill) {
-          display: block;
-          height: 100%;
-          border-radius: 999px;
-          background-color: ${theme.palette.accents_4};
-        }
-        .preview :global(.calendar) {
-          flex-direction: column;
-          gap: 10px;
-          padding: 12px;
-        }
-        .preview :global(.days) {
-          display: grid;
-          grid-template-columns: repeat(7, 14px);
-          gap: 6px;
-        }
-        .preview :global(.day) {
-          width: 14px;
-          height: 14px;
-          border-radius: 4px;
-          background-color: ${theme.palette.accents_2};
-        }
-
-        @media (max-width: ${theme.breakpoints.md.max}) {
-          .grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-        @media (max-width: ${theme.breakpoints.xs.max}) {
-          .head {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .grid {
-            grid-template-columns: minmax(0, 1fr);
-          }
-        }
-      `}</style>
     </Section>
   )
 }

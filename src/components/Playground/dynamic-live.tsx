@@ -6,6 +6,7 @@ import makeCodeTheme from './code-theme'
 import { transformLiveCode } from './transform-code'
 import { buildPlaygroundSource } from './build-source'
 import Editor from './editor'
+import styles from './dynamic-live.module.css'
 
 // Component is read by react-live but missing from its types. React 19 does
 // not apply its defaultProps ('div') on function components, so it is passed.
@@ -23,6 +24,11 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
   const codeTheme = makeCodeTheme(theme)
   // What's actually executed (via `scope`) stays as-is; this is only for
   // display, a real file a reader could paste into their own project.
+  const wrapperStyle = {
+    '--live-error': theme.palette.error,
+    '--live-radius': theme.layout.radius,
+    '--live-error-bg': addColorAlpha(theme.palette.secondaryDark, 0.1)
+  } as React.CSSProperties
   const displaySource = useMemo(
     () => buildPlaygroundSource(code, scope),
     [code, scope]
@@ -41,16 +47,16 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
     >
       <Tabs initialValue="1" hideDivider hideBorder>
         <Tabs.Item label="Preview" value="1">
-          <Card bordered style={{ background: 'none' }}>
-            <div className="wrapper">
+          <Card bordered style={{ backgroundColor: 'transparent' }}>
+            <div className={styles.wrapper} style={wrapperStyle}>
               <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
           </Card>
         </Tabs.Item>
         <Tabs.Item label="See code" value="2">
-          <Card bordered style={{ background: 'none' }} mb={1}>
-            <div className="wrapper">
+          <Card bordered style={{ backgroundColor: 'transparent' }} mb={1}>
+            <div className={styles.wrapper} style={wrapperStyle}>
               <Preview Component="div" />
               <LiveError className="live-error" />
             </div>
@@ -58,28 +64,6 @@ const DynamicLive: React.FC<Props> = ({ code, scope }) => {
           <Editor code={displaySource} codeTheme={codeTheme} />
         </Tabs.Item>
       </Tabs>
-      <style jsx>{`
-        .wrapper {
-          width: 100%;
-          /* padding: ${theme.layout.pageMargin}; */
-          display: flex;
-          flex-direction: column;
-          box-sizing: border-box;
-        }
-        .wrapper > :global(div) {
-          width: 100%;
-          background-color: transparent;
-        }
-        .wrapper > :global(.live-error) {
-          margin-top: 0;
-          margin-bottom: 0;
-          border: 2px ${theme.palette.error} dotted;
-          border-radius: ${theme.layout.radius};
-          color: ${theme.palette.error};
-          font-size: 12px;
-          background-color: ${addColorAlpha(theme.palette.secondaryDark, 0.1)};
-        }
-      `}</style>
     </LiveProvider>
   )
 }

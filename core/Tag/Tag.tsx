@@ -4,7 +4,9 @@ import { SnippetTypes } from '../utils/prop-types'
 import { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
+import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Tag.module.css'
 
 export type TagTypes = SnippetTypes
 interface Props {
@@ -93,6 +95,7 @@ const TagComponent = React.forwardRef<
       invert = false,
       light = false,
       subtle = false,
+      style,
       ...props
     },
     ref
@@ -104,27 +107,27 @@ const TagComponent = React.forwardRef<
       [type, theme.palette, invert, light, subtle]
     )
 
+    const tagStyle: React.CSSProperties = {
+      border: `1px solid ${borderColor}`,
+      backgroundColor: bgColor,
+      color,
+      borderRadius: SCALES.height(0.3125),
+      fontSize: SCALES.font(0.875),
+      width: SCALES.width(1, 'auto'),
+      height: SCALES.height(1.75),
+      padding: `${SCALES.pt(0.375)} ${SCALES.pr(0.375)} ${SCALES.pb(0.375)} ${SCALES.pl(0.375)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      ...style
+    }
+
     return (
-      <span ref={ref} className={className} {...props}>
+      <span
+        ref={ref}
+        className={useClasses(styles.tag, className)}
+        {...props}
+        style={tagStyle}
+      >
         {children}
-        <style jsx>{`
-          span {
-            display: inline-block;
-            border: 1px solid ${borderColor};
-            background-color: ${bgColor};
-            color: ${color};
-            box-sizing: border-box;
-            line-height: 1em;
-            border-radius: ${SCALES.height(0.3125)};
-            font-size: ${SCALES.font(0.875)};
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1.75)};
-            padding: ${SCALES.pt(0.375)} ${SCALES.pr(0.375)} ${SCALES.pb(0.375)}
-              ${SCALES.pl(0.375)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-        `}</style>
       </span>
     )
   }

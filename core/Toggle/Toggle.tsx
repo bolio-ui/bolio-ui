@@ -5,6 +5,7 @@ import { getColors } from './styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './Toggle.module.css'
 
 export type ToggleTypes = NormalTypes
 export interface ToggleEventTarget {
@@ -23,6 +24,8 @@ interface Props {
   onChange?: (ev: ToggleEvent) => void
   disabled?: boolean
   type?: ToggleTypes
+  icon?: React.ReactNode
+  checkedIcon?: React.ReactNode
   className?: string
 }
 
@@ -45,9 +48,12 @@ const ToggleComponent = React.forwardRef<
       disabled = false,
       onChange,
       type = 'default' as ToggleTypes,
+      icon,
+      checkedIcon,
       className = '',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      style,
       ...props
     },
     ref
@@ -55,7 +61,10 @@ const ToggleComponent = React.forwardRef<
     const theme = useTheme()
     const { SCALES } = useScale()
     const [selfChecked, setSelfChecked] = useState<boolean>(initialChecked)
-    const classes = useClasses('toggle', { checked: selfChecked, disabled })
+    const classes = useClasses(styles.toggle, {
+      [styles.checked]: selfChecked,
+      [styles.disabled]: disabled
+    })
 
     const changeHandle = useCallback(
       (ev: React.ChangeEvent) => {
@@ -85,8 +94,33 @@ const ToggleComponent = React.forwardRef<
       setSelfChecked(checked)
     }, [checked])
 
+    const labelStyle = {
+      cursor: disabled ? 'not-allowed' : 'pointer',
+      '--toggle-font-size': SCALES.font(1),
+      '--toggle-height': SCALES.height(1),
+      width: SCALES.width(1.75),
+      height: 'var(--toggle-height)',
+      padding: `${SCALES.pt(0.1875)} ${SCALES.pr(0)} ${SCALES.pb(0.1875)} ${SCALES.pl(0)}`,
+      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+      '--toggle-focus-color': theme.palette.primary,
+      '--toggle-bg': theme.palette.accents_2,
+      '--toggle-inner-bg': theme.palette.accents_1,
+      '--toggle-disabled-border': theme.palette.accents_2,
+      '--toggle-disabled-bg': theme.palette.accents_1,
+      '--toggle-disabled-inner-bg': theme.palette.accents_2,
+      '--toggle-disabled-checked-border': theme.palette.accents_4,
+      '--toggle-disabled-checked-bg': theme.palette.accents_4,
+      '--toggle-checked-bg': bg,
+      '--toggle-icon-color': theme.palette.accents_6,
+      ...style
+    } as React.CSSProperties
+
     return (
-      <label className={className} {...props}>
+      <label
+        className={`${styles.label} ${className}`.trim()}
+        {...props}
+        style={labelStyle}
+      >
         <input
           ref={ref}
           type="checkbox"
@@ -96,97 +130,13 @@ const ToggleComponent = React.forwardRef<
           disabled={disabled}
           checked={selfChecked}
           onChange={changeHandle}
+          className={styles.input}
         />
         <div className={classes}>
-          <span className="inner" />
+          <span className={styles.inner}>
+            {selfChecked ? (checkedIcon ?? icon) : icon}
+          </span>
         </div>
-        <style jsx>{`
-          label {
-            -webkit-tap-highlight-color: transparent;
-            display: inline-block;
-            vertical-align: middle;
-            white-space: nowrap;
-            user-select: none;
-            position: relative;
-            cursor: ${disabled ? 'not-allowed' : 'pointer'};
-            --toggle-font-size: ${SCALES.font(1)};
-            --toggle-height: ${SCALES.height(1)};
-            width: ${SCALES.width(1.75)};
-            height: var(--toggle-height);
-            padding: ${SCALES.pt(0.1875)} ${SCALES.pr(0)} ${SCALES.pb(0.1875)}
-              ${SCALES.pl(0)};
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-
-          input {
-            overflow: hidden;
-            height: 0;
-            margin: 0;
-            opacity: 0;
-            width: 0;
-            position: absolute;
-            background-color: transparent;
-            z-index: -1;
-          }
-
-          input:focus-visible + .toggle {
-            outline: 2px solid ${theme.palette.primary};
-            outline-offset: 2px;
-          }
-
-          .toggle {
-            height: calc(var(--toggle-height) + 2px);
-            width: 100%;
-            border-radius: var(--toggle-height);
-            transition-delay: 0.12s;
-            transition-duration: 0.2s;
-            transition-property: background, border;
-            transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-            position: relative;
-            border: 1px solid transparent;
-            background-color: ${theme.palette.accents_2};
-            padding: 0;
-          }
-
-          .inner {
-            width: calc(var(--toggle-height) - 2px);
-            height: calc(var(--toggle-height) - 2px);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 1px;
-            box-shadow:
-              rgba(0, 0, 0, 0.2) 0 1px 2px 0,
-              rgba(0, 0, 0, 0.1) 0 1px 3px 0;
-            transition: left 280ms cubic-bezier(0, 0, 0.2, 1);
-            border-radius: 50%;
-            background-color: ${theme.palette.accents_1};
-          }
-
-          .disabled {
-            border-color: ${theme.palette.accents_2};
-            background-color: ${theme.palette.accents_1};
-          }
-
-          .disabled > .inner {
-            background-color: ${theme.palette.accents_2};
-          }
-
-          .disabled.checked {
-            border-color: ${theme.palette.accents_4};
-            background-color: ${theme.palette.accents_4};
-          }
-
-          .checked {
-            background-color: ${bg};
-          }
-
-          .checked > .inner {
-            left: calc(100% - (var(--toggle-height) - 1px));
-            box-shadow: none;
-          }
-        `}</style>
       </label>
     )
   }

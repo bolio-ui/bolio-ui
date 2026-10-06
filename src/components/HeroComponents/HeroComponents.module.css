@@ -1,0 +1,89 @@
+.profileCard {
+  width: 100%;
+  animation: levitating 12s ease-in-out infinite;
+}
+
+.search {
+  margin-top: 6px;
+  animation: levitating 6s ease-in-out infinite;
+}
+
+.toggle {
+  animation: levitating 9s ease-in-out infinite;
+}
+
+.button {
+  animation: levitating 9s ease-in-out infinite;
+}
+
+.buttonIcon {
+  animation: levitating 9s ease-in-out infinite;
+}
+
+.infoCard {
+  width: 100%;
+  animation: levitating 12s ease-in-out infinite;
+}
+
+.infoContainer {
+  position: relative;
+}
+
+.infoImage {
+  border-radius: 8px;
+  opacity: 0.2;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.infoContent {
+  padding: 20px;
+  transition: 0.5s ease;
+  position: absolute;
+  top: 0%;
+}
+
+.followersCard {
+  width: 100%;
+  animation: levitating 3s ease-in-out infinite;
+}
+
+.borderGradient {
+  background:
+    linear-gradient(var(--hero-code), var(--hero-code-dark)) padding-box,
+    linear-gradient(to right, var(--hero-code), var(--hero-code-dark))
+      border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.playerCard {
+  width: 100%;
+  animation: levitating 9s ease-in-out infinite;
+}
+
+@keyframes levitating {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+
+  70% {
+    transform: translateX(-15px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

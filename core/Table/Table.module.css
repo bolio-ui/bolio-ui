@@ -1,0 +1,17 @@
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--table-font-size);
+  width: var(--table-width);
+  height: var(--table-height);
+  padding: var(--table-padding-top) var(--table-padding-right)
+    var(--table-padding-bottom) var(--table-padding-left);
+  margin: var(--table-margin-top) var(--table-margin-right)
+    var(--table-margin-bottom) var(--table-margin-left);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}

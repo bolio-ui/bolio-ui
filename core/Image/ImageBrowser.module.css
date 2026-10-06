@@ -1,0 +1,98 @@
+.title {
+  font-size: 0.75em;
+}
+
+.addressInput {
+  height: 1.75em;
+  max-width: 60%;
+  min-width: 40%;
+  color: inherit;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.addressInput :global(*) {
+  font-size: 0.75em;
+  color: inherit;
+}
+
+.addressInput :global(a) {
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  color: inherit;
+}
+
+.https {
+  width: 0.75em;
+  height: 0.75em;
+  font-size: 1em;
+  margin-right: 0.31em;
+  user-select: none;
+  margin-top: -1px;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+.browser {
+  background-color: transparent;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.browser :global(.image) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.header {
+  height: 2.5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.traffic {
+  width: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  font-size: inherit;
+}
+
+.traffic span {
+  border-radius: 50%;
+  width: 0.75em;
+  height: 0.75em;
+  max-width: 20px;
+  max-height: 20px;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.close {
+  background-color: #ff5f56;
+}
+
+.mini {
+  background-color: #ffbd2e;
+}
+
+.full {
+  background-color: #27c93f;
+}

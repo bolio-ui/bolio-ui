@@ -1,0 +1,107 @@
+.daterange {
+  position: relative;
+  display: inline-block;
+  font-size: var(--daterange-font-size);
+  width: var(--daterange-width);
+  height: var(--daterange-height);
+  padding: var(--daterange-padding-top) var(--daterange-padding-right)
+    var(--daterange-padding-bottom) var(--daterange-padding-left);
+  margin: var(--daterange-margin-top) var(--daterange-margin-right)
+    var(--daterange-margin-bottom) var(--daterange-margin-left);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--daterange-input-height);
+  padding-left: 0.875em;
+  color: var(--daterange-field-color);
+  background-color: var(--daterange-field-bg);
+  border: 1px solid var(--daterange-field-border);
+  border-radius: var(--daterange-radius);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+  background-clip: padding-box;
+}
+
+.field:hover {
+  border-color: var(--daterange-field-hover-border);
+  background-color: var(--daterange-field-hover-bg);
+}
+
+.field:focus-within {
+  border-color: var(--daterange-focus-border-color);
+}
+
+.input {
+  flex: none;
+  box-sizing: border-box;
+  width: 7em;
+  height: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--daterange-placeholder-color);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.separator {
+  padding: 0 0.5em;
+  color: var(--daterange-separator-color);
+}
+
+.toggle {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: calc(var(--daterange-input-height) - 2px);
+  height: 100%;
+  padding: 0;
+  color: var(--daterange-toggle-color);
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--daterange-radius);
+  appearance: none;
+  -webkit-appearance: none;
+  background-clip: padding-box;
+}
+
+.toggle:hover:not(:disabled) {
+  color: var(--daterange-toggle-hover-color);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--daterange-focus-border-color);
+  outline-offset: -2px;
+}
+
+.toggle:disabled {
+  cursor: not-allowed;
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1100;
+  padding: 0.75em;
+  background-color: var(--daterange-bg);
+  border: 1px solid var(--daterange-border-color);
+  border-radius: var(--daterange-popup-radius);
+  box-shadow: var(--daterange-shadow);
+  background-clip: padding-box;
+}

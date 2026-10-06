@@ -1,0 +1,10 @@
+.span {
+  display: inline-flex;
+  width: initial;
+  height: 100%;
+  align-items: center;
+  pointer-events: none;
+  margin: 0;
+  font-size: inherit;
+  line-height: 1;
+}

@@ -49,3 +49,27 @@ export const Disabled: StoryFn = () => (
     </Grid>
   </Grid.Container>
 )
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <DatePicker type={type} {...{ [variant]: true }} />
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <DatePicker type="primary" filled disabled />
+    </Grid>
+  </Grid.Container>
+)

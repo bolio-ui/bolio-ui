@@ -76,6 +76,116 @@ Retrieve multi-line user input.
 />
 
 <Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` to change the surface of any colored `Textarea`."
+  scope={{ Textarea, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Textarea type="primary" height="65px" placeholder="Primary filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" placeholder="Secondary filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="success" height="65px" placeholder="Success filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" placeholder="Warning filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" placeholder="Error filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="info" height="65px" placeholder="Info filled" filled />
+  </Grid>
+  <Grid>
+    <Textarea type="primary" height="65px" placeholder="Primary light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" placeholder="Secondary light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="success" height="65px" placeholder="Success light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" placeholder="Warning light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" placeholder="Error light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="info" height="65px" placeholder="Info light" light />
+  </Grid>
+  <Grid>
+    <Textarea type="primary" height="65px" placeholder="Primary ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" placeholder="Secondary ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="success" height="65px" placeholder="Success ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" placeholder="Warning ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" placeholder="Error ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="info" height="65px" placeholder="Info ghost" ghost />
+  </Grid>
+  <Grid>
+    <Textarea type="primary" height="65px" placeholder="Primary subtle" subtle />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" placeholder="Secondary subtle" subtle />
+  </Grid>
+  <Grid>
+    <Textarea type="success" height="65px" placeholder="Success subtle" subtle />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" placeholder="Warning subtle" subtle />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" placeholder="Error subtle" subtle />
+  </Grid>
+  <Grid>
+    <Textarea type="info" height="65px" placeholder="Info subtle" subtle />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Rounded"
+  desc="You can completely round the corners of any type of `Textarea` with the `rounded` property."
+  scope={{ Textarea, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Textarea type="primary" height="65px" placeholder="Primary" rounded />
+  </Grid>
+  <Grid>
+    <Textarea type="secondary" height="65px" placeholder="Secondary" rounded />
+  </Grid>
+  <Grid>
+    <Textarea type="success" height="65px" placeholder="Success" rounded />
+  </Grid>
+  <Grid>
+    <Textarea type="warning" height="65px" placeholder="Warning" rounded />
+  </Grid>
+  <Grid>
+    <Textarea type="error" height="65px" placeholder="Error" rounded />
+  </Grid>
+  <Grid>
+    <Textarea type="info" height="65px" placeholder="Info" rounded />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Get Change"
   desc="Capture changes in textarea."
   scope={{ Textarea, Grid, useState }}
@@ -164,17 +274,22 @@ Retrieve multi-line user input.
 <Attributes edit="/content/docs/components/textarea.mdx">
 <Attributes.Title alias="Input.Textarea">Textarea.Props</Attributes.Title>
 
-| Attribute        | Description    | Type                             | Accepted values                  | Default   |
-| ---------------- | -------------- | -------------------------------- | -------------------------------- | --------- |
-| **value**        | textarea value | `string`                         | -                                | -         |
-| **initialValue** | textarea value | `string`                         | -                                | -         |
-| **placeholder**  | placeholder    | `string`                         | -                                | -         |
-| **type**         | current type   | `TextareaTypes`                  | [TextareaTypes](#textareatypes)  | `default` |
-| **readOnly**     | native attr    | `boolean`                        | -                                | `false`   |
-| **disabled**     | disable input  | `boolean`                        | -                                | `false`   |
-| **onChange**     | change event   | `(e: React.ChangeEvent) => void` | -                                | -         |
-| **resize**       | CSS attribute  | `CSSResize`                      | [CSSResize](#cssresize)          | `none`    |
-| ...              | native props   | `TextareaHTMLAttributes`         | `'form', 'id', 'className', ...` | -         |
+| Attribute        | Description     | Type                             | Accepted values                  | Default   |
+| ---------------- | --------------- | -------------------------------- | -------------------------------- | --------- |
+| **value**        | textarea value  | `string`                         | -                                | -         |
+| **initialValue** | textarea value  | `string`                         | -                                | -         |
+| **placeholder**  | placeholder     | `string`                         | -                                | -         |
+| **type**         | current type    | `TextareaTypes`                  | [TextareaTypes](#textareatypes)  | `default` |
+| **readOnly**     | native attr     | `boolean`                        | -                                | `false`   |
+| **disabled**     | disable input   | `boolean`                        | -                                | `false`   |
+| **rounded**      | round corners   | `boolean`                        | -                                | `false`   |
+| **filled**       | filled variant  | `boolean`                        | -                                | `false`   |
+| **light**        | light variant   | `boolean`                        | -                                | `false`   |
+| **ghost**        | outline variant | `boolean`                        | -                                | `false`   |
+| **subtle**       | subtle variant  | `boolean`                        | -                                | `false`   |
+| **onChange**     | change event    | `(e: React.ChangeEvent) => void` | -                                | -         |
+| **resize**       | CSS attribute   | `CSSResize`                      | [CSSResize](#cssresize)          | `none`    |
+| ...              | native props    | `TextareaHTMLAttributes`         | `'form', 'id', 'className', ...` | -         |
 
 <Attributes.Title>useInput</Attributes.Title>
 
@@ -195,25 +310,14 @@ type useInput = (initialValue: string) => {
 
 ```ts
 type TextareaTypes =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
+  'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
 ```
 
 <Attributes.Title>CSSResize</Attributes.Title>
 
 ```ts
 type CSSResize =
-  | 'none'
-  | 'both'
-  | 'horizontal'
-  | 'vertical'
-  | 'initial'
-  | 'inherit'
+  'none' | 'both' | 'horizontal' | 'vertical' | 'initial' | 'inherit'
 ```
 
 </Attributes>

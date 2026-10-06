@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import styles from './CardFooter.module.css'
 
 interface Props {
   disableAutoMargin?: boolean
@@ -16,41 +17,37 @@ function CardFooterComponent({
   children,
   className = '',
   disableAutoMargin = false,
+  style,
   ...props
 }: CardFooterProps) {
   const theme = useTheme()
   const { SCALES } = useScale()
 
-  const classes = useClasses({ 'auto-margin': !disableAutoMargin }, className)
+  const classes = useClasses(
+    styles.footer,
+    {
+      [styles.autoMargin]: !disableAutoMargin
+    },
+    className
+  )
+
+  const footerStyle = {
+    padding: `${SCALES.py(0.66)} ${SCALES.px(1.31)}`,
+    fontSize: SCALES.font(0.875),
+    borderTop: `1px solid ${theme.palette.border}`,
+    borderBottomLeftRadius: theme.layout.radius,
+    borderBottomRightRadius: theme.layout.radius,
+    minHeight: SCALES.height(3.3),
+    width: SCALES.width(1, 'auto'),
+    height: SCALES.height(1, 'auto'),
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    '--card-footer-gap': theme.layout.gapQuarter,
+    ...style
+  } as React.CSSProperties
 
   return (
-    <footer className={classes} {...props}>
+    <footer className={classes} {...props} style={footerStyle}>
       {children}
-      <style jsx>{`
-        footer {
-          padding: ${SCALES.py(0.66)} ${SCALES.px(1.31)};
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-          color: inherit;
-          background-color: inherit;
-          font-size: ${SCALES.font(0.875)};
-          border-top: 1px solid ${theme.palette.border};
-          border-bottom-left-radius: ${theme.layout.radius};
-          border-bottom-right-radius: ${theme.layout.radius};
-          min-height: ${SCALES.height(3.3)};
-          width: ${SCALES.width(1, 'auto')};
-          height: ${SCALES.height(1, 'auto')};
-          margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-            ${SCALES.ml(0)};
-        }
-
-        .auto-margin :global(*) {
-          margin-top: 0;
-          margin-bottom: 0;
-          margin-right: ${theme.layout.gapQuarter};
-        }
-      `}</style>
     </footer>
   )
 }

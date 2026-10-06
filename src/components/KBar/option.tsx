@@ -6,6 +6,7 @@ import { addColorAlpha } from 'core/utils/color'
 import * as Icons from '@bolio-ui/icons'
 import { isEmpty } from 'lodash'
 import { Action, ResultHandlers, ResultState } from './types'
+import styles from './option.module.css'
 
 type Icon = keyof typeof Icons
 
@@ -45,7 +46,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
 
     if (isEmpty(action.icon)) {
       return (
-        <div className="option-icon">
+        <div className={styles.icon}>
           <Icons.ChevronRight
             stroke={
               active ? theme?.palette?.accents_7 : theme?.palette?.accents_6
@@ -62,7 +63,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
       action.icon.includes('.svg')
     ) {
       return (
-        <div className="option-icon">
+        <div className={styles.icon}>
           <Image
             width={24}
             height={24}
@@ -76,7 +77,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
       )
     } else if (action.icon && typeof action.icon === 'string') {
       return (
-        <div className="option-icon">
+        <div className={styles.icon}>
           <CurrentIcon
             stroke={
               active ? theme?.palette?.accents_7 : theme?.palette?.accents_6
@@ -86,7 +87,7 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
         </div>
       )
     }
-    return <div className="option-icon">{action.icon}</div>
+    return <div className={styles.icon}>{action.icon}</div>
   }, [
     action.icon,
     action.name,
@@ -97,20 +98,31 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
   ])
 
   return (
-    <li ref={ownRef} className="kbar-option" {...handlers}>
-      <div className={cn('option-container', { active })}>
-        <div className="option-left-container">
+    <li
+      ref={ownRef}
+      className={styles.option}
+      style={
+        {
+          '--option-active-bg': addColorAlpha(theme?.palette?.secondary, 0.1),
+          '--option-foreground': theme?.palette?.foreground,
+          '--option-muted': theme?.palette?.accents_7
+        } as React.CSSProperties
+      }
+      {...handlers}
+    >
+      <div className={cn(styles.container, { [styles.active]: active })}>
+        <div className={styles.left}>
           {renderIcon()}
-          <div className="option-text-container">
-            <span className="option-text-title">{action.name}</span>
+          <div className={styles.text}>
+            <span className={styles.title}>{action.name}</span>
             {action.subtitle && (
-              <span className="option-text-subtitle">{action.subtitle}</span>
+              <span className={styles.subtitle}>{action.subtitle}</span>
             )}
           </div>
         </div>
-        <div className="option-right-container">
+        <div className={styles.right}>
           {action.shortcut?.length ? (
-            <div className="kbd-container">
+            <div className={styles.kbd}>
               {action.shortcut.map((sc, index) => (
                 <Keyboard key={`${sc}_${index}`}>{sc}</Keyboard>
               ))}
@@ -118,60 +130,6 @@ const KBarOption: React.FC<Props> = ({ action, handlers, state }) => {
           ) : null}
         </div>
       </div>
-
-      <style jsx>
-        {`
-          .kbar-option {
-            width: 100%;
-            min-height: 54px;
-          }
-          .option-container {
-            display: flex;
-            height: 54px;
-            padding: 0 10px;
-            margin: 4px 12px;
-            align-items: center;
-            cursor: pointer;
-            justify-content: space-between;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-          }
-          .active {
-            background: ${addColorAlpha(theme?.palette?.secondary, 0.1)};
-          }
-          .option-left-container {
-            display: flex;
-            align-items: center;
-          }
-          :global(.option-icon) {
-            display: flex;
-            align-items: center;
-            padding-right: 12px;
-          }
-          .option-text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .option-right-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-          }
-          .option-text-title {
-            color: ${theme?.palette?.foreground};
-          }
-          .option-text-subtitle {
-            font-size: 12px;
-            color: ${theme?.palette?.accents_7};
-          }
-          .kbd-container {
-            display: grid;
-            grid-auto-flow: column;
-            gap: 4px;
-          }
-        `}
-      </style>
     </li>
   )
 }

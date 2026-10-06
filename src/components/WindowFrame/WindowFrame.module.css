@@ -1,0 +1,26 @@
+.frame {
+  border: 1px solid var(--frame-border);
+  border-radius: var(--frame-radius);
+  background-color: var(--frame-bg);
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--frame-border);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--frame-dot);
+}
+
+.content {
+  padding: var(--frame-gap);
+}

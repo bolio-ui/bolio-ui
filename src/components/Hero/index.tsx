@@ -1,9 +1,38 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
 import WindowFrame from 'src/components/WindowFrame'
+import { ThemeContext } from 'core/use-theme/theme-context'
+import { accents, mix, useSettings } from 'src/utils/use-settings'
 import SectionHeroComponents from 'src/templates/Home/SectionHeroComponents'
+
+// The showcase uses the secondary color, so it follows the chosen accent
+function HeroShowcase() {
+  const theme = useTheme()
+  const { accent } = useSettings()
+  const value = useMemo(() => {
+    if (accent === accents[0].name) return theme
+    const { color } = accents.find((item) => item.name === accent) ?? accents[0]
+    return {
+      ...theme,
+      palette: {
+        ...theme.palette,
+        secondary: color,
+        secondaryLight: mix(color, 255, 0.8),
+        secondaryLighter: mix(color, 255, 0.5),
+        secondaryDark: mix(color, 0, 0.7),
+        code: color
+      }
+    }
+  }, [theme, accent])
+
+  return (
+    <ThemeContext.Provider value={value}>
+      <SectionHeroComponents />
+    </ThemeContext.Provider>
+  )
+}
 
 function Hero() {
   const router = useRouter()
@@ -47,7 +76,7 @@ function Hero() {
           </Grid>
           <Grid xs={12} sm={6} md={7} direction="column" justify="center">
             <WindowFrame>
-              <SectionHeroComponents />
+              <HeroShowcase />
             </WindowFrame>
           </Grid>
         </Grid.Container>

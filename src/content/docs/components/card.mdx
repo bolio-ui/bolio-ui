@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Card, Link, Image, Text, Divider, Code, Grid } from 'core'
+import { Card, Link, Image, Text, Divider, Code, Grid, Avatar, Button } from 'core'
 
 export const meta = {
   title: 'Card',
@@ -212,6 +212,173 @@ A common container component.
 `}
 />
 
+<Playground
+  title="Spotlight"
+  desc="The `spotlight` prop adds a glow that follows the pointer. It uses the card text color, so it fits every `type`."
+  scope={{ Card, Grid, Text }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12} md={4}>
+    <Card spotlight bordered width="100%">
+      <Text h4 my={0}>Default</Text>
+      <Text>Move the pointer over the card.</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card spotlight type="primary" width="100%">
+      <Text h4 my={0}>Primary</Text>
+      <Text>The glow follows the card color.</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card spotlight type="dark" width="100%">
+      <Text h4 my={0}>Dark</Text>
+      <Text>Works on solid backgrounds too.</Text>
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Glass"
+  desc="The `glass` prop makes the background translucent with a blur. Use it over images or gradients."
+  scope={{ Card, Grid, Text }}
+  code={`
+<div
+  style={{
+    padding: 24,
+    borderRadius: 12,
+    background: 'linear-gradient(135deg, #60A5FA, #A78BFA 60%, #F472B6)'
+  }}
+>
+  <Grid.Container gap={2}>
+    <Grid xs={12} md={6}>
+      <Card glass bordered width="100%">
+        <Text h4 my={0}>Frosted</Text>
+        <Text>The gradient shows through the card.</Text>
+      </Card>
+    </Grid>
+    <Grid xs={12} md={6}>
+      <Card glass type="dark" width="100%">
+        <Text h4 my={0}>Frosted dark</Text>
+        <Text>Same effect with a dark tint.</Text>
+      </Card>
+    </Grid>
+  </Grid.Container>
+</div>
+`}
+/>
+
+<Playground
+  title="Interactive"
+  desc="The `interactive` prop makes the card behave like a button: pointer cursor, lift on hover and a visible focus ring for keyboard users."
+  scope={{ Card, Grid, Text }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12} md={6}>
+    <Card interactive bordered width="100%" onClick={() => alert('Opened')}>
+      <Text h4 my={0}>Open project</Text>
+      <Text>Click, or focus with Tab.</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={6}>
+    <Card interactive spotlight bordered width="100%">
+      <Text h4 my={0}>With spotlight</Text>
+      <Text>Combine variants freely.</Text>
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Metric"
+  desc="A compact card for a number and its trend."
+  scope={{ Card, Grid, Text }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Text small type="secondary" my={0}>Revenue</Text>
+      <Text h2 my={0}>$48,200</Text>
+      <Text small type="success" my={0}>+12.4% this month</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Text small type="secondary" my={0}>Active users</Text>
+      <Text h2 my={0}>3,842</Text>
+      <Text small type="success" my={0}>+4.1% this week</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={4}>
+    <Card bordered width="100%">
+      <Text small type="secondary" my={0}>Churn</Text>
+      <Text h2 my={0}>1.8%</Text>
+      <Text small type="error" my={0}>+0.3% this month</Text>
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Pricing"
+  desc="Highlight the recommended plan with `filled` and `spotlight`, and keep the others quiet."
+  scope={{ Card, Grid, Text, Divider }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={12} md={6}>
+    <Card bordered width="100%">
+      <Text h4 my={0}>Free</Text>
+      <Text h2 my={0}>$0</Text>
+      <Divider h="1px" my={1} />
+      <Text my={0}>1 project</Text>
+      <Text my={0}>Community support</Text>
+    </Card>
+  </Grid>
+  <Grid xs={12} md={6}>
+    <Card filled spotlight type="primary" width="100%">
+      <Text h4 my={0}>Pro</Text>
+      <Text h2 my={0}>$12</Text>
+      <Divider h="1px" my={1} />
+      <Text my={0}>Unlimited projects</Text>
+      <Text my={0}>Priority support</Text>
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Profile"
+  desc="A person with their contact and the two actions people take next."
+  scope={{ Card, Avatar, Text, Divider, Button, Grid }}
+  code={`
+<Card bordered width="320px">
+  <Grid.Container gap={1} alignItems="center">
+    <Grid>
+      <Avatar text="AL" />
+    </Grid>
+    <Grid>
+      <Text h5 my={0}>Ada Lovelace</Text>
+      <Text small type="secondary">ada@example.com</Text>
+    </Grid>
+  </Grid.Container>
+  <Divider />
+  <Grid.Container gap={1}>
+    <Grid>
+      <Button auto scale={0.75} type="primary">Message</Button>
+    </Grid>
+    <Grid>
+      <Button auto scale={0.75}>View profile</Button>
+    </Grid>
+  </Grid.Container>
+</Card>
+`}
+/>
+
 <Attributes edit="/content/docs/components/card.mdx">
 <Attributes.Title>Card.Props</Attributes.Title>
 
@@ -223,6 +390,9 @@ A common container component.
 | **filled**    | filled variant, solid background           | `boolean`              | -                       | `false`   |
 | **ghost**     | outline variant, always shows a border     | `boolean`              | -                       | `false`   |
 | **subtle**    | subtle variant, no background              | `boolean`              | -                       | `false`   |
+| **spotlight** | glow that follows the pointer on hover     | `boolean`              | -                       | `false`   |
+| **glass**     | translucent background with blur           | `boolean`              | -                       | `false`   |
+| **interactive** | pointer cursor, lift on hover and focus ring | `boolean`          | -                       | `false`   |
 | ...           | native props                               | `HTMLAttributes`       | `'id', className', ...` | -         |
 
 <Attributes.Title alias="Card.Body">Card.Content.Props</Attributes.Title>

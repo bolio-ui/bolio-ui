@@ -5,6 +5,14 @@ import CssTransition from '../Shared/css-transition'
 import { isChildElement } from '../utils/collections'
 import { DrawerPlacement, getDrawerTransform } from './helper'
 import useClasses from '../use-classes'
+import styles from './DrawerWrapper.module.css'
+
+const placementClasses: Record<DrawerPlacement, string> = {
+  top: styles.top,
+  left: styles.left,
+  bottom: styles.bottom,
+  right: styles.right
+}
 
 interface Props {
   className?: string
@@ -26,7 +34,30 @@ const DrawerWrapper = React.forwardRef<
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
   const transform = useMemo(() => getDrawerTransform(placement), [placement])
-  const classes = useClasses('wrapper', placement, className)
+  const classes = useClasses(
+    styles.wrapper,
+    placementClasses[placement],
+    className
+  )
+
+  const wrapperStyle = {
+    backgroundColor: theme.palette.background,
+    color: theme.palette.foreground,
+    borderRadius: `calc(3 * ${theme.layout.radius})`,
+    boxShadow: theme.expressiveness.shadowLarge,
+    fontSize: SCALES.font(1),
+    '--drawer-wrapper-padding-left': SCALES.pl(1.3125),
+    '--drawer-wrapper-padding-right': SCALES.pr(1.3125),
+    padding: `${SCALES.pt(1.3125)} var(--drawer-wrapper-padding-right) ${SCALES.pb(1.3125)} var(--drawer-wrapper-padding-left)`,
+    margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
+    '--drawer-wrapper-top-bottom-width': SCALES.width(1, '100%'),
+    '--drawer-wrapper-top-bottom-height': SCALES.height(1, 'auto'),
+    '--drawer-wrapper-left-right-width': SCALES.width(1, 'auto'),
+    '--drawer-wrapper-left-right-height': SCALES.height(1, '100%'),
+    '--drawer-wrapper-transform-initial': transform.initial,
+    '--drawer-wrapper-transform-hidden': transform.hidden,
+    '--drawer-wrapper-transform-visible': transform.visible
+  } as React.CSSProperties
 
   useEffect(() => {
     if (!visible) return
@@ -61,108 +92,21 @@ const DrawerWrapper = React.forwardRef<
         onKeyDown={onKeyDown}
         ref={modalContent}
         {...props}
+        style={wrapperStyle}
       >
         <div
           tabIndex={0}
-          className="hide-tab start"
+          className={styles.hideTab}
           aria-hidden="true"
           ref={tabStart}
         />
         {children}
         <div
           tabIndex={0}
-          className="hide-tab end"
+          className={styles.hideTab}
           aria-hidden="true"
           ref={tabEnd}
         />
-        <style jsx>{`
-          .wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            max-width: 100%;
-            vertical-align: middle;
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            background-color: ${theme.palette.background};
-            color: ${theme.palette.foreground};
-            border-radius: calc(3 * ${theme.layout.radius});
-            box-shadow: ${theme.expressiveness.shadowLarge};
-            opacity: 0;
-            outline: none;
-            transform: ${transform.initial};
-            transition:
-              opacity,
-              transform 400ms cubic-bezier(0.1, 0.6, 0.1, 1);
-            font-size: ${SCALES.font(1)};
-            --modal-wrapper-padding-left: ${SCALES.pl(1.3125)};
-            --modal-wrapper-padding-right: ${SCALES.pr(1.3125)};
-            padding: ${SCALES.pt(1.3125)} var(--modal-wrapper-padding-right)
-              ${SCALES.pb(1.3125)} var(--modal-wrapper-padding-left);
-            margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)}
-              ${SCALES.ml(0)};
-          }
-          .top,
-          .bottom {
-            width: ${SCALES.width(1, '100%')};
-            height: ${SCALES.height(1, 'auto')};
-          }
-          .left,
-          .right {
-            width: ${SCALES.width(1, 'auto')};
-            height: ${SCALES.height(1, '100%')};
-          }
-          .top {
-            bottom: auto;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-          }
-          .left {
-            right: auto;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-          }
-          .bottom {
-            top: auto;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          .right {
-            left: auto;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          .wrapper-enter {
-            opacity: 0;
-            transform: ${transform.hidden};
-          }
-          .wrapper-enter-active {
-            opacity: 1;
-            transform: ${transform.visible};
-          }
-          .wrapper-leave {
-            opacity: 1;
-            transform: ${transform.visible};
-            transition:
-              opacity,
-              transform 400ms cubic-bezier(0.1, 0.2, 0.1, 1);
-          }
-          .wrapper-leave-active {
-            opacity: 0.4;
-            transform: ${transform.hidden};
-          }
-          .hide-tab {
-            outline: none;
-            overflow: hidden;
-            width: 0;
-            height: 0;
-            opacity: 0;
-          }
-        `}</style>
       </div>
     </CssTransition>
   )

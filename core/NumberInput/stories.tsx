@@ -52,3 +52,27 @@ export const Controlled: StoryFn = () => {
     </Grid.Container>
   )
 }
+
+const variantTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+  'info'
+] as const
+
+export const Variants: StoryFn = () => (
+  <Grid.Container gap={2}>
+    {(['filled', 'light', 'ghost', 'subtle'] as const).map((variant) =>
+      variantTypes.map((type) => (
+        <Grid key={`${variant}-${type}`}>
+          <NumberInput type={type} initialValue={5} {...{ [variant]: true }} />
+        </Grid>
+      ))
+    )}
+    <Grid>
+      <NumberInput type="primary" filled disabled initialValue={5} />
+    </Grid>
+  </Grid.Container>
+)

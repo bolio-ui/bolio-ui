@@ -1,0 +1,75 @@
+.option {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: normal;
+  color: inherit;
+  user-select: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: var(--select-option-cursor);
+  transition:
+    background 0.2s ease 0s,
+    border-color 0.2s ease 0s;
+  font-size: var(--select-font-size);
+  width: var(--select-option-width);
+  height: var(--select-option-height);
+  padding: var(--select-option-padding-top) var(--select-option-padding-right)
+    var(--select-option-padding-bottom) var(--select-option-padding-left);
+  margin: var(--select-option-margin-top) var(--select-option-margin-right)
+    var(--select-option-margin-bottom) var(--select-option-margin-left);
+  background-clip: padding-box;
+}
+
+.option:hover {
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.label:hover,
+.divider:hover {
+  background-color: transparent;
+}
+
+.disabled,
+.disabled:hover {
+  opacity: 0.5;
+  background-color: transparent;
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.divider {
+  line-height: 0;
+  overflow: hidden;
+  border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  width: var(--select-option-width);
+  height: var(--select-option-divider-height);
+  padding: var(--select-option-divider-padding-top)
+    var(--select-option-divider-padding-right)
+    var(--select-option-divider-padding-bottom)
+    var(--select-option-divider-padding-left);
+  margin: var(--select-option-divider-margin-top)
+    var(--select-option-divider-margin-right)
+    var(--select-option-divider-margin-bottom)
+    var(--select-option-divider-margin-left);
+}
+
+.label:not(:first-child) {
+  margin-top: 0.25em;
+}
+
+.label {
+  color: color-mix(in srgb, currentColor 80%, transparent);
+  border-radius: 0;
+  margin-bottom: 0.25em;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  text-transform: capitalize;
+  cursor: default;
+  font-size: var(--select-option-label-font-size);
+  width: var(--select-option-width);
+  font-weight: 500;
+}

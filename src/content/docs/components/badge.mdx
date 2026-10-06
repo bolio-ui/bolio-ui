@@ -95,6 +95,29 @@ Display an indicator that requires attention.
 />
 
 <Playground
+  title="Pulse"
+  desc="Use `pulse` for a live status. The ring follows the badge color and stops when the user prefers reduced motion."
+  scope={{ Grid, Badge }}
+  code={`
+<Grid.Container gap={2} alignItems="center">
+  <Grid>
+    <Badge dot pulse type="success" />
+  </Grid>
+  <Grid>
+    <Badge pulse type="error">
+      Recording
+    </Badge>
+  </Grid>
+  <Grid>
+    <Badge pulse type="primary">
+      Live
+    </Badge>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Anchor"
   desc="Fix the `Badge` in the designated position."
   scope={{ Grid, Badge, Avatar, Button, Link }}
@@ -151,6 +174,7 @@ Display an indicator that requires attention.
 | --------- | --------------------------- | ---------------- | ------------------------------- | --------- |
 | **type**  | badge type                       | `BadgeTypes`      | [BadgeTypes](#badgetypes)       | `default` |
 | **dot**   | show dot and ignore content      | `boolean`         | -                                | `false`   |
+| **pulse** | animated ring for live status    | `boolean`         | -                                | `false`   |
 | **ghost** | outline variant: opposite color  | `boolean`         | -                                | `false`   |
 | **light** | light variant: tinted background | `boolean`         | -                                | `false`   |
 | **subtle**| subtle variant: no background    | `boolean`         | -                                | `false`   |

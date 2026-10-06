@@ -1,0 +1,9 @@
+.menuSub {
+  position: relative;
+}
+
+.chevron {
+  display: inline-flex;
+  margin-left: auto;
+  padding-left: 1em;
+}

@@ -28,6 +28,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "files": ["../core/index.ts", "../core/Next/index.ts"],
+  "files": [
+    "../core/index.ts",
+    "../core/css-modules.d.ts"
+  ],
   "exclude": ["node_modules", "lib", "es"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@bolio-ui/core",
-  "version": "2.0.0-alpha.2",
+  "version": "3.0.0-alpha.1",
   "description": "Amazing, modern and creative tools for React UI. 🥷🏼",
   "keywords": [
     "bolio",
@@ -23,7 +23,7 @@
     "name": "Bruno Andrade",
     "email": "brunnoandradi@gmail.com"
   },
-  "sideEffects": false,
+  "sideEffects": ["*.css"],
   "main": "dist/index.js",
   "unpkg": "dist/index.min.js",
   "module": "esm/index.js",
@@ -34,11 +34,8 @@
       "module": "./esm/index.js",
       "default": "./dist/index.js"
     },
-    "./next": {
-      "types": "./esm/Next/index.d.ts",
-      "module": "./esm/Next/index.js",
-      "default": "./dist/Next/index.js"
-    },
+    "./styles.css": "./dist/styles.css",
+    "./css/*": "./dist/css/*",
     "./dist/index.js": "./dist/index.js",
     "./dist/*/index.js": "./dist/*/index.js",
     "./dist/*": "./dist/*/index.js",
@@ -46,13 +43,6 @@
     "./esm/*/index.js": "./esm/*/index.js",
     "./esm/*": "./esm/*/index.js",
     "./package.json": "./package.json"
-  },
-  "typesVersions": {
-    "*": {
-      "next": [
-        "esm/Next/index.d.ts"
-      ]
-    }
   },
   "files": [
     "/dist",
@@ -75,17 +65,13 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:js": "tsup --config scripts/tsup.config.ts",
     "build:after": "node scripts/add-use-client.js",
-    "build:webpack": "webpack --config scripts/webpack.config.js",
     "build:types": "tsc -p ./scripts && tsc -p ./scripts --outDir ./esm",
     "build:package": "yarn build:clear && yarn build:js && yarn build:types && yarn build:after",
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
     "re-build": "rm -rf .next _static node_modules && yarn install && yarn build",
-    "release": "yarn build && yarn build:package && npm publish --access public",
-    "release:next": "yarn build:package && npm publish --access public --tag next"
-  },
-  "dependencies": {
-    "styled-jsx": "^5.0.7"
+    "release": "yarn build && yarn build:package && npm publish --access public --registry https://registry.npmjs.org/",
+    "release:next": "yarn build:package && npm publish --access public --tag next --registry https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -114,7 +100,6 @@
     "@typescript-eslint/parser": "^8",
     "@vitejs/plugin-react": "^5",
     "axe-core": "^4.3.2",
-    "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
     "classnames": "^2.3.1",
     "esbuild": "^0.27",
@@ -125,12 +110,14 @@
     "eslint-plugin-react-hooks": "^5",
     "globals": "^17.12.0",
     "gray-matter": "^4.0.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30",
     "jest-environment-jsdom": "^30",
     "jest-styled-components": "^7.0.5",
     "kbar": "0.1.0-beta.6",
     "next": "^16",
     "plop": "^2.7.4",
+    "postcss-modules": "^9.0.1",
     "prettier": "^3",
     "prism-react-renderer": "^1.2.1",
     "react": "^19",

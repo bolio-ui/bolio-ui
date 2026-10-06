@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { menuMobile } from 'src/data/menuMobile'
 import { isPlainLeftClick } from 'src/utils/client-navigation'
 import { versions } from 'src/data/versions'
+import styles from './NavigationMobile.module.css'
 
 interface Props {
   expanded: boolean
@@ -31,21 +32,34 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
   if (!expanded) return null
 
   return (
-    <div className="mobile-menu">
-      <div className="content">
-        <Text className={`fadein ${pathname === `/` ? 'active' : ''}`} ml={1}>
-          Documentation
-        </Text>
+    <div
+      className={styles.mobileMenu}
+      style={
+        {
+          '--menu-page-margin': theme.layout.pageMargin,
+          '--menu-gap': theme.layout.gap,
+          '--menu-gap-half': theme.layout.gapHalf,
+          '--menu-quarter': theme.layout.gapQuarter,
+          '--menu-quarter-negative': theme.layout.gapQuarterNegative,
+          '--menu-strong': theme.palette.accents_7,
+          '--menu-muted': theme.palette.accents_6,
+          '--menu-line': theme.palette.accents_2,
+          '--menu-link': theme.palette.link
+        } as React.CSSProperties
+      }
+    >
+      <div>
+        <Text ml={1}>Documentation</Text>
 
         {menuMobile.map((item, index) => (
           <div
             key={item.name}
-            className="fadein"
+            className={styles.fadein}
             style={{ animationDelay: `${(index + 1) * 50}ms` }}
           >
             <button
-              className={`menu-item ${
-                expandedGroupName === item.name && 'expanded'
+              className={`${styles.menuItem} ${
+                expandedGroupName === item.name ? styles.expanded : ''
               }`}
               onClick={() => handleGroupClick(item.name)}
             >
@@ -57,13 +71,13 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
               {item.name}
             </button>
             {expandedGroupName === item.name && (
-              <div className="group">
+              <div className={styles.group}>
                 {item.children.map((section) => (
                   <div key={section.name}>
-                    <span className="section-name">{section.name}</span>
+                    <span className={styles.sectionName}>{section.name}</span>
                     {section.children.map((item) => {
-                      const className = `section-item ${
-                        pathname === item.url ? 'active' : ''
+                      const className = `${styles.sectionItem} ${
+                        pathname === item.url ? styles.active : ''
                       }`
                       return item.target ? (
                         <a
@@ -94,13 +108,13 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
         ))}
 
         <div
-          className="fadein"
+          className={styles.fadein}
           style={{ animationDelay: `${(menuMobile.length + 1) * 50}ms` }}
         >
-          <div className="group">
-            <span className="section-name">Version</span>
+          <div className={styles.group}>
+            <span className={styles.sectionName}>Version</span>
             {versions.map(({ label, version, url, current }) => {
-              const className = `section-item ${current ? 'active' : ''}`
+              const className = `${styles.sectionItem} ${current ? styles.active : ''}`
               const text = `${label} (v${version})`
               const ariaLabel = `Bolio UI ${label} documentation`
               return current ? (
@@ -129,104 +143,6 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .mobile-menu {
-          position: fixed;
-          top: 60px;
-          z-index: 1001;
-          right: 0;
-          left: 0;
-          bottom: 0;
-          display: block;
-          margin: 0;
-          width: 100%;
-          /* height: 100vh; */
-          -webkit-transition: height.25s ease;
-          -moz-transition: height.25s ease;
-          -o-transition: height.25s ease;
-          transition: height.25s ease;
-          will-change: height;
-          overflow-y: scroll;
-          overflow-x: hidden;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-
-          backdrop-filter: saturate(180%) blur(40px);
-          transition: box-shadow 1s ease;
-          transition: backdrop-filter 1s ease;
-        }
-        .fadein {
-          animation: fadeIn 200ms ease;
-          animation-fill-mode: forwards;
-          opacity: 0;
-        }
-        .menu-item {
-          padding: 0 ${theme.layout.pageMargin};
-          height: 48px;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          border: none;
-          background: none;
-          outline: none;
-          /* border-bottom: 1px solid ${theme.palette.accents_2}; */
-          text-transform: capitalize;
-          color: ${theme.palette.accents_7};
-          cursor: pointer;
-        }
-        .menu-item :global(svg) {
-          transform: translateX(${theme.layout.gapQuarterNegative});
-          transition: transform 250ms ease;
-        }
-        .menu-item.expanded {
-          border-bottom: none;
-        }
-        .menu-item.expanded :global(svg) {
-          transform: rotate(90deg) translateY(${theme.layout.gapQuarter});
-        }
-        .group {
-          /* background: ${theme.palette.accents_1}; */
-          padding: 1px ${theme.layout.gap} ${theme.layout.gap}
-            calc(${theme.layout.gap} * 1.5);
-        }
-        .section-name {
-          display: block;
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          color: ${theme.palette.accents_7};
-          margin-top: ${theme.layout.gap};
-          margin-bottom: ${theme.layout.gapHalf};
-        }
-        .section-item {
-          padding: ${theme.layout.gapQuarter} ${theme.layout.gap};
-          margin: 0 ${theme.layout.gapQuarter};
-          width: 100%;
-          display: flex;
-          align-items: center;
-          border: none;
-          background: none;
-          outline: none;
-          color: ${theme.palette.accents_6};
-          border-left: 1px solid ${theme.palette.accents_2};
-        }
-        .active {
-          color: ${theme.palette.link};
-          font-weight: 500;
-        }
-        @keyframes fadeIn {
-          from {
-            transform: translate3d(0, 0.375rem, 0);
-            opacity: 0;
-          }
-          to {
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </div>
   )
 }
