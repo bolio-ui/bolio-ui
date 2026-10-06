@@ -21,7 +21,6 @@
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  background-clip: padding-box;
 }
 
 .field:hover {
@@ -90,5 +89,4 @@
   border: 1px solid var(--colorinput-popup-border);
   border-radius: var(--colorinput-popup-radius);
   box-shadow: var(--colorinput-shadow);
-  background-clip: padding-box;
 }

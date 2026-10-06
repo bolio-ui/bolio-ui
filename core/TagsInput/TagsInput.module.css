@@ -16,7 +16,6 @@
   background-color: var(--input-bg);
   cursor: text;
   transition: border 0.2s ease;
-  background-clip: padding-box;
 }
 
 .field:hover {
@@ -61,7 +60,6 @@
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  background-clip: padding-box;
 }
 
 .remove:hover:not(:disabled) {

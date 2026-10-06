@@ -25,7 +25,6 @@
   transition:
     border 0.2s ease 0s,
     color 0.2s ease 0s;
-  background-clip: padding-box;
 }
 
 .inputWrapper:hover {

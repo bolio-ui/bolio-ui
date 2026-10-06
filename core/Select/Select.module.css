@@ -21,7 +21,6 @@
     var(--select-padding-bottom) var(--select-padding-left);
   margin: var(--select-margin-top) var(--select-margin-right)
     var(--select-margin-bottom) var(--select-margin-left);
-  background-clip: padding-box;
 }
 
 .multiple {

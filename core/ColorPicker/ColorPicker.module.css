@@ -81,7 +81,6 @@
   box-shadow: 0 0 0 1px rgb(0 0 0 / 40%);
   appearance: none;
   -webkit-appearance: none;
-  background-clip: padding-box;
 }
 
 .hue::-moz-range-thumb {
@@ -92,7 +91,6 @@
   border: 2px solid #fff;
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 40%);
-  background-clip: padding-box;
 }
 
 .hue:focus-visible {
@@ -111,7 +109,6 @@
   border-radius: var(--picker-radius);
   background-color: var(--picker-bg);
   transition: border-color 0.15s ease;
-  background-clip: padding-box;
 }
 
 .field:hover {

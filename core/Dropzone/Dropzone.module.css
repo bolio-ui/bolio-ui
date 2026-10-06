@@ -32,7 +32,6 @@
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease;
-  background-clip: padding-box;
 }
 
 .dropzone:hover .content {
@@ -87,7 +86,6 @@
   background-color: var(--dropzone-tile-bg);
   border: 1px solid var(--dropzone-border);
   border-radius: var(--dropzone-radius);
-  background-clip: padding-box;
 }
 
 .preview {
@@ -132,7 +130,6 @@
   border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
-  background-clip: padding-box;
 }
 
 .remove:hover:not(:disabled) {

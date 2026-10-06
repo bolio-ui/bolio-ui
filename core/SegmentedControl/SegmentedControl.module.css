@@ -7,5 +7,4 @@
   background-color: var(--segmented-bg);
   border: 1px solid var(--segmented-border);
   border-radius: var(--segmented-radius);
-  background-clip: padding-box;
 }
