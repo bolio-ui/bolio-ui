@@ -262,6 +262,9 @@ export type { TextareaProps } from './Textarea'
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 
+export { default as Tour } from './Tour'
+export type { TourProps, TourStep } from './Tour'
+
 export { default as Tree } from './Tree'
 export type { TreeProps, TreeNodeData } from './Tree'
 

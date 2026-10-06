@@ -389,6 +389,11 @@ export const components = [
     url: '/docs/components/tooltip'
   },
   {
+    name: 'Tour',
+    url: '/docs/components/tour',
+    tag: 'New'
+  },
+  {
     name: 'Tree',
     url: '/docs/components/tree',
     tag: 'New'

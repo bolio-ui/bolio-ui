@@ -68,6 +68,7 @@ const {
   Textarea,
   Toggle,
   Tooltip,
+  Tour,
   Tree
 } = Bolio
 
@@ -326,6 +327,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       <Tooltip text="Tip">
         <span>Hover</span>
       </Tooltip>
+    )
+  ],
+  [
+    'Tour',
+    () => (
+      <Tour
+        open
+        onClose={() => undefined}
+        steps={[{ title: 'Welcome', content: 'A short tour' }]}
+      />
     )
   ],
   [

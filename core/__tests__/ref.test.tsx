@@ -70,6 +70,7 @@ const {
   Textarea,
   Toggle,
   Tooltip,
+  Tour,
   Tree
 } = Bolio
 
@@ -344,6 +345,18 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
         <span>Hover</span>
       </Tooltip>
     )
+  ],
+  [
+    'Tour',
+    (ref) => (
+      <Tour
+        ref={ref}
+        open
+        onClose={() => undefined}
+        steps={[{ title: 'Welcome', content: 'A short tour' }]}
+      />
+    ),
+    'DIV'
   ],
   [
     'Tree',

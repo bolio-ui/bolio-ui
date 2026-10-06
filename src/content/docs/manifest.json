@@ -459,6 +459,11 @@
               "path": "/docs/components/tooltip.mdx"
             },
             {
+              "title": "Tour",
+              "keywords": "tour, onboarding, walkthrough, guide, product tour, spotlight, steps, tooltip tour",
+              "path": "/docs/components/tour.mdx"
+            },
+            {
               "title": "Tree",
               "keywords": "tree, tree view, nested list, file tree, hierarchy, folders, expand, collapse, categories",
               "path": "/docs/components/tree.mdx"

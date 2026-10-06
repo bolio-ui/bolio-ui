@@ -4518,6 +4518,59 @@
     "path": "/docs/components/tooltip#placement"
   },
   {
+    "title": "Tour",
+    "component": true,
+    "path": "/docs/components/tour"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour General",
+    "component": false,
+    "path": "/docs/components/tour#general"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour Controlled and without a target",
+    "component": false,
+    "path": "/docs/components/tour#controlled-and-without-a-target"
+  },
+  {
+    "head": "Tour",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tour#apis"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour Props",
+    "component": false,
+    "path": "/docs/components/tour#tour.props"
+  },
+  {
+    "head": "Tour",
+    "title": "TourStep",
+    "component": false,
+    "path": "/docs/components/tour#tourstep"
+  },
+  {
+    "head": "Tour",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/tour#behavior"
+  },
+  {
+    "head": "Tour",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tour#ref"
+  },
+  {
+    "head": "Tour",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tour#accessibility"
+  },
+  {
     "title": "Tree",
     "component": true,
     "path": "/docs/components/tree"
