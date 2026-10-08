@@ -156,11 +156,13 @@ export const components = [
   },
   {
     name: 'Combobox',
-    url: '/docs/components/combobox'
+    url: '/docs/components/combobox',
+    tag: 'Updated'
   },
   {
     name: 'Command',
-    url: '/docs/components/command'
+    url: '/docs/components/command',
+    tag: 'Updated'
   },
   {
     name: 'Container',
@@ -173,7 +175,8 @@ export const components = [
   },
   {
     name: 'DatePicker',
-    url: '/docs/components/date-picker'
+    url: '/docs/components/date-picker',
+    tag: 'Updated'
   },
   {
     name: 'DateRangePicker',
@@ -198,7 +201,8 @@ export const components = [
   },
   {
     name: 'Drawer',
-    url: '/docs/components/drawer'
+    url: '/docs/components/drawer',
+    tag: 'Updated'
   },
   {
     name: 'Empty State',
@@ -254,11 +258,13 @@ export const components = [
   },
   {
     name: 'Menu',
-    url: '/docs/components/menu'
+    url: '/docs/components/menu',
+    tag: 'Updated'
   },
   {
     name: 'Modal',
-    url: '/docs/components/modal'
+    url: '/docs/components/modal',
+    tag: 'Updated'
   },
   {
     name: 'Note',
@@ -283,7 +289,8 @@ export const components = [
   },
   {
     name: 'Popover',
-    url: '/docs/components/popover'
+    url: '/docs/components/popover',
+    tag: 'Updated'
   },
   {
     name: 'Progress',
@@ -309,7 +316,8 @@ export const components = [
   },
   {
     name: 'Select',
-    url: '/docs/components/select'
+    url: '/docs/components/select',
+    tag: 'Updated'
   },
   {
     name: 'Skeleton',
@@ -386,7 +394,8 @@ export const components = [
   },
   {
     name: 'Tooltip',
-    url: '/docs/components/tooltip'
+    url: '/docs/components/tooltip',
+    tag: 'Updated'
   },
   {
     name: 'Tour',
