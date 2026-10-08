@@ -1,5 +1,10 @@
 .action.btn:hover,
-.action.btn:focus {
+.action.btn:focus-visible {
   color: var(--modal-action-hover-color);
   background-color: var(--modal-action-hover-bg);
+}
+
+/* Shrinking the pressed action exposes the footer around it as an edge */
+.action:global(.btn):active {
+  transform: none;
 }
