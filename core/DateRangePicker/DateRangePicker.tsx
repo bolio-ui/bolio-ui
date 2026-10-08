@@ -179,6 +179,7 @@ const DateRangePickerComponent = React.forwardRef<
       '--daterange-margin-bottom': SCALES.mb(0),
       '--daterange-margin-left': SCALES.ml(0),
       '--daterange-bg': surface.bg,
+      '--calendar-popup-hover': surface.hover,
       '--daterange-border-color': theme.palette.border,
       '--daterange-radius': rounded ? '25px' : theme.layout.radius,
       '--daterange-popup-radius': theme.layout.radius,

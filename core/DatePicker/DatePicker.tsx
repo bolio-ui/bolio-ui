@@ -139,6 +139,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       '--datepicker-margin-left': SCALES.ml(0),
       '--datepicker-text-color': theme.palette.foreground,
       '--datepicker-bg': surface.bg,
+      '--calendar-popup-hover': surface.hover,
       '--datepicker-border-color': theme.palette.border,
       '--datepicker-radius': rounded ? '25px' : theme.layout.radius,
       '--datepicker-popup-radius': theme.layout.radius,
