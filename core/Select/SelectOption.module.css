@@ -20,7 +20,6 @@
     var(--select-option-padding-bottom) var(--select-option-padding-left);
   margin: var(--select-option-margin-top) var(--select-option-margin-right)
     var(--select-option-margin-bottom) var(--select-option-margin-left);
-  background-clip: padding-box;
 }
 
 .option:hover {

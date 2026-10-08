@@ -8,6 +8,7 @@ import useClickAway from '../utils/use-click-away'
 import styles from './DatePicker.module.css'
 import Calendar from '../Calendar'
 import { fromISO, startOfDay, toISO } from '../Calendar/date-utils'
+import { getSurface } from '../utils/surface'
 
 interface Props {
   value?: Date | null
@@ -61,6 +62,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
     ref
   ) => {
     const theme = useTheme()
+    const surface = getSurface(theme)
     const { SCALES } = useScale()
     const colors = getColors(theme.palette, type, disabled, {
       filled,
@@ -136,7 +138,8 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       '--datepicker-margin-bottom': SCALES.mb(0),
       '--datepicker-margin-left': SCALES.ml(0),
       '--datepicker-text-color': theme.palette.foreground,
-      '--datepicker-bg': theme.palette.background,
+      '--datepicker-bg': surface.bg,
+      '--calendar-popup-hover': surface.hover,
       '--datepicker-border-color': theme.palette.border,
       '--datepicker-radius': rounded ? '25px' : theme.layout.radius,
       '--datepicker-popup-radius': theme.layout.radius,
@@ -150,7 +153,7 @@ const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
       '--datepicker-toggle-color': colors.iconColor,
       '--datepicker-toggle-hover-color': colors.color,
       '--datepicker-toggle-disabled-color': colors.iconColor,
-      '--datepicker-shadow': theme.expressiveness.shadowMedium
+      '--datepicker-shadow': surface.shadow
     } as React.CSSProperties
 
     return (

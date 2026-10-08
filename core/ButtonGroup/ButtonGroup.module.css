@@ -4,7 +4,6 @@
   overflow: hidden;
   border: 1px solid var(--btn-group-border);
   border-radius: var(--btn-group-radius);
-  background-clip: padding-box;
 }
 
 .vertical {

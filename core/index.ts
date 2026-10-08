@@ -1,3 +1,6 @@
+export { default as Alert } from './Alert'
+export type { AlertProps } from './Alert'
+
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
@@ -40,6 +43,9 @@ export type { CarouselProps } from './Carousel'
 
 export { default as Checkbox } from './Checkbox'
 export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
+
+export { default as Chip } from './Chip'
+export type { ChipProps, ChipGroupProps } from './Chip'
 
 export { default as Code } from './Code'
 export type { CodeProps } from './Code'
@@ -109,6 +115,9 @@ export type { GridProps, GridContainerProps } from './Grid'
 export { default as Image } from './Image'
 export type { ImageProps, ImageBrowserProps } from './Image'
 
+export { default as ImageZoom } from './ImageZoom'
+export type { ImageZoomProps } from './ImageZoom'
+
 export { default as Input } from './Input'
 export type { InputProps, InputPasswordProps } from './Input'
 
@@ -120,6 +129,9 @@ export type { LinkProps } from './Link'
 
 export { default as Loading } from './Loading'
 export type { LoadingProps } from './Loading'
+
+export { default as Mention } from './Mention'
+export type { MentionProps, MentionOption } from './Mention'
 
 export { default as Menu } from './Menu'
 export type {
@@ -218,6 +230,13 @@ export type { SpacerProps } from './Spacer'
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 
+export { default as Splitter } from './Splitter'
+export type {
+  SplitterProps,
+  SplitterPanelProps,
+  SplitterDirection
+} from './Splitter'
+
 export { default as Stepper } from './Stepper'
 export type {
   StepperProps,
@@ -226,7 +245,13 @@ export type {
 } from './Stepper'
 
 export { default as Table } from './Table'
-export type { TableProps, TableColumnProps } from './Table'
+export type {
+  TableProps,
+  TableColumnProps,
+  TableKey,
+  TableSort,
+  TableSortDirection
+} from './Table'
 
 export { default as Tabs } from './Tabs'
 export type { TabsProps } from './Tabs'
@@ -245,6 +270,12 @@ export type { TextareaProps } from './Textarea'
 
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
+
+export { default as Toolbar } from './Toolbar'
+export type { ToolbarProps, ToolbarSeparatorProps } from './Toolbar'
+
+export { default as Tour } from './Tour'
+export type { TourProps, TourStep } from './Tour'
 
 export { default as Tree } from './Tree'
 export type { TreeProps, TreeNodeData } from './Tree'

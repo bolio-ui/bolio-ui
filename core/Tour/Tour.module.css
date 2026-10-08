@@ -1,0 +1,78 @@
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+}
+
+/* the page is dimmed by a shadow around the target, so the target itself
+   stays clear */
+.spotlight {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 100vmax var(--tour-dim);
+  transition:
+    left 0.2s ease,
+    top 0.2s ease,
+    width 0.2s ease,
+    height 0.2s ease;
+}
+
+.dim {
+  position: fixed;
+  inset: 0;
+  background: var(--tour-dim);
+}
+
+.card {
+  position: fixed;
+  box-sizing: border-box;
+  max-width: calc(100vw - 16px);
+  padding: 1rem;
+  color: var(--tour-color);
+  background: var(--tour-bg);
+  border-radius: var(--tour-radius);
+  box-shadow: var(--tour-shadow);
+  outline: none;
+}
+
+.centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.count {
+  font-size: 0.75rem;
+  color: var(--tour-muted);
+}
+
+.title {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.content {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--tour-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight {
+    transition: none;
+  }
+}

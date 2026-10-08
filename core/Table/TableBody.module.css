@@ -22,3 +22,13 @@
   align-items: center;
   flex-flow: row wrap;
 }
+
+.selected,
+.selected:hover {
+  background-color: var(--table-body-selected-bg);
+}
+
+.tr :global(td).selectCell {
+  width: 1%;
+  white-space: nowrap;
+}

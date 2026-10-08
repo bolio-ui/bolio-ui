@@ -6,6 +6,7 @@ import { isChildElement } from '../utils/collections'
 import { DrawerPlacement, getDrawerTransform } from './helper'
 import useClasses from '../use-classes'
 import styles from './DrawerWrapper.module.css'
+import { getSurface } from '../utils/surface'
 
 const placementClasses: Record<DrawerPlacement, string> = {
   top: styles.top,
@@ -27,6 +28,7 @@ const DrawerWrapper = React.forwardRef<
   React.PropsWithChildren<DrawerWrapperProps>
 >(({ className = '', children, visible = false, placement, ...props }, ref) => {
   const theme = useTheme()
+  const surface = getSurface(theme, theme.expressiveness.shadowLarge)
   const { SCALES } = useScale()
 
   const modalContent = useRef<HTMLDivElement>(null)
@@ -41,10 +43,10 @@ const DrawerWrapper = React.forwardRef<
   )
 
   const wrapperStyle = {
-    backgroundColor: theme.palette.background,
+    backgroundColor: surface.bg,
     color: theme.palette.foreground,
     borderRadius: `calc(3 * ${theme.layout.radius})`,
-    boxShadow: theme.expressiveness.shadowLarge,
+    boxShadow: surface.shadow,
     fontSize: SCALES.font(1),
     '--drawer-wrapper-padding-left': SCALES.pl(1.3125),
     '--drawer-wrapper-padding-right': SCALES.pr(1.3125),

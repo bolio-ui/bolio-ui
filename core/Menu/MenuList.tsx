@@ -4,6 +4,7 @@ import useScale from '../use-scale'
 import { MenuContext, MenuListContext } from './MenuContext'
 import { joinClasses } from '../use-classes'
 import styles from './MenuList.module.css'
+import { getSurface } from '../utils/surface'
 
 export type MenuFocus = 'first' | 'last' | 'list'
 
@@ -47,10 +48,13 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
     )
 
   useEffect(() => {
-    if (focus === 'list') return listRef.current?.focus()
+    // Without scrolling: the browser would scroll the page to show a menu that
+    // is still below the trigger, before the dropdown can place it above.
+    const options = { preventScroll: true }
+    if (focus === 'list') return listRef.current?.focus(options)
     const items = getItems()
     const target = focus === 'first' ? items[0] : items[items.length - 1]
-    ;(target ?? listRef.current)?.focus()
+    ;(target ?? listRef.current)?.focus(options)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -123,13 +127,14 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
     if (isCharacter) typeahead(event.key, items, index)
   }
 
+  const surface = getSurface(theme)
   const listStyle = {
     '--menu-list-font-size': SCALES.font(0.875),
     '--menu-list-color': theme.palette.foreground,
-    '--menu-list-bg': theme.palette.background,
+    '--menu-list-bg': surface.bg,
     '--menu-list-border-color': theme.palette.border,
     '--menu-list-radius': theme.layout.radius,
-    '--menu-list-shadow': theme.expressiveness.shadowMedium
+    '--menu-list-shadow': surface.shadow
   } as React.CSSProperties
 
   return (

@@ -4,6 +4,7 @@ import Modal from '../Modal'
 import Input from '../Input'
 import useClasses from '../use-classes'
 import styles from './Command.module.css'
+import { getSurface } from '../utils/surface'
 
 export interface CommandItem {
   value: string
@@ -107,7 +108,7 @@ const Command: React.FC<CommandProps> = ({
               className={styles.item}
               style={{
                 backgroundColor:
-                  index === active ? theme.palette.accents_2 : undefined
+                  index === active ? getSurface(theme).hover : undefined
               }}
               onMouseEnter={() => setActive(index)}
               onClick={() => select(item)}

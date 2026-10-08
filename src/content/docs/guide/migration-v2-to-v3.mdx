@@ -3,7 +3,7 @@ import { Spacer } from 'core'
 
 export const meta = {
   title: 'Migrating to v3',
-  description: 'What changes from v2 to v3 and what to do about it.',
+  description: 'What changes in v3 and what to do about it, coming from v1 or from a v2 alpha.',
   sidebar: 'guide',
   group: 'Guide'
 }
@@ -13,10 +13,10 @@ export const meta = {
 Version 3 drops the styled-jsx runtime: every component now ships plain, static CSS instead of injecting `<style>` tags at render time.
 This page lists what changes and what to do about it. The documentation of v2 stays available at <a href="https://v2.bolio-ui.com" rel="noreferrer" target="_blank">v2.bolio-ui.com</a>.
 
-While v3 is in alpha, install it with the `next` tag:
+Version 2 was only published as alphas, so most projects come from 1.x or from a v2 alpha. Coming from 1.x, read the <a href="https://v2.bolio-ui.com/docs/guide/migration-v1-to-v2" rel="noreferrer" target="_blank">migration guide to v2</a> first, then this page. Install v3 with:
 
 ```bash
-yarn add @bolio-ui/core@next
+yarn add @bolio-ui/core
 ```
 
 <Spacer h={2} />
@@ -115,27 +115,30 @@ The old Rating changed its value on hover and then locked on click. Now the valu
 - • **Box sizing**: `CssBaseline` now sets `box-sizing: border-box` on the page, and every element inherits it. A width or a height now includes the padding and the border. If your own styles assumed `content-box`, check the elements that have both a size and a border or padding.
 - • **Collapse**: the title is now a heading with a native button inside, in place of a `div` with `role="button"`. A selector that targeted that `div` needs to change. `Collapse.Group` also moves the focus between the titles with the arrow keys, Home and End.
 - • **Select**: the dropdown and its options take the colors of the field, so they follow its `type` and variant, in place of the fixed gray.
-- • **Dropdown**: Menu, Select, Popover and the other dropdowns open upwards when there is not enough room below.
+- • **Dropdown**: Menu, Select, Popover and the other dropdowns open upwards when there is not enough room below. A Menu no longer scrolls the page when it opens.
+- • **Native controls follow the theme**: `CssBaseline` sets `color-scheme` on the page, so the clock of a time field, the scrollbars and the pickers of the browser are drawn for a dark page on the dark theme.
 
 <Spacer h={2} />
 
 ### New components
 
-These are in v3 and were not in `2.0.0-alpha.2`. Nothing was removed.
+These are in v3 and were not in `2.0.0-alpha.2`, or in 1.x. Nothing was removed.
 
 - • <a href="/docs/components/carousel">Carousel</a>, <a href="/docs/components/color-input">Color Input</a> and <a href="/docs/components/color-picker">Color Picker</a>
 - • <a href="/docs/components/command">Command</a>, <a href="/docs/components/context-menu">Context Menu</a> and <a href="/docs/components/date-range-picker">DateRangePicker</a>
-- • <a href="/docs/components/dropzone">Dropzone</a>, <a href="/docs/components/empty-state">Empty State</a> and <a href="/docs/components/marquee">Marquee</a>
-- • <a href="/docs/components/pin-input">Pin Input</a>, <a href="/docs/components/segmented-control">Segmented Control</a> and <a href="/docs/components/stat">Stat</a>
-- • <a href="/docs/components/tags-input">Tags Input</a>, <a href="/docs/components/timeline">Timeline</a> and <a href="/docs/components/tree">Tree</a>
+- • <a href="/docs/components/dropzone">Dropzone</a>, <a href="/docs/components/empty-state">Empty State</a> and <a href="/docs/components/image-zoom">Image Zoom</a>
+- • <a href="/docs/components/marquee">Marquee</a>, <a href="/docs/components/pin-input">Pin Input</a> and <a href="/docs/components/segmented-control">Segmented Control</a>
+- • <a href="/docs/components/splitter">Splitter</a>, <a href="/docs/components/stat">Stat</a> and <a href="/docs/components/tags-input">Tags Input</a>
+- • <a href="/docs/components/timeline">Timeline</a>, <a href="/docs/components/tour">Tour</a> and <a href="/docs/components/tree">Tree</a>
+- • <a href="/docs/components/alert">Alert</a>, <a href="/docs/components/chip">Chip</a>, <a href="/docs/components/mention">Mention</a> and <a href="/docs/components/toolbar">Toolbar</a>
 
-Existing components also got new props: `Collapse` has `visible`, `onVisibleChange` and `disabled`, and `Calendar` has `numberOfMonths`.
+Existing components also got new props: `Collapse` has `visible`, `onVisibleChange` and `disabled`, `Calendar` has `numberOfMonths`, and `Table` has sortable columns (`sortable` and `sorter`), `sort`, `selectable`, `rowKey` and `selectedKeys`.
 
 <Spacer h={2} />
 
 ### Checklist
 
-1. Install `@bolio-ui/core@next`.
+1. Install `@bolio-ui/core` 3.0.0 or later.
 2. Add `import '@bolio-ui/core/styles.css'` once, near your other top-level imports.
 3. Remove `StyledJsxRegistry` and the `@bolio-ui/core/next` import from your App Router layout, if you had one.
 4. Remove `styled-jsx` from your own dependencies if nothing else in your app uses it.

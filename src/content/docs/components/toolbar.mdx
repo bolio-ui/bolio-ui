@@ -1,0 +1,90 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Toolbar, Button, Chip, Text } from 'core'
+
+export const meta = {
+  title: 'Toolbar',
+  description: 'Group related controls in one tab stop and move between them with the arrow keys.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 56
+}
+
+## Toolbar
+
+Group related controls in one tab stop and move between them with the arrow keys.
+
+<Playground
+  title="General"
+  desc="Tab enters the `Toolbar` once and leaves it on the next Tab. Inside, the arrow keys, Home and End move the focus. Give it an `aria-label`."
+  scope={{ Toolbar, Button }}
+  code={`
+<Toolbar aria-label="Text formatting">
+  <Button auto scale={0.75} subtle>Bold</Button>
+  <Button auto scale={0.75} subtle>Italic</Button>
+  <Button auto scale={0.75} subtle>Underline</Button>
+  <Toolbar.Separator />
+  <Button auto scale={0.75} subtle>Link</Button>
+  <Button auto scale={0.75} subtle disabled>Image</Button>
+</Toolbar>
+`}
+/>
+
+<Playground
+  title="Vertical"
+  desc="With `orientation` set to vertical, the Up and Down arrows move the focus."
+  scope={{ Toolbar, Button }}
+  code={`
+<Toolbar orientation="vertical" aria-label="Zoom">
+  <Button auto scale={0.75} subtle>Zoom in</Button>
+  <Button auto scale={0.75} subtle>Zoom out</Button>
+  <Toolbar.Separator />
+  <Button auto scale={0.75} subtle>Fit to screen</Button>
+</Toolbar>
+`}
+/>
+
+<Playground
+  title="Editor actions"
+  desc="Mix buttons and chips. The text below shows which formats are on."
+  scope={{ Toolbar, Button, Chip, Text }}
+  code={`
+() => {
+  const [formats, setFormats] = React.useState(['bold'])
+  const toggle = (name) =>
+    setFormats((current) => current.includes(name) ? current.filter((f) => f !== name) : [...current, name])
+  return (
+    <>
+      <Toolbar aria-label="Formatting">
+        {['bold', 'italic', 'underline'].map((name) => (
+          <Chip key={name} checked={formats.includes(name)} onChange={() => toggle(name)} style={{ textTransform: 'capitalize' }}>
+            {name}
+          </Chip>
+        ))}
+        <Toolbar.Separator />
+        <Button auto scale={0.75} subtle onClick={() => setFormats([])}>Clear</Button>
+      </Toolbar>
+      <Text small type="secondary">{formats.length ? 'On: ' + formats.join(', ') : 'No format is on.'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/toolbar.mdx">
+<Attributes.Title>Toolbar.Props</Attributes.Title>
+
+| Attribute       | Description                                       | Type                         | Accepted values | Default      |
+| --------------- | ------------------------------------------------- | ---------------------------- | --------------- | ------------ |
+| **orientation** | direction of the row and of the arrow keys        | `'horizontal' \| 'vertical'` | -               | `horizontal` |
+| ...             | native props, such as `aria-label`                | `HTMLAttributes`             | -               | -            |
+
+<Attributes.Title>Toolbar.Separator.Props</Attributes.Title>
+
+| Attribute | Description  | Type             | Accepted values | Default |
+| --------- | ------------ | ---------------- | --------------- | ------- |
+| ...       | native props | `HTMLAttributes` | -               | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

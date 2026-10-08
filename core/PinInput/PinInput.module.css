@@ -21,7 +21,6 @@
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease;
-  background-clip: padding-box;
 }
 
 .box:hover {
@@ -31,6 +30,7 @@
 
 .box:focus {
   border-color: var(--input-focus-border);
+  background-clip: padding-box;
 }
 
 .box:disabled {

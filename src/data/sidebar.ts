@@ -80,6 +80,21 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Alert',
+    url: '/docs/components/alert',
+    tag: 'New'
+  },
+  {
+    name: 'Chip',
+    url: '/docs/components/chip',
+    tag: 'New'
+  },
+  {
+    name: 'Mention',
+    url: '/docs/components/mention',
+    tag: 'New'
+  },
+  {
     name: 'Overview',
     url: '/docs/components/overview'
   },
@@ -156,11 +171,13 @@ export const components = [
   },
   {
     name: 'Combobox',
-    url: '/docs/components/combobox'
+    url: '/docs/components/combobox',
+    tag: 'Updated'
   },
   {
     name: 'Command',
-    url: '/docs/components/command'
+    url: '/docs/components/command',
+    tag: 'Updated'
   },
   {
     name: 'Container',
@@ -173,7 +190,8 @@ export const components = [
   },
   {
     name: 'DatePicker',
-    url: '/docs/components/date-picker'
+    url: '/docs/components/date-picker',
+    tag: 'Updated'
   },
   {
     name: 'DateRangePicker',
@@ -198,7 +216,8 @@ export const components = [
   },
   {
     name: 'Drawer',
-    url: '/docs/components/drawer'
+    url: '/docs/components/drawer',
+    tag: 'Updated'
   },
   {
     name: 'Empty State',
@@ -227,6 +246,11 @@ export const components = [
     url: '/docs/components/image'
   },
   {
+    name: 'Image Zoom',
+    url: '/docs/components/image-zoom',
+    tag: 'New'
+  },
+  {
     name: 'Input',
     url: '/docs/components/input'
   },
@@ -249,11 +273,13 @@ export const components = [
   },
   {
     name: 'Menu',
-    url: '/docs/components/menu'
+    url: '/docs/components/menu',
+    tag: 'Updated'
   },
   {
     name: 'Modal',
-    url: '/docs/components/modal'
+    url: '/docs/components/modal',
+    tag: 'Updated'
   },
   {
     name: 'Note',
@@ -278,7 +304,8 @@ export const components = [
   },
   {
     name: 'Popover',
-    url: '/docs/components/popover'
+    url: '/docs/components/popover',
+    tag: 'Updated'
   },
   {
     name: 'Progress',
@@ -304,7 +331,8 @@ export const components = [
   },
   {
     name: 'Select',
-    url: '/docs/components/select'
+    url: '/docs/components/select',
+    tag: 'Updated'
   },
   {
     name: 'Skeleton',
@@ -331,6 +359,11 @@ export const components = [
     url: '/docs/components/spinner'
   },
   {
+    name: 'Splitter',
+    url: '/docs/components/splitter',
+    tag: 'New'
+  },
+  {
     name: 'Stat',
     url: '/docs/components/stat',
     tag: 'New'
@@ -341,7 +374,8 @@ export const components = [
   },
   {
     name: 'Table',
-    url: '/docs/components/table'
+    url: '/docs/components/table',
+    tag: 'Updated'
   },
   {
     name: 'Tabs',
@@ -370,12 +404,27 @@ export const components = [
     url: '/docs/components/textarea'
   },
   {
+    name: 'Toast',
+    url: '/docs/hooks/use-toast'
+  },
+  {
     name: 'Toggle',
     url: '/docs/components/toggle'
   },
   {
+    name: 'Toolbar',
+    url: '/docs/components/toolbar',
+    tag: 'New'
+  },
+  {
     name: 'Tooltip',
-    url: '/docs/components/tooltip'
+    url: '/docs/components/tooltip',
+    tag: 'Updated'
+  },
+  {
+    name: 'Tour',
+    url: '/docs/components/tour',
+    tag: 'New'
   },
   {
     name: 'Tree',

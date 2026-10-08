@@ -4,6 +4,7 @@ import * as Bolio from '..'
 import type { AnyElement } from '../utils/types'
 
 const {
+  Alert,
   BolioUIProvider,
   Avatar,
   Badge,
@@ -16,6 +17,7 @@ const {
   Card,
   Carousel,
   Checkbox,
+  Chip,
   Code,
   ColorInput,
   ColorPicker,
@@ -35,10 +37,12 @@ const {
   Fieldset,
   Grid,
   Image,
+  ImageZoom,
   Input,
   Keyboard,
   Link,
   Loading,
+  Mention,
   Menu,
   Modal,
   Note,
@@ -59,6 +63,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Splitter,
   Stepper,
   Table,
   Tabs,
@@ -67,7 +72,9 @@ const {
   Text,
   Textarea,
   Toggle,
+  Toolbar,
   Tooltip,
+  Tour,
   Tree
 } = Bolio
 
@@ -203,6 +210,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Image', (ref) => <Image ref={ref} src="/logo.svg" alt="logo" />],
+  [
+    'ImageZoom',
+    (ref) => <ImageZoom ref={ref} src="/a.jpg" alt="A photo" />,
+    'BUTTON'
+  ],
   ['Input', (ref) => <Input ref={ref} placeholder="type" />, 'INPUT'],
   ['Keyboard', (ref) => <Keyboard ref={ref}>K</Keyboard>],
   [
@@ -289,6 +301,16 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spinner', (ref) => <Spinner ref={ref} />],
   [
+    'Splitter',
+    (ref) => (
+      <Splitter ref={ref}>
+        <Splitter.Panel>A</Splitter.Panel>
+        <Splitter.Panel>B</Splitter.Panel>
+      </Splitter>
+    ),
+    'DIV'
+  ],
+  [
     'Stepper',
     (ref) => (
       <Stepper ref={ref} active={0}>
@@ -329,11 +351,44 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   [
+    'Tour',
+    (ref) => (
+      <Tour
+        ref={ref}
+        open
+        onClose={() => undefined}
+        steps={[{ title: 'Welcome', content: 'A short tour' }]}
+      />
+    ),
+    'DIV'
+  ],
+  [
     'Tree',
     (ref) => (
       <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
     ),
     'UL'
+  ],
+  ['Alert', (ref) => <Alert ref={ref}>Your trial ends soon.</Alert>],
+  ['Chip', (ref) => <Chip ref={ref}>React</Chip>, 'INPUT'],
+  [
+    'Toolbar',
+    (ref) => (
+      <Toolbar ref={ref} aria-label="Formatting">
+        <button type="button">Bold</button>
+      </Toolbar>
+    )
+  ],
+  [
+    'Mention',
+    (ref) => (
+      <Mention
+        ref={ref}
+        aria-label="Comment"
+        options={[{ value: 'ana', label: 'Ana Souza' }]}
+      />
+    ),
+    'TEXTAREA'
   ]
 ]
 

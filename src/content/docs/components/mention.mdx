@@ -1,0 +1,111 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Mention, Card, Text, Button } from 'core'
+
+export const meta = {
+  title: 'Mention',
+  description: 'Type a trigger character in a text field to pick a person, a tag or a command from a list.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 57
+}
+
+## Mention
+
+Type a trigger character in a text field to pick a person, a tag or a command from a list.
+
+<Playground
+  title="General"
+  desc="Type `@` and the start of a name. Arrow keys move through the list, Enter or Tab inserts the mention and Escape closes the list."
+  scope={{ Mention }}
+  code={`
+<Mention
+  aria-label="Comment"
+  placeholder="Write a comment and type @ to mention someone"
+  options={[
+    { value: 'ana', label: 'Ana Souza' },
+    { value: 'bruno', label: 'Bruno Lima' },
+    { value: 'carla', label: 'Carla Dias' },
+    { value: 'diego', label: 'Diego Prado', disabled: true }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Other trigger"
+  desc="Change the character with `trigger`. Here `#` picks a topic."
+  scope={{ Mention }}
+  code={`
+<Mention
+  aria-label="Post"
+  trigger="#"
+  rows={2}
+  placeholder="Write a post and type # to add a topic"
+  options={[
+    { value: 'release', label: 'release' },
+    { value: 'design', label: 'design' },
+    { value: 'accessibility', label: 'accessibility' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Comment box"
+  desc="Keep the text in your state to read who was mentioned. The people below are the ones who will be notified."
+  scope={{ Mention, Card, Text, Button }}
+  code={`
+() => {
+  const people = [
+    { value: 'ana', label: 'Ana Souza' },
+    { value: 'bruno', label: 'Bruno Lima' },
+    { value: 'carla', label: 'Carla Dias' }
+  ]
+  const [text, setText] = React.useState('')
+  const [posted, setPosted] = React.useState(null)
+  const mentioned = people.filter((p) => text.includes('@' + p.value + ' ') || text.endsWith('@' + p.value))
+  return (
+    <Card bordered width="100%">
+      <Mention
+        aria-label="Comment"
+        value={text}
+        onChange={setText}
+        options={people}
+        placeholder="Reply to the thread, @ to mention someone"
+      />
+      <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+        <Button auto scale={0.75} type="primary" disabled={!text.trim()} onClick={() => { setPosted(mentioned.length); setText('') }}>
+          Post comment
+        </Button>
+        <Text small type="secondary">
+          {mentioned.length ? 'Notifies ' + mentioned.map((p) => p.label).join(', ') : 'Nobody is mentioned yet.'}
+        </Text>
+      </div>
+      {posted !== null && <Text small type="success">Posted, {posted} {posted === 1 ? 'person' : 'people'} notified.</Text>}
+    </Card>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/mention.mdx">
+<Attributes.Title>Mention.Props</Attributes.Title>
+
+| Attribute        | Description                                                      | Type                                                  | Accepted values | Default      |
+| ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------- | --------------- | ------------ |
+| **options**      | what can be mentioned. `value` is inserted, `label` is shown     | `{ value: string; label?: string; disabled?: boolean }[]` | -           | -            |
+| **trigger**      | character that opens the list                                    | `string`                                              | -               | `@`          |
+| **value**        | text of the field, to control it                                 | `string`                                              | -               | -            |
+| **initialValue** | text at the start                                                | `string`                                              | -               | `''`         |
+| **onChange**     | called with the new text                                         | `(text: string) => void`                              | -               | -            |
+| **onSelect**     | called with the option that was inserted                         | `(option: MentionOption) => void`                     | -               | -            |
+| **rows**         | height of the field                                              | `number`                                              | -               | `3`          |
+| **placeholder**  | hint while the field is empty                                    | `string`                                              | -               | -            |
+| **emptyText**    | shown when nothing matches                                       | `string`                                              | -               | `No results` |
+| **disabled**     | block the field                                                  | `boolean`                                             | -               | `false`      |
+| ...              | native props of the textarea                                     | `TextareaHTMLAttributes`                              | -               | -            |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

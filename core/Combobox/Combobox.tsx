@@ -5,6 +5,7 @@ import { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
 import styles from './Combobox.module.css'
+import { getSurface } from '../utils/surface'
 
 export type ComboboxOption = {
   value: string
@@ -72,6 +73,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     ref
   ) => {
     const theme = useTheme()
+    const surface = getSurface(theme)
     const { SCALES } = useScale()
     const colors = getColors(theme.palette, type, disabled, {
       filled,
@@ -185,7 +187,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       '--combobox-margin-bottom': SCALES.mb(0),
       '--combobox-margin-left': SCALES.ml(0),
       '--combobox-text-color': theme.palette.foreground,
-      '--combobox-bg': theme.palette.background,
+      '--combobox-bg': surface.bg,
       '--combobox-border-color': theme.palette.border,
       '--combobox-radius': rounded ? '25px' : theme.layout.radius,
       '--combobox-popup-radius': theme.layout.radius,
@@ -197,8 +199,8 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       '--combobox-focus-border-color': colors.focusBorder,
       '--combobox-placeholder-color': colors.placeholderColor,
       '--combobox-disabled-color': theme.palette.accents_4,
-      '--combobox-shadow': theme.expressiveness.shadowMedium,
-      '--combobox-active-bg': theme.palette.accents_2,
+      '--combobox-shadow': surface.shadow,
+      '--combobox-active-bg': surface.hover,
       '--combobox-empty-color': theme.palette.accents_5
     } as React.CSSProperties
 

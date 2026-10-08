@@ -104,6 +104,21 @@
           "open": true,
           "routes": [
             {
+              "title": "Alert",
+              "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
+              "path": "/docs/components/alert.mdx"
+            },
+            {
+              "title": "Chip",
+              "keywords": "chip, pill, tag select, filter, toggle button, multi select, choice",
+              "path": "/docs/components/chip.mdx"
+            },
+            {
+              "title": "Mention",
+              "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
+              "path": "/docs/components/mention.mdx"
+            },
+            {
               "title": "Overview",
               "keywords": "overview, all components, components list, categories",
               "path": "/docs/components/overview.mdx"
@@ -274,6 +289,11 @@
               "path": "/docs/components/image.mdx"
             },
             {
+              "title": "Image Zoom",
+              "keywords": "image zoom, lightbox, zoom, enlarge image, gallery, dialog, thumbnail",
+              "path": "/docs/components/image-zoom.mdx"
+            },
+            {
               "title": "Input",
               "keywords": "input, sizes, set width, unwritable, inline label, block label, types, icon, clearable, password, get change, imperative api",
               "path": "/docs/components/input.mdx"
@@ -379,6 +399,11 @@
               "path": "/docs/components/skeleton.mdx"
             },
             {
+              "title": "Slider",
+              "keywords": "slider, range, drag, value, step, type, disabled, markers, min, max",
+              "path": "/docs/components/slider.mdx"
+            },
+            {
               "title": "Snippet",
               "keywords": "snippet, width, types, multi line, copy, custom symbol, toast, filled",
               "path": "/docs/components/snippet.mdx"
@@ -392,6 +417,11 @@
               "title": "Spinner",
               "keywords": "spinner",
               "path": "/docs/components/spinner.mdx"
+            },
+            {
+              "title": "Splitter",
+              "keywords": "splitter, resizable panels, split view, divider, drag to resize, layout, panes",
+              "path": "/docs/components/splitter.mdx"
             },
             {
               "title": "Stat",
@@ -444,9 +474,19 @@
               "path": "/docs/components/toggle.mdx"
             },
             {
+              "title": "Toolbar",
+              "keywords": "toolbar, button group, actions, formatting, arrow keys, roving tabindex",
+              "path": "/docs/components/toolbar.mdx"
+            },
+            {
               "title": "Tooltip",
               "keywords": "tooltip, trigger, with components, custom content, types, variant, placements",
               "path": "/docs/components/tooltip.mdx"
+            },
+            {
+              "title": "Tour",
+              "keywords": "tour, onboarding, walkthrough, guide, product tour, spotlight, steps, tooltip tour",
+              "path": "/docs/components/tour.mdx"
             },
             {
               "title": "Tree",
@@ -523,7 +563,7 @@
             },
             {
               "title": "useToast",
-              "keywords": "useToast",
+              "keywords": "useToast, toast, notification, snackbar, message, undo, placement",
               "path": "/docs/hooks/use-toast.mdx"
             }
           ]

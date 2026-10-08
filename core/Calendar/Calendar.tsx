@@ -345,7 +345,8 @@ const CalendarComponent = React.forwardRef<HTMLDivElement, ImplProps>(
       '--calendar-margin-left': SCALES.ml(0),
       '--calendar-weekday-color': theme.palette.accents_5,
       '--calendar-radius': theme.layout.radius,
-      '--calendar-hover-bg': theme.palette.accents_2,
+      // a popup around the calendar (DatePicker) sets its own, lighter hover
+      '--calendar-hover-bg': `var(--calendar-popup-hover, ${theme.palette.accents_2})`,
       '--calendar-focus-outline': theme.palette.primary,
       '--calendar-disabled-color': theme.palette.accents_3,
       '--calendar-today-border': theme.palette.accents_4,

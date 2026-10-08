@@ -1977,6 +1977,59 @@
     "path": "/docs/components/image#image.browser.props"
   },
   {
+    "title": "Image Zoom",
+    "component": true,
+    "path": "/docs/components/image-zoom"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom General",
+    "component": false,
+    "path": "/docs/components/image-zoom#general"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom Larger image and caption",
+    "component": false,
+    "path": "/docs/components/image-zoom#larger-image-and-caption"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Image Zoom Gallery",
+    "component": false,
+    "path": "/docs/components/image-zoom#gallery"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/image-zoom#apis"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "ImageZoom Props",
+    "component": false,
+    "path": "/docs/components/image-zoom#imagezoom.props"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/image-zoom#behavior"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/image-zoom#ref"
+  },
+  {
+    "head": "Image Zoom",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/image-zoom#accessibility"
+  },
+  {
     "title": "Input",
     "component": true,
     "path": "/docs/components/input"
@@ -2064,6 +2117,12 @@
     "title": "Input Get Change",
     "component": false,
     "path": "/docs/components/input#get-change"
+  },
+  {
+    "head": "Input",
+    "title": "Input Date and time",
+    "component": false,
+    "path": "/docs/components/input#date-and-time"
   },
   {
     "head": "Input",
@@ -3643,6 +3702,65 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "title": "Splitter",
+    "component": true,
+    "path": "/docs/components/splitter"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter General",
+    "component": false,
+    "path": "/docs/components/splitter#general"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Vertical",
+    "component": false,
+    "path": "/docs/components/splitter#vertical"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Limits and three panels",
+    "component": false,
+    "path": "/docs/components/splitter#limits-and-three-panels"
+  },
+  {
+    "head": "Splitter",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/splitter#apis"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Props",
+    "component": false,
+    "path": "/docs/components/splitter#splitter.props"
+  },
+  {
+    "head": "Splitter",
+    "title": "Splitter Panel Props",
+    "component": false,
+    "path": "/docs/components/splitter#splitter.panel.props"
+  },
+  {
+    "head": "Splitter",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/splitter#behavior"
+  },
+  {
+    "head": "Splitter",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/splitter#ref"
+  },
+  {
+    "head": "Splitter",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/splitter#accessibility"
+  },
+  {
     "title": "Stat",
     "component": true,
     "path": "/docs/components/stat"
@@ -3797,6 +3915,24 @@
   },
   {
     "head": "Table",
+    "title": "Table sorting",
+    "component": false,
+    "path": "/docs/components/table#sorting"
+  },
+  {
+    "head": "Table",
+    "title": "Table selection",
+    "component": false,
+    "path": "/docs/components/table#selection"
+  },
+  {
+    "head": "Table",
+    "title": "Table data table",
+    "component": false,
+    "path": "/docs/components/table#data-table"
+  },
+  {
+    "head": "Table",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/table#apis"
@@ -3812,6 +3948,18 @@
     "title": "Table Column Props",
     "component": false,
     "path": "/docs/components/table#table.column.props"
+  },
+  {
+    "head": "Table",
+    "title": "Table TableSort",
+    "component": false,
+    "path": "/docs/components/table#tablesort"
+  },
+  {
+    "head": "Table",
+    "title": "Sorting and selection",
+    "component": false,
+    "path": "/docs/components/table#sorting-and-selection"
   },
   {
     "head": "Table",
@@ -4370,6 +4518,59 @@
     "path": "/docs/components/tooltip#placement"
   },
   {
+    "title": "Tour",
+    "component": true,
+    "path": "/docs/components/tour"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour General",
+    "component": false,
+    "path": "/docs/components/tour#general"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour Controlled and without a target",
+    "component": false,
+    "path": "/docs/components/tour#controlled-and-without-a-target"
+  },
+  {
+    "head": "Tour",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tour#apis"
+  },
+  {
+    "head": "Tour",
+    "title": "Tour Props",
+    "component": false,
+    "path": "/docs/components/tour#tour.props"
+  },
+  {
+    "head": "Tour",
+    "title": "TourStep",
+    "component": false,
+    "path": "/docs/components/tour#tourstep"
+  },
+  {
+    "head": "Tour",
+    "title": "Behavior",
+    "component": false,
+    "path": "/docs/components/tour#behavior"
+  },
+  {
+    "head": "Tour",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tour#ref"
+  },
+  {
+    "head": "Tour",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tour#accessibility"
+  },
+  {
     "title": "Tree",
     "component": true,
     "path": "/docs/components/tree"
@@ -4732,6 +4933,18 @@
     "title": "useToast Type",
     "component": false,
     "path": "/docs/hooks/use-toast#type"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Placement",
+    "component": false,
+    "path": "/docs/hooks/use-toast#placement"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Unique id",
+    "component": false,
+    "path": "/docs/hooks/use-toast#unique-id"
   },
   {
     "head": "useToast",
@@ -5157,5 +5370,169 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/guide/refs-and-accessibility#accessibility"
+  },
+  {
+    "title": "Alert",
+    "component": true,
+    "path": "/docs/components/alert"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert General",
+    "component": false,
+    "path": "/docs/components/alert#general"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Variants",
+    "component": false,
+    "path": "/docs/components/alert#variants"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Dismissible",
+    "component": false,
+    "path": "/docs/components/alert#dismissible"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert With an icon and an action",
+    "component": false,
+    "path": "/docs/components/alert#with-an-icon-and-an-action"
+  },
+  {
+    "head": "Alert",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/alert#apis"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Props",
+    "component": false,
+    "path": "/docs/components/alert#alert.props"
+  },
+  {
+    "title": "Chip",
+    "component": true,
+    "path": "/docs/components/chip"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip General",
+    "component": false,
+    "path": "/docs/components/chip#general"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Multiple",
+    "component": false,
+    "path": "/docs/components/chip#multiple"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Single",
+    "component": false,
+    "path": "/docs/components/chip#single"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Filtering a list",
+    "component": false,
+    "path": "/docs/components/chip#filtering-a-list"
+  },
+  {
+    "head": "Chip",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/chip#apis"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Props",
+    "component": false,
+    "path": "/docs/components/chip#chip.props"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Group Props",
+    "component": false,
+    "path": "/docs/components/chip#chip.group.props"
+  },
+  {
+    "title": "Toolbar",
+    "component": true,
+    "path": "/docs/components/toolbar"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar General",
+    "component": false,
+    "path": "/docs/components/toolbar#general"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Vertical",
+    "component": false,
+    "path": "/docs/components/toolbar#vertical"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Editor actions",
+    "component": false,
+    "path": "/docs/components/toolbar#editor-actions"
+  },
+  {
+    "head": "Toolbar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/toolbar#apis"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Props",
+    "component": false,
+    "path": "/docs/components/toolbar#toolbar.props"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Separator Props",
+    "component": false,
+    "path": "/docs/components/toolbar#toolbar.separator.props"
+  },
+  {
+    "title": "Mention",
+    "component": true,
+    "path": "/docs/components/mention"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention General",
+    "component": false,
+    "path": "/docs/components/mention#general"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Other trigger",
+    "component": false,
+    "path": "/docs/components/mention#other-trigger"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Comment box",
+    "component": false,
+    "path": "/docs/components/mention#comment-box"
+  },
+  {
+    "head": "Mention",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mention#apis"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Props",
+    "component": false,
+    "path": "/docs/components/mention#mention.props"
   }
 ]

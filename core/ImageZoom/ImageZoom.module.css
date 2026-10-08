@@ -1,0 +1,90 @@
+.trigger {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  color: inherit;
+  cursor: zoom-in;
+  background: none;
+  border: 0;
+  border-radius: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.dialog {
+  box-sizing: border-box;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 1rem;
+  overflow: visible;
+  color: #fff;
+  background: transparent;
+  border: 0;
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 85%);
+}
+
+/* the page behind does not scroll while it is open */
+:global(body):has(.dialog[open]) {
+  overflow: hidden;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.zoomed {
+  display: block;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  cursor: zoom-out;
+  border-radius: 8px;
+}
+
+.caption {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  background: rgb(255 255 255 / 12%);
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.close:hover {
+  background: rgb(255 255 255 / 24%);
+}
+
+.close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}

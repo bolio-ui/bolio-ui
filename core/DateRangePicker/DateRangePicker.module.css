@@ -23,7 +23,6 @@
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  background-clip: padding-box;
 }
 
 .field:hover {
@@ -33,6 +32,7 @@
 
 .field:focus-within {
   border-color: var(--daterange-focus-border-color);
+  background-clip: padding-box;
 }
 
 .input {
@@ -77,7 +77,6 @@
   border-radius: var(--daterange-radius);
   appearance: none;
   -webkit-appearance: none;
-  background-clip: padding-box;
 }
 
 .toggle:hover:not(:disabled) {
@@ -103,5 +102,10 @@
   border: 1px solid var(--daterange-border-color);
   border-radius: var(--daterange-popup-radius);
   box-shadow: var(--daterange-shadow);
-  background-clip: padding-box;
+}
+
+/* a field near the right edge: the popup grows to the left */
+.alignEnd {
+  right: 0;
+  left: auto;
 }

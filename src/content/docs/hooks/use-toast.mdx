@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { useToasts, Button, Spacer, Link } from 'core'
+import { useToasts, Button, Spacer, Link, SegmentedControl } from 'core'
 
 export const meta = {
   title: 'useToast',
@@ -12,16 +12,44 @@ export const meta = {
 
 ## useToast
 
-Display an important message globally.
+Display an important message globally. A toast is not a component you render: call `setToast` from `useToasts` anywhere under `BolioUIProvider`, and the provider shows it. It disappears after `delay`, and stays while the pointer is over it.
 
 <Playground
-  desc="Basic usage."
+  desc="Basic usage. The toast closes after 2 seconds, or after `delay` milliseconds."
   scope={{ Button, useToasts }}
   code={`
 () => {
   const { setToast } = useToasts()
-  const click = () => setToast({ text: 'HTTP is stateless, but not sessionless.', delay: 2000 })
-  return <Button scale={2/3} auto onClick={click}>Show Toast</Button>
+  const click = () => setToast({ text: 'Draft saved.', delay: 3000 })
+  return <Button scale={2/3} auto onClick={click}>Save draft</Button>
+}
+`}
+/>
+
+<Playground
+  title="Type"
+  desc="Use `type` to tell a result from a problem. An `error` toast is announced right away by a screen reader, the others wait for a pause."
+  scope={{ Button, useToasts, Spacer }}
+  code={`
+() => {
+  const { setToast } = useToasts()
+  const messages = {
+    success: 'Invoice 2041 is paid.',
+    info: 'A new version is ready to load.',
+    warning: 'You used 92% of your storage.',
+    error: 'Your card was declined. Update it to try again.'
+  }
+  const click = (type) => setToast({ text: messages[type], type })
+  return (
+    <>
+      {Object.keys(messages).map((type) => (
+        <React.Fragment key={type}>
+          <Button scale={2/3} auto onClick={() => click(type)} type={type} style={{ textTransform: 'capitalize' }}>{type}</Button>
+          <Spacer inline w={.5} />
+        </React.Fragment>
+      ))}
+    </>
+  )
 }
 `}
 />
@@ -41,48 +69,49 @@ Display an important message globally.
 
 <Playground
   title="Action"
-  desc="Add a custom button to the Toast."
+  desc="Add a button with `actions`. Its `handler` receives the click and a `cancel` function that closes the toast. Actions show only when `text` is a string."
   scope={{ Button, useToasts }}
   code={`
 () => {
   const { setToast } = useToasts()
-  const action = {
-    name: 'alert',
-    handler: () => alert('alert from toast')
+  const archive = () => {
+    setToast({
+      text: 'Conversation archived.',
+      delay: 6000,
+      actions: [{
+        name: 'Undo',
+        handler: (event, cancel) => {
+          cancel()
+          setToast({ text: 'Conversation restored.' })
+        }
+      }]
+    })
   }
-  const click = () => setToast({
-    text: 'HTTP is stateless, but not sessionless.',
-    actions: [action],
-  })
-  return <Button scale={2/3} auto onClick={click} type="secondary">Show Action</Button>
+  return <Button scale={2/3} auto onClick={archive}>Archive conversation</Button>
 }
 `}
 />
 
 <Playground
   title="Cancel"
-  desc="Use `passive` to change the style of the button."
+  desc="Use `passive` to change the style of the button, for an action that only dismisses."
   scope={{ Button, useToasts }}
   code={`
 () => {
   const { setToast } = useToasts()
-  const action = {
-    name: 'cancel',
-    passive: true,
-    handler: (event, cancel) => cancel()
-  }
   const click = () => setToast({
-    text: 'HTTP is stateless, but not sessionless.',
-    actions: [action],
+    text: 'You are offline. Changes sync when you reconnect.',
+    delay: 8000,
+    actions: [{ name: 'Dismiss', passive: true, handler: (event, cancel) => cancel() }]
   })
-  return <Button scale={2/3} auto onClick={click}>Show Toast</Button>
+  return <Button scale={2/3} auto onClick={click}>Go offline</Button>
 }
 `}
 />
 
 <Playground
   title="ReactNode"
-  desc="Show more information by replacing the string with a `ReactNode`."
+  desc="Show more information by replacing the string with a `ReactNode`. The content replaces the whole toast, so put any button or link inside it."
   scope={{ Button, useToasts, Link }}
   code={`
 () => {
@@ -97,20 +126,54 @@ Display an important message globally.
 />
 
 <Playground
-  title="Type"
+  title="Placement"
+  desc="Pass a layout to `useToasts` to choose where toasts appear. The layout applies when the component mounts, so it is set once, not on each toast."
+  scope={{ Button, useToasts, SegmentedControl, Spacer }}
+  code={`
+() => {
+  const Demo = ({ placement }) => {
+    const { setToast } = useToasts({ placement })
+    return (
+      <Button scale={2/3} auto onClick={() => setToast({ text: 'Showing at ' + placement + '.' })}>
+        Show Toast
+      </Button>
+    )
+  }
+  const [placement, setPlacement] = React.useState('bottomRight')
+  return (
+    <>
+      <SegmentedControl value={placement} onChange={setPlacement} aria-label="Placement">
+        <SegmentedControl.Item value="topLeft">Top left</SegmentedControl.Item>
+        <SegmentedControl.Item value="topRight">Top right</SegmentedControl.Item>
+        <SegmentedControl.Item value="bottomLeft">Bottom left</SegmentedControl.Item>
+        <SegmentedControl.Item value="bottomRight">Bottom right</SegmentedControl.Item>
+      </SegmentedControl>
+      <Spacer h={1} />
+      <Demo key={placement} placement={placement} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Unique id"
+  desc="Give a toast an `id` to close it later with `removeToastOneByID`, or use `removeAll` to close every toast. Setting a toast with an `id` that is still shown throws an error, so check with `findToastOneByID` first."
   scope={{ Button, useToasts, Spacer }}
   code={`
 () => {
-  const { setToast } = useToasts()
-  const click = type => setToast({
-    text: 'HTTP is stateless, but not sessionless.',
-    type,
-  })
+  const { setToast, findToastOneByID, removeToastOneByID, removeAll } = useToasts()
+  const start = () => {
+    if (findToastOneByID('upload')) return
+    setToast({ id: 'upload', text: 'Uploading 3 files.', delay: 20000 })
+  }
   return (
     <>
-    <Button scale={2/3} auto onClick={() => click('success')} type="success">Show Success</Button>
-    <Spacer inline w={.5} />
-    <Button scale={2/3} auto onClick={() => click('warning')} type="warning">Show Warning</Button>
+      <Button scale={2/3} auto onClick={start}>Start upload</Button>
+      <Spacer inline w={.5} />
+      <Button scale={2/3} auto onClick={() => removeToastOneByID('upload')}>Cancel upload</Button>
+      <Spacer inline w={.5} />
+      <Button scale={2/3} auto onClick={removeAll}>Clear all</Button>
     </>
   )
 }
@@ -143,22 +206,22 @@ const {
 
 | Option        | Description                  | Type                              | Default       |
 | ------------- | ---------------------------- | --------------------------------- | ------------- |
-| **padding**   | CSS properties               | `string`                          | -             |
-| **margin**    | CSS properties               | `string`                          | -             |
-| **width**     | CSS properties               | `string`                          | -             |
-| **maxWidth**  | CSS properties               | `string`                          | `90vw`        |
-| **maxHeight** | CSS properties               | `string`                          | `75px`        |
+| **padding**   | space inside each toast      | `string`                          | `12px 16px`   |
+| **margin**    | space around each toast      | `string`                          | `8px 0`       |
+| **width**     | width of each toast          | `string`                          | `420px`       |
+| **maxWidth**  | largest width of a toast     | `string`                          | `90vw`        |
+| **maxHeight** | largest height of a toast    | `string`                          | `75px`        |
 | **placement** | the pop-up position of toast | [ToastPlacement](#toastplacement) | `bottomRight` |
 
 <Attributes.Title>ToastInput</Attributes.Title>
 
 | Option      | Description                                  | Type                        | Default   |
 | ----------- | -------------------------------------------- | --------------------------- | --------- |
-| **id**      | unique identifier that can be auto generated | `string`                    | -         |
+| **id**      | name to find or close the toast. It must not match a toast that is still shown | `string`                    | generated |
 | **text**    | content displayed in toast                   | `string`, `ReactNode`       | -         |
 | **type**    | the type of toast                            | [ToastTypes](#toasttypes)   | `default` |
-| **delay**   | close after a specified time                 | `number`                    | `2000`    |
-| **actions** | specify a default action                     | [ToastAction](#toastaction) | -         |
+| **delay**   | milliseconds before it closes. `0` uses the default | `number`             | `2000`    |
+| **actions** | buttons shown after the text. Only with a string `text` | [ToastAction](#toastaction)[] | -  |
 
 <Attributes.Title>ToastPlacement</Attributes.Title>
 
@@ -172,8 +235,8 @@ type ToastPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 interface ToastAction {
   name: string
   handler: (
-    event: React.MouseEventHandler<HTMLButtonElement>,
-    cancel: Function
+    event: React.MouseEvent<HTMLButtonElement>,
+    cancel: () => void
   ) => void
   passive?: boolean
 }

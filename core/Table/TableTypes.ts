@@ -9,11 +9,17 @@ export type TableColumnRender<Item extends TableDataItemBase> = (
   rowIndex: number
 ) => React.JSX.Element | void
 
+export type TableSortDirection = 'asc' | 'desc'
+export type TableSort = { prop: string; direction: TableSortDirection }
+export type TableKey = string | number
+
 export type TableAbstractColumn<TableDataItem extends TableDataItemBase> = {
   prop: keyof TableDataItem
   label: React.ReactNode | string
   className: string
   width?: number
+  sortable?: boolean
+  sorter?: (a: TableDataItem, b: TableDataItem) => number
   renderHandler: TableColumnRender<TableDataItem>
 }
 

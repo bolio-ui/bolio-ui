@@ -1,0 +1,143 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Tour, Button, Grid, Card, Text, Input } from 'core'
+
+export const meta = {
+  title: 'Tour',
+  description:
+    'A guided walk through a page: each step highlights an element and explains it.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 70
+}
+
+## Tour
+
+A guided walk through a page. Each step highlights an element and explains it in a
+card next to it, with buttons to go forward and back. Use it the first time
+someone opens a page with parts that are not obvious.
+
+<Playground
+  desc="Each step has a `title`, a `content` and a `target`, a CSS selector of the element to highlight. `open` and `onClose` are yours to keep."
+  scope={{ Tour, Button, Grid, Input, Card, Text }}
+  code={`
+() => {
+  const [open, setOpen] = React.useState(false)
+  return (
+    <>
+      <Grid.Container gap={2} alignItems="center">
+        <Grid>
+          <Input id="tour-search" placeholder="Search invoices" />
+        </Grid>
+        <Grid>
+          <Button id="tour-filter" auto>Filters</Button>
+        </Grid>
+        <Grid>
+          <Button id="tour-export" auto type="primary">Export</Button>
+        </Grid>
+        <Grid>
+          <Button auto ghost onClick={() => setOpen(true)}>Take the tour</Button>
+        </Grid>
+      </Grid.Container>
+      <Tour
+        open={open}
+        onClose={() => setOpen(false)}
+        steps={[
+          { target: '#tour-search', title: 'Find an invoice', content: 'Type a name or a number and the list narrows as you write.' },
+          { target: '#tour-filter', title: 'Narrow the list', content: 'Filter by status, date or amount.' },
+          { target: '#tour-export', title: 'Take it with you', content: 'Export the invoices you see as a CSV file.' }
+        ]}
+      />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Controlled and without a target"
+  desc="`current` and `onCurrentChange` keep the step in your state, and `onFinish` runs when the last one is done, for example to remember that the tour was seen. A step without a `target`, like a welcome, is centered."
+  scope={{ Tour, Button, Grid, Text }}
+  code={`
+() => {
+  const [open, setOpen] = React.useState(false)
+  const [current, setCurrent] = React.useState(0)
+  const [seen, setSeen] = React.useState(false)
+  return (
+    <>
+      <Grid.Container gap={2} alignItems="center">
+        <Grid>
+          <Button id="tour-start" auto type="primary" onClick={() => { setCurrent(0); setOpen(true) }}>
+            Start
+          </Button>
+        </Grid>
+        <Grid>
+          <Text small type="secondary">
+            {seen ? 'Tour done.' : 'Step ' + (current + 1) + ' of 2.'}
+          </Text>
+        </Grid>
+      </Grid.Container>
+      <Tour
+        open={open}
+        current={current}
+        onCurrentChange={setCurrent}
+        onFinish={() => setSeen(true)}
+        onClose={() => setOpen(false)}
+        steps={[
+          { title: 'Welcome', content: 'A short walk through the page. It takes a minute.' },
+          { target: '#tour-start', title: 'Start again', content: 'You can come back to the tour from this button.' }
+        ]}
+      />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/tour.mdx">
+<Attributes.Title>Tour.Props</Attributes.Title>
+
+| Attribute            | Description                                                   | Type                                       | Accepted values | Default |
+| -------------------- | ------------------------------------------------------------- | ------------------------------------------ | --------------- | ------- |
+| **steps**            | the steps of the tour                                         | [TourStep](#tourstep)`[]`                  | -               | -       |
+| **open**             | shows the tour                                                | `boolean`                                  | -               | -       |
+| **onClose**          | called on Skip, on Escape and when the last step is done      | `() => void`                               | -               | -       |
+| **current**          | the step in view, to control it                               | `number`                                   | -               | -       |
+| **initialCurrent**   | the step on the first render                                  | `number`                                   | -               | `0`     |
+| **onCurrentChange**  | called with the new step                                      | `(index: number) => void`                  | -               | -       |
+| **onFinish**         | called when the last step is done, before `onClose`           | `() => void`                               | -               | -       |
+| **previousLabel**    | name of the button to go back                                 | `string`                                   | -               | `Back`  |
+| **nextLabel**        | name of the button to go forward                              | `string`                                   | -               | `Next`  |
+| **finishLabel**      | name of the button of the last step                           | `string`                                   | -               | `Done`  |
+| **skipLabel**        | name of the button that closes the tour                       | `string`                                   | -               | `Skip`  |
+| **stepLabel**        | text with the position of the step                            | `(index: number, count: number) => string` | -               | `1 of 3` |
+| **spotlightPadding** | space between the target and the highlight, in px             | `number`                                   | -               | `6`     |
+| ...                  | native props, passed to the root `div`                        | `HTMLAttributes`                           | `'id', ...`     | -       |
+
+<Attributes.Title>TourStep</Attributes.Title>
+
+| Attribute   | Description                                                                               | Type                                              | Accepted values | Default |
+| ----------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------- | --------------- | ------- |
+| **title**   | name of the step                                                                          | `ReactNode`                                       | -               | -       |
+| **content** | the explanation                                                                           | `ReactNode`                                       | -               | -       |
+| **target**  | what the step points at: a CSS selector, an element, or a function that returns one       | `string` / `HTMLElement` / `() => HTMLElement`    | -               | -       |
+
+<Attributes.Title>Behavior</Attributes.Title>
+
+- • **Highlight**: the page is dimmed, and the target is left clear, with a little space around it. It follows the target when the page scrolls or the window is resized.
+- • **Scrolling**: the target is scrolled into view when its step comes.
+- • **Card**: it opens under the target, and above it when there is not room below. It stays inside the screen.
+- • **No target**: without a `target`, or when it is not found, the card is centered and nothing is highlighted.
+- • **Closing**: Skip and Escape call `onClose`, and so does the last step, after `onFinish`. The focus goes back to where it was.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`, which covers the screen.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The card is a modal `dialog`, named by the title and described by the content, and it takes the focus on every step. Tab and Shift Tab cycle through its buttons, and Escape closes it. The position of the step is also a text, like "2 of 3". The page behind is dimmed but not hidden, so keep the text of the step complete enough to stand on its own.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

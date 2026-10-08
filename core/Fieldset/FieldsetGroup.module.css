@@ -34,7 +34,6 @@
   border: 1px solid var(--fieldset-group-border);
   text-decoration: none;
   outline: none;
-  background-clip: padding-box;
 }
 
 .button.active {

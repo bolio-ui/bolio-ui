@@ -102,6 +102,11 @@ export const menuMobile = [
         name: 'Components',
         children: [
           {
+            name: 'Alert',
+            url: '/docs/components/alert',
+            group: 'Components'
+          },
+          {
             name: 'Avatar',
             url: '/docs/components/avatar',
             group: 'Components'
@@ -157,6 +162,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Chip',
+            url: '/docs/components/chip',
+            group: 'Components'
+          },
+          {
             name: 'Code',
             url: '/docs/components/code',
             group: 'Components'
@@ -184,6 +194,11 @@ export const menuMobile = [
           {
             name: 'Combobox',
             url: '/docs/components/combobox',
+            group: 'Components'
+          },
+          {
+            name: 'Command',
+            url: '/docs/components/command',
             group: 'Components'
           },
           {
@@ -232,6 +247,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Empty State',
+            url: '/docs/components/empty-state',
+            group: 'Components'
+          },
+          {
             name: 'Dropzone',
             url: '/docs/components/dropzone',
             group: 'Components'
@@ -257,6 +277,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Image Zoom',
+            url: '/docs/components/image-zoom',
+            group: 'Components'
+          },
+          {
             name: 'Input',
             url: '/docs/components/input',
             group: 'Components'
@@ -274,6 +299,16 @@ export const menuMobile = [
           {
             name: 'Loading',
             url: '/docs/components/loading',
+            group: 'Components'
+          },
+          {
+            name: 'Marquee',
+            url: '/docs/components/marquee',
+            group: 'Components'
+          },
+          {
+            name: 'Mention',
+            url: '/docs/components/mention',
             group: 'Components'
           },
           {
@@ -377,6 +412,16 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Splitter',
+            url: '/docs/components/splitter',
+            group: 'Components'
+          },
+          {
+            name: 'Stat',
+            url: '/docs/components/stat',
+            group: 'Components'
+          },
+          {
             name: 'Stepper',
             url: '/docs/components/stepper',
             group: 'Components'
@@ -397,6 +442,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Timeline',
+            url: '/docs/components/timeline',
+            group: 'Components'
+          },
+          {
             name: 'Tags Input',
             url: '/docs/components/tags-input',
             group: 'Components'
@@ -412,13 +462,28 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Toast',
+            url: '/docs/hooks/use-toast',
+            group: 'Components'
+          },
+          {
             name: 'Toggle',
             url: '/docs/components/toggle',
             group: 'Components'
           },
           {
+            name: 'Toolbar',
+            url: '/docs/components/toolbar',
+            group: 'Components'
+          },
+          {
             name: 'Tooltip',
             url: '/docs/components/tooltip',
+            group: 'Components'
+          },
+          {
+            name: 'Tour',
+            url: '/docs/components/tour',
             group: 'Components'
           },
           {

@@ -9,7 +9,6 @@
   border-radius: var(--menu-list-radius);
   box-shadow: var(--menu-list-shadow);
   outline: none;
-  background-clip: padding-box;
 }
 
 .sub {

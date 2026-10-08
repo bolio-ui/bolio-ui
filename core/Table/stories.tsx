@@ -232,3 +232,23 @@ export const Pagination: StoryFn = () => {
     </Table>
   )
 }
+
+const people = [
+  { id: 1, name: 'Cora', age: 100 },
+  { id: 2, name: 'Ada', age: 9 },
+  { id: 3, name: 'Bruno', age: 36 }
+]
+
+export const Sortable: StoryFn = () => (
+  <Table data={people} initialSort={{ prop: 'age', direction: 'desc' }}>
+    <Table.Column prop="name" label="name" sortable />
+    <Table.Column prop="age" label="age" sortable />
+  </Table>
+)
+
+export const Selectable: StoryFn = () => (
+  <Table data={people} selectable rowKey="id" initialSelectedKeys={[2]}>
+    <Table.Column prop="name" label="name" sortable />
+    <Table.Column prop="age" label="age" />
+  </Table>
+)

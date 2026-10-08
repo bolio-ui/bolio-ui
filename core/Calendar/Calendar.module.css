@@ -61,7 +61,6 @@
   border-radius: var(--calendar-radius);
   appearance: none;
   -webkit-appearance: none;
-  background-clip: padding-box;
 }
 
 .navButton {

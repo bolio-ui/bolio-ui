@@ -9,8 +9,15 @@
   right: 0;
 }
 
-.footer > :global(button.btn + button.btn) {
-  border-left: 1px solid var(--modal-actions-border);
+/* The action sets its border inline, so the divider is drawn as a pseudo-element */
+.footer > :global(button.btn + button.btn)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: var(--modal-actions-border);
 }
 
 .spacer {

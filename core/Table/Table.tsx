@@ -14,11 +14,14 @@ import { TableContext, TableConfig } from './TableContext'
 import {
   TableAbstractColumn,
   TableDataItemBase,
+  TableKey,
+  TableSort,
   TableOnCellClick,
   TableOnChange,
   TableOnRowClick,
   TableRowClassNameHandler
 } from './TableTypes'
+import useTheme from '../use-theme'
 import useScale, { ScaleProps, withScale } from '../use-scale'
 import TableColumn from './TableColumn'
 import Pagination from '../Pagination'
@@ -45,7 +48,35 @@ interface Props<TableDataItem extends TableDataItemBase> {
   pagination?: TablePagination
   className?: string
   rowClassName?: TableRowClassNameHandler<TableDataItem>
+  // the column the rows are sorted by, to control it
+  sort?: TableSort | null
+  initialSort?: TableSort | null
+  onSortChange?: (sort: TableSort | null) => void
+  // a checkbox on each row, and one in the header for the rows in view
+  selectable?: boolean
+  // what identifies a row: a prop of the rows, or a function. The position of
+  // the row in `data` when missing
+  rowKey?: keyof TableDataItem | ((row: TableDataItem) => TableKey)
+  selectedKeys?: Array<TableKey>
+  initialSelectedKeys?: Array<TableKey>
+  onSelectionChange?: (
+    keys: Array<TableKey>,
+    rows: Array<TableDataItem>
+  ) => void
+  selectRowLabel?: string
+  selectAllLabel?: string
 }
+
+const noKeys: Array<TableKey> = []
+
+// numbers by value, anything else as text where "item 2" comes before "item 10"
+const compareValues = (a: unknown, b: unknown) =>
+  typeof a === 'number' && typeof b === 'number'
+    ? a - b
+    : String(a ?? '').localeCompare(String(b ?? ''), undefined, {
+        numeric: true,
+        sensitivity: 'base'
+      })
 
 const defaultProps = {
   hover: true,
@@ -81,11 +112,22 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
     pagination,
     className = defaultProps.className,
     rowClassName = defaultProps.rowClassName,
+    sort: customSort,
+    initialSort = null,
+    onSortChange,
+    selectable = false,
+    rowKey,
+    selectedKeys: customKeys,
+    initialSelectedKeys = noKeys,
+    onSelectionChange,
+    selectRowLabel = 'Select row',
+    selectAllLabel = 'Select all rows',
     style,
     ...props
   } = tableProps
   /* eslint-enable @typescript-eslint/no-unused-vars */
 
+  const theme = useTheme()
   const { SCALES } = useScale()
   const tableRef = useRef<HTMLTableElement>(null)
   useImperativeHandle(forwardedRef, () => tableRef.current as HTMLTableElement)
@@ -122,15 +164,84 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
   }, [customData])
   useResize(() => updateShape())
 
+  const [selfSort, setSelfSort] = useState<TableSort | null>(initialSort)
+  const sort = customSort !== undefined ? customSort : selfSort
+  const [selfKeys, setSelfKeys] = useState<Array<TableKey>>(initialSelectedKeys)
+  const selectedKeys = customKeys !== undefined ? customKeys : selfKeys
+
+  const keyOf = (row: TableDataItem, index: number): TableKey =>
+    typeof rowKey === 'function'
+      ? rowKey(row)
+      : rowKey !== undefined
+        ? (row[rowKey] as TableKey)
+        : index
+
+  // With the rows on the server the order is the server's, so it is only
+  // reported, never applied here.
+  const sortedEntries = useMemo(() => {
+    const entries = data.map((row, index) => ({ row, key: keyOf(row, index) }))
+    const column = sort && columns.find((item) => item.prop === sort.prop)
+    if (!sort || !column || pagination?.total !== undefined) return entries
+    const direction = sort.direction === 'desc' ? -1 : 1
+    const compare =
+      column.sorter ||
+      ((a: TableDataItem, b: TableDataItem) =>
+        compareValues(a[column.prop], b[column.prop]))
+    return [...entries].sort((a, b) => direction * compare(a.row, b.row))
+    // keyOf only reads rowKey
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, sort, columns, pagination?.total, rowKey])
+
   const [selfPage, setSelfPage] = useState(1)
   const pageSize = pagination ? Math.max(1, pagination.pageSize) : 0
   const totalRows = pagination?.total ?? data.length
   const pageCount = pagination ? Math.ceil(totalRows / pageSize) : 0
   const page = Math.min(pagination?.page ?? selfPage, Math.max(pageCount, 1))
-  const rows =
+  const pageEntries =
     pagination && pagination.total === undefined
-      ? data.slice((page - 1) * pageSize, page * pageSize)
-      : data
+      ? sortedEntries.slice((page - 1) * pageSize, page * pageSize)
+      : sortedEntries
+  const rows = pageEntries.map((entry) => entry.row)
+  const pageKeys = pageEntries.map((entry) => entry.key)
+
+  const sortHandler = (prop: string) => {
+    const next: TableSort | null =
+      !sort || sort.prop !== prop
+        ? { prop, direction: 'asc' }
+        : sort.direction === 'asc'
+          ? { prop, direction: 'desc' }
+          : null
+    setSelfSort(next)
+    if (onSortChange) onSortChange(next)
+  }
+
+  const selectKeys = (next: Array<TableKey>) => {
+    setSelfKeys(next)
+    if (onSelectionChange)
+      onSelectionChange(
+        next,
+        sortedEntries
+          .filter((entry) => next.includes(entry.key))
+          .map((entry) => entry.row)
+      )
+  }
+  const toggleKey = (key: TableKey) =>
+    selectKeys(
+      selectedKeys.includes(key)
+        ? selectedKeys.filter((item) => item !== key)
+        : [...selectedKeys, key]
+    )
+  // the header checkbox: every row in view, or none of them
+  const inView = pageKeys.filter((key) => selectedKeys.includes(key)).length
+  const toggleAll = () =>
+    selectKeys(
+      inView === pageKeys.length
+        ? selectedKeys.filter((key) => !pageKeys.includes(key))
+        : [
+            ...selectedKeys,
+            ...pageKeys.filter((key) => !selectedKeys.includes(key))
+          ]
+    )
 
   const pageChangeHandler = (next: number) => {
     if (next === page) return
@@ -140,6 +251,7 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
 
   const tableStyle = {
     '--table-font-size': SCALES.font(1),
+    '--table-select-accent': theme.palette.primary,
     '--table-width': SCALES.width(1, '100%'),
     '--table-height': SCALES.height(1, 'auto'),
     '--table-padding-top': SCALES.pt(0),
@@ -164,9 +276,34 @@ function TableComponent<TableDataItem extends TableDataItemBase>(
         {...props}
         style={tableStyle}
       >
-        <TableHead columns={columns} width={width} />
+        <TableHead
+          columns={columns}
+          width={width}
+          sort={sort}
+          onSort={sortHandler}
+          selection={
+            selectable
+              ? {
+                  checked: pageKeys.length > 0 && inView === pageKeys.length,
+                  indeterminate: inView > 0 && inView < pageKeys.length,
+                  label: selectAllLabel,
+                  onToggle: toggleAll
+                }
+              : undefined
+          }
+        />
         <TableBody<TableDataItem>
           data={rows}
+          keys={pageKeys}
+          selection={
+            selectable
+              ? {
+                  keys: selectedKeys,
+                  label: selectRowLabel,
+                  onToggle: toggleKey
+                }
+              : undefined
+          }
           hover={hover}
           emptyText={emptyText}
           onRow={onRow}

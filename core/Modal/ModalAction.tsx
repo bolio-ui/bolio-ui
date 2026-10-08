@@ -52,9 +52,13 @@ const ModalActionComponent = React.forwardRef<
     return passive ? theme.palette.accents_5 : theme.palette.foreground
   }, [theme.palette, passive])
 
-  const bgColor = useMemo(() => {
-    return disabled ? theme.palette.accents_1 : theme.palette.background
-  }, [theme.palette, disabled])
+  // On the dark theme the modal is a lighter surface, so the actions are a
+  // darker gray than it
+  const actionBg =
+    theme.type === 'dark' ? theme.palette.accents_2 : theme.palette.background
+
+  const hoverBg =
+    theme.type === 'dark' ? theme.palette.accents_3 : theme.palette.accents_1
 
   const classes = useClasses(styles.action, className)
 
@@ -62,7 +66,7 @@ const ModalActionComponent = React.forwardRef<
     fontSize: SCALES.font(0.75),
     border: 'none',
     color,
-    backgroundColor: theme.palette.background,
+    backgroundColor: actionBg,
     display: 'flex',
     WebkitBoxAlign: 'center',
     alignItems: 'center',
@@ -73,12 +77,11 @@ const ModalActionComponent = React.forwardRef<
     borderRadius: 0,
     minWidth: 0,
     '--modal-action-hover-color': disabled ? color : theme.palette.foreground,
-    '--modal-action-hover-bg': disabled ? bgColor : theme.palette.accents_1
+    '--modal-action-hover-bg': disabled ? actionBg : hoverBg
   } as React.CSSProperties
 
   const overrideProps = {
     ...props,
-    effect: false,
     ref: btnRef
   }
 

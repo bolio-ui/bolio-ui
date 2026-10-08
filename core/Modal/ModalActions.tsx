@@ -8,6 +8,9 @@ const ModalActionsComponent: React.FC<React.PropsWithChildren<unknown>> = ({
 }) => {
   const theme = useTheme()
   const ref = useRef<HTMLDivElement>(null)
+  // The dark border is as dark as the actions, so the lines need a lighter one
+  const border =
+    theme.type === 'dark' ? theme.palette.accents_4 : theme.palette.border
   const [height, setHeight] = useState<number | string>('auto')
 
   useEffect(() => {
@@ -24,10 +27,10 @@ const ModalActionsComponent: React.FC<React.PropsWithChildren<unknown>> = ({
         className={styles.footer}
         style={
           {
-            borderTop: `1px solid ${theme.palette.border}`,
+            borderTop: `1px solid ${border}`,
             borderBottomLeftRadius: theme.layout.radius,
             borderBottomRightRadius: theme.layout.radius,
-            '--modal-actions-border': theme.palette.border
+            '--modal-actions-border': border
           } as React.CSSProperties
         }
       >

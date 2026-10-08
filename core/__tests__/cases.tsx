@@ -3,6 +3,7 @@ import React from 'react'
 import * as Bolio from '..'
 
 const {
+  Alert,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -14,6 +15,7 @@ const {
   Card,
   Carousel,
   Checkbox,
+  Chip,
   Code,
   ColorInput,
   ColorPicker,
@@ -33,10 +35,12 @@ const {
   Fieldset,
   Grid,
   Image,
+  ImageZoom,
   Input,
   Keyboard,
   Link,
   Loading,
+  Mention,
   Menu,
   Modal,
   Note,
@@ -57,6 +61,7 @@ const {
   Snippet,
   Spacer,
   Spinner,
+  Splitter,
   Stepper,
   Table,
   Tabs,
@@ -65,7 +70,9 @@ const {
   Text,
   Textarea,
   Toggle,
+  Toolbar,
   Tooltip,
+  Tour,
   Tree
 } = Bolio
 
@@ -186,6 +193,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Image', () => <Image src="/logo.svg" alt="logo" width={20} height={20} />],
+  ['ImageZoom', () => <ImageZoom src="/a.jpg" alt="A photo" />],
   ['Input', () => <Input placeholder="type" />],
   ['Input.Password', () => <Input.Password placeholder="secret" />],
   ['Keyboard', () => <Keyboard>K</Keyboard>],
@@ -271,6 +279,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Spacer', () => <Spacer h={1} />],
   ['Spinner', () => <Spinner />],
   [
+    'Splitter',
+    () => (
+      <Splitter aria-label="Layout">
+        <Splitter.Panel defaultSize={30}>A</Splitter.Panel>
+        <Splitter.Panel>B</Splitter.Panel>
+      </Splitter>
+    )
+  ],
+  [
     'Stepper',
     () => (
       <Stepper active={1} aria-label="Checkout">
@@ -317,6 +334,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   [
+    'Tour',
+    () => (
+      <Tour
+        open
+        onClose={() => undefined}
+        steps={[{ title: 'Welcome', content: 'A short tour' }]}
+      />
+    )
+  ],
+  [
     'Tree',
     () => (
       <Tree
@@ -325,6 +352,35 @@ export const cases: Array<[string, () => React.ReactElement]> = [
           { value: 'a', label: 'A', children: [{ value: 'b', label: 'B' }] }
         ]}
         initialExpanded={['a']}
+      />
+    )
+  ],
+  ['Alert', () => <Alert title="Heads up">Your trial ends soon.</Alert>],
+  [
+    'Chip',
+    () => (
+      <Chip.Group multiple aria-label="Stack">
+        <Chip value="react">React</Chip>
+        <Chip value="vue">Vue</Chip>
+      </Chip.Group>
+    )
+  ],
+  [
+    'Toolbar',
+    () => (
+      <Toolbar aria-label="Formatting">
+        <button type="button">Bold</button>
+        <Toolbar.Separator />
+        <button type="button">Italic</button>
+      </Toolbar>
+    )
+  ],
+  [
+    'Mention',
+    () => (
+      <Mention
+        aria-label="Comment"
+        options={[{ value: 'ana', label: 'Ana Souza' }]}
       />
     )
   ]

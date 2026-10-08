@@ -5,6 +5,7 @@ import { isChildElement } from '../utils/collections'
 import useScale from '../use-scale'
 import useClasses from '../use-classes'
 import styles from './ModalWrapper.module.css'
+import { getSurface } from '../utils/surface'
 
 interface Props {
   className?: string
@@ -48,11 +49,12 @@ const ModalWrapper = React.forwardRef<
     }
   }
 
+  const surface = getSurface(theme, theme.expressiveness.shadowLarge)
   const wrapperStyle = {
-    backgroundColor: theme.palette.background,
+    backgroundColor: surface.bg,
     color: theme.palette.foreground,
     borderRadius: theme.layout.radius,
-    boxShadow: theme.expressiveness.shadowLarge,
+    boxShadow: surface.shadow,
     fontSize: SCALES.font(1),
     height: SCALES.height(1, 'auto'),
     '--modal-wrapper-padding-left': SCALES.pl(1.3125),

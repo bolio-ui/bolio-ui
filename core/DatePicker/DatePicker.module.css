@@ -25,7 +25,6 @@
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;
-  background-clip: padding-box;
 }
 
 .input::placeholder {
@@ -39,6 +38,7 @@
 
 .input:focus {
   border-color: var(--datepicker-focus-border-color);
+  background-clip: padding-box;
 }
 
 .input:disabled {
@@ -61,7 +61,6 @@
   border-radius: var(--datepicker-radius);
   appearance: none;
   -webkit-appearance: none;
-  background-clip: padding-box;
 }
 
 .toggle:hover:not(:disabled) {
@@ -88,5 +87,4 @@
   border: 1px solid var(--datepicker-border-color);
   border-radius: var(--datepicker-popup-radius);
   box-shadow: var(--datepicker-shadow);
-  background-clip: padding-box;
 }

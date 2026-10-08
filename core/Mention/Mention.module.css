@@ -1,0 +1,90 @@
+.mention {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: var(--mention-font-size);
+  width: var(--mention-width);
+  height: var(--mention-height);
+  margin: var(--mention-margin-top) var(--mention-margin-right)
+    var(--mention-margin-bottom) var(--mention-margin-left);
+}
+
+.field {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 12.5em;
+  padding: 0.625em 0.875em;
+  font: inherit;
+  line-height: 1.5;
+  color: var(--mention-field-color);
+  background-color: var(--mention-field-bg);
+  border: 1px solid var(--mention-field-border);
+  border-radius: var(--mention-radius);
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field::placeholder {
+  color: var(--mention-placeholder-color);
+}
+
+.field:hover {
+  border-color: var(--mention-field-hover-border);
+  background-color: var(--mention-field-hover-bg);
+}
+
+.field:focus {
+  border-color: var(--mention-focus-border-color);
+  background-clip: padding-box;
+}
+
+.field:disabled {
+  cursor: not-allowed;
+}
+
+.list,
+.empty {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  box-sizing: border-box;
+  background-color: var(--mention-bg);
+  border: 1px solid var(--mention-border-color);
+  border-radius: var(--mention-radius);
+  box-shadow: var(--mention-shadow);
+}
+
+.list {
+  max-height: 15em;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25em;
+  list-style: none;
+}
+
+.option {
+  padding: 0.5em 0.75em;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--mention-text-color);
+}
+
+.active {
+  background-color: var(--mention-active-bg);
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: var(--mention-empty-color);
+}
+
+.empty {
+  padding: 0.75em;
+  color: var(--mention-empty-color);
+}

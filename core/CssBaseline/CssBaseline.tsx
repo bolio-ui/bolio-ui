@@ -22,6 +22,9 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           font-size: 16px;
           --bolioui-icons-background: ${theme.palette.background};
           box-sizing: border-box;
+          /* the native parts of the page follow the theme: the clock of a time
+             field, the scrollbars and the pickers of the browser */
+          color-scheme: ${theme.type};
         }
 
         body {
@@ -49,7 +52,6 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         *:before,
         *:after {
           box-sizing: inherit;
-          text-rendering: geometricPrecision;
           -webkit-tap-highlight-color: transparent;
         }
 

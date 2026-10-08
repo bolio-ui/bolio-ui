@@ -343,6 +343,25 @@ The Input contain an additional Hooks, see subsection [useInput](/docs/hooks/use
 />
 
 <Playground
+  title="Date and time"
+  desc="`htmlType` takes the native types, like `date`, `time` and `datetime-local`. The browser draws the picker, in the language and with the keyboard of the user, and it follows the theme."
+  scope={{ Input, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Input htmlType="date">Date</Input>
+  </Grid>
+  <Grid>
+    <Input htmlType="time">Time</Input>
+  </Grid>
+  <Grid>
+    <Input htmlType="datetime-local">Date and time</Input>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
   title="Imperative API"
   desc="Update component in an uncontrolled way."
   scope={{ Input, Grid, Button }}

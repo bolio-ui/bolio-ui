@@ -15,6 +15,7 @@ import { NormalTypes } from '../utils/prop-types'
 import ColorPicker from '../ColorPicker'
 import { normalizeHex } from '../ColorPicker/color-utils'
 import styles from './ColorInput.module.css'
+import { getSurface } from '../utils/surface'
 
 interface Props {
   // "#rrggbb", or "#rgb"
@@ -70,6 +71,7 @@ const ColorInputComponent = React.forwardRef<
     ref
   ) => {
     const theme = useTheme()
+    const surface = getSurface(theme)
     const { SCALES } = useScale()
     const generatedId = useId()
     const inputId = props.id || generatedId
@@ -148,9 +150,9 @@ const ColorInputComponent = React.forwardRef<
       '--colorinput-focus-border': colors.focusBorder,
       '--colorinput-placeholder': colors.placeholderColor,
       '--colorinput-color': colors.color,
-      '--colorinput-popup-bg': theme.palette.background,
+      '--colorinput-popup-bg': surface.bg,
       '--colorinput-popup-border': theme.palette.border,
-      '--colorinput-shadow': theme.expressiveness.shadowMedium
+      '--colorinput-shadow': surface.shadow
     } as React.CSSProperties
 
     return (

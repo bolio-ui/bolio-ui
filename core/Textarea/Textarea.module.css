@@ -12,7 +12,6 @@
     color 0.2s ease 0s;
   min-width: 12.5rem;
   max-width: 95vw;
-  background-clip: padding-box;
 }
 
 .wrapper:hover {
@@ -22,6 +21,7 @@
 
 .wrapper.hover {
   border-color: var(--textarea-focus-border);
+  background-clip: padding-box;
 }
 
 .wrapper.disabled {

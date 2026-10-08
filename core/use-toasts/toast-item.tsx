@@ -4,6 +4,7 @@ import type { Toast, ToastLayout } from './use-toast'
 import CssTransition from '../Shared/css-transition'
 import { makeToastActions, getColors, getTranslateByPlacement } from './helpers'
 import styles from './toast-item.module.css'
+import { getSurface } from '../utils/surface'
 
 export interface ToastItemProps {
   toast: Toast
@@ -23,12 +24,15 @@ const ToastItem: React.FC<ToastItemProps> = React.memo(({ toast, layout }) => {
     [placement]
   )
 
+  const surface = getSurface(theme, theme.expressiveness.shadowSmall)
+
   const toastStyle = {
     '--toast-item-max-height': maxHeight,
     '--toast-item-color': color,
-    '--toast-item-bg': bgColor,
+    '--toast-item-bg':
+      bgColor === theme.palette.background ? surface.bg : bgColor,
     '--toast-item-radius': theme.layout.radius,
-    '--toast-item-shadow': theme.expressiveness.shadowSmall,
+    '--toast-item-shadow': surface.shadow,
     '--toast-item-margin': margin,
     '--toast-item-padding': padding,
     '--toast-item-enter-transform': enter,

@@ -21,7 +21,7 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
 export type NoteProps = Props & NativeAttrs
 
-const getStatusColor = (
+export const getStatusColor = (
   type: NoteTypes,
   {
     filled,

@@ -1,0 +1,131 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Splitter, Text, useTheme } from 'core'
+
+export const meta = {
+  title: 'Splitter',
+  description:
+    'Panels that share a space, with a line between them that the user drags to resize them.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 68
+}
+
+## Splitter
+
+Panels that share a space, with a line between them that the user drags, or moves
+with the arrow keys, to give more room to one of them. The Splitter fills its
+container, so the container needs a height.
+
+<Playground
+  desc="Put `Splitter.Panel` elements inside. `defaultSize` is a percent of the space the panels share, and the panels without one split the rest."
+  scope={{ Splitter, Text, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <div style={{ height: 200, border: '1px solid ' + theme.palette.border, borderRadius: theme.layout.radius }}>
+      <Splitter>
+        <Splitter.Panel defaultSize={30} style={{ padding: 12 }}>
+          <Text b>Sidebar</Text>
+        </Splitter.Panel>
+        <Splitter.Panel style={{ padding: 12 }}>
+          <Text b>Content</Text>
+        </Splitter.Panel>
+      </Splitter>
+    </div>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Vertical"
+  desc="Set `direction` to `vertical` to stack the panels, like an editor above a console."
+  scope={{ Splitter, Text, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <div style={{ height: 240, border: '1px solid ' + theme.palette.border, borderRadius: theme.layout.radius }}>
+      <Splitter direction="vertical">
+        <Splitter.Panel style={{ padding: 12 }}>
+          <Text b>Editor</Text>
+        </Splitter.Panel>
+        <Splitter.Panel defaultSize={35} minSize={15} style={{ padding: 12 }}>
+          <Text b>Console</Text>
+        </Splitter.Panel>
+      </Splitter>
+    </div>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Limits and three panels"
+  desc="`minSize` and `maxSize` keep a panel from being squeezed or stretched too far. A line only moves the two panels next to it. `onResize` receives the size of every panel, to save the layout."
+  scope={{ Splitter, Text, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const [sizes, setSizes] = React.useState([20, 55, 25])
+  return (
+    <div>
+      <div style={{ height: 200, border: '1px solid ' + theme.palette.border, borderRadius: theme.layout.radius }}>
+        <Splitter onResize={setSizes}>
+          <Splitter.Panel defaultSize={20} minSize={10} maxSize={35} style={{ padding: 12 }}>
+            <Text small>Files</Text>
+          </Splitter.Panel>
+          <Splitter.Panel defaultSize={55} minSize={30} style={{ padding: 12 }}>
+            <Text small>Editor</Text>
+          </Splitter.Panel>
+          <Splitter.Panel defaultSize={25} minSize={10} style={{ padding: 12 }}>
+            <Text small>Outline</Text>
+          </Splitter.Panel>
+        </Splitter>
+      </div>
+      <Text small type="secondary">{sizes.map((size) => Math.round(size) + '%').join(' / ')}</Text>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/splitter.mdx">
+<Attributes.Title>Splitter.Props</Attributes.Title>
+
+| Attribute        | Description                                                             | Type                           | Accepted values           | Default      |
+| ---------------- | ----------------------------------------------------------------------- | ------------------------------ | ------------------------- | ------------ |
+| **direction**    | `horizontal` puts the panels side by side, `vertical` stacks them       | `string`                       | `'horizontal', 'vertical'` | `horizontal` |
+| **onResize**     | called with the size of every panel, in percent, when one of them changes | `(sizes: number[]) => void`  | -                         | -            |
+| **handleLabel**  | name of the lines, for screen readers                                   | `string`                       | -                         | `Resize`     |
+| ...              | native props, passed to the root `div`                                  | `HTMLAttributes`               | `'id', 'style', ...`      | -            |
+
+<Attributes.Title>Splitter.Panel.Props</Attributes.Title>
+
+| Attribute       | Description                                                                          | Type     | Accepted values | Default |
+| --------------- | ------------------------------------------------------------------------------------ | -------- | --------------- | ------- |
+| **defaultSize** | percent of the space the panels share; the panels without one split what is left     | `number` | `0` to `100`    | -       |
+| **minSize**     | smallest size the panel can have, in percent                                         | `number` | `0` to `100`    | `0`     |
+| **maxSize**     | largest size the panel can have, in percent                                          | `number` | `0` to `100`    | `100`   |
+| ...             | native props, passed to the panel `div`                                              | `HTMLAttributes` | `'className', 'style', ...` | - |
+
+<Attributes.Title>Behavior</Attributes.Title>
+
+- • **Sizes** are percents of the space the panels share, without the lines, so the panels stay in proportion when the container is resized.
+- • **A line** moves the panel before it and the one after it, by the same amount, as far as the limits of both allow.
+- • **Overflow**: each panel scrolls its own content.
+- • **Panels that come or go** start the sizes again from the `defaultSize` values.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` of `Splitter` points at the root `div`, and the `ref` of a panel at its `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each line is a `separator` that can be focused, with `aria-valuenow`, `aria-valuemin` and `aria-valuemax` for the size of the panel before it, and `aria-controls` pointing at that panel. The arrow keys that go along the splitter move it by 1%, or by 10% with Shift: Left and Right when the panels are side by side, Up and Down when they are stacked. Home and End go to the smallest and the largest size the limits allow. Name the lines with `handleLabel`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
