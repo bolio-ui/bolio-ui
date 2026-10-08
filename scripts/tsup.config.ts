@@ -31,6 +31,7 @@ const cssModules: NonNullable<Options['esbuildPlugins']>[number] = {
   name: 'css-modules',
   setup(build) {
     const perComponent = new Map<string, string>()
+    const layers = new Set<string>()
 
     build.onResolve({ filter: /\.module\.css$/ }, (args) => ({
       path: resolve(args.resolveDir, args.path) + SOURCE_SUFFIX,
@@ -56,10 +57,14 @@ const cssModules: NonNullable<Options['esbuildPlugins']>[number] = {
         const fileName = basename(path, '.module.css')
         const componentName =
           fileName === folderName ? folderName : `${folderName}-${fileName}`
+        // The layer is the folder, so the files of one component keep the
+        // specificity rules they had as plain CSS (a container overriding its
+        // items, the way ButtonDropdown does).
         perComponent.set(
           componentName,
-          `@layer ${componentName} {\n${result.css}\n}\n`
+          `@layer ${folderName} {\n${result.css}\n}\n`
         )
+        layers.add(folderName)
         return { contents: `export default ${JSON.stringify(tokens)};`, loader: 'js' }
       }
     )
@@ -68,8 +73,13 @@ const cssModules: NonNullable<Options['esbuildPlugins']>[number] = {
       if (perComponent.size === 0) return
       const outDir = build.initialOptions.outdir as string
       await mkdir(join(outDir, 'css'), { recursive: true })
-      const names = [...perComponent.keys()]
-      const combined = `@layer ${names.join(', ')};\n\n${[...perComponent.values()].join('\n')}`
+      // Sorted, because the order the files finish loading in changes from one
+      // build to the next, and the order of the layers is their priority.
+      // Alphabetical puts a component after the one it builds on, like
+      // ButtonGroup after Button.
+      const names = [...perComponent.keys()].sort()
+      // CssBaseline puts its rules in BolioUIBaseline, which has to be the lowest
+      const combined = `@layer BolioUIBaseline, ${[...layers].sort().join(', ')};\n\n${names.map((name) => perComponent.get(name)).join('\n')}`
       await Promise.all([
         writeFile(join(outDir, 'styles.css'), combined),
         ...names.map((name) =>
