@@ -21,6 +21,7 @@
 
 .wrapper.hover {
   border-color: var(--textarea-focus-border);
+  background-clip: padding-box;
 }
 
 .wrapper.disabled {

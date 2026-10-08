@@ -25,6 +25,7 @@
 
 .field:focus-within {
   border-color: var(--input-focus-border);
+  background-clip: padding-box;
 }
 
 .field.disabled {

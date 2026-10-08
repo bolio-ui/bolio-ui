@@ -30,6 +30,7 @@
 
 .box:focus {
   border-color: var(--input-focus-border);
+  background-clip: padding-box;
 }
 
 .box:disabled {

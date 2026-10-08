@@ -52,6 +52,7 @@
 
 .inputWrapper.hover {
   border-color: var(--input-focus-border);
+  background-clip: padding-box;
 }
 
 .input {

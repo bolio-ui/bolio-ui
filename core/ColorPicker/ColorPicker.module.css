@@ -18,7 +18,6 @@
   height: 10em;
   cursor: crosshair;
   touch-action: none;
-  border: 1px solid var(--picker-border);
   border-radius: var(--picker-radius);
   background-image:
     linear-gradient(to top, #000, transparent),
@@ -39,6 +38,11 @@
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 40%);
   outline: none;
+  transition: transform 0.15s ease;
+}
+
+.picker:not(.disabled) .panel:active .thumb {
+  transform: scale(1.2);
 }
 
 .thumb:focus-visible {

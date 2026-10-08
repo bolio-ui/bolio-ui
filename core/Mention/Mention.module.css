@@ -39,6 +39,7 @@
 
 .field:focus {
   border-color: var(--mention-focus-border-color);
+  background-clip: padding-box;
 }
 
 .field:disabled {

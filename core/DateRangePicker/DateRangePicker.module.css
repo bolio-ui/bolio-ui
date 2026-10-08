@@ -32,6 +32,7 @@
 
 .field:focus-within {
   border-color: var(--daterange-focus-border-color);
+  background-clip: padding-box;
 }
 
 .input {

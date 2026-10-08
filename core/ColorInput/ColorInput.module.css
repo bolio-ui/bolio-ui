@@ -30,6 +30,7 @@
 
 .field:focus-within {
   border-color: var(--colorinput-focus-border);
+  background-clip: padding-box;
 }
 
 .swatch {
@@ -40,10 +41,15 @@
   margin: 0;
   padding: 0;
   cursor: pointer;
-  border: 1px solid var(--colorinput-popup-border);
+  border: 0;
   border-radius: 6px;
   appearance: none;
   -webkit-appearance: none;
+  transition: transform 0.15s ease;
+}
+
+.swatch:not(:disabled):active {
+  transform: scale(0.9);
 }
 
 .swatch:focus-visible {

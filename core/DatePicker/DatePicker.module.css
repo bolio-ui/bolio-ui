@@ -38,6 +38,7 @@
 
 .input:focus {
   border-color: var(--datepicker-focus-border-color);
+  background-clip: padding-box;
 }
 
 .input:disabled {
