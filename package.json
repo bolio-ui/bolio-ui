@@ -102,7 +102,7 @@
     "axe-core": "^4.3.2",
     "babel-plugin-styled-components": "^1.13.2",
     "classnames": "^2.3.1",
-    "esbuild": "^0.27",
+    "esbuild": "^0.28.1",
     "eslint": "^9",
     "eslint-config-prettier": "^10",
     "eslint-plugin-prettier": "^5",
@@ -116,7 +116,7 @@
     "jest-styled-components": "^7.0.5",
     "kbar": "0.1.0-beta.6",
     "next": "^16",
-    "plop": "^2.7.4",
+    "plop": "^4",
     "postcss-modules": "^9.0.1",
     "prettier": "^3",
     "prism-react-renderer": "^1.2.1",
@@ -137,6 +137,9 @@
     "vite": "^8"
   },
   "resolutions": {
+    "**/findup-sync/micromatch/braces": "^3.0.3",
+    "esbuild": "^0.28.1",
+    "**/refractor/prismjs": "^1.30.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "react": "^19",
