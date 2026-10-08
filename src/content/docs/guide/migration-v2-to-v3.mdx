@@ -115,7 +115,8 @@ The old Rating changed its value on hover and then locked on click. Now the valu
 - • **Box sizing**: `CssBaseline` now sets `box-sizing: border-box` on the page, and every element inherits it. A width or a height now includes the padding and the border. If your own styles assumed `content-box`, check the elements that have both a size and a border or padding.
 - • **Collapse**: the title is now a heading with a native button inside, in place of a `div` with `role="button"`. A selector that targeted that `div` needs to change. `Collapse.Group` also moves the focus between the titles with the arrow keys, Home and End.
 - • **Select**: the dropdown and its options take the colors of the field, so they follow its `type` and variant, in place of the fixed gray.
-- • **Dropdown**: Menu, Select, Popover and the other dropdowns open upwards when there is not enough room below.
+- • **Dropdown**: Menu, Select, Popover and the other dropdowns open upwards when there is not enough room below. A Menu no longer scrolls the page when it opens.
+- • **Native controls follow the theme**: `CssBaseline` sets `color-scheme` on the page, so the clock of a time field, the scrollbars and the pickers of the browser are drawn for a dark page on the dark theme.
 
 <Spacer h={2} />
 
@@ -125,11 +126,12 @@ These are in v3 and were not in `2.0.0-alpha.2`. Nothing was removed.
 
 - • <a href="/docs/components/carousel">Carousel</a>, <a href="/docs/components/color-input">Color Input</a> and <a href="/docs/components/color-picker">Color Picker</a>
 - • <a href="/docs/components/command">Command</a>, <a href="/docs/components/context-menu">Context Menu</a> and <a href="/docs/components/date-range-picker">DateRangePicker</a>
-- • <a href="/docs/components/dropzone">Dropzone</a>, <a href="/docs/components/empty-state">Empty State</a> and <a href="/docs/components/marquee">Marquee</a>
-- • <a href="/docs/components/pin-input">Pin Input</a>, <a href="/docs/components/segmented-control">Segmented Control</a> and <a href="/docs/components/stat">Stat</a>
-- • <a href="/docs/components/tags-input">Tags Input</a>, <a href="/docs/components/timeline">Timeline</a> and <a href="/docs/components/tree">Tree</a>
+- • <a href="/docs/components/dropzone">Dropzone</a>, <a href="/docs/components/empty-state">Empty State</a> and <a href="/docs/components/image-zoom">Image Zoom</a>
+- • <a href="/docs/components/marquee">Marquee</a>, <a href="/docs/components/pin-input">Pin Input</a> and <a href="/docs/components/segmented-control">Segmented Control</a>
+- • <a href="/docs/components/splitter">Splitter</a>, <a href="/docs/components/stat">Stat</a> and <a href="/docs/components/tags-input">Tags Input</a>
+- • <a href="/docs/components/timeline">Timeline</a>, <a href="/docs/components/tour">Tour</a> and <a href="/docs/components/tree">Tree</a>
 
-Existing components also got new props: `Collapse` has `visible`, `onVisibleChange` and `disabled`, and `Calendar` has `numberOfMonths`.
+Existing components also got new props: `Collapse` has `visible`, `onVisibleChange` and `disabled`, `Calendar` has `numberOfMonths`, and `Table` has sortable columns (`sortable` and `sorter`), `sort`, `selectable`, `rowKey` and `selectedKeys`.
 
 <Spacer h={2} />
 
