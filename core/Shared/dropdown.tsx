@@ -64,7 +64,17 @@ const Dropdown: React.FC<React.PropsWithChildren<Props>> = React.memo(
         width: nativeWidth,
         elementTop
       } = getRefRect(parent, getPopupContainer)
-      setRect({ top, left, right, width: nativeWidth, elementTop })
+      // Keep the same object when nothing moved, so repeated calls (observer,
+      // resize, click) do not re-render the dropdown in a loop.
+      setRect((prev) =>
+        prev.top === top &&
+        prev.left === left &&
+        prev.right === right &&
+        prev.width === nativeWidth &&
+        prev.elementTop === elementTop
+          ? prev
+          : { top, left, right, width: nativeWidth, elementTop }
+      )
     }
 
     useResize(updateRect)
