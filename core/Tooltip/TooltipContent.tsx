@@ -24,6 +24,7 @@ import useScale from '../use-scale'
 import { getRect } from './helper'
 import useClasses, { joinClasses } from '../use-classes'
 import styles from './TooltipContent.module.css'
+import { getSurface } from '../utils/surface'
 
 interface Props {
   parent?: MutableRefObject<HTMLElement | null> | undefined
@@ -73,6 +74,11 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
     [type, theme.palette, light, ghost, subtle]
   )
   const hasShadow = type === 'default'
+  const surface = getSurface(theme)
+  const bgColor =
+    hasShadow && colors.bgColor === theme.palette.background
+      ? surface.bg
+      : colors.bgColor
   const classes = useClasses(
     'tooltip-content',
     styles.tooltipContent,
@@ -116,14 +122,14 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   const contentStyle = {
     '--tooltip-icon-offset-x': iconOffset.x,
     '--tooltip-icon-offset-y': iconOffset.y,
-    '--tooltip-content-bg': colors.bgColor,
+    '--tooltip-content-bg': bgColor,
     top: rect.top,
     left: rect.left,
     transform: rect.transform,
     color: colors.color,
     border: `1px solid ${colors.borderColor}`,
     borderRadius: theme.layout.radius,
-    boxShadow: hasShadow ? theme.expressiveness.shadowMedium : 'none',
+    boxShadow: hasShadow ? surface.shadow : 'none',
     width: SCALES.width(1, 'auto'),
     height: SCALES.height(1, 'auto')
   } as React.CSSProperties

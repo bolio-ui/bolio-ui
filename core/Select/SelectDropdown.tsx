@@ -6,6 +6,7 @@ import type { InputColor } from '../Input/styles'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './SelectDropdown.module.css'
+import { getSurface } from '../utils/surface'
 
 interface Props {
   visible: boolean
@@ -36,6 +37,7 @@ const SelectDropdown = React.forwardRef<
     dropdownRef
   ) => {
     const theme = useTheme()
+    const surface = getSurface(theme)
     const internalDropdownRef = useRef<HTMLDivElement | null>(null)
     const { ref } = useSelectContext()
     const classes = useClasses(styles.selectDropdown, className)
@@ -58,8 +60,11 @@ const SelectDropdown = React.forwardRef<
           style={
             {
               '--select-dropdown-radius': theme.layout.radius,
-              '--select-dropdown-shadow': theme.expressiveness.shadowMedium,
-              '--select-dropdown-bg': colors.bgColor,
+              '--select-dropdown-shadow': surface.shadow,
+              '--select-dropdown-bg':
+                colors.bgColor === theme.palette.background
+                  ? surface.bg
+                  : colors.bgColor,
               '--select-dropdown-border': colors.borderColor,
               '--select-dropdown-color': colors.color,
               ...dropdownStyle

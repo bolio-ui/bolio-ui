@@ -9,6 +9,7 @@ import Calendar from '../Calendar'
 import type { DateRange } from '../Calendar'
 import { fromISO, startOfDay, toISO } from '../Calendar/date-utils'
 import styles from './DateRangePicker.module.css'
+import { getSurface } from '../utils/surface'
 
 // the width of the popup in em, with the calendar of two months and of one
 const TWO_MONTHS_EM = 46
@@ -76,6 +77,7 @@ const DateRangePickerComponent = React.forwardRef<
     ref
   ) => {
     const theme = useTheme()
+    const surface = getSurface(theme)
     const { SCALES } = useScale()
     const colors = getColors(theme.palette, type, disabled, {
       filled,
@@ -176,7 +178,7 @@ const DateRangePickerComponent = React.forwardRef<
       '--daterange-margin-right': SCALES.mr(0),
       '--daterange-margin-bottom': SCALES.mb(0),
       '--daterange-margin-left': SCALES.ml(0),
-      '--daterange-bg': theme.palette.background,
+      '--daterange-bg': surface.bg,
       '--daterange-border-color': theme.palette.border,
       '--daterange-radius': rounded ? '25px' : theme.layout.radius,
       '--daterange-popup-radius': theme.layout.radius,
@@ -190,7 +192,7 @@ const DateRangePickerComponent = React.forwardRef<
       '--daterange-separator-color': colors.iconColor,
       '--daterange-toggle-color': colors.iconColor,
       '--daterange-toggle-hover-color': colors.color,
-      '--daterange-shadow': theme.expressiveness.shadowMedium,
+      '--daterange-shadow': surface.shadow,
       ...style
     } as React.CSSProperties
 

@@ -7,6 +7,7 @@ import useLatest from '../utils/use-latest'
 import logWarning from '../utils/log-warning'
 import { joinClasses } from '../use-classes'
 import styles from './Tour.module.css'
+import { getSurface } from '../utils/surface'
 
 export interface TourStep {
   // what the step points at: a CSS selector, an element, or a function that
@@ -181,15 +182,17 @@ const Tour = React.forwardRef<HTMLDivElement, TourProps>(
 
     // The card floats like the other popups, with the shadow of the theme. On
     // a dark page it is also a surface lighter than the page, which is what
-    // makes it stand out from the dimmed page.
+    // makes it stand out from the dimmed page. Black shadow vanishes on a dark
+    // page, so there it gets a wide, faint halo of light, with no hard edge.
     const dark = theme.type === 'dark'
+    const surface = getSurface(theme)
 
     const tourStyle = {
       '--tour-color': theme.palette.foreground,
       '--tour-muted': theme.palette.accents_5,
       '--tour-radius': theme.layout.radius,
-      '--tour-bg': dark ? theme.palette.accents_3 : theme.palette.background,
-      '--tour-shadow': theme.expressiveness.shadowMedium,
+      '--tour-bg': surface.bg,
+      '--tour-shadow': surface.shadow,
       '--tour-dim': dark ? 'rgb(0 0 0 / 60%)' : 'rgb(0 0 0 / 55%)',
       ...style
     } as React.CSSProperties

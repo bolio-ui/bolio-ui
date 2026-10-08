@@ -21,6 +21,7 @@ import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
 import styles from './ButtonDropdown.module.css'
+import { getSurface } from '../utils/surface'
 
 export type ButtonDropdownTypes = NormalTypes
 
@@ -66,6 +67,7 @@ const ButtonDropdownComponent = React.forwardRef<
     const innerRef = useRef<HTMLDivElement>(null)
     useImperativeHandle(ref, () => innerRef.current as HTMLDivElement)
     const theme = useTheme()
+    const surface = getSurface(theme)
 
     const colors = getColor(theme.palette, type)
     const itemChildren = pickChild(children, ButtonDropdownItem)[1]
@@ -176,10 +178,10 @@ const ButtonDropdownComponent = React.forwardRef<
             <div
               className={styles.content}
               style={{
-                boxShadow: theme.expressiveness.shadowMedium,
+                boxShadow: surface.shadow,
                 transform: 'translateY(4px)',
                 backgroundColor:
-                  type === 'default' ? theme.palette.background : colors.bgColor
+                  type === 'default' ? surface.bg : colors.bgColor
               }}
             >
               {itemChildrenWithoutMain}

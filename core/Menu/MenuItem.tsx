@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import useClasses from '../use-classes'
 import { MenuContext, MenuListContext, MenuRadioContext } from './MenuContext'
 import styles from './MenuItem.module.css'
+import { getSurface } from '../utils/surface'
 
 type ItemType = 'default' | 'error'
 
@@ -102,7 +103,7 @@ export const MenuItemBase = React.forwardRef<
 
     const itemStyle = {
       '--menu-item-color': theme.palette.foreground,
-      '--menu-item-focus-bg': theme.palette.accents_2,
+      '--menu-item-focus-bg': getSurface(theme).hover,
       '--menu-item-error-color': theme.palette.error,
       '--menu-item-error-focus-bg': theme.palette.errorLight,
       '--menu-item-error-focus-color': theme.palette.errorDark,

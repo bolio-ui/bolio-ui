@@ -4,6 +4,7 @@ import useScale from '../use-scale'
 import { MenuContext, MenuListContext } from './MenuContext'
 import { joinClasses } from '../use-classes'
 import styles from './MenuList.module.css'
+import { getSurface } from '../utils/surface'
 
 export type MenuFocus = 'first' | 'last' | 'list'
 
@@ -126,13 +127,14 @@ const MenuList: React.FC<React.PropsWithChildren<Props>> = ({
     if (isCharacter) typeahead(event.key, items, index)
   }
 
+  const surface = getSurface(theme)
   const listStyle = {
     '--menu-list-font-size': SCALES.font(0.875),
     '--menu-list-color': theme.palette.foreground,
-    '--menu-list-bg': theme.palette.background,
+    '--menu-list-bg': surface.bg,
     '--menu-list-border-color': theme.palette.border,
     '--menu-list-radius': theme.layout.radius,
-    '--menu-list-shadow': theme.expressiveness.shadowMedium
+    '--menu-list-shadow': surface.shadow
   } as React.CSSProperties
 
   return (

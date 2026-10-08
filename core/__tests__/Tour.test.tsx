@@ -230,10 +230,12 @@ describe('<Tour />', () => {
       return result
     }
 
-    it('lifts the card with a lighter surface, and the shadow of the theme, on a dark theme', () => {
+    it('lifts the card with a lighter surface, and a hairline under the shadow, on a dark theme', () => {
       const dark = vars('dark')
       expect(dark.bg).toBe('#171a20')
-      expect(dark.shadow).toBe('0 8px 30px rgba(0, 0, 0, 0.35)')
+      expect(dark.shadow).toBe(
+        '0 0 0 1px rgb(255 255 255 / 6%), 0 2px 6px rgb(0 0 0 / 40%), 0 8px 30px rgba(0, 0, 0, 0.35)'
+      )
       expect(dark.dim).toBe('rgb(0 0 0 / 60%)')
     })
 
