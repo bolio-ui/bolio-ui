@@ -5358,5 +5358,169 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/guide/refs-and-accessibility#accessibility"
+  },
+  {
+    "title": "Alert",
+    "component": true,
+    "path": "/docs/components/alert"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert General",
+    "component": false,
+    "path": "/docs/components/alert#general"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Variants",
+    "component": false,
+    "path": "/docs/components/alert#variants"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Dismissible",
+    "component": false,
+    "path": "/docs/components/alert#dismissible"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert With an icon and an action",
+    "component": false,
+    "path": "/docs/components/alert#with-an-icon-and-an-action"
+  },
+  {
+    "head": "Alert",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/alert#apis"
+  },
+  {
+    "head": "Alert",
+    "title": "Alert Props",
+    "component": false,
+    "path": "/docs/components/alert#alert.props"
+  },
+  {
+    "title": "Chip",
+    "component": true,
+    "path": "/docs/components/chip"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip General",
+    "component": false,
+    "path": "/docs/components/chip#general"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Multiple",
+    "component": false,
+    "path": "/docs/components/chip#multiple"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Single",
+    "component": false,
+    "path": "/docs/components/chip#single"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Filtering a list",
+    "component": false,
+    "path": "/docs/components/chip#filtering-a-list"
+  },
+  {
+    "head": "Chip",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/chip#apis"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Props",
+    "component": false,
+    "path": "/docs/components/chip#chip.props"
+  },
+  {
+    "head": "Chip",
+    "title": "Chip Group Props",
+    "component": false,
+    "path": "/docs/components/chip#chip.group.props"
+  },
+  {
+    "title": "Toolbar",
+    "component": true,
+    "path": "/docs/components/toolbar"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar General",
+    "component": false,
+    "path": "/docs/components/toolbar#general"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Vertical",
+    "component": false,
+    "path": "/docs/components/toolbar#vertical"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Editor actions",
+    "component": false,
+    "path": "/docs/components/toolbar#editor-actions"
+  },
+  {
+    "head": "Toolbar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/toolbar#apis"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Props",
+    "component": false,
+    "path": "/docs/components/toolbar#toolbar.props"
+  },
+  {
+    "head": "Toolbar",
+    "title": "Toolbar Separator Props",
+    "component": false,
+    "path": "/docs/components/toolbar#toolbar.separator.props"
+  },
+  {
+    "title": "Mention",
+    "component": true,
+    "path": "/docs/components/mention"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention General",
+    "component": false,
+    "path": "/docs/components/mention#general"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Other trigger",
+    "component": false,
+    "path": "/docs/components/mention#other-trigger"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Comment box",
+    "component": false,
+    "path": "/docs/components/mention#comment-box"
+  },
+  {
+    "head": "Mention",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mention#apis"
+  },
+  {
+    "head": "Mention",
+    "title": "Mention Props",
+    "component": false,
+    "path": "/docs/components/mention#mention.props"
   }
 ]

@@ -3,6 +3,7 @@ import React from 'react'
 import * as Bolio from '..'
 
 const {
+  Alert,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -14,6 +15,7 @@ const {
   Card,
   Carousel,
   Checkbox,
+  Chip,
   Code,
   ColorInput,
   ColorPicker,
@@ -38,6 +40,7 @@ const {
   Keyboard,
   Link,
   Loading,
+  Mention,
   Menu,
   Modal,
   Note,
@@ -67,6 +70,7 @@ const {
   Text,
   Textarea,
   Toggle,
+  Toolbar,
   Tooltip,
   Tour,
   Tree
@@ -348,6 +352,35 @@ export const cases: Array<[string, () => React.ReactElement]> = [
           { value: 'a', label: 'A', children: [{ value: 'b', label: 'B' }] }
         ]}
         initialExpanded={['a']}
+      />
+    )
+  ],
+  ['Alert', () => <Alert title="Heads up">Your trial ends soon.</Alert>],
+  [
+    'Chip',
+    () => (
+      <Chip.Group multiple aria-label="Stack">
+        <Chip value="react">React</Chip>
+        <Chip value="vue">Vue</Chip>
+      </Chip.Group>
+    )
+  ],
+  [
+    'Toolbar',
+    () => (
+      <Toolbar aria-label="Formatting">
+        <button type="button">Bold</button>
+        <Toolbar.Separator />
+        <button type="button">Italic</button>
+      </Toolbar>
+    )
+  ],
+  [
+    'Mention',
+    () => (
+      <Mention
+        aria-label="Comment"
+        options={[{ value: 'ana', label: 'Ana Souza' }]}
       />
     )
   ]

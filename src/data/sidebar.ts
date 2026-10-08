@@ -80,6 +80,21 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Alert',
+    url: '/docs/components/alert',
+    tag: 'New'
+  },
+  {
+    name: 'Chip',
+    url: '/docs/components/chip',
+    tag: 'New'
+  },
+  {
+    name: 'Mention',
+    url: '/docs/components/mention',
+    tag: 'New'
+  },
+  {
     name: 'Overview',
     url: '/docs/components/overview'
   },
@@ -391,6 +406,11 @@ export const components = [
   {
     name: 'Toggle',
     url: '/docs/components/toggle'
+  },
+  {
+    name: 'Toolbar',
+    url: '/docs/components/toolbar',
+    tag: 'New'
   },
   {
     name: 'Tooltip',

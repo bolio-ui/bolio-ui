@@ -104,6 +104,21 @@
           "open": true,
           "routes": [
             {
+              "title": "Alert",
+              "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
+              "path": "/docs/components/alert.mdx"
+            },
+            {
+              "title": "Chip",
+              "keywords": "chip, pill, tag select, filter, toggle button, multi select, choice",
+              "path": "/docs/components/chip.mdx"
+            },
+            {
+              "title": "Mention",
+              "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
+              "path": "/docs/components/mention.mdx"
+            },
+            {
               "title": "Overview",
               "keywords": "overview, all components, components list, categories",
               "path": "/docs/components/overview.mdx"
@@ -457,6 +472,11 @@
               "title": "Toggle",
               "keywords": "toggle, types, disabled, get change",
               "path": "/docs/components/toggle.mdx"
+            },
+            {
+              "title": "Toolbar",
+              "keywords": "toolbar, button group, actions, formatting, arrow keys, roving tabindex",
+              "path": "/docs/components/toolbar.mdx"
             },
             {
               "title": "Tooltip",

@@ -1,0 +1,113 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Alert, Button, Grid, useTheme } from 'core'
+
+export const meta = {
+  title: 'Alert',
+  description: 'Show a message that stays in the page, with an optional title, icon and close button.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 54
+}
+
+## Alert
+
+Show a message that stays in the page, with an optional title, icon and close button.
+
+<Playground
+  title="General"
+  desc="The basic `Alert` usage. Errors and warnings are announced right away by a screen reader, the other types wait for a pause."
+  scope={{ Alert, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid>
+    <Alert title="Trial ending">Your trial ends in 3 days. Pick a plan to keep your projects.</Alert>
+  </Grid>
+  <Grid>
+    <Alert type="success" title="Payment received">Invoice 2041 is paid.</Alert>
+  </Grid>
+  <Grid>
+    <Alert type="warning" title="Storage almost full">You used 92% of your 10 GB.</Alert>
+  </Grid>
+  <Grid>
+    <Alert type="error" title="Card declined">Your bank refused the payment. Update the card to retry.</Alert>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light` or `subtle` to change how much the color takes over."
+  scope={{ Alert, Grid }}
+  code={`
+<Grid.Container gap={2} direction="column">
+  <Grid><Alert type="info" title="Outline">New features are on the way.</Alert></Grid>
+  <Grid><Alert type="info" light title="Light">New features are on the way.</Alert></Grid>
+  <Grid><Alert type="info" subtle title="Subtle">New features are on the way.</Alert></Grid>
+  <Grid><Alert type="info" filled title="Filled">New features are on the way.</Alert></Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Dismissible"
+  desc="`onClose` shows a close button. Hide the alert in your state, and bring it back when the cause returns."
+  scope={{ Alert, Button }}
+  code={`
+() => {
+  const [open, setOpen] = React.useState(true)
+  return open ? (
+    <Alert type="info" light title="New version" onClose={() => setOpen(false)}>
+      Reload the page to get the latest changes.
+    </Alert>
+  ) : (
+    <Button auto scale={0.75} onClick={() => setOpen(true)}>Show the alert again</Button>
+  )
+}
+`}
+/>
+
+<Playground
+  title="With an icon and an action"
+  desc="Put an `icon` before the text, and any element, such as a button, after it."
+  scope={{ Alert, Button, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  const icon = (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+    </svg>
+  )
+  return (
+    <Alert type="warning" light icon={icon} title="Unsaved changes">
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+        <span>Leave now and the last 4 edits are lost.</span>
+        <Button auto scale={0.6} type="warning">Save draft</Button>
+      </div>
+    </Alert>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/alert.mdx">
+<Attributes.Title>Alert.Props</Attributes.Title>
+
+| Attribute      | Description                                   | Type                                                                          | Accepted values | Default   |
+| -------------- | --------------------------------------------- | ----------------------------------------------------------------------------- | --------------- | --------- |
+| **type**       | color of the alert                            | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'info'` | -               | `default` |
+| **title**      | bold first line                               | `ReactNode`                                                                   | -               | -         |
+| **icon**       | element before the text                       | `ReactNode`                                                                   | -               | -         |
+| **filled**     | solid color                                   | `boolean`                                                                     | -               | `false`   |
+| **light**      | tinted background                             | `boolean`                                                                     | -               | `false`   |
+| **subtle**     | text only, no border                          | `boolean`                                                                     | -               | `false`   |
+| **onClose**    | shows a close button and calls it on click    | `() => void`                                                                  | -               | -         |
+| **closeLabel** | accessible name of the close button           | `string`                                                                      | -               | `Close`   |
+| **role**       | defaults to `alert` for errors and warnings, `status` otherwise | `string`                                                    | -               | -         |
+| ...            | native props                                  | `HTMLAttributes`                                                              | -               | -         |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

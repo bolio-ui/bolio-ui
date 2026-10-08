@@ -3,6 +3,7 @@
 // in an actual project. Regenerate by hand if a component or icon is added
 // (this only needs to list the names, not stay perfectly in sync).
 export const CORE_EXPORT_NAMES = new Set([
+  'Alert',
   'Avatar',
   'Badge',
   'BolioUIProvider',
@@ -14,6 +15,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Capacity',
   'Card',
   'Checkbox',
+  'Chip',
   'Code',
   'Col',
   'Collapse',
@@ -41,6 +43,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Link',
   'Loading',
   'Marquee',
+  'Mention',
   'Menu',
   'Modal',
   'Note',
@@ -74,6 +77,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Themes',
   'Timeline',
   'Toggle',
+  'Toolbar',
   'Tooltip',
   'Tree',
   'useAllThemes',

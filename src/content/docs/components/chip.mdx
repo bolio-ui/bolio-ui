@@ -1,0 +1,131 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Chip, Card, Text, Grid } from 'core'
+
+export const meta = {
+  title: 'Chip',
+  description: 'Pick options from a row of pills, one or several at a time.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 55
+}
+
+## Chip
+
+Pick options from a row of pills, one or several at a time.
+
+<Playground
+  title="General"
+  desc="A `Chip` alone works as a checkbox. Control it with `checked` and `onChange`, or let it keep its own state."
+  scope={{ Chip }}
+  code={`
+<Chip initialChecked>Free shipping</Chip>
+`}
+/>
+
+<Playground
+  title="Multiple"
+  desc="`Chip.Group` with `multiple` lets the user check several chips. `onChange` receives the values of the checked ones."
+  scope={{ Chip, Text }}
+  code={`
+() => {
+  const [stack, setStack] = React.useState(['react'])
+  return (
+    <>
+      <Chip.Group multiple value={stack} onChange={setStack} aria-label="Stack">
+        <Chip value="react">React</Chip>
+        <Chip value="vue">Vue</Chip>
+        <Chip value="svelte">Svelte</Chip>
+        <Chip value="solid">Solid</Chip>
+      </Chip.Group>
+      <Text small type="secondary">
+        {stack.length ? stack.length + ' selected: ' + stack.join(', ') : 'Pick at least one framework.'}
+      </Text>
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Single"
+  desc="Without `multiple`, checking a chip unchecks the other, the way a radio group does."
+  scope={{ Chip }}
+  code={`
+() => {
+  const [size, setSize] = React.useState(['m'])
+  return (
+    <Chip.Group value={size} onChange={setSize} aria-label="Size">
+      <Chip value="s">S</Chip>
+      <Chip value="m">M</Chip>
+      <Chip value="l">L</Chip>
+      <Chip value="xl" disabled>XL, sold out</Chip>
+    </Chip.Group>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Filtering a list"
+  desc="Use the checked values to filter what is shown. Here the list narrows to the topics you picked."
+  scope={{ Chip, Card, Text }}
+  code={`
+() => {
+  const posts = [
+    ['Ship a Tour in an afternoon', 'product'],
+    ['Why we dropped styled-jsx', 'engineering'],
+    ['Dark mode without gray mush', 'design'],
+    ['Splitting a layout with CSS grid', 'engineering'],
+    ['Reading an empty state', 'design']
+  ]
+  const [topics, setTopics] = React.useState([])
+  const shown = topics.length ? posts.filter(([, topic]) => topics.includes(topic)) : posts
+  return (
+    <>
+      <Chip.Group multiple value={topics} onChange={setTopics} aria-label="Topics">
+        <Chip value="product">Product</Chip>
+        <Chip value="engineering">Engineering</Chip>
+        <Chip value="design">Design</Chip>
+      </Chip.Group>
+      <div style={{ marginTop: 16, display: 'grid', gap: 8 }}>
+        {shown.map(([title, topic]) => (
+          <Card key={title} bordered width="100%">
+            <Text b>{title}</Text>
+            <Text small type="secondary" style={{ textTransform: 'capitalize' }}>{topic}</Text>
+          </Card>
+        ))}
+      </div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/chip.mdx">
+<Attributes.Title>Chip.Props</Attributes.Title>
+
+| Attribute          | Description                                              | Type                                                              | Accepted values | Default   |
+| ------------------ | -------------------------------------------------------- | ----------------------------------------------------------------- | --------------- | --------- |
+| **value**          | value the chip adds to or takes from its `Chip.Group`    | `string`                                                          | -               | -         |
+| **checked**        | checked state, to control the chip                       | `boolean`                                                         | -               | -         |
+| **initialChecked** | checked state at the start                               | `boolean`                                                         | -               | `false`   |
+| **onChange**       | called with the new state when the chip is alone         | `(checked: boolean) => void`                                      | -               | -         |
+| **type**           | color of a checked chip                                  | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'info'` | -         | `primary` |
+| **disabled**       | block the chip                                           | `boolean`                                                         | -               | `false`   |
+| ...                | native props of the input                                | `InputHTMLAttributes`                                             | -               | -         |
+
+<Attributes.Title>Chip.Group.Props</Attributes.Title>
+
+| Attribute        | Description                                 | Type                          | Accepted values | Default |
+| ---------------- | ------------------------------------------- | ----------------------------- | --------------- | ------- |
+| **value**        | values of the checked chips, to control it  | `string[]`                    | -               | -       |
+| **initialValue** | values checked at the start                 | `string[]`                    | -               | `[]`    |
+| **onChange**     | called with the values of the checked chips | `(value: string[]) => void`   | -               | -       |
+| **multiple**     | allow several checked chips                 | `boolean`                     | -               | `false` |
+| **disabled**     | block every chip of the group               | `boolean`                     | -               | `false` |
+| ...              | native props                                | `HTMLAttributes`              | -               | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

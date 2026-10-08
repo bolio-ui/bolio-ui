@@ -4,6 +4,7 @@ import * as Bolio from '..'
 import type { AnyElement } from '../utils/types'
 
 const {
+  Alert,
   BolioUIProvider,
   Avatar,
   Badge,
@@ -16,6 +17,7 @@ const {
   Card,
   Carousel,
   Checkbox,
+  Chip,
   Code,
   ColorInput,
   ColorPicker,
@@ -40,6 +42,7 @@ const {
   Keyboard,
   Link,
   Loading,
+  Mention,
   Menu,
   Modal,
   Note,
@@ -69,6 +72,7 @@ const {
   Text,
   Textarea,
   Toggle,
+  Toolbar,
   Tooltip,
   Tour,
   Tree
@@ -364,6 +368,27 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
     ),
     'UL'
+  ],
+  ['Alert', (ref) => <Alert ref={ref}>Your trial ends soon.</Alert>],
+  ['Chip', (ref) => <Chip ref={ref}>React</Chip>, 'INPUT'],
+  [
+    'Toolbar',
+    (ref) => (
+      <Toolbar ref={ref} aria-label="Formatting">
+        <button type="button">Bold</button>
+      </Toolbar>
+    )
+  ],
+  [
+    'Mention',
+    (ref) => (
+      <Mention
+        ref={ref}
+        aria-label="Comment"
+        options={[{ value: 'ana', label: 'Ana Souza' }]}
+      />
+    ),
+    'TEXTAREA'
   ]
 ]
 

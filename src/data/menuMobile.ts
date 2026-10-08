@@ -102,6 +102,11 @@ export const menuMobile = [
         name: 'Components',
         children: [
           {
+            name: 'Alert',
+            url: '/docs/components/alert',
+            group: 'Components'
+          },
+          {
             name: 'Avatar',
             url: '/docs/components/avatar',
             group: 'Components'
@@ -154,6 +159,11 @@ export const menuMobile = [
           {
             name: 'Checkbox',
             url: '/docs/components/checkbox',
+            group: 'Components'
+          },
+          {
+            name: 'Chip',
+            url: '/docs/components/chip',
             group: 'Components'
           },
           {
@@ -294,6 +304,11 @@ export const menuMobile = [
           {
             name: 'Marquee',
             url: '/docs/components/marquee',
+            group: 'Components'
+          },
+          {
+            name: 'Mention',
+            url: '/docs/components/mention',
             group: 'Components'
           },
           {
@@ -449,6 +464,11 @@ export const menuMobile = [
           {
             name: 'Toggle',
             url: '/docs/components/toggle',
+            group: 'Components'
+          },
+          {
+            name: 'Toolbar',
+            url: '/docs/components/toolbar',
             group: 'Components'
           },
           {

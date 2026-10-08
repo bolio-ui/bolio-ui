@@ -1,0 +1,62 @@
+.chip {
+  position: relative;
+  display: inline-flex;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  font-size: 0;
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 0.875em;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--chip-color);
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.text:hover {
+  background-color: var(--chip-hover-bg);
+}
+
+.input:checked + .text {
+  color: var(--chip-checked-color);
+  background-color: var(--chip-checked-bg);
+  border-color: var(--chip-checked-border);
+}
+
+.input:focus-visible + .text {
+  outline: 2px solid var(--chip-focus);
+  outline-offset: 2px;
+}
+
+.input:disabled + .text {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input:disabled + .text:hover {
+  background-color: transparent;
+}
+
+.input:disabled:checked + .text:hover {
+  background-color: var(--chip-checked-bg);
+}

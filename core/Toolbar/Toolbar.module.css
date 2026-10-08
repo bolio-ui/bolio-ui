@@ -1,0 +1,29 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  box-sizing: border-box;
+  width: fit-content;
+  padding: 0.25em;
+  border: 1px solid var(--toolbar-border);
+  border-radius: var(--toolbar-radius);
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.separator {
+  flex: none;
+  align-self: stretch;
+  width: 1px;
+  margin: 0.125em 0.25em;
+  background: var(--toolbar-border);
+}
+
+.vertical .separator {
+  width: auto;
+  height: 1px;
+  margin: 0.25em 0.125em;
+}

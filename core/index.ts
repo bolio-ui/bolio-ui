@@ -1,3 +1,6 @@
+export { default as Alert } from './Alert'
+export type { AlertProps } from './Alert'
+
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
@@ -40,6 +43,9 @@ export type { CarouselProps } from './Carousel'
 
 export { default as Checkbox } from './Checkbox'
 export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
+
+export { default as Chip } from './Chip'
+export type { ChipProps, ChipGroupProps } from './Chip'
 
 export { default as Code } from './Code'
 export type { CodeProps } from './Code'
@@ -123,6 +129,9 @@ export type { LinkProps } from './Link'
 
 export { default as Loading } from './Loading'
 export type { LoadingProps } from './Loading'
+
+export { default as Mention } from './Mention'
+export type { MentionProps, MentionOption } from './Mention'
 
 export { default as Menu } from './Menu'
 export type {
@@ -261,6 +270,9 @@ export type { TextareaProps } from './Textarea'
 
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
+
+export { default as Toolbar } from './Toolbar'
+export type { ToolbarProps, ToolbarSeparatorProps } from './Toolbar'
 
 export { default as Tour } from './Tour'
 export type { TourProps, TourStep } from './Tour'
