@@ -462,6 +462,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Toast',
+            url: '/docs/hooks/use-toast',
+            group: 'Components'
+          },
+          {
             name: 'Toggle',
             url: '/docs/components/toggle',
             group: 'Components'

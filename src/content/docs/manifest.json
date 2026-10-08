@@ -563,7 +563,7 @@
             },
             {
               "title": "useToast",
-              "keywords": "useToast",
+              "keywords": "useToast, toast, notification, snackbar, message, undo, placement",
               "path": "/docs/hooks/use-toast.mdx"
             }
           ]

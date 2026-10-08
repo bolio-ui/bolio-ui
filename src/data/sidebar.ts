@@ -404,6 +404,10 @@ export const components = [
     url: '/docs/components/textarea'
   },
   {
+    name: 'Toast',
+    url: '/docs/hooks/use-toast'
+  },
+  {
     name: 'Toggle',
     url: '/docs/components/toggle'
   },

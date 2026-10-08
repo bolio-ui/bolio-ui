@@ -4936,6 +4936,18 @@
   },
   {
     "head": "useToast",
+    "title": "useToast Placement",
+    "component": false,
+    "path": "/docs/hooks/use-toast#placement"
+  },
+  {
+    "head": "useToast",
+    "title": "useToast Unique id",
+    "component": false,
+    "path": "/docs/hooks/use-toast#unique-id"
+  },
+  {
+    "head": "useToast",
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-toast#apis"
