@@ -3,7 +3,7 @@ import { Spacer } from 'core'
 
 export const meta = {
   title: 'Migrating to v3',
-  description: 'What changes from v2 to v3 and what to do about it.',
+  description: 'What changes in v3 and what to do about it, coming from v1 or from a v2 alpha.',
   sidebar: 'guide',
   group: 'Guide'
 }
@@ -13,10 +13,10 @@ export const meta = {
 Version 3 drops the styled-jsx runtime: every component now ships plain, static CSS instead of injecting `<style>` tags at render time.
 This page lists what changes and what to do about it. The documentation of v2 stays available at <a href="https://v2.bolio-ui.com" rel="noreferrer" target="_blank">v2.bolio-ui.com</a>.
 
-While v3 is in alpha, install it with the `next` tag:
+Version 2 was only published as alphas, so most projects come from 1.x or from a v2 alpha. Coming from 1.x, read the <a href="https://v2.bolio-ui.com/docs/guide/migration-v1-to-v2" rel="noreferrer" target="_blank">migration guide to v2</a> first, then this page. Install v3 with:
 
 ```bash
-yarn add @bolio-ui/core@next
+yarn add @bolio-ui/core
 ```
 
 <Spacer h={2} />
@@ -122,7 +122,7 @@ The old Rating changed its value on hover and then locked on click. Now the valu
 
 ### New components
 
-These are in v3 and were not in `2.0.0-alpha.2`. Nothing was removed.
+These are in v3 and were not in `2.0.0-alpha.2`, or in 1.x. Nothing was removed.
 
 - • <a href="/docs/components/carousel">Carousel</a>, <a href="/docs/components/color-input">Color Input</a> and <a href="/docs/components/color-picker">Color Picker</a>
 - • <a href="/docs/components/command">Command</a>, <a href="/docs/components/context-menu">Context Menu</a> and <a href="/docs/components/date-range-picker">DateRangePicker</a>
@@ -138,7 +138,7 @@ Existing components also got new props: `Collapse` has `visible`, `onVisibleChan
 
 ### Checklist
 
-1. Install `@bolio-ui/core@next`.
+1. Install `@bolio-ui/core` 3.0.0 or later.
 2. Add `import '@bolio-ui/core/styles.css'` once, near your other top-level imports.
 3. Remove `StyledJsxRegistry` and the `@bolio-ui/core/next` import from your App Router layout, if you had one.
 4. Remove `styled-jsx` from your own dependencies if nothing else in your app uses it.
