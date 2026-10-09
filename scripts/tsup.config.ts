@@ -82,6 +82,9 @@ const cssModules: NonNullable<Options['esbuildPlugins']>[number] = {
       const combined = `@layer BolioUIBaseline, ${[...layers].sort().join(', ')};\n\n${names.map((name) => perComponent.get(name)).join('\n')}`
       await Promise.all([
         writeFile(join(outDir, 'styles.css'), combined),
+        // so `import '@bolio-ui/core/styles.css'` type-checks when the
+        // consumer's TypeScript requires declarations for side-effect imports
+        writeFile(join(outDir, 'styles.d.ts'), 'export {}\n'),
         ...names.map((name) =>
           writeFile(join(outDir, 'css', `${name}.css`), perComponent.get(name)!)
         )

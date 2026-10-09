@@ -34,7 +34,10 @@
       "module": "./esm/index.js",
       "default": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css",
+    "./styles.css": {
+      "types": "./dist/styles.d.ts",
+      "default": "./dist/styles.css"
+    },
     "./css/*": "./dist/css/*",
     "./dist/index.js": "./dist/index.js",
     "./dist/*/index.js": "./dist/*/index.js",
