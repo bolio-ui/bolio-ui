@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react'
+import React, { PropsWithChildren, useMemo } from 'react'
 import Themes from '../Themes'
 import { BolioUIThemes } from '../Themes/Presets'
 import { ThemeContext } from '../use-theme/theme-context'
@@ -12,34 +12,28 @@ export interface Props {
   themes?: Array<BolioUIThemes>
 }
 
+const noThemes: Array<BolioUIThemes> = []
+
 const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   children,
   themeType,
-  themes = []
+  themes = noThemes
 }) => {
-  const [allThemes, setAllThemes] = useState<AllThemesConfig>({
-    themes: Themes.getPresets()
-  })
+  // Derived while rendering, not in an effect: with an effect a custom
+  // theme only exists from the second render, so the first one falls back to
+  // the preset (and flashes it) even when themeType names the custom theme.
+  const allThemes = useMemo<AllThemesConfig>(() => {
+    const safeThemes = themes.filter((item) =>
+      Themes.isAvailableThemeType(item.type)
+    )
+    return { themes: Themes.getPresets().concat(safeThemes) }
+  }, [themes])
 
   const currentTheme = useMemo<BolioUIThemes>(() => {
     const theme = allThemes.themes.find((item) => item.type === themeType)
     if (theme) return theme
     return Themes.getPresetStaticTheme()
   }, [allThemes, themeType])
-
-  useEffect(() => {
-    if (!themes?.length) return
-    setAllThemes((last) => {
-      const safeThemes = themes.filter((item) =>
-        Themes.isAvailableThemeType(item.type)
-      )
-      const nextThemes = Themes.getPresets().concat(safeThemes)
-      return {
-        ...last,
-        themes: nextThemes
-      }
-    })
-  }, [themes])
 
   return (
     <AllThemesContext.Provider value={allThemes}>

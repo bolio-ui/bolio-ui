@@ -11,7 +11,10 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
       {children}
       <style
         dangerouslySetInnerHTML={{
+          // In a layer, below the layers of the components (styles.css declares
+          // it first), otherwise these element rules would beat the components.
           __html: `
+        @layer BolioUIBaseline {
         html,
         body {
           background-color: ${theme.palette.background};
@@ -309,6 +312,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
         ::selection {
           background-color: ${theme.palette.selection};
           color: ${theme.palette.foreground};
+        }
         }
       `
         }}

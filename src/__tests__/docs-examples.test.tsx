@@ -7,7 +7,7 @@ import * as babel from '@babel/core'
 import { BolioUIProvider } from 'core'
 import transformLiveCode from 'src/components/Playground/transform-code'
 
-// Every Playground of the component pages is run the way the site runs it:
+// Every Playground of the component, hook and guide pages is run the way the site runs it:
 // the `code` of the example is compiled and given the names of its `scope`,
 // which the page imports. It must render on the server and in the browser
 // without a React warning, so a missing scope name, a wrong prop or a broken
@@ -18,7 +18,8 @@ jest.mock('next/navigation', () => ({
   usePathname: () => '/'
 }))
 
-const dir = path.join(__dirname, '../content/docs/components')
+const docs = path.join(__dirname, '../content/docs')
+const dirs = ['components', 'hooks', 'guide']
 
 type Binding = { spec: string; imported: string }
 
@@ -66,11 +67,16 @@ const load = async (binding: Binding) => {
   return mod[binding.imported]
 }
 
-const files = fs.readdirSync(dir).filter((file) => file.endsWith('.mdx'))
+const files = dirs.flatMap((dir) =>
+  fs
+    .readdirSync(path.join(docs, dir))
+    .filter((file) => file.endsWith('.mdx'))
+    .map((file) => `${dir}/${file}`)
+)
 
 describe('docs examples', () => {
   files.forEach((file) => {
-    const text = fs.readFileSync(path.join(dir, file), 'utf8')
+    const text = fs.readFileSync(path.join(docs, file), 'utf8')
     const imports = parseImports(text)
 
     parseExamples(text).forEach(({ title, scope, code }, index) => {
