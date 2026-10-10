@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from 'react'
+import React, { MouseEvent, useEffect, useId, useMemo, useState } from 'react'
 import { withScale } from '../use-scale'
 import usePortal from '../utils/use-portal'
 import useBodyScroll from '../utils/use-body-scroll'
@@ -7,6 +7,10 @@ import { createPortal } from 'react-dom'
 import Backdrop from '../Shared/backdrop'
 import { DrawerPlacement } from './helper'
 import DrawerWrapper from './DrawerWrapper'
+import ModalTitle from '../Modal/ModalTitle'
+import ModalSubtitle from '../Modal/ModalSubtitle'
+import { ModalContext } from '../Modal/ModalContext'
+import { hasChild } from '../utils/collections'
 
 interface Props {
   visible?: boolean
@@ -35,11 +39,16 @@ const DrawerComponent = React.forwardRef<
       placement,
       onClose,
       onContentClick,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       ...props
     },
     ref
   ) => {
     const portal = usePortal('drawer')
+    const baseId = useId()
+    const titleId = `${baseId}-title`
+    const descriptionId = `${baseId}-description`
 
     const [visible, setVisible] = useState<boolean>(false)
     const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
@@ -71,25 +80,41 @@ const DrawerComponent = React.forwardRef<
       closeDrawer()
     }
 
+    // Drawer.Title and Drawer.Subtitle name and describe the dialog
+    const modalConfig = useMemo(
+      () => ({ titleId, descriptionId }),
+      [titleId, descriptionId]
+    )
+
     if (!portal) return null
     return createPortal(
-      <Backdrop
-        onClick={closeFromBackdrop}
-        onContentClick={onContentClick}
-        visible={visible}
-        width="100%"
-        {...bindings}
-      >
-        <DrawerWrapper
-          ref={ref}
+      <ModalContext.Provider value={modalConfig}>
+        <Backdrop
+          onClick={closeFromBackdrop}
+          onContentClick={onContentClick}
           visible={visible}
-          className={wrapClassName}
-          placement={placement}
-          {...props}
+          width="100%"
+          {...bindings}
         >
-          {children}
-        </DrawerWrapper>
-      </Backdrop>,
+          <DrawerWrapper
+            ref={ref}
+            visible={visible}
+            className={wrapClassName}
+            placement={placement}
+            aria-labelledby={
+              ariaLabelledby ||
+              (hasChild(children, ModalTitle) ? titleId : undefined)
+            }
+            aria-describedby={
+              ariaDescribedby ||
+              (hasChild(children, ModalSubtitle) ? descriptionId : undefined)
+            }
+            {...props}
+          >
+            {children}
+          </DrawerWrapper>
+        </Backdrop>
+      </ModalContext.Provider>,
       portal
     )
   }

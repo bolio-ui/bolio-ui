@@ -1,8 +1,8 @@
-import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import React, { useImperativeHandle, useMemo, useRef } from 'react'
 import useScale from '../use-scale'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
-import { isChildElement } from '../utils/collections'
+import useDialogFocus from '../utils/use-dialog-focus'
 import { DrawerPlacement, getDrawerTransform } from './helper'
 import useClasses from '../use-classes'
 import styles from './DrawerWrapper.module.css'
@@ -61,20 +61,17 @@ const DrawerWrapper = React.forwardRef<
     '--drawer-wrapper-transform-visible': transform.visible
   } as React.CSSProperties
 
-  useEffect(() => {
-    if (!visible) return
-    const activeElement = document.activeElement
-    const isChild = isChildElement(modalContent.current, activeElement)
-    if (isChild) return
-    if (tabStart.current) tabStart.current.focus()
-  }, [visible])
+  useDialogFocus(visible, modalContent)
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const isTabDown = event.keyCode === 9
     if (!visible || !isTabDown) return
     const activeElement = document.activeElement
     if (event.shiftKey) {
-      if (activeElement === tabStart.current) {
+      if (
+        activeElement === tabStart.current ||
+        activeElement === modalContent.current
+      ) {
         if (tabEnd.current) tabEnd.current.focus()
       }
     } else {

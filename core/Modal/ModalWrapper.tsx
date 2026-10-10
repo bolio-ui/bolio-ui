@@ -1,7 +1,7 @@
-import React, { useEffect, useImperativeHandle, useRef } from 'react'
+import React, { useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from '../Shared/css-transition'
-import { isChildElement } from '../utils/collections'
+import useDialogFocus from '../utils/use-dialog-focus'
 import useScale from '../use-scale'
 import useClasses from '../use-classes'
 import styles from './ModalWrapper.module.css'
@@ -26,20 +26,17 @@ const ModalWrapper = React.forwardRef<
   const tabStart = useRef<HTMLDivElement>(null)
   const tabEnd = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (!visible) return
-    const activeElement = document.activeElement
-    const isChild = isChildElement(modalContent.current, activeElement)
-    if (isChild) return
-    if (tabStart.current) tabStart.current.focus()
-  }, [visible])
+  useDialogFocus(visible, modalContent)
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const isTabDown = event.keyCode === 9
     if (!visible || !isTabDown) return
     const activeElement = document.activeElement
     if (event.shiftKey) {
-      if (activeElement === tabStart.current) {
+      if (
+        activeElement === tabStart.current ||
+        activeElement === modalContent.current
+      ) {
         if (tabEnd.current) tabEnd.current.focus()
       }
     } else {
