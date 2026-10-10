@@ -284,6 +284,13 @@ const MentionComponent = React.forwardRef<HTMLTextAreaElement, MentionProps>(
         {open && visible.length === 0 && (
           <div className={styles.empty}>{emptyText}</div>
         )}
+        <div role="status" className={styles.srOnly}>
+          {expanded
+            ? `${visible.length} result${
+                visible.length === 1 ? '' : 's'
+              } available`
+            : ''}
+        </div>
       </div>
     )
   }
