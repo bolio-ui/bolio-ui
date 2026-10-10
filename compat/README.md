@@ -28,3 +28,23 @@ zero `<style>` tags means the page is served unstyled and only gets CSS after
 hydration.
 
 Working files live in `compat/.work/` (git-ignored).
+
+## Styles of the package against the source
+
+`compat/run.sh` only checks that the pages build and that styles reach the HTML.
+It cannot tell a component that looks wrong, which is how 3.0.0 shipped with the
+rules of `CssBaseline` outside the CSS layers, overriding the components.
+
+```bash
+compat/compare-styles.sh
+# or with a tarball you already have
+PACK_DIR=/tmp/bolio-pack compat/compare-styles.sh
+```
+
+It builds one page with the default case of every component (the list of
+`core/__tests__/cases.tsx`) twice, with Vite: against the packed tarball and its
+`styles.css`, and against `core/` as plain CSS Modules. Then it compares the
+computed style of every element in the light and the dark theme, with animations
+off. It prints the components that differ and exits with 1 if there is any. It
+needs Google Chrome. A new component is covered as soon as it has a case in
+`cases.tsx`.

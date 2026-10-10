@@ -143,4 +143,13 @@ describe('<Mention />', () => {
     rerender(<Mention aria-label="Comment" options={options} value="b" />)
     expect(screen.getByRole('textbox')).toHaveValue('b')
   })
+
+  it('announces how many options match', () => {
+    const field = setup()
+    expect(screen.getByRole('status')).toBeEmptyDOMElement()
+    type(field, '@')
+    expect(screen.getByRole('status')).toHaveTextContent('3 results available')
+    type(field, '@br')
+    expect(screen.getByRole('status')).toHaveTextContent('1 result available')
+  })
 })
