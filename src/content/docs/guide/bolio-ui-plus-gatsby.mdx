@@ -1,5 +1,6 @@
 import Docs from 'src/templates/Docs'
-import { Link, Tabs, Spacer, Snippet } from 'core'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer } from 'core'
 
 export const meta = {
   title: 'Example with Gatsby',
@@ -26,16 +27,7 @@ you can access comprehensive instructions on how to get started on <Link target=
 
 Follow <Link target="_blank" rel="nofollow" color icon href="https://www.gatsbyjs.com/docs/quick-start/"> Gatsby quick start</Link> guide to create new Gatsby application:
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn create gatsby" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npm init gatsby" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm create gatsby" npm="npm init gatsby" yarn="yarn create gatsby" bun="bun create gatsby" />
 
 <Spacer h={2} />
 
@@ -43,16 +35,7 @@ Follow <Link target="_blank" rel="nofollow" color icon href="https://www.gatsbyj
 
 Install dependencies:
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn add @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npm install @bolio-ui/core" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
 
 <Spacer h={2} />
 
@@ -83,6 +66,6 @@ export { wrapRootElement } from './gatsby-browser'
 
 Ready to go! Start the development server:
 
-<Snippet text="npm run develop" />
+<PackageTabs pnpm="pnpm develop" npm="npm run develop" yarn="yarn develop" bun="bun run develop" />
 
 export default Docs.withMeta(meta)

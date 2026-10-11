@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { Text, Container, Grid, Section, Button, Snippet, useTheme } from 'core'
+import { Text, Container, Grid, Section, Button, useTheme } from 'core'
 import Eyebrow from 'src/components/Eyebrow'
+import PackageTabs from 'src/components/PackageTabs'
 import WindowFrame from 'src/components/WindowFrame'
 import { ThemeContext } from 'core/use-theme/theme-context'
 import { accents, mix, useSettings } from 'src/utils/use-settings'
@@ -52,24 +53,23 @@ function Hero() {
               Develop pratic and more fast with React components.
             </Text>
             <Grid.Container gap={2}>
-              <Grid xs={12} sm={6} md={4} ml={-0.5}>
-                <Button
-                  onClick={() => router.push('/docs/guide/getting-started')}
-                  type="secondary-light"
-                  rounded
+              <Grid xs={12} ml={-0.5}>
+                <PackageTabs
+                  pnpm="pnpm add @bolio-ui/core"
+                  npm="npm i @bolio-ui/core"
+                  yarn="yarn add @bolio-ui/core"
+                  bun="bun add @bolio-ui/core"
                   width="100%"
-                  style={{ textTransform: 'none' }}
-                >
-                  Get started
-                </Button>
-              </Grid>
-              <Grid xs={12} sm={6} md={8} ml={-0.5}>
-                <Snippet
-                  toastText="Code copied!"
-                  toastType="secondary"
-                  text="yarn add @bolio-ui/core"
-                  width="100%"
-                  rounded
+                  action={
+                    <Button
+                      onClick={() => router.push('/docs/guide/getting-started')}
+                      type="secondary-light"
+                      rounded
+                      style={{ textTransform: 'none', flexShrink: 0 }}
+                    >
+                      Get started
+                    </Button>
+                  }
                 />
               </Grid>
             </Grid.Container>

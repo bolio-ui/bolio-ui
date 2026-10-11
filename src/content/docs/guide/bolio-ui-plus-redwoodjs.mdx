@@ -1,5 +1,6 @@
 import Docs from 'src/templates/Docs'
-import { Link, Tabs, Spacer, Snippet } from 'core'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer, Snippet } from 'core'
 
 export const meta = {
   title: 'Example with RedwoodJS',
@@ -30,6 +31,8 @@ Follow <Link target="_blank" rel="nofollow" color icon href="https://redwoodjs.c
 
 <Snippet text="yarn create redwood-app my-redwood-project" />
 
+Redwood needs Node 20. Switch with `nvm use 20` before creating the project, and run `corepack enable` if `yarn` is not found.
+
 <Spacer h={2} />
 
 ### Installation
@@ -44,16 +47,7 @@ Open web directory before installing dependencies:
 
 Install dependencies:
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn add @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npm install @bolio-ui/core" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
 
 <Spacer h={2} />
 

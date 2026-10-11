@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
-import { Attributes, CodeTabs } from 'src/components'
-import { Tabs, Spacer, Snippet } from 'core'
+import { Attributes, CodeTabs, PackageTabs } from 'src/components'
+import { Spacer } from 'core'
 
 export const meta = {
   title: 'Getting Started',
@@ -24,22 +24,7 @@ Bolio UI allows you to make beautiful, modern, and fast websites/applications re
 
 Create a project with Bolio UI already set up. The command makes the project with the generator of the framework, installs `@bolio-ui/core` and wraps the app in `BolioUIProvider`:
 
-<Spacer h={3} />
-
-<Tabs initialValue="pnpm" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="pnpm" value="pnpm">
-    <Snippet text="pnpm dlx @bolio-ui/cli@latest init my-app -t next" />
-  </Tabs.Item>
-  <Tabs.Item label="npm" value="npm">
-    <Snippet text="npx @bolio-ui/cli@latest init my-app -t next" />
-  </Tabs.Item>
-  <Tabs.Item label="yarn" value="yarn">
-    <Snippet text="yarn dlx @bolio-ui/cli@latest init my-app -t next" />
-  </Tabs.Item>
-  <Tabs.Item label="bun" value="bun">
-    <Snippet text="bunx --bun @bolio-ui/cli@latest init my-app -t next" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm dlx @bolio-ui/cli@latest init my-app -t next" npm="npx @bolio-ui/cli@latest init my-app -t next" yarn="yarn dlx @bolio-ui/cli@latest init my-app -t next" bun="bunx --bun @bolio-ui/cli@latest init my-app -t next" />
 
 Pick the framework with `-t`. Without it, the command asks which one you want.
 
@@ -59,22 +44,7 @@ Add `-y` to skip every question and `--icons` to also install `@bolio-ui/icons`.
 
 Run it at the root of a project you already have. It detects Next.js, Vite, React Router, Remix, Gatsby or RedwoodJS, installs `@bolio-ui/core` with the package manager of your lockfile, and edits the root file of the app:
 
-<Spacer h={3} />
-
-<Tabs initialValue="pnpm" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="pnpm" value="pnpm">
-    <Snippet text="pnpm dlx @bolio-ui/cli@latest init" />
-  </Tabs.Item>
-  <Tabs.Item label="npm" value="npm">
-    <Snippet text="npx @bolio-ui/cli@latest init" />
-  </Tabs.Item>
-  <Tabs.Item label="yarn" value="yarn">
-    <Snippet text="yarn dlx @bolio-ui/cli@latest init" />
-  </Tabs.Item>
-  <Tabs.Item label="bun" value="bun">
-    <Snippet text="bunx --bun @bolio-ui/cli@latest init" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm dlx @bolio-ui/cli@latest init" npm="npx @bolio-ui/cli@latest init" yarn="yarn dlx @bolio-ui/cli@latest init" bun="bunx --bun @bolio-ui/cli@latest init" />
 
 If a file does not look the way the command expects, it leaves the file alone and prints the lines to add. Running it again changes nothing. To do the same by hand, follow the next two steps.
 
@@ -84,22 +54,7 @@ If a file does not look the way the command expects, it leaves the file alone an
 
 Inside your React project directory, install Bolio UI by running any of the following:
 
-<Spacer h={3} />
-
-<Tabs initialValue="pnpm" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="pnpm" value="pnpm">
-    <Snippet text="pnpm add @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="npm" value="npm">
-    <Snippet text="npm i @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="yarn" value="yarn">
-    <Snippet text="yarn add @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="bun" value="bun">
-    <Snippet text="bun add @bolio-ui/core" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
 
 <Spacer h={2} />
 
