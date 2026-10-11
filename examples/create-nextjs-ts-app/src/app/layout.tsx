@@ -1,5 +1,11 @@
-'use client'
+import type { Metadata } from 'next'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+import '@bolio-ui/core/styles.css'
+
+export const metadata: Metadata = {
+  title: 'Bolio UI',
+  icons: { icon: '/favicon.ico' }
+}
 
 export default function RootLayout({
   children
@@ -8,17 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <CssBaseline />
-        <title>Bolio UI</title>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
-        />
-      </head>
       <body>
-        <BolioUIProvider>{children}</BolioUIProvider>
+        <BolioUIProvider>
+          <CssBaseline />
+          {children}
+        </BolioUIProvider>
       </body>
     </html>
   )
