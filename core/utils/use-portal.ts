@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import useSSR from './use-ssr'
 import useLatest from './use-latest'
-import { getId } from './collections'
 
 const createElement = (id: string): HTMLElement => {
   const el = document.createElement('div')
@@ -14,8 +13,9 @@ const usePortal = (
   getContainer?: () => HTMLElement | null
 ): HTMLElement | null => {
   // without an id, one is made once: a new one on every render would be a
-  // new portal element on every render
-  const [generatedId] = useState(getId)
+  // new portal element on every render. `useId` and not a random value, which
+  // Next.js with Cache Components refuses to prerender
+  const generatedId = useId()
   const id = `bolio-ui-${selectId ?? generatedId}`
   const { isBrowser } = useSSR()
   const [elSnapshot, setElSnapshot] = useState<HTMLElement | null>(
@@ -29,7 +29,7 @@ const usePortal = (
     const getContainer = getContainerRef.current
     const customContainer = getContainer ? getContainer() : null
     const parentElement = customContainer || document.body
-    const hasElement = parentElement.querySelector<HTMLElement>(`#${id}`)
+    const hasElement = parentElement.querySelector<HTMLElement>(`[id="${id}"]`)
     const el = hasElement || createElement(id)
 
     if (!hasElement) {

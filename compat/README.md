@@ -22,6 +22,13 @@ PACK_DIR=/tmp/bolio-pack compat/run.sh 16 19
 PACK_DIR=/tmp/bolio-pack compat/run.sh 14 18
 ```
 
+Next 16 also has Cache Components, which fails the build of a page that reads
+the time or a random value while it renders. Check it with:
+
+```bash
+CACHE_COMPONENTS=1 PACK_DIR=/tmp/bolio-pack compat/run.sh 16 19
+```
+
 For each route the script prints the HTTP status, how many `<style>` tags reach
 the server-rendered HTML and how many `jsx-*` classes appear. `jsx-*` classes with
 zero `<style>` tags means the page is served unstyled and only gets CSS after
