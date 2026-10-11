@@ -99,7 +99,7 @@ const corepackManager = (dir) => {
   const field = fs.existsSync(file)
     ? JSON.parse(fs.readFileSync(file, 'utf8')).packageManager
     : null
-  if (field) return field.split('@')[0]
+  if (field) return field
   return path.dirname(dir) !== dir ? corepackManager(path.dirname(dir)) : null
 }
 
@@ -308,7 +308,7 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
   ].filter((name) => !deps[name])
   if (packages.length) {
     console.log(`\nInstalling ${packages.join(', ')} with ${pm}`)
-    const viaCorepack = corepackManager(cwd) === pm
+    const viaCorepack = corepackManager(cwd)?.split('@')[0] === pm
     const [bin, args] = viaCorepack
       ? ['corepack', [pm, command, ...packages]]
       : [pm, [command, ...packages]]
@@ -394,11 +394,14 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     ? 'yarn rw dev'
     : `${pm} ${pm === 'npm' ? 'run ' : ''}${deps.gatsby ? 'develop' : 'dev'}`
   if (!done) return console.log(`\nAdd the lines above, then see ${docs}`)
-  // Yarn 1 refuses a project that asks for Corepack until `corepack enable`
-  const manager = corepackManager(cwd)
-  if (manager && spawnSync(manager, ['--version'], { cwd }).status !== 0)
+  // `yarn --version` passes with the wrong Yarn, so compare the versions
+  const [manager, wanted] = (corepackManager(cwd) || '').split('@')
+  const current = manager
+    ? spawnSync(manager, ['--version'], { cwd, encoding: 'utf8' }).stdout
+    : ''
+  if (wanted && current.trim().split('.')[0] !== wanted.split('.')[0])
     console.log(
-      `\nYour global ${manager} does not match this project. Run \`corepack enable\` once, then \`${dev}\`.`
+      `\nYour current ${manager} is ${current.trim() || 'missing'} and this project uses ${wanted}. Run \`corepack enable\` once, then \`${dev}\`.`
     )
   console.log(
     `\nDone.${created ? ` Run \`cd ${path.relative(process.cwd(), root)}\` and then \`${dev}\`.` : ''} See ${docs}`
