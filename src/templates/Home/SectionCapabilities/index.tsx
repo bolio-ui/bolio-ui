@@ -46,6 +46,26 @@ const platforms = [
     title: 'Redwood',
     link: '/docs/guide/bolio-ui-plus-redwoodjs',
     image: '/img/png/home/redwoodjs.png'
+  },
+  {
+    title: 'TanStack Start',
+    link: '/docs/guide/bolio-ui-plus-tanstack-start',
+    image: '/img/png/home/tanstack-start.png'
+  },
+  {
+    title: 'Waku',
+    link: '/docs/guide/bolio-ui-plus-waku',
+    image: '/img/png/home/waku.png'
+  },
+  {
+    title: 'RedwoodSDK',
+    link: '/docs/guide/bolio-ui-plus-redwoodsdk',
+    image: '/img/png/home/redwoodsdk.png'
+  },
+  {
+    title: 'Astro',
+    link: '/docs/guide/bolio-ui-plus-astro',
+    image: '/img/png/home/astro.png'
   }
 ]
 
@@ -306,7 +326,8 @@ function SectionCapabilities() {
               <Text font={1.2} mt={0} className={styles.panelDescription}>
                 Bolio UI is compatible with a wide range platforms. You can
                 begin using it right away with Next.js, Gatsby.js, RedwoodJS,
-                Vite, or Remix by following the introductory guide.
+                Vite, Remix, TanStack Start, Waku, RedwoodSDK or Astro by
+                following the introductory guide.
               </Text>
               <div className={styles.card}>
                 <div className={styles.cardBar}>
