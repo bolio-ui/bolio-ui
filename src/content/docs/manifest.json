@@ -104,6 +104,11 @@
           "open": true,
           "routes": [
             {
+              "title": "Overview",
+              "keywords": "overview, all components, components list, categories",
+              "path": "/docs/components/overview.mdx"
+            },
+            {
               "title": "Alert",
               "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
               "path": "/docs/components/alert.mdx"
@@ -117,11 +122,6 @@
               "title": "Mention",
               "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
               "path": "/docs/components/mention.mdx"
-            },
-            {
-              "title": "Overview",
-              "keywords": "overview, all components, components list, categories",
-              "path": "/docs/components/overview.mdx"
             },
             {
               "title": "Avatar",

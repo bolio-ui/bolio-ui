@@ -80,6 +80,10 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Overview',
+    url: '/docs/components/overview'
+  },
+  {
     name: 'Alert',
     url: '/docs/components/alert',
     tag: 'New'
@@ -93,10 +97,6 @@ export const components = [
     name: 'Mention',
     url: '/docs/components/mention',
     tag: 'New'
-  },
-  {
-    name: 'Overview',
-    url: '/docs/components/overview'
   },
   {
     name: 'Avatar',
