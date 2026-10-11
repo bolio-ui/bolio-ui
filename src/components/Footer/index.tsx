@@ -71,6 +71,7 @@ function Footer() {
                 <Link href="/docs/components/avatar">Components</Link>
                 <Link href="/docs/hooks/use-body-scroll">Hooks</Link>
                 <Link href="/theme-generator">Theme Generator</Link>
+                <Link href="/faq">FAQ</Link>
               </Row>
             </div>
           </Grid>

@@ -34,7 +34,8 @@ const navLinks = [
     label: 'Theme Generator',
     href: '/theme-generator',
     base: '/theme-generator'
-  }
+  },
+  { label: 'FAQ', href: '/faq', base: '/faq' }
 ]
 
 const Navigation: React.FC = () => {
