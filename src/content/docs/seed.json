@@ -5268,6 +5268,18 @@
   },
   {
     "head": "Getting Started",
+    "title": "New project",
+    "component": false,
+    "path": "/docs/guide/getting-started#new-project"
+  },
+  {
+    "head": "Getting Started",
+    "title": "Existing project",
+    "component": false,
+    "path": "/docs/guide/getting-started#existing-project"
+  },
+  {
+    "head": "Getting Started",
     "title": "Install",
     "component": false,
     "path": "/docs/guide/getting-started#install"
