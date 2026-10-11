@@ -103,12 +103,30 @@ const corepackManager = (dir) => {
   return path.dirname(dir) !== dir ? corepackManager(path.dirname(dir)) : null
 }
 
-const run = (command, args, cwd) =>
-  spawnSync(command, args, {
+// npm warnings, audit and funding notices come from the generators and their
+// templates, not from this setup. Their stderr is kept and shown only when the
+// command fails; `hideOutput` also keeps stdout (package manager progress)
+const quiet = {
+  ...process.env,
+  npm_config_loglevel: 'error',
+  npm_config_audit: 'false',
+  npm_config_fund: 'false'
+}
+
+const run = (command, args, cwd, hideOutput = false) => {
+  const result = spawnSync(command, args, {
     cwd,
-    stdio: 'inherit',
+    env: quiet,
+    stdio: ['inherit', hideOutput ? 'pipe' : 'inherit', 'pipe'],
     shell: process.platform === 'win32'
-  }).status === 0
+  })
+  const ok = result.status === 0
+  if (!ok) {
+    process.stdout.write(result.stdout || '')
+    process.stderr.write(result.stderr || '')
+  }
+  return ok
+}
 
 const main = async () => {
   let root = process.cwd()
@@ -138,6 +156,11 @@ const main = async () => {
     if (!templates[template])
       fail(
         `Unknown template "${template}". Use one of: ${Object.keys(templates).join(', ')}.`
+      )
+    const node = process.versions.node
+    if (template === 'redwood' && node.split('.')[0] !== '20')
+      fail(
+        `Redwood needs Node 20, and you are on Node ${node}. Switch with \`nvm use 20\` and run this command again.`
       )
     let name = nameArg
     if (!name)
@@ -289,9 +312,9 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     const [bin, args] = viaCorepack
       ? ['corepack', [pm, command, ...packages]]
       : [pm, [command, ...packages]]
-    if (!run(bin, args, cwd))
+    if (!run(bin, args, cwd, true))
       fail(
-        `The install failed. Run \`${pm} ${command} ${packages.join(' ')}\` and try again.`
+        `The install failed. ${viaCorepack ? 'If Corepack is off, run `corepack enable`. ' : ''}Run \`${pm} ${command} ${packages.join(' ')}\` and try again.`
       )
   }
 
@@ -371,6 +394,12 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     ? 'yarn rw dev'
     : `${pm} ${pm === 'npm' ? 'run ' : ''}${deps.gatsby ? 'develop' : 'dev'}`
   if (!done) return console.log(`\nAdd the lines above, then see ${docs}`)
+  // Yarn 1 refuses a project that asks for Corepack until `corepack enable`
+  const manager = corepackManager(cwd)
+  if (manager && spawnSync(manager, ['--version'], { cwd }).status !== 0)
+    console.log(
+      `\nYour global ${manager} does not match this project. Run \`corepack enable\` once, then \`${dev}\`.`
+    )
   console.log(
     `\nDone.${created ? ` Run \`cd ${path.relative(process.cwd(), root)}\` and then \`${dev}\`.` : ''} See ${docs}`
   )

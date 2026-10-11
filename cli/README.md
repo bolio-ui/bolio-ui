@@ -4,10 +4,22 @@ Set up Bolio UI with one command, in a new project or in one you already have.
 
 ```bash
 # a new project
+pnpm dlx @bolio-ui/cli@latest init my-app -t next
+# or
 npx @bolio-ui/cli@latest init my-app -t next
+# or
+yarn dlx @bolio-ui/cli@latest init my-app -t next
+# or
+bunx --bun @bolio-ui/cli@latest init my-app -t next
 
 # the project of the current folder
+pnpm dlx @bolio-ui/cli@latest init
+# or
 npx @bolio-ui/cli@latest init
+# or
+yarn dlx @bolio-ui/cli@latest init
+# or
+bunx --bun @bolio-ui/cli@latest init
 ```
 
 It installs `@bolio-ui/core` with your package manager and wraps your app with `BolioUIProvider`.
@@ -23,7 +35,7 @@ It installs `@bolio-ui/core` with your package manager and wraps your app with `
 
 Without `-t`, in a folder with no project, the command asks which template to use. In a terminal it also asks if you want `@bolio-ui/icons`.
 
-Each template runs the generator of the framework (`create-next-app`, `create-vite`, `create-react-router`, `create-gatsby` and `create-redwood-app`) with `npx`, then sets up Bolio UI in the new project. Redwood needs a Node version its generator accepts and Corepack.
+Each template runs the generator of the framework (`create-next-app`, `create-vite`, `create-react-router`, `create-gatsby` and `create-redwood-app`) with `npx`, then sets up Bolio UI in the new project. Redwood needs Node 20 and Corepack; the command stops with a hint when the Node version is different.
 
 ## Supported frameworks
 
