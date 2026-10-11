@@ -26,16 +26,16 @@ It installs `@bolio-ui/core` with your package manager and wraps your app with `
 
 ## Options
 
-| Option             | What it does                                                                |
-| ------------------ | --------------------------------------------------------------------------- |
-| `[name]`           | folder of the new project, with `-t`                                        |
-| `-t`, `--template` | create a new project: `next`, `vite`, `react-router`, `gatsby` or `redwood` |
-| `--icons`          | also install `@bolio-ui/icons`                                              |
-| `-y`, `--yes`      | do not ask anything                                                         |
+| Option             | What it does                                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `[name]`           | folder of the new project, with `-t`                                                                              |
+| `-t`, `--template` | create a new project: `next`, `vite`, `react-router`, `gatsby`, `redwood`, `tanstack`, `waku`, `rwsdk` or `astro` |
+| `--icons`          | also install `@bolio-ui/icons`                                                                                    |
+| `-y`, `--yes`      | do not ask anything                                                                                               |
 
 Without `-t`, in a folder with no project, the command asks which template to use. In a terminal it also asks if you want `@bolio-ui/icons`.
 
-Each template runs the generator of the framework (`create-next-app`, `create-vite`, `create-react-router`, `create-gatsby` and `create-redwood-app`) with `npx`, then sets up Bolio UI in the new project. Redwood needs Node 20 and Corepack; the command stops with a hint when the Node version is different.
+Each template runs the generator of the framework (`create-next-app`, `create-vite`, `create-react-router`, `create-gatsby`, `create-redwood-app`, `@tanstack/cli`, `create-waku`, `create-rwsdk` and `create-astro`) with `npx`, then sets up Bolio UI in the new project. Redwood needs Node 20 and Corepack; the command stops with a hint when the Node version is different. Astro needs Node 22 or newer.
 
 ## Supported frameworks
 
@@ -47,5 +47,9 @@ Each template runs the generator of the framework (`create-next-app`, `create-vi
 | Remix and React Router (framework) | `app/root`                                            |
 | Gatsby                             | `gatsby-browser` and `gatsby-ssr` (created)           |
 | Redwood                            | `web/src/App`                                         |
+| TanStack Start                     | `src/routes/__root`                                   |
+| Waku                               | `src/pages/_layout`                                   |
+| RedwoodSDK                         | `src/app/document`                                    |
+| Astro                              | `src/components/BolioUI` (created, wraps each island) |
 
 When a file does not have the expected code, the command prints what to add instead of editing it, and running it again changes nothing. See the [getting started guide](https://bolio-ui.com/docs/guide/getting-started) for the manual setup.

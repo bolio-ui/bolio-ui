@@ -9,7 +9,7 @@ const usage = `Usage: bolio-ui init [name] [options]
 Sets up Bolio UI in the project of the current folder, or creates a new one.
 
 Options:
-  -t, --template <name>  create a new project: next, vite, react-router, gatsby or redwood
+  -t, --template <name>  create a new project: next, vite, react-router, gatsby, redwood, tanstack, waku, rwsdk or astro
   --icons                also install @bolio-ui/icons
   -y, --yes              do not ask anything`
 
@@ -57,7 +57,21 @@ const templates = {
     npx('create-react-router@latest', name, '--yes', '--no-git-init'),
   gatsby: (name) => npx('create-gatsby@latest', name, '-y', '-ts'),
   redwood: (name) =>
-    npx('create-redwood-app@latest', name, '--yes', '--ts', '--no-git-init')
+    npx('create-redwood-app@latest', name, '--yes', '--ts', '--no-git-init'),
+  tanstack: (name) =>
+    npx('@tanstack/cli@latest', 'create', name, '--yes', '--no-git'),
+  waku: (name) =>
+    npx(
+      'create-waku@latest',
+      '--project-name',
+      name,
+      '--template',
+      '01_basic',
+      '--skip-install'
+    ),
+  rwsdk: (name) => npx('create-rwsdk@latest', 'create', name),
+  astro: (name) =>
+    npx('create-astro@latest', name, '--yes', '--add', 'react', '--no-git')
 }
 
 const readline = require('readline/promises')
@@ -113,11 +127,17 @@ const quiet = {
   npm_config_fund: 'false'
 }
 
-const run = (command, args, cwd, hideOutput = false) => {
+// `keepStderr` leaves stderr connected to the terminal, for generators that
+// draw their spinner there (Gatsby crashes when it is a pipe)
+const run = (command, args, cwd, hideOutput = false, keepStderr = false) => {
   const result = spawnSync(command, args, {
     cwd,
     env: quiet,
-    stdio: ['inherit', hideOutput ? 'pipe' : 'inherit', 'pipe'],
+    stdio: [
+      'inherit',
+      hideOutput ? 'pipe' : 'inherit',
+      keepStderr ? 'inherit' : 'pipe'
+    ],
     shell: process.platform === 'win32'
   })
   const ok = result.status === 0
@@ -158,6 +178,10 @@ const main = async () => {
         `Unknown template "${template}". Use one of: ${Object.keys(templates).join(', ')}.`
       )
     const node = process.versions.node
+    if (template === 'astro' && Number(node.split('.')[0]) < 22)
+      fail(
+        `Astro needs Node 22 or newer, and you are on Node ${node}. Switch with \`nvm use 22\` and run this command again.`
+      )
     if (template === 'redwood' && node.split('.')[0] !== '20')
       fail(
         `Redwood needs Node 20, and you are on Node ${node}. Switch with \`nvm use 20\` and run this command again.`
@@ -174,7 +198,7 @@ const main = async () => {
     const pm = ['pnpm', 'yarn', 'bun'].find((n) => agent.startsWith(n)) || 'npm'
     const [command, args] = templates[template](name, pm)
     console.log(`Creating a ${template} project\n`)
-    if (!run(command, args, root))
+    if (!run(command, args, root, false, template === 'gatsby'))
       fail(
         `The ${template} generator failed. Fix the error above and try again.`
       )
@@ -229,8 +253,24 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
 }
 `
 
-  // `target` is the element that gets wrapped in the provider
-  const edit = (file, target) => ({ file, target })
+  // Astro renders React only in islands, so the provider is a component to
+  // wrap the content of each island
+  const astroProvider = (ts) => `${coreImport}
+${ts ? "import type { ReactNode } from 'react'\n" : ''}
+export default function BolioUI({ children }${ts ? ': { children: ReactNode }' : ''}) {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      {children}
+    </BolioUIProvider>
+  )
+}
+`
+
+  // `target` is the element that gets wrapped in the provider. With `link`, the
+  // file is a server component that cannot import CSS, so the stylesheet is a
+  // URL linked in its <head> (RedwoodSDK)
+  const edit = (file, target, link) => ({ file, target, link })
 
   const getSetup = () => {
     if (deps.next) {
@@ -279,6 +319,36 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
         }
       }
     }
+    if (deps['@tanstack/react-start']) {
+      const rootFile = find(withExt('src/routes/__root'))
+      if (rootFile) return edit(rootFile, '{children}')
+      fail(
+        `Could not find src/routes/__root. Set up BolioUIProvider manually: ${docs}`
+      )
+    }
+    if (deps.waku) {
+      const layout = find(withExt('src/pages/_layout'))
+      if (layout) return edit(layout, '{children}')
+      fail(
+        `Could not find src/pages/_layout. Set up BolioUIProvider manually: ${docs}`
+      )
+    }
+    if (deps.rwsdk) {
+      const document = find(withExt('src/app/document'))
+      if (document) return edit(document, '{children}', true)
+      fail(
+        `Could not find src/app/document. Set up BolioUIProvider manually: ${docs}`
+      )
+    }
+    if (deps.astro) {
+      const ts = find(['tsconfig.json'])
+      return {
+        files: {
+          [`src/components/BolioUI.${ts ? 'tsx' : 'jsx'}`]: astroProvider(ts)
+        },
+        hint: 'Astro renders React only in islands. Wrap the content of each island with BolioUI, for example <BolioUI client:load><YourComponent /></BolioUI> in an .astro file.'
+      }
+    }
     if (deps.vite && deps.react) {
       const main = find(['src/main', 'src/index'].flatMap(withExt))
       if (main) {
@@ -291,7 +361,7 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
       fail(`Could not find src/main. Set up BolioUIProvider manually: ${docs}`)
     }
     fail(
-      `Could not detect Next.js, Remix, React Router, Gatsby, Redwood or Vite with React. Set up BolioUIProvider manually: ${docs}`
+      `Could not detect Next.js, Remix, React Router, Gatsby, Redwood, TanStack Start, Waku, RedwoodSDK, Astro or Vite with React. Set up BolioUIProvider manually: ${docs}`
     )
   }
 
@@ -304,7 +374,9 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
   const { pm, command } = packageManager(cwd)
   const packages = [
     '@bolio-ui/core',
-    ...(icons ? ['@bolio-ui/icons'] : [])
+    ...(icons ? ['@bolio-ui/icons'] : []),
+    // Waku builds with a Babel plugin whose peer dependency Yarn does not install
+    ...(deps['@rolldown/plugin-babel'] ? ['@babel/core'] : [])
   ].filter((name) => !deps[name])
   if (packages.length) {
     console.log(`\nInstalling ${packages.join(', ')} with ${pm}`)
@@ -318,7 +390,7 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
       )
   }
 
-  const update = ({ file, target }) => {
+  const update = ({ file, target, link }) => {
     const source = read(file)
     if (source.includes('BolioUIProvider')) {
       console.log(`${file} already uses BolioUIProvider`)
@@ -332,19 +404,25 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     ]
     const last = matches[matches.length - 1]
     const semi = last && last[0].endsWith(';') ? ';' : ''
-    const lines = coreImport
+    const lines = (
+      link
+        ? `import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'\nimport bolioStyles from '@bolio-ui/core/styles.css?url'`
+        : coreImport
+    )
       .split('\n')
       .map((line) => line + semi)
       .join('\n')
+    const stylesheet = '<link rel="stylesheet" href={bolioStyles} />'
 
     // the last one: a layout may also write `{children}` in its parameters
     const at = source.lastIndexOf(target)
     const inParameters =
       target === '{children}' && /[(,]\s*$/.test(source.slice(0, at))
-    if (at === -1 || inParameters) {
+    const head = source.match(/^([ \t]*)<head>[ \t]*\n/m)
+    if (at === -1 || inParameters || (link && !head)) {
       console.log(`Could not update ${file} automatically. Add this to it:\n`)
       console.log(
-        `${lines}\n\n<BolioUIProvider><CssBaseline />${target}</BolioUIProvider>\n`
+        `${lines}\n\n${link ? `${stylesheet} inside <head>, and ` : ''}<BolioUIProvider><CssBaseline />${target}</BolioUIProvider>\n`
       )
       return false
     }
@@ -361,12 +439,19 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     const wrapped = alone
       ? `<BolioUIProvider>\n${indent}  <CssBaseline />\n${indent}  ${target}\n${indent}</BolioUIProvider>`
       : `<BolioUIProvider><CssBaseline />${target}</BolioUIProvider>`
-    const body = alone
+    const wrappedSource = alone
       ? source.slice(0, lineStart) +
         indent +
         wrapped +
         source.slice(at + target.length)
       : source.slice(0, at) + wrapped + source.slice(at + target.length)
+    // <head> comes before the children, so the offsets after it do not move
+    const body = link
+      ? wrappedSource.replace(
+          /^([ \t]*)<head>[ \t]*\n/m,
+          (match, space) => `${match}${space}  ${stylesheet}\n`
+        )
+      : wrappedSource
 
     const end = last ? last.index + last[0].length : 0
     // a file with no imports gets a blank line between them and the code
@@ -389,6 +474,7 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
     })
 
   const done = setup.files ? (create(setup.files), true) : update(setup)
+  if (setup.hint) console.log(`\n${setup.hint}`)
 
   const dev = deps['@redwoodjs/web']
     ? 'yarn rw dev'
@@ -396,8 +482,13 @@ export default function App({ Component, pageProps }${ts ? ': AppProps' : ''}) {
   if (!done) return console.log(`\nAdd the lines above, then see ${docs}`)
   // `yarn --version` passes with the wrong Yarn, so compare the versions
   const [manager, wanted] = (corepackManager(cwd) || '').split('@')
+  // a manager that cannot run (missing, or a .cmd on Windows) has no output
   const current = manager
-    ? spawnSync(manager, ['--version'], { cwd, encoding: 'utf8' }).stdout
+    ? spawnSync(manager, ['--version'], {
+        cwd,
+        encoding: 'utf8',
+        shell: process.platform === 'win32'
+      }).stdout || ''
     : ''
   if (wanted && current.trim().split('.')[0] !== wanted.split('.')[0])
     console.log(
