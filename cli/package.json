@@ -1,7 +1,7 @@
 {
   "name": "@bolio-ui/cli",
-  "version": "2.0.0-alpha.0",
-  "description": "Set up Bolio UI in a Next.js or Vite project with one command.",
+  "version": "1.0.0",
+  "description": "Create a project with Bolio UI or set it up in the one you have, with one command.",
   "license": "MIT",
   "author": {
     "name": "Bruno Andrade",
@@ -18,9 +18,6 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "release:next": "yarn publish --tag next --non-interactive"
-  },
   "publishConfig": {
     "access": "public"
   },
