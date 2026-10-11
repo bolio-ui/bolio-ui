@@ -37,7 +37,7 @@ function Footer() {
         } as React.CSSProperties
       }
     >
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <Grid.Container gap={2} alignItems="center">
           <Grid xs={12} md={6}>
             <Logo name="Bolio UI" />

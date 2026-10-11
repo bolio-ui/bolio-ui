@@ -94,7 +94,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* A dashboard-style rail: pinned to the real edge of the viewport and
-          full height, not centered inside the 1300px content container —
+          full height, not centered inside the 1400px content container —
           otherwise it floats with a huge empty gutter on wide screens. */}
       <aside className={styles.sidebarLeft} style={themed}>
         <Sidebar sidebar={sidebar} />
@@ -119,7 +119,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
       {/* Sibling of .docs-main, not a child of it — the only piece that
-          keeps reaching the real right edge of the screen even past 1300px,
+          keeps reaching the real right edge of the screen even past 1400px,
           while everything else caps and centers. */}
       <div className={styles.footer} style={themed}>
         <div className={styles.footerInner}>

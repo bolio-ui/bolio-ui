@@ -1,11 +1,11 @@
 .sidebarLeft {
   position: fixed;
-  /* Above 1300px the whole shell caps and centers like the rest of
+  /* Above 1400px the whole shell caps and centers like the rest of
      the site, but the sidebar is position:fixed (viewport-relative,
      not container-relative) so it needs its own matching offset
      instead of a wrapping Container — a Container here can't align
      with a fixed element and reintroduces the old gap/overlap bug. */
-  left: max(0px, calc((100vw - 1300px) / 2));
+  left: max(0px, calc((100vw - 1400px) / 2));
   top: 60px;
   bottom: 0;
   width: 260px;
@@ -16,7 +16,7 @@
 }
 
 .main {
-  margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+  margin-left: calc(260px + max(0px, calc((100vw - 1400px) / 2)));
   max-width: 1040px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .footer {
-  margin-left: calc(260px + max(0px, calc((100vw - 1300px) / 2)));
+  margin-left: calc(260px + max(0px, calc((100vw - 1400px) / 2)));
   border-top: 1px solid var(--docs-border);
 }
 

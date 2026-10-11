@@ -174,7 +174,7 @@ function SectionPlayground() {
         } as React.CSSProperties
       }
     >
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <div className={styles.head}>
           <div>
             <Eyebrow>Theming</Eyebrow>

@@ -41,7 +41,7 @@ function Hero() {
 
   return (
     <Section py={4}>
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <Grid.Container gap={2}>
           <Grid xs={12} sm={6} md={5} direction="column" justify="center">
             <Eyebrow>React UI Kit</Eyebrow>

@@ -124,7 +124,7 @@ function SectionCapabilities() {
         } as React.CSSProperties
       }
     >
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <div className={styles.capabilities}>
           <nav className={styles.rail}>
             <Text className={styles.railTitle} font={0.75} my={0} mb={1.5}>
