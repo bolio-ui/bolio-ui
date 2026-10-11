@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useReducedMotion } from 'core'
+
+export const meta = {
+  title: 'useReducedMotion',
+  description: 'Detect when the user asks the system to reduce motion.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 47
+}
+
+## useReducedMotion
+
+Detect when the user asks the system to reduce motion.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Turn on reduced motion in the system settings to see it change."
+  scope={{ Text, useReducedMotion }}
+  code={`
+() => {
+  const reduced = useReducedMotion()
+  return <Text>{reduced ? 'Reduced motion' : 'Motion allowed'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-reduced-motion.mdx">
+<Attributes.Title>useReducedMotion</Attributes.Title>
+
+```ts
+const useReducedMotion = () => boolean
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

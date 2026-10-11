@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Spacer, useDrag } from 'core'
+
+export const meta = {
+  title: 'useDrag',
+  description: 'Drag an element with the pointer and read how far it moved.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 63
+}
+
+## useDrag
+
+Drag an element with the pointer and read how far it moved.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Drag the box, the position is kept between drags."
+  scope={{ Button, Spacer, useDrag }}
+  code={`
+() => {
+  const { ref, position, dragging, reset } = useDrag()
+  return (
+    <>
+      <div ref={ref} style={{ width: 120, padding: 16, border: '1px solid currentColor', cursor: dragging ? 'grabbing' : 'grab', touchAction: 'none', userSelect: 'none', transform: 'translate(' + position.x + 'px, ' + position.y + 'px)' }}>Drag me</div>
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={reset}>Reset</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-drag.mdx">
+<Attributes.Title>useDrag</Attributes.Title>
+
+```ts
+const useDrag = <T extends HTMLElement = HTMLElement>() => {
+  ref: RefObject<T | null>
+  dragging: boolean
+  position: { x: number; y: number }
+  reset: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

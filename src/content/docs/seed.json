@@ -4710,6 +4710,57 @@
     "path": "/docs/hooks/use-clipboard#apis"
   },
   {
+    "title": "useCollapse",
+    "component": true,
+    "path": "/docs/hooks/use-collapse"
+  },
+  {
+    "head": "useCollapse",
+    "title": "useCollapse General",
+    "component": false,
+    "path": "/docs/hooks/use-collapse#general"
+  },
+  {
+    "head": "useCollapse",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-collapse#apis"
+  },
+  {
+    "title": "useColorScheme",
+    "component": true,
+    "path": "/docs/hooks/use-color-scheme"
+  },
+  {
+    "head": "useColorScheme",
+    "title": "useColorScheme General",
+    "component": false,
+    "path": "/docs/hooks/use-color-scheme#general"
+  },
+  {
+    "head": "useColorScheme",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-color-scheme#apis"
+  },
+  {
+    "title": "useCounter",
+    "component": true,
+    "path": "/docs/hooks/use-counter"
+  },
+  {
+    "head": "useCounter",
+    "title": "useCounter General",
+    "component": false,
+    "path": "/docs/hooks/use-counter#general"
+  },
+  {
+    "head": "useCounter",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-counter#apis"
+  },
+  {
     "title": "useCurrentState",
     "component": true,
     "path": "/docs/hooks/use-current-state"
@@ -4725,6 +4776,414 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-current-state#apis"
+  },
+  {
+    "title": "useDebouncedCallback",
+    "component": true,
+    "path": "/docs/hooks/use-debounced-callback"
+  },
+  {
+    "head": "useDebouncedCallback",
+    "title": "useDebouncedCallback General",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-callback#general"
+  },
+  {
+    "head": "useDebouncedCallback",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-callback#apis"
+  },
+  {
+    "title": "useDebouncedState",
+    "component": true,
+    "path": "/docs/hooks/use-debounced-state"
+  },
+  {
+    "head": "useDebouncedState",
+    "title": "useDebouncedState General",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-state#general"
+  },
+  {
+    "head": "useDebouncedState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-state#apis"
+  },
+  {
+    "title": "useDebouncedValue",
+    "component": true,
+    "path": "/docs/hooks/use-debounced-value"
+  },
+  {
+    "head": "useDebouncedValue",
+    "title": "useDebouncedValue General",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-value#general"
+  },
+  {
+    "head": "useDebouncedValue",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-debounced-value#apis"
+  },
+  {
+    "title": "useDidUpdate",
+    "component": true,
+    "path": "/docs/hooks/use-did-update"
+  },
+  {
+    "head": "useDidUpdate",
+    "title": "useDidUpdate General",
+    "component": false,
+    "path": "/docs/hooks/use-did-update#general"
+  },
+  {
+    "head": "useDidUpdate",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-did-update#apis"
+  },
+  {
+    "title": "useDisclosure",
+    "component": true,
+    "path": "/docs/hooks/use-disclosure"
+  },
+  {
+    "head": "useDisclosure",
+    "title": "useDisclosure General",
+    "component": false,
+    "path": "/docs/hooks/use-disclosure#general"
+  },
+  {
+    "head": "useDisclosure",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-disclosure#apis"
+  },
+  {
+    "title": "useDocumentTitle",
+    "component": true,
+    "path": "/docs/hooks/use-document-title"
+  },
+  {
+    "head": "useDocumentTitle",
+    "title": "useDocumentTitle General",
+    "component": false,
+    "path": "/docs/hooks/use-document-title#general"
+  },
+  {
+    "head": "useDocumentTitle",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-document-title#apis"
+  },
+  {
+    "title": "useDocumentVisibility",
+    "component": true,
+    "path": "/docs/hooks/use-document-visibility"
+  },
+  {
+    "head": "useDocumentVisibility",
+    "title": "useDocumentVisibility General",
+    "component": false,
+    "path": "/docs/hooks/use-document-visibility#general"
+  },
+  {
+    "head": "useDocumentVisibility",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-document-visibility#apis"
+  },
+  {
+    "title": "useDrag",
+    "component": true,
+    "path": "/docs/hooks/use-drag"
+  },
+  {
+    "head": "useDrag",
+    "title": "useDrag General",
+    "component": false,
+    "path": "/docs/hooks/use-drag#general"
+  },
+  {
+    "head": "useDrag",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-drag#apis"
+  },
+  {
+    "title": "useElementSize",
+    "component": true,
+    "path": "/docs/hooks/use-element-size"
+  },
+  {
+    "head": "useElementSize",
+    "title": "useElementSize General",
+    "component": false,
+    "path": "/docs/hooks/use-element-size#general"
+  },
+  {
+    "head": "useElementSize",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-element-size#apis"
+  },
+  {
+    "title": "useEventListener",
+    "component": true,
+    "path": "/docs/hooks/use-event-listener"
+  },
+  {
+    "head": "useEventListener",
+    "title": "useEventListener General",
+    "component": false,
+    "path": "/docs/hooks/use-event-listener#general"
+  },
+  {
+    "head": "useEventListener",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-event-listener#apis"
+  },
+  {
+    "title": "useEyeDropper",
+    "component": true,
+    "path": "/docs/hooks/use-eye-dropper"
+  },
+  {
+    "head": "useEyeDropper",
+    "title": "useEyeDropper General",
+    "component": false,
+    "path": "/docs/hooks/use-eye-dropper#general"
+  },
+  {
+    "head": "useEyeDropper",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-eye-dropper#apis"
+  },
+  {
+    "title": "useFavicon",
+    "component": true,
+    "path": "/docs/hooks/use-favicon"
+  },
+  {
+    "head": "useFavicon",
+    "title": "useFavicon General",
+    "component": false,
+    "path": "/docs/hooks/use-favicon#general"
+  },
+  {
+    "head": "useFavicon",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-favicon#apis"
+  },
+  {
+    "title": "useFetch",
+    "component": true,
+    "path": "/docs/hooks/use-fetch"
+  },
+  {
+    "head": "useFetch",
+    "title": "useFetch General",
+    "component": false,
+    "path": "/docs/hooks/use-fetch#general"
+  },
+  {
+    "head": "useFetch",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-fetch#apis"
+  },
+  {
+    "title": "useFileDialog",
+    "component": true,
+    "path": "/docs/hooks/use-file-dialog"
+  },
+  {
+    "head": "useFileDialog",
+    "title": "useFileDialog General",
+    "component": false,
+    "path": "/docs/hooks/use-file-dialog#general"
+  },
+  {
+    "head": "useFileDialog",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-file-dialog#apis"
+  },
+  {
+    "title": "useFloatingWindow",
+    "component": true,
+    "path": "/docs/hooks/use-floating-window"
+  },
+  {
+    "head": "useFloatingWindow",
+    "title": "useFloatingWindow General",
+    "component": false,
+    "path": "/docs/hooks/use-floating-window#general"
+  },
+  {
+    "head": "useFloatingWindow",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-floating-window#apis"
+  },
+  {
+    "title": "useFocusReturn",
+    "component": true,
+    "path": "/docs/hooks/use-focus-return"
+  },
+  {
+    "head": "useFocusReturn",
+    "title": "useFocusReturn General",
+    "component": false,
+    "path": "/docs/hooks/use-focus-return#general"
+  },
+  {
+    "head": "useFocusReturn",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-focus-return#apis"
+  },
+  {
+    "title": "useFocusTrap",
+    "component": true,
+    "path": "/docs/hooks/use-focus-trap"
+  },
+  {
+    "head": "useFocusTrap",
+    "title": "useFocusTrap General",
+    "component": false,
+    "path": "/docs/hooks/use-focus-trap#general"
+  },
+  {
+    "head": "useFocusTrap",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-focus-trap#apis"
+  },
+  {
+    "title": "useFocusWithin",
+    "component": true,
+    "path": "/docs/hooks/use-focus-within"
+  },
+  {
+    "head": "useFocusWithin",
+    "title": "useFocusWithin General",
+    "component": false,
+    "path": "/docs/hooks/use-focus-within#general"
+  },
+  {
+    "head": "useFocusWithin",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-focus-within#apis"
+  },
+  {
+    "title": "useForceUpdate",
+    "component": true,
+    "path": "/docs/hooks/use-force-update"
+  },
+  {
+    "head": "useForceUpdate",
+    "title": "useForceUpdate General",
+    "component": false,
+    "path": "/docs/hooks/use-force-update#general"
+  },
+  {
+    "head": "useForceUpdate",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-force-update#apis"
+  },
+  {
+    "title": "useFullscreen",
+    "component": true,
+    "path": "/docs/hooks/use-fullscreen"
+  },
+  {
+    "head": "useFullscreen",
+    "title": "useFullscreen General",
+    "component": false,
+    "path": "/docs/hooks/use-fullscreen#general"
+  },
+  {
+    "head": "useFullscreen",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-fullscreen#apis"
+  },
+  {
+    "title": "useHash",
+    "component": true,
+    "path": "/docs/hooks/use-hash"
+  },
+  {
+    "head": "useHash",
+    "title": "useHash General",
+    "component": false,
+    "path": "/docs/hooks/use-hash#general"
+  },
+  {
+    "head": "useHash",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-hash#apis"
+  },
+  {
+    "title": "useHeadroom",
+    "component": true,
+    "path": "/docs/hooks/use-headroom"
+  },
+  {
+    "head": "useHeadroom",
+    "title": "useHeadroom General",
+    "component": false,
+    "path": "/docs/hooks/use-headroom#general"
+  },
+  {
+    "head": "useHeadroom",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-headroom#apis"
+  },
+  {
+    "title": "useHover",
+    "component": true,
+    "path": "/docs/hooks/use-hover"
+  },
+  {
+    "head": "useHover",
+    "title": "useHover General",
+    "component": false,
+    "path": "/docs/hooks/use-hover#general"
+  },
+  {
+    "head": "useHover",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-hover#apis"
+  },
+  {
+    "title": "useIdle",
+    "component": true,
+    "path": "/docs/hooks/use-idle"
+  },
+  {
+    "head": "useIdle",
+    "title": "useIdle General",
+    "component": false,
+    "path": "/docs/hooks/use-idle#general"
+  },
+  {
+    "head": "useIdle",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-idle#apis"
   },
   {
     "title": "useInput",
@@ -4748,6 +5207,108 @@
     "title": "Keyboard Options",
     "component": false,
     "path": "/docs/hooks/use-input#keyboardoptions"
+  },
+  {
+    "title": "useInputState",
+    "component": true,
+    "path": "/docs/hooks/use-input-state"
+  },
+  {
+    "head": "useInputState",
+    "title": "useInputState General",
+    "component": false,
+    "path": "/docs/hooks/use-input-state#general"
+  },
+  {
+    "head": "useInputState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-input-state#apis"
+  },
+  {
+    "title": "useIntersection",
+    "component": true,
+    "path": "/docs/hooks/use-intersection"
+  },
+  {
+    "head": "useIntersection",
+    "title": "useIntersection General",
+    "component": false,
+    "path": "/docs/hooks/use-intersection#general"
+  },
+  {
+    "head": "useIntersection",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-intersection#apis"
+  },
+  {
+    "title": "useInterval",
+    "component": true,
+    "path": "/docs/hooks/use-interval"
+  },
+  {
+    "head": "useInterval",
+    "title": "useInterval General",
+    "component": false,
+    "path": "/docs/hooks/use-interval#general"
+  },
+  {
+    "head": "useInterval",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-interval#apis"
+  },
+  {
+    "title": "useInViewport",
+    "component": true,
+    "path": "/docs/hooks/use-in-viewport"
+  },
+  {
+    "head": "useInViewport",
+    "title": "useInViewport General",
+    "component": false,
+    "path": "/docs/hooks/use-in-viewport#general"
+  },
+  {
+    "head": "useInViewport",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-in-viewport#apis"
+  },
+  {
+    "title": "useIsFirstRender",
+    "component": true,
+    "path": "/docs/hooks/use-is-first-render"
+  },
+  {
+    "head": "useIsFirstRender",
+    "title": "useIsFirstRender General",
+    "component": false,
+    "path": "/docs/hooks/use-is-first-render#general"
+  },
+  {
+    "head": "useIsFirstRender",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-is-first-render#apis"
+  },
+  {
+    "title": "useIsomorphicEffect",
+    "component": true,
+    "path": "/docs/hooks/use-isomorphic-effect"
+  },
+  {
+    "head": "useIsomorphicEffect",
+    "title": "useIsomorphicEffect General",
+    "component": false,
+    "path": "/docs/hooks/use-isomorphic-effect#general"
+  },
+  {
+    "head": "useIsomorphicEffect",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-isomorphic-effect#apis"
   },
   {
     "title": "useKeyboard",
@@ -4779,6 +5340,108 @@
     "path": "/docs/hooks/use-keyboard#keyboardoptions"
   },
   {
+    "title": "useListState",
+    "component": true,
+    "path": "/docs/hooks/use-list-state"
+  },
+  {
+    "head": "useListState",
+    "title": "useListState General",
+    "component": false,
+    "path": "/docs/hooks/use-list-state#general"
+  },
+  {
+    "head": "useListState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-list-state#apis"
+  },
+  {
+    "title": "useLocalStorage",
+    "component": true,
+    "path": "/docs/hooks/use-local-storage"
+  },
+  {
+    "head": "useLocalStorage",
+    "title": "useLocalStorage General",
+    "component": false,
+    "path": "/docs/hooks/use-local-storage#general"
+  },
+  {
+    "head": "useLocalStorage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-local-storage#apis"
+  },
+  {
+    "title": "useLogger",
+    "component": true,
+    "path": "/docs/hooks/use-logger"
+  },
+  {
+    "head": "useLogger",
+    "title": "useLogger General",
+    "component": false,
+    "path": "/docs/hooks/use-logger#general"
+  },
+  {
+    "head": "useLogger",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-logger#apis"
+  },
+  {
+    "title": "useLongPress",
+    "component": true,
+    "path": "/docs/hooks/use-long-press"
+  },
+  {
+    "head": "useLongPress",
+    "title": "useLongPress General",
+    "component": false,
+    "path": "/docs/hooks/use-long-press#general"
+  },
+  {
+    "head": "useLongPress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-long-press#apis"
+  },
+  {
+    "title": "useMap",
+    "component": true,
+    "path": "/docs/hooks/use-map"
+  },
+  {
+    "head": "useMap",
+    "title": "useMap General",
+    "component": false,
+    "path": "/docs/hooks/use-map#general"
+  },
+  {
+    "head": "useMap",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-map#apis"
+  },
+  {
+    "title": "useMask",
+    "component": true,
+    "path": "/docs/hooks/use-mask"
+  },
+  {
+    "head": "useMask",
+    "title": "useMask General",
+    "component": false,
+    "path": "/docs/hooks/use-mask#general"
+  },
+  {
+    "head": "useMask",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-mask#apis"
+  },
+  {
     "title": "useMediaQuery",
     "component": true,
     "path": "/docs/hooks/use-media-query"
@@ -4802,6 +5465,23 @@
     "path": "/docs/hooks/use-media-query#apis"
   },
   {
+    "title": "useMergedRef",
+    "component": true,
+    "path": "/docs/hooks/use-merged-ref"
+  },
+  {
+    "head": "useMergedRef",
+    "title": "useMergedRef General",
+    "component": false,
+    "path": "/docs/hooks/use-merged-ref#general"
+  },
+  {
+    "head": "useMergedRef",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-merged-ref#apis"
+  },
+  {
     "title": "useModal",
     "component": true,
     "path": "/docs/hooks/use-modal"
@@ -4817,6 +5497,261 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-modal#apis"
+  },
+  {
+    "title": "useMounted",
+    "component": true,
+    "path": "/docs/hooks/use-mounted"
+  },
+  {
+    "head": "useMounted",
+    "title": "useMounted General",
+    "component": false,
+    "path": "/docs/hooks/use-mounted#general"
+  },
+  {
+    "head": "useMounted",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-mounted#apis"
+  },
+  {
+    "title": "useMouse",
+    "component": true,
+    "path": "/docs/hooks/use-mouse"
+  },
+  {
+    "head": "useMouse",
+    "title": "useMouse General",
+    "component": false,
+    "path": "/docs/hooks/use-mouse#general"
+  },
+  {
+    "head": "useMouse",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-mouse#apis"
+  },
+  {
+    "title": "useMove",
+    "component": true,
+    "path": "/docs/hooks/use-move"
+  },
+  {
+    "head": "useMove",
+    "title": "useMove General",
+    "component": false,
+    "path": "/docs/hooks/use-move#general"
+  },
+  {
+    "head": "useMove",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-move#apis"
+  },
+  {
+    "title": "useMutationObserver",
+    "component": true,
+    "path": "/docs/hooks/use-mutation-observer"
+  },
+  {
+    "head": "useMutationObserver",
+    "title": "useMutationObserver General",
+    "component": false,
+    "path": "/docs/hooks/use-mutation-observer#general"
+  },
+  {
+    "head": "useMutationObserver",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-mutation-observer#apis"
+  },
+  {
+    "title": "useNetwork",
+    "component": true,
+    "path": "/docs/hooks/use-network"
+  },
+  {
+    "head": "useNetwork",
+    "title": "useNetwork General",
+    "component": false,
+    "path": "/docs/hooks/use-network#general"
+  },
+  {
+    "head": "useNetwork",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-network#apis"
+  },
+  {
+    "title": "useOrientation",
+    "component": true,
+    "path": "/docs/hooks/use-orientation"
+  },
+  {
+    "head": "useOrientation",
+    "title": "useOrientation General",
+    "component": false,
+    "path": "/docs/hooks/use-orientation#general"
+  },
+  {
+    "head": "useOrientation",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-orientation#apis"
+  },
+  {
+    "title": "useOs",
+    "component": true,
+    "path": "/docs/hooks/use-os"
+  },
+  {
+    "head": "useOs",
+    "title": "useOs General",
+    "component": false,
+    "path": "/docs/hooks/use-os#general"
+  },
+  {
+    "head": "useOs",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-os#apis"
+  },
+  {
+    "title": "usePageLeave",
+    "component": true,
+    "path": "/docs/hooks/use-page-leave"
+  },
+  {
+    "head": "usePageLeave",
+    "title": "usePageLeave General",
+    "component": false,
+    "path": "/docs/hooks/use-page-leave#general"
+  },
+  {
+    "head": "usePageLeave",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-page-leave#apis"
+  },
+  {
+    "title": "usePagination",
+    "component": true,
+    "path": "/docs/hooks/use-pagination"
+  },
+  {
+    "head": "usePagination",
+    "title": "usePagination General",
+    "component": false,
+    "path": "/docs/hooks/use-pagination#general"
+  },
+  {
+    "head": "usePagination",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-pagination#apis"
+  },
+  {
+    "title": "usePrevious",
+    "component": true,
+    "path": "/docs/hooks/use-previous"
+  },
+  {
+    "head": "usePrevious",
+    "title": "usePrevious General",
+    "component": false,
+    "path": "/docs/hooks/use-previous#general"
+  },
+  {
+    "head": "usePrevious",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-previous#apis"
+  },
+  {
+    "title": "useQueue",
+    "component": true,
+    "path": "/docs/hooks/use-queue"
+  },
+  {
+    "head": "useQueue",
+    "title": "useQueue General",
+    "component": false,
+    "path": "/docs/hooks/use-queue#general"
+  },
+  {
+    "head": "useQueue",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-queue#apis"
+  },
+  {
+    "title": "useRadialMove",
+    "component": true,
+    "path": "/docs/hooks/use-radial-move"
+  },
+  {
+    "head": "useRadialMove",
+    "title": "useRadialMove General",
+    "component": false,
+    "path": "/docs/hooks/use-radial-move#general"
+  },
+  {
+    "head": "useRadialMove",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-radial-move#apis"
+  },
+  {
+    "title": "useReducedMotion",
+    "component": true,
+    "path": "/docs/hooks/use-reduced-motion"
+  },
+  {
+    "head": "useReducedMotion",
+    "title": "useReducedMotion General",
+    "component": false,
+    "path": "/docs/hooks/use-reduced-motion#general"
+  },
+  {
+    "head": "useReducedMotion",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-reduced-motion#apis"
+  },
+  {
+    "title": "useResizeObserver",
+    "component": true,
+    "path": "/docs/hooks/use-resize-observer"
+  },
+  {
+    "head": "useResizeObserver",
+    "title": "useResizeObserver General",
+    "component": false,
+    "path": "/docs/hooks/use-resize-observer#general"
+  },
+  {
+    "head": "useResizeObserver",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-resize-observer#apis"
+  },
+  {
+    "title": "useRovingIndex",
+    "component": true,
+    "path": "/docs/hooks/use-roving-index"
+  },
+  {
+    "head": "useRovingIndex",
+    "title": "useRovingIndex General",
+    "component": false,
+    "path": "/docs/hooks/use-roving-index#general"
+  },
+  {
+    "head": "useRovingIndex",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-roving-index#apis"
   },
   {
     "title": "useScale",
@@ -4854,6 +5789,176 @@
     "path": "/docs/hooks/use-scale#withscale"
   },
   {
+    "title": "useScrollDirection",
+    "component": true,
+    "path": "/docs/hooks/use-scroll-direction"
+  },
+  {
+    "head": "useScrollDirection",
+    "title": "useScrollDirection General",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-direction#general"
+  },
+  {
+    "head": "useScrollDirection",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-direction#apis"
+  },
+  {
+    "title": "useScroller",
+    "component": true,
+    "path": "/docs/hooks/use-scroller"
+  },
+  {
+    "head": "useScroller",
+    "title": "useScroller General",
+    "component": false,
+    "path": "/docs/hooks/use-scroller#general"
+  },
+  {
+    "head": "useScroller",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scroller#apis"
+  },
+  {
+    "title": "useScrollIntoView",
+    "component": true,
+    "path": "/docs/hooks/use-scroll-into-view"
+  },
+  {
+    "head": "useScrollIntoView",
+    "title": "useScrollIntoView General",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-into-view#general"
+  },
+  {
+    "head": "useScrollIntoView",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-into-view#apis"
+  },
+  {
+    "title": "useScrollSpy",
+    "component": true,
+    "path": "/docs/hooks/use-scroll-spy"
+  },
+  {
+    "head": "useScrollSpy",
+    "title": "useScrollSpy General",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-spy#general"
+  },
+  {
+    "head": "useScrollSpy",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-scroll-spy#apis"
+  },
+  {
+    "title": "useSelection",
+    "component": true,
+    "path": "/docs/hooks/use-selection"
+  },
+  {
+    "head": "useSelection",
+    "title": "useSelection General",
+    "component": false,
+    "path": "/docs/hooks/use-selection#general"
+  },
+  {
+    "head": "useSelection",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-selection#apis"
+  },
+  {
+    "title": "useSet",
+    "component": true,
+    "path": "/docs/hooks/use-set"
+  },
+  {
+    "head": "useSet",
+    "title": "useSet General",
+    "component": false,
+    "path": "/docs/hooks/use-set#general"
+  },
+  {
+    "head": "useSet",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-set#apis"
+  },
+  {
+    "title": "useSetState",
+    "component": true,
+    "path": "/docs/hooks/use-set-state"
+  },
+  {
+    "head": "useSetState",
+    "title": "useSetState General",
+    "component": false,
+    "path": "/docs/hooks/use-set-state#general"
+  },
+  {
+    "head": "useSetState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-set-state#apis"
+  },
+  {
+    "title": "useShallowEffect",
+    "component": true,
+    "path": "/docs/hooks/use-shallow-effect"
+  },
+  {
+    "head": "useShallowEffect",
+    "title": "useShallowEffect General",
+    "component": false,
+    "path": "/docs/hooks/use-shallow-effect#general"
+  },
+  {
+    "head": "useShallowEffect",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-shallow-effect#apis"
+  },
+  {
+    "title": "useSplitter",
+    "component": true,
+    "path": "/docs/hooks/use-splitter"
+  },
+  {
+    "head": "useSplitter",
+    "title": "useSplitter General",
+    "component": false,
+    "path": "/docs/hooks/use-splitter#general"
+  },
+  {
+    "head": "useSplitter",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-splitter#apis"
+  },
+  {
+    "title": "useStateHistory",
+    "component": true,
+    "path": "/docs/hooks/use-state-history"
+  },
+  {
+    "head": "useStateHistory",
+    "title": "useStateHistory General",
+    "component": false,
+    "path": "/docs/hooks/use-state-history#general"
+  },
+  {
+    "head": "useStateHistory",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-state-history#apis"
+  },
+  {
     "title": "useTabs",
     "component": true,
     "path": "/docs/hooks/use-tabs"
@@ -4869,6 +5974,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-tabs#apis"
+  },
+  {
+    "title": "useTextSelection",
+    "component": true,
+    "path": "/docs/hooks/use-text-selection"
+  },
+  {
+    "head": "useTextSelection",
+    "title": "useTextSelection General",
+    "component": false,
+    "path": "/docs/hooks/use-text-selection#general"
+  },
+  {
+    "head": "useTextSelection",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-text-selection#apis"
   },
   {
     "title": "useTheme",
@@ -4892,6 +6014,74 @@
     "title": "Get preset types",
     "component": false,
     "path": "/docs/hooks/use-theme#get-preset-types"
+  },
+  {
+    "title": "useThrottledCallback",
+    "component": true,
+    "path": "/docs/hooks/use-throttled-callback"
+  },
+  {
+    "head": "useThrottledCallback",
+    "title": "useThrottledCallback General",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-callback#general"
+  },
+  {
+    "head": "useThrottledCallback",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-callback#apis"
+  },
+  {
+    "title": "useThrottledState",
+    "component": true,
+    "path": "/docs/hooks/use-throttled-state"
+  },
+  {
+    "head": "useThrottledState",
+    "title": "useThrottledState General",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-state#general"
+  },
+  {
+    "head": "useThrottledState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-state#apis"
+  },
+  {
+    "title": "useThrottledValue",
+    "component": true,
+    "path": "/docs/hooks/use-throttled-value"
+  },
+  {
+    "head": "useThrottledValue",
+    "title": "useThrottledValue General",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-value#general"
+  },
+  {
+    "head": "useThrottledValue",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-throttled-value#apis"
+  },
+  {
+    "title": "useTimeout",
+    "component": true,
+    "path": "/docs/hooks/use-timeout"
+  },
+  {
+    "head": "useTimeout",
+    "title": "useTimeout General",
+    "component": false,
+    "path": "/docs/hooks/use-timeout#general"
+  },
+  {
+    "head": "useTimeout",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-timeout#apis"
   },
   {
     "title": "useToast",
@@ -4987,6 +6177,108 @@
     "title": "Toast Types",
     "component": false,
     "path": "/docs/hooks/use-toast#toasttypes"
+  },
+  {
+    "title": "useToggle",
+    "component": true,
+    "path": "/docs/hooks/use-toggle"
+  },
+  {
+    "head": "useToggle",
+    "title": "useToggle General",
+    "component": false,
+    "path": "/docs/hooks/use-toggle#general"
+  },
+  {
+    "head": "useToggle",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-toggle#apis"
+  },
+  {
+    "title": "useUncontrolled",
+    "component": true,
+    "path": "/docs/hooks/use-uncontrolled"
+  },
+  {
+    "head": "useUncontrolled",
+    "title": "useUncontrolled General",
+    "component": false,
+    "path": "/docs/hooks/use-uncontrolled#general"
+  },
+  {
+    "head": "useUncontrolled",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-uncontrolled#apis"
+  },
+  {
+    "title": "useValidatedState",
+    "component": true,
+    "path": "/docs/hooks/use-validated-state"
+  },
+  {
+    "head": "useValidatedState",
+    "title": "useValidatedState General",
+    "component": false,
+    "path": "/docs/hooks/use-validated-state#general"
+  },
+  {
+    "head": "useValidatedState",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-validated-state#apis"
+  },
+  {
+    "title": "useViewportSize",
+    "component": true,
+    "path": "/docs/hooks/use-viewport-size"
+  },
+  {
+    "head": "useViewportSize",
+    "title": "useViewportSize General",
+    "component": false,
+    "path": "/docs/hooks/use-viewport-size#general"
+  },
+  {
+    "head": "useViewportSize",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-viewport-size#apis"
+  },
+  {
+    "title": "useWindowEvent",
+    "component": true,
+    "path": "/docs/hooks/use-window-event"
+  },
+  {
+    "head": "useWindowEvent",
+    "title": "useWindowEvent General",
+    "component": false,
+    "path": "/docs/hooks/use-window-event#general"
+  },
+  {
+    "head": "useWindowEvent",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-window-event#apis"
+  },
+  {
+    "title": "useWindowScroll",
+    "component": true,
+    "path": "/docs/hooks/use-window-scroll"
+  },
+  {
+    "head": "useWindowScroll",
+    "title": "useWindowScroll General",
+    "component": false,
+    "path": "/docs/hooks/use-window-scroll#general"
+  },
+  {
+    "head": "useWindowScroll",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-window-scroll#apis"
   },
   {
     "title": "About Bolio UI",

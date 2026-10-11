@@ -1,0 +1,45 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useSet } from 'core'
+
+export const meta = {
+  title: 'useSet',
+  description: 'Keep a Set in state that renders again when it changes.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 86
+}
+
+## useSet
+
+Keep a Set in state that renders again when it changes.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="add, delete and clear render the component again."
+  scope={{ Button, Text, useSet }}
+  code={`
+() => {
+  const set = useSet(['a', 'b'])
+  return (
+    <>
+      <Text>{[...set].join(', ') || 'empty'}</Text>
+      <Button auto scale={0.6} onClick={() => set.add('item ' + (set.size + 1))}>Add</Button>
+      <Button auto scale={0.6} onClick={() => set.clear()} style={{ marginLeft: 8 }}>Clear</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-set.mdx">
+<Attributes.Title>useSet</Attributes.Title>
+
+```ts
+const useSet = <T>(values?: readonly T[]) => Set<T>
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

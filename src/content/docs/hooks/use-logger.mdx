@@ -1,0 +1,40 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useLogger } from 'core'
+
+export const meta = {
+  title: 'useLogger',
+  description: 'Log the mount, the updates and the unmount of a component with its props, for debugging.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 72
+}
+
+## useLogger
+
+Log the mount, the updates and the unmount of a component with its props, for debugging.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Open the console to see the logs."
+  scope={{ Button, useLogger }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  useLogger('Counter', [count])
+  return <Button auto scale={0.6} onClick={() => setCount(count + 1)}>Count {count}</Button>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-logger.mdx">
+<Attributes.Title>useLogger</Attributes.Title>
+
+```ts
+const useLogger = (componentName: string, props: unknown[]) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

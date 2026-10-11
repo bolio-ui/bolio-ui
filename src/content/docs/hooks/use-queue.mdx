@@ -1,0 +1,55 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useQueue } from 'core'
+
+export const meta = {
+  title: 'useQueue',
+  description: 'Show a limited number of items at once and keep the rest waiting in a queue.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 46
+}
+
+## useQueue
+
+Show a limited number of items at once and keep the rest waiting in a queue.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Only two items are visible, the others wait in the queue."
+  scope={{ Button, Text, useQueue }}
+  code={`
+() => {
+  const { state, queue, add, update } = useQueue({ initialValues: [1, 2, 3], limit: 2 })
+  return (
+    <>
+      <Text>Visible: {state.join(', ')}</Text>
+      <Text>Queue: {queue.join(', ') || 'empty'}</Text>
+      <Button auto scale={0.6} onClick={() => add(state.length + queue.length + 1)}>Add</Button>
+      <Button auto scale={0.6} onClick={() => update((items) => items.slice(1))} style={{ marginLeft: 8 }}>Remove first</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-queue.mdx">
+<Attributes.Title>useQueue</Attributes.Title>
+
+```ts
+const useQueue = <T>(options?: {
+  initialValues?: T[]
+  limit?: number
+}) => {
+  state: T[]
+  queue: T[]
+  add: (...items: T[]) => void
+  update: (fn: (items: T[]) => T[]) => void
+  cleanQueue: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

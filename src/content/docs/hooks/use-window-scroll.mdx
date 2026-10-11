@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useWindowScroll } from 'core'
+
+export const meta = {
+  title: 'useWindowScroll',
+  description: 'Read the scroll position of the window and scroll it.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 60
+}
+
+## useWindowScroll
+
+Read the scroll position of the window and scroll it.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Read the scroll position and go back to the top."
+  scope={{ Button, Text, useWindowScroll }}
+  code={`
+() => {
+  const [scroll, scrollTo] = useWindowScroll()
+  return (
+    <>
+      <Text>Scroll: {scroll.x}, {scroll.y}</Text>
+      <Button auto scale={0.6} onClick={() => scrollTo({ y: 0 })}>Scroll to top</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-window-scroll.mdx">
+<Attributes.Title>useWindowScroll</Attributes.Title>
+
+```ts
+const useWindowScroll = () => [
+  { x: number; y: number },
+  (position: { x?: number; y?: number }) => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

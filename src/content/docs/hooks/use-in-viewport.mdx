@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useInViewport } from 'core'
+
+export const meta = {
+  title: 'useInViewport',
+  description: 'Detect whether an element is visible in the viewport.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 33
+}
+
+## useInViewport
+
+Detect whether an element is visible in the viewport.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The label follows the visibility of the box."
+  scope={{ Text, useInViewport }}
+  code={`
+() => {
+  const { ref, inViewport } = useInViewport()
+  return (
+    <>
+      <Text>{inViewport ? 'Visible' : 'Out of the viewport'}</Text>
+      <div ref={ref} style={{ padding: 24, border: '1px dashed currentColor' }}>Observed</div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-in-viewport.mdx">
+<Attributes.Title>useInViewport</Attributes.Title>
+
+```ts
+const useInViewport = <T extends HTMLElement = HTMLElement>() => {
+  ref: (element: T | null) => void
+  inViewport: boolean
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, useMove } from 'core'
+
+export const meta = {
+  title: 'useMove',
+  description: 'Track the position of the pointer inside an element as a value between 0 and 1.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 75
+}
+
+## useMove
+
+Track the position of the pointer inside an element as a value between 0 and 1.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Press and drag inside the box to move the dot."
+  scope={{ useMove }}
+  code={`
+() => {
+  const [value, setValue] = React.useState({ x: 0.5, y: 0.5 })
+  const { ref } = useMove(setValue)
+  return (
+    <div ref={ref} style={{ position: 'relative', width: 240, height: 120, border: '1px dashed currentColor', touchAction: 'none' }}>
+      <div style={{ position: 'absolute', left: value.x * 100 + '%', top: value.y * 100 + '%', width: 12, height: 12, marginLeft: -6, marginTop: -6, borderRadius: '50%', background: 'currentColor' }} />
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-move.mdx">
+<Attributes.Title>useMove</Attributes.Title>
+
+```ts
+const useMove = <T extends HTMLElement = HTMLElement>(
+  onChange: (value: { x: number; y: number }) => void,
+  onScrubEnd?: () => void,
+) => { ref: RefObject<T | null>; active: boolean }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

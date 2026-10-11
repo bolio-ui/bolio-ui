@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useLongPress } from 'core'
+
+export const meta = {
+  title: 'useLongPress',
+  description: 'Run a callback when an element is pressed and held, with mouse or touch.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 38
+}
+
+## useLongPress
+
+Run a callback when an element is pressed and held, with mouse or touch.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Hold the button for one second."
+  scope={{ Button, useLongPress }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  const handlers = useLongPress(() => setCount((c) => c + 1), { threshold: 1000 })
+  return <Button auto scale={0.6} {...handlers}>Held {count} times</Button>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-long-press.mdx">
+<Attributes.Title>useLongPress</Attributes.Title>
+
+```ts
+const useLongPress = (
+  onLongPress: () => void,
+  options?: { threshold?: number },
+) => {
+  onMouseDown: () => void
+  onMouseUp: () => void
+  onMouseLeave: () => void
+  onTouchStart: () => void
+  onTouchEnd: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

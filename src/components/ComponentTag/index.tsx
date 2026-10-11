@@ -1,15 +1,15 @@
 import React from 'react'
 import { Tag, Badge } from 'core'
-import { components } from 'src/data/sidebar'
+import { components, hooks } from 'src/data/sidebar'
 
 export interface Props {
   href: string
   raised?: boolean
 }
 
-// Shows the New or Updated tag set for this page in the components sidebar data.
+// Shows the New or Updated tag set for this page in the components and hooks sidebar data.
 const ComponentTag: React.FC<Props> = ({ href, raised }) => {
-  const tag = components.find((item) => item.url === href)?.tag
+  const tag = [...components, ...hooks].find((item) => item.url === href)?.tag
   if (!tag) return null
 
   const type = tag === 'New' ? 'success' : 'primary'

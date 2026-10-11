@@ -1,0 +1,61 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, usePagination } from 'core'
+
+export const meta = {
+  title: 'usePagination',
+  description: 'Compute the page numbers and the handlers of a pagination, with dots when there are many pages.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 78
+}
+
+## usePagination
+
+Compute the page numbers and the handlers of a pagination, with dots when there are many pages.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Twenty pages, with dots between the ranges."
+  scope={{ Button, Text, usePagination }}
+  code={`
+() => {
+  const { range, active, setPage, next, previous } = usePagination({ total: 20, initialPage: 5 })
+  return (
+    <>
+      <Text>{range.map((item) => (item === 'dots' ? '...' : item === active ? '[' + item + ']' : item)).join(' ')}</Text>
+      <Button auto scale={0.6} onClick={previous}>Previous</Button>
+      <Button auto scale={0.6} onClick={next} style={{ marginLeft: 8 }}>Next</Button>
+      <Button auto scale={0.6} onClick={() => setPage(1)} style={{ marginLeft: 8 }}>First</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-pagination.mdx">
+<Attributes.Title>usePagination</Attributes.Title>
+
+```ts
+const usePagination = (options: {
+  total: number
+  page?: number
+  initialPage?: number
+  siblings?: number
+  boundaries?: number
+  onChange?: (page: number) => void
+}) => {
+  range: (number | 'dots')[]
+  active: number
+  setPage: (page: number) => void
+  next: () => void
+  previous: () => void
+  first: () => void
+  last: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

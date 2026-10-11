@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useDocumentVisibility } from 'core'
+
+export const meta = {
+  title: 'useDocumentVisibility',
+  description: 'Detect when the tab is visible or hidden.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 21
+}
+
+## useDocumentVisibility
+
+Detect when the tab is visible or hidden.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Switch to another tab and back to see the value change."
+  scope={{ Text, useDocumentVisibility }}
+  code={`
+() => {
+  const visibility = useDocumentVisibility()
+  return <Text>The tab is {visibility}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-document-visibility.mdx">
+<Attributes.Title>useDocumentVisibility</Attributes.Title>
+
+```ts
+const useDocumentVisibility = () => 'visible' | 'hidden'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,52 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, useFloatingWindow } from 'core'
+
+export const meta = {
+  title: 'useFloatingWindow',
+  description: 'Build a floating window that the user drags by a handle and that stays inside the viewport.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 68
+}
+
+## useFloatingWindow
+
+Build a floating window that the user drags by a handle and that stays inside the viewport.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Drag the window by its title, it stays inside the viewport."
+  scope={{ useFloatingWindow }}
+  code={`
+() => {
+  const { ref, handleRef, style } = useFloatingWindow({ initialPosition: { x: 24, y: 120 } })
+  return (
+    <div ref={ref} style={{ ...style, zIndex: 100, width: 200, border: '1px solid currentColor', background: 'Canvas' }}>
+      <div ref={handleRef} style={{ padding: 8, cursor: 'move', touchAction: 'none', borderBottom: '1px solid currentColor' }}>Drag here</div>
+      <div style={{ padding: 8 }}>Floating content</div>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-floating-window.mdx">
+<Attributes.Title>useFloatingWindow</Attributes.Title>
+
+```ts
+const useFloatingWindow = <
+  T extends HTMLElement = HTMLElement,
+  H extends HTMLElement = HTMLElement,
+>(options?: { initialPosition?: { x: number; y: number } }) => {
+  ref: RefObject<T | null>
+  handleRef: RefObject<H | null>
+  style: CSSProperties
+  dragging: boolean
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

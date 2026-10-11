@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useTimeout } from 'core'
+
+export const meta = {
+  title: 'useTimeout',
+  description: 'Run a function after a delay that you can start again or clear.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 54
+}
+
+## useTimeout
+
+Run a function after a delay that you can start again or clear.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The message appears two seconds after the click."
+  scope={{ Button, Text, useTimeout }}
+  code={`
+() => {
+  const [visible, setVisible] = React.useState(false)
+  const { start } = useTimeout(() => setVisible(true), 2000)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => { setVisible(false); start() }}>Start</Button>
+      <Text>{visible ? 'Done' : 'Waiting'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-timeout.mdx">
+<Attributes.Title>useTimeout</Attributes.Title>
+
+```ts
+const useTimeout = (
+  callback: () => void,
+  delay: number,
+  options?: { autoInvoke?: boolean },
+) => { start: () => void; clear: () => void }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

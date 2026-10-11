@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, Input, Spacer, useDebouncedState } from 'core'
+
+export const meta = {
+  title: 'useDebouncedState',
+  description: 'Keep a state whose updates are applied only after the user stops changing it.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 62
+}
+
+## useDebouncedState
+
+Keep a state whose updates are applied only after the user stops changing it.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The value changes 500ms after the last keystroke."
+  scope={{ Text, Input, Spacer, useDebouncedState }}
+  code={`
+() => {
+  const [value, setValue] = useDebouncedState('', 500)
+  return (
+    <>
+      <Input placeholder="Type something" onChange={(e) => setValue(e.target.value)} />
+      <Spacer h={0.5} />
+      <Text>Value: {value}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-debounced-state.mdx">
+<Attributes.Title>useDebouncedState</Attributes.Title>
+
+```ts
+const useDebouncedState = <T>(
+  initialValue: T,
+  wait: number,
+  options?: { leading?: boolean },
+) => [T, (value: T) => void]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useTextSelection } from 'core'
+
+export const meta = {
+  title: 'useTextSelection',
+  description: 'Read the text the user has selected on the page.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 52
+}
+
+## useTextSelection
+
+Read the text the user has selected on the page.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Select some text of this page."
+  scope={{ Text, useTextSelection }}
+  code={`
+() => {
+  const selection = useTextSelection()
+  return <Text>Selected: {selection ? selection.toString() : ''}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-text-selection.mdx">
+<Attributes.Title>useTextSelection</Attributes.Title>
+
+```ts
+const useTextSelection = () => Selection | null
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useMutationObserver } from 'core'
+
+export const meta = {
+  title: 'useMutationObserver',
+  description: 'Observe changes in the attributes, children or text of an element.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 76
+}
+
+## useMutationObserver
+
+Observe changes in the attributes, children or text of an element.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Count the children added to the list."
+  scope={{ Button, Text, useMutationObserver }}
+  code={`
+() => {
+  const [changes, setChanges] = React.useState(0)
+  const [items, setItems] = React.useState(1)
+  const ref = useMutationObserver(() => setChanges((c) => c + 1), { childList: true })
+  return (
+    <>
+      <ul ref={ref}>{Array.from({ length: items }, (_, i) => <li key={i}>Item {i + 1}</li>)}</ul>
+      <Button auto scale={0.6} onClick={() => setItems(items + 1)}>Add item</Button>
+      <Text>Mutations: {changes}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-mutation-observer.mdx">
+<Attributes.Title>useMutationObserver</Attributes.Title>
+
+```ts
+const useMutationObserver = <T extends HTMLElement = HTMLElement>(
+  callback: MutationCallback,
+  options: MutationObserverInit,
+) => RefObject<T | null>
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

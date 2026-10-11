@@ -1,0 +1,48 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useThrottledState } from 'core'
+
+export const meta = {
+  title: 'useThrottledState',
+  description: 'Keep a state that updates at most once per interval.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 88
+}
+
+## useThrottledState
+
+Keep a state that updates at most once per interval.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The click count shows at most one update per second."
+  scope={{ Button, Text, useThrottledState }}
+  code={`
+() => {
+  const [count, setCount] = useThrottledState(0, 1000)
+  const clicks = React.useRef(0)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setCount(++clicks.current)}>Click fast</Button>
+      <Text>Shown: {count}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-throttled-state.mdx">
+<Attributes.Title>useThrottledState</Attributes.Title>
+
+```ts
+const useThrottledState = <T>(
+  initialValue: T,
+  wait: number,
+) => [T, (value: T) => void]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

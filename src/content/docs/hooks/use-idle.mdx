@@ -1,0 +1,42 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useIdle } from 'core'
+
+export const meta = {
+  title: 'useIdle',
+  description: 'Detect when the user has not interacted with the page for a while.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 29
+}
+
+## useIdle
+
+Detect when the user has not interacted with the page for a while.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Stay still for three seconds."
+  scope={{ Text, useIdle }}
+  code={`
+() => {
+  const idle = useIdle(3000, { initialState: false })
+  return <Text>{idle ? 'Idle' : 'Active'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-idle.mdx">
+<Attributes.Title>useIdle</Attributes.Title>
+
+```ts
+const useIdle = (
+  timeout: number,
+  options?: { events?: string[]; initialState?: boolean },
+) => boolean
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

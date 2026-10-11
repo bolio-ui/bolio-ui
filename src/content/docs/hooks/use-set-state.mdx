@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useSetState } from 'core'
+
+export const meta = {
+  title: 'useSetState',
+  description: 'Keep an object in state and update it with partial changes, like the setState of a class component.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 49
+}
+
+## useSetState
+
+Keep an object in state and update it with partial changes, like the setState of a class component.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Changing one field keeps the others."
+  scope={{ Button, Text, useSetState }}
+  code={`
+() => {
+  const [state, setState] = useSetState({ name: 'Ada', age: 36 })
+  return (
+    <>
+      <Text>{state.name}, {state.age}</Text>
+      <Button auto scale={0.6} onClick={() => setState({ name: 'Grace' })}>Change name</Button>
+      <Button auto scale={0.6} onClick={() => setState((current) => ({ age: current.age + 1 }))} style={{ marginLeft: 8 }}>Add a year</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-set-state.mdx">
+<Attributes.Title>useSetState</Attributes.Title>
+
+```ts
+const useSetState = <T extends Record<string, unknown>>(
+  initialState: T,
+) => [
+  T,
+  (partial: Partial<T> | ((current: T) => Partial<T>)) => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

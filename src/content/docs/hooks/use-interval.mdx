@@ -1,0 +1,54 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useInterval } from 'core'
+
+export const meta = {
+  title: 'useInterval',
+  description: 'Run a function on an interval that you can start and stop.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 32
+}
+
+## useInterval
+
+Run a function on an interval that you can start and stop.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="A counter that ticks every second until you stop it."
+  scope={{ Button, Text, useInterval }}
+  code={`
+() => {
+  const [seconds, setSeconds] = React.useState(0)
+  const interval = useInterval(() => setSeconds((s) => s + 1), 1000)
+  return (
+    <>
+      <Text h3>{seconds}</Text>
+      <Button auto scale={0.6} onClick={interval.toggle}>{interval.active ? 'Stop' : 'Start'}</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-interval.mdx">
+<Attributes.Title>useInterval</Attributes.Title>
+
+```ts
+const useInterval = (
+  fn: () => void,
+  interval: number,
+  options?: { autoInvoke?: boolean },
+) => {
+  start: () => void
+  stop: () => void
+  toggle: () => void
+  active: boolean
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

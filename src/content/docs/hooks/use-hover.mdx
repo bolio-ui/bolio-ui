@@ -1,0 +1,46 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useHover } from 'core'
+
+export const meta = {
+  title: 'useHover',
+  description: 'Detect when the pointer is over an element.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 28
+}
+
+## useHover
+
+Detect when the pointer is over an element.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The text changes while the pointer is over the box."
+  scope={{ Text, useHover }}
+  code={`
+() => {
+  const { hovered, ref } = useHover()
+  return (
+    <div ref={ref} style={{ padding: 24, border: '1px dashed currentColor' }}>
+      <Text>{hovered ? 'Hovered' : 'Hover me'}</Text>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-hover.mdx">
+<Attributes.Title>useHover</Attributes.Title>
+
+```ts
+const useHover = <T extends HTMLElement = HTMLElement>() => {
+  hovered: boolean
+  ref: RefObject<T | null>
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

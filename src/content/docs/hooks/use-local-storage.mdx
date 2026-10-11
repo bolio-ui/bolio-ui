@@ -1,0 +1,52 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Input, Spacer, useLocalStorage } from 'core'
+
+export const meta = {
+  title: 'useLocalStorage',
+  description: 'Keep a value in localStorage, in sync across components and tabs, safe for server rendering.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 37
+}
+
+## useLocalStorage
+
+Keep a value in localStorage, in sync across components and tabs, safe for server rendering.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The value survives a page reload."
+  scope={{ Button, Input, Spacer, useLocalStorage }}
+  code={`
+() => {
+  const [name, setName, removeName] = useLocalStorage({ key: 'bolio-ui-docs-name', defaultValue: '' })
+  return (
+    <>
+      <Input placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={removeName}>Clear</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-local-storage.mdx">
+<Attributes.Title>useLocalStorage</Attributes.Title>
+
+```ts
+const useLocalStorage = <T>(options: {
+  key: string
+  defaultValue: T
+}) => [
+  T,
+  (value: T | ((current: T) => T)) => void,
+  () => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

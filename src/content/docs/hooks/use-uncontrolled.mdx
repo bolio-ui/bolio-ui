@@ -1,0 +1,54 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Input, Spacer, useUncontrolled } from 'core'
+
+export const meta = {
+  title: 'useUncontrolled',
+  description: 'Build a component that works controlled and uncontrolled with the same code.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 56
+}
+
+## useUncontrolled
+
+Build a component that works controlled and uncontrolled with the same code.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The same component keeps its own state or follows the value prop."
+  scope={{ Input, Spacer, useUncontrolled }}
+  code={`
+() => {
+  const Field = ({ value, defaultValue, onChange }) => {
+    const [current, setCurrent, controlled] = useUncontrolled({ value, defaultValue, finalValue: '', onChange })
+    return <Input value={current} onChange={(e) => setCurrent(e.target.value)} placeholder={controlled ? 'Controlled' : 'Uncontrolled'} />
+  }
+  const [value, setValue] = React.useState('')
+  return (
+    <>
+      <Field defaultValue="Starts here" />
+      <Spacer h={0.5} />
+      <Field value={value} onChange={setValue} />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-uncontrolled.mdx">
+<Attributes.Title>useUncontrolled</Attributes.Title>
+
+```ts
+const useUncontrolled = <T>(options: {
+  value?: T
+  defaultValue?: T
+  finalValue?: T
+  onChange?: (value: T) => void
+}) => [T, (value: T) => void, boolean]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,64 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, Spacer, useSelection } from 'core'
+
+export const meta = {
+  title: 'useSelection',
+  description: 'Select items of a list, one by one or all at once, and know which are selected.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 85
+}
+
+## useSelection
+
+Select items of a list, one by one or all at once, and know which are selected.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Toggle items or select them all."
+  scope={{ Button, Text, Spacer, useSelection }}
+  code={`
+() => {
+  const data = ['Apple', 'Banana', 'Cherry']
+  const [selected, handlers] = useSelection({ data })
+  return (
+    <>
+      {data.map((item) => (
+        <Button key={item} auto scale={0.6} type={handlers.isSelected(item) ? 'success' : 'default'} onClick={() => handlers.toggle(item)} style={{ marginRight: 8 }}>{item}</Button>
+      ))}
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={handlers.selectAll}>Select all</Button>
+      <Button auto scale={0.6} onClick={handlers.deselectAll} style={{ marginLeft: 8 }}>Clear</Button>
+      <Text>Selected: {selected.join(', ') || 'none'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-selection.mdx">
+<Attributes.Title>useSelection</Attributes.Title>
+
+```ts
+const useSelection = <T>(options: {
+  data: T[]
+  initialSelection?: T[]
+}) => [
+  T[],
+  {
+    select: (item: T) => void
+    deselect: (item: T) => void
+    toggle: (item: T) => void
+    selectAll: () => void
+    deselectAll: () => void
+    setSelection: (items: T[]) => void
+    isSelected: (item: T) => boolean
+  },
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,51 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, Input, Spacer, useValidatedState } from 'core'
+
+export const meta = {
+  title: 'useValidatedState',
+  description: 'Keep a value together with its validity and the last value that was valid.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 57
+}
+
+## useValidatedState
+
+Keep a value together with its validity and the last value that was valid.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The email is valid when it matches a simple pattern."
+  scope={{ Text, Input, Spacer, useValidatedState }}
+  code={`
+() => {
+  const [{ value, lastValidValue, valid }, setEmail] = useValidatedState('', (v) => /^\S+@\S+\.\S+$/.test(v))
+  return (
+    <>
+      <Input placeholder="Email" value={value} onChange={(e) => setEmail(e.target.value)} />
+      <Spacer h={0.5} />
+      <Text>Valid: {String(valid)}, last valid: {lastValidValue || 'none'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-validated-state.mdx">
+<Attributes.Title>useValidatedState</Attributes.Title>
+
+```ts
+const useValidatedState = <T>(
+  initialValue: T,
+  validate: (value: T) => boolean,
+) => [
+  { value: T; lastValidValue: T | undefined; valid: boolean },
+  (value: T) => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

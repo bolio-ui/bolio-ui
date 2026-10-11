@@ -1,0 +1,57 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useScrollSpy } from 'core'
+
+export const meta = {
+  title: 'useScrollSpy',
+  description: 'Highlight the heading that is visible while the page is scrolled, for a table of contents.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 84
+}
+
+## useScrollSpy
+
+Highlight the heading that is visible while the page is scrolled, for a table of contents.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Lists the h2 headings of the page and marks the one being read."
+  scope={{ Text, useScrollSpy }}
+  code={`
+() => {
+  const { active, data } = useScrollSpy({ selector: 'h2', offset: 80 })
+  return (
+    <>
+      {data.slice(0, 6).map((heading, index) => (
+        <Text key={heading.id + index} small b={index === active}>{heading.label}</Text>
+      ))}
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-scroll-spy.mdx">
+<Attributes.Title>useScrollSpy</Attributes.Title>
+
+```ts
+const useScrollSpy = (options?: {
+  selector?: string
+  offset?: number
+}) => {
+  active: number
+  data: {
+    id: string
+    label: string
+    depth: number
+    element: HTMLElement
+  }[]
+  reinitialize: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

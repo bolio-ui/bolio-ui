@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useMergedRef } from 'core'
+
+export const meta = {
+  title: 'useMergedRef',
+  description: 'Merge several refs, callback or object, into one.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 39
+}
+
+## useMergedRef
+
+Merge several refs, callback or object, into one.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="One element is read by two refs."
+  scope={{ Button, Text, useMergedRef }}
+  code={`
+() => {
+  const first = React.useRef(null)
+  const second = React.useRef(null)
+  const ref = useMergedRef(first, second)
+  const [same, setSame] = React.useState('')
+  return (
+    <>
+      <div ref={ref}>Merged</div>
+      <Button auto scale={0.6} onClick={() => setSame(String(first.current === second.current))}>Compare</Button>
+      <Text>Same element: {same}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-merged-ref.mdx">
+<Attributes.Title>useMergedRef</Attributes.Title>
+
+```ts
+const useMergedRef = <T>(...refs: (Ref<T> | undefined)[]) =>
+  (node: T | null) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

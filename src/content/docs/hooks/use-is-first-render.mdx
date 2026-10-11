@@ -1,0 +1,45 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useIsFirstRender } from 'core'
+
+export const meta = {
+  title: 'useIsFirstRender',
+  description: 'Know whether the component is rendering for the first time.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 34
+}
+
+## useIsFirstRender
+
+Know whether the component is rendering for the first time.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It is true only on the first render."
+  scope={{ Button, Text, useIsFirstRender }}
+  code={`
+() => {
+  const first = useIsFirstRender()
+  const [, setCount] = React.useState(0)
+  return (
+    <>
+      <Text>First render: {String(first)}</Text>
+      <Button auto scale={0.6} onClick={() => setCount((c) => c + 1)}>Render again</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-is-first-render.mdx">
+<Attributes.Title>useIsFirstRender</Attributes.Title>
+
+```ts
+const useIsFirstRender = () => boolean
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

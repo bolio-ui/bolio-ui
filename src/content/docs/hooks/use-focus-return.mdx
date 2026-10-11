@@ -1,0 +1,52 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useFocusReturn } from 'core'
+
+export const meta = {
+  title: 'useFocusReturn',
+  description: 'Return the focus to the element that had it before something opened, such as a modal.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 69
+}
+
+## useFocusReturn
+
+Return the focus to the element that had it before something opened, such as a modal.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Close the box and the focus goes back to the button that opened it."
+  scope={{ Button, useFocusReturn }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(false)
+  useFocusReturn({ opened })
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setOpened(true)}>Open</Button>
+      {opened && (
+        <div style={{ marginTop: 8 }}>
+          <Button auto scale={0.6} autoFocus onClick={() => setOpened(false)}>Close and return focus</Button>
+        </div>
+      )}
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-focus-return.mdx">
+<Attributes.Title>useFocusReturn</Attributes.Title>
+
+```ts
+const useFocusReturn = (options: {
+  opened: boolean
+  shouldReturnFocus?: boolean
+}) => () => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

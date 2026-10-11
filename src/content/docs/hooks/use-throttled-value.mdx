@@ -1,0 +1,46 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, Input, Spacer, useThrottledValue } from 'core'
+
+export const meta = {
+  title: 'useThrottledValue',
+  description: 'Limit how often a value updates, no more than once per interval.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 89
+}
+
+## useThrottledValue
+
+Limit how often a value updates, no more than once per interval.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The throttled value updates at most once per second."
+  scope={{ Text, Input, Spacer, useThrottledValue }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('')
+  const throttled = useThrottledValue(value, 1000)
+  return (
+    <>
+      <Input placeholder="Type fast" value={value} onChange={(e) => setValue(e.target.value)} />
+      <Spacer h={0.5} />
+      <Text>Throttled: {throttled}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-throttled-value.mdx">
+<Attributes.Title>useThrottledValue</Attributes.Title>
+
+```ts
+const useThrottledValue = <T>(value: T, wait: number) => T
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

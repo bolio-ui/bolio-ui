@@ -1,0 +1,48 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Input, Spacer, useInputState } from 'core'
+
+export const meta = {
+  title: 'useInputState',
+  description: 'Keep the value of an input in state, accepting the change event or a value.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 30
+}
+
+## useInputState
+
+Keep the value of an input in state, accepting the change event or a value.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Pass the handler straight to onChange, or call it with a value."
+  scope={{ Button, Input, Spacer, useInputState }}
+  code={`
+() => {
+  const [value, setValue] = useInputState('')
+  return (
+    <>
+      <Input placeholder="Type something" value={value} onChange={setValue} />
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={() => setValue('')}>Clear</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-input-state.mdx">
+<Attributes.Title>useInputState</Attributes.Title>
+
+```ts
+const useInputState = <T>(initialValue: T) => [
+  T,
+  (value: T | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useThrottledCallback } from 'core'
+
+export const meta = {
+  title: 'useThrottledCallback',
+  description: 'Create a function that runs at most once per interval, with a trailing call.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 53
+}
+
+## useThrottledCallback
+
+Create a function that runs at most once per interval, with a trailing call.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Move the mouse over the box, the position updates at most every 200ms."
+  scope={{ Text, useThrottledCallback }}
+  code={`
+() => {
+  const [position, setPosition] = React.useState('0, 0')
+  const update = useThrottledCallback((e) => setPosition(e.clientX + ', ' + e.clientY), 200)
+  return (
+    <div onMouseMove={update} style={{ padding: 24, border: '1px dashed currentColor' }}>
+      <Text>{position}</Text>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-throttled-callback.mdx">
+<Attributes.Title>useThrottledCallback</Attributes.Title>
+
+```ts
+const useThrottledCallback = <A extends unknown[]>(
+  callback: (...args: A) => void,
+  wait: number,
+) => ((...args: A) => void) & { cancel: () => void }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

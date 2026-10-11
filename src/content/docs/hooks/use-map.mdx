@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useMap } from 'core'
+
+export const meta = {
+  title: 'useMap',
+  description: 'Keep a Map in state that renders again when it changes.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 73
+}
+
+## useMap
+
+Keep a Map in state that renders again when it changes.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="set, delete and clear render the component again."
+  scope={{ Button, Text, useMap }}
+  code={`
+() => {
+  const map = useMap([['a', 1]])
+  return (
+    <>
+      <Text>{[...map].map(([key, value]) => key + '=' + value).join(', ') || 'empty'}</Text>
+      <Button auto scale={0.6} onClick={() => map.set('k' + map.size, map.size)}>Add</Button>
+      <Button auto scale={0.6} onClick={() => map.clear()} style={{ marginLeft: 8 }}>Clear</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-map.mdx">
+<Attributes.Title>useMap</Attributes.Title>
+
+```ts
+const useMap = <K, V>(
+  initialState?: Iterable<readonly [K, V]>,
+) => Map<K, V>
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

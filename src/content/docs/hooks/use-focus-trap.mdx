@@ -1,0 +1,51 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Input, Spacer, useFocusTrap } from 'core'
+
+export const meta = {
+  title: 'useFocusTrap',
+  description: 'Keep the focus inside an element while it is active, cycling with Tab.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 70
+}
+
+## useFocusTrap
+
+Keep the focus inside an element while it is active, cycling with Tab.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Press Tab inside the box, the focus never leaves it."
+  scope={{ Button, Input, Spacer, useFocusTrap }}
+  code={`
+() => {
+  const [active, setActive] = React.useState(false)
+  const ref = useFocusTrap(active)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setActive(!active)}>{active ? 'Release focus' : 'Trap focus'}</Button>
+      <div ref={ref} style={{ marginTop: 8, padding: 16, border: '1px dashed currentColor' }}>
+        <Input placeholder="First" />
+        <Spacer h={0.5} />
+        <Input placeholder="Second" />
+      </div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-focus-trap.mdx">
+<Attributes.Title>useFocusTrap</Attributes.Title>
+
+```ts
+const useFocusTrap = <T extends HTMLElement = HTMLElement>(
+  active?: boolean,
+) => RefObject<T | null>
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

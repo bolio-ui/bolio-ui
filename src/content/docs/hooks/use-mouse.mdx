@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useMouse } from 'core'
+
+export const meta = {
+  title: 'useMouse',
+  description: 'Track the position of the mouse, in the page or relative to an element.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 41
+}
+
+## useMouse
+
+Track the position of the mouse, in the page or relative to an element.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The position is relative to the box when the ref is used."
+  scope={{ Text, useMouse }}
+  code={`
+() => {
+  const { ref, x, y } = useMouse()
+  return (
+    <div ref={ref} style={{ padding: 24, border: '1px dashed currentColor' }}>
+      <Text>{x}, {y}</Text>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-mouse.mdx">
+<Attributes.Title>useMouse</Attributes.Title>
+
+```ts
+const useMouse = <T extends HTMLElement = HTMLElement>() => {
+  ref: RefObject<T | null>
+  x: number
+  y: number
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

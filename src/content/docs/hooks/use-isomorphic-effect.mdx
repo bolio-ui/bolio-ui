@@ -1,0 +1,41 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useIsomorphicEffect } from 'core'
+
+export const meta = {
+  title: 'useIsomorphicEffect',
+  description: 'Use useLayoutEffect in the browser and useEffect on the server, without the warning.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 35
+}
+
+## useIsomorphicEffect
+
+Use useLayoutEffect in the browser and useEffect on the server, without the warning.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Measure an element before the browser paints."
+  scope={{ Text, useIsomorphicEffect }}
+  code={`
+() => {
+  const ref = React.useRef(null)
+  const [width, setWidth] = React.useState(0)
+  useIsomorphicEffect(() => setWidth(ref.current.offsetWidth), [])
+  return <div ref={ref}><Text>Width: {width}px</Text></div>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-isomorphic-effect.mdx">
+<Attributes.Title>useIsomorphicEffect</Attributes.Title>
+
+```ts
+const useIsomorphicEffect: typeof useEffect
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

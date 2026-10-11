@@ -1,0 +1,44 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useHash } from 'core'
+
+export const meta = {
+  title: 'useHash',
+  description: 'Read and set the hash of the URL and keep it updated.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 27
+}
+
+## useHash
+
+Read and set the hash of the URL and keep it updated.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Change the hash and the value follows."
+  scope={{ Button, Text, useHash }}
+  code={`
+() => {
+  const [hash, setHash] = useHash()
+  return (
+    <>
+      <Text>Hash: {hash || 'empty'}</Text>
+      <Button auto scale={0.6} onClick={() => setHash('example')}>Set #example</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-hash.mdx">
+<Attributes.Title>useHash</Attributes.Title>
+
+```ts
+const useHash = () => [string, (value: string) => void]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

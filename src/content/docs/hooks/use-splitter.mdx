@@ -1,0 +1,58 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, useSplitter } from 'core'
+
+export const meta = {
+  title: 'useSplitter',
+  description: 'Resize two panes by dragging the handle between them, in percent of the container.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 87
+}
+
+## useSplitter
+
+Resize two panes by dragging the handle between them, in percent of the container.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Drag the bar to resize the panes."
+  scope={{ useSplitter }}
+  code={`
+() => {
+  const { containerRef, handleRef, size } = useSplitter({ initialSize: 40 })
+  return (
+    <div ref={containerRef} style={{ display: 'flex', height: 100, border: '1px dashed currentColor' }}>
+      <div style={{ width: size + '%', padding: 8 }}>{Math.round(size)}%</div>
+      <div ref={handleRef} style={{ width: 8, cursor: 'col-resize', touchAction: 'none', background: 'currentColor', opacity: 0.3 }} />
+      <div style={{ flex: 1, padding: 8 }}>Second pane</div>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-splitter.mdx">
+<Attributes.Title>useSplitter</Attributes.Title>
+
+```ts
+const useSplitter = <
+  C extends HTMLElement = HTMLElement,
+  H extends HTMLElement = HTMLElement,
+>(options?: {
+  initialSize?: number
+  min?: number
+  max?: number
+  direction?: 'horizontal' | 'vertical'
+}) => {
+  containerRef: RefObject<C | null>
+  handleRef: RefObject<H | null>
+  size: number
+  dragging: boolean
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

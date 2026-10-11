@@ -1,0 +1,46 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useOs } from 'core'
+
+export const meta = {
+  title: 'useOs',
+  description: 'Detect the operating system of the user.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 43
+}
+
+## useOs
+
+Detect the operating system of the user.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It is undetermined on the server and on the first render."
+  scope={{ Text, useOs }}
+  code={`
+() => {
+  const os = useOs()
+  return <Text>{os}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-os.mdx">
+<Attributes.Title>useOs</Attributes.Title>
+
+```ts
+const useOs = () =>
+  | 'undetermined'
+  | 'macos'
+  | 'ios'
+  | 'windows'
+  | 'android'
+  | 'linux'
+  | 'chromeos'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

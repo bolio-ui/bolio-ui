@@ -1,0 +1,54 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useScroller } from 'core'
+
+export const meta = {
+  title: 'useScroller',
+  description: 'Know whether a scrollable row can scroll further and scroll it by a step, for carousels and tab lists.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 82
+}
+
+## useScroller
+
+Know whether a scrollable row can scroll further and scroll it by a step, for carousels and tab lists.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The buttons are disabled when the row cannot scroll further."
+  scope={{ Button, useScroller }}
+  code={`
+() => {
+  const { ref, canScrollStart, canScrollEnd, scrollBy } = useScroller(120)
+  return (
+    <>
+      <Button auto scale={0.6} disabled={!canScrollStart} onClick={() => scrollBy('start')}>Previous</Button>
+      <Button auto scale={0.6} disabled={!canScrollEnd} onClick={() => scrollBy('end')} style={{ marginLeft: 8 }}>Next</Button>
+      <div ref={ref} style={{ marginTop: 8, display: 'flex', gap: 8, overflow: 'auto', width: 240 }}>
+        {Array.from({ length: 10 }, (_, i) => <div key={i} style={{ flex: '0 0 80px', padding: 16, border: '1px solid currentColor' }}>{i + 1}</div>)}
+      </div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-scroller.mdx">
+<Attributes.Title>useScroller</Attributes.Title>
+
+```ts
+const useScroller = <T extends HTMLElement = HTMLElement>(
+  step?: number,
+) => {
+  ref: RefObject<T | null>
+  canScrollStart: boolean
+  canScrollEnd: boolean
+  scrollBy: (direction: 'start' | 'end') => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

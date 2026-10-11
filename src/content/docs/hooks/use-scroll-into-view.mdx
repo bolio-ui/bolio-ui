@@ -1,0 +1,55 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useScrollIntoView } from 'core'
+
+export const meta = {
+  title: 'useScrollIntoView',
+  description: 'Scroll smoothly to an element, in the page or inside a container.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 83
+}
+
+## useScrollIntoView
+
+Scroll smoothly to an element, in the page or inside a container.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Scroll the box down to the last item."
+  scope={{ Button, useScrollIntoView }}
+  code={`
+() => {
+  const { targetRef, scrollableRef, scrollIntoView } = useScrollIntoView({ duration: 500 })
+  return (
+    <>
+      <Button auto scale={0.6} onClick={scrollIntoView}>Scroll to the last item</Button>
+      <div ref={scrollableRef} style={{ marginTop: 8, height: 100, overflow: 'auto', border: '1px dashed currentColor' }}>
+        <div style={{ height: 300 }}>Scroll content</div>
+        <div ref={targetRef}>Last item</div>
+      </div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-scroll-into-view.mdx">
+<Attributes.Title>useScrollIntoView</Attributes.Title>
+
+```ts
+const useScrollIntoView = <
+  T extends HTMLElement = HTMLElement,
+  C extends HTMLElement = HTMLElement,
+>(options?: { duration?: number; offset?: number }) => {
+  targetRef: RefObject<T | null>
+  scrollableRef: RefObject<C | null>
+  scrollIntoView: () => void
+  cancel: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

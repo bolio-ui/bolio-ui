@@ -1,0 +1,40 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, usePageLeave } from 'core'
+
+export const meta = {
+  title: 'usePageLeave',
+  description: 'Run a callback when the mouse leaves the page.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 44
+}
+
+## usePageLeave
+
+Run a callback when the mouse leaves the page.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Move the mouse out of the window."
+  scope={{ Text, usePageLeave }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  usePageLeave(() => setCount((c) => c + 1))
+  return <Text>The mouse left the page {count} times</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-page-leave.mdx">
+<Attributes.Title>usePageLeave</Attributes.Title>
+
+```ts
+const usePageLeave = (onPageLeave: () => void) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

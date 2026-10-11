@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useShallowEffect } from 'core'
+
+export const meta = {
+  title: 'useShallowEffect',
+  description: 'Run an effect when the dependencies change, comparing objects and arrays by their contents.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 50
+}
+
+## useShallowEffect
+
+Run an effect when the dependencies change, comparing objects and arrays by their contents.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The effect runs once, even though the object is new on every render."
+  scope={{ Button, Text, useShallowEffect }}
+  code={`
+() => {
+  const [, setCount] = React.useState(0)
+  const [runs, setRuns] = React.useState(0)
+  useShallowEffect(() => setRuns((r) => r + 1), [{ id: 1 }])
+  return (
+    <>
+      <Text>Effect ran {runs} times</Text>
+      <Button auto scale={0.6} onClick={() => setCount((c) => c + 1)}>Render again</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-shallow-effect.mdx">
+<Attributes.Title>useShallowEffect</Attributes.Title>
+
+```ts
+const useShallowEffect = (
+  cb: EffectCallback,
+  dependencies?: DependencyList,
+) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

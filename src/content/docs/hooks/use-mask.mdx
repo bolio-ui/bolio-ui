@@ -1,0 +1,45 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Input, useMask } from 'core'
+
+export const meta = {
+  title: 'useMask',
+  description: 'Format the value of an input with a mask, such as a phone number or a date.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 74
+}
+
+## useMask
+
+Format the value of an input with a mask, such as a phone number or a date.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="# is a digit, A is a letter and * is any of them."
+  scope={{ Input, useMask }}
+  code={`
+() => {
+  const [phone, setPhone] = useMask({ mask: '(###) ###-####' })
+  return <Input placeholder="(555) 123-4567" value={phone} onChange={setPhone} />
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-mask.mdx">
+<Attributes.Title>useMask</Attributes.Title>
+
+```ts
+const useMask = (options: {
+  mask: string
+  initialValue?: string
+}) => [
+  string,
+  (value: string | ChangeEvent<HTMLInputElement>) => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

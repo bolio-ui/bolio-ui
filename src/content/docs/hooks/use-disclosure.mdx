@@ -1,0 +1,53 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Modal, useDisclosure } from 'core'
+
+export const meta = {
+  title: 'useDisclosure',
+  description: 'Control the open state of a modal, drawer or any other disclosure, with optional callbacks.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 19
+}
+
+## useDisclosure
+
+Control the open state of a modal, drawer or any other disclosure, with optional callbacks.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Open and close a modal from the handlers."
+  scope={{ Button, Modal, useDisclosure }}
+  code={`
+() => {
+  const [opened, { open, close }] = useDisclosure(false)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={open}>Open modal</Button>
+      <Modal visible={opened} onClose={close}>
+        <Modal.Title>Disclosure</Modal.Title>
+        <Modal.Action passive onClick={close}>Close</Modal.Action>
+      </Modal>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-disclosure.mdx">
+<Attributes.Title>useDisclosure</Attributes.Title>
+
+```ts
+const useDisclosure = (
+  initialState?: boolean,
+  options?: { onOpen?: () => void; onClose?: () => void },
+) => [
+  boolean,
+  { open: () => void; close: () => void; toggle: () => void },
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)
