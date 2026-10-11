@@ -121,6 +121,12 @@
   margin-bottom: 0.75em;
 }
 
+/* Markdown tables: headers are centered by the browser while the cells
+   are left aligned, so the columns look shifted. */
+.pageContent :global(th) {
+  text-align: left;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
