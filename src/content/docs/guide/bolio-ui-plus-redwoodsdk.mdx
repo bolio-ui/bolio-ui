@@ -1,0 +1,76 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer } from 'core'
+
+export const meta = {
+  title: 'Example with RedwoodSDK',
+  description: 'Set up Bolio UI in a RedwoodSDK application.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Example with RedwoodSDK
+
+<Spacer h={2} />
+
+### Get started with an example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-rwsdk">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://docs.rwsdk.com/getting-started/quick-start/">RedwoodSDK quick start</Link> guide to create new application:
+
+<PackageTabs pnpm="pnpm dlx create-rwsdk@latest create my-app" npm="npx create-rwsdk@latest create my-app" yarn="yarn dlx create-rwsdk@latest create my-app" bun="bunx create-rwsdk@latest create my-app" />
+
+<Spacer h={2} />
+
+### Installation
+
+Install dependencies:
+
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
+
+<Spacer h={2} />
+
+### Setup
+
+RedwoodSDK is not RedwoodJS. It runs on Cloudflare Workers with React Server Components, and `BolioUIProvider` is already a client component. The document is a server component, so it cannot import CSS directly. Import the stylesheet as a URL and link it in the `<head>`, then add BolioUIProvider and CssBaseline to `src/app/document.tsx`:
+
+```jsx
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+import bolioStyles from '@bolio-ui/core/styles.css?url'
+
+export const Document: React.FC<{ children: React.ReactNode }> = ({
+  children
+}) => (
+  <html lang="en">
+    <head>
+      <link rel="stylesheet" href={bolioStyles} />
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>My app</title>
+      <link rel="modulepreload" href="/src/client.tsx" />
+    </head>
+    <body>
+      <BolioUIProvider>
+        <CssBaseline />
+        {children}
+      </BolioUIProvider>
+      <script>import("/src/client.tsx")</script>
+    </body>
+  </html>
+)
+```
+
+Ready to go! Start the development server:
+
+<PackageTabs pnpm="pnpm dev" npm="npm run dev" yarn="yarn dev" bun="bun run dev" />
+
+export default Docs.withMeta(meta)

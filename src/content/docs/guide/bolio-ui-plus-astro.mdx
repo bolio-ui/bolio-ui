@@ -1,0 +1,82 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer } from 'core'
+
+export const meta = {
+  title: 'Example with Astro',
+  description: 'Set up Bolio UI in an Astro application.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Example with Astro
+
+<Spacer h={2} />
+
+### Get started with an example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-astro">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://docs.astro.build/en/install-and-setup/">Astro installation</Link> guide to create new application:
+
+<PackageTabs pnpm="pnpm create astro@latest" npm="npm create astro@latest" yarn="yarn create astro" bun="bun create astro@latest" />
+
+Then add the React integration:
+
+<PackageTabs pnpm="pnpm astro add react" npm="npx astro add react" yarn="yarn astro add react" bun="bunx astro add react" />
+
+<Spacer h={2} />
+
+### Installation
+
+Install dependencies:
+
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
+
+<Spacer h={2} />
+
+### Setup
+
+Astro renders React only in islands, so there is no single root to wrap. Create a component with the `BolioUIProvider`, `CssBaseline` and styles import in `src/components/BolioUI.tsx`:
+
+```jsx
+import type { ReactNode } from 'react'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+import '@bolio-ui/core/styles.css'
+
+export default function BolioUI({ children }: { children: ReactNode }) {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      {children}
+    </BolioUIProvider>
+  )
+}
+```
+
+Then wrap the content of each island with it in an `.astro` file:
+
+```jsx
+---
+import BolioUI from '../components/BolioUI'
+import Counter from '../components/Counter'
+---
+
+<BolioUI client:load>
+  <Counter />
+</BolioUI>
+```
+
+Ready to go! Start the development server:
+
+<PackageTabs pnpm="pnpm dev" npm="npm run dev" yarn="yarn dev" bun="bun run dev" />
+
+export default Docs.withMeta(meta)

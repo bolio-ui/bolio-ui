@@ -76,6 +76,26 @@
               "title": "Example with RedwoodJS",
               "keywords": "next, nextjs, redwoodjs, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-redwoodjs.mdx"
+            },
+            {
+              "title": "Example with TanStack Start",
+              "keywords": "tanstack, start, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-tanstack-start.mdx"
+            },
+            {
+              "title": "Example with Waku",
+              "keywords": "waku, rsc, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-waku.mdx"
+            },
+            {
+              "title": "Example with RedwoodSDK",
+              "keywords": "redwoodsdk, rwsdk, cloudflare, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-redwoodsdk.mdx"
+            },
+            {
+              "title": "Example with Astro",
+              "keywords": "astro, islands, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-astro.mdx"
             }
           ]
         },

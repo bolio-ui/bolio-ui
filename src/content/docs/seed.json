@@ -6397,6 +6397,122 @@
     "path": "/docs/guide/bolio-ui-plus-redwoodjs#setup"
   },
   {
+    "title": "Example with TanStack Start",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-tanstack-start"
+  },
+  {
+    "head": "Example with TanStack Start",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-tanstack-start#get-started-with-an-example"
+  },
+  {
+    "head": "Example with TanStack Start",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-tanstack-start#generate-new-application"
+  },
+  {
+    "head": "Example with TanStack Start",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-tanstack-start#installation"
+  },
+  {
+    "head": "Example with TanStack Start",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-tanstack-start#setup"
+  },
+  {
+    "title": "Example with Waku",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-waku"
+  },
+  {
+    "head": "Example with Waku",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-waku#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Waku",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-waku#generate-new-application"
+  },
+  {
+    "head": "Example with Waku",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-waku#installation"
+  },
+  {
+    "head": "Example with Waku",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-waku#setup"
+  },
+  {
+    "title": "Example with RedwoodSDK",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-redwoodsdk"
+  },
+  {
+    "head": "Example with RedwoodSDK",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodsdk#get-started-with-an-example"
+  },
+  {
+    "head": "Example with RedwoodSDK",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodsdk#generate-new-application"
+  },
+  {
+    "head": "Example with RedwoodSDK",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodsdk#installation"
+  },
+  {
+    "head": "Example with RedwoodSDK",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-redwoodsdk#setup"
+  },
+  {
+    "title": "Example with Astro",
+    "component": true,
+    "path": "/docs/guide/bolio-ui-plus-astro"
+  },
+  {
+    "head": "Example with Astro",
+    "title": "Get started with an example",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-astro#get-started-with-an-example"
+  },
+  {
+    "head": "Example with Astro",
+    "title": "Generate new application",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-astro#generate-new-application"
+  },
+  {
+    "head": "Example with Astro",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-astro#installation"
+  },
+  {
+    "head": "Example with Astro",
+    "title": "Setup",
+    "component": false,
+    "path": "/docs/guide/bolio-ui-plus-astro#setup"
+  },
+  {
     "title": "Example with Remix",
     "component": true,
     "path": "/docs/guide/bolio-ui-plus-remix"

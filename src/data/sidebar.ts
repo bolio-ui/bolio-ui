@@ -59,6 +59,26 @@ export const guide = [
     url: '/docs/guide/bolio-ui-plus-redwoodjs'
   },
   {
+    name: 'Example with TanStack Start',
+    url: '/docs/guide/bolio-ui-plus-tanstack-start',
+    tag: 'New'
+  },
+  {
+    name: 'Example with Waku',
+    url: '/docs/guide/bolio-ui-plus-waku',
+    tag: 'New'
+  },
+  {
+    name: 'Example with RedwoodSDK',
+    url: '/docs/guide/bolio-ui-plus-redwoodsdk',
+    tag: 'New'
+  },
+  {
+    name: 'Example with Astro',
+    url: '/docs/guide/bolio-ui-plus-astro',
+    tag: 'New'
+  },
+  {
     name: 'Theme',
     url: '',
     icon: 'Target'

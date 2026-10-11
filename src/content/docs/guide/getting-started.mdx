@@ -24,17 +24,26 @@ Bolio UI allows you to make beautiful, modern, and fast websites/applications re
 
 Create a project with Bolio UI already set up. The command makes the project with the generator of the framework, installs `@bolio-ui/core` and wraps the app in `BolioUIProvider`:
 
-<PackageTabs pnpm="pnpm dlx @bolio-ui/cli@latest init my-app -t next" npm="npx @bolio-ui/cli@latest init my-app -t next" yarn="yarn dlx @bolio-ui/cli@latest init my-app -t next" bun="bunx --bun @bolio-ui/cli@latest init my-app -t next" />
+<PackageTabs
+  pnpm="pnpm dlx @bolio-ui/cli@latest init my-app -t next"
+  npm="npx @bolio-ui/cli@latest init my-app -t next"
+  yarn="yarn dlx @bolio-ui/cli@latest init my-app -t next"
+  bun="bunx --bun @bolio-ui/cli@latest init my-app -t next"
+/>
 
 Pick the framework with `-t`. Without it, the command asks which one you want.
 
-| Template       | Creates                                  | Guide                                            |
-| -------------- | ---------------------------------------- | ------------------------------------------------ |
-| `next`         | Next.js, App Router and TypeScript       | [Next.js](/docs/guide/bolio-ui-plus-nextjs)      |
-| `vite`         | Vite, React and TypeScript               | [Vite](/docs/guide/bolio-ui-plus-vite)           |
-| `react-router` | React Router in framework mode           | [Remix](/docs/guide/bolio-ui-plus-remix)         |
-| `gatsby`       | Gatsby and TypeScript                    | [Gatsby](/docs/guide/bolio-ui-plus-gatsby)       |
-| `redwood`      | RedwoodJS and TypeScript, needs Corepack | [RedwoodJS](/docs/guide/bolio-ui-plus-redwoodjs) |
+| Template       | Creates                                  | Guide                                                      |
+| -------------- | ---------------------------------------- | ---------------------------------------------------------- |
+| `next`         | Next.js, App Router and TypeScript       | [Next.js](/docs/guide/bolio-ui-plus-nextjs)                |
+| `vite`         | Vite, React and TypeScript               | [Vite](/docs/guide/bolio-ui-plus-vite)                     |
+| `react-router` | React Router in framework mode           | [Remix](/docs/guide/bolio-ui-plus-remix)                   |
+| `gatsby`       | Gatsby and TypeScript                    | [Gatsby](/docs/guide/bolio-ui-plus-gatsby)                 |
+| `redwood`      | RedwoodJS and TypeScript, needs Corepack | [RedwoodJS](/docs/guide/bolio-ui-plus-redwoodjs)           |
+| `tanstack`     | TanStack Start and TypeScript            | [TanStack Start](/docs/guide/bolio-ui-plus-tanstack-start) |
+| `waku`         | Waku and TypeScript                      | [Waku](/docs/guide/bolio-ui-plus-waku)                     |
+| `rwsdk`        | RedwoodSDK and TypeScript                | [RedwoodSDK](/docs/guide/bolio-ui-plus-redwoodsdk)         |
+| `astro`        | Astro with React, needs Node 22          | [Astro](/docs/guide/bolio-ui-plus-astro)                   |
 
 Add `-y` to skip every question and `--icons` to also install `@bolio-ui/icons`. The generators run with `npx`, so Node needs npm.
 
@@ -42,9 +51,14 @@ Add `-y` to skip every question and `--icons` to also install `@bolio-ui/icons`.
 
 ### Existing project
 
-Run it at the root of a project you already have. It detects Next.js, Vite, React Router, Remix, Gatsby or RedwoodJS, installs `@bolio-ui/core` with the package manager of your lockfile, and edits the root file of the app:
+Run it at the root of a project you already have. It detects Next.js, Vite, React Router, Remix, Gatsby, RedwoodJS, TanStack Start, Waku, RedwoodSDK or Astro, installs `@bolio-ui/core` with the package manager of your lockfile, and edits the root file of the app:
 
-<PackageTabs pnpm="pnpm dlx @bolio-ui/cli@latest init" npm="npx @bolio-ui/cli@latest init" yarn="yarn dlx @bolio-ui/cli@latest init" bun="bunx --bun @bolio-ui/cli@latest init" />
+<PackageTabs
+  pnpm="pnpm dlx @bolio-ui/cli@latest init"
+  npm="npx @bolio-ui/cli@latest init"
+  yarn="yarn dlx @bolio-ui/cli@latest init"
+  bun="bunx --bun @bolio-ui/cli@latest init"
+/>
 
 If a file does not look the way the command expects, it leaves the file alone and prints the lines to add. Running it again changes nothing. To do the same by hand, follow the next two steps.
 
@@ -54,7 +68,12 @@ If a file does not look the way the command expects, it leaves the file alone an
 
 Inside your React project directory, install Bolio UI by running any of the following:
 
-<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
+<PackageTabs
+  pnpm="pnpm add @bolio-ui/core"
+  npm="npm i @bolio-ui/core"
+  yarn="yarn add @bolio-ui/core"
+  bun="bun add @bolio-ui/core"
+/>
 
 <Spacer h={2} />
 
