@@ -1,3 +1,4 @@
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
 
 function MyApp({ Component, pageProps }) {
