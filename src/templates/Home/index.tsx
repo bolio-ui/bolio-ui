@@ -6,6 +6,7 @@ import { Action, useRegisterActions } from 'kbar'
 import { getId } from 'core/utils/collections'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
+import SectionAgents from './SectionAgents'
 import SectionFeatures from './SectionFeatures'
 import SectionPlayground from './SectionPlayground'
 import SectionCapabilities from './SectionCapabilities'
@@ -33,6 +34,7 @@ function Home() {
     <>
       <Base>
         <Hero />
+        <SectionAgents />
         <SectionFeatures />
         <SectionPlayground />
         <SectionCapabilities />
