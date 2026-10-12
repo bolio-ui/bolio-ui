@@ -1629,6 +1629,18 @@
     "path": "/docs/components/drawer#drawerplacement"
   },
   {
+    "head": "Drawer",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/drawer#ref"
+  },
+  {
+    "head": "Drawer",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/drawer#accessibility"
+  },
+  {
     "title": "Empty State",
     "component": true,
     "path": "/docs/components/empty-state"
@@ -2531,6 +2543,18 @@
     "title": "Action Event - Modal",
     "component": false,
     "path": "/docs/components/modal#modalactionevent"
+  },
+  {
+    "head": "Modal",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/modal#ref"
+  },
+  {
+    "head": "Modal",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/modal#accessibility"
   },
   {
     "title": "Note",
