@@ -165,6 +165,12 @@
     "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
   },
   {
+    "head": "Breadcrumbs",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#accessibility"
+  },
+  {
     "title": "Button",
     "component": true,
     "path": "/docs/components/button"
@@ -353,6 +359,12 @@
     "title": "Types Button Dropdown",
     "component": false,
     "path": "/docs/components/button-dropdown#buttondropdowntypes"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/button-dropdown#accessibility"
   },
   {
     "title": "Button Group",
@@ -643,6 +655,12 @@
     "title": "Types - Card",
     "component": false,
     "path": "/docs/components/card#cardtype"
+  },
+  {
+    "head": "Card",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/card#accessibility"
   },
   {
     "title": "Carousel",
@@ -3746,6 +3764,12 @@
     "path": "/docs/components/snippet#toasttypes"
   },
   {
+    "head": "Snippet",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/snippet#accessibility"
+  },
+  {
     "title": "Spacer",
     "component": true,
     "path": "/docs/components/spacer"
@@ -4104,6 +4128,12 @@
     "title": "Table ColumnRender",
     "component": false,
     "path": "/docs/components/table#tablecolumnrender"
+  },
+  {
+    "head": "Table",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/table#accessibility"
   },
   {
     "title": "Tabs",
