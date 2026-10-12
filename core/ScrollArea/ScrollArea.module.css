@@ -23,17 +23,6 @@
     background: var(--scroll-thumb);
   }
 
-  /* Chrome does not restyle the scrollbar when only a variable changes, so
-     the hover variant sets the thumb in its own rules */
-  .hover::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-
-  .hover:hover::-webkit-scrollbar-thumb,
-  .hover:focus-within::-webkit-scrollbar-thumb {
-    background: var(--scroll-thumb-visible);
-  }
-
   .scrollArea::-webkit-scrollbar-thumb:hover {
     background: var(--scroll-thumb-active);
   }
