@@ -5,9 +5,11 @@ import styles from './SelectIconClear.module.css'
 
 interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  // the accessible name of the button
+  label?: string
 }
 
-function SelectIconClear({ onClick }: Props) {
+function SelectIconClear({ onClick, label = 'Clear' }: Props) {
   const theme = useTheme()
 
   const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,7 +22,7 @@ function SelectIconClear({ onClick }: Props) {
   return (
     <button
       type="button"
-      aria-label="Clear"
+      aria-label={label}
       onClick={clickHandler}
       className={joinClasses('clear-icon', styles.clearIcon)}
       style={

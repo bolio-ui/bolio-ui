@@ -257,18 +257,26 @@ const SelectComponent = React.forwardRef<
       const [, optionChildren] = pickChildByProps(children, 'value', value)
       return React.Children.map(optionChildren, (child) => {
         if (
-          !React.isValidElement<{ value: string; preventAllEvents?: boolean }>(
-            child
-          )
+          !React.isValidElement<{
+            value: string
+            preventAllEvents?: boolean
+            children?: React.ReactNode
+          }>(child)
         )
           return null
         const el = React.cloneElement(child, {
           preventAllEvents: true
         })
         if (!multiple) return el
+        const content = child.props.children
+        const name =
+          typeof content === 'string' || typeof content === 'number'
+            ? String(content)
+            : child.props.value
         return (
           <SelectMultipleValue
             disabled={disabled}
+            label={`Remove ${name}`}
             onClear={clearable ? () => updateValue(child.props.value) : null}
           >
             {el}

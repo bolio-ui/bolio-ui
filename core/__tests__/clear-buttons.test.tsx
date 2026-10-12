@@ -32,9 +32,9 @@ describe('clear buttons are real buttons', () => {
         <Select.Option value="2">Two</Select.Option>
       </Select>
     )
-    const buttons = screen.getAllByRole('button', { name: 'Clear' })
-    expect(buttons).toHaveLength(2)
-    fireEvent.click(buttons[0])
+    expect(screen.getAllByRole('button')).toHaveLength(2)
+    fireEvent.click(screen.getByRole('button', { name: 'Remove One' }))
     expect(onChange).toHaveBeenCalledWith(['2'])
+    expect(screen.getByRole('button', { name: 'Remove Two' })).toBeTruthy()
   })
 })

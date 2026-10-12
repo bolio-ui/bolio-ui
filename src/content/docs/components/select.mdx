@@ -576,6 +576,7 @@ type SelectTypes =
 
 - • The field is a `combobox` with `aria-haspopup="listbox"` and `aria-expanded`, and the list is a `listbox` of `option` elements. Its `placeholder` is the name when you do not pass one.
 - • With the focus on the field, the arrows, Enter and Space open the list. Up and Down arrows move between the options and skip the disabled ones, Home and End go to the first and the last, Enter and Space choose the option, and Escape closes the list. Typing letters goes to the option that starts with them, and opens the list when it is closed. With `multiple`, Enter toggles the option and the list stays open.
+- • With `multiple`, each chosen value has a button named "Remove" followed by its text, such as "Remove Brazil".
 - • The option the keyboard is on is announced through `aria-activedescendant`, so the focus stays on the field.
 - • Without a visible label, pass `aria-label` or `aria-labelledby`.
 
