@@ -266,6 +266,18 @@
     "path": "/docs/components/button#buttontypes"
   },
   {
+    "head": "Button",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/button#ref"
+  },
+  {
+    "head": "Button",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/button#accessibility"
+  },
+  {
     "title": "Button Dropdown",
     "component": true,
     "path": "/docs/components/button-dropdown"
@@ -2876,6 +2888,18 @@
     "path": "/docs/components/pagination#pagination.next.props"
   },
   {
+    "head": "Pagination",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pagination#ref"
+  },
+  {
+    "head": "Pagination",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pagination#accessibility"
+  },
+  {
     "title": "Pin Input",
     "component": true,
     "path": "/docs/components/pin-input"
@@ -2992,6 +3016,18 @@
     "title": "Placement - Popover",
     "component": false,
     "path": "/docs/components/popover#placement"
+  },
+  {
+    "head": "Popover",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/popover#ref"
+  },
+  {
+    "head": "Popover",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/popover#accessibility"
   },
   {
     "title": "Progress",
@@ -4147,6 +4183,18 @@
     "path": "/docs/components/tabs#tabs.item.props"
   },
   {
+    "head": "Tabs",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tabs#ref"
+  },
+  {
+    "head": "Tabs",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tabs#accessibility"
+  },
+  {
     "title": "Tag",
     "component": true,
     "path": "/docs/components/tag"
@@ -4618,6 +4666,18 @@
     "title": "Placement - Tooltip",
     "component": false,
     "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tooltip#ref"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tooltip#accessibility"
   },
   {
     "title": "Tour",

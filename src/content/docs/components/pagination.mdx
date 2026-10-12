@@ -163,6 +163,16 @@ Navigation and identification between multiple pages.
 | --------- | ------------ | ---------------------- | ------------------------ | ------- |
 | ...       | native props | `ButtonHTMLAttributes` | `'id', 'className', ...` | -       |
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `nav` element.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The root is a `nav` named "Pagination", and the pages are buttons in a list.
+- • The current page has `aria-current="page"`.
+- • Icon-only content in `Pagination.Previous` and `Pagination.Next` needs an `aria-label`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

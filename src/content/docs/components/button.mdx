@@ -485,6 +485,16 @@ type ButtonTypes =
   | 'info-light'
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the native `button`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The component is a native `button`, so Tab reaches it and Enter and Space press it.
+- • While `disabled` or `loading`, a click does nothing.
+- • A button with only an icon needs an `aria-label`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

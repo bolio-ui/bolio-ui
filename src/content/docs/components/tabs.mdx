@@ -290,6 +290,16 @@ The Tabs contain an additional Hooks, see subsection [useTabs](/docs/hooks/use-t
 | **value**(required) | unique ident value  | `string`  | -               | -       |
 | **disabled**        | disable current tab | `boolean` | -               | `false` |
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element, which holds the tab list and the panel.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The tabs use `tablist`, `tab` and `tabpanel`, and the selected tab has `aria-selected`.
+- • Tab reaches the selected tab only. Left and Right arrows move to the previous and next tab and wrap around at the ends, Home and End go to the first and the last, and Enter and Space select the focused tab.
+- • Disabled tabs have `aria-disabled` and are skipped by the arrows.
+
 </Attributes>
 
 export default Docs.withMeta(meta)
