@@ -31,10 +31,10 @@ behave as usual.
 
 <Playground
   title="Horizontal"
-  desc="Use `orientation` to scroll sideways, or `both` for both directions. A sideways scrollbar gets space below the content."
+  desc="Use `orientation` to scroll sideways, or `both` for both directions. A sideways scrollbar gets space below the content, and `scrollbar="hover"` shows it only while the pointer is over the area."
   scope={{ ScrollArea }}
   code={`
-<ScrollArea orientation="horizontal" aria-label="Wide content">
+<ScrollArea orientation="horizontal" scrollbar="hover" aria-label="Wide content">
   <div style={{ width: 1200 }}>A line wider than its container.</div>
 </ScrollArea>
 `}
