@@ -322,6 +322,11 @@ export const components = [
     url: '/docs/components/loading'
   },
   {
+    name: 'Mark',
+    url: '/docs/components/mark',
+    tag: 'New'
+  },
+  {
     name: 'Marquee',
     url: '/docs/components/marquee',
     tag: 'New'

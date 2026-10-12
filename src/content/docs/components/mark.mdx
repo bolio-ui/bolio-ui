@@ -1,0 +1,84 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Mark, Input } from 'core'
+
+export const meta = {
+  title: 'Mark',
+  description:
+    'Marks the terms you pick inside a text, for search results and key words.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 74
+}
+
+## Mark
+
+Marks the terms you pick inside a text, for search results and key words. It
+matches without regard to case and keeps the text as it was written.
+
+<Playground
+  desc="Pass the text as a string and the term in `highlight`."
+  scope={{ Mark }}
+  code={`
+<Mark highlight="theme">
+  Every component follows the theme of the provider.
+</Mark>
+`}
+/>
+
+<Playground
+  title="Several terms"
+  desc="Pass a list to mark more than one term. When terms overlap, the longest one wins."
+  scope={{ Mark }}
+  code={`
+<Mark highlight={['button', 'input']}>
+  Button and Input share the same scale. Each Button reads it.
+</Mark>
+`}
+/>
+
+<Playground
+  title="Search"
+  desc="Use the value of an input as the term to mark the matches while you type."
+  scope={{ Mark, Input }}
+  code={`
+() => {
+  const [query, setQuery] = React.useState('scale')
+  return (
+    <>
+      <Input
+        label="Search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <p>
+        <Mark highlight={query}>
+          Components use a scale, so one scale prop sizes the whole library.
+        </Mark>
+      </p>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/mark.mdx">
+<Attributes.Title>Mark.Props</Attributes.Title>
+
+| Attribute     | Description                                         | Type                 | Accepted values | Default |
+| ------------- | --------------------------------------------------- | -------------------- | --------------- | ------- |
+| **children**  | text to search in                                   | `string`             | -               | `''`    |
+| **highlight** | terms to mark, matched without regard to case       | `string` / `string[]` | -              | `''`    |
+| ...           | native props, passed to the root element            | `HTMLAttributes`     | `'id', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `span`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each match renders as a native `mark` element, which browsers and most screen readers treat as highlighted text. The meaning does not rely on the color alone.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

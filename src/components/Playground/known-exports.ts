@@ -42,6 +42,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Keyboard',
   'Link',
   'Loading',
+  'Mark',
   'Marquee',
   'Mention',
   'Menu',

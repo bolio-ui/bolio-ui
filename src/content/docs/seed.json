@@ -7318,5 +7318,52 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/spoiler#accessibility"
+  },
+  {
+    "title": "Mark",
+    "component": true,
+    "path": "/docs/components/mark"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark General",
+    "component": false,
+    "path": "/docs/components/mark#general"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Several terms",
+    "component": false,
+    "path": "/docs/components/mark#several-terms"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Search",
+    "component": false,
+    "path": "/docs/components/mark#search"
+  },
+  {
+    "head": "Mark",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mark#apis"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Props",
+    "component": false,
+    "path": "/docs/components/mark#mark.props"
+  },
+  {
+    "head": "Mark",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/mark#ref"
+  },
+  {
+    "head": "Mark",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/mark#accessibility"
   }
 ]

@@ -372,6 +372,11 @@
               "path": "/docs/components/loading.mdx"
             },
             {
+              "title": "Mark",
+              "keywords": "mark, highlight, highlighter, search, match, key words, text, find",
+              "path": "/docs/components/mark.mdx"
+            },
+            {
               "title": "Marquee",
               "keywords": "marquee, ticker, logos, testimonials, carousel, loop",
               "path": "/docs/components/marquee.mdx"

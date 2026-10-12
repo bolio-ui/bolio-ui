@@ -41,6 +41,7 @@ const {
   Link,
   Loading,
   Mention,
+  Mark,
   Menu,
   Modal,
   Note,
@@ -247,6 +248,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Radio.Group>
     )
   ],
+  ['Mark', () => <Mark highlight="a">Mark</Mark>],
   ['Rating', () => <Rating value={3} />],
   [
     'Row',

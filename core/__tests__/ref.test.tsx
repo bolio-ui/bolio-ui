@@ -43,6 +43,7 @@ const {
   Link,
   Loading,
   Mention,
+  Mark,
   Menu,
   Modal,
   Note,
@@ -276,6 +277,14 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       </Radio.Group>
     ),
     'INPUT'
+  ],
+  [
+    'Mark',
+    (ref) => (
+      <Mark ref={ref} highlight="a">
+        Mark
+      </Mark>
+    )
   ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
