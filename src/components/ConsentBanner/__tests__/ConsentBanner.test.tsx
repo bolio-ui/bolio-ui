@@ -40,6 +40,14 @@ describe('<ConsentBanner />', () => {
     expect(screen.queryByRole('region', { name: 'Analytics' })).toBeNull()
   })
 
+  it('links to the privacy page', () => {
+    load(true)
+    expect(screen.getByRole('link', { name: 'Privacy' })).toHaveAttribute(
+      'href',
+      '/privacy'
+    )
+  })
+
   it('keeps analytics denied when the visitor declines', () => {
     load(true)
     fireEvent.click(screen.getByRole('button', { name: 'Decline' }))

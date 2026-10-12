@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Text, useTheme } from 'core'
+import { Button, Card, Link, Text, useTheme } from 'core'
 import { ANALYTICS_ENABLED, getConsent, setConsent } from 'src/utils/gtag'
 import styles from './ConsentBanner.module.css'
 
@@ -34,7 +34,11 @@ const ConsentBanner: React.FC = () => {
         <div className={styles.content}>
           <Text p margin={0}>
             Bolio UI uses Google Analytics to count visits and find which docs
-            need work. It stays off until you accept.
+            need work. It stays off until you accept. See{' '}
+            <Link href="/privacy" color underline>
+              Privacy
+            </Link>
+            .
           </Text>
           <div className={styles.actions}>
             <Button auto scale={0.75} onClick={() => answer('denied')}>
