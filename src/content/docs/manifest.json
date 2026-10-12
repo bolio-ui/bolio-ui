@@ -272,6 +272,11 @@
               "path": "/docs/components/container.mdx"
             },
             {
+              "title": "Copy Button",
+              "keywords": "copy button, copy, clipboard, copied, copy text, snippet",
+              "path": "/docs/components/copy-button.mdx"
+            },
+            {
               "title": "Context Menu",
               "keywords": "context menu, right click, contextmenu, menu, actions, popup menu, shift f10",
               "path": "/docs/components/context-menu.mdx"

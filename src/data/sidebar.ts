@@ -234,6 +234,11 @@ export const components = [
     url: '/docs/components/container'
   },
   {
+    name: 'Copy Button',
+    url: '/docs/components/copy-button',
+    tag: 'New'
+  },
+  {
     name: 'Context Menu',
     url: '/docs/components/context-menu',
     tag: 'New'

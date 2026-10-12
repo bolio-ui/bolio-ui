@@ -237,6 +237,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Copy Button',
+            url: '/docs/components/copy-button',
+            group: 'Components'
+          },
+          {
             name: 'Context Menu',
             url: '/docs/components/context-menu',
             group: 'Components'

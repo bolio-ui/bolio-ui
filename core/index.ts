@@ -268,6 +268,9 @@ export type { TextProps } from './Text'
 export { default as Textarea } from './Textarea'
 export type { TextareaProps } from './Textarea'
 
+export { default as CopyButton } from './CopyButton'
+export type { CopyButtonProps, CopyButtonRenderProps } from './CopyButton'
+
 export { default as ScrollArea } from './ScrollArea'
 export type { ScrollAreaProps, ScrollAreaOrientation } from './ScrollArea'
 

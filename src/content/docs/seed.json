@@ -7242,5 +7242,40 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/scroll-area#accessibility"
+  },
+  {
+    "title": "Copy Button",
+    "component": true,
+    "path": "/docs/components/copy-button"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Copy Button General",
+    "component": false,
+    "path": "/docs/components/copy-button#general"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Copy Button Timeout",
+    "component": false,
+    "path": "/docs/components/copy-button#timeout"
+  },
+  {
+    "head": "Copy Button",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/copy-button#apis"
+  },
+  {
+    "head": "Copy Button",
+    "title": "CopyButton.Props",
+    "component": false,
+    "path": "/docs/components/copy-button#copybutton.props"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/copy-button#accessibility"
   }
 ]
