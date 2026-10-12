@@ -1,3 +1,4 @@
+import { activateOnKey } from '../utils/activate-on-key'
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { CardTypes } from '../utils/prop-types'
@@ -119,6 +120,7 @@ const CardComponent = React.forwardRef<
           className
         )}
         tabIndex={interactive ? 0 : undefined}
+        onKeyDown={interactive ? activateOnKey : undefined}
         onMouseMove={(event) => {
           if (spotlight) {
             const rect = event.currentTarget.getBoundingClientRect()

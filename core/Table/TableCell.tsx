@@ -1,3 +1,4 @@
+import { activateOnKey } from '../utils/activate-on-key'
 import React from 'react'
 import {
   TableDataItemBase,
@@ -51,6 +52,8 @@ const TableCell = <TableDataItem extends TableDataItemBase>({
             onClick={() =>
               onCellClick && onCellClick(currentRowValue, rowIndex, index)
             }
+            tabIndex={onCellClick ? 0 : undefined}
+            onKeyDown={onCellClick ? activateOnKey : undefined}
             className={column.className}
           >
             <div className="cell">

@@ -1,3 +1,4 @@
+import { activateOnKey } from '../utils/activate-on-key'
 import React from 'react'
 import useTheme from '../use-theme'
 import TableCell from './TableCell'
@@ -75,6 +76,8 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
               className
             )}
             onClick={() => rowClickHandler(row, index)}
+            tabIndex={onRow ? 0 : undefined}
+            onKeyDown={onRow ? activateOnKey : undefined}
             style={trStyle}
           >
             {selection && (

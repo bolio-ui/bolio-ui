@@ -32,6 +32,7 @@ const ContextMenuComponent = React.forwardRef<
       className = '',
       children,
       onContextMenu,
+      onKeyDown,
       ...props
     },
     ref
@@ -39,6 +40,8 @@ const ContextMenuComponent = React.forwardRef<
     // where the menu opens, null while it is closed
     const [point, setPoint] = useState<Point | null>(null)
     const area = useRef<HTMLDivElement | null>(null)
+    // the element that had the focus when the keyboard opened the menu
+    const opener = useRef<HTMLElement | null>(null)
 
     const setRefs = (element: HTMLDivElement | null) => {
       area.current = element
@@ -55,7 +58,24 @@ const ContextMenuComponent = React.forwardRef<
       if (onContextMenu) onContextMenu(event)
       if (disabled || event.defaultPrevented) return
       event.preventDefault()
+      opener.current = null
       change(true, { x: event.clientX, y: event.clientY })
+    }
+
+    // the Menu key and Shift+F10 open it below the element with the focus
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (onKeyDown) onKeyDown(event)
+      if (disabled || event.defaultPrevented) return
+      if (
+        event.key !== 'ContextMenu' &&
+        !(event.shiftKey && event.key === 'F10')
+      )
+        return
+      event.preventDefault()
+      const target = event.target as HTMLElement
+      const rect = target.getBoundingClientRect()
+      opener.current = target
+      change(true, { x: rect.left, y: rect.bottom })
     }
 
     // like the menus of the system, it closes when the page scrolls
@@ -76,6 +96,7 @@ const ContextMenuComponent = React.forwardRef<
         className={useClasses(styles.area, className)}
         {...props}
         onContextMenu={contextMenuHandler}
+        onKeyDown={keyDownHandler}
       >
         {children}
         {point && (
@@ -92,14 +113,14 @@ const ContextMenuComponent = React.forwardRef<
               height: 0
             }}
             // The menu returns the focus to its trigger when it closes, and
-            // this one hands it to the area.
+            // this one hands it on to where the keyboard opened the menu, or the area.
             trigger={
               <button
                 type="button"
                 tabIndex={-1}
                 aria-hidden="true"
                 className={styles.trigger}
-                onFocus={() => area.current?.focus()}
+                onFocus={() => (opener.current ?? area.current)?.focus()}
               />
             }
           >
