@@ -1,12 +1,12 @@
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration
 } from '@remix-run/react'
 import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+import '@bolio-ui/core/styles.css'
 
 export default function App() {
   return (
@@ -23,7 +23,6 @@ export default function App() {
           <Outlet />
           <ScrollRestoration />
           <Scripts />
-          <LiveReload />
         </BolioUIProvider>
       </body>
     </html>

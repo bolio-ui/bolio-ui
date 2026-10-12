@@ -1,0 +1,60 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, useRovingIndex } from 'core'
+
+export const meta = {
+  title: 'useRovingIndex',
+  description: 'Move the focus between the items of a list with the arrow keys, keeping one tab stop.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 80
+}
+
+## useRovingIndex
+
+Move the focus between the items of a list with the arrow keys, keeping one tab stop.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Tab into the group once, then use the arrow keys."
+  scope={{ useRovingIndex }}
+  code={`
+() => {
+  const { getItemProps } = useRovingIndex({ total: 3 })
+  return (
+    <div>
+      {['One', 'Two', 'Three'].map((label, index) => (
+        <button key={label} {...getItemProps(index)} style={{ marginRight: 8 }}>{label}</button>
+      ))}
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-roving-index.mdx">
+<Attributes.Title>useRovingIndex</Attributes.Title>
+
+```ts
+const useRovingIndex = (options: {
+  total: number
+  initialIndex?: number
+  orientation?: 'horizontal' | 'vertical'
+  loop?: boolean
+  onChange?: (index: number) => void
+}) => {
+  selected: number
+  setSelected: (index: number) => void
+  getItemProps: (index: number) => {
+    ref: (element: HTMLElement | null) => void
+    tabIndex: number
+    onFocus: () => void
+    onKeyDown: (event: KeyboardEvent) => void
+  }
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

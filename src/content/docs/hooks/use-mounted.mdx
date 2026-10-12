@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useMounted } from 'core'
+
+export const meta = {
+  title: 'useMounted',
+  description: 'Know whether the component has mounted in the browser.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 40
+}
+
+## useMounted
+
+Know whether the component has mounted in the browser.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It is false on the server and on the first render."
+  scope={{ Text, useMounted }}
+  code={`
+() => {
+  const mounted = useMounted()
+  return <Text>{mounted ? 'Mounted' : 'Rendering'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-mounted.mdx">
+<Attributes.Title>useMounted</Attributes.Title>
+
+```ts
+const useMounted = () => boolean
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

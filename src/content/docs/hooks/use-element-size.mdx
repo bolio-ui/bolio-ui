@@ -1,0 +1,48 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useElementSize } from 'core'
+
+export const meta = {
+  title: 'useElementSize',
+  description: 'Get the width and height of an element and keep them updated.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 22
+}
+
+## useElementSize
+
+Get the width and height of an element and keep them updated.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Resize the textarea to see its size change."
+  scope={{ Text, useElementSize }}
+  code={`
+() => {
+  const { ref, width, height } = useElementSize()
+  return (
+    <>
+      <Text>{Math.round(width)} x {Math.round(height)}</Text>
+      <textarea ref={ref} style={{ resize: 'both', width: 240, height: 80 }} />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-element-size.mdx">
+<Attributes.Title>useElementSize</Attributes.Title>
+
+```ts
+const useElementSize = <T extends HTMLElement = HTMLElement>() => {
+  ref: RefObject<T | null>
+  width: number
+  height: number
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

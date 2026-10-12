@@ -10,7 +10,7 @@ export default function ThemeGeneratorTemplate() {
     <>
       <Base>
         <Section py={4}>
-          <Container style={{ maxWidth: 1300 }}>
+          <Container style={{ maxWidth: 1400, paddingInline: 24 }}>
             <Text h1>Theme Generator</Text>
             <Text p style={{ maxWidth: 640 }}>
               Pick a primary and a secondary color. Bolio UI derives the shades

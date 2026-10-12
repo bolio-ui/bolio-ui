@@ -1,0 +1,42 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useOrientation } from 'core'
+
+export const meta = {
+  title: 'useOrientation',
+  description: 'Read the orientation of the screen, portrait or landscape, and its angle.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 77
+}
+
+## useOrientation
+
+Read the orientation of the screen, portrait or landscape, and its angle.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Rotate the device to see the values change."
+  scope={{ Text, useOrientation }}
+  code={`
+() => {
+  const { angle, type } = useOrientation()
+  return <Text>{type}, {angle} degrees</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-orientation.mdx">
+<Attributes.Title>useOrientation</Attributes.Title>
+
+```ts
+const useOrientation = (defaultValue?: {
+  angle: number
+  type: OrientationType
+}) => { angle: number; type: OrientationType }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useFullscreen } from 'core'
+
+export const meta = {
+  title: 'useFullscreen',
+  description: 'Put an element, or the whole page, in fullscreen.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 26
+}
+
+## useFullscreen
+
+Put an element, or the whole page, in fullscreen.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Without a ref the whole page goes fullscreen."
+  scope={{ Button, useFullscreen }}
+  code={`
+() => {
+  const { ref, toggle, fullscreen } = useFullscreen()
+  return (
+    <div ref={ref} style={{ padding: 24 }}>
+      <Button auto scale={0.6} onClick={toggle}>{fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}</Button>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-fullscreen.mdx">
+<Attributes.Title>useFullscreen</Attributes.Title>
+
+```ts
+const useFullscreen = <T extends HTMLElement = HTMLElement>() => {
+  ref: RefObject<T | null>
+  fullscreen: boolean
+  enter: () => Promise<void>
+  exit: () => Promise<void>
+  toggle: () => Promise<void>
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

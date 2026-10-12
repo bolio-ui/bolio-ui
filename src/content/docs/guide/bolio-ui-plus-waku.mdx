@@ -1,0 +1,75 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer } from 'core'
+
+export const meta = {
+  title: 'Example with Waku',
+  description: 'Set up Bolio UI in a Waku application.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Example with Waku
+
+<Spacer h={2} />
+
+### Get started with an example
+
+To begin, the most straightforward approach is to utilize one of the provided templates.
+These templates come pre-configured with the necessary settings, such as CssBaseline and other fundamental components.
+
+If you're new to GitHub and need guidance on initiating a project using a template,
+you can access comprehensive instructions on how to get started on <Link target="_blank" rel="nofollow" color icon href="https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-waku">this example</Link>.
+
+<Spacer h={2} />
+
+### Generate new application
+
+Follow <Link target="_blank" rel="nofollow" color icon href="https://waku.gg/">Waku</Link> guide to create new application:
+
+<PackageTabs pnpm="pnpm create waku@latest" npm="npm create waku@latest" yarn="yarn create waku" bun="bun create waku@latest" />
+
+<Spacer h={2} />
+
+### Installation
+
+Install dependencies:
+
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
+
+With Yarn, the Waku template also needs `@babel/core`, which Yarn does not install as a peer dependency. Add it with `yarn add @babel/core`.
+
+<Spacer h={2} />
+
+### Setup
+
+Waku renders layouts as React Server Components, and `BolioUIProvider` is already a client component, so it can be used in the layout directly. Add styles imports, BolioUIProvider and CssBaseline to `src/pages/_layout.tsx`:
+
+```jsx
+import '../styles.css'
+import '@bolio-ui/core/styles.css'
+
+import type { ReactNode } from 'react'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <BolioUIProvider>
+      <CssBaseline />
+      {children}
+    </BolioUIProvider>
+  )
+}
+
+export const getConfig = async () => {
+  return {
+    render: 'static'
+  } as const
+}
+```
+
+Ready to go! Start the development server:
+
+<PackageTabs pnpm="pnpm dev" npm="npm run dev" yarn="yarn dev" bun="bun run dev" />
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,174 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'MCP Server',
+  description:
+    'Access the Bolio UI documentation directly in your AI assistant, with the Bolio UI MCP Server.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## MCP Server
+
+The Bolio UI MCP Server gives AI assistants direct access to the documentation of every component, hook and guide, so they build with the real props and examples.
+
+It is published as `@bolio-ui/mcp` on npm and uses the stdio transport. It reads the same pages as [LLMs.txt](/docs/guide/llms-txt), so it needs no API key.
+
+<Spacer h={2} />
+
+### Cursor
+
+Add to `.cursor/mcp.json`, or to `~/.cursor/mcp.json` to use it in every project:
+
+```json
+{
+  "mcpServers": {
+    "bolio-ui": {
+      "command": "npx",
+      "args": ["-y", "@bolio-ui/mcp@latest"]
+    }
+  }
+}
+```
+
+<Spacer h={2} />
+
+### Claude Code
+
+Run this command in your terminal:
+
+```bash
+claude mcp add bolio-ui -- npx -y @bolio-ui/mcp@latest
+```
+
+Or add to the `.mcp.json` file of your project:
+
+```json
+{
+  "mcpServers": {
+    "bolio-ui": {
+      "command": "npx",
+      "args": ["-y", "@bolio-ui/mcp@latest"]
+    }
+  }
+}
+```
+
+Restart Claude Code and run `/mcp`. When the server shows Connected, it is ready to use.
+
+<Spacer h={2} />
+
+### Windsurf
+
+Add to `.windsurf/mcp.json`, then restart Windsurf:
+
+```json
+{
+  "mcpServers": {
+    "bolio-ui": {
+      "command": "npx",
+      "args": ["-y", "@bolio-ui/mcp@latest"]
+    }
+  }
+}
+```
+
+<Spacer h={2} />
+
+### Zed
+
+Add to your `settings.json`, then restart Zed. In the Agent Panel settings, the dot next to the server turns green when it is active:
+
+```json
+{
+  "context_servers": {
+    "bolio-ui": {
+      "command": "npx",
+      "args": ["-y", "@bolio-ui/mcp@latest"],
+      "env": {}
+    }
+  }
+}
+```
+
+<Spacer h={2} />
+
+### VS Code
+
+Add to `.vscode/mcp.json`, then click Start next to the server:
+
+```json
+{
+  "servers": {
+    "bolio-ui": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@bolio-ui/mcp@latest"]
+    }
+  }
+}
+```
+
+<Spacer h={2} />
+
+### Codex
+
+Add to `~/.codex/config.toml`, or to `.codex/config.toml` in your project, then restart Codex and run `/mcp` to check it:
+
+```toml
+[mcp_servers.bolio-ui]
+command = "npx"
+args = ["-y", "@bolio-ui/mcp@latest"]
+```
+
+<Spacer h={2} />
+
+### OpenCode
+
+Add to `opencode.json`, then restart OpenCode:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "bolio-ui": {
+      "type": "local",
+      "command": ["npx", "-y", "@bolio-ui/mcp@latest"]
+    }
+  }
+}
+```
+
+<Spacer h={2} />
+
+### Usage
+
+Once configured, ask your AI assistant questions like:
+
+- • "Show me all Bolio UI components"
+- • "What props does the Button component have?"
+- • "Give me an example of using the Modal component"
+- • "Help me install Bolio UI in my Vite app"
+- • "How do I customize the theme?"
+- • "Which hooks does Bolio UI have?"
+
+<Spacer h={2} />
+
+### Available tools
+
+| Tool                 | Description                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `list_components`    | List all Bolio UI components, with a summary of each                                                                   |
+| `get_component_docs` | Get the documentation of one or more components, including props, examples and usage                                   |
+| `get_docs`           | Get one page by path, such as `guide/getting-started` or `hooks/use-theme`. Without a path, returns the index of pages |
+
+<Spacer h={2} />
+
+### Troubleshooting
+
+Requirements: Node.js 18 or higher. The package is downloaded by `npx` the first time the server starts.
+
+Something not working? Open an issue on [GitHub](https://github.com/bolio-ui/bolio-ui/issues/new).
+
+export default Docs.withMeta(meta)

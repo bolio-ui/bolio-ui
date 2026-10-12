@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useColorScheme } from 'core'
+
+export const meta = {
+  title: 'useColorScheme',
+  description: 'Detect the color scheme of the system, light or dark.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 14
+}
+
+## useColorScheme
+
+Detect the color scheme of the system, light or dark.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It follows the system, not the theme of the site."
+  scope={{ Text, useColorScheme }}
+  code={`
+() => {
+  const scheme = useColorScheme()
+  return <Text>System scheme: {scheme}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-color-scheme.mdx">
+<Attributes.Title>useColorScheme</Attributes.Title>
+
+```ts
+const useColorScheme = () => 'light' | 'dark'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

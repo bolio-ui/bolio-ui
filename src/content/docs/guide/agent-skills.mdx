@@ -1,0 +1,81 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Agent Skills',
+  description:
+    'Teach AI assistants to build interfaces with Bolio UI components, setup and theming using the Bolio UI Skill.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Agent Skills
+
+<Spacer h={2} />
+
+### Installation
+
+The Bolio UI Skill gives your AI assistant the setup, rules and docs links it needs to build with `@bolio-ui/core`. Install it with the skills package:
+
+<PackageTabs
+  pnpm="pnpm dlx skills add bolio-ui/bolio-ui"
+  npm="npx skills add bolio-ui/bolio-ui"
+  yarn="yarn dlx skills add bolio-ui/bolio-ui"
+  bun="bunx skills add bolio-ui/bolio-ui"
+/>
+
+It works with Claude Code, Cursor, OpenCode and other tools that read Agent Skills.
+
+<Spacer h={2} />
+
+### Manual install
+
+Copy the [skills/bolio-ui](https://github.com/bolio-ui/bolio-ui/tree/master/skills/bolio-ui) folder to the skills directory of your tool. Use your project to load the Skill only where Bolio UI is used, or your home directory to load it in every project:
+
+- • `.claude/skills/` for Claude Code
+- • `.cursor/skills/` for Cursor
+- • `.opencode/skills/` for OpenCode
+- • `.agents/skills/` for Codex and Antigravity
+
+<Spacer h={2} />
+
+### Usage
+
+Your assistant discovers the Skill by itself when you work with `@bolio-ui/core`, or you can call it by name with `/bolio-ui`.
+
+Ask your assistant to:
+
+- • Build components using Bolio UI
+- • Create pages with Bolio UI components
+- • Customize themes and colors
+- • Read the documentation of a component
+
+<Spacer h={2} />
+
+### What's included
+
+- • Installation with the CLI or by hand, for every supported framework
+- • Rules for building with the components, such as theme colors instead of hex values
+- • Links to the [LLMs.txt](/docs/guide/llms-txt) files, so props and examples come from the docs and not from memory
+- • The path to the [migration guide](/docs/guide/migration-v2-to-v3) for projects coming from v2
+
+<Spacer h={2} />
+
+### Structure
+
+```text
+skills/bolio-ui/
+└── SKILL.md    # Main skill documentation
+```
+
+<Spacer h={2} />
+
+### Related documentation
+
+- • [Agent Skills specification](https://agentskills.io): the format of a Skill
+- • [Claude Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview): Skills in Claude
+- • [Cursor Skills](https://cursor.com/docs/context/skills): Skills in Cursor
+- • [OpenCode Skills](https://opencode.ai/docs/skills): Skills in OpenCode
+
+export default Docs.withMeta(meta)

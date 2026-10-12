@@ -1,0 +1,56 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useStateHistory } from 'core'
+
+export const meta = {
+  title: 'useStateHistory',
+  description: 'Keep a value with its history and move back and forward through it.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 51
+}
+
+## useStateHistory
+
+Keep a value with its history and move back and forward through it.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Undo and redo the changes of a value."
+  scope={{ Button, Text, useStateHistory }}
+  code={`
+() => {
+  const [value, handlers, state] = useStateHistory(1)
+  return (
+    <>
+      <Text h3>{value}</Text>
+      <Button auto scale={0.6} onClick={() => handlers.set(value + 1)}>Increment</Button>
+      <Button auto scale={0.6} onClick={() => handlers.back()} style={{ marginLeft: 8 }}>Undo</Button>
+      <Button auto scale={0.6} onClick={() => handlers.forward()} style={{ marginLeft: 8 }}>Redo</Button>
+      <Text small>History: {state.history.join(', ')}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-state-history.mdx">
+<Attributes.Title>useStateHistory</Attributes.Title>
+
+```ts
+const useStateHistory = <T>(initialValue: T) => [
+  T,
+  {
+    set: (value: T) => void
+    back: (steps?: number) => void
+    forward: (steps?: number) => void
+    reset: () => void
+  },
+  { history: T[]; current: number },
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

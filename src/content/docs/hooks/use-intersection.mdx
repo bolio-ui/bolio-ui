@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useIntersection } from 'core'
+
+export const meta = {
+  title: 'useIntersection',
+  description: 'Observe how much of an element is visible with an IntersectionObserver.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 31
+}
+
+## useIntersection
+
+Observe how much of an element is visible with an IntersectionObserver.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Scroll the page to change how much of the box is visible."
+  scope={{ Text, useIntersection }}
+  code={`
+() => {
+  const { ref, entry } = useIntersection({ threshold: [0, 0.5, 1] })
+  return (
+    <>
+      <Text>Visible: {Math.round((entry?.intersectionRatio || 0) * 100)}%</Text>
+      <div ref={ref} style={{ padding: 24, border: '1px dashed currentColor' }}>Observed</div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-intersection.mdx">
+<Attributes.Title>useIntersection</Attributes.Title>
+
+```ts
+const useIntersection = <T extends HTMLElement = HTMLElement>(
+  options?: IntersectionObserverInit,
+) => {
+  ref: (element: T | null) => void
+  entry: IntersectionObserverEntry | null
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

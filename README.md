@@ -35,9 +35,13 @@ Visit <a aria-label="bolio-ui learn" href="https://bolio-ui.com/docs/guide">http
 1. Installation: Inside your React project directory, install Bolio UI by running either of the following:
 
 ```bash
-yarn add @bolio-ui/core
+pnpm add @bolio-ui/core
 # or
 npm i @bolio-ui/core
+# or
+yarn add @bolio-ui/core
+# or
+bun add @bolio-ui/core
 ```
 
 2. Setup: For Bolio UI to work correctly, you need to set up the CssBaseline at the root of your application.

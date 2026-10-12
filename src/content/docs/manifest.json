@@ -47,6 +47,34 @@
           ]
         },
         {
+          "title": "UI for Agents",
+          "open": true,
+          "keywords": "ui for agents, ai, agents, llms, bolio ui",
+          "icon": "Cpu",
+          "routes": [
+            {
+              "title": "LLMs.txt",
+              "keywords": "llms, llms.txt, ai, agents, claude, cursor, windsurf, bolio ui",
+              "path": "/docs/guide/llms-txt.mdx"
+            },
+            {
+              "title": "MCP Server",
+              "keywords": "mcp, mcp server, model context protocol, ai, agents, claude, cursor, bolio ui",
+              "path": "/docs/guide/mcp-server.mdx"
+            },
+            {
+              "title": "Agent Skills",
+              "keywords": "skill, skills, agent skills, ai, agents, claude, bolio ui",
+              "path": "/docs/guide/agent-skills.mdx"
+            },
+            {
+              "title": "AGENTS.md",
+              "keywords": "agents.md, claude.md, ai, agents, bolio ui",
+              "path": "/docs/guide/agents-md.mdx"
+            }
+          ]
+        },
+        {
           "title": "Frameworks",
           "open": true,
           "keywords": "frameworks, examples frameworks, bolio ui",
@@ -76,6 +104,26 @@
               "title": "Example with RedwoodJS",
               "keywords": "next, nextjs, redwoodjs, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-redwoodjs.mdx"
+            },
+            {
+              "title": "Example with TanStack Start",
+              "keywords": "tanstack, start, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-tanstack-start.mdx"
+            },
+            {
+              "title": "Example with Waku",
+              "keywords": "waku, rsc, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-waku.mdx"
+            },
+            {
+              "title": "Example with RedwoodSDK",
+              "keywords": "redwoodsdk, rwsdk, cloudflare, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-redwoodsdk.mdx"
+            },
+            {
+              "title": "Example with Astro",
+              "keywords": "astro, islands, react, bolio ui",
+              "path": "/docs/guide/bolio-ui-plus-astro.mdx"
             }
           ]
         },
@@ -104,6 +152,11 @@
           "open": true,
           "routes": [
             {
+              "title": "Overview",
+              "keywords": "overview, all components, components list, categories",
+              "path": "/docs/components/overview.mdx"
+            },
+            {
               "title": "Alert",
               "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
               "path": "/docs/components/alert.mdx"
@@ -117,11 +170,6 @@
               "title": "Mention",
               "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
               "path": "/docs/components/mention.mdx"
-            },
-            {
-              "title": "Overview",
-              "keywords": "overview, all components, components list, categories",
-              "path": "/docs/components/overview.mdx"
             },
             {
               "title": "Avatar",
@@ -522,9 +570,144 @@
               "path": "/docs/hooks/use-clipboard.mdx"
             },
             {
+              "title": "useCollapse",
+              "keywords": "useCollapse",
+              "path": "/docs/hooks/use-collapse.mdx"
+            },
+            {
+              "title": "useColorScheme",
+              "keywords": "useColorScheme",
+              "path": "/docs/hooks/use-color-scheme.mdx"
+            },
+            {
+              "title": "useCounter",
+              "keywords": "useCounter",
+              "path": "/docs/hooks/use-counter.mdx"
+            },
+            {
               "title": "useCurrentState",
               "keywords": "useCurrentState",
               "path": "/docs/hooks/use-current-state.mdx"
+            },
+            {
+              "title": "useDebouncedCallback",
+              "keywords": "useDebouncedCallback",
+              "path": "/docs/hooks/use-debounced-callback.mdx"
+            },
+            {
+              "title": "useDebouncedState",
+              "keywords": "useDebouncedState",
+              "path": "/docs/hooks/use-debounced-state.mdx"
+            },
+            {
+              "title": "useDebouncedValue",
+              "keywords": "useDebouncedValue",
+              "path": "/docs/hooks/use-debounced-value.mdx"
+            },
+            {
+              "title": "useDidUpdate",
+              "keywords": "useDidUpdate",
+              "path": "/docs/hooks/use-did-update.mdx"
+            },
+            {
+              "title": "useDisclosure",
+              "keywords": "useDisclosure",
+              "path": "/docs/hooks/use-disclosure.mdx"
+            },
+            {
+              "title": "useDocumentTitle",
+              "keywords": "useDocumentTitle",
+              "path": "/docs/hooks/use-document-title.mdx"
+            },
+            {
+              "title": "useDocumentVisibility",
+              "keywords": "useDocumentVisibility",
+              "path": "/docs/hooks/use-document-visibility.mdx"
+            },
+            {
+              "title": "useDrag",
+              "keywords": "useDrag",
+              "path": "/docs/hooks/use-drag.mdx"
+            },
+            {
+              "title": "useElementSize",
+              "keywords": "useElementSize",
+              "path": "/docs/hooks/use-element-size.mdx"
+            },
+            {
+              "title": "useEventListener",
+              "keywords": "useEventListener",
+              "path": "/docs/hooks/use-event-listener.mdx"
+            },
+            {
+              "title": "useEyeDropper",
+              "keywords": "useEyeDropper",
+              "path": "/docs/hooks/use-eye-dropper.mdx"
+            },
+            {
+              "title": "useFavicon",
+              "keywords": "useFavicon",
+              "path": "/docs/hooks/use-favicon.mdx"
+            },
+            {
+              "title": "useFetch",
+              "keywords": "useFetch",
+              "path": "/docs/hooks/use-fetch.mdx"
+            },
+            {
+              "title": "useFileDialog",
+              "keywords": "useFileDialog",
+              "path": "/docs/hooks/use-file-dialog.mdx"
+            },
+            {
+              "title": "useFloatingWindow",
+              "keywords": "useFloatingWindow",
+              "path": "/docs/hooks/use-floating-window.mdx"
+            },
+            {
+              "title": "useFocusReturn",
+              "keywords": "useFocusReturn",
+              "path": "/docs/hooks/use-focus-return.mdx"
+            },
+            {
+              "title": "useFocusTrap",
+              "keywords": "useFocusTrap",
+              "path": "/docs/hooks/use-focus-trap.mdx"
+            },
+            {
+              "title": "useFocusWithin",
+              "keywords": "useFocusWithin",
+              "path": "/docs/hooks/use-focus-within.mdx"
+            },
+            {
+              "title": "useForceUpdate",
+              "keywords": "useForceUpdate",
+              "path": "/docs/hooks/use-force-update.mdx"
+            },
+            {
+              "title": "useFullscreen",
+              "keywords": "useFullscreen",
+              "path": "/docs/hooks/use-fullscreen.mdx"
+            },
+            {
+              "title": "useHash",
+              "keywords": "useHash",
+              "path": "/docs/hooks/use-hash.mdx"
+            },
+            {
+              "title": "useHeadroom",
+              "keywords": "useHeadroom",
+              "path": "/docs/hooks/use-headroom.mdx"
+            },
+            {
+              "title": "useHover",
+              "keywords": "useHover",
+              "path": "/docs/hooks/use-hover.mdx"
+            },
+            {
+              "title": "useIdle",
+              "keywords": "useIdle",
+              "path": "/docs/hooks/use-idle.mdx"
             },
             {
               "title": "useInput",
@@ -532,9 +715,69 @@
               "path": "/docs/hooks/use-input.mdx"
             },
             {
+              "title": "useInputState",
+              "keywords": "useInputState",
+              "path": "/docs/hooks/use-input-state.mdx"
+            },
+            {
+              "title": "useIntersection",
+              "keywords": "useIntersection",
+              "path": "/docs/hooks/use-intersection.mdx"
+            },
+            {
+              "title": "useInterval",
+              "keywords": "useInterval",
+              "path": "/docs/hooks/use-interval.mdx"
+            },
+            {
+              "title": "useInViewport",
+              "keywords": "useInViewport",
+              "path": "/docs/hooks/use-in-viewport.mdx"
+            },
+            {
+              "title": "useIsFirstRender",
+              "keywords": "useIsFirstRender",
+              "path": "/docs/hooks/use-is-first-render.mdx"
+            },
+            {
+              "title": "useIsomorphicEffect",
+              "keywords": "useIsomorphicEffect",
+              "path": "/docs/hooks/use-isomorphic-effect.mdx"
+            },
+            {
               "title": "useKeyboard",
               "keywords": "useKeyboard",
               "path": "/docs/hooks/use-keyboard.mdx"
+            },
+            {
+              "title": "useListState",
+              "keywords": "useListState",
+              "path": "/docs/hooks/use-list-state.mdx"
+            },
+            {
+              "title": "useLocalStorage",
+              "keywords": "useLocalStorage",
+              "path": "/docs/hooks/use-local-storage.mdx"
+            },
+            {
+              "title": "useLogger",
+              "keywords": "useLogger",
+              "path": "/docs/hooks/use-logger.mdx"
+            },
+            {
+              "title": "useLongPress",
+              "keywords": "useLongPress",
+              "path": "/docs/hooks/use-long-press.mdx"
+            },
+            {
+              "title": "useMap",
+              "keywords": "useMap",
+              "path": "/docs/hooks/use-map.mdx"
+            },
+            {
+              "title": "useMask",
+              "keywords": "useMask",
+              "path": "/docs/hooks/use-mask.mdx"
             },
             {
               "title": "useMediaQuery",
@@ -542,9 +785,89 @@
               "path": "/docs/hooks/use-media-query.mdx"
             },
             {
+              "title": "useMergedRef",
+              "keywords": "useMergedRef",
+              "path": "/docs/hooks/use-merged-ref.mdx"
+            },
+            {
               "title": "useModal",
               "keywords": "useModal",
               "path": "/docs/hooks/use-modal.mdx"
+            },
+            {
+              "title": "useMounted",
+              "keywords": "useMounted",
+              "path": "/docs/hooks/use-mounted.mdx"
+            },
+            {
+              "title": "useMouse",
+              "keywords": "useMouse",
+              "path": "/docs/hooks/use-mouse.mdx"
+            },
+            {
+              "title": "useMove",
+              "keywords": "useMove",
+              "path": "/docs/hooks/use-move.mdx"
+            },
+            {
+              "title": "useMutationObserver",
+              "keywords": "useMutationObserver",
+              "path": "/docs/hooks/use-mutation-observer.mdx"
+            },
+            {
+              "title": "useNetwork",
+              "keywords": "useNetwork",
+              "path": "/docs/hooks/use-network.mdx"
+            },
+            {
+              "title": "useOrientation",
+              "keywords": "useOrientation",
+              "path": "/docs/hooks/use-orientation.mdx"
+            },
+            {
+              "title": "useOs",
+              "keywords": "useOs",
+              "path": "/docs/hooks/use-os.mdx"
+            },
+            {
+              "title": "usePageLeave",
+              "keywords": "usePageLeave",
+              "path": "/docs/hooks/use-page-leave.mdx"
+            },
+            {
+              "title": "usePagination",
+              "keywords": "usePagination",
+              "path": "/docs/hooks/use-pagination.mdx"
+            },
+            {
+              "title": "usePrevious",
+              "keywords": "usePrevious",
+              "path": "/docs/hooks/use-previous.mdx"
+            },
+            {
+              "title": "useQueue",
+              "keywords": "useQueue",
+              "path": "/docs/hooks/use-queue.mdx"
+            },
+            {
+              "title": "useRadialMove",
+              "keywords": "useRadialMove",
+              "path": "/docs/hooks/use-radial-move.mdx"
+            },
+            {
+              "title": "useReducedMotion",
+              "keywords": "useReducedMotion",
+              "path": "/docs/hooks/use-reduced-motion.mdx"
+            },
+            {
+              "title": "useResizeObserver",
+              "keywords": "useResizeObserver",
+              "path": "/docs/hooks/use-resize-observer.mdx"
+            },
+            {
+              "title": "useRovingIndex",
+              "keywords": "useRovingIndex",
+              "path": "/docs/hooks/use-roving-index.mdx"
             },
             {
               "title": "useScale",
@@ -552,9 +875,64 @@
               "path": "/docs/hooks/use-scale.mdx"
             },
             {
+              "title": "useScrollDirection",
+              "keywords": "useScrollDirection",
+              "path": "/docs/hooks/use-scroll-direction.mdx"
+            },
+            {
+              "title": "useScroller",
+              "keywords": "useScroller",
+              "path": "/docs/hooks/use-scroller.mdx"
+            },
+            {
+              "title": "useScrollIntoView",
+              "keywords": "useScrollIntoView",
+              "path": "/docs/hooks/use-scroll-into-view.mdx"
+            },
+            {
+              "title": "useScrollSpy",
+              "keywords": "useScrollSpy",
+              "path": "/docs/hooks/use-scroll-spy.mdx"
+            },
+            {
+              "title": "useSelection",
+              "keywords": "useSelection",
+              "path": "/docs/hooks/use-selection.mdx"
+            },
+            {
+              "title": "useSet",
+              "keywords": "useSet",
+              "path": "/docs/hooks/use-set.mdx"
+            },
+            {
+              "title": "useSetState",
+              "keywords": "useSetState",
+              "path": "/docs/hooks/use-set-state.mdx"
+            },
+            {
+              "title": "useShallowEffect",
+              "keywords": "useShallowEffect",
+              "path": "/docs/hooks/use-shallow-effect.mdx"
+            },
+            {
+              "title": "useSplitter",
+              "keywords": "useSplitter",
+              "path": "/docs/hooks/use-splitter.mdx"
+            },
+            {
+              "title": "useStateHistory",
+              "keywords": "useStateHistory",
+              "path": "/docs/hooks/use-state-history.mdx"
+            },
+            {
               "title": "useTabs",
               "keywords": "useTabs",
               "path": "/docs/hooks/use-tabs.mdx"
+            },
+            {
+              "title": "useTextSelection",
+              "keywords": "useTextSelection",
+              "path": "/docs/hooks/use-text-selection.mdx"
             },
             {
               "title": "useTheme",
@@ -562,9 +940,59 @@
               "path": "/docs/hooks/use-theme.mdx"
             },
             {
+              "title": "useThrottledCallback",
+              "keywords": "useThrottledCallback",
+              "path": "/docs/hooks/use-throttled-callback.mdx"
+            },
+            {
+              "title": "useThrottledState",
+              "keywords": "useThrottledState",
+              "path": "/docs/hooks/use-throttled-state.mdx"
+            },
+            {
+              "title": "useThrottledValue",
+              "keywords": "useThrottledValue",
+              "path": "/docs/hooks/use-throttled-value.mdx"
+            },
+            {
+              "title": "useTimeout",
+              "keywords": "useTimeout",
+              "path": "/docs/hooks/use-timeout.mdx"
+            },
+            {
               "title": "useToast",
               "keywords": "useToast, toast, notification, snackbar, message, undo, placement",
               "path": "/docs/hooks/use-toast.mdx"
+            },
+            {
+              "title": "useToggle",
+              "keywords": "useToggle",
+              "path": "/docs/hooks/use-toggle.mdx"
+            },
+            {
+              "title": "useUncontrolled",
+              "keywords": "useUncontrolled",
+              "path": "/docs/hooks/use-uncontrolled.mdx"
+            },
+            {
+              "title": "useValidatedState",
+              "keywords": "useValidatedState",
+              "path": "/docs/hooks/use-validated-state.mdx"
+            },
+            {
+              "title": "useViewportSize",
+              "keywords": "useViewportSize",
+              "path": "/docs/hooks/use-viewport-size.mdx"
+            },
+            {
+              "title": "useWindowEvent",
+              "keywords": "useWindowEvent",
+              "path": "/docs/hooks/use-window-event.mdx"
+            },
+            {
+              "title": "useWindowScroll",
+              "keywords": "useWindowScroll",
+              "path": "/docs/hooks/use-window-scroll.mdx"
             }
           ]
         }

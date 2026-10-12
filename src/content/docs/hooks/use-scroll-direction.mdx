@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useScrollDirection } from 'core'
+
+export const meta = {
+  title: 'useScrollDirection',
+  description: 'Know whether the page is being scrolled up or down.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 81
+}
+
+## useScrollDirection
+
+Know whether the page is being scrolled up or down.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Scroll the page to see the value change."
+  scope={{ Text, useScrollDirection }}
+  code={`
+() => {
+  const direction = useScrollDirection()
+  return <Text>Scrolling {direction}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-scroll-direction.mdx">
+<Attributes.Title>useScrollDirection</Attributes.Title>
+
+```ts
+const useScrollDirection = () => 'up' | 'down'
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

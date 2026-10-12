@@ -1,0 +1,44 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useForceUpdate } from 'core'
+
+export const meta = {
+  title: 'useForceUpdate',
+  description: 'Get a function that renders the component again.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 25
+}
+
+## useForceUpdate
+
+Get a function that renders the component again.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The time changes on every render."
+  scope={{ Button, Text, useForceUpdate }}
+  code={`
+() => {
+  const forceUpdate = useForceUpdate()
+  return (
+    <>
+      <Text>{new Date().toLocaleTimeString()}</Text>
+      <Button auto scale={0.6} onClick={forceUpdate}>Render again</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-force-update.mdx">
+<Attributes.Title>useForceUpdate</Attributes.Title>
+
+```ts
+const useForceUpdate = () => () => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

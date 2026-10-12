@@ -1,0 +1,49 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useDidUpdate } from 'core'
+
+export const meta = {
+  title: 'useDidUpdate',
+  description: 'Run an effect only when the dependencies change, not on the first render.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 18
+}
+
+## useDidUpdate
+
+Run an effect only when the dependencies change, not on the first render.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The counter of updates ignores the first render."
+  scope={{ Button, Text, useDidUpdate }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  const [updates, setUpdates] = React.useState(0)
+  useDidUpdate(() => setUpdates((u) => u + 1), [count])
+  return (
+    <>
+      <Text>Count: {count}, updates: {updates}</Text>
+      <Button auto scale={0.6} onClick={() => setCount(count + 1)}>Increment</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-did-update.mdx">
+<Attributes.Title>useDidUpdate</Attributes.Title>
+
+```ts
+const useDidUpdate = (
+  fn: EffectCallback,
+  dependencies?: DependencyList,
+) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

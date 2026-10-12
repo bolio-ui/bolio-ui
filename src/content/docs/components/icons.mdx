@@ -1,12 +1,13 @@
 import Docs from 'src/templates/Docs'
 import { Smile } from '@bolio-ui/icons'
-import { Grid, Tabs, Snippet } from 'core'
+import { Grid } from 'core'
 import {
   Layout,
   Playground,
   PlaygroundTitle,
   Attributes,
-  IconsGallery
+  IconsGallery,
+  PackageTabs
 } from 'src/components'
 
 export const meta = {
@@ -27,20 +28,7 @@ Display semantic vector graphics in SVG format.
       title="Installation"
       desc="Install the package in your project directory."
     />
-    <Tabs
-      initialValue="yarn"
-      hideDivider
-      hideBorder
-      align="flex-start"
-      width="100%"
-    >
-      <Tabs.Item label="Yarn" value="yarn">
-        <Snippet width="100%">yarn add @bolio-ui/icons</Snippet>
-      </Tabs.Item>
-      <Tabs.Item label="npm" value="npm">
-        <Snippet width="100%">npm i @bolio-ui/icons</Snippet>
-      </Tabs.Item>
-    </Tabs>
+    <PackageTabs pnpm="pnpm add @bolio-ui/icons" npm="npm i @bolio-ui/icons" yarn="yarn add @bolio-ui/icons" bun="bun add @bolio-ui/icons" width="100%" />
   </Grid>
 </Grid.Container>
 

@@ -1,0 +1,57 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useCounter } from 'core'
+
+export const meta = {
+  title: 'useCounter',
+  description: 'Keep a number with increment, decrement, set and reset handlers, optionally clamped to a range.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 15
+}
+
+## useCounter
+
+Keep a number with increment, decrement, set and reset handlers, optionally clamped to a range.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The value stays between min and max."
+  scope={{ Button, Text, useCounter }}
+  code={`
+() => {
+  const [count, { increment, decrement, reset }] = useCounter(3, { min: 0, max: 10 })
+  return (
+    <>
+      <Text h3>{count}</Text>
+      <Button auto scale={0.6} onClick={decrement}>-1</Button>
+      <Button auto scale={0.6} onClick={increment} style={{ marginLeft: 8 }}>+1</Button>
+      <Button auto scale={0.6} onClick={reset} style={{ marginLeft: 8 }}>Reset</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-counter.mdx">
+<Attributes.Title>useCounter</Attributes.Title>
+
+```ts
+const useCounter = (
+  initialValue?: number,
+  options?: { min?: number; max?: number },
+) => [
+  number,
+  {
+    increment: () => void
+    decrement: () => void
+    set: (value: number) => void
+    reset: () => void
+  },
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

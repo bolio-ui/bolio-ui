@@ -1,0 +1,44 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useWindowEvent } from 'core'
+
+export const meta = {
+  title: 'useWindowEvent',
+  description: 'Attach an event listener to the window and remove it when the component unmounts.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 59
+}
+
+## useWindowEvent
+
+Attach an event listener to the window and remove it when the component unmounts.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Show the last key pressed anywhere on the page."
+  scope={{ Text, useWindowEvent }}
+  code={`
+() => {
+  const [key, setKey] = React.useState('')
+  useWindowEvent('keydown', (event) => setKey(event.key))
+  return <Text>Last key: {key || 'none yet'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-window-event.mdx">
+<Attributes.Title>useWindowEvent</Attributes.Title>
+
+```ts
+const useWindowEvent = <K extends keyof WindowEventMap>(
+  type: K,
+  listener: (event: WindowEventMap[K]) => void,
+  options?: boolean | AddEventListenerOptions,
+) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

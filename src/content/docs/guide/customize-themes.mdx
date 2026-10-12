@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
-import { Spacer, Tabs, Snippet } from 'core'
-import { ThemeGenerator } from 'src/components'
+import { Spacer } from 'core'
+import { ThemeGenerator, PackageTabs } from 'src/components'
 
 export const meta = {
   title: 'Customize Themes',
@@ -200,16 +200,7 @@ If this occurs, you have the option to enhance the rendering by adding extra fon
 
 #### Install `inter-ui`
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn add inter-ui" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npm i inter-ui" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm add inter-ui" npm="npm i inter-ui" yarn="yarn add inter-ui" bun="bun add inter-ui" />
 
 <Spacer h={3} />
 

@@ -1,0 +1,55 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useCollapse } from 'core'
+
+export const meta = {
+  title: 'useCollapse',
+  description: 'Animate the height of an element when it opens and closes.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 61
+}
+
+## useCollapse
+
+Animate the height of an element when it opens and closes.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Spread the style and onTransitionEnd on the element that grows and shrinks."
+  scope={{ Button, Text, useCollapse }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(false)
+  const { ref, style, onTransitionEnd } = useCollapse({ opened })
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setOpened(!opened)}>{opened ? 'Close' : 'Open'}</Button>
+      <div ref={ref} style={style} onTransitionEnd={onTransitionEnd}>
+        <Text>This content animates its height.</Text>
+        <Text>It keeps the natural height when it is open.</Text>
+      </div>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-collapse.mdx">
+<Attributes.Title>useCollapse</Attributes.Title>
+
+```ts
+const useCollapse = <T extends HTMLElement = HTMLElement>(options: {
+  opened: boolean
+  duration?: number
+}) => {
+  ref: RefObject<T | null>
+  style: CSSProperties
+  onTransitionEnd: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

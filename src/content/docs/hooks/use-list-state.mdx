@@ -1,0 +1,62 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useListState } from 'core'
+
+export const meta = {
+  title: 'useListState',
+  description: 'Keep an array in state with handlers to append, insert, remove, reorder and filter items.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 36
+}
+
+## useListState
+
+Keep an array in state with handlers to append, insert, remove, reorder and filter items.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Add items to the end of the list and remove them by index."
+  scope={{ Button, Link, Text, useListState }}
+  code={`
+() => {
+  const [items, handlers] = useListState(['Apple', 'Banana'])
+  return (
+    <>
+      {items.map((item, index) => (
+        <Text key={item + index}>
+          {item}{' '}
+          <Link color href="#" onClick={(e) => { e.preventDefault(); handlers.remove(index) }}>remove</Link>
+        </Text>
+      ))}
+      <Button auto scale={0.6} onClick={() => handlers.append('Item ' + (items.length + 1))}>Add item</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-list-state.mdx">
+<Attributes.Title>useListState</Attributes.Title>
+
+```ts
+const useListState = <T>(initialValue?: T[]) => [
+  T[],
+  {
+    setState: (items: T[]) => void
+    append: (...items: T[]) => void
+    prepend: (...items: T[]) => void
+    insert: (index: number, ...items: T[]) => void
+    remove: (...indices: number[]) => void
+    reorder: (move: { from: number; to: number }) => void
+    setItem: (index: number, item: T) => void
+    filter: (fn: (item: T, index: number) => boolean) => void
+    apply: (fn: (item: T, index: number) => T) => void
+  },
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

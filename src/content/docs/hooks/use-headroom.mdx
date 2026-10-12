@@ -1,0 +1,44 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useHeadroom } from 'core'
+
+export const meta = {
+  title: 'useHeadroom',
+  description: 'Know when a fixed header should show or hide, based on the scroll direction.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 71
+}
+
+## useHeadroom
+
+Know when a fixed header should show or hide, based on the scroll direction.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Scroll the page down to hide the label and up to show it."
+  scope={{ Text, useHeadroom }}
+  code={`
+() => {
+  const pinned = useHeadroom({ fixedAt: 120 })
+  return <Text>{pinned ? 'Header pinned' : 'Header hidden'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-headroom.mdx">
+<Attributes.Title>useHeadroom</Attributes.Title>
+
+```ts
+const useHeadroom = (options?: {
+  fixedAt?: number
+  onPin?: () => void
+  onFix?: () => void
+  onRelease?: () => void
+}) => boolean
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

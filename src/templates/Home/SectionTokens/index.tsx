@@ -42,7 +42,7 @@ function SectionTokens() {
         } as React.CSSProperties
       }
     >
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <Eyebrow>
           <span style={{ color: theme.palette.accents_5 }}>Make it yours</span>
         </Eyebrow>

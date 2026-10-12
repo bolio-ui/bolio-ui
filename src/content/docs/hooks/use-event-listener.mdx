@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useEventListener } from 'core'
+
+export const meta = {
+  title: 'useEventListener',
+  description: 'Attach an event listener to an element and remove it when the component unmounts.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 23
+}
+
+## useEventListener
+
+Attach an event listener to an element and remove it when the component unmounts.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Count the clicks of an element without writing the effect."
+  scope={{ Button, useEventListener }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  const ref = useEventListener('click', () => setCount((c) => c + 1))
+  return <Button ref={ref} auto scale={0.6}>Clicked {count} times</Button>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-event-listener.mdx">
+<Attributes.Title>useEventListener</Attributes.Title>
+
+```ts
+const useEventListener = <
+  K extends keyof HTMLElementEventMap,
+  T extends HTMLElement = HTMLElement,
+>(
+  type: K,
+  listener: (event: HTMLElementEventMap[K]) => void,
+  options?: boolean | AddEventListenerOptions,
+) => RefObject<T | null>
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

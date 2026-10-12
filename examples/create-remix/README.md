@@ -1,38 +1,19 @@
 # Remix example for Bolio UI
 
-- [Remix Docs](https://remix.run/docs)
+A [Remix](https://remix.run) application with Vite and Bolio UI already set up.
 
-## Development
+## Getting started
 
-From your terminal:
-
-```sh
-npm run dev
+```bash
+yarn
+yarn dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+To run a production build:
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+```bash
+yarn build
+yarn start
 ```
 
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+See the [Remix guide](https://bolio-ui.com/docs/guide/bolio-ui-plus-remix) to set up Bolio UI in your own project.

@@ -34,7 +34,8 @@ const navLinks = [
     label: 'Theme Generator',
     href: '/theme-generator',
     base: '/theme-generator'
-  }
+  },
+  { label: 'FAQ', href: '/faq', base: '/faq' }
 ]
 
 const Navigation: React.FC = () => {
@@ -62,21 +63,21 @@ const Navigation: React.FC = () => {
   return (
     <>
       <nav className={styles.wrapper}>
-        <Container>
-          <div
-            className={styles.sticky}
-            style={
-              {
-                '--nav-bg': theme.palette.background,
-                '--nav-border': theme.palette.border,
-                '--nav-gap': theme.layout.gap,
-                '--nav-muted': theme.palette.accents_5,
-                '--nav-hover-bg': theme.palette.accents_2,
-                '--nav-foreground': theme.palette.foreground,
-                '--nav-primary': theme.palette.primary
-              } as React.CSSProperties
-            }
-          >
+        <div
+          className={styles.sticky}
+          style={
+            {
+              '--nav-bg': theme.palette.background,
+              '--nav-border': theme.palette.border,
+              '--nav-gap': theme.layout.gap,
+              '--nav-muted': theme.palette.accents_5,
+              '--nav-hover-bg': theme.palette.accents_2,
+              '--nav-foreground': theme.palette.foreground,
+              '--nav-primary': theme.palette.primary
+            } as React.CSSProperties
+          }
+        >
+          <Container style={{ maxWidth: 1400 }}>
             <Grid.Container gap={1} justify="center">
               {/* Both layouts come in the server HTML and CSS shows the one
                   for the screen, so the navbar is ready on the first paint */}
@@ -169,8 +170,8 @@ const Navigation: React.FC = () => {
                 </Grid>
               </div>
             </Grid.Container>
-          </div>
-        </Container>
+          </Container>
+        </div>
       </nav>
       <NavigationMobile expanded={expanded} />
     </>

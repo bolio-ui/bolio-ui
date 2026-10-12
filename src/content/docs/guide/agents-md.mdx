@@ -1,0 +1,63 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'AGENTS.md',
+  description:
+    'Add the Bolio UI docs to the AGENTS.md of your project, so AI coding agents read them before writing UI code.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## AGENTS.md
+
+<Spacer h={2} />
+
+### Usage
+
+Run the command at the root of your project. It adds a Bolio UI section to `AGENTS.md`, and creates the file when it does not exist:
+
+<PackageTabs
+  pnpm="pnpm dlx @bolio-ui/cli@latest agents-md"
+  npm="npx @bolio-ui/cli@latest agents-md"
+  yarn="yarn dlx @bolio-ui/cli@latest agents-md"
+  bun="bunx --bun @bolio-ui/cli@latest agents-md"
+/>
+
+Or give the file to write, for example `CLAUDE.md`:
+
+<PackageTabs
+  pnpm="pnpm dlx @bolio-ui/cli@latest agents-md CLAUDE.md"
+  npm="npx @bolio-ui/cli@latest agents-md CLAUDE.md"
+  yarn="yarn dlx @bolio-ui/cli@latest agents-md CLAUDE.md"
+  bun="bunx --bun @bolio-ui/cli@latest agents-md CLAUDE.md"
+/>
+
+<Spacer h={2} />
+
+### What it does
+
+- • Adds a Bolio UI section between `<!-- bolio-ui -->` markers, keeping the rest of the file as it is
+- • Links the [LLMs.txt](/docs/guide/llms-txt) files, so the agent reads the real props and examples of each component
+- • Updates the section when you run it again, without repeating it
+
+Nothing is downloaded to your project. The agent reads the docs from [bolio-ui.com](https://bolio-ui.com) when it needs them.
+
+<Spacer h={2} />
+
+### Options
+
+| Argument | What it does                                              |
+| -------- | --------------------------------------------------------- |
+| `[file]` | file to write, relative to the current folder (AGENTS.md) |
+
+<Spacer h={2} />
+
+### Related documentation
+
+- • [AGENTS.md](https://agents.md): the format of instructions for coding agents
+- • [CLAUDE.md](https://docs.claude.com/en/docs/claude-code/memory): the Claude equivalent of AGENTS.md
+- • [Agent Skills](/docs/guide/agent-skills): the Bolio UI Skill, for tools that load Skills
+
+export default Docs.withMeta(meta)

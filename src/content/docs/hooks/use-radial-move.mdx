@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useRadialMove } from 'core'
+
+export const meta = {
+  title: 'useRadialMove',
+  description: 'Track the angle of the pointer around the center of an element, from 0 to 360 degrees.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 79
+}
+
+## useRadialMove
+
+Track the angle of the pointer around the center of an element, from 0 to 360 degrees.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Press and drag around the circle to turn the hand."
+  scope={{ Text, useRadialMove }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(0)
+  const { ref } = useRadialMove(setValue, { step: 5 })
+  return (
+    <>
+      <div ref={ref} style={{ position: 'relative', width: 120, height: 120, border: '1px dashed currentColor', borderRadius: '50%', touchAction: 'none' }}>
+        <div style={{ position: 'absolute', left: '50%', top: '50%', width: 2, height: 50, marginLeft: -1, marginTop: -50, background: 'currentColor', transformOrigin: 'bottom center', transform: 'rotate(' + value + 'deg)' }} />
+      </div>
+      <Text>{value} degrees</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-radial-move.mdx">
+<Attributes.Title>useRadialMove</Attributes.Title>
+
+```ts
+const useRadialMove = <T extends HTMLElement = HTMLElement>(
+  onChange: (value: number) => void,
+  options?: { step?: number; onChangeEnd?: (value: number) => void },
+) => { ref: RefObject<T | null>; active: boolean }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

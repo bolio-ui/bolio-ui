@@ -1,0 +1,54 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useFileDialog } from 'core'
+
+export const meta = {
+  title: 'useFileDialog',
+  description: 'Open the file dialog of the browser from any element and get the chosen files.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 67
+}
+
+## useFileDialog
+
+Open the file dialog of the browser from any element and get the chosen files.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Choose images and list their names."
+  scope={{ Button, Text, useFileDialog }}
+  code={`
+() => {
+  const { files, open, reset } = useFileDialog({ multiple: true, accept: 'image/*' })
+  return (
+    <>
+      <Button auto scale={0.6} onClick={open}>Choose files</Button>
+      <Button auto scale={0.6} onClick={reset} style={{ marginLeft: 8 }}>Reset</Button>
+      <Text>{files && files.length ? Array.from(files).map((file) => file.name).join(', ') : 'No files'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-file-dialog.mdx">
+<Attributes.Title>useFileDialog</Attributes.Title>
+
+```ts
+const useFileDialog = (options?: {
+  multiple?: boolean
+  accept?: string
+  capture?: string
+  onChange?: (files: FileList | null) => void
+}) => {
+  files: FileList | null
+  open: () => void
+  reset: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

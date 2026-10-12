@@ -152,7 +152,7 @@
 
 .platformsGrid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   padding: 24px;
 }
@@ -229,9 +229,5 @@
 
   .docsSidebar {
     display: none;
-  }
-
-  .platformsGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

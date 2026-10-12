@@ -1,0 +1,46 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useResizeObserver } from 'core'
+
+export const meta = {
+  title: 'useResizeObserver',
+  description: 'Observe the size and position of an element with a ResizeObserver.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 48
+}
+
+## useResizeObserver
+
+Observe the size and position of an element with a ResizeObserver.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Resize the textarea to see its size change."
+  scope={{ Text, useResizeObserver }}
+  code={`
+() => {
+  const [ref, rect] = useResizeObserver()
+  return (
+    <>
+      <Text>{Math.round(rect.width)} x {Math.round(rect.height)}</Text>
+      <textarea ref={ref} style={{ resize: 'both', width: 240, height: 80 }} />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-resize-observer.mdx">
+<Attributes.Title>useResizeObserver</Attributes.Title>
+
+```ts
+const useResizeObserver = <T extends HTMLElement = HTMLElement>(
+  options?: ResizeObserverOptions,
+) => [RefObject<T | null>, UseResizeObserverRect]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -34,6 +34,31 @@ export const guide = [
     target: '_blank'
   },
   {
+    name: 'UI for Agents',
+    url: '',
+    icon: 'Cpu'
+  },
+  {
+    name: 'LLMs.txt',
+    url: '/docs/guide/llms-txt',
+    tag: 'New'
+  },
+  {
+    name: 'MCP Server',
+    url: '/docs/guide/mcp-server',
+    tag: 'New'
+  },
+  {
+    name: 'Agent Skills',
+    url: '/docs/guide/agent-skills',
+    tag: 'New'
+  },
+  {
+    name: 'AGENTS.md',
+    url: '/docs/guide/agents-md',
+    tag: 'New'
+  },
+  {
     name: 'Frameworks',
     url: '',
     icon: 'Package'
@@ -59,6 +84,26 @@ export const guide = [
     url: '/docs/guide/bolio-ui-plus-redwoodjs'
   },
   {
+    name: 'Example with TanStack Start',
+    url: '/docs/guide/bolio-ui-plus-tanstack-start',
+    tag: 'New'
+  },
+  {
+    name: 'Example with Waku',
+    url: '/docs/guide/bolio-ui-plus-waku',
+    tag: 'New'
+  },
+  {
+    name: 'Example with RedwoodSDK',
+    url: '/docs/guide/bolio-ui-plus-redwoodsdk',
+    tag: 'New'
+  },
+  {
+    name: 'Example with Astro',
+    url: '/docs/guide/bolio-ui-plus-astro',
+    tag: 'New'
+  },
+  {
     name: 'Theme',
     url: '',
     icon: 'Target'
@@ -80,6 +125,10 @@ export const components = [
     icon: 'Grid'
   },
   {
+    name: 'Overview',
+    url: '/docs/components/overview'
+  },
+  {
     name: 'Alert',
     url: '/docs/components/alert',
     tag: 'New'
@@ -93,10 +142,6 @@ export const components = [
     name: 'Mention',
     url: '/docs/components/mention',
     tag: 'New'
-  },
-  {
-    name: 'Overview',
-    url: '/docs/components/overview'
   },
   {
     name: 'Avatar',
@@ -435,60 +480,385 @@ export const components = [
 
 export const hooks = [
   {
-    name: 'Hooks',
+    name: 'UI and DOM',
     url: '',
-    icon: 'Settings'
+    icon: 'MousePointer'
   },
   {
     name: 'useBodyScroll',
     url: '/docs/hooks/use-body-scroll'
   },
   {
-    name: 'useClasses',
-    url: '/docs/hooks/use-classes'
-  },
-  {
     name: 'useClickAway',
     url: '/docs/hooks/use-click-away'
   },
   {
-    name: 'useClipboard',
-    url: '/docs/hooks/use-clipboard'
+    name: 'useCollapse',
+    url: '/docs/hooks/use-collapse'
   },
   {
-    name: 'useCurrentState',
-    url: '/docs/hooks/use-current-state'
+    name: 'useColorScheme',
+    url: '/docs/hooks/use-color-scheme'
   },
   {
-    name: 'useInput',
-    url: '/docs/hooks/use-input'
+    name: 'useDrag',
+    url: '/docs/hooks/use-drag'
+  },
+  {
+    name: 'useElementSize',
+    url: '/docs/hooks/use-element-size'
+  },
+  {
+    name: 'useEventListener',
+    url: '/docs/hooks/use-event-listener'
+  },
+  {
+    name: 'useFileDialog',
+    url: '/docs/hooks/use-file-dialog'
+  },
+  {
+    name: 'useFloatingWindow',
+    url: '/docs/hooks/use-floating-window'
+  },
+  {
+    name: 'useFocusReturn',
+    url: '/docs/hooks/use-focus-return'
+  },
+  {
+    name: 'useFocusTrap',
+    url: '/docs/hooks/use-focus-trap'
+  },
+  {
+    name: 'useFocusWithin',
+    url: '/docs/hooks/use-focus-within'
+  },
+  {
+    name: 'useFullscreen',
+    url: '/docs/hooks/use-fullscreen'
+  },
+  {
+    name: 'useHover',
+    url: '/docs/hooks/use-hover'
+  },
+  {
+    name: 'useIntersection',
+    url: '/docs/hooks/use-intersection'
+  },
+  {
+    name: 'useInViewport',
+    url: '/docs/hooks/use-in-viewport'
   },
   {
     name: 'useKeyboard',
     url: '/docs/hooks/use-keyboard'
   },
   {
+    name: 'useLongPress',
+    url: '/docs/hooks/use-long-press'
+  },
+  {
+    name: 'useMask',
+    url: '/docs/hooks/use-mask'
+  },
+  {
     name: 'useMediaQuery',
     url: '/docs/hooks/use-media-query'
+  },
+  {
+    name: 'useMouse',
+    url: '/docs/hooks/use-mouse'
+  },
+  {
+    name: 'useMove',
+    url: '/docs/hooks/use-move'
+  },
+  {
+    name: 'useMutationObserver',
+    url: '/docs/hooks/use-mutation-observer'
+  },
+  {
+    name: 'useOrientation',
+    url: '/docs/hooks/use-orientation'
+  },
+  {
+    name: 'useRadialMove',
+    url: '/docs/hooks/use-radial-move'
+  },
+  {
+    name: 'useReducedMotion',
+    url: '/docs/hooks/use-reduced-motion'
+  },
+  {
+    name: 'useResizeObserver',
+    url: '/docs/hooks/use-resize-observer'
+  },
+  {
+    name: 'useRovingIndex',
+    url: '/docs/hooks/use-roving-index'
+  },
+  {
+    name: 'useScroller',
+    url: '/docs/hooks/use-scroller'
+  },
+  {
+    name: 'useScrollIntoView',
+    url: '/docs/hooks/use-scroll-into-view'
+  },
+  {
+    name: 'useScrollSpy',
+    url: '/docs/hooks/use-scroll-spy'
+  },
+  {
+    name: 'useSplitter',
+    url: '/docs/hooks/use-splitter'
+  },
+  {
+    name: 'useViewportSize',
+    url: '/docs/hooks/use-viewport-size'
+  },
+  {
+    name: 'useWindowEvent',
+    url: '/docs/hooks/use-window-event'
+  },
+  {
+    name: 'useWindowScroll',
+    url: '/docs/hooks/use-window-scroll'
+  },
+  {
+    name: 'State',
+    url: '',
+    icon: 'Database'
+  },
+  {
+    name: 'useCounter',
+    url: '/docs/hooks/use-counter'
+  },
+  {
+    name: 'useCurrentState',
+    url: '/docs/hooks/use-current-state'
+  },
+  {
+    name: 'useDebouncedCallback',
+    url: '/docs/hooks/use-debounced-callback'
+  },
+  {
+    name: 'useDebouncedState',
+    url: '/docs/hooks/use-debounced-state'
+  },
+  {
+    name: 'useDebouncedValue',
+    url: '/docs/hooks/use-debounced-value',
+    tag: 'New'
+  },
+  {
+    name: 'useDisclosure',
+    url: '/docs/hooks/use-disclosure',
+    tag: 'New'
+  },
+  {
+    name: 'useInput',
+    url: '/docs/hooks/use-input'
+  },
+  {
+    name: 'useInputState',
+    url: '/docs/hooks/use-input-state'
+  },
+  {
+    name: 'useListState',
+    url: '/docs/hooks/use-list-state'
+  },
+  {
+    name: 'useLocalStorage',
+    url: '/docs/hooks/use-local-storage',
+    tag: 'New'
+  },
+  {
+    name: 'useMap',
+    url: '/docs/hooks/use-map'
   },
   {
     name: 'useModal',
     url: '/docs/hooks/use-modal'
   },
   {
-    name: 'useScale',
-    url: '/docs/hooks/use-scale'
+    name: 'usePagination',
+    url: '/docs/hooks/use-pagination',
+    tag: 'New'
+  },
+  {
+    name: 'usePrevious',
+    url: '/docs/hooks/use-previous'
+  },
+  {
+    name: 'useQueue',
+    url: '/docs/hooks/use-queue'
+  },
+  {
+    name: 'useSelection',
+    url: '/docs/hooks/use-selection'
+  },
+  {
+    name: 'useSet',
+    url: '/docs/hooks/use-set'
+  },
+  {
+    name: 'useSetState',
+    url: '/docs/hooks/use-set-state'
+  },
+  {
+    name: 'useStateHistory',
+    url: '/docs/hooks/use-state-history'
   },
   {
     name: 'useTabs',
     url: '/docs/hooks/use-tabs'
   },
   {
+    name: 'useThrottledCallback',
+    url: '/docs/hooks/use-throttled-callback'
+  },
+  {
+    name: 'useThrottledState',
+    url: '/docs/hooks/use-throttled-state'
+  },
+  {
+    name: 'useThrottledValue',
+    url: '/docs/hooks/use-throttled-value'
+  },
+  {
+    name: 'useToggle',
+    url: '/docs/hooks/use-toggle',
+    tag: 'New'
+  },
+  {
+    name: 'useUncontrolled',
+    url: '/docs/hooks/use-uncontrolled'
+  },
+  {
+    name: 'useValidatedState',
+    url: '/docs/hooks/use-validated-state'
+  },
+  {
+    name: 'Utilities',
+    url: '',
+    icon: 'Tool'
+  },
+  {
+    name: 'useClasses',
+    url: '/docs/hooks/use-classes'
+  },
+  {
+    name: 'useClipboard',
+    url: '/docs/hooks/use-clipboard'
+  },
+  {
+    name: 'useDocumentTitle',
+    url: '/docs/hooks/use-document-title'
+  },
+  {
+    name: 'useDocumentVisibility',
+    url: '/docs/hooks/use-document-visibility'
+  },
+  {
+    name: 'useEyeDropper',
+    url: '/docs/hooks/use-eye-dropper'
+  },
+  {
+    name: 'useFavicon',
+    url: '/docs/hooks/use-favicon'
+  },
+  {
+    name: 'useFetch',
+    url: '/docs/hooks/use-fetch',
+    tag: 'New'
+  },
+  {
+    name: 'useHash',
+    url: '/docs/hooks/use-hash'
+  },
+  {
+    name: 'useHeadroom',
+    url: '/docs/hooks/use-headroom'
+  },
+  {
+    name: 'useIdle',
+    url: '/docs/hooks/use-idle'
+  },
+  {
+    name: 'useInterval',
+    url: '/docs/hooks/use-interval'
+  },
+  {
+    name: 'useMergedRef',
+    url: '/docs/hooks/use-merged-ref'
+  },
+  {
+    name: 'useNetwork',
+    url: '/docs/hooks/use-network'
+  },
+  {
+    name: 'useOs',
+    url: '/docs/hooks/use-os'
+  },
+  {
+    name: 'usePageLeave',
+    url: '/docs/hooks/use-page-leave'
+  },
+  {
+    name: 'useScale',
+    url: '/docs/hooks/use-scale'
+  },
+  {
+    name: 'useScrollDirection',
+    url: '/docs/hooks/use-scroll-direction'
+  },
+  {
+    name: 'useTextSelection',
+    url: '/docs/hooks/use-text-selection'
+  },
+  {
     name: 'useTheme',
     url: '/docs/hooks/use-theme'
   },
   {
+    name: 'useTimeout',
+    url: '/docs/hooks/use-timeout'
+  },
+  {
     name: 'useToast',
     url: '/docs/hooks/use-toast'
+  },
+  {
+    name: 'Lifecycle',
+    url: '',
+    icon: 'RefreshCw'
+  },
+  {
+    name: 'useDidUpdate',
+    url: '/docs/hooks/use-did-update'
+  },
+  {
+    name: 'useForceUpdate',
+    url: '/docs/hooks/use-force-update'
+  },
+  {
+    name: 'useIsFirstRender',
+    url: '/docs/hooks/use-is-first-render'
+  },
+  {
+    name: 'useIsomorphicEffect',
+    url: '/docs/hooks/use-isomorphic-effect'
+  },
+  {
+    name: 'useLogger',
+    url: '/docs/hooks/use-logger'
+  },
+  {
+    name: 'useMounted',
+    url: '/docs/hooks/use-mounted'
+  },
+  {
+    name: 'useShallowEffect',
+    url: '/docs/hooks/use-shallow-effect'
   }
 ]

@@ -1,0 +1,48 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Spacer, useToggle } from 'core'
+
+export const meta = {
+  title: 'useToggle',
+  description: 'Switch between two or more values, a boolean by default.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 55
+}
+
+## useToggle
+
+Switch between two or more values, a boolean by default.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Without arguments it flips a boolean, with a list it cycles through the values."
+  scope={{ Button, Spacer, useToggle }}
+  code={`
+() => {
+  const [value, toggle] = useToggle()
+  const [theme, toggleTheme] = useToggle(['light', 'dark', 'system'])
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => toggle()}>{String(value)}</Button>
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={() => toggleTheme()}>{theme}</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-toggle.mdx">
+<Attributes.Title>useToggle</Attributes.Title>
+
+```ts
+const useToggle = <T = boolean>(
+  options?: readonly T[]
+) => readonly [T, (value?: T) => void]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

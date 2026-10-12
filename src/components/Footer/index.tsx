@@ -37,7 +37,7 @@ function Footer() {
         } as React.CSSProperties
       }
     >
-      <Container style={{ maxWidth: 1300 }}>
+      <Container style={{ maxWidth: 1400 }}>
         <Grid.Container gap={2} alignItems="center">
           <Grid xs={12} md={6}>
             <Logo name="Bolio UI" />
@@ -71,6 +71,7 @@ function Footer() {
                 <Link href="/docs/components/avatar">Components</Link>
                 <Link href="/docs/hooks/use-body-scroll">Hooks</Link>
                 <Link href="/theme-generator">Theme Generator</Link>
+                <Link href="/faq">FAQ</Link>
               </Row>
             </div>
           </Grid>

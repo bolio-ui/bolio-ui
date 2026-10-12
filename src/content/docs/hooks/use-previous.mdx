@@ -1,0 +1,45 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, usePrevious } from 'core'
+
+export const meta = {
+  title: 'usePrevious',
+  description: 'Get the value a variable had on the previous render.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 45
+}
+
+## usePrevious
+
+Get the value a variable had on the previous render.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It is null on the first render."
+  scope={{ Button, Text, usePrevious }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  const previous = usePrevious(count)
+  return (
+    <>
+      <Text>Now: {count}, before: {String(previous)}</Text>
+      <Button auto scale={0.6} onClick={() => setCount(count + 1)}>Increment</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-previous.mdx">
+<Attributes.Title>usePrevious</Attributes.Title>
+
+```ts
+const usePrevious = <T>(value: T) => T | undefined | null
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,53 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useFetch } from 'core'
+
+export const meta = {
+  title: 'useFetch',
+  description: 'Request data with fetch and get the loading state, the error and a way to refetch or abort.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 66
+}
+
+## useFetch
+
+Request data with fetch and get the loading state, the error and a way to refetch or abort.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Load a post when you click, with the loading state handled by the hook."
+  scope={{ Button, Text, useFetch }}
+  code={`
+() => {
+  const { data, loading, error, refetch } = useFetch('https://jsonplaceholder.typicode.com/posts/1', { autoInvoke: false })
+  return (
+    <>
+      <Button auto scale={0.6} loading={loading} onClick={refetch}>Load post</Button>
+      <Text>{error ? error.message : data ? data.title : 'Nothing loaded yet'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-fetch.mdx">
+<Attributes.Title>useFetch</Attributes.Title>
+
+```ts
+const useFetch = <T = unknown>(
+  url: string,
+  options?: RequestInit & { autoInvoke?: boolean },
+) => {
+  data: T | null
+  loading: boolean
+  error: Error | null
+  refetch: () => Promise<T | null>
+  abort: () => void
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

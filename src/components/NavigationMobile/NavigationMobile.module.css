@@ -37,6 +37,10 @@
   cursor: pointer;
 }
 
+.menuLink {
+  padding-left: calc(var(--menu-page-margin) + 10px + var(--menu-quarter));
+}
+
 .menuItem svg {
   transform: translateX(var(--menu-quarter-negative));
   transition: transform 250ms ease;

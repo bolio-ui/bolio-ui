@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useViewportSize } from 'core'
+
+export const meta = {
+  title: 'useViewportSize',
+  description: 'Get the width and height of the window and keep them updated.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 58
+}
+
+## useViewportSize
+
+Get the width and height of the window and keep them updated.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Resize the window to see the values change."
+  scope={{ Text, useViewportSize }}
+  code={`
+() => {
+  const { width, height } = useViewportSize()
+  return <Text>{width} x {height}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-viewport-size.mdx">
+<Attributes.Title>useViewportSize</Attributes.Title>
+
+```ts
+const useViewportSize = () => { width: number; height: number }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

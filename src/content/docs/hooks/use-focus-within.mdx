@@ -1,0 +1,51 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Input, Spacer, useFocusWithin } from 'core'
+
+export const meta = {
+  title: 'useFocusWithin',
+  description: 'Detect when the focus is inside an element or any of its children.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 24
+}
+
+## useFocusWithin
+
+Detect when the focus is inside an element or any of its children.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The border changes while any input inside has the focus."
+  scope={{ Input, Spacer, useFocusWithin }}
+  code={`
+() => {
+  const { ref, focused } = useFocusWithin()
+  return (
+    <div ref={ref} style={{ padding: 16, border: focused ? '2px solid currentColor' : '2px dashed currentColor' }}>
+      <Input placeholder="First" />
+      <Spacer h={0.5} />
+      <Input placeholder="Second" />
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-focus-within.mdx">
+<Attributes.Title>useFocusWithin</Attributes.Title>
+
+```ts
+const useFocusWithin = <T extends HTMLElement = HTMLElement>(options?: {
+  onFocus?: (event: FocusEvent) => void
+  onBlur?: (event: FocusEvent) => void
+}) => {
+  ref: RefObject<T | null>
+  focused: boolean
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

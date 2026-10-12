@@ -11,6 +11,12 @@ interface Props {
   expanded: boolean
 }
 
+// Pages of the top navigation that are not a group of docs
+const pages = [
+  { name: 'Theme Generator', url: '/theme-generator' },
+  { name: 'FAQ', url: '/faq' }
+]
+
 const MenuMobile: React.FC<Props> = ({ expanded }) => {
   const theme = useTheme()
   const router = useRouter()
@@ -107,9 +113,25 @@ const MenuMobile: React.FC<Props> = ({ expanded }) => {
           </div>
         ))}
 
+        {pages.map(({ name, url }, index) => (
+          <a
+            key={url}
+            href={url}
+            className={`${styles.menuItem} ${styles.menuLink} ${styles.fadein}`}
+            style={{
+              animationDelay: `${(menuMobile.length + index + 1) * 50}ms`
+            }}
+            onClick={(event) => navigate(event, url)}
+          >
+            {name}
+          </a>
+        ))}
+
         <div
           className={styles.fadein}
-          style={{ animationDelay: `${(menuMobile.length + 1) * 50}ms` }}
+          style={{
+            animationDelay: `${(menuMobile.length + pages.length + 1) * 50}ms`
+          }}
         >
           <div className={styles.group}>
             <span className={styles.sectionName}>Version</span>

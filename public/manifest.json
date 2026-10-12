@@ -52,7 +52,7 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, and Remix. Transform your development experience now!",
+  "description": "Make your development more amazing with tools Bolio UI. Easy customization and clear documentation. Compatible with Next.js, Gatsby.js, RedwoodJS, Vite, Remix, TanStack Start, Waku, RedwoodSDK, and Astro. Transform your development experience now!",
   "display": "fullscreen",
   "start_url": "/",
   "background_color": "#000",

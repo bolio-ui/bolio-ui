@@ -1,0 +1,40 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Input, useDocumentTitle } from 'core'
+
+export const meta = {
+  title: 'useDocumentTitle',
+  description: 'Set the title of the page and update it when the value changes.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 20
+}
+
+## useDocumentTitle
+
+Set the title of the page and update it when the value changes.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The title of the tab follows the input."
+  scope={{ Input, useDocumentTitle }}
+  code={`
+() => {
+  const [title, setTitle] = React.useState('Bolio UI')
+  useDocumentTitle(title)
+  return <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-document-title.mdx">
+<Attributes.Title>useDocumentTitle</Attributes.Title>
+
+```ts
+const useDocumentTitle = (title: string) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

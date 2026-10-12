@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, Input, Spacer, useDebouncedValue } from 'core'
+
+export const meta = {
+  title: 'useDebouncedValue',
+  description: 'Delay a value until it stops changing for the given time.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 17
+}
+
+## useDebouncedValue
+
+Delay a value until it stops changing for the given time.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The debounced value follows the input 500ms after the last keystroke."
+  scope={{ Text, Input, Spacer, useDebouncedValue }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('')
+  const [debounced] = useDebouncedValue(value, 500)
+  return (
+    <>
+      <Input placeholder="Type something" value={value} onChange={(e) => setValue(e.target.value)} />
+      <Spacer h={0.5} />
+      <Text>Debounced: {debounced}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-debounced-value.mdx">
+<Attributes.Title>useDebouncedValue</Attributes.Title>
+
+```ts
+const useDebouncedValue = <T>(
+  value: T,
+  wait: number,
+  options?: { leading?: boolean },
+) => [T, () => void]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

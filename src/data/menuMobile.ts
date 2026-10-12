@@ -44,6 +44,31 @@ export const menuMobile = [
         ]
       },
       {
+        name: 'UI for Agents',
+        children: [
+          {
+            name: 'LLMs.txt',
+            url: '/docs/guide/llms-txt',
+            group: 'Guide'
+          },
+          {
+            name: 'MCP Server',
+            url: '/docs/guide/mcp-server',
+            group: 'Guide'
+          },
+          {
+            name: 'Agent Skills',
+            url: '/docs/guide/agent-skills',
+            group: 'Guide'
+          },
+          {
+            name: 'AGENTS.md',
+            url: '/docs/guide/agents-md',
+            group: 'Guide'
+          }
+        ]
+      },
+      {
         name: 'Frameworks',
         children: [
           {

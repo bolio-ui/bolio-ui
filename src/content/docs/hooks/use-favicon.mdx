@@ -1,0 +1,41 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, useFavicon } from 'core'
+
+export const meta = {
+  title: 'useFavicon',
+  description: 'Set the favicon of the page and update it when the value changes.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 65
+}
+
+## useFavicon
+
+Set the favicon of the page and update it when the value changes.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The icon of the tab follows the choice."
+  scope={{ Button, useFavicon }}
+  code={`
+() => {
+  const [url, setUrl] = React.useState('')
+  const red = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="red"/></svg>')
+  useFavicon(url)
+  return <Button auto scale={0.6} onClick={() => setUrl(red)}>Use a red icon</Button>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-favicon.mdx">
+<Attributes.Title>useFavicon</Attributes.Title>
+
+```ts
+const useFavicon = (url: string) => void
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

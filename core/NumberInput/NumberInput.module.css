@@ -60,8 +60,9 @@
   padding: 0;
   font: inherit;
   color: var(--control-color);
-  background-color: none;
+  background-color: transparent;
   border: 0;
+  border-radius: calc(var(--input-radius) - 1px);
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
@@ -69,6 +70,14 @@
 
 .control:hover:not(:disabled) {
   color: var(--control-hover-color);
+}
+
+.control svg {
+  transition: transform 0.1s ease;
+}
+
+.control:active:not(:disabled) svg {
+  transform: scale(0.8);
 }
 
 .control:disabled {

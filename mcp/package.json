@@ -1,0 +1,27 @@
+{
+  "name": "@bolio-ui/mcp",
+  "version": "1.0.0",
+  "description": "MCP server that gives AI assistants the Bolio UI documentation.",
+  "license": "MIT",
+  "author": {
+    "name": "Bruno Andrade",
+    "email": "brunnoandradi@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bolio-ui/bolio-ui",
+    "directory": "mcp"
+  },
+  "bin": {
+    "bolio-ui-mcp": "index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

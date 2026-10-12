@@ -1,0 +1,50 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, Spacer, useDebouncedCallback } from 'core'
+
+export const meta = {
+  title: 'useDebouncedCallback',
+  description: 'Create a function that runs only after it stops being called for the given time.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 16
+}
+
+## useDebouncedCallback
+
+Create a function that runs only after it stops being called for the given time.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The callback runs once, 400ms after the last click."
+  scope={{ Button, Text, Spacer, useDebouncedCallback }}
+  code={`
+() => {
+  const [count, setCount] = React.useState(0)
+  const [clicks, setClicks] = React.useState(0)
+  const save = useDebouncedCallback((value) => setCount(value), 400)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => { setClicks(clicks + 1); save(clicks + 1) }}>Click</Button>
+      <Spacer h={0.5} />
+      <Text>Clicks: {clicks}, saved: {count}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-debounced-callback.mdx">
+<Attributes.Title>useDebouncedCallback</Attributes.Title>
+
+```ts
+const useDebouncedCallback = <A extends unknown[]>(
+  callback: (...args: A) => void,
+  wait: number,
+) => ((...args: A) => void) & { cancel: () => void }
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

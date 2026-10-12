@@ -1,0 +1,58 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Text, useEyeDropper } from 'core'
+
+export const meta = {
+  title: 'useEyeDropper',
+  description: 'Pick a color from anywhere on the screen with the EyeDropper API.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 64
+}
+
+## useEyeDropper
+
+Pick a color from anywhere on the screen with the EyeDropper API.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="It works in browsers that support the EyeDropper API."
+  scope={{ Button, Text, useEyeDropper }}
+  code={`
+() => {
+  const { supported, open } = useEyeDropper()
+  const [color, setColor] = React.useState('')
+  const pick = async () => {
+    try {
+      const result = await open()
+      if (result) setColor(result.sRGBHex)
+    } catch {
+      // the user closed the picker
+    }
+  }
+  return (
+    <>
+      <Button auto scale={0.6} disabled={!supported} onClick={pick}>Pick a color</Button>
+      <Text>{supported ? color || 'No color yet' : 'EyeDropper is not supported'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-eye-dropper.mdx">
+<Attributes.Title>useEyeDropper</Attributes.Title>
+
+```ts
+const useEyeDropper = () => {
+  supported: boolean
+  open: (options?: {
+    signal?: AbortSignal
+  }) => Promise<{ sRGBHex: string } | undefined>
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

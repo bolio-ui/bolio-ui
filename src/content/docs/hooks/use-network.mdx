@@ -1,0 +1,47 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useNetwork } from 'core'
+
+export const meta = {
+  title: 'useNetwork',
+  description: 'Read the state of the connection and know when it goes online or offline.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 42
+}
+
+## useNetwork
+
+Read the state of the connection and know when it goes online or offline.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Turn the network off in the browser to see the status change. Connection details are not available in every browser."
+  scope={{ Text, useNetwork }}
+  code={`
+() => {
+  const network = useNetwork()
+  return <Text>{network.online ? 'Online' : 'Offline'}, {network.effectiveType || 'unknown connection'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-network.mdx">
+<Attributes.Title>useNetwork</Attributes.Title>
+
+```ts
+const useNetwork = () => {
+  online?: boolean
+  downlink?: number
+  downlinkMax?: number
+  effectiveType?: string
+  rtt?: number
+  saveData?: boolean
+  type?: string
+}
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

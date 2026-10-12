@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import ReactDom from 'react-dom'
+import { createRoot } from 'react-dom/client'
+import '@bolio-ui/core/styles.css'
 import { BolioUIProvider, CssBaseline, Page, Text } from '@bolio-ui/core'
 import { blueTheme, violetTheme } from './theme'
 import Home from './home'
@@ -19,11 +20,10 @@ const App = () => {
   )
 }
 
-ReactDom.render(
+createRoot(document.getElementById('app')).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('app')
+  </React.StrictMode>
 )
 
 export default App

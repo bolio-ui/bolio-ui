@@ -31,6 +31,12 @@ cat > "$WORK/package.json" <<JSON
 }
 JSON
 
+# Next 16 with Cache Components fails the build of a page that reads the time
+# or a random value while it renders: CACHE_COMPONENTS=1 compat/run.sh 16 19
+if [ "${CACHE_COMPONENTS:-}" = "1" ]; then
+  echo "module.exports = { outputFileTracingRoot: __dirname, cacheComponents: true }" > "$WORK/next.config.js"
+fi
+
 cd "$WORK"
 echo "== install (next@$NEXT_V react@$REACT_V)"
 npm install --no-audit --no-fund --legacy-peer-deps > install.log 2>&1 || { echo "INSTALL FAILED"; tail -20 install.log; exit 1; }

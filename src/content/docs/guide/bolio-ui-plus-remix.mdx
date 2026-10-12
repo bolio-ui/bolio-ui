@@ -1,5 +1,6 @@
 import Docs from 'src/templates/Docs'
-import { Link, Tabs, Spacer, Snippet } from 'core'
+import { PackageTabs } from 'src/components'
+import { Link, Spacer } from 'core'
 
 export const meta = {
   title: 'Example with Remix',
@@ -26,16 +27,7 @@ you can access comprehensive instructions on how to get started on <Link target=
 
 Follow <Link target="_blank" rel="nofollow" color icon href="https://remix.run/">Remix getting started</Link> guide to create new Remix application:
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn create remix" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npx create-remix@latest" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm create remix@latest" npm="npx create-remix@latest" yarn="yarn create remix" bun="bunx create-remix@latest" />
 
 <Spacer h={2} />
 
@@ -43,16 +35,7 @@ Follow <Link target="_blank" rel="nofollow" color icon href="https://remix.run/"
 
 Install dependencies:
 
-<Spacer h={3} />
-
-<Tabs initialValue="yarn" hideDivider hideBorder align="flex-start" mt="-46px">
-  <Tabs.Item label="Yarn" value="yarn">
-    <Snippet text="yarn add @bolio-ui/core" />
-  </Tabs.Item>
-  <Tabs.Item label="Npm" value="npm">
-    <Snippet text="npm install @bolio-ui/core" />
-  </Tabs.Item>
-</Tabs>
+<PackageTabs pnpm="pnpm add @bolio-ui/core" npm="npm i @bolio-ui/core" yarn="yarn add @bolio-ui/core" bun="bun add @bolio-ui/core" />
 
 <Spacer h={2} />
 
@@ -97,6 +80,6 @@ export default function App() {
 
 Ready to go! Start the development server:
 
-<Snippet text="npm run dev" />
+<PackageTabs pnpm="pnpm dev" npm="npm run dev" yarn="yarn dev" bun="bun run dev" />
 
 export default Docs.withMeta(meta)

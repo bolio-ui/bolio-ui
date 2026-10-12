@@ -20,6 +20,8 @@ const nextConfig = {
     NEXT_PUBLIC_VERSION: require('./package.json').version
   },
   devIndicators: false,
+  // AGENTS.md is written by hand: stop `next dev` from adding its own block
+  agentRules: false,
   // .mdx here also makes the MDX files use the React that ships with the App Router
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // each docs section opens on its first page

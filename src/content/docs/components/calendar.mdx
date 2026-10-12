@@ -14,6 +14,8 @@ export const meta = {
 
 A month grid to pick a day with the mouse or the keyboard. `DatePicker` uses it, and you can use it alone when the calendar should always be visible.
 
+In Next.js 16 with `cacheComponents` on, wrap a `Calendar` that is always visible in `<Suspense>`. It reads today's date while it renders, and Next does not prerender that. A `DatePicker` does not need it, because its calendar opens on a click.
+
 <Playground
   desc="Pass the selected day with `value` and listen to `onChange`."
   scope={{ Calendar, Grid }}
