@@ -1,5 +1,19 @@
 .center {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 16px;
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+}
+
+.links :global(a) {
+  color: var(--footer-muted);
 }
 
 .right {
@@ -7,7 +21,10 @@
 }
 
 @media (max-width: 899px) {
-  .center,
+  .center {
+    justify-content: flex-start;
+  }
+
   .right {
     text-align: left;
   }
