@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { BolioUIProvider, ScrollArea } from '..'
 
 const wrap = (ui: React.ReactElement) =>
@@ -63,5 +63,29 @@ describe('<ScrollArea />', () => {
     )
     expect(container.firstElementChild).toHaveAttribute('data-testid', 's')
     expect(container.firstElementChild).toHaveClass('scrollArea', 'extra')
+  })
+
+  it('scrolls a horizontal area with the vertical wheel until the end', () => {
+    const { container } = wrap(
+      <ScrollArea orientation="horizontal">Content</ScrollArea>
+    )
+    const root = container.firstElementChild as HTMLElement
+    Object.defineProperty(root, 'scrollWidth', { value: 500 })
+    Object.defineProperty(root, 'clientWidth', { value: 200 })
+
+    expect(fireEvent.wheel(root, { deltaY: 120 })).toBe(false)
+    expect(root.scrollLeft).toBe(120)
+
+    root.scrollLeft = 300
+    // at the end, the page takes the wheel again
+    expect(fireEvent.wheel(root, { deltaY: 120 })).toBe(true)
+  })
+
+  it('leaves the wheel alone on a vertical area', () => {
+    const { container } = wrap(<ScrollArea>Content</ScrollArea>)
+    const root = container.firstElementChild as HTMLElement
+    Object.defineProperty(root, 'scrollWidth', { value: 500 })
+    Object.defineProperty(root, 'clientWidth', { value: 200 })
+    expect(fireEvent.wheel(root, { deltaY: 120 })).toBe(true)
   })
 })

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import useMergedRef from '../use-merged-ref'
 import styles from './ScrollArea.module.css'
 
 export type ScrollAreaOrientation = 'vertical' | 'horizontal' | 'both'
@@ -32,7 +33,27 @@ const ScrollAreaComponent = React.forwardRef<
     ref
   ) => {
     const theme = useTheme()
+    const innerRef = useRef<HTMLDivElement>(null)
+    const mergedRef = useMergedRef(ref, innerRef)
     const { SCALES } = useScale()
+
+    // the wheel and a vertical trackpad swipe scroll a sideways area, until
+    // it reaches an end, where the page takes over again
+    useEffect(() => {
+      const node = innerRef.current
+      if (!node || orientation !== 'horizontal') return
+      const onWheel = (event: WheelEvent) => {
+        if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
+        const max = node.scrollWidth - node.clientWidth
+        const next = Math.min(max, Math.max(0, node.scrollLeft + event.deltaY))
+        if (next === node.scrollLeft) return
+        event.preventDefault()
+        node.scrollLeft = next
+      }
+      node.addEventListener('wheel', onWheel, { passive: false })
+      return () => node.removeEventListener('wheel', onWheel)
+    }, [orientation])
+
     const classes = useClasses(
       styles.scrollArea,
       styles[orientation],
@@ -54,7 +75,7 @@ const ScrollAreaComponent = React.forwardRef<
     // the area scrolls with the keyboard only when it can take focus
     return (
       <div
-        ref={ref}
+        ref={mergedRef}
         className={classes}
         tabIndex={0}
         {...props}
