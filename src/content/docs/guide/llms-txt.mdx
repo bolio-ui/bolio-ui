@@ -1,0 +1,94 @@
+import Docs from 'src/templates/Docs'
+import { Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'LLMs.txt',
+  description:
+    'Enable AI assistants like Claude Code, Cursor and Windsurf to understand Bolio UI, with the docs published as Markdown.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## LLMs.txt
+
+<Spacer h={2} />
+
+### Available files
+
+We provide LLMs.txt files to make the Bolio UI documentation accessible to AI coding assistants. Every page is also available alone as Markdown, so an assistant reads the real props and examples instead of guessing them.
+
+<Text b>Core documentation:</Text>
+
+- • [`/llms.txt`](/llms.txt): quick reference index, with one line per page
+- • [`/llms-full.txt`](/llms-full.txt): complete Bolio UI documentation
+
+<Text b>For limited context windows:</Text>
+
+- • [`/llms-components.txt`](/llms-components.txt): components and hooks only
+- • [`/llms-guide.txt`](/llms-guide.txt): guides only, such as setup, themes and page structure
+
+<Text b>A single page:</Text>
+
+- • `/md/components/button`: one page as Markdown. Use any section (`guide`, `components` or `hooks`) and page name.
+
+<Spacer h={2} />
+
+### Claude Code
+
+Tell Claude to reference the documentation:
+
+```text
+Use the Bolio UI documentation from https://bolio-ui.com/llms.txt
+```
+
+Or add the links to your project with [AGENTS.md](/docs/guide/agents-md), so Claude loads them on every session.
+
+<Spacer h={2} />
+
+### Cursor
+
+Use the `@Docs` feature:
+
+```text
+@Docs https://bolio-ui.com/llms-full.txt
+```
+
+<Spacer h={2} />
+
+### Windsurf
+
+Add this line to your `.windsurfrules` file:
+
+```text
+#docs https://bolio-ui.com/llms-full.txt
+```
+
+<Spacer h={2} />
+
+### Other AI tools
+
+Most AI assistants can reference documentation by URL. Simply provide:
+
+```text
+https://bolio-ui.com/llms.txt
+```
+
+For component and hook documentation only:
+
+```text
+https://bolio-ui.com/llms-components.txt
+```
+
+For setup and guides only:
+
+```text
+https://bolio-ui.com/llms-guide.txt
+```
+
+<Spacer h={2} />
+
+### Contributing
+
+Found an issue with AI-generated code? Help us improve the LLMs.txt files by [opening an issue on GitHub](https://github.com/bolio-ui/bolio-ui/issues/new).
+
+export default Docs.withMeta(meta)

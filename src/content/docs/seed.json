@@ -6310,6 +6310,182 @@
     "path": "/docs/guide/about-bolio-ui#project-maintenance"
   },
   {
+    "title": "LLMs.txt",
+    "component": true,
+    "path": "/docs/guide/llms-txt"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Available files",
+    "component": false,
+    "path": "/docs/guide/llms-txt#available-files"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Claude Code",
+    "component": false,
+    "path": "/docs/guide/llms-txt#claude-code"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Cursor",
+    "component": false,
+    "path": "/docs/guide/llms-txt#cursor"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Windsurf",
+    "component": false,
+    "path": "/docs/guide/llms-txt#windsurf"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Other AI tools",
+    "component": false,
+    "path": "/docs/guide/llms-txt#other-ai-tools"
+  },
+  {
+    "head": "LLMs.txt",
+    "title": "Contributing",
+    "component": false,
+    "path": "/docs/guide/llms-txt#contributing"
+  },
+  {
+    "title": "MCP Server",
+    "component": true,
+    "path": "/docs/guide/mcp-server"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Cursor",
+    "component": false,
+    "path": "/docs/guide/mcp-server#cursor"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Claude Code",
+    "component": false,
+    "path": "/docs/guide/mcp-server#claude-code"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Windsurf",
+    "component": false,
+    "path": "/docs/guide/mcp-server#windsurf"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Zed",
+    "component": false,
+    "path": "/docs/guide/mcp-server#zed"
+  },
+  {
+    "head": "MCP Server",
+    "title": "VS Code",
+    "component": false,
+    "path": "/docs/guide/mcp-server#vs-code"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Codex",
+    "component": false,
+    "path": "/docs/guide/mcp-server#codex"
+  },
+  {
+    "head": "MCP Server",
+    "title": "OpenCode",
+    "component": false,
+    "path": "/docs/guide/mcp-server#opencode"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/mcp-server#usage"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Available tools",
+    "component": false,
+    "path": "/docs/guide/mcp-server#available-tools"
+  },
+  {
+    "head": "MCP Server",
+    "title": "Troubleshooting",
+    "component": false,
+    "path": "/docs/guide/mcp-server#troubleshooting"
+  },
+  {
+    "title": "Agent Skills",
+    "component": true,
+    "path": "/docs/guide/agent-skills"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "Installation",
+    "component": false,
+    "path": "/docs/guide/agent-skills#installation"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "Manual install",
+    "component": false,
+    "path": "/docs/guide/agent-skills#manual-install"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/agent-skills#usage"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "What's included",
+    "component": false,
+    "path": "/docs/guide/agent-skills#whats-included"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "Structure",
+    "component": false,
+    "path": "/docs/guide/agent-skills#structure"
+  },
+  {
+    "head": "Agent Skills",
+    "title": "Related documentation",
+    "component": false,
+    "path": "/docs/guide/agent-skills#related-documentation"
+  },
+  {
+    "title": "AGENTS.md",
+    "component": true,
+    "path": "/docs/guide/agents-md"
+  },
+  {
+    "head": "AGENTS.md",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/agents-md#usage"
+  },
+  {
+    "head": "AGENTS.md",
+    "title": "What it does",
+    "component": false,
+    "path": "/docs/guide/agents-md#what-it-does"
+  },
+  {
+    "head": "AGENTS.md",
+    "title": "Options",
+    "component": false,
+    "path": "/docs/guide/agents-md#options"
+  },
+  {
+    "head": "AGENTS.md",
+    "title": "Related documentation",
+    "component": false,
+    "path": "/docs/guide/agents-md#related-documentation"
+  },
+  {
     "title": "Example with Gatsby",
     "component": true,
     "path": "/docs/guide/bolio-ui-plus-gatsby"

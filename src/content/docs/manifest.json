@@ -47,6 +47,34 @@
           ]
         },
         {
+          "title": "UI for Agents",
+          "open": true,
+          "keywords": "ui for agents, ai, agents, llms, bolio ui",
+          "icon": "Cpu",
+          "routes": [
+            {
+              "title": "LLMs.txt",
+              "keywords": "llms, llms.txt, ai, agents, claude, cursor, windsurf, bolio ui",
+              "path": "/docs/guide/llms-txt.mdx"
+            },
+            {
+              "title": "MCP Server",
+              "keywords": "mcp, mcp server, model context protocol, ai, agents, claude, cursor, bolio ui",
+              "path": "/docs/guide/mcp-server.mdx"
+            },
+            {
+              "title": "Agent Skills",
+              "keywords": "skill, skills, agent skills, ai, agents, claude, bolio ui",
+              "path": "/docs/guide/agent-skills.mdx"
+            },
+            {
+              "title": "AGENTS.md",
+              "keywords": "agents.md, claude.md, ai, agents, bolio ui",
+              "path": "/docs/guide/agents-md.mdx"
+            }
+          ]
+        },
+        {
           "title": "Frameworks",
           "open": true,
           "keywords": "frameworks, examples frameworks, bolio ui",

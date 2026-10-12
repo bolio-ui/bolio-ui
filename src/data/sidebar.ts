@@ -34,6 +34,31 @@ export const guide = [
     target: '_blank'
   },
   {
+    name: 'UI for Agents',
+    url: '',
+    icon: 'Cpu'
+  },
+  {
+    name: 'LLMs.txt',
+    url: '/docs/guide/llms-txt',
+    tag: 'New'
+  },
+  {
+    name: 'MCP Server',
+    url: '/docs/guide/mcp-server',
+    tag: 'New'
+  },
+  {
+    name: 'Agent Skills',
+    url: '/docs/guide/agent-skills',
+    tag: 'New'
+  },
+  {
+    name: 'AGENTS.md',
+    url: '/docs/guide/agents-md',
+    tag: 'New'
+  },
+  {
     name: 'Frameworks',
     url: '',
     icon: 'Package'
