@@ -1,0 +1,65 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Spoiler, Text } from 'core'
+
+export const meta = {
+  title: 'Spoiler',
+  description:
+    'Shows the start of a long content and a button to read the rest.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 73
+}
+
+## Spoiler
+
+Shows the start of a long content and a button to read the rest. The button
+only appears when the content is taller than `maxHeight`.
+
+<Playground
+  desc="Set `maxHeight` in pixels. The content shows in full when it fits."
+  scope={{ Spoiler, Text }}
+  code={`
+<Spoiler maxHeight={80}>
+  {[...Array(10)].map((_, i) => (
+    <Text key={i} my={0.5}>Line {i + 1}</Text>
+  ))}
+</Spoiler>
+`}
+/>
+
+<Playground
+  title="Labels"
+  desc="Use `showLabel` and `hideLabel` to name the button, and `initialOpened` to start open."
+  scope={{ Spoiler, Text }}
+  code={`
+<Spoiler maxHeight={60} showLabel="Read the full note" hideLabel="Read less">
+  {[...Array(8)].map((_, i) => (
+    <Text key={i} my={0.5}>Paragraph {i + 1}</Text>
+  ))}
+</Spoiler>
+`}
+/>
+
+<Attributes edit="/content/docs/components/spoiler.mdx">
+<Attributes.Title>Spoiler.Props</Attributes.Title>
+
+| Attribute         | Description                                      | Type      | Accepted values | Default       |
+| ----------------- | ------------------------------------------------ | --------- | --------------- | ------------- |
+| **maxHeight**     | height in pixels of the content while collapsed  | `number`  | -               | `100`         |
+| **showLabel**     | text of the button while collapsed               | `string`  | -               | `'Show more'` |
+| **hideLabel**     | text of the button while open                    | `string`  | -               | `'Hide'`      |
+| **initialOpened** | starts with the content open                     | `boolean` | -               | `false`       |
+| ...               | native props, passed to the root element         | `HTMLAttributes` | `'id', 'className', ...` | -  |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The button is a native `button` with `aria-expanded` and `aria-controls` pointing at the content, so screen readers announce whether it is open. The collapsed text is still in the page, so screen readers read all of it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

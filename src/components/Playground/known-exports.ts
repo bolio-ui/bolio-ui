@@ -67,6 +67,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Slider',
   'Snippet',
   'Spacer',
+  'Spoiler',
   'Spinner',
   'Stat',
   'Stepper',

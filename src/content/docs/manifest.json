@@ -477,6 +477,11 @@
               "path": "/docs/components/spacer.mdx"
             },
             {
+              "title": "Spoiler",
+              "keywords": "spoiler, show more, read more, collapse, expand, truncate, max height, long text",
+              "path": "/docs/components/spoiler.mdx"
+            },
+            {
               "title": "Spinner",
               "keywords": "spinner",
               "path": "/docs/components/spinner.mdx"

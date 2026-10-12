@@ -447,6 +447,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Spoiler',
+            url: '/docs/components/spoiler',
+            group: 'Components'
+          },
+          {
             name: 'Spinner',
             url: '/docs/components/spinner',
             group: 'Components'

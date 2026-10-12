@@ -415,6 +415,11 @@ export const components = [
     url: '/docs/components/spacer'
   },
   {
+    name: 'Spoiler',
+    url: '/docs/components/spoiler',
+    tag: 'New'
+  },
+  {
     name: 'Spinner',
     url: '/docs/components/spinner'
   },

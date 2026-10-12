@@ -61,6 +61,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  Spoiler,
   Spinner,
   Splitter,
   Stepper,
@@ -279,6 +280,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Slider', () => <Slider initialValue={20} />],
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
   ['Spacer', () => <Spacer h={1} />],
+  ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],
   [
     'Splitter',

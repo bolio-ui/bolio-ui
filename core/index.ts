@@ -274,6 +274,9 @@ export type { CopyButtonProps, CopyButtonRenderProps } from './CopyButton'
 export { default as ScrollArea } from './ScrollArea'
 export type { ScrollAreaProps, ScrollAreaOrientation } from './ScrollArea'
 
+export { default as Spoiler } from './Spoiler'
+export type { SpoilerProps } from './Spoiler'
+
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 

@@ -7277,5 +7277,46 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/copy-button#accessibility"
+  },
+  {
+    "title": "Spoiler",
+    "component": true,
+    "path": "/docs/components/spoiler"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler General",
+    "component": false,
+    "path": "/docs/components/spoiler#general"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Labels",
+    "component": false,
+    "path": "/docs/components/spoiler#labels"
+  },
+  {
+    "head": "Spoiler",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/spoiler#apis"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Props",
+    "component": false,
+    "path": "/docs/components/spoiler#spoiler.props"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/spoiler#ref"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/spoiler#accessibility"
   }
 ]

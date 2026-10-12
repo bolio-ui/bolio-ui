@@ -63,6 +63,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  Spoiler,
   Spinner,
   Splitter,
   Stepper,
@@ -301,6 +302,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Slider', (ref) => <Slider ref={ref} initialValue={20} />],
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
+  ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],
   [
     'Splitter',
