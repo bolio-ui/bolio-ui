@@ -25,16 +25,25 @@ const slugOf = (name) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
 
+// One section ("Components", "Hooks") of the llms.txt index
+const listSection = async (name) => {
+  const index = await get('/llms.txt')
+  const section = index.split('## ').find((s) => s.startsWith(name))
+  return section.split('\n').slice(2).join('\n').trim()
+}
+
 const tools = [
   {
     name: 'list_components',
     description: 'List every Bolio UI component with its name and summary.',
     inputSchema: { type: 'object', properties: {} },
-    run: async () => {
-      const index = await get('/llms.txt')
-      const section = index.split('## ').find((s) => s.startsWith('Components'))
-      return section.split('\n').slice(2).join('\n').trim()
-    }
+    run: () => listSection('Components')
+  },
+  {
+    name: 'list_hooks',
+    description: 'List every Bolio UI hook with its name and summary.',
+    inputSchema: { type: 'object', properties: {} },
+    run: () => listSection('Hooks')
   },
   {
     name: 'get_component_docs',
@@ -57,6 +66,23 @@ const tools = [
           components.map((name) => get(`/md/components/${slugOf(name)}`))
         )
       ).join('\n\n---\n\n')
+  },
+  {
+    name: 'get_theme_variables',
+    description:
+      'Get the theme tokens (palette, font, layout, breakpoints and expressiveness) of the light theme, the dark theme or both.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        type: { type: 'string', enum: ['light', 'dark'] }
+      }
+    },
+    run: async ({ type }) => {
+      const themes = JSON.parse(await get('/theme.json'))
+      if (type && !themes[type])
+        throw new Error(`Unknown theme "${type}". Use "light" or "dark".`)
+      return JSON.stringify(type ? themes[type] : themes, null, 2)
+    }
   },
   {
     name: 'get_docs',

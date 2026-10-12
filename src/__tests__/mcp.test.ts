@@ -12,7 +12,11 @@ const pages: Record<string, string> = {
     '# Bolio UI\n\n## Guide\n\n- [Start](x)\n\n## Components\n\n- [Button](https://bolio-ui.com/md/components/button): A button.\n- [Button Group](https://bolio-ui.com/md/components/button-group): Many.\n\n## Hooks\n\n- [useTheme](y)\n',
   '/md/components/button': 'BUTTON DOCS',
   '/md/components/button-group': 'GROUP DOCS',
-  '/md/hooks/use-theme': 'THEME DOCS'
+  '/md/hooks/use-theme': 'THEME DOCS',
+  '/theme.json': JSON.stringify({
+    light: { type: 'light', palette: { background: '#fff' } },
+    dark: { type: 'dark', palette: { background: '#000' } }
+  })
 }
 
 let site: http.Server
@@ -78,7 +82,7 @@ const text = (answers: Record<number, Message>) =>
   answers[1].result.content[0].text
 
 describe('@bolio-ui/mcp', () => {
-  it('answers the handshake and lists the three tools', async () => {
+  it('answers the handshake and lists the tools', async () => {
     const answers = await ask(
       {
         id: 1,
@@ -92,7 +96,9 @@ describe('@bolio-ui/mcp', () => {
     expect(answers[1].result.serverInfo.name).toBe('bolio-ui')
     expect(answers[2].result.tools.map((t) => t.name)).toEqual([
       'list_components',
+      'list_hooks',
       'get_component_docs',
+      'get_theme_variables',
       'get_docs'
     ])
   })
@@ -103,6 +109,24 @@ describe('@bolio-ui/mcp', () => {
     expect(output).toContain('[Button Group](')
     expect(output).not.toContain('Start')
     expect(output).not.toContain('useTheme')
+  })
+
+  it('list_hooks returns the hooks only', async () => {
+    const output = text(await ask(call('list_hooks')))
+    expect(output).toContain('[useTheme](')
+    expect(output).not.toContain('[Button](')
+  })
+
+  it('get_theme_variables returns both themes, or the one asked', async () => {
+    const both = JSON.parse(text(await ask(call('get_theme_variables'))))
+    expect(Object.keys(both)).toEqual(['light', 'dark'])
+    const dark = JSON.parse(
+      text(await ask(call('get_theme_variables', { type: 'dark' })))
+    )
+    expect(dark.palette.background).toBe('#000')
+    const unknown = await ask(call('get_theme_variables', { type: 'sepia' }))
+    expect(unknown[1].result.isError).toBe(true)
+    expect(text(unknown)).toContain('Use "light" or "dark"')
   })
 
   it('get_component_docs reads each name as a page, in any case', async () => {
