@@ -15,9 +15,11 @@ export const GA_TRACKING_ID: string = process.env.NEXT_PUBLIC_GA_TRACKING || ''
 export const ANALYTICS_ENABLED =
   process.env.NODE_ENV === 'production' && GA_TRACKING_ID !== ''
 
-// 'granted' or 'denied', as the visitor chose in the consent banner. Without
-// a choice, analytics storage stays denied.
+// 'granted' or 'denied', as the visitor chose in the consent banner. Google
+// Analytics is not even loaded until the answer is 'granted', so a visitor who
+// declines or has not answered sends nothing.
 export const CONSENT_KEY = 'analytics-consent'
+export const CONSENT_EVENT = 'analytics-consent-change'
 
 export const getConsent = (): 'granted' | 'denied' | null => {
   try {
@@ -34,8 +36,7 @@ export const setConsent = (choice: 'granted' | 'denied'): void => {
   } catch {
     // the choice still applies to this visit
   }
-  if (window.gtag)
-    window.gtag('consent', 'update', { analytics_storage: choice })
+  window.dispatchEvent(new Event(CONSENT_EVENT))
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
