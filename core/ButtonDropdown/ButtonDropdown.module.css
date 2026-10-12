@@ -40,6 +40,11 @@
     border-color 0.2s ease 0s;
 }
 
+.summary:focus-visible {
+  outline: 2px solid var(--bolio-ui-dropdown-focus);
+  outline-offset: -2px;
+}
+
 .content {
   position: absolute;
   right: 0;
