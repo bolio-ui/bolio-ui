@@ -130,7 +130,7 @@ const SelectComponent = React.forwardRef<
     )
 
     // the options the keyboard can reach
-    const enabledValues = useMemo(
+    const enabledOptions = useMemo(
       () =>
         React.Children.toArray(children).flatMap((child) => {
           if (
@@ -139,15 +139,31 @@ const SelectComponent = React.forwardRef<
               disabled?: boolean
               label?: boolean
               divider?: boolean
+              children?: React.ReactNode
             }>(child)
           )
             return []
-          const { value: optionValue, disabled, label, divider } = child.props
+          const {
+            value: optionValue,
+            disabled,
+            label,
+            divider,
+            children: content
+          } = child.props
           if (optionValue === undefined || disabled || label || divider)
             return []
-          return [optionValue]
+          // typing matches what the option shows, or its value when that is not text
+          const text =
+            typeof content === 'string' || typeof content === 'number'
+              ? String(content)
+              : optionValue
+          return [{ value: optionValue, text: text.toLowerCase() }]
         }),
       [children]
+    )
+    const enabledValues = useMemo(
+      () => enabledOptions.map((option) => option.value),
+      [enabledOptions]
     )
     const latestEnabled = useLatest(enabledValues)
 
@@ -261,9 +277,40 @@ const SelectComponent = React.forwardRef<
       })
     }, [value, children, multiple, clearable, disabled, updateValue])
 
+    // letters typed within half a second find an option by its start
+    const typed = useRef('')
+    const typedTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+      undefined
+    )
+    useEffect(() => () => clearTimeout(typedTimer.current), [])
+
     const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (disabled) return
       const { key } = event
+      if (
+        key.length === 1 &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        !event.altKey &&
+        (key !== ' ' || typed.current)
+      ) {
+        event.preventDefault()
+        typed.current += key.toLowerCase()
+        clearTimeout(typedTimer.current)
+        typedTimer.current = setTimeout(() => (typed.current = ''), 500)
+        // the same letter again goes on to the next option that starts with it
+        const from =
+          activeValue === undefined ? -1 : enabledValues.indexOf(activeValue)
+        const start = typed.current.length === 1 ? from + 1 : Math.max(from, 0)
+        const found = [
+          ...enabledOptions.slice(start),
+          ...enabledOptions.slice(0, start)
+        ].find((option) => option.text.startsWith(typed.current))
+        if (!found) return
+        if (!visible) updateVisible(true)
+        setActiveValue(found.value)
+        return
+      }
       const options = enabledValues
       const move = (to: number) => {
         event.preventDefault()

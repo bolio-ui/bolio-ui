@@ -126,6 +126,83 @@ describe('<Select /> keyboard', () => {
     expect(field().getAttribute('aria-activedescendant')).toBe(options[0].id)
   })
 
+  describe('typeahead', () => {
+    const fruits = (
+      <Select placeholder="Fruit">
+        <Select.Option value="apple">Apple</Select.Option>
+        <Select.Option value="apricot">Apricot</Select.Option>
+        <Select.Option value="banana">Banana</Select.Option>
+        <Select.Option value="blocked" disabled>
+          Blueberry
+        </Select.Option>
+        <Select.Option value="cherry">Cherry</Select.Option>
+      </Select>
+    )
+
+    it('opens the list on the first option that starts with the letter', async () => {
+      wrap(fruits)
+      press('b')
+      await settle()
+      expect(field()).toHaveAttribute('aria-expanded', 'true')
+      expect(active()).toBe('Banana')
+    })
+
+    it('refines with more letters typed together', async () => {
+      wrap(fruits)
+      press('a')
+      await settle()
+      expect(active()).toBe('Apple')
+      press('p')
+      press('r')
+      expect(active()).toBe('Apricot')
+    })
+
+    it('goes on to the next option with the same letter', async () => {
+      wrap(fruits)
+      press('a')
+      await settle()
+      expect(active()).toBe('Apple')
+      await act(() => new Promise((resolve) => setTimeout(resolve, 600)))
+      press('a')
+      expect(active()).toBe('Apricot')
+      await act(() => new Promise((resolve) => setTimeout(resolve, 600)))
+      press('a')
+      expect(active()).toBe('Apple')
+    })
+
+    it('skips disabled options and ignores letters with no match', async () => {
+      wrap(fruits)
+      press('b')
+      await settle()
+      await act(() => new Promise((resolve) => setTimeout(resolve, 600)))
+      press('b')
+      expect(active()).toBe('Banana')
+      await act(() => new Promise((resolve) => setTimeout(resolve, 600)))
+      press('z')
+      expect(active()).toBe('Banana')
+    })
+
+    it('does not read Space as a choice while typing a phrase', async () => {
+      const onChange = jest.fn()
+      render(
+        <BolioUIProvider>
+          <Select placeholder="Place" onChange={onChange}>
+            <Select.Option value="a">New York</Select.Option>
+            <Select.Option value="b">New Delhi</Select.Option>
+          </Select>
+        </BolioUIProvider>
+      )
+      press('n')
+      await settle()
+      press('e')
+      press('w')
+      press(' ')
+      press('d')
+      expect(active()).toBe('New Delhi')
+      expect(onChange).not.toHaveBeenCalled()
+    })
+  })
+
   it('has no axe violations with the list open', async () => {
     const { container } = wrap(basic({ initialValue: '1' }))
     press('Enter')
