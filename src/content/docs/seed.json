@@ -781,6 +781,18 @@
     "path": "/docs/components/checkbox#checkboxevent"
   },
   {
+    "head": "Checkbox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/checkbox#ref"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/checkbox#accessibility"
+  },
+  {
     "title": "Code",
     "component": true,
     "path": "/docs/components/code"
@@ -2179,6 +2191,18 @@
     "path": "/docs/components/input#useinput"
   },
   {
+    "head": "Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/input#ref"
+  },
+  {
+    "head": "Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/input#accessibility"
+  },
+  {
     "title": "Keyboard",
     "component": true,
     "path": "/docs/components/keyboard"
@@ -3112,6 +3136,18 @@
     "path": "/docs/components/radio#radiotypes"
   },
   {
+    "head": "Radio",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/radio#ref"
+  },
+  {
+    "head": "Radio",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/radio#accessibility"
+  },
+  {
     "title": "Rating",
     "component": true,
     "path": "/docs/components/rating"
@@ -3449,6 +3485,12 @@
     "path": "/docs/components/select#selecttypes"
   },
   {
+    "head": "Select",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/select#accessibility"
+  },
+  {
     "title": "Slider",
     "component": true,
     "path": "/docs/components/slider"
@@ -3512,6 +3554,18 @@
     "title": "Types - Slider",
     "component": false,
     "path": "/docs/components/slider#slidertypes"
+  },
+  {
+    "head": "Slider",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/slider#ref"
+  },
+  {
+    "head": "Slider",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/slider#accessibility"
   },
   {
     "title": "Skeleton",
@@ -4359,6 +4413,18 @@
     "path": "/docs/components/textarea#cssresize"
   },
   {
+    "head": "Textarea",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/textarea#ref"
+  },
+  {
+    "head": "Textarea",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/textarea#accessibility"
+  },
+  {
     "title": "Timeline",
     "component": true,
     "path": "/docs/components/timeline"
@@ -4469,6 +4535,18 @@
     "title": "Types - Toggle",
     "component": false,
     "path": "/docs/components/toggle#toggletypes"
+  },
+  {
+    "head": "Toggle",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/toggle#ref"
+  },
+  {
+    "head": "Toggle",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/toggle#accessibility"
   },
   {
     "title": "Tooltip",
