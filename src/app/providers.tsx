@@ -17,6 +17,7 @@ import {
 import { KBarWrapper as KBarProvider } from 'src/components'
 import Navigation from 'src/components/Navigation'
 import Analytics from 'src/components/Analytics'
+import ConsentBanner from 'src/components/ConsentBanner'
 import * as gtag from 'src/utils/gtag'
 
 // theme.palette here must come from useTheme() called *inside* BolioUIProvider,
@@ -229,6 +230,7 @@ export default function Providers({
         >
           <AccentTheme accent={accent}>
             <Analytics />
+            <ConsentBanner />
             <CssBaseline />
             <KBarProvider>
               <Navigation />

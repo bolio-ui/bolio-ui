@@ -14,7 +14,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bolio-ui.com'),
-  title: { default: title, template: `%s | ${title}` },
+  title: { default: title, template: '%s | Bolio UI' },
   description,
   keywords: [
     'React',
@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     'UI Framework',
     'UI Design System'
   ],
+  // './' is the URL of each page: a page with no canonical of its own gets itself
+  alternates: { canonical: './' },
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',

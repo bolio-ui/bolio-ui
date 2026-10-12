@@ -6,7 +6,14 @@ const SITE = 'https://bolio-ui.com'
 // Every docs page comes from the same folder that builds the site, so a new
 // page is in the sitemap on the next build.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['', '/faq', '/theme-generator'].concat(
+  const pages = [
+    '',
+    '/about',
+    '/contact',
+    '/faq',
+    '/privacy',
+    '/theme-generator'
+  ].concat(
     generateStaticParams().map(
       ({ section, slug }) => `/docs/${section}/${slug}`
     )

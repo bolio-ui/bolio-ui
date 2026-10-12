@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import type { Metadata } from 'next'
+import JsonLd from 'src/components/JsonLd'
 import { DocsContent, Meta } from 'src/templates/Docs'
 import { toCapitalize } from 'src/utils/to-capitalize'
 
@@ -39,13 +40,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { section, slug } = await params
   const { title = '', description } = readMeta({ section, slug })
-  const pageTitle = `${toCapitalize(
-    title
-  )} | Bolio UI - Amazing, modern and creative tools for React UI`
+  const pageTitle = `${toCapitalize(title)} | Bolio UI`
 
   return {
     title: toCapitalize(title),
     description,
+    alternates: { canonical: `/docs/${section}/${slug}` },
     openGraph: {
       url: `/docs/${section}/${slug}`,
       title: pageTitle,
@@ -55,7 +55,47 @@ export async function generateMetadata({
   }
 }
 
+const SITE = 'https://bolio-ui.com'
+const SECTION_NAMES: Record<string, string> = {
+  guide: 'Guide',
+  components: 'Components',
+  hooks: 'Hooks'
+}
+
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { section, slug } = await params
-  return <DocsContent section={section} slug={slug} />
+  const { title = '', description } = readMeta({ section, slug })
+  const url = `${SITE}/docs/${section}/${slug}`
+  const data = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TechArticle',
+        headline: toCapitalize(title),
+        description,
+        url,
+        inLanguage: 'en',
+        isPartOf: { '@type': 'WebSite', name: 'Bolio UI', url: SITE }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { name: 'Bolio UI', item: SITE },
+          { name: SECTION_NAMES[section], item: `${SITE}/docs/${section}` },
+          { name: toCapitalize(title), item: url }
+        ].map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          ...crumb
+        }))
+      }
+    ]
+  }
+
+  return (
+    <>
+      <JsonLd data={data} />
+      <DocsContent section={section} slug={slug} />
+    </>
+  )
 }
