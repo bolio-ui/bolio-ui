@@ -26,6 +26,10 @@
   background-color: color-mix(in srgb, currentColor 12%, transparent);
 }
 
+.option.active {
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
 .label:hover,
 .divider:hover {
   background-color: transparent;
