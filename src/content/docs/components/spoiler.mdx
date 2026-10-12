@@ -21,7 +21,7 @@ only appears when the content is taller than `maxHeight`.
   scope={{ Spoiler, Text }}
   code={`
 <Spoiler maxHeight={80}>
-  {[...Array(10)].map((_, i) => (
+  {Array.from({ length: 10 }, (_, i) => (
     <Text key={i} my={0.5}>Line {i + 1}</Text>
   ))}
 </Spoiler>
@@ -34,7 +34,7 @@ only appears when the content is taller than `maxHeight`.
   scope={{ Spoiler, Text }}
   code={`
 <Spoiler maxHeight={60} showLabel="Read the full note" hideLabel="Read less">
-  {[...Array(8)].map((_, i) => (
+  {Array.from({ length: 8 }, (_, i) => (
     <Text key={i} my={0.5}>Paragraph {i + 1}</Text>
   ))}
 </Spoiler>

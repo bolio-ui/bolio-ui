@@ -22,7 +22,7 @@ behave as usual.
   scope={{ ScrollArea, Text }}
   code={`
 <ScrollArea height="160px" aria-label="Release notes">
-  {[...Array(20)].map((_, i) => (
+  {Array.from({ length: 20 }, (_, i) => (
     <Text key={i} my={0.5}>Line {i + 1}</Text>
   ))}
 </ScrollArea>
@@ -46,7 +46,7 @@ behave as usual.
   scope={{ ScrollArea, Text }}
   code={`
 <ScrollArea height="160px" scrollbar="hover" aria-label="Release notes">
-  {[...Array(20)].map((_, i) => (
+  {Array.from({ length: 20 }, (_, i) => (
     <Text key={i} my={0.5}>Line {i + 1}</Text>
   ))}
 </ScrollArea>
