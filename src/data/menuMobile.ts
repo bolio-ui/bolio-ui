@@ -26,6 +26,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Scale and spacing',
+            url: '/docs/guide/scale-and-spacing',
+            group: 'Guide'
+          },
+          {
             name: 'About Bolio UI',
             url: '/docs/guide/about-bolio-ui',
             group: 'Guide'
