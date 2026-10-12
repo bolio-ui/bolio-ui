@@ -23,6 +23,20 @@ describe('<ScrollArea />', () => {
     expect(container.firstElementChild).toHaveClass('horizontal')
   })
 
+  it('leaves room below a sideways scrollbar, not a vertical one', () => {
+    const { container, rerender } = wrap(
+      <ScrollArea orientation="horizontal">Content</ScrollArea>
+    )
+    const root = () => container.firstElementChild as HTMLElement
+    expect(root().style.paddingBottom).not.toBe('0')
+    rerender(
+      <BolioUIProvider>
+        <ScrollArea>Content</ScrollArea>
+      </BolioUIProvider>
+    )
+    expect(root().style.paddingBottom).toBe('0px')
+  })
+
   it('hides the scrollbar until hover with scrollbar="hover"', () => {
     const { container } = wrap(
       <ScrollArea scrollbar="hover">Content</ScrollArea>

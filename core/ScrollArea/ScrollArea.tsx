@@ -43,9 +43,10 @@ const ScrollAreaComponent = React.forwardRef<
     const scrollStyle = {
       width: SCALES.width(1, '100%'),
       height: SCALES.height(1, 'auto'),
-      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
+      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(orientation === 'vertical' ? 0 : 0.5)} ${SCALES.pl(0)}`,
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
       '--scroll-thumb-visible': theme.palette.accents_3,
+      '--scroll-thumb-active': theme.palette.accents_4,
       '--scroll-focus': theme.palette.foreground,
       ...style
     } as React.CSSProperties

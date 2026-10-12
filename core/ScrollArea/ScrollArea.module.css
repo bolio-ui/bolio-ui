@@ -23,6 +23,10 @@
     background: var(--scroll-thumb);
   }
 
+  .scrollArea::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-active);
+  }
+
   .scrollArea::-webkit-scrollbar-corner {
     background: transparent;
   }
