@@ -5,8 +5,11 @@ const { spawnSync } = require('child_process')
 
 const docs = 'https://bolio-ui.com/docs/guide/getting-started'
 const usage = `Usage: bolio-ui init [name] [options]
+       bolio-ui agents-md [file]
 
 Sets up Bolio UI in the project of the current folder, or creates a new one.
+
+agents-md adds the Bolio UI docs for AI assistants to AGENTS.md, or to the file you give.
 
 Options:
   -t, --template <name>  create a new project: next, vite, react-router, gatsby, redwood, tanstack, waku, rwsdk or astro
@@ -26,6 +29,28 @@ const fail = (message) => {
   process.exit(1)
 }
 
+if (argv[0] === 'agents-md') {
+  const file = path.resolve(argv[1] || 'AGENTS.md')
+  const marker = '<!-- bolio-ui -->'
+  const block = `${marker}
+## Bolio UI
+
+This project uses Bolio UI (\`@bolio-ui/core\`). Before writing UI code, read the docs for assistants:
+
+- Index of every page: https://bolio-ui.com/llms.txt
+- All docs in one file: https://bolio-ui.com/llms-full.txt
+- One page as Markdown: https://bolio-ui.com/md/components/<name>
+${marker}
+`
+  const current = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : ''
+  const [before, , after = ''] = current.split(marker)
+  const next = current.includes(marker)
+    ? `${before}${block.trimEnd()}${after}`
+    : `${current}${current ? (current.endsWith('\n') ? '\n' : '\n\n') : ''}${block}`
+  fs.writeFileSync(file, next)
+  console.log(`Bolio UI docs added to ${path.relative(process.cwd(), file)}`)
+  process.exit(0)
+}
 if (argv[0] !== 'init') fail(usage)
 const yes = has('-y', '--yes')
 const ask = yes || !process.stdin.isTTY || !process.stdout.isTTY ? null : true

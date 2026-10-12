@@ -24,6 +24,14 @@ bunx --bun @bolio-ui/cli@latest init
 
 It installs `@bolio-ui/core` with your package manager and wraps your app with `BolioUIProvider`.
 
+## For AI assistants
+
+```bash
+npx @bolio-ui/cli@latest agents-md [file]
+```
+
+Adds a Bolio UI section with the links of [llms.txt](https://bolio-ui.com/llms.txt) to `AGENTS.md`, or to the file you give. Running it again updates the section.
+
 ## Options
 
 | Option             | What it does                                                                                                      |
