@@ -1,0 +1,76 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ScrollArea, Text } from 'core'
+
+export const meta = {
+  title: 'Scroll Area',
+  description:
+    'A scrollable region with a slim scrollbar that follows the theme and works with the keyboard.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 71
+}
+
+## Scroll Area
+
+A scrollable region with a slim scrollbar that follows the theme and works with
+the keyboard. It uses the browser's own scrolling, so touch, wheel and trackpad
+behave as usual.
+
+<Playground
+  desc="Set a `height` and the content scrolls when it is taller. Add an `aria-label` so screen readers name the region."
+  scope={{ ScrollArea, Text }}
+  code={`
+<ScrollArea height="160px" aria-label="Release notes">
+  {[...Array(20)].map((_, i) => (
+    <Text key={i} my={0.5}>Line {i + 1}</Text>
+  ))}
+</ScrollArea>
+`}
+/>
+
+<Playground
+  title="Horizontal"
+  desc="Use `orientation` to scroll sideways, or `both` for both directions."
+  scope={{ ScrollArea }}
+  code={`
+<ScrollArea orientation="horizontal" aria-label="Wide content">
+  <div style={{ width: 1200 }}>A line wider than its container.</div>
+</ScrollArea>
+`}
+/>
+
+<Playground
+  title="Hover scrollbar"
+  desc="Use `scrollbar='hover'` to show the scrollbar only while the pointer or the focus is inside."
+  scope={{ ScrollArea, Text }}
+  code={`
+<ScrollArea height="160px" scrollbar="hover" aria-label="Release notes">
+  {[...Array(20)].map((_, i) => (
+    <Text key={i} my={0.5}>Line {i + 1}</Text>
+  ))}
+</ScrollArea>
+`}
+/>
+
+<Attributes edit="/content/docs/components/scroll-area.mdx">
+<Attributes.Title>ScrollArea.Props</Attributes.Title>
+
+| Attribute       | Description                                          | Type                                     | Accepted values | Default      |
+| --------------- | ---------------------------------------------------- | ---------------------------------------- | --------------- | ------------ |
+| **orientation** | direction of the scroll                              | `'vertical' / 'horizontal' / 'both'`     | -               | `'vertical'` |
+| **scrollbar**   | `'hover'` hides the scrollbar until the pointer or the focus is inside | `'always' / 'hover'` | -               | `'always'`   |
+| **height**      | height of the region; a number is a multiple of the theme unit | `string` / `number`          | `'160px'`, ...  | `auto`       |
+| ...             | native props, passed to the root element             | `HTMLAttributes`                         | `'id', 'className', ...` | -   |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the scrolling element, so you can read or set `scrollTop` and `scrollLeft`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The region takes focus with Tab, so the arrow keys, Page Up, Page Down, Home and End scroll it without a mouse. Pass `aria-label` or `aria-labelledby` to name it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

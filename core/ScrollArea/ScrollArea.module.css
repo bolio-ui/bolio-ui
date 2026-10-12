@@ -1,0 +1,35 @@
+.scrollArea {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  --scroll-thumb: var(--scroll-thumb-visible);
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+
+.scrollArea:focus-visible {
+  outline: 2px solid var(--scroll-focus);
+  outline-offset: -2px;
+}
+
+.vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.both {
+  overflow: auto;
+}
+
+/* the thumb only shows while the pointer or the focus is inside */
+.hover {
+  --scroll-thumb: transparent;
+}
+
+.hover:hover,
+.hover:focus-within {
+  --scroll-thumb: var(--scroll-thumb-visible);
+}

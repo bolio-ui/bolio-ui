@@ -389,6 +389,11 @@ export const components = [
     url: '/docs/components/skeleton'
   },
   {
+    name: 'Scroll Area',
+    url: '/docs/components/scroll-area',
+    tag: 'New'
+  },
+  {
     name: 'Section',
     url: '/docs/components/section'
   },

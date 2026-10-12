@@ -53,6 +53,7 @@ const {
   Radio,
   Rating,
   Row,
+  ScrollArea,
   Section,
   SegmentedControl,
   Select,
@@ -254,6 +255,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Row>
     )
   ],
+  ['ScrollArea', () => <ScrollArea height="100px">Content</ScrollArea>],
   ['Section', () => <Section>Section</Section>],
   [
     'SegmentedControl',

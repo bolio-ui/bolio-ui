@@ -432,6 +432,11 @@
               "path": "/docs/components/row.mdx"
             },
             {
+              "title": "Scroll Area",
+              "keywords": "scroll area, scrollbar, overflow, scroll, scrollable, horizontal, vertical, custom scrollbar",
+              "path": "/docs/components/scroll-area.mdx"
+            },
+            {
               "title": "Section",
               "keywords": "section, band, background, page section, layout",
               "path": "/docs/components/section.mdx"

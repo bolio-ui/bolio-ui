@@ -268,6 +268,9 @@ export type { TextProps } from './Text'
 export { default as Textarea } from './Textarea'
 export type { TextareaProps } from './Textarea'
 
+export { default as ScrollArea } from './ScrollArea'
+export type { ScrollAreaProps, ScrollAreaOrientation } from './ScrollArea'
+
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 

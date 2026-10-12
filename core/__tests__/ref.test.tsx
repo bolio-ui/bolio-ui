@@ -55,6 +55,7 @@ const {
   Radio,
   Rating,
   Row,
+  ScrollArea,
   Section,
   SegmentedControl,
   Select,
@@ -277,6 +278,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
+  ['ScrollArea', (ref) => <ScrollArea ref={ref}>Content</ScrollArea>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],
   [
     'SegmentedControl',

@@ -7195,5 +7195,52 @@
     "title": "Mention Props",
     "component": false,
     "path": "/docs/components/mention#mention.props"
+  },
+  {
+    "title": "Scroll Area",
+    "component": true,
+    "path": "/docs/components/scroll-area"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area General",
+    "component": false,
+    "path": "/docs/components/scroll-area#general"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area Horizontal",
+    "component": false,
+    "path": "/docs/components/scroll-area#horizontal"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area Hover scrollbar",
+    "component": false,
+    "path": "/docs/components/scroll-area#hover-scrollbar"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/scroll-area#apis"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "ScrollArea.Props",
+    "component": false,
+    "path": "/docs/components/scroll-area#scrollarea.props"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/scroll-area#ref"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/scroll-area#accessibility"
   }
 ]

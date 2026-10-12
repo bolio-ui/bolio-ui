@@ -417,6 +417,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Scroll Area',
+            url: '/docs/components/scroll-area',
+            group: 'Components'
+          },
+          {
             name: 'Section',
             url: '/docs/components/section',
             group: 'Components'

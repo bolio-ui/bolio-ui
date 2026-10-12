@@ -58,6 +58,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Row',
   'ScaleContext',
   'ScalePropKeys',
+  'ScrollArea',
   'Section',
   'SegmentedControl',
   'Select',
