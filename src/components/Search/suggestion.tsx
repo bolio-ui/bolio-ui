@@ -6,6 +6,7 @@ import { File, Hash, ArrowRight } from '@bolio-ui/icons'
 import { addColorAlpha } from 'core/utils/color'
 import { includes } from 'lodash'
 import { DocHit, splitMatches } from 'src/utils/local-search'
+import { track } from 'src/utils/gtag'
 import styles from './suggestion.module.css'
 
 interface Props {
@@ -31,6 +32,7 @@ const Suggestion: React.FC<Props> = ({ hit, query, highlighted }) => {
   return (
     <NextLink
       href={hit.path}
+      onClick={() => track('search_select', { page_path: hit.path })}
       style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}
     >
       <span
