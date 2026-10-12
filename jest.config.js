@@ -5,6 +5,18 @@ module.exports = {
   roots: ['<rootDir>/core', '<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.test.(ts|tsx)'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  // Babel only runs here: the site is compiled by SWC, which Next turns off when
+  // there is a .babelrc
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      'babel-jest',
+      {
+        babelrc: false,
+        configFile: false,
+        presets: ['next/babel', '@babel/preset-typescript']
+      }
+    ]
+  },
   // Real CSS Modules scoping isn't needed in jsdom tests, just a stable
   // classname per key so `styles.root` etc. resolve to something.
   moduleNameMapper: { '\\.module\\.css$': 'identity-obj-proxy' },
