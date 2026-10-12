@@ -192,6 +192,7 @@ export default function Providers({
 
   const switchTheme = useCallback((theme: ThemePreference) => {
     setThemePreference(theme)
+    gtag.track('theme_change', { theme })
     if (typeof window !== 'undefined' && window.localStorage)
       window.localStorage.setItem('theme', theme)
   }, [])

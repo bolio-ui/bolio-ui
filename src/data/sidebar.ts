@@ -21,6 +21,11 @@ export const guide = [
     url: '/docs/guide/page-structure'
   },
   {
+    name: 'Scale and spacing',
+    url: '/docs/guide/scale-and-spacing',
+    tag: 'New'
+  },
+  {
     name: 'About Bolio UI',
     url: '/docs/guide/about-bolio-ui'
   },

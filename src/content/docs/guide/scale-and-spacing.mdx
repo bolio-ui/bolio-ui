@@ -1,0 +1,137 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, Grid, Spacer } from 'core'
+
+export const meta = {
+  title: 'Scale and spacing',
+  description:
+    'The width, padding, margin, font and scale props that every Bolio UI component accepts, and how their values work.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Scale and spacing
+
+Every Bolio UI component accepts the same props to set its size and spacing: `width`, `padding`, `margin`, `font` and their shorthands, plus `scale` to resize the whole component.
+They are not repeated in the props table of each component, because they work the same everywhere. To add them to a component of your own, read [useScale](/docs/hooks/use-scale).
+
+<Spacer h={2} />
+
+### How values work
+
+- • A <b>number</b> is a multiplier of the base unit, `16px` by default. `width={10}` is `160px`.
+- • A <b>string</b> is used as it is: `width="120px"`, `width="100%"` or `width="auto"`.
+- • Each component also has its own default for every property. A Button has `1.15` units of horizontal padding, and a number multiplies that default too, so `px={2}` on a Button is twice its usual padding.
+
+<Playground
+  title="Numbers and strings"
+  desc="A number multiplies the unit, a string is used as it is."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button width={10}>width 10</Button>
+  </Grid>
+  <Grid>
+    <Button width="120px">120px</Button>
+  </Grid>
+  <Grid>
+    <Button width="100%">100%</Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+### The scale prop
+
+`scale` resizes the component with all of its parts, so the padding, the font and the icons follow together.
+The effect is softened: `scale={2}` makes a component `1.5` times bigger and `scale={0.5}` makes it `0.75` times.
+
+<Playground
+  title="Scale"
+  desc="The same Button with four scales."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2} alignItems="center">
+  <Grid>
+    <Button scale={0.5}>0.5</Button>
+  </Grid>
+  <Grid>
+    <Button>1</Button>
+  </Grid>
+  <Grid>
+    <Button scale={1.5}>1.5</Button>
+  </Grid>
+  <Grid>
+    <Button scale={2}>2</Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+### Padding and margin
+
+Set one side with `pt`, `pr`, `pb` and `pl`, both sides of an axis with `px` and `py`, or all sides with `padding`. Margin works the same with `mt`, `mr`, `mb`, `ml`, `mx`, `my` and `margin`.
+When more than one applies, the most specific wins: a side beats its axis, and an axis beats the general one. With `padding={1}` and `pt={3}`, the top is `3` and the other sides are `1`.
+
+<Playground
+  title="Padding"
+  desc="The side pl wins over the axis px."
+  scope={{ Button, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Button px={2}>px 2</Button>
+  </Grid>
+  <Grid>
+    <Button px={2} pl={0.5}>
+      px 2, pl 0.5
+    </Button>
+  </Grid>
+  <Grid>
+    <Button padding={1} pt={3}>
+      padding 1, pt 3
+    </Button>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+### Base unit
+
+`unit` changes the base that numbers multiply. With `unit="10px"`, `width={10}` is `100px`.
+
+<Spacer h={2} />
+
+### All scale props
+
+<Attributes edit="/content/docs/guide/scale-and-spacing.mdx">
+<Attributes.Title>ScaleProps</Attributes.Title>
+
+| Attribute                          | Description                     | Type               | Default                  |
+| ---------------------------------- | ------------------------------- | ------------------ | ------------------------ |
+| **width**, **w**                   | width                           | `string \| number` | depends on the component |
+| **height**, **h**                  | height                          | `string \| number` | depends on the component |
+| **padding**                        | padding on all sides            | `string \| number` | depends on the component |
+| **px**, **py**                     | horizontal and vertical padding | `string \| number` | depends on the component |
+| **pt**, **pr**, **pb**, **pl**     | padding of one side             | `string \| number` | depends on the component |
+| **paddingTop**, **paddingRight**   | long names of `pt` and `pr`     | `string \| number` | depends on the component |
+| **paddingBottom**, **paddingLeft** | long names of `pb` and `pl`     | `string \| number` | depends on the component |
+| **margin**                         | margin on all sides             | `string \| number` | depends on the component |
+| **mx**, **my**                     | horizontal and vertical margin  | `string \| number` | depends on the component |
+| **mt**, **mr**, **mb**, **ml**     | margin of one side              | `string \| number` | depends on the component |
+| **marginTop**, **marginRight**     | long names of `mt` and `mr`     | `string \| number` | depends on the component |
+| **marginBottom**, **marginLeft**   | long names of `mb` and `ml`     | `string \| number` | depends on the component |
+| **font**                           | font size                       | `string \| number` | depends on the component |
+| **scale**                          | resizes the whole component     | `number`           | `1`                      |
+| **unit**                           | base that numbers multiply      | `string`           | `16px`                   |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -6951,6 +6951,71 @@
     "path": "/docs/guide/page-structure#rules-that-keep-it-working"
   },
   {
+    "title": "Scale and spacing",
+    "component": true,
+    "path": "/docs/guide/scale-and-spacing"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "How values work",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#how-values-work"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Scale and spacing Numbers and strings",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#numbers-and-strings"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "The scale prop",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#the-scale-prop"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Scale and spacing Scale",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#scale"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Padding and margin",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#padding-and-margin"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Scale and spacing Padding",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#padding"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Base unit",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#base-unit"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "All scale props",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#all-scale-props"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#apis"
+  },
+  {
+    "head": "Scale and spacing",
+    "title": "Scale Props",
+    "component": false,
+    "path": "/docs/guide/scale-and-spacing#scaleprops"
+  },
+  {
     "title": "Refs and accessibility",
     "component": true,
     "path": "/docs/guide/refs-and-accessibility"

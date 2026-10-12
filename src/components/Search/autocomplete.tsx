@@ -9,6 +9,7 @@ import { addColorAlpha } from 'core/utils/color'
 import { isEmpty } from 'lodash'
 import Suggestion from './suggestion'
 import { searchDocs } from 'src/utils/local-search'
+import { track } from 'src/utils/gtag'
 import { VisualState, useKBar } from 'kbar'
 import useIsMounted from 'src/utils/use-is-mounted'
 import usePortal from 'core/utils/use-portal'
@@ -90,6 +91,7 @@ const Autocomplete: React.FC<Props> = ({ offsetTop = 0 }) => {
       event.preventDefault()
       const { path } = hits[highlighted]
       onClear()
+      track('search_select', { page_path: path })
       router.push(path)
     }
   }

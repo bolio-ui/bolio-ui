@@ -35,6 +35,11 @@
               "path": "/docs/guide/page-structure.mdx"
             },
             {
+              "title": "Scale and spacing",
+              "keywords": "scale, spacing, width, height, padding, margin, font, unit, px, py, mx, my, props, bolio ui",
+              "path": "/docs/guide/scale-and-spacing.mdx"
+            },
+            {
               "title": "About Bolio UI",
               "keywords": "about, bolio ui",
               "path": "/docs/guide/bolio-ui-plus-nextjs.mdx"

@@ -49,22 +49,11 @@ export const pageview = (url: string): void => {
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({
-  action,
-  category,
-  label,
-  value
-}: {
-  action: string
-  category: string
-  label: string
-  value: number
-}): void => {
-  if (window.gtag) {
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value
-    })
-  }
+// window.gtag exists only after the visitor accepted, so for anyone else this
+// does nothing.
+export const track = (
+  name: string,
+  params?: { [key: string]: unknown }
+): void => {
+  if (window.gtag) window.gtag('event', name, params)
 }

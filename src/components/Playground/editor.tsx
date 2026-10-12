@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Highlight, { Prism, PrismTheme } from 'prism-react-renderer'
 import { useTheme, useToasts, useClipboard, Tooltip, Text } from 'core'
+import { track } from 'src/utils/gtag'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
 import styles from './editor.module.css'
 
@@ -43,6 +44,7 @@ const Editor: React.FC<Props> = ({ code, codeTheme }) => {
     event.stopPropagation()
     event.preventDefault()
     copy(code)
+    track('copy_code', { source: 'playground' })
     setToast({ text: 'Code copied!' })
   }
 

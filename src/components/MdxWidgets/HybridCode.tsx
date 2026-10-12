@@ -1,5 +1,6 @@
 import React, { ReactNode, useMemo, useRef } from 'react'
 import { Code, CodeProps, useClipboard, useTheme, useToasts } from 'core'
+import { track } from 'src/utils/gtag'
 import { Copy } from '@bolio-ui/icons'
 import styles from './HybridCode.module.css'
 
@@ -72,6 +73,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 
   const copyHandler = () => {
     copy(ref.current?.querySelector('pre')?.textContent ?? '')
+    track('copy_code', { source: 'docs' })
     setToast({ text: 'Code copied!' })
   }
 
