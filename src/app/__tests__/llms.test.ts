@@ -5,6 +5,8 @@ import { GET as index } from 'src/app/llms.txt/route'
 import { GET as full } from 'src/app/llms-full.txt/route'
 import { GET as components } from 'src/app/llms-components.txt/route'
 import { GET as guide } from 'src/app/llms-guide.txt/route'
+import { GET as theme } from 'src/app/theme.json/route'
+import sitemap from 'src/app/sitemap'
 import manifest from 'src/content/docs/manifest.json'
 
 const text = (route: () => Response) => route().text()
@@ -78,6 +80,33 @@ describe('llms-*.txt', () => {
     const body = await text(index)
     ;['full', 'components', 'guide'].forEach((name) =>
       expect(body).toContain(`/llms-${name}.txt`)
+    )
+  })
+})
+
+describe('theme.json', () => {
+  it('has the light and the dark theme with their tokens', async () => {
+    const themes = await theme().json()
+    expect(themes.light.type).toBe('light')
+    expect(themes.dark.type).toBe('dark')
+    expect(themes.dark.palette.background).not.toBe(
+      themes.light.palette.background
+    )
+    expect(Object.keys(themes.light)).toEqual(
+      expect.arrayContaining(['palette', 'font', 'layout', 'breakpoints'])
+    )
+  })
+})
+
+describe('sitemap', () => {
+  it('lists the site pages and every docs page', () => {
+    const urls = sitemap().map(({ url }) => url)
+    expect(urls).toContain('https://bolio-ui.com')
+    expect(urls).toContain('https://bolio-ui.com/docs/guide/mcp-server')
+    ;['guide', 'components', 'hooks'].forEach((section) =>
+      pages(section).forEach((slug) =>
+        expect(urls).toContain(`https://bolio-ui.com/docs/${section}/${slug}`)
+      )
     )
   })
 })
