@@ -25,7 +25,7 @@ The Bolio UI Skill gives your AI assistant the setup, rules and docs links it ne
   bun="bunx skills add bolio-ui/bolio-ui"
 />
 
-It works with Claude Code, Cursor, OpenCode and other tools that read Agent Skills.
+The Skill goes to `.agents/skills/bolio-ui` in your project, which Cursor, Codex, GitHub Copilot and other tools read, and is linked for Claude Code. Run the command at the root of your project.
 
 <Spacer h={2} />
 
@@ -33,10 +33,9 @@ It works with Claude Code, Cursor, OpenCode and other tools that read Agent Skil
 
 Copy the [skills/bolio-ui](https://github.com/bolio-ui/bolio-ui/tree/master/skills/bolio-ui) folder to the skills directory of your tool. Use your project to load the Skill only where Bolio UI is used, or your home directory to load it in every project:
 
+- • `.agents/skills/` for Cursor, Codex, GitHub Copilot and Antigravity
 - • `.claude/skills/` for Claude Code
-- • `.cursor/skills/` for Cursor
 - • `.opencode/skills/` for OpenCode
-- • `.agents/skills/` for Codex and Antigravity
 
 <Spacer h={2} />
 

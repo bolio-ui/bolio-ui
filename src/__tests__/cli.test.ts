@@ -134,3 +134,50 @@ describe('bolio-ui init', () => {
     expect(init(dir, 'app', '-t', 'next').stderr).toContain('is not empty')
   })
 })
+
+describe('bolio-ui agents-md', () => {
+  const agentsMd = (dir: string, ...args: Array<string>) =>
+    spawnSync('node', [cli, 'agents-md', ...args], {
+      cwd: dir,
+      encoding: 'utf8'
+    })
+  const empty = () => fs.mkdtempSync(path.join(os.tmpdir(), 'bolio-cli-'))
+
+  it('creates AGENTS.md with the llms.txt links', () => {
+    const dir = empty()
+    expect(agentsMd(dir).status).toBe(0)
+    expect(read(dir, 'AGENTS.md')).toContain('https://bolio-ui.com/llms.txt')
+  })
+
+  it('keeps what the file already has and adds the section once', () => {
+    const dir = empty()
+    fs.writeFileSync(path.join(dir, 'AGENTS.md'), '# Mine\n')
+    agentsMd(dir)
+    const first = read(dir, 'AGENTS.md')
+    agentsMd(dir)
+    expect(first.startsWith('# Mine\n')).toBe(true)
+    expect(read(dir, 'AGENTS.md')).toBe(first)
+    expect(first.split('<!-- bolio-ui -->')).toHaveLength(3)
+  })
+
+  it('updates an old section and leaves the text around it', () => {
+    const dir = empty()
+    fs.writeFileSync(
+      path.join(dir, 'AGENTS.md'),
+      '# Mine\n\n<!-- bolio-ui -->\nold\n<!-- bolio-ui -->\n\n# After\n'
+    )
+    agentsMd(dir)
+    const output = read(dir, 'AGENTS.md')
+    expect(output).not.toContain('old')
+    expect(output).toContain('llms-full.txt')
+    expect(output.startsWith('# Mine\n')).toBe(true)
+    expect(output.endsWith('\n\n# After\n')).toBe(true)
+  })
+
+  it('writes to the file it is given', () => {
+    const dir = empty()
+    agentsMd(dir, 'CLAUDE.md')
+    expect(read(dir, 'CLAUDE.md')).toContain('Bolio UI')
+    expect(fs.existsSync(path.join(dir, 'AGENTS.md'))).toBe(false)
+  })
+})
