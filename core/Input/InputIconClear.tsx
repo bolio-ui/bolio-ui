@@ -4,7 +4,7 @@ import styles from './InputIconClear.module.css'
 
 interface Props {
   visible: boolean
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
   hoverColor: string
 }
@@ -12,7 +12,7 @@ interface Props {
 function InputIconClear({ onClick, disabled, visible, hoverColor }: Props) {
   const classes = useClasses(styles.clearIcon, { [styles.visible]: visible })
 
-  const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+  const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     event.stopPropagation()
     event.nativeEvent.stopImmediatePropagation()
@@ -25,7 +25,14 @@ function InputIconClear({ onClick, disabled, visible, hoverColor }: Props) {
   } as React.CSSProperties
 
   return (
-    <div onClick={clickHandler} className={classes} style={iconStyle}>
+    <button
+      type="button"
+      aria-label="Clear"
+      disabled={disabled}
+      onClick={clickHandler}
+      className={classes}
+      style={iconStyle}
+    >
       <svg
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -39,7 +46,7 @@ function InputIconClear({ onClick, disabled, visible, hoverColor }: Props) {
         <path d="M18 6L6 18" />
         <path d="M6 6l12 12" />
       </svg>
-    </div>
+    </button>
   )
 }
 
