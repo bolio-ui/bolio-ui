@@ -40,25 +40,50 @@ const tabs = [
     value: 'docs',
     label: 'Documentation',
     code: 'Use the Bolio UI documentation from https://bolio-ui.com/llms.txt',
-    symbol: ''
+    symbol: '',
+    href: '/docs/guide/llms-txt',
+    steps: [
+      'The assistant opens llms.txt and finds the page of each component.',
+      'It reads the props and the examples before it writes code.',
+      'Give it llms-full.txt when the whole documentation fits its context.'
+    ]
   },
   {
     value: 'skills',
     label: 'Skills',
     code: 'npx skills add bolio-ui/bolio-ui',
-    symbol: '$'
+    symbol: '$',
+    href: '/docs/guide/agent-skills',
+    steps: [
+      'The Skill is installed in .agents/skills/bolio-ui.',
+      'Claude Code gets a link to it.',
+      'The assistant loads it when you work with @bolio-ui/core.'
+    ]
   },
   {
     value: 'mcp',
     label: 'MCP server',
     code: 'claude mcp add bolio-ui -- npx -y @bolio-ui/mcp@latest',
-    symbol: '$'
+    symbol: '$',
+    href: '/docs/guide/mcp-server',
+    steps: [
+      'list_components and list_hooks show what exists.',
+      'get_component_docs returns the props and the examples.',
+      'get_theme_variables returns the tokens of the light and dark themes.',
+      'get_docs reads any page of the guide.'
+    ]
   },
   {
     value: 'agents',
     label: 'AGENTS.md',
     code: 'npx @bolio-ui/cli@latest agents-md',
-    symbol: '$'
+    symbol: '$',
+    href: '/docs/guide/agents-md',
+    steps: [
+      'Adds a Bolio UI section with the links of llms.txt.',
+      'Keeps the rest of your AGENTS.md as it is.',
+      'Run it again and the section is updated, not repeated.'
+    ]
   }
 ]
 
@@ -116,23 +141,39 @@ function SectionAgents() {
             </div>
           </div>
           <div className={styles.install}>
-            <SegmentedControl
-              value={tab}
-              onChange={setTab}
-              aria-label="How to connect an assistant"
-            >
-              {tabs.map(({ value, label }) => (
-                <SegmentedControl.Item key={value} value={value}>
-                  {label}
-                </SegmentedControl.Item>
-              ))}
-            </SegmentedControl>
-            <Snippet
-              key={current.value}
-              text={current.code}
-              symbol={current.symbol}
-              width="100%"
-            />
+            <div className={styles.installBar}>
+              <SegmentedControl
+                value={tab}
+                onChange={setTab}
+                aria-label="How to connect an assistant"
+              >
+                {tabs.map(({ value, label }) => (
+                  <SegmentedControl.Item key={value} value={value}>
+                    {label}
+                  </SegmentedControl.Item>
+                ))}
+              </SegmentedControl>
+            </div>
+            <div className={styles.installBody}>
+              <Snippet
+                key={current.value}
+                text={current.code}
+                symbol={current.symbol}
+                width="100%"
+              />
+              <ol className={styles.steps}>
+                {current.steps.map((step, index) => (
+                  <li key={step} className={styles.step}>
+                    <span className={styles.stepNumber}>{index + 1}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <NextLink href={current.href} className={styles.learnMore}>
+                Read the guide
+                <ArrowRight fontSize={16} />
+              </NextLink>
+            </div>
           </div>
         </div>
       </Container>

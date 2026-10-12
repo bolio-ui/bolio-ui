@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 48px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 62em) {
@@ -61,6 +61,55 @@
 .install {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   min-width: 0;
+  border: 1px solid var(--agents-border);
+  border-radius: var(--agents-radius);
+  background-color: var(--agents-bg);
+  overflow: hidden;
+}
+
+.installBar {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--agents-border);
+  overflow-x: auto;
+}
+
+.installBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--agents-strong);
+}
+
+.step {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.stepNumber {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--agents-border);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  line-height: 20px;
+  text-align: center;
+  color: var(--agents-muted);
+}
+
+.install .learnMore {
+  margin-top: auto;
 }

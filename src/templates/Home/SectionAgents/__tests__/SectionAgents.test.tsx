@@ -27,6 +27,18 @@ describe('<SectionAgents />', () => {
     expect(screen.queryByText(/claude mcp add/)).toBeNull()
   })
 
+  it('explains what happens and links the guide of the tab picked', () => {
+    setup()
+    expect(
+      screen.getByRole('link', { name: 'Read the guide' })
+    ).toHaveAttribute('href', '/docs/guide/llms-txt')
+    fireEvent.click(screen.getByRole('radio', { name: 'MCP server' }))
+    expect(screen.getByText(/get_theme_variables returns/)).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: 'Read the guide' })
+    ).toHaveAttribute('href', '/docs/guide/mcp-server')
+  })
+
   it('links to the guide', () => {
     setup()
     expect(
