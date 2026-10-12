@@ -4,11 +4,25 @@
   bottom: 16px;
   left: 16px;
   z-index: 1000;
-  max-width: 420px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* text and buttons on one line, wrapping only when the screen is too narrow */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.content > p {
+  flex: 1 1 320px;
 }
 
 .actions {
   display: flex;
+  flex: 0 0 auto;
   gap: 8px;
-  justify-content: flex-end;
 }
