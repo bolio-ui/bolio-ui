@@ -5,6 +5,29 @@
   scrollbar-color: var(--scroll-thumb) transparent;
 }
 
+/* Chrome and Safari draw an overlay scrollbar that only shows while
+   scrolling when the standard properties are set, so they get a real one */
+@supports selector(::-webkit-scrollbar) {
+  .scrollArea {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  .scrollArea::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollArea::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--scroll-thumb);
+  }
+
+  .scrollArea::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
 .scrollArea:focus-visible {
   outline: 2px solid var(--scroll-focus);
   outline-offset: -2px;
