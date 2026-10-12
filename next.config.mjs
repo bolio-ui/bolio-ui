@@ -39,6 +39,11 @@ const nextConfig = {
   },
   async headers() {
     return [
+      // the Markdown copies of the docs are for assistants, not for search results
+      {
+        source: '/md/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex' }]
+      },
       {
         source: '/(.*)',
         headers: [
