@@ -2257,6 +2257,12 @@
   },
   {
     "head": "Keyboard",
+    "title": "Keyboard Shortcut list",
+    "component": false,
+    "path": "/docs/components/keyboard#shortcut-list"
+  },
+  {
+    "head": "Keyboard",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/keyboard#apis"
@@ -7454,6 +7460,12 @@
   },
   {
     "head": "Copy Button",
+    "title": "Copy Button API key",
+    "component": false,
+    "path": "/docs/components/copy-button#api-key"
+  },
+  {
+    "head": "Copy Button",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/copy-button#apis"
@@ -7486,6 +7498,12 @@
     "title": "Spoiler Labels",
     "component": false,
     "path": "/docs/components/spoiler#labels"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Release notes",
+    "component": false,
+    "path": "/docs/components/spoiler#release-notes"
   },
   {
     "head": "Spoiler",

@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Spoiler, Text } from 'core'
+import { Spoiler, Text, Card, Badge } from 'core'
 
 export const meta = {
   title: 'Spoiler',
@@ -38,6 +38,23 @@ only appears when the content is taller than `maxHeight`.
     <Text key={i} my={0.5}>Paragraph {i + 1}</Text>
   ))}
 </Spoiler>
+`}
+/>
+
+<Playground
+  title="Release notes"
+  desc="Keep a long text short inside a Card, so the next item stays in view."
+  scope={{ Spoiler, Text, Card, Badge }}
+  code={`
+<Card bordered width="100%">
+  <Text b>Version 3.0 <Badge type="primary">New</Badge></Text>
+  <Spoiler maxHeight={72} showLabel="Read the full notes" hideLabel="Show less">
+    <Text p>Components now ship their styles in one stylesheet, so there is nothing to register in the server.</Text>
+    <Text p>Select and Button Dropdown work with the keyboard, and every clickable icon is a real button.</Text>
+    <Text p>The new Scroll Area, Copy Button, Spoiler and Mark components join the library.</Text>
+    <Text p>Read the migration guide before you upgrade a project from version 2.</Text>
+  </Spoiler>
+</Card>
 `}
 />
 
