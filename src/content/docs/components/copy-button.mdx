@@ -51,8 +51,8 @@ by itself: you return the trigger, so it works with a Button, a link or an icon.
   scope={{ CopyButton, Button, Input, Card, Text, Grid }}
   code={`
 <Card bordered width="100%">
-  <Text b>Your API key</Text>
-  <Text small type="secondary">Keep it private. You can create a new one at any time.</Text>
+  <Text p b my={0}>Your API key</Text>
+  <Text p small type="secondary" my={0.5}>Keep it private. You can create a new one at any time.</Text>
   <Grid.Container gap={1} alignItems="flex-end">
     <Grid xs>
       <Input readOnly width="100%" aria-label="API key" value="bk_live_51Hx9a2eZvKYlo2C" />
