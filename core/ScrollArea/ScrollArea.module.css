@@ -1,0 +1,113 @@
+.scrollArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  --scroll-thumb: var(--scroll-thumb-visible);
+}
+
+/* the thumb only shows while the pointer or the focus is inside */
+.hover {
+  --scroll-thumb: transparent;
+}
+
+.hover:hover,
+.hover:focus-within {
+  --scroll-thumb: var(--scroll-thumb-visible);
+}
+
+.viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+
+/* Chrome and Safari draw an overlay scrollbar that only shows while
+   scrolling when the standard properties are set, so they get a real one */
+@supports selector(::-webkit-scrollbar) {
+  .viewport {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  .viewport::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .viewport::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: var(--scroll-thumb);
+  }
+
+  .viewport::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-active);
+  }
+
+  .viewport::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.viewport:focus-visible {
+  outline: 2px solid var(--scroll-focus);
+  outline-offset: -2px;
+}
+
+.vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.both {
+  overflow: auto;
+}
+
+/* Firefox keeps an overlay scrollbar that never shows on hover, so its
+   native one is hidden and the area draws these thumbs instead */
+.viewport.custom {
+  scrollbar-width: none;
+}
+
+.track {
+  position: absolute;
+  pointer-events: none;
+}
+
+.trackX {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 8px;
+}
+
+.trackY {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+}
+
+.thumb {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--scroll-thumb);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.trackY .thumb {
+  width: 100%;
+  height: auto;
+}
+
+.thumb:hover {
+  background: var(--scroll-thumb-active);
+}

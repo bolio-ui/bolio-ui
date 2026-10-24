@@ -24,7 +24,7 @@ export type InputProps = Props & NativeAttrs
 
 const simulateChangeEvent = (
   el: HTMLInputElement,
-  event: React.MouseEvent<HTMLDivElement>
+  event: React.MouseEvent<AnyElement>
 ): React.ChangeEvent<HTMLInputElement> => {
   return {
     ...event,
@@ -116,7 +116,7 @@ const InputComponent = React.forwardRef<
     if (onChange) onChange(event)
   }
 
-  const clearHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+  const clearHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     setSelfValue('')
     if (onClearClick) onClearClick(event)
     /* istanbul ignore next */

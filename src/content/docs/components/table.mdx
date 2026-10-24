@@ -471,6 +471,10 @@ type TableColumnRender<T extends Record> = (
 ) => JSX.Element | void
 ```
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • A row passed to `onRow` and a cell passed to `onCell` take the focus with Tab, and Enter and Space act like a click. Without those handlers, the table adds no tab stops.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

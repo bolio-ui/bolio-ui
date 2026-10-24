@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Keyboard, Grid } from 'core'
+import { Keyboard, Grid, Card, Text } from 'core'
 
 export const meta = {
   title: 'Keyboard',
@@ -72,6 +72,37 @@ The `Keyboard` can only display layout styles, if you need to bind the keyboard 
     </Keyboard>
   </Grid>
 </Grid.Container>
+`}
+/>
+
+<Playground
+  title="Shortcut list"
+  desc="Pair each action with its keys, so people learn the shortcuts where they look for help."
+  scope={{ Keyboard, Grid, Card, Text }}
+  code={`
+<Card bordered width="100%">
+  <Text b>Shortcuts</Text>
+  <Grid.Container gap={1} direction="column">
+    <Grid>
+      <Grid.Container justify="space-between" alignItems="center">
+        <Grid><Text small>Search the docs</Text></Grid>
+        <Grid><Keyboard command>K</Keyboard></Grid>
+      </Grid.Container>
+    </Grid>
+    <Grid>
+      <Grid.Container justify="space-between" alignItems="center">
+        <Grid><Text small>Save the changes</Text></Grid>
+        <Grid><Keyboard command>S</Keyboard></Grid>
+      </Grid.Container>
+    </Grid>
+    <Grid>
+      <Grid.Container justify="space-between" alignItems="center">
+        <Grid><Text small>Undo the last change</Text></Grid>
+        <Grid><Keyboard command shift>Z</Keyboard></Grid>
+      </Grid.Container>
+    </Grid>
+  </Grid.Container>
+</Card>
 `}
 />
 

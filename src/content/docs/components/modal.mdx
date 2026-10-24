@@ -392,6 +392,17 @@ type ModalActionEvent = MouseEvent<HTMLButtonElement> & {
 }
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the element with `role="dialog"`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The dialog is `aria-modal`, and `Modal.Title` names it and `Modal.Subtitle` describes it. Without a title, pass `aria-label` or `aria-labelledby`.
+- • Use `role="alertdialog"` for a message that needs an answer, such as a confirmation.
+- • The focus moves into the dialog when it opens and goes back to the element that had it when it closes. Tab stays inside while it is open.
+- • Escape closes the modal. Set `keyboard={false}` to turn that off.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

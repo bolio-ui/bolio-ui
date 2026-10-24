@@ -131,7 +131,9 @@ const SnippetComponent = React.forwardRef<
           <pre ref={preRef}>{children || text}</pre>
         )}
         {showCopyIcon && (
-          <div
+          <button
+            type="button"
+            aria-label="Copy"
             className={styles.copy}
             onClick={clickHandler}
             style={{
@@ -143,7 +145,7 @@ const SnippetComponent = React.forwardRef<
             }}
           >
             <SnippetIcon />
-          </div>
+          </button>
         )}
       </div>
     )

@@ -292,6 +292,16 @@ type Placement = 'top'
   | 'rightEnd',
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the wrapper around the trigger.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The tooltip opens when the trigger gets the focus and closes with Escape, so it also works without a mouse.
+- • The trigger is described by the tooltip through `aria-describedby`. A plain text trigger gets `role="button"` so the keyboard can reach it.
+- • Keep the content short and do not put controls inside it.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

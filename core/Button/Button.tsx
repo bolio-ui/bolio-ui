@@ -158,6 +158,7 @@ const ButtonComponent = React.forwardRef<
     '--bolio-ui-button-height': SCALES.height(2.5),
     '--bolio-ui-button-color': color,
     '--bolio-ui-button-bg': bg,
+    '--bolio-ui-button-focus': theme.palette.primary,
     minWidth: iconOnly
       ? SCALES.width(2.5)
       : auto

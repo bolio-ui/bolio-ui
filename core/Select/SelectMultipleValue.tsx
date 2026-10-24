@@ -7,10 +7,12 @@ import styles from './SelectMultipleValue.module.css'
 interface Props {
   disabled: boolean
   onClear: (() => void) | null
+  // names the button that removes this value
+  label?: string
   children: React.ReactNode
 }
 
-function SelectMultipleValue({ disabled, onClear, children }: Props) {
+function SelectMultipleValue({ disabled, onClear, label, children }: Props) {
   const theme = useTheme()
 
   return (
@@ -28,7 +30,7 @@ function SelectMultipleValue({ disabled, onClear, children }: Props) {
         }
       >
         {children}
-        {!!onClear && <SelectClearIcon onClick={onClear} />}
+        {!!onClear && <SelectClearIcon onClick={onClear} label={label} />}
       </div>
     </Grid>
   )

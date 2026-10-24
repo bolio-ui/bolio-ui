@@ -118,7 +118,7 @@ The `ref` points at the area `div`.
 
 <Attributes.Title>Accessibility</Attributes.Title>
 
-The right click is not the only way in. The keyboard opens a context menu with Shift and F10, or with the menu key, on a focused element, and the browser sends the same event with the position of that element. For that, the area, or something inside it, has to be focusable: use `tabIndex={0}` on the area when it has nothing focusable. The menu is a `menu` with `menuitem` children, as in Menu. Touch screens have no right click, so keep a visible way to reach the same actions, like a button with a Menu.
+The right click is not the only way in. The keyboard opens a context menu with Shift and F10, or with the menu key, on a focused element: the menu opens below that element, and the focus goes back to it when the menu closes. For that, the area, or something inside it, has to be focusable: use `tabIndex={0}` on the area when it has nothing focusable. The menu is a `menu` with `menuitem` children, as in Menu. Touch screens have no right click, so keep a visible way to reach the same actions, like a button with a Menu.
 
 </Attributes>
 

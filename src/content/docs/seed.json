@@ -165,6 +165,12 @@
     "path": "/docs/components/breadcrumbs#breadcrumbs.separator.props"
   },
   {
+    "head": "Breadcrumbs",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/breadcrumbs#accessibility"
+  },
+  {
     "title": "Button",
     "component": true,
     "path": "/docs/components/button"
@@ -266,6 +272,18 @@
     "path": "/docs/components/button#buttontypes"
   },
   {
+    "head": "Button",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/button#ref"
+  },
+  {
+    "head": "Button",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/button#accessibility"
+  },
+  {
     "title": "Button Dropdown",
     "component": true,
     "path": "/docs/components/button-dropdown"
@@ -341,6 +359,12 @@
     "title": "Types Button Dropdown",
     "component": false,
     "path": "/docs/components/button-dropdown#buttondropdowntypes"
+  },
+  {
+    "head": "Button Dropdown",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/button-dropdown#accessibility"
   },
   {
     "title": "Button Group",
@@ -633,6 +657,12 @@
     "path": "/docs/components/card#cardtype"
   },
   {
+    "head": "Card",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/card#accessibility"
+  },
+  {
     "title": "Carousel",
     "component": true,
     "path": "/docs/components/carousel"
@@ -779,6 +809,18 @@
     "title": "Checkbox Event",
     "component": false,
     "path": "/docs/components/checkbox#checkboxevent"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/checkbox#ref"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/checkbox#accessibility"
   },
   {
     "title": "Code",
@@ -1629,6 +1671,18 @@
     "path": "/docs/components/drawer#drawerplacement"
   },
   {
+    "head": "Drawer",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/drawer#ref"
+  },
+  {
+    "head": "Drawer",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/drawer#accessibility"
+  },
+  {
     "title": "Empty State",
     "component": true,
     "path": "/docs/components/empty-state"
@@ -2167,6 +2221,18 @@
     "path": "/docs/components/input#useinput"
   },
   {
+    "head": "Input",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/input#ref"
+  },
+  {
+    "head": "Input",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/input#accessibility"
+  },
+  {
     "title": "Keyboard",
     "component": true,
     "path": "/docs/components/keyboard"
@@ -2188,6 +2254,12 @@
     "title": "Keyboard Combination",
     "component": false,
     "path": "/docs/components/keyboard#combination"
+  },
+  {
+    "head": "Keyboard",
+    "title": "Keyboard Shortcut list",
+    "component": false,
+    "path": "/docs/components/keyboard#shortcut-list"
   },
   {
     "head": "Keyboard",
@@ -2533,6 +2605,18 @@
     "path": "/docs/components/modal#modalactionevent"
   },
   {
+    "head": "Modal",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/modal#ref"
+  },
+  {
+    "head": "Modal",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/modal#accessibility"
+  },
+  {
     "title": "Note",
     "component": true,
     "path": "/docs/components/note"
@@ -2740,6 +2824,12 @@
   },
   {
     "head": "Page",
+    "title": "Page Settings page",
+    "component": false,
+    "path": "/docs/components/page#settings-page"
+  },
+  {
+    "head": "Page",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/page#apis"
@@ -2826,6 +2916,18 @@
     "title": "Pagination Next Props",
     "component": false,
     "path": "/docs/components/pagination#pagination.next.props"
+  },
+  {
+    "head": "Pagination",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pagination#ref"
+  },
+  {
+    "head": "Pagination",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pagination#accessibility"
   },
   {
     "title": "Pin Input",
@@ -2944,6 +3046,18 @@
     "title": "Placement - Popover",
     "component": false,
     "path": "/docs/components/popover#placement"
+  },
+  {
+    "head": "Popover",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/popover#ref"
+  },
+  {
+    "head": "Popover",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/popover#accessibility"
   },
   {
     "title": "Progress",
@@ -3086,6 +3200,18 @@
     "title": "Types - Radio",
     "component": false,
     "path": "/docs/components/radio#radiotypes"
+  },
+  {
+    "head": "Radio",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/radio#ref"
+  },
+  {
+    "head": "Radio",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/radio#accessibility"
   },
   {
     "title": "Rating",
@@ -3425,6 +3551,12 @@
     "path": "/docs/components/select#selecttypes"
   },
   {
+    "head": "Select",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/select#accessibility"
+  },
+  {
     "title": "Slider",
     "component": true,
     "path": "/docs/components/slider"
@@ -3488,6 +3620,18 @@
     "title": "Types - Slider",
     "component": false,
     "path": "/docs/components/slider#slidertypes"
+  },
+  {
+    "head": "Slider",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/slider#ref"
+  },
+  {
+    "head": "Slider",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/slider#accessibility"
   },
   {
     "title": "Skeleton",
@@ -3630,6 +3774,12 @@
     "title": "Toast Types - Snippet",
     "component": false,
     "path": "/docs/components/snippet#toasttypes"
+  },
+  {
+    "head": "Snippet",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/snippet#accessibility"
   },
   {
     "title": "Spacer",
@@ -3992,6 +4142,12 @@
     "path": "/docs/components/table#tablecolumnrender"
   },
   {
+    "head": "Table",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/table#accessibility"
+  },
+  {
     "title": "Tabs",
     "component": true,
     "path": "/docs/components/tabs"
@@ -4067,6 +4223,18 @@
     "title": "Tabs Item Props",
     "component": false,
     "path": "/docs/components/tabs#tabs.item.props"
+  },
+  {
+    "head": "Tabs",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tabs#ref"
+  },
+  {
+    "head": "Tabs",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tabs#accessibility"
   },
   {
     "title": "Tag",
@@ -4335,6 +4503,18 @@
     "path": "/docs/components/textarea#cssresize"
   },
   {
+    "head": "Textarea",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/textarea#ref"
+  },
+  {
+    "head": "Textarea",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/textarea#accessibility"
+  },
+  {
     "title": "Timeline",
     "component": true,
     "path": "/docs/components/timeline"
@@ -4447,6 +4627,18 @@
     "path": "/docs/components/toggle#toggletypes"
   },
   {
+    "head": "Toggle",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/toggle#ref"
+  },
+  {
+    "head": "Toggle",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/toggle#accessibility"
+  },
+  {
     "title": "Tooltip",
     "component": true,
     "path": "/docs/components/tooltip"
@@ -4516,6 +4708,18 @@
     "title": "Placement - Tooltip",
     "component": false,
     "path": "/docs/components/tooltip#placement"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tooltip#ref"
+  },
+  {
+    "head": "Tooltip",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tooltip#accessibility"
   },
   {
     "title": "Tour",
@@ -7195,5 +7399,187 @@
     "title": "Mention Props",
     "component": false,
     "path": "/docs/components/mention#mention.props"
+  },
+  {
+    "title": "Scroll Area",
+    "component": true,
+    "path": "/docs/components/scroll-area"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area General",
+    "component": false,
+    "path": "/docs/components/scroll-area#general"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area Horizontal",
+    "component": false,
+    "path": "/docs/components/scroll-area#horizontal"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Scroll Area Hover scrollbar",
+    "component": false,
+    "path": "/docs/components/scroll-area#hover-scrollbar"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/scroll-area#apis"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "ScrollArea.Props",
+    "component": false,
+    "path": "/docs/components/scroll-area#scrollarea.props"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/scroll-area#ref"
+  },
+  {
+    "head": "Scroll Area",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/scroll-area#accessibility"
+  },
+  {
+    "title": "Copy Button",
+    "component": true,
+    "path": "/docs/components/copy-button"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Copy Button General",
+    "component": false,
+    "path": "/docs/components/copy-button#general"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Copy Button Timeout",
+    "component": false,
+    "path": "/docs/components/copy-button#timeout"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Copy Button API key",
+    "component": false,
+    "path": "/docs/components/copy-button#api-key"
+  },
+  {
+    "head": "Copy Button",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/copy-button#apis"
+  },
+  {
+    "head": "Copy Button",
+    "title": "CopyButton.Props",
+    "component": false,
+    "path": "/docs/components/copy-button#copybutton.props"
+  },
+  {
+    "head": "Copy Button",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/copy-button#accessibility"
+  },
+  {
+    "title": "Spoiler",
+    "component": true,
+    "path": "/docs/components/spoiler"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler General",
+    "component": false,
+    "path": "/docs/components/spoiler#general"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Labels",
+    "component": false,
+    "path": "/docs/components/spoiler#labels"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Release notes",
+    "component": false,
+    "path": "/docs/components/spoiler#release-notes"
+  },
+  {
+    "head": "Spoiler",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/spoiler#apis"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Spoiler Props",
+    "component": false,
+    "path": "/docs/components/spoiler#spoiler.props"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/spoiler#ref"
+  },
+  {
+    "head": "Spoiler",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/spoiler#accessibility"
+  },
+  {
+    "title": "Mark",
+    "component": true,
+    "path": "/docs/components/mark"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark General",
+    "component": false,
+    "path": "/docs/components/mark#general"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Several terms",
+    "component": false,
+    "path": "/docs/components/mark#several-terms"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Search",
+    "component": false,
+    "path": "/docs/components/mark#search"
+  },
+  {
+    "head": "Mark",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mark#apis"
+  },
+  {
+    "head": "Mark",
+    "title": "Mark Props",
+    "component": false,
+    "path": "/docs/components/mark#mark.props"
+  },
+  {
+    "head": "Mark",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/mark#ref"
+  },
+  {
+    "head": "Mark",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/mark#accessibility"
   }
 ]

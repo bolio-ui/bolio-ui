@@ -1,5 +1,5 @@
 import Docs from 'src/templates/Docs'
-import { Page, Button, Grid } from 'core'
+import { Page, Button, Grid, Text } from 'core'
 import { Layout, Playground, Attributes } from 'src/components'
 import MockPage from 'core/MdxWidgets/MockPage'
 
@@ -69,6 +69,40 @@ Container of general for display page content.
             </Page.Content>
             <Page.Footer>
               <h2>Footer</h2>
+            </Page.Footer>
+          </Page>
+        </MockPage>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Settings page"
+  desc="A page with a title and its main action in the `Header`, the form in the `Content` and the save button in the `Footer`. `dotBackdrop` adds the dots behind it."
+  scope={{ Page, MockPage, Button, Grid, Text }}
+  code={`
+() => {
+  const [visible, setVisible] = React.useState(false)
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Button onClick={() => setVisible(true)} auto>
+          Open settings
+        </Button>
+        <MockPage visible={visible} onClose={() => setVisible(false)}>
+          <Page dotBackdrop>
+            <Page.Header center>
+              <Text h3 my={0}>Profile</Text>
+            </Page.Header>
+            <Page.Content>
+              <Text p b my={0}>Display name</Text>
+              <Text p type="secondary" my={0}>Ada Lovelace is how your name appears to your team.</Text>
+            </Page.Content>
+            <Page.Footer>
+              <Button auto type="success">Save changes</Button>
             </Page.Footer>
           </Page>
         </MockPage>

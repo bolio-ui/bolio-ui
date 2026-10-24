@@ -474,6 +474,17 @@ type useInput = (initialValue: string) => {
 }
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the native `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The `label` is tied to the field with `htmlFor`, so a click on it focuses the input and screen readers read it.
+- • With `error`, the input gets `aria-invalid` and `aria-describedby` pointing at the error text.
+- • Clickable icons, such as the clear button, are real buttons. The password toggle is named "Show password" or "Hide password".
+- • An input without a visible label needs an `aria-label`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

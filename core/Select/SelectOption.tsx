@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useSelectContext } from './SelectContext'
+import { getOptionId, useSelectContext } from './SelectContext'
 import logWarning from '../utils/log-warning'
 import Ellipsis from '../Shared/ellipsis'
 import useScale, { withScale } from '../use-scale'
@@ -32,7 +32,8 @@ function SelectOptionComponent({
 }: React.PropsWithChildren<SelectOptionProps>) {
   const { SCALES } = useScale()
 
-  const { updateValue, value, disableAll } = useSelectContext()
+  const { updateValue, value, disableAll, activeValue, listId } =
+    useSelectContext()
 
   const isDisabled = useMemo(
     () => disabled || disableAll,
@@ -57,6 +58,8 @@ function SelectOptionComponent({
       [styles.divider]: divider,
       [styles.label]: label,
       [styles.selected]: selected,
+      [styles.active]:
+        !preventAllEvents && !isLabel && activeValue === identValue,
       [styles.disabled]: isDisabled
     },
     className
@@ -99,6 +102,15 @@ function SelectOptionComponent({
 
   return (
     <div
+      // the copy of the chosen option shown in the field is not part of the list
+      role={preventAllEvents ? undefined : isLabel ? 'presentation' : 'option'}
+      id={
+        preventAllEvents || isLabel
+          ? undefined
+          : getOptionId(listId, identValue)
+      }
+      aria-selected={preventAllEvents || isLabel ? undefined : selected}
+      aria-disabled={isDisabled && !isLabel ? true : undefined}
       className={classes}
       onClick={clickHandler}
       style={optionStyle}

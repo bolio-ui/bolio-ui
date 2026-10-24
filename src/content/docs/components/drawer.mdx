@@ -167,6 +167,16 @@ An interactive element fixed to the edge of the screen.
 type DrawerPlacement = 'top' | 'bottom' | 'right' | 'left'
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the element with `role="dialog"`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The drawer is `aria-modal`, and `Drawer.Title` names it and `Drawer.Subtitle` describes it. Without a title, pass `aria-labelledby`.
+- • The focus moves into the drawer when it opens and goes back to the element that had it when it closes. Tab stays inside while it is open.
+- • Escape closes the drawer. Set `keyboard={false}` to turn that off.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

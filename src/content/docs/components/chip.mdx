@@ -91,8 +91,8 @@ Pick options from a row of pills, one or several at a time.
       <div style={{ marginTop: 16, display: 'grid', gap: 8 }}>
         {shown.map(([title, topic]) => (
           <Card key={title} bordered width="100%">
-            <Text b>{title}</Text>
-            <Text small type="secondary" style={{ textTransform: 'capitalize' }}>{topic}</Text>
+            <Text p b my={0}>{title}</Text>
+            <Text p small type="secondary" my={0} style={{ textTransform: 'capitalize' }}>{topic}</Text>
           </Card>
         ))}
       </div>
