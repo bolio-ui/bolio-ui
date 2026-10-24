@@ -2824,6 +2824,12 @@
   },
   {
     "head": "Page",
+    "title": "Page Settings page",
+    "component": false,
+    "path": "/docs/components/page#settings-page"
+  },
+  {
+    "head": "Page",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/page#apis"
