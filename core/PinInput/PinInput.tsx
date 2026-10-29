@@ -3,7 +3,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import { getColors } from '../Input/styles'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import styles from './PinInput.module.css'
 
 interface Props {

@@ -2,10 +2,8 @@ import React, { useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
-import {
-  SegmentedControlContext,
-  SegmentedControlValue
-} from './SegmentedControlContext'
+import type { SegmentedControlValue } from './SegmentedControlContext'
+import { SegmentedControlContext } from './SegmentedControlContext'
 import styles from './SegmentedControl.module.css'
 
 interface Props {

@@ -1,5 +1,5 @@
+import type { RefObject } from 'react'
 import React, {
-  RefObject,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -8,12 +8,13 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import useDrag, { DraggingEvent } from '../utils/use-drag'
+import type { DraggingEvent } from '../utils/use-drag'
+import useDrag from '../utils/use-drag'
 import useCurrentState from '../utils/use-current-state'
 import SliderDot from './SliderDot'
 import SliderMark from './SliderMark'
 import { getColors } from './styles'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'

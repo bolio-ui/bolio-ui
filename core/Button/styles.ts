@@ -1,6 +1,6 @@
-import { BolioUIThemesPalette } from '../Themes/Presets'
-import { ButtonTypes } from '../utils/prop-types'
-import { ButtonProps } from './Button'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
+import type { ButtonTypes } from '../utils/prop-types'
+import type { ButtonProps } from './Button'
 import { addColorAlpha } from '../utils/color'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 

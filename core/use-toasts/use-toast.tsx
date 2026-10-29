@@ -1,11 +1,13 @@
-import React, { CSSProperties, useEffect } from 'react'
+import type { CSSProperties } from 'react'
+import type React from 'react'
+import { useEffect } from 'react'
 import type { NormalTypes } from '../utils/prop-types'
 import {
   defaultToastLayout,
   useBolioUIContext
 } from '../utils/use-bolio-ui-context'
 import { getId } from '../utils/collections'
-import { ToastPlacement } from './helpers'
+import type { ToastPlacement } from './helpers'
 
 export interface ToastAction {
   name: string

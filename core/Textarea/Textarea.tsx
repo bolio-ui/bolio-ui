@@ -6,7 +6,7 @@ import React, {
   useState
 } from 'react'
 import useTheme from '../use-theme'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import { getColors } from '../Input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

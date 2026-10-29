@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import { getColors } from '../Input/styles'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses, { joinClasses } from '../use-classes'
 import styles from './Combobox.module.css'

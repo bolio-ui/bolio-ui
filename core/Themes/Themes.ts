@@ -1,4 +1,4 @@
-import { BolioUIThemes } from './Presets/index'
+import type { BolioUIThemes } from './Presets/index'
 import type { DeepPartial } from '../utils/types'
 import lightTheme from './Presets/Default'
 import darkTheme from './Presets/Dark'

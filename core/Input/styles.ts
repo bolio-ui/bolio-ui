@@ -1,5 +1,5 @@
-import { NormalTypes } from '../utils/prop-types'
-import { BolioUIThemesPalette } from '../Themes/Presets'
+import type { NormalTypes } from '../utils/prop-types'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 // Single source of colors for every field (Input, Textarea, NumberInput,

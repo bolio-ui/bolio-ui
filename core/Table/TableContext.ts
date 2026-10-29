@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableAbstractColumn, TableDataItemBase } from './TableTypes'
+import type { TableAbstractColumn, TableDataItemBase } from './TableTypes'
 
 export interface TableConfig<T extends TableDataItemBase> {
   columns: Array<TableAbstractColumn<T>>

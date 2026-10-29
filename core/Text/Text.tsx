@@ -1,5 +1,6 @@
-import React, { ReactNode, useMemo } from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type { ReactNode } from 'react'
+import React, { useMemo } from 'react'
+import type { NormalTypes } from '../utils/prop-types'
 import TextChild from './Child'
 import { withScale } from '../use-scale'
 import type { AnyElement } from '../utils/types'
@@ -72,11 +73,11 @@ const TextComponent = React.forwardRef<
     const inlineElements: ElementMap = { span, small, b, em, i, del }
 
     const names = Object.keys(elements).filter(
-      (name: keyof React.JSX.IntrinsicElements) => elements[name]
+      (name) => elements[name as keyof ElementMap]
     ) as TextRenderableElements
 
     const inlineNames = Object.keys(inlineElements).filter(
-      (name: keyof React.JSX.IntrinsicElements) => inlineElements[name]
+      (name) => inlineElements[name as keyof ElementMap]
     ) as TextRenderableElements
 
     const tag = useMemo(() => {

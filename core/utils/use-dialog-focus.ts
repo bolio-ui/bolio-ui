@@ -1,4 +1,5 @@
-import { RefObject, useEffect } from 'react'
+import type { RefObject } from 'react'
+import { useEffect } from 'react'
 import { isChildElement } from './collections'
 
 // Moves the focus to the dialog when it opens, so a screen reader announces

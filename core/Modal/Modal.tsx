@@ -1,11 +1,5 @@
-import React, {
-  MouseEvent,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useState
-} from 'react'
+import type { MouseEvent } from 'react'
+import React, { useCallback, useEffect, useId, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import usePortal from '../utils/use-portal'
 import ModalWrapper from './ModalWrapper'
@@ -14,7 +8,8 @@ import ModalActions from './ModalActions'
 import ModalTitle from './ModalTitle'
 import ModalSubtitle from './ModalSubtitle'
 import Backdrop from '../Shared/backdrop'
-import { ModalConfig, ModalContext } from './ModalContext'
+import type { ModalConfig } from './ModalContext'
+import { ModalContext } from './ModalContext'
 import { hasChild, pickChild } from '../utils/collections'
 import useBodyScroll from '../utils/use-body-scroll'
 import useScale, { withScale } from '../use-scale'

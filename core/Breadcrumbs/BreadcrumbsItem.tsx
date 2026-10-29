@@ -1,6 +1,6 @@
 import { activateOnKey } from '../utils/activate-on-key'
 import Link from '../Link'
-import { Props as LinkBasicProps } from '../Link/Link'
+import type { Props as LinkBasicProps } from '../Link/Link'
 import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
 import BreadcrumbsSeparator from './BreadcrumbsSeparator'

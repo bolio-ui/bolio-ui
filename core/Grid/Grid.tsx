@@ -1,5 +1,6 @@
 import React from 'react'
-import GridBasicItem, { GridBasicItemProps } from './BasicItem'
+import type { GridBasicItemProps } from './BasicItem'
+import GridBasicItem from './BasicItem'
 import useScale, { withScale } from '../use-scale'
 
 interface Props {

@@ -1,7 +1,7 @@
 import { activateOnKey } from '../utils/activate-on-key'
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
-import { CardTypes } from '../utils/prop-types'
+import type { CardTypes } from '../utils/prop-types'
 import { getStyles } from './styles'
 import CardFooter from './CardFooter'
 import CardContent from './CardContent'

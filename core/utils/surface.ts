@@ -1,4 +1,4 @@
-import { BolioUIThemes } from '../Themes/Presets'
+import type { BolioUIThemes } from '../Themes/Presets'
 
 // The colors of a popup that floats over the page. On a dark page the popup
 // is a surface lighter than the page and its hover goes one step lighter

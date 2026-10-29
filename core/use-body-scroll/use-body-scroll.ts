@@ -1,11 +1,5 @@
-import {
-  Dispatch,
-  RefObject,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import type { Dispatch, RefObject, SetStateAction } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export type ElementStackItem = {
   overflow: string

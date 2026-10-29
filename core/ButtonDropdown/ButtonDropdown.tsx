@@ -1,6 +1,5 @@
+import type { KeyboardEvent, MouseEvent } from 'react'
 import React, {
-  KeyboardEvent,
-  MouseEvent,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -13,11 +12,9 @@ import useClickAway from '../utils/use-click-away'
 import { getColor } from './styles'
 import ButtonDropdownIcon from './Icon'
 import ButtonDropdownItem from './ButtonDropdownItem'
-import {
-  ButtonDropdownContext,
-  ButtonDropdownAlign
-} from './ButtonDropdownContext'
-import { NormalTypes } from '../utils/prop-types'
+import type { ButtonDropdownAlign } from './ButtonDropdownContext'
+import { ButtonDropdownContext } from './ButtonDropdownContext'
+import type { NormalTypes } from '../utils/prop-types'
 import { pickChild, pickChildByProps } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

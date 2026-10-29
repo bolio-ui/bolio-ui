@@ -1,5 +1,6 @@
 import { KeyMod } from './codes'
-import React, { useEffect } from 'react'
+import type React from 'react'
+import { useEffect } from 'react'
 import { getActiveModMap, getCtrlKeysByPlatform } from './helper'
 import useLatest from '../utils/use-latest'
 

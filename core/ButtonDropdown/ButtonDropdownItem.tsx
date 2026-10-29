@@ -1,9 +1,10 @@
-import React, { MouseEvent, useMemo } from 'react'
+import type { MouseEvent } from 'react'
+import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import { getColor } from './styles'
 import { useButtonDropdown } from './ButtonDropdownContext'
 import Loading from '../Loading'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import type { AnyElement } from '../utils/types'
 import styles from './ButtonDropdownItem.module.css'
 

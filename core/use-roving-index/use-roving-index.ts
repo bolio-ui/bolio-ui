@@ -1,4 +1,5 @@
-import { KeyboardEvent, useCallback, useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 export type UseRovingIndexOptions = {
   total: number

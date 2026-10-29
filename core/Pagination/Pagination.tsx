@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useMemo } from 'react'
 import PaginationPrevious from './PaginationPrevious'
 import PaginationNext from './PaginationNext'
 import PaginationPages from './PaginationPages'
-import {
-  PaginationContext,
+import type {
   PaginationConfig,
   PaginationUpdateType
 } from './PaginationContext'
+import { PaginationContext } from './PaginationContext'
 import useCurrentState from '../utils/use-current-state'
 import { pickChild } from '../utils/collections'
 import useScale, { withScale } from '../use-scale'

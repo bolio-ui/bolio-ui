@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react'
 import useTheme from '../use-theme'
-import { SnippetTypes, CopyTypes, NormalTypes } from '../utils/prop-types'
+import type { SnippetTypes, CopyTypes, NormalTypes } from '../utils/prop-types'
 import { getStyles } from './styles'
 import SnippetIcon from './SnippetIcon'
 import useClipboard from '../utils/use-clipboard'

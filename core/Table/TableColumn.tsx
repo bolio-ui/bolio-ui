@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import type React from 'react'
+import { useEffect } from 'react'
 import { useTableContext } from './TableContext'
 import logWarning from '../utils/log-warning'
-import { TableColumnRender, TableDataItemBase } from './TableTypes'
+import type { TableColumnRender, TableDataItemBase } from './TableTypes'
 
 // module level, so the effect below does not run again on every render
 const defaultRender = () => {}

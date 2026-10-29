@@ -119,17 +119,6 @@ const add = async () => {
     console.log(
       `\nThese files already exist and differ, so they were kept. Run again with --overwrite to replace them:\n${kept.map((file) => `  ${file}`).join('\n')}`
     )
-  const pkg = JSON.parse(
-    fs.readFileSync(path.join(cwd, 'package.json'), 'utf8')
-  )
-  const installed = { ...pkg.dependencies, ...pkg.devDependencies }
-  if (
-    fs.existsSync(path.join(cwd, 'tsconfig.json')) &&
-    !installed['@types/node']
-  )
-    console.log(
-      '\nThe components read process.env.NODE_ENV. Install @types/node so TypeScript knows it.'
-    )
 }
 
 if (argv[0] !== 'init' && argv[0] !== 'add') fail(usage)

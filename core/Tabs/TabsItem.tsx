@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react'
-import { TabsInternalCellProps, useTabsContext } from './TabsContext'
+import type { TabsInternalCellProps } from './TabsContext'
+import { useTabsContext } from './TabsContext'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

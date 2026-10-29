@@ -1,5 +1,5 @@
-import { CardTypes } from '../utils/prop-types'
-import { BolioUIThemesPalette } from '../Themes/Presets'
+import type { CardTypes } from '../utils/prop-types'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
 import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
 
 export type CardStyles = {

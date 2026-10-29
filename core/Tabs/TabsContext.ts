@@ -1,4 +1,5 @@
-import React, { CSSProperties, MouseEvent } from 'react'
+import type { CSSProperties, MouseEvent } from 'react'
+import React from 'react'
 
 export type TabsInternalCellProps = {
   onClick: (value: string) => void

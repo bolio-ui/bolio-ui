@@ -1,4 +1,5 @@
-import { MutableRefObject, Ref, useCallback } from 'react'
+import type { MutableRefObject, Ref } from 'react'
+import { useCallback } from 'react'
 
 type PossibleRef<T> = Ref<T> | undefined
 

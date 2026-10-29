@@ -4,7 +4,7 @@ import useTheme from '../use-theme'
 import TableCell from './TableCell'
 import { useTableContext } from './TableContext'
 import TableSelectBox from './TableSelectBox'
-import {
+import type {
   TableDataItemBase,
   TableKey,
   TableOnCellClick,

@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 
 export const getId = () => {
   return Math.random().toString(32).slice(2, 10)

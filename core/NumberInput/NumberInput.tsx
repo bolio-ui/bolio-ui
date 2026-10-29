@@ -4,7 +4,7 @@ import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import InputBlockLabel from '../Input/InputBlockLabel'
 import { getColors } from '../Input/styles'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import styles from './NumberInput.module.css'
 
 interface Props {

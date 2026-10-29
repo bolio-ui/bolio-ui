@@ -1,15 +1,10 @@
-import React, {
-  useRef,
-  useState,
-  MouseEvent,
-  useMemo,
-  useImperativeHandle
-} from 'react'
+import type { MouseEvent } from 'react'
+import React, { useRef, useState, useMemo, useImperativeHandle } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import ButtonDrip from './ButtonDrip'
 import ButtonLoading from './ButtonLoading'
-import { ButtonTypes } from '../utils/prop-types'
+import type { ButtonTypes } from '../utils/prop-types'
 import { filterPropsWithGroup, getButtonChildrenWithIcon } from './utils'
 import { useButtonGroupContext } from '../ButtonGroup/ButtonGroupContext'
 import { getButtonColors, getButtonCursor, getButtonDripColor } from './styles'

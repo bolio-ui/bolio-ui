@@ -1,4 +1,4 @@
-import { Placement } from '../utils/prop-types'
+import type { Placement } from '../utils/prop-types'
 
 interface ParentDomRect {
   top: number

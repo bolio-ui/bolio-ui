@@ -1,4 +1,5 @@
-import React, { CSSProperties, useEffect, useMemo, useState } from 'react'
+import type { CSSProperties } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import PageContent from './PageContent'
 import { hasChild } from '../utils/collections'

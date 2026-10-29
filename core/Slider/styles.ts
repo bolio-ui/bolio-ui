@@ -1,5 +1,5 @@
-import { BolioUIThemesPalette } from '../Themes/Presets'
-import { NormalTypes } from '../utils/prop-types'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
+import type { NormalTypes } from '../utils/prop-types'
 
 export type SelectColor = {
   bg: string
