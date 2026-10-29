@@ -68,6 +68,9 @@ const names = readdirSync(root).filter((name) =>
   existsSync(join(root, name, 'index.ts'))
 )
 
+if (!only.length)
+  writeFileSync(join(out, 'index.json'), JSON.stringify(names, null, 2) + '\n')
+
 for (const name of names) {
   if (only.length && !only.includes(name)) continue
   const { files, dependencies } = collect(join(root, name, 'index.ts'))
