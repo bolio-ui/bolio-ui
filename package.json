@@ -53,7 +53,7 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn build:registry && next build",
     "start": "next start",
     "lint": "eslint src core --max-warnings=0",
     "typecheck": "tsc --project tsconfig.json --noEmit",

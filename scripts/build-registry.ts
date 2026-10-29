@@ -10,7 +10,8 @@ import { join, dirname, relative, extname } from 'path'
 // Builds the registry the CLI `add` command reads: one JSON per component in
 // public/r, holding every file the component needs (its folder plus the
 // relative imports it pulls from other folders) and the npm packages it uses.
-// stories and tests are not part of it.
+// The example.tsx of the component's own folder goes with it; stories and
+// tests do not.
 
 const root = 'core'
 const out = join('public', 'r')
@@ -59,6 +60,8 @@ const collect = (entry: string) => {
     }
   }
   visit(entry)
+  const example = join(dirname(entry), 'example.tsx')
+  if (existsSync(example)) visit(example)
   return { files: [...files].sort(), dependencies: [...dependencies].sort() }
 }
 

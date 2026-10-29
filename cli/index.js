@@ -88,6 +88,7 @@ const add = async () => {
   }
   const available = await get('index')
   const files = new Map()
+  const examples = []
   for (const name of wanted) {
     const found = available.find(
       (item) => item.toLowerCase() === name.toLowerCase()
@@ -98,6 +99,7 @@ const add = async () => {
       )
     for (const file of (await get(found)).files)
       files.set(file.path, file.content)
+    if (files.has(`${found}/example.tsx`)) examples.push(`${found}/example.tsx`)
   }
 
   const kept = []
@@ -115,6 +117,10 @@ const add = async () => {
 
   const shown = path.relative(cwd, dir)
   console.log(`Added ${wanted.join(', ')} to ${shown}`)
+  if (examples.length)
+    console.log(
+      `\nExamples to start from:\n${examples.map((file) => `  ${path.join(shown, file)}`).join('\n')}`
+    )
   if (kept.length)
     console.log(
       `\nThese files already exist and differ, so they were kept. Run again with --overwrite to replace them:\n${kept.map((file) => `  ${file}`).join('\n')}`
