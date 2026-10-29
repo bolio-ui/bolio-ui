@@ -15,7 +15,7 @@ Bolio UI is a React component library (`@bolio-ui/core`, v3). The docs are publi
 
 ## Setup
 
-1. Install with `npx @bolio-ui/cli@latest init`, or `npm install @bolio-ui/core`.
+1. Install with `npx @bolio-ui/cli@latest init`, or `npm install @bolio-ui/core`. To copy the source of a component into the project instead, run `npx @bolio-ui/cli@latest add <component>`, and skip the stylesheet import below.
 2. Import `@bolio-ui/core/styles.css` once and wrap the app with `BolioUIProvider` and `CssBaseline`.
 3. See https://bolio-ui.com/md/guide/getting-started for each framework.
 

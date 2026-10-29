@@ -7103,6 +7103,47 @@
     "path": "/docs/guide/getting-started#community"
   },
   {
+    "title": "Add components",
+    "component": true,
+    "path": "/docs/guide/add-components"
+  },
+  {
+    "head": "Add components",
+    "title": "Usage",
+    "component": false,
+    "path": "/docs/guide/add-components#usage"
+  },
+  {
+    "head": "Add components",
+    "title": "What it does",
+    "component": false,
+    "path": "/docs/guide/add-components#what-it-does"
+  },
+  {
+    "head": "Add components",
+    "title": "Requirements",
+    "component": false,
+    "path": "/docs/guide/add-components#requirements"
+  },
+  {
+    "head": "Add components",
+    "title": "Options",
+    "component": false,
+    "path": "/docs/guide/add-components#options"
+  },
+  {
+    "head": "Add components",
+    "title": "Updating",
+    "component": false,
+    "path": "/docs/guide/add-components#updating"
+  },
+  {
+    "head": "Add components",
+    "title": "Core package or copied code",
+    "component": false,
+    "path": "/docs/guide/add-components#core-package-or-copied-code"
+  },
+  {
     "head": "Getting Started",
     "title": "Contributing",
     "component": false,

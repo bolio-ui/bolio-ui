@@ -1,0 +1,85 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Add components',
+  description:
+    'Copy the source of a Bolio UI component into your project with one command, with an example to start from.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Add components
+
+<Spacer h={2} />
+
+### Usage
+
+Run the command at the root of your project with the components you want:
+
+<PackageTabs
+  pnpm="pnpm dlx @bolio-ui/cli@latest add button select"
+  npm="npx @bolio-ui/cli@latest add button select"
+  yarn="yarn dlx @bolio-ui/cli@latest add button select"
+  bun="bunx --bun @bolio-ui/cli@latest add button select"
+/>
+
+Use the name of the component without spaces, in any case: `button`, `Button` and `copybutton` all work. The full list is at [bolio-ui.com/r/index.json](https://bolio-ui.com/r/index.json).
+
+<Spacer h={2} />
+
+### What it does
+
+- • Copies the source of each component, and of what it needs (themes, hooks and other components), into `src/components/bolio-ui`
+- • Adds an `example.tsx` next to each component, ready to render
+- • Prints where the examples landed
+
+The files are yours from then on. Edit them as you like, and import the component from where it landed:
+
+```tsx
+// NAME: /src/App.tsx
+import Button from './components/bolio-ui/Button'
+
+export default function App() {
+  return <Button type="success">Save</Button>
+}
+```
+
+Nothing is installed with your package manager, and `@bolio-ui/core` is not needed.
+
+<Spacer h={2} />
+
+### Requirements
+
+- • A bundler with CSS Modules support, like Next.js or Vite
+- • React 18 or 19
+- • Without a `BolioUIProvider`, the components use the default theme. Add the provider to switch themes
+- • In TypeScript projects, turn `erasableSyntaxOnly` off in your `tsconfig` if you add `useKeyboard`, `Modal`, `Drawer` or `Command`, because `useKeyboard` declares two `enum`s
+
+You do not import `@bolio-ui/core/styles.css` here. The styles come with each component.
+
+<Spacer h={2} />
+
+### Options
+
+| Argument      | What it does                                                      |
+| ------------- | ----------------------------------------------------------------- |
+| `<component>` | one or more components to add                                     |
+| `--dir`       | folder to write to, relative to the current folder                |
+| `--overwrite` | replace files that already exist and differ (your edits are lost) |
+
+<Spacer h={2} />
+
+### Updating
+
+Run the command again to get a newer version. Files that already exist and differ from the new version are kept, and the command lists them. Compare them with the new version, or run it with `--overwrite` to replace them.
+
+<Spacer h={2} />
+
+### Core package or copied code
+
+- • Use [`@bolio-ui/core`](/docs/guide/getting-started) when you want updates through your package manager
+- • Use `add` when you want the code in your project, to change it or to ship only what you use
+
+export default Docs.withMeta(meta)

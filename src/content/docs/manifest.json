@@ -20,6 +20,11 @@
               "path": "/docs/guide/getting-started.mdx"
             },
             {
+              "title": "Add components",
+              "keywords": "add, cli, copy, components, shadcn, source, registry, example, bolio ui",
+              "path": "/docs/guide/add-components.mdx"
+            },
+            {
               "title": "Migrating to v3",
               "keywords": "migrate, migration, upgrade, v2, v3, styled-jsx, css modules, breaking changes, bolio ui",
               "path": "/docs/guide/migration-v2-to-v3.mdx"
