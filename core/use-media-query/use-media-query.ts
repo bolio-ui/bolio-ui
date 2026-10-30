@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
-import { BreakpointsItem, BolioUIThemesBreakpoints } from '../Themes/Presets'
+import type {
+  BreakpointsItem,
+  BolioUIThemesBreakpoints
+} from '../Themes/Presets'
 
 export type ResponsiveBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'mobile'
 

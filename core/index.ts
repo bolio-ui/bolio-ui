@@ -268,6 +268,18 @@ export type { TextProps } from './Text'
 export { default as Textarea } from './Textarea'
 export type { TextareaProps } from './Textarea'
 
+export { default as CopyButton } from './CopyButton'
+export type { CopyButtonProps, CopyButtonRenderProps } from './CopyButton'
+
+export { default as ScrollArea } from './ScrollArea'
+export type { ScrollAreaProps, ScrollAreaOrientation } from './ScrollArea'
+
+export { default as Mark } from './Mark'
+export type { MarkProps } from './Mark'
+
+export { default as Spoiler } from './Spoiler'
+export type { SpoilerProps } from './Spoiler'
+
 export { default as Themes } from './Themes'
 export type { BolioUIThemes, BolioUIUserTheme } from './Themes'
 

@@ -180,6 +180,16 @@ type Placement = 'top'
   | 'rightEnd',
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the wrapper around the trigger.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The trigger gets `aria-expanded` and `aria-controls`. It has to be focusable, for example a Button. A plain text trigger gets `role="button"` so the keyboard can reach it.
+- • Escape closes the popover.
+- • A `Popover.Item` with `onClick` is a button: it takes the focus with Tab, and Enter and Space act like a click.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

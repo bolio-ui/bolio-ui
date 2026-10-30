@@ -4,6 +4,7 @@ import useScale, { withScale } from '../use-scale'
 import { usePopoverContext } from './PopoverContext'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import { activateOnKey } from '../utils/activate-on-key'
 import styles from './PopoverItem.module.css'
 
 interface Props {
@@ -70,6 +71,9 @@ function PopoverItemComponent({
       <div
         className={classes}
         onClick={clickHandler}
+        {...(hasHandler && !line && !title
+          ? { role: 'button', tabIndex: 0, onKeyDown: activateOnKey }
+          : {})}
         {...props}
         style={{ ...itemStyle, ...style } as React.CSSProperties}
       >

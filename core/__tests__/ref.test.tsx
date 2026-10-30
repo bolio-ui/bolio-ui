@@ -43,6 +43,7 @@ const {
   Link,
   Loading,
   Mention,
+  Mark,
   Menu,
   Modal,
   Note,
@@ -55,6 +56,7 @@ const {
   Radio,
   Rating,
   Row,
+  ScrollArea,
   Section,
   SegmentedControl,
   Select,
@@ -62,6 +64,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  Spoiler,
   Spinner,
   Splitter,
   Stepper,
@@ -275,8 +278,17 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'INPUT'
   ],
+  [
+    'Mark',
+    (ref) => (
+      <Mark ref={ref} highlight="a">
+        Mark
+      </Mark>
+    )
+  ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
+  ['ScrollArea', (ref) => <ScrollArea ref={ref}>Content</ScrollArea>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],
   [
     'SegmentedControl',
@@ -299,6 +311,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Slider', (ref) => <Slider ref={ref} initialValue={20} />],
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
+  ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],
   [
     'Splitter',

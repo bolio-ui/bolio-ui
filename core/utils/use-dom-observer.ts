@@ -1,4 +1,5 @@
-import { MutableRefObject, useEffect } from 'react'
+import type { MutableRefObject } from 'react'
+import { useEffect } from 'react'
 import useLatest from './use-latest'
 
 const config = { attributes: false, childList: true, subtree: true }

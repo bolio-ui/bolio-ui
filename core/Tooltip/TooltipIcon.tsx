@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { getIconPosition } from './placement'
-import { Placement } from '../utils/prop-types'
+import type { Placement } from '../utils/prop-types'
 import styles from './TooltipIcon.module.css'
 
 interface Props {

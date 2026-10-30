@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react'
-import {
+import type {
   DynamicLayoutPipe,
   ScaleConfig,
-  ScaleContext,
   ScaleProps
 } from './scale-context'
+import { ScaleContext } from './scale-context'
 import useTheme from '../use-theme'
 import { isCSSNumberValue } from '../utils/collections'
 import { generateGetAllScaleProps, generateGetScaleProps } from './utils'

@@ -6,10 +6,11 @@ import React, {
   useRef,
   useState
 } from 'react'
-import TooltipContent, { TooltipIconOffset } from './TooltipContent'
+import type { TooltipIconOffset } from './TooltipContent'
+import TooltipContent from './TooltipContent'
 import useClickAway from '../utils/use-click-away'
 import useLatest from '../utils/use-latest'
-import { TriggerTypes, Placement, SnippetTypes } from '../utils/prop-types'
+import type { TriggerTypes, Placement, SnippetTypes } from '../utils/prop-types'
 import { withScale } from '../use-scale'
 import { getRect } from './helper'
 import useClasses from '../use-classes'

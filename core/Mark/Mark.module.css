@@ -1,0 +1,6 @@
+.mark {
+  padding: 0 0.15em;
+  border-radius: 0.2em;
+  background-color: var(--mark-bg);
+  color: inherit;
+}

@@ -125,4 +125,23 @@ describe('<ContextMenu />', () => {
     })
     expect(results.violations).toEqual([])
   })
+
+  it('opens from the keyboard with the Menu key and with Shift+F10', async () => {
+    for (const init of [
+      { key: 'ContextMenu' },
+      { key: 'F10', shiftKey: true }
+    ]) {
+      const { unmount } = setup()
+      fireEvent.keyDown(area(), init)
+      await waitFor(() => expect(screen.getByRole('menu')).toBeInTheDocument())
+      unmount()
+      await act(() => new Promise((resolve) => setTimeout(resolve, 200)))
+    }
+  })
+
+  it('does not open from the keyboard when disabled', () => {
+    setup({ disabled: true })
+    fireEvent.keyDown(area(), { key: 'ContextMenu' })
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+  })
 })

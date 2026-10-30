@@ -1,4 +1,5 @@
-import React, { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
+import { useCallback, useMemo } from 'react'
 import PaginationItem from './PaginationItem'
 import PaginationEllipsis from './PaginationEllipsis'
 

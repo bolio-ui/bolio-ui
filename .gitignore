@@ -50,6 +50,7 @@ yarn-error.log*
 .vercel
 
 # sw stuff
+/public/r
 /public/sw.*
 /public/workbox-*
 /public/swe-worker-*

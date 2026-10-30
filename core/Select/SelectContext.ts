@@ -1,4 +1,5 @@
-import React, { MutableRefObject } from 'react'
+import type { MutableRefObject } from 'react'
+import React from 'react'
 
 export interface SelectConfig {
   value?: string | string[]
@@ -7,7 +8,14 @@ export interface SelectConfig {
   updateVisible?: (next: boolean) => unknown
   disableAll?: boolean
   ref?: MutableRefObject<HTMLElement | null>
+  // the option the keyboard is on, and what ties options to the listbox
+  activeValue?: string
+  listId?: string
+  multiple?: boolean
 }
+
+export const getOptionId = (listId: string | undefined, value: string) =>
+  `${listId}-${encodeURIComponent(value)}`
 
 const defaultContext = {
   visible: false,

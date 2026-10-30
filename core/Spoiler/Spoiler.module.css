@@ -1,0 +1,27 @@
+.spoiler {
+  box-sizing: border-box;
+}
+
+.content {
+  overflow: hidden;
+}
+
+.toggle {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--spoiler-link);
+  font: inherit;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--spoiler-link);
+  outline-offset: 2px;
+}

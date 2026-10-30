@@ -1,5 +1,6 @@
+import { activateOnKey } from '../utils/activate-on-key'
 import Link from '../Link'
-import { Props as LinkBasicProps } from '../Link/Link'
+import type { Props as LinkBasicProps } from '../Link/Link'
 import React, { useMemo } from 'react'
 import { pickChild } from '../utils/collections'
 import BreadcrumbsSeparator from './BreadcrumbsSeparator'
@@ -46,7 +47,13 @@ const BreadcrumbsItem = React.forwardRef<
 
     if (!isLink) {
       return (
-        <span className={classes} onClick={clickHandler}>
+        <span
+          className={classes}
+          onClick={clickHandler}
+          {...(onClick
+            ? { role: 'button', tabIndex: 0, onKeyDown: activateOnKey }
+            : {})}
+        >
           {withoutSepChildren}
         </span>
       )

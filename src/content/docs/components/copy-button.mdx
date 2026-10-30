@@ -1,0 +1,89 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { CopyButton, Button, Input, Card, Text, Grid } from 'core'
+
+export const meta = {
+  title: 'Copy Button',
+  description:
+    'Copies a text to the clipboard and tells you when it is done, with the trigger you choose.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 72
+}
+
+## Copy Button
+
+Copies a text to the clipboard and tells you when it is done. It draws nothing
+by itself: you return the trigger, so it works with a Button, a link or an icon.
+
+<Playground
+  desc="Call `copy` from the trigger. `copied` is `true` for a second after the copy."
+  scope={{ CopyButton, Button }}
+  code={`
+<CopyButton value="yarn add @bolio-ui/core">
+  {({ copied, copy }) => (
+    <Button auto scale={0.75} onClick={copy}>
+      {copied ? 'Copied' : 'Copy'}
+    </Button>
+  )}
+</CopyButton>
+`}
+/>
+
+<Playground
+  title="Timeout"
+  desc="Use `timeout` to change how long `copied` lasts, in milliseconds."
+  scope={{ CopyButton, Button }}
+  code={`
+<CopyButton value="hello@bolio-ui.com" timeout={3000}>
+  {({ copied, copy }) => (
+    <Button auto scale={0.75} type={copied ? 'success' : 'default'} onClick={copy}>
+      {copied ? 'Email copied' : 'Copy email'}
+    </Button>
+  )}
+</CopyButton>
+`}
+/>
+
+<Playground
+  title="API key"
+  desc="Show a value next to a button that copies it. The button text says when it is done."
+  scope={{ CopyButton, Button, Input, Card, Text, Grid }}
+  code={`
+<Card bordered width="100%">
+  <Text p b my={0}>Your API key</Text>
+  <Text p small type="secondary" my={0.5}>Keep it private. You can create a new one at any time.</Text>
+  <Grid.Container gap={1} alignItems="flex-end">
+    <Grid xs>
+      <Input readOnly width="100%" aria-label="API key" value="bk_live_51Hx9a2eZvKYlo2C" />
+    </Grid>
+    <Grid>
+      <CopyButton value="bk_live_51Hx9a2eZvKYlo2C">
+        {({ copied, copy }) => (
+          <Button auto type={copied ? 'success' : 'default'} onClick={copy}>
+            {copied ? 'Copied' : 'Copy key'}
+          </Button>
+        )}
+      </CopyButton>
+    </Grid>
+  </Grid.Container>
+</Card>
+`}
+/>
+
+<Attributes edit="/content/docs/components/copy-button.mdx">
+<Attributes.Title>CopyButton.Props</Attributes.Title>
+
+| Attribute    | Description                                                | Type                                   | Accepted values | Default |
+| ------------ | ---------------------------------------------------------- | -------------------------------------- | --------------- | ------- |
+| **value**    | text copied to the clipboard                               | `string`                               | -               | -       |
+| **timeout**  | milliseconds that `copied` stays `true` after a copy       | `number`                               | -               | `1000`  |
+| **children** | function that returns the trigger                          | `({ copied, copy }) => ReactNode`      | -               | -       |
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The component adds no element, so the trigger you return carries the semantics. Use a real button, and change its text when `copied` is `true` so the new state is clear.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
-import GridBasicItem, { GridBasicItemProps } from './BasicItem'
-import { GridWrap } from './GridTypes'
+import type { GridBasicItemProps } from './BasicItem'
+import GridBasicItem from './BasicItem'
+import type { GridWrap } from './GridTypes'
 import useScale, { withScale } from '../use-scale'
 
 interface Props {

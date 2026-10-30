@@ -1,4 +1,5 @@
-import React, { CSSProperties, useImperativeHandle, useRef } from 'react'
+import type { CSSProperties } from 'react'
+import React, { useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
 import Dropdown from '../Shared/dropdown'
@@ -15,6 +16,8 @@ interface Props {
   dropdownStyle?: CSSProperties
   disableMatchWidth?: boolean
   getPopupContainer?: () => HTMLElement | null
+  ariaLabel?: string
+  ariaLabelledby?: string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
@@ -32,14 +35,16 @@ const SelectDropdown = React.forwardRef<
       className = '',
       dropdownStyle = {},
       disableMatchWidth,
-      getPopupContainer
+      getPopupContainer,
+      ariaLabel,
+      ariaLabelledby
     }: React.PropsWithChildren<SelectDropdownProps>,
     dropdownRef
   ) => {
     const theme = useTheme()
     const surface = getSurface(theme)
     const internalDropdownRef = useRef<HTMLDivElement | null>(null)
-    const { ref } = useSelectContext()
+    const { ref, listId, multiple } = useSelectContext()
     const classes = useClasses(styles.selectDropdown, className)
 
     useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
@@ -56,6 +61,11 @@ const SelectDropdown = React.forwardRef<
       >
         <div
           ref={internalDropdownRef}
+          id={listId}
+          role="listbox"
+          aria-multiselectable={multiple || undefined}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
           className={classes}
           style={
             {

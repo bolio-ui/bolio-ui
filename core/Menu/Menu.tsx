@@ -4,7 +4,8 @@ import useClasses from '../use-classes'
 import useClickAway from '../utils/use-click-away'
 import Dropdown from '../Shared/dropdown'
 import { MenuContext } from './MenuContext'
-import MenuList, { MenuFocus } from './MenuList'
+import type { MenuFocus } from './MenuList'
+import MenuList from './MenuList'
 import styles from './Menu.module.css'
 
 type TriggerProps = {

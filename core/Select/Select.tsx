@@ -1,21 +1,24 @@
+import type { CSSProperties } from 'react'
 import React, {
-  CSSProperties,
   useCallback,
   useEffect,
+  useId,
   useImperativeHandle,
   useMemo,
   useRef,
   useState
 } from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import useTheme from '../use-theme'
 import useCurrentState from '../utils/use-current-state'
+import useLatest from '../utils/use-latest'
 import { pickChildByProps } from '../utils/collections'
 import SelectIcon from './SelectIcon'
 import SelectDropdown from './SelectDropdown'
 import SelectMultipleValue from './SelectMultipleValue'
 import Grid from '../Grid'
-import { SelectContext, SelectConfig } from './SelectContext'
+import type { SelectConfig } from './SelectContext'
+import { SelectContext, getOptionId } from './SelectContext'
 import { getColors } from '../Input/styles'
 import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
@@ -101,6 +104,8 @@ const SelectComponent = React.forwardRef<
     const dropdownRef = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState<boolean>(false)
     const [selectFocus, setSelectFocus] = useState<boolean>(false)
+    const [activeValue, setActiveValue] = useState<string | undefined>()
+    const listId = useId()
     const [value, setValue, valueRef] = useCurrentState<
       string | string[] | undefined
     >(() => {
@@ -125,12 +130,57 @@ const SelectComponent = React.forwardRef<
       [theme.palette, type, disabled, filled, light, ghost, subtle]
     )
 
+    // the options the keyboard can reach
+    const enabledOptions = useMemo(
+      () =>
+        React.Children.toArray(children).flatMap((child) => {
+          if (
+            !React.isValidElement<{
+              value?: string
+              disabled?: boolean
+              label?: boolean
+              divider?: boolean
+              children?: React.ReactNode
+            }>(child)
+          )
+            return []
+          const {
+            value: optionValue,
+            disabled,
+            label,
+            divider,
+            children: content
+          } = child.props
+          if (optionValue === undefined || disabled || label || divider)
+            return []
+          // typing matches what the option shows, or its value when that is not text
+          const text =
+            typeof content === 'string' || typeof content === 'number'
+              ? String(content)
+              : optionValue
+          return [{ value: optionValue, text: text.toLowerCase() }]
+        }),
+      [children]
+    )
+    const enabledValues = useMemo(
+      () => enabledOptions.map((option) => option.value),
+      [enabledOptions]
+    )
+    const latestEnabled = useLatest(enabledValues)
+
+    // the keyboard starts on the chosen option, or on the first one
     const updateVisible = useCallback(
       (next: boolean) => {
         onDropdownVisibleChange(next)
         setVisible(next)
+        if (!next) return setActiveValue(undefined)
+        const chosen = ([] as string[]).concat(valueRef.current ?? [])
+        setActiveValue(
+          chosen.find((item) => latestEnabled.current.includes(item)) ??
+            latestEnabled.current[0]
+        )
       },
-      [onDropdownVisibleChange]
+      [onDropdownVisibleChange, valueRef, latestEnabled]
     )
 
     const updateValue = useCallback(
@@ -155,9 +205,22 @@ const SelectComponent = React.forwardRef<
         updateValue,
         updateVisible,
         ref,
-        disableAll: disabled
+        disableAll: disabled,
+        activeValue,
+        listId,
+        multiple
       }),
-      [visible, disabled, ref, value, updateValue, updateVisible]
+      [
+        visible,
+        disabled,
+        ref,
+        value,
+        updateValue,
+        updateVisible,
+        activeValue,
+        listId,
+        multiple
+      ]
     )
 
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -195,18 +258,26 @@ const SelectComponent = React.forwardRef<
       const [, optionChildren] = pickChildByProps(children, 'value', value)
       return React.Children.map(optionChildren, (child) => {
         if (
-          !React.isValidElement<{ value: string; preventAllEvents?: boolean }>(
-            child
-          )
+          !React.isValidElement<{
+            value: string
+            preventAllEvents?: boolean
+            children?: React.ReactNode
+          }>(child)
         )
           return null
         const el = React.cloneElement(child, {
           preventAllEvents: true
         })
         if (!multiple) return el
+        const content = child.props.children
+        const name =
+          typeof content === 'string' || typeof content === 'number'
+            ? String(content)
+            : child.props.value
         return (
           <SelectMultipleValue
             disabled={disabled}
+            label={`Remove ${name}`}
             onClear={clearable ? () => updateValue(child.props.value) : null}
           >
             {el}
@@ -214,6 +285,78 @@ const SelectComponent = React.forwardRef<
         )
       })
     }, [value, children, multiple, clearable, disabled, updateValue])
+
+    // letters typed within half a second find an option by its start
+    const typed = useRef('')
+    const typedTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+      undefined
+    )
+    useEffect(() => () => clearTimeout(typedTimer.current), [])
+
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (disabled) return
+      const { key } = event
+      if (
+        key.length === 1 &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        !event.altKey &&
+        (key !== ' ' || typed.current)
+      ) {
+        event.preventDefault()
+        typed.current += key.toLowerCase()
+        clearTimeout(typedTimer.current)
+        typedTimer.current = setTimeout(() => (typed.current = ''), 500)
+        // the same letter again goes on to the next option that starts with it
+        const from =
+          activeValue === undefined ? -1 : enabledValues.indexOf(activeValue)
+        const start = typed.current.length === 1 ? from + 1 : Math.max(from, 0)
+        const found = [
+          ...enabledOptions.slice(start),
+          ...enabledOptions.slice(0, start)
+        ].find((option) => option.text.startsWith(typed.current))
+        if (!found) return
+        if (!visible) updateVisible(true)
+        setActiveValue(found.value)
+        return
+      }
+      const options = enabledValues
+      const move = (to: number) => {
+        event.preventDefault()
+        if (options.length)
+          setActiveValue(options[Math.min(options.length - 1, Math.max(0, to))])
+      }
+      const current =
+        activeValue === undefined ? -1 : options.indexOf(activeValue)
+
+      if (key === 'ArrowDown' || key === 'ArrowUp') {
+        if (!visible) {
+          event.preventDefault()
+          return updateVisible(true)
+        }
+        if (key === 'ArrowDown') move(current + 1)
+        else move(current < 0 ? options.length - 1 : current - 1)
+      } else if (key === 'Home' && visible) {
+        move(0)
+      } else if (key === 'End' && visible) {
+        move(options.length - 1)
+      } else if (key === 'Enter' || key === ' ') {
+        event.preventDefault()
+        if (!visible) updateVisible(true)
+        else if (activeValue !== undefined) updateValue(activeValue)
+      } else if (key === 'Escape' && visible) {
+        event.preventDefault()
+        updateVisible(false)
+      }
+    }
+
+    // keeps the option the keyboard is on inside the list
+    useEffect(() => {
+      if (activeValue === undefined) return
+      document
+        .getElementById(getOptionId(listId, activeValue))
+        ?.scrollIntoView?.({ block: 'nearest' })
+    }, [activeValue, listId])
 
     const onInputBlur = () => {
       updateVisible(false)
@@ -277,6 +420,13 @@ const SelectComponent = React.forwardRef<
             visible={visible}
             onBlur={onInputBlur}
             onFocus={() => setSelectFocus(true)}
+            onKeyDown={keyDownHandler}
+            controls={listId}
+            activeDescendant={
+              activeValue === undefined
+                ? undefined
+                : getOptionId(listId, activeValue)
+            }
           />
           {isEmpty && (
             <span className={joinClasses(styles.value, styles.placeholder)}>
@@ -292,6 +442,11 @@ const SelectComponent = React.forwardRef<
           <SelectDropdown
             ref={dropdownRef}
             visible={visible}
+            ariaLabel={
+              ariaLabel ||
+              (typeof placeholder === 'string' ? placeholder : undefined)
+            }
+            ariaLabelledby={ariaLabelledby}
             colors={colors}
             className={dropdownClassName}
             dropdownStyle={dropdownStyle}

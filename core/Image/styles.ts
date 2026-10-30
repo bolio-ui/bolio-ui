@@ -1,4 +1,4 @@
-import { BolioUIThemesPalette } from '../Themes/Presets'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
 
 export type BrowserColors = {
   color: string

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 
 export type ButtonDropdownAlign = 'start' | 'center' | 'end'
 

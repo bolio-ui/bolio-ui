@@ -10,6 +10,9 @@
   color: var(--select-clear-icon-color);
   visibility: visible;
   opacity: 1;
+  border: 0;
+  background: none;
+  font: inherit;
 }
 
 .clearIcon:hover {

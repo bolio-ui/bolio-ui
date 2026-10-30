@@ -1,6 +1,7 @@
 import React, { useContext, useId, useRef } from 'react'
 import { MenuListContext } from './MenuContext'
-import MenuList, { MenuFocus } from './MenuList'
+import type { MenuFocus } from './MenuList'
+import MenuList from './MenuList'
 import { MenuItemBase } from './MenuItem'
 import styles from './MenuSub.module.css'
 

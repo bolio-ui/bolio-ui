@@ -20,6 +20,11 @@
               "path": "/docs/guide/getting-started.mdx"
             },
             {
+              "title": "Add components",
+              "keywords": "add, cli, copy, components, shadcn, source, registry, example, bolio ui",
+              "path": "/docs/guide/add-components.mdx"
+            },
+            {
               "title": "Migrating to v3",
               "keywords": "migrate, migration, upgrade, v2, v3, styled-jsx, css modules, breaking changes, bolio ui",
               "path": "/docs/guide/migration-v2-to-v3.mdx"
@@ -272,6 +277,11 @@
               "path": "/docs/components/container.mdx"
             },
             {
+              "title": "Copy Button",
+              "keywords": "copy button, copy, clipboard, copied, copy text, snippet",
+              "path": "/docs/components/copy-button.mdx"
+            },
+            {
               "title": "Context Menu",
               "keywords": "context menu, right click, contextmenu, menu, actions, popup menu, shift f10",
               "path": "/docs/components/context-menu.mdx"
@@ -367,6 +377,11 @@
               "path": "/docs/components/loading.mdx"
             },
             {
+              "title": "Mark",
+              "keywords": "mark, highlight, highlighter, search, match, key words, text, find",
+              "path": "/docs/components/mark.mdx"
+            },
+            {
               "title": "Marquee",
               "keywords": "marquee, ticker, logos, testimonials, carousel, loop",
               "path": "/docs/components/marquee.mdx"
@@ -432,6 +447,11 @@
               "path": "/docs/components/row.mdx"
             },
             {
+              "title": "Scroll Area",
+              "keywords": "scroll area, scrollbar, overflow, scroll, scrollable, horizontal, vertical, custom scrollbar",
+              "path": "/docs/components/scroll-area.mdx"
+            },
+            {
               "title": "Section",
               "keywords": "section, band, background, page section, layout",
               "path": "/docs/components/section.mdx"
@@ -465,6 +485,11 @@
               "title": "Spacer",
               "keywords": "spacer, vertical, horizontal",
               "path": "/docs/components/spacer.mdx"
+            },
+            {
+              "title": "Spoiler",
+              "keywords": "spoiler, show more, read more, collapse, expand, truncate, max height, long text",
+              "path": "/docs/components/spoiler.mdx"
             },
             {
               "title": "Spinner",

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import useTheme from '../use-theme'
 import styles from './SliderMark.module.css'
 

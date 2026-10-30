@@ -187,6 +187,16 @@ type SliderTypes =
   | 'info'
 ```
 
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element of the slider.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The handle is a `slider` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`, and takes the focus with Tab.
+- • Arrows change the value by `step`, Page Up and Page Down by ten steps, and Home and End go to the minimum and the maximum.
+- • Without a visible label, pass `aria-label` or `aria-labelledby`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

@@ -1,4 +1,4 @@
-import { BolioUIThemesPalette } from '../Themes/Presets'
+import type { BolioUIThemesPalette } from '../Themes/Presets'
 
 // The 4 variants shared across colored surfaces (Button, Tag, Badge, Note,
 // Snippet, Card, Tooltip): a solid fill, a tinted background, a bordered

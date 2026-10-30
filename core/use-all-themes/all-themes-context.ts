@@ -1,6 +1,6 @@
 import React from 'react'
 import Themes from '../Themes/Themes'
-import { BolioUIThemes } from '../Themes/Presets'
+import type { BolioUIThemes } from '../Themes/Presets'
 
 export type AllThemesConfig = {
   themes: Array<BolioUIThemes>

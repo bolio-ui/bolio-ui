@@ -9,6 +9,11 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
+    name: 'Add components',
+    url: '/docs/guide/add-components',
+    tag: 'New'
+  },
+  {
     name: 'Migrating to v3',
     url: '/docs/guide/migration-v2-to-v3'
   },
@@ -234,6 +239,11 @@ export const components = [
     url: '/docs/components/container'
   },
   {
+    name: 'Copy Button',
+    url: '/docs/components/copy-button',
+    tag: 'New'
+  },
+  {
     name: 'Context Menu',
     url: '/docs/components/context-menu',
     tag: 'New'
@@ -317,6 +327,11 @@ export const components = [
     url: '/docs/components/loading'
   },
   {
+    name: 'Mark',
+    url: '/docs/components/mark',
+    tag: 'New'
+  },
+  {
     name: 'Marquee',
     url: '/docs/components/marquee',
     tag: 'New'
@@ -389,6 +404,11 @@ export const components = [
     url: '/docs/components/skeleton'
   },
   {
+    name: 'Scroll Area',
+    url: '/docs/components/scroll-area',
+    tag: 'New'
+  },
+  {
     name: 'Section',
     url: '/docs/components/section'
   },
@@ -403,6 +423,11 @@ export const components = [
   {
     name: 'Spacer',
     url: '/docs/components/spacer'
+  },
+  {
+    name: 'Spoiler',
+    url: '/docs/components/spoiler',
+    tag: 'New'
   },
   {
     name: 'Spinner',

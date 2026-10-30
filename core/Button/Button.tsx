@@ -1,15 +1,10 @@
-import React, {
-  useRef,
-  useState,
-  MouseEvent,
-  useMemo,
-  useImperativeHandle
-} from 'react'
+import type { MouseEvent } from 'react'
+import React, { useRef, useState, useMemo, useImperativeHandle } from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import ButtonDrip from './ButtonDrip'
 import ButtonLoading from './ButtonLoading'
-import { ButtonTypes } from '../utils/prop-types'
+import type { ButtonTypes } from '../utils/prop-types'
 import { filterPropsWithGroup, getButtonChildrenWithIcon } from './utils'
 import { useButtonGroupContext } from '../ButtonGroup/ButtonGroupContext'
 import { getButtonColors, getButtonCursor, getButtonDripColor } from './styles'
@@ -158,6 +153,7 @@ const ButtonComponent = React.forwardRef<
     '--bolio-ui-button-height': SCALES.height(2.5),
     '--bolio-ui-button-color': color,
     '--bolio-ui-button-bg': bg,
+    '--bolio-ui-button-focus': theme.palette.primary,
     minWidth: iconOnly
       ? SCALES.width(2.5)
       : auto

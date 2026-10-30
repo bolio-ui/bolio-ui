@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react'
 import useTheme from '../use-theme'
-import { SnippetTypes, CopyTypes, NormalTypes } from '../utils/prop-types'
+import type { SnippetTypes, CopyTypes, NormalTypes } from '../utils/prop-types'
 import { getStyles } from './styles'
 import SnippetIcon from './SnippetIcon'
 import useClipboard from '../utils/use-clipboard'
@@ -131,7 +131,9 @@ const SnippetComponent = React.forwardRef<
           <pre ref={preRef}>{children || text}</pre>
         )}
         {showCopyIcon && (
-          <div
+          <button
+            type="button"
+            aria-label="Copy"
             className={styles.copy}
             onClick={clickHandler}
             style={{
@@ -143,7 +145,7 @@ const SnippetComponent = React.forwardRef<
             }}
           >
             <SnippetIcon />
-          </div>
+          </button>
         )}
       </div>
     )

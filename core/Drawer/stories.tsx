@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react-vite'
 import React, { useState } from 'react'
-import { DrawerPlacement } from './helper'
+import type { DrawerPlacement } from './helper'
 import Drawer from '.'
 import Button from '../Button'
 import Grid from '../Grid'

@@ -41,6 +41,7 @@ const {
   Link,
   Loading,
   Mention,
+  Mark,
   Menu,
   Modal,
   Note,
@@ -53,6 +54,7 @@ const {
   Radio,
   Rating,
   Row,
+  ScrollArea,
   Section,
   SegmentedControl,
   Select,
@@ -60,6 +62,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  Spoiler,
   Spinner,
   Splitter,
   Stepper,
@@ -245,6 +248,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Radio.Group>
     )
   ],
+  ['Mark', () => <Mark highlight="a">Mark</Mark>],
   ['Rating', () => <Rating value={3} />],
   [
     'Row',
@@ -254,6 +258,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Row>
     )
   ],
+  ['ScrollArea', () => <ScrollArea height="100px">Content</ScrollArea>],
   ['Section', () => <Section>Section</Section>],
   [
     'SegmentedControl',
@@ -277,6 +282,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Slider', () => <Slider initialValue={20} />],
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
   ['Spacer', () => <Spacer h={1} />],
+  ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],
   [
     'Splitter',

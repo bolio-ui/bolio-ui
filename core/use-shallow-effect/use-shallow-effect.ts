@@ -1,4 +1,5 @@
-import { DependencyList, EffectCallback, useEffect, useRef } from 'react'
+import type { DependencyList, EffectCallback } from 'react'
+import { useEffect, useRef } from 'react'
 
 const isEqual = (a: unknown, b: unknown): boolean => {
   if (Object.is(a, b)) return true

@@ -1,5 +1,6 @@
-import React from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type React from 'react'
+import type { NormalTypes } from '../utils/prop-types'
+import type { AnyElement } from '../utils/types'
 
 export type InputTypes = NormalTypes
 
@@ -21,7 +22,7 @@ export interface Props {
   className?: string
   clearable?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onClearClick?: (e: React.MouseEvent<HTMLDivElement>) => void
+  onClearClick?: (e: React.MouseEvent<AnyElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onIconClick?: (e: React.MouseEvent<HTMLDivElement>) => void

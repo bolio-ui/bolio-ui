@@ -1,11 +1,12 @@
 import React, { useImperativeHandle } from 'react'
-import useContextState, {
+import type {
   ContextHandler,
   ContextHandlerWhere,
   ContextStateFilter,
   ContextStateOnChange,
   ContextStates
 } from './use-context-state'
+import useContextState from './use-context-state'
 import { capitalize } from '../collections'
 
 const makeVirtualValues = <S,>(values: S): ContextStates<S> => {

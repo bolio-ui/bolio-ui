@@ -1,4 +1,5 @@
-import React, { MutableRefObject, useEffect, useState } from 'react'
+import type { MutableRefObject } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import usePortal from '../utils/use-portal'
 import useResize from '../utils/use-resize'
@@ -8,6 +9,10 @@ import useLatest from '../utils/use-latest'
 import useDOMObserver from '../utils/use-dom-observer'
 import logWarning from '../utils/log-warning'
 import { getRefRect } from '../utils/layouts'
+
+// The bundler replaces process.env.NODE_ENV, so this keeps the file compiling
+// in projects without @types/node
+declare const process: { env: { NODE_ENV?: string } }
 
 interface Props {
   parent?: MutableRefObject<HTMLElement | null> | undefined

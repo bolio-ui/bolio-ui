@@ -1,4 +1,4 @@
-import { RefObject } from 'react'
+import type { RefObject } from 'react'
 import useResizeObserver from '../use-resize-observer'
 
 export type UseElementSizeResult<T extends HTMLElement> = {

@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import type { AnyObject } from '../utils/types'
 
 export type TableDataItemBase = AnyObject

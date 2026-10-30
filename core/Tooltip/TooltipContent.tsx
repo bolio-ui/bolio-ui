@@ -1,10 +1,5 @@
-import React, {
-  MutableRefObject,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
+import type { MutableRefObject } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import useTheme from '../use-theme'
 import usePortal from '../utils/use-portal'
@@ -13,13 +8,10 @@ import useLatest from '../utils/use-latest'
 import CssTransition from '../Shared/css-transition'
 import useClickAnyWhere from '../utils/use-click-anywhere'
 import { getColors } from './styles'
-import {
-  getPosition,
-  TooltipPosition,
-  defaultTooltipPosition
-} from './placement'
+import type { TooltipPosition } from './placement'
+import { getPosition, defaultTooltipPosition } from './placement'
 import TooltipIcon from './TooltipIcon'
-import { Placement, SnippetTypes } from '../utils/prop-types'
+import type { Placement, SnippetTypes } from '../utils/prop-types'
 import useScale from '../use-scale'
 import { getRect } from './helper'
 import useClasses, { joinClasses } from '../use-classes'
