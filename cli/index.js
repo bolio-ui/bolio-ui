@@ -10,7 +10,7 @@ const usage = `Usage: bolio-ui init [name] [options]
 
 Sets up Bolio UI in the project of the current folder, or creates a new one.
 
-add copies the source of a component, and of what it needs, into your project (src/components/bolio-ui by default).
+add copies the source of a component, and of what it needs, into your project (src/components/bolio-ui by default, or components/bolio-ui without a src folder).
 
 agents-md adds the Bolio UI docs for AI assistants to AGENTS.md, or to the file you give.
 
