@@ -1,16 +1,19 @@
-import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react'
-import {
-  BolioUIContent,
-  defaultToastLayout,
+import type { PropsWithChildren } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import type {
   BolioUIContextParams,
   UpdateToastsFunction,
   UpdateToastsIDFunction,
   UpdateToastsLayoutFunction
 } from '../utils/use-bolio-ui-context'
+import {
+  BolioUIContent,
+  defaultToastLayout
+} from '../utils/use-bolio-ui-context'
 import ThemeProvider from './ThemeProvider'
 import useCurrentState from '../utils/use-current-state'
 import ToastContainer from '../use-toasts/toast-container'
-import { BolioUIThemes } from '../Themes/Presets'
+import type { BolioUIThemes } from '../Themes/Presets'
 
 export type BolioUIProviderProps = {
   themes?: Array<BolioUIThemes>

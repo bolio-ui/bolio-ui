@@ -1,4 +1,5 @@
-import React, { MutableRefObject } from 'react'
+import type { MutableRefObject } from 'react'
+import React from 'react'
 
 export interface SelectConfig {
   value?: string | string[]

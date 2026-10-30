@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'

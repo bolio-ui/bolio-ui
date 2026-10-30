@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { Props } from './InputProps'
+import type { Props } from './InputProps'
 import PasswordIcon from './PasswordIcon'
 import Input from './Input'
 import { useScale, withScale } from '../use-scale'

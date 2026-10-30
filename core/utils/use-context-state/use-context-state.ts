@@ -1,10 +1,5 @@
-import {
-  Dispatch,
-  MutableRefObject,
-  SetStateAction,
-  useCallback,
-  useMemo
-} from 'react'
+import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
+import { useCallback, useMemo } from 'react'
 import useCurrentState from '../use-current-state'
 import useLatest from '../use-latest'
 import { capitalize } from '../collections'

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import {
+import type {
   GridJustify,
   GridDirection,
   GridAlignItems,

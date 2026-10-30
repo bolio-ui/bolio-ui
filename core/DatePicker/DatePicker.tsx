@@ -1,7 +1,7 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import useTheme from '../use-theme'
 import { getColors } from '../Input/styles'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import useClickAway from '../utils/use-click-away'

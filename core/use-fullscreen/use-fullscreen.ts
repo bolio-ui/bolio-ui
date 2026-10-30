@@ -1,4 +1,5 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import type { RefObject } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export type UseFullscreenResult<T extends HTMLElement> = {
   ref: RefObject<T | null>

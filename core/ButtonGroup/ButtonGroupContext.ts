@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonTypes } from '../utils/prop-types'
+import type { ButtonTypes } from '../utils/prop-types'
 
 export interface ButtonGroupConfig {
   type?: ButtonTypes

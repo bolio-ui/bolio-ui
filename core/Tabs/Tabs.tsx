@@ -1,13 +1,8 @@
-import React, {
-  CSSProperties,
-  MouseEvent,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
+import type { CSSProperties, MouseEvent } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import useTheme from '../use-theme'
-import { TabsHeaderItem, TabsConfig, TabsContext } from './TabsContext'
+import type { TabsHeaderItem, TabsConfig } from './TabsContext'
+import { TabsContext } from './TabsContext'
 import useScale, { withScale } from '../use-scale'
 import Highlight from '../Shared/highlight'
 import { useRect } from '../utils/layouts'

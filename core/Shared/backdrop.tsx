@@ -1,4 +1,5 @@
-import React, { MouseEvent, useRef } from 'react'
+import type { MouseEvent } from 'react'
+import React, { useRef } from 'react'
 import useTheme from '../use-theme'
 import CssTransition from './css-transition'
 import useCurrentState from '../utils/use-current-state'

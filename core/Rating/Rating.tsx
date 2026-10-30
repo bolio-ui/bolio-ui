@@ -1,5 +1,5 @@
 import React, { useId, useState } from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import RatingIcon from './RatingIcon'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'

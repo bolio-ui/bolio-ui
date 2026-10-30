@@ -1,5 +1,5 @@
+import type { CSSProperties } from 'react'
 import React, {
-  CSSProperties,
   useCallback,
   useEffect,
   useId,
@@ -8,7 +8,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type { NormalTypes } from '../utils/prop-types'
 import useTheme from '../use-theme'
 import useCurrentState from '../utils/use-current-state'
 import useLatest from '../utils/use-latest'
@@ -17,7 +17,8 @@ import SelectIcon from './SelectIcon'
 import SelectDropdown from './SelectDropdown'
 import SelectMultipleValue from './SelectMultipleValue'
 import Grid from '../Grid'
-import { SelectContext, SelectConfig, getOptionId } from './SelectContext'
+import type { SelectConfig } from './SelectContext'
+import { SelectContext, getOptionId } from './SelectContext'
 import { getColors } from '../Input/styles'
 import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'

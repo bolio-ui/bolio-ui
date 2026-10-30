@@ -10,8 +10,9 @@ import TableHead from './TableHead'
 import TableBody from './TableBody'
 import useRealShape from '../utils/use-real-shape'
 import useResize from '../utils/use-resize'
-import { TableContext, TableConfig } from './TableContext'
-import {
+import type { TableConfig } from './TableContext'
+import { TableContext } from './TableContext'
+import type {
   TableAbstractColumn,
   TableDataItemBase,
   TableKey,
@@ -22,7 +23,8 @@ import {
   TableRowClassNameHandler
 } from './TableTypes'
 import useTheme from '../use-theme'
-import useScale, { ScaleProps, withScale } from '../use-scale'
+import type { ScaleProps } from '../use-scale'
+import useScale, { withScale } from '../use-scale'
 import TableColumn from './TableColumn'
 import Pagination from '../Pagination'
 import type { AnyElement } from '../utils/types'

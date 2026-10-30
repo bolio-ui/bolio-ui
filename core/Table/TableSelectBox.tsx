@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import styles from './TableSelectBox.module.css'
 
 interface Props {

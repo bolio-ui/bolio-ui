@@ -1,4 +1,5 @@
-import { MouseEvent, FocusEvent, MutableRefObject, useState } from 'react'
+import type { MouseEvent, FocusEvent, MutableRefObject } from 'react'
+import { useState } from 'react'
 
 export const getElementOffset = (el?: HTMLElement | null | undefined) => {
   if (!el)

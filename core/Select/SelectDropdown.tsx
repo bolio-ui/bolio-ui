@@ -1,4 +1,5 @@
-import React, { CSSProperties, useImperativeHandle, useRef } from 'react'
+import type { CSSProperties } from 'react'
+import React, { useImperativeHandle, useRef } from 'react'
 import useTheme from '../use-theme'
 import { useSelectContext } from './SelectContext'
 import Dropdown from '../Shared/dropdown'

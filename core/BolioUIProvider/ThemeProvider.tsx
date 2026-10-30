@@ -1,11 +1,10 @@
-import React, { PropsWithChildren, useMemo } from 'react'
+import type { PropsWithChildren } from 'react'
+import React, { useMemo } from 'react'
 import Themes from '../Themes'
-import { BolioUIThemes } from '../Themes/Presets'
+import type { BolioUIThemes } from '../Themes/Presets'
 import { ThemeContext } from '../use-theme/theme-context'
-import {
-  AllThemesConfig,
-  AllThemesContext
-} from '../use-all-themes/all-themes-context'
+import type { AllThemesConfig } from '../use-all-themes/all-themes-context'
+import { AllThemesContext } from '../use-all-themes/all-themes-context'
 
 export interface Props {
   themeType?: string

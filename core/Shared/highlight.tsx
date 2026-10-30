@@ -1,5 +1,6 @@
 import React, { useMemo, useRef } from 'react'
-import { isUnplacedRect, ReactiveDomReact } from '../utils/layouts'
+import type { ReactiveDomReact } from '../utils/layouts'
+import { isUnplacedRect } from '../utils/layouts'
 import usePrevious from '../utils/use-previous'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'

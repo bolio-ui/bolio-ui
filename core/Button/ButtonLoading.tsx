@@ -1,4 +1,3 @@
-import React from 'react'
 import Loading from '../Loading'
 import styles from './ButtonLoading.module.css'
 

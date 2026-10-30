@@ -53,7 +53,7 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn build:registry && next build",
     "start": "next start",
     "lint": "eslint src core --max-warnings=0",
     "typecheck": "tsc --project tsconfig.json --noEmit",
@@ -68,6 +68,7 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:js": "tsup --config scripts/tsup.config.ts",
     "build:after": "node scripts/add-use-client.js",
+    "build:registry": "node scripts/build-registry.ts",
     "build:types": "tsc -p ./scripts && tsc -p ./scripts --outDir ./esm",
     "build:package": "yarn build:clear && yarn build:js && yarn build:types && yarn build:after",
     "clear-all": "rm -rf .next _static node_modules",

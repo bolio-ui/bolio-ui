@@ -17,7 +17,8 @@ import {
   useKeyboard
 } from '..'
 import useResize from '../utils/use-resize'
-import useDrag, { DraggingEvent } from '../utils/use-drag'
+import type { DraggingEvent } from '../utils/use-drag'
+import useDrag from '../utils/use-drag'
 import useDOMObserver from '../utils/use-dom-observer'
 
 // Code that sets up a listener once has to call the callback of the latest

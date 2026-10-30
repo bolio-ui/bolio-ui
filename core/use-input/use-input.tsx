@@ -1,4 +1,5 @@
-import React, { Dispatch, MutableRefObject, SetStateAction } from 'react'
+import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
+import type React from 'react'
 import useCurrentState from '../utils/use-current-state'
 
 export type BindingsChangeTarget =

@@ -54,5 +54,14 @@ export default [
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-var-requires': 'off'
     }
+  },
+  {
+    // `bolio-ui add` copies these files into projects that build with
+    // verbatimModuleSyntax (the Vite template does), where a type imported as a
+    // value breaks the build
+    files: ['core/**'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error'
+    }
   }
 ]

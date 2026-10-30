@@ -24,6 +24,21 @@ bunx --bun @bolio-ui/cli@latest init
 
 It installs `@bolio-ui/core` with your package manager and wraps your app with `BolioUIProvider`.
 
+## Add components
+
+```bash
+npx @bolio-ui/cli@latest add button select
+```
+
+Copies the source of each component, and of what it needs, into `src/components/bolio-ui` (or `components/bolio-ui` without a `src` folder), with an `example.tsx` next to it. The files are yours to edit, and `@bolio-ui/core` is not needed.
+
+| Option        | What it does                                                         |
+| ------------- | -------------------------------------------------------------------- |
+| `--dir`       | folder to write to, relative to the current folder                   |
+| `--overwrite` | replace files that already exist and differ (the default keeps them) |
+
+See the [guide](https://bolio-ui.com/docs/guide/add-components).
+
 ## For AI assistants
 
 ```bash

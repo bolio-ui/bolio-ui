@@ -1,5 +1,5 @@
-import React from 'react'
-import { NormalTypes } from '../utils/prop-types'
+import type React from 'react'
+import type { NormalTypes } from '../utils/prop-types'
 import type { AnyElement } from '../utils/types'
 
 export type InputTypes = NormalTypes

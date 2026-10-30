@@ -1,4 +1,5 @@
-import React, { ReactNode, useMemo } from 'react'
+import type { ReactNode } from 'react'
+import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import BreadcrumbsSeparator from './BreadcrumbsSeparator'
 import { addColorAlpha } from '../utils/color'

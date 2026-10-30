@@ -1,9 +1,9 @@
-import {
+import type {
   GetAllScalePropsFunction,
   GetScalePropsFunction,
-  ScaleProps,
-  ScalePropKeys
+  ScaleProps
 } from './scale-context'
+import { ScalePropKeys } from './scale-context'
 
 export const generateGetScaleProps = <P>(
   props: P & ScaleProps

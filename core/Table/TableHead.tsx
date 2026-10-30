@@ -1,7 +1,11 @@
 import React, { useMemo } from 'react'
 import useTheme from '../use-theme'
 import TableSelectBox from './TableSelectBox'
-import { TableAbstractColumn, TableDataItemBase, TableSort } from './TableTypes'
+import type {
+  TableAbstractColumn,
+  TableDataItemBase,
+  TableSort
+} from './TableTypes'
 import type { AnyElement } from '../utils/types'
 import { joinClasses } from '../use-classes'
 import styles from './TableHead.module.css'

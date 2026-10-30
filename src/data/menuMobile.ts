@@ -11,6 +11,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Add components',
+            url: '/docs/guide/add-components',
+            group: 'Guide'
+          },
+          {
             name: 'Migrating to v3',
             url: '/docs/guide/migration-v2-to-v3',
             group: 'Guide'

@@ -1,4 +1,5 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import type { MutableRefObject } from 'react'
+import { useEffect, useRef } from 'react'
 
 // A ref that holds the value of the latest render, for code that is set up
 // once (a listener, a timer, an effect that runs when something else

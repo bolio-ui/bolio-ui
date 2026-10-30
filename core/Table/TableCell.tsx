@@ -1,6 +1,6 @@
 import { activateOnKey } from '../utils/activate-on-key'
 import React from 'react'
-import {
+import type {
   TableDataItemBase,
   TableAbstractColumn,
   TableOnCellClick

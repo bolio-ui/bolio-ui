@@ -9,6 +9,11 @@ export const guide = [
     url: '/docs/guide/getting-started'
   },
   {
+    name: 'Add components',
+    url: '/docs/guide/add-components',
+    tag: 'New'
+  },
+  {
     name: 'Migrating to v3',
     url: '/docs/guide/migration-v2-to-v3'
   },

@@ -73,7 +73,7 @@ const CollapseComponent = React.forwardRef<
       const next = !(isControlled ? controlledVisible : visibleRef.current)
       if (!isControlled) setVisible(next)
       if (onVisibleChange) onVisibleChange(next)
-      if (updateValues) updateValues(index, next)
+      if (updateValues) updateValues(index as number, next)
     }
 
     const collapseStyle: React.CSSProperties = shadow

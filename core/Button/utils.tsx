@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import ButtonIcon from './ButtonIcon'
-import { ButtonProps } from './Button'
-import { ButtonGroupConfig } from '../ButtonGroup/ButtonGroupContext'
+import type { ButtonProps } from './Button'
+import type { ButtonGroupConfig } from '../ButtonGroup/ButtonGroupContext'
 
 export const getButtonChildrenWithIcon = (
   children: ReactNode,

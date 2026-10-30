@@ -5,9 +5,12 @@ const { spawnSync } = require('child_process')
 
 const docs = 'https://bolio-ui.com/docs/guide/getting-started'
 const usage = `Usage: bolio-ui init [name] [options]
+       bolio-ui add <component...> [--dir <folder>] [--overwrite]
        bolio-ui agents-md [file]
 
 Sets up Bolio UI in the project of the current folder, or creates a new one.
+
+add copies the source of a component, and of what it needs, into your project (src/components/bolio-ui by default).
 
 agents-md adds the Bolio UI docs for AI assistants to AGENTS.md, or to the file you give.
 
@@ -51,7 +54,80 @@ ${marker}
   console.log(`Bolio UI docs added to ${path.relative(process.cwd(), file)}`)
   process.exit(0)
 }
-if (argv[0] !== 'init') fail(usage)
+// Copies the source of a component, and of what it imports, into the project.
+// The files import each other by relative paths, so they keep working as long
+// as they all go under the same folder.
+const add = async () => {
+  const registry = (valueOf('--registry') || 'https://bolio-ui.com/r').replace(
+    /\/$/,
+    ''
+  )
+  const wanted = argv.slice(1).filter((arg, i, rest) => {
+    return (
+      !arg.startsWith('-') && !['--dir', '--registry'].includes(rest[i - 1])
+    )
+  })
+  if (!wanted.length) fail(usage)
+  const cwd = process.cwd()
+  if (!fs.existsSync(path.join(cwd, 'package.json')))
+    fail('No package.json found. Run this command at the root of your project.')
+  const dir = path.resolve(
+    cwd,
+    valueOf('--dir') ||
+      (fs.existsSync(path.join(cwd, 'src')) ? 'src' : '.') +
+        '/components/bolio-ui'
+  )
+
+  const get = async (name) => {
+    const response = await fetch(`${registry}/${name}.json`).catch(() => null)
+    if (!response?.ok)
+      fail(
+        `Could not load ${registry}/${name}.json. Check your connection and try again.`
+      )
+    return response.json()
+  }
+  const available = await get('index')
+  const files = new Map()
+  const examples = []
+  for (const name of wanted) {
+    const found = available.find(
+      (item) => item.toLowerCase() === name.toLowerCase()
+    )
+    if (!found)
+      fail(
+        `There is no component named "${name}". The list is at ${registry}/index.json`
+      )
+    for (const file of (await get(found)).files)
+      files.set(file.path, file.content)
+    if (files.has(`${found}/example.tsx`)) examples.push(`${found}/example.tsx`)
+  }
+
+  const kept = []
+  for (const [file, content] of files) {
+    const target = path.join(dir, file)
+    if (path.relative(dir, target).startsWith('..'))
+      fail(`The registry sent a file outside of the folder: ${file}`)
+    if (fs.existsSync(target) && !has('--overwrite')) {
+      if (fs.readFileSync(target, 'utf8') !== content) kept.push(file)
+      continue
+    }
+    fs.mkdirSync(path.dirname(target), { recursive: true })
+    fs.writeFileSync(target, content)
+  }
+
+  const shown = path.relative(cwd, dir)
+  console.log(`Added ${wanted.join(', ')} to ${shown}`)
+  if (examples.length)
+    console.log(
+      `\nExamples to start from:\n${examples.map((file) => `  ${path.join(shown, file)}`).join('\n')}`
+    )
+  if (kept.length)
+    console.log(
+      `\nThese files already exist and differ, so they were kept. Run again with --overwrite to replace them:\n${kept.map((file) => `  ${file}`).join('\n')}`
+    )
+}
+
+if (argv[0] !== 'init' && argv[0] !== 'add') fail(usage)
 const yes = has('-y', '--yes')
 const ask = yes || !process.stdin.isTTY || !process.stdout.isTTY ? null : true
 
@@ -524,4 +600,5 @@ export default function BolioUI({ children }${ts ? ': { children: ReactNode }' :
   )
 }
 
-main()
+if (argv[0] === 'add') add()
+else main()
