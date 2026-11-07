@@ -6,6 +6,7 @@ export default function Example() {
       width="280px"
       height="160px"
       src="https://bolio-ui.com/logo-white.jpg"
+      alt="Bolio UI logo"
     />
   )
 }

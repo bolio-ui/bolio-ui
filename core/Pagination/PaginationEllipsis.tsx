@@ -12,6 +12,7 @@ function PaginationEllipsis({ isBefore, onClick }: Props) {
 
   return (
     <PaginationItem
+      aria-label={isBefore ? 'Previous 5 pages' : 'Next 5 pages'}
       onClick={(e) => onClick && onClick(e)}
       onMouseEnter={() => setShowMore(true)}
       onMouseLeave={() => setShowMore(false)}
