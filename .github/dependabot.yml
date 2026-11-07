@@ -10,6 +10,15 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      # eslint-plugin-react does not accept ESLint 10 yet
+      - dependency-name: eslint
+        update-types: [version-update:semver-major]
+      - dependency-name: "@eslint/js"
+        update-types: [version-update:semver-major]
+      # Babel 8 is ESM only, and a docs test loads @babel/core through Jest
+      - dependency-name: "@babel/*"
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
