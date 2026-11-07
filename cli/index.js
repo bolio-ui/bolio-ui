@@ -38,7 +38,7 @@ if (argv[0] === 'agents-md') {
   const block = `${marker}
 ## Bolio UI
 
-This project uses Bolio UI (\`@bolio-ui/core\`). Before writing UI code, read the docs for assistants:
+This project uses Bolio UI, from \`@bolio-ui/core\` or copied with \`bolio-ui add\`. Before writing UI code, read the docs for assistants:
 
 - Index of every page: https://bolio-ui.com/llms.txt
 - All docs in one file: https://bolio-ui.com/llms-full.txt
