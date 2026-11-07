@@ -1,0 +1,17 @@
+version: 2
+
+updates:
+  # Patch and minor updates arrive as one PR a week. A major update opens a PR
+  # of its own, so it can be reviewed and reverted alone.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
