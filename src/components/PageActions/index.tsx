@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { ButtonDropdown } from 'core'
+import { ButtonDropdown, Snippet } from 'core'
 import { Copy, Check, FileText, ExternalLink } from '@bolio-ui/icons'
 import styles from './PageActions.module.css'
 
@@ -20,6 +20,20 @@ const PageActions: React.FC = () => {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  // The registry lists the components `add` can copy. A page that has none
+  // (Overview, Icons) shows no command.
+  const [, , section, slug] = pathname.split('/')
+  const [names, setNames] = useState<string[]>([])
+  useEffect(() => {
+    fetch('/r/index.json')
+      .then((response) => response.json())
+      .then(setNames)
+      .catch(() => {})
+  }, [])
+  const registered =
+    section === 'components' &&
+    names.find((name) => name.toLowerCase() === slug.replace(/-/g, ''))
+
   const open = (url: string) => window.open(url, '_blank', 'noopener')
 
   // The AI assistants read the page from its public Markdown address
@@ -32,6 +46,12 @@ const PageActions: React.FC = () => {
 
   return (
     <div className={styles.pageActions}>
+      {registered && (
+        <Snippet
+          scale={0.6}
+          text={`npx @bolio-ui/cli@latest add ${registered.toLowerCase()}`}
+        />
+      )}
       <ButtonDropdown scale={0.6}>
         <ButtonDropdown.Item
           main
