@@ -1,1 +1,1 @@
-export { guide, components, hooks } from './sidebar'
+export { guide, components, hooks, form } from './sidebar'

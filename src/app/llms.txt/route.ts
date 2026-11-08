@@ -5,7 +5,12 @@ import { generateStaticParams } from 'src/app/docs/[section]/[slug]/page'
 export const dynamic = 'force-static'
 
 const SITE = 'https://bolio-ui.com'
-const SECTIONS = { guide: 'Guide', components: 'Components', hooks: 'Hooks' }
+const SECTIONS = {
+  guide: 'Guide',
+  components: 'Components',
+  hooks: 'Hooks',
+  form: 'Form'
+}
 
 export const readDoc = (section: string, slug: string) =>
   fs.readFileSync(

@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useId, useMemo, useState } from 'react'
 import { useCheckbox } from './CheckboxContext'
 import CheckboxIcon from './CheckboxIcon'
 import logWarning from '../utils/log-warning'
 import type { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
@@ -29,6 +30,8 @@ interface Props {
   onChange?: (e: CheckboxEvent) => void
   className?: string
   value?: string
+  error?: boolean
+  errorMessage?: string
 }
 
 type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
@@ -48,6 +51,8 @@ const CheckboxComponent = React.forwardRef<
       children,
       type = 'default' as CheckboxTypes,
       value = '',
+      error = false,
+      errorMessage,
       ...props
     },
     ref
@@ -58,6 +63,12 @@ const CheckboxComponent = React.forwardRef<
     const { updateState, inGroup, disabledAll, values } = useCheckbox()
     const isDisabled = inGroup ? disabledAll || disabled : disabled
     const classes = useClasses(styles.checkbox, className)
+    const generatedId = useId()
+    const errorId = `${props.id || generatedId}-error`
+    const describedBy =
+      [props['aria-describedby'], error && errorMessage ? errorId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined
 
     if (inGroup && checked) {
       logWarning(
@@ -73,8 +84,8 @@ const CheckboxComponent = React.forwardRef<
     }, [inGroup, selfChecked, value, values])
 
     const fill = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
+      () => getColors(theme.palette, error ? 'error' : type),
+      [theme.palette, type, error]
     )
 
     const changeHandle = useCallback(
@@ -115,24 +126,37 @@ const CheckboxComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <label className={classes} style={checkboxStyle}>
-        <CheckboxIcon fill={fill} disabled={isDisabled} checked={selfChecked} />
-        <input
-          ref={ref}
-          type="checkbox"
-          disabled={isDisabled}
-          checked={selfChecked}
-          onChange={changeHandle}
-          {...props}
-          className={styles.input}
-        />
-        <span
-          className={styles.text}
-          style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
-        >
-          {children}
-        </span>
-      </label>
+      <>
+        <label className={classes} style={checkboxStyle}>
+          <CheckboxIcon
+            fill={fill}
+            disabled={isDisabled}
+            checked={selfChecked}
+          />
+          <input
+            ref={ref}
+            type="checkbox"
+            disabled={isDisabled}
+            checked={selfChecked}
+            onChange={changeHandle}
+            {...props}
+            aria-invalid={error || undefined}
+            aria-describedby={describedBy}
+            className={styles.input}
+          />
+          <span
+            className={styles.text}
+            style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
+          >
+            {children}
+          </span>
+        </label>
+        {error && (
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
+        )}
+      </>
     )
   }
 )

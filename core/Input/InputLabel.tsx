@@ -11,10 +11,12 @@ export interface InputLabel {
 function InputLabel({ children, isRight }: InputLabel) {
   const theme = useTheme()
 
+  const dark = theme.type === 'dark'
+
   const labelStyle: React.CSSProperties = {
     padding: `0 ${theme.layout.gapHalf}`,
-    color: theme.palette.accents_4,
-    backgroundColor: theme.palette.accents_1,
+    color: dark ? theme.palette.accents_7 : theme.palette.accents_4,
+    backgroundColor: dark ? theme.palette.accents_3 : theme.palette.accents_1,
     borderTopLeftRadius: isRight ? 0 : theme.layout.radius,
     borderBottomLeftRadius: isRight ? 0 : theme.layout.radius,
     borderTopRightRadius: isRight ? theme.layout.radius : 0,

@@ -4,6 +4,7 @@ import useClasses from '../use-classes'
 import { MenuContext, MenuListContext, MenuRadioContext } from './MenuContext'
 import styles from './MenuItem.module.css'
 import { getSurface } from '../utils/surface'
+import { mixWithPage } from '../utils/variant-colors'
 
 type ItemType = 'default' | 'error'
 
@@ -101,12 +102,17 @@ export const MenuItemBase = React.forwardRef<
         event.currentTarget.focus()
     }
 
+    const dark = theme.type === 'dark'
     const itemStyle = {
       '--menu-item-color': theme.palette.foreground,
       '--menu-item-focus-bg': getSurface(theme).hover,
       '--menu-item-error-color': theme.palette.error,
-      '--menu-item-error-focus-bg': theme.palette.errorLight,
-      '--menu-item-error-focus-color': theme.palette.errorDark,
+      '--menu-item-error-focus-bg': dark
+        ? mixWithPage(theme.palette, theme.palette.error, 14)
+        : theme.palette.errorLight,
+      '--menu-item-error-focus-color': dark
+        ? theme.palette.error
+        : theme.palette.errorDark,
       '--menu-item-disabled-color': theme.palette.accents_4,
       '--menu-item-shortcut-color': theme.palette.accents_5,
       ...style

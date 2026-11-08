@@ -1,6 +1,10 @@
 import type { CardTypes } from '../utils/prop-types'
 import type { BolioUIThemesPalette } from '../Themes/Presets'
-import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
+import {
+  getVariantColors,
+  isDarkPalette,
+  isSemanticColorType
+} from '../utils/variant-colors'
 
 export type CardStyles = {
   color: string
@@ -34,6 +38,10 @@ export const getStyles = (
     if (filled) {
       const { bg, border, color } = getVariantColors(palette, type, 'filled')
       return { color, bgColor: bg, borderColor: border }
+    }
+    if (isDarkPalette(palette)) {
+      const { bg, color } = getVariantColors(palette, type, 'light')
+      return { color, bgColor: bg, borderColor: 'transparent' }
     }
   }
 

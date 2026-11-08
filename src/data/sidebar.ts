@@ -686,6 +686,11 @@ export const hooks = [
     tag: 'New'
   },
   {
+    name: 'useForm',
+    url: '/docs/hooks/use-form',
+    tag: 'New'
+  },
+  {
     name: 'useInput',
     url: '/docs/hooks/use-input'
   },
@@ -890,5 +895,58 @@ export const hooks = [
   {
     name: 'useShallowEffect',
     url: '/docs/hooks/use-shallow-effect'
+  }
+]
+
+export const form = [
+  {
+    name: 'Form',
+    url: '',
+    icon: 'Edit3'
+  },
+  {
+    name: 'Get started',
+    url: '/docs/form/get-started',
+    tag: 'New'
+  },
+  {
+    name: 'getInputProps',
+    url: '/docs/form/get-input-props',
+    tag: 'New'
+  },
+  {
+    name: 'Form values',
+    url: '/docs/form/values',
+    tag: 'New'
+  },
+  {
+    name: 'Form errors',
+    url: '/docs/form/errors',
+    tag: 'New'
+  },
+  {
+    name: 'Form validation',
+    url: '/docs/form/validation',
+    tag: 'New'
+  },
+  {
+    name: 'Form validators',
+    url: '/docs/form/validators',
+    tag: 'New'
+  },
+  {
+    name: 'Nested fields',
+    url: '/docs/form/nested-fields',
+    tag: 'New'
+  },
+  {
+    name: 'Form status',
+    url: '/docs/form/status',
+    tag: 'New'
+  },
+  {
+    name: 'useForm with all inputs',
+    url: '/docs/form/all-inputs',
+    tag: 'New'
   }
 ]

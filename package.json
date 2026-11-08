@@ -1,6 +1,6 @@
 {
   "name": "@bolio-ui/core",
-  "version": "3.0.5",
+  "version": "3.1.0",
   "description": "Amazing, modern and creative tools for React UI. 🥷🏼",
   "keywords": [
     "bolio",
@@ -92,7 +92,7 @@
     "@storybook/addon-docs": "^10.6",
     "@storybook/react-vite": "^10.6",
     "@testing-library/dom": "^10",
-    "@testing-library/jest-dom": "^6",
+    "@testing-library/jest-dom": "^7",
     "@testing-library/react": "^16",
     "@types/jest": "^30",
     "@types/lodash": "^4.17.26",
@@ -101,7 +101,6 @@
     "@types/react-syntax-highlighter": "^15.5.4",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@vitejs/plugin-react": "^5",
     "axe-core": "^4.3.2",
     "classnames": "^2.3.1",
     "esbuild": "^0.28.1",
@@ -109,7 +108,7 @@
     "eslint-config-prettier": "^10",
     "eslint-plugin-prettier": "^5",
     "eslint-plugin-react": "^7.37",
-    "eslint-plugin-react-hooks": "^5",
+    "eslint-plugin-react-hooks": "^7",
     "globals": "^17.12.0",
     "gray-matter": "^4.0.3",
     "identity-obj-proxy": "^3.0.0",

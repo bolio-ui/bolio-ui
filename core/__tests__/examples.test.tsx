@@ -2,10 +2,11 @@ import React from 'react'
 import { readdirSync, existsSync } from 'fs'
 import { join } from 'path'
 import { render } from '@testing-library/react'
+import axe from 'axe-core'
 import { BolioUIProvider } from '..'
 
 // `bolio-ui add` ships each example.tsx to the user's project, so every one
-// has to render without React warnings
+// has to render without React warnings or accessibility violations
 const root = join(__dirname, '..')
 const names = readdirSync(root).filter((name) =>
   existsSync(join(root, name, 'example.tsx'))
@@ -31,5 +32,10 @@ describe('examples: every example.tsx renders', () => {
     )
     expect(container).toBeTruthy()
     expect(errorSpy.mock.calls.map((call) => String(call[0]))).toEqual([])
+    // colour contrast depends on the theme and jsdom has no layout, so it is not checked here
+    const result = await axe.run(container, {
+      rules: { 'color-contrast': { enabled: false } }
+    })
+    expect(result.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([])
   })
 })

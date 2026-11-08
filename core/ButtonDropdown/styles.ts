@@ -1,5 +1,10 @@
 import type { BolioUIThemesPalette } from '../Themes/Presets'
 import type { NormalTypes } from '../utils/prop-types'
+import {
+  getVariantColors,
+  isDarkPalette,
+  isSemanticColorType
+} from '../utils/variant-colors'
 
 type ButtonDropdownColors = {
   color: string
@@ -84,6 +89,16 @@ export const getColor = (
       hoverBgColor: palette.accents_2,
       hoverBorder: palette.accents_3
     }
+
+  if (type && isSemanticColorType(type) && isDarkPalette(palette)) {
+    const { bg, color } = getVariantColors(palette, type, 'light')
+    return {
+      ...colors[type],
+      color,
+      bgColor: bg,
+      hoverBgColor: bg
+    }
+  }
 
   return type ? colors[type] : colors.default
 }

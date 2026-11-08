@@ -193,6 +193,8 @@ Provides single user input from a selection of options.
 | **value**    | unique ident value (in group) | `string`                                       | -                         | -         |
 | **id**       | native attr                   | `string`                                       | -                         | -         |
 | **disabled** | disable current radio         | `boolean`                                      | -                         | `false`   |
+| **error**    | mark the field as invalid     | `boolean`                                      | -                         | `false`   |
+| **errorMessage** | message below the field       | `string`                                       | -                         | -         |
 | **type**     | current type                  | `RadioTypes`                                   | [RadioTypes](#radiotypes) | `default` |
 | **onChange** | change event                  | `(e: RadioEvent) => void`                      | -                         | -         |
 | **ref**      | forwardRef                    | <Code>Ref&lt;HTMLInputElement &#124; null&gt;</Code> | -                         | -         |
@@ -206,6 +208,8 @@ Provides single user input from a selection of options.
 | **value**        | selected child radio | `string`                  | -                        | -       |
 | **useRow**       | horizontal layout    | `boolean`                 | -                        | `false` |
 | **disabled**     | disable all radios   | `boolean`                 | -                        | `false` |
+| **error**        | mark the group as invalid | `boolean`            | -                        | `false` |
+| **errorMessage** | message below the group   | `string`             | -                        | -       |
 | **onChange**     | change event         | `(value: string) => void` | -                        | -       |
 | ...              | native props         | `HTMLAttributes`          | `'id', 'className', ...` | -       |
 

@@ -30,7 +30,8 @@ const nextConfig = {
       ['/docs', '/docs/guide/getting-started'],
       ['/docs/guide', '/docs/guide/getting-started'],
       ['/docs/components', '/docs/components/overview'],
-      ['/docs/hooks', '/docs/hooks/use-body-scroll']
+      ['/docs/hooks', '/docs/hooks/use-body-scroll'],
+      ['/docs/form', '/docs/form/get-started']
     ].map(([source, destination]) => ({
       source,
       destination,

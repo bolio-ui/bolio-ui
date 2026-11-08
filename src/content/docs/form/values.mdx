@@ -1,0 +1,135 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, Input, Spacer, Text, useForm } from 'core'
+
+export const meta = {
+  title: 'Form values',
+  description: 'Read, change and reset the values of a form.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Form values
+
+`initialValues` sets the first values and the ones `reset` goes back to. `form.values` always holds the current ones.
+
+<Spacer h={2} />
+
+### Change values
+
+`setFieldValue(path, value)` changes one field and `setValues(values)` merges several at once. Both keep the other fields.
+
+<Playground
+  desc="Fill the form from code, then reset it."
+  scope={{ Button, Input, Spacer, Text, useForm }}
+  code={`
+() => {
+  const form = useForm({ initialValues: { name: '', city: '' } })
+  return (
+    <>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={0.5} />
+      <Input width="100%" label="City" {...form.getInputProps('city')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} onClick={() => form.setFieldValue('name', 'Ana')}>Set name</Button>
+      <Button auto scale={1 / 2} ml="10px" onClick={() => form.setValues({ name: 'Bia', city: 'Lisbon' })}>Set both</Button>
+      <Button auto scale={1 / 2} ml="10px" onClick={form.reset}>Reset</Button>
+      <Text>{JSON.stringify(form.values)}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+### Load saved values
+
+`initialize(values)` sets the values and makes them the new initial ones, so the form starts clean and `reset` goes back to them. Use it when the data arrives after the first render, such as a record fetched for editing.
+`onValuesChange` runs after every change, but not after `initialize`.
+
+<Playground
+  desc="Load a record, edit it and watch the changes."
+  scope={{ Button, Input, Spacer, Text, useForm }}
+  code={`
+() => {
+  const [changes, setChanges] = React.useState(0)
+  const form = useForm({
+    initialValues: { name: '' },
+    onValuesChange: () => setChanges((count) => count + 1)
+  })
+  return (
+    <>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} onClick={() => form.initialize({ name: 'Ana' })}>Load record</Button>
+      <Button auto scale={1 / 2} ml="10px" onClick={form.reset}>Reset</Button>
+      <Text>Changes: {changes}. Dirty: {String(form.isDirty())}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+### Reset
+
+`reset()` restores the initial values and clears the errors and the touched state.
+Use `onReset` on the `form` element, or on a reset button, to do the same without calling it yourself.
+
+<Spacer h={2} />
+
+### Submit
+
+`onSubmit(handleValues)` returns the handler for the `form` element. It calls `preventDefault`, validates, and gives `handleValues` the current values.
+
+```tsx
+<form onSubmit={form.onSubmit((values) => save(values))} onReset={form.onReset}>
+```
+
+<Spacer h={2} />
+
+### Transform values
+
+The form keeps what the fields hold, usually text. `transformValues` shapes the values that `onSubmit` hands to your handler, such as a number from a text field. `form.values` stays as it is, and `getTransformedValues()` returns the same result at any time.
+
+<Playground
+  desc="The age is text in the field and a number in the submit."
+  scope={{ Button, Input, Spacer, Text, useForm }}
+  code={`
+() => {
+  const [sent, setSent] = React.useState()
+  const form = useForm({
+    initialValues: { age: '30' },
+    transformValues: (values) => ({ age: Number(values.age) })
+  })
+  return (
+    <form onSubmit={form.onSubmit(setSent)}>
+      <Input width="100%" label="Age" {...form.getInputProps('age')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} htmlType="submit">Send</Button>
+      <Text>{sent ? JSON.stringify(sent) + ' ' + typeof sent.age : 'Not sent yet.'}</Text>
+    </form>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/form/values.mdx">
+<Attributes.Title>Values</Attributes.Title>
+
+| Name                  | Description                                  | Type                                    |
+| --------------------- | -------------------------------------------- | --------------------------------------- |
+| **values**            | current values                               | `Values`                                |
+| **setFieldValue**     | change one field by path                     | `(path: string, value: unknown) => void` |
+| **setValues**         | merge values into the current ones           | `(values: Partial<Values>) => void`     |
+| **initialize**        | set values and make them the initial ones    | `(values: Values) => void`              |
+| **getValues**         | current values, also right after a change    | `() => Values`                          |
+| **getTransformedValues** | the values after `transformValues`         | `() => Transformed`                     |
+| **reset**             | restore the initial values and clear errors  | `() => void`                            |
+| **onReset**           | `reset` as an event handler                  | `(event?: FormEvent) => void`           |
+
+</Attributes>
+
+export default Docs.withMeta(meta)
