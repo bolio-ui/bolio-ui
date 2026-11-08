@@ -72,6 +72,7 @@ The errors of a list go away when you change it, because their positions change.
 | **insertListItem**  | add an item, at the end when there is no index       | `(path: string, item: unknown, index?: number) => void`    |
 | **removeListItem**  | remove the item at the index                         | `(path: string, index: number) => void`                    |
 | **reorderListItem** | move an item from one index to another               | `(path: string, indexes: { from: number; to: number }) => void` |
+| **replaceListItem** | replace the item at the index                        | `(path: string, index: number, item: unknown) => void`     |
 
 </Attributes>
 

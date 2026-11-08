@@ -150,8 +150,12 @@ type useForm = <Values, Transformed = Values>(
   insertListItem: (path: string, item: unknown, index?: number) => void
   removeListItem: (path: string, index: number) => void
   reorderListItem: (path: string, indexes: { from: number; to: number }) => void
+  replaceListItem: (path: string, index: number, item: unknown) => void
   isDirty: (path?: string) => boolean
+  isValid: (path?: string) => boolean
   isTouched: (path?: string) => boolean
+  getTouched: () => Record<string, boolean>
+  setFieldTouched: (path: string, touched?: boolean) => void
 }
 ```
 
@@ -164,6 +168,7 @@ type useForm = <Values, Transformed = Values>(
 | **validateInputOnChange** | validate every field, or only the listed paths, on change | `boolean` \| `string[]`                                        | `false` |
 | **validateInputOnBlur**   | validate every field, or only the listed paths, on blur   | `boolean` \| `string[]`                                        | `false` |
 | **transformValues**       | shapes the values `onSubmit` hands to its handler         | `(values: Values) => Transformed`                              | -       |
+| **clearInputErrorOnChange** | clear the error of a field when it changes              | `boolean`                                                      | `true`  |
 | **onValuesChange**        | called with the new values after every change             | `(values: Values) => void`                                     | -       |
 
 <Attributes.Title>getInputProps</Attributes.Title>

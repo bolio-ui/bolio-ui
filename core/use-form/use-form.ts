@@ -15,6 +15,8 @@ export type UseFormOptions<Values, Transformed = Values> = {
   validateInputOnChange?: boolean | string[]
   /** `true` validates every field on blur, an array only the listed paths. */
   validateInputOnBlur?: boolean | string[]
+  /** `false` keeps a field error while the field changes. */
+  clearInputErrorOnChange?: boolean
   /** Runs after the values change, but not after `initialize`. */
   onValuesChange?: (values: Values) => void
 }
@@ -85,6 +87,7 @@ const useForm = <Values extends Record<string, unknown>, Transformed = Values>({
   validate: rules,
   validateInputOnChange = false,
   validateInputOnBlur = false,
+  clearInputErrorOnChange = true,
   onValuesChange
 }: UseFormOptions<Values, Transformed>) => {
   const [initial, setInitial] = useState(initialValues)
@@ -125,6 +128,14 @@ const useForm = <Values extends Record<string, unknown>, Transformed = Values>({
     return { hasErrors: Object.keys(next).length > 0, errors: next }
   }
 
+  // no errors shown, so it can drive a disabled button
+  const isValid = (path?: string) => {
+    const found = Object.keys(runRules(valuesRef.current))
+    return path
+      ? !found.some((key) => key === path || key.startsWith(`${path}.`))
+      : found.length === 0
+  }
+
   const clearFieldError = (path: string) =>
     setErrorsState((last) => without(last, path))
 
@@ -133,7 +144,7 @@ const useForm = <Values extends Record<string, unknown>, Transformed = Values>({
     commit(next)
     setTouched((last) => ({ ...last, [path]: true }))
     if (shouldCheck(validateInputOnChange, path)) validateField(path, next)
-    else clearFieldError(path)
+    else if (clearInputErrorOnChange) clearFieldError(path)
   }
 
   const editList = (path: string, edit: (list: unknown[]) => unknown[]) => {
@@ -271,8 +282,17 @@ const useForm = <Values extends Record<string, unknown>, Transformed = Values>({
         return list
       }),
     isDirty,
+    isValid,
     isTouched: (path?: string) =>
-      path ? Boolean(touched[path]) : Object.keys(touched).length > 0
+      path ? Boolean(touched[path]) : Object.values(touched).some(Boolean),
+    getTouched: () => touched,
+    setFieldTouched: (path: string, value = true) =>
+      setTouched((last) => ({ ...last, [path]: value })),
+    replaceListItem: (path: string, index: number, item: unknown) =>
+      editList(path, (list) => {
+        list[index] = item
+        return list
+      })
   }
 }
 
