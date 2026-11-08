@@ -11,6 +11,8 @@ export type SelectInputProps = {
   activeDescendant?: string
   ariaLabel?: string
   ariaLabelledby?: string
+  invalid?: boolean
+  describedBy?: string
 }
 
 const SelectInput = React.forwardRef<HTMLInputElement | null, SelectInputProps>(
@@ -23,7 +25,9 @@ const SelectInput = React.forwardRef<HTMLInputElement | null, SelectInputProps>(
       controls,
       activeDescendant,
       ariaLabel,
-      ariaLabelledby
+      ariaLabelledby,
+      invalid,
+      describedBy
     },
     inputRef
   ) => {
@@ -47,6 +51,8 @@ const SelectInput = React.forwardRef<HTMLInputElement | null, SelectInputProps>(
         aria-haspopup="listbox"
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
+        aria-invalid={invalid || undefined}
+        aria-describedby={describedBy}
         readOnly
         unselectable="on"
         aria-expanded={visible}

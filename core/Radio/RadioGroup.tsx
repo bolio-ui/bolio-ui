@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useId, useMemo, useState } from 'react'
 import { RadioContext } from './RadioContext'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
@@ -12,6 +13,8 @@ interface Props {
   onChange?: (value: string | number) => void
   className?: string
   useRow?: boolean
+  error?: boolean
+  errorMessage?: string
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<AnyElement>, keyof Props>
@@ -25,10 +28,13 @@ function RadioGroupComponent({
   className = '',
   initialValue,
   useRow = false,
+  error = false,
+  errorMessage,
   style,
   ...props
 }: React.PropsWithChildren<RadioGroupProps>) {
   const { SCALES } = useScale()
+  const errorId = `${useId()}-error`
 
   const [selfVal, setSelfVal] = useState<string | number | undefined>(
     initialValue
@@ -72,11 +78,18 @@ function RadioGroupComponent({
     <RadioContext.Provider value={providerValue}>
       <div
         className={useClasses(styles.radioGroup, className)}
+        aria-invalid={error || undefined}
+        aria-describedby={error && errorMessage ? errorId : undefined}
         {...props}
         style={groupStyle}
       >
         {children}
       </div>
+      {error && (
+        <InputBlockLabel error={error} id={errorId}>
+          {errorMessage}
+        </InputBlockLabel>
+      )}
     </RadioContext.Provider>
   )
 }

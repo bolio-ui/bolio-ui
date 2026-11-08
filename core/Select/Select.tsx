@@ -111,6 +111,7 @@ const SelectComponent = React.forwardRef<
     const [selectFocus, setSelectFocus] = useState<boolean>(false)
     const [activeValue, setActiveValue] = useState<string | undefined>()
     const listId = useId()
+    const errorId = `${listId}-error`
     const [value, setValue, valueRef] = useCurrentState<
       string | string[] | undefined
     >(() => {
@@ -422,6 +423,8 @@ const SelectComponent = React.forwardRef<
               (typeof placeholder === 'string' ? placeholder : undefined)
             }
             ariaLabelledby={ariaLabelledby}
+            invalid={error}
+            describedBy={error && errorMessage ? errorId : undefined}
             visible={visible}
             onBlur={onInputBlur}
             onFocus={() => setSelectFocus(true)}
@@ -467,7 +470,9 @@ const SelectComponent = React.forwardRef<
           )}
         </div>
         {error && (
-          <InputBlockLabel error={error}>{errorMessage}</InputBlockLabel>
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
         )}
       </SelectContext.Provider>
     )
