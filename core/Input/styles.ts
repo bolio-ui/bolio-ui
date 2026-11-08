@@ -1,6 +1,11 @@
 import type { NormalTypes } from '../utils/prop-types'
 import type { BolioUIThemesPalette } from '../Themes/Presets'
-import { getVariantColors, isSemanticColorType } from '../utils/variant-colors'
+import {
+  getVariantColors,
+  isDarkPalette,
+  isSemanticColorType,
+  mixWithPage
+} from '../utils/variant-colors'
 
 // Single source of colors for every field (Input, Textarea, NumberInput,
 // Select, Combobox, DatePicker).
@@ -108,14 +113,19 @@ export const getColors = (
     }
   }
 
+  const isDark = isDarkPalette(palette)
+  const bgColor = isDark
+    ? mixWithPage(palette, base, 12)
+    : palette[`${status}Light`]
+
   return {
-    color: dark,
-    bgColor: palette[`${status}Light`],
-    borderColor: base,
-    hoverBgColor: palette[`${status}Light`],
+    color: isDark ? base : dark,
+    bgColor,
+    borderColor: isDark ? mixWithPage(palette, base, 55) : base,
+    hoverBgColor: bgColor,
     hoverBorder: base,
-    focusBorder: dark,
+    focusBorder: isDark ? base : dark,
     placeholderColor: palette.accents_6,
-    iconColor: dark
+    iconColor: isDark ? base : dark
   }
 }
