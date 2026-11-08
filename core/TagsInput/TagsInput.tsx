@@ -74,7 +74,7 @@ const TagsInputComponent = React.forwardRef<
       [props['aria-describedby'], error && errorMessage ? errorId : undefined]
         .filter(Boolean)
         .join(' ') || undefined
-    const colors = getColors(theme.palette, type, disabled, {
+    const colors = getColors(theme.palette, error ? 'error' : type, disabled, {
       filled,
       light,
       ghost,
