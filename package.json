@@ -125,7 +125,7 @@
     "react-device-detect": "^1.17.0",
     "react-dom": "^19",
     "react-live": "^2.2.3",
-    "react-syntax-highlighter": "^15.5.0",
+    "react-syntax-highlighter": "^16.1.2",
     "rehype-join-line": "^1.0.2",
     "remark-autolink-headings": "^6.0.1",
     "remark-gfm": "^4.0.1",
