@@ -1030,6 +1030,59 @@
               "path": "/docs/hooks/use-window-scroll.mdx"
             }
           ]
+        },
+        {
+          "title": "Form",
+          "keywords": "form, useForm, validation, errors, values, inputs",
+          "icon": "Edit3",
+          "open": true,
+          "routes": [
+            {
+              "title": "Get started",
+              "keywords": "start, install, basic, useForm, form",
+              "path": "/docs/form/get-started.mdx"
+            },
+            {
+              "title": "getInputProps",
+              "keywords": "getInputProps, bind, field, props, error",
+              "path": "/docs/form/get-input-props.mdx"
+            },
+            {
+              "title": "Form values",
+              "keywords": "values, setFieldValue, setValues, reset, form",
+              "path": "/docs/form/values.mdx"
+            },
+            {
+              "title": "Form errors",
+              "keywords": "errors, setFieldError, setErrors, server, form",
+              "path": "/docs/form/errors.mdx"
+            },
+            {
+              "title": "Form validation",
+              "keywords": "validation, validate, rules, onChange, onBlur, form",
+              "path": "/docs/form/validation.mdx"
+            },
+            {
+              "title": "Form validators",
+              "keywords": "validators, isNotEmpty, isEmail, matches, hasLength, isInRange, matchesField",
+              "path": "/docs/form/validators.mdx"
+            },
+            {
+              "title": "Nested fields",
+              "keywords": "nested, list, path, insertListItem, removeListItem, reorderListItem",
+              "path": "/docs/form/nested-fields.mdx"
+            },
+            {
+              "title": "Form status",
+              "keywords": "status, dirty, touched, submitting, isDirty, isTouched",
+              "path": "/docs/form/status.mdx"
+            },
+            {
+              "title": "useForm with all inputs",
+              "keywords": "all inputs, select, checkbox, radio, slider, date picker, tags input, rating",
+              "path": "/docs/form/all-inputs.mdx"
+            }
+          ]
         }
       ]
     }

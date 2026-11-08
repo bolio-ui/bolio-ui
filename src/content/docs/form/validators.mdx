@@ -1,0 +1,98 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import {
+  Button,
+  Input,
+  NumberInput,
+  Spacer,
+  hasLength,
+  isEmail,
+  isInRange,
+  isNotEmpty,
+  matches,
+  matchesField,
+  useForm
+} from 'core'
+
+export const meta = {
+  title: 'Form validators',
+  description:
+    'Rules that come ready: required, email, pattern, length, range and matching fields.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Form validators
+
+Each validator takes the message to show and returns a rule for `validate`. The rule returns the message when the value is invalid, and `null` when it is fine.
+
+<Spacer h={2} />
+
+### Use the validators
+
+<Playground
+  desc="Submit the empty form to see every message."
+  scope={{
+    Button,
+    Input,
+    NumberInput,
+    Spacer,
+    hasLength,
+    isEmail,
+    isInRange,
+    isNotEmpty,
+    matches,
+    matchesField,
+    useForm
+  }}
+  code={`
+() => {
+  const form = useForm({
+    initialValues: { name: '', email: '', zip: '', age: null, password: '', confirm: '' },
+    validate: {
+      name: isNotEmpty('Enter your name'),
+      email: isEmail('Enter a valid email'),
+      zip: matches(/^\\d{5}$/, 'Use 5 digits'),
+      age: isInRange({ min: 18, max: 120 }, 'Age must be between 18 and 120'),
+      password: hasLength({ min: 8 }, 'Use at least 8 characters'),
+      confirm: matchesField('password', 'The passwords do not match')
+    }
+  })
+  return (
+    <form onSubmit={form.onSubmit(() => {})}>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={0.5} />
+      <Input width="100%" label="Email" {...form.getInputProps('email')} />
+      <Spacer h={0.5} />
+      <Input width="100%" label="Zip" {...form.getInputProps('zip')} />
+      <Spacer h={0.5} />
+      <NumberInput width="100%" aria-label="Age" {...form.getInputProps('age')} />
+      <Spacer h={0.5} />
+      <Input.Password width="100%" label="Password" {...form.getInputProps('password')} />
+      <Spacer h={0.5} />
+      <Input.Password width="100%" label="Confirm" {...form.getInputProps('confirm')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Create account</Button>
+    </form>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/form/validators.mdx">
+<Attributes.Title>Validators</Attributes.Title>
+
+| Validator                            | Fails when                                                  |
+| ------------------------------------ | ----------------------------------------------------------- |
+| **`isNotEmpty(message)`**            | empty string, empty list, `false`, `null` or `undefined`    |
+| **`isEmail(message)`**               | the value is not an email                                   |
+| **`matches(regex, message)`**        | the value is not a string that matches the pattern          |
+| **`hasLength(length, message)`**     | the length is out of `n` or of `{ min, max }`               |
+| **`isInRange({ min, max }, message)`** | the value is not a number inside the range                |
+| **`matchesField(path, message)`**    | the value differs from the field at `path`                  |
+
+Strings are trimmed before `isNotEmpty` and `hasLength` check them.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

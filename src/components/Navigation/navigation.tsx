@@ -30,6 +30,7 @@ const navLinks = [
     base: '/docs/components'
   },
   { label: 'Hooks', href: '/docs/hooks/use-body-scroll', base: '/docs/hooks' },
+  { label: 'Form', href: '/docs/form/get-started', base: '/docs/form' },
   {
     label: 'Theme Generator',
     href: '/theme-generator',

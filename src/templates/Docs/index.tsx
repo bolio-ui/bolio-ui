@@ -17,7 +17,7 @@ import SidebarHeading from 'src/components/SidebarHeading'
 import MadeDesigned from 'src/components/MadeDesigned'
 import NavigationDocs from 'src/components/NavigationDocs'
 import PageActions from 'src/components/PageActions'
-import { guide, components, hooks } from 'src/data/sidebar'
+import { guide, components, hooks, form } from 'src/data/sidebar'
 import styles from './Docs.module.css'
 
 export interface Meta {
@@ -36,7 +36,8 @@ export type DocsTemplateProps = {
 const sidebarItems = {
   guide: guide,
   components: components,
-  hooks: hooks
+  hooks: hooks,
+  form: form
 }
 
 const useIsomorphicLayoutEffect =
@@ -52,7 +53,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   const [headings, setHeadings] = useState<Heading[]>([])
 
-  // The segment after /docs picks the sidebar: guide, components or hooks.
+  // The segment after /docs picks the sidebar: guide, components, hooks or form.
   const sidebar = pathname.split('/')[2]
   const items = sidebarItems[sidebar] ?? []
 

@@ -1,0 +1,78 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, Input, Row, Spacer, Text, isNotEmpty, useForm } from 'core'
+
+export const meta = {
+  title: 'Nested fields',
+  description:
+    'Bind fields inside objects and lists with dot paths, and add, remove and reorder list items.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Nested fields
+
+Every method of `useForm` takes a path. Use dots for objects and numbers for list items: `user.email`, `tags.0.label`.
+Errors use the same flat path, so the error of `tags.0.label` is `form.errors['tags.0.label']`.
+
+<Spacer h={2} />
+
+### Objects
+
+```tsx
+const form = useForm({
+  initialValues: { user: { name: '', email: '' } }
+})
+
+<Input {...form.getInputProps('user.name')} />
+```
+
+<Spacer h={2} />
+
+### Lists
+
+A rule object under a list key runs for every item. Add, remove and reorder items with the list methods.
+The errors of a list go away when you change it, because their positions change.
+
+<Playground
+  desc="Add and remove items. Submit with an empty item to see its error."
+  scope={{ Button, Input, Row, Spacer, Text, isNotEmpty, useForm }}
+  code={`
+() => {
+  const form = useForm({
+    initialValues: { skills: [{ name: 'React' }] },
+    validate: { skills: { name: isNotEmpty('Enter a skill') } }
+  })
+  return (
+    <form onSubmit={form.onSubmit(() => {})}>
+      {form.values.skills.map((_, index) => (
+        <div key={index}>
+          <Row align="top" style={{ gap: 8 }}>
+            <Input width="100%" aria-label={'Skill ' + (index + 1)} {...form.getInputProps('skills.' + index + '.name')} />
+            <Button auto scale={1 / 2} disabled={index === 0} onClick={() => form.reorderListItem('skills', { from: index, to: index - 1 })}>Up</Button>
+            <Button auto scale={1 / 2} onClick={() => form.removeListItem('skills', index)}>Remove</Button>
+          </Row>
+          <Spacer h={0.5} />
+        </div>
+      ))}
+      <Button auto scale={1 / 2} onClick={() => form.insertListItem('skills', { name: '' })}>Add skill</Button>
+      <Button auto scale={1 / 2} ml="10px" type="secondary" htmlType="submit">Save</Button>
+      <Text>{JSON.stringify(form.values.skills)}</Text>
+    </form>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/form/nested-fields.mdx">
+<Attributes.Title>ListMethods</Attributes.Title>
+
+| Name                | Description                                          | Type                                                       |
+| ------------------- | ---------------------------------------------------- | ---------------------------------------------------------- |
+| **insertListItem**  | add an item, at the end when there is no index       | `(path: string, item: unknown, index?: number) => void`    |
+| **removeListItem**  | remove the item at the index                         | `(path: string, index: number) => void`                    |
+| **reorderListItem** | move an item from one index to another               | `(path: string, indexes: { from: number; to: number }) => void` |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

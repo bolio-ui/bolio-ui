@@ -4,4 +4,4 @@ export const dynamic = 'force-static'
 
 // Every docs page in one file, for assistants that load a single document.
 export const GET = () =>
-  textResponse(joinDocs(['guide', 'components', 'hooks']))
+  textResponse(joinDocs(['guide', 'components', 'hooks', 'form']))

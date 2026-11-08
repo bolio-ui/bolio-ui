@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { useTheme, Grid } from 'core'
-import { guide, components, hooks } from 'src/data/sidebar'
+import { guide, components, hooks, form } from 'src/data/sidebar'
 import ActiveLink from '../ActiveLink'
 import ActiveCategory from '../ActiveCategory'
 import styles from './Sidebar.module.css'
@@ -12,7 +12,8 @@ export interface SidebarProps {
 const sidebarItems = {
   guide: guide,
   components: components,
-  hooks: hooks
+  hooks: hooks,
+  form: form
 }
 
 // Each page renders its own Sidebar, so it is created again on every navigation.

@@ -1,0 +1,122 @@
+import Docs from 'src/templates/Docs'
+import { Playground } from 'src/components'
+import {
+  Button,
+  Checkbox,
+  DatePicker,
+  Input,
+  NumberInput,
+  Radio,
+  Rating,
+  SegmentedControl,
+  Select,
+  Slider,
+  Spacer,
+  TagsInput,
+  Text,
+  Textarea,
+  isNotEmpty,
+  useForm
+} from 'core'
+
+export const meta = {
+  title: 'useForm with all inputs',
+  description:
+    'One form that binds Input, Textarea, NumberInput, Select, Checkbox, Radio, Slider, DatePicker, TagsInput, Rating and SegmentedControl.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## useForm with all inputs
+
+<Spacer h={2} />
+
+### Every field in one form
+
+Fields that take a value use the plain `getInputProps(path)`. The checkbox uses `{ type: 'checkbox' }`.
+`Radio.Group` gets its `value` and `onChange` by hand, because it does not show errors.
+
+<Playground
+  desc="Change any field and read the values below."
+  scope={{
+    Button,
+    Checkbox,
+    DatePicker,
+    Input,
+    NumberInput,
+    Radio,
+    Rating,
+    SegmentedControl,
+    Select,
+    Slider,
+    Spacer,
+    TagsInput,
+    Text,
+    Textarea,
+    isNotEmpty,
+    useForm
+  }}
+  code={`
+() => {
+  const form = useForm({
+    initialValues: {
+      name: '',
+      bio: '',
+      seats: 1,
+      plan: 'free',
+      billing: 'monthly',
+      volume: 30,
+      start: null,
+      skills: ['React'],
+      rating: 3,
+      period: 'week',
+      terms: false
+    },
+    validate: {
+      name: isNotEmpty('Enter your name'),
+      terms: isNotEmpty('Accept the terms to continue')
+    }
+  })
+  return (
+    <form onSubmit={form.onSubmit(() => {})} onReset={form.onReset}>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={0.5} />
+      <Textarea width="100%" placeholder="Bio" {...form.getInputProps('bio')} />
+      <Spacer h={0.5} />
+      <NumberInput aria-label="Seats" min={1} {...form.getInputProps('seats')} />
+      <Spacer h={0.5} />
+      <Select width="100%" {...form.getInputProps('plan')}>
+        <Select.Option value="free">Free</Select.Option>
+        <Select.Option value="pro">Pro</Select.Option>
+      </Select>
+      <Spacer h={0.5} />
+      <Radio.Group value={form.values.billing} onChange={(value) => form.setFieldValue('billing', value)}>
+        <Radio value="monthly">Monthly</Radio>
+        <Radio value="yearly">Yearly</Radio>
+      </Radio.Group>
+      <Spacer h={0.5} />
+      <Slider {...form.getInputProps('volume')} />
+      <Spacer h={0.5} />
+      <DatePicker aria-label="Start date" {...form.getInputProps('start')} />
+      <Spacer h={0.5} />
+      <TagsInput aria-label="Skills" placeholder="Add a skill" {...form.getInputProps('skills')} />
+      <Spacer h={0.5} />
+      <Rating {...form.getInputProps('rating')} />
+      <Spacer h={0.5} />
+      <SegmentedControl aria-label="Period" value={form.values.period} onChange={(value) => form.setFieldValue('period', value)}>
+        <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+      </SegmentedControl>
+      <Spacer h={0.5} />
+      <Checkbox {...form.getInputProps('terms', { type: 'checkbox' })}>I accept the terms</Checkbox>
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Save</Button>
+      <Button auto scale={1 / 2} ml="10px" htmlType="reset">Reset</Button>
+      <Text>{JSON.stringify(form.values)}</Text>
+    </form>
+  )
+}
+`}
+/>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,121 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import {
+  Button,
+  Input,
+  Spacer,
+  hasLength,
+  isEmail,
+  isNotEmpty,
+  useForm
+} from 'core'
+
+export const meta = {
+  title: 'Form validation',
+  description:
+    'Write the rules of a form and choose when they run: on submit, on change or on blur.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Form validation
+
+`validate` takes one rule per field. A rule is a function that gets the field value, all the values and the path, and returns the error message or `null`.
+Rules run when the user submits the form or when you call `validate()`.
+
+<Spacer h={2} />
+
+### Rules
+
+Write your own rule or use the [validators](/docs/form/validators) that come ready. The second argument gives access to the other fields.
+
+```tsx
+const form = useForm({
+  initialValues: { password: '', confirm: '' },
+  validate: {
+    password: hasLength({ min: 8 }, 'Use at least 8 characters'),
+    confirm: (value, values) =>
+      value === values.password ? null : 'The passwords do not match'
+  }
+})
+```
+
+<Spacer h={2} />
+
+### One function for all fields
+
+`validate` also accepts a function that gets the values and returns all the errors at once. Use it when the rules depend on each other.
+
+```tsx
+const form = useForm({
+  initialValues: { start: 1, end: 1 },
+  validate: (values) =>
+    values.end < values.start ? { end: 'End must come after start' } : {}
+})
+```
+
+<Spacer h={2} />
+
+### When to validate
+
+By default a field is checked on submit, and its error clears as soon as the user changes it.
+Set `validateInputOnChange` or `validateInputOnBlur` to `true` to check every field while the user fills the form, or to a list of paths to check only those.
+
+<Playground
+  desc="The email is checked on change and the name on blur."
+  scope={{ Button, Input, Spacer, hasLength, isEmail, isNotEmpty, useForm }}
+  code={`
+() => {
+  const form = useForm({
+    initialValues: { name: '', email: '' },
+    validateInputOnChange: ['email'],
+    validateInputOnBlur: ['name'],
+    validate: {
+      name: hasLength({ min: 2 }, 'Use at least 2 letters'),
+      email: isEmail('Enter a valid email')
+    }
+  })
+  return (
+    <form onSubmit={form.onSubmit(() => {})}>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={0.5} />
+      <Input width="100%" label="Email" {...form.getInputProps('email')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Save</Button>
+    </form>
+  )
+}
+`}
+/>
+
+`onBlur` only fires on fields that have it, such as Input and Textarea. The other fields count as touched when their value changes.
+
+<Spacer h={2} />
+
+### Validate from code
+
+`validate()` checks every field and returns `{ hasErrors, errors }`. `validateField(path)` checks one field and returns whether it is valid.
+Use them for steps of a longer form, where each step checks only its own fields.
+
+<Attributes edit="/content/docs/form/validation.mdx">
+<Attributes.Title>Validation</Attributes.Title>
+
+| Name                      | Description                                                 | Type                                                         |
+| ------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| **validate**              | rules by field path, or one function that returns the errors | `Record<string, rule>` \| `(values) => Record<string, string>` |
+| **validateInputOnChange** | check every field, or only the listed paths, on change      | `boolean` \| `string[]`                                      |
+| **validateInputOnBlur**   | check every field, or only the listed paths, on blur        | `boolean` \| `string[]`                                      |
+
+<Attributes.Title>Rule</Attributes.Title>
+
+```ts
+type FormRule = (
+  value: unknown,
+  values: unknown,
+  path: string
+) => string | null | undefined
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

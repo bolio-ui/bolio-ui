@@ -25,7 +25,7 @@ const manifestPaths = (routes: Array<Route>): Array<string> =>
 describe('llms.txt', () => {
   it('links every docs page to its Markdown source', async () => {
     const body = await text(index)
-    ;['guide', 'components', 'hooks'].forEach((section) =>
+    ;['guide', 'components', 'hooks', 'form'].forEach((section) =>
       pages(section).forEach((slug) =>
         expect(body).toContain(`](https://bolio-ui.com/md/${section}/${slug})`)
       )
@@ -103,7 +103,7 @@ describe('sitemap', () => {
     const urls = sitemap().map(({ url }) => url)
     expect(urls).toContain('https://bolio-ui.com')
     expect(urls).toContain('https://bolio-ui.com/docs/guide/mcp-server')
-    ;['guide', 'components', 'hooks'].forEach((section) =>
+    ;['guide', 'components', 'hooks', 'form'].forEach((section) =>
       pages(section).forEach((slug) =>
         expect(urls).toContain(`https://bolio-ui.com/docs/${section}/${slug}`)
       )

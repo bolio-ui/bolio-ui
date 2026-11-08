@@ -49,22 +49,22 @@ This is custom React hooks, you need to follow the <Link target="_blank" color h
   const form = useForm({
     initialValues: { email: '', message: '', terms: false },
     validate: {
-      email: isEmail('Informe um e-mail válido'),
-      message: hasLength({ min: 10 }, 'Escreva ao menos 10 caracteres'),
-      terms: isNotEmpty('Aceite os termos para enviar')
+      email: isEmail('Enter a valid email'),
+      message: hasLength({ min: 10 }, 'Use at least 10 characters'),
+      terms: isNotEmpty('Accept the terms to send')
     }
   })
   return (
     <form onSubmit={form.onSubmit(setSent)} onReset={form.onReset}>
-      <Input width="100%" label="E-mail" {...form.getInputProps('email')} />
+      <Input width="100%" label="Email" {...form.getInputProps('email')} />
       <Spacer h={0.5} />
-      <Textarea width="100%" placeholder="Mensagem" {...form.getInputProps('message')} />
+      <Textarea width="100%" placeholder="Message" {...form.getInputProps('message')} />
       <Spacer h={0.5} />
-      <Checkbox {...form.getInputProps('terms', { type: 'checkbox' })}>Aceito os termos</Checkbox>
+      <Checkbox {...form.getInputProps('terms', { type: 'checkbox' })}>I accept the terms</Checkbox>
       <Spacer h={1} />
-      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Enviar</Button>
-      <Button auto scale={1 / 2} ml="10px" htmlType="reset">Limpar</Button>
-      {sent && <Text>Enviado: {JSON.stringify(sent)}</Text>}
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Send</Button>
+      <Button auto scale={1 / 2} ml="10px" htmlType="reset">Reset</Button>
+      {sent && <Text>Sent: {JSON.stringify(sent)}</Text>}
     </form>
   )
 }
@@ -81,8 +81,8 @@ Use dot paths for nested objects and list items, such as `user.email` or `tags.0
 const form = useForm({
   initialValues: { user: { email: '' }, tags: [{ label: '' }] },
   validate: {
-    user: { email: isEmail('E-mail inválido') },
-    tags: { label: isNotEmpty('Informe a tag') }
+    user: { email: isEmail('Enter a valid email') },
+    tags: { label: isNotEmpty('Enter a tag') }
   }
 })
 
@@ -108,7 +108,7 @@ const form = useForm({
   initialValues: { password: '', confirm: '' },
   validate: {
     confirm: (value, values) =>
-      value === values.password ? null : 'As senhas não conferem'
+      value === values.password ? null : 'The passwords do not match'
   }
 })
 ```
