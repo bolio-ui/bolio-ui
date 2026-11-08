@@ -12,6 +12,7 @@ import {
   useTheme,
   useToasts
 } from 'core'
+import { track } from 'src/utils/gtag'
 import styles from './ThemeGenerator.module.css'
 
 const HEX_PATTERN = /^#[0-9a-fA-F]{6}$/
@@ -518,11 +519,13 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
     url.searchParams.set('primary', primary)
     url.searchParams.set('secondary', secondary)
     copy(url.toString())
+    track('copy_theme', { kind: 'url' })
     setToast({ text: 'Link copied!', type: 'success' })
   }
 
   const copyCode = () => {
     copy(code.join('\n'))
+    track('copy_theme', { kind: 'code' })
     setToast({ text: 'Code copied!', type: 'success' })
   }
 
