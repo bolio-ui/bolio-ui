@@ -124,7 +124,7 @@
     "react": "^19",
     "react-device-detect": "^1.17.0",
     "react-dom": "^19",
-    "react-live": "^2.2.3",
+    "react-live": "^5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-join-line": "^1.0.2",
     "remark-autolink-headings": "^6.0.1",
