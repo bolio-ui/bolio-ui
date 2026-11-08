@@ -6,8 +6,10 @@ export type FormErrors = Record<string, string>
 export type FormRules<Values> =
   Record<string, unknown> | ((values: Values) => FormErrors)
 
-export type UseFormOptions<Values> = {
+export type UseFormOptions<Values, Transformed = Values> = {
   initialValues: Values
+  /** Shapes the values `onSubmit` hands to its handler. */
+  transformValues?: (values: Values) => Transformed
   validate?: FormRules<Values>
   /** `true` validates every field on change, an array only the listed paths. */
   validateInputOnChange?: boolean | string[]
@@ -77,13 +79,14 @@ const without = (errors: FormErrors, path: string) =>
     )
   )
 
-const useForm = <Values extends Record<string, unknown>>({
+const useForm = <Values extends Record<string, unknown>, Transformed = Values>({
   initialValues,
+  transformValues,
   validate: rules,
   validateInputOnChange = false,
   validateInputOnBlur = false,
   onValuesChange
-}: UseFormOptions<Values>) => {
+}: UseFormOptions<Values, Transformed>) => {
   const [initial, setInitial] = useState(initialValues)
   const valuesRef = useRef(initialValues)
   const [values, setValuesState] = useState(initialValues)
@@ -160,9 +163,12 @@ const useForm = <Values extends Record<string, unknown>>({
     setTouched({})
   }
 
+  const getTransformedValues = (current = valuesRef.current) =>
+    (transformValues ? transformValues(current) : current) as Transformed
+
   const onSubmit =
     (
-      handleValues: (values: Values, event?: React.FormEvent) => unknown,
+      handleValues: (values: Transformed, event?: React.FormEvent) => unknown,
       handleErrors?: (errors: FormErrors, values: Values) => void
     ) =>
     async (event?: React.FormEvent) => {
@@ -172,7 +178,7 @@ const useForm = <Values extends Record<string, unknown>>({
         return handleErrors?.(result.errors, valuesRef.current)
       setSubmitting(true)
       try {
-        await handleValues(valuesRef.current, event)
+        await handleValues(getTransformedValues(), event)
       } finally {
         setSubmitting(false)
       }
@@ -235,6 +241,7 @@ const useForm = <Values extends Record<string, unknown>>({
     reset,
     initialize,
     getValues: () => valuesRef.current,
+    getTransformedValues,
     setInitialValues: setInitial,
     resetDirty: (next?: Values) => setInitial(next ?? valuesRef.current),
     resetTouched: () => setTouched({}),
@@ -268,5 +275,10 @@ const useForm = <Values extends Record<string, unknown>>({
       path ? Boolean(touched[path]) : Object.keys(touched).length > 0
   }
 }
+
+export type UseFormReturn<
+  Values extends Record<string, unknown>,
+  Transformed = Values
+> = ReturnType<typeof useForm<Values, Transformed>>
 
 export default useForm

@@ -88,6 +88,34 @@ Use `onReset` on the `form` element, or on a reset button, to do the same withou
 <form onSubmit={form.onSubmit((values) => save(values))} onReset={form.onReset}>
 ```
 
+<Spacer h={2} />
+
+### Transform values
+
+The form keeps what the fields hold, usually text. `transformValues` shapes the values that `onSubmit` hands to your handler, such as a number from a text field. `form.values` stays as it is, and `getTransformedValues()` returns the same result at any time.
+
+<Playground
+  desc="The age is text in the field and a number in the submit."
+  scope={{ Button, Input, Spacer, Text, useForm }}
+  code={`
+() => {
+  const [sent, setSent] = React.useState()
+  const form = useForm({
+    initialValues: { age: '30' },
+    transformValues: (values) => ({ age: Number(values.age) })
+  })
+  return (
+    <form onSubmit={form.onSubmit(setSent)}>
+      <Input width="100%" label="Age" {...form.getInputProps('age')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} htmlType="submit">Send</Button>
+      <Text>{sent ? JSON.stringify(sent) + ' ' + typeof sent.age : 'Not sent yet.'}</Text>
+    </form>
+  )
+}
+`}
+/>
+
 <Attributes edit="/content/docs/form/values.mdx">
 <Attributes.Title>Values</Attributes.Title>
 
@@ -98,6 +126,7 @@ Use `onReset` on the `form` element, or on a reset button, to do the same withou
 | **setValues**         | merge values into the current ones           | `(values: Partial<Values>) => void`     |
 | **initialize**        | set values and make them the initial ones    | `(values: Values) => void`              |
 | **getValues**         | current values, also right after a change    | `() => Values`                          |
+| **getTransformedValues** | the values after `transformValues`         | `() => Transformed`                     |
 | **reset**             | restore the initial values and clear errors  | `() => void`                            |
 | **onReset**           | `reset` as an event handler                  | `(event?: FormEvent) => void`           |
 

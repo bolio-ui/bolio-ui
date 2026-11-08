@@ -117,7 +117,9 @@ const form = useForm({
 <Attributes.Title>useForm</Attributes.Title>
 
 ```ts
-type useForm = <Values>(options: UseFormOptions<Values>) => {
+type useForm = <Values, Transformed = Values>(
+  options: UseFormOptions<Values, Transformed>
+) => {
   values: Values
   errors: Record<string, string>
   submitting: boolean
@@ -126,13 +128,14 @@ type useForm = <Values>(options: UseFormOptions<Values>) => {
     options?: { type?: 'input' | 'checkbox' }
   ) => InputProps
   onSubmit: (
-    handleValues: (values: Values, event?: React.FormEvent) => unknown,
+    handleValues: (values: Transformed, event?: React.FormEvent) => unknown,
     handleErrors?: (errors: Record<string, string>, values: Values) => void
   ) => (event?: React.FormEvent) => Promise<void>
   onReset: (event?: React.FormEvent) => void
   reset: () => void
   initialize: (values: Values) => void
   getValues: () => Values
+  getTransformedValues: () => Transformed
   setInitialValues: (values: Values) => void
   resetDirty: (values?: Values) => void
   resetTouched: () => void
@@ -160,6 +163,7 @@ type useForm = <Values>(options: UseFormOptions<Values>) => {
 | **validate**              | rules by path, or a function that returns all errors      | `Record<string, rule>` \| `(values) => Record<string, string>` | -       |
 | **validateInputOnChange** | validate every field, or only the listed paths, on change | `boolean` \| `string[]`                                        | `false` |
 | **validateInputOnBlur**   | validate every field, or only the listed paths, on blur   | `boolean` \| `string[]`                                        | `false` |
+| **transformValues**       | shapes the values `onSubmit` hands to its handler         | `(values: Values) => Transformed`                              | -       |
 | **onValuesChange**        | called with the new values after every change             | `(values: Values) => void`                                     | -       |
 
 <Attributes.Title>getInputProps</Attributes.Title>
@@ -181,6 +185,13 @@ type useForm = <Values>(options: UseFormOptions<Values>) => {
 | **hasLength(length, message)**       | the length is out of `n` or `{ min, max }`               |
 | `isInRange({ min, max }, message)` | the value is not a number inside the range               |
 | **matchesField(path, message)**      | the value differs from the field at `path`               |
+
+<Attributes.Title>FormProvider</Attributes.Title>
+
+| Name                             | Description                                                      |
+| -------------------------------- | ---------------------------------------------------------------- |
+| **`<FormProvider form={form}>`** | shares the form with every component below it                    |
+| **`useFormContext<Values>()`**   | returns the shared form, and throws outside a `FormProvider`     |
 
 </Attributes>
 

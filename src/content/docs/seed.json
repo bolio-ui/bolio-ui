@@ -5358,6 +5358,12 @@
     "path": "/docs/hooks/use-form#validators"
   },
   {
+    "head": "useForm",
+    "title": "Form Provider",
+    "component": false,
+    "path": "/docs/hooks/use-form#formprovider"
+  },
+  {
     "title": "useFullscreen",
     "component": true,
     "path": "/docs/hooks/use-fullscreen"
@@ -7701,6 +7707,12 @@
   },
   {
     "head": "Get started",
+    "title": "Fields in other components",
+    "component": false,
+    "path": "/docs/form/get-started#fields-in-other-components"
+  },
+  {
+    "head": "Get started",
     "title": "Next steps",
     "component": false,
     "path": "/docs/form/get-started#next-steps"
@@ -7786,6 +7798,12 @@
     "title": "Submit",
     "component": false,
     "path": "/docs/form/values#submit"
+  },
+  {
+    "head": "Form values",
+    "title": "Transform values",
+    "component": false,
+    "path": "/docs/form/values#transform-values"
   },
   {
     "head": "Form values",

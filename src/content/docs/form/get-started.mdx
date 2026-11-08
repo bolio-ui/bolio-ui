@@ -2,13 +2,15 @@ import Docs from 'src/templates/Docs'
 import { Playground } from 'src/components'
 import {
   Button,
+  FormProvider,
   Input,
   Link,
   Spacer,
   Text,
   isEmail,
   isNotEmpty,
-  useForm
+  useForm,
+  useFormContext
 } from 'core'
 
 export const meta = {
@@ -67,6 +69,34 @@ The handler only runs when every rule passes.
 - • `validate` takes one rule per field. A rule returns the message to show, or `null` when the value is fine.
 - • `onSubmit` validates first. It calls your handler with the values, or the optional second handler with the errors.
 - • `reset` goes back to the initial values and clears the errors.
+
+<Spacer h={2} />
+
+### Fields in other components
+
+Wrap the form in `FormProvider` and call `useFormContext()` in any component below it, so the form does not travel through props. Pass the type of the values to keep `getInputProps` and `values` typed.
+
+<Playground
+  desc="The field lives in its own component and reads the form from the context."
+  scope={{ FormProvider, Input, Spacer, Text, useForm, useFormContext }}
+  code={`
+const NameField = () => {
+  const form = useFormContext()
+  return <Input width="100%" label="Name" {...form.getInputProps('name')} />
+}
+
+const Page = () => {
+  const form = useForm({ initialValues: { name: '' } })
+  return (
+    <FormProvider form={form}>
+      <NameField />
+      <Spacer h={0.5} />
+      <Text>Hello, {form.values.name || 'stranger'}.</Text>
+    </FormProvider>
+  )
+}
+`}
+/>
 
 <Spacer h={2} />
 

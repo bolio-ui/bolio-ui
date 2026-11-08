@@ -8,6 +8,7 @@ import {
 } from '@testing-library/react'
 import {
   Checkbox,
+  FormProvider,
   Input,
   Radio,
   Select,
@@ -20,7 +21,8 @@ import {
   isNotEmpty,
   matches,
   matchesField,
-  useForm
+  useForm,
+  useFormContext
 } from 'core'
 
 const setup = (options = {}) =>
@@ -233,6 +235,28 @@ describe('useForm', () => {
     expect(result.current.values.name).toBe('')
   })
 
+  it('hands the transformed values to the submit handler', async () => {
+    const handle = jest.fn()
+    const { result } = renderHook(() =>
+      useForm({
+        initialValues: { age: '30', name: ' Ana ' },
+        transformValues: (values) => ({
+          age: Number(values.age),
+          name: values.name.trim()
+        })
+      })
+    )
+    expect(result.current.getTransformedValues()).toEqual({
+      age: 30,
+      name: 'Ana'
+    })
+    expect(result.current.values.age).toBe('30')
+    await act(async () => {
+      await result.current.onSubmit(handle)()
+    })
+    expect(handle).toHaveBeenCalledWith({ age: 30, name: 'Ana' }, undefined)
+  })
+
   it('builds input props for values, events and checkboxes', () => {
     const { result } = setup()
     act(() =>
@@ -416,5 +440,34 @@ describe('useForm with fields', () => {
         expect.anything()
       )
     )
+  })
+})
+
+describe('FormProvider', () => {
+  const Name = () => {
+    const form = useFormContext<{ name: string }>()
+    return <Input aria-label="name" {...form.getInputProps('name')} />
+  }
+
+  it('shares the form with the fields below it', () => {
+    const Page = () => {
+      const form = useForm({ initialValues: { name: 'Ana' } })
+      return (
+        <FormProvider form={form}>
+          <Name />
+          <span>{form.values.name}</span>
+        </FormProvider>
+      )
+    }
+    render(<Page />)
+    fireEvent.change(screen.getByLabelText('name'), {
+      target: { value: 'Bia' }
+    })
+    expect(screen.getByText('Bia')).toBeInTheDocument()
+  })
+
+  it('throws outside the provider', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+    expect(() => render(<Name />)).toThrow('inside FormProvider')
   })
 })
