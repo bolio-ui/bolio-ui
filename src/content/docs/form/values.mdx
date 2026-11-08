@@ -43,6 +43,36 @@ export const meta = {
 
 <Spacer h={2} />
 
+### Load saved values
+
+`initialize(values)` sets the values and makes them the new initial ones, so the form starts clean and `reset` goes back to them. Use it when the data arrives after the first render, such as a record fetched for editing.
+`onValuesChange` runs after every change, but not after `initialize`.
+
+<Playground
+  desc="Load a record, edit it and watch the changes."
+  scope={{ Button, Input, Spacer, Text, useForm }}
+  code={`
+() => {
+  const [changes, setChanges] = React.useState(0)
+  const form = useForm({
+    initialValues: { name: '' },
+    onValuesChange: () => setChanges((count) => count + 1)
+  })
+  return (
+    <>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} onClick={() => form.initialize({ name: 'Ana' })}>Load record</Button>
+      <Button auto scale={1 / 2} ml="10px" onClick={form.reset}>Reset</Button>
+      <Text>Changes: {changes}. Dirty: {String(form.isDirty())}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
 ### Reset
 
 `reset()` restores the initial values and clears the errors and the touched state.
@@ -66,6 +96,8 @@ Use `onReset` on the `form` element, or on a reset button, to do the same withou
 | **values**            | current values                               | `Values`                                |
 | **setFieldValue**     | change one field by path                     | `(path: string, value: unknown) => void` |
 | **setValues**         | merge values into the current ones           | `(values: Partial<Values>) => void`     |
+| **initialize**        | set values and make them the initial ones    | `(values: Values) => void`              |
+| **getValues**         | current values, also right after a change    | `() => Values`                          |
 | **reset**             | restore the initial values and clear errors  | `() => void`                            |
 | **onReset**           | `reset` as an event handler                  | `(event?: FormEvent) => void`           |
 

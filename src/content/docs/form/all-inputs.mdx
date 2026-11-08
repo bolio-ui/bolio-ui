@@ -34,7 +34,7 @@ export const meta = {
 ### Every field in one form
 
 Fields that take a value use the plain `getInputProps(path)`. The checkbox uses `{ type: 'checkbox' }`.
-`Radio.Group` gets its `value` and `onChange` by hand, because it does not show errors.
+`SegmentedControl` gets its `value` and `onChange` by hand, because it does not show errors.
 
 <Playground
   desc="Change any field and read the values below."
@@ -90,7 +90,7 @@ Fields that take a value use the plain `getInputProps(path)`. The checkbox uses 
         <Select.Option value="pro">Pro</Select.Option>
       </Select>
       <Spacer h={0.5} />
-      <Radio.Group value={form.values.billing} onChange={(value) => form.setFieldValue('billing', value)}>
+      <Radio.Group {...form.getInputProps('billing')}>
         <Radio value="monthly">Monthly</Radio>
         <Radio value="yearly">Yearly</Radio>
       </Radio.Group>

@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   useMemo,
+  useId,
   useRef,
   useState
 } from 'react'
@@ -11,6 +12,7 @@ import useTheme from '../use-theme'
 import type { DraggingEvent } from '../utils/use-drag'
 import useDrag from '../utils/use-drag'
 import useCurrentState from '../utils/use-current-state'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import SliderDot from './SliderDot'
 import SliderMark from './SliderMark'
 import { getColors } from './styles'
@@ -30,6 +32,8 @@ interface Props {
   max?: number
   min?: number
   disabled?: boolean
+  error?: boolean
+  errorMessage?: string
   showMarkers?: boolean
   onChange?: (val: number) => void
   className?: string
@@ -72,6 +76,8 @@ const SliderComponent = React.forwardRef<
     {
       hideValue = false,
       disabled = false,
+      error = false,
+      errorMessage,
       type = 'default' as SliderTypes,
       step = 1,
       max = 100,
@@ -83,6 +89,7 @@ const SliderComponent = React.forwardRef<
       showMarkers = false,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       style,
       ...props
     },
@@ -90,6 +97,11 @@ const SliderComponent = React.forwardRef<
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const errorId = `${useId()}-error`
+    const describedBy =
+      [ariaDescribedby, error && errorMessage ? errorId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined
     const [value, setValue] = useState<number>(initialValue)
     const [, setSliderWidth, sideWidthRef] = useCurrentState<number>(0)
     const [, setLastDargOffset, lastDargOffsetRef] = useCurrentState<number>(0)
@@ -126,8 +138,8 @@ const SliderComponent = React.forwardRef<
     )
 
     const { bg } = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
+      () => getColors(theme.palette, error ? 'error' : type),
+      [theme.palette, type, error]
     )
 
     const dragHandler = (event: DraggingEvent) => {
@@ -209,32 +221,41 @@ const SliderComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <div
-        className={useClasses(styles.slider, className)}
-        onClick={clickHandler}
-        ref={sliderRef}
-        {...props}
-        style={sliderStyle}
-      >
-        <SliderDot
-          disabled={disabled}
-          ref={dotRef}
-          isClick={isClick}
-          left={currentRatio}
-          role="slider"
-          tabIndex={disabled ? -1 : 0}
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledby}
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={value}
-          aria-disabled={disabled || undefined}
-          onKeyDown={keyDownHandler}
+      <>
+        <div
+          className={useClasses(styles.slider, className)}
+          onClick={clickHandler}
+          ref={sliderRef}
+          {...props}
+          style={sliderStyle}
         >
-          {hideValue || value}
-        </SliderDot>
-        {showMarkers && <SliderMark max={max} min={min} step={step} />}
-      </div>
+          <SliderDot
+            disabled={disabled}
+            ref={dotRef}
+            isClick={isClick}
+            left={currentRatio}
+            role="slider"
+            tabIndex={disabled ? -1 : 0}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
+            aria-invalid={error || undefined}
+            aria-describedby={describedBy}
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-valuenow={value}
+            aria-disabled={disabled || undefined}
+            onKeyDown={keyDownHandler}
+          >
+            {hideValue || value}
+          </SliderDot>
+          {showMarkers && <SliderMark max={max} min={min} step={step} />}
+        </div>
+        {error && (
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
+        )}
+      </>
     )
   }
 )

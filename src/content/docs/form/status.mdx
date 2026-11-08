@@ -17,7 +17,7 @@ export const meta = {
 ### Dirty and touched
 
 A field is dirty when its value differs from the initial one. It is touched after the user changes it or leaves it.
-Call `isDirty()` or `isTouched()` for the whole form, or pass a path for one field. `reset()` clears both.
+Call `isDirty()` or `isTouched()` for the whole form, or pass a path for one field. `reset()` clears both. `resetDirty()` makes the current values the initial ones, or the ones you pass, and `resetTouched()` clears only the touched state.
 
 <Playground
   desc="Type in the field, then clear it back to the first value."
@@ -77,6 +77,9 @@ Use it to disable the button and avoid a second submit.
 | -------------- | ------------------------------------------------------- | ------------------------------ |
 | **isDirty**    | a field, or any field, differs from the initial values  | `(path?: string) => boolean`   |
 | **isTouched**  | a field, or any field, was changed or left              | `(path?: string) => boolean`   |
+| **resetDirty** | make the current values, or the given ones, the initial ones | `(values?: Values) => void` |
+| **setInitialValues** | change the initial values without touching the current ones | `(values: Values) => void` |
+| **resetTouched** | clear the touched state of every field                | `() => void`                   |
 | **submitting** | the handler of `onSubmit` is still running              | `boolean`                      |
 
 </Attributes>

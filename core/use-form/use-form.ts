@@ -13,6 +13,8 @@ export type UseFormOptions<Values> = {
   validateInputOnChange?: boolean | string[]
   /** `true` validates every field on blur, an array only the listed paths. */
   validateInputOnBlur?: boolean | string[]
+  /** Runs after the values change, but not after `initialize`. */
+  onValuesChange?: (values: Values) => void
 }
 
 export type GetInputPropsOptions = { type?: 'input' | 'checkbox' }
@@ -79,18 +81,20 @@ const useForm = <Values extends Record<string, unknown>>({
   initialValues,
   validate: rules,
   validateInputOnChange = false,
-  validateInputOnBlur = false
+  validateInputOnBlur = false,
+  onValuesChange
 }: UseFormOptions<Values>) => {
-  const initialRef = useRef(initialValues)
+  const [initial, setInitial] = useState(initialValues)
   const valuesRef = useRef(initialValues)
   const [values, setValuesState] = useState(initialValues)
   const [errors, setErrorsState] = useState<FormErrors>({})
   const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [submitting, setSubmitting] = useState(false)
 
-  const commit = (next: Values) => {
+  const commit = (next: Values, notify = true) => {
     valuesRef.current = next
     setValuesState(next)
+    if (notify) onValuesChange?.(next)
   }
 
   const runRules = (current: Values): FormErrors => {
@@ -139,12 +143,19 @@ const useForm = <Values extends Record<string, unknown>>({
     const same = (a: unknown, b: unknown) =>
       JSON.stringify(a) === JSON.stringify(b)
     return path
-      ? !same(getPath(values, path), getPath(initialRef.current, path))
-      : !same(values, initialRef.current)
+      ? !same(getPath(values, path), getPath(initial, path))
+      : !same(values, initial)
   }
 
   const reset = () => {
-    commit(initialRef.current)
+    commit(initial)
+    setErrorsState({})
+    setTouched({})
+  }
+
+  const initialize = (next: Values) => {
+    setInitial(next)
+    commit(next, false)
     setErrorsState({})
     setTouched({})
   }
@@ -222,6 +233,11 @@ const useForm = <Values extends Record<string, unknown>>({
       reset()
     },
     reset,
+    initialize,
+    getValues: () => valuesRef.current,
+    setInitialValues: setInitial,
+    resetDirty: (next?: Values) => setInitial(next ?? valuesRef.current),
+    resetTouched: () => setTouched({}),
     validate,
     validateField,
     setFieldValue,

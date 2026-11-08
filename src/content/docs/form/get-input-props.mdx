@@ -26,11 +26,11 @@ export const meta = {
 
 ### Fields that receive a value
 
-Most fields take `value` and call `onChange` with the new value: Select, Slider, NumberInput, DatePicker, TagsInput, Rating and others. `Radio.Group` also takes `value` and `onChange`.
+Most fields take `value` and call `onChange` with the new value: Select, Slider, NumberInput, DatePicker, TagsInput, Rating, Radio.Group and others.
 Input and Textarea call `onChange` with the event, and `getInputProps` reads `event.target.value` for you.
 
 <Playground
-  desc="Select and Slider take the spread. Radio.Group gets its value and handler."
+  desc="Select, Radio.Group and Slider take the spread."
   scope={{ Radio, Select, Slider, Spacer, Text, useForm }}
   code={`
 () => {
@@ -44,10 +44,7 @@ Input and Textarea call `onChange` with the event, and `getInputProps` reads `ev
         <Select.Option value="pro">Pro</Select.Option>
       </Select>
       <Spacer h={1} />
-      <Radio.Group
-        value={form.values.size}
-        onChange={(value) => form.setFieldValue('size', value)}
-      >
+      <Radio.Group {...form.getInputProps('size')}>
         <Radio value="s">Small</Radio>
         <Radio value="m">Medium</Radio>
       </Radio.Group>
@@ -90,9 +87,8 @@ A checkbox has no `value`, it has `checked`. Pass `{ type: 'checkbox' }` and `ge
 
 ### Showing the error
 
-While a field has an error, `getInputProps` also returns `error` and `errorMessage`. Input, Textarea, NumberInput, TagsInput, Select, Checkbox and Radio show them.
-On other fields, pass only `value` and `onChange`, or the extra props reach the DOM as unknown attributes.
-`Radio.Group` is one of them, so set its `value` and `onChange` yourself.
+While a field has an error, `getInputProps` also returns `error` and `errorMessage`. Input, Textarea, NumberInput, TagsInput, Select, Checkbox, Radio, Radio.Group, Toggle and Slider show them.
+On other fields, such as SegmentedControl, pass only `value` and `onChange`, or the extra props reach the DOM as unknown attributes.
 
 <Attributes edit="/content/docs/form/get-input-props.mdx">
 <Attributes.Title>getInputProps</Attributes.Title>

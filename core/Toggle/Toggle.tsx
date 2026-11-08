@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useId, useMemo, useState } from 'react'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import useTheme from '../use-theme'
 import type { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
@@ -24,6 +25,8 @@ interface Props {
   onChange?: (ev: ToggleEvent) => void
   disabled?: boolean
   type?: ToggleTypes
+  error?: boolean
+  errorMessage?: string
   icon?: React.ReactNode
   checkedIcon?: React.ReactNode
   className?: string
@@ -48,11 +51,14 @@ const ToggleComponent = React.forwardRef<
       disabled = false,
       onChange,
       type = 'default' as ToggleTypes,
+      error = false,
+      errorMessage,
       icon,
       checkedIcon,
       className = '',
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       style,
       ...props
     },
@@ -60,6 +66,11 @@ const ToggleComponent = React.forwardRef<
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const errorId = `${useId()}-error`
+    const describedBy =
+      [ariaDescribedby, error && errorMessage ? errorId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined
     const [selfChecked, setSelfChecked] = useState<boolean>(initialChecked)
     const classes = useClasses(styles.toggle, {
       [styles.checked]: selfChecked,
@@ -85,8 +96,8 @@ const ToggleComponent = React.forwardRef<
     )
 
     const { bg } = useMemo(
-      () => getColors(theme.palette, type),
-      [theme.palette, type]
+      () => getColors(theme.palette, error ? 'error' : type),
+      [theme.palette, type, error]
     )
 
     useEffect(() => {
@@ -116,28 +127,37 @@ const ToggleComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <label
-        className={`${styles.label} ${className}`.trim()}
-        {...props}
-        style={labelStyle}
-      >
-        <input
-          ref={ref}
-          type="checkbox"
-          role="switch"
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledby}
-          disabled={disabled}
-          checked={selfChecked}
-          onChange={changeHandle}
-          className={styles.input}
-        />
-        <div className={classes}>
-          <span className={styles.inner}>
-            {selfChecked ? (checkedIcon ?? icon) : icon}
-          </span>
-        </div>
-      </label>
+      <>
+        <label
+          className={`${styles.label} ${className}`.trim()}
+          {...props}
+          style={labelStyle}
+        >
+          <input
+            ref={ref}
+            type="checkbox"
+            role="switch"
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
+            aria-invalid={error || undefined}
+            aria-describedby={describedBy}
+            disabled={disabled}
+            checked={selfChecked}
+            onChange={changeHandle}
+            className={styles.input}
+          />
+          <div className={classes}>
+            <span className={styles.inner}>
+              {selfChecked ? (checkedIcon ?? icon) : icon}
+            </span>
+          </div>
+        </label>
+        {error && (
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
+        )}
+      </>
     )
   }
 )

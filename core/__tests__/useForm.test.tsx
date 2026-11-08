@@ -11,7 +11,9 @@ import {
   Input,
   Radio,
   Select,
+  Slider,
   Textarea,
+  Toggle,
   hasLength,
   isEmail,
   isInRange,
@@ -196,6 +198,41 @@ describe('useForm', () => {
     expect(result.current.errors).toEqual({})
   })
 
+  it('calls onValuesChange on edits, not on initialize', () => {
+    const onValuesChange = jest.fn()
+    const { result } = setup({ onValuesChange })
+    act(() => result.current.setFieldValue('name', 'Ana'))
+    expect(onValuesChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ name: 'Ana' })
+    )
+    act(() => result.current.insertListItem('tags', { label: 'b' }))
+    expect(onValuesChange).toHaveBeenCalledTimes(2)
+    act(() =>
+      result.current.initialize({ ...result.current.values, name: 'Bia' })
+    )
+    expect(onValuesChange).toHaveBeenCalledTimes(2)
+    expect(result.current.values.name).toBe('Bia')
+    expect(result.current.isDirty()).toBe(false)
+  })
+
+  it('moves the initial values and the touched state', () => {
+    const { result } = setup()
+    act(() => result.current.setFieldValue('name', 'Ana'))
+    expect(result.current.getValues().name).toBe('Ana')
+    expect(result.current.isDirty()).toBe(true)
+    act(() => result.current.resetDirty())
+    expect(result.current.isDirty()).toBe(false)
+    expect(result.current.isTouched('name')).toBe(true)
+    act(() => result.current.resetTouched())
+    expect(result.current.isTouched()).toBe(false)
+    act(() =>
+      result.current.setInitialValues({ ...result.current.values, name: '' })
+    )
+    expect(result.current.isDirty('name')).toBe(true)
+    act(() => result.current.reset())
+    expect(result.current.values.name).toBe('')
+  })
+
   it('builds input props for values, events and checkboxes', () => {
     const { result } = setup()
     act(() =>
@@ -299,6 +336,34 @@ describe('error on form fields', () => {
       'aria-describedby',
       expect.stringContaining('-error')
     )
+  })
+
+  it('marks Select, Toggle, Slider and Radio.Group as invalid', () => {
+    render(
+      <>
+        <Select error errorMessage="Erro select" aria-label="s" />
+        <Toggle error errorMessage="Erro toggle" aria-label="tg" />
+        <Slider error errorMessage="Erro slider" aria-label="sl" />
+        <Radio.Group error errorMessage="Erro grupo" data-testid="g">
+          <Radio value="1">r</Radio>
+        </Radio.Group>
+      </>
+    )
+    ;['select', 'toggle', 'slider', 'grupo'].forEach((name) =>
+      expect(screen.getByText(`Erro ${name}`)).toBeInTheDocument()
+    )
+    ;[
+      screen.getByRole('combobox'),
+      screen.getByRole('switch'),
+      screen.getByRole('slider'),
+      screen.getByTestId('g')
+    ].forEach((element) => {
+      expect(element).toHaveAttribute('aria-invalid', 'true')
+      expect(element).toHaveAttribute(
+        'aria-describedby',
+        expect.stringContaining('-error')
+      )
+    })
   })
 
   it('shows nothing without the error prop', () => {
