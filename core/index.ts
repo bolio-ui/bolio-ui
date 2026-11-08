@@ -331,6 +331,8 @@ export { default as useEyeDropper } from './use-eye-dropper'
 export { default as useFavicon } from './use-favicon'
 export {
   default as useForm,
+  FormProvider,
+  useFormContext,
   hasLength,
   isEmail,
   isInRange,
@@ -345,6 +347,7 @@ export type {
   FormRules,
   GetInputPropsOptions,
   UseFormOptions,
+  UseFormReturn,
   ValueFieldProps
 } from './use-form'
 export { default as useFetch } from './use-fetch'
