@@ -1,0 +1,181 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import {
+  Link,
+  Text,
+  Input,
+  Textarea,
+  Checkbox,
+  Button,
+  Spacer,
+  useForm,
+  isEmail,
+  hasLength,
+  isNotEmpty
+} from 'core'
+
+export const meta = {
+  title: 'useForm',
+  description:
+    'Manage the values, errors and submit of a form, and bind them to Bolio UI fields with getInputProps.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 90
+}
+
+## useForm
+
+Manage the values, errors and submit of a form, and bind them to Bolio UI fields with `getInputProps`.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Errors show on submit and clear as the user fixes each field."
+  scope={{
+    Text,
+    Input,
+    Textarea,
+    Checkbox,
+    Button,
+    Spacer,
+    useForm,
+    isEmail,
+    hasLength,
+    isNotEmpty
+  }}
+  code={`
+() => {
+  const [sent, setSent] = React.useState(null)
+  const form = useForm({
+    initialValues: { email: '', message: '', terms: false },
+    validate: {
+      email: isEmail('Informe um e-mail válido'),
+      message: hasLength({ min: 10 }, 'Escreva ao menos 10 caracteres'),
+      terms: isNotEmpty('Aceite os termos para enviar')
+    }
+  })
+  return (
+    <form onSubmit={form.onSubmit(setSent)} onReset={form.onReset}>
+      <Input width="100%" label="E-mail" {...form.getInputProps('email')} />
+      <Spacer h={0.5} />
+      <Textarea width="100%" placeholder="Mensagem" {...form.getInputProps('message')} />
+      <Spacer h={0.5} />
+      <Checkbox {...form.getInputProps('terms', { type: 'checkbox' })}>Aceito os termos</Checkbox>
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Enviar</Button>
+      <Button auto scale={1 / 2} ml="10px" htmlType="reset">Limpar</Button>
+      {sent && <Text>Enviado: {JSON.stringify(sent)}</Text>}
+    </form>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+### Nested fields and lists
+
+Use dot paths for nested objects and list items, such as `user.email` or `tags.0.label`. Errors use the same flat keys. A rule object under a list key runs for every item.
+
+```tsx
+const form = useForm({
+  initialValues: { user: { email: '' }, tags: [{ label: '' }] },
+  validate: {
+    user: { email: isEmail('E-mail inválido') },
+    tags: { label: isNotEmpty('Informe a tag') }
+  }
+})
+
+form.getInputProps('tags.0.label')
+form.insertListItem('tags', { label: '' })
+form.removeListItem('tags', 0)
+```
+
+<Spacer h={2} />
+
+### When to validate
+
+Rules run on submit or when you call `validate()`. Pass `validateInputOnChange` or `validateInputOnBlur` as `true`, or as a list of paths, to validate while the user fills the form. Without them, an error clears as soon as its field changes.
+
+<Spacer h={2} />
+
+### Custom validation
+
+A rule is a function that receives the field value, all values and the path, and returns the error message or `null`. `validate` also accepts one function that returns all errors at once.
+
+```tsx
+const form = useForm({
+  initialValues: { password: '', confirm: '' },
+  validate: {
+    confirm: (value, values) =>
+      value === values.password ? null : 'As senhas não conferem'
+  }
+})
+```
+
+<Attributes edit="/content/docs/hooks/use-form.mdx">
+<Attributes.Title>useForm</Attributes.Title>
+
+```ts
+type useForm = <Values>(options: UseFormOptions<Values>) => {
+  values: Values
+  errors: Record<string, string>
+  submitting: boolean
+  getInputProps: (
+    path: string,
+    options?: { type?: 'input' | 'checkbox' }
+  ) => InputProps
+  onSubmit: (
+    handleValues: (values: Values, event?: React.FormEvent) => unknown,
+    handleErrors?: (errors: Record<string, string>, values: Values) => void
+  ) => (event?: React.FormEvent) => Promise<void>
+  onReset: (event?: React.FormEvent) => void
+  reset: () => void
+  validate: () => { hasErrors: boolean; errors: Record<string, string> }
+  validateField: (path: string) => boolean
+  setFieldValue: (path: string, value: unknown) => void
+  setValues: (values: Partial<Values>) => void
+  setErrors: (errors: Record<string, string>) => void
+  setFieldError: (path: string, message: string) => void
+  clearErrors: () => void
+  clearFieldError: (path: string) => void
+  insertListItem: (path: string, item: unknown, index?: number) => void
+  removeListItem: (path: string, index: number) => void
+  reorderListItem: (path: string, indexes: { from: number; to: number }) => void
+  isDirty: (path?: string) => boolean
+  isTouched: (path?: string) => boolean
+}
+```
+
+<Attributes.Title>UseFormOptions</Attributes.Title>
+
+| Option                    | Description                                               | Type                                                           | Default |
+| ------------------------- | --------------------------------------------------------- | -------------------------------------------------------------- | ------- |
+| **initialValues**         | values of the form, also the base for `reset`/`isDirty`   | `Values`                                                       | -       |
+| **validate**              | rules by path, or a function that returns all errors      | `Record<string, rule>` \| `(values) => Record<string, string>` | -       |
+| **validateInputOnChange** | validate every field, or only the listed paths, on change | `boolean` \| `string[]`                                        | `false` |
+| **validateInputOnBlur**   | validate every field, or only the listed paths, on blur   | `boolean` \| `string[]`                                        | `false` |
+
+<Attributes.Title>getInputProps</Attributes.Title>
+
+| Type             | Returns                                                     | Use with                                                                                       |
+| ---------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **`'input'`**    | `value`, `onChange`, `onBlur` (+ `error`, `errorMessage`)   | Input, Textarea, NumberInput, Select, Combobox, Slider, DatePicker, TagsInput and other fields |
+| **`'checkbox'`** | `checked`, `onChange`, `onBlur` (+ `error`, `errorMessage`) | Checkbox                                                                                       |
+
+`error` and `errorMessage` only come back while the field has an error. Spread them on fields that accept both: Input, Textarea, NumberInput, TagsInput, Select, Checkbox and Radio. `onBlur` only fires on fields that have it, such as Input and Textarea, so the other fields count as touched once their value changes.
+
+<Attributes.Title>Validators</Attributes.Title>
+
+| Validator                            | Fails when                                               |
+| ------------------------------------ | -------------------------------------------------------- |
+| **isNotEmpty(message)**              | empty string, empty list, `false`, `null` or `undefined` |
+| **isEmail(message)**                 | the value is not an e-mail                               |
+| **matches(regex, message)**          | the value is not a string that matches the pattern       |
+| **hasLength(length, message)**       | the length is out of `n` or `{ min, max }`               |
+| **isInRange({ min, max }, message)** | the value is not a number inside the range               |
+| **matchesField(path, message)**      | the value differs from the field at `path`               |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

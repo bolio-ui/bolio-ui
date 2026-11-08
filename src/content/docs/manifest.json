@@ -715,6 +715,11 @@
               "path": "/docs/hooks/use-force-update.mdx"
             },
             {
+              "title": "useForm",
+              "keywords": "useForm",
+              "path": "/docs/hooks/use-form.mdx"
+            },
+            {
               "title": "useFullscreen",
               "keywords": "useFullscreen",
               "path": "/docs/hooks/use-fullscreen.mdx"

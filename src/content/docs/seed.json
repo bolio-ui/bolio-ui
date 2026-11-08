@@ -5305,6 +5305,41 @@
     "path": "/docs/hooks/use-force-update#apis"
   },
   {
+    "title": "useForm",
+    "component": true,
+    "path": "/docs/hooks/use-form"
+  },
+  {
+    "head": "useForm",
+    "title": "useForm General",
+    "component": false,
+    "path": "/docs/hooks/use-form#general"
+  },
+  {
+    "head": "useForm",
+    "title": "Nested fields and lists",
+    "component": false,
+    "path": "/docs/hooks/use-form#nested-fields-and-lists"
+  },
+  {
+    "head": "useForm",
+    "title": "When to validate",
+    "component": false,
+    "path": "/docs/hooks/use-form#when-to-validate"
+  },
+  {
+    "head": "useForm",
+    "title": "Custom validation",
+    "component": false,
+    "path": "/docs/hooks/use-form#custom-validation"
+  },
+  {
+    "head": "useForm",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-form#apis"
+  },
+  {
     "title": "useFullscreen",
     "component": true,
     "path": "/docs/hooks/use-fullscreen"

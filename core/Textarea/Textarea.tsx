@@ -1,4 +1,5 @@
 import React, {
+  useId,
   useRef,
   useImperativeHandle,
   useEffect,
@@ -8,6 +9,7 @@ import React, {
 import useTheme from '../use-theme'
 import type { NormalTypes } from '../utils/prop-types'
 import { getColors } from '../Input/styles'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
@@ -33,6 +35,8 @@ interface Props {
   light?: boolean
   ghost?: boolean
   subtle?: boolean
+  error?: boolean
+  errorMessage?: string
 }
 
 type NativeAttrs = Omit<React.TextareaHTMLAttributes<AnyElement>, keyof Props>
@@ -60,6 +64,8 @@ const TextareaComponent = React.forwardRef<
       light = false,
       ghost = false,
       subtle = false,
+      error = false,
+      errorMessage,
       ...props
     }: React.PropsWithChildren<TextareaProps>,
     ref: React.Ref<HTMLTextAreaElement | null>
@@ -71,16 +77,22 @@ const TextareaComponent = React.forwardRef<
     const isControlledComponent = useMemo(() => value !== undefined, [value])
     const [selfValue, setSelfValue] = useState<string>(initialValue)
     const [hover, setHover] = useState<boolean>(false)
+    const generatedId = useId()
+    const errorId = `${props.id || generatedId}-error`
+    const describedBy =
+      [props['aria-describedby'], error && errorMessage ? errorId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined
 
     const colors = useMemo(
       () =>
-        getColors(theme.palette, type, disabled, {
+        getColors(theme.palette, error ? 'error' : type, disabled, {
           filled,
           light,
           ghost,
           subtle
         }),
-      [theme.palette, type, disabled, filled, light, ghost, subtle]
+      [theme.palette, type, error, disabled, filled, light, ghost, subtle]
     )
 
     const classes = useClasses(
@@ -140,23 +152,32 @@ const TextareaComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <div className={classes} style={wrapperStyle}>
-        <textarea
-          ref={textareaRef}
-          disabled={disabled}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          onFocus={focusHandler}
-          onBlur={blurHandler}
-          onChange={changeHandler}
-          {...textareaProps}
-          className={styles.textarea}
-          style={{
-            padding: `${SCALES.pt(0.5)} ${SCALES.pr(0.5)} ${SCALES.pb(0.5)} ${SCALES.pl(0.5)}`,
-            ...(textareaProps as { style?: React.CSSProperties }).style
-          }}
-        />
-      </div>
+      <>
+        <div className={classes} style={wrapperStyle}>
+          <textarea
+            ref={textareaRef}
+            disabled={disabled}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            onFocus={focusHandler}
+            onBlur={blurHandler}
+            onChange={changeHandler}
+            {...textareaProps}
+            aria-invalid={error || undefined}
+            aria-describedby={describedBy}
+            className={styles.textarea}
+            style={{
+              padding: `${SCALES.pt(0.5)} ${SCALES.pr(0.5)} ${SCALES.pb(0.5)} ${SCALES.pl(0.5)}`,
+              ...(textareaProps as { style?: React.CSSProperties }).style
+            }}
+          />
+        </div>
+        {error && (
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
+        )}
+      </>
     )
   }
 )

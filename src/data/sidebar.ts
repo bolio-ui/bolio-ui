@@ -686,6 +686,11 @@ export const hooks = [
     tag: 'New'
   },
   {
+    name: 'useForm',
+    url: '/docs/hooks/use-form',
+    tag: 'New'
+  },
+  {
     name: 'useInput',
     url: '/docs/hooks/use-input'
   },
