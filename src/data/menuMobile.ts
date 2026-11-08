@@ -624,5 +624,60 @@ export const menuMobile = [
         ]
       }
     ]
+  },
+  {
+    name: 'form',
+    children: [
+      {
+        name: 'Form',
+        children: [
+          {
+            name: 'Get started',
+            url: '/docs/form/get-started',
+            group: 'Form'
+          },
+          {
+            name: 'getInputProps',
+            url: '/docs/form/get-input-props',
+            group: 'Form'
+          },
+          {
+            name: 'Form values',
+            url: '/docs/form/values',
+            group: 'Form'
+          },
+          {
+            name: 'Form errors',
+            url: '/docs/form/errors',
+            group: 'Form'
+          },
+          {
+            name: 'Form validation',
+            url: '/docs/form/validation',
+            group: 'Form'
+          },
+          {
+            name: 'Form validators',
+            url: '/docs/form/validators',
+            group: 'Form'
+          },
+          {
+            name: 'Nested fields',
+            url: '/docs/form/nested-fields',
+            group: 'Form'
+          },
+          {
+            name: 'Form status',
+            url: '/docs/form/status',
+            group: 'Form'
+          },
+          {
+            name: 'useForm with all inputs',
+            url: '/docs/form/all-inputs',
+            group: 'Form'
+          }
+        ]
+      }
+    ]
   }
 ]

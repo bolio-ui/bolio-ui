@@ -1,0 +1,82 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Button, Input, Spacer, Text, isEmail, useForm } from 'core'
+
+export const meta = {
+  title: 'Form errors',
+  description:
+    'Read the errors of a form and set your own, such as the ones that come from the server.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Form errors
+
+`form.errors` is an object with one message per field. Its keys are the field paths, such as `email` or `user.email`.
+A field without an error has no key.
+
+<Spacer h={2} />
+
+### Set errors from the server
+
+Validation in the browser cannot know everything. When the server rejects a value, call `setFieldError` or `setErrors` with the message.
+The field shows it right away, and it clears when the user changes that field.
+
+<Playground
+  desc="The server rejects this email, so the field shows its message."
+  scope={{ Button, Input, Spacer, Text, isEmail, useForm }}
+  code={`
+() => {
+  const form = useForm({
+    initialValues: { email: '' },
+    validate: { email: isEmail('Enter a valid email') }
+  })
+  const subscribe = ({ email }) => {
+    if (email === 'ana@bolio-ui.com') {
+      form.setFieldError('email', 'This email is already subscribed')
+    }
+  }
+  return (
+    <form onSubmit={form.onSubmit(subscribe)}>
+      <Input width="100%" label="Email" {...form.getInputProps('email')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Subscribe</Button>
+      <Button auto scale={1 / 2} ml="10px" onClick={() => form.setFieldValue('email', 'ana@bolio-ui.com')}>Use ana@bolio-ui.com</Button>
+      <Text>Errors: {JSON.stringify(form.errors)}</Text>
+    </form>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+### Clear errors
+
+`clearFieldError(path)` removes one error and `clearErrors()` removes all of them.
+Changing a field also clears its error, unless [validateInputOnChange](/docs/form/validation) is on for it.
+
+<Spacer h={2} />
+
+### Handle errors on submit
+
+`onSubmit` takes a second handler that runs when validation fails. It receives the errors and the values.
+
+```tsx
+<form onSubmit={form.onSubmit(save, (errors) => console.log(errors))}>
+```
+
+<Attributes edit="/content/docs/form/errors.mdx">
+<Attributes.Title>Errors</Attributes.Title>
+
+| Name                | Description                          | Type                                      |
+| ------------------- | ------------------------------------ | ----------------------------------------- |
+| **errors**          | one message per field path           | `Record<string, string>`                  |
+| **setErrors**       | replace all errors                   | `(errors: Record<string, string>) => void` |
+| **setFieldError**   | set the error of one field           | `(path: string, message: string) => void` |
+| **clearErrors**     | remove all errors                    | `() => void`                              |
+| **clearFieldError** | remove the error of one field        | `(path: string) => void`                  |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

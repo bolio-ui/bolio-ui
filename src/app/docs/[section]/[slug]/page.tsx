@@ -9,7 +9,7 @@ type Params = { section: string; slug: string }
 
 // Every .mdx file in src/content/docs/<section> is a page
 const DOCS_DIR = path.join(process.cwd(), 'src/content/docs')
-const SECTIONS = ['guide', 'components', 'hooks']
+const SECTIONS = ['guide', 'components', 'hooks', 'form']
 
 export const dynamicParams = false
 
@@ -59,7 +59,8 @@ const SITE = 'https://bolio-ui.com'
 const SECTION_NAMES: Record<string, string> = {
   guide: 'Guide',
   components: 'Components',
-  hooks: 'Hooks'
+  hooks: 'Hooks',
+  form: 'Form'
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {

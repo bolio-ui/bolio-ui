@@ -20,6 +20,7 @@ import Grid from '../Grid'
 import type { SelectConfig } from './SelectContext'
 import { SelectContext, getOptionId } from './SelectContext'
 import { getColors } from '../Input/styles'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import Ellipsis from '../Shared/ellipsis'
 import SelectInput from './SelectInput'
 import useScale, { withScale } from '../use-scale'
@@ -41,6 +42,8 @@ interface Props {
   light?: boolean
   ghost?: boolean
   subtle?: boolean
+  error?: boolean
+  errorMessage?: string
   value?: string | string[]
   initialValue?: string | string[]
   placeholder?: React.ReactNode | string
@@ -75,6 +78,8 @@ const SelectComponent = React.forwardRef<
       light = false,
       ghost = false,
       subtle = false,
+      error = false,
+      errorMessage,
       disabled = false,
       initialValue: init,
       value: customValue,
@@ -121,13 +126,13 @@ const SelectComponent = React.forwardRef<
 
     const colors = useMemo(
       () =>
-        getColors(theme.palette, type, disabled, {
+        getColors(theme.palette, error ? 'error' : type, disabled, {
           filled,
           light,
           ghost,
           subtle
         }),
-      [theme.palette, type, disabled, filled, light, ghost, subtle]
+      [theme.palette, type, error, disabled, filled, light, ghost, subtle]
     )
 
     // the options the keyboard can reach
@@ -461,6 +466,9 @@ const SelectComponent = React.forwardRef<
             </div>
           )}
         </div>
+        {error && (
+          <InputBlockLabel error={error}>{errorMessage}</InputBlockLabel>
+        )}
       </SelectContext.Provider>
     )
   }

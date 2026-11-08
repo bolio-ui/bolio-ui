@@ -1,0 +1,86 @@
+import Docs from 'src/templates/Docs'
+import { Playground } from 'src/components'
+import {
+  Button,
+  Input,
+  Link,
+  Spacer,
+  Text,
+  isEmail,
+  isNotEmpty,
+  useForm
+} from 'core'
+
+export const meta = {
+  title: 'Get started',
+  description:
+    'Build a form with useForm: keep the values and errors in one place and bind them to Bolio UI fields.',
+  sidebar: 'form',
+  group: 'Form'
+}
+
+## Get started
+
+`useForm` keeps the values, errors and submit of a form in one place and binds them to Bolio UI fields.
+It comes with `@bolio-ui/core`, so there is nothing else to install.
+
+<Spacer h={2} />
+
+### Basic form
+
+Pass the initial values and the rules. Spread `getInputProps` on each field and call `onSubmit` with your handler.
+The handler only runs when every rule passes.
+
+<Playground
+  desc="Submit the empty form to see the errors."
+  scope={{ Button, Input, Spacer, Text, isEmail, isNotEmpty, useForm }}
+  code={`
+() => {
+  const [sent, setSent] = React.useState(null)
+  const form = useForm({
+    initialValues: { name: '', email: '' },
+    validate: {
+      name: isNotEmpty('Enter your name'),
+      email: isEmail('Enter a valid email')
+    }
+  })
+  return (
+    <form onSubmit={form.onSubmit(setSent)}>
+      <Input width="100%" label="Name" {...form.getInputProps('name')} />
+      <Spacer h={0.5} />
+      <Input width="100%" label="Email" {...form.getInputProps('email')} />
+      <Spacer h={1} />
+      <Button auto scale={1 / 2} type="secondary" htmlType="submit">Subscribe</Button>
+      {sent && <Text>Sent: {JSON.stringify(sent)}</Text>}
+    </form>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+### How it works
+
+- • `values` and `errors` hold the current state. Errors use the same path as their field, such as `user.email`.
+- • `getInputProps(path)` returns what a field needs: its value, the change and blur handlers, and the error when there is one.
+- • `validate` takes one rule per field. A rule returns the message to show, or `null` when the value is fine.
+- • `onSubmit` validates first. It calls your handler with the values, or the optional second handler with the errors.
+- • `reset` goes back to the initial values and clears the errors.
+
+<Spacer h={2} />
+
+### Next steps
+
+- • [getInputProps](/docs/form/get-input-props) binds each kind of field.
+- • [Form values](/docs/form/values) changes values and resets the form.
+- • [Form errors](/docs/form/errors) sets errors that come from the server.
+- • [Form validation](/docs/form/validation) chooses when the rules run.
+- • [Form validators](/docs/form/validators) lists the rules that come ready.
+- • [Nested fields](/docs/form/nested-fields) handles objects and lists.
+- • [Form status](/docs/form/status) tells which fields changed and when the form is sending.
+- • [useForm with all inputs](/docs/form/all-inputs) binds every field type.
+
+The full list of options and returns is in the <Link href="/docs/hooks/use-form" color>useForm</Link> reference.
+
+export default Docs.withMeta(meta)

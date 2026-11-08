@@ -19,7 +19,7 @@ jest.mock('next/navigation', () => ({
 }))
 
 const docs = path.join(__dirname, '../content/docs')
-const dirs = ['components', 'hooks', 'guide']
+const dirs = ['components', 'hooks', 'guide', 'form']
 
 type Binding = { spec: string; imported: string }
 

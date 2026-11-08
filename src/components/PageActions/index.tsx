@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { ButtonDropdown, Snippet } from 'core'
 import { Copy, Check, FileText, ExternalLink } from '@bolio-ui/icons'
+import { track } from 'src/utils/gtag'
 import styles from './PageActions.module.css'
 
 const PageActions: React.FC = () => {
@@ -16,6 +17,7 @@ const PageActions: React.FC = () => {
   const copyMarkdown = async () => {
     const response = await fetch(markdownPath)
     await navigator.clipboard.writeText(await response.text())
+    track('copy_markdown', { page_path: pathname })
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }

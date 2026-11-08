@@ -38,7 +38,8 @@ const Analytics = () => {
             gtag('consent', 'default', {
               ad_storage: 'denied',
               ad_user_data: 'denied',
-              ad_personalization: 'denied'
+              ad_personalization: 'denied',
+              analytics_storage: 'granted'
             });
             gtag('js', new Date());
             gtag('config', '${GA_TRACKING_ID}', {

@@ -1,7 +1,7 @@
 interface ExtendedWindow extends Window {
   gtag?: (
     command: 'config' | 'event' | 'consent',
-    trackingId: string,
+    target: string,
     config?: { [key: string]: unknown }
   ) => void
 }
@@ -36,16 +36,19 @@ export const setConsent = (choice: 'granted' | 'denied'): void => {
   } catch {
     // the choice still applies to this visit
   }
+  // gtag.js stays loaded after a visitor who accepted changes their mind, so it
+  // has to be told to stop
+  if (window.gtag) {
+    window.gtag('consent', 'update', { analytics_storage: choice })
+  }
   window.dispatchEvent(new Event(CONSENT_EVENT))
 }
 
-// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+// Sent as an event: a second `config` call would add one more automatic
+// page_view on top of this one.
+// https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications
 export const pageview = (url: string): void => {
-  if (window.gtag) {
-    window.gtag('config', GA_TRACKING_ID, {
-      page_path: url
-    })
-  }
+  if (window.gtag) window.gtag('event', 'page_view', { page_path: url })
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events

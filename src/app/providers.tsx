@@ -199,6 +199,7 @@ export default function Providers({
 
   const switchAccent = useCallback((next: AccentName) => {
     setAccent(next)
+    gtag.track('accent_change', { accent: next })
     window.localStorage.setItem('accent', next)
   }, [])
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import { useRadioContext } from './RadioContext'
 import RadioDescription from './RadioDescription'
@@ -6,6 +6,7 @@ import { pickChild } from '../utils/collections'
 import logWarning from '../utils/log-warning'
 import type { NormalTypes } from '../utils/prop-types'
 import { getColor } from './styles'
+import InputBlockLabel from '../Input/InputBlockLabel'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
@@ -29,6 +30,8 @@ interface Props {
   className?: string
   disabled?: boolean
   onChange?: (e: RadioEvent) => void
+  error?: boolean
+  errorMessage?: string
 }
 
 type NativeAttrs = Omit<React.InputHTMLAttributes<AnyElement>, keyof Props>
@@ -46,6 +49,8 @@ const RadioComponent = React.forwardRef<
       disabled = false,
       type = 'default' as RadioTypes,
       value: radioValue,
+      error = false,
+      errorMessage,
       children,
       ...props
     },
@@ -53,6 +58,12 @@ const RadioComponent = React.forwardRef<
   ) => {
     const theme = useTheme()
     const { SCALES } = useScale()
+    const generatedId = useId()
+    const errorId = `${props.id || generatedId}-error`
+    const describedBy =
+      [props['aria-describedby'], error && errorMessage ? errorId : undefined]
+        .filter(Boolean)
+        .join(' ') || undefined
     const [selfChecked, setSelfChecked] = useState<boolean>(!!checked)
     const {
       value: groupValue,
@@ -83,8 +94,8 @@ const RadioComponent = React.forwardRef<
     }, [inGroup, groupValue, radioValue])
 
     const color = useMemo(
-      () => getColor(theme.palette, type),
-      [theme.palette, type]
+      () => getColor(theme.palette, error ? 'error' : type),
+      [theme.palette, type, error]
     )
 
     const isDisabled = useMemo(
@@ -137,31 +148,40 @@ const RadioComponent = React.forwardRef<
     } as React.CSSProperties
 
     return (
-      <div
-        className={useClasses('radio', styles.radio, className)}
-        style={radioStyle}
-      >
-        <label className={styles.label}>
-          <input
-            ref={ref}
-            type="radio"
-            value={radioValue}
-            checked={selfChecked}
-            onChange={changeHandler}
-            {...props}
-            className={styles.input}
-          />
-          <span className={styles.name}>
-            <span
-              className={useClasses(styles.point, {
-                [styles.active]: selfChecked
-              })}
+      <>
+        <div
+          className={useClasses('radio', styles.radio, className)}
+          style={radioStyle}
+        >
+          <label className={styles.label}>
+            <input
+              ref={ref}
+              type="radio"
+              value={radioValue}
+              checked={selfChecked}
+              onChange={changeHandler}
+              {...props}
+              aria-invalid={error || undefined}
+              aria-describedby={describedBy}
+              className={styles.input}
             />
-            {withoutDescChildren}
-          </span>
-          {DescChildren && DescChildren}
-        </label>
-      </div>
+            <span className={styles.name}>
+              <span
+                className={useClasses(styles.point, {
+                  [styles.active]: selfChecked
+                })}
+              />
+              {withoutDescChildren}
+            </span>
+            {DescChildren && DescChildren}
+          </label>
+        </div>
+        {error && (
+          <InputBlockLabel error={error} id={errorId}>
+            {errorMessage}
+          </InputBlockLabel>
+        )}
+      </>
     )
   }
 )

@@ -102,13 +102,13 @@ const InputComponent = React.forwardRef<
 
   const colors = useMemo(
     () =>
-      getColors(theme.palette, type, disabled, {
+      getColors(theme.palette, error ? 'error' : type, disabled, {
         filled,
         light,
         ghost,
         subtle
       }),
-    [theme.palette, type, disabled, filled, light, ghost, subtle]
+    [theme.palette, type, error, disabled, filled, light, ghost, subtle]
   )
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
