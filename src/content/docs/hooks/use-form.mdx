@@ -173,7 +173,7 @@ type useForm = <Values>(options: UseFormOptions<Values>) => {
 | **isEmail(message)**                 | the value is not an e-mail                               |
 | **matches(regex, message)**          | the value is not a string that matches the pattern       |
 | **hasLength(length, message)**       | the length is out of `n` or `{ min, max }`               |
-| **isInRange({ min, max }, message)** | the value is not a number inside the range               |
+| `isInRange({ min, max }, message)` | the value is not a number inside the range               |
 | **matchesField(path, message)**      | the value differs from the field at `path`               |
 
 </Attributes>
