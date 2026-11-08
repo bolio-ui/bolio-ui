@@ -163,7 +163,7 @@ type useForm = <Values>(options: UseFormOptions<Values>) => {
 | **`'input'`**    | `value`, `onChange`, `onBlur` (+ `error`, `errorMessage`)   | Input, Textarea, NumberInput, Select, Combobox, Slider, DatePicker, TagsInput and other fields |
 | **`'checkbox'`** | `checked`, `onChange`, `onBlur` (+ `error`, `errorMessage`) | Checkbox                                                                                       |
 
-`error` and `errorMessage` only come back while the field has an error. Spread them on fields that accept both: Input, Textarea, NumberInput, TagsInput, Select, Checkbox and Radio. `onBlur` only fires on fields that have it, such as Input and Textarea, so the other fields count as touched once their value changes.
+`error` and `errorMessage` only come back while the field has an error. Spread them on fields that accept both: Input, Textarea, NumberInput, TagsInput, Select, Checkbox and Radio. On other fields, such as `Radio.Group`, pass only `value` and `onChange`, or the props reach the DOM as unknown attributes. `onBlur` only fires on fields that have it, such as Input and Textarea, so the other fields count as touched once their value changes.
 
 <Attributes.Title>Validators</Attributes.Title>
 
