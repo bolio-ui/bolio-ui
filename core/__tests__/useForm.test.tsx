@@ -257,6 +257,40 @@ describe('useForm', () => {
     expect(handle).toHaveBeenCalledWith({ age: 30, name: 'Ana' }, undefined)
   })
 
+  it('tells if the form or a field is valid without showing errors', () => {
+    const { result } = setup()
+    expect(result.current.isValid()).toBe(false)
+    expect(result.current.isValid('name')).toBe(false)
+    expect(result.current.isValid('user')).toBe(false)
+    expect(result.current.errors).toEqual({})
+    act(() => {
+      result.current.setValues({ name: 'Ana', user: { email: 'a@b.co' } })
+      result.current.setFieldValue('tags.0.label', 'x')
+    })
+    expect(result.current.isValid('name')).toBe(true)
+    expect(result.current.isValid()).toBe(true)
+  })
+
+  it('keeps a field error on change when asked', () => {
+    const { result } = setup({ clearInputErrorOnChange: false })
+    act(() => {
+      result.current.validate()
+    })
+    act(() => result.current.setFieldValue('name', 'Ana'))
+    expect(result.current.errors.name).toBe('Informe o nome')
+  })
+
+  it('reads and sets the touched state, and replaces a list item', () => {
+    const { result } = setup()
+    act(() => result.current.setFieldTouched('name'))
+    expect(result.current.getTouched()).toEqual({ name: true })
+    expect(result.current.isTouched()).toBe(true)
+    act(() => result.current.setFieldTouched('name', false))
+    expect(result.current.isTouched()).toBe(false)
+    act(() => result.current.replaceListItem('tags', 0, { label: 'z' }))
+    expect(result.current.values.tags).toEqual([{ label: 'z' }])
+  })
+
   it('builds input props for values, events and checkboxes', () => {
     const { result } = setup()
     act(() =>
