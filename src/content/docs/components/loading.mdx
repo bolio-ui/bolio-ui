@@ -109,6 +109,10 @@ type LoadingTypes =
   | 'info'
 ```
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The root has `role="status"`. With `children`, the text is what a screen reader announces. Without them, the name is `Loading`; pass an `aria-label`, such as `aria-label="Loading invoices"`, to name what is loading.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

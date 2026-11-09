@@ -35,6 +35,7 @@ const SpinnerComponent = React.forwardRef<
     <div
       ref={ref}
       role="status"
+      aria-label="Loading"
       className={classes}
       {...props}
       style={spinnerStyle}

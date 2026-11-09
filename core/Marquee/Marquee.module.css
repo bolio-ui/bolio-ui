@@ -23,7 +23,8 @@
   animation-direction: var(--marquee-direction);
 }
 
-.pause:hover .track {
+.pause:hover .track,
+.pause:focus-within .track {
   animation-play-state: paused;
 }
 

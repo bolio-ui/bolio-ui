@@ -174,6 +174,11 @@ Avatars represent a user or a team. Stacked avatars represent a group of people.
 | **count** | show total members | `number`         | -                                | -       |
 | ...       | native props       | `HTMLAttributes` | `'id', 'name', 'className', ...` | -       |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The image has `alt="Avatar"` by default. Props reach the image, so pass an `alt` with the name of the person, such as `alt="Ada Lovelace"`.
+- • With `text`, the letters are the content, and a screen reader reads them.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

@@ -83,6 +83,10 @@ As an indicator of load waiting, see also component [Loading](/docs/components/l
 | --------- | ------------ | ---------------- | ------------------------ | ------- |
 | ...       | native props | `HTMLAttributes` | `'id', 'className', ...` | -       |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The root has `role="status"` and the name `Loading`, so a screen reader announces it. Pass an `aria-label`, such as `aria-label="Loading invoices"`, to name what is loading.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

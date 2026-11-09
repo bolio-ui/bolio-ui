@@ -1,4 +1,4 @@
-import { PrismTheme } from 'prism-react-renderer'
+import { PrismTheme, PrismThemeEntry } from 'prism-react-renderer'
 import { BolioUIThemes } from 'core/Themes/Presets'
 
 const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
@@ -12,7 +12,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => ({
     textRendering: 'geometricPrecision',
     borderBottomLeftRadius: theme.layout.radius,
     borderBottomRightRadius: theme.layout.radius
-  },
+  } as PrismThemeEntry,
   styles: [
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],

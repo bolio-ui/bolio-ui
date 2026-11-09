@@ -1,6 +1,6 @@
 {
   "name": "@bolio-ui/core",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Amazing, modern and creative tools for React UI. 🥷🏼",
   "keywords": [
     "bolio",
@@ -120,7 +120,7 @@
     "plop": "^4",
     "postcss-modules": "^9.0.1",
     "prettier": "^3",
-    "prism-react-renderer": "^1.2.1",
+    "prism-react-renderer": "^2.4.1",
     "react": "^19",
     "react-device-detect": "^1.17.0",
     "react-dom": "^19",
@@ -129,7 +129,7 @@
     "rehype-join-line": "^1.0.2",
     "remark-autolink-headings": "^6.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-slug": "^6.0.0",
+    "remark-slug": "^8.0.0",
     "serwist": "^9",
     "storybook": "^10.6",
     "tsup": "^8",

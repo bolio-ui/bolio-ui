@@ -54,8 +54,14 @@ const MarqueeComponent = React.forwardRef<
         {...props}
       >
         <div className={styles.track}>{children}</div>
-        {/* the copy makes the loop seamless and is hidden from readers */}
-        <div className={styles.track} aria-hidden>
+        {/* the copy makes the loop seamless and is hidden from readers and the keyboard */}
+        <div
+          className={styles.track}
+          aria-hidden
+          // inert keeps links of the copy out of the tab order; a ref because
+          // React 18 and 19 treat the attribute differently
+          ref={(copy) => copy?.setAttribute('inert', '')}
+        >
           {children}
         </div>
       </div>

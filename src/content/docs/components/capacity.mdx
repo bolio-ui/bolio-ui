@@ -108,6 +108,10 @@ Display an capacity indicator.
 | **color** | css color string | `string`         | -                  | -       |
 | ...       | native props     | `HTMLAttributes` | `'className', ...` | -       |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • Without a name the bar is a plain `div`, so a screen reader does not announce it. Pass an `aria-label` or `aria-labelledby`, such as `aria-label="Storage used"`, and it becomes a `meter` with `aria-valuenow` as the `value`, `aria-valuemin` 0 and `aria-valuemax` as the `limit`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)
