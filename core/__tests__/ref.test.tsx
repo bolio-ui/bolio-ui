@@ -6,6 +6,7 @@ import type { AnyElement } from '../utils/types'
 const {
   Alert,
   BolioUIProvider,
+  Autocomplete,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -96,6 +97,11 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['EmojiPicker', (ref) => <EmojiPicker ref={ref} data={[]} />],
   ['JsonViewer', (ref) => <JsonViewer ref={ref} value={{ a: 1 }} />],
   ['Schedule', (ref) => <Schedule ref={ref} />],
+  [
+    'Autocomplete',
+    (ref) => <Autocomplete ref={ref} aria-label="Fruit" data={['Apple']} />,
+    'INPUT'
+  ],
   ['Avatar', (ref) => <Avatar ref={ref} text="BA" />],
   ['Badge', (ref) => <Badge ref={ref}>new</Badge>],
   [

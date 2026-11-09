@@ -4,6 +4,7 @@
 // (this only needs to list the names, not stay perfectly in sync).
 export const CORE_EXPORT_NAMES = new Set([
   'Alert',
+  'Autocomplete',
   'Avatar',
   'Badge',
   'BolioUIProvider',

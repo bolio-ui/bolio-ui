@@ -154,6 +154,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'Autocomplete',
+    url: '/docs/components/autocomplete',
+    tag: 'New'
+  },
+  {
     name: 'Avatar',
     url: '/docs/components/avatar'
   },
@@ -483,7 +488,8 @@ export const components = [
   },
   {
     name: 'Tag',
-    url: '/docs/components/tag'
+    url: '/docs/components/tag',
+    tag: 'Updated'
   },
   {
     name: 'Timeline',
