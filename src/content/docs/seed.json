@@ -1112,6 +1112,59 @@
     "path": "/docs/components/color-picker#accessibility"
   },
   {
+    "title": "Autocomplete",
+    "component": true,
+    "path": "/docs/components/autocomplete"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete General",
+    "component": false,
+    "path": "/docs/components/autocomplete#general"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Controlled",
+    "component": false,
+    "path": "/docs/components/autocomplete#controlled"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Suggestions with labels",
+    "component": false,
+    "path": "/docs/components/autocomplete#suggestions-with-labels"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Variants",
+    "component": false,
+    "path": "/docs/components/autocomplete#variants"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/autocomplete#apis"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Props",
+    "component": false,
+    "path": "/docs/components/autocomplete#autocomplete.props"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/autocomplete#ref"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/autocomplete#accessibility"
+  },
+  {
     "title": "Combobox",
     "component": true,
     "path": "/docs/components/combobox"
@@ -4312,6 +4365,12 @@
     "title": "Tag Invert",
     "component": false,
     "path": "/docs/components/tag#invert"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag Removable",
+    "component": false,
+    "path": "/docs/components/tag#removable"
   },
   {
     "head": "Tag",

@@ -142,6 +142,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Autocomplete',
+            url: '/docs/components/autocomplete',
+            group: 'Components'
+          },
+          {
             name: 'Avatar',
             url: '/docs/components/avatar',
             group: 'Components'

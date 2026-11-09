@@ -262,6 +262,11 @@
               "path": "/docs/components/color-picker.mdx"
             },
             {
+              "title": "Autocomplete",
+              "keywords": "autocomplete, autosuggest, typeahead, suggestions, free text, search input, datalist",
+              "path": "/docs/components/autocomplete.mdx"
+            },
+            {
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"

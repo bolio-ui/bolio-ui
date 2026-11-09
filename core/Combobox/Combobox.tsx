@@ -28,6 +28,7 @@ interface Props {
   ghost?: boolean
   subtle?: boolean
   emptyText?: string
+  freeText?: boolean
   filter?: (option: ComboboxOption, text: string) => boolean
   className?: string
 }
@@ -64,6 +65,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       ghost = false,
       subtle = false,
       emptyText = 'No results',
+      freeText = false,
       filter = defaultFilter,
       className = '',
       onKeyDown,
@@ -89,7 +91,8 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     const [selfValue, setSelfValue] = useState<string | null>(initialValue)
     const selected = isControlled ? customValue : selfValue
     const selectedOption = options.find((option) => option.value === selected)
-    const selectedLabel = getLabel(selectedOption)
+    // In free text mode the value is the text itself, not one of the options.
+    const selectedLabel = freeText ? (selected ?? '') : getLabel(selectedOption)
 
     const [text, setText] = useState(selectedLabel)
     const [open, setOpen] = useState(false)
@@ -100,7 +103,8 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     }, [selectedLabel])
 
     // Once an option is chosen, show every option again until the user types.
-    const query = selectedOption && text === selectedLabel ? '' : text
+    const query =
+      !freeText && selectedOption && text === selectedLabel ? '' : text
     const visible = useMemo(
       () => options.filter((option) => filter(option, query)),
       [options, filter, query]
@@ -108,7 +112,8 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     const expanded = open && visible.length > 0
 
     useEffect(() => {
-      setActiveIndex(open ? firstEnabled(visible) : -1)
+      // Free text keeps Enter for the typed text until an option is highlighted.
+      setActiveIndex(open && !freeText ? firstEnabled(visible) : -1)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open, query])
 
@@ -122,7 +127,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     const choose = (option: ComboboxOption) => {
       if (option.disabled) return
       if (!isControlled) setSelfValue(option.value)
-      setText(getLabel(option))
+      setText(freeText ? option.value : getLabel(option))
       setOpen(false)
       if (onChange) onChange(option.value)
     }
@@ -132,6 +137,11 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
       setText(next)
       setOpen(true)
       if (onInputChange) onInputChange(next)
+      if (freeText) {
+        if (!isControlled) setSelfValue(next)
+        if (onChange) onChange(next)
+        return
+      }
       if (next === '' && selected !== null) {
         if (!isControlled) setSelfValue(null)
         if (onChange) onChange(null)
@@ -170,7 +180,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
     const blurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
       if (onBlur) onBlur(event)
       setOpen(false)
-      setText(selectedLabel)
+      if (!freeText) setText(selectedLabel)
     }
 
     const comboboxStyle = {
@@ -254,7 +264,7 @@ const ComboboxComponent = React.forwardRef<HTMLInputElement, ComboboxProps>(
             ))}
           </ul>
         )}
-        {open && visible.length === 0 && (
+        {open && !freeText && visible.length === 0 && (
           <div className={styles.empty}>{emptyText}</div>
         )}
         <div role="status" className={styles.srOnly}>
