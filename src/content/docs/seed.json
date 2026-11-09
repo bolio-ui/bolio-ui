@@ -47,6 +47,12 @@
     "path": "/docs/components/avatar#avatar.group.props"
   },
   {
+    "head": "Avatar",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/avatar#accessibility"
+  },
+  {
     "title": "Badge",
     "component": true,
     "path": "/docs/components/badge"
@@ -536,6 +542,12 @@
     "title": "Capacity Props",
     "component": false,
     "path": "/docs/components/capacity#capacity.props"
+  },
+  {
+    "head": "Capacity",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/capacity#accessibility"
   },
   {
     "title": "Card",
@@ -1210,6 +1222,12 @@
     "title": "CommandItem",
     "component": false,
     "path": "/docs/components/command#commanditem"
+  },
+  {
+    "head": "Command",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/command#accessibility"
   },
   {
     "title": "Container",
@@ -2031,6 +2049,12 @@
     "path": "/docs/components/image#image.browser.props"
   },
   {
+    "head": "Image",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/image#accessibility"
+  },
+  {
     "title": "Image Zoom",
     "component": true,
     "path": "/docs/components/image-zoom"
@@ -2374,6 +2398,12 @@
     "path": "/docs/components/loading#loadingtypes"
   },
   {
+    "head": "Loading",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/loading#accessibility"
+  },
+  {
     "title": "Marquee",
     "component": true,
     "path": "/docs/components/marquee"
@@ -2407,6 +2437,12 @@
     "title": "Marquee Props",
     "component": false,
     "path": "/docs/components/marquee#marquee.props"
+  },
+  {
+    "head": "Marquee",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/marquee#accessibility"
   },
   {
     "title": "Menu",
@@ -3123,6 +3159,12 @@
     "title": "Types - Progress",
     "component": false,
     "path": "/docs/components/progress#progresstypes"
+  },
+  {
+    "head": "Progress",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/progress#accessibility"
   },
   {
     "title": "Radio",
@@ -3852,6 +3894,12 @@
     "path": "/docs/components/spinner#spinner.props"
   },
   {
+    "head": "Spinner",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/spinner#accessibility"
+  },
+  {
     "title": "Splitter",
     "component": true,
     "path": "/docs/components/splitter"
@@ -4560,6 +4608,12 @@
     "title": "Timeline Item Props",
     "component": false,
     "path": "/docs/components/timeline#timeline.item.props"
+  },
+  {
+    "head": "Timeline",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/timeline#accessibility"
   },
   {
     "title": "Toggle",
@@ -7378,6 +7432,12 @@
     "path": "/docs/components/alert#alert.props"
   },
   {
+    "head": "Alert",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/alert#accessibility"
+  },
+  {
     "title": "Chip",
     "component": true,
     "path": "/docs/components/chip"
@@ -7499,6 +7559,12 @@
     "title": "Mention Props",
     "component": false,
     "path": "/docs/components/mention#mention.props"
+  },
+  {
+    "head": "Mention",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/mention#accessibility"
   },
   {
     "title": "Scroll Area",

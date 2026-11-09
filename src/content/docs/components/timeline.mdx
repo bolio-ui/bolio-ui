@@ -103,6 +103,11 @@ List events in order, such as a changelog or an activity feed.
 | **icon**  | replaces the default dot     | `ReactNode`      | -               | -       |
 | ...       | native props                 | `HTMLAttributes` | -               | -       |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The timeline is an `ol` of `li` items, so a screen reader announces a list with its number of items, and the order of the items is the reading order.
+- • The title and the `time` are plain text. Write the time in a form people read, such as `Nov 3, 2026`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

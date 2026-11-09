@@ -106,6 +106,12 @@ Type a trigger character in a text field to pick a person, a tag or a command fr
 | **disabled**     | block the field                                                  | `boolean`                                             | -               | `false`      |
 | ...              | native props of the textarea                                     | `TextareaHTMLAttributes`                              | -               | -            |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The field is a textarea with `aria-autocomplete="list"`. While the suggestions are open it points to the list with `aria-controls` and to the highlighted option with `aria-activedescendant`. The list has the `listbox` and `option` roles, and a disabled option has `aria-disabled`.
+- • Arrow Down and Arrow Up move through the options and skip the disabled ones, Enter or Tab choose the highlighted one, and Escape closes the list. Typing or moving the caret opens it again.
+- • A hidden status line announces how many results are available, such as `3 results available`.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

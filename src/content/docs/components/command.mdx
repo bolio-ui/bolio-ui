@@ -123,6 +123,11 @@ interface CommandItem {
 }
 ```
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The palette opens in a Modal named `Command`, so focus goes into it and Escape closes it.
+- • The field is a `combobox` over a `listbox` of `option`s, and the highlighted option has `aria-selected`. Arrow Down and Arrow Up move through the items and wrap around, and Enter runs the highlighted one.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

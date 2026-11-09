@@ -85,6 +85,11 @@ Loop content horizontally without end.
 | ...              | native props               | `HTMLAttributes` | -               | -       |
 
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The copy that makes the loop seamless has `aria-hidden`, so a screen reader goes through the content once.
+- • The animation stops when the user asks for reduced motion, and `pauseOnHover` pauses it under the mouse. Use it for decoration, such as logos, and not for links or text the user must read.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

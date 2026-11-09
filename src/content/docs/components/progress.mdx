@@ -199,6 +199,11 @@ type ProgressTypes =
   | 'info'
 ```
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • A native `progress` element carries the `value` and the `max`, kept in the page with no opacity, so a screen reader announces the percentage. The bar you see is decoration, and `title` shows the percentage on hover.
+- • Native props reach that element. Pass an `aria-label`, such as `aria-label="Upload"`, so the reader knows what the bar measures.
+
 </Attributes>
 
 export default Docs.withMeta(meta)
