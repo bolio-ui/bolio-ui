@@ -95,6 +95,33 @@ Display a unique keyword, optionally as a part of a set.
 />
 
 <Playground
+  title="Removable"
+  desc="Pass `onClose` to add a remove button. Name it for screen readers with `closeLabel`."
+  scope={{ Tag, Grid }}
+  code={`
+() => {
+  const [tags, setTags] = React.useState(['React', 'Vue', 'Svelte'])
+  return (
+    <Grid.Container gap={1}>
+      {tags.map((tag) => (
+        <Grid key={tag}>
+          <Tag
+            type="primary"
+            light
+            closeLabel={'Remove ' + tag}
+            onClose={() => setTags(tags.filter((t) => t !== tag))}
+          >
+            {tag}
+          </Tag>
+        </Grid>
+      ))}
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
   title="Article header"
   desc="Tags beside a title classify the content. Keep each one to a word or two."
   scope={{ Tag, Text }}
@@ -120,6 +147,8 @@ Display a unique keyword, optionally as a part of a set.
 | **invert** | filled variant: invert color and background | `boolean`              | -                        | `false`   |
 | **light**  | light variant: tinted background            | `boolean`              | -                        | `false`   |
 | **subtle** | subtle variant: no background               | `boolean`              | -                        | `false`   |
+| **onClose** | adds a remove button and calls this when it is clicked | `() => void` | -                        | -         |
+| **closeLabel** | accessible name of the remove button       | `string`               | -                        | `Remove`  |
 | ...        | native props                                | `HTMLAttributes`       | `'id', 'className', ...` | -         |
 
 <Attributes.Title>TagTypes</Attributes.Title>

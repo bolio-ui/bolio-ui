@@ -1112,6 +1112,59 @@
     "path": "/docs/components/color-picker#accessibility"
   },
   {
+    "title": "Autocomplete",
+    "component": true,
+    "path": "/docs/components/autocomplete"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete General",
+    "component": false,
+    "path": "/docs/components/autocomplete#general"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Controlled",
+    "component": false,
+    "path": "/docs/components/autocomplete#controlled"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Suggestions with labels",
+    "component": false,
+    "path": "/docs/components/autocomplete#suggestions-with-labels"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Variants",
+    "component": false,
+    "path": "/docs/components/autocomplete#variants"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/autocomplete#apis"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Autocomplete Props",
+    "component": false,
+    "path": "/docs/components/autocomplete#autocomplete.props"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/autocomplete#ref"
+  },
+  {
+    "head": "Autocomplete",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/autocomplete#accessibility"
+  },
+  {
     "title": "Combobox",
     "component": true,
     "path": "/docs/components/combobox"
@@ -1495,6 +1548,59 @@
     "path": "/docs/components/description#description.props"
   },
   {
+    "title": "Diff",
+    "component": true,
+    "path": "/docs/components/diff"
+  },
+  {
+    "head": "Diff",
+    "title": "Diff General",
+    "component": false,
+    "path": "/docs/components/diff#general"
+  },
+  {
+    "head": "Diff",
+    "title": "Diff Split",
+    "component": false,
+    "path": "/docs/components/diff#split"
+  },
+  {
+    "head": "Diff",
+    "title": "Diff Context lines",
+    "component": false,
+    "path": "/docs/components/diff#context-lines"
+  },
+  {
+    "head": "Diff",
+    "title": "Diff Highlight and colors",
+    "component": false,
+    "path": "/docs/components/diff#highlight-and-colors"
+  },
+  {
+    "head": "Diff",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/diff#apis"
+  },
+  {
+    "head": "Diff",
+    "title": "Diff Props",
+    "component": false,
+    "path": "/docs/components/diff#diff.props"
+  },
+  {
+    "head": "Diff",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/diff#ref"
+  },
+  {
+    "head": "Diff",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/diff#accessibility"
+  },
+  {
     "title": "Display",
     "component": true,
     "path": "/docs/components/display"
@@ -1699,6 +1805,53 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/drawer#accessibility"
+  },
+  {
+    "title": "EmojiPicker",
+    "component": true,
+    "path": "/docs/components/emoji-picker"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "EmojiPicker General",
+    "component": false,
+    "path": "/docs/components/emoji-picker#general"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "EmojiPicker Choose an emoji",
+    "component": false,
+    "path": "/docs/components/emoji-picker#choose-an-emoji"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/emoji-picker#apis"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "EmojiPicker Props",
+    "component": false,
+    "path": "/docs/components/emoji-picker#emojipicker.props"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "EmojiCategory",
+    "component": false,
+    "path": "/docs/components/emoji-picker#emojicategory"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/emoji-picker#ref"
+  },
+  {
+    "head": "EmojiPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/emoji-picker#accessibility"
   },
   {
     "title": "Empty State",
@@ -2257,6 +2410,59 @@
     "path": "/docs/components/input#accessibility"
   },
   {
+    "title": "JsonViewer",
+    "component": true,
+    "path": "/docs/components/json-viewer"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "JsonViewer General",
+    "component": false,
+    "path": "/docs/components/json-viewer#general"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "JsonViewer Controls and copy",
+    "component": false,
+    "path": "/docs/components/json-viewer#controls-and-copy"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "JsonViewer Depth and selection",
+    "component": false,
+    "path": "/docs/components/json-viewer#depth-and-selection"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/json-viewer#apis"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "JsonViewer Props",
+    "component": false,
+    "path": "/docs/components/json-viewer#jsonviewer.props"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "JsonPath",
+    "component": false,
+    "path": "/docs/components/json-viewer#jsonpath"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/json-viewer#ref"
+  },
+  {
+    "head": "JsonViewer",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/json-viewer#accessibility"
+  },
+  {
     "title": "Keyboard",
     "component": true,
     "path": "/docs/components/keyboard"
@@ -2704,6 +2910,71 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/modal#accessibility"
+  },
+  {
+    "title": "ModalsProvider",
+    "component": true,
+    "path": "/docs/components/modals-provider"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "ModalsProvider General",
+    "component": false,
+    "path": "/docs/components/modals-provider#general"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "ModalsProvider Confirm",
+    "component": false,
+    "path": "/docs/components/modals-provider#confirm"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "ModalsProvider Steps",
+    "component": false,
+    "path": "/docs/components/modals-provider#steps"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/modals-provider#apis"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "ModalsProvider Props",
+    "component": false,
+    "path": "/docs/components/modals-provider#modalsprovider.props"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "useModals()",
+    "component": false,
+    "path": "/docs/components/modals-provider#usemodals"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "OpenModalOptions",
+    "component": false,
+    "path": "/docs/components/modals-provider#openmodaloptions"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "ConfirmModalOptions",
+    "component": false,
+    "path": "/docs/components/modals-provider#confirmmodaloptions"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/modals-provider#ref"
+  },
+  {
+    "head": "ModalsProvider",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/modals-provider#accessibility"
   },
   {
     "title": "Note",
@@ -4365,6 +4636,12 @@
     "title": "Tag Invert",
     "component": false,
     "path": "/docs/components/tag#invert"
+  },
+  {
+    "head": "Tag",
+    "title": "Tag Removable",
+    "component": false,
+    "path": "/docs/components/tag#removable"
   },
   {
     "head": "Tag",
@@ -7689,6 +7966,65 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/mention#accessibility"
+  },
+  {
+    "title": "Schedule",
+    "component": true,
+    "path": "/docs/components/schedule"
+  },
+  {
+    "head": "Schedule",
+    "title": "Schedule General",
+    "component": false,
+    "path": "/docs/components/schedule#general"
+  },
+  {
+    "head": "Schedule",
+    "title": "Schedule Month",
+    "component": false,
+    "path": "/docs/components/schedule#month"
+  },
+  {
+    "head": "Schedule",
+    "title": "Schedule Create and open events",
+    "component": false,
+    "path": "/docs/components/schedule#create-and-open-events"
+  },
+  {
+    "head": "Schedule",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/schedule#apis"
+  },
+  {
+    "head": "Schedule",
+    "title": "Schedule Props",
+    "component": false,
+    "path": "/docs/components/schedule#schedule.props"
+  },
+  {
+    "head": "Schedule",
+    "title": "ScheduleEvent",
+    "component": false,
+    "path": "/docs/components/schedule#scheduleevent"
+  },
+  {
+    "head": "Schedule",
+    "title": "ScheduleLabels",
+    "component": false,
+    "path": "/docs/components/schedule#schedulelabels"
+  },
+  {
+    "head": "Schedule",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/schedule#ref"
+  },
+  {
+    "head": "Schedule",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/schedule#accessibility"
   },
   {
     "title": "Scroll Area",

@@ -6,6 +6,7 @@ import type { AnyElement } from '../utils/types'
 const {
   Alert,
   BolioUIProvider,
+  Autocomplete,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -15,6 +16,10 @@ const {
   Calendar,
   Capacity,
   Card,
+  Diff,
+  EmojiPicker,
+  JsonViewer,
+  Schedule,
   Carousel,
   Checkbox,
   Chip,
@@ -90,6 +95,15 @@ type Ref = React.RefObject<AnyElement>
 // or the native input for form controls (Checkbox, Radio, Toggle). Select keeps its
 // documented imperative handle (SelectRef).
 const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
+  ['Diff', (ref) => <Diff ref={ref} previousValue="a" currentValue="b" />],
+  ['EmojiPicker', (ref) => <EmojiPicker ref={ref} data={[]} />],
+  ['JsonViewer', (ref) => <JsonViewer ref={ref} value={{ a: 1 }} />],
+  ['Schedule', (ref) => <Schedule ref={ref} />],
+  [
+    'Autocomplete',
+    (ref) => <Autocomplete ref={ref} aria-label="Fruit" data={['Apple']} />,
+    'INPUT'
+  ],
   ['Avatar', (ref) => <Avatar ref={ref} text="BA" />],
   ['Badge', (ref) => <Badge ref={ref}>new</Badge>],
   [
