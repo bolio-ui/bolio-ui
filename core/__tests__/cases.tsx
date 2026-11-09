@@ -57,6 +57,8 @@ const {
   Mark,
   Menu,
   Modal,
+  MonthPicker,
+  TimePicker,
   Note,
   NumberInput,
   Page,
@@ -416,6 +418,8 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Text', () => <Text h1>Title</Text>],
   ['Textarea', () => <Textarea placeholder="write" />],
+  ['MonthPicker', () => <MonthPicker initialValue={new Date(2026, 10, 1)} />],
+  ['TimePicker', () => <TimePicker aria-label="Time" initialValue="09:30" />],
   ['Toggle', () => <Toggle />],
   [
     'Tooltip',

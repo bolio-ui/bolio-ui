@@ -144,6 +144,9 @@ export const menuMobile = [
           {
             name: 'AreaChart',
             url: '/docs/components/area-chart',
+            group: 'Components'
+          },
+          {
             name: 'Autocomplete',
             url: '/docs/components/autocomplete',
             group: 'Components'
@@ -444,6 +447,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'MonthPicker',
+            url: '/docs/components/month-picker',
+            group: 'Components'
+          },
+          {
             name: 'Modal',
             url: '/docs/components/modal',
             group: 'Components'
@@ -541,6 +549,9 @@ export const menuMobile = [
           {
             name: 'ScatterChart',
             url: '/docs/components/scatter-chart',
+            group: 'Components'
+          },
+          {
             name: 'Schedule',
             url: '/docs/components/schedule',
             group: 'Components'
@@ -643,6 +654,11 @@ export const menuMobile = [
           {
             name: 'Toast',
             url: '/docs/hooks/use-toast',
+            group: 'Components'
+          },
+          {
+            name: 'TimePicker',
+            url: '/docs/components/time-picker',
             group: 'Components'
           },
           {

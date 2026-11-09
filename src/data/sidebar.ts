@@ -161,6 +161,9 @@ export const components = [
   {
     name: 'AreaChart',
     url: '/docs/components/area-chart',
+    tag: 'New'
+  },
+  {
     name: 'Autocomplete',
     url: '/docs/components/autocomplete',
     tag: 'New'
@@ -424,6 +427,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'MonthPicker',
+    url: '/docs/components/month-picker',
+    tag: 'New'
+  },
+  {
     name: 'Modal',
     url: '/docs/components/modal',
     tag: 'Updated'
@@ -513,6 +521,9 @@ export const components = [
   {
     name: 'ScatterChart',
     url: '/docs/components/scatter-chart',
+    tag: 'New'
+  },
+  {
     name: 'Schedule',
     url: '/docs/components/schedule',
     tag: 'New'
@@ -606,6 +617,11 @@ export const components = [
   {
     name: 'Toast',
     url: '/docs/hooks/use-toast'
+  },
+  {
+    name: 'TimePicker',
+    url: '/docs/components/time-picker',
+    tag: 'New'
   },
   {
     name: 'Toggle',

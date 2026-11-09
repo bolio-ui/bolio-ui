@@ -3352,6 +3352,59 @@
     "path": "/docs/components/menu#accessibility"
   },
   {
+    "title": "MonthPicker",
+    "component": true,
+    "path": "/docs/components/month-picker"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "MonthPicker General",
+    "component": false,
+    "path": "/docs/components/month-picker#general"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "MonthPicker Controlled",
+    "component": false,
+    "path": "/docs/components/month-picker#controlled"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "MonthPicker Min and max",
+    "component": false,
+    "path": "/docs/components/month-picker#min-and-max"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "MonthPicker Locale",
+    "component": false,
+    "path": "/docs/components/month-picker#locale"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/month-picker#apis"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "MonthPicker Props",
+    "component": false,
+    "path": "/docs/components/month-picker#monthpicker.props"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/month-picker#ref"
+  },
+  {
+    "head": "MonthPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/month-picker#accessibility"
+  },
+  {
     "title": "Modal",
     "component": true,
     "path": "/docs/components/modal"
@@ -5715,6 +5768,71 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/timeline#accessibility"
+  },
+  {
+    "title": "TimePicker",
+    "component": true,
+    "path": "/docs/components/time-picker"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker General",
+    "component": false,
+    "path": "/docs/components/time-picker#general"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker Seconds",
+    "component": false,
+    "path": "/docs/components/time-picker#seconds"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker 12 hour clock",
+    "component": false,
+    "path": "/docs/components/time-picker#12-hour-clock"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker Steps",
+    "component": false,
+    "path": "/docs/components/time-picker#steps"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker Controlled",
+    "component": false,
+    "path": "/docs/components/time-picker#controlled"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker Variants",
+    "component": false,
+    "path": "/docs/components/time-picker#variants"
+  },
+  {
+    "head": "TimePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/time-picker#apis"
+  },
+  {
+    "head": "TimePicker",
+    "title": "TimePicker Props",
+    "component": false,
+    "path": "/docs/components/time-picker#timepicker.props"
+  },
+  {
+    "head": "TimePicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/time-picker#ref"
+  },
+  {
+    "head": "TimePicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/time-picker#accessibility"
   },
   {
     "title": "Toggle",
