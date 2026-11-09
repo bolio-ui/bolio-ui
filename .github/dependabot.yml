@@ -5,6 +5,7 @@ updates:
   # of its own, so it can be reviewed and reverted alone.
   - package-ecosystem: npm
     directory: /
+    target-branch: develop
     schedule:
       interval: weekly
     groups:
@@ -14,13 +15,14 @@ updates:
       # eslint-plugin-react does not accept ESLint 10 yet
       - dependency-name: eslint
         update-types: [version-update:semver-major]
-      - dependency-name: "@eslint/js"
+      - dependency-name: '@eslint/js'
         update-types: [version-update:semver-major]
       # Babel 8 is ESM only, and a docs test loads @babel/core through Jest
-      - dependency-name: "@babel/*"
+      - dependency-name: '@babel/*'
         update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
+    target-branch: develop
     schedule:
       interval: weekly
