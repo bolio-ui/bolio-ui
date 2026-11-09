@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useId, useMemo, useState } from 'react'
 import useTheme from '../use-theme'
 import Modal from '../Modal'
 import Input from '../Input'
@@ -35,6 +35,7 @@ const Command: React.FC<CommandProps> = ({
   className = ''
 }) => {
   const theme = useTheme()
+  const listId = useId()
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
 
@@ -88,10 +89,13 @@ const Command: React.FC<CommandProps> = ({
           }}
           role="combobox"
           aria-expanded
-          aria-controls="bolioui-command-list"
+          aria-controls={listId}
+          aria-activedescendant={
+            filtered[active] ? `${listId}-${active}` : undefined
+          }
           aria-label={placeholder}
         />
-        <div id="bolioui-command-list" role="listbox" className={styles.list}>
+        <div id={listId} role="listbox" className={styles.list}>
           {filtered.length === 0 && (
             <div
               className={styles.empty}
@@ -103,6 +107,7 @@ const Command: React.FC<CommandProps> = ({
           {filtered.map((item, index) => (
             <div
               key={item.value}
+              id={`${listId}-${index}`}
               role="option"
               aria-selected={index === active}
               className={styles.item}

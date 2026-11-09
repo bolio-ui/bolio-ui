@@ -126,7 +126,7 @@ interface CommandItem {
 <Attributes.Title>Accessibility</Attributes.Title>
 
 - • The palette opens in a Modal named `Command`, so focus goes into it and Escape closes it.
-- • The field is a `combobox` over a `listbox` of `option`s, and the highlighted option has `aria-selected`. Arrow Down and Arrow Up move through the items and wrap around, and Enter runs the highlighted one.
+- • The field is a `combobox` over a `listbox` of `option`s. It points to the highlighted option with `aria-activedescendant`, so a screen reader announces each item as the arrows move, and the option has `aria-selected`. Arrow Down and Arrow Up move through the items and wrap around, and Enter runs the highlighted one.
 
 </Attributes>
 

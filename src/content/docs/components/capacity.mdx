@@ -110,7 +110,7 @@ Display an capacity indicator.
 
 <Attributes.Title>Accessibility</Attributes.Title>
 
-- • The bar is a `div` with a `span` and no role, so a screen reader does not announce its value. Show the value as text next to it, such as "70% used", or pass `role="meter"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax` and an `aria-label` yourself.
+- • Without a name the bar is a plain `div`, so a screen reader does not announce it. Pass an `aria-label` or `aria-labelledby`, such as `aria-label="Storage used"`, and it becomes a `meter` with `aria-valuenow` as the `value`, `aria-valuemin` 0 and `aria-valuemax` as the `limit`.
 
 </Attributes>
 

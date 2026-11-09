@@ -3,11 +3,13 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import axe from 'axe-core'
 import {
   BolioUIProvider,
+  Capacity,
   Code,
   Collapse,
   Drawer,
   Input,
   Loading,
+  Marquee,
   Modal,
   Pagination,
   Popover,
@@ -332,6 +334,45 @@ describe('semantics', () => {
       </>
     )
     expect(screen.getAllByRole('status')).toHaveLength(2)
+  })
+
+  it('Spinner has a name that the app can replace', () => {
+    wrap(
+      <>
+        <Spinner />
+        <Spinner aria-label="Loading invoices" />
+      </>
+    )
+    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('status', { name: 'Loading invoices' })
+    ).toBeInTheDocument()
+  })
+
+  it('Capacity is a meter once it has a name', () => {
+    wrap(
+      <>
+        <Capacity value={70} data-testid="plain" />
+        <Capacity value={70} limit={200} aria-label="Storage used" />
+      </>
+    )
+    expect(screen.getByTestId('plain')).not.toHaveAttribute('role')
+    const meter = screen.getByRole('meter', { name: 'Storage used' })
+    expect(meter).toHaveAttribute('aria-valuenow', '70')
+    expect(meter).toHaveAttribute('aria-valuemax', '200')
+  })
+
+  it('Marquee keeps the links of its copy out of the keyboard', () => {
+    const { container } = wrap(
+      <Marquee>
+        <a href="#a">Link</a>
+      </Marquee>
+    )
+    const tracks = container.querySelectorAll('[class*="track"]')
+    expect(tracks).toHaveLength(2)
+    expect(tracks[0]).not.toHaveAttribute('inert')
+    expect(tracks[1]).toHaveAttribute('inert')
+    expect(tracks[1]).toHaveAttribute('aria-hidden', 'true')
   })
 })
 

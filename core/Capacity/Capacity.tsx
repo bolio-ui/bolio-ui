@@ -64,6 +64,15 @@ const CapacityComponent = React.forwardRef<
         ref={ref}
         className={classes}
         title={`${percentValue}%`}
+        // a meter needs a name, so the role and its values only come with one
+        {...(props['aria-label'] || props['aria-labelledby']
+          ? {
+              role: 'meter',
+              'aria-valuemin': 0,
+              'aria-valuemax': limit,
+              'aria-valuenow': value
+            }
+          : {})}
         {...props}
         style={capacityStyle}
       >
