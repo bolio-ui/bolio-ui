@@ -392,6 +392,11 @@
               "path": "/docs/components/menu.mdx"
             },
             {
+              "title": "MonthPicker",
+              "keywords": "month picker, month, year, billing period, report, calendar, select month",
+              "path": "/docs/components/month-picker.mdx"
+            },
+            {
               "title": "Modal",
               "keywords": "modal, dialog, backdrop, actions, customized, loading, overlong",
               "path": "/docs/components/modal.mdx"
@@ -545,6 +550,11 @@
               "title": "Timeline",
               "keywords": "timeline, changelog, history, activity, steps, events",
               "path": "/docs/components/timeline.mdx"
+            },
+            {
+              "title": "TimePicker",
+              "keywords": "time picker, time, hours, minutes, seconds, am pm, 12h, 24h, clock, input",
+              "path": "/docs/components/time-picker.mdx"
             },
             {
               "title": "Toggle",
