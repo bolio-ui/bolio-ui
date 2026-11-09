@@ -233,6 +233,12 @@ export type { SpacerProps } from './Spacer'
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 
+export { default as GaugeChart } from './GaugeChart'
+export type { GaugeChartProps, GaugeSection } from './GaugeChart'
+
+export { default as Heatmap } from './Heatmap'
+export type { HeatmapProps } from './Heatmap'
+
 export { default as Sparkline } from './Sparkline'
 export type { SparklineProps } from './Sparkline'
 

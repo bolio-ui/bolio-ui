@@ -34,7 +34,9 @@ export const CORE_EXPORT_NAMES = new Set([
   'Dropzone',
   'EmptyState',
   'Fieldset',
+  'GaugeChart',
   'Grid',
+  'Heatmap',
   'Highlight',
   'Image',
   'Input',
@@ -401,5 +403,7 @@ export const CHART_EXPORT_NAMES = new Set([
   'BarChart',
   'DonutChart',
   'LineChart',
-  'PieChart'
+  'PieChart',
+  'RadarChart',
+  'ScatterChart'
 ])

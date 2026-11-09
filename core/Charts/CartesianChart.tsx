@@ -8,15 +8,13 @@ import {
   Legend,
   Line,
   LineChart as RechartsLineChart,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis
 } from 'recharts'
 import useTheme from '../use-theme'
 import useReducedMotion from '../use-reduced-motion'
-import useScale from '../use-scale'
-import useClasses from '../use-classes'
+import ChartFrame from './ChartFrame'
 import { getSeriesColor, getTooltipStyle } from './chart-theme'
 
 export interface ChartSeries {
@@ -84,7 +82,6 @@ const CartesianChart = React.forwardRef<
     ref
   ) => {
     const theme = useTheme()
-    const { SCALES } = useScale()
     const animate = !useReducedMotion()
     const palette = theme.palette
 
@@ -154,13 +151,6 @@ const CartesianChart = React.forwardRef<
       )
     ]
 
-    const rootStyle: React.CSSProperties = {
-      width: SCALES.width(1, '100%'),
-      padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
-      margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
-      ...style
-    }
-
     let chart: React.ReactElement
     if (kind === 'line')
       chart = (
@@ -221,24 +211,15 @@ const CartesianChart = React.forwardRef<
       )
 
     return (
-      <div
+      <ChartFrame
         ref={ref}
-        // a name is only valid on an element with a role
-        role={
-          props['aria-label'] || props['aria-labelledby'] ? 'group' : undefined
-        }
-        className={useClasses(className)}
-        style={rootStyle}
+        height={height}
+        className={className}
+        style={style}
         {...props}
       >
-        <ResponsiveContainer
-          width="100%"
-          height={height}
-          initialDimension={{ width: 600, height }}
-        >
-          {chart}
-        </ResponsiveContainer>
-      </div>
+        {chart}
+      </ChartFrame>
     )
   }
 )

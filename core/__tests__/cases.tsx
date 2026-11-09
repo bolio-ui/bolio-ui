@@ -7,6 +7,8 @@ const {
   Avatar,
   Badge,
   BarsList,
+  GaugeChart,
+  Heatmap,
   Sparkline,
   Breadcrumbs,
   Button,
@@ -84,6 +86,18 @@ const {
 export const cases: Array<[string, () => React.ReactElement]> = [
   ['Avatar', () => <Avatar text="BA" />],
   ['Badge', () => <Badge>new</Badge>],
+  ['GaugeChart', () => <GaugeChart aria-label="CPU" value={60} />],
+  [
+    'Heatmap',
+    () => (
+      <Heatmap
+        aria-label="Activity"
+        data={{ '2026-01-02': 3 }}
+        startDate="2026-01-01"
+        endDate="2026-03-01"
+      />
+    )
+  ],
   ['BarsList', () => <BarsList data={[{ name: 'React', value: 10 }]} />],
   ['Sparkline', () => <Sparkline aria-label="Visits" data={[1, 3, 2]} />],
   [

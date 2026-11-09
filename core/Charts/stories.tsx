@@ -1,6 +1,14 @@
 import React from 'react'
 import type { StoryFn, Meta } from '@storybook/react-vite'
-import { AreaChart, BarChart, DonutChart, LineChart, PieChart } from '.'
+import {
+  AreaChart,
+  BarChart,
+  DonutChart,
+  LineChart,
+  PieChart,
+  RadarChart,
+  ScatterChart
+} from '.'
 
 export default {
   title: 'Data Display/Charts',
@@ -42,4 +50,37 @@ export const Pie: StoryFn = () => (
 
 export const Donut: StoryFn = () => (
   <DonutChart data={slices} withLegend chartLabel="1,000" />
+)
+
+export const Radar: StoryFn = () => (
+  <RadarChart
+    data={[
+      { skill: 'Speed', anna: 80, ben: 60 },
+      { skill: 'Power', anna: 50, ben: 90 },
+      { skill: 'Technique', anna: 70, ben: 70 },
+      { skill: 'Defense', anna: 40, ben: 55 },
+      { skill: 'Stamina', anna: 85, ben: 65 }
+    ]}
+    dataKey="skill"
+    series={[{ name: 'anna' }, { name: 'ben' }]}
+    withLegend
+  />
+)
+
+export const Scatter: StoryFn = () => (
+  <ScatterChart
+    xAxisLabel="Age"
+    yAxisLabel="Weight"
+    data={[
+      {
+        name: 'people',
+        points: [
+          { x: 18, y: 62 },
+          { x: 31, y: 78 },
+          { x: 45, y: 85 },
+          { x: 60, y: 76 }
+        ]
+      }
+    ]}
+  />
 )

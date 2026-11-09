@@ -322,8 +322,18 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'GaugeChart',
+            url: '/docs/components/gauge-chart',
+            group: 'Components'
+          },
+          {
             name: 'Grid',
             url: '/docs/components/grid',
+            group: 'Components'
+          },
+          {
+            name: 'Heatmap',
+            url: '/docs/components/heatmap',
             group: 'Components'
           },
           {
@@ -432,6 +442,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'RadarChart',
+            url: '/docs/components/radar-chart',
+            group: 'Components'
+          },
+          {
             name: 'Radio',
             url: '/docs/components/radio',
             group: 'Components'
@@ -459,6 +474,11 @@ export const menuMobile = [
           {
             name: 'Skeleton',
             url: '/docs/components/skeleton',
+            group: 'Components'
+          },
+          {
+            name: 'ScatterChart',
+            url: '/docs/components/scatter-chart',
             group: 'Components'
           },
           {

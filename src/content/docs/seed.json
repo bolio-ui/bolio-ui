@@ -2078,6 +2078,65 @@
     "path": "/docs/components/fieldset#fieldset.group.props"
   },
   {
+    "title": "GaugeChart",
+    "component": true,
+    "path": "/docs/components/gauge-chart"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart General",
+    "component": false,
+    "path": "/docs/components/gauge-chart#general"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Sections",
+    "component": false,
+    "path": "/docs/components/gauge-chart#sections"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Target and label",
+    "component": false,
+    "path": "/docs/components/gauge-chart#target-and-label"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Angles and size",
+    "component": false,
+    "path": "/docs/components/gauge-chart#angles-and-size"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/gauge-chart#apis"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Props",
+    "component": false,
+    "path": "/docs/components/gauge-chart#gaugechart.props"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeSection",
+    "component": false,
+    "path": "/docs/components/gauge-chart#gaugesection"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/gauge-chart#ref"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/gauge-chart#accessibility"
+  },
+  {
     "title": "Grid",
     "component": true,
     "path": "/docs/components/grid"
@@ -2159,6 +2218,53 @@
     "title": "Wrap - Grid",
     "component": false,
     "path": "/docs/components/grid#wrap"
+  },
+  {
+    "title": "Heatmap",
+    "component": true,
+    "path": "/docs/components/heatmap"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap General",
+    "component": false,
+    "path": "/docs/components/heatmap#general"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Legend and colors",
+    "component": false,
+    "path": "/docs/components/heatmap#legend-and-colors"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Week start and language",
+    "component": false,
+    "path": "/docs/components/heatmap#week-start-and-language"
+  },
+  {
+    "head": "Heatmap",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/heatmap#apis"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Props",
+    "component": false,
+    "path": "/docs/components/heatmap#heatmap.props"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/heatmap#ref"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/heatmap#accessibility"
   },
   {
     "title": "Icons",
@@ -3495,6 +3601,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/progress#accessibility"
+  },
+  {
+    "title": "RadarChart",
+    "component": true,
+    "path": "/docs/components/radar-chart"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart General",
+    "component": false,
+    "path": "/docs/components/radar-chart#general"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Radius axis and dots",
+    "component": false,
+    "path": "/docs/components/radar-chart#radius-axis-and-dots"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Clean",
+    "component": false,
+    "path": "/docs/components/radar-chart#clean"
+  },
+  {
+    "head": "RadarChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/radar-chart#apis"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Props",
+    "component": false,
+    "path": "/docs/components/radar-chart#radarchart.props"
+  },
+  {
+    "head": "RadarChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/radar-chart#chartseries"
+  },
+  {
+    "head": "RadarChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/radar-chart#ref"
+  },
+  {
+    "head": "RadarChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/radar-chart#accessibility"
   },
   {
     "title": "Radio",
@@ -7895,6 +8054,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/mention#accessibility"
+  },
+  {
+    "title": "ScatterChart",
+    "component": true,
+    "path": "/docs/components/scatter-chart"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart General",
+    "component": false,
+    "path": "/docs/components/scatter-chart#general"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Many series",
+    "component": false,
+    "path": "/docs/components/scatter-chart#many-series"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Value format",
+    "component": false,
+    "path": "/docs/components/scatter-chart#value-format"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/scatter-chart#apis"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Props",
+    "component": false,
+    "path": "/docs/components/scatter-chart#scatterchart.props"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterSeries",
+    "component": false,
+    "path": "/docs/components/scatter-chart#scatterseries"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/scatter-chart#ref"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/scatter-chart#accessibility"
   },
   {
     "title": "Scroll Area",

@@ -357,9 +357,19 @@
               "path": "/docs/components/fieldset.mdx"
             },
             {
+              "title": "GaugeChart",
+              "keywords": "gauge chart, gauge, meter, speedometer, progress, kpi, data visualization",
+              "path": "/docs/components/gauge-chart.mdx"
+            },
+            {
               "title": "Grid",
               "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
               "path": "/docs/components/grid.mdx"
+            },
+            {
+              "title": "Heatmap",
+              "keywords": "heatmap, calendar heatmap, contributions, activity, github, data visualization",
+              "path": "/docs/components/heatmap.mdx"
             },
             {
               "title": "Icons",
@@ -462,6 +472,11 @@
               "path": "/docs/components/progress.mdx"
             },
             {
+              "title": "RadarChart",
+              "keywords": "radar chart, spider chart, web, compare, chart, data visualization, recharts",
+              "path": "/docs/components/radar-chart.mdx"
+            },
+            {
               "title": "Radio",
               "keywords": "radio, radio group, types, description, disabled, inline",
               "path": "/docs/components/radio.mdx"
@@ -475,6 +490,11 @@
               "title": "Row",
               "keywords": "row, flex, justify, align, gap, layout, columns",
               "path": "/docs/components/row.mdx"
+            },
+            {
+              "title": "ScatterChart",
+              "keywords": "scatter chart, scatter plot, correlation, points, chart, data visualization, recharts",
+              "path": "/docs/components/scatter-chart.mdx"
             },
             {
               "title": "Scroll Area",

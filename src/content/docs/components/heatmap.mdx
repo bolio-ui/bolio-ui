@@ -1,0 +1,105 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Heatmap, Code } from 'core'
+
+export const meta = {
+  title: 'Heatmap',
+  description: 'A calendar where each day is a square, darker the bigger its value.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 87
+}
+
+## Heatmap
+
+A calendar where each day is a square, darker the bigger its value. Use it for activity over weeks, such as commits, check-ins or sales per day.
+
+<Playground
+  desc="Pass the days in `data`, as `YYYY-MM-DD` keys with a number for each. Days without a value stay empty. Without dates, it shows the last year."
+  scope={{ Heatmap }}
+  code={`
+<Heatmap
+  aria-label="Commits from January to May 2026"
+  startDate="2026-01-01"
+  endDate="2026-05-31"
+  data={{
+    '2026-01-05': 1, '2026-01-06': 3, '2026-01-12': 5, '2026-01-20': 2,
+    '2026-02-02': 4, '2026-02-03': 4, '2026-02-17': 8, '2026-03-09': 2,
+    '2026-03-10': 6, '2026-03-11': 9, '2026-04-14': 3, '2026-04-21': 7,
+    '2026-05-04': 1, '2026-05-18': 5, '2026-05-19': 6
+  }}
+/>
+`}
+/>
+
+<Playground
+  title="Legend and colors"
+  desc="`withLegend` explains the scale. Set `type` for a theme color, or `colors` for your own levels, from the lowest to the highest."
+  scope={{ Heatmap }}
+  code={`
+<Heatmap
+  withLegend
+  type="primary"
+  startDate="2026-03-01"
+  endDate="2026-05-31"
+  data={{
+    '2026-03-09': 2, '2026-03-10': 6, '2026-03-11': 9, '2026-04-14': 3,
+    '2026-04-21': 7, '2026-05-04': 1, '2026-05-18': 5, '2026-05-19': 6
+  }}
+/>
+`}
+/>
+
+<Playground
+  title="Week start and language"
+  desc="`firstDayOfWeek` goes from 0 (Sunday) to 6. `locale` translates the months and the weekdays."
+  scope={{ Heatmap }}
+  code={`
+<Heatmap
+  firstDayOfWeek={0}
+  locale="pt-BR"
+  startDate="2026-03-01"
+  endDate="2026-05-31"
+  valueLabel={(date, value) => value + ' contribuições em ' + date}
+  data={{ '2026-03-09': 2, '2026-04-14': 3, '2026-05-18': 5 }}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/heatmap.mdx">
+<Attributes.Title>Heatmap.Props</Attributes.Title>
+
+| Attribute             | Description                                                    | Type                                  | Accepted values                                                            | Default                |
+| --------------------- | -------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- | ---------------------- |
+| **data**              | the value of each day, with `YYYY-MM-DD` keys                  | `Record<string, number>`              | -                                                                          | -                      |
+| **startDate**         | first day shown                                                | <Code>string &#124; Date</Code>       | -                                                                          | a year before the end  |
+| **endDate**           | last day shown                                                 | <Code>string &#124; Date</Code>       | -                                                                          | today                  |
+| **type**              | theme color of the squares                                     | `NormalTypes`                         | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `success`              |
+| **colors**            | colors of the levels, from the lowest to the highest           | `string[]`                            | -                                                                          | 4 shades of `type`     |
+| **firstDayOfWeek**    | day that starts a week, 0 is Sunday                            | `number`                              | `0` to `6`                                                                 | `1`                    |
+| **rectSize**          | side of a square, in pixels                                    | `number`                              | -                                                                          | `12`                   |
+| **gap**               | space between squares, in pixels                               | `number`                              | -                                                                          | `3`                    |
+| **rectRadius**        | corner radius of a square, in pixels                           | `number`                              | -                                                                          | `2`                    |
+| **withMonthLabels**   | name the months above the columns                              | `boolean`                             | -                                                                          | `true`                 |
+| **withWeekdayLabels** | name Monday, Wednesday and Friday                              | `boolean`                             | -                                                                          | `true`                 |
+| **withLegend**        | show the scale below                                           | `boolean`                             | -                                                                          | `false`                |
+| **legendLabels**      | texts at the two ends of the legend                            | `[string, string]`                    | -                                                                          | `Less`, `More`         |
+| **locale**            | language of the months and the weekdays                        | `string`                              | -                                                                          | `en-US`                |
+| **monthLabels**       | the 12 month names, from January                               | `string[]`                            | -                                                                          | from `locale`          |
+| **weekdayLabels**     | the 7 weekday names, from Sunday                               | `string[]`                            | -                                                                          | from `locale`          |
+| **valueLabel**        | text of the hover title of a day                               | `(date: string, value: number) => string` | -                                                                      | `date: value`          |
+| ...                   | native props, passed to the `svg`                              | `SVGAttributes`                       | `'aria-label', 'className', ...`                                           | -                      |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `svg`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Value is shown by color only, and each square has a hover title with its date and value. Describe the pattern with `aria-label` or `aria-labelledby`, such as "Commits in 2026, busiest in March". With a name it is an image. Without one it is hidden from assistive technology.
+
+For the exact numbers, offer the same data in a `Table` next to the heatmap.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

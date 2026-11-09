@@ -314,8 +314,18 @@ export const components = [
     url: '/docs/components/fieldset'
   },
   {
+    name: 'GaugeChart',
+    url: '/docs/components/gauge-chart',
+    tag: 'New'
+  },
+  {
     name: 'Grid',
     url: '/docs/components/grid'
+  },
+  {
+    name: 'Heatmap',
+    url: '/docs/components/heatmap',
+    tag: 'New'
   },
   {
     name: 'Icons',
@@ -407,6 +417,11 @@ export const components = [
     url: '/docs/components/progress'
   },
   {
+    name: 'RadarChart',
+    url: '/docs/components/radar-chart',
+    tag: 'New'
+  },
+  {
     name: 'Radio',
     url: '/docs/components/radio',
     tag: 'Updated'
@@ -432,6 +447,11 @@ export const components = [
   {
     name: 'Skeleton',
     url: '/docs/components/skeleton'
+  },
+  {
+    name: 'ScatterChart',
+    url: '/docs/components/scatter-chart',
+    tag: 'New'
   },
   {
     name: 'Scroll Area',
