@@ -7298,6 +7298,41 @@
     "path": "/docs/guide/migration-v2-to-v3#checklist"
   },
   {
+    "title": "Testing with Vitest",
+    "component": true,
+    "path": "/docs/guide/testing-with-vitest"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#install"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Configure Vitest",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#configure-vitest"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Render with the provider",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#render-with-the-provider"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Write a test",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#write-a-test"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "What to keep in mind",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#what-to-keep-in-mind"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"

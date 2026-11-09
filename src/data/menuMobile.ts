@@ -26,6 +26,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Testing with Vitest',
+            url: '/docs/guide/testing-with-vitest',
+            group: 'Guide'
+          },
+          {
             name: 'Page structure',
             url: '/docs/guide/page-structure',
             group: 'Guide'
