@@ -302,6 +302,11 @@
               "path": "/docs/components/description.mdx"
             },
             {
+              "title": "Diff",
+              "keywords": "diff, compare, changes, before after, text diff, code review, unified, split",
+              "path": "/docs/components/diff.mdx"
+            },
+            {
               "title": "Display",
               "keywords": "display, code, snippet, caption",
               "path": "/docs/components/display.mdx"
@@ -320,6 +325,11 @@
               "title": "Drawer",
               "keywords": "drawer, placement, modal",
               "path": "/docs/components/drawer.mdx"
+            },
+            {
+              "title": "EmojiPicker",
+              "keywords": "emoji picker, emoji, reactions, search emoji, smileys, picker",
+              "path": "/docs/components/emoji-picker.mdx"
             },
             {
               "title": "Empty State",
@@ -362,6 +372,11 @@
               "path": "/docs/components/input.mdx"
             },
             {
+              "title": "JsonViewer",
+              "keywords": "json viewer, json, tree, inspect, expand, collapse, response",
+              "path": "/docs/components/json-viewer.mdx"
+            },
+            {
               "title": "Keyboard",
               "keywords": "keyboard, modifiers, combination",
               "path": "/docs/components/keyboard.mdx"
@@ -395,6 +410,11 @@
               "title": "Modal",
               "keywords": "modal, dialog, backdrop, actions, customized, loading, overlong",
               "path": "/docs/components/modal.mdx"
+            },
+            {
+              "title": "ModalsProvider",
+              "keywords": "modals provider, useModals, modals manager, confirm dialog, open modal, imperative modal, stack",
+              "path": "/docs/components/modals-provider.mdx"
             },
             {
               "title": "Note",
@@ -445,6 +465,11 @@
               "title": "Row",
               "keywords": "row, flex, justify, align, gap, layout, columns",
               "path": "/docs/components/row.mdx"
+            },
+            {
+              "title": "Schedule",
+              "keywords": "schedule, calendar, events, agenda, week view, day view, month view, appointments, time grid",
+              "path": "/docs/components/schedule.mdx"
             },
             {
               "title": "Scroll Area",

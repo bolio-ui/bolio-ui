@@ -267,6 +267,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Diff',
+            url: '/docs/components/diff',
+            group: 'Components'
+          },
+          {
             name: 'Display',
             url: '/docs/components/display',
             group: 'Components'
@@ -284,6 +289,11 @@ export const menuMobile = [
           {
             name: 'Drawer',
             url: '/docs/components/drawer',
+            group: 'Components'
+          },
+          {
+            name: 'EmojiPicker',
+            url: '/docs/components/emoji-picker',
             group: 'Components'
           },
           {
@@ -327,6 +337,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'JsonViewer',
+            url: '/docs/components/json-viewer',
+            group: 'Components'
+          },
+          {
             name: 'Keyboard',
             url: '/docs/components/keyboard',
             group: 'Components'
@@ -364,6 +379,11 @@ export const menuMobile = [
           {
             name: 'Modal',
             url: '/docs/components/modal',
+            group: 'Components'
+          },
+          {
+            name: 'ModalsProvider',
+            url: '/docs/components/modals-provider',
             group: 'Components'
           },
           {
@@ -429,6 +449,11 @@ export const menuMobile = [
           {
             name: 'Skeleton',
             url: '/docs/components/skeleton',
+            group: 'Components'
+          },
+          {
+            name: 'Schedule',
+            url: '/docs/components/schedule',
             group: 'Components'
           },
           {
