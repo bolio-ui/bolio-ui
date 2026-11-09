@@ -108,6 +108,12 @@ Show a message that stays in the page, with an optional title, icon and close bu
 | **role**       | defaults to `alert` for errors and warnings, `status` otherwise | `string`                                                    | -               | -         |
 | ...            | native props                                  | `HTMLAttributes`                                                              | -               | -         |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • `error` and `warning` use `role="alert"`, so a screen reader announces them as soon as they appear. The other types use `role="status"`, which waits until the reader is done with what it was saying.
+- • The icon is hidden from screen readers. The title and the text carry the message, so do not rely on the color of the type alone.
+- • The close button is named by `closeLabel`, `Close` by default. Set it in the language of your page.
+
 </Attributes>
 
 export default Docs.withMeta(meta)

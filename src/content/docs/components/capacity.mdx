@@ -108,6 +108,10 @@ Display an capacity indicator.
 | **color** | css color string | `string`         | -                  | -       |
 | ...       | native props     | `HTMLAttributes` | `'className', ...` | -       |
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The bar is a `div` with a `span` and no role, so a screen reader does not announce its value. Show the value as text next to it, such as "70% used", or pass `role="meter"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax` and an `aria-label` yourself.
+
 </Attributes>
 
 export default Docs.withMeta(meta)
