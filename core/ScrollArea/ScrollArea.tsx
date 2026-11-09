@@ -108,8 +108,12 @@ const ScrollAreaComponent = React.forwardRef<
       if (!custom || !node) return
       update()
       node.addEventListener('scroll', update)
-      const resize = new ResizeObserver(update)
-      resize.observe(node)
+      // jsdom has no ResizeObserver, and the area still has to render there
+      const resize =
+        typeof ResizeObserver === 'function'
+          ? new ResizeObserver(update)
+          : undefined
+      if (resize) resize.observe(node)
       const mutation = new MutationObserver(update)
       mutation.observe(node, {
         childList: true,
@@ -118,7 +122,7 @@ const ScrollAreaComponent = React.forwardRef<
       })
       return () => {
         node.removeEventListener('scroll', update)
-        resize.disconnect()
+        if (resize) resize.disconnect()
         mutation.disconnect()
       }
     }, [custom, update])
