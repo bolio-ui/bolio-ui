@@ -1,0 +1,89 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs } from 'src/components'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Dashboard example',
+  description:
+    'A Vite page that puts stat tiles, charts, a schedule and modals together with Bolio UI.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Dashboard example
+
+<Spacer h={2} />
+
+### Get the example
+
+The [Vite dashboard example](https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-vite-dashboard) is a single page with stat tiles that carry a sparkline, an area chart, a donut chart, a ranked list of pages, a schedule, and modals opened from code. Copy the folder and run it:
+
+```bash
+yarn
+yarn dev
+```
+
+<Spacer h={2} />
+
+### Install recharts for the charts
+
+The charts use [recharts](https://recharts.org), which is an optional peer dependency. Add it to the project that uses them:
+
+<PackageTabs
+  pnpm="pnpm add recharts"
+  npm="npm install recharts"
+  yarn="yarn add recharts"
+  bun="bun add recharts"
+/>
+
+The charts are exported from their own entry, so a project that does not use them never loads recharts:
+
+```tsx
+import { AreaChart, DonutChart } from '@bolio-ui/core/charts'
+```
+
+Every other component, such as `Sparkline`, `BarsList`, `Schedule` and `JsonViewer`, comes from `@bolio-ui/core` and needs nothing extra.
+
+<Spacer h={2} />
+
+### Stat tiles with a sparkline
+
+`Stat` has an `extra` slot on the right. Put a `Sparkline` in it, give it a name, and set `trend` so the color follows the change from the first to the last value:
+
+```tsx
+<Stat
+  label="Visits"
+  value="24,300"
+  change="+12.4% this month"
+  extra={<Sparkline trend aria-label="Visits, last six months" data={[12, 14, 13, 18, 21, 24]} />}
+/>
+```
+
+<Spacer h={2} />
+
+### Modals from code
+
+Wrap the app in `ModalsProvider` once, in the entry file. Then any component can call `useModals()` instead of keeping a `visible` state:
+
+```tsx
+// NAME: src/main.tsx
+<BolioUIProvider>
+  <ModalsProvider>
+    <App />
+  </ModalsProvider>
+</BolioUIProvider>
+```
+
+```tsx
+// NAME: src/App.tsx
+const modals = useModals()
+
+modals.openConfirm({
+  title: 'Delete this report?',
+  onConfirm: () => setToast({ text: 'Report deleted', type: 'success' })
+})
+```
+
+The same hook opens any content, such as a `JsonViewer` with the raw data, or the details of a clicked event in the schedule.
+
+export default Docs.withMeta(meta)

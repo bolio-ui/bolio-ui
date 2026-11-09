@@ -45,6 +45,11 @@
               "path": "/docs/guide/storybook.mdx"
             },
             {
+              "title": "Dashboard example",
+              "keywords": "dashboard, example, charts, recharts, sparkline, stat, schedule, modals, useModals, vite, bolio ui",
+              "path": "/docs/guide/dashboard-example.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"

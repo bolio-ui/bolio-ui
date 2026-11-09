@@ -7362,6 +7362,35 @@
     "path": "/docs/guide/storybook#what-to-keep-in-mind"
   },
   {
+    "title": "Dashboard example",
+    "component": true,
+    "path": "/docs/guide/dashboard-example"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Get the example",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#get-the-example"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Install recharts for the charts",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#install-recharts-for-the-charts"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Stat tiles with a sparkline",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#stat-tiles-with-a-sparkline"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Modals from code",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#modals-from-code"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"

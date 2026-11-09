@@ -32,6 +32,11 @@ export const guide = [
     tag: 'New'
   },
   {
+    name: 'Dashboard example',
+    url: '/docs/guide/dashboard-example',
+    tag: 'New'
+  },
+  {
     name: 'Page structure',
     url: '/docs/guide/page-structure'
   },
