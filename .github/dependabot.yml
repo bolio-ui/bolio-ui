@@ -4,7 +4,10 @@ updates:
   # Patch and minor updates arrive as one PR a week. A major update opens a PR
   # of its own, so it can be reviewed and reverted alone.
   - package-ecosystem: npm
-    directory: /
+    directories:
+      - /
+      - /examples/create-nextjs-js-app
+      - /examples/create-nextjs-ts-app
     target-branch: develop
     schedule:
       interval: weekly
