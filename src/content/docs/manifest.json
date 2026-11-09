@@ -50,6 +50,11 @@
               "path": "/docs/guide/dashboard-example.mdx"
             },
             {
+              "title": "Controlled and uncontrolled",
+              "keywords": "controlled, uncontrolled, value, initialValue, checked, initialChecked, onChange, state, useUncontrolled, bolio ui",
+              "path": "/docs/guide/controlled-and-uncontrolled.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"
