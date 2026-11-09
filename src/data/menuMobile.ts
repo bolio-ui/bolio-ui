@@ -144,6 +144,8 @@ export const menuMobile = [
           {
             name: 'AreaChart',
             url: '/docs/components/area-chart',
+            name: 'Autocomplete',
+            url: '/docs/components/autocomplete',
             group: 'Components'
           },
           {
@@ -302,6 +304,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Diff',
+            url: '/docs/components/diff',
+            group: 'Components'
+          },
+          {
             name: 'Display',
             url: '/docs/components/display',
             group: 'Components'
@@ -324,6 +331,11 @@ export const menuMobile = [
           {
             name: 'Drawer',
             url: '/docs/components/drawer',
+            group: 'Components'
+          },
+          {
+            name: 'EmojiPicker',
+            url: '/docs/components/emoji-picker',
             group: 'Components'
           },
           {
@@ -382,6 +394,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'JsonViewer',
+            url: '/docs/components/json-viewer',
+            group: 'Components'
+          },
+          {
             name: 'Keyboard',
             url: '/docs/components/keyboard',
             group: 'Components'
@@ -429,6 +446,11 @@ export const menuMobile = [
           {
             name: 'Modal',
             url: '/docs/components/modal',
+            group: 'Components'
+          },
+          {
+            name: 'ModalsProvider',
+            url: '/docs/components/modals-provider',
             group: 'Components'
           },
           {
@@ -519,6 +541,8 @@ export const menuMobile = [
           {
             name: 'ScatterChart',
             url: '/docs/components/scatter-chart',
+            name: 'Schedule',
+            url: '/docs/components/schedule',
             group: 'Components'
           },
           {

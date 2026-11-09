@@ -1,4 +1,4 @@
-import { PrismTheme } from 'prism-react-renderer'
+import { PrismTheme, PrismThemeEntry } from 'prism-react-renderer'
 import { BolioUIThemes } from 'core/Themes/Presets'
 
 // Neutral surface (CssBaseline's own tokens), but each token category gets
@@ -31,7 +31,7 @@ const makeCodeTheme = (theme: BolioUIThemes): PrismTheme => {
       fontFamily: theme.font.mono,
       fontSize: '.875rem',
       textRendering: 'geometricPrecision'
-    },
+    } as PrismThemeEntry,
     styles: [
       {
         types: ['comment', 'prolog', 'doctype', 'cdata'],

@@ -4,6 +4,7 @@ import * as Bolio from '..'
 
 const {
   Alert,
+  Autocomplete,
   Avatar,
   Badge,
   BarsList,
@@ -21,6 +22,10 @@ const {
   Calendar,
   Capacity,
   Card,
+  Diff,
+  EmojiPicker,
+  JsonViewer,
+  Schedule,
   Carousel,
   Checkbox,
   Chip,
@@ -88,6 +93,27 @@ const {
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
+  ['Diff', () => <Diff previousValue="a" currentValue="b" />],
+  [
+    'EmojiPicker',
+    () => (
+      <EmojiPicker
+        data={[
+          {
+            id: 'faces',
+            label: 'Faces',
+            emojis: [{ emoji: '😀', name: 'grinning face' }]
+          }
+        ]}
+      />
+    )
+  ],
+  ['JsonViewer', () => <JsonViewer value={{ a: 1, b: [1, 2] }} />],
+  ['Schedule', () => <Schedule onSlotClick={() => undefined} />],
+  [
+    'Autocomplete',
+    () => <Autocomplete aria-label="Fruit" data={['Apple', 'Pear']} />
+  ],
   ['Avatar', () => <Avatar text="BA" />],
   ['Badge', () => <Badge>new</Badge>],
   ['GaugeChart', () => <GaugeChart aria-label="CPU" value={60} />],

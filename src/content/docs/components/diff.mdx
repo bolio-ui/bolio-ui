@@ -1,0 +1,98 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Diff } from 'core'
+
+export const meta = {
+  title: 'Diff',
+  description: 'Compare two texts line by line, with the words that changed highlighted.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 100
+}
+
+## Diff
+
+Compare two texts line by line, with the words that changed highlighted. Use it to review a change before it is saved, such as an edited document, a config file or a generated answer.
+
+<Playground
+  desc="Pass the text before in `previousValue` and the text after in `currentValue`. Removed lines are marked with a minus and added lines with a plus."
+  scope={{ Diff }}
+  code={`
+<Diff
+  previousValue={'const total = price * 2\nreturn total'}
+  currentValue={'const total = price * quantity\nreturn total'}
+/>
+`}
+/>
+
+<Playground
+  title="Split"
+  desc="`mode=&quot;split&quot;` puts the previous text on the left and the current text on the right."
+  scope={{ Diff }}
+  code={`
+<Diff
+  mode="split"
+  previousValue={'name: bolio\nversion: 1\nlicense: MIT'}
+  currentValue={'name: bolio-ui\nversion: 2\nlicense: MIT\nprivate: false'}
+/>
+`}
+/>
+
+<Playground
+  title="Context lines"
+  desc="With `contextLines`, the unchanged lines far from a change fold into a button that brings them back."
+  scope={{ Diff }}
+  code={`
+<Diff
+  contextLines={1}
+  previousValue={Array.from({ length: 20 }, (_, i) => 'line ' + (i + 1)).join('\n')}
+  currentValue={Array.from({ length: 20 }, (_, i) => (i === 9 ? 'a changed line' : 'line ' + (i + 1))).join('\n')}
+/>
+`}
+/>
+
+<Playground
+  title="Highlight and colors"
+  desc="`diffMethod` sets what is highlighted inside a changed line: `words`, `chars`, or `lines` for none."
+  scope={{ Diff }}
+  code={`
+<Diff
+  diffMethod="chars"
+  addColor="#2563eb"
+  removeColor="#f59e0b"
+  withLineNumbers={false}
+  previousValue="The quick brown fox"
+  currentValue="The quack brown box"
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/diff.mdx">
+<Attributes.Title>Diff.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **previousValue** | the text before the change | `string` | - | - |
+| **currentValue** | the text after the change | `string` | - | - |
+| **mode** | how the two texts are laid out | `string` | `'unified', 'split'` | `unified` |
+| **diffMethod** | what is highlighted inside a changed line | `string` | `'words', 'chars', 'lines'` | `words` |
+| **contextLines** | unchanged lines kept around each change, the rest folds | `number` | - | all of them |
+| **withLineNumbers** | show the line numbers | `boolean` | - | `true` |
+| **addColor** | color of the added lines | `string` | - | theme success |
+| **removeColor** | color of the removed lines | `string` | - | theme error |
+| **expandLabel** | text of the button of a folded run | `(hidden: number) => string` | - | `Show N hidden lines` |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each line starts with a `+` or a `-`, so a change reads as text and not only as color. Folded lines are behind a real button, with its text set by `expandLabel`.
+
+The diff is a table of lines. For a long change, say what changed in a sentence next to it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

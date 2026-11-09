@@ -1,0 +1,93 @@
+.viewer {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--json-font-size);
+  color: var(--json-text-color);
+  border: 1px solid var(--json-border-color);
+  border-radius: var(--json-radius);
+  overflow: auto;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.75em;
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid var(--json-border-color);
+}
+
+.tool {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.tool:focus-visible {
+  outline: 2px solid var(--json-focus-color);
+  outline-offset: 2px;
+}
+
+.tree {
+  padding: 0.5em 0;
+}
+
+.row {
+  min-height: 1.6em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.item {
+  cursor: default;
+  outline: none;
+}
+
+.item:hover {
+  background-color: var(--json-hover-bg);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--json-focus-color);
+  outline-offset: -2px;
+}
+
+.chevron {
+  display: inline-block;
+  width: 1.25em;
+  color: var(--json-punctuation-color);
+}
+
+.key {
+  color: var(--json-key-color);
+}
+
+.punctuation,
+.size {
+  color: var(--json-punctuation-color);
+}
+
+.size {
+  margin-left: 0.75em;
+  font-size: 0.9em;
+}
+
+.string {
+  color: var(--json-string-color);
+}
+
+.number {
+  color: var(--json-number-color);
+}
+
+.boolean {
+  color: var(--json-boolean-color);
+}
+
+.null {
+  color: var(--json-null-color);
+  font-style: italic;
+}

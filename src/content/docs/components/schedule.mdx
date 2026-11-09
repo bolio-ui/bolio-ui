@@ -1,0 +1,163 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Schedule } from 'core'
+
+export const meta = {
+  title: 'Schedule',
+  description: 'A calendar of events, by day, week or month.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 104
+}
+
+## Schedule
+
+A calendar of events, by day, week or month. Events sit on a grid of hours, side by side when they overlap, and all-day events have a row of their own. Use it for appointments, shifts, bookings and meetings.
+
+<Playground
+  desc="Pass `events` with a `start` and an `end`. The header changes the date and the view."
+  scope={{ Schedule }}
+  code={`
+() => {
+  const at = (day, hour, minute = 0) => {
+    const d = new Date()
+    d.setDate(d.getDate() + day)
+    d.setHours(hour, minute, 0, 0)
+    return d
+  }
+  const events = [
+    { id: 1, title: 'Standup', start: at(0, 9), end: at(0, 9, 30) },
+    { id: 2, title: 'Design review', start: at(0, 9), end: at(0, 10, 30), color: '#8b5cf6' },
+    { id: 3, title: 'Lunch', start: at(1, 12), end: at(1, 13), color: '#16a34a' },
+    { id: 4, title: 'Offsite', start: at(2, 0), end: at(3, 0), allDay: true }
+  ]
+  return <Schedule events={events} height={380} />
+}
+`}
+/>
+
+<Playground
+  title="Month"
+  desc="Past `maxEventsPerDay`, a day shows a +N more button that opens that day."
+  scope={{ Schedule }}
+  code={`
+() => {
+  const at = (day, hour) => {
+    const d = new Date()
+    d.setDate(d.getDate() + day)
+    d.setHours(hour, 0, 0, 0)
+    return d
+  }
+  const events = [
+    { id: 1, title: 'Review', start: at(0, 10), end: at(0, 11) },
+    { id: 2, title: 'Call', start: at(0, 13), end: at(0, 14), color: '#16a34a' },
+    { id: 3, title: 'Demo', start: at(0, 15), end: at(0, 16), color: '#8b5cf6' },
+    { id: 4, title: 'Retro', start: at(0, 17), end: at(0, 18), color: '#f59e0b' }
+  ]
+  return <Schedule initialView="month" maxEventsPerDay={2} events={events} />
+}
+`}
+/>
+
+<Playground
+  title="Create and open events"
+  desc="With `onSlotClick`, each hour is a button that reports its start and end. `onEventClick` reports the event."
+  scope={{ Schedule }}
+  code={`
+() => {
+  const [events, setEvents] = React.useState([])
+  const [picked, setPicked] = React.useState('Nothing picked')
+  return (
+    <>
+      <Schedule
+        initialView="day"
+        height={300}
+        events={events}
+        intervalMinutes={60}
+        onSlotClick={(start, end) =>
+          setEvents([...events, { id: events.length + 1, title: 'New event', start, end }])
+        }
+        onEventClick={(event) => setPicked(event.title + ' (' + event.id + ')')}
+      />
+      <p>{picked}</p>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/schedule.mdx">
+<Attributes.Title>Schedule.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **events** | what to show | `ScheduleEvent[]` | [ScheduleEvent](#scheduleevent) | `[]` |
+| **view** | the view, to control it | `string` | `'day', 'week', 'month'` | - |
+| **initialView** | the view at the start | `string` | `'day', 'week', 'month'` | `week` |
+| **onViewChange** | called with the new view | `(view: ScheduleView) => void` | - | - |
+| **date** | a day of the period shown, to control it | `Date` | - | - |
+| **initialDate** | a day of the period at the start | `Date` | - | today |
+| **onDateChange** | called with the new day | `(date: Date) => void` | - | - |
+| **views** | the views offered in the header | `ScheduleView[]` | - | all three |
+| **locale** | language of the dates and the times | `string` | - | `en-US` |
+| **weekStartsOn** | day that starts a week, 0 is Sunday | `number` | `0` to `6` | `0` |
+| **startHour** | first hour of the grid | `number` | - | `0` |
+| **endHour** | hour where the grid ends | `number` | - | `24` |
+| **slotHeight** | height of an hour, in pixels | `number` | - | `48` |
+| **intervalMinutes** | length of a slot that can be clicked | `number` | - | `60` |
+| **height** | height of the grid, in pixels | `number` | - | `600` |
+| **startScrollHour** | hour the grid is scrolled to | `number` | - | `7` |
+| **maxEventsPerDay** | events shown in a month day before +N more | `number` | - | `3` |
+| **withCurrentTimeIndicator** | draw a line at the current time | `boolean` | - | `true` |
+| **getNow** | where the current time comes from | `() => Date` | - | the clock |
+| **labels** | texts of the header and the buttons | `Partial<ScheduleLabels>` | [ScheduleLabels](#schedulelabels) | English |
+| **onEventClick** | called when an event is clicked | `(event: ScheduleEvent) => void` | - | - |
+| **onSlotClick** | called with the start and the end of a slot, and turns the slots into buttons | `(start: Date, end: Date) => void` | - | - |
+| **onDayClick** | called when a day number is clicked, which also opens that day | `(date: Date) => void` | - | - |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ScheduleEvent</Attributes.Title>
+
+```ts
+type ScheduleEvent = {
+  id: string | number
+  title: string
+  start: Date
+  end: Date
+  color?: string // any CSS color, the theme primary when missing
+  allDay?: boolean // events of a day or more also go to the all-day row
+  payload?: unknown // your own data
+}
+```
+
+<Attributes.Title>ScheduleLabels</Attributes.Title>
+
+```ts
+type ScheduleLabels = {
+  today: string
+  previous: string
+  next: string
+  view: string
+  day: string
+  week: string
+  month: string
+  allDay: string
+  more: (count: number) => string
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The header buttons and the views are real buttons, and the view that is on has `aria-pressed`. Each day of the grid is a group named by its date, and each event is a button named by its title and time.
+
+With `onSlotClick`, the slots are one tab stop, moved with the arrow keys: Up and Down between hours, Left and Right between days, Home and End to the first and last hour. In the month view the day numbers work the same way, and Home and End go to the start and end of the week.
+
+Dragging and resizing events are not part of this component.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

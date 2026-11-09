@@ -10,14 +10,6 @@ interface Props {
   codeTheme: PrismTheme
 }
 
-// prism-react-renderer 1 returns `key: undefined` in the line and token
-// props, and React 19 warns when a key comes in a spread
-const withoutKey = <T extends object>(props: T) => {
-  const rest: T & { key?: unknown } = { ...props }
-  delete rest.key
-  return rest
-}
-
 // A real file, read only: the live-editable version (react-live's
 // LiveEditor) only ever ran the trimmed-down `code` a Playground executes,
 // never something you could paste into an actual project as-is. `code` here
@@ -83,9 +75,9 @@ const Editor: React.FC<Props> = ({ code, codeTheme }) => {
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
               {tokens.map((line, i) => (
-                <div key={i} {...withoutKey(getLineProps({ line }))}>
+                <div key={i} {...getLineProps({ line })}>
                   {line.map((token, key) => (
-                    <span key={key} {...withoutKey(getTokenProps({ token }))} />
+                    <span key={key} {...getTokenProps({ token })} />
                   ))}
                 </div>
               ))}

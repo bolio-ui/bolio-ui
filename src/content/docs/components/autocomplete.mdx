@@ -1,0 +1,143 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Autocomplete, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Autocomplete',
+  description:
+    'A text input that suggests values while you type and still accepts any text.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 75
+}
+
+## Autocomplete
+
+A text input that suggests values while you type. Unlike `Combobox`, the user can
+keep any text, so use it for free fields like a city, a tag or a search term.
+
+<Playground
+  desc="Pass the suggestions in `data` and name the field with `aria-label`, or with a visible label."
+  scope={{ Autocomplete, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Autocomplete
+      aria-label="Fruit"
+      placeholder="Type or pick a fruit"
+      data={['Apple', 'Banana', 'Cherry', 'Grape']}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="`onChange` receives the text on every keystroke and when a suggestion is picked."
+  scope={{ Autocomplete, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('')
+  return (
+    <Grid.Container gap={2}>
+      <Grid>
+        <Autocomplete
+          aria-label="Fruit"
+          data={['Apple', 'Banana', 'Cherry', 'Grape']}
+          value={value}
+          onChange={setValue}
+        />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>You typed: {value || 'nothing yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Suggestions with labels"
+  desc="Use `{ value, label, disabled }` objects. The input receives the `value`; the list shows the `label`."
+  scope={{ Autocomplete, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Autocomplete
+      aria-label="Language"
+      placeholder="Type a language"
+      data={[
+        { value: 'pt-BR', label: 'Portuguese (Brazil)' },
+        { value: 'en-US', label: 'English (United States)' },
+        { value: 'xx', label: 'Unavailable', disabled: true }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type`, as in `Combobox`."
+  scope={{ Autocomplete, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Autocomplete type="primary" filled placeholder="Primary filled" data={['react', 'vue']} />
+  </Grid>
+  <Grid>
+    <Autocomplete type="success" light placeholder="Success light" data={['react', 'vue']} />
+  </Grid>
+  <Grid>
+    <Autocomplete type="error" ghost placeholder="Error ghost" data={['react', 'vue']} />
+  </Grid>
+  <Grid>
+    <Autocomplete type="info" subtle placeholder="Info subtle" data={['react', 'vue']} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/autocomplete.mdx">
+<Attributes.Title>Autocomplete.Props</Attributes.Title>
+
+| Attribute        | Description                              | Type                                      | Accepted values                                                            | Default                    |
+| ---------------- | ---------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------- | -------------------------- |
+| **data**         | the suggestions                          | `Array<string / ComboboxOption>`          | [ComboboxOption](/docs/components/combobox#comboboxoption)                 | -                          |
+| **value**        | text of the input, to control it         | `string`                                  | -                                                                          | -                          |
+| **initialValue** | text at the start                        | `string`                                  | -                                                                          | `''`                       |
+| **onChange**     | called with the text                     | `(value: string) => void`                 | -                                                                          | -                          |
+| **filter**       | decides which suggestions match the text | `(option, text) => boolean`               | -                                                                          | contains, case insensitive |
+| **placeholder**  | text shown when the input is empty       | `string`                                  | -                                                                          | -                          |
+| **disabled**     | disable the component                    | `boolean`                                 | -                                                                          | `false`                    |
+| **type**         | color of the field                       | `NormalTypes`                             | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`                  |
+| **rounded**      | round the corners                        | `boolean`                                 | -                                                                          | `false`                    |
+| **filled**       | filled variant                           | `boolean`                                 | -                                                                          | `false`                    |
+| **light**        | light variant                            | `boolean`                                 | -                                                                          | `false`                    |
+| **ghost**        | outline variant                          | `boolean`                                 | -                                                                          | `false`                    |
+| **subtle**       | subtle variant                           | `boolean`                                 | -                                                                          | `false`                    |
+| ...              | native props, passed to the input        | `InputHTMLAttributes`                     | `'aria-label', 'name', 'id', ...`                                          | -                          |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `input`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The input has `role="combobox"` and points at the highlighted suggestion with `aria-activedescendant`. The list is a `listbox` of `option` elements.
+
+| Key               | Action                                                      |
+| ----------------- | ----------------------------------------------------------- |
+| Arrow Down and Up | Open the list, and move between the suggestions             |
+| Enter             | Use the highlighted suggestion. Without one, keeps the text |
+| Escape            | Close the list                                              |
+| Tab               | Close the list and keep the text                            |
+
+A screen reader hears how many suggestions match while the user types. Give the input a name with `aria-label` or `aria-labelledby`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

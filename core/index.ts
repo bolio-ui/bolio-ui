@@ -1,6 +1,9 @@
 export { default as Alert } from './Alert'
 export type { AlertProps } from './Alert'
 
+export { default as Autocomplete } from './Autocomplete'
+export type { AutocompleteProps } from './Autocomplete'
+
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
@@ -80,6 +83,9 @@ export type { DateRangePickerProps } from './DateRangePicker'
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
 
+export { default as Diff } from './Diff'
+export type { DiffProps, DiffMethod } from './Diff'
+
 export { default as Display } from './Display'
 export type { DisplayProps } from './Display'
 
@@ -88,6 +94,9 @@ export type { DividerProps } from './Divider'
 
 export { default as Dot } from './Dot'
 export type { DotProps } from './Dot'
+
+export { default as EmojiPicker } from './EmojiPicker'
+export type { EmojiPickerProps, EmojiItem, EmojiCategory } from './EmojiPicker'
 
 export { default as EmptyState } from './EmptyState'
 export type { EmptyStateProps } from './EmptyState'
@@ -124,6 +133,9 @@ export type { ImageZoomProps } from './ImageZoom'
 export { default as Input } from './Input'
 export type { InputProps, InputPasswordProps } from './Input'
 
+export { default as JsonViewer } from './JsonViewer'
+export type { JsonViewerProps, JsonPath } from './JsonViewer'
+
 export { default as Keyboard } from './Keyboard'
 export type { KeyboardProps } from './Keyboard'
 
@@ -147,6 +159,14 @@ export type {
   MenuDividerProps,
   MenuSubProps
 } from './Menu'
+
+export { default as ModalsProvider, useModals } from './ModalsProvider'
+export type {
+  ModalsProviderProps,
+  ModalsApi,
+  OpenModalOptions,
+  ConfirmModalOptions
+} from './ModalsProvider'
 
 export { default as Modal } from './Modal'
 export type {
@@ -204,6 +224,14 @@ export type {
 
 export { default as Row } from './Row'
 export type { RowProps } from './Row'
+
+export { default as Schedule } from './Schedule'
+export type {
+  ScheduleProps,
+  ScheduleView,
+  ScheduleLabels,
+  ScheduleEvent
+} from './Schedule'
 
 export { default as Section } from './Section'
 export type { SectionProps } from './Section'

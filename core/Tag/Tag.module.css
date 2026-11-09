@@ -3,3 +3,29 @@
   box-sizing: border-box;
   line-height: 1em;
 }
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 0.375em;
+  padding: 0.125em;
+  vertical-align: middle;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:focus-visible {
+  outline: 2px solid currentColor;
+}
