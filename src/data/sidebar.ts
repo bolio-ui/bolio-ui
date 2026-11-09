@@ -286,6 +286,11 @@ export const components = [
     url: '/docs/components/divider'
   },
   {
+    name: 'DonutChart',
+    url: '/docs/components/donut-chart',
+    tag: 'New'
+  },
+  {
     name: 'Dot',
     url: '/docs/components/dot'
   },
@@ -381,6 +386,11 @@ export const components = [
   {
     name: 'Pagination',
     url: '/docs/components/pagination'
+  },
+  {
+    name: 'PieChart',
+    url: '/docs/components/pie-chart',
+    tag: 'New'
   },
   {
     name: 'Pin Input',

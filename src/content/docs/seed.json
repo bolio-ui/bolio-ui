@@ -1742,6 +1742,59 @@
     "path": "/docs/components/divider#divideralign"
   },
   {
+    "title": "DonutChart",
+    "component": true,
+    "path": "/docs/components/donut-chart"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart General",
+    "component": false,
+    "path": "/docs/components/donut-chart#general"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Thickness",
+    "component": false,
+    "path": "/docs/components/donut-chart#thickness"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Legend and labels",
+    "component": false,
+    "path": "/docs/components/donut-chart#legend-and-labels"
+  },
+  {
+    "head": "DonutChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/donut-chart#apis"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Props",
+    "component": false,
+    "path": "/docs/components/donut-chart#donutchart.props"
+  },
+  {
+    "head": "DonutChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/donut-chart#chartslice"
+  },
+  {
+    "head": "DonutChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/donut-chart#ref"
+  },
+  {
+    "head": "DonutChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/donut-chart#accessibility"
+  },
+  {
     "title": "Dot",
     "component": true,
     "path": "/docs/components/dot"
@@ -3182,6 +3235,65 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/pagination#accessibility"
+  },
+  {
+    "title": "PieChart",
+    "component": true,
+    "path": "/docs/components/pie-chart"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart General",
+    "component": false,
+    "path": "/docs/components/pie-chart#general"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Legend and labels",
+    "component": false,
+    "path": "/docs/components/pie-chart#legend-and-labels"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Colors and format",
+    "component": false,
+    "path": "/docs/components/pie-chart#colors-and-format"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Semicircle",
+    "component": false,
+    "path": "/docs/components/pie-chart#semicircle"
+  },
+  {
+    "head": "PieChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/pie-chart#apis"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Props",
+    "component": false,
+    "path": "/docs/components/pie-chart#piechart.props"
+  },
+  {
+    "head": "PieChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/pie-chart#chartslice"
+  },
+  {
+    "head": "PieChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pie-chart#ref"
+  },
+  {
+    "head": "PieChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pie-chart#accessibility"
   },
   {
     "title": "Pin Input",

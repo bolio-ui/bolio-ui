@@ -399,5 +399,7 @@ export const ICON_EXPORT_NAMES = new Set([
 export const CHART_EXPORT_NAMES = new Set([
   'AreaChart',
   'BarChart',
-  'LineChart'
+  'DonutChart',
+  'LineChart',
+  'PieChart'
 ])

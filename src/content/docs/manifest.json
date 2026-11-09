@@ -327,6 +327,11 @@
               "path": "/docs/components/divider.mdx"
             },
             {
+              "title": "DonutChart",
+              "keywords": "donut chart, doughnut, ring, proportion, chart, data visualization, recharts",
+              "path": "/docs/components/donut-chart.mdx"
+            },
+            {
               "title": "Dot",
               "keywords": "dot, text",
               "path": "/docs/components/dot.mdx"
@@ -435,6 +440,11 @@
               "title": "Pagination",
               "keywords": "pagination, paginate, table pagination, pages, navigate, limit",
               "path": "/docs/components/pagination.mdx"
+            },
+            {
+              "title": "PieChart",
+              "keywords": "pie chart, proportion, share, slices, chart, data visualization, recharts",
+              "path": "/docs/components/pie-chart.mdx"
             },
             {
               "title": "Pin Input",

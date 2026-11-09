@@ -292,6 +292,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'DonutChart',
+            url: '/docs/components/donut-chart',
+            group: 'Components'
+          },
+          {
             name: 'Dot',
             url: '/docs/components/dot',
             group: 'Components'
@@ -404,6 +409,11 @@ export const menuMobile = [
           {
             name: 'Pagination',
             url: '/docs/components/pagination',
+            group: 'Components'
+          },
+          {
+            name: 'PieChart',
+            url: '/docs/components/pie-chart',
             group: 'Components'
           },
           {

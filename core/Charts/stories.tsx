@@ -1,6 +1,6 @@
 import React from 'react'
 import type { StoryFn, Meta } from '@storybook/react-vite'
-import { AreaChart, BarChart, LineChart } from '.'
+import { AreaChart, BarChart, DonutChart, LineChart, PieChart } from '.'
 
 export default {
   title: 'Data Display/Charts',
@@ -28,4 +28,18 @@ export const Area: StoryFn = () => (
 
 export const Bar: StoryFn = () => (
   <BarChart data={data} dataKey="month" series={series} withLegend />
+)
+
+const slices = [
+  { name: 'Direct', value: 300 },
+  { name: 'Search', value: 500 },
+  { name: 'Social', value: 200 }
+]
+
+export const Pie: StoryFn = () => (
+  <PieChart data={slices} withLegend withLabels labelsType="percent" />
+)
+
+export const Donut: StoryFn = () => (
+  <DonutChart data={slices} withLegend chartLabel="1,000" />
 )

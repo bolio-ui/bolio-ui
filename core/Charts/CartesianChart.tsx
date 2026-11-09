@@ -17,7 +17,7 @@ import useTheme from '../use-theme'
 import useReducedMotion from '../use-reduced-motion'
 import useScale from '../use-scale'
 import useClasses from '../use-classes'
-import { getSurface } from '../utils/surface'
+import { getSeriesColor, getTooltipStyle } from './chart-theme'
 
 export interface ChartSeries {
   name: string
@@ -45,16 +45,6 @@ export type ChartNativeAttrs = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   keyof ChartProps
 >
-
-// The colors a series gets when it does not set one, in order
-const order = [
-  'primary',
-  'success',
-  'warning',
-  'error',
-  'info',
-  'secondary'
-] as const
 
 type Kind = 'line' | 'area' | 'bar'
 
@@ -94,13 +84,12 @@ const CartesianChart = React.forwardRef<
     ref
   ) => {
     const theme = useTheme()
-    const surface = getSurface(theme)
     const { SCALES } = useScale()
     const animate = !useReducedMotion()
     const palette = theme.palette
 
     const colorOf = (item: ChartSeries, index: number) =>
-      item.color || palette[order[index % order.length]]
+      getSeriesColor(palette, index, item.color)
     const format = (value: unknown) =>
       typeof value === 'number' && valueFormatter
         ? valueFormatter(value)
@@ -149,15 +138,7 @@ const CartesianChart = React.forwardRef<
             fill: palette.accents_2,
             fillOpacity: kind === 'bar' ? 0.5 : 1
           }}
-          contentStyle={{
-            background: surface.bg,
-            border: `1px solid ${palette.border}`,
-            borderRadius: theme.layout.radius,
-            boxShadow: surface.shadow,
-            color: palette.foreground
-          }}
-          itemStyle={{ color: palette.foreground }}
-          labelStyle={{ color: palette.foreground, fontWeight: 600 }}
+          {...getTooltipStyle(theme)}
         />
       ),
       withLegend && (
