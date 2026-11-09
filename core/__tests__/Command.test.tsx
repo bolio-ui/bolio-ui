@@ -85,6 +85,21 @@ describe('<Command />', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
+  it('points the field at the highlighted option', async () => {
+    render(wrap())
+    const input = await screen.findByRole('combobox')
+    const options = screen.getAllByRole('option')
+    expect(input).toHaveAttribute('aria-activedescendant', options[0].id)
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    expect(input).toHaveAttribute('aria-activedescendant', options[1].id)
+    expect(input).toHaveAttribute(
+      'aria-controls',
+      screen.getByRole('listbox').id
+    )
+    fireEvent.change(input, { target: { value: 'zzz' } })
+    expect(input).not.toHaveAttribute('aria-activedescendant')
+  })
+
   it('starts empty every time it opens', async () => {
     const { rerender } = render(wrap())
     const input = await screen.findByRole('combobox')
