@@ -268,6 +268,11 @@ export const components = [
     url: '/docs/components/description'
   },
   {
+    name: 'Diff',
+    url: '/docs/components/diff',
+    tag: 'New'
+  },
+  {
     name: 'Display',
     url: '/docs/components/display'
   },
@@ -283,6 +288,11 @@ export const components = [
     name: 'Drawer',
     url: '/docs/components/drawer',
     tag: 'Updated'
+  },
+  {
+    name: 'EmojiPicker',
+    url: '/docs/components/emoji-picker',
+    tag: 'New'
   },
   {
     name: 'Empty State',
@@ -320,6 +330,11 @@ export const components = [
     url: '/docs/components/input'
   },
   {
+    name: 'JsonViewer',
+    url: '/docs/components/json-viewer',
+    tag: 'New'
+  },
+  {
     name: 'Keyboard',
     url: '/docs/components/keyboard'
   },
@@ -350,6 +365,11 @@ export const components = [
     name: 'Modal',
     url: '/docs/components/modal',
     tag: 'Updated'
+  },
+  {
+    name: 'ModalsProvider',
+    url: '/docs/components/modals-provider',
+    tag: 'New'
   },
   {
     name: 'Note',
@@ -407,6 +427,11 @@ export const components = [
   {
     name: 'Skeleton',
     url: '/docs/components/skeleton'
+  },
+  {
+    name: 'Schedule',
+    url: '/docs/components/schedule',
+    tag: 'New'
   },
   {
     name: 'Scroll Area',

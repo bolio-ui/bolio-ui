@@ -1,0 +1,157 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ModalsProvider, useModals, Button } from 'core'
+
+export const meta = {
+  title: 'ModalsProvider',
+  description: 'Open modals and confirm dialogs from code, without a Modal in every page.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 103
+}
+
+## ModalsProvider
+
+Open modals and confirm dialogs from code, without a `Modal` and a `visible` state in every page. Wrap the app once in `ModalsProvider`, then call `useModals()` where you need a modal, such as an event handler.
+
+<Playground
+  desc="`open` shows a modal with a title, a subtitle and any content. It returns an id."
+  scope={{ ModalsProvider, useModals, Button }}
+  code={`
+() => {
+  const Demo = () => {
+    const modals = useModals()
+    return (
+      <Button onClick={() => modals.open({
+        title: 'Welcome',
+        subtitle: 'Opened from code',
+        children: 'There is no Modal in this page, only a call.'
+      })}>
+        Open a modal
+      </Button>
+    )
+  }
+  return <ModalsProvider><Demo /></ModalsProvider>
+}
+`}
+/>
+
+<Playground
+  title="Confirm"
+  desc="`openConfirm` is an alert dialog with a cancel and a confirm action. Both close it unless you set `closeOnConfirm` or `closeOnCancel` to `false`."
+  scope={{ ModalsProvider, useModals, Button }}
+  code={`
+() => {
+  const Demo = () => {
+    const modals = useModals()
+    const [answer, setAnswer] = React.useState('No answer yet')
+    return (
+      <>
+        <Button type="error" onClick={() => modals.openConfirm({
+          title: 'Delete project?',
+          children: 'This cannot be undone.',
+          labels: { confirm: 'Delete', cancel: 'Keep' },
+          onConfirm: () => setAnswer('Deleted'),
+          onCancel: () => setAnswer('Kept')
+        })}>
+          Delete project
+        </Button>
+        <p>{answer}</p>
+      </>
+    )
+  }
+  return <ModalsProvider><Demo /></ModalsProvider>
+}
+`}
+/>
+
+<Playground
+  title="Steps"
+  desc="Modals stack, and the last one opened is on top. `closeAll` closes every layer at the end of a flow."
+  scope={{ ModalsProvider, useModals, Button }}
+  code={`
+() => {
+  const Demo = () => {
+    const modals = useModals()
+    return (
+      <Button onClick={() => modals.openConfirm({
+        title: 'Step 1 of 2',
+        children: 'Archive the project?',
+        closeOnConfirm: false,
+        labels: { confirm: 'Next' },
+        onConfirm: () => modals.openConfirm({
+          title: 'Step 2 of 2',
+          children: 'Notify the team?',
+          labels: { confirm: 'Finish' },
+          onConfirm: () => modals.closeAll()
+        })
+      })}>
+        Start
+      </Button>
+    )
+  }
+  return <ModalsProvider><Demo /></ModalsProvider>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/modals-provider.mdx">
+<Attributes.Title>ModalsProvider.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **labels** | default texts of the confirm and cancel actions | `{ confirm?: string; cancel?: string }` | - | `Confirm`, `Cancel` |
+| **children** | your app | `ReactNode` | - | - |
+
+<Attributes.Title>useModals()</Attributes.Title>
+
+```ts
+const modals = useModals()
+
+modals.open(options)            // returns the id
+modals.openConfirm(options)     // returns the id
+modals.update(id, options)      // changes an open modal
+modals.close(id)                // closes one
+modals.closeAll()               // closes every one
+```
+
+<Attributes.Title>OpenModalOptions</Attributes.Title>
+
+```ts
+type OpenModalOptions = {
+  id?: string // a new modal with the same id replaces the old one
+  title?: ReactNode
+  subtitle?: ReactNode
+  children?: ReactNode
+  onClose?: () => void // the user closed it: Escape, the backdrop or an action
+  // ...and any prop of Modal, such as keyboard or disableBackdropClick
+}
+```
+
+<Attributes.Title>ConfirmModalOptions</Attributes.Title>
+
+```ts
+type ConfirmModalOptions = OpenModalOptions & {
+  labels?: { confirm?: string; cancel?: string }
+  onConfirm?: () => void
+  onCancel?: () => void
+  closeOnConfirm?: boolean // true
+  closeOnCancel?: boolean // true
+  confirmProps?: Partial<ModalActionProps>
+  cancelProps?: Partial<ModalActionProps>
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+`ModalsProvider` renders no element of its own, so it has no `ref`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Every modal is a `Modal`, so it traps the focus and closes with Escape. A confirm dialog has `role="alertdialog"` and is named by its title.
+
+`useModals` throws when it is used outside `ModalsProvider`, so a missing provider is caught at once.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

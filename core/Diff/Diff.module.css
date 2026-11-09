@@ -1,0 +1,89 @@
+.diff {
+  display: block;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--diff-font-size);
+  color: var(--diff-text-color);
+  border: 1px solid var(--diff-border-color);
+  border-radius: var(--diff-radius);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.number {
+  width: 1%;
+  min-width: 3ch;
+  padding: 0 0.75em;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--diff-number-color);
+  user-select: none;
+}
+
+.code {
+  padding: 0 0.75em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.mark {
+  display: inline-block;
+  width: 1.5ch;
+  user-select: none;
+}
+
+.add {
+  background-color: color-mix(in srgb, var(--diff-add-color) 14%, transparent);
+}
+
+.remove {
+  background-color: color-mix(
+    in srgb,
+    var(--diff-remove-color) 14%,
+    transparent
+  );
+}
+
+.empty {
+  background-color: var(--diff-fold-bg);
+}
+
+.changed {
+  color: inherit;
+  border-radius: 2px;
+}
+
+.add .changed {
+  background-color: color-mix(in srgb, var(--diff-add-color) 38%, transparent);
+}
+
+.remove .changed {
+  background-color: color-mix(
+    in srgb,
+    var(--diff-remove-color) 38%,
+    transparent
+  );
+}
+
+.fold {
+  padding: 0.25em 0.75em;
+  background-color: var(--diff-fold-bg);
+}
+
+.expand {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+}
+
+.expand:focus-visible {
+  outline: 2px solid var(--diff-focus-color);
+  outline-offset: 2px;
+}
