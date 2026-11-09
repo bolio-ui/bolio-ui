@@ -4,6 +4,7 @@ import * as Bolio from '..'
 
 const {
   Alert,
+  Autocomplete,
   Avatar,
   Badge,
   Breadcrumbs,
@@ -80,6 +81,10 @@ const {
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
+  [
+    'Autocomplete',
+    () => <Autocomplete aria-label="Fruit" data={['Apple', 'Pear']} />
+  ],
   ['Avatar', () => <Avatar text="BA" />],
   ['Badge', () => <Badge>new</Badge>],
   [

@@ -1,6 +1,9 @@
 export { default as Alert } from './Alert'
 export type { AlertProps } from './Alert'
 
+export { default as Autocomplete } from './Autocomplete'
+export type { AutocompleteProps } from './Autocomplete'
+
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
