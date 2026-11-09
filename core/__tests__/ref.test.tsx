@@ -9,6 +9,10 @@ const {
   Avatar,
   Badge,
   BarsList,
+  BulletChart,
+  MatrixChart,
+  SunburstChart,
+  WaffleChart,
   GaugeChart,
   Heatmap,
   Sparkline,
@@ -107,6 +111,10 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'svg'
   ],
+  ['BulletChart', (ref) => <BulletChart ref={ref} value={1} ranges={[]} />],
+  ['MatrixChart', (ref) => <MatrixChart ref={ref} data={[]} />, 'svg'],
+  ['SunburstChart', (ref) => <SunburstChart ref={ref} data={[]} />, 'svg'],
+  ['WaffleChart', (ref) => <WaffleChart ref={ref} data={[]} />],
   ['BarsList', (ref) => <BarsList ref={ref} data={[]} />],
   ['Sparkline', (ref) => <Sparkline ref={ref} data={[1, 2]} />, 'svg'],
   [
@@ -451,7 +459,9 @@ describe('ref: every component forwards it to a DOM element', () => {
     } else {
       // Sparkline and Heatmap are svg, every other component is an HTML element
       expect(ref.current).toBeInstanceOf(
-        name === 'Sparkline' || name === 'Heatmap' ? SVGElement : HTMLElement
+        ['Sparkline', 'Heatmap', 'MatrixChart', 'SunburstChart'].includes(name)
+          ? SVGElement
+          : HTMLElement
       )
     }
     if (tag) expect(ref.current.tagName).toBe(tag)

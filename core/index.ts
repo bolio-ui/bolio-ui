@@ -233,6 +233,22 @@ export type { SpacerProps } from './Spacer'
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 
+export { default as BulletChart } from './BulletChart'
+export type { BulletChartProps, BulletRange } from './BulletChart'
+
+export { default as MatrixChart } from './MatrixChart'
+export type { MatrixChartProps, MatrixCell } from './MatrixChart'
+
+export { default as SunburstChart } from './SunburstChart'
+export type { SunburstChartProps, SunburstNode } from './SunburstChart'
+
+export { default as WaffleChart } from './WaffleChart'
+export type {
+  WaffleChartProps,
+  WaffleCell,
+  WaffleFillDirection
+} from './WaffleChart'
+
 export { default as GaugeChart } from './GaugeChart'
 export type { GaugeChartProps, GaugeSection } from './GaugeChart'
 

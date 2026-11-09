@@ -149,6 +149,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'MatrixChart',
+    url: '/docs/components/matrix-chart',
+    tag: 'New'
+  },
+  {
     name: 'Mention',
     url: '/docs/components/mention',
     tag: 'New'
@@ -181,6 +186,16 @@ export const components = [
     url: '/docs/components/breadcrumbs'
   },
   {
+    name: 'BubbleChart',
+    url: '/docs/components/bubble-chart',
+    tag: 'New'
+  },
+  {
+    name: 'BulletChart',
+    url: '/docs/components/bullet-chart',
+    tag: 'New'
+  },
+  {
     name: 'Button',
     url: '/docs/components/button',
     tag: 'Updated'
@@ -198,6 +213,11 @@ export const components = [
     name: 'Calendar',
     url: '/docs/components/calendar',
     tag: 'Updated'
+  },
+  {
+    name: 'CandlestickChart',
+    url: '/docs/components/candlestick-chart',
+    tag: 'New'
   },
   {
     name: 'Capacity',
@@ -248,6 +268,11 @@ export const components = [
     name: 'Command',
     url: '/docs/components/command',
     tag: 'Updated'
+  },
+  {
+    name: 'CompositeChart',
+    url: '/docs/components/composite-chart',
+    tag: 'New'
   },
   {
     name: 'Container',
@@ -312,6 +337,11 @@ export const components = [
   {
     name: 'Fieldset',
     url: '/docs/components/fieldset'
+  },
+  {
+    name: 'FunnelChart',
+    url: '/docs/components/funnel-chart',
+    tag: 'New'
   },
   {
     name: 'GaugeChart',
@@ -422,6 +452,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'RadialBarChart',
+    url: '/docs/components/radial-bar-chart',
+    tag: 'New'
+  },
+  {
     name: 'Radio',
     url: '/docs/components/radio',
     tag: 'Updated'
@@ -447,6 +482,11 @@ export const components = [
   {
     name: 'Skeleton',
     url: '/docs/components/skeleton'
+  },
+  {
+    name: 'SankeyChart',
+    url: '/docs/components/sankey-chart',
+    tag: 'New'
   },
   {
     name: 'ScatterChart',
@@ -501,6 +541,11 @@ export const components = [
   {
     name: 'Stepper',
     url: '/docs/components/stepper'
+  },
+  {
+    name: 'SunburstChart',
+    url: '/docs/components/sunburst-chart',
+    tag: 'New'
   },
   {
     name: 'Table',
@@ -559,6 +604,16 @@ export const components = [
   {
     name: 'Tree',
     url: '/docs/components/tree',
+    tag: 'New'
+  },
+  {
+    name: 'Treemap',
+    url: '/docs/components/treemap',
+    tag: 'New'
+  },
+  {
+    name: 'WaffleChart',
+    url: '/docs/components/waffle-chart',
     tag: 'New'
   }
 ]

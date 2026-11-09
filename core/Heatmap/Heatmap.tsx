@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import type { NormalTypes } from '../utils/prop-types'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { getLevelColor, getLevels } from '../Charts/chart-theme'
 
 type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
@@ -76,13 +77,7 @@ const HeatmapComponent = React.forwardRef<SVGSVGElement, HeatmapProps>(
     const { SCALES } = useScale()
     const palette = theme.palette
 
-    const base = palette[type === 'default' ? 'foreground' : type]
-    const levels = colors?.length
-      ? colors
-      : [30, 55, 80, 100].map(
-          (percent) =>
-            `color-mix(in srgb, ${base} ${percent}%, ${palette.background})`
-        )
+    const levels = getLevels(palette, type, colors)
 
     const layout = useMemo(() => {
       const end = endDate ? toDay(endDate) : toDay(new Date())
@@ -95,13 +90,9 @@ const HeatmapComponent = React.forwardRef<SVGSVGElement, HeatmapProps>(
     const { start, end, firstColumn, weeks } = layout
 
     const values = Object.values(data).filter((value) => value > 0)
-    const low = Math.min(...values)
-    const high = Math.max(...values)
-    const colorOf = (value: number | undefined) => {
-      if (!value || value <= 0) return palette.accents_2
-      const position = high === low ? 1 : (value - low) / (high - low)
-      return levels[Math.round(position * (levels.length - 1))]
-    }
+    const domain: [number, number] = [Math.min(...values), Math.max(...values)]
+    const colorOf = (value: number | undefined) =>
+      getLevelColor(value, domain, levels, palette.accents_2)
 
     const months = useMemo(() => {
       if (monthLabels) return monthLabels

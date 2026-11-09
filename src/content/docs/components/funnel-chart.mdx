@@ -1,0 +1,89 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { FunnelChart } from 'core/Charts'
+
+export const meta = {
+  title: 'FunnelChart',
+  description: 'Steps that get narrower, to show where people drop off.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 90
+}
+
+## FunnelChart
+
+Steps that get narrower, to show where people drop off. Use it for a process with ordered stages, such as visit, sign up and purchase.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each item has a `name` and a `value`. Pass the steps from the widest to the narrowest."
+  scope={{ FunnelChart }}
+  code={`
+<FunnelChart
+  aria-label="Checkout funnel"
+  data={[
+    { name: 'Visits', value: 1000 },
+    { name: 'Sign ups', value: 640 },
+    { name: 'Trials', value: 320 },
+    { name: 'Paid', value: 120 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Legend and format"
+  desc="Swap the labels for a legend, and use `valueFormatter` to change how the tooltip reads."
+  scope={{ FunnelChart }}
+  code={`
+<FunnelChart
+  withLegend
+  withLabels={false}
+  valueFormatter={(value) => value.toLocaleString('en-US') + ' people'}
+  data={[
+    { name: 'Visits', value: 1000, color: '#60a5fa' },
+    { name: 'Sign ups', value: 640, color: '#8b5cf6' },
+    { name: 'Paid', value: 120, color: '#16a34a' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/funnel-chart.mdx">
+<Attributes.Title>FunnelChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the steps, from the widest to the narrowest | `ChartSlice[]` | [ChartSlice](#chartslice) | - |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **withTooltip** | show the value of a step on hover and focus | `boolean` | - | `true` |
+| **withLegend** | show the legend | `boolean` | - | `false` |
+| **withLabels** | write the name of each step | `boolean` | - | `true` |
+| **labelsPosition** | where the names go | `string` | `'left', 'right', 'inside'` | `right` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ChartSlice</Attributes.Title>
+
+```ts
+type ChartSlice = {
+  name: string // shown in the labels, the legend and the tooltip
+  value: number // the width of the step
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the data and show the values in the tooltip.
+
+Steps differ by color and width, so keep the names visible with `withLabels` or `withLegend`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

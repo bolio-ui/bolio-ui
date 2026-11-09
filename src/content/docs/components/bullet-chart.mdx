@@ -1,0 +1,115 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { BulletChart } from 'core'
+
+export const meta = {
+  title: 'BulletChart',
+  description: 'One value against a target, on top of bands that say if it is good or bad.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 96
+}
+
+## BulletChart
+
+One value against a target, on top of bands that say if it is good or bad. Use it for a KPI that has a goal, such as revenue against quota.
+
+It is plain HTML, so it does not need any extra package.
+
+<Playground
+  desc="The bar is the `value`, the line is the `target` and each item of `ranges` is a band that ends at its own `value`."
+  scope={{ BulletChart }}
+  code={`
+<BulletChart
+  aria-label="Revenue against quota"
+  label="Revenue"
+  value={270}
+  target={250}
+  valueFormatter={(value) => '$' + value + 'k'}
+  ranges={[
+    { value: 150, label: 'Poor' },
+    { value: 225, label: 'Fair' },
+    { value: 300, label: 'Good' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Colors"
+  desc="Set `color` on a range, and `barColor` for the bar. Without colors, the bands are shades of the theme gray."
+  scope={{ BulletChart }}
+  code={`
+<BulletChart
+  aria-label="Support tickets closed"
+  value={64}
+  target={80}
+  barColor="#1d4ed8"
+  ranges={[
+    { value: 50, color: '#fecaca', label: 'Behind' },
+    { value: 80, color: '#fde68a', label: 'On track' },
+    { value: 100, color: '#bbf7d0', label: 'Ahead' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Vertical"
+  desc="Set `orientation` to `vertical` and give the track a `height`."
+  scope={{ BulletChart }}
+  code={`
+<BulletChart
+  orientation="vertical"
+  aria-label="Stock level"
+  height={220}
+  value={72}
+  target={60}
+  ranges={[{ value: 40 }, { value: 70 }, { value: 100 }]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/bullet-chart.mdx">
+<Attributes.Title>BulletChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **value** | the current value | `number` | - | - |
+| **target** | draw a marker at this value | `number` | - | - |
+| **ranges** | the bands, each one ends at its `value` | `BulletRange[]` | [BulletRange](#bulletrange) | - |
+| **min** | where the scale starts | `number` | - | `0` |
+| **orientation** | direction of the chart | `string` | `'horizontal', 'vertical'` | `horizontal` |
+| **size** | thickness of the track, in pixels | `number` | - | `28` |
+| **barSize** | thickness of the bar, in pixels | `number` | - | a third of `size` |
+| **height** | height of the track when vertical, in pixels | `number` | - | `200` |
+| **type** | theme color of the bar | `NormalTypes` | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `primary` |
+| **barColor** | any CSS color for the bar, replaces `type` | `string` | - | - |
+| **targetColor** | color of the target marker | `string` | - | theme color |
+| **label** | content shown above the chart | `ReactNode` | - | - |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>BulletRange</Attributes.Title>
+
+```ts
+type BulletRange = {
+  value: number // where the band ends, it starts where the one before ends
+  color?: string // any CSS color, a shade of gray when missing
+  label?: string // listed below the chart
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+With `aria-label` or `aria-labelledby` the root is a `meter` that exposes the value, the range and a text such as "270, target 250". Without a name it is plain content, because a meter needs one.
+
+Bands are colors, so give each range a `label` to list what it means as text.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

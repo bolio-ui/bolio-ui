@@ -5,6 +5,7 @@ import {
   Bar,
   BarChart as RechartsBarChart,
   CartesianGrid,
+  ComposedChart,
   Legend,
   Line,
   LineChart as RechartsLineChart,
@@ -21,6 +22,10 @@ export interface ChartSeries {
   name: string
   label?: string
   color?: string
+  // only in CompositeChart: how the series is drawn, `line` when missing
+  type?: 'line' | 'bar' | 'area'
+  // only in CompositeChart: `right` needs `withRightYAxis`
+  yAxisId?: 'left' | 'right'
 }
 
 export type ChartCurve = 'linear' | 'monotone' | 'step'
@@ -44,7 +49,7 @@ export type ChartNativeAttrs = Omit<
   keyof ChartProps
 >
 
-type Kind = 'line' | 'area' | 'bar'
+type Kind = 'line' | 'area' | 'bar' | 'composite'
 
 interface Props extends ChartProps {
   kind: Kind
@@ -52,6 +57,7 @@ interface Props extends ChartProps {
   stacked?: boolean
   withDots?: boolean
   connectNulls?: boolean
+  withRightYAxis?: boolean
 }
 
 const CartesianChart = React.forwardRef<
@@ -75,6 +81,7 @@ const CartesianChart = React.forwardRef<
       stacked = false,
       withDots = true,
       connectNulls = false,
+      withRightYAxis = false,
       className = '',
       style,
       ...props
@@ -126,6 +133,20 @@ const CartesianChart = React.forwardRef<
         axisLine={false}
         tickFormatter={(value) => String(format(value))}
       />,
+      kind === 'composite' && withRightYAxis && (
+        <YAxis
+          key="right"
+          yAxisId="right"
+          orientation="right"
+          hide={!withYAxis}
+          width="auto"
+          tick={tick}
+          stroke={palette.accents_3}
+          tickLine={false}
+          axisLine={false}
+          tickFormatter={(value) => String(format(value))}
+        />
+      ),
       withTooltip && (
         <Tooltip
           key="tooltip"
@@ -191,6 +212,54 @@ const CartesianChart = React.forwardRef<
             />
           ))}
         </RechartsAreaChart>
+      )
+    else if (kind === 'composite')
+      chart = (
+        <ComposedChart {...common}>
+          {parts}
+          {series.map((item, index) => {
+            const color = colorOf(item, index)
+            const shared = {
+              dataKey: item.name,
+              name: item.label || item.name,
+              yAxisId: item.yAxisId === 'right' ? 'right' : undefined,
+              isAnimationActive: animate
+            }
+            if (item.type === 'bar')
+              return (
+                <Bar
+                  key={item.name}
+                  {...shared}
+                  fill={color}
+                  radius={[4, 4, 0, 0]}
+                />
+              )
+            if (item.type === 'area')
+              return (
+                <Area
+                  key={item.name}
+                  {...shared}
+                  type={curve}
+                  stroke={color}
+                  fill={color}
+                  fillOpacity={0.2}
+                  strokeWidth={2}
+                  connectNulls={connectNulls}
+                />
+              )
+            return (
+              <Line
+                key={item.name}
+                {...shared}
+                type={curve}
+                stroke={color}
+                strokeWidth={2}
+                dot={withDots}
+                connectNulls={connectNulls}
+              />
+            )
+          })}
+        </ComposedChart>
       )
     else
       chart = (

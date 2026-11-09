@@ -1,0 +1,95 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { RadialBarChart } from 'core/Charts'
+
+export const meta = {
+  title: 'RadialBarChart',
+  description: 'Concentric bars that curve around a center, one ring per item.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 99
+}
+
+## RadialBarChart
+
+Concentric bars that curve around a center, one ring per item. Use it to compare a few values against a shared maximum, such as goals reached.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each item has a `name` and a `value`. The longest bar marks the biggest value."
+  scope={{ RadialBarChart }}
+  code={`
+<RadialBarChart
+  aria-label="Goals reached"
+  withLegend
+  data={[
+    { name: 'Sales', value: 80 },
+    { name: 'Support', value: 62 },
+    { name: 'Marketing', value: 45 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Labels and angles"
+  desc="`withLabels` writes the value on each bar. `startAngle` and `endAngle` set the arc, so 180 to 0 is the upper half."
+  scope={{ RadialBarChart }}
+  code={`
+<RadialBarChart
+  withLabels
+  withBackground={false}
+  barSize={18}
+  startAngle={180}
+  endAngle={0}
+  height={220}
+  data={[
+    { name: 'Chrome', value: 65, color: '#60a5fa' },
+    { name: 'Safari', value: 25, color: '#8b5cf6' },
+    { name: 'Other', value: 10, color: '#16a34a' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/radial-bar-chart.mdx">
+<Attributes.Title>RadialBarChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | one ring per item | `ChartSlice[]` | [ChartSlice](#chartslice) | - |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **barSize** | thickness of each bar, in pixels | `number` | - | `20` |
+| **withBackground** | draw the empty track behind each bar | `boolean` | - | `true` |
+| **withLabels** | write the value on each bar | `boolean` | - | `false` |
+| **withLegend** | show the legend | `boolean` | - | `false` |
+| **withTooltip** | show the value of a bar on hover and focus | `boolean` | - | `true` |
+| **startAngle** | where the bars start, in degrees | `number` | - | `90` |
+| **endAngle** | where the bars end, in degrees | `number` | - | `-270` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ChartSlice</Attributes.Title>
+
+```ts
+type ChartSlice = {
+  name: string // shown in the legend and the tooltip
+  value: number // the length of the bar
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the data and show the values in the tooltip.
+
+Bars differ by color and length, so turn on `withLegend` or `withLabels` and write the key numbers in text next to the chart.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

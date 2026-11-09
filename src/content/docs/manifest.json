@@ -177,6 +177,11 @@
               "path": "/docs/components/chip.mdx"
             },
             {
+              "title": "MatrixChart",
+              "keywords": "matrix chart, heatmap, grid, two categories, cross table, data visualization",
+              "path": "/docs/components/matrix-chart.mdx"
+            },
+            {
               "title": "Mention",
               "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
               "path": "/docs/components/mention.mdx"
@@ -212,6 +217,16 @@
               "path": "/docs/components/breadcrumbs.mdx"
             },
             {
+              "title": "BubbleChart",
+              "keywords": "bubble chart, scatter, three variables, size, chart, data visualization, recharts",
+              "path": "/docs/components/bubble-chart.mdx"
+            },
+            {
+              "title": "BulletChart",
+              "keywords": "bullet chart, kpi, target, quota, bands, progress, data visualization",
+              "path": "/docs/components/bullet-chart.mdx"
+            },
+            {
               "title": "Button",
               "keywords": "button, btn, buttons, action",
               "path": "/docs/components/button.mdx"
@@ -230,6 +245,11 @@
               "title": "Calendar",
               "keywords": "calendar, month, day picker, date, week, grid",
               "path": "/docs/components/calendar.mdx"
+            },
+            {
+              "title": "CandlestickChart",
+              "keywords": "candlestick chart, ohlc, stock, price, trading, finance, chart, recharts",
+              "path": "/docs/components/candlestick-chart.mdx"
             },
             {
               "title": "Capacity",
@@ -285,6 +305,11 @@
               "title": "Command",
               "keywords": "command, command palette, cmd k, search, shortcuts, actions",
               "path": "/docs/components/command.mdx"
+            },
+            {
+              "title": "CompositeChart",
+              "keywords": "composite chart, combo chart, bar line area, mixed, dual axis, chart, recharts",
+              "path": "/docs/components/composite-chart.mdx"
             },
             {
               "title": "Container",
@@ -355,6 +380,11 @@
               "title": "Fieldset",
               "keywords": "fieldset, text, tabs, divider",
               "path": "/docs/components/fieldset.mdx"
+            },
+            {
+              "title": "FunnelChart",
+              "keywords": "funnel chart, conversion, steps, drop off, sales funnel, chart, recharts",
+              "path": "/docs/components/funnel-chart.mdx"
             },
             {
               "title": "GaugeChart",
@@ -477,6 +507,11 @@
               "path": "/docs/components/radar-chart.mdx"
             },
             {
+              "title": "RadialBarChart",
+              "keywords": "radial bar chart, circular progress, rings, chart, data visualization, recharts",
+              "path": "/docs/components/radial-bar-chart.mdx"
+            },
+            {
               "title": "Radio",
               "keywords": "radio, radio group, types, description, disabled, inline",
               "path": "/docs/components/radio.mdx"
@@ -490,6 +525,11 @@
               "title": "Row",
               "keywords": "row, flex, justify, align, gap, layout, columns",
               "path": "/docs/components/row.mdx"
+            },
+            {
+              "title": "SankeyChart",
+              "keywords": "sankey chart, flow, links, nodes, journey, chart, recharts",
+              "path": "/docs/components/sankey-chart.mdx"
             },
             {
               "title": "ScatterChart",
@@ -567,6 +607,11 @@
               "path": "/docs/components/stepper.mdx"
             },
             {
+              "title": "SunburstChart",
+              "keywords": "sunburst chart, hierarchy, nested, rings, tree, data visualization",
+              "path": "/docs/components/sunburst-chart.mdx"
+            },
+            {
               "title": "Table",
               "keywords": "table",
               "path": "/docs/components/table.mdx"
@@ -625,6 +670,16 @@
               "title": "Tree",
               "keywords": "tree, tree view, nested list, file tree, hierarchy, folders, expand, collapse, categories",
               "path": "/docs/components/tree.mdx"
+            },
+            {
+              "title": "Treemap",
+              "keywords": "treemap, tree map, rectangles, hierarchy, proportions, chart, recharts",
+              "path": "/docs/components/treemap.mdx"
+            },
+            {
+              "title": "WaffleChart",
+              "keywords": "waffle chart, squares, share, proportion, unit chart, data visualization",
+              "path": "/docs/components/waffle-chart.mdx"
             }
           ]
         },
