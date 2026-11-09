@@ -393,3 +393,11 @@ export const ICON_EXPORT_NAMES = new Set([
   'ZoomIn',
   'ZoomOut'
 ])
+
+// Charts need the optional `recharts` package, so they live in their own entry
+// and are not part of the root export above.
+export const CHART_EXPORT_NAMES = new Set([
+  'AreaChart',
+  'BarChart',
+  'LineChart'
+])

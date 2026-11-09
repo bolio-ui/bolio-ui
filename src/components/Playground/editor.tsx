@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Highlight, { Prism, PrismTheme } from 'prism-react-renderer'
+import { Highlight, PrismTheme } from 'prism-react-renderer'
 import { useTheme, useToasts, useClipboard, Tooltip, Text } from 'core'
 import { track } from 'src/utils/gtag'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
@@ -79,7 +79,7 @@ const Editor: React.FC<Props> = ({ code, codeTheme }) => {
         </div>
       </div>
       {visible && (
-        <Highlight Prism={Prism} code={code} language="jsx" theme={codeTheme}>
+        <Highlight code={code} language="jsx" theme={codeTheme}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
               {tokens.map((line, i) => (

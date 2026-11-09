@@ -182,6 +182,11 @@
               "path": "/docs/components/mention.mdx"
             },
             {
+              "title": "AreaChart",
+              "keywords": "area chart, stacked area, chart, trend, data visualization, recharts",
+              "path": "/docs/components/area-chart.mdx"
+            },
+            {
               "title": "Avatar",
               "keywords": "avatar, avatar text, avatar group, group",
               "path": "/docs/components/avatar.mdx"
@@ -190,6 +195,11 @@
               "title": "Badge",
               "keywords": "badge, badge custom color, custom color, anchor",
               "path": "/docs/components/badge.mdx"
+            },
+            {
+              "title": "BarChart",
+              "keywords": "bar chart, columns, stacked bars, compare, chart, data visualization, recharts",
+              "path": "/docs/components/bar-chart.mdx"
             },
             {
               "title": "BarsList",
@@ -370,6 +380,11 @@
               "title": "Keyboard",
               "keywords": "keyboard, modifiers, combination",
               "path": "/docs/components/keyboard.mdx"
+            },
+            {
+              "title": "LineChart",
+              "keywords": "line chart, trend, time series, chart, data visualization, recharts",
+              "path": "/docs/components/line-chart.mdx"
             },
             {
               "title": "Link",

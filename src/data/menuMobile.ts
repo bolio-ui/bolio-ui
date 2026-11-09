@@ -142,6 +142,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'AreaChart',
+            url: '/docs/components/area-chart',
+            group: 'Components'
+          },
+          {
             name: 'Avatar',
             url: '/docs/components/avatar',
             group: 'Components'
@@ -149,6 +154,11 @@ export const menuMobile = [
           {
             name: 'Badge',
             url: '/docs/components/badge',
+            group: 'Components'
+          },
+          {
+            name: 'BarChart',
+            url: '/docs/components/bar-chart',
             group: 'Components'
           },
           {
@@ -334,6 +344,11 @@ export const menuMobile = [
           {
             name: 'Keyboard',
             url: '/docs/components/keyboard',
+            group: 'Components'
+          },
+          {
+            name: 'LineChart',
+            url: '/docs/components/line-chart',
             group: 'Components'
           },
           {

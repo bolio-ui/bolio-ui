@@ -30,6 +30,7 @@
   },
   "files": [
     "../core/index.ts",
+    "../core/Charts/index.ts",
     "../core/css-modules.d.ts"
   ],
   "exclude": ["node_modules", "lib", "es"]

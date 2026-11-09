@@ -1,5 +1,52 @@
 [
   {
+    "title": "AreaChart",
+    "component": true,
+    "path": "/docs/components/area-chart"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart General",
+    "component": false,
+    "path": "/docs/components/area-chart#general"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart Stacked",
+    "component": false,
+    "path": "/docs/components/area-chart#stacked"
+  },
+  {
+    "head": "AreaChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/area-chart#apis"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart Props",
+    "component": false,
+    "path": "/docs/components/area-chart#areachart.props"
+  },
+  {
+    "head": "AreaChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/area-chart#chartseries"
+  },
+  {
+    "head": "AreaChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/area-chart#ref"
+  },
+  {
+    "head": "AreaChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/area-chart#accessibility"
+  },
+  {
     "title": "Avatar",
     "component": true,
     "path": "/docs/components/avatar"
@@ -116,6 +163,59 @@
     "title": "Badge Anchor Placement",
     "component": false,
     "path": "/docs/components/badge#anchorplacement"
+  },
+  {
+    "title": "BarChart",
+    "component": true,
+    "path": "/docs/components/bar-chart"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart General",
+    "component": false,
+    "path": "/docs/components/bar-chart#general"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Many series",
+    "component": false,
+    "path": "/docs/components/bar-chart#many-series"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Stacked",
+    "component": false,
+    "path": "/docs/components/bar-chart#stacked"
+  },
+  {
+    "head": "BarChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bar-chart#apis"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Props",
+    "component": false,
+    "path": "/docs/components/bar-chart#barchart.props"
+  },
+  {
+    "head": "BarChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/bar-chart#chartseries"
+  },
+  {
+    "head": "BarChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bar-chart#ref"
+  },
+  {
+    "head": "BarChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bar-chart#accessibility"
   },
   {
     "title": "BarsList",
@@ -2349,6 +2449,65 @@
     "title": "Keyboard Props",
     "component": false,
     "path": "/docs/components/keyboard#keyboard.props"
+  },
+  {
+    "title": "LineChart",
+    "component": true,
+    "path": "/docs/components/line-chart"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart General",
+    "component": false,
+    "path": "/docs/components/line-chart#general"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Many series",
+    "component": false,
+    "path": "/docs/components/line-chart#many-series"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Curve and dots",
+    "component": false,
+    "path": "/docs/components/line-chart#curve-and-dots"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Value format",
+    "component": false,
+    "path": "/docs/components/line-chart#value-format"
+  },
+  {
+    "head": "LineChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/line-chart#apis"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Props",
+    "component": false,
+    "path": "/docs/components/line-chart#linechart.props"
+  },
+  {
+    "head": "LineChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/line-chart#chartseries"
+  },
+  {
+    "head": "LineChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/line-chart#ref"
+  },
+  {
+    "head": "LineChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/line-chart#accessibility"
   },
   {
     "title": "Link",

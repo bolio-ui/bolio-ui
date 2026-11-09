@@ -154,12 +154,22 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'AreaChart',
+    url: '/docs/components/area-chart',
+    tag: 'New'
+  },
+  {
     name: 'Avatar',
     url: '/docs/components/avatar'
   },
   {
     name: 'Badge',
     url: '/docs/components/badge'
+  },
+  {
+    name: 'BarChart',
+    url: '/docs/components/bar-chart',
+    tag: 'New'
   },
   {
     name: 'BarsList',
@@ -322,6 +332,11 @@ export const components = [
   {
     name: 'Keyboard',
     url: '/docs/components/keyboard'
+  },
+  {
+    name: 'LineChart',
+    url: '/docs/components/line-chart',
+    tag: 'New'
   },
   {
     name: 'Link',
