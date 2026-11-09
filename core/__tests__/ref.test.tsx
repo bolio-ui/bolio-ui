@@ -8,6 +8,8 @@ const {
   BolioUIProvider,
   Avatar,
   Badge,
+  BarsList,
+  Sparkline,
   Breadcrumbs,
   Button,
   ButtonDropdown,
@@ -90,6 +92,8 @@ type Ref = React.RefObject<AnyElement>
 const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Avatar', (ref) => <Avatar ref={ref} text="BA" />],
   ['Badge', (ref) => <Badge ref={ref}>new</Badge>],
+  ['BarsList', (ref) => <BarsList ref={ref} data={[]} />],
+  ['Sparkline', (ref) => <Sparkline ref={ref} data={[1, 2]} />, 'svg'],
   [
     'Breadcrumbs',
     (ref) => (
@@ -430,7 +434,10 @@ describe('ref: every component forwards it to a DOM element', () => {
         })
       )
     } else {
-      expect(ref.current).toBeInstanceOf(HTMLElement)
+      // Sparkline is an svg, every other component is an HTML element
+      expect(ref.current).toBeInstanceOf(
+        name === 'Sparkline' ? SVGElement : HTMLElement
+      )
     }
     if (tag) expect(ref.current.tagName).toBe(tag)
     // no "Function components cannot be given refs" warning

@@ -162,6 +162,11 @@ export const components = [
     url: '/docs/components/badge'
   },
   {
+    name: 'BarsList',
+    url: '/docs/components/bars-list',
+    tag: 'New'
+  },
+  {
     name: 'Breadcrumbs',
     url: '/docs/components/breadcrumbs'
   },
@@ -423,6 +428,11 @@ export const components = [
   {
     name: 'Spacer',
     url: '/docs/components/spacer'
+  },
+  {
+    name: 'Sparkline',
+    url: '/docs/components/sparkline',
+    tag: 'New'
   },
   {
     name: 'Spoiler',

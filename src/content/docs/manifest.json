@@ -192,6 +192,11 @@
               "path": "/docs/components/badge.mdx"
             },
             {
+              "title": "BarsList",
+              "keywords": "bars list, bar chart, ranking, top list, horizontal bars, chart, data visualization",
+              "path": "/docs/components/bars-list.mdx"
+            },
+            {
               "title": "Breadcrumbs",
               "keywords": "breadcrumbs, breadcrumbs icons, icons",
               "path": "/docs/components/breadcrumbs.mdx"
@@ -485,6 +490,11 @@
               "title": "Spacer",
               "keywords": "spacer, vertical, horizontal",
               "path": "/docs/components/spacer.mdx"
+            },
+            {
+              "title": "Sparkline",
+              "keywords": "sparkline, line chart, trend, mini chart, chart, data visualization, svg",
+              "path": "/docs/components/sparkline.mdx"
             },
             {
               "title": "Spoiler",

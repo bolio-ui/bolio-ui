@@ -118,6 +118,59 @@
     "path": "/docs/components/badge#anchorplacement"
   },
   {
+    "title": "BarsList",
+    "component": true,
+    "path": "/docs/components/bars-list"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList General",
+    "component": false,
+    "path": "/docs/components/bars-list#general"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Column labels",
+    "component": false,
+    "path": "/docs/components/bars-list#column-labels"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Colors and format",
+    "component": false,
+    "path": "/docs/components/bars-list#colors-and-format"
+  },
+  {
+    "head": "BarsList",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bars-list#apis"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Props",
+    "component": false,
+    "path": "/docs/components/bars-list#barslist.props"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsListItem",
+    "component": false,
+    "path": "/docs/components/bars-list#barslistitem"
+  },
+  {
+    "head": "BarsList",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bars-list#ref"
+  },
+  {
+    "head": "BarsList",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bars-list#accessibility"
+  },
+  {
     "title": "Breadcrumbs",
     "component": true,
     "path": "/docs/components/breadcrumbs"
@@ -7659,6 +7712,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/copy-button#accessibility"
+  },
+  {
+    "title": "Sparkline",
+    "component": true,
+    "path": "/docs/components/sparkline"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline General",
+    "component": false,
+    "path": "/docs/components/sparkline#general"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Trend color",
+    "component": false,
+    "path": "/docs/components/sparkline#trend-color"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Types and colors",
+    "component": false,
+    "path": "/docs/components/sparkline#types-and-colors"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Missing values",
+    "component": false,
+    "path": "/docs/components/sparkline#missing-values"
+  },
+  {
+    "head": "Sparkline",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/sparkline#apis"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Props",
+    "component": false,
+    "path": "/docs/components/sparkline#sparkline.props"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/sparkline#ref"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/sparkline#accessibility"
   },
   {
     "title": "Spoiler",

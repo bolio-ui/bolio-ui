@@ -1,0 +1,106 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Sparkline, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Sparkline',
+  description: 'A tiny line chart that shows the shape of a series in the space of a word.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 78
+}
+
+## Sparkline
+
+A tiny line chart that shows the shape of a series in the space of a word. Use it in tables, cards and stats, next to the number it explains.
+
+<Playground
+  desc="Pass the values in `data`. Give it an `aria-label` that says what it shows, or it stays hidden from screen readers."
+  scope={{ Sparkline, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Sparkline aria-label="Weekly visits, rising" data={[12, 18, 14, 22, 30, 28, 41]} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Trend color"
+  desc="With `trend`, the color follows the change from the first to the last value: success when it rises, error when it falls."
+  scope={{ Sparkline, Grid, Text }}
+  code={`
+<Grid.Container gap={3} alignItems="center">
+  <Grid>
+    <Text p b my={0}>Revenue</Text>
+    <Sparkline trend aria-label="Revenue, rising" data={[8, 10, 9, 14, 18, 21]} />
+  </Grid>
+  <Grid>
+    <Text p b my={0}>Churn</Text>
+    <Sparkline trend aria-label="Churn, falling" data={[9, 8, 8, 6, 4, 3]} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Types and colors"
+  desc="Use `type` for a theme color, or `color` for any CSS color. Turn the area off with `area={false}`."
+  scope={{ Sparkline, Grid }}
+  code={`
+<Grid.Container gap={3} alignItems="center">
+  <Grid>
+    <Sparkline type="success" data={[3, 6, 4, 9, 7, 12]} />
+  </Grid>
+  <Grid>
+    <Sparkline type="warning" area={false} data={[3, 6, 4, 9, 7, 12]} />
+  </Grid>
+  <Grid>
+    <Sparkline color="#8b5cf6" strokeWidth={3} data={[3, 6, 4, 9, 7, 12]} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Missing values"
+  desc="A `null` breaks the line. Use `connectNulls` to draw through it."
+  scope={{ Sparkline, Grid }}
+  code={`
+<Grid.Container gap={3} alignItems="center">
+  <Grid>
+    <Sparkline aria-label="With a gap" data={[3, 5, null, 8, 6]} />
+  </Grid>
+  <Grid>
+    <Sparkline connectNulls aria-label="Connected" data={[3, 5, null, 8, 6]} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/sparkline.mdx">
+<Attributes.Title>Sparkline.Props</Attributes.Title>
+
+| Attribute        | Description                                                | Type                          | Accepted values                                                            | Default   |
+| ---------------- | ---------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------- | --------- |
+| **data**         | the values to draw, a `null` leaves a gap                  | `Array<number / null>`        | -                                                                          | -         |
+| **type**         | theme color of the line                                    | `NormalTypes`                 | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `primary` |
+| **color**        | any CSS color, replaces `type` and `trend`                 | `string`                      | -                                                                          | -         |
+| **trend**        | color by the change from the first to the last value       | `boolean`                     | -                                                                          | `false`   |
+| **area**         | fill the area under the line                               | `boolean`                     | -                                                                          | `true`    |
+| **strokeWidth**  | thickness of the line, in pixels                           | `number`                      | -                                                                          | `2`       |
+| **connectNulls** | draw the line through `null` values                        | `boolean`                     | -                                                                          | `false`   |
+| ...              | native props, passed to the `svg`                          | `SVGAttributes`               | `'aria-label', 'className', ...`                                           | -         |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `svg`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+A sparkline has no text, so describe what it shows with `aria-label` or `aria-labelledby`, including the direction, such as "Weekly visits, rising". With a name it is an image. Without one it is hidden from assistive technology, which suits a chart that sits next to the same number in text.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

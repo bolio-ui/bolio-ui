@@ -1,0 +1,97 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { BarsList, Grid } from 'core'
+
+export const meta = {
+  title: 'BarsList',
+  description: 'A ranked list where each row is a bar sized by its value.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 79
+}
+
+## BarsList
+
+A ranked list where each row is a bar sized by its value. Use it for top pages, top sources and any list where the size of each item matters at a glance.
+
+<Playground
+  desc="Each item has a `name` and a `value`. The largest value fills the row, the others are sized against it."
+  scope={{ BarsList, Grid }}
+  code={`
+<BarsList
+  data={[
+    { name: 'React', value: 950000 },
+    { name: 'Vue', value: 420000 },
+    { name: 'Svelte', value: 120000 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Column labels"
+  desc="Add headers with `barsLabel` and `valueLabel`."
+  scope={{ BarsList }}
+  code={`
+<BarsList
+  barsLabel="Library"
+  valueLabel="Downloads"
+  data={[
+    { name: 'React', value: 950000 },
+    { name: 'Vue', value: 420000 },
+    { name: 'Svelte', value: 120000 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Colors and format"
+  desc="Set `color` on an item to override the type, and `valueFormatter` to change how the value reads."
+  scope={{ BarsList }}
+  code={`
+<BarsList
+  valueFormatter={(value) => value + '%'}
+  data={[
+    { name: 'Paid', value: 80, color: '#16a34a' },
+    { name: 'Pending', value: 35, color: '#f59e0b' },
+    { name: 'Failed', value: 8, color: '#dc2626' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/bars-list.mdx">
+<Attributes.Title>BarsList.Props</Attributes.Title>
+
+| Attribute          | Description                                       | Type                        | Accepted values                                                            | Default                     |
+| ------------------ | ------------------------------------------------- | --------------------------- | -------------------------------------------------------------------------- | --------------------------- |
+| **data**           | the rows to show                                  | `BarsListItem[]`            | [BarsListItem](#barslistitem)                                              | -                           |
+| **type**           | theme color of the bars                           | `NormalTypes`               | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `primary`                   |
+| **barColor**       | any CSS color for the bars, replaces `type`       | `string`                    | -                                                                          | -                           |
+| **valueFormatter** | how a value is written                            | `(value: number) => string` | -                                                                          | thousands separators, en-US |
+| **barsLabel**      | header above the bars                             | `string`                    | -                                                                          | -                           |
+| **valueLabel**     | header above the values                           | `string`                    | -                                                                          | -                           |
+| ...                | native props, passed to the root                  | `HTMLAttributes`            | `'id', 'className', ...`                                                   | -                           |
+
+<Attributes.Title>BarsListItem</Attributes.Title>
+
+```ts
+type BarsListItem = {
+  name: string
+  value: number // negative values draw no bar
+  color?: string // any CSS color, replaces the type for this row
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The rows are a list, and each item reads as its name followed by its value. The column headers are only visual, because the names and values already carry the meaning.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -152,6 +152,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'BarsList',
+            url: '/docs/components/bars-list',
+            group: 'Components'
+          },
+          {
             name: 'Breadcrumbs',
             url: '/docs/components/breadcrumbs',
             group: 'Components'
@@ -454,6 +459,11 @@ export const menuMobile = [
           {
             name: 'Spacer',
             url: '/docs/components/spacer',
+            group: 'Components'
+          },
+          {
+            name: 'Sparkline',
+            url: '/docs/components/sparkline',
             group: 'Components'
           },
           {

@@ -6,6 +6,8 @@ const {
   Alert,
   Avatar,
   Badge,
+  BarsList,
+  Sparkline,
   Breadcrumbs,
   Button,
   ButtonDropdown,
@@ -82,6 +84,8 @@ const {
 export const cases: Array<[string, () => React.ReactElement]> = [
   ['Avatar', () => <Avatar text="BA" />],
   ['Badge', () => <Badge>new</Badge>],
+  ['BarsList', () => <BarsList data={[{ name: 'React', value: 10 }]} />],
+  ['Sparkline', () => <Sparkline aria-label="Visits" data={[1, 3, 2]} />],
   [
     'Breadcrumbs',
     () => (

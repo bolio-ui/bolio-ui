@@ -10,6 +10,9 @@ export type { BadgeProps, BadgeAnchorProps } from './Badge'
 export { default as BolioUIProvider } from './BolioUIProvider'
 export type { BolioUIProviderProps } from './BolioUIProvider'
 
+export { default as BarsList } from './BarsList'
+export type { BarsListProps, BarsListItem } from './BarsList'
+
 export { default as Breadcrumbs } from './Breadcrumbs'
 export type {
   BreadcrumbsProps,
@@ -229,6 +232,9 @@ export type { SpacerProps } from './Spacer'
 
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
+
+export { default as Sparkline } from './Sparkline'
+export type { SparklineProps } from './Sparkline'
 
 export { default as Splitter } from './Splitter'
 export type {
