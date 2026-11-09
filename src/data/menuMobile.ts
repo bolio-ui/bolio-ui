@@ -31,6 +31,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Storybook',
+            url: '/docs/guide/storybook',
+            group: 'Guide'
+          },
+          {
             name: 'Page structure',
             url: '/docs/guide/page-structure',
             group: 'Guide'

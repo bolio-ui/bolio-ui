@@ -7333,6 +7333,35 @@
     "path": "/docs/guide/testing-with-vitest#what-to-keep-in-mind"
   },
   {
+    "title": "Storybook",
+    "component": true,
+    "path": "/docs/guide/storybook"
+  },
+  {
+    "head": "Storybook",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/storybook#install"
+  },
+  {
+    "head": "Storybook",
+    "title": "Configure Storybook",
+    "component": false,
+    "path": "/docs/guide/storybook#configure-storybook"
+  },
+  {
+    "head": "Storybook",
+    "title": "Write a story",
+    "component": false,
+    "path": "/docs/guide/storybook#write-a-story"
+  },
+  {
+    "head": "Storybook",
+    "title": "What to keep in mind",
+    "component": false,
+    "path": "/docs/guide/storybook#what-to-keep-in-mind"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"

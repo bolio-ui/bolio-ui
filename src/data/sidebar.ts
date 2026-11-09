@@ -27,6 +27,11 @@ export const guide = [
     tag: 'New'
   },
   {
+    name: 'Storybook',
+    url: '/docs/guide/storybook',
+    tag: 'New'
+  },
+  {
     name: 'Page structure',
     url: '/docs/guide/page-structure'
   },

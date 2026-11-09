@@ -40,6 +40,11 @@
               "path": "/docs/guide/testing-with-vitest.mdx"
             },
             {
+              "title": "Storybook",
+              "keywords": "storybook, stories, component review, provider, theme switch, dark mode, autodocs, a11y addon, vite, bolio ui",
+              "path": "/docs/guide/storybook.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"
