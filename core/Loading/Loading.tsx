@@ -79,6 +79,7 @@ const LoadingComponent = React.forwardRef<
       <div
         ref={ref}
         role="status"
+        aria-label={children ? undefined : 'Loading'}
         className={classes}
         {...props}
         style={containerStyle}

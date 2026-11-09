@@ -349,6 +349,19 @@ describe('semantics', () => {
     ).toBeInTheDocument()
   })
 
+  it('Loading is named unless its children say what is loading', () => {
+    wrap(
+      <>
+        <Loading />
+        <Loading>Fetching invoices</Loading>
+      </>
+    )
+    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument()
+    expect(
+      screen.getByText('Fetching invoices').closest('[role=status]')
+    ).not.toHaveAttribute('aria-label')
+  })
+
   it('Capacity is a meter once it has a name', () => {
     wrap(
       <>

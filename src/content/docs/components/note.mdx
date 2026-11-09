@@ -173,6 +173,10 @@ type NoteTypes =
   | 'info'
 ```
 
+<Attributes.Title>Accessibility</Attributes.Title>
+
+- • The `type` is only a color, which a screen reader does not announce. Keep the `label` as the word that carries the meaning, such as `label="error"`, and avoid `label={false}` when the type matters.
+
 </Attributes>
 
 export default Docs.withMeta(meta)
