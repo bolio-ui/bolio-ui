@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Highlight, { Prism, PrismTheme } from 'prism-react-renderer'
+import { Highlight, PrismTheme } from 'prism-react-renderer'
 import { useTheme, useToasts, useClipboard, Tooltip, Text } from 'core'
 import { track } from 'src/utils/gtag'
 import { Copy, ChevronRight } from '@bolio-ui/icons'
@@ -8,14 +8,6 @@ import styles from './editor.module.css'
 interface Props {
   code: string
   codeTheme: PrismTheme
-}
-
-// prism-react-renderer 1 returns `key: undefined` in the line and token
-// props, and React 19 warns when a key comes in a spread
-const withoutKey = <T extends object>(props: T) => {
-  const rest: T & { key?: unknown } = { ...props }
-  delete rest.key
-  return rest
 }
 
 // A real file, read only: the live-editable version (react-live's
@@ -79,13 +71,13 @@ const Editor: React.FC<Props> = ({ code, codeTheme }) => {
         </div>
       </div>
       {visible && (
-        <Highlight Prism={Prism} code={code} language="jsx" theme={codeTheme}>
+        <Highlight code={code} language="jsx" theme={codeTheme}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
               {tokens.map((line, i) => (
-                <div key={i} {...withoutKey(getLineProps({ line }))}>
+                <div key={i} {...getLineProps({ line })}>
                   {line.map((token, key) => (
-                    <span key={key} {...withoutKey(getTokenProps({ token }))} />
+                    <span key={key} {...getTokenProps({ token })} />
                   ))}
                 </div>
               ))}
