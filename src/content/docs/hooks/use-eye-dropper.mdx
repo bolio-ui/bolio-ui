@@ -27,7 +27,7 @@ This is custom React hooks, you need to follow the <Link target="_blank" color h
     try {
       const result = await open()
       if (result) setColor(result.sRGBHex)
-    } catch {
+    } catch (e) {
       // the user closed the picker
     }
   }
