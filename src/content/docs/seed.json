@@ -8611,6 +8611,99 @@
     "path": "/docs/guide/migration-v2-to-v3#checklist"
   },
   {
+    "title": "Testing with Vitest",
+    "component": true,
+    "path": "/docs/guide/testing-with-vitest"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#install"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Configure Vitest",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#configure-vitest"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Render with the provider",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#render-with-the-provider"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "Write a test",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#write-a-test"
+  },
+  {
+    "head": "Testing with Vitest",
+    "title": "What to keep in mind",
+    "component": false,
+    "path": "/docs/guide/testing-with-vitest#what-to-keep-in-mind"
+  },
+  {
+    "title": "Storybook",
+    "component": true,
+    "path": "/docs/guide/storybook"
+  },
+  {
+    "head": "Storybook",
+    "title": "Install",
+    "component": false,
+    "path": "/docs/guide/storybook#install"
+  },
+  {
+    "head": "Storybook",
+    "title": "Configure Storybook",
+    "component": false,
+    "path": "/docs/guide/storybook#configure-storybook"
+  },
+  {
+    "head": "Storybook",
+    "title": "Write a story",
+    "component": false,
+    "path": "/docs/guide/storybook#write-a-story"
+  },
+  {
+    "head": "Storybook",
+    "title": "What to keep in mind",
+    "component": false,
+    "path": "/docs/guide/storybook#what-to-keep-in-mind"
+  },
+  {
+    "title": "Dashboard example",
+    "component": true,
+    "path": "/docs/guide/dashboard-example"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Get the example",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#get-the-example"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Install recharts for the charts",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#install-recharts-for-the-charts"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Stat tiles with a sparkline",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#stat-tiles-with-a-sparkline"
+  },
+  {
+    "head": "Dashboard example",
+    "title": "Modals from code",
+    "component": false,
+    "path": "/docs/guide/dashboard-example#modals-from-code"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"

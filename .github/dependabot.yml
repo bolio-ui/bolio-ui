@@ -6,8 +6,7 @@ updates:
   - package-ecosystem: npm
     directories:
       - /
-      - /examples/create-nextjs-js-app
-      - /examples/create-nextjs-ts-app
+      - /examples/*
     target-branch: develop
     schedule:
       interval: weekly

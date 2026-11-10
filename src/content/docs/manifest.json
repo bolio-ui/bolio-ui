@@ -35,6 +35,21 @@
               "path": "/docs/guide/refs-and-accessibility.mdx"
             },
             {
+              "title": "Testing with Vitest",
+              "keywords": "test, tests, testing, vitest, jest, testing library, jsdom, provider, modal, toast, resizeobserver, bolio ui",
+              "path": "/docs/guide/testing-with-vitest.mdx"
+            },
+            {
+              "title": "Storybook",
+              "keywords": "storybook, stories, component review, provider, theme switch, dark mode, autodocs, a11y addon, vite, bolio ui",
+              "path": "/docs/guide/storybook.mdx"
+            },
+            {
+              "title": "Dashboard example",
+              "keywords": "dashboard, example, charts, recharts, sparkline, stat, schedule, modals, useModals, vite, bolio ui",
+              "path": "/docs/guide/dashboard-example.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"

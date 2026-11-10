@@ -22,6 +22,21 @@ export const guide = [
     url: '/docs/guide/refs-and-accessibility'
   },
   {
+    name: 'Testing with Vitest',
+    url: '/docs/guide/testing-with-vitest',
+    tag: 'New'
+  },
+  {
+    name: 'Storybook',
+    url: '/docs/guide/storybook',
+    tag: 'New'
+  },
+  {
+    name: 'Dashboard example',
+    url: '/docs/guide/dashboard-example',
+    tag: 'New'
+  },
+  {
     name: 'Page structure',
     url: '/docs/guide/page-structure'
   },
