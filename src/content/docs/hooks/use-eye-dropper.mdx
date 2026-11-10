@@ -23,14 +23,10 @@ This is custom React hooks, you need to follow the <Link target="_blank" color h
 () => {
   const { supported, open } = useEyeDropper()
   const [color, setColor] = React.useState('')
-  const pick = async () => {
-    try {
-      const result = await open()
-      if (result) setColor(result.sRGBHex)
-    } catch (e) {
-      // the user closed the picker
-    }
-  }
+  const pick = () =>
+    open()
+      .then((result) => result && setColor(result.sRGBHex))
+      .catch(() => {})
   return (
     <>
       <Button auto scale={0.6} disabled={!supported} onClick={pick}>Pick a color</Button>
