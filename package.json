@@ -127,7 +127,7 @@
     "prettier": "^3",
     "prism-react-renderer": "^2.4.1",
     "react": "^19",
-    "react-device-detect": "^1.17.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19",
     "react-is": "^19.3.1",
     "react-live": "^2.2.3",
