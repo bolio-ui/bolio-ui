@@ -1,0 +1,122 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { GaugeChart, Grid } from 'core'
+
+export const meta = {
+  title: 'GaugeChart',
+  description: 'An arc that fills up to a value inside a range.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 88
+}
+
+## GaugeChart
+
+An arc that fills up to a value inside a range. Use it for one number that has a limit, such as CPU load, a score or progress to a goal.
+
+<Playground
+  desc="Pass the `value`. The range is 0 to 100 unless you set `min` and `max`. Name it with `aria-label`."
+  scope={{ GaugeChart }}
+  code={`
+<GaugeChart aria-label="CPU load" value={64} valueFormatter={(value) => value + '%'} />
+`}
+/>
+
+<Playground
+  title="Sections"
+  desc="With `sections`, the arc is split into bands. Each one ends at its `value` and starts where the one before ends."
+  scope={{ GaugeChart }}
+  code={`
+<GaugeChart
+  aria-label="Server temperature"
+  value={72}
+  max={120}
+  valueFormatter={(value) => value + ' °C'}
+  sections={[
+    { value: 60, color: '#16a34a' },
+    { value: 90, color: '#f59e0b' },
+    { value: 120, color: '#dc2626' }
+  ]}
+  target={72}
+/>
+`}
+/>
+
+<Playground
+  title="Target and label"
+  desc="`target` draws a marker, such as a goal. `label` replaces the number in the center with anything."
+  scope={{ GaugeChart }}
+  code={`
+<GaugeChart
+  aria-label="Sales against the goal"
+  value={420}
+  max={600}
+  target={500}
+  roundCaps
+  type="success"
+  label={<span>420<br /><small>of 500</small></span>}
+/>
+`}
+/>
+
+<Playground
+  title="Angles and size"
+  desc="`startAngle` and `endAngle` set the arc. 0 is the top and angles grow clockwise, so -90 to 90 is a half circle."
+  scope={{ GaugeChart, Grid }}
+  code={`
+<Grid.Container gap={3} alignItems="center">
+  <Grid>
+    <GaugeChart aria-label="Half" value={40} startAngle={-90} endAngle={90} size={180} thickness={18} />
+  </Grid>
+  <Grid>
+    <GaugeChart aria-label="Full" value={75} startAngle={0} endAngle={360} size={140} thickness={10} type="info" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/gauge-chart.mdx">
+<Attributes.Title>GaugeChart.Props</Attributes.Title>
+
+| Attribute          | Description                                                   | Type                           | Accepted values                                                            | Default       |
+| ------------------ | ------------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------- | ------------- |
+| **value**          | the value to show                                             | `number`                       | -                                                                          | -             |
+| **min**            | start of the range                                            | `number`                       | -                                                                          | `0`           |
+| **max**            | end of the range                                              | `number`                       | -                                                                          | `100`         |
+| **sections**       | bands of the arc, each one ends at its `value`                | `GaugeSection[]`               | [GaugeSection](#gaugesection)                                              | -             |
+| **target**         | draw a marker at this value                                   | `number`                       | -                                                                          | -             |
+| **size**           | width and height, in pixels                                   | `number`                       | -                                                                          | `200`         |
+| **thickness**      | width of the arc, in pixels                                   | `number`                       | -                                                                          | `14`          |
+| **startAngle**     | where the arc starts, in degrees, 0 is the top                | `number`                       | -                                                                          | `-120`        |
+| **endAngle**       | where the arc ends, in degrees                                | `number`                       | -                                                                          | `120`         |
+| **roundCaps**      | round the ends of the arc, without `sections`                 | `boolean`                      | -                                                                          | `false`       |
+| **type**           | theme color of the filled arc, without `sections`            | `NormalTypes`                  | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `primary`     |
+| **color**          | any CSS color for the filled arc, replaces `type`             | `string`                       | -                                                                          | -             |
+| **trackColor**     | color of the unfilled arc                                     | `string`                       | -                                                                          | theme color   |
+| **targetColor**    | color of the target marker                                    | `string`                       | -                                                                          | theme color   |
+| **label**          | content of the center, replaces the value                     | `ReactNode`                    | -                                                                          | the value     |
+| **valueFormatter** | how the value is written in the center                        | `(value: number) => string`    | -                                                                          | thousands separators, en-US |
+| ...                | native props, passed to the root                              | `HTMLAttributes`               | `'aria-label', 'className', ...`                                           | -             |
+
+<Attributes.Title>GaugeSection</Attributes.Title>
+
+```ts
+type GaugeSection = {
+  value: number // where the band ends, it starts where the one before ends
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+With `aria-label` or `aria-labelledby`, the root is a `meter` that exposes the value, the range and the text written by `valueFormatter`. Without a name it is plain content, because a meter needs one.
+
+The bands are only color, so write what the value means in the `label` or next to the gauge, such as "72 °C, warm".
+
+</Attributes>
+
+export default Docs.withMeta(meta)

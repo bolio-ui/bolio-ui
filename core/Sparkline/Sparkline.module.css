@@ -1,0 +1,20 @@
+.sparkline {
+  display: inline-block;
+  box-sizing: content-box;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+.line {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.area {
+  fill: currentColor;
+  fill-opacity: 0.15;
+  stroke: none;
+}

@@ -9,6 +9,14 @@ const {
   Autocomplete,
   Avatar,
   Badge,
+  BarsList,
+  BulletChart,
+  MatrixChart,
+  SunburstChart,
+  WaffleChart,
+  GaugeChart,
+  Heatmap,
+  Sparkline,
   Breadcrumbs,
   Button,
   ButtonDropdown,
@@ -106,6 +114,25 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ],
   ['Avatar', (ref) => <Avatar ref={ref} text="BA" />],
   ['Badge', (ref) => <Badge ref={ref}>new</Badge>],
+  ['GaugeChart', (ref) => <GaugeChart ref={ref} value={60} />],
+  [
+    'Heatmap',
+    (ref) => (
+      <Heatmap
+        ref={ref}
+        data={{}}
+        startDate="2026-01-01"
+        endDate="2026-02-01"
+      />
+    ),
+    'svg'
+  ],
+  ['BulletChart', (ref) => <BulletChart ref={ref} value={1} ranges={[]} />],
+  ['MatrixChart', (ref) => <MatrixChart ref={ref} data={[]} />, 'svg'],
+  ['SunburstChart', (ref) => <SunburstChart ref={ref} data={[]} />, 'svg'],
+  ['WaffleChart', (ref) => <WaffleChart ref={ref} data={[]} />],
+  ['BarsList', (ref) => <BarsList ref={ref} data={[]} />],
+  ['Sparkline', (ref) => <Sparkline ref={ref} data={[1, 2]} />, 'svg'],
   [
     'Breadcrumbs',
     (ref) => (
@@ -448,7 +475,12 @@ describe('ref: every component forwards it to a DOM element', () => {
         })
       )
     } else {
-      expect(ref.current).toBeInstanceOf(HTMLElement)
+      // Sparkline and Heatmap are svg, every other component is an HTML element
+      expect(ref.current).toBeInstanceOf(
+        ['Sparkline', 'Heatmap', 'MatrixChart', 'SunburstChart'].includes(name)
+          ? SVGElement
+          : HTMLElement
+      )
     }
     if (tag) expect(ref.current.tagName).toBe(tag)
     // no "Function components cannot be given refs" warning

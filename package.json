@@ -34,6 +34,11 @@
       "module": "./esm/index.js",
       "default": "./dist/index.js"
     },
+    "./charts": {
+      "types": "./esm/Charts/index.d.ts",
+      "module": "./esm/Charts/index.js",
+      "default": "./dist/Charts/index.js"
+    },
     "./styles.css": {
       "types": "./dist/styles.d.ts",
       "default": "./dist/styles.css"
@@ -124,8 +129,10 @@
     "react": "^19",
     "react-device-detect": "^1.17.0",
     "react-dom": "^19",
+    "react-is": "^19.3.1",
     "react-live": "^2.2.3",
     "react-syntax-highlighter": "^15.5.0",
+    "recharts": "^3.10.1",
     "rehype-join-line": "^1.0.2",
     "remark-autolink-headings": "^6.0.1",
     "remark-gfm": "^4.0.1",
@@ -147,6 +154,12 @@
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
-    "react-dom": "^18.2.0 || ^19.0.0"
+    "react-dom": "^18.2.0 || ^19.0.0",
+    "recharts": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "recharts": {
+      "optional": true
+    }
   }
 }

@@ -142,6 +142,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'AreaChart',
+            url: '/docs/components/area-chart',
+            group: 'Components'
+          },
+          {
             name: 'Autocomplete',
             url: '/docs/components/autocomplete',
             group: 'Components'
@@ -157,8 +162,28 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'BarChart',
+            url: '/docs/components/bar-chart',
+            group: 'Components'
+          },
+          {
+            name: 'BarsList',
+            url: '/docs/components/bars-list',
+            group: 'Components'
+          },
+          {
             name: 'Breadcrumbs',
             url: '/docs/components/breadcrumbs',
+            group: 'Components'
+          },
+          {
+            name: 'BubbleChart',
+            url: '/docs/components/bubble-chart',
+            group: 'Components'
+          },
+          {
+            name: 'BulletChart',
+            url: '/docs/components/bullet-chart',
             group: 'Components'
           },
           {
@@ -179,6 +204,11 @@ export const menuMobile = [
           {
             name: 'Calendar',
             url: '/docs/components/calendar',
+            group: 'Components'
+          },
+          {
+            name: 'CandlestickChart',
+            url: '/docs/components/candlestick-chart',
             group: 'Components'
           },
           {
@@ -242,6 +272,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'CompositeChart',
+            url: '/docs/components/composite-chart',
+            group: 'Components'
+          },
+          {
             name: 'Container',
             url: '/docs/components/container',
             group: 'Components'
@@ -287,6 +322,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'DonutChart',
+            url: '/docs/components/donut-chart',
+            group: 'Components'
+          },
+          {
             name: 'Dot',
             url: '/docs/components/dot',
             group: 'Components'
@@ -317,8 +357,23 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'FunnelChart',
+            url: '/docs/components/funnel-chart',
+            group: 'Components'
+          },
+          {
+            name: 'GaugeChart',
+            url: '/docs/components/gauge-chart',
+            group: 'Components'
+          },
+          {
             name: 'Grid',
             url: '/docs/components/grid',
+            group: 'Components'
+          },
+          {
+            name: 'Heatmap',
+            url: '/docs/components/heatmap',
             group: 'Components'
           },
           {
@@ -352,6 +407,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'LineChart',
+            url: '/docs/components/line-chart',
+            group: 'Components'
+          },
+          {
             name: 'Link',
             url: '/docs/components/link',
             group: 'Components'
@@ -369,6 +429,11 @@ export const menuMobile = [
           {
             name: 'Marquee',
             url: '/docs/components/marquee',
+            group: 'Components'
+          },
+          {
+            name: 'MatrixChart',
+            url: '/docs/components/matrix-chart',
             group: 'Components'
           },
           {
@@ -417,6 +482,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'PieChart',
+            url: '/docs/components/pie-chart',
+            group: 'Components'
+          },
+          {
             name: 'Pin Input',
             url: '/docs/components/pin-input',
             group: 'Components'
@@ -429,6 +499,16 @@ export const menuMobile = [
           {
             name: 'Progress',
             url: '/docs/components/progress',
+            group: 'Components'
+          },
+          {
+            name: 'RadarChart',
+            url: '/docs/components/radar-chart',
+            group: 'Components'
+          },
+          {
+            name: 'RadialBarChart',
+            url: '/docs/components/radial-bar-chart',
             group: 'Components'
           },
           {
@@ -462,6 +542,16 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'SankeyChart',
+            url: '/docs/components/sankey-chart',
+            group: 'Components'
+          },
+          {
+            name: 'ScatterChart',
+            url: '/docs/components/scatter-chart',
+            group: 'Components'
+          },
+          {
             name: 'Schedule',
             url: '/docs/components/schedule',
             group: 'Components'
@@ -492,6 +582,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Sparkline',
+            url: '/docs/components/sparkline',
+            group: 'Components'
+          },
+          {
             name: 'Spoiler',
             url: '/docs/components/spoiler',
             group: 'Components'
@@ -514,6 +609,11 @@ export const menuMobile = [
           {
             name: 'Stepper',
             url: '/docs/components/stepper',
+            group: 'Components'
+          },
+          {
+            name: 'SunburstChart',
+            url: '/docs/components/sunburst-chart',
             group: 'Components'
           },
           {
@@ -584,6 +684,16 @@ export const menuMobile = [
           {
             name: 'Tree',
             url: '/docs/components/tree',
+            group: 'Components'
+          },
+          {
+            name: 'Treemap',
+            url: '/docs/components/treemap',
+            group: 'Components'
+          },
+          {
+            name: 'WaffleChart',
+            url: '/docs/components/waffle-chart',
             group: 'Components'
           }
         ]

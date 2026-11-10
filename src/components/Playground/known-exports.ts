@@ -7,8 +7,10 @@ export const CORE_EXPORT_NAMES = new Set([
   'Autocomplete',
   'Avatar',
   'Badge',
+  'BarsList',
   'BolioUIProvider',
   'Breadcrumbs',
+  'BulletChart',
   'Button',
   'ButtonDropdown',
   'ButtonGroup',
@@ -36,7 +38,9 @@ export const CORE_EXPORT_NAMES = new Set([
   'EmojiPicker',
   'EmptyState',
   'Fieldset',
+  'GaugeChart',
   'Grid',
+  'Heatmap',
   'Highlight',
   'Image',
   'Input',
@@ -48,6 +52,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Loading',
   'Mark',
   'Marquee',
+  'MatrixChart',
   'Mention',
   'Menu',
   'Modal',
@@ -75,10 +80,12 @@ export const CORE_EXPORT_NAMES = new Set([
   'Slider',
   'Snippet',
   'Spacer',
+  'Sparkline',
   'Spoiler',
   'Spinner',
   'Stat',
   'Stepper',
+  'SunburstChart',
   'Table',
   'Tabs',
   'Tag',
@@ -92,6 +99,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Toolbar',
   'Tooltip',
   'Tree',
+  'WaffleChart',
   'useAllThemes',
   'useBodyScroll',
   'useClasses',
@@ -399,4 +407,23 @@ export const ICON_EXPORT_NAMES = new Set([
   'ZapOff',
   'ZoomIn',
   'ZoomOut'
+])
+
+// Charts need the optional `recharts` package, so they live in their own entry
+// and are not part of the root export above.
+export const CHART_EXPORT_NAMES = new Set([
+  'AreaChart',
+  'BarChart',
+  'BubbleChart',
+  'CandlestickChart',
+  'CompositeChart',
+  'DonutChart',
+  'FunnelChart',
+  'LineChart',
+  'PieChart',
+  'RadarChart',
+  'RadialBarChart',
+  'SankeyChart',
+  'ScatterChart',
+  'Treemap'
 ])

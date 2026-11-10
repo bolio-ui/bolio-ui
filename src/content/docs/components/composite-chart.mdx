@@ -1,0 +1,111 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { CompositeChart } from 'core/Charts'
+
+export const meta = {
+  title: 'CompositeChart',
+  description: 'Bars, lines and areas in one chart, to compare measures that work together.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 89
+}
+
+## CompositeChart
+
+Bars, lines and areas in one chart, to compare measures that work together. Use it when one number explains another, such as visits (bars) and conversion (line).
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Give each item of `series` a `type`: `bar`, `area` or `line`. A series without a type is a line."
+  scope={{ CompositeChart }}
+  code={`
+<CompositeChart
+  aria-label="Visits, sales and conversion"
+  withLegend
+  data={[
+    { month: 'Jan', visits: 120, sales: 40, rate: 3.3 },
+    { month: 'Feb', visits: 180, sales: 55, rate: 3.0 },
+    { month: 'Mar', visits: 150, sales: 80, rate: 5.3 },
+    { month: 'Apr', visits: 220, sales: 95, rate: 4.3 }
+  ]}
+  dataKey="month"
+  series={[
+    { name: 'visits', label: 'Visits', type: 'bar' },
+    { name: 'sales', label: 'Sales', type: 'area' },
+    { name: 'rate', label: 'Rate', type: 'line' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Right axis"
+  desc="Measures with different scales need their own axis. Turn on `withRightYAxis` and set `yAxisId: 'right'` on the series that uses it."
+  scope={{ CompositeChart }}
+  code={`
+<CompositeChart
+  withLegend
+  withRightYAxis
+  valueFormatter={(value) => value.toLocaleString('en-US')}
+  data={[
+    { month: 'Jan', revenue: 12000, margin: 18 },
+    { month: 'Feb', revenue: 18500, margin: 22 },
+    { month: 'Mar', revenue: 15200, margin: 20 },
+    { month: 'Apr', revenue: 21000, margin: 27 }
+  ]}
+  dataKey="month"
+  series={[
+    { name: 'revenue', label: 'Revenue', type: 'bar' },
+    { name: 'margin', label: 'Margin (%)', type: 'line', yAxisId: 'right', color: '#8b5cf6' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/composite-chart.mdx">
+<Attributes.Title>CompositeChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | one object per point on the x axis | `Array<Record<string, ...>>` | - | - |
+| **dataKey** | key of `data` that holds the x axis label | `string` | - | - |
+| **series** | what to draw, one per key of `data` | `ChartSeries[]` | [ChartSeries](#chartseries) | - |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **withLegend** | show the legend | `boolean` | - | `false` |
+| **withTooltip** | show the values of a point on hover and focus | `boolean` | - | `true` |
+| **withXAxis** | show the x axis | `boolean` | - | `true` |
+| **withYAxis** | show the y axis | `boolean` | - | `true` |
+| **withGrid** | show the horizontal grid lines | `boolean` | - | `true` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **curve** | how the lines join the points | `string` | `'linear', 'monotone', 'step'` | `monotone` |
+| **withDots** | draw a dot on each point of a line | `boolean` | - | `true` |
+| **connectNulls** | draw lines through `null` values | `boolean` | - | `false` |
+| **withRightYAxis** | add a second y axis on the right | `boolean` | - | `false` |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ChartSeries</Attributes.Title>
+
+```ts
+type ChartSeries = {
+  name: string // key of `data` with the values
+  label?: string // shown in the legend and the tooltip, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+  type?: 'line' | 'bar' | 'area' // `line` when missing
+  yAxisId?: 'left' | 'right' // `right` needs `withRightYAxis`
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the data and show the values in the tooltip.
+
+When the series are different measures, repeat the key numbers in text next to the chart, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

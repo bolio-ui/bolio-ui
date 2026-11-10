@@ -1,0 +1,95 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { MatrixChart } from 'core'
+
+export const meta = {
+  title: 'MatrixChart',
+  description: 'A grid of two categories, where the color of each cell follows a value.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 98
+}
+
+## MatrixChart
+
+A grid of two categories, where the color of each cell follows a value. Use it to cross two lists, such as services by weekday.
+
+It is plain `svg`, so it does not need any extra package. For days on a calendar, use `Heatmap`.
+
+<Playground
+  desc="Each item has the column in `x`, the row in `y` and a `value`. A cell with `null` or `0` stays empty."
+  scope={{ MatrixChart }}
+  code={`
+<MatrixChart
+  aria-label="Deploys per service and weekday"
+  withLegend
+  data={[
+    { x: 'Mon', y: 'api', value: 4 }, { x: 'Tue', y: 'api', value: 7 }, { x: 'Wed', y: 'api', value: 2 }, { x: 'Thu', y: 'api', value: 9 },
+    { x: 'Mon', y: 'web', value: 1 }, { x: 'Tue', y: 'web', value: 3 }, { x: 'Wed', y: 'web', value: null }, { x: 'Thu', y: 'web', value: 5 },
+    { x: 'Mon', y: 'jobs', value: 6 }, { x: 'Tue', y: 'jobs', value: 0 }, { x: 'Wed', y: 'jobs', value: 8 }, { x: 'Thu', y: 'jobs', value: 2 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Colors and labels"
+  desc="Set `type` or `colors` for the scale, `xLabelsRotation` for long names and `valueLabel` for the hover title."
+  scope={{ MatrixChart }}
+  code={`
+<MatrixChart
+  type="info"
+  cellSize={36}
+  xLabelsRotation={-45}
+  valueLabel={(cell) => cell.y + ' on ' + cell.x + ': ' + cell.value + ' incidents'}
+  data={[
+    { x: 'January', y: 'north', value: 3 }, { x: 'February', y: 'north', value: 8 }, { x: 'March', y: 'north', value: 5 },
+    { x: 'January', y: 'south', value: 6 }, { x: 'February', y: 'south', value: 2 }, { x: 'March', y: 'south', value: 9 }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/matrix-chart.mdx">
+<Attributes.Title>MatrixChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | one item per cell | `MatrixCell[]` | [MatrixCell](#matrixcell) | - |
+| **type** | theme color of the scale | `NormalTypes` | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `primary` |
+| **colors** | colors of the levels, from the lowest to the highest | `string[]` | - | 4 shades of `type` |
+| **domain** | values that get the lowest and the highest color | `[number, number]` | - | from the data |
+| **cellSize** | side of a cell, in pixels | `number` | - | `28` |
+| **gap** | space between cells, in pixels | `number` | - | `2` |
+| **cellRadius** | corner radius of a cell, in pixels | `number` | - | `3` |
+| **withXLabels** | name the columns | `boolean` | - | `true` |
+| **withYLabels** | name the rows | `boolean` | - | `true` |
+| **xLabelsRotation** | angle of the column names, in degrees | `number` | - | `0` |
+| **withLegend** | show the scale below | `boolean` | - | `false` |
+| **legendLabels** | texts at the two ends of the legend | `[string, string]` | - | `Less`, `More` |
+| **valueLabel** | text of the hover title of a cell | `(cell: MatrixCell) => string` | - | `row, column: value` |
+| **...** | native props, passed to the `svg` | `SVGAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>MatrixCell</Attributes.Title>
+
+```ts
+type MatrixCell = {
+  x: string // the column
+  y: string // the row
+  value: number | null // `null` leaves the cell empty
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `svg`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Value is shown by color only, and each cell has a hover title with its row, column and value. Describe the chart with `aria-label` or `aria-labelledby`. With a name it is an image, without one it is hidden from assistive technology.
+
+For the exact numbers, offer the same data in a `Table` next to it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,107 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { WaffleChart } from 'core'
+
+export const meta = {
+  title: 'WaffleChart',
+  description: 'A grid of squares where each part owns as many squares as its share.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 94
+}
+
+## WaffleChart
+
+A grid of squares where each part owns as many squares as its share. Use it for a share you want people to feel, such as 65 of every 100 users.
+
+It is plain `svg`, so it does not need any extra package.
+
+<Playground
+  desc="The whole grid is the sum of the values, 100 squares by default."
+  scope={{ WaffleChart }}
+  code={`
+<WaffleChart
+  aria-label="Browser share"
+  data={[
+    { name: 'Chrome', value: 65 },
+    { name: 'Safari', value: 25 },
+    { name: 'Other', value: 10 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Total and empty squares"
+  desc="With `total`, the values are measured against it and the squares left over stay empty."
+  scope={{ WaffleChart }}
+  code={`
+<WaffleChart
+  total={100}
+  rows={5}
+  columns={20}
+  size={400}
+  valueFormatter={(value) => value + '%'}
+  data={[{ name: 'Goal reached', value: 38, color: '#16a34a' }]}
+/>
+`}
+/>
+
+<Playground
+  title="Direction"
+  desc="`fillDirection` sets the order the squares are given out in."
+  scope={{ WaffleChart }}
+  code={`
+<WaffleChart
+  fillDirection="bottom-to-top"
+  rows={8}
+  columns={8}
+  size={220}
+  data={[
+    { name: 'Done', value: 40, color: '#16a34a' },
+    { name: 'Doing', value: 15, color: '#f59e0b' },
+    { name: 'To do', value: 9, color: '#dc2626' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/waffle-chart.mdx">
+<Attributes.Title>WaffleChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the parts of the whole | `WaffleCell[]` | [WaffleCell](#wafflecell) | - |
+| **rows** | number of rows | `number` | - | `10` |
+| **columns** | number of columns | `number` | - | `10` |
+| **total** | what the whole grid stands for, the sum of the values when missing | `number` | - | - |
+| **fillDirection** | the order squares are given out in | `string` | `'left-to-right', 'right-to-left', 'top-to-bottom', 'bottom-to-top'` | `left-to-right` |
+| **gap** | space between squares, in pixels | `number` | - | `2` |
+| **cellRadius** | corner radius of a square, in pixels | `number` | - | `2` |
+| **size** | width of the grid, in pixels | `number` | - | `220` |
+| **emptyColor** | color of the squares nobody owns | `string` | - | theme color |
+| **withLegend** | list the parts below the grid | `boolean` | - | `true` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>WaffleCell</Attributes.Title>
+
+```ts
+type WaffleCell = {
+  name: string
+  value: number // squares are given out in proportion to it
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+With `aria-label` or `aria-labelledby` the root is a `group`. The legend lists every part with its value as text, so the grid itself is hidden from assistive technology. Without the legend, the grid becomes an image named by the parts, such as "Chrome 65, Safari 25, Other 10".
+
+</Attributes>
+
+export default Docs.withMeta(meta)

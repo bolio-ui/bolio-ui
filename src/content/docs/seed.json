@@ -1,5 +1,52 @@
 [
   {
+    "title": "AreaChart",
+    "component": true,
+    "path": "/docs/components/area-chart"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart General",
+    "component": false,
+    "path": "/docs/components/area-chart#general"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart Stacked",
+    "component": false,
+    "path": "/docs/components/area-chart#stacked"
+  },
+  {
+    "head": "AreaChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/area-chart#apis"
+  },
+  {
+    "head": "AreaChart",
+    "title": "AreaChart Props",
+    "component": false,
+    "path": "/docs/components/area-chart#areachart.props"
+  },
+  {
+    "head": "AreaChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/area-chart#chartseries"
+  },
+  {
+    "head": "AreaChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/area-chart#ref"
+  },
+  {
+    "head": "AreaChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/area-chart#accessibility"
+  },
+  {
     "title": "Avatar",
     "component": true,
     "path": "/docs/components/avatar"
@@ -118,6 +165,112 @@
     "path": "/docs/components/badge#anchorplacement"
   },
   {
+    "title": "BarChart",
+    "component": true,
+    "path": "/docs/components/bar-chart"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart General",
+    "component": false,
+    "path": "/docs/components/bar-chart#general"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Many series",
+    "component": false,
+    "path": "/docs/components/bar-chart#many-series"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Stacked",
+    "component": false,
+    "path": "/docs/components/bar-chart#stacked"
+  },
+  {
+    "head": "BarChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bar-chart#apis"
+  },
+  {
+    "head": "BarChart",
+    "title": "BarChart Props",
+    "component": false,
+    "path": "/docs/components/bar-chart#barchart.props"
+  },
+  {
+    "head": "BarChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/bar-chart#chartseries"
+  },
+  {
+    "head": "BarChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bar-chart#ref"
+  },
+  {
+    "head": "BarChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bar-chart#accessibility"
+  },
+  {
+    "title": "BarsList",
+    "component": true,
+    "path": "/docs/components/bars-list"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList General",
+    "component": false,
+    "path": "/docs/components/bars-list#general"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Column labels",
+    "component": false,
+    "path": "/docs/components/bars-list#column-labels"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Colors and format",
+    "component": false,
+    "path": "/docs/components/bars-list#colors-and-format"
+  },
+  {
+    "head": "BarsList",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bars-list#apis"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsList Props",
+    "component": false,
+    "path": "/docs/components/bars-list#barslist.props"
+  },
+  {
+    "head": "BarsList",
+    "title": "BarsListItem",
+    "component": false,
+    "path": "/docs/components/bars-list#barslistitem"
+  },
+  {
+    "head": "BarsList",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bars-list#ref"
+  },
+  {
+    "head": "BarsList",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bars-list#accessibility"
+  },
+  {
     "title": "Breadcrumbs",
     "component": true,
     "path": "/docs/components/breadcrumbs"
@@ -175,6 +328,106 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/breadcrumbs#accessibility"
+  },
+  {
+    "title": "BubbleChart",
+    "component": true,
+    "path": "/docs/components/bubble-chart"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "BubbleChart General",
+    "component": false,
+    "path": "/docs/components/bubble-chart#general"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "BubbleChart Many series and size",
+    "component": false,
+    "path": "/docs/components/bubble-chart#many-series-and-size"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bubble-chart#apis"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "BubbleChart Props",
+    "component": false,
+    "path": "/docs/components/bubble-chart#bubblechart.props"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "ScatterSeries",
+    "component": false,
+    "path": "/docs/components/bubble-chart#scatterseries"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bubble-chart#ref"
+  },
+  {
+    "head": "BubbleChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bubble-chart#accessibility"
+  },
+  {
+    "title": "BulletChart",
+    "component": true,
+    "path": "/docs/components/bullet-chart"
+  },
+  {
+    "head": "BulletChart",
+    "title": "BulletChart General",
+    "component": false,
+    "path": "/docs/components/bullet-chart#general"
+  },
+  {
+    "head": "BulletChart",
+    "title": "BulletChart Colors",
+    "component": false,
+    "path": "/docs/components/bullet-chart#colors"
+  },
+  {
+    "head": "BulletChart",
+    "title": "BulletChart Vertical",
+    "component": false,
+    "path": "/docs/components/bullet-chart#vertical"
+  },
+  {
+    "head": "BulletChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/bullet-chart#apis"
+  },
+  {
+    "head": "BulletChart",
+    "title": "BulletChart Props",
+    "component": false,
+    "path": "/docs/components/bullet-chart#bulletchart.props"
+  },
+  {
+    "head": "BulletChart",
+    "title": "BulletRange",
+    "component": false,
+    "path": "/docs/components/bullet-chart#bulletrange"
+  },
+  {
+    "head": "BulletChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/bullet-chart#ref"
+  },
+  {
+    "head": "BulletChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/bullet-chart#accessibility"
   },
   {
     "title": "Button",
@@ -507,6 +760,47 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/calendar#accessibility"
+  },
+  {
+    "title": "CandlestickChart",
+    "component": true,
+    "path": "/docs/components/candlestick-chart"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "CandlestickChart General",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#general"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "CandlestickChart Colors and keys",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#colors-and-keys"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#apis"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "CandlestickChart Props",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#candlestickchart.props"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#ref"
+  },
+  {
+    "head": "CandlestickChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/candlestick-chart#accessibility"
   },
   {
     "title": "Capacity",
@@ -1283,6 +1577,53 @@
     "path": "/docs/components/command#accessibility"
   },
   {
+    "title": "CompositeChart",
+    "component": true,
+    "path": "/docs/components/composite-chart"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "CompositeChart General",
+    "component": false,
+    "path": "/docs/components/composite-chart#general"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "CompositeChart Right axis",
+    "component": false,
+    "path": "/docs/components/composite-chart#right-axis"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/composite-chart#apis"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "CompositeChart Props",
+    "component": false,
+    "path": "/docs/components/composite-chart#compositechart.props"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/composite-chart#chartseries"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/composite-chart#ref"
+  },
+  {
+    "head": "CompositeChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/composite-chart#accessibility"
+  },
+  {
     "title": "Container",
     "component": true,
     "path": "/docs/components/container"
@@ -1695,6 +2036,59 @@
     "path": "/docs/components/divider#divideralign"
   },
   {
+    "title": "DonutChart",
+    "component": true,
+    "path": "/docs/components/donut-chart"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart General",
+    "component": false,
+    "path": "/docs/components/donut-chart#general"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Thickness",
+    "component": false,
+    "path": "/docs/components/donut-chart#thickness"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Legend and labels",
+    "component": false,
+    "path": "/docs/components/donut-chart#legend-and-labels"
+  },
+  {
+    "head": "DonutChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/donut-chart#apis"
+  },
+  {
+    "head": "DonutChart",
+    "title": "DonutChart Props",
+    "component": false,
+    "path": "/docs/components/donut-chart#donutchart.props"
+  },
+  {
+    "head": "DonutChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/donut-chart#chartslice"
+  },
+  {
+    "head": "DonutChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/donut-chart#ref"
+  },
+  {
+    "head": "DonutChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/donut-chart#accessibility"
+  },
+  {
     "title": "Dot",
     "component": true,
     "path": "/docs/components/dot"
@@ -2025,6 +2419,112 @@
     "path": "/docs/components/fieldset#fieldset.group.props"
   },
   {
+    "title": "FunnelChart",
+    "component": true,
+    "path": "/docs/components/funnel-chart"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "FunnelChart General",
+    "component": false,
+    "path": "/docs/components/funnel-chart#general"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "FunnelChart Legend and format",
+    "component": false,
+    "path": "/docs/components/funnel-chart#legend-and-format"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/funnel-chart#apis"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "FunnelChart Props",
+    "component": false,
+    "path": "/docs/components/funnel-chart#funnelchart.props"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/funnel-chart#chartslice"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/funnel-chart#ref"
+  },
+  {
+    "head": "FunnelChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/funnel-chart#accessibility"
+  },
+  {
+    "title": "GaugeChart",
+    "component": true,
+    "path": "/docs/components/gauge-chart"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart General",
+    "component": false,
+    "path": "/docs/components/gauge-chart#general"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Sections",
+    "component": false,
+    "path": "/docs/components/gauge-chart#sections"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Target and label",
+    "component": false,
+    "path": "/docs/components/gauge-chart#target-and-label"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Angles and size",
+    "component": false,
+    "path": "/docs/components/gauge-chart#angles-and-size"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/gauge-chart#apis"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeChart Props",
+    "component": false,
+    "path": "/docs/components/gauge-chart#gaugechart.props"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "GaugeSection",
+    "component": false,
+    "path": "/docs/components/gauge-chart#gaugesection"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/gauge-chart#ref"
+  },
+  {
+    "head": "GaugeChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/gauge-chart#accessibility"
+  },
+  {
     "title": "Grid",
     "component": true,
     "path": "/docs/components/grid"
@@ -2106,6 +2606,53 @@
     "title": "Wrap - Grid",
     "component": false,
     "path": "/docs/components/grid#wrap"
+  },
+  {
+    "title": "Heatmap",
+    "component": true,
+    "path": "/docs/components/heatmap"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap General",
+    "component": false,
+    "path": "/docs/components/heatmap#general"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Legend and colors",
+    "component": false,
+    "path": "/docs/components/heatmap#legend-and-colors"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Week start and language",
+    "component": false,
+    "path": "/docs/components/heatmap#week-start-and-language"
+  },
+  {
+    "head": "Heatmap",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/heatmap#apis"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Heatmap Props",
+    "component": false,
+    "path": "/docs/components/heatmap#heatmap.props"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/heatmap#ref"
+  },
+  {
+    "head": "Heatmap",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/heatmap#accessibility"
   },
   {
     "title": "Icons",
@@ -2502,6 +3049,65 @@
     "title": "Keyboard Props",
     "component": false,
     "path": "/docs/components/keyboard#keyboard.props"
+  },
+  {
+    "title": "LineChart",
+    "component": true,
+    "path": "/docs/components/line-chart"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart General",
+    "component": false,
+    "path": "/docs/components/line-chart#general"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Many series",
+    "component": false,
+    "path": "/docs/components/line-chart#many-series"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Curve and dots",
+    "component": false,
+    "path": "/docs/components/line-chart#curve-and-dots"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Value format",
+    "component": false,
+    "path": "/docs/components/line-chart#value-format"
+  },
+  {
+    "head": "LineChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/line-chart#apis"
+  },
+  {
+    "head": "LineChart",
+    "title": "LineChart Props",
+    "component": false,
+    "path": "/docs/components/line-chart#linechart.props"
+  },
+  {
+    "head": "LineChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/line-chart#chartseries"
+  },
+  {
+    "head": "LineChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/line-chart#ref"
+  },
+  {
+    "head": "LineChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/line-chart#accessibility"
   },
   {
     "title": "Link",
@@ -3296,6 +3902,65 @@
     "path": "/docs/components/pagination#accessibility"
   },
   {
+    "title": "PieChart",
+    "component": true,
+    "path": "/docs/components/pie-chart"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart General",
+    "component": false,
+    "path": "/docs/components/pie-chart#general"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Legend and labels",
+    "component": false,
+    "path": "/docs/components/pie-chart#legend-and-labels"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Colors and format",
+    "component": false,
+    "path": "/docs/components/pie-chart#colors-and-format"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Semicircle",
+    "component": false,
+    "path": "/docs/components/pie-chart#semicircle"
+  },
+  {
+    "head": "PieChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/pie-chart#apis"
+  },
+  {
+    "head": "PieChart",
+    "title": "PieChart Props",
+    "component": false,
+    "path": "/docs/components/pie-chart#piechart.props"
+  },
+  {
+    "head": "PieChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/pie-chart#chartslice"
+  },
+  {
+    "head": "PieChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/pie-chart#ref"
+  },
+  {
+    "head": "PieChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/pie-chart#accessibility"
+  },
+  {
     "title": "Pin Input",
     "component": true,
     "path": "/docs/components/pin-input"
@@ -3495,6 +4160,106 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/progress#accessibility"
+  },
+  {
+    "title": "RadarChart",
+    "component": true,
+    "path": "/docs/components/radar-chart"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart General",
+    "component": false,
+    "path": "/docs/components/radar-chart#general"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Radius axis and dots",
+    "component": false,
+    "path": "/docs/components/radar-chart#radius-axis-and-dots"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Clean",
+    "component": false,
+    "path": "/docs/components/radar-chart#clean"
+  },
+  {
+    "head": "RadarChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/radar-chart#apis"
+  },
+  {
+    "head": "RadarChart",
+    "title": "RadarChart Props",
+    "component": false,
+    "path": "/docs/components/radar-chart#radarchart.props"
+  },
+  {
+    "head": "RadarChart",
+    "title": "ChartSeries",
+    "component": false,
+    "path": "/docs/components/radar-chart#chartseries"
+  },
+  {
+    "head": "RadarChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/radar-chart#ref"
+  },
+  {
+    "head": "RadarChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/radar-chart#accessibility"
+  },
+  {
+    "title": "RadialBarChart",
+    "component": true,
+    "path": "/docs/components/radial-bar-chart"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "RadialBarChart General",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#general"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "RadialBarChart Labels and angles",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#labels-and-angles"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#apis"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "RadialBarChart Props",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#radialbarchart.props"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "ChartSlice",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#chartslice"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#ref"
+  },
+  {
+    "head": "RadialBarChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/radial-bar-chart#accessibility"
   },
   {
     "title": "Radio",
@@ -4381,6 +5146,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/stepper#accessibility"
+  },
+  {
+    "title": "SunburstChart",
+    "component": true,
+    "path": "/docs/components/sunburst-chart"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "SunburstChart General",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#general"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "SunburstChart Labels and size",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#labels-and-size"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "SunburstChart Half circle",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#half-circle"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#apis"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "SunburstChart Props",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#sunburstchart.props"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "SunburstNode",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#sunburstnode"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#ref"
+  },
+  {
+    "head": "SunburstChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/sunburst-chart#accessibility"
   },
   {
     "title": "Table",
@@ -5287,6 +6105,106 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/tree#accessibility"
+  },
+  {
+    "title": "Treemap",
+    "component": true,
+    "path": "/docs/components/treemap"
+  },
+  {
+    "head": "Treemap",
+    "title": "Treemap General",
+    "component": false,
+    "path": "/docs/components/treemap#general"
+  },
+  {
+    "head": "Treemap",
+    "title": "Treemap Groups",
+    "component": false,
+    "path": "/docs/components/treemap#groups"
+  },
+  {
+    "head": "Treemap",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/treemap#apis"
+  },
+  {
+    "head": "Treemap",
+    "title": "Treemap Props",
+    "component": false,
+    "path": "/docs/components/treemap#treemap.props"
+  },
+  {
+    "head": "Treemap",
+    "title": "TreemapNode",
+    "component": false,
+    "path": "/docs/components/treemap#treemapnode"
+  },
+  {
+    "head": "Treemap",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/treemap#ref"
+  },
+  {
+    "head": "Treemap",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/treemap#accessibility"
+  },
+  {
+    "title": "WaffleChart",
+    "component": true,
+    "path": "/docs/components/waffle-chart"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "WaffleChart General",
+    "component": false,
+    "path": "/docs/components/waffle-chart#general"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "WaffleChart Total and empty squares",
+    "component": false,
+    "path": "/docs/components/waffle-chart#total-and-empty-squares"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "WaffleChart Direction",
+    "component": false,
+    "path": "/docs/components/waffle-chart#direction"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/waffle-chart#apis"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "WaffleChart Props",
+    "component": false,
+    "path": "/docs/components/waffle-chart#wafflechart.props"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "WaffleCell",
+    "component": false,
+    "path": "/docs/components/waffle-chart#wafflecell"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/waffle-chart#ref"
+  },
+  {
+    "head": "WaffleChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/waffle-chart#accessibility"
   },
   {
     "title": "useBodyScroll",
@@ -7927,6 +8845,53 @@
     "path": "/docs/components/toolbar#toolbar.separator.props"
   },
   {
+    "title": "MatrixChart",
+    "component": true,
+    "path": "/docs/components/matrix-chart"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "MatrixChart General",
+    "component": false,
+    "path": "/docs/components/matrix-chart#general"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "MatrixChart Colors and labels",
+    "component": false,
+    "path": "/docs/components/matrix-chart#colors-and-labels"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/matrix-chart#apis"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "MatrixChart Props",
+    "component": false,
+    "path": "/docs/components/matrix-chart#matrixchart.props"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "MatrixCell",
+    "component": false,
+    "path": "/docs/components/matrix-chart#matrixcell"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/matrix-chart#ref"
+  },
+  {
+    "head": "MatrixChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/matrix-chart#accessibility"
+  },
+  {
     "title": "Mention",
     "component": true,
     "path": "/docs/components/mention"
@@ -7966,6 +8931,112 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/mention#accessibility"
+  },
+  {
+    "title": "SankeyChart",
+    "component": true,
+    "path": "/docs/components/sankey-chart"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "SankeyChart General",
+    "component": false,
+    "path": "/docs/components/sankey-chart#general"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "SankeyChart Colors and format",
+    "component": false,
+    "path": "/docs/components/sankey-chart#colors-and-format"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/sankey-chart#apis"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "SankeyChart Props",
+    "component": false,
+    "path": "/docs/components/sankey-chart#sankeychart.props"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "SankeyNode",
+    "component": false,
+    "path": "/docs/components/sankey-chart#sankeynode"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "SankeyLink",
+    "component": false,
+    "path": "/docs/components/sankey-chart#sankeylink"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/sankey-chart#ref"
+  },
+  {
+    "head": "SankeyChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/sankey-chart#accessibility"
+  },
+  {
+    "title": "ScatterChart",
+    "component": true,
+    "path": "/docs/components/scatter-chart"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart General",
+    "component": false,
+    "path": "/docs/components/scatter-chart#general"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Many series",
+    "component": false,
+    "path": "/docs/components/scatter-chart#many-series"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Value format",
+    "component": false,
+    "path": "/docs/components/scatter-chart#value-format"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/scatter-chart#apis"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterChart Props",
+    "component": false,
+    "path": "/docs/components/scatter-chart#scatterchart.props"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "ScatterSeries",
+    "component": false,
+    "path": "/docs/components/scatter-chart#scatterseries"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/scatter-chart#ref"
+  },
+  {
+    "head": "ScatterChart",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/scatter-chart#accessibility"
   },
   {
     "title": "Schedule",
@@ -8113,6 +9184,59 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/copy-button#accessibility"
+  },
+  {
+    "title": "Sparkline",
+    "component": true,
+    "path": "/docs/components/sparkline"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline General",
+    "component": false,
+    "path": "/docs/components/sparkline#general"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Trend color",
+    "component": false,
+    "path": "/docs/components/sparkline#trend-color"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Types and colors",
+    "component": false,
+    "path": "/docs/components/sparkline#types-and-colors"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Missing values",
+    "component": false,
+    "path": "/docs/components/sparkline#missing-values"
+  },
+  {
+    "head": "Sparkline",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/sparkline#apis"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Sparkline Props",
+    "component": false,
+    "path": "/docs/components/sparkline#sparkline.props"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/sparkline#ref"
+  },
+  {
+    "head": "Sparkline",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/sparkline#accessibility"
   },
   {
     "title": "Spoiler",

@@ -149,8 +149,18 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'MatrixChart',
+    url: '/docs/components/matrix-chart',
+    tag: 'New'
+  },
+  {
     name: 'Mention',
     url: '/docs/components/mention',
+    tag: 'New'
+  },
+  {
+    name: 'AreaChart',
+    url: '/docs/components/area-chart',
     tag: 'New'
   },
   {
@@ -167,8 +177,28 @@ export const components = [
     url: '/docs/components/badge'
   },
   {
+    name: 'BarChart',
+    url: '/docs/components/bar-chart',
+    tag: 'New'
+  },
+  {
+    name: 'BarsList',
+    url: '/docs/components/bars-list',
+    tag: 'New'
+  },
+  {
     name: 'Breadcrumbs',
     url: '/docs/components/breadcrumbs'
+  },
+  {
+    name: 'BubbleChart',
+    url: '/docs/components/bubble-chart',
+    tag: 'New'
+  },
+  {
+    name: 'BulletChart',
+    url: '/docs/components/bullet-chart',
+    tag: 'New'
   },
   {
     name: 'Button',
@@ -188,6 +218,11 @@ export const components = [
     name: 'Calendar',
     url: '/docs/components/calendar',
     tag: 'Updated'
+  },
+  {
+    name: 'CandlestickChart',
+    url: '/docs/components/candlestick-chart',
+    tag: 'New'
   },
   {
     name: 'Capacity',
@@ -240,6 +275,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'CompositeChart',
+    url: '/docs/components/composite-chart',
+    tag: 'New'
+  },
+  {
     name: 'Container',
     url: '/docs/components/container'
   },
@@ -281,6 +321,11 @@ export const components = [
     url: '/docs/components/divider'
   },
   {
+    name: 'DonutChart',
+    url: '/docs/components/donut-chart',
+    tag: 'New'
+  },
+  {
     name: 'Dot',
     url: '/docs/components/dot'
   },
@@ -309,8 +354,23 @@ export const components = [
     url: '/docs/components/fieldset'
   },
   {
+    name: 'FunnelChart',
+    url: '/docs/components/funnel-chart',
+    tag: 'New'
+  },
+  {
+    name: 'GaugeChart',
+    url: '/docs/components/gauge-chart',
+    tag: 'New'
+  },
+  {
     name: 'Grid',
     url: '/docs/components/grid'
+  },
+  {
+    name: 'Heatmap',
+    url: '/docs/components/heatmap',
+    tag: 'New'
   },
   {
     name: 'Icons',
@@ -337,6 +397,11 @@ export const components = [
   {
     name: 'Keyboard',
     url: '/docs/components/keyboard'
+  },
+  {
+    name: 'LineChart',
+    url: '/docs/components/line-chart',
+    tag: 'New'
   },
   {
     name: 'Link',
@@ -393,6 +458,11 @@ export const components = [
     url: '/docs/components/pagination'
   },
   {
+    name: 'PieChart',
+    url: '/docs/components/pie-chart',
+    tag: 'New'
+  },
+  {
     name: 'Pin Input',
     url: '/docs/components/pin-input',
     tag: 'New'
@@ -405,6 +475,16 @@ export const components = [
   {
     name: 'Progress',
     url: '/docs/components/progress'
+  },
+  {
+    name: 'RadarChart',
+    url: '/docs/components/radar-chart',
+    tag: 'New'
+  },
+  {
+    name: 'RadialBarChart',
+    url: '/docs/components/radial-bar-chart',
+    tag: 'New'
   },
   {
     name: 'Radio',
@@ -434,6 +514,16 @@ export const components = [
     url: '/docs/components/skeleton'
   },
   {
+    name: 'SankeyChart',
+    url: '/docs/components/sankey-chart',
+    tag: 'New'
+  },
+  {
+    name: 'ScatterChart',
+    url: '/docs/components/scatter-chart',
+    tag: 'New'
+  },
+  {
     name: 'Schedule',
     url: '/docs/components/schedule',
     tag: 'New'
@@ -460,6 +550,11 @@ export const components = [
     url: '/docs/components/spacer'
   },
   {
+    name: 'Sparkline',
+    url: '/docs/components/sparkline',
+    tag: 'New'
+  },
+  {
     name: 'Spoiler',
     url: '/docs/components/spoiler',
     tag: 'New'
@@ -481,6 +576,11 @@ export const components = [
   {
     name: 'Stepper',
     url: '/docs/components/stepper'
+  },
+  {
+    name: 'SunburstChart',
+    url: '/docs/components/sunburst-chart',
+    tag: 'New'
   },
   {
     name: 'Table',
@@ -545,6 +645,16 @@ export const components = [
   {
     name: 'Tree',
     url: '/docs/components/tree',
+    tag: 'New'
+  },
+  {
+    name: 'Treemap',
+    url: '/docs/components/treemap',
+    tag: 'New'
+  },
+  {
+    name: 'WaffleChart',
+    url: '/docs/components/waffle-chart',
     tag: 'New'
   }
 ]

@@ -1,0 +1,127 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ScatterChart } from 'core/Charts'
+
+export const meta = {
+  title: 'ScatterChart',
+  description: 'Points placed by two numbers, to see how one value relates to another.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 86
+}
+
+## ScatterChart
+
+Points placed by two numbers, to see how one value relates to another. Use it to look for a pattern or an outlier between two measures.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each series has its own `points`, with an `x` and a `y` for each one. Name the axes with `xAxisLabel` and `yAxisLabel`."
+  scope={{ ScatterChart }}
+  code={`
+<ScatterChart
+  aria-label="Weight by age"
+  xAxisLabel="Age"
+  yAxisLabel="Weight (kg)"
+  data={[
+    {
+      name: 'people',
+      label: 'People',
+      points: [
+        { x: 18, y: 62 }, { x: 24, y: 70 }, { x: 31, y: 78 },
+        { x: 38, y: 74 }, { x: 45, y: 85 }, { x: 52, y: 80 }, { x: 60, y: 76 }
+      ]
+    }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Many series"
+  desc="Each series gets its own color. Add `withLegend` to name them."
+  scope={{ ScatterChart }}
+  code={`
+<ScatterChart
+  withLegend
+  xAxisLabel="Hours studied"
+  yAxisLabel="Score"
+  data={[
+    {
+      name: 'morning',
+      label: 'Morning class',
+      points: [{ x: 2, y: 55 }, { x: 4, y: 68 }, { x: 6, y: 80 }, { x: 8, y: 92 }]
+    },
+    {
+      name: 'evening',
+      label: 'Evening class',
+      color: '#8b5cf6',
+      points: [{ x: 1, y: 40 }, { x: 3, y: 52 }, { x: 5, y: 60 }, { x: 7, y: 71 }]
+    }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Value format"
+  desc="`valueFormatter` changes how a number reads on both axes and in the tooltip."
+  scope={{ ScatterChart }}
+  code={`
+<ScatterChart
+  valueFormatter={(value) => '$' + value.toLocaleString('en-US')}
+  height={260}
+  data={[
+    {
+      name: 'deals',
+      label: 'Deals',
+      color: '#16a34a',
+      points: [{ x: 1200, y: 3400 }, { x: 2600, y: 5100 }, { x: 4100, y: 6000 }, { x: 5200, y: 9300 }]
+    }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/scatter-chart.mdx">
+<Attributes.Title>ScatterChart.Props</Attributes.Title>
+
+| Attribute          | Description                                             | Type                        | Accepted values                | Default |
+| ------------------ | ------------------------------------------------------- | --------------------------- | ------------------------------ | ------- |
+| **data**           | the series to plot                                      | `ScatterSeries[]`           | [ScatterSeries](#scatterseries) | -      |
+| **height**         | height of the chart, in pixels                          | `number`                    | -                              | `300`   |
+| **xAxisLabel**     | title of the x axis                                     | `string`                    | -                              | -       |
+| **yAxisLabel**     | title of the y axis                                     | `string`                    | -                              | -       |
+| **withLegend**     | show the legend                                         | `boolean`                   | -                              | `false` |
+| **withTooltip**    | show the values of a point on hover and focus           | `boolean`                   | -                              | `true`  |
+| **withXAxis**      | show the x axis                                         | `boolean`                   | -                              | `true`  |
+| **withYAxis**      | show the y axis                                         | `boolean`                   | -                              | `true`  |
+| **withGrid**       | show the grid lines                                     | `boolean`                   | -                              | `true`  |
+| **valueFormatter** | how a number is written on the axes and in the tooltip  | `(value: number) => string` | -                              | -       |
+| ...                | native props, passed to the root                        | `HTMLAttributes`            | `'aria-label', 'className', ...` | -     |
+
+<Attributes.Title>ScatterSeries</Attributes.Title>
+
+```ts
+type ScatterSeries = {
+  name: string // identifies the series
+  label?: string // shown in the legend, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+  points: Array<{ x: number; y: number }>
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the points and show their values in the tooltip.
+
+Series differ only by color, so use `withLegend` and write the pattern you see in text next to the chart.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
