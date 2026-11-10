@@ -51,6 +51,8 @@ const {
   Mark,
   Menu,
   Modal,
+  MonthPicker,
+  TimePicker,
   Note,
   NumberInput,
   Page,
@@ -368,6 +370,8 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['TagsInput', (ref) => <TagsInput ref={ref} aria-label="Skills" />, 'INPUT'],
   ['Text', (ref) => <Text ref={ref}>Text</Text>],
   ['Textarea', (ref) => <Textarea ref={ref} placeholder="write" />, 'TEXTAREA'],
+  ['MonthPicker', (ref) => <MonthPicker ref={ref} />],
+  ['TimePicker', (ref) => <TimePicker ref={ref} aria-label="Time" />],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],
   [
     'Tooltip',

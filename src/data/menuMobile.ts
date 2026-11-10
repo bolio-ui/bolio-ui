@@ -382,6 +382,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'MonthPicker',
+            url: '/docs/components/month-picker',
+            group: 'Components'
+          },
+          {
             name: 'Modal',
             url: '/docs/components/modal',
             group: 'Components'
@@ -549,6 +554,11 @@ export const menuMobile = [
           {
             name: 'Toast',
             url: '/docs/hooks/use-toast',
+            group: 'Components'
+          },
+          {
+            name: 'TimePicker',
+            url: '/docs/components/time-picker',
             group: 'Components'
           },
           {

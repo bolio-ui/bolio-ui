@@ -1,0 +1,112 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { MonthPicker, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'MonthPicker',
+  description: 'A grid of months to pick one, with a year header.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 76
+}
+
+## MonthPicker
+
+A grid of months to pick one, with a year header. Use it for billing periods, reports and any date where the day does not matter.
+
+<Playground
+  desc="Click a month, or move with the arrow keys. `onChange` receives a `Date` on the first day of the month."
+  scope={{ MonthPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <MonthPicker initialValue={new Date(2026, 10, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`."
+  scope={{ MonthPicker, Grid, Text }}
+  code={`
+() => {
+  const [month, setMonth] = React.useState(null)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <MonthPicker value={month} onChange={setMonth} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>
+          {month ? month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'No month yet'}
+        </Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="Months outside `min` and `max` are disabled, and so are the year buttons that would lead only to them."
+  scope={{ MonthPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <MonthPicker min={new Date(2026, 2, 1)} max={new Date(2026, 8, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Locale"
+  desc="Month names come from `Intl`. Set `locale` and the button labels."
+  scope={{ MonthPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <MonthPicker locale="pt-BR" previousLabel="Ano anterior" nextLabel="Próximo ano" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/month-picker.mdx">
+<Attributes.Title>MonthPicker.Props</Attributes.Title>
+
+| Attribute         | Description                                  | Type                        | Accepted values | Default         |
+| ----------------- | -------------------------------------------- | --------------------------- | --------------- | --------------- |
+| **value**         | selected month, to control the component     | <Code>Date &#124; null</Code> | -               | -               |
+| **initialValue**  | selected month at the start                  | <Code>Date &#124; null</Code> | -               | `null`          |
+| **onChange**      | called with the first day of the chosen month | `(month: Date) => void`     | -               | -               |
+| **min**           | first month that can be picked               | `Date`                      | -               | -               |
+| **max**           | last month that can be picked                | `Date`                      | -               | -               |
+| **locale**        | language of the month names                  | `string`                    | -               | `en-US`         |
+| **autoFocus**     | focus the month on mount                     | `boolean`                   | -               | `false`         |
+| **previousLabel** | name of the previous year button             | `string`                    | -               | `Previous year` |
+| **nextLabel**     | name of the next year button                 | `string`                    | -               | `Next year`     |
+| ...               | native props, passed to the root             | `HTMLAttributes`            | `'id', 'className', ...` | -      |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The months are buttons inside a group named by the year. Each one has the full name, such as "November 2026", and `aria-pressed` tells which is selected. Only the focused month is in the tab order.
+
+| Key                  | Action                                   |
+| -------------------- | ---------------------------------------- |
+| Arrow Left and Right | Previous and next month, across years    |
+| Arrow Up and Down    | Three months back and forward            |
+| Home and End         | First and last month of the year         |
+| Page Up and Down     | Same month of the previous and next year |
+| Enter and Space      | Pick the focused month                   |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,155 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { TimePicker, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'TimePicker',
+  description: 'A field with one segment for hours, minutes, optional seconds and AM or PM.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 77
+}
+
+## TimePicker
+
+A field with one segment for hours, minutes, optional seconds and AM or PM. The value is always a 24 hour string such as `13:05` or `13:05:09`, even on the 12 hour clock.
+
+<Playground
+  desc="Type the digits and the focus moves to the next segment. Arrow Up and Down change the number."
+  scope={{ TimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TimePicker aria-label="Start time" initialValue="09:30" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Seconds"
+  desc="Add the seconds segment with `withSeconds`."
+  scope={{ TimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TimePicker aria-label="Duration" withSeconds initialValue="00:12:45" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="12 hour clock"
+  desc="Use `format=&quot;12h&quot;` to show an AM or PM select. `onChange` still receives the 24 hour value."
+  scope={{ TimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TimePicker aria-label="Meeting time" format="12h" initialValue="15:45" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Steps"
+  desc="Set how much Arrow Up and Down change each segment."
+  scope={{ TimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TimePicker aria-label="Appointment" minutesStep={15} initialValue="10:00" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="`onChange` runs when the time is complete, and with an empty string when every segment is cleared. It does not run while the time is half typed."
+  scope={{ TimePicker, Grid, Text }}
+  code={`
+() => {
+  const [time, setTime] = React.useState('08:00')
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <TimePicker aria-label="Alarm" value={time} onChange={setTime} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{time || 'No time yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Variants"
+  desc="Use `filled`, `light`, `ghost` or `subtle` with a `type`, as in the other fields."
+  scope={{ TimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TimePicker aria-label="Primary filled" type="primary" filled initialValue="09:00" />
+  </Grid>
+  <Grid>
+    <TimePicker aria-label="Success light" type="success" light initialValue="09:00" />
+  </Grid>
+  <Grid>
+    <TimePicker aria-label="Error ghost" type="error" ghost initialValue="09:00" />
+  </Grid>
+  <Grid>
+    <TimePicker aria-label="Info subtle" type="info" subtle initialValue="09:00" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/time-picker.mdx">
+<Attributes.Title>TimePicker.Props</Attributes.Title>
+
+| Attribute         | Description                                           | Type                           | Accepted values                                                            | Default     |
+| ----------------- | ----------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------- | ----------- |
+| **value**         | time as `HH:mm` or `HH:mm:ss`, to control the component | `string`                     | -                                                                          | -           |
+| **initialValue**  | time at the start                                     | `string`                       | -                                                                          | `''`        |
+| **onChange**      | called with the 24 hour time once it is complete      | `(value: string) => void`      | -                                                                          | -           |
+| **withSeconds**   | show the seconds segment                              | `boolean`                      | -                                                                          | `false`     |
+| **format**        | clock shown                                           | `string`                       | `'12h', '24h'`                                                             | `24h`       |
+| **hoursStep**     | change of the hours with the arrow keys               | `number`                       | -                                                                          | `1`         |
+| **minutesStep**   | change of the minutes with the arrow keys             | `number`                       | -                                                                          | `1`         |
+| **secondsStep**   | change of the seconds with the arrow keys             | `number`                       | -                                                                          | `1`         |
+| **hoursLabel**    | accessible name of the hours segment                  | `string`                       | -                                                                          | `Hours`     |
+| **minutesLabel**  | accessible name of the minutes segment                | `string`                       | -                                                                          | `Minutes`   |
+| **secondsLabel**  | accessible name of the seconds segment                | `string`                       | -                                                                          | `Seconds`   |
+| **amPmLabel**     | accessible name of the AM or PM select                | `string`                       | -                                                                          | `AM or PM`  |
+| **amPmLabels**    | text of the AM and PM options                         | `{ am: string; pm: string }`   | -                                                                          | `AM`, `PM`  |
+| **disabled**      | disable the component                                 | `boolean`                      | -                                                                          | `false`     |
+| **type**          | color of the field                                    | `NormalTypes`                  | `'default', 'primary', 'secondary', 'success', 'warning', 'error', 'info'` | `default`   |
+| **rounded**       | round the corners                                     | `boolean`                      | -                                                                          | `false`     |
+| **filled**        | filled variant                                        | `boolean`                      | -                                                                          | `false`     |
+| **light**         | light variant                                         | `boolean`                      | -                                                                          | `false`     |
+| **ghost**         | outline variant                                       | `boolean`                      | -                                                                          | `false`     |
+| **subtle**        | subtle variant                                        | `boolean`                      | -                                                                          | `false`     |
+| ...               | native props, passed to the root                      | `HTMLAttributes`               | `'aria-label', 'id', 'className', ...`                                     | -           |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`, which has `role="group"`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The root is a `group`: name it with `aria-label` or `aria-labelledby`. Each segment is its own input with a name from `hoursLabel`, `minutesLabel` and `secondsLabel`, and the AM or PM select has `amPmLabel`.
+
+| Key                  | Action                                                  |
+| -------------------- | ------------------------------------------------------- |
+| 0 to 9               | Type the segment, then move to the next one when it is full |
+| Arrow Up and Down    | Raise and lower the segment by its step, wrapping around |
+| Arrow Left and Right | Move to the previous and next segment at the edge of the text |
+| Backspace            | On an empty segment, move to the previous one           |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

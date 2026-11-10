@@ -1,0 +1,83 @@
+.picker {
+  display: inline-block;
+  font-size: var(--time-picker-font-size);
+  width: var(--time-picker-width);
+  padding: var(--time-picker-padding-top) var(--time-picker-padding-right)
+    var(--time-picker-padding-bottom) var(--time-picker-padding-left);
+  margin: var(--time-picker-margin-top) var(--time-picker-margin-right)
+    var(--time-picker-margin-bottom) var(--time-picker-margin-left);
+}
+
+.field {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--time-picker-height);
+  padding: 0 0.875em;
+  color: var(--time-picker-color);
+  background-color: var(--time-picker-bg);
+  border: 1px solid var(--time-picker-border);
+  border-radius: var(--time-picker-radius);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field:hover {
+  border-color: var(--time-picker-hover-border);
+  background-color: var(--time-picker-hover-bg);
+}
+
+.field:focus-within {
+  border-color: var(--time-picker-focus-border);
+}
+
+.segment {
+  box-sizing: content-box;
+  width: 2ch;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+.segment::placeholder {
+  color: var(--time-picker-placeholder);
+}
+
+.segment:disabled,
+.period:disabled {
+  cursor: not-allowed;
+}
+
+.segment::selection {
+  background-color: var(--time-picker-focus-border);
+  color: var(--time-picker-bg);
+}
+
+.separator {
+  padding: 0 0.125em;
+  color: var(--time-picker-placeholder);
+}
+
+.period {
+  margin: 0 0 0 0.5em;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.period:focus-visible {
+  text-decoration: underline;
+}

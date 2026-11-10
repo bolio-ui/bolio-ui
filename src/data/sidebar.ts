@@ -362,6 +362,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'MonthPicker',
+    url: '/docs/components/month-picker',
+    tag: 'New'
+  },
+  {
     name: 'Modal',
     url: '/docs/components/modal',
     tag: 'Updated'
@@ -512,6 +517,11 @@ export const components = [
   {
     name: 'Toast',
     url: '/docs/hooks/use-toast'
+  },
+  {
+    name: 'TimePicker',
+    url: '/docs/components/time-picker',
+    tag: 'New'
   },
   {
     name: 'Toggle',
