@@ -1,0 +1,83 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Controlled and uncontrolled',
+  description:
+    'When to let a component keep its own state and when to drive it from yours.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Controlled and uncontrolled
+
+<Spacer h={2} />
+
+### Uncontrolled
+
+Pass `initialValue` and the component keeps its own state. Use `onChange` only when you need to know what changed.
+
+```tsx
+import { Tabs } from '@bolio-ui/core'
+
+<Tabs initialValue="billing" onChange={(value) => console.log(value)}>
+  <Tabs.Item label="Billing" value="billing">…</Tabs.Item>
+  <Tabs.Item label="Profile" value="profile">…</Tabs.Item>
+</Tabs>
+```
+
+The initial prop is read once, on the first render. Changing it later does nothing.
+
+<Spacer h={2} />
+
+### Controlled
+
+Pass `value` and keep the state yourself. Update it inside `onChange`, so the component always shows what your state says.
+
+```tsx
+import { useState } from 'react'
+import { Slider } from '@bolio-ui/core'
+
+function Volume() {
+  const [volume, setVolume] = useState(20)
+
+  return (
+    <>
+      <Slider aria-label="Volume" value={volume} onChange={setVolume} />
+      <button onClick={() => setVolume(0)}>Mute</button>
+    </>
+  )
+}
+```
+
+Use this mode when something else needs to change the value too, such as a reset button, a URL parameter or a saved draft.
+
+<Spacer h={2} />
+
+### Prop names
+
+The pair is always the same: a prop that follows your state and an `initial*` prop for the starting value.
+
+| Controlled | Uncontrolled | Components |
+| ---------- | ------------ | ---------- |
+| `value` | `initialValue` | Input, Textarea, Select, Combobox, Tabs, Slider, Rating, NumberInput, SegmentedControl, TagsInput, PinInput, DatePicker |
+| `checked` | `initialChecked` | Toggle, Checkbox |
+| `page` | `initialPage` | Pagination |
+
+`onChange` has the same name everywhere, but its argument changes with the component. Tabs, Slider and Pagination give the new value directly. Toggle gives an event, so read `event.target.checked`.
+
+<Spacer h={2} />
+
+### Pick one mode
+
+Decide at the start and keep it for the whole life of the component. Passing `value` on some renders and leaving it out on others makes the field jump between your state and its own.
+
+Start a controlled field with a real value, such as an empty string for a text field, never `undefined`.
+
+<Spacer h={2} />
+
+### In your own components
+
+[useUncontrolled](/docs/hooks/use-uncontrolled) gives your component the same behavior with one call. It returns the current value, a setter and a flag that tells which mode is active.
+
+export default Docs.withMeta(meta)

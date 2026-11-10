@@ -41,6 +41,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Controlled and uncontrolled',
+            url: '/docs/guide/controlled-and-uncontrolled',
+            group: 'Guide'
+          },
+          {
             name: 'Page structure',
             url: '/docs/guide/page-structure',
             group: 'Guide'

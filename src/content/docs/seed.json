@@ -8803,6 +8803,41 @@
     "path": "/docs/guide/refs-and-accessibility#accessibility"
   },
   {
+    "title": "Controlled and uncontrolled",
+    "component": true,
+    "path": "/docs/guide/controlled-and-uncontrolled"
+  },
+  {
+    "head": "Controlled and uncontrolled",
+    "title": "Uncontrolled",
+    "component": false,
+    "path": "/docs/guide/controlled-and-uncontrolled#uncontrolled"
+  },
+  {
+    "head": "Controlled and uncontrolled",
+    "title": "Controlled",
+    "component": false,
+    "path": "/docs/guide/controlled-and-uncontrolled#controlled"
+  },
+  {
+    "head": "Controlled and uncontrolled",
+    "title": "Prop names",
+    "component": false,
+    "path": "/docs/guide/controlled-and-uncontrolled#prop-names"
+  },
+  {
+    "head": "Controlled and uncontrolled",
+    "title": "Pick one mode",
+    "component": false,
+    "path": "/docs/guide/controlled-and-uncontrolled#pick-one-mode"
+  },
+  {
+    "head": "Controlled and uncontrolled",
+    "title": "In your own components",
+    "component": false,
+    "path": "/docs/guide/controlled-and-uncontrolled#in-your-own-components"
+  },
+  {
     "title": "Alert",
     "component": true,
     "path": "/docs/components/alert"

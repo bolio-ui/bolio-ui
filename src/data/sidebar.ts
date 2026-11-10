@@ -37,6 +37,11 @@ export const guide = [
     tag: 'New'
   },
   {
+    name: 'Controlled and uncontrolled',
+    url: '/docs/guide/controlled-and-uncontrolled',
+    tag: 'New'
+  },
+  {
     name: 'Page structure',
     url: '/docs/guide/page-structure'
   },
