@@ -1,6 +1,11 @@
-import { CORE_EXPORT_NAMES, ICON_EXPORT_NAMES } from './known-exports'
+import {
+  CHART_EXPORT_NAMES,
+  CORE_EXPORT_NAMES,
+  ICON_EXPORT_NAMES
+} from './known-exports'
 
 const CORE_PACKAGE = '@bolio-ui/core'
+const CHARTS_PACKAGE = '@bolio-ui/core/charts'
 const ICONS_PACKAGE = '@bolio-ui/icons'
 
 const indent = (text: string, spaces: number) => {
@@ -46,6 +51,9 @@ export const buildPlaygroundSource = (
   const coreNames = usedNames
     .filter((name) => CORE_EXPORT_NAMES.has(name))
     .sort()
+  const chartNames = usedNames
+    .filter((name) => CHART_EXPORT_NAMES.has(name))
+    .sort()
   const iconNames = usedNames
     .filter(
       (name) => ICON_EXPORT_NAMES.has(name) && !CORE_EXPORT_NAMES.has(name)
@@ -57,6 +65,10 @@ export const buildPlaygroundSource = (
   if (coreNames.length)
     importLines.push(
       `import { ${coreNames.join(', ')} } from '${CORE_PACKAGE}'`
+    )
+  if (chartNames.length)
+    importLines.push(
+      `import { ${chartNames.join(', ')} } from '${CHARTS_PACKAGE}'`
     )
   if (iconNames.length)
     importLines.push(

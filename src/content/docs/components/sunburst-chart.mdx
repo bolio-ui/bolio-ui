@@ -1,0 +1,133 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { SunburstChart } from 'core'
+
+export const meta = {
+  title: 'SunburstChart',
+  description: 'Rings of arcs that show how a whole splits into parts and sub-parts.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 93
+}
+
+## SunburstChart
+
+Rings of arcs that show how a whole splits into parts and sub-parts. Use it for data with levels, such as a category and its products.
+
+It is plain `svg`, so it does not need any extra package.
+
+<Playground
+  desc="A leaf has a `value`. A group takes the sum of its `children`. Hover an arc to read it."
+  scope={{ SunburstChart }}
+  code={`
+<SunburstChart
+  aria-label="Stock by category"
+  data={[
+    {
+      name: 'Fruit',
+      children: [
+        { name: 'Apple', value: 30 },
+        { name: 'Pear', value: 20 }
+      ]
+    },
+    {
+      name: 'Dairy',
+      children: [
+        { name: 'Milk', value: 25 },
+        { name: 'Cheese', value: 15 }
+      ]
+    },
+    { name: 'Bread', value: 40 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Labels and size"
+  desc="`withLabels` writes the name of every arc that is big enough. A bigger `size` leaves room for more."
+  scope={{ SunburstChart }}
+  code={`
+<SunburstChart
+  withLabels
+  size={380}
+  innerRadius={48}
+  data={[
+    {
+      name: 'Europe',
+      color: '#60a5fa',
+      children: [
+        { name: 'Spain', value: 40 },
+        { name: 'France', value: 60 }
+      ]
+    },
+    {
+      name: 'Americas',
+      color: '#16a34a',
+      children: [
+        { name: 'Brazil', value: 90 },
+        { name: 'Chile', value: 30 }
+      ]
+    }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Half circle"
+  desc="0 is the top and angles grow clockwise, so -90 to 90 draws the upper half."
+  scope={{ SunburstChart }}
+  code={`
+<SunburstChart
+  startAngle={-90}
+  endAngle={90}
+  size={320}
+  data={[
+    { name: 'A', value: 50 },
+    { name: 'B', value: 30 },
+    { name: 'C', value: 20 }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/sunburst-chart.mdx">
+<Attributes.Title>SunburstChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the top level items, each one may have `children` | `SunburstNode[]` | [SunburstNode](#sunburstnode) | - |
+| **size** | width and height, in pixels | `number` | - | `300` |
+| **innerRadius** | radius of the hole in the center, in pixels | `number` | - | `36` |
+| **gap** | space between arcs and rings, in pixels | `number` | - | `1` |
+| **startAngle** | where the first arc starts, in degrees, 0 is the top | `number` | - | `0` |
+| **endAngle** | where the last arc ends, in degrees | `number` | - | `360` |
+| **withLabels** | write the name inside the arcs that are big enough | `boolean` | - | `false` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the `svg` | `SVGAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>SunburstNode</Attributes.Title>
+
+```ts
+type SunburstNode = {
+  name: string
+  value?: number // a leaf needs a value, a group is the sum of its children
+  color?: string // any CSS color, children take their parent's, a little lighter
+  children?: SunburstNode[]
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `svg`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each arc has a hover title with its name and value. Describe the chart with `aria-label` or `aria-labelledby`. With a name it is an image, without one it is hidden from assistive technology.
+
+Write the biggest parts in text next to the chart, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,91 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { CandlestickChart } from 'core/Charts'
+
+export const meta = {
+  title: 'CandlestickChart',
+  description: 'Open, high, low and close of each period, the usual chart for prices.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 95
+}
+
+## CandlestickChart
+
+Open, high, low and close of each period, the usual chart for prices. Each candle has a body from the open to the close, and a thin line from the lowest to the highest value.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each row needs `open`, `high`, `low` and `close`. A rise has a hollow body and a fall has a solid one, so the direction does not rest on color alone."
+  scope={{ CandlestickChart }}
+  code={`
+<CandlestickChart
+  aria-label="Share price in March"
+  dataKey="day"
+  data={[
+    { day: 'Mar 01', open: 136, high: 142, low: 133, close: 140 },
+    { day: 'Mar 02', open: 140, high: 144, low: 136, close: 138 },
+    { day: 'Mar 03', open: 138, high: 141, low: 130, close: 132 },
+    { day: 'Mar 04', open: 132, high: 139, low: 131, close: 138 },
+    { day: 'Mar 05', open: 138, high: 147, low: 137, close: 146 },
+    { day: 'Mar 06', open: 146, high: 149, low: 142, close: 143 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Colors and keys"
+  desc="Use `dataKeys` when your rows name the values differently, `labels` to translate the tooltip, and `upColor` and `downColor` to pick the colors."
+  scope={{ CandlestickChart }}
+  code={`
+<CandlestickChart
+  dataKey="day"
+  upColor="#2563eb"
+  downColor="#f59e0b"
+  dataKeys={{ open: 'o', high: 'h', low: 'l', close: 'c' }}
+  valueFormatter={(value) => '$' + value}
+  labels={{ open: 'Open', high: 'Peak', low: 'Bottom', close: 'Close' }}
+  data={[
+    { day: 'Mon', o: 20, h: 26, l: 18, c: 24 },
+    { day: 'Tue', o: 24, h: 25, l: 19, c: 21 },
+    { day: 'Wed', o: 21, h: 29, l: 20, c: 28 },
+    { day: 'Thu', o: 28, h: 30, l: 24, c: 25 }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/candlestick-chart.mdx">
+<Attributes.Title>CandlestickChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | one row per period | `Array<Record<string, ...>>` | - | - |
+| **dataKey** | key of `data` that holds the x axis label | `string` | - | - |
+| **dataKeys** | keys of the four values, when they are not the default names | `{ open, high, low, close }` | - | `open`, `high`, `low`, `close` |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **upColor** | color of a period that closed at or above the open | `string` | - | theme success |
+| **downColor** | color of a period that closed below the open | `string` | - | theme error |
+| **withTooltip** | show the four values on hover and focus | `boolean` | - | `true` |
+| **withXAxis** | show the x axis | `boolean` | - | `true` |
+| **withYAxis** | show the y axis | `boolean` | - | `true` |
+| **withGrid** | show the horizontal grid lines | `boolean` | - | `true` |
+| **labels** | names of the four values in the tooltip | `{ open, high, low, close }` | - | `Open`, `High`, `Low`, `Close` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the data and show the values in the tooltip. The tooltip lists the open, high, low and close of the period.
+
+A price chart carries many numbers, so offer the same data in a `Table` for anyone who needs the exact values.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,100 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Treemap } from 'core/Charts'
+
+export const meta = {
+  title: 'Treemap',
+  description: 'Rectangles sized by value, to compare parts of a whole at a glance.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 91
+}
+
+## Treemap
+
+Rectangles sized by value, to compare parts of a whole at a glance. Use it when there are many parts and a pie would be unreadable, such as disk usage or sales by product.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each item has a `name` and a `value`. The area of its rectangle follows the value."
+  scope={{ Treemap }}
+  code={`
+<Treemap
+  aria-label="Sales by region"
+  data={[
+    { name: 'North', value: 400 },
+    { name: 'South', value: 300 },
+    { name: 'East', value: 200 },
+    { name: 'West', value: 150 },
+    { name: 'Center', value: 90 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Groups"
+  desc="An item with `children` is a group. Its children take its color unless they set their own."
+  scope={{ Treemap }}
+  code={`
+<Treemap
+  data={[
+    {
+      name: 'Fruit',
+      color: '#16a34a',
+      children: [
+        { name: 'Apple', value: 300 },
+        { name: 'Pear', value: 180 },
+        { name: 'Grape', value: 120 }
+      ]
+    },
+    {
+      name: 'Vegetables',
+      color: '#f59e0b',
+      children: [
+        { name: 'Carrot', value: 260 },
+        { name: 'Potato', value: 340 }
+      ]
+    }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/treemap.mdx">
+<Attributes.Title>Treemap.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the items, each one may have `children` | `TreemapNode[]` | [TreemapNode](#treemapnode) | - |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **aspectRatio** | the shape the rectangles try to have, width over height | `number` | - | golden ratio |
+| **withTooltip** | show the value of a rectangle on hover and focus | `boolean` | - | `true` |
+| **withLabels** | write the name inside the rectangles that are big enough | `boolean` | - | `true` |
+| **labelColor** | color of the names | `string` | - | `#fff` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>TreemapNode</Attributes.Title>
+
+```ts
+type TreemapNode = {
+  name: string
+  value?: number // a leaf needs a value, a group is the sum of its children
+  color?: string // any CSS color, a group passes it to its children
+  children?: TreemapNode[]
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. Names show only inside rectangles that have room, so list the biggest items in text next to the chart or offer a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,138 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { EmojiPicker, Text } from 'core'
+
+export const meta = {
+  title: 'EmojiPicker',
+  description: 'A searchable grid of emoji, grouped by category.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 102
+}
+
+## EmojiPicker
+
+A searchable grid of emoji, grouped by category. It brings no emoji data of its own, so you pass the list you want, from a package such as `emojibase` or `emoji-mart` or from a short list of your own.
+
+<Playground
+  desc="Each category has an `id`, a `label` and its `emojis`. Search matches the `name` and the `keywords`."
+  scope={{ EmojiPicker, Text }}
+  code={`
+<EmojiPicker
+  columns={6}
+  height={240}
+  data={[
+    {
+      id: 'faces',
+      label: 'Faces',
+      emojis: [
+        { emoji: '😀', name: 'grinning face', keywords: ['smile', 'happy'] },
+        { emoji: '😢', name: 'crying face', keywords: ['sad', 'tear'] },
+        { emoji: '😎', name: 'cool face', keywords: ['sunglasses'] },
+        { emoji: '😴', name: 'sleeping face', keywords: ['tired'] }
+      ]
+    },
+    {
+      id: 'animals',
+      label: 'Animals',
+      emojis: [
+        { emoji: '🐶', name: 'dog' },
+        { emoji: '🐱', name: 'cat' },
+        { emoji: '🦊', name: 'fox' }
+      ]
+    }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Choose an emoji"
+  desc="`onEmojiSelect` receives the emoji and its category. Here it adds the emoji to a text."
+  scope={{ EmojiPicker, Text }}
+  code={`
+() => {
+  const [text, setText] = React.useState('Great job')
+  const data = [
+    {
+      id: 'reactions',
+      label: 'Reactions',
+      emojis: [
+        { emoji: '👍', name: 'thumbs up', keywords: ['yes', 'like'] },
+        { emoji: '🎉', name: 'party popper', keywords: ['celebrate'] },
+        { emoji: '❤️', name: 'red heart', keywords: ['love'] },
+        { emoji: '🚀', name: 'rocket', keywords: ['launch'] }
+      ]
+    }
+  ]
+  return (
+    <>
+      <Text p b my={0}>{text}</Text>
+      <EmojiPicker
+        data={data}
+        columns={4}
+        height={140}
+        withCategoryNav={false}
+        onEmojiSelect={(item) => setText(text + ' ' + item.emoji)}
+      />
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/emoji-picker.mdx">
+<Attributes.Title>EmojiPicker.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the categories and their emojis | `EmojiCategory[]` | [EmojiCategory](#emojicategory) | - |
+| **onEmojiSelect** | called when an emoji is chosen | `(emoji: EmojiItem, category: EmojiCategory) => void` | - | - |
+| **columns** | emojis per row | `number` | - | `8` |
+| **emojiSize** | size of an emoji, in pixels | `number` | - | `24` |
+| **height** | height of the list, in pixels | `number` | - | `300` |
+| **withSearch** | show the search field | `boolean` | - | `true` |
+| **searchLabel** | accessible name of the search field | `string` | - | `Search emoji` |
+| **searchPlaceholder** | placeholder of the search field | `string` | - | `Search emoji` |
+| **withCategoryNav** | show the bar to jump between categories | `boolean` | - | `true` |
+| **categoriesLabel** | accessible name of that bar | `string` | - | `Categories` |
+| **withPreview** | show the emoji and its name below the list | `boolean` | - | `true` |
+| **emptyContent** | what to show when the search finds nothing | `ReactNode` | - | `No emoji found` |
+| **autoFocus** | focus the search field on mount | `boolean` | - | `false` |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>EmojiCategory</Attributes.Title>
+
+```ts
+type EmojiCategory = {
+  id: string
+  label: string
+  icon?: string // shown in the category bar, the first emoji when missing
+  emojis: EmojiItem[]
+}
+
+type EmojiItem = {
+  emoji: string // the character
+  name: string // names the button, and is searched
+  keywords?: string[] // searched too
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each emoji is a button named by its `name`, and each category is a region named by its `label`. The grid is one tab stop.
+
+| Key | Action |
+| --- | --- |
+| Arrow keys | Move between emoji, and across categories on the same column |
+| Home and End | First and last emoji |
+| Arrow Down in the search | Go into the grid |
+| Enter in the search | Choose the first result |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

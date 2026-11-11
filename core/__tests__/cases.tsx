@@ -4,8 +4,17 @@ import * as Bolio from '..'
 
 const {
   Alert,
+  Autocomplete,
   Avatar,
   Badge,
+  BarsList,
+  BulletChart,
+  MatrixChart,
+  SunburstChart,
+  WaffleChart,
+  GaugeChart,
+  Heatmap,
+  Sparkline,
   Breadcrumbs,
   Button,
   ButtonDropdown,
@@ -13,6 +22,10 @@ const {
   Calendar,
   Capacity,
   Card,
+  Diff,
+  EmojiPicker,
+  JsonViewer,
+  Schedule,
   Carousel,
   Checkbox,
   Chip,
@@ -44,6 +57,8 @@ const {
   Mark,
   Menu,
   Modal,
+  MonthPicker,
+  TimePicker,
   Note,
   NumberInput,
   Page,
@@ -80,8 +95,81 @@ const {
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
+  ['Diff', () => <Diff previousValue="a" currentValue="b" />],
+  [
+    'EmojiPicker',
+    () => (
+      <EmojiPicker
+        data={[
+          {
+            id: 'faces',
+            label: 'Faces',
+            emojis: [{ emoji: '😀', name: 'grinning face' }]
+          }
+        ]}
+      />
+    )
+  ],
+  ['JsonViewer', () => <JsonViewer value={{ a: 1, b: [1, 2] }} />],
+  ['Schedule', () => <Schedule onSlotClick={() => undefined} />],
+  [
+    'Autocomplete',
+    () => <Autocomplete aria-label="Fruit" data={['Apple', 'Pear']} />
+  ],
   ['Avatar', () => <Avatar text="BA" />],
   ['Badge', () => <Badge>new</Badge>],
+  ['GaugeChart', () => <GaugeChart aria-label="CPU" value={60} />],
+  [
+    'Heatmap',
+    () => (
+      <Heatmap
+        aria-label="Activity"
+        data={{ '2026-01-02': 3 }}
+        startDate="2026-01-01"
+        endDate="2026-03-01"
+      />
+    )
+  ],
+  [
+    'BulletChart',
+    () => (
+      <BulletChart
+        aria-label="Revenue"
+        value={270}
+        target={250}
+        ranges={[{ value: 150 }, { value: 300 }]}
+      />
+    )
+  ],
+  [
+    'MatrixChart',
+    () => (
+      <MatrixChart
+        aria-label="Deploys"
+        data={[
+          { x: 'Mon', y: 'api', value: 4 },
+          { x: 'Tue', y: 'api', value: null }
+        ]}
+      />
+    )
+  ],
+  [
+    'SunburstChart',
+    () => (
+      <SunburstChart
+        aria-label="Stock"
+        data={[{ name: 'Fruit', children: [{ name: 'Apple', value: 3 }] }]}
+      />
+    )
+  ],
+  [
+    'WaffleChart',
+    () => (
+      <WaffleChart aria-label="Share" data={[{ name: 'Chrome', value: 65 }]} />
+    )
+  ],
+  ['BarsList', () => <BarsList data={[{ name: 'React', value: 10 }]} />],
+  ['Sparkline', () => <Sparkline aria-label="Visits" data={[1, 3, 2]} />],
   [
     'Breadcrumbs',
     () => (
@@ -330,6 +418,8 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Text', () => <Text h1>Title</Text>],
   ['Textarea', () => <Textarea placeholder="write" />],
+  ['MonthPicker', () => <MonthPicker initialValue={new Date(2026, 10, 1)} />],
+  ['TimePicker', () => <TimePicker aria-label="Time" initialValue="09:30" />],
   ['Toggle', () => <Toggle />],
   [
     'Tooltip',

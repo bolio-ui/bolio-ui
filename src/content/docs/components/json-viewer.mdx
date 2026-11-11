@@ -1,0 +1,106 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { JsonViewer } from 'core'
+
+export const meta = {
+  title: 'JsonViewer',
+  description: 'An interactive tree to read JSON, with nodes that open and close.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 101
+}
+
+## JsonViewer
+
+An interactive tree to read JSON, with nodes that open and close. Use it to inspect a response, a config or any value you would otherwise print with `JSON.stringify`.
+
+<Playground
+  desc="Click a node, or use the arrow keys, to open it. `rootName` names the tree."
+  scope={{ JsonViewer }}
+  code={`
+<JsonViewer
+  rootName="user"
+  value={{
+    name: 'Ada',
+    age: 36,
+    admin: true,
+    manager: null,
+    tags: ['math', 'code'],
+    address: { city: 'London', geo: { lat: 51.5, lng: -0.12 } }
+  }}
+/>
+`}
+/>
+
+<Playground
+  title="Controls and copy"
+  desc="`withControls` adds Expand all and Collapse all, and `withCopyButton` copies the whole JSON."
+  scope={{ JsonViewer }}
+  code={`
+<JsonViewer
+  withControls
+  withCopyButton
+  value={{ id: 7, items: [{ sku: 'a1', qty: 2 }, { sku: 'b2', qty: 1 }], paid: false }}
+/>
+`}
+/>
+
+<Playground
+  title="Depth and selection"
+  desc="`defaultExpandDepth` opens more levels at the start. `onValueSelect` runs when a value is clicked or chosen with Enter."
+  scope={{ JsonViewer }}
+  code={`
+<JsonViewer
+  defaultExpandDepth={2}
+  sortKeys
+  onValueSelect={(path, value) => alert(path.join('.') + ' = ' + value)}
+  value={{ b: { z: 1, a: 2 }, a: { y: 'text' } }}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/json-viewer.mdx">
+<Attributes.Title>JsonViewer.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **value** | the data to show | `unknown` | - | - |
+| **defaultExpandDepth** | levels that start open, the root always does | `number` | - | `1` |
+| **allExpanded** | open every node | `boolean` | - | `false` |
+| **rootName** | name of the tree, written before the root value | `string` | - | - |
+| **sortKeys** | sort the keys of the objects | `boolean` | - | `false` |
+| **maxDisplayLength** | children shown before a row says how many are left | `number` | - | `100` |
+| **withControls** | show Expand all and Collapse all | `boolean` | - | `false` |
+| **withCopyButton** | show a button that copies the JSON | `boolean` | - | `false` |
+| **copyLabel** | text of the copy button | `string` | - | `Copy JSON` |
+| **copiedLabel** | text of the copy button after it copied | `string` | - | `Copied` |
+| **expandAllLabel** | text of the expand all button | `string` | - | `Expand all` |
+| **collapseAllLabel** | text of the collapse all button | `string` | - | `Collapse all` |
+| **onValueSelect** | called when a value, not a container, is chosen | `(path: JsonPath, value: unknown) => void` | - | - |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>JsonPath</Attributes.Title>
+
+```ts
+type JsonPath = Array<string | number> // keys and indexes, from the root
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The viewer is a `tree`, named by `rootName`, `aria-label` or `JSON`. Each row is a `treeitem` with its level, position and, for a container, whether it is open. Only one row is in the tab order.
+
+| Key | Action |
+| --- | --- |
+| Arrow Down and Up | Next and previous row |
+| Arrow Right | Open the node, or go to its first child |
+| Arrow Left | Close the node, or go to its parent |
+| Home and End | First and last row |
+| Enter and Space | Open or close a container, or choose a value |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

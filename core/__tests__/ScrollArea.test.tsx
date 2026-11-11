@@ -124,6 +124,17 @@ describe('<ScrollArea />', () => {
       fireEvent.scroll(viewport)
     }
 
+    it('still renders where there is no ResizeObserver, such as jsdom', () => {
+      Reflect.deleteProperty(window, 'ResizeObserver')
+      const { container } = wrap(
+        <ScrollArea orientation="horizontal">Content</ScrollArea>
+      )
+      const { viewport } = parts(container)
+      expect(viewport).toHaveClass('custom')
+      scrollable(viewport)
+      expect(container.querySelector('.thumb')).not.toBeNull()
+    })
+
     it('hides the native scrollbar and draws a thumb sized to the content', () => {
       const { container } = wrap(
         <ScrollArea orientation="horizontal">Content</ScrollArea>

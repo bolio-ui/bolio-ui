@@ -1,0 +1,122 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { RadarChart } from 'core/Charts'
+
+export const meta = {
+  title: 'RadarChart',
+  description: 'A polygon per series over axes that start at the same center, to compare profiles.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 85
+}
+
+## RadarChart
+
+A polygon per series over axes that start at the same center, to compare profiles. Use it to compare a few items across the same five to eight criteria.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each row of `data` is one axis, named by `dataKey`. Each item of `series` is one polygon."
+  scope={{ RadarChart }}
+  code={`
+<RadarChart
+  aria-label="Skills of two players"
+  data={[
+    { skill: 'Speed', anna: 80, ben: 60 },
+    { skill: 'Power', anna: 50, ben: 90 },
+    { skill: 'Technique', anna: 70, ben: 70 },
+    { skill: 'Defense', anna: 40, ben: 55 },
+    { skill: 'Stamina', anna: 85, ben: 65 }
+  ]}
+  dataKey="skill"
+  series={[
+    { name: 'anna', label: 'Anna' },
+    { name: 'ben', label: 'Ben' }
+  ]}
+  withLegend
+/>
+`}
+/>
+
+<Playground
+  title="Radius axis and dots"
+  desc="`withPolarRadiusAxis` writes the scale, and `withDots` marks each value."
+  scope={{ RadarChart }}
+  code={`
+<RadarChart
+  withPolarRadiusAxis
+  withDots
+  height={280}
+  data={[
+    { product: 'Apples', sales: 120 },
+    { product: 'Oranges', sales: 98 },
+    { product: 'Pears', sales: 86 },
+    { product: 'Grapes', sales: 99 },
+    { product: 'Figs', sales: 85 }
+  ]}
+  dataKey="product"
+  series={[{ name: 'sales', label: 'Sales', color: '#16a34a' }]}
+/>
+`}
+/>
+
+<Playground
+  title="Clean"
+  desc="Turn the grid and the axis names off to leave only the shape."
+  scope={{ RadarChart }}
+  code={`
+<RadarChart
+  withPolarGrid={false}
+  withPolarAngleAxis={false}
+  height={220}
+  data={[
+    { k: 'a', v: 80 }, { k: 'b', v: 50 }, { k: 'c', v: 70 }, { k: 'd', v: 40 }, { k: 'e', v: 90 }
+  ]}
+  dataKey="k"
+  series={[{ name: 'v', label: 'Value' }]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/radar-chart.mdx">
+<Attributes.Title>RadarChart.Props</Attributes.Title>
+
+| Attribute          | Description                                             | Type                        | Accepted values                | Default |
+| ------------------ | ------------------------------------------------------- | --------------------------- | ------------------------------ | ------- |
+| **data**           | one object per axis                                     | `Array<Record<string, ...>>` | -                             | -       |
+| **dataKey**        | key of `data` that names the axis                       | `string`                    | -                              | -       |
+| **series**         | the polygons to draw, one per key of `data`             | `ChartSeries[]`             | [ChartSeries](#chartseries)    | -       |
+| **height**         | height of the chart, in pixels                          | `number`                    | -                              | `320`   |
+| **withLegend**     | show the legend                                         | `boolean`                   | -                              | `false` |
+| **withTooltip**    | show the values on hover and focus                      | `boolean`                   | -                              | `true`  |
+| **withPolarGrid**  | draw the web behind the polygons                        | `boolean`                   | -                              | `true`  |
+| **withPolarAngleAxis** | write the name of each axis                         | `boolean`                   | -                              | `true`  |
+| **withPolarRadiusAxis** | write the scale along one axis                     | `boolean`                   | -                              | `false` |
+| **withDots**       | draw a dot on each value                                | `boolean`                   | -                              | `false` |
+| **valueFormatter** | how a value is written in the scale and the tooltip     | `(value: number) => string` | -                              | -       |
+| ...                | native props, passed to the root                        | `HTMLAttributes`            | `'aria-label', 'className', ...` | -     |
+
+<Attributes.Title>ChartSeries</Attributes.Title>
+
+```ts
+type ChartSeries = {
+  name: string // key of `data` with the values
+  label?: string // shown in the legend and the tooltip, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`.
+
+A radar is hard to read without sight, so write the key values in text next to it, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

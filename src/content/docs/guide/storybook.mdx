@@ -1,0 +1,135 @@
+import Docs from 'src/templates/Docs'
+import { PackageTabs, CodeTabs } from 'src/components'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Storybook',
+  description:
+    'Build and review components that use Bolio UI in Storybook, with the provider, the stylesheet and a theme switch.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Storybook
+
+<Spacer h={2} />
+
+### Install
+
+<PackageTabs
+  pnpm="pnpm add -D storybook @storybook/react-vite @storybook/addon-docs @storybook/addon-a11y"
+  npm="npm install -D storybook @storybook/react-vite @storybook/addon-docs @storybook/addon-a11y"
+  yarn="yarn add -D storybook @storybook/react-vite @storybook/addon-docs @storybook/addon-a11y"
+  bun="bun add -D storybook @storybook/react-vite @storybook/addon-docs @storybook/addon-a11y"
+/>
+
+Add the scripts to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
+}
+```
+
+The [Vite example with Storybook](https://github.com/bolio-ui/bolio-ui/tree/master/examples/create-vite-storybook) has all the files of this guide, and you can copy it.
+
+<Spacer h={2} />
+
+### Configure Storybook
+
+Tell Storybook where the stories are, and wrap every story in the provider:
+
+<CodeTabs>
+
+```ts
+// NAME: .storybook/main.ts
+import type { StorybookConfig } from '@storybook/react-vite'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(ts|tsx)'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
+  framework: '@storybook/react-vite'
+}
+
+export default config
+```
+
+```tsx
+// NAME: .storybook/preview.tsx
+import type { Preview } from '@storybook/react-vite'
+import '@bolio-ui/core/styles.css'
+import { BolioUIProvider, CssBaseline } from '@bolio-ui/core'
+
+const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Bolio UI theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: ['light', 'dark'],
+        dynamicTitle: true
+      }
+    }
+  },
+  initialGlobals: { theme: 'light' },
+  decorators: [
+    (Story, context) => (
+      <BolioUIProvider themeType={context.globals.theme}>
+        <CssBaseline />
+        <Story />
+      </BolioUIProvider>
+    )
+  ],
+  tags: ['autodocs']
+}
+
+export default preview
+```
+
+</CodeTabs>
+
+The stylesheet is imported once, in `preview.tsx`. Without it the stories show the components without style.
+
+<Spacer h={2} />
+
+### Write a story
+
+A story is a component with the props you want to review. The `args` become controls in the panel:
+
+```tsx
+// NAME: src/StatusCard.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import StatusCard from './StatusCard.tsx'
+
+const meta = {
+  title: 'StatusCard',
+  component: StatusCard,
+  args: { title: 'API', children: 'Responding in under 200 ms.' },
+  argTypes: {
+    status: { control: 'inline-radio', options: ['success', 'warning', 'error'] }
+  }
+} satisfies Meta<typeof StatusCard>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Healthy: Story = { args: { status: 'success' } }
+export const Down: Story = {
+  args: { status: 'error', children: 'The service is not responding.' }
+}
+```
+
+<Spacer h={2} />
+
+### What to keep in mind
+
+- • The provider has to be in the decorator, not in each story. Components such as `Modal` and `Tooltip`, and the `useToasts` hook, read from it.
+- • `themeType` takes `light` or `dark`. The switch in the toolbar changes it, so you can review a component in both.
+- • Storybook 10 builds a Docs page only for the stories tagged with `autodocs`, which `preview.tsx` sets for all of them.
+- • The Accessibility add-on checks each story with axe. Fix the violations it reports, or give the control an `aria-label`.
+
+export default Docs.withMeta(meta)

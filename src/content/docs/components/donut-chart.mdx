@@ -1,0 +1,111 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { DonutChart } from 'core/Charts'
+
+export const meta = {
+  title: 'DonutChart',
+  description: 'A ring split into slices, with room in the center for the total.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 84
+}
+
+## DonutChart
+
+A ring split into slices, with room in the center for the total. It reads like a `PieChart`, and the hole gives you a place for the number that matters.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Same data as `PieChart`. Write the total in the middle with `chartLabel`."
+  scope={{ DonutChart }}
+  code={`
+<DonutChart
+  aria-label="Visits by source"
+  chartLabel="1,000"
+  data={[
+    { name: 'Direct', value: 300 },
+    { name: 'Search', value: 500 },
+    { name: 'Social', value: 200 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Thickness"
+  desc="`thickness` sets the width of the ring, in pixels."
+  scope={{ DonutChart }}
+  code={`
+<DonutChart
+  thickness={12}
+  chartLabel="75%"
+  data={[
+    { name: 'Used', value: 75 },
+    { name: 'Free', value: 25, color: '#e5e7eb' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Legend and labels"
+  desc="Add `withLegend` to name the slices, and `withLabels` to write a `value`, `name` or `percent` on each one."
+  scope={{ DonutChart }}
+  code={`
+<DonutChart
+  withLegend
+  withLabels
+  labelsType="percent"
+  paddingAngle={2}
+  data={[
+    { name: 'Direct', value: 300 },
+    { name: 'Search', value: 500 },
+    { name: 'Social', value: 200 }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/donut-chart.mdx">
+<Attributes.Title>DonutChart.Props</Attributes.Title>
+
+| Attribute          | Description                                             | Type                                | Accepted values                | Default |
+| ------------------ | ------------------------------------------------------- | ----------------------------------- | ------------------------------ | ------- |
+| **data**           | one item per slice                                      | `ChartSlice[]`                      | [ChartSlice](#chartslice)      | -       |
+| **size**           | width and height of the ring, in pixels                 | `number`                            | -                              | `220`   |
+| **withTooltip**    | show the value of a slice on hover and focus            | `boolean`                           | -                              | `true`  |
+| **withLegend**     | show the legend below the chart                         | `boolean`                           | -                              | `false` |
+| **withLabels**     | write a label next to each slice                        | `boolean`                           | -                              | `false` |
+| **labelsType**     | what the labels say                                     | `string`                            | `'value', 'name', 'percent'`   | `value` |
+| **valueFormatter** | how a value is written in the labels and the tooltip    | `(value: number) => string`         | -                              | thousands separators, en-US |
+| **paddingAngle**   | gap between the slices, in degrees                      | `number`                            | -                              | `0`     |
+| **startAngle**     | where the first slice starts, in degrees                | `number`                            | -                              | `90`    |
+| **endAngle**       | where the last slice ends, in degrees                   | `number`                            | -                              | `-270`  |
+| **thickness**      | width of the ring, in pixels                            | `number`                            | -                              | `24`    |
+| **chartLabel**     | text or number written in the center                    | `string / number`                   | -                              | -       |
+| ...                | native props, passed to the root                        | `HTMLAttributes`                    | `'aria-label', 'className', ...` | -       |
+
+<Attributes.Title>ChartSlice</Attributes.Title>
+
+```ts
+type ChartSlice = {
+  name: string // shown in the legend, the tooltip and the name labels
+  value: number // the size of the slice, against the sum of all values
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the slices and show their values in the tooltip.
+
+Color alone is a weak signal, so turn on `withLegend` or `withLabels` and write the key numbers in text next to the chart, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

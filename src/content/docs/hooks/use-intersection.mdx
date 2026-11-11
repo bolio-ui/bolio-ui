@@ -24,7 +24,7 @@ This is custom React hooks, you need to follow the <Link target="_blank" color h
   const { ref, entry } = useIntersection({ threshold: [0, 0.5, 1] })
   return (
     <>
-      <Text>Visible: {Math.round((entry?.intersectionRatio || 0) * 100)}%</Text>
+      <Text>Visible: {Math.round(((entry && entry.intersectionRatio) || 0) * 100)}%</Text>
       <div ref={ref} style={{ padding: 24, border: '1px dashed currentColor' }}>Observed</div>
     </>
   )

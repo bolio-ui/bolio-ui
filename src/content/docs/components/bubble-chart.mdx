@@ -1,0 +1,113 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { BubbleChart } from 'core/Charts'
+
+export const meta = {
+  title: 'BubbleChart',
+  description: 'Points placed by two numbers, with a third number as the size of each bubble.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 97
+}
+
+## BubbleChart
+
+Points placed by two numbers, with a third number as the size of each bubble. Use it to compare items on three measures at once.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each point has an `x`, a `y` and a `z`. The `z` sets the area of the bubble."
+  scope={{ BubbleChart }}
+  code={`
+<BubbleChart
+  aria-label="Customers by spend and orders"
+  xAxisLabel="Orders"
+  yAxisLabel="Spend ($)"
+  zLabel="Customers"
+  data={[
+    {
+      name: 'retail',
+      label: 'Retail',
+      points: [
+        { x: 10, y: 400, z: 120 },
+        { x: 25, y: 900, z: 60 },
+        { x: 40, y: 1500, z: 20 }
+      ]
+    }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Many series and size"
+  desc="`sizeRange` is the area of the smallest and of the biggest bubble, in square pixels."
+  scope={{ BubbleChart }}
+  code={`
+<BubbleChart
+  withLegend
+  sizeRange={[60, 900]}
+  xAxisLabel="Age"
+  yAxisLabel="Income (k)"
+  zLabel="People"
+  data={[
+    {
+      name: 'north',
+      label: 'North',
+      points: [{ x: 25, y: 32, z: 200 }, { x: 40, y: 58, z: 340 }, { x: 55, y: 70, z: 120 }]
+    },
+    {
+      name: 'south',
+      label: 'South',
+      color: '#8b5cf6',
+      points: [{ x: 28, y: 28, z: 150 }, { x: 45, y: 49, z: 260 }, { x: 60, y: 61, z: 90 }]
+    }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/bubble-chart.mdx">
+<Attributes.Title>BubbleChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the series to plot | `ScatterSeries[]` | [ScatterSeries](#scatterseries) | - |
+| **height** | height of the chart, in pixels | `number` | - | `300` |
+| **sizeRange** | area of the smallest and the biggest bubble, in square pixels | `[number, number]` | - | `[40, 600]` |
+| **zLabel** | name of the size in the tooltip | `string` | - | `z` |
+| **xAxisLabel** | title of the x axis | `string` | - | - |
+| **yAxisLabel** | title of the y axis | `string` | - | - |
+| **withLegend** | show the legend | `boolean` | - | `false` |
+| **withTooltip** | show the values of a bubble on hover and focus | `boolean` | - | `true` |
+| **withXAxis** | show the x axis | `boolean` | - | `true` |
+| **withYAxis** | show the y axis | `boolean` | - | `true` |
+| **withGrid** | show the grid lines | `boolean` | - | `true` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ScatterSeries</Attributes.Title>
+
+```ts
+type ScatterSeries = {
+  name: string // identifies the series
+  label?: string // shown in the legend, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+  points: Array<{ x: number; y: number; z?: number }>
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the data and show the values in the tooltip.
+
+Size and color are hard to compare without sight, so write the pattern you see in text, or offer the points in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

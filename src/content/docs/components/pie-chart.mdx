@@ -1,0 +1,126 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { PieChart } from 'core/Charts'
+
+export const meta = {
+  title: 'PieChart',
+  description: 'A circle split into slices that show how a total divides between parts.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 83
+}
+
+## PieChart
+
+A circle split into slices that show how a total divides between parts. Use it with few parts, up to five or six, where one slice is much bigger than the others.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Each item has a `name` and a `value`. The slices are sized against the sum of all values."
+  scope={{ PieChart }}
+  code={`
+<PieChart
+  aria-label="Visits by source"
+  data={[
+    { name: 'Direct', value: 300 },
+    { name: 'Search', value: 500 },
+    { name: 'Social', value: 200 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Legend and labels"
+  desc="Add `withLegend` to name the slices. `withLabels` writes a label on each one: its `value`, its `name` or its `percent`."
+  scope={{ PieChart }}
+  code={`
+<PieChart
+  withLegend
+  withLabels
+  labelsType="percent"
+  data={[
+    { name: 'Direct', value: 300 },
+    { name: 'Search', value: 500 },
+    { name: 'Social', value: 200 }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Colors and format"
+  desc="Set `color` on an item to override the theme color, and `valueFormatter` to change how a value reads."
+  scope={{ PieChart }}
+  code={`
+<PieChart
+  withLabels
+  valueFormatter={(value) => '$' + value.toLocaleString('en-US')}
+  data={[
+    { name: 'Subscriptions', value: 8400, color: '#16a34a' },
+    { name: 'One-time', value: 2100, color: '#f59e0b' },
+    { name: 'Refunds', value: 650, color: '#dc2626' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Semicircle"
+  desc="Set `startAngle` and `endAngle` to draw only part of the circle. The chart still keeps the room of a full circle."
+  scope={{ PieChart }}
+  code={`
+<PieChart
+  startAngle={180}
+  endAngle={0}
+  paddingAngle={2}
+  data={[
+    { name: 'Done', value: 60 },
+    { name: 'In progress', value: 25 },
+    { name: 'To do', value: 15 }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/pie-chart.mdx">
+<Attributes.Title>PieChart.Props</Attributes.Title>
+
+| Attribute          | Description                                             | Type                                | Accepted values                | Default |
+| ------------------ | ------------------------------------------------------- | ----------------------------------- | ------------------------------ | ------- |
+| **data**           | one item per slice                                      | `ChartSlice[]`                      | [ChartSlice](#chartslice)      | -       |
+| **size**           | width and height of the ring, in pixels                 | `number`                            | -                              | `220`   |
+| **withTooltip**    | show the value of a slice on hover and focus            | `boolean`                           | -                              | `true`  |
+| **withLegend**     | show the legend below the chart                         | `boolean`                           | -                              | `false` |
+| **withLabels**     | write a label next to each slice                        | `boolean`                           | -                              | `false` |
+| **labelsType**     | what the labels say                                     | `string`                            | `'value', 'name', 'percent'`   | `value` |
+| **valueFormatter** | how a value is written in the labels and the tooltip    | `(value: number) => string`         | -                              | thousands separators, en-US |
+| **paddingAngle**   | gap between the slices, in degrees                      | `number`                            | -                              | `0`     |
+| **startAngle**     | where the first slice starts, in degrees                | `number`                            | -                              | `90`    |
+| **endAngle**       | where the last slice ends, in degrees                   | `number`                            | -                              | `-270`  |
+| ...                | native props, passed to the root                        | `HTMLAttributes`                    | `'aria-label', 'className', ...` | -       |
+
+<Attributes.Title>ChartSlice</Attributes.Title>
+
+```ts
+type ChartSlice = {
+  name: string // shown in the legend, the tooltip and the name labels
+  value: number // the size of the slice, against the sum of all values
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the slices and show their values in the tooltip.
+
+Color alone is a weak signal, so turn on `withLegend` or `withLabels` and write the key numbers in text next to the chart, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

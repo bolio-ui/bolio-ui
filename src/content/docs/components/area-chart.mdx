@@ -1,0 +1,102 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { AreaChart } from 'core/Charts'
+
+export const meta = {
+  title: 'AreaChart',
+  description: 'Lines with the area below them filled, alone or stacked.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 81
+}
+
+## AreaChart
+
+Lines with the area below them filled, alone or stacked. Use it when the size of the total matters as much as the trend.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Same data as `LineChart`, with the area filled."
+  scope={{ AreaChart }}
+  code={`
+<AreaChart
+  aria-label="Visits per month"
+  data={[
+    { month: 'Jan', visits: 120 },
+    { month: 'Feb', visits: 180 },
+    { month: 'Mar', visits: 150 },
+    { month: 'Apr', visits: 220 }
+  ]}
+  dataKey="month"
+  series={[{ name: 'visits', label: 'Visits' }]}
+/>
+`}
+/>
+
+<Playground
+  title="Stacked"
+  desc="With `stacked`, the series add up and the top edge is the total."
+  scope={{ AreaChart }}
+  code={`
+<AreaChart
+  stacked
+  withLegend
+  data={[
+    { month: 'Jan', web: 80, mobile: 40 },
+    { month: 'Feb', web: 110, mobile: 70 },
+    { month: 'Mar', web: 90, mobile: 85 },
+    { month: 'Apr', web: 140, mobile: 100 }
+  ]}
+  dataKey="month"
+  series={[
+    { name: 'web', label: 'Web' },
+    { name: 'mobile', label: 'Mobile' }
+  ]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/area-chart.mdx">
+<Attributes.Title>AreaChart.Props</Attributes.Title>
+
+| Attribute          | Description                                                  | Type                         | Accepted values | Default |
+| ------------------ | ------------------------------------------------------------ | ---------------------------- | --------------- | ------- |
+| **data**           | one object per point on the x axis                           | `Array<Record<string, ...>>` | -               | -       |
+| **dataKey**        | key of `data` that holds the x axis label                    | `string`                     | -               | -       |
+| **series**         | the lines to draw, one per key of `data`                     | `ChartSeries[]`              | [ChartSeries](#chartseries) | -   |
+| **height**         | height of the chart, in pixels                               | `number`                     | -               | `300`   |
+| **withLegend**     | show the legend                                              | `boolean`                    | -               | `false` |
+| **withTooltip**    | show the values of a point on hover and focus                | `boolean`                    | -               | `true`  |
+| **withXAxis**      | show the x axis                                              | `boolean`                    | -               | `true`  |
+| **withYAxis**      | show the y axis                                              | `boolean`                    | -               | `true`  |
+| **withGrid**       | show the horizontal grid lines                               | `boolean`                    | -               | `true`  |
+| **valueFormatter** | how a value is written on the y axis and in the tooltip      | `(value: number) => string`  | -               | -       |
+| **curve**          | how the line joins the points                                | `string`                     | `'linear', 'monotone', 'step'` | `monotone` |
+| **stacked**        | stack the series instead of overlapping them                 | `boolean`                    | -               | `false` |
+| **connectNulls**   | draw the line through `null` values                          | `boolean`                    | -               | `false` |
+| ...                | native props, passed to the root                             | `HTMLAttributes`             | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ChartSeries</Attributes.Title>
+
+```ts
+type ChartSeries = {
+  name: string // key of `data` with the values
+  label?: string // shown in the legend and the tooltip, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the points and show their values in the tooltip.
+
+A chart is hard to read for screen reader users, so repeat the key numbers in text next to it, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

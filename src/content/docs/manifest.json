@@ -35,6 +35,26 @@
               "path": "/docs/guide/refs-and-accessibility.mdx"
             },
             {
+              "title": "Testing with Vitest",
+              "keywords": "test, tests, testing, vitest, jest, testing library, jsdom, provider, modal, toast, resizeobserver, bolio ui",
+              "path": "/docs/guide/testing-with-vitest.mdx"
+            },
+            {
+              "title": "Storybook",
+              "keywords": "storybook, stories, component review, provider, theme switch, dark mode, autodocs, a11y addon, vite, bolio ui",
+              "path": "/docs/guide/storybook.mdx"
+            },
+            {
+              "title": "Dashboard example",
+              "keywords": "dashboard, example, charts, recharts, sparkline, stat, schedule, modals, useModals, vite, bolio ui",
+              "path": "/docs/guide/dashboard-example.mdx"
+            },
+            {
+              "title": "Controlled and uncontrolled",
+              "keywords": "controlled, uncontrolled, value, initialValue, checked, initialChecked, onChange, state, useUncontrolled, bolio ui",
+              "path": "/docs/guide/controlled-and-uncontrolled.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"
@@ -177,9 +197,19 @@
               "path": "/docs/components/chip.mdx"
             },
             {
+              "title": "MatrixChart",
+              "keywords": "matrix chart, heatmap, grid, two categories, cross table, data visualization",
+              "path": "/docs/components/matrix-chart.mdx"
+            },
+            {
               "title": "Mention",
               "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
               "path": "/docs/components/mention.mdx"
+            },
+            {
+              "title": "AreaChart",
+              "keywords": "area chart, stacked area, chart, trend, data visualization, recharts",
+              "path": "/docs/components/area-chart.mdx"
             },
             {
               "title": "Avatar",
@@ -192,9 +222,29 @@
               "path": "/docs/components/badge.mdx"
             },
             {
+              "title": "BarChart",
+              "keywords": "bar chart, columns, stacked bars, compare, chart, data visualization, recharts",
+              "path": "/docs/components/bar-chart.mdx"
+            },
+            {
+              "title": "BarsList",
+              "keywords": "bars list, bar chart, ranking, top list, horizontal bars, chart, data visualization",
+              "path": "/docs/components/bars-list.mdx"
+            },
+            {
               "title": "Breadcrumbs",
               "keywords": "breadcrumbs, breadcrumbs icons, icons",
               "path": "/docs/components/breadcrumbs.mdx"
+            },
+            {
+              "title": "BubbleChart",
+              "keywords": "bubble chart, scatter, three variables, size, chart, data visualization, recharts",
+              "path": "/docs/components/bubble-chart.mdx"
+            },
+            {
+              "title": "BulletChart",
+              "keywords": "bullet chart, kpi, target, quota, bands, progress, data visualization",
+              "path": "/docs/components/bullet-chart.mdx"
             },
             {
               "title": "Button",
@@ -215,6 +265,11 @@
               "title": "Calendar",
               "keywords": "calendar, month, day picker, date, week, grid",
               "path": "/docs/components/calendar.mdx"
+            },
+            {
+              "title": "CandlestickChart",
+              "keywords": "candlestick chart, ohlc, stock, price, trading, finance, chart, recharts",
+              "path": "/docs/components/candlestick-chart.mdx"
             },
             {
               "title": "Capacity",
@@ -262,6 +317,11 @@
               "path": "/docs/components/color-picker.mdx"
             },
             {
+              "title": "Autocomplete",
+              "keywords": "autocomplete, autosuggest, typeahead, suggestions, free text, search input, datalist",
+              "path": "/docs/components/autocomplete.mdx"
+            },
+            {
               "title": "Combobox",
               "keywords": "combobox, autocomplete, autosuggest, search select, filter, typeahead",
               "path": "/docs/components/combobox.mdx"
@@ -270,6 +330,11 @@
               "title": "Command",
               "keywords": "command, command palette, cmd k, search, shortcuts, actions",
               "path": "/docs/components/command.mdx"
+            },
+            {
+              "title": "CompositeChart",
+              "keywords": "composite chart, combo chart, bar line area, mixed, dual axis, chart, recharts",
+              "path": "/docs/components/composite-chart.mdx"
             },
             {
               "title": "Container",
@@ -302,6 +367,11 @@
               "path": "/docs/components/description.mdx"
             },
             {
+              "title": "Diff",
+              "keywords": "diff, compare, changes, before after, text diff, code review, unified, split",
+              "path": "/docs/components/diff.mdx"
+            },
+            {
               "title": "Display",
               "keywords": "display, code, snippet, caption",
               "path": "/docs/components/display.mdx"
@@ -312,6 +382,11 @@
               "path": "/docs/components/divider.mdx"
             },
             {
+              "title": "DonutChart",
+              "keywords": "donut chart, doughnut, ring, proportion, chart, data visualization, recharts",
+              "path": "/docs/components/donut-chart.mdx"
+            },
+            {
               "title": "Dot",
               "keywords": "dot, text",
               "path": "/docs/components/dot.mdx"
@@ -320,6 +395,11 @@
               "title": "Drawer",
               "keywords": "drawer, placement, modal",
               "path": "/docs/components/drawer.mdx"
+            },
+            {
+              "title": "EmojiPicker",
+              "keywords": "emoji picker, emoji, reactions, search emoji, smileys, picker",
+              "path": "/docs/components/emoji-picker.mdx"
             },
             {
               "title": "Empty State",
@@ -337,9 +417,24 @@
               "path": "/docs/components/fieldset.mdx"
             },
             {
+              "title": "FunnelChart",
+              "keywords": "funnel chart, conversion, steps, drop off, sales funnel, chart, recharts",
+              "path": "/docs/components/funnel-chart.mdx"
+            },
+            {
+              "title": "GaugeChart",
+              "keywords": "gauge chart, gauge, meter, speedometer, progress, kpi, data visualization",
+              "path": "/docs/components/gauge-chart.mdx"
+            },
+            {
               "title": "Grid",
               "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
               "path": "/docs/components/grid.mdx"
+            },
+            {
+              "title": "Heatmap",
+              "keywords": "heatmap, calendar heatmap, contributions, activity, github, data visualization",
+              "path": "/docs/components/heatmap.mdx"
             },
             {
               "title": "Icons",
@@ -362,9 +457,19 @@
               "path": "/docs/components/input.mdx"
             },
             {
+              "title": "JsonViewer",
+              "keywords": "json viewer, json, tree, inspect, expand, collapse, response",
+              "path": "/docs/components/json-viewer.mdx"
+            },
+            {
               "title": "Keyboard",
               "keywords": "keyboard, modifiers, combination",
               "path": "/docs/components/keyboard.mdx"
+            },
+            {
+              "title": "LineChart",
+              "keywords": "line chart, trend, time series, chart, data visualization, recharts",
+              "path": "/docs/components/line-chart.mdx"
             },
             {
               "title": "Link",
@@ -392,9 +497,19 @@
               "path": "/docs/components/menu.mdx"
             },
             {
+              "title": "MonthPicker",
+              "keywords": "month picker, month, year, billing period, report, calendar, select month",
+              "path": "/docs/components/month-picker.mdx"
+            },
+            {
               "title": "Modal",
               "keywords": "modal, dialog, backdrop, actions, customized, loading, overlong",
               "path": "/docs/components/modal.mdx"
+            },
+            {
+              "title": "ModalsProvider",
+              "keywords": "modals provider, useModals, modals manager, confirm dialog, open modal, imperative modal, stack",
+              "path": "/docs/components/modals-provider.mdx"
             },
             {
               "title": "Note",
@@ -417,6 +532,11 @@
               "path": "/docs/components/pagination.mdx"
             },
             {
+              "title": "PieChart",
+              "keywords": "pie chart, proportion, share, slices, chart, data visualization, recharts",
+              "path": "/docs/components/pie-chart.mdx"
+            },
+            {
               "title": "Pin Input",
               "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
               "path": "/docs/components/pin-input.mdx"
@@ -432,6 +552,16 @@
               "path": "/docs/components/progress.mdx"
             },
             {
+              "title": "RadarChart",
+              "keywords": "radar chart, spider chart, web, compare, chart, data visualization, recharts",
+              "path": "/docs/components/radar-chart.mdx"
+            },
+            {
+              "title": "RadialBarChart",
+              "keywords": "radial bar chart, circular progress, rings, chart, data visualization, recharts",
+              "path": "/docs/components/radial-bar-chart.mdx"
+            },
+            {
               "title": "Radio",
               "keywords": "radio, radio group, types, description, disabled, inline",
               "path": "/docs/components/radio.mdx"
@@ -445,6 +575,21 @@
               "title": "Row",
               "keywords": "row, flex, justify, align, gap, layout, columns",
               "path": "/docs/components/row.mdx"
+            },
+            {
+              "title": "SankeyChart",
+              "keywords": "sankey chart, flow, links, nodes, journey, chart, recharts",
+              "path": "/docs/components/sankey-chart.mdx"
+            },
+            {
+              "title": "ScatterChart",
+              "keywords": "scatter chart, scatter plot, correlation, points, chart, data visualization, recharts",
+              "path": "/docs/components/scatter-chart.mdx"
+            },
+            {
+              "title": "Schedule",
+              "keywords": "schedule, calendar, events, agenda, week view, day view, month view, appointments, time grid",
+              "path": "/docs/components/schedule.mdx"
             },
             {
               "title": "Scroll Area",
@@ -487,6 +632,11 @@
               "path": "/docs/components/spacer.mdx"
             },
             {
+              "title": "Sparkline",
+              "keywords": "sparkline, line chart, trend, mini chart, chart, data visualization, svg",
+              "path": "/docs/components/sparkline.mdx"
+            },
+            {
               "title": "Spoiler",
               "keywords": "spoiler, show more, read more, collapse, expand, truncate, max height, long text",
               "path": "/docs/components/spoiler.mdx"
@@ -510,6 +660,11 @@
               "title": "Stepper",
               "keywords": "stepper, steps, wizard, progress, checkout, onboarding, timeline, vertical",
               "path": "/docs/components/stepper.mdx"
+            },
+            {
+              "title": "SunburstChart",
+              "keywords": "sunburst chart, hierarchy, nested, rings, tree, data visualization",
+              "path": "/docs/components/sunburst-chart.mdx"
             },
             {
               "title": "Table",
@@ -547,6 +702,11 @@
               "path": "/docs/components/timeline.mdx"
             },
             {
+              "title": "TimePicker",
+              "keywords": "time picker, time, hours, minutes, seconds, am pm, 12h, 24h, clock, input",
+              "path": "/docs/components/time-picker.mdx"
+            },
+            {
               "title": "Toggle",
               "keywords": "toggle, types, disabled, get change",
               "path": "/docs/components/toggle.mdx"
@@ -570,6 +730,16 @@
               "title": "Tree",
               "keywords": "tree, tree view, nested list, file tree, hierarchy, folders, expand, collapse, categories",
               "path": "/docs/components/tree.mdx"
+            },
+            {
+              "title": "Treemap",
+              "keywords": "treemap, tree map, rectangles, hierarchy, proportions, chart, recharts",
+              "path": "/docs/components/treemap.mdx"
+            },
+            {
+              "title": "WaffleChart",
+              "keywords": "waffle chart, squares, share, proportion, unit chart, data visualization",
+              "path": "/docs/components/waffle-chart.mdx"
             }
           ]
         },

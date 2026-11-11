@@ -6,8 +6,17 @@ import type { AnyElement } from '../utils/types'
 const {
   Alert,
   BolioUIProvider,
+  Autocomplete,
   Avatar,
   Badge,
+  BarsList,
+  BulletChart,
+  MatrixChart,
+  SunburstChart,
+  WaffleChart,
+  GaugeChart,
+  Heatmap,
+  Sparkline,
   Breadcrumbs,
   Button,
   ButtonDropdown,
@@ -15,6 +24,10 @@ const {
   Calendar,
   Capacity,
   Card,
+  Diff,
+  EmojiPicker,
+  JsonViewer,
+  Schedule,
   Carousel,
   Checkbox,
   Chip,
@@ -46,6 +59,8 @@ const {
   Mark,
   Menu,
   Modal,
+  MonthPicker,
+  TimePicker,
   Note,
   NumberInput,
   Page,
@@ -88,8 +103,36 @@ type Ref = React.RefObject<AnyElement>
 // or the native input for form controls (Checkbox, Radio, Toggle). Select keeps its
 // documented imperative handle (SelectRef).
 const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
+  ['Diff', (ref) => <Diff ref={ref} previousValue="a" currentValue="b" />],
+  ['EmojiPicker', (ref) => <EmojiPicker ref={ref} data={[]} />],
+  ['JsonViewer', (ref) => <JsonViewer ref={ref} value={{ a: 1 }} />],
+  ['Schedule', (ref) => <Schedule ref={ref} />],
+  [
+    'Autocomplete',
+    (ref) => <Autocomplete ref={ref} aria-label="Fruit" data={['Apple']} />,
+    'INPUT'
+  ],
   ['Avatar', (ref) => <Avatar ref={ref} text="BA" />],
   ['Badge', (ref) => <Badge ref={ref}>new</Badge>],
+  ['GaugeChart', (ref) => <GaugeChart ref={ref} value={60} />],
+  [
+    'Heatmap',
+    (ref) => (
+      <Heatmap
+        ref={ref}
+        data={{}}
+        startDate="2026-01-01"
+        endDate="2026-02-01"
+      />
+    ),
+    'svg'
+  ],
+  ['BulletChart', (ref) => <BulletChart ref={ref} value={1} ranges={[]} />],
+  ['MatrixChart', (ref) => <MatrixChart ref={ref} data={[]} />, 'svg'],
+  ['SunburstChart', (ref) => <SunburstChart ref={ref} data={[]} />, 'svg'],
+  ['WaffleChart', (ref) => <WaffleChart ref={ref} data={[]} />],
+  ['BarsList', (ref) => <BarsList ref={ref} data={[]} />],
+  ['Sparkline', (ref) => <Sparkline ref={ref} data={[1, 2]} />, 'svg'],
   [
     'Breadcrumbs',
     (ref) => (
@@ -354,6 +397,8 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['TagsInput', (ref) => <TagsInput ref={ref} aria-label="Skills" />, 'INPUT'],
   ['Text', (ref) => <Text ref={ref}>Text</Text>],
   ['Textarea', (ref) => <Textarea ref={ref} placeholder="write" />, 'TEXTAREA'],
+  ['MonthPicker', (ref) => <MonthPicker ref={ref} />],
+  ['TimePicker', (ref) => <TimePicker ref={ref} aria-label="Time" />],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],
   [
     'Tooltip',
@@ -430,7 +475,12 @@ describe('ref: every component forwards it to a DOM element', () => {
         })
       )
     } else {
-      expect(ref.current).toBeInstanceOf(HTMLElement)
+      // Sparkline and Heatmap are svg, every other component is an HTML element
+      expect(ref.current).toBeInstanceOf(
+        ['Sparkline', 'Heatmap', 'MatrixChart', 'SunburstChart'].includes(name)
+          ? SVGElement
+          : HTMLElement
+      )
     }
     if (tag) expect(ref.current.tagName).toBe(tag)
     // no "Function components cannot be given refs" warning

@@ -27,7 +27,7 @@ function Form() {
   return (
     <>
       <Input ref={input} placeholder="Name" />
-      <Button onClick={() => input.current?.focus()}>Focus the input</Button>
+      <Button onClick={() => input.current && input.current.focus()}>Focus the input</Button>
     </>
   )
 }

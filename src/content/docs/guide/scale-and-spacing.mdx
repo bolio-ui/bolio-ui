@@ -1,6 +1,6 @@
 import Docs from 'src/templates/Docs'
 import { Playground, Attributes } from 'src/components'
-import { Button, Grid, Spacer } from 'core'
+import { Button, Grid, Input, Spacer } from 'core'
 
 export const meta = {
   title: 'Scale and spacing',
@@ -26,17 +26,17 @@ They are not repeated in the props table of each component, because they work th
 <Playground
   title="Numbers and strings"
   desc="A number multiplies the unit, a string is used as it is."
-  scope={{ Button, Grid }}
+  scope={{ Grid, Input }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Button width={10}>width 10</Button>
+    <Input width={10} placeholder="width 10" />
   </Grid>
   <Grid>
-    <Button width="120px">120px</Button>
+    <Input width="120px" placeholder="120px" />
   </Grid>
   <Grid>
-    <Button width="100%">100%</Button>
+    <Input width="100%" placeholder="100%" />
   </Grid>
 </Grid.Container>
 `}

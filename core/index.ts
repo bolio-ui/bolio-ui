@@ -1,6 +1,9 @@
 export { default as Alert } from './Alert'
 export type { AlertProps } from './Alert'
 
+export { default as Autocomplete } from './Autocomplete'
+export type { AutocompleteProps } from './Autocomplete'
+
 export { default as Avatar } from './Avatar'
 export type { AvatarProps, AvatarGroupProps } from './Avatar'
 
@@ -9,6 +12,9 @@ export type { BadgeProps, BadgeAnchorProps } from './Badge'
 
 export { default as BolioUIProvider } from './BolioUIProvider'
 export type { BolioUIProviderProps } from './BolioUIProvider'
+
+export { default as BarsList } from './BarsList'
+export type { BarsListProps, BarsListItem } from './BarsList'
 
 export { default as Breadcrumbs } from './Breadcrumbs'
 export type {
@@ -77,6 +83,9 @@ export type { DateRangePickerProps } from './DateRangePicker'
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
 
+export { default as Diff } from './Diff'
+export type { DiffProps, DiffMethod } from './Diff'
+
 export { default as Display } from './Display'
 export type { DisplayProps } from './Display'
 
@@ -85,6 +94,9 @@ export type { DividerProps } from './Divider'
 
 export { default as Dot } from './Dot'
 export type { DotProps } from './Dot'
+
+export { default as EmojiPicker } from './EmojiPicker'
+export type { EmojiPickerProps, EmojiItem, EmojiCategory } from './EmojiPicker'
 
 export { default as EmptyState } from './EmptyState'
 export type { EmptyStateProps } from './EmptyState'
@@ -121,6 +133,9 @@ export type { ImageZoomProps } from './ImageZoom'
 export { default as Input } from './Input'
 export type { InputProps, InputPasswordProps } from './Input'
 
+export { default as JsonViewer } from './JsonViewer'
+export type { JsonViewerProps, JsonPath } from './JsonViewer'
+
 export { default as Keyboard } from './Keyboard'
 export type { KeyboardProps } from './Keyboard'
 
@@ -145,6 +160,14 @@ export type {
   MenuSubProps
 } from './Menu'
 
+export { default as ModalsProvider, useModals } from './ModalsProvider'
+export type {
+  ModalsProviderProps,
+  ModalsApi,
+  OpenModalOptions,
+  ConfirmModalOptions
+} from './ModalsProvider'
+
 export { default as Modal } from './Modal'
 export type {
   ModalProps,
@@ -153,6 +176,9 @@ export type {
   ModalContentProps,
   ModalActionProps
 } from './Modal'
+
+export { default as MonthPicker } from './MonthPicker'
+export type { MonthPickerProps } from './MonthPicker'
 
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
@@ -202,6 +228,14 @@ export type {
 export { default as Row } from './Row'
 export type { RowProps } from './Row'
 
+export { default as Schedule } from './Schedule'
+export type {
+  ScheduleProps,
+  ScheduleView,
+  ScheduleLabels,
+  ScheduleEvent
+} from './Schedule'
+
 export { default as Section } from './Section'
 export type { SectionProps } from './Section'
 
@@ -229,6 +263,31 @@ export type { SpacerProps } from './Spacer'
 
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
+
+export { default as BulletChart } from './BulletChart'
+export type { BulletChartProps, BulletRange } from './BulletChart'
+
+export { default as MatrixChart } from './MatrixChart'
+export type { MatrixChartProps, MatrixCell } from './MatrixChart'
+
+export { default as SunburstChart } from './SunburstChart'
+export type { SunburstChartProps, SunburstNode } from './SunburstChart'
+
+export { default as WaffleChart } from './WaffleChart'
+export type {
+  WaffleChartProps,
+  WaffleCell,
+  WaffleFillDirection
+} from './WaffleChart'
+
+export { default as GaugeChart } from './GaugeChart'
+export type { GaugeChartProps, GaugeSection } from './GaugeChart'
+
+export { default as Heatmap } from './Heatmap'
+export type { HeatmapProps } from './Heatmap'
+
+export { default as Sparkline } from './Sparkline'
+export type { SparklineProps } from './Sparkline'
 
 export { default as Splitter } from './Splitter'
 export type {
@@ -511,6 +570,9 @@ export type { StatProps } from './Stat'
 
 export { default as Timeline } from './Timeline'
 export type { TimelineProps, TimelineItemProps } from './Timeline'
+
+export { default as TimePicker } from './TimePicker'
+export type { TimePickerProps } from './TimePicker'
 
 export { default as Command } from './Command'
 export type { CommandProps, CommandItem } from './Command'

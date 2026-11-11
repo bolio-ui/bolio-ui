@@ -1,0 +1,141 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { LineChart } from 'core/Charts'
+
+export const meta = {
+  title: 'LineChart',
+  description: 'Lines that follow one or more series across the same axis.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 80
+}
+
+## LineChart
+
+Lines that follow one or more series across the same axis. Use it to show how a value changes over time.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="Pass the rows in `data`, the key of the x axis in `dataKey` and one item of `series` per line."
+  scope={{ LineChart }}
+  code={`
+<LineChart
+  aria-label="Visits per month"
+  data={[
+    { month: 'Jan', visits: 120 },
+    { month: 'Feb', visits: 180 },
+    { month: 'Mar', visits: 150 },
+    { month: 'Apr', visits: 220 }
+  ]}
+  dataKey="month"
+  series={[{ name: 'visits', label: 'Visits' }]}
+/>
+`}
+/>
+
+<Playground
+  title="Many series"
+  desc="Each series gets its own theme color, or the `color` you set. Add `withLegend` to name them."
+  scope={{ LineChart }}
+  code={`
+<LineChart
+  withLegend
+  data={[
+    { month: 'Jan', visits: 120, sales: 40 },
+    { month: 'Feb', visits: 180, sales: 55 },
+    { month: 'Mar', visits: 150, sales: 80 },
+    { month: 'Apr', visits: 220, sales: 95 }
+  ]}
+  dataKey="month"
+  series={[
+    { name: 'visits', label: 'Visits' },
+    { name: 'sales', label: 'Sales', color: '#8b5cf6' }
+  ]}
+/>
+`}
+/>
+
+<Playground
+  title="Curve and dots"
+  desc="Use `curve` with `linear`, `monotone` or `step`, and turn the dots off with `withDots={false}`."
+  scope={{ LineChart }}
+  code={`
+<LineChart
+  curve="step"
+  withDots={false}
+  height={220}
+  data={[
+    { day: 'Mon', orders: 12 },
+    { day: 'Tue', orders: 19 },
+    { day: 'Wed', orders: 9 },
+    { day: 'Thu', orders: 24 },
+    { day: 'Fri', orders: 17 }
+  ]}
+  dataKey="day"
+  series={[{ name: 'orders', label: 'Orders' }]}
+/>
+`}
+/>
+
+<Playground
+  title="Value format"
+  desc="`valueFormatter` changes how a number reads on the y axis and in the tooltip."
+  scope={{ LineChart }}
+  code={`
+<LineChart
+  valueFormatter={(value) => '$' + value.toLocaleString('en-US')}
+  data={[
+    { month: 'Jan', revenue: 12000 },
+    { month: 'Feb', revenue: 18500 },
+    { month: 'Mar', revenue: 15200 }
+  ]}
+  dataKey="month"
+  series={[{ name: 'revenue', label: 'Revenue', color: '#16a34a' }]}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/line-chart.mdx">
+<Attributes.Title>LineChart.Props</Attributes.Title>
+
+| Attribute          | Description                                                  | Type                         | Accepted values | Default |
+| ------------------ | ------------------------------------------------------------ | ---------------------------- | --------------- | ------- |
+| **data**           | one object per point on the x axis                           | `Array<Record<string, ...>>` | -               | -       |
+| **dataKey**        | key of `data` that holds the x axis label                    | `string`                     | -               | -       |
+| **series**         | the lines to draw, one per key of `data`                     | `ChartSeries[]`              | [ChartSeries](#chartseries) | -   |
+| **height**         | height of the chart, in pixels                               | `number`                     | -               | `300`   |
+| **withLegend**     | show the legend                                              | `boolean`                    | -               | `false` |
+| **withTooltip**    | show the values of a point on hover and focus                | `boolean`                    | -               | `true`  |
+| **withXAxis**      | show the x axis                                              | `boolean`                    | -               | `true`  |
+| **withYAxis**      | show the y axis                                              | `boolean`                    | -               | `true`  |
+| **withGrid**       | show the horizontal grid lines                               | `boolean`                    | -               | `true`  |
+| **valueFormatter** | how a value is written on the y axis and in the tooltip      | `(value: number) => string`  | -               | -       |
+| **curve**          | how the line joins the points                                | `string`                     | `'linear', 'monotone', 'step'` | `monotone` |
+| **withDots**       | draw a dot on each point                                     | `boolean`                    | -               | `true`  |
+| **connectNulls**   | draw the line through `null` values                          | `boolean`                    | -               | `false` |
+| ...                | native props, passed to the root                             | `HTMLAttributes`             | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>ChartSeries</Attributes.Title>
+
+```ts
+type ChartSeries = {
+  name: string // key of `data` with the values
+  label?: string // shown in the legend and the tooltip, `name` when missing
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. The chart can be focused. Arrow Left and Right then move through the points and show their values in the tooltip.
+
+A chart is hard to read for screen reader users, so repeat the key numbers in text next to it, or offer the same data in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

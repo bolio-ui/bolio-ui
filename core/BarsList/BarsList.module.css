@@ -1,0 +1,66 @@
+.root {
+  display: block;
+  font-size: var(--bars-list-font-size);
+  color: var(--bars-list-text-color);
+}
+
+.labels,
+.item {
+  display: grid;
+  grid-template-columns: 1fr var(--bars-list-value-width);
+  align-items: center;
+  column-gap: 1em;
+}
+
+.labels {
+  margin-bottom: 0.5em;
+  font-size: 0.875em;
+  color: var(--bars-list-label-color);
+}
+
+.valueLabel {
+  text-align: right;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  height: var(--bars-list-bar-height);
+}
+
+.track {
+  height: 100%;
+}
+
+.bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 3em;
+  max-width: 100%;
+  padding: 0 0.75em;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--bars-list-color) 22%, transparent);
+  border-left: 3px solid var(--bars-list-color);
+  border-radius: var(--bars-list-radius);
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}

@@ -1,0 +1,111 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { SankeyChart } from 'core/Charts'
+
+export const meta = {
+  title: 'SankeyChart',
+  description: 'Flows between steps, with the width of each link following its amount.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 92
+}
+
+## SankeyChart
+
+Flows between steps, with the width of each link following its amount. Use it to follow where something goes, such as visitors across pages or money across budgets.
+
+> Charts need [Recharts](https://recharts.org). Install it once with `yarn add recharts`, then import from `@bolio-ui/core/charts`. The package stays out of your bundle until you use a chart.
+
+<Playground
+  desc="`nodes` lists the steps and `links` joins them by position: `source` and `target` are indexes of `nodes`."
+  scope={{ SankeyChart }}
+  code={`
+<SankeyChart
+  aria-label="Where visitors go"
+  data={{
+    nodes: [
+      { name: 'Visits' },
+      { name: 'Search' },
+      { name: 'Pricing' },
+      { name: 'Buy' },
+      { name: 'Leave' }
+    ],
+    links: [
+      { source: 0, target: 1, value: 100 },
+      { source: 1, target: 2, value: 60 },
+      { source: 1, target: 4, value: 40 },
+      { source: 2, target: 3, value: 25 },
+      { source: 2, target: 4, value: 35 }
+    ]
+  }}
+/>
+`}
+/>
+
+<Playground
+  title="Colors and format"
+  desc="A link takes the color of its source. Set `color` on a node to choose it."
+  scope={{ SankeyChart }}
+  code={`
+<SankeyChart
+  valueFormatter={(value) => '$' + value.toLocaleString('en-US')}
+  data={{
+    nodes: [
+      { name: 'Income', color: '#16a34a' },
+      { name: 'Rent', color: '#f59e0b' },
+      { name: 'Food', color: '#dc2626' },
+      { name: 'Savings', color: '#60a5fa' }
+    ],
+    links: [
+      { source: 0, target: 1, value: 1200 },
+      { source: 0, target: 2, value: 600 },
+      { source: 0, target: 3, value: 900 }
+    ]
+  }}
+/>
+`}
+/>
+
+<Attributes edit="/content/docs/components/sankey-chart.mdx">
+<Attributes.Title>SankeyChart.Props</Attributes.Title>
+
+| Attribute | Description | Type | Accepted values | Default |
+| --- | --- | --- | --- | --- |
+| **data** | the steps and the flows between them | `{ nodes, links }` | [SankeyNode](#sankeynode), [SankeyLink](#sankeylink) | - |
+| **height** | height of the chart, in pixels | `number` | - | `320` |
+| **nodeWidth** | width of the bars of the steps, in pixels | `number` | - | `12` |
+| **nodePadding** | vertical space between steps of one column, in pixels | `number` | - | `24` |
+| **withTooltip** | show the amount of a flow on hover | `boolean` | - | `true` |
+| **valueFormatter** | how a number is written | `(value: number) => string` | - | thousands separators, en-US |
+| **...** | native props, passed to the root | `HTMLAttributes` | `'aria-label', 'className', ...` | - |
+
+<Attributes.Title>SankeyNode</Attributes.Title>
+
+```ts
+type SankeyNode = {
+  name: string
+  color?: string // any CSS color, a theme color when missing
+}
+```
+
+<Attributes.Title>SankeyLink</Attributes.Title>
+
+```ts
+type SankeyLink = {
+  source: number // position of the step in `nodes`
+  target: number
+  value: number // the width of the flow
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Name the chart with `aria-label`, or with `aria-labelledby` pointing at a heading. A named chart becomes a `group`. A flow chart cannot be read with the keyboard, so describe the main paths in text next to it, or offer the links in a `Table`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
