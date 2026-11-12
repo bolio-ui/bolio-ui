@@ -70,6 +70,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'ModalsProvider',
   'NavLink',
   'Note',
+  'NProgress',
   'NumberInput',
   'OverflowList',
   'Page',

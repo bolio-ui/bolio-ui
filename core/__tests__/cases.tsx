@@ -70,6 +70,7 @@ const {
   TimeGrid,
   TimePicker,
   NavLink,
+  NProgress,
   Note,
   NumberInput,
   OverflowList,
@@ -332,6 +333,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </NavLink>
     )
   ],
+  ['NProgress', () => <NProgress value={40} />],
   ['Note', () => <Note>Note</Note>],
   ['NumberInput', () => <NumberInput aria-label="Quantity" min={0} />],
   [

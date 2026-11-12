@@ -4094,6 +4094,41 @@
     "path": "/docs/components/overview#navigation"
   },
   {
+    "title": "NProgress",
+    "component": true,
+    "path": "/docs/components/nprogress"
+  },
+  {
+    "head": "NProgress",
+    "title": "NProgress General",
+    "component": false,
+    "path": "/docs/components/nprogress#general"
+  },
+  {
+    "head": "NProgress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/nprogress#apis"
+  },
+  {
+    "head": "NProgress",
+    "title": "NProgress Props",
+    "component": false,
+    "path": "/docs/components/nprogress#nprogress.props"
+  },
+  {
+    "head": "NProgress",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/nprogress#ref"
+  },
+  {
+    "head": "NProgress",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/nprogress#accessibility"
+  },
+  {
     "title": "OverflowList",
     "component": true,
     "path": "/docs/components/overflow-list"
@@ -7833,6 +7868,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-mounted#apis"
+  },
+  {
+    "title": "useNProgress",
+    "component": true,
+    "path": "/docs/hooks/use-nprogress"
+  },
+  {
+    "head": "useNProgress",
+    "title": "useNProgress General",
+    "component": false,
+    "path": "/docs/hooks/use-nprogress#general"
+  },
+  {
+    "head": "useNProgress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-nprogress#apis"
   },
   {
     "title": "useMouse",

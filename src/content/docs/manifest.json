@@ -567,6 +567,11 @@
               "path": "/docs/components/number-input.mdx"
             },
             {
+              "title": "NProgress",
+              "keywords": "nprogress, progress bar, loading bar, top bar, navigation progress, page loading",
+              "path": "/docs/components/nprogress.mdx"
+            },
+            {
               "title": "OverflowList",
               "keywords": "overflow list, overflow, tags, truncate, more, collapse, responsive row",
               "path": "/docs/components/overflow-list.mdx"
@@ -1103,6 +1108,11 @@
               "title": "useMounted",
               "keywords": "useMounted",
               "path": "/docs/hooks/use-mounted.mdx"
+            },
+            {
+              "title": "useNProgress",
+              "keywords": "useNProgress",
+              "path": "/docs/hooks/use-nprogress.mdx"
             },
             {
               "title": "useMouse",

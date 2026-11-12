@@ -537,6 +537,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'NProgress',
+            url: '/docs/components/nprogress',
+            group: 'Components'
+          },
+          {
             name: 'OverflowList',
             url: '/docs/components/overflow-list',
             group: 'Components'

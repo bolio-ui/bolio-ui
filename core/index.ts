@@ -216,6 +216,13 @@ export type { NavLinkProps } from './NavLink'
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
 
+export { default as NProgress, useNProgress } from './NProgress'
+export type {
+  NProgressProps,
+  UseNProgressOptions,
+  UseNProgressResult
+} from './NProgress'
+
 export { default as NumberInput } from './NumberInput'
 export type { NumberInputProps } from './NumberInput'
 
