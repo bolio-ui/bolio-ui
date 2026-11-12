@@ -742,6 +742,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'WeekPicker',
+            url: '/docs/components/week-picker',
+            group: 'Components'
+          },
+          {
             name: 'YearPicker',
             url: '/docs/components/year-picker',
             group: 'Components'

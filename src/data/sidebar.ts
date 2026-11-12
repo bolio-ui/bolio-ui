@@ -703,6 +703,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'WeekPicker',
+    url: '/docs/components/week-picker',
+    tag: 'New'
+  },
+  {
     name: 'YearPicker',
     url: '/docs/components/year-picker',
     tag: 'New'

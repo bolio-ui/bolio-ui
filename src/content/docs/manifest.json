@@ -767,6 +767,11 @@
               "path": "/docs/components/treemap.mdx"
             },
             {
+              "title": "WeekPicker",
+              "keywords": "week picker, week, weekly, timesheet, calendar, range",
+              "path": "/docs/components/week-picker.mdx"
+            },
+            {
               "title": "YearPicker",
               "keywords": "year picker, year, years, fiscal year, birth year",
               "path": "/docs/components/year-picker.mdx"

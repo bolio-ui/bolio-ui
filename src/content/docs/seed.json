@@ -6317,6 +6317,41 @@
     "path": "/docs/components/treemap#accessibility"
   },
   {
+    "title": "WeekPicker",
+    "component": true,
+    "path": "/docs/components/week-picker"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker General",
+    "component": false,
+    "path": "/docs/components/week-picker#general"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker Controlled",
+    "component": false,
+    "path": "/docs/components/week-picker#controlled"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/week-picker#apis"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker Props",
+    "component": false,
+    "path": "/docs/components/week-picker#weekpicker.props"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/week-picker#ref"
+  },
+  {
     "title": "YearPicker",
     "component": true,
     "path": "/docs/components/year-picker"

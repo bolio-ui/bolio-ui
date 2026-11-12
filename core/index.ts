@@ -192,6 +192,9 @@ export type {
 export { default as MonthPicker } from './MonthPicker'
 export type { MonthPickerProps } from './MonthPicker'
 
+export { default as WeekPicker } from './WeekPicker'
+export type { WeekPickerProps, Week } from './WeekPicker'
+
 export { default as YearPicker } from './YearPicker'
 export type { YearPickerProps } from './YearPicker'
 
