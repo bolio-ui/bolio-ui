@@ -3990,6 +3990,35 @@
     "path": "/docs/components/pie-chart#accessibility"
   },
   {
+    "title": "PhoneInput",
+    "component": true,
+    "path": "/docs/components/phone-input"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput General",
+    "component": false,
+    "path": "/docs/components/phone-input#general"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Controlled",
+    "component": false,
+    "path": "/docs/components/phone-input#controlled"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Countries",
+    "component": false,
+    "path": "/docs/components/phone-input#countries"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Props",
+    "component": false,
+    "path": "/docs/components/phone-input#phoneinput.props"
+  },
+  {
     "title": "Pin Input",
     "component": true,
     "path": "/docs/components/pin-input"

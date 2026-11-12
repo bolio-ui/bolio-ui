@@ -197,6 +197,9 @@ export type {
   PageFooterProps
 } from './Page'
 
+export { default as PhoneInput, phoneCountries } from './PhoneInput'
+export type { PhoneInputProps, PhoneCountry } from './PhoneInput'
+
 export { default as Pagination } from './Pagination'
 export type {
   PaginationProps,

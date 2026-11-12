@@ -63,6 +63,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'NumberInput',
   'Page',
   'Pagination',
+  'PhoneInput',
   'PinInput',
   'Popover',
   'Progress',

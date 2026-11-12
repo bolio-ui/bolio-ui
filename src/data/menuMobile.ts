@@ -512,6 +512,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'PhoneInput',
+            url: '/docs/components/phone-input',
+            group: 'Components'
+          },
+          {
             name: 'Pin Input',
             url: '/docs/components/pin-input',
             group: 'Components'

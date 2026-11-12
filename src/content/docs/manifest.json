@@ -542,6 +542,11 @@
               "path": "/docs/components/pie-chart.mdx"
             },
             {
+              "title": "PhoneInput",
+              "keywords": "phone input, phone, telephone, tel, country code, dial code, number",
+              "path": "/docs/components/phone-input.mdx"
+            },
+            {
               "title": "Pin Input",
               "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
               "path": "/docs/components/pin-input.mdx"

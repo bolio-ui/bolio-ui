@@ -488,6 +488,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'PhoneInput',
+    url: '/docs/components/phone-input',
+    tag: 'New'
+  },
+  {
     name: 'Pin Input',
     url: '/docs/components/pin-input',
     tag: 'New'
