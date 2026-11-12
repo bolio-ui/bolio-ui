@@ -467,6 +467,11 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'MiniCalendar',
+    url: '/docs/components/mini-calendar',
+    tag: 'New'
+  },
+  {
     name: 'MonthPicker',
     url: '/docs/components/month-picker',
     tag: 'New'

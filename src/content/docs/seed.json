@@ -3451,6 +3451,53 @@
     "path": "/docs/components/menu#accessibility"
   },
   {
+    "title": "MiniCalendar",
+    "component": true,
+    "path": "/docs/components/mini-calendar"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar General",
+    "component": false,
+    "path": "/docs/components/mini-calendar#general"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Controlled",
+    "component": false,
+    "path": "/docs/components/mini-calendar#controlled"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Disabled days",
+    "component": false,
+    "path": "/docs/components/mini-calendar#disabled-days"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mini-calendar#apis"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Props",
+    "component": false,
+    "path": "/docs/components/mini-calendar#minicalendar.props"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/mini-calendar#ref"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/mini-calendar#accessibility"
+  },
+  {
     "title": "MonthPicker",
     "component": true,
     "path": "/docs/components/month-picker"

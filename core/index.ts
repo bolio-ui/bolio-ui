@@ -189,6 +189,9 @@ export type {
   ModalActionProps
 } from './Modal'
 
+export { default as MiniCalendar } from './MiniCalendar'
+export type { MiniCalendarProps } from './MiniCalendar'
+
 export { default as MonthPicker } from './MonthPicker'
 export type { MonthPickerProps } from './MonthPicker'
 

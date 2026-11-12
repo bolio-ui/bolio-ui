@@ -487,6 +487,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'MiniCalendar',
+            url: '/docs/components/mini-calendar',
+            group: 'Components'
+          },
+          {
             name: 'MonthPicker',
             url: '/docs/components/month-picker',
             group: 'Components'

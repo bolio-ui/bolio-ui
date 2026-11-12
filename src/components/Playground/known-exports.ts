@@ -60,6 +60,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Mention',
   'Menu',
   'Modal',
+  'MiniCalendar',
   'MonthPicker',
   'WeekPicker',
   'YearPicker',
