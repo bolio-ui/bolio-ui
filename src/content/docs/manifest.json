@@ -905,6 +905,11 @@
               "path": "/docs/hooks/use-headroom.mdx"
             },
             {
+              "title": "useHotkeys",
+              "keywords": "useHotkeys",
+              "path": "/docs/hooks/use-hotkeys.mdx"
+            },
+            {
               "title": "useHover",
               "keywords": "useHover",
               "path": "/docs/hooks/use-hover.mdx"

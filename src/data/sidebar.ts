@@ -987,6 +987,11 @@ export const hooks = [
     url: '/docs/hooks/use-headroom'
   },
   {
+    name: 'useHotkeys',
+    url: '/docs/hooks/use-hotkeys',
+    tag: 'New'
+  },
+  {
     name: 'useIdle',
     url: '/docs/hooks/use-idle'
   },

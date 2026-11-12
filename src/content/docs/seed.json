@@ -6788,6 +6788,23 @@
     "path": "/docs/hooks/use-headroom#apis"
   },
   {
+    "title": "useHotkeys",
+    "component": true,
+    "path": "/docs/hooks/use-hotkeys"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "useHotkeys General",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#general"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#apis"
+  },
+  {
     "title": "useHover",
     "component": true,
     "path": "/docs/hooks/use-hover"
