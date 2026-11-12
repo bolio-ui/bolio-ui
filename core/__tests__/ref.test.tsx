@@ -26,6 +26,7 @@ const {
   Calendar,
   Capacity,
   Card,
+  Cascader,
   Diff,
   EmojiPicker,
   JsonViewer,
@@ -440,6 +441,17 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       />
     ),
     'DIV'
+  ],
+  [
+    'Cascader',
+    (ref) => (
+      <Cascader
+        ref={ref}
+        aria-label="Place"
+        data={[{ value: 'a', label: 'A' }]}
+      />
+    ),
+    'BUTTON'
   ],
   [
     'Tree',

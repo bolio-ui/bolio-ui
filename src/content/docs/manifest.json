@@ -297,6 +297,11 @@
               "path": "/docs/components/carousel.mdx"
             },
             {
+              "title": "Cascader",
+              "keywords": "cascader, cascade, nested select, path, country state city, columns, hierarchy",
+              "path": "/docs/components/cascader.mdx"
+            },
+            {
               "title": "Checkbox",
               "keywords": "checkbox, check, radio, selectable, checkbox, box",
               "path": "/docs/components/checkbox.mdx"

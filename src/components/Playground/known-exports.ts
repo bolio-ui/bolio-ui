@@ -19,6 +19,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Calendar',
   'Capacity',
   'Card',
+  'Cascader',
   'Checkbox',
   'Chip',
   'Code',

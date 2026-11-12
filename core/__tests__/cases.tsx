@@ -24,6 +24,7 @@ const {
   Calendar,
   Capacity,
   Card,
+  Cascader,
   Diff,
   EmojiPicker,
   JsonViewer,
@@ -460,6 +461,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
         open
         onClose={() => undefined}
         steps={[{ title: 'Welcome', content: 'A short tour' }]}
+      />
+    )
+  ],
+  [
+    'Cascader',
+    () => (
+      <Cascader
+        aria-label="Place"
+        data={[{ value: 'a', label: 'A' }]}
+        initialValue={['a']}
       />
     )
   ],

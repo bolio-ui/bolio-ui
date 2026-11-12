@@ -268,6 +268,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'Cascader',
+    url: '/docs/components/cascader',
+    tag: 'New'
+  },
+  {
     name: 'Checkbox',
     url: '/docs/components/checkbox'
   },

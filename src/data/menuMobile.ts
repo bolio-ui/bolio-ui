@@ -257,6 +257,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Cascader',
+            url: '/docs/components/cascader',
+            group: 'Components'
+          },
+          {
             name: 'Checkbox',
             url: '/docs/components/checkbox',
             group: 'Components'

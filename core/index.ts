@@ -47,6 +47,9 @@ export type { CalendarProps, DateRange } from './Calendar'
 export { default as Capacity } from './Capacity'
 export type { CapacityProps } from './Capacity'
 
+export { default as Cascader } from './Cascader'
+export type { CascaderProps, CascaderOption } from './Cascader'
+
 export { default as Card } from './Card'
 export type { CardProps, CardContentProps, CardFooterProps } from './Card'
 

@@ -1075,6 +1075,53 @@
     "path": "/docs/components/carousel#accessibility"
   },
   {
+    "title": "Cascader",
+    "component": true,
+    "path": "/docs/components/cascader"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader General",
+    "component": false,
+    "path": "/docs/components/cascader#general"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader Controlled",
+    "component": false,
+    "path": "/docs/components/cascader#controlled"
+  },
+  {
+    "head": "Cascader",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/cascader#apis"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader Props",
+    "component": false,
+    "path": "/docs/components/cascader#cascader.props"
+  },
+  {
+    "head": "Cascader",
+    "title": "CascaderOption",
+    "component": false,
+    "path": "/docs/components/cascader#cascaderoption"
+  },
+  {
+    "head": "Cascader",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/cascader#ref"
+  },
+  {
+    "head": "Cascader",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/cascader#accessibility"
+  },
+  {
     "title": "Checkbox",
     "component": true,
     "path": "/docs/components/checkbox"
