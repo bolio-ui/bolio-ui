@@ -1,5 +1,46 @@
 [
   {
+    "title": "AngleSlider",
+    "component": true,
+    "path": "/docs/components/angle-slider"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider General",
+    "component": false,
+    "path": "/docs/components/angle-slider#general"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider Controlled",
+    "component": false,
+    "path": "/docs/components/angle-slider#controlled"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/angle-slider#apis"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider Props",
+    "component": false,
+    "path": "/docs/components/angle-slider#angleslider.props"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/angle-slider#ref"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/angle-slider#accessibility"
+  },
+  {
     "title": "AreaChart",
     "component": true,
     "path": "/docs/components/area-chart"

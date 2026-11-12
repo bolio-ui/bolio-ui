@@ -5,6 +5,7 @@ import * as Bolio from '..'
 const {
   Affix,
   Alert,
+  AngleSlider,
   Autocomplete,
   Avatar,
   Badge,
@@ -507,6 +508,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       />
     )
   ],
+  ['AngleSlider', () => <AngleSlider aria-label="Angle" initialValue={45} />],
   [
     'Affix',
     () => (

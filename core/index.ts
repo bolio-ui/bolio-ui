@@ -4,6 +4,9 @@ export type { AffixProps } from './Affix'
 export { default as Alert } from './Alert'
 export type { AlertProps } from './Alert'
 
+export { default as AngleSlider } from './AngleSlider'
+export type { AngleSliderProps } from './AngleSlider'
+
 export { default as Autocomplete } from './Autocomplete'
 export type { AutocompleteProps } from './Autocomplete'
 

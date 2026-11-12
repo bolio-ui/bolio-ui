@@ -1,0 +1,83 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { AngleSlider, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'AngleSlider',
+  description: 'A dial to pick an angle from 0 to 359 degrees by dragging around a circle.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 122
+}
+
+## AngleSlider
+
+A dial to pick an angle from 0 to 359 degrees by dragging around a circle. Zero is at the top and the angle grows clockwise. Use it for rotation, gradient direction and shadow angle.
+
+<Playground
+  desc="Press and drag around the circle, or focus it and use the arrow keys."
+  scope={{ AngleSlider, Grid, Text }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <AngleSlider aria-label="Rotation" initialValue={45} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`. With `step`, the angle snaps to multiples of it."
+  scope={{ AngleSlider, Grid, Text }}
+  code={`
+() => {
+  const [angle, setAngle] = React.useState(90)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <AngleSlider aria-label="Rotation" step={15} value={angle} onChange={setAngle} />
+      </Grid>
+      <Grid>
+        <div style={{ width: 64, height: 64, borderRadius: 12, background: 'linear-gradient(' + angle + 'deg, #8b5cf6, #22d3ee)' }} />
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/angle-slider.mdx">
+<Attributes.Title>AngleSlider.Props</Attributes.Title>
+
+| Attribute        | Description                                          | Type                      | Accepted values | Default       |
+| ---------------- | ---------------------------------------------------- | ------------------------- | --------------- | ------------- |
+| **value**        | angle in degrees, to control the component           | `number`                  | -               | -             |
+| **initialValue** | angle at the start                                   | `number`                  | -               | `0`           |
+| **onChange**     | called with the angle while it changes               | `(value: number) => void` | -               | -             |
+| **onChangeEnd**  | called when the pointer is released, or after a key  | `(value: number) => void` | -               | -             |
+| **step**         | degrees between two values                           | `number`                  | -               | `1`           |
+| **size**         | diameter in pixels                                   | `number`                  | -               | `120`         |
+| **withLabel**    | show the angle in the center                         | `boolean`                 | -               | `true`        |
+| **formatLabel**  | text of the center                                   | `(value: number) => ReactNode` | -          | `${value}°`   |
+| **disabled**     | disable the dial                                     | `boolean`                 | -               | `false`       |
+| ...              | native props, passed to the dial                     | `HTMLAttributes`          | `'aria-label', ...` | -         |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the outer `div`, around the dial.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The dial is a `slider` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax` and a value text in degrees. Give it a name with `aria-label`.
+
+| Key                   | Action                            |
+| --------------------- | --------------------------------- |
+| Arrow Up and Right    | Add one step                      |
+| Arrow Down and Left   | Remove one step                   |
+| Page Up and Down      | Add and remove ten steps          |
+| Home and End          | Go to 0 and to the last step      |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

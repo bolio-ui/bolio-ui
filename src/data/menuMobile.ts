@@ -167,6 +167,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'AngleSlider',
+            url: '/docs/components/angle-slider',
+            group: 'Components'
+          },
+          {
             name: 'AreaChart',
             url: '/docs/components/area-chart',
             group: 'Components'

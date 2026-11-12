@@ -212,6 +212,11 @@
               "path": "/docs/components/mention.mdx"
             },
             {
+              "title": "AngleSlider",
+              "keywords": "angle slider, angle, rotation, dial, knob, degrees, direction",
+              "path": "/docs/components/angle-slider.mdx"
+            },
+            {
               "title": "AreaChart",
               "keywords": "area chart, stacked area, chart, trend, data visualization, recharts",
               "path": "/docs/components/area-chart.mdx"

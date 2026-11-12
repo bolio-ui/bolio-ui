@@ -5,6 +5,7 @@
 export const CORE_EXPORT_NAMES = new Set([
   'Affix',
   'Alert',
+  'AngleSlider',
   'Autocomplete',
   'Avatar',
   'Badge',

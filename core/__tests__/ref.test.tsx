@@ -6,6 +6,7 @@ import type { AnyElement } from '../utils/types'
 const {
   Affix,
   Alert,
+  AngleSlider,
   BolioUIProvider,
   Autocomplete,
   Avatar,
@@ -483,6 +484,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'BUTTON'
   ],
+  ['AngleSlider', (ref) => <AngleSlider ref={ref} aria-label="Angle" />],
   ['Affix', (ref) => <Affix ref={ref}>Pinned</Affix>],
   ['Burger', (ref) => <Burger ref={ref} label="Open menu" />, 'BUTTON'],
   ['Alert', (ref) => <Alert ref={ref}>Your trial ends soon.</Alert>],
