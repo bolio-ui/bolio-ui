@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  // same imports as the site: 'core' and 'src/...' come from the tsconfig baseUrl
+  // same imports as the site: 'core' and 'src/...' come from the tsconfig paths
   moduleDirectories: ['node_modules', '<rootDir>'],
   roots: ['<rootDir>/core', '<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.test.(ts|tsx)'],

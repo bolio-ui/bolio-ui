@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "../",
+    "rootDir": "../core",
     "outDir": "../dist",
     "paths": {
-      "*": ["*"],
-      "bolio-ui": ["core/index.tsx"],
-      "core/*": ["core/*"]
+      "*": ["../*"],
+      "bolio-ui": ["../core/index.tsx"],
+      "core/*": ["../core/*"]
     },
     "declaration": true,
     "types": ["node"],
     "emitDeclarationOnly": true,
     "strictNullChecks": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "jsx": "preserve",
