@@ -399,7 +399,11 @@
 
 .yearTitle {
   font-weight: 600;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.yearTitle::first-letter {
+  text-transform: uppercase;
 }
 
 .yearDays {

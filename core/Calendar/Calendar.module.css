@@ -29,7 +29,11 @@
 
 .title {
   font-weight: 600;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
 }
 
 .table {

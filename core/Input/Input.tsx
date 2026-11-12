@@ -164,7 +164,7 @@ const InputComponent = React.forwardRef<
   }
 
   const withLabelStyle: React.CSSProperties = {
-    '--input-height': SCALES.height(2.25),
+    '--input-height': SCALES.height(2.5),
     fontSize: SCALES.font(0.875),
     width: SCALES.width(1, 'initial'),
     padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,

@@ -70,7 +70,6 @@
   border-radius: 0;
   margin-bottom: 0.25em;
   border-bottom: 1px solid color-mix(in srgb, currentColor 25%, transparent);
-  text-transform: capitalize;
   cursor: default;
   font-size: var(--select-option-label-font-size);
   width: var(--select-option-width);

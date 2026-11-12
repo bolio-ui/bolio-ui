@@ -383,7 +383,7 @@ const SelectComponent = React.forwardRef<
       '--select-radius': rounded ? '25px' : theme.layout.radius,
       '--select-bg-color': colors.bgColor,
       '--select-font-size': SCALES.font(0.875),
-      '--select-height': SCALES.height(2.25),
+      '--select-height': SCALES.height(2.5),
       '--select-width': SCALES.width(1, 'initial'),
       '--select-padding-top': SCALES.pt(0),
       '--select-padding-right': SCALES.pr(0.334),

@@ -5,11 +5,11 @@ import { getSurface } from '../utils/surface'
 // The colors an item gets when it does not set one, in order
 const order = [
   'primary',
+  'secondary',
   'success',
   'warning',
   'error',
-  'info',
-  'secondary'
+  'info'
 ] as const
 
 export const getSeriesColor = (

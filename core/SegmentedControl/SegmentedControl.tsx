@@ -59,7 +59,7 @@ const SegmentedControlComponent = React.forwardRef<
 
     const groupStyle = {
       width: SCALES.width(1, fullWidth ? '100%' : 'fit-content'),
-      height: SCALES.height(2.25),
+      height: SCALES.height(2.5),
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
       fontSize: SCALES.font(0.875),
       '--segmented-bg': theme.palette.accents_1,

@@ -45,12 +45,18 @@ export const getColors = (
       iconColor: palette.accents_3
     }
 
+  // A control sits one step above the card it is on: a lighter surface on
+  // dark, the page white on light.
+  const controlBg = isDarkPalette(palette)
+    ? palette.accents_2
+    : palette.background
+
   if (!status || !isSemanticColorType(status))
     return {
       color: palette.foreground,
-      bgColor: palette.background,
+      bgColor: controlBg,
       borderColor: palette.border,
-      hoverBgColor: palette.background,
+      hoverBgColor: controlBg,
       hoverBorder: palette.accents_4,
       focusBorder: palette.primary,
       placeholderColor: palette.accents_6,

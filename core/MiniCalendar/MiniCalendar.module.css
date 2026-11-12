@@ -18,7 +18,11 @@
 
 .title {
   font-weight: 600;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
 }
 
 .nav,
@@ -59,7 +63,11 @@
 .weekday {
   font-size: 0.8125em;
   color: var(--mini-calendar-muted-color);
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.weekday::first-letter {
+  text-transform: uppercase;
 }
 
 .number {
