@@ -6288,6 +6288,23 @@
     "path": "/docs/components/waffle-chart#accessibility"
   },
   {
+    "title": "useActiveElement",
+    "component": true,
+    "path": "/docs/hooks/use-active-element"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "useActiveElement General",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#general"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#apis"
+  },
+  {
     "title": "useBodyScroll",
     "component": true,
     "path": "/docs/hooks/use-body-scroll"
@@ -6366,6 +6383,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-clipboard#apis"
+  },
+  {
+    "title": "useBrowserLanguage",
+    "component": true,
+    "path": "/docs/hooks/use-browser-language"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "useBrowserLanguage General",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#general"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#apis"
   },
   {
     "title": "useCollapse",

@@ -701,12 +701,22 @@ export const hooks = [
     icon: 'MousePointer'
   },
   {
+    name: 'useActiveElement',
+    url: '/docs/hooks/use-active-element',
+    tag: 'New'
+  },
+  {
     name: 'useBodyScroll',
     url: '/docs/hooks/use-body-scroll'
   },
   {
     name: 'useClickAway',
     url: '/docs/hooks/use-click-away'
+  },
+  {
+    name: 'useBrowserLanguage',
+    url: '/docs/hooks/use-browser-language',
+    tag: 'New'
   },
   {
     name: 'useCollapse',

@@ -765,6 +765,11 @@
           "open": true,
           "routes": [
             {
+              "title": "useActiveElement",
+              "keywords": "useActiveElement",
+              "path": "/docs/hooks/use-active-element.mdx"
+            },
+            {
               "title": "useBodyScroll",
               "keywords": "useBodyScroll",
               "path": "/docs/hooks/use-body-scroll.mdx"
@@ -783,6 +788,11 @@
               "title": "useClipboard",
               "keywords": "useClipboard",
               "path": "/docs/hooks/use-clipboard.mdx"
+            },
+            {
+              "title": "useBrowserLanguage",
+              "keywords": "useBrowserLanguage",
+              "path": "/docs/hooks/use-browser-language.mdx"
             },
             {
               "title": "useCollapse",
