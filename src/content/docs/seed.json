@@ -3297,6 +3297,47 @@
     "path": "/docs/components/line-chart#accessibility"
   },
   {
+    "title": "Lightbox",
+    "component": true,
+    "path": "/docs/components/lightbox"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox General",
+    "component": false,
+    "path": "/docs/components/lightbox#general"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox Start on an image",
+    "component": false,
+    "path": "/docs/components/lightbox#start-on-an-image"
+  },
+  {
+    "head": "Lightbox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/lightbox#apis"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox Props",
+    "component": false,
+    "path": "/docs/components/lightbox#lightbox.props"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/lightbox#ref"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/lightbox#accessibility"
+  },
+  {
     "title": "Link",
     "component": true,
     "path": "/docs/components/link"

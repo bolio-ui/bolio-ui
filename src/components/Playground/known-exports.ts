@@ -54,6 +54,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'KeyMod',
   'JsonViewer',
   'Keyboard',
+  'Lightbox',
   'Link',
   'Loading',
   'Mark',

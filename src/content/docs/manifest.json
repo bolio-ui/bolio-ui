@@ -502,6 +502,11 @@
               "path": "/docs/components/line-chart.mdx"
             },
             {
+              "title": "Lightbox",
+              "keywords": "lightbox, gallery, image viewer, modal, photos, carousel, fullscreen",
+              "path": "/docs/components/lightbox.mdx"
+            },
+            {
               "title": "Link",
               "keywords": "link, navigation, href, next link",
               "path": "/docs/components/link.mdx"

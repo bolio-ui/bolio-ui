@@ -1,0 +1,100 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Lightbox, Button, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Lightbox',
+  description: 'A full screen viewer for a gallery of images, with captions and arrows.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 124
+}
+
+## Lightbox
+
+A full screen viewer for a gallery of images, with captions and arrows. It is a native dialog, so it sits above the page, keeps the focus inside and gives it back when it closes. For one image that opens from its own thumbnail, use [ImageZoom](/docs/components/image-zoom).
+
+<Playground
+  desc="Open it from your own button and keep `opened` in state. The arrow keys, the buttons and Escape work."
+  scope={{ Lightbox, Button }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(false)
+  const images = [
+    { src: '/cover.jpg', alt: 'The cover of the docs', caption: 'The cover of the docs' },
+    { src: '/logo-colored.svg', alt: 'The colored logo', caption: 'The colored logo' },
+    { src: '/logo.svg', alt: 'The logo' }
+  ]
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setOpened(true)}>Open the gallery</Button>
+      <Lightbox images={images} opened={opened} onClose={() => setOpened(false)} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Start on an image"
+  desc="Set `initialIndex` to open on one image, or `index` and `onIndexChange` to control it. With `loop`, the last image goes on to the first."
+  scope={{ Lightbox, Button, Grid, Text }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(false)
+  const [index, setIndex] = React.useState(1)
+  const images = [
+    { src: '/cover.jpg', alt: 'The cover of the docs' },
+    { src: '/logo-colored.svg', alt: 'The colored logo' },
+    { src: '/logo.svg', alt: 'The logo' }
+  ]
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Button auto scale={0.6} onClick={() => setOpened(true)}>Open on the second</Button>
+      </Grid>
+      <Grid>
+        <Text p b my={0}>Image {index + 1}</Text>
+      </Grid>
+      <Lightbox loop images={images} opened={opened} index={index} onIndexChange={setIndex} onClose={() => setOpened(false)} />
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/lightbox.mdx">
+<Attributes.Title>Lightbox.Props</Attributes.Title>
+
+| Attribute         | Description                                               | Type                      | Accepted values | Default          |
+| ----------------- | --------------------------------------------------------- | ------------------------- | --------------- | ---------------- |
+| **images**        | the images, each with `src`, `alt` and an optional `caption` | `LightboxImage[]`      | -               | -                |
+| **opened**        | whether it is open                                        | `boolean`                 | -               | -                |
+| **onClose**       | called when it closes, with Escape, the button or the dark area | `() => void`        | -               | -                |
+| **index**         | shown image, to control it                                | `number`                  | -               | -                |
+| **initialIndex**  | shown image at the start                                  | `number`                  | -               | `0`              |
+| **onIndexChange** | called with the new image                                 | `(index: number) => void` | -               | -                |
+| **loop**          | the last image goes on to the first, and back             | `boolean`                 | -               | `false`          |
+| **label**         | accessible name of the dialog                             | `string`                  | -               | `Image gallery`  |
+| **closeLabel**    | name of the close button                                  | `string`                  | -               | `Close`          |
+| **previousLabel** | name of the previous button                               | `string`                  | -               | `Previous image` |
+| **nextLabel**     | name of the next button                                   | `string`                  | -               | `Next image`     |
+| ...               | native props of `dialog`                                  | `DialogHTMLAttributes`    | -               | -                |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `dialog`. It is empty while the Lightbox is closed, because nothing is drawn then.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The dialog is modal, so the page behind is not reachable and the focus returns to what opened it. The count is announced politely as the image changes. Give each image an `alt` that says what it shows.
+
+| Key                | Action                       |
+| ------------------ | ---------------------------- |
+| Arrow Left, Right  | Previous and next image      |
+| Escape             | Close                        |
+| Tab                | Move between the buttons     |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

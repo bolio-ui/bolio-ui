@@ -157,6 +157,9 @@ export type { JsonViewerProps, JsonPath } from './JsonViewer'
 export { default as Keyboard } from './Keyboard'
 export type { KeyboardProps } from './Keyboard'
 
+export { default as Lightbox } from './Lightbox'
+export type { LightboxProps, LightboxImage } from './Lightbox'
+
 export { default as Link } from './Link'
 export type { LinkProps } from './Link'
 

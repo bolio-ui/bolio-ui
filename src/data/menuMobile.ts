@@ -462,6 +462,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Lightbox',
+            url: '/docs/components/lightbox',
+            group: 'Components'
+          },
+          {
             name: 'Link',
             url: '/docs/components/link',
             group: 'Components'
