@@ -30,7 +30,9 @@ export const getTooltipStyle = (theme: BolioUIThemes) => {
       boxShadow: surface.shadow,
       color: palette.foreground
     },
-    itemStyle: { color: palette.foreground },
+    // CssBaseline gives every li a bottom margin, which left extra space under
+    // the last item
+    itemStyle: { color: palette.foreground, marginBottom: 0 },
     labelStyle: { color: palette.foreground, fontWeight: 600 }
   }
 }
