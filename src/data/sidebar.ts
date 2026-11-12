@@ -581,7 +581,7 @@ export const components = [
   {
     name: 'Schedule',
     url: '/docs/components/schedule',
-    tag: 'New'
+    tag: 'Updated'
   },
   {
     name: 'Scroll Area',

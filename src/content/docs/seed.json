@@ -9557,6 +9557,12 @@
   },
   {
     "head": "Schedule",
+    "title": "Schedule Agenda and year",
+    "component": false,
+    "path": "/docs/components/schedule#agenda-and-year"
+  },
+  {
+    "head": "Schedule",
     "title": "Schedule Create and open events",
     "component": false,
     "path": "/docs/components/schedule#create-and-open-events"
