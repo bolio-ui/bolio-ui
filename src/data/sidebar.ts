@@ -159,6 +159,11 @@ export const components = [
     url: '/docs/components/overview'
   },
   {
+    name: 'Affix',
+    url: '/docs/components/affix',
+    tag: 'New'
+  },
+  {
     name: 'Alert',
     url: '/docs/components/alert',
     tag: 'New'
@@ -218,6 +223,11 @@ export const components = [
   {
     name: 'BulletChart',
     url: '/docs/components/bullet-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Burger',
+    url: '/docs/components/burger',
     tag: 'New'
   },
   {

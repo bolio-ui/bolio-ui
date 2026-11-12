@@ -3,6 +3,7 @@ import React from 'react'
 import * as Bolio from '..'
 
 const {
+  Affix,
   Alert,
   Autocomplete,
   Avatar,
@@ -16,6 +17,7 @@ const {
   Heatmap,
   Sparkline,
   Breadcrumbs,
+  Burger,
   Button,
   ButtonDropdown,
   ButtonGroup,
@@ -461,6 +463,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       />
     )
   ],
+  [
+    'Affix',
+    () => (
+      <Affix bottom={20} right={20}>
+        Pinned
+      </Affix>
+    )
+  ],
+  ['Burger', () => <Burger label="Open menu" />],
   ['Alert', () => <Alert title="Heads up">Your trial ends soon.</Alert>],
   [
     'Chip',

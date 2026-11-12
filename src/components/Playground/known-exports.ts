@@ -3,6 +3,7 @@
 // in an actual project. Regenerate by hand if a component or icon is added
 // (this only needs to list the names, not stay perfectly in sync).
 export const CORE_EXPORT_NAMES = new Set([
+  'Affix',
   'Alert',
   'Autocomplete',
   'Avatar',
@@ -11,6 +12,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'BolioUIProvider',
   'Breadcrumbs',
   'BulletChart',
+  'Burger',
   'Button',
   'ButtonDropdown',
   'ButtonGroup',

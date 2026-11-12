@@ -187,6 +187,11 @@
               "path": "/docs/components/overview.mdx"
             },
             {
+              "title": "Affix",
+              "keywords": "affix, fixed, pin, sticky, floating, back to top, overlay",
+              "path": "/docs/components/affix.mdx"
+            },
+            {
               "title": "Alert",
               "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
               "path": "/docs/components/alert.mdx"
@@ -245,6 +250,11 @@
               "title": "BulletChart",
               "keywords": "bullet chart, kpi, target, quota, bands, progress, data visualization",
               "path": "/docs/components/bullet-chart.mdx"
+            },
+            {
+              "title": "Burger",
+              "keywords": "burger, hamburger, menu button, navigation, toggle, mobile menu",
+              "path": "/docs/components/burger.mdx"
             },
             {
               "title": "Button",

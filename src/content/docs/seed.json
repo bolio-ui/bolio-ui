@@ -430,6 +430,35 @@
     "path": "/docs/components/bullet-chart#accessibility"
   },
   {
+    "title": "Burger",
+    "component": true,
+    "path": "/docs/components/burger"
+  },
+  {
+    "head": "Burger",
+    "title": "Burger General",
+    "component": false,
+    "path": "/docs/components/burger#general"
+  },
+  {
+    "head": "Burger",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/burger#apis"
+  },
+  {
+    "head": "Burger",
+    "title": "Burger Props",
+    "component": false,
+    "path": "/docs/components/burger#burger.props"
+  },
+  {
+    "head": "Burger",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/burger#ref"
+  },
+  {
     "title": "Button",
     "component": true,
     "path": "/docs/components/button"
@@ -9068,6 +9097,35 @@
     "title": "In your own components",
     "component": false,
     "path": "/docs/guide/controlled-and-uncontrolled#in-your-own-components"
+  },
+  {
+    "title": "Affix",
+    "component": true,
+    "path": "/docs/components/affix"
+  },
+  {
+    "head": "Affix",
+    "title": "Affix General",
+    "component": false,
+    "path": "/docs/components/affix#general"
+  },
+  {
+    "head": "Affix",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/affix#apis"
+  },
+  {
+    "head": "Affix",
+    "title": "Affix Props",
+    "component": false,
+    "path": "/docs/components/affix#affix.props"
+  },
+  {
+    "head": "Affix",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/affix#ref"
   },
   {
     "title": "Alert",

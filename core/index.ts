@@ -1,3 +1,6 @@
+export { default as Affix } from './Affix'
+export type { AffixProps } from './Affix'
+
 export { default as Alert } from './Alert'
 export type { AlertProps } from './Alert'
 
@@ -22,6 +25,9 @@ export type {
   BreadcrumbsItemProps,
   BreadcrumbsSeparatorProps
 } from './Breadcrumbs'
+
+export { default as Burger } from './Burger'
+export type { BurgerProps } from './Burger'
 
 export { default as Button } from './Button'
 export type { ButtonProps } from './Button'

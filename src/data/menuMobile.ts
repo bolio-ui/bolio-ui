@@ -157,6 +157,11 @@ export const menuMobile = [
         name: 'Components',
         children: [
           {
+            name: 'Affix',
+            url: '/docs/components/affix',
+            group: 'Components'
+          },
+          {
             name: 'Alert',
             url: '/docs/components/alert',
             group: 'Components'
@@ -204,6 +209,11 @@ export const menuMobile = [
           {
             name: 'BulletChart',
             url: '/docs/components/bullet-chart',
+            group: 'Components'
+          },
+          {
+            name: 'Burger',
+            url: '/docs/components/burger',
             group: 'Components'
           },
           {

@@ -4,6 +4,7 @@ import * as Bolio from '..'
 import type { AnyElement } from '../utils/types'
 
 const {
+  Affix,
   Alert,
   BolioUIProvider,
   Autocomplete,
@@ -18,6 +19,7 @@ const {
   Heatmap,
   Sparkline,
   Breadcrumbs,
+  Burger,
   Button,
   ButtonDropdown,
   ButtonGroup,
@@ -437,6 +439,8 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'UL'
   ],
+  ['Affix', (ref) => <Affix ref={ref}>Pinned</Affix>],
+  ['Burger', (ref) => <Burger ref={ref} label="Open menu" />, 'BUTTON'],
   ['Alert', (ref) => <Alert ref={ref}>Your trial ends soon.</Alert>],
   ['Chip', (ref) => <Chip ref={ref}>React</Chip>, 'INPUT'],
   [
