@@ -500,6 +500,11 @@ export const components = [
     url: '/docs/components/number-input'
   },
   {
+    name: 'OverflowList',
+    url: '/docs/components/overflow-list',
+    tag: 'New'
+  },
+  {
     name: 'Page',
     url: '/docs/components/page'
   },

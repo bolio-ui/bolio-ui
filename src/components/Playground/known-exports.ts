@@ -68,6 +68,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'ModalsProvider',
   'Note',
   'NumberInput',
+  'OverflowList',
   'Page',
   'Pagination',
   'PhoneInput',

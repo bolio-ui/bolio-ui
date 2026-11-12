@@ -70,6 +70,7 @@ const {
   TimePicker,
   Note,
   NumberInput,
+  OverflowList,
   Page,
   Pagination,
   PhoneInput,
@@ -323,6 +324,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Note', () => <Note>Note</Note>],
   ['NumberInput', () => <NumberInput aria-label="Quantity" min={0} />],
+  [
+    'OverflowList',
+    () => (
+      <OverflowList
+        data={['a', 'b']}
+        renderItem={(item) => <span>{item}</span>}
+        renderOverflow={(hidden) => <span>+{hidden.length}</span>}
+      />
+    )
+  ],
   [
     'Page',
     () => (

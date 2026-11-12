@@ -210,6 +210,9 @@ export type { NoteProps } from './Note'
 export { default as NumberInput } from './NumberInput'
 export type { NumberInputProps } from './NumberInput'
 
+export { default as OverflowList } from './OverflowList'
+export type { OverflowListProps } from './OverflowList'
+
 export { default as Page } from './Page'
 export type {
   PageProps,

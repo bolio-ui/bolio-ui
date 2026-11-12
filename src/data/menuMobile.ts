@@ -522,6 +522,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'OverflowList',
+            url: '/docs/components/overflow-list',
+            group: 'Components'
+          },
+          {
             name: 'Page',
             url: '/docs/components/page',
             group: 'Components'

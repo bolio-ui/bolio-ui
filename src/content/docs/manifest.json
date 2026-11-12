@@ -552,6 +552,11 @@
               "path": "/docs/components/number-input.mdx"
             },
             {
+              "title": "OverflowList",
+              "keywords": "overflow list, overflow, tags, truncate, more, collapse, responsive row",
+              "path": "/docs/components/overflow-list.mdx"
+            },
+            {
               "title": "Page",
               "keywords": "page, content",
               "path": "/docs/components/page.mdx"

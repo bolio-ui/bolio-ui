@@ -1,0 +1,66 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { OverflowList, Tag, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'OverflowList',
+  description: 'A row that shows the items that fit and replaces the rest with a count.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 121
+}
+
+## OverflowList
+
+A row that shows the items that fit and replaces the rest with a count, such as "+3". It measures the row and measures again when the row changes size. Use it for tags, filters and breadcrumbs in a space that can shrink.
+
+<Playground
+  desc="Drag the width with the slider and the tags that do not fit become a count."
+  scope={{ OverflowList, Tag, Grid, Text }}
+  code={`
+() => {
+  const [width, setWidth] = React.useState(260)
+  const tags = ['React', 'Next.js', 'Vite', 'Storybook', 'Vitest', 'Playwright']
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <input type="range" min="60" max="520" value={width} aria-label="Width" onChange={(event) => setWidth(Number(event.target.value))} />
+        <Text small>{width}px</Text>
+      </Grid>
+      <Grid>
+        <div style={{ width, maxWidth: '100%' }}>
+          <OverflowList
+            data={tags}
+            renderItem={(tag) => <Tag>{tag}</Tag>}
+            renderOverflow={(hidden) => <Tag type="secondary">+{hidden.length}</Tag>}
+          />
+        </div>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/overflow-list.mdx">
+<Attributes.Title>OverflowList.Props</Attributes.Title>
+
+| Attribute          | Description                                             | Type                               | Accepted values | Default |
+| ------------------ | ------------------------------------------------------- | ---------------------------------- | --------------- | ------- |
+| **data**           | the items, in order                                     | `T[]`                              | -               | -       |
+| **renderItem**     | draws an item                                           | `(item: T, index: number) => ReactNode` | -          | -       |
+| **renderOverflow** | draws what takes the place of the items that do not fit | `(hidden: T[]) => ReactNode`       | -               | -       |
+| **gap**            | pixels between two items                                | `number`                           | -               | `8`     |
+| ...                | native props of `div`                                   | `HTMLAttributes`                   | -               | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the row `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The list measures a copy of the items that is hidden from the keyboard and from screen readers. The items that are hidden by the overflow are not in the page, so put them where the user can reach them, for example in a Popover or a Tooltip that `renderOverflow` returns.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
