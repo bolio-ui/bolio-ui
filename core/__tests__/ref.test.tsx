@@ -40,6 +40,7 @@ const {
   Container,
   ContextMenu,
   DatePicker,
+  DateTimePicker,
   DateRangePicker,
   Description,
   Display,
@@ -215,6 +216,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'DIV'
   ],
+  ['DateTimePicker', (ref) => <DateTimePicker ref={ref} />, 'DIV'],
   [
     'DatePicker',
     (ref) => <DatePicker ref={ref} aria-label="Birthday" />,

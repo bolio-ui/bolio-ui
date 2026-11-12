@@ -27,6 +27,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Container',
   'CssBaseline',
   'DatePicker',
+  'DateTimePicker',
   'DateRangePicker',
   'Description',
   'Diff',

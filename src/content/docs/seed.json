@@ -1854,6 +1854,35 @@
     "path": "/docs/components/date-range-picker#accessibility"
   },
   {
+    "title": "DateTimePicker",
+    "component": true,
+    "path": "/docs/components/date-time-picker"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker General",
+    "component": false,
+    "path": "/docs/components/date-time-picker#general"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Controlled",
+    "component": false,
+    "path": "/docs/components/date-time-picker#controlled"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Seconds and 12 hour clock",
+    "component": false,
+    "path": "/docs/components/date-time-picker#seconds-and-12-hour-clock"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Props",
+    "component": false,
+    "path": "/docs/components/date-time-picker#datetimepicker.props"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"

@@ -324,6 +324,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'DateTimePicker',
+    url: '/docs/components/date-time-picker',
+    tag: 'New'
+  },
+  {
     name: 'Description',
     url: '/docs/components/description'
   },

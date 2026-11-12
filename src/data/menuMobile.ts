@@ -322,6 +322,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'DateTimePicker',
+            url: '/docs/components/date-time-picker',
+            group: 'Components'
+          },
+          {
             name: 'Description',
             url: '/docs/components/description',
             group: 'Components'

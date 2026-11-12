@@ -80,6 +80,9 @@ export type { DatePickerProps } from './DatePicker'
 export { default as DateRangePicker } from './DateRangePicker'
 export type { DateRangePickerProps } from './DateRangePicker'
 
+export { default as DateTimePicker } from './DateTimePicker'
+export type { DateTimePickerProps } from './DateTimePicker'
+
 export { default as Description } from './Description'
 export type { DescriptionProps } from './Description'
 
