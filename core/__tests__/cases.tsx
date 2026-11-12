@@ -69,6 +69,7 @@ const {
   YearPicker,
   TimeGrid,
   TimePicker,
+  NavLink,
   Note,
   NumberInput,
   OverflowList,
@@ -321,6 +322,14 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       <Modal visible={false} onClose={() => undefined}>
         <Modal.Title>Title</Modal.Title>
       </Modal>
+    )
+  ],
+  [
+    'NavLink',
+    () => (
+      <NavLink label="Settings" defaultOpened>
+        <NavLink label="Profile" href="#" active />
+      </NavLink>
     )
   ],
   ['Note', () => <Note>Note</Note>],

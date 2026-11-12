@@ -67,6 +67,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'WeekPicker',
   'YearPicker',
   'ModalsProvider',
+  'NavLink',
   'Note',
   'NumberInput',
   'OverflowList',

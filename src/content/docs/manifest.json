@@ -547,6 +547,11 @@
               "path": "/docs/components/modals-provider.mdx"
             },
             {
+              "title": "NavLink",
+              "keywords": "nav link, navigation, sidebar item, menu item, nested, link, tree",
+              "path": "/docs/components/nav-link.mdx"
+            },
+            {
               "title": "Note",
               "keywords": "note, secondary, status, hidden label, custom label, filled variant",
               "path": "/docs/components/note.mdx"

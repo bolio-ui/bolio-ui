@@ -517,6 +517,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'NavLink',
+            url: '/docs/components/nav-link',
+            group: 'Components'
+          },
+          {
             name: 'Note',
             url: '/docs/components/note',
             group: 'Components'

@@ -207,6 +207,9 @@ export type { WeekPickerProps, Week } from './WeekPicker'
 export { default as YearPicker } from './YearPicker'
 export type { YearPickerProps } from './YearPicker'
 
+export { default as NavLink } from './NavLink'
+export type { NavLinkProps } from './NavLink'
+
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
 

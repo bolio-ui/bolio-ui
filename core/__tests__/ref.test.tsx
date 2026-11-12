@@ -71,6 +71,7 @@ const {
   YearPicker,
   TimeGrid,
   TimePicker,
+  NavLink,
   Note,
   NumberInput,
   OverflowList,
@@ -306,6 +307,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       </Modal>
     )
   ],
+  ['NavLink', (ref) => <NavLink ref={ref} label="Home" />, 'BUTTON'],
   ['Note', (ref) => <Note ref={ref}>Note</Note>],
   ['NumberInput', (ref) => <NumberInput ref={ref} aria-label="Qty" />, 'INPUT'],
   [

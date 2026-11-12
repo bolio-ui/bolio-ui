@@ -3817,6 +3817,47 @@
     "path": "/docs/components/modals-provider#accessibility"
   },
   {
+    "title": "NavLink",
+    "component": true,
+    "path": "/docs/components/nav-link"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink General",
+    "component": false,
+    "path": "/docs/components/nav-link#general"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink Controlled",
+    "component": false,
+    "path": "/docs/components/nav-link#controlled"
+  },
+  {
+    "head": "NavLink",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/nav-link#apis"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink Props",
+    "component": false,
+    "path": "/docs/components/nav-link#navlink.props"
+  },
+  {
+    "head": "NavLink",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/nav-link#ref"
+  },
+  {
+    "head": "NavLink",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/nav-link#accessibility"
+  },
+  {
     "title": "Note",
     "component": true,
     "path": "/docs/components/note"
