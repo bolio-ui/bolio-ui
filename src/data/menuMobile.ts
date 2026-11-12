@@ -46,6 +46,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Form recipes',
+            url: '/docs/guide/form-recipes',
+            group: 'Guide'
+          },
+          {
             name: 'Page structure',
             url: '/docs/guide/page-structure',
             group: 'Guide'

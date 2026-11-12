@@ -9439,6 +9439,47 @@
     "path": "/docs/guide/dashboard-example#modals-from-code"
   },
   {
+    "title": "Form recipes",
+    "component": true,
+    "path": "/docs/guide/form-recipes"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Show that a submit is pending",
+    "component": false,
+    "path": "/docs/guide/form-recipes#show-that-a-submit-is-pending"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Show an error from the server",
+    "component": false,
+    "path": "/docs/guide/form-recipes#show-an-error-from-the-server"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Save only when something changed",
+    "component": false,
+    "path": "/docs/guide/form-recipes#save-only-when-something-changed"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Link two fields",
+    "component": false,
+    "path": "/docs/guide/form-recipes#link-two-fields"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Send other values than the form holds",
+    "component": false,
+    "path": "/docs/guide/form-recipes#send-other-values-than-the-form-holds"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Edit a record that loads later",
+    "component": false,
+    "path": "/docs/guide/form-recipes#edit-a-record-that-loads-later"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"

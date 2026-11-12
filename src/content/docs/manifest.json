@@ -55,6 +55,11 @@
               "path": "/docs/guide/controlled-and-uncontrolled.mdx"
             },
             {
+              "title": "Form recipes",
+              "keywords": "form, recipes, useForm, submit, errors, server errors, isDirty, initialize, transformValues, validation, bolio ui",
+              "path": "/docs/guide/form-recipes.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"
