@@ -66,6 +66,7 @@ const {
   MonthPicker,
   WeekPicker,
   YearPicker,
+  TimeGrid,
   TimePicker,
   Note,
   NumberInput,
@@ -414,6 +415,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['QuarterPicker', (ref) => <QuarterPicker ref={ref} />],
   ['WeekPicker', (ref) => <WeekPicker ref={ref} />],
   ['YearPicker', (ref) => <YearPicker ref={ref} />],
+  ['TimeGrid', (ref) => <TimeGrid ref={ref} />],
   ['TimePicker', (ref) => <TimePicker ref={ref} aria-label="Time" />],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],
   [

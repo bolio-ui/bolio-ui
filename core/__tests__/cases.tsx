@@ -64,6 +64,7 @@ const {
   MonthPicker,
   WeekPicker,
   YearPicker,
+  TimeGrid,
   TimePicker,
   Note,
   NumberInput,
@@ -438,6 +439,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['MonthPicker', () => <MonthPicker initialValue={new Date(2026, 10, 1)} />],
   ['WeekPicker', () => <WeekPicker defaultMonth={new Date(2026, 10, 1)} />],
   ['YearPicker', () => <YearPicker initialValue={new Date(2026, 0, 1)} />],
+  ['TimeGrid', () => <TimeGrid initialValue="09:30" />],
   ['TimePicker', () => <TimePicker aria-label="Time" initialValue="09:30" />],
   ['Toggle', () => <Toggle />],
   [

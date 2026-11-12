@@ -674,6 +674,11 @@ export const components = [
     url: '/docs/hooks/use-toast'
   },
   {
+    name: 'TimeGrid',
+    url: '/docs/components/time-grid',
+    tag: 'New'
+  },
+  {
     name: 'TimePicker',
     url: '/docs/components/time-picker',
     tag: 'New'

@@ -602,6 +602,9 @@ export type { StatProps } from './Stat'
 export { default as Timeline } from './Timeline'
 export type { TimelineProps, TimelineItemProps } from './Timeline'
 
+export { default as TimeGrid } from './TimeGrid'
+export type { TimeGridProps } from './TimeGrid'
+
 export { default as TimePicker } from './TimePicker'
 export type { TimePickerProps } from './TimePicker'
 

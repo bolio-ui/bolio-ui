@@ -103,6 +103,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Textarea',
   'Themes',
   'Timeline',
+  'TimeGrid',
   'TimePicker',
   'Toggle',
   'Toolbar',

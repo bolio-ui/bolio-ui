@@ -5980,6 +5980,53 @@
     "path": "/docs/components/timeline#accessibility"
   },
   {
+    "title": "TimeGrid",
+    "component": true,
+    "path": "/docs/components/time-grid"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid General",
+    "component": false,
+    "path": "/docs/components/time-grid#general"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid Controlled",
+    "component": false,
+    "path": "/docs/components/time-grid#controlled"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid 12 hour clock and booked times",
+    "component": false,
+    "path": "/docs/components/time-grid#12-hour-clock-and-booked-times"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/time-grid#apis"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid Props",
+    "component": false,
+    "path": "/docs/components/time-grid#timegrid.props"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/time-grid#ref"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/time-grid#accessibility"
+  },
+  {
     "title": "TimePicker",
     "component": true,
     "path": "/docs/components/time-picker"

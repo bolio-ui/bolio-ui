@@ -712,6 +712,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'TimeGrid',
+            url: '/docs/components/time-grid',
+            group: 'Components'
+          },
+          {
             name: 'TimePicker',
             url: '/docs/components/time-picker',
             group: 'Components'

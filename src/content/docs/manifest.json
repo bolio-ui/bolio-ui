@@ -737,6 +737,11 @@
               "path": "/docs/components/timeline.mdx"
             },
             {
+              "title": "TimeGrid",
+              "keywords": "time grid, time slots, slots, appointment, booking, hours, schedule",
+              "path": "/docs/components/time-grid.mdx"
+            },
+            {
               "title": "TimePicker",
               "keywords": "time picker, time, hours, minutes, seconds, am pm, 12h, 24h, clock, input",
               "path": "/docs/components/time-picker.mdx"
