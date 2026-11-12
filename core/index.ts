@@ -225,6 +225,9 @@ export type {
   RatingPrecision
 } from './Rating'
 
+export { default as RollingNumber } from './RollingNumber'
+export type { RollingNumberProps } from './RollingNumber'
+
 export { default as Row } from './Row'
 export type { RowProps } from './Row'
 

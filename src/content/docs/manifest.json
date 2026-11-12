@@ -572,6 +572,11 @@
               "path": "/docs/components/rating.mdx"
             },
             {
+              "title": "RollingNumber",
+              "keywords": "rolling number, odometer, counter, animated number, digits, stat",
+              "path": "/docs/components/rolling-number.mdx"
+            },
+            {
               "title": "Row",
               "keywords": "row, flex, justify, align, gap, layout, columns",
               "path": "/docs/components/row.mdx"

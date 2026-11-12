@@ -70,6 +70,7 @@ const {
   Progress,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -330,6 +331,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
+  ['RollingNumber', (ref) => <RollingNumber ref={ref} value={1280} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
   ['ScrollArea', (ref) => <ScrollArea ref={ref}>Content</ScrollArea>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],

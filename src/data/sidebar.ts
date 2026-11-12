@@ -516,6 +516,11 @@ export const components = [
     url: '/docs/components/rating'
   },
   {
+    name: 'RollingNumber',
+    url: '/docs/components/rolling-number',
+    tag: 'New'
+  },
+  {
     name: 'Row',
     url: '/docs/components/row'
   },

@@ -67,6 +67,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Progress',
   'Radio',
   'Rating',
+  'RollingNumber',
   'Row',
   'ScaleContext',
   'ScalePropKeys',

@@ -542,6 +542,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'RollingNumber',
+            url: '/docs/components/rolling-number',
+            group: 'Components'
+          },
+          {
             name: 'Row',
             url: '/docs/components/row',
             group: 'Components'

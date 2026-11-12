@@ -68,6 +68,7 @@ const {
   Progress,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -338,6 +339,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Mark', () => <Mark highlight="a">Mark</Mark>],
   ['Rating', () => <Rating value={3} />],
+  ['RollingNumber', () => <RollingNumber value={1280} />],
   [
     'Row',
     () => (

@@ -4422,6 +4422,29 @@
     "path": "/docs/components/rating#accessibility"
   },
   {
+    "title": "RollingNumber",
+    "component": true,
+    "path": "/docs/components/rolling-number"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber General",
+    "component": false,
+    "path": "/docs/components/rolling-number#general"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Format",
+    "component": false,
+    "path": "/docs/components/rolling-number#format"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Props",
+    "component": false,
+    "path": "/docs/components/rolling-number#rollingnumber.props"
+  },
+  {
     "title": "Row",
     "component": true,
     "path": "/docs/components/row"
