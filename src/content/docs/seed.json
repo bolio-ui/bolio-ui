@@ -4296,6 +4296,53 @@
     "path": "/docs/components/progress#accessibility"
   },
   {
+    "title": "QuarterPicker",
+    "component": true,
+    "path": "/docs/components/quarter-picker"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker General",
+    "component": false,
+    "path": "/docs/components/quarter-picker#general"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Controlled",
+    "component": false,
+    "path": "/docs/components/quarter-picker#controlled"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Min and max",
+    "component": false,
+    "path": "/docs/components/quarter-picker#min-and-max"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/quarter-picker#apis"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Props",
+    "component": false,
+    "path": "/docs/components/quarter-picker#quarterpicker.props"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/quarter-picker#ref"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/quarter-picker#accessibility"
+  },
+  {
     "title": "RadarChart",
     "component": true,
     "path": "/docs/components/radar-chart"

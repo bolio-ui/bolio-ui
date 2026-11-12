@@ -547,6 +547,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'QuarterPicker',
+            url: '/docs/components/quarter-picker',
+            group: 'Components'
+          },
+          {
             name: 'RadarChart',
             url: '/docs/components/radar-chart',
             group: 'Components'

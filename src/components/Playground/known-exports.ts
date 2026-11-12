@@ -72,6 +72,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'PinInput',
   'Popover',
   'Progress',
+  'QuarterPicker',
   'Radio',
   'Rating',
   'RollingNumber',

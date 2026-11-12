@@ -73,6 +73,7 @@ const {
   PinInput,
   Popover,
   Progress,
+  QuarterPicker,
   Radio,
   Rating,
   RollingNumber,
@@ -338,6 +339,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Progress', () => <Progress value={30} />],
+  [
+    'QuarterPicker',
+    () => <QuarterPicker initialValue={new Date(2026, 3, 1)} />
+  ],
   [
     'Radio',
     () => (

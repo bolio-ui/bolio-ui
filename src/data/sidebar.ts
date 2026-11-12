@@ -522,6 +522,11 @@ export const components = [
     url: '/docs/components/progress'
   },
   {
+    name: 'QuarterPicker',
+    url: '/docs/components/quarter-picker',
+    tag: 'New'
+  },
+  {
     name: 'RadarChart',
     url: '/docs/components/radar-chart',
     tag: 'New'

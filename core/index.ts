@@ -231,6 +231,9 @@ export type { PopoverProps, PopoverItemProps } from './Popover'
 export { default as Progress } from './Progress'
 export type { ProgressProps } from './Progress'
 
+export { default as QuarterPicker } from './QuarterPicker'
+export type { QuarterPickerProps } from './QuarterPicker'
+
 export { default as Radio } from './Radio'
 export type {
   RadioProps,

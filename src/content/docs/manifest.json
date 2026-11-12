@@ -577,6 +577,11 @@
               "path": "/docs/components/progress.mdx"
             },
             {
+              "title": "QuarterPicker",
+              "keywords": "quarter picker, quarter, quarterly, fiscal, financial, report period",
+              "path": "/docs/components/quarter-picker.mdx"
+            },
+            {
               "title": "RadarChart",
               "keywords": "radar chart, spider chart, web, compare, chart, data visualization, recharts",
               "path": "/docs/components/radar-chart.mdx"
