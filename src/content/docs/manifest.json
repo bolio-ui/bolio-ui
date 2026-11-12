@@ -427,6 +427,11 @@
               "path": "/docs/components/gauge-chart.mdx"
             },
             {
+              "title": "FileInput",
+              "keywords": "file input, file, upload, attachment, select file, field",
+              "path": "/docs/components/file-input.mdx"
+            },
+            {
               "title": "Grid",
               "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
               "path": "/docs/components/grid.mdx"

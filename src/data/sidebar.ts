@@ -384,6 +384,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'FileInput',
+    url: '/docs/components/file-input',
+    tag: 'New'
+  },
+  {
     name: 'Grid',
     url: '/docs/components/grid'
   },

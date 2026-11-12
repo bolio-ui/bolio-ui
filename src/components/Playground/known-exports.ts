@@ -38,6 +38,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'EmojiPicker',
   'EmptyState',
   'Fieldset',
+  'FileInput',
   'GaugeChart',
   'Grid',
   'Heatmap',

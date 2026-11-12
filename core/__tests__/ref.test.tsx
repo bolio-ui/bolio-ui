@@ -48,6 +48,7 @@ const {
   Drawer,
   Dropzone,
   Fieldset,
+  FileInput,
   Grid,
   Image,
   ImageZoom,
@@ -240,6 +241,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     (ref) => <Dropzone ref={ref} aria-label="Attachments" />,
     'INPUT'
   ],
+  ['FileInput', (ref) => <FileInput ref={ref} aria-label="Upload" />],
   [
     'Fieldset',
     (ref) => (

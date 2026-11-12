@@ -111,6 +111,9 @@ export type {
   FileRejectionReason
 } from './Dropzone'
 
+export { default as FileInput } from './FileInput'
+export type { FileInputProps, FileInputValue } from './FileInput'
+
 export { default as Fieldset } from './Fieldset'
 export type {
   FieldsetProps,

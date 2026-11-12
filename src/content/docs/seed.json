@@ -2525,6 +2525,35 @@
     "path": "/docs/components/gauge-chart#accessibility"
   },
   {
+    "title": "FileInput",
+    "component": true,
+    "path": "/docs/components/file-input"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput General",
+    "component": false,
+    "path": "/docs/components/file-input#general"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Multiple",
+    "component": false,
+    "path": "/docs/components/file-input#multiple"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Accept",
+    "component": false,
+    "path": "/docs/components/file-input#accept"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Props",
+    "component": false,
+    "path": "/docs/components/file-input#fileinput.props"
+  },
+  {
     "title": "Grid",
     "component": true,
     "path": "/docs/components/grid"

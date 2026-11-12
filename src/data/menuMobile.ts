@@ -387,6 +387,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'FileInput',
+            url: '/docs/components/file-input',
+            group: 'Components'
+          },
+          {
             name: 'Grid',
             url: '/docs/components/grid',
             group: 'Components'
