@@ -6,6 +6,7 @@ import { ButtonGroupContext } from './ButtonGroupContext'
 import type { BolioUIThemesPalette } from '../Themes/Presets'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { getButtonLightColors } from '../Button/styles'
 import styles from './ButtonGroup.module.css'
 
 interface Props {
@@ -33,6 +34,15 @@ const getGroupBorderColors = (
 ): string => {
   const { ghost, type } = props
 
+  // a light group keeps the soft border of its buttons instead of a seam
+  const light = !ghost && type?.endsWith('-light')
+  if (light) {
+    const lightBorder = getButtonLightColors(
+      palette,
+      type.replace('-light', '') as ButtonTypes
+    )?.border
+    if (lightBorder) return lightBorder
+  }
   if (!ghost && type !== 'default') return palette.background
   const colors: { [key in ButtonTypes]?: string } = {
     // default: palette.accents_3,
