@@ -384,6 +384,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'FileInput',
+    url: '/docs/components/file-input',
+    tag: 'New'
+  },
+  {
     name: 'Grid',
     url: '/docs/components/grid'
   },
@@ -483,6 +488,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'PhoneInput',
+    url: '/docs/components/phone-input',
+    tag: 'New'
+  },
+  {
     name: 'Pin Input',
     url: '/docs/components/pin-input',
     tag: 'New'
@@ -514,6 +524,11 @@ export const components = [
   {
     name: 'Rating',
     url: '/docs/components/rating'
+  },
+  {
+    name: 'RollingNumber',
+    url: '/docs/components/rolling-number',
+    tag: 'New'
   },
   {
     name: 'Row',
@@ -686,12 +701,22 @@ export const hooks = [
     icon: 'MousePointer'
   },
   {
+    name: 'useActiveElement',
+    url: '/docs/hooks/use-active-element',
+    tag: 'New'
+  },
+  {
     name: 'useBodyScroll',
     url: '/docs/hooks/use-body-scroll'
   },
   {
     name: 'useClickAway',
     url: '/docs/hooks/use-click-away'
+  },
+  {
+    name: 'useBrowserLanguage',
+    url: '/docs/hooks/use-browser-language',
+    tag: 'New'
   },
   {
     name: 'useCollapse',
@@ -985,6 +1010,11 @@ export const hooks = [
   {
     name: 'useHeadroom',
     url: '/docs/hooks/use-headroom'
+  },
+  {
+    name: 'useHotkeys',
+    url: '/docs/hooks/use-hotkeys',
+    tag: 'New'
   },
   {
     name: 'useIdle',

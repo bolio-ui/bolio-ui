@@ -46,6 +46,7 @@ const {
   Drawer,
   Dropzone,
   Fieldset,
+  FileInput,
   Grid,
   Image,
   ImageZoom,
@@ -63,11 +64,13 @@ const {
   NumberInput,
   Page,
   Pagination,
+  PhoneInput,
   PinInput,
   Popover,
   Progress,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -266,6 +269,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Dropzone', () => <Dropzone aria-label="Attachments" />],
+  ['FileInput', () => <FileInput aria-label="Upload" />],
   [
     'Fieldset',
     () => (
@@ -317,6 +321,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Pagination', () => <Pagination count={5} initialPage={1} />],
+  ['PhoneInput', () => <PhoneInput initialValue="+5511999999999" />],
   ['PinInput', () => <PinInput aria-label="Code" numeric initialValue="12" />],
   [
     'Popover',
@@ -338,6 +343,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Mark', () => <Mark highlight="a">Mark</Mark>],
   ['Rating', () => <Rating value={3} />],
+  ['RollingNumber', () => <RollingNumber value={1280} />],
   [
     'Row',
     () => (

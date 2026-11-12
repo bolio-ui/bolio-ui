@@ -111,6 +111,9 @@ export type {
   FileRejectionReason
 } from './Dropzone'
 
+export { default as FileInput } from './FileInput'
+export type { FileInputProps, FileInputValue } from './FileInput'
+
 export { default as Fieldset } from './Fieldset'
 export type {
   FieldsetProps,
@@ -194,6 +197,9 @@ export type {
   PageFooterProps
 } from './Page'
 
+export { default as PhoneInput, phoneCountries } from './PhoneInput'
+export type { PhoneInputProps, PhoneCountry } from './PhoneInput'
+
 export { default as Pagination } from './Pagination'
 export type {
   PaginationProps,
@@ -224,6 +230,9 @@ export type {
   RatingVariants,
   RatingPrecision
 } from './Rating'
+
+export { default as RollingNumber } from './RollingNumber'
+export type { RollingNumberProps } from './RollingNumber'
 
 export { default as Row } from './Row'
 export type { RowProps } from './Row'
@@ -363,6 +372,7 @@ export type { AllThemesConfig } from './use-all-themes'
 export { default as useToasts } from './use-toasts'
 export type { Toast, ToastInput, ToastAction, ToastLayout } from './use-toasts'
 
+export { default as useActiveElement } from './use-active-element'
 export { default as useBodyScroll } from './use-body-scroll'
 export type { BodyScrollOptions } from './use-body-scroll'
 
@@ -380,6 +390,7 @@ export { default as useModal } from './use-modal'
 export { default as useTabs } from './use-tabs'
 export { default as useClickAway } from './use-click-away'
 export { default as useCurrentState } from './use-current-state'
+export { default as useBrowserLanguage } from './use-browser-language'
 export { default as useCollapse } from './use-collapse'
 export type { UseCollapseOptions, UseCollapseResult } from './use-collapse'
 export { default as useDebouncedState } from './use-debounced-state'
@@ -498,6 +509,8 @@ export { default as useInterval } from './use-interval'
 export type { UseIntervalOptions, UseIntervalResult } from './use-interval'
 export { default as useInViewport } from './use-in-viewport'
 export type { UseInViewportResult } from './use-in-viewport'
+export { default as useHotkeys } from './use-hotkeys'
+export type { HotkeyItem, UseHotkeysOptions } from './use-hotkeys'
 export { default as useIsFirstRender } from './use-is-first-render'
 export { default as useIsomorphicEffect } from './use-isomorphic-effect'
 export { default as useListState } from './use-list-state'

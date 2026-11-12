@@ -427,6 +427,11 @@
               "path": "/docs/components/gauge-chart.mdx"
             },
             {
+              "title": "FileInput",
+              "keywords": "file input, file, upload, attachment, select file, field",
+              "path": "/docs/components/file-input.mdx"
+            },
+            {
               "title": "Grid",
               "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
               "path": "/docs/components/grid.mdx"
@@ -537,6 +542,11 @@
               "path": "/docs/components/pie-chart.mdx"
             },
             {
+              "title": "PhoneInput",
+              "keywords": "phone input, phone, telephone, tel, country code, dial code, number",
+              "path": "/docs/components/phone-input.mdx"
+            },
+            {
               "title": "Pin Input",
               "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
               "path": "/docs/components/pin-input.mdx"
@@ -570,6 +580,11 @@
               "title": "Rating",
               "keywords": "rating, types, custom amount, icon, vote",
               "path": "/docs/components/rating.mdx"
+            },
+            {
+              "title": "RollingNumber",
+              "keywords": "rolling number, odometer, counter, animated number, digits, stat",
+              "path": "/docs/components/rolling-number.mdx"
             },
             {
               "title": "Row",
@@ -750,6 +765,11 @@
           "open": true,
           "routes": [
             {
+              "title": "useActiveElement",
+              "keywords": "useActiveElement",
+              "path": "/docs/hooks/use-active-element.mdx"
+            },
+            {
               "title": "useBodyScroll",
               "keywords": "useBodyScroll",
               "path": "/docs/hooks/use-body-scroll.mdx"
@@ -768,6 +788,11 @@
               "title": "useClipboard",
               "keywords": "useClipboard",
               "path": "/docs/hooks/use-clipboard.mdx"
+            },
+            {
+              "title": "useBrowserLanguage",
+              "keywords": "useBrowserLanguage",
+              "path": "/docs/hooks/use-browser-language.mdx"
             },
             {
               "title": "useCollapse",
@@ -903,6 +928,11 @@
               "title": "useHeadroom",
               "keywords": "useHeadroom",
               "path": "/docs/hooks/use-headroom.mdx"
+            },
+            {
+              "title": "useHotkeys",
+              "keywords": "useHotkeys",
+              "path": "/docs/hooks/use-hotkeys.mdx"
             },
             {
               "title": "useHover",

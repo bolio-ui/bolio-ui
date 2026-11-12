@@ -1,0 +1,44 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Input, Text, useActiveElement } from 'core'
+
+export const meta = {
+  title: 'useActiveElement',
+  description: 'Read the element that has focus right now.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 109
+}
+
+## useActiveElement
+
+Read the element that has focus right now.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Focus the input, then click elsewhere."
+  scope={{ Input, Text, useActiveElement }}
+  code={`
+() => {
+  const active = useActiveElement()
+  return (
+    <>
+      <Input aria-label="Name" placeholder="Focus me" />
+      <Text>Focused: {active ? active.tagName.toLowerCase() : 'nothing'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-active-element.mdx">
+<Attributes.Title>useActiveElement</Attributes.Title>
+
+```ts
+const useActiveElement = () => Element | null
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -2525,6 +2525,35 @@
     "path": "/docs/components/gauge-chart#accessibility"
   },
   {
+    "title": "FileInput",
+    "component": true,
+    "path": "/docs/components/file-input"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput General",
+    "component": false,
+    "path": "/docs/components/file-input#general"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Multiple",
+    "component": false,
+    "path": "/docs/components/file-input#multiple"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Accept",
+    "component": false,
+    "path": "/docs/components/file-input#accept"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Props",
+    "component": false,
+    "path": "/docs/components/file-input#fileinput.props"
+  },
+  {
     "title": "Grid",
     "component": true,
     "path": "/docs/components/grid"
@@ -3961,6 +3990,35 @@
     "path": "/docs/components/pie-chart#accessibility"
   },
   {
+    "title": "PhoneInput",
+    "component": true,
+    "path": "/docs/components/phone-input"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput General",
+    "component": false,
+    "path": "/docs/components/phone-input#general"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Controlled",
+    "component": false,
+    "path": "/docs/components/phone-input#controlled"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Countries",
+    "component": false,
+    "path": "/docs/components/phone-input#countries"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Props",
+    "component": false,
+    "path": "/docs/components/phone-input#phoneinput.props"
+  },
+  {
     "title": "Pin Input",
     "component": true,
     "path": "/docs/components/pin-input"
@@ -4420,6 +4478,29 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/rating#accessibility"
+  },
+  {
+    "title": "RollingNumber",
+    "component": true,
+    "path": "/docs/components/rolling-number"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber General",
+    "component": false,
+    "path": "/docs/components/rolling-number#general"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Format",
+    "component": false,
+    "path": "/docs/components/rolling-number#format"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Props",
+    "component": false,
+    "path": "/docs/components/rolling-number#rollingnumber.props"
   },
   {
     "title": "Row",
@@ -6207,6 +6288,23 @@
     "path": "/docs/components/waffle-chart#accessibility"
   },
   {
+    "title": "useActiveElement",
+    "component": true,
+    "path": "/docs/hooks/use-active-element"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "useActiveElement General",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#general"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#apis"
+  },
+  {
     "title": "useBodyScroll",
     "component": true,
     "path": "/docs/hooks/use-body-scroll"
@@ -6285,6 +6383,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-clipboard#apis"
+  },
+  {
+    "title": "useBrowserLanguage",
+    "component": true,
+    "path": "/docs/hooks/use-browser-language"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "useBrowserLanguage General",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#general"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#apis"
   },
   {
     "title": "useCollapse",
@@ -6786,6 +6901,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-headroom#apis"
+  },
+  {
+    "title": "useHotkeys",
+    "component": true,
+    "path": "/docs/hooks/use-hotkeys"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "useHotkeys General",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#general"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#apis"
   },
   {
     "title": "useHover",

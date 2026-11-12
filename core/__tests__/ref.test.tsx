@@ -48,6 +48,7 @@ const {
   Drawer,
   Dropzone,
   Fieldset,
+  FileInput,
   Grid,
   Image,
   ImageZoom,
@@ -65,11 +66,13 @@ const {
   NumberInput,
   Page,
   Pagination,
+  PhoneInput,
   PinInput,
   Popover,
   Progress,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -239,6 +242,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     (ref) => <Dropzone ref={ref} aria-label="Attachments" />,
     'INPUT'
   ],
+  ['FileInput', (ref) => <FileInput ref={ref} aria-label="Upload" />],
   [
     'Fieldset',
     (ref) => (
@@ -300,6 +304,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Pagination', (ref) => <Pagination ref={ref} count={5} initialPage={1} />],
+  ['PhoneInput', (ref) => <PhoneInput ref={ref} />, 'DIV'],
   ['PinInput', (ref) => <PinInput ref={ref} aria-label="Code" />, 'DIV'],
   [
     'Popover',
@@ -330,6 +335,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
+  ['RollingNumber', (ref) => <RollingNumber ref={ref} value={1280} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
   ['ScrollArea', (ref) => <ScrollArea ref={ref}>Content</ScrollArea>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],

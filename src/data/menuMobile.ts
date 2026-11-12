@@ -387,6 +387,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'FileInput',
+            url: '/docs/components/file-input',
+            group: 'Components'
+          },
+          {
             name: 'Grid',
             url: '/docs/components/grid',
             group: 'Components'
@@ -507,6 +512,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'PhoneInput',
+            url: '/docs/components/phone-input',
+            group: 'Components'
+          },
+          {
             name: 'Pin Input',
             url: '/docs/components/pin-input',
             group: 'Components'
@@ -539,6 +549,11 @@ export const menuMobile = [
           {
             name: 'Rating',
             url: '/docs/components/rating',
+            group: 'Components'
+          },
+          {
+            name: 'RollingNumber',
+            url: '/docs/components/rolling-number',
             group: 'Components'
           },
           {
