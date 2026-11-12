@@ -1878,6 +1878,12 @@
   },
   {
     "head": "DateTimePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-time-picker#apis"
+  },
+  {
+    "head": "DateTimePicker",
     "title": "DateTimePicker Props",
     "component": false,
     "path": "/docs/components/date-time-picker#datetimepicker.props"
@@ -2575,6 +2581,12 @@
     "title": "FileInput Accept",
     "component": false,
     "path": "/docs/components/file-input#accept"
+  },
+  {
+    "head": "FileInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/file-input#apis"
   },
   {
     "head": "FileInput",
@@ -4043,6 +4055,12 @@
   },
   {
     "head": "PhoneInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/phone-input#apis"
+  },
+  {
+    "head": "PhoneInput",
     "title": "PhoneInput Props",
     "component": false,
     "path": "/docs/components/phone-input#phoneinput.props"
@@ -4524,6 +4542,12 @@
     "title": "RollingNumber Format",
     "component": false,
     "path": "/docs/components/rolling-number#format"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/rolling-number#apis"
   },
   {
     "head": "RollingNumber",
@@ -6262,6 +6286,53 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/treemap#accessibility"
+  },
+  {
+    "title": "YearPicker",
+    "component": true,
+    "path": "/docs/components/year-picker"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker General",
+    "component": false,
+    "path": "/docs/components/year-picker#general"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Controlled",
+    "component": false,
+    "path": "/docs/components/year-picker#controlled"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Min and max",
+    "component": false,
+    "path": "/docs/components/year-picker#min-and-max"
+  },
+  {
+    "head": "YearPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/year-picker#apis"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Props",
+    "component": false,
+    "path": "/docs/components/year-picker#yearpicker.props"
+  },
+  {
+    "head": "YearPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/year-picker#ref"
+  },
+  {
+    "head": "YearPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/year-picker#accessibility"
   },
   {
     "title": "WaffleChart",

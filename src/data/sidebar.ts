@@ -693,6 +693,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'YearPicker',
+    url: '/docs/components/year-picker',
+    tag: 'New'
+  },
+  {
     name: 'WaffleChart',
     url: '/docs/components/waffle-chart',
     tag: 'New'

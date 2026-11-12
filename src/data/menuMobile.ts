@@ -732,6 +732,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'YearPicker',
+            url: '/docs/components/year-picker',
+            group: 'Components'
+          },
+          {
             name: 'WaffleChart',
             url: '/docs/components/waffle-chart',
             group: 'Components'

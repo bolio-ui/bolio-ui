@@ -1,0 +1,96 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { YearPicker, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'YearPicker',
+  description: 'A grid of years to pick one, in pages of twelve.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 112
+}
+
+## YearPicker
+
+A grid of years to pick one, in pages of twelve. Use it for birth years, fiscal years and any date where the month does not matter.
+
+<Playground
+  desc="Click a year, or move with the arrow keys. `onChange` receives a `Date` on January 1 of the year."
+  scope={{ YearPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <YearPicker initialValue={new Date(2026, 0, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`."
+  scope={{ YearPicker, Grid, Text }}
+  code={`
+() => {
+  const [year, setYear] = React.useState(null)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <YearPicker value={year} onChange={setYear} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{year ? year.getFullYear() : 'No year yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="Years outside `min` and `max` are disabled, and so are the page buttons that would lead only to them."
+  scope={{ YearPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <YearPicker min={new Date(2022, 0, 1)} max={new Date(2028, 0, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/year-picker.mdx">
+<Attributes.Title>YearPicker.Props</Attributes.Title>
+
+| Attribute         | Description                                  | Type                          | Accepted values | Default          |
+| ----------------- | -------------------------------------------- | ----------------------------- | --------------- | ---------------- |
+| **value**         | selected year, to control the component      | <Code>Date &#124; null</Code> | -               | -                |
+| **initialValue**  | selected year at the start                   | <Code>Date &#124; null</Code> | -               | `null`           |
+| **onChange**      | called with January 1 of the chosen year     | `(year: Date) => void`        | -               | -                |
+| **min**           | first year that can be picked                | `Date`                        | -               | -                |
+| **max**           | last year that can be picked                 | `Date`                        | -               | -                |
+| **autoFocus**     | focus the year on mount                      | `boolean`                     | -               | `false`          |
+| **previousLabel** | name of the previous page button             | `string`                      | -               | `Previous years` |
+| **nextLabel**     | name of the next page button                 | `string`                      | -               | `Next years`     |
+| ...               | native props, passed to the root             | `HTMLAttributes`              | `'id', 'className', ...` | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The years are buttons inside a group named by the range of the page, and `aria-pressed` tells which is selected. Only the focused year is in the tab order.
+
+| Key                  | Action                                  |
+| -------------------- | --------------------------------------- |
+| Arrow Left and Right | Previous and next year, across pages    |
+| Arrow Up and Down    | Three years back and forward            |
+| Home and End         | First and last year of the page         |
+| Page Up and Down     | Previous and next page                  |
+| Enter and Space      | Pick the focused year                   |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

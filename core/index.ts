@@ -186,6 +186,9 @@ export type {
 export { default as MonthPicker } from './MonthPicker'
 export type { MonthPickerProps } from './MonthPicker'
 
+export { default as YearPicker } from './YearPicker'
+export type { YearPickerProps } from './YearPicker'
+
 export { default as Note } from './Note'
 export type { NoteProps } from './Note'
 

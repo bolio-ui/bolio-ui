@@ -757,6 +757,11 @@
               "path": "/docs/components/treemap.mdx"
             },
             {
+              "title": "YearPicker",
+              "keywords": "year picker, year, years, fiscal year, birth year",
+              "path": "/docs/components/year-picker.mdx"
+            },
+            {
               "title": "WaffleChart",
               "keywords": "waffle chart, squares, share, proportion, unit chart, data visualization",
               "path": "/docs/components/waffle-chart.mdx"
