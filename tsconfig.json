@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
+      "core": ["./core"],
+      "core/*": ["./core/*"],
+      "src/*": ["./src/*"],
       "prism-react-renderer": [
-        "node_modules/prism-react-renderer/dist/index.d.ts"
+        "./node_modules/prism-react-renderer/dist/index.d.ts"
       ]
     },
     "target": "es6",
