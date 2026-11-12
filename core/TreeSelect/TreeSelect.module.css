@@ -1,0 +1,78 @@
+.root {
+  position: relative;
+  display: inline-block;
+  font-size: var(--tree-select-font-size);
+  width: var(--tree-select-width);
+  max-width: 100%;
+  padding: var(--tree-select-padding-top) var(--tree-select-padding-right)
+    var(--tree-select-padding-bottom) var(--tree-select-padding-left);
+  margin: var(--tree-select-margin-top) var(--tree-select-margin-right)
+    var(--tree-select-margin-bottom) var(--tree-select-margin-left);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--tree-select-height);
+  padding: 0 0.5em 0 0.875em;
+  font: inherit;
+  text-align: left;
+  color: var(--tree-select-color);
+  cursor: pointer;
+  background-color: var(--tree-select-bg);
+  border: 1px solid var(--tree-select-border);
+  border-radius: var(--tree-select-radius);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field:hover:not(:disabled) {
+  background-color: var(--tree-select-hover-bg);
+  border-color: var(--tree-select-hover-border);
+}
+
+.field:focus-visible {
+  outline: none;
+  border-color: var(--tree-select-focus-border);
+}
+
+.field:disabled {
+  cursor: not-allowed;
+}
+
+.value,
+.placeholder {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--tree-select-placeholder);
+}
+
+.chevron {
+  flex: none;
+  color: var(--tree-select-placeholder);
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1100;
+  box-sizing: border-box;
+  min-width: 100%;
+  max-height: 18em;
+  padding: 0.5em;
+  overflow: auto;
+  background-color: var(--tree-select-popup-bg);
+  border: 1px solid var(--tree-select-popup-border);
+  border-radius: var(--tree-select-popup-radius);
+  box-shadow: var(--tree-select-shadow);
+}

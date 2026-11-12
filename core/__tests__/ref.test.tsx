@@ -104,7 +104,8 @@ const {
   Toolbar,
   Tooltip,
   Tour,
-  Tree
+  Tree,
+  TreeSelect
 } = Bolio
 
 // an element, or the handle of a component that has none (Select)
@@ -446,6 +447,17 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
     ),
     'UL'
+  ],
+  [
+    'TreeSelect',
+    (ref) => (
+      <TreeSelect
+        ref={ref}
+        aria-label="File"
+        data={[{ value: 'a', label: 'A' }]}
+      />
+    ),
+    'BUTTON'
   ],
   ['Affix', (ref) => <Affix ref={ref}>Pinned</Affix>],
   ['Burger', (ref) => <Burger ref={ref} label="Open menu" />, 'BUTTON'],

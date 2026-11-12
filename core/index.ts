@@ -381,6 +381,9 @@ export type { TourProps, TourStep } from './Tour'
 export { default as Tree } from './Tree'
 export type { TreeProps, TreeNodeData } from './Tree'
 
+export { default as TreeSelect } from './TreeSelect'
+export type { TreeSelectProps } from './TreeSelect'
+
 export { default as Toggle } from './Toggle'
 export type { ToggleProps } from './Toggle'
 

@@ -752,6 +752,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'TreeSelect',
+            url: '/docs/components/tree-select',
+            group: 'Components'
+          },
+          {
             name: 'Treemap',
             url: '/docs/components/treemap',
             group: 'Components'

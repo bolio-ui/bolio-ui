@@ -777,6 +777,11 @@
               "path": "/docs/components/tree.mdx"
             },
             {
+              "title": "TreeSelect",
+              "keywords": "tree select, tree, nested select, folder, category, hierarchy, dropdown",
+              "path": "/docs/components/tree-select.mdx"
+            },
+            {
               "title": "Treemap",
               "keywords": "treemap, tree map, rectangles, hierarchy, proportions, chart, recharts",
               "path": "/docs/components/treemap.mdx"

@@ -6411,6 +6411,47 @@
     "path": "/docs/components/tree#accessibility"
   },
   {
+    "title": "TreeSelect",
+    "component": true,
+    "path": "/docs/components/tree-select"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect General",
+    "component": false,
+    "path": "/docs/components/tree-select#general"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect Controlled",
+    "component": false,
+    "path": "/docs/components/tree-select#controlled"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tree-select#apis"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect Props",
+    "component": false,
+    "path": "/docs/components/tree-select#treeselect.props"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tree-select#ref"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tree-select#accessibility"
+  },
+  {
     "title": "Treemap",
     "component": true,
     "path": "/docs/components/treemap"

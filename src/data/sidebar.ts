@@ -713,6 +713,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'TreeSelect',
+    url: '/docs/components/tree-select',
+    tag: 'New'
+  },
+  {
     name: 'Treemap',
     url: '/docs/components/treemap',
     tag: 'New'

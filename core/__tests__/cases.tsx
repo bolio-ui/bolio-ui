@@ -102,7 +102,8 @@ const {
   Toolbar,
   Tooltip,
   Tour,
-  Tree
+  Tree,
+  TreeSelect
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
@@ -471,6 +472,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
           { value: 'a', label: 'A', children: [{ value: 'b', label: 'B' }] }
         ]}
         initialExpanded={['a']}
+      />
+    )
+  ],
+  [
+    'TreeSelect',
+    () => (
+      <TreeSelect
+        aria-label="File"
+        data={[{ value: 'a', label: 'A' }]}
+        initialValue="a"
       />
     )
   ],

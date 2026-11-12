@@ -110,6 +110,7 @@ export const CORE_EXPORT_NAMES = new Set([
   'Toolbar',
   'Tooltip',
   'Tree',
+  'TreeSelect',
   'WaffleChart',
   'useAllThemes',
   'useBodyScroll',
