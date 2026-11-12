@@ -1,0 +1,23 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tabs {
+  display: flex;
+  overflow-x: auto;
+}
+
+.surface {
+  padding: 32px;
+  border: 1px solid;
+  border-radius: 16px;
+}

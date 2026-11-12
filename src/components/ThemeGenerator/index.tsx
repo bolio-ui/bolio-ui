@@ -4,6 +4,7 @@ import {
   BolioUIThemes,
   Button,
   ButtonProps,
+  SegmentedControl,
   Snippet,
   Text,
   Themes,
@@ -12,6 +13,14 @@ import {
   useTheme,
   useToasts
 } from 'core'
+import { TABS, Tab } from 'src/components/ThemeGallery/Examples'
+import {
+  BASES,
+  FONTS,
+  neutralsFor,
+  OptionSelect,
+  RADII
+} from 'src/components/ThemeGallery/options'
 import { track } from 'src/utils/gtag'
 import styles from './ThemeGenerator.module.css'
 
@@ -360,10 +369,7 @@ const ColorField: React.FC<{
 
 // Shared box that carries the current theme's background/foreground/border,
 // so nested previews read correctly no matter what page theme sits behind them.
-const ThemeBox: React.FC<React.PropsWithChildren<{ label: string }>> = ({
-  label,
-  children
-}) => {
+const ThemeBox: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   const theme = useTheme()
 
   return (
@@ -375,9 +381,6 @@ const ThemeBox: React.FC<React.PropsWithChildren<{ label: string }>> = ({
         borderColor: theme.palette.border
       }}
     >
-      <Text small style={{ color: theme.palette.accents_5 }}>
-        {label}
-      </Text>
       {children}
     </div>
   )
@@ -433,6 +436,47 @@ const VariantsPreview: React.FC = () => {
   )
 }
 
+// One preview box with its own Light/Dark toggle, starting on the theme the
+// site is showing, so each section switches mode on its own.
+const ModePreview: React.FC<
+  React.PropsWithChildren<{
+    heading: string
+    lightTheme: BolioUIThemes
+    darkTheme: BolioUIThemes
+    extra?: React.ReactNode
+  }>
+> = ({ heading, lightTheme, darkTheme, extra, children }) => {
+  const theme = useTheme()
+  const [mode, setMode] = useState<'light' | 'dark'>(
+    theme.type === 'dark' ? 'dark' : 'light'
+  )
+
+  return (
+    <div className={styles.section}>
+      <div className={styles.codeHeader}>
+        <SectionHeading>{heading}</SectionHeading>
+        <SegmentedControl
+          value={mode}
+          onChange={(value) => setMode(value as 'light' | 'dark')}
+          aria-label="Preview mode"
+        >
+          <SegmentedControl.Item value="light">Light</SegmentedControl.Item>
+          <SegmentedControl.Item value="dark">Dark</SegmentedControl.Item>
+        </SegmentedControl>
+      </div>
+      {extra}
+      <div className={styles.variantsPreview}>
+        <BolioUIProvider
+          themes={[mode === 'dark' ? darkTheme : lightTheme]}
+          themeType={`theme-generator-preview-${mode}`}
+        >
+          <ThemeBox>{children}</ThemeBox>
+        </BolioUIProvider>
+      </div>
+    </div>
+  )
+}
+
 interface ThemeGeneratorProps {
   // Trims the heavier sections (variants preview, usage code) and shrinks the
   // shade strips, for embedding inline in a docs page instead of a full one.
@@ -446,6 +490,10 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
 
   const [primary, setPrimary] = useState(theme.palette.primary)
   const [secondary, setSecondary] = useState(theme.palette.secondary)
+  const [base, setBase] = useState('default')
+  const [font, setFont] = useState('inter')
+  const [radius, setRadius] = useState('medium')
+  const [tab, setTab] = useState<Tab>('components')
 
   // A preset or a shared link can set both colors at once, so state updates
   // don't race the query-string sync effect below.
@@ -462,6 +510,13 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
     ) {
       setSecondary(querySecondary.toUpperCase())
     }
+    const pick = (name: string, options: Record<string, unknown>) => {
+      const value = query.get(name)
+      return value && value in options ? value : undefined
+    }
+    setBase((prev) => pick('base', BASES) ?? prev)
+    setFont((prev) => pick('font', FONTS) ?? prev)
+    setRadius((prev) => pick('radius', RADII) ?? prev)
     // Only read the query string once, when the page lands with one.
   }, [])
 
@@ -475,23 +530,35 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
     [primary, secondary]
   )
 
+  const options = useMemo(
+    () => ({
+      font: FONTS[font] ? { sans: FONTS[font] } : undefined,
+      layout: { radius: `${RADII[radius]}px` }
+    }),
+    [font, radius]
+  )
+
   const lightPreviewTheme = useMemo<BolioUIThemes>(
     () =>
       Themes.createFromLight({
         type: 'theme-generator-preview-light',
-        palette
+        palette: { ...neutralsFor(BASES[base], false), ...palette },
+        ...options
       }),
-    [palette]
+    [palette, base, options]
   )
 
   const darkPreviewTheme = useMemo<BolioUIThemes>(
     () =>
       Themes.createFromDark({
         type: 'theme-generator-preview-dark',
-        palette
+        palette: { ...neutralsFor(BASES[base], true), ...palette },
+        ...options
       }),
-    [palette]
+    [palette, base, options]
   )
+
+  const Content = TABS[tab][1]
 
   const code = useMemo(
     () => [
@@ -507,17 +574,25 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
       `    secondary: '${palette.secondary}',`,
       `    secondaryLighter: '${palette.secondaryLighter}',`,
       `    secondaryLight: '${palette.secondaryLight}',`,
-      `    secondaryDark: '${palette.secondaryDark}'`,
-      '  }',
+      `    secondaryDark: '${palette.secondaryDark}',`,
+      ...Object.entries(neutralsFor(BASES[base], false)).map(
+        ([token, hex]) => `    ${token}: '${hex}',`
+      ),
+      '  },',
+      ...(FONTS[font] ? [`  font: { sans: '${FONTS[font]}' },`] : []),
+      `  layout: { radius: '${RADII[radius]}px' }`,
       '})'
     ],
-    [palette]
+    [palette, base, font, radius]
   )
 
   const copyUrl = () => {
     const url = new URL(window.location.href)
     url.searchParams.set('primary', primary)
     url.searchParams.set('secondary', secondary)
+    url.searchParams.set('base', base)
+    url.searchParams.set('font', font)
+    url.searchParams.set('radius', radius)
     copy(url.toString())
     track('copy_theme', { kind: 'url' })
     setToast({ text: 'Link copied!', type: 'success' })
@@ -549,6 +624,31 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
           onChange={setSecondary}
         />
         {!compact && (
+          <>
+            {(
+              [
+                ['Base', base, BASES, setBase],
+                ['Font family', font, FONTS, setFont],
+                ['Radius', radius, RADII, setRadius]
+              ] as const
+            ).map(([label, value, source, set]) => (
+              <div
+                key={label}
+                style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+              >
+                <Text small my={0} style={{ color: theme.palette.accents_5 }}>
+                  {label}
+                </Text>
+                <OptionSelect
+                  value={value}
+                  options={Object.keys(source)}
+                  onChange={set}
+                />
+              </div>
+            ))}
+          </>
+        )}
+        {!compact && (
           <Button auto scale={0.75} onClick={copyUrl}>
             Copy URL
           </Button>
@@ -577,6 +677,29 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
         </div>
       </div>
 
+      {!compact && (
+        <ModePreview
+          heading="Examples"
+          lightTheme={lightPreviewTheme}
+          darkTheme={darkPreviewTheme}
+          extra={
+            <SegmentedControl
+              value={tab}
+              onChange={(value) => setTab(value as Tab)}
+              aria-label="Example"
+            >
+              {(Object.keys(TABS) as Array<Tab>).map((key) => (
+                <SegmentedControl.Item key={key} value={key}>
+                  {TABS[key][0]}
+                </SegmentedControl.Item>
+              ))}
+            </SegmentedControl>
+          }
+        >
+          <Content />
+        </ModePreview>
+      )}
+
       <div className={styles.section}>
         <SectionHeading>Shades</SectionHeading>
         <div className={styles.shadeStrips}>
@@ -586,27 +709,13 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
       </div>
 
       {!compact && (
-        <div className={styles.section}>
-          <SectionHeading>Variants preview</SectionHeading>
-          <div className={styles.variantsPreview}>
-            <BolioUIProvider
-              themes={[lightPreviewTheme]}
-              themeType="theme-generator-preview-light"
-            >
-              <ThemeBox label="Light">
-                <VariantsPreview />
-              </ThemeBox>
-            </BolioUIProvider>
-            <BolioUIProvider
-              themes={[darkPreviewTheme]}
-              themeType="theme-generator-preview-dark"
-            >
-              <ThemeBox label="Dark">
-                <VariantsPreview />
-              </ThemeBox>
-            </BolioUIProvider>
-          </div>
-        </div>
+        <ModePreview
+          heading="Variants preview"
+          lightTheme={lightPreviewTheme}
+          darkTheme={darkPreviewTheme}
+        >
+          <VariantsPreview />
+        </ModePreview>
       )}
 
       {!compact && (
