@@ -378,7 +378,8 @@ const ThemeBox: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => {
       style={{
         background: theme.palette.background,
         color: theme.palette.foreground,
-        borderColor: theme.palette.border
+        borderColor: theme.palette.border,
+        fontFamily: theme.font.sans
       }}
     >
       {children}
@@ -562,7 +563,7 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
 
   const code = useMemo(
     () => [
-      "import { Themes } from '@bolio-ui/core'",
+      "import { BolioUIProvider, Themes } from '@bolio-ui/core'",
       '',
       'const myTheme = Themes.createFromLight({',
       "  type: 'my-theme',",
@@ -581,7 +582,11 @@ const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ compact = false }) => {
       '  },',
       ...(FONTS[font] ? [`  font: { sans: '${FONTS[font]}' },`] : []),
       `  layout: { radius: '${RADII[radius]}px' }`,
-      '})'
+      '})',
+      '',
+      '<BolioUIProvider themes={[myTheme]} themeType="my-theme">',
+      '  <App />',
+      '</BolioUIProvider>'
     ],
     [palette, base, font, radius]
   )

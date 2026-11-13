@@ -6,6 +6,21 @@ import {
   Bookmark,
   Briefcase,
   Calendar as CalendarIcon,
+  Check,
+  Disc,
+  Flag,
+  Folder,
+  Mail as MailIcon,
+  Github,
+  Music,
+  Pause,
+  Play,
+  Repeat,
+  Shuffle,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  Zap,
   Clock,
   Globe,
   Heart,
@@ -45,6 +60,7 @@ import {
   Calendar,
   Checkbox,
   Chip,
+  Divider,
   Input,
   MiniCalendar,
   Radio,
@@ -52,11 +68,13 @@ import {
   Progress,
   SegmentedControl,
   Select,
+  Slider,
   Stat,
   Table,
   Tag,
   Text,
   Textarea,
+  Timeline,
   Toggle,
   useTheme
 } from 'core'
@@ -79,6 +97,11 @@ const MONTHS = [
   'Nov',
   'Dec'
 ]
+
+const frameStyle = (theme: ReturnType<typeof useTheme>) => ({
+  borderColor: theme.palette.border,
+  borderRadius: `calc(${theme.layout.radius} + 8px)`
+})
 
 const Head: React.FC<
   React.PropsWithChildren<{ title: string; sub?: string }>
@@ -768,7 +791,7 @@ export const CalendarApp: React.FC = () => (
     <MiniCalendar aria-label="Week" />
     <div className={styles.twoCols}>
       <Tile title="November">
-        <Calendar />
+        <Calendar width="100%" />
       </Tile>
       <Tile title="Today">
         {EVENTS.map(([time, title, place, type]) => (
@@ -966,6 +989,299 @@ export const Store: React.FC = () => {
   )
 }
 
+const PLANS = [
+  {
+    name: 'Free',
+    price: '$0',
+    cta: 'Start for free',
+    features: ['3 projects', '1 GB storage', 'Community support']
+  },
+  {
+    name: 'Pro',
+    price: '$12',
+    cta: 'Start Pro trial',
+    popular: true,
+    features: [
+      'Unlimited projects',
+      '100 GB storage',
+      'Priority support',
+      'Custom themes'
+    ]
+  },
+  {
+    name: 'Team',
+    price: '$29',
+    cta: 'Talk to sales',
+    features: [
+      'Everything in Pro',
+      'Shared workspace',
+      '1 TB storage',
+      'SSO and audit log'
+    ]
+  }
+]
+
+export const Pricing: React.FC = () => {
+  const theme = useTheme()
+  return (
+    <div className={styles.storeFrame} style={frameStyle(theme)}>
+      <div className={styles.center}>
+        <Text b my={0} style={{ fontSize: 22 }}>
+          Pick the plan that fits your team
+        </Text>
+        <Muted>No credit card required. Cancel anytime.</Muted>
+        <SegmentedControl initialValue="monthly" aria-label="Billing">
+          <SegmentedControl.Item value="monthly">Monthly</SegmentedControl.Item>
+          <SegmentedControl.Item value="yearly">
+            Yearly, save 20%
+          </SegmentedControl.Item>
+        </SegmentedControl>
+      </div>
+      <div className={styles.stats}>
+        {PLANS.map((plan) => (
+          <div
+            key={plan.name}
+            className={styles.plan}
+            style={{
+              background: theme.palette.accents_1,
+              border: `1px solid ${plan.popular ? theme.palette.primary : theme.palette.border}`,
+              borderRadius: `calc(${theme.layout.radius} + 4px)`
+            }}
+          >
+            <div className={styles.between}>
+              <Text b my={0}>
+                {plan.name}
+              </Text>
+              {plan.popular && (
+                <Tag type="primary" light>
+                  Most popular
+                </Tag>
+              )}
+            </div>
+            <div className={styles.row}>
+              <Text b my={0} style={{ fontSize: 32 }}>
+                {plan.price}
+              </Text>
+              <Muted>per user, per month</Muted>
+            </div>
+            {plan.features.map((feature) => (
+              <div className={styles.row} key={feature}>
+                <Check width={16} height={16} color={theme.palette.success} />
+                <Text small my={0}>
+                  {feature}
+                </Text>
+              </div>
+            ))}
+            <Button type={plan.popular ? 'primary' : 'default'} width="100%">
+              {plan.cta}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export const Login: React.FC = () => {
+  const theme = useTheme()
+  return (
+    <div className={styles.login} style={frameStyle(theme)}>
+      <div className={styles.loginForm}>
+        <div>
+          <Text b my={0} style={{ fontSize: 22 }}>
+            Welcome back
+          </Text>
+          <Muted>Sign in to continue to Bolio UI</Muted>
+        </div>
+        <Input icon={icon(MailIcon)} placeholder="you@email.com" width="100%">
+          Email
+        </Input>
+        <Input.Password placeholder="Your password" width="100%">
+          Password
+        </Input.Password>
+        <div className={styles.between}>
+          <Checkbox checked>Remember me</Checkbox>
+          <Text small my={0} style={{ color: theme.palette.primary }}>
+            Forgot password?
+          </Text>
+        </div>
+        <Button type="primary" width="100%">
+          Sign in
+        </Button>
+        <Divider>OR</Divider>
+        <Button width="100%" icon={icon(Github)}>
+          Continue with GitHub
+        </Button>
+        <Muted>New here? Create an account, it takes 2 minutes.</Muted>
+      </div>
+      <div
+        className={styles.loginSide}
+        style={{
+          background: `linear-gradient(135deg, ${theme.palette.primary}, ${theme.palette.primaryDark})`
+        }}
+      >
+        <Zap width={28} height={28} />
+        <Text b my={0} style={{ color: 'inherit', fontSize: 20 }}>
+          Ship interfaces your team actually enjoys.
+        </Text>
+        <div className={styles.row}>
+          <Avatar text="AS" />
+          <div>
+            <Text small b my={0} style={{ color: 'inherit' }}>
+              Ana Souza
+            </Text>
+            <Text
+              small
+              my={0}
+              style={{ display: 'block', color: 'inherit', opacity: 0.8 }}
+            >
+              Head of Product
+            </Text>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const TASKS = [
+  ['Review the launch checklist', 'High', 'AS', 'Today', true],
+  ['Update the pricing page copy', 'Medium', 'LL', 'Tomorrow', false],
+  ['Fix the empty state on Orders', 'Low', 'MR', 'Fri', false],
+  ['Write the release notes', 'Medium', 'AS', 'Mon', false]
+] as const
+
+const PRIORITY = { High: 'error', Medium: 'warning', Low: 'success' } as const
+
+export const Tasks: React.FC = () => (
+  <Shell
+    user={['Kate Moore', 'Product']}
+    nav={[
+      { icon: icon(Inbox), label: 'Inbox', tag: '3' },
+      { icon: icon(Check), label: 'My tasks', active: true },
+      { icon: icon(Folder), label: 'Projects' },
+      { icon: icon(Flag), label: 'Roadmap' },
+      { icon: icon(Settings), label: 'Settings' }
+    ]}
+    bottom={SIDEBAR_BOTTOM}
+  >
+    <Head title="My tasks" sub="4 open, 1 due today">
+      <Input icon={icon(Search)} placeholder="Search tasks" width="200px" />
+      <Button auto scale={0.8} type="primary" icon={icon(Plus)}>
+        New task
+      </Button>
+    </Head>
+    <div className={styles.row}>
+      <Chip initialChecked>All</Chip>
+      <Chip>Today</Chip>
+      <Chip>This week</Chip>
+      <Chip>Assigned to me</Chip>
+    </div>
+    <div className={styles.twoCols}>
+      <div className={styles.wide}>
+        <Tile>
+          {TASKS.map(([title, priority, who, due, done]) => (
+            <div className={styles.row} key={title}>
+              <Checkbox checked={done} />
+              <div className={styles.fill}>
+                <Text small b my={0}>
+                  {title}
+                </Text>
+                <Muted>Due {due}</Muted>
+              </div>
+              <Tag type={PRIORITY[priority]} light>
+                {priority}
+              </Tag>
+              <Avatar text={who} />
+            </div>
+          ))}
+        </Tile>
+      </div>
+      <Tile title="Sprint 12">
+        <Progress value={68} type="primary" />
+        <Muted>17 of 25 tasks done</Muted>
+        <Timeline>
+          <Timeline.Item title="Design freeze" time="Done" />
+          <Timeline.Item title="Beta release" time="Thu" />
+        </Timeline>
+      </Tile>
+    </div>
+  </Shell>
+)
+
+const QUEUE = [
+  { id: 1, title: 'Midnight City', artist: 'M83', time: '4:03' },
+  { id: 2, title: 'Intro', artist: 'The xx', time: '2:07' },
+  { id: 3, title: 'Genesis', artist: 'Grimes', time: '4:15' },
+  { id: 4, title: 'Nightcall', artist: 'Kavinsky', time: '4:18' }
+]
+
+export const Player: React.FC = () => {
+  const theme = useTheme()
+  return (
+    <Shell
+      user={['Kate Moore', 'Premium']}
+      nav={[
+        { icon: icon(Layout), label: 'Home' },
+        { icon: icon(Search), label: 'Search' },
+        { icon: icon(Music), label: 'Library', active: true },
+        { icon: icon(Disc), label: 'Albums' },
+        { icon: icon(Users), label: 'Artists' }
+      ]}
+      bottom={SIDEBAR_BOTTOM}
+    >
+      <div className={styles.twoCols}>
+        <Tile>
+          <div
+            className={styles.cover}
+            style={{
+              background: `linear-gradient(135deg, ${theme.palette.primary}, ${theme.palette.secondary})`,
+              borderRadius: theme.layout.radius
+            }}
+          />
+          <div className={styles.between}>
+            <div>
+              <Text b my={0}>
+                Midnight City
+              </Text>
+              <Muted>M83, Hurry Up, We&apos;re Dreaming</Muted>
+            </div>
+            <Heart width={18} height={18} />
+          </div>
+          <Slider initialValue={38} hideValue aria-label="Progress" />
+          <div className={styles.between}>
+            <Muted>1:32</Muted>
+            <Muted>4:03</Muted>
+          </div>
+          <div className={styles.controls}>
+            <IconButton icon={icon(Shuffle)} label="Shuffle" />
+            <IconButton icon={icon(SkipBack)} label="Previous" />
+            <Button auto type="primary" icon={icon(Pause)} aria-label="Pause" />
+            <IconButton icon={icon(SkipForward)} label="Next" />
+            <IconButton icon={icon(Repeat)} label="Repeat" />
+          </div>
+          <div className={styles.row}>
+            <Volume2 width={16} height={16} />
+            <div className={styles.fill}>
+              <Slider initialValue={70} hideValue aria-label="Volume" />
+            </div>
+          </div>
+        </Tile>
+        <Tile title="Up next">
+          <Table data={QUEUE}>
+            <Table.Column prop="title" label="Title" />
+            <Table.Column prop="artist" label="Artist" />
+            <Table.Column prop="time" label="Time" />
+          </Table>
+          <Button auto scale={0.8} icon={icon(Play)}>
+            Play all
+          </Button>
+        </Tile>
+      </div>
+    </Shell>
+  )
+}
+
 export const TABS = {
   components: ['Components', ThemeGallery],
   dashboard: ['Dashboard', Dashboard],
@@ -975,7 +1291,11 @@ export const TABS = {
   crm: ['CRM', CRM],
   calendar: ['Calendar', CalendarApp],
   settings: ['Settings', SettingsApp],
-  store: ['Store', Store]
+  store: ['Store', Store],
+  pricing: ['Pricing', Pricing],
+  login: ['Login', Login],
+  tasks: ['Tasks', Tasks],
+  player: ['Player', Player]
 } as const
 
 export type Tab = keyof typeof TABS

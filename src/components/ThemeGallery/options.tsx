@@ -53,9 +53,11 @@ export const neutralsFor = (tint: string, dark: boolean) =>
           border: mix(tint, 0, 0.86)
         }
       : {
-          accents_1: mix(tint, 255, 0.96),
-          accents_2: mix(tint, 255, 0.92),
-          border: mix(tint, 255, 0.9)
+          background: mix(tint, 255, 0.97),
+          accents_1: mix(tint, 255, 0.93),
+          accents_2: mix(tint, 255, 0.87),
+          accents_3: mix(tint, 255, 0.78),
+          border: mix(tint, 255, 0.84)
         }
 
 export const OptionSelect: React.FC<{

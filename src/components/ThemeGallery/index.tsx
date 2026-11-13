@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { CreditCard, Search } from '@bolio-ui/icons'
 import {
+  Alert,
   Avatar,
   Button,
   Checkbox,
@@ -7,13 +9,18 @@ import {
   Input,
   Keyboard,
   PinInput,
+  Progress,
   Radio,
+  Rating,
   SegmentedControl,
   Select,
   Slider,
+  Sparkline,
   Spinner,
+  Stat,
   Tag,
   Text,
+  Timeline,
   Toggle,
   useTheme
 } from 'core'
@@ -232,6 +239,162 @@ const ThemeGallery: React.FC = () => {
             Draft
           </Tag>
         </div>
+      </Tile>
+      <Tile>
+        <Stat
+          label="Monthly revenue"
+          value="$48,290"
+          change="+12.4%"
+          extra={<Sparkline data={[4, 6, 5, 8, 7, 11, 13]} trend />}
+        />
+      </Tile>
+
+      <Tile title="Usage">
+        <div className={styles.between}>
+          <Muted>Projects</Muted>
+          <Muted>7 of 10</Muted>
+        </div>
+        <Progress value={70} type="primary" />
+        <div className={styles.between}>
+          <Muted>Storage</Muted>
+          <Muted>92 of 100 GB</Muted>
+        </div>
+        <Progress value={92} type="warning" />
+        <Button type="primary" width="100%">
+          Upgrade to Pro
+        </Button>
+      </Tile>
+
+      <Tile title="Invite your team">
+        <div className={styles.row}>
+          <div className={styles.fill}>
+            <Input placeholder="name@company.com" width="100%" />
+          </div>
+          <Button auto type="primary">
+            Invite
+          </Button>
+        </div>
+        <div className={styles.between}>
+          <div className={styles.row}>
+            <Avatar text="AS" />
+            <div>
+              <Text small b my={0}>
+                Ana Souza
+              </Text>
+              <Muted>ana@company.com</Muted>
+            </div>
+          </div>
+          <Tag type="success" light>
+            Admin
+          </Tag>
+        </div>
+        <div className={styles.between}>
+          <div className={styles.row}>
+            <Avatar text="LL" />
+            <div>
+              <Text small b my={0}>
+                Lucas Lima
+              </Text>
+              <Muted>lucas@company.com</Muted>
+            </div>
+          </div>
+          <Tag type="lite">Member</Tag>
+        </div>
+      </Tile>
+
+      <Tile>
+        <Input
+          icon={<Search width={16} height={16} />}
+          placeholder="Search commands"
+          width="100%"
+        />
+        <div className={styles.between}>
+          <Text small my={0}>
+            New project
+          </Text>
+          <Keyboard command>N</Keyboard>
+        </div>
+        <div className={styles.between}>
+          <Text small my={0}>
+            Open settings
+          </Text>
+          <Keyboard command>,</Keyboard>
+        </div>
+        <div className={styles.between}>
+          <Text small my={0}>
+            Switch theme
+          </Text>
+          <Keyboard command shift>
+            L
+          </Keyboard>
+        </div>
+      </Tile>
+
+      <Tile>
+        <Alert type="success" light title="Payment received">
+          Your Pro plan is active.
+        </Alert>
+        <Alert type="warning" light title="Storage almost full">
+          You have used 92% of your space.
+        </Alert>
+        <Alert type="error" light title="Sync failed">
+          Check your connection and try again.
+        </Alert>
+      </Tile>
+
+      <Tile>
+        <div className={styles.row}>
+          <Avatar text="MR" />
+          <div>
+            <Text small b my={0}>
+              Marta Reis
+            </Text>
+            <Muted>Verified buyer</Muted>
+          </div>
+        </div>
+        <Rating initialValue={5} />
+        <Text small my={0}>
+          The setup took five minutes and the components look great out of the
+          box.
+        </Text>
+        <div className={styles.row}>
+          <Button auto scale={0.7}>
+            Helpful (24)
+          </Button>
+          <Button auto scale={0.7}>
+            Reply
+          </Button>
+        </div>
+      </Tile>
+
+      <Tile title="Order #1042">
+        <Timeline>
+          <Timeline.Item title="Order placed" time="Mon, 9:41" />
+          <Timeline.Item title="Shipped" time="Tue, 14:05" />
+          <Timeline.Item title="Out for delivery" time="Thu, 8:20" />
+        </Timeline>
+        <Progress value={75} type="success" />
+        <Muted>Arrives tomorrow</Muted>
+      </Tile>
+
+      <Tile title="Payment">
+        <Input
+          icon={<CreditCard width={16} height={16} />}
+          placeholder="Card number"
+          width="100%"
+        />
+        <div className={styles.row}>
+          <div className={styles.fill}>
+            <Input placeholder="MM / YY" width="100%" />
+          </div>
+          <div className={styles.fill}>
+            <Input placeholder="CVC" width="100%" />
+          </div>
+        </div>
+        <Checkbox checked>Save this card for next time</Checkbox>
+        <Button type="primary" width="100%">
+          Pay $29
+        </Button>
       </Tile>
     </div>
   )
