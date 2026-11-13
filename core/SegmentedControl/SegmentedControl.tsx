@@ -4,6 +4,7 @@ import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { SegmentedControlValue } from './SegmentedControlContext'
 import { SegmentedControlContext } from './SegmentedControlContext'
+import { isDarkPalette } from '../utils/variant-colors'
 import styles from './SegmentedControl.module.css'
 
 interface Props {
@@ -66,7 +67,9 @@ const SegmentedControlComponent = React.forwardRef<
       '--segmented-border': theme.palette.border,
       '--segmented-color': theme.palette.accents_5,
       '--segmented-hover-color': theme.palette.foreground,
-      '--segmented-active-bg': theme.palette.background,
+      '--segmented-active-bg': isDarkPalette(theme.palette)
+        ? theme.palette.accents_3
+        : theme.palette.background,
       '--segmented-active-color': theme.palette.foreground,
       '--segmented-shadow': theme.expressiveness.shadowSmall,
       '--segmented-focus': theme.palette.primary,
