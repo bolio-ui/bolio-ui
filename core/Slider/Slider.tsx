@@ -1,3 +1,4 @@
+import { isDarkPalette } from '../utils/variant-colors'
 import type { RefObject } from 'react'
 import React, {
   useCallback,
@@ -155,6 +156,10 @@ const SliderComponent = React.forwardRef<
     }
 
     const dragEndHandler = (event: DraggingEvent) => {
+      justDragged.current = true
+      setTimeout(() => {
+        justDragged.current = false
+      }, 0)
       if (disabled) return
       const offset = event.currentX - event.startX
       const currentOffset = offset + lastDargOffsetRef.current
@@ -184,8 +189,12 @@ const SliderComponent = React.forwardRef<
       if (onChange) onChange(next)
     }
 
+    // A drag that ends over the slider is also followed by a click, which must
+    // not move the value to the pointer again.
+    const justDragged = useRef(false)
+
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-      if (disabled) return
+      if (disabled || justDragged.current) return
       if (!sliderRef || !sliderRef.current) return
       setIsClick(true)
       setSliderWidth(getRefWidth(sliderRef))
@@ -209,12 +218,18 @@ const SliderComponent = React.forwardRef<
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    // The part up to the thumb is filled with the type color, the rest is a
+    // muted rail that stays visible on a card or on the page.
+    const fill = disabled ? theme.palette.accents_3 : bg
+    const rail = isDarkPalette(theme.palette)
+      ? theme.palette.accents_4
+      : theme.palette.accents_2
     const sliderStyle = {
-      backgroundColor: disabled ? theme.palette.accents_2 : bg,
-      cursor: disabled ? 'not-allow' : 'pointer',
+      background: `linear-gradient(to right, ${fill} ${currentRatio}%, ${disabled ? theme.palette.accents_2 : rail} ${currentRatio}%)`,
+      cursor: disabled ? 'not-allowed' : 'pointer',
       '--slider-font-size': SCALES.font(1),
       width: SCALES.width(1, '100%'),
-      height: SCALES.height(0.5),
+      height: SCALES.height(0.375),
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
       margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
       ...style
@@ -234,6 +249,7 @@ const SliderComponent = React.forwardRef<
             ref={dotRef}
             isClick={isClick}
             left={currentRatio}
+            style={{ backgroundColor: fill }}
             role="slider"
             tabIndex={disabled ? -1 : 0}
             aria-label={ariaLabel}
