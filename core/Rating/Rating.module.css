@@ -4,10 +4,26 @@
   align-items: center;
   gap: calc(var(--rating-font-size) * 0.2);
   font-size: var(--rating-font-size);
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+/* a finger can scroll the page up and down, and drag across the icons */
+.interactive {
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--rating-focus-outline);
+  outline-offset: 3px;
 }
 
 .disabled {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .item {
@@ -18,11 +34,55 @@
   height: calc(var(--rating-font-size) * 1.5);
 }
 
+.item {
+  transition: transform 90ms ease-out;
+}
+
+/* held down: the icon shrinks a little, as a Button does */
+.item[data-pressed] {
+  transform: scale(0.88);
+}
+
+/* picked: a circle spreads from the icon and fades, as the drip of a Button */
+.drip {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--rating-color);
+  pointer-events: none;
+  animation: rating-drip 350ms ease-in forwards;
+}
+
+@keyframes rating-drip {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  30% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
 .layer {
   position: absolute;
   inset: 0;
   display: block;
-  transition: clip-path 100ms linear;
+  pointer-events: none;
+}
+
+.filled {
+  /* how much of the icon is shown, from 0 to 1, from the start of the row */
+  clip-path: inset(0 calc((1 - var(--rating-fill, 1)) * 100%) 0 0);
+}
+
+.rtl .filled {
+  clip-path: inset(0 0 0 calc((1 - var(--rating-fill, 1)) * 100%));
 }
 
 .layer :global(svg) {
@@ -47,38 +107,25 @@
   fill: currentColor;
 }
 
-.hit {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 4px;
+.value {
+  margin-inline-start: calc(var(--rating-font-size) * 0.25);
+  font-size: calc(var(--rating-font-size) * 0.875);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--rating-value-color);
 }
 
-.hit.half {
-  width: 50%;
-}
+@media (prefers-reduced-motion: reduce) {
+  .filled,
+  .item {
+    transition: none;
+  }
 
-.hit.full {
-  left: 50%;
-  width: 50%;
-}
+  .item[data-pressed] {
+    transform: none;
+  }
 
-.hit:has(:focus-visible) {
-  outline: 2px solid var(--rating-focus-outline);
-  outline-offset: 1px;
-}
-
-.input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
+  .drip {
+    display: none;
+  }
 }

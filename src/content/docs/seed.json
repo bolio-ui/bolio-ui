@@ -4849,6 +4849,12 @@
   },
   {
     "head": "Rating",
+    "title": "Rating Reviews",
+    "component": false,
+    "path": "/docs/components/rating#reviews"
+  },
+  {
+    "head": "Rating",
     "title": "Rating States",
     "component": false,
     "path": "/docs/components/rating#states"

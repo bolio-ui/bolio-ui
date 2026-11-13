@@ -14,7 +14,7 @@ export const meta = {
 
 ## Rating
 
-Pick or show a score with stars or any other icon. The value only changes when the user clicks or uses the arrow keys, and hovering shows a preview.
+Pick or show a score with stars or any other icon. Click or drag across the icons to pick, or use the keyboard. Hovering with a mouse shows a preview, and a read only score can be any fraction.
 
 <Playground
   title="Default"
@@ -68,15 +68,15 @@ Pick or show a score with stars or any other icon. The value only changes when t
 
 <Playground
   title="Variants"
-  desc="`outline` shows only the border of the empty icons, `filled` fills them with a soft color."
+  desc="`filled` fills the empty icons with a soft color, `outline` shows only their border."
   scope={{ Rating, Grid }}
   code={`
 <Grid.Container gap={2}>
   <Grid>
-    <Rating variant="outline" initialValue={3} />
+    <Rating variant="filled" initialValue={3} />
   </Grid>
   <Grid>
-    <Rating variant="filled" initialValue={3} />
+    <Rating variant="outline" initialValue={3} />
   </Grid>
 </Grid.Container>
 `}
@@ -84,7 +84,7 @@ Pick or show a score with stars or any other icon. The value only changes when t
 
 <Playground
   title="Precision"
-  desc="With `precision={0.5}` each icon can be picked by its half."
+  desc="With `precision={0.5}` each icon can be picked by its half, and with `0.25` by its quarter."
   scope={{ Rating, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -92,7 +92,23 @@ Pick or show a score with stars or any other icon. The value only changes when t
     <Rating precision={0.5} initialValue={2.5} />
   </Grid>
   <Grid>
-    <Rating precision={0.5} readOnly value={3.5} />
+    <Rating precision={0.25} initialValue={1.75} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Reviews"
+  desc="A `readOnly` score can be any fraction, such as an average. `showValue` writes the number after the icons."
+  scope={{ Rating, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Rating readOnly value={4.3} showValue />
+  </Grid>
+  <Grid>
+    <Rating readOnly value={3.7} showValue type="primary" />
   </Grid>
 </Grid.Container>
 `}
@@ -135,7 +151,7 @@ Pick or show a score with stars or any other icon. The value only changes when t
 
 <Playground
   title="Icon"
-  desc="Use `icon` for the filled state and `emptyIcon` for the empty one. With `highlightSelectedOnly` only the picked icon is lit, good for faces or emojis."
+  desc="Use `icon` for the filled state and `emptyIcon` for the empty one. Pass a function to give each position its own icon. With `highlightSelectedOnly` only the picked icon is lit, good for faces or emojis."
   scope={{ Rating, Umbrella, Zap, Grid }}
   code={`
 <Grid.Container gap={2}>
@@ -145,6 +161,13 @@ Pick or show a score with stars or any other icon. The value only changes when t
   <Grid>
     <Rating initialValue={3} type="error" icon={<Zap />} highlightSelectedOnly />
   </Grid>
+  <Grid>
+    <Rating
+      initialValue={4}
+      highlightSelectedOnly
+      icon={(index) => <span>{['😡', '🙁', '😐', '🙂', '😍'][index - 1]}</span>}
+    />
+  </Grid>
 </Grid.Container>
 `}
 />
@@ -152,24 +175,26 @@ Pick or show a score with stars or any other icon. The value only changes when t
 <Attributes edit="/content/docs/components/rating.mdx">
 <Attributes.Title>Rating.Props</Attributes.Title>
 
-| Attribute                 | Description                                         | Type                                       | Accepted values             | Default   |
-| ------------------------- | --------------------------------------------------- | ------------------------------------------ | --------------------------- | --------- |
-| **value**                 | current score, to control the component             | `number`                                   | `0` to `count`              | -         |
-| **initialValue**          | score at the start                                  | `number`                                   | `0` to `count`              | `0`       |
-| **onChange**              | called with the score the user picked               | `(value: number) => void`                  | -                           | -         |
-| **onHoverChange**         | called with the previewed score, or `null` on leave | `(value: number \| null) => void`          | -                           | -         |
-| **count**                 | amount of icons                                     | `number`                                   | -                           | `5`       |
-| **precision**             | step of the score                                   | `RatingPrecision`                          | `1`, `0.5`                  | `1`       |
-| **type**                  | color of the icons                                  | `RatingTypes`                              | [RatingTypes](#ratingtypes) | `default` |
-| **variant**               | look of the empty icons                             | `RatingVariants`                           | `'outline', 'filled'`       | `outline` |
-| **icon**                  | icon of the filled state                            | `React.ReactNode`                          | -                           | star      |
-| **emptyIcon**             | icon of the empty state                             | `React.ReactNode`                          | -                           | `icon`    |
-| **readOnly**              | show the score without picking                      | `boolean`                                  | -                           | `false`   |
-| **disabled**              | block the component                                 | `boolean`                                  | -                           | `false`   |
-| **clearable**             | a click on the current score clears it              | `boolean`                                  | -                           | `false`   |
-| **highlightSelectedOnly** | light only the icon of the score                    | `boolean`                                  | -                           | `false`   |
-| **getLabel**              | accessible name of each score                       | `(value: number, count: number) => string` | -                           | `3 of 5`  |
-| ...                       | native props                                        | `HTMLAttributes`                           | -                           | -         |
+| Attribute                 | Description                                             | Type                                        | Accepted values             | Default   |
+| ------------------------- | ------------------------------------------------------- | ------------------------------------------- | --------------------------- | --------- |
+| **value**                 | current score, to control the component                 | `number`                                    | `0` to `count`              | -         |
+| **initialValue**          | score at the start                                      | `number`                                    | `0` to `count`              | `0`       |
+| **onChange**              | called with the new score, only when it changes         | `(value: number) => void`                   | -                           | -         |
+| **onHoverChange**         | called with the previewed score, or `null` on leave     | `(value: number \| null) => void`           | -                           | -         |
+| **count**                 | amount of icons                                         | `number`                                    | -                           | `5`       |
+| **precision**             | step the user can pick                                  | `RatingPrecision`                           | `1`, `0.5`, `0.25`          | `1`       |
+| **type**                  | color of the icons                                      | `RatingTypes`                               | [RatingTypes](#ratingtypes) | `default` |
+| **variant**               | look of the empty icons                                 | `RatingVariants`                            | `'outline', 'filled'`       | `filled`  |
+| **icon**                  | icon of the filled state, or a function of its position | `ReactNode \| (index: number) => ReactNode` | -                           | star      |
+| **emptyIcon**             | icon of the empty state                                 | `ReactNode \| (index: number) => ReactNode` | -                           | `icon`    |
+| **readOnly**              | show the score, any fraction, without picking           | `boolean`                                   | -                           | `false`   |
+| **disabled**              | block the component                                     | `boolean`                                   | -                           | `false`   |
+| **clearable**             | a click on the current score clears it                  | `boolean`                                   | -                           | `false`   |
+| **highlightSelectedOnly** | light only the icon of the score                        | `boolean`                                   | -                           | `false`   |
+| **showValue**             | write the score after the icons                         | `boolean`                                   | -                           | `false`   |
+| **name**                  | name of a hidden field, so a form submits the score     | `string`                                    | -                           | -         |
+| **getLabel**              | accessible text of the score                            | `(value: number, count: number) => string`  | -                           | `3 of 5`  |
+| ...                       | native props                                            | `HTMLAttributes`                            | -                           | -         |
 
 <Attributes.Title>RatingTypes</Attributes.Title>
 
@@ -180,7 +205,7 @@ type RatingTypes =
 
 <Attributes.Title>Accessibility</Attributes.Title>
 
-The component is a group of native radio buttons, so the arrow keys move the score and Tab leaves the group. Give it an `aria-label`. With `readOnly` or `disabled` it becomes an image named by `getLabel`.
+The component is a slider. The arrow keys move the score by `precision`, Page Up and Page Down by one icon, Home and End go to 0 and `count`, the digits 0 to 9 set the score, and Delete clears it. Give it an `aria-label`. With `readOnly` or `disabled` it becomes an image named by `getLabel`.
 
 </Attributes>
 

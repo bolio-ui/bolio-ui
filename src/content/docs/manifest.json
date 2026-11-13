@@ -638,7 +638,7 @@
             },
             {
               "title": "Rating",
-              "keywords": "rating, types, custom amount, icon, vote",
+              "keywords": "rating, types, precision, reviews, custom amount, icon, vote",
               "path": "/docs/components/rating.mdx"
             },
             {

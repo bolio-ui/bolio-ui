@@ -5,13 +5,14 @@ function RatingIcon() {
       width="24"
       height="24"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       fill="none"
       shapeRendering="geometricPrecision"
+      aria-hidden="true"
     >
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      <path d="M12 3.2l2.55 5.5 6 .72-4.43 4.1 1.17 5.93L12 16.5l-5.29 2.95 1.17-5.93-4.43-4.1 6-.72L12 3.2z" />
     </svg>
   )
 }
