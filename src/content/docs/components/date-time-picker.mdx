@@ -1,0 +1,90 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { DateTimePicker, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'DateTimePicker',
+  description: 'A day and a time in two fields, reported as one Date.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 111
+}
+
+## DateTimePicker
+
+A day and a time in two fields, reported as one `Date`. It is a [DatePicker](/docs/components/date-picker) next to a [TimePicker](/docs/components/time-picker), so both accept the same keys and typing.
+
+<Playground
+  desc="Choose a day and type the time. The time is midnight until you set it."
+  scope={{ DateTimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DateTimePicker />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Controlled"
+  desc="The value is null until there is a day. A time typed before the day waits for it."
+  scope={{ DateTimePicker, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(new Date(2026, 10, 12, 9, 30))
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <DateTimePicker value={value} onChange={setValue} />
+      </Grid>
+      <Grid>
+        <Text p my={0}>{value ? value.toLocaleString() : 'No date yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Seconds and 12 hour clock"
+  desc="Use `withSeconds` and `format=&quot;12h&quot;` as in the TimePicker."
+  scope={{ DateTimePicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <DateTimePicker withSeconds format="12h" initialValue={new Date(2026, 10, 12, 15, 45, 10)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/date-time-picker.mdx">
+<Attributes.Title>DateTimePicker.Props</Attributes.Title>
+
+| Property            | Description                                    | Type                      | Accepted values | Default |
+| ------------------- | ---------------------------------------------- | ------------------------- | --------------- | ------- |
+| **value**           | controlled date and time                       | `Date \| null`            | -               | -       |
+| **initialValue**    | initial date and time                          | `Date \| null`            | -               | `null`  |
+| **onChange**        | called with the date, or `null` without a day  | `(date: Date \| null) => void` | -          | -       |
+| **min**, **max**    | first and last day that can be chosen          | `Date`                    | -               | -       |
+| **locale**          | locale of the calendar                         | `string`                  | -               | browser |
+| **weekStartsOn**    | first day of the week                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6` | -         | -       |
+| **withSeconds**     | add the seconds segment                        | `boolean`                 | -               | `false` |
+| **format**          | clock of the time field                        | `'12h' \| '24h'`          | -               | `24h`   |
+| **datePlaceholder** | placeholder of the day field                   | `string`                  | -               | `YYYY-MM-DD` |
+| **dateLabel**       | accessible name of the day field               | `string`                  | -               | `Date`  |
+| **timeLabel**       | accessible name of the time field              | `string`                  | -               | `Time`  |
+| **disabled**        | disable both fields                            | `boolean`                 | -               | `false` |
+| **type**            | color of the fields                            | `NormalTypes`             | `'default' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `default` |
+| **rounded**         | round the corners                              | `boolean`                 | -               | `false` |
+| ...                 | native props of `div`                          | `HTMLAttributes`          | -               | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -1,0 +1,61 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, NProgress, Button, useNProgress } from 'core'
+
+export const meta = {
+  title: 'useNProgress',
+  description: 'Move a loading bar: start it, set it, and complete it.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 126
+}
+
+## useNProgress
+
+Move a loading bar: start it, set it, and complete it. It holds the value and the visibility for an [NProgress](/docs/components/nprogress), and it does not know about any router, so call `start` and `complete` from the events you have.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Wrap a request with start and complete."
+  scope={{ NProgress, Button, useNProgress }}
+  code={`
+() => {
+  const progress = useNProgress()
+  const load = () => {
+    progress.start()
+    setTimeout(progress.complete, 2000)
+  }
+  return (
+    <>
+      <NProgress value={progress.value} visible={progress.visible} />
+      <Button auto scale={0.6} onClick={load}>Load for two seconds</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-nprogress.mdx">
+<Attributes.Title>useNProgress</Attributes.Title>
+
+```ts
+const useNProgress = (options?: {
+  trickleSpeed?: number // 200
+  maximum?: number // 94
+}) => {
+  value: number
+  visible: boolean
+  start: () => void
+  set: (value: number) => void
+  increment: () => void
+  complete: () => void
+  reset: () => void
+}
+```
+
+`start` shows the bar and moves it every `trickleSpeed` milliseconds, in smaller steps as it grows, and it waits at `maximum`. `complete` fills it, fades it out and goes back to zero. `reset` hides it at once. With Next.js, call `start` and `complete` from your own navigation code or from a `useEffect` on the path.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

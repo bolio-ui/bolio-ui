@@ -4,7 +4,7 @@ import { Schedule } from 'core'
 
 export const meta = {
   title: 'Schedule',
-  description: 'A calendar of events, by day, week or month.',
+  description: 'A calendar of events, by day, week, month, agenda or year.',
   sidebar: 'components',
   group: 'Components',
   index: 104
@@ -12,7 +12,7 @@ export const meta = {
 
 ## Schedule
 
-A calendar of events, by day, week or month. Events sit on a grid of hours, side by side when they overlap, and all-day events have a row of their own. Use it for appointments, shifts, bookings and meetings.
+A calendar of events, by day, week, month, agenda or year. Events sit on a grid of hours, side by side when they overlap, and all-day events have a row of their own. Use it for appointments, shifts, bookings and meetings.
 
 <Playground
   desc="Pass `events` with a `start` and an `end`. The header changes the date and the view."
@@ -60,6 +60,28 @@ A calendar of events, by day, week or month. Events sit on a grid of hours, side
 />
 
 <Playground
+  title="Agenda and year"
+  desc="The agenda lists the events of the month day by day. The year shows a card for each month with its count of events, and a click opens that month. Turn them on with `views`."
+  scope={{ Schedule }}
+  code={`
+() => {
+  const at = (day, hour) => {
+    const d = new Date()
+    d.setDate(d.getDate() + day)
+    d.setHours(hour, 0, 0, 0)
+    return d
+  }
+  const events = [
+    { id: 1, title: 'Review', start: at(0, 10), end: at(0, 11) },
+    { id: 2, title: 'Call', start: at(1, 13), end: at(1, 14), color: '#16a34a' },
+    { id: 3, title: 'Demo', start: at(3, 15), end: at(3, 16), color: '#8b5cf6' }
+  ]
+  return <Schedule initialView="agenda" views={['agenda', 'month', 'year']} events={events} />
+}
+`}
+/>
+
+<Playground
   title="Create and open events"
   desc="With `onSlotClick`, each hour is a button that reports its start and end. `onEventClick` reports the event."
   scope={{ Schedule }}
@@ -92,13 +114,13 @@ A calendar of events, by day, week or month. Events sit on a grid of hours, side
 | Attribute | Description | Type | Accepted values | Default |
 | --- | --- | --- | --- | --- |
 | **events** | what to show | `ScheduleEvent[]` | [ScheduleEvent](#scheduleevent) | `[]` |
-| **view** | the view, to control it | `string` | `'day', 'week', 'month'` | - |
-| **initialView** | the view at the start | `string` | `'day', 'week', 'month'` | `week` |
+| **view** | the view, to control it | `string` | `'day', 'week', 'month', 'agenda', 'year'` | - |
+| **initialView** | the view at the start | `string` | `'day', 'week', 'month', 'agenda', 'year'` | `week` |
 | **onViewChange** | called with the new view | `(view: ScheduleView) => void` | - | - |
 | **date** | a day of the period shown, to control it | `Date` | - | - |
 | **initialDate** | a day of the period at the start | `Date` | - | today |
 | **onDateChange** | called with the new day | `(date: Date) => void` | - | - |
-| **views** | the views offered in the header | `ScheduleView[]` | - | all three |
+| **views** | the views offered in the header | `ScheduleView[]` | - | `['day', 'week', 'month']` |
 | **locale** | language of the dates and the times | `string` | - | `en-US` |
 | **weekStartsOn** | day that starts a week, 0 is Sunday | `number` | `0` to `6` | `0` |
 | **startHour** | first hour of the grid | `number` | - | `0` |
@@ -141,7 +163,11 @@ type ScheduleLabels = {
   day: string
   week: string
   month: string
+  agenda: string
+  year: string
   allDay: string
+  noEvents: string
+  events: (count: number) => string
   more: (count: number) => string
 }
 ```

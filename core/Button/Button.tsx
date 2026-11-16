@@ -146,7 +146,7 @@ const ButtonComponent = React.forwardRef<
     fontSize: SCALES.font(0.875),
     color,
     backgroundColor: bg,
-    border: inGroup && ghost ? undefined : `1px solid ${border}`,
+    border: inGroup ? undefined : `1px solid ${border}`,
     cursor,
     pointerEvents: events,
     boxShadow: shadow ? '0 4px 10px 0' + bg : 'none',

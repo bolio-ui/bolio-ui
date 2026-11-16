@@ -1,0 +1,59 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Affix, Button, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'Affix',
+  description: 'Pin content to a corner or an edge of the window, above the page.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 113
+}
+
+## Affix
+
+Pin content to a corner or an edge of the window, above the page. It renders into the body, so a parent with `overflow` or a transform does not clip it. Use it for a back to top button, a chat launcher or a cookie notice.
+
+<Playground
+  desc="Click the button to pin a note to the bottom right of the window."
+  scope={{ Affix, Button, Text }}
+  code={`
+() => {
+  const [visible, setVisible] = React.useState(false)
+  return (
+    <>
+      <Button auto scale={0.6} onClick={() => setVisible(!visible)}>
+        {visible ? 'Hide the note' : 'Pin a note'}
+      </Button>
+      {visible && (
+        <Affix bottom={20} right={20}>
+          <Text p b my={0}>Pinned to the window</Text>
+        </Affix>
+      )}
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/affix.mdx">
+<Attributes.Title>Affix.Props</Attributes.Title>
+
+| Attribute  | Description                                       | Type               | Accepted values | Default |
+| ---------- | ------------------------------------------------- | ------------------ | --------------- | ------- |
+| **top**    | distance to the top edge of the window            | `number \| string` | -               | -       |
+| **right**  | distance to the right edge of the window          | `number \| string` | -               | -       |
+| **bottom** | distance to the bottom edge of the window         | `number \| string` | -               | -       |
+| **left**   | distance to the left edge of the window           | `number \| string` | -               | -       |
+| **zIndex** | stacking order                                    | `number`           | -               | `100`   |
+| ...        | native props of `div`                             | `HTMLAttributes`   | -               | -       |
+
+A number is pixels and a string is used as it is, such as `"2em"` or `"env(safe-area-inset-bottom)"`.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the pinned `div`. It is empty until the first render in the browser, because nothing is drawn on the server.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

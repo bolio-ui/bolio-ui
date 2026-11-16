@@ -17,6 +17,8 @@ const useDrag = (
   dragEndHandler: DraggingHandler = () => {}
 ) => {
   const onDragging = useRef<boolean>(false)
+  // Body styles to put back when the drag ends
+  const bodyStyle = useRef<{ cursor: string; userSelect: string } | null>(null)
   const [, setStartX, startXRef] = useCurrentState<number>(0)
   const [, setCurrentX, currentXRef] = useCurrentState<number>(0)
 
@@ -29,6 +31,13 @@ const useDrag = (
     const element = elementRef && elementRef.current
     if (!element) return
 
+    const restoreBody = () => {
+      if (!bodyStyle.current) return
+      document.body.style.cursor = bodyStyle.current.cursor
+      document.body.style.userSelect = bodyStyle.current.userSelect
+      bodyStyle.current = null
+    }
+
     const getCustomEvent = () => ({
       startX: startXRef.current,
       currentX: currentXRef.current
@@ -38,7 +47,22 @@ const useDrag = (
       event.stopPropagation()
       event.stopImmediatePropagation()
       onDragging.current = true
-      setStartX(element.getBoundingClientRect().x)
+      // The pointer leaves the handle while it follows the mouse, so the
+      // cursor is held on the body for the whole drag instead of flickering
+      // between the handle, the track and the page.
+      const { style } = document.body
+      bodyStyle.current = {
+        cursor: style.cursor,
+        userSelect: style.userSelect
+      }
+      style.cursor = 'grabbing'
+      style.userSelect = 'none'
+      // Start from where the pointer pressed, not from the edge of the handle,
+      // so grabbing it off center does not make the value jump.
+      const pressX =
+        'touches' in event ? event.touches[0].clientX : event.clientX
+      setStartX(pressX)
+      setCurrentX(pressX)
       dragStartRef.current(getCustomEvent())
     }
 
@@ -54,6 +78,7 @@ const useDrag = (
     const globalDragEndHandler = () => {
       if (!onDragging.current) return
       onDragging.current = false
+      restoreBody()
       dragEndRef.current(getCustomEvent())
     }
 
@@ -66,6 +91,7 @@ const useDrag = (
     window.addEventListener('touchend', globalDragEndHandler)
 
     return () => {
+      restoreBody()
       window.removeEventListener('mousemove', globalDraggingHandler)
       window.removeEventListener('touchmove', globalDraggingHandler)
       window.removeEventListener('mouseup', globalDragEndHandler)

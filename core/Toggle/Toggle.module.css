@@ -19,8 +19,8 @@
 }
 
 .input:focus-visible + .toggle {
-  outline: 2px solid var(--toggle-focus-color);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--toggle-checked-bg) 30%, transparent);
 }
 
 .toggle {

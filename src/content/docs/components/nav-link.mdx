@@ -1,0 +1,81 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { NavLink, Badge, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'NavLink',
+  description: 'An item of a navigation list, with an icon, a description and nested items.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 123
+}
+
+## NavLink
+
+An item of a navigation list, with an icon, a description and nested items. It is a link when it has an `href` and a button otherwise, and a parent with children always opens and closes. Use it for sidebars and settings menus.
+
+<Playground
+  desc="Mark the page the user is on with `active`. A parent opens its items on click."
+  scope={{ NavLink, Badge }}
+  code={`
+<div style={{ width: 260 }}>
+  <NavLink label="Dashboard" href="#" active />
+  <NavLink label="Reports" description="Monthly and yearly" href="#" rightSection={<Badge>3</Badge>} />
+  <NavLink label="Settings" defaultOpened>
+    <NavLink label="Profile" href="#" />
+    <NavLink label="Billing" href="#" />
+  </NavLink>
+  <NavLink label="Archived" disabled />
+</div>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `opened` and update it in `onOpenedChange`."
+  scope={{ NavLink, Text }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(true)
+  return (
+    <div style={{ width: 260 }}>
+      <NavLink label="Settings" opened={opened} onOpenedChange={setOpened}>
+        <NavLink label="Profile" href="#" />
+        <NavLink label="Billing" href="#" />
+      </NavLink>
+      <Text small>{opened ? 'Open' : 'Closed'}</Text>
+    </div>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/nav-link.mdx">
+<Attributes.Title>NavLink.Props</Attributes.Title>
+
+| Attribute          | Description                                                 | Type                       | Accepted values | Default |
+| ------------------ | ----------------------------------------------------------- | -------------------------- | --------------- | ------- |
+| **label**          | text of the item                                            | `ReactNode`                | -               | -       |
+| **description**    | smaller text under the label                                | `ReactNode`                | -               | -       |
+| **icon**           | drawn before the label                                      | `ReactNode`                | -               | -       |
+| **rightSection**   | drawn after the label, in place of the arrow of a parent    | `ReactNode`                | -               | -       |
+| **active**         | the page the user is on                                     | `boolean`                  | -               | `false` |
+| **disabled**       | disable the item                                            | `boolean`                  | -               | `false` |
+| **href**           | makes the item a link                                       | `string`                   | -               | -       |
+| **opened**         | for a parent, whether the items are shown, to control it    | `boolean`                  | -               | -       |
+| **defaultOpened**  | for a parent, whether the items are shown at the start      | `boolean`                  | -               | `false` |
+| **onOpenedChange** | called with the new state when a parent opens or closes     | `(opened: boolean) => void` | -              | -       |
+| **children**       | nested `NavLink`s, which make the item a parent             | `ReactNode`                | -               | -       |
+| ...                | native props of `a`, or of `button` without an `href`       | `HTMLAttributes`           | `'onClick', 'target', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `a`, or at the `button` when there is no `href` or the item is a parent.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The current page has `aria-current="page"`. A parent is a button with `aria-expanded`, and a disabled link loses its `href` and gets `aria-disabled`. The icon is hidden from screen readers, so keep the meaning in the label.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

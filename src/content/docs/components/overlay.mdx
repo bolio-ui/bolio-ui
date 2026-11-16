@@ -1,0 +1,89 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Overlay, LoadingOverlay, Card, Text, Button, Toggle, Group } from 'core'
+
+export const meta = {
+  title: 'Overlay',
+  description:
+    'A layer over an area, with an optional loading state, to dim or block what is behind it.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 127
+}
+
+## Overlay
+
+A layer that covers its closest positioned parent, so give the parent `position: relative`. Use it to dim an area, to block it while something loads or to focus on content placed over it.
+
+<Playground
+  desc="Set `opacity` and `blur` to control how much of the content behind shows."
+  scope={{ Overlay, Card, Text, Button }}
+  code={`
+<Card style={{ position: 'relative' }}>
+  <Text p my={0}>Quarterly report</Text>
+  <Text p small type="secondary" my={0}>This area is read only until the review ends.</Text>
+  <Overlay blur={2}>
+    <Button auto>Request access</Button>
+  </Overlay>
+</Card>
+`}
+/>
+
+<Playground
+  title="Loading"
+  desc="LoadingOverlay shows a spinner over the area while `visible` is on."
+  scope={{ LoadingOverlay, Card, Text, Toggle, Group }}
+  code={`
+() => {
+  const [loading, setLoading] = React.useState(true)
+  return (
+    <>
+      <Group>
+        <Toggle checked={loading} onChange={(e) => setLoading(e.target.checked)} />
+        <Text p my={0}>Loading</Text>
+      </Group>
+      <Card style={{ position: 'relative', marginTop: 16 }}>
+        <Text p my={0}>Revenue this month</Text>
+        <Text p b my={0}>US$ 48,290</Text>
+        <LoadingOverlay visible={loading} />
+      </Card>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/overlay.mdx">
+<Attributes.Title>Overlay.Props</Attributes.Title>
+
+| Attribute   | Description                                              | Type      | Accepted values | Default                |
+| ----------- | -------------------------------------------------------- | --------- | --------------- | ---------------------- |
+| **color**   | color of the layer                                       | `string`  | -               | the page background    |
+| **opacity** | how solid the layer is                                   | `number`  | `0` to `1`      | `0.6`                  |
+| **blur**    | blur in px of what is behind the layer                   | `number`  | -               | `0`                    |
+| **fixed**   | covers the whole screen instead of the positioned parent | `boolean` | -               | `false`                |
+| **zIndex**  | stacking order of the layer                              | `number`  | -               | `10`                   |
+| ...         | native props, passed to the root element                 | `HTMLAttributes` | `'id', 'className', ...` | -      |
+
+<Attributes.Title>LoadingOverlay.Props</Attributes.Title>
+
+Takes the `Overlay` props, except `children`, and:
+
+| Attribute   | Description                                  | Type      | Accepted values | Default     |
+| ----------- | -------------------------------------------- | --------- | --------------- | ----------- |
+| **visible** | shows the layer, renders nothing when off    | `boolean` | -               | `true`      |
+| **label**   | name read by screen readers                  | `string`  | -               | `'Loading'` |
+
+`LoadingOverlay` has `blur` of `1` by default.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the layer.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+`LoadingOverlay` has the `status` role and an `aria-label`, so screen readers announce that the area is loading. `Overlay` is a plain layer: it does not stop the keyboard from reaching what is behind it, so for a blocking dialog use Modal.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

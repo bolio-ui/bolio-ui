@@ -1,0 +1,64 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { NProgress, useNProgress, Button, Grid } from 'core'
+
+export const meta = {
+  title: 'NProgress',
+  description: 'A thin bar at the top of the window that shows that a page or a request is loading.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 125
+}
+
+## NProgress
+
+A thin bar at the top of the window that shows that a page or a request is loading. The component only draws the bar. The [useNProgress](/docs/hooks/use-nprogress) hook moves it, so you start and finish it from any router, fetch or event you already have.
+
+<Playground
+  desc="Start it and the bar creeps forward without reaching the end. Complete it and the bar fills, fades out and goes back to zero."
+  scope={{ NProgress, useNProgress, Button, Grid }}
+  code={`
+() => {
+  const progress = useNProgress()
+  return (
+    <Grid.Container gap={2}>
+      <NProgress value={progress.value} visible={progress.visible} />
+      <Grid>
+        <Button auto scale={0.6} onClick={progress.start}>Start</Button>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.6} onClick={progress.complete}>Complete</Button>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.6} type="secondary" onClick={progress.reset}>Reset</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/nprogress.mdx">
+<Attributes.Title>NProgress.Props</Attributes.Title>
+
+| Attribute   | Description                                        | Type      | Accepted values | Default        |
+| ----------- | -------------------------------------------------- | --------- | --------------- | -------------- |
+| **value**   | how much of the bar is filled, from 0 to 100       | `number`  | -               | -              |
+| **visible** | show the bar, or fade it out                       | `boolean` | -               | `true`         |
+| **height**  | thickness in pixels                                | `number`  | -               | `3`            |
+| **color**   | color of the bar                                   | `string`  | -               | theme primary  |
+| **zIndex**  | stacking order                                     | `number`  | -               | `1200`         |
+| **label**   | accessible name of the bar                         | `string`  | -               | `Page loading` |
+| ...         | native props of `div`                              | `HTMLAttributes` | -        | -              |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the fixed `div` of the bar.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The bar is a `progressbar` with the rounded value, and it is hidden from screen readers while it is not visible. The fade and the growth stop when the user prefers reduced motion. Announce the result of what loaded in the page itself, because a bar does not say what finished.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

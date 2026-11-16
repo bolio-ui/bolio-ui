@@ -69,8 +69,7 @@ function RadioGroupComponent({
     padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
     margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
     '--radio-group-item-size': SCALES.font(1),
-    '--radio-group-margin-top': useRow ? 0 : SCALES.font(1),
-    '--radio-group-margin-left': useRow ? SCALES.font(1) : 0,
+    '--radio-group-gap': SCALES.font(useRow ? 1 : 0.75),
     ...style
   } as React.CSSProperties
 

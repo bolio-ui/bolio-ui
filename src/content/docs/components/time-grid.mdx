@@ -1,0 +1,97 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { TimeGrid, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'TimeGrid',
+  description: 'A grid of times to pick one, such as the slots of an appointment.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 117
+}
+
+## TimeGrid
+
+A grid of times to pick one, such as the slots of an appointment. Use it when the user chooses from a few set times, and [TimePicker](/docs/components/time-picker) when any time is valid. The value is always a 24 hour string such as `14:30`, even when the labels use the 12 hour clock.
+
+<Playground
+  desc="Set the first and the last time and the minutes between them."
+  scope={{ TimeGrid, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={16}>
+    <TimeGrid startTime="09:00" endTime="13:00" interval={30} initialValue="09:30" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`. With `allowDeselect`, a click on the chosen time clears it."
+  scope={{ TimeGrid, Grid, Text }}
+  code={`
+() => {
+  const [time, setTime] = React.useState('')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid xs={24} sm={16}>
+        <TimeGrid startTime="14:00" endTime="17:00" allowDeselect value={time} onChange={setTime} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{time || 'No time yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="12 hour clock and booked times"
+  desc="`format=&quot;12h&quot;` changes the labels. Times in `disabledTimes` cannot be chosen."
+  scope={{ TimeGrid, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={16}>
+    <TimeGrid format="12h" locale="en-US" startTime="09:00" endTime="12:00" disabledTimes={['10:00', '10:30']} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/time-grid.mdx">
+<Attributes.Title>TimeGrid.Props</Attributes.Title>
+
+| Attribute         | Description                                        | Type                      | Accepted values | Default |
+| ----------------- | -------------------------------------------------- | ------------------------- | --------------- | ------- |
+| **value**         | chosen time as `HH:mm`, to control the component   | `string`                  | -               | -       |
+| **initialValue**  | chosen time at the start                           | `string`                  | -               | `''`    |
+| **onChange**      | called with the time, or `''` when it is cleared   | `(time: string) => void`  | -               | -       |
+| **startTime**     | first time of the grid                             | `string`                  | -               | `09:00` |
+| **endTime**       | last time of the grid                              | `string`                  | -               | `18:00` |
+| **interval**      | minutes between two times                          | `number`                  | -               | `30`    |
+| **format**        | clock of the labels                                | `'12h' \| '24h'`          | -               | `24h`   |
+| **locale**        | locale of the labels                               | `string`                  | -               | browser |
+| **disabledTimes** | times that cannot be chosen                        | `string[]`                | -               | `[]`    |
+| **allowDeselect** | clear the time when the chosen one is clicked      | `boolean`                 | -               | `false` |
+| **label**         | accessible name of the group                       | `string`                  | -               | `Time`  |
+| ...               | native props, passed to the root                   | `HTMLAttributes`          | `'id', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The grid is a radio group and each time is a radio. Only one time is in the tab order, the chosen one or else the first that can be chosen.
+
+| Key                      | Action                              |
+| ------------------------ | ----------------------------------- |
+| Arrow Left, Right, Up, Down | Previous and next time, skipping disabled ones |
+| Home and End             | First and last time                 |
+| Enter and Space          | Choose the focused time             |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

@@ -55,6 +55,11 @@
               "path": "/docs/guide/controlled-and-uncontrolled.mdx"
             },
             {
+              "title": "Form recipes",
+              "keywords": "form, recipes, useForm, submit, errors, server errors, isDirty, initialize, transformValues, validation, bolio ui",
+              "path": "/docs/guide/form-recipes.mdx"
+            },
+            {
               "title": "Page structure",
               "keywords": "page structure, layout, section, container, row, col, grid",
               "path": "/docs/guide/page-structure.mdx"
@@ -187,6 +192,16 @@
               "path": "/docs/components/overview.mdx"
             },
             {
+              "title": "Affix",
+              "keywords": "affix, fixed, pin, sticky, floating, back to top, overlay",
+              "path": "/docs/components/affix.mdx"
+            },
+            {
+              "title": "AppShell",
+              "keywords": "app shell, layout, header, navbar, sidebar, aside, footer, main, dashboard",
+              "path": "/docs/components/app-shell.mdx"
+            },
+            {
               "title": "Alert",
               "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
               "path": "/docs/components/alert.mdx"
@@ -205,6 +220,11 @@
               "title": "Mention",
               "keywords": "mention, @mention, autocomplete, trigger, comment, tag people, hashtag",
               "path": "/docs/components/mention.mdx"
+            },
+            {
+              "title": "AngleSlider",
+              "keywords": "angle slider, angle, rotation, dial, knob, degrees, direction",
+              "path": "/docs/components/angle-slider.mdx"
             },
             {
               "title": "AreaChart",
@@ -247,6 +267,11 @@
               "path": "/docs/components/bullet-chart.mdx"
             },
             {
+              "title": "Burger",
+              "keywords": "burger, hamburger, menu button, navigation, toggle, mobile menu",
+              "path": "/docs/components/burger.mdx"
+            },
+            {
               "title": "Button",
               "keywords": "button, btn, buttons, action",
               "path": "/docs/components/button.mdx"
@@ -282,9 +307,19 @@
               "path": "/docs/components/card.mdx"
             },
             {
+              "title": "ColorSwatch",
+              "keywords": "color swatch, color, dot, circle, palette, theme",
+              "path": "/docs/components/color-swatch.mdx"
+            },
+            {
               "title": "Carousel",
               "keywords": "carousel, slider, slides, scroll snap, gallery, testimonials, swipe, slideshow",
               "path": "/docs/components/carousel.mdx"
+            },
+            {
+              "title": "Cascader",
+              "keywords": "cascader, cascade, nested select, path, country state city, columns, hierarchy",
+              "path": "/docs/components/cascader.mdx"
             },
             {
               "title": "Checkbox",
@@ -362,6 +397,11 @@
               "path": "/docs/components/date-range-picker.mdx"
             },
             {
+              "title": "DateTimePicker",
+              "keywords": "date time picker, datetime, date and time, timestamp, schedule, appointment",
+              "path": "/docs/components/date-time-picker.mdx"
+            },
+            {
               "title": "Description",
               "keywords": "description, with component",
               "path": "/docs/components/description.mdx"
@@ -380,6 +420,16 @@
               "title": "Divider",
               "keywords": "divider, text, space, types",
               "path": "/docs/components/divider.mdx"
+            },
+            {
+              "title": "Flex",
+              "keywords": "flex, stack, group, center, grid, row, column, gap, layout, align, justify",
+              "path": "/docs/components/flex.mdx"
+            },
+            {
+              "title": "Overlay",
+              "keywords": "overlay, loading overlay, dim, block, blur, backdrop, loading",
+              "path": "/docs/components/overlay.mdx"
             },
             {
               "title": "DonutChart",
@@ -427,6 +477,11 @@
               "path": "/docs/components/gauge-chart.mdx"
             },
             {
+              "title": "FileInput",
+              "keywords": "file input, file, upload, attachment, select file, field",
+              "path": "/docs/components/file-input.mdx"
+            },
+            {
               "title": "Grid",
               "keywords": "fieldset, fluid, layout, responsive, hide elements, auto width, custom breakpoints",
               "path": "/docs/components/grid.mdx"
@@ -467,9 +522,19 @@
               "path": "/docs/components/keyboard.mdx"
             },
             {
+              "title": "List",
+              "keywords": "list, bullets, ordered, numbered, unordered, icons, ul, ol",
+              "path": "/docs/components/list.mdx"
+            },
+            {
               "title": "LineChart",
               "keywords": "line chart, trend, time series, chart, data visualization, recharts",
               "path": "/docs/components/line-chart.mdx"
+            },
+            {
+              "title": "Lightbox",
+              "keywords": "lightbox, gallery, image viewer, modal, photos, carousel, fullscreen",
+              "path": "/docs/components/lightbox.mdx"
             },
             {
               "title": "Link",
@@ -497,6 +562,11 @@
               "path": "/docs/components/menu.mdx"
             },
             {
+              "title": "MiniCalendar",
+              "keywords": "mini calendar, week strip, day strip, date strip, days, booking",
+              "path": "/docs/components/mini-calendar.mdx"
+            },
+            {
               "title": "MonthPicker",
               "keywords": "month picker, month, year, billing period, report, calendar, select month",
               "path": "/docs/components/month-picker.mdx"
@@ -512,6 +582,11 @@
               "path": "/docs/components/modals-provider.mdx"
             },
             {
+              "title": "NavLink",
+              "keywords": "nav link, navigation, sidebar item, menu item, nested, link, tree",
+              "path": "/docs/components/nav-link.mdx"
+            },
+            {
               "title": "Note",
               "keywords": "note, secondary, status, hidden label, custom label, filled variant",
               "path": "/docs/components/note.mdx"
@@ -520,6 +595,16 @@
               "title": "Number Input",
               "keywords": "number input, numeric, spinbutton, stepper, quantity, increment, decrement, min, max, step",
               "path": "/docs/components/number-input.mdx"
+            },
+            {
+              "title": "NProgress",
+              "keywords": "nprogress, progress bar, loading bar, top bar, navigation progress, page loading",
+              "path": "/docs/components/nprogress.mdx"
+            },
+            {
+              "title": "OverflowList",
+              "keywords": "overflow list, overflow, tags, truncate, more, collapse, responsive row",
+              "path": "/docs/components/overflow-list.mdx"
             },
             {
               "title": "Page",
@@ -537,6 +622,11 @@
               "path": "/docs/components/pie-chart.mdx"
             },
             {
+              "title": "PhoneInput",
+              "keywords": "phone input, phone, telephone, tel, country code, dial code, number",
+              "path": "/docs/components/phone-input.mdx"
+            },
+            {
               "title": "Pin Input",
               "keywords": "pin input, pin, otp, one time code, verification code, code input, passcode, 2fa",
               "path": "/docs/components/pin-input.mdx"
@@ -550,6 +640,11 @@
               "title": "Progress",
               "keywords": "progress, custom max, dynamic colors, types",
               "path": "/docs/components/progress.mdx"
+            },
+            {
+              "title": "QuarterPicker",
+              "keywords": "quarter picker, quarter, quarterly, fiscal, financial, report period",
+              "path": "/docs/components/quarter-picker.mdx"
             },
             {
               "title": "RadarChart",
@@ -568,8 +663,13 @@
             },
             {
               "title": "Rating",
-              "keywords": "rating, types, custom amount, icon, vote",
+              "keywords": "rating, types, precision, reviews, custom amount, icon, vote",
               "path": "/docs/components/rating.mdx"
+            },
+            {
+              "title": "RollingNumber",
+              "keywords": "rolling number, odometer, counter, animated number, digits, stat",
+              "path": "/docs/components/rolling-number.mdx"
             },
             {
               "title": "Row",
@@ -702,6 +802,11 @@
               "path": "/docs/components/timeline.mdx"
             },
             {
+              "title": "TimeGrid",
+              "keywords": "time grid, time slots, slots, appointment, booking, hours, schedule",
+              "path": "/docs/components/time-grid.mdx"
+            },
+            {
               "title": "TimePicker",
               "keywords": "time picker, time, hours, minutes, seconds, am pm, 12h, 24h, clock, input",
               "path": "/docs/components/time-picker.mdx"
@@ -732,9 +837,24 @@
               "path": "/docs/components/tree.mdx"
             },
             {
+              "title": "TreeSelect",
+              "keywords": "tree select, tree, nested select, folder, category, hierarchy, dropdown",
+              "path": "/docs/components/tree-select.mdx"
+            },
+            {
               "title": "Treemap",
               "keywords": "treemap, tree map, rectangles, hierarchy, proportions, chart, recharts",
               "path": "/docs/components/treemap.mdx"
+            },
+            {
+              "title": "WeekPicker",
+              "keywords": "week picker, week, weekly, timesheet, calendar, range",
+              "path": "/docs/components/week-picker.mdx"
+            },
+            {
+              "title": "YearPicker",
+              "keywords": "year picker, year, years, fiscal year, birth year",
+              "path": "/docs/components/year-picker.mdx"
             },
             {
               "title": "WaffleChart",
@@ -749,6 +869,11 @@
           "icon": "Sliders",
           "open": true,
           "routes": [
+            {
+              "title": "useActiveElement",
+              "keywords": "useActiveElement",
+              "path": "/docs/hooks/use-active-element.mdx"
+            },
             {
               "title": "useBodyScroll",
               "keywords": "useBodyScroll",
@@ -768,6 +893,11 @@
               "title": "useClipboard",
               "keywords": "useClipboard",
               "path": "/docs/hooks/use-clipboard.mdx"
+            },
+            {
+              "title": "useBrowserLanguage",
+              "keywords": "useBrowserLanguage",
+              "path": "/docs/hooks/use-browser-language.mdx"
             },
             {
               "title": "useCollapse",
@@ -905,6 +1035,11 @@
               "path": "/docs/hooks/use-headroom.mdx"
             },
             {
+              "title": "useHotkeys",
+              "keywords": "useHotkeys",
+              "path": "/docs/hooks/use-hotkeys.mdx"
+            },
+            {
               "title": "useHover",
               "keywords": "useHover",
               "path": "/docs/hooks/use-hover.mdx"
@@ -1005,6 +1140,11 @@
               "path": "/docs/hooks/use-mounted.mdx"
             },
             {
+              "title": "useNProgress",
+              "keywords": "useNProgress",
+              "path": "/docs/hooks/use-nprogress.mdx"
+            },
+            {
               "title": "useMouse",
               "keywords": "useMouse",
               "path": "/docs/hooks/use-mouse.mdx"
@@ -1103,6 +1243,11 @@
               "title": "useSelection",
               "keywords": "useSelection",
               "path": "/docs/hooks/use-selection.mdx"
+            },
+            {
+              "title": "useSessionStorage",
+              "keywords": "useSessionStorage",
+              "path": "/docs/hooks/use-session-storage.mdx"
             },
             {
               "title": "useSet",

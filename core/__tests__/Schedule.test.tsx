@@ -522,6 +522,78 @@ describe('<Schedule /> time', () => {
   })
 })
 
+describe('<Schedule /> agenda and year views', () => {
+  it('lists the days of the month that have events, in order', () => {
+    draw({ initialView: 'agenda', views: ['agenda', 'week'] })
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+      'November 2026'
+    )
+    const sections = screen
+      .getAllByRole('region')
+      .map((section) => section.getAttribute('aria-label'))
+    expect(sections).toEqual([
+      expect.stringContaining('November 9'),
+      expect.stringContaining('November 10'),
+      expect.stringContaining('November 11')
+    ])
+    expect(
+      within(screen.getByRole('region', { name: /November 9/ })).getAllByRole(
+        'button'
+      )
+    ).toHaveLength(3)
+  })
+
+  it('opens a day from the agenda, and calls onEventClick', () => {
+    const onEventClick = jest.fn()
+    draw({ initialView: 'agenda', onEventClick, views: ['agenda', 'day'] })
+    fireEvent.click(screen.getByRole('button', { name: /^Lunch/ }))
+    expect(onEventClick).toHaveBeenCalledWith(events[2])
+    const heading = within(
+      screen.getByRole('region', { name: /November 10/ })
+    ).getAllByRole('button')[0]
+    fireEvent.click(heading)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+      'Tuesday, November 10, 2026'
+    )
+  })
+
+  it('says so when the month has no events and moves by month', () => {
+    draw({ initialView: 'agenda', events: [] })
+    expect(screen.getByText('No events this month')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+      'December 2026'
+    )
+  })
+
+  it('shows a card for each month with its count of events', () => {
+    draw({ initialView: 'year', views: ['year', 'month'] })
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('2026')
+    expect(
+      screen.getAllByRole('button', { name: /, \d+ events?$/ })
+    ).toHaveLength(12)
+    expect(
+      screen.getByRole('button', { name: 'November 2026, 4 events' })
+    ).toHaveAttribute('aria-current', 'date')
+    expect(
+      screen.getByRole('button', { name: 'December 2026, 0 events' })
+    ).toBeInTheDocument()
+  })
+
+  it('opens the month of a card and moves by year', () => {
+    draw({ initialView: 'year', views: ['year', 'month'] })
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('2027')
+    fireEvent.click(
+      screen.getByRole('button', { name: 'March 2027, 0 events' })
+    )
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+      'March 2027'
+    )
+    expect(screen.getByRole('table')).toBeInTheDocument()
+  })
+})
+
 describe('<Schedule /> accessibility', () => {
   it('forwards the ref', () => {
     const ref = React.createRef<HTMLDivElement>()
@@ -533,7 +605,7 @@ describe('<Schedule /> accessibility', () => {
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
   })
 
-  it.each(['day', 'week', 'month'] as const)(
+  it.each(['day', 'week', 'month', 'agenda', 'year'] as const)(
     'has no violations in the %s view',
     async (initialView) => {
       const { container } = draw({ initialView, onSlotClick: jest.fn() })

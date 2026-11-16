@@ -4,7 +4,9 @@ import * as Bolio from '..'
 import type { AnyElement } from '../utils/types'
 
 const {
+  Affix,
   Alert,
+  AngleSlider,
   BolioUIProvider,
   Autocomplete,
   Avatar,
@@ -18,12 +20,14 @@ const {
   Heatmap,
   Sparkline,
   Breadcrumbs,
+  Burger,
   Button,
   ButtonDropdown,
   ButtonGroup,
   Calendar,
   Capacity,
   Card,
+  Cascader,
   Diff,
   EmojiPicker,
   JsonViewer,
@@ -40,6 +44,7 @@ const {
   Container,
   ContextMenu,
   DatePicker,
+  DateTimePicker,
   DateRangePicker,
   Description,
   Display,
@@ -48,6 +53,7 @@ const {
   Drawer,
   Dropzone,
   Fieldset,
+  FileInput,
   Grid,
   Image,
   ImageZoom,
@@ -59,17 +65,27 @@ const {
   Mark,
   Menu,
   Modal,
+  MiniCalendar,
   MonthPicker,
+  WeekPicker,
+  YearPicker,
+  TimeGrid,
   TimePicker,
+  NavLink,
+  NProgress,
   Note,
   NumberInput,
+  OverflowList,
   Page,
   Pagination,
+  PhoneInput,
   PinInput,
   Popover,
   Progress,
+  QuarterPicker,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -79,6 +95,16 @@ const {
   Slider,
   Snippet,
   Spacer,
+  AppShell,
+  ColorSwatch,
+  List,
+  Overlay,
+  LoadingOverlay,
+  Flex,
+  Stack,
+  Group,
+  Center,
+  SimpleGrid,
   Spoiler,
   Spinner,
   Splitter,
@@ -93,7 +119,8 @@ const {
   Toolbar,
   Tooltip,
   Tour,
-  Tree
+  Tree,
+  TreeSelect
 } = Bolio
 
 // an element, or the handle of a component that has none (Select)
@@ -212,6 +239,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'DIV'
   ],
+  ['DateTimePicker', (ref) => <DateTimePicker ref={ref} />, 'DIV'],
   [
     'DatePicker',
     (ref) => <DatePicker ref={ref} aria-label="Birthday" />,
@@ -239,6 +267,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     (ref) => <Dropzone ref={ref} aria-label="Attachments" />,
     'INPUT'
   ],
+  ['FileInput', (ref) => <FileInput ref={ref} aria-label="Upload" />],
   [
     'Fieldset',
     (ref) => (
@@ -289,8 +318,21 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
       </Modal>
     )
   ],
+  ['NavLink', (ref) => <NavLink ref={ref} label="Home" />, 'BUTTON'],
+  ['NProgress', (ref) => <NProgress ref={ref} value={40} />],
   ['Note', (ref) => <Note ref={ref}>Note</Note>],
   ['NumberInput', (ref) => <NumberInput ref={ref} aria-label="Qty" />, 'INPUT'],
+  [
+    'OverflowList',
+    (ref) => (
+      <OverflowList
+        ref={ref}
+        data={['a']}
+        renderItem={(item) => <span>{item}</span>}
+        renderOverflow={() => null}
+      />
+    )
+  ],
   [
     'Page',
     (ref) => (
@@ -300,6 +342,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Pagination', (ref) => <Pagination ref={ref} count={5} initialPage={1} />],
+  ['PhoneInput', (ref) => <PhoneInput ref={ref} />, 'DIV'],
   ['PinInput', (ref) => <PinInput ref={ref} aria-label="Code" />, 'DIV'],
   [
     'Popover',
@@ -330,6 +373,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     )
   ],
   ['Rating', (ref) => <Rating ref={ref} value={3} />],
+  ['RollingNumber', (ref) => <RollingNumber ref={ref} value={1280} />],
   ['Row', (ref) => <Row ref={ref}>row</Row>],
   ['ScrollArea', (ref) => <ScrollArea ref={ref}>Content</ScrollArea>],
   ['Section', (ref) => <Section ref={ref}>Section</Section>],
@@ -353,6 +397,31 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['Skeleton', (ref) => <Skeleton ref={ref} />],
   ['Slider', (ref) => <Slider ref={ref} initialValue={20} />],
   ['Snippet', (ref) => <Snippet ref={ref} text="yarn add" />],
+  ['Flex', (ref) => <Flex ref={ref}>Content</Flex>],
+  ['Stack', (ref) => <Stack ref={ref}>Content</Stack>],
+  ['Group', (ref) => <Group ref={ref}>Content</Group>],
+  ['Center', (ref) => <Center ref={ref}>Content</Center>],
+  ['SimpleGrid', (ref) => <SimpleGrid ref={ref}>Content</SimpleGrid>],
+  ['Overlay', (ref) => <Overlay ref={ref} />],
+  ['LoadingOverlay', (ref) => <LoadingOverlay ref={ref} />],
+  [
+    'List',
+    (ref) => (
+      <List ref={ref}>
+        <List.Item>One</List.Item>
+      </List>
+    ),
+    'UL'
+  ],
+  ['ColorSwatch', (ref) => <ColorSwatch ref={ref} color="#3b82f6" />],
+  [
+    'AppShell',
+    (ref) => (
+      <AppShell ref={ref} height={200}>
+        <AppShell.Main>Main</AppShell.Main>
+      </AppShell>
+    )
+  ],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],
@@ -397,7 +466,12 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['TagsInput', (ref) => <TagsInput ref={ref} aria-label="Skills" />, 'INPUT'],
   ['Text', (ref) => <Text ref={ref}>Text</Text>],
   ['Textarea', (ref) => <Textarea ref={ref} placeholder="write" />, 'TEXTAREA'],
+  ['MiniCalendar', (ref) => <MiniCalendar ref={ref} />],
   ['MonthPicker', (ref) => <MonthPicker ref={ref} />],
+  ['QuarterPicker', (ref) => <QuarterPicker ref={ref} />],
+  ['WeekPicker', (ref) => <WeekPicker ref={ref} />],
+  ['YearPicker', (ref) => <YearPicker ref={ref} />],
+  ['TimeGrid', (ref) => <TimeGrid ref={ref} />],
   ['TimePicker', (ref) => <TimePicker ref={ref} aria-label="Time" />],
   ['Toggle', (ref) => <Toggle ref={ref} />, 'INPUT'],
   [
@@ -421,12 +495,37 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'DIV'
   ],
   [
+    'Cascader',
+    (ref) => (
+      <Cascader
+        ref={ref}
+        aria-label="Place"
+        data={[{ value: 'a', label: 'A' }]}
+      />
+    ),
+    'BUTTON'
+  ],
+  [
     'Tree',
     (ref) => (
       <Tree ref={ref} aria-label="Files" data={[{ value: 'a', label: 'A' }]} />
     ),
     'UL'
   ],
+  [
+    'TreeSelect',
+    (ref) => (
+      <TreeSelect
+        ref={ref}
+        aria-label="File"
+        data={[{ value: 'a', label: 'A' }]}
+      />
+    ),
+    'BUTTON'
+  ],
+  ['AngleSlider', (ref) => <AngleSlider ref={ref} aria-label="Angle" />],
+  ['Affix', (ref) => <Affix ref={ref}>Pinned</Affix>],
+  ['Burger', (ref) => <Burger ref={ref} label="Open menu" />, 'BUTTON'],
   ['Alert', (ref) => <Alert ref={ref}>Your trial ends soon.</Alert>],
   ['Chip', (ref) => <Chip ref={ref}>React</Chip>, 'INPUT'],
   [

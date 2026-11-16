@@ -1,0 +1,98 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { QuarterPicker, Grid, Text, Code } from 'core'
+
+export const meta = {
+  title: 'QuarterPicker',
+  description: 'A grid of the four quarters of a year to pick one.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 116
+}
+
+## QuarterPicker
+
+A grid of the four quarters of a year to pick one, with a year header. Use it for financial reports, targets and any period that closes every three months.
+
+<Playground
+  desc="Click a quarter, or move with the arrow keys. `onChange` receives a `Date` on the first day of the quarter."
+  scope={{ QuarterPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <QuarterPicker initialValue={new Date(2026, 3, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`."
+  scope={{ QuarterPicker, Grid, Text }}
+  code={`
+() => {
+  const [quarter, setQuarter] = React.useState(null)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <QuarterPicker value={quarter} onChange={setQuarter} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>
+          {quarter ? 'Q' + (Math.floor(quarter.getMonth() / 3) + 1) + ' ' + quarter.getFullYear() : 'No quarter yet'}
+        </Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Min and max"
+  desc="Quarters outside `min` and `max` are disabled, and so are the year buttons that would lead only to them."
+  scope={{ QuarterPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <QuarterPicker min={new Date(2026, 3, 1)} max={new Date(2026, 9, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/quarter-picker.mdx">
+<Attributes.Title>QuarterPicker.Props</Attributes.Title>
+
+| Attribute         | Description                                      | Type                          | Accepted values | Default         |
+| ----------------- | ------------------------------------------------ | ----------------------------- | --------------- | --------------- |
+| **value**         | selected quarter, to control the component       | <Code>Date &#124; null</Code> | -               | -               |
+| **initialValue**  | selected quarter at the start                    | <Code>Date &#124; null</Code> | -               | `null`          |
+| **onChange**      | called with the first day of the chosen quarter  | `(quarter: Date) => void`     | -               | -               |
+| **min**           | first quarter that can be picked                 | `Date`                        | -               | -               |
+| **max**           | last quarter that can be picked                  | `Date`                        | -               | -               |
+| **autoFocus**     | focus the quarter on mount                       | `boolean`                     | -               | `false`         |
+| **previousLabel** | name of the previous year button                 | `string`                      | -               | `Previous year` |
+| **nextLabel**     | name of the next year button                     | `string`                      | -               | `Next year`     |
+| ...               | native props, passed to the root                 | `HTMLAttributes`              | `'id', 'className', ...` | -      |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The quarters are buttons inside a group named by the year. Each one is named such as "Q2 2026", and `aria-pressed` tells which is selected. Only the focused quarter is in the tab order.
+
+| Key                  | Action                                    |
+| -------------------- | ----------------------------------------- |
+| Arrow Left and Right | Previous and next quarter, across years   |
+| Arrow Up and Down    | Two quarters back and forward             |
+| Home and End         | First and last quarter of the year        |
+| Page Up and Down     | Same quarter of the previous and next year |
+| Enter and Space      | Pick the focused quarter                  |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

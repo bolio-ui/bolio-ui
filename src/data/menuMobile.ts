@@ -46,6 +46,11 @@ export const menuMobile = [
             group: 'Guide'
           },
           {
+            name: 'Form recipes',
+            url: '/docs/guide/form-recipes',
+            group: 'Guide'
+          },
+          {
             name: 'Page structure',
             url: '/docs/guide/page-structure',
             group: 'Guide'
@@ -157,8 +162,23 @@ export const menuMobile = [
         name: 'Components',
         children: [
           {
+            name: 'Affix',
+            url: '/docs/components/affix',
+            group: 'Components'
+          },
+          {
+            name: 'AppShell',
+            url: '/docs/components/app-shell',
+            group: 'Components'
+          },
+          {
             name: 'Alert',
             url: '/docs/components/alert',
+            group: 'Components'
+          },
+          {
+            name: 'AngleSlider',
+            url: '/docs/components/angle-slider',
             group: 'Components'
           },
           {
@@ -207,6 +227,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Burger',
+            url: '/docs/components/burger',
+            group: 'Components'
+          },
+          {
             name: 'Button',
             url: '/docs/components/button',
             group: 'Components'
@@ -242,8 +267,18 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'ColorSwatch',
+            url: '/docs/components/color-swatch',
+            group: 'Components'
+          },
+          {
             name: 'Carousel',
             url: '/docs/components/carousel',
+            group: 'Components'
+          },
+          {
+            name: 'Cascader',
+            url: '/docs/components/cascader',
             group: 'Components'
           },
           {
@@ -322,6 +357,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'DateTimePicker',
+            url: '/docs/components/date-time-picker',
+            group: 'Components'
+          },
+          {
             name: 'Description',
             url: '/docs/components/description',
             group: 'Components'
@@ -339,6 +379,16 @@ export const menuMobile = [
           {
             name: 'Divider',
             url: '/docs/components/divider',
+            group: 'Components'
+          },
+          {
+            name: 'Flex',
+            url: '/docs/components/flex',
+            group: 'Components'
+          },
+          {
+            name: 'Overlay',
+            url: '/docs/components/overlay',
             group: 'Components'
           },
           {
@@ -387,6 +437,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'FileInput',
+            url: '/docs/components/file-input',
+            group: 'Components'
+          },
+          {
             name: 'Grid',
             url: '/docs/components/grid',
             group: 'Components'
@@ -427,8 +482,18 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'List',
+            url: '/docs/components/list',
+            group: 'Components'
+          },
+          {
             name: 'LineChart',
             url: '/docs/components/line-chart',
+            group: 'Components'
+          },
+          {
+            name: 'Lightbox',
+            url: '/docs/components/lightbox',
             group: 'Components'
           },
           {
@@ -467,6 +532,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'MiniCalendar',
+            url: '/docs/components/mini-calendar',
+            group: 'Components'
+          },
+          {
             name: 'MonthPicker',
             url: '/docs/components/month-picker',
             group: 'Components'
@@ -482,6 +552,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'NavLink',
+            url: '/docs/components/nav-link',
+            group: 'Components'
+          },
+          {
             name: 'Note',
             url: '/docs/components/note',
             group: 'Components'
@@ -489,6 +564,16 @@ export const menuMobile = [
           {
             name: 'Number Input',
             url: '/docs/components/number-input',
+            group: 'Components'
+          },
+          {
+            name: 'NProgress',
+            url: '/docs/components/nprogress',
+            group: 'Components'
+          },
+          {
+            name: 'OverflowList',
+            url: '/docs/components/overflow-list',
             group: 'Components'
           },
           {
@@ -507,6 +592,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'PhoneInput',
+            url: '/docs/components/phone-input',
+            group: 'Components'
+          },
+          {
             name: 'Pin Input',
             url: '/docs/components/pin-input',
             group: 'Components'
@@ -519,6 +609,11 @@ export const menuMobile = [
           {
             name: 'Progress',
             url: '/docs/components/progress',
+            group: 'Components'
+          },
+          {
+            name: 'QuarterPicker',
+            url: '/docs/components/quarter-picker',
             group: 'Components'
           },
           {
@@ -539,6 +634,11 @@ export const menuMobile = [
           {
             name: 'Rating',
             url: '/docs/components/rating',
+            group: 'Components'
+          },
+          {
+            name: 'RollingNumber',
+            url: '/docs/components/rolling-number',
             group: 'Components'
           },
           {
@@ -677,6 +777,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'TimeGrid',
+            url: '/docs/components/time-grid',
+            group: 'Components'
+          },
+          {
             name: 'TimePicker',
             url: '/docs/components/time-picker',
             group: 'Components'
@@ -707,8 +812,23 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'TreeSelect',
+            url: '/docs/components/tree-select',
+            group: 'Components'
+          },
+          {
             name: 'Treemap',
             url: '/docs/components/treemap',
+            group: 'Components'
+          },
+          {
+            name: 'WeekPicker',
+            url: '/docs/components/week-picker',
+            group: 'Components'
+          },
+          {
+            name: 'YearPicker',
+            url: '/docs/components/year-picker',
             group: 'Components'
           },
           {

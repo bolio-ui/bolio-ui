@@ -1,6 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import { isDarkPalette } from '../utils/variant-colors'
 import styles from './Timeline.module.css'
 
 interface Props {
@@ -25,7 +26,11 @@ const TimelineItem = React.forwardRef<
       ref={ref}
       className={useClasses(styles.item, className)}
       style={
-        { '--timeline-line': theme.palette.accents_3 } as React.CSSProperties
+        {
+          '--timeline-line': isDarkPalette(theme.palette)
+            ? theme.palette.accents_4
+            : theme.palette.accents_3
+        } as React.CSSProperties
       }
       {...props}
     >
@@ -39,7 +44,7 @@ const TimelineItem = React.forwardRef<
         {icon || (
           <span
             className={styles.dot}
-            style={{ backgroundColor: theme.palette.foreground }}
+            style={{ backgroundColor: theme.palette.primary }}
           />
         )}
       </span>

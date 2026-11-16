@@ -1,0 +1,58 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Keyboard, Text, useHotkeys } from 'core'
+
+export const meta = {
+  title: 'useHotkeys',
+  description: 'Run a callback when a key combination is pressed anywhere on the page.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 105
+}
+
+## useHotkeys
+
+Run a callback when a key combination is pressed anywhere on the page.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="Press Ctrl or Command with J, or Shift with K. Typing in an input is ignored."
+  scope={{ Keyboard, Text, useHotkeys }}
+  code={`
+() => {
+  const [last, setLast] = React.useState('')
+  useHotkeys([
+    ['mod+J', () => setLast('mod+J')],
+    ['shift+K', () => setLast('shift+K')]
+  ])
+  return (
+    <>
+      <Keyboard command>J</Keyboard> <Keyboard shift>K</Keyboard>
+      <Text>{last || 'No hotkey yet'}</Text>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-hotkeys.mdx">
+<Attributes.Title>useHotkeys</Attributes.Title>
+
+```ts
+type HotkeyItem = [string, (event: KeyboardEvent) => void]
+
+const useHotkeys = (
+  hotkeys: HotkeyItem[],
+  options?: {
+    ignoreTags?: string[]
+    preventDefault?: boolean
+  },
+) => void
+```
+
+`mod` is Command on macOS and Ctrl elsewhere. The other modifiers are `ctrl`, `meta`, `alt` and `shift`, and the last part is the key, such as `K`, `esc`, `space` or `up`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

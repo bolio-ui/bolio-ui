@@ -1,0 +1,57 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Burger, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'Burger',
+  description: 'A button of three lines that turns into a cross, to open and close a menu.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 114
+}
+
+## Burger
+
+A button of three lines that turns into a cross, to open and close a menu. It sets `aria-expanded` from `opened`, and the lines stop moving when the user prefers reduced motion.
+
+<Playground
+  desc="Click to switch between the lines and the cross. Keep the name in step with the state."
+  scope={{ Burger, Grid, Text }}
+  code={`
+() => {
+  const [opened, setOpened] = React.useState(false)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Burger
+          label={opened ? 'Close menu' : 'Open menu'}
+          opened={opened}
+          onClick={() => setOpened(!opened)}
+        />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{opened ? 'Menu open' : 'Menu closed'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/burger.mdx">
+<Attributes.Title>Burger.Props</Attributes.Title>
+
+| Attribute  | Description                                  | Type                   | Accepted values | Default      |
+| ---------- | -------------------------------------------- | ---------------------- | --------------- | ------------ |
+| **opened** | draw a cross instead of three lines          | `boolean`              | -               | `false`      |
+| **label**  | accessible name of the button                | `string`               | -               | -            |
+| **color**  | color of the lines                           | `string`               | -               | foreground   |
+| ...        | native props of `button`                     | `ButtonHTMLAttributes` | `'onClick', 'disabled', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `button`.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

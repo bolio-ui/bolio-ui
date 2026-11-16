@@ -1,0 +1,70 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { WeekPicker, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'WeekPicker',
+  description: 'A calendar where a click on any day picks the whole week around it.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 115
+}
+
+## WeekPicker
+
+A calendar where a click on any day picks the whole week around it. Use it for weekly reports, timesheets and plans by week. It takes the props of [Calendar](/docs/components/calendar), except the ones that choose how days are selected.
+
+<Playground
+  desc="Click a day and its week is selected. `onChange` receives the first and the last day."
+  scope={{ WeekPicker, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <WeekPicker defaultMonth={new Date(2026, 10, 1)} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`. Set `weekStartsOn` for weeks that start on Monday."
+  scope={{ WeekPicker, Grid, Text }}
+  code={`
+() => {
+  const [week, setWeek] = React.useState(null)
+  const format = (date) => date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <WeekPicker weekStartsOn={1} value={week} onChange={setWeek} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{week ? format(week[0]) + ' to ' + format(week[1]) : 'No week yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/week-picker.mdx">
+<Attributes.Title>WeekPicker.Props</Attributes.Title>
+
+| Attribute        | Description                                       | Type                          | Accepted values | Default |
+| ---------------- | ------------------------------------------------- | ----------------------------- | --------------- | ------- |
+| **value**        | selected week, to control the component           | `[Date, Date] \| null`        | -               | -       |
+| **initialValue** | selected week at the start                        | `[Date, Date] \| null`        | -               | `null`  |
+| **onChange**     | called with the first and the last day of the week | `(week: [Date, Date]) => void` | -              | -       |
+| **weekStartsOn** | first day of the week, 0 is Sunday                | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6` | -           | `0`     |
+| ...              | props of the Calendar, such as `min`, `max` and `locale` | `CalendarProps`        | -               | -       |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div` of the Calendar.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

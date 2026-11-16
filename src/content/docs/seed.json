@@ -1,5 +1,46 @@
 [
   {
+    "title": "AngleSlider",
+    "component": true,
+    "path": "/docs/components/angle-slider"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider General",
+    "component": false,
+    "path": "/docs/components/angle-slider#general"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider Controlled",
+    "component": false,
+    "path": "/docs/components/angle-slider#controlled"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/angle-slider#apis"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "AngleSlider Props",
+    "component": false,
+    "path": "/docs/components/angle-slider#angleslider.props"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/angle-slider#ref"
+  },
+  {
+    "head": "AngleSlider",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/angle-slider#accessibility"
+  },
+  {
     "title": "AreaChart",
     "component": true,
     "path": "/docs/components/area-chart"
@@ -428,6 +469,35 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/bullet-chart#accessibility"
+  },
+  {
+    "title": "Burger",
+    "component": true,
+    "path": "/docs/components/burger"
+  },
+  {
+    "head": "Burger",
+    "title": "Burger General",
+    "component": false,
+    "path": "/docs/components/burger#general"
+  },
+  {
+    "head": "Burger",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/burger#apis"
+  },
+  {
+    "head": "Burger",
+    "title": "Burger Props",
+    "component": false,
+    "path": "/docs/components/burger#burger.props"
+  },
+  {
+    "head": "Burger",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/burger#ref"
   },
   {
     "title": "Button",
@@ -1046,6 +1116,53 @@
     "path": "/docs/components/carousel#accessibility"
   },
   {
+    "title": "Cascader",
+    "component": true,
+    "path": "/docs/components/cascader"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader General",
+    "component": false,
+    "path": "/docs/components/cascader#general"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader Controlled",
+    "component": false,
+    "path": "/docs/components/cascader#controlled"
+  },
+  {
+    "head": "Cascader",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/cascader#apis"
+  },
+  {
+    "head": "Cascader",
+    "title": "Cascader Props",
+    "component": false,
+    "path": "/docs/components/cascader#cascader.props"
+  },
+  {
+    "head": "Cascader",
+    "title": "CascaderOption",
+    "component": false,
+    "path": "/docs/components/cascader#cascaderoption"
+  },
+  {
+    "head": "Cascader",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/cascader#ref"
+  },
+  {
+    "head": "Cascader",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/cascader#accessibility"
+  },
+  {
     "title": "Checkbox",
     "component": true,
     "path": "/docs/components/checkbox"
@@ -1088,6 +1205,12 @@
   },
   {
     "head": "Checkbox",
+    "title": "Checkbox Cards",
+    "component": false,
+    "path": "/docs/components/checkbox#cards"
+  },
+  {
+    "head": "Checkbox",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/checkbox#apis"
@@ -1103,6 +1226,12 @@
     "title": "Checkbox Group Props",
     "component": false,
     "path": "/docs/components/checkbox#checkbox.group.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Card Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.card.props"
   },
   {
     "head": "Checkbox",
@@ -1854,6 +1983,41 @@
     "path": "/docs/components/date-range-picker#accessibility"
   },
   {
+    "title": "DateTimePicker",
+    "component": true,
+    "path": "/docs/components/date-time-picker"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker General",
+    "component": false,
+    "path": "/docs/components/date-time-picker#general"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Controlled",
+    "component": false,
+    "path": "/docs/components/date-time-picker#controlled"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Seconds and 12 hour clock",
+    "component": false,
+    "path": "/docs/components/date-time-picker#seconds-and-12-hour-clock"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/date-time-picker#apis"
+  },
+  {
+    "head": "DateTimePicker",
+    "title": "DateTimePicker Props",
+    "component": false,
+    "path": "/docs/components/date-time-picker#datetimepicker.props"
+  },
+  {
     "title": "Description",
     "component": true,
     "path": "/docs/components/description"
@@ -2525,6 +2689,41 @@
     "path": "/docs/components/gauge-chart#accessibility"
   },
   {
+    "title": "FileInput",
+    "component": true,
+    "path": "/docs/components/file-input"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput General",
+    "component": false,
+    "path": "/docs/components/file-input#general"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Multiple",
+    "component": false,
+    "path": "/docs/components/file-input#multiple"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Accept",
+    "component": false,
+    "path": "/docs/components/file-input#accept"
+  },
+  {
+    "head": "FileInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/file-input#apis"
+  },
+  {
+    "head": "FileInput",
+    "title": "FileInput Props",
+    "component": false,
+    "path": "/docs/components/file-input#fileinput.props"
+  },
+  {
     "title": "Grid",
     "component": true,
     "path": "/docs/components/grid"
@@ -3110,6 +3309,47 @@
     "path": "/docs/components/line-chart#accessibility"
   },
   {
+    "title": "Lightbox",
+    "component": true,
+    "path": "/docs/components/lightbox"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox General",
+    "component": false,
+    "path": "/docs/components/lightbox#general"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox Start on an image",
+    "component": false,
+    "path": "/docs/components/lightbox#start-on-an-image"
+  },
+  {
+    "head": "Lightbox",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/lightbox#apis"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Lightbox Props",
+    "component": false,
+    "path": "/docs/components/lightbox#lightbox.props"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/lightbox#ref"
+  },
+  {
+    "head": "Lightbox",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/lightbox#accessibility"
+  },
+  {
     "title": "Link",
     "component": true,
     "path": "/docs/components/link"
@@ -3352,6 +3592,53 @@
     "path": "/docs/components/menu#accessibility"
   },
   {
+    "title": "MiniCalendar",
+    "component": true,
+    "path": "/docs/components/mini-calendar"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar General",
+    "component": false,
+    "path": "/docs/components/mini-calendar#general"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Controlled",
+    "component": false,
+    "path": "/docs/components/mini-calendar#controlled"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Disabled days",
+    "component": false,
+    "path": "/docs/components/mini-calendar#disabled-days"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/mini-calendar#apis"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "MiniCalendar Props",
+    "component": false,
+    "path": "/docs/components/mini-calendar#minicalendar.props"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/mini-calendar#ref"
+  },
+  {
+    "head": "MiniCalendar",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/mini-calendar#accessibility"
+  },
+  {
     "title": "MonthPicker",
     "component": true,
     "path": "/docs/components/month-picker"
@@ -3583,6 +3870,47 @@
     "path": "/docs/components/modals-provider#accessibility"
   },
   {
+    "title": "NavLink",
+    "component": true,
+    "path": "/docs/components/nav-link"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink General",
+    "component": false,
+    "path": "/docs/components/nav-link#general"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink Controlled",
+    "component": false,
+    "path": "/docs/components/nav-link#controlled"
+  },
+  {
+    "head": "NavLink",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/nav-link#apis"
+  },
+  {
+    "head": "NavLink",
+    "title": "NavLink Props",
+    "component": false,
+    "path": "/docs/components/nav-link#navlink.props"
+  },
+  {
+    "head": "NavLink",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/nav-link#ref"
+  },
+  {
+    "head": "NavLink",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/nav-link#accessibility"
+  },
+  {
     "title": "Note",
     "component": true,
     "path": "/docs/components/note"
@@ -3778,6 +4106,76 @@
     "path": "/docs/components/overview#navigation"
   },
   {
+    "title": "NProgress",
+    "component": true,
+    "path": "/docs/components/nprogress"
+  },
+  {
+    "head": "NProgress",
+    "title": "NProgress General",
+    "component": false,
+    "path": "/docs/components/nprogress#general"
+  },
+  {
+    "head": "NProgress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/nprogress#apis"
+  },
+  {
+    "head": "NProgress",
+    "title": "NProgress Props",
+    "component": false,
+    "path": "/docs/components/nprogress#nprogress.props"
+  },
+  {
+    "head": "NProgress",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/nprogress#ref"
+  },
+  {
+    "head": "NProgress",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/nprogress#accessibility"
+  },
+  {
+    "title": "OverflowList",
+    "component": true,
+    "path": "/docs/components/overflow-list"
+  },
+  {
+    "head": "OverflowList",
+    "title": "OverflowList General",
+    "component": false,
+    "path": "/docs/components/overflow-list#general"
+  },
+  {
+    "head": "OverflowList",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/overflow-list#apis"
+  },
+  {
+    "head": "OverflowList",
+    "title": "OverflowList Props",
+    "component": false,
+    "path": "/docs/components/overflow-list#overflowlist.props"
+  },
+  {
+    "head": "OverflowList",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/overflow-list#ref"
+  },
+  {
+    "head": "OverflowList",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/overflow-list#accessibility"
+  },
+  {
     "title": "Page",
     "component": true,
     "path": "/docs/components/page"
@@ -3959,6 +4357,41 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/pie-chart#accessibility"
+  },
+  {
+    "title": "PhoneInput",
+    "component": true,
+    "path": "/docs/components/phone-input"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput General",
+    "component": false,
+    "path": "/docs/components/phone-input#general"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Controlled",
+    "component": false,
+    "path": "/docs/components/phone-input#controlled"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Countries",
+    "component": false,
+    "path": "/docs/components/phone-input#countries"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/phone-input#apis"
+  },
+  {
+    "head": "PhoneInput",
+    "title": "PhoneInput Props",
+    "component": false,
+    "path": "/docs/components/phone-input#phoneinput.props"
   },
   {
     "title": "Pin Input",
@@ -4162,6 +4595,53 @@
     "path": "/docs/components/progress#accessibility"
   },
   {
+    "title": "QuarterPicker",
+    "component": true,
+    "path": "/docs/components/quarter-picker"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker General",
+    "component": false,
+    "path": "/docs/components/quarter-picker#general"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Controlled",
+    "component": false,
+    "path": "/docs/components/quarter-picker#controlled"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Min and max",
+    "component": false,
+    "path": "/docs/components/quarter-picker#min-and-max"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/quarter-picker#apis"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "QuarterPicker Props",
+    "component": false,
+    "path": "/docs/components/quarter-picker#quarterpicker.props"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/quarter-picker#ref"
+  },
+  {
+    "head": "QuarterPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/quarter-picker#accessibility"
+  },
+  {
     "title": "RadarChart",
     "component": true,
     "path": "/docs/components/radar-chart"
@@ -4310,6 +4790,12 @@
   },
   {
     "head": "Radio",
+    "title": "Radio Cards",
+    "component": false,
+    "path": "/docs/components/radio#cards"
+  },
+  {
+    "head": "Radio",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/radio#apis"
@@ -4331,6 +4817,12 @@
     "title": "Radio Description Props",
     "component": false,
     "path": "/docs/components/radio#radio.description.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Card Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.card.props"
   },
   {
     "head": "Radio",
@@ -4381,6 +4873,12 @@
   },
   {
     "head": "Rating",
+    "title": "Rating Reviews",
+    "component": false,
+    "path": "/docs/components/rating#reviews"
+  },
+  {
+    "head": "Rating",
     "title": "Rating States",
     "component": false,
     "path": "/docs/components/rating#states"
@@ -4420,6 +4918,35 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/rating#accessibility"
+  },
+  {
+    "title": "RollingNumber",
+    "component": true,
+    "path": "/docs/components/rolling-number"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber General",
+    "component": false,
+    "path": "/docs/components/rolling-number#general"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Format",
+    "component": false,
+    "path": "/docs/components/rolling-number#format"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/rolling-number#apis"
+  },
+  {
+    "head": "RollingNumber",
+    "title": "RollingNumber Props",
+    "component": false,
+    "path": "/docs/components/rolling-number#rollingnumber.props"
   },
   {
     "title": "Row",
@@ -5770,6 +6297,53 @@
     "path": "/docs/components/timeline#accessibility"
   },
   {
+    "title": "TimeGrid",
+    "component": true,
+    "path": "/docs/components/time-grid"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid General",
+    "component": false,
+    "path": "/docs/components/time-grid#general"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid Controlled",
+    "component": false,
+    "path": "/docs/components/time-grid#controlled"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid 12 hour clock and booked times",
+    "component": false,
+    "path": "/docs/components/time-grid#12-hour-clock-and-booked-times"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/time-grid#apis"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "TimeGrid Props",
+    "component": false,
+    "path": "/docs/components/time-grid#timegrid.props"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/time-grid#ref"
+  },
+  {
+    "head": "TimeGrid",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/time-grid#accessibility"
+  },
+  {
     "title": "TimePicker",
     "component": true,
     "path": "/docs/components/time-picker"
@@ -6107,6 +6681,47 @@
     "path": "/docs/components/tree#accessibility"
   },
   {
+    "title": "TreeSelect",
+    "component": true,
+    "path": "/docs/components/tree-select"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect General",
+    "component": false,
+    "path": "/docs/components/tree-select#general"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect Controlled",
+    "component": false,
+    "path": "/docs/components/tree-select#controlled"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/tree-select#apis"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "TreeSelect Props",
+    "component": false,
+    "path": "/docs/components/tree-select#treeselect.props"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/tree-select#ref"
+  },
+  {
+    "head": "TreeSelect",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/tree-select#accessibility"
+  },
+  {
     "title": "Treemap",
     "component": true,
     "path": "/docs/components/treemap"
@@ -6152,6 +6767,88 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/treemap#accessibility"
+  },
+  {
+    "title": "WeekPicker",
+    "component": true,
+    "path": "/docs/components/week-picker"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker General",
+    "component": false,
+    "path": "/docs/components/week-picker#general"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker Controlled",
+    "component": false,
+    "path": "/docs/components/week-picker#controlled"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/week-picker#apis"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "WeekPicker Props",
+    "component": false,
+    "path": "/docs/components/week-picker#weekpicker.props"
+  },
+  {
+    "head": "WeekPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/week-picker#ref"
+  },
+  {
+    "title": "YearPicker",
+    "component": true,
+    "path": "/docs/components/year-picker"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker General",
+    "component": false,
+    "path": "/docs/components/year-picker#general"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Controlled",
+    "component": false,
+    "path": "/docs/components/year-picker#controlled"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Min and max",
+    "component": false,
+    "path": "/docs/components/year-picker#min-and-max"
+  },
+  {
+    "head": "YearPicker",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/year-picker#apis"
+  },
+  {
+    "head": "YearPicker",
+    "title": "YearPicker Props",
+    "component": false,
+    "path": "/docs/components/year-picker#yearpicker.props"
+  },
+  {
+    "head": "YearPicker",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/year-picker#ref"
+  },
+  {
+    "head": "YearPicker",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/year-picker#accessibility"
   },
   {
     "title": "WaffleChart",
@@ -6205,6 +6902,23 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/waffle-chart#accessibility"
+  },
+  {
+    "title": "useActiveElement",
+    "component": true,
+    "path": "/docs/hooks/use-active-element"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "useActiveElement General",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#general"
+  },
+  {
+    "head": "useActiveElement",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-active-element#apis"
   },
   {
     "title": "useBodyScroll",
@@ -6285,6 +6999,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-clipboard#apis"
+  },
+  {
+    "title": "useBrowserLanguage",
+    "component": true,
+    "path": "/docs/hooks/use-browser-language"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "useBrowserLanguage General",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#general"
+  },
+  {
+    "head": "useBrowserLanguage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-browser-language#apis"
   },
   {
     "title": "useCollapse",
@@ -6788,6 +7519,23 @@
     "path": "/docs/hooks/use-headroom#apis"
   },
   {
+    "title": "useHotkeys",
+    "component": true,
+    "path": "/docs/hooks/use-hotkeys"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "useHotkeys General",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#general"
+  },
+  {
+    "head": "useHotkeys",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-hotkeys#apis"
+  },
+  {
     "title": "useHover",
     "component": true,
     "path": "/docs/hooks/use-hover"
@@ -7150,6 +7898,23 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-mounted#apis"
+  },
+  {
+    "title": "useNProgress",
+    "component": true,
+    "path": "/docs/hooks/use-nprogress"
+  },
+  {
+    "head": "useNProgress",
+    "title": "useNProgress General",
+    "component": false,
+    "path": "/docs/hooks/use-nprogress#general"
+  },
+  {
+    "head": "useNProgress",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-nprogress#apis"
   },
   {
     "title": "useMouse",
@@ -8704,6 +9469,47 @@
     "path": "/docs/guide/dashboard-example#modals-from-code"
   },
   {
+    "title": "Form recipes",
+    "component": true,
+    "path": "/docs/guide/form-recipes"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Show that a submit is pending",
+    "component": false,
+    "path": "/docs/guide/form-recipes#show-that-a-submit-is-pending"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Show an error from the server",
+    "component": false,
+    "path": "/docs/guide/form-recipes#show-an-error-from-the-server"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Save only when something changed",
+    "component": false,
+    "path": "/docs/guide/form-recipes#save-only-when-something-changed"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Link two fields",
+    "component": false,
+    "path": "/docs/guide/form-recipes#link-two-fields"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Send other values than the form holds",
+    "component": false,
+    "path": "/docs/guide/form-recipes#send-other-values-than-the-form-holds"
+  },
+  {
+    "head": "Form recipes",
+    "title": "Edit a record that loads later",
+    "component": false,
+    "path": "/docs/guide/form-recipes#edit-a-record-that-loads-later"
+  },
+  {
     "title": "Page structure",
     "component": true,
     "path": "/docs/guide/page-structure"
@@ -8836,6 +9642,35 @@
     "title": "In your own components",
     "component": false,
     "path": "/docs/guide/controlled-and-uncontrolled#in-your-own-components"
+  },
+  {
+    "title": "Affix",
+    "component": true,
+    "path": "/docs/components/affix"
+  },
+  {
+    "head": "Affix",
+    "title": "Affix General",
+    "component": false,
+    "path": "/docs/components/affix#general"
+  },
+  {
+    "head": "Affix",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/affix#apis"
+  },
+  {
+    "head": "Affix",
+    "title": "Affix Props",
+    "component": false,
+    "path": "/docs/components/affix#affix.props"
+  },
+  {
+    "head": "Affix",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/affix#ref"
   },
   {
     "title": "Alert",
@@ -9182,6 +10017,12 @@
     "title": "Schedule Month",
     "component": false,
     "path": "/docs/components/schedule#month"
+  },
+  {
+    "head": "Schedule",
+    "title": "Schedule Agenda and year",
+    "component": false,
+    "path": "/docs/components/schedule#agenda-and-year"
   },
   {
     "head": "Schedule",
@@ -9774,5 +10615,305 @@
     "title": "useForm with all inputs General",
     "component": false,
     "path": "/docs/form/all-inputs#general"
+  },
+  {
+    "title": "Flex",
+    "component": true,
+    "path": "/docs/components/flex"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex General",
+    "component": false,
+    "path": "/docs/components/flex#general"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Stack",
+    "component": false,
+    "path": "/docs/components/flex#stack"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Group",
+    "component": false,
+    "path": "/docs/components/flex#group"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Center",
+    "component": false,
+    "path": "/docs/components/flex#center"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex SimpleGrid",
+    "component": false,
+    "path": "/docs/components/flex#simplegrid"
+  },
+  {
+    "head": "Flex",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/flex#apis"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Props",
+    "component": false,
+    "path": "/docs/components/flex#flex.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Stack Props",
+    "component": false,
+    "path": "/docs/components/flex#stack.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Group Props",
+    "component": false,
+    "path": "/docs/components/flex#group.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Center Props",
+    "component": false,
+    "path": "/docs/components/flex#center.props"
+  },
+  {
+    "head": "Flex",
+    "title": "SimpleGrid Props",
+    "component": false,
+    "path": "/docs/components/flex#simplegrid.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/flex#ref"
+  },
+  {
+    "head": "Flex",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/flex#accessibility"
+  },
+  {
+    "title": "Overlay",
+    "component": true,
+    "path": "/docs/components/overlay"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay General",
+    "component": false,
+    "path": "/docs/components/overlay#general"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay Loading",
+    "component": false,
+    "path": "/docs/components/overlay#loading"
+  },
+  {
+    "head": "Overlay",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/overlay#apis"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay Props",
+    "component": false,
+    "path": "/docs/components/overlay#overlay.props"
+  },
+  {
+    "head": "Overlay",
+    "title": "LoadingOverlay Props",
+    "component": false,
+    "path": "/docs/components/overlay#loadingoverlay.props"
+  },
+  {
+    "head": "Overlay",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/overlay#ref"
+  },
+  {
+    "head": "Overlay",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/overlay#accessibility"
+  },
+  {
+    "title": "List",
+    "component": true,
+    "path": "/docs/components/list"
+  },
+  {
+    "head": "List",
+    "title": "List General",
+    "component": false,
+    "path": "/docs/components/list#general"
+  },
+  {
+    "head": "List",
+    "title": "List Ordered",
+    "component": false,
+    "path": "/docs/components/list#ordered"
+  },
+  {
+    "head": "List",
+    "title": "List Icons",
+    "component": false,
+    "path": "/docs/components/list#icons"
+  },
+  {
+    "head": "List",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/list#apis"
+  },
+  {
+    "head": "List",
+    "title": "List Props",
+    "component": false,
+    "path": "/docs/components/list#list.props"
+  },
+  {
+    "head": "List",
+    "title": "List Item Props",
+    "component": false,
+    "path": "/docs/components/list#list.item.props"
+  },
+  {
+    "head": "List",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/list#ref"
+  },
+  {
+    "head": "List",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/list#accessibility"
+  },
+  {
+    "title": "ColorSwatch",
+    "component": true,
+    "path": "/docs/components/color-swatch"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch General",
+    "component": false,
+    "path": "/docs/components/color-swatch#general"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch Square",
+    "component": false,
+    "path": "/docs/components/color-swatch#square"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch With a label",
+    "component": false,
+    "path": "/docs/components/color-swatch#with-a-label"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-swatch#apis"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch Props",
+    "component": false,
+    "path": "/docs/components/color-swatch#colorswatch.props"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-swatch#ref"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-swatch#accessibility"
+  },
+  {
+    "title": "useSessionStorage",
+    "component": true,
+    "path": "/docs/hooks/use-session-storage"
+  },
+  {
+    "head": "useSessionStorage",
+    "title": "useSessionStorage General",
+    "component": false,
+    "path": "/docs/hooks/use-session-storage#general"
+  },
+  {
+    "head": "useSessionStorage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-session-storage#apis"
+  },
+  {
+    "title": "AppShell",
+    "component": true,
+    "path": "/docs/components/app-shell"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell General",
+    "component": false,
+    "path": "/docs/components/app-shell#general"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Aside and footer",
+    "component": false,
+    "path": "/docs/components/app-shell#aside-and-footer"
+  },
+  {
+    "head": "AppShell",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/app-shell#apis"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Header Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.header.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Navbar Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.navbar.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/app-shell#ref"
+  },
+  {
+    "head": "AppShell",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/app-shell#accessibility"
   }
 ]

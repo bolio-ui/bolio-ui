@@ -1,0 +1,111 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { TreeSelect, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'TreeSelect',
+  description: 'A field that opens a tree to choose one item from nested options.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 119
+}
+
+## TreeSelect
+
+A field that opens a [Tree](/docs/components/tree) to choose one item from nested options, such as a folder, a category or an organization chart. A node with children opens and closes, and a node without children is the one that gets chosen.
+
+<Playground
+  desc="Open the tree and choose a file. The field shows the label of the chosen node."
+  scope={{ TreeSelect, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <TreeSelect
+      aria-label="File"
+      placeholder="Pick a file"
+      data={[
+        {
+          value: 'src',
+          label: 'src',
+          children: [
+            { value: 'src/index.ts', label: 'index.ts' },
+            { value: 'src/app.tsx', label: 'app.tsx' }
+          ]
+        },
+        { value: 'README.md', label: 'README.md' }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`. The tree opens on the chosen node."
+  scope={{ TreeSelect, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('docs/guide/start.md')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <TreeSelect
+          aria-label="Page"
+          value={value}
+          onChange={setValue}
+          data={[
+            {
+              value: 'docs',
+              label: 'docs',
+              children: [
+                {
+                  value: 'docs/guide',
+                  label: 'guide',
+                  children: [
+                    { value: 'docs/guide/start.md', label: 'start.md' },
+                    { value: 'docs/guide/theme.md', label: 'theme.md' }
+                  ]
+                },
+                { value: 'docs/faq.md', label: 'faq.md' }
+              ]
+            }
+          ]}
+        />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{value}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/tree-select.mdx">
+<Attributes.Title>TreeSelect.Props</Attributes.Title>
+
+| Attribute        | Description                                      | Type                                          | Accepted values | Default   |
+| ---------------- | ------------------------------------------------ | --------------------------------------------- | --------------- | --------- |
+| **data**         | nodes of the tree, as in [Tree](/docs/components/tree) | `TreeNodeData[]`                        | -               | -         |
+| **value**        | value of the chosen node, to control it          | `string \| null`                              | -               | -         |
+| **initialValue** | value of the chosen node at the start            | `string \| null`                              | -               | `null`    |
+| **onChange**     | called with the value and the node that was chosen | `(value: string, node: TreeNodeData) => void` | -              | -         |
+| **placeholder**  | text shown while nothing is chosen               | `string`                                      | -               | `Select`  |
+| **treeLabel**    | accessible name of the tree                      | `string`                                      | -               | `Options` |
+| **disabled**     | disable the field                                | `boolean`                                     | -               | `false`   |
+| **type**         | color of the field                               | `NormalTypes`                                 | `'default' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `default` |
+| **rounded**      | round the corners                                | `boolean`                                     | -               | `false`   |
+| ...              | native props of `button`                         | `ButtonHTMLAttributes`                        | `'id', 'aria-label', ...` | -  |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `button` of the field.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The field is a button with `aria-haspopup="tree"` and `aria-expanded`. The tree takes the focus when it opens, on the chosen node or else on the first one, and Escape closes it and gives the focus back to the field. Give the field a name with `aria-label` or a label, because its text is the chosen item and not what it is for. The keys inside are those of [Tree](/docs/components/tree).
+
+</Attributes>
+
+export default Docs.withMeta(meta)

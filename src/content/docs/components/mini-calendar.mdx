@@ -1,0 +1,103 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { MiniCalendar, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'MiniCalendar',
+  description: 'A strip of a few days to pick one, with arrows to move along the calendar.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 118
+}
+
+## MiniCalendar
+
+A strip of a few days to pick one, with arrows to move along the calendar. It takes little room, so use it at the top of a day view, in a booking flow or on a small screen. Use [Calendar](/docs/components/calendar) when the user needs the whole month.
+
+<Playground
+  desc="Click a day, or move with the arrow keys. The arrows in the header move the strip by its length."
+  scope={{ MiniCalendar, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={16}>
+    <MiniCalendar />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="Pass `value` and update it in `onChange`. `numberOfDays` sets the length of the strip."
+  scope={{ MiniCalendar, Grid, Text }}
+  code={`
+() => {
+  const [day, setDay] = React.useState(null)
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid xs={24} sm={16}>
+        <MiniCalendar numberOfDays={5} value={day} onChange={setDay} />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{day ? day.toLocaleDateString('en-US', { dateStyle: 'full' }) : 'No day yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="Disabled days"
+  desc="Days outside `min` and `max`, or rejected by `shouldDisableDate`, cannot be chosen."
+  scope={{ MiniCalendar, Grid }}
+  code={`
+() => {
+  const from = new Date()
+  const to = new Date()
+  to.setDate(to.getDate() + 10)
+  return (
+    <Grid.Container gap={2}>
+      <Grid xs={24} sm={16}>
+        <MiniCalendar min={from} max={to} shouldDisableDate={(date) => date.getDay() === 0} />
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/mini-calendar.mdx">
+<Attributes.Title>MiniCalendar.Props</Attributes.Title>
+
+| Attribute             | Description                                          | Type                          | Accepted values | Default         |
+| --------------------- | ---------------------------------------------------- | ----------------------------- | --------------- | --------------- |
+| **value**             | chosen day, to control the component                 | `Date \| null`                | -               | -               |
+| **initialValue**      | chosen day at the start                              | `Date \| null`                | -               | `null`          |
+| **onChange**          | called with the chosen day                           | `(date: Date) => void`        | -               | -               |
+| **defaultDate**       | first day of the strip when there is no value        | `Date`                        | -               | today           |
+| **numberOfDays**      | days in the strip                                    | `number`                      | -               | `7`             |
+| **min**, **max**      | first and last day that can be chosen                | `Date`                        | -               | -               |
+| **shouldDisableDate** | disable the days it returns true for                 | `(date: Date) => boolean`     | -               | -               |
+| **locale**            | locale of the names                                  | `string`                      | -               | browser         |
+| **previousLabel**     | name of the previous button                          | `string`                      | -               | `Previous days` |
+| **nextLabel**         | name of the next button                              | `string`                      | -               | `Next days`     |
+| ...                   | native props, passed to the root                     | `HTMLAttributes`              | `'id', 'className', ...` | -      |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root `div`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The days are buttons in a group named by the month, each named by its full date, and `aria-pressed` tells which is chosen. Only one day is in the tab order.
+
+| Key                  | Action                                          |
+| -------------------- | ----------------------------------------------- |
+| Arrow Left and Right | Previous and next day of the strip, skipping disabled ones |
+| Home and End         | First and last day of the strip                 |
+| Enter and Space      | Choose the focused day                          |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

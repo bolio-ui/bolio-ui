@@ -1,0 +1,118 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Cascader, Grid, Text } from 'core'
+
+export const meta = {
+  title: 'Cascader',
+  description: 'A field that opens columns of options, one for each level, to choose a path.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 120
+}
+
+## Cascader
+
+A field that opens columns of options, one for each level, to choose a path such as country, state and city. An option with children opens the next column, and an option without children is the end of the path. Use [TreeSelect](/docs/components/tree-select) when the options read better as an outline.
+
+<Playground
+  desc="Open the field and go into the columns. The field shows the whole path."
+  scope={{ Cascader, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <Cascader
+      aria-label="Place"
+      placeholder="Pick a place"
+      data={[
+        {
+          value: 'br',
+          label: 'Brazil',
+          children: [
+            { value: 'sp', label: 'São Paulo', children: [{ value: 'campinas', label: 'Campinas' }, { value: 'santos', label: 'Santos' }] },
+            { value: 'rj', label: 'Rio de Janeiro' }
+          ]
+        },
+        { value: 'pt', label: 'Portugal' }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="Controlled"
+  desc="The value is the list of values from the first column to the chosen option. `onChange` also receives the options along the path."
+  scope={{ Cascader, Grid, Text }}
+  code={`
+() => {
+  const [path, setPath] = React.useState(['br', 'rj'])
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <Cascader
+          aria-label="Place"
+          value={path}
+          onChange={setPath}
+          data={[
+            { value: 'br', label: 'Brazil', children: [{ value: 'sp', label: 'São Paulo' }, { value: 'rj', label: 'Rio de Janeiro' }] },
+            { value: 'pt', label: 'Portugal', children: [{ value: 'lisbon', label: 'Lisbon' }, { value: 'porto', label: 'Porto', disabled: true }] }
+          ]}
+        />
+      </Grid>
+      <Grid>
+        <Text p b my={0}>{path.join(' > ') || 'Nothing chosen'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/cascader.mdx">
+<Attributes.Title>Cascader.Props</Attributes.Title>
+
+| Attribute        | Description                                          | Type                                                  | Accepted values | Default   |
+| ---------------- | ---------------------------------------------------- | ----------------------------------------------------- | --------------- | --------- |
+| **data**         | options of the first column, each with its `children` | `CascaderOption[]`                                   | -               | -         |
+| **value**        | values from the first column to the chosen option    | `string[]`                                            | -               | -         |
+| **initialValue** | the path at the start                                | `string[]`                                            | -               | `[]`      |
+| **onChange**     | called with the path and the options along it        | `(path: string[], options: CascaderOption[]) => void` | -               | -         |
+| **placeholder**  | text shown while nothing is chosen                   | `string`                                              | -               | `Select`  |
+| **listLabel**    | accessible name of each column, followed by its number | `string`                                            | -               | `Options` |
+| **disabled**     | disable the field                                    | `boolean`                                             | -               | `false`   |
+| **type**         | color of the field                                   | `NormalTypes`                                         | `'default' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `default` |
+| **rounded**      | round the corners                                    | `boolean`                                             | -               | `false`   |
+| ...              | native props of `button`                             | `ButtonHTMLAttributes`                                | `'id', 'aria-label', ...` | -  |
+
+<Attributes.Title>CascaderOption</Attributes.Title>
+
+```ts
+type CascaderOption = {
+  value: string
+  label: React.ReactNode
+  disabled?: boolean
+  children?: CascaderOption[]
+}
+```
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `button` of the field.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The field is a button with `aria-haspopup="listbox"` and `aria-expanded`. Each column is a listbox named by `listLabel` and its number, and the options are `option`s with `aria-selected` on the chosen path. The focus goes into the list when it opens and back to the field when it closes. Give the field a name with `aria-label` or a label, because its text is the chosen path and not what it is for.
+
+| Key             | Action                                                       |
+| --------------- | ------------------------------------------------------------ |
+| Arrow Up, Down  | Previous and next option of the column, skipping disabled ones |
+| Arrow Right     | Open the options of the focused item and move into them      |
+| Arrow Left      | Close the last column and move back to its parent            |
+| Home and End    | First and last option of the column                          |
+| Enter and Space | Open the item, or choose it when it has no children          |
+| Escape          | Close and give the focus back to the field                   |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

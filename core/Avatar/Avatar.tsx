@@ -4,6 +4,7 @@ import useTheme from '../use-theme'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import type { AnyElement } from '../utils/types'
+import { isDarkPalette } from '../utils/variant-colors'
 import styles from './Avatar.module.css'
 
 interface Props {
@@ -82,7 +83,9 @@ const AvatarComponent = React.forwardRef<
 
     const avatarStyle: React.CSSProperties = {
       borderRadius: radius,
-      backgroundColor: theme.palette.accents_2,
+      backgroundColor: isDarkPalette(theme.palette)
+        ? theme.palette.accents_3
+        : theme.palette.accents_2,
       width: SCALES.width(1.75) || SCALES.height(1.75),
       height: SCALES.height(1.75) || SCALES.width(1.75),
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,

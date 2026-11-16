@@ -115,7 +115,7 @@ const TagComponent = React.forwardRef<
       border: `1px solid ${borderColor}`,
       backgroundColor: bgColor,
       color,
-      borderRadius: SCALES.height(0.3125),
+      borderRadius: `min(${theme.layout.radius}, ${SCALES.height(0.875)})`,
       fontSize: SCALES.font(0.875),
       width: SCALES.width(1, 'auto'),
       height: SCALES.height(1.75),

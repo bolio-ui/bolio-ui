@@ -29,10 +29,15 @@
 
 .title {
   font-weight: 600;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
 }
 
 .table {
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -71,7 +76,9 @@
 }
 
 .dayButton {
-  width: 2.5em;
+  width: 100%;
+  min-width: 2.5em;
+  max-width: 3.5em;
   height: 2.5em;
 }
 

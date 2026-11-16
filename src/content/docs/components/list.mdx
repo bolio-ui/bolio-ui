@@ -1,0 +1,84 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { List } from 'core'
+import { Check, X } from '@bolio-ui/icons'
+
+export const meta = {
+  title: 'List',
+  description:
+    'A bulleted or numbered list, with an optional icon as the marker of every item.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 128
+}
+
+## List
+
+A bulleted or numbered list. The base styles of the page remove the bullets of a plain `ul`, so use `List` when you want them back, or when each item needs an icon.
+
+<Playground
+  desc="Bulleted by default. Set `spacing` to open the gap between the items."
+  scope={{ List }}
+  code={`
+<List spacing={0.5}>
+  <List.Item>Unlimited projects</List.Item>
+  <List.Item>Priority support</List.Item>
+  <List.Item>Export to CSV and JSON</List.Item>
+</List>
+`}
+/>
+
+<Playground
+  title="Ordered"
+  desc="Use `type` to number the items."
+  scope={{ List }}
+  code={`
+<List type="ordered">
+  <List.Item>Install the package</List.Item>
+  <List.Item>Import the stylesheet once</List.Item>
+  <List.Item>Wrap the app in the provider</List.Item>
+</List>
+`}
+/>
+
+<Playground
+  title="Icons"
+  desc="An `icon` on the list replaces the marker of every item, and one on an item replaces only its own."
+  scope={{ List, Check, X }}
+  code={`
+<List icon={<Check width={16} height={16} />} spacing={0.5}>
+  <List.Item>Unlimited projects</List.Item>
+  <List.Item>Priority support</List.Item>
+  <List.Item icon={<X width={16} height={16} />}>Custom domain</List.Item>
+</List>
+`}
+/>
+
+<Attributes edit="/content/docs/components/list.mdx">
+<Attributes.Title>List.Props</Attributes.Title>
+
+| Attribute   | Description                                              | Type        | Accepted values              | Default       |
+| ----------- | -------------------------------------------------------- | ----------- | ---------------------------- | ------------- |
+| **type**    | bullets or numbers                                       | `string`    | `'unordered'`, `'ordered'`   | `'unordered'` |
+| **icon**    | marker of every item, replaces the bullet or the number  | `ReactNode` | -                            | -             |
+| **spacing** | space between the items, in `rem`                        | `number`    | -                            | `0.25`        |
+| ...         | native props, passed to the `ul` or `ol`                 | `HTMLAttributes` | `'id', 'className', ...` | -             |
+
+<Attributes.Title>List.Item.Props</Attributes.Title>
+
+| Attribute | Description                        | Type        | Accepted values | Default |
+| --------- | ---------------------------------- | ----------- | --------------- | ------- |
+| **icon**  | marker of this item only           | `ReactNode` | -               | -       |
+| ...       | native props, passed to the `li`   | `HTMLAttributes` | `'id', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the `ul` or `ol`, and on `List.Item` at the `li`.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The list is a native `ul` or `ol` and the items are `li`, so screen readers announce the number of items. Icons are hidden from screen readers, so use text, not an icon alone, to say something that matters.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

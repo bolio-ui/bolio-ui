@@ -1,4 +1,13 @@
 .slider {
   border-radius: 50px;
   position: relative;
+  /* keeps the thumb's z-index inside the slider, under sticky headers */
+  isolation: isolate;
+}
+
+/* The track is thin, so the clickable area reaches past it. */
+.slider::before {
+  content: '';
+  position: absolute;
+  inset: -10px 0;
 }

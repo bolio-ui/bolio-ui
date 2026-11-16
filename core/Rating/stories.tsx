@@ -102,3 +102,14 @@ export const Icon: StoryFn = () => (
 export const HighlightSelectedOnly: StoryFn = () => (
   <Rating highlightSelectedOnly initialValue={3} icon={<Zap />} />
 )
+
+export const Reviews: StoryFn = () => (
+  <Grid.Container gap={2}>
+    <Grid>
+      <Rating readOnly value={4.3} showValue />
+    </Grid>
+    <Grid>
+      <Rating readOnly value={3.7} showValue type="primary" />
+    </Grid>
+  </Grid.Container>
+)

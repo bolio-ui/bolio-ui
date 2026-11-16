@@ -48,11 +48,11 @@
 }
 
 .horizontal > .handle::before {
-  inset: 0 -4px;
+  inset: 0 -6px;
 }
 
 .vertical > .handle::before {
-  inset: -4px 0;
+  inset: -6px 0;
 }
 
 .handle:hover,

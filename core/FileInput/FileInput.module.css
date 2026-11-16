@@ -1,0 +1,86 @@
+.root {
+  position: relative;
+  display: inline-block;
+  font-size: var(--file-input-font-size);
+  width: var(--file-input-width);
+  max-width: 100%;
+  padding: var(--file-input-padding-top) var(--file-input-padding-right)
+    var(--file-input-padding-bottom) var(--file-input-padding-left);
+  margin: var(--file-input-margin-top) var(--file-input-margin-right)
+    var(--file-input-margin-bottom) var(--file-input-margin-left);
+}
+
+.native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--file-input-height);
+  padding: 0 2.25em 0 0.875em;
+  font: inherit;
+  text-align: left;
+  color: var(--file-input-color);
+  background-color: var(--file-input-bg);
+  border: 1px solid var(--file-input-border);
+  border-radius: var(--file-input-radius);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field:hover {
+  border-color: var(--file-input-hover-border);
+  background-color: var(--file-input-hover-bg);
+}
+
+.field:focus-visible {
+  outline: none;
+  border-color: var(--file-input-focus-border);
+}
+
+.field:disabled {
+  cursor: not-allowed;
+}
+
+.names,
+.placeholder {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--file-input-placeholder);
+}
+
+.clear {
+  position: absolute;
+  top: 50%;
+  right: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em;
+  color: var(--file-input-placeholder);
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.clear:hover,
+.clear:focus-visible {
+  color: var(--file-input-color);
+  outline: none;
+}

@@ -159,6 +159,21 @@ export const components = [
     url: '/docs/components/overview'
   },
   {
+    name: 'Layout',
+    url: '',
+    icon: 'Layout'
+  },
+  {
+    name: 'Affix',
+    url: '/docs/components/affix',
+    tag: 'New'
+  },
+  {
+    name: 'AppShell',
+    url: '/docs/components/app-shell',
+    tag: 'New'
+  },
+  {
     name: 'Alert',
     url: '/docs/components/alert',
     tag: 'New'
@@ -169,9 +184,35 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'MatrixChart',
-    url: '/docs/components/matrix-chart',
+    name: 'Col',
+    url: '/docs/components/col'
+  },
+  {
+    name: 'Container',
+    url: '/docs/components/container'
+  },
+  {
+    name: 'Divider',
+    url: '/docs/components/divider'
+  },
+  {
+    name: 'Flex',
+    url: '/docs/components/flex',
     tag: 'New'
+  },
+  {
+    name: 'Overlay',
+    url: '/docs/components/overlay',
+    tag: 'New'
+  },
+  {
+    name: 'FileInput',
+    url: '/docs/components/file-input',
+    tag: 'New'
+  },
+  {
+    name: 'Grid',
+    url: '/docs/components/grid'
   },
   {
     name: 'Mention',
@@ -179,13 +220,255 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'AreaChart',
-    url: '/docs/components/area-chart',
+    name: 'OverflowList',
+    url: '/docs/components/overflow-list',
     tag: 'New'
+  },
+  {
+    name: 'Page',
+    url: '/docs/components/page'
+  },
+  {
+    name: 'RollingNumber',
+    url: '/docs/components/rolling-number',
+    tag: 'New'
+  },
+  {
+    name: 'Row',
+    url: '/docs/components/row'
+  },
+  {
+    name: 'Splitter',
+    url: '/docs/components/splitter',
+    tag: 'New'
+  },
+  {
+    name: 'Schedule',
+    url: '/docs/components/schedule',
+    tag: 'Updated'
+  },
+  {
+    name: 'Scroll Area',
+    url: '/docs/components/scroll-area',
+    tag: 'New'
+  },
+  {
+    name: 'Section',
+    url: '/docs/components/section'
+  },
+  {
+    name: 'Spacer',
+    url: '/docs/components/spacer'
+  },
+  {
+    name: 'Typography',
+    url: '',
+    icon: 'Type'
+  },
+  {
+    name: 'Code',
+    url: '/docs/components/code'
+  },
+  {
+    name: 'DateTimePicker',
+    url: '/docs/components/date-time-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Description',
+    url: '/docs/components/description'
+  },
+  {
+    name: 'JsonViewer',
+    url: '/docs/components/json-viewer',
+    tag: 'New'
+  },
+  {
+    name: 'Keyboard',
+    url: '/docs/components/keyboard'
+  },
+  {
+    name: 'List',
+    url: '/docs/components/list',
+    tag: 'New'
+  },
+  {
+    name: 'Link',
+    url: '/docs/components/link'
+  },
+  {
+    name: 'Text',
+    url: '/docs/components/text'
+  },
+  {
+    name: 'Buttons',
+    url: '',
+    icon: 'MousePointer'
+  },
+  {
+    name: 'Burger',
+    url: '/docs/components/burger',
+    tag: 'New'
+  },
+  {
+    name: 'Button',
+    url: '/docs/components/button',
+    tag: 'Updated'
+  },
+  {
+    name: 'Button Dropdown',
+    url: '/docs/components/button-dropdown',
+    tag: 'Updated'
+  },
+  {
+    name: 'Button Group',
+    url: '/docs/components/button-group'
+  },
+  {
+    name: 'Menu',
+    url: '/docs/components/menu',
+    tag: 'Updated'
+  },
+  {
+    name: 'Forms',
+    url: '',
+    icon: 'Edit3'
   },
   {
     name: 'Autocomplete',
     url: '/docs/components/autocomplete',
+    tag: 'New'
+  },
+  {
+    name: 'Cascader',
+    url: '/docs/components/cascader',
+    tag: 'New'
+  },
+  {
+    name: 'Checkbox',
+    url: '/docs/components/checkbox',
+    tag: 'Updated'
+  },
+  {
+    name: 'Color Input',
+    url: '/docs/components/color-input',
+    tag: 'New'
+  },
+  {
+    name: 'Color Picker',
+    url: '/docs/components/color-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Combobox',
+    url: '/docs/components/combobox',
+    tag: 'Updated'
+  },
+  {
+    name: 'MiniCalendar',
+    url: '/docs/components/mini-calendar',
+    tag: 'New'
+  },
+  {
+    name: 'MonthPicker',
+    url: '/docs/components/month-picker',
+    tag: 'New'
+  },
+  {
+    name: 'DatePicker',
+    url: '/docs/components/date-picker',
+    tag: 'Updated'
+  },
+  {
+    name: 'DateRangePicker',
+    url: '/docs/components/date-range-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Dropzone',
+    url: '/docs/components/dropzone',
+    tag: 'New'
+  },
+  {
+    name: 'Fieldset',
+    url: '/docs/components/fieldset'
+  },
+  {
+    name: 'Input',
+    url: '/docs/components/input'
+  },
+  {
+    name: 'Number Input',
+    url: '/docs/components/number-input'
+  },
+  {
+    name: 'Tags Input',
+    url: '/docs/components/tags-input',
+    tag: 'New'
+  },
+  {
+    name: 'PhoneInput',
+    url: '/docs/components/phone-input',
+    tag: 'New'
+  },
+  {
+    name: 'Pin Input',
+    url: '/docs/components/pin-input',
+    tag: 'New'
+  },
+  {
+    name: 'Radio',
+    url: '/docs/components/radio',
+    tag: 'Updated'
+  },
+  {
+    name: 'Rating',
+    url: '/docs/components/rating'
+  },
+  {
+    name: 'Segmented Control',
+    url: '/docs/components/segmented-control',
+    tag: 'New'
+  },
+  {
+    name: 'Select',
+    url: '/docs/components/select',
+    tag: 'Updated'
+  },
+  {
+    name: 'Slider',
+    url: '/docs/components/slider'
+  },
+  {
+    name: 'Textarea',
+    url: '/docs/components/textarea'
+  },
+  {
+    name: 'Toast',
+    url: '/docs/hooks/use-toast'
+  },
+  {
+    name: 'TimeGrid',
+    url: '/docs/components/time-grid',
+    tag: 'New'
+  },
+  {
+    name: 'TimePicker',
+    url: '/docs/components/time-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Toggle',
+    url: '/docs/components/toggle'
+  },
+  {
+    name: 'Data Display',
+    url: '',
+    icon: 'Database'
+  },
+  {
+    name: 'AreaChart',
+    url: '/docs/components/area-chart',
     tag: 'New'
   },
   {
@@ -207,10 +490,6 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Breadcrumbs',
-    url: '/docs/components/breadcrumbs'
-  },
-  {
     name: 'BubbleChart',
     url: '/docs/components/bubble-chart',
     tag: 'New'
@@ -219,20 +498,6 @@ export const components = [
     name: 'BulletChart',
     url: '/docs/components/bullet-chart',
     tag: 'New'
-  },
-  {
-    name: 'Button',
-    url: '/docs/components/button',
-    tag: 'Updated'
-  },
-  {
-    name: 'Button Dropdown',
-    url: '/docs/components/button-dropdown',
-    tag: 'Updated'
-  },
-  {
-    name: 'Button Group',
-    url: '/docs/components/button-group'
   },
   {
     name: 'Calendar',
@@ -245,12 +510,13 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Capacity',
-    url: '/docs/components/capacity'
-  },
-  {
     name: 'Card',
     url: '/docs/components/card'
+  },
+  {
+    name: 'ColorSwatch',
+    url: '/docs/components/color-swatch',
+    tag: 'New'
   },
   {
     name: 'Carousel',
@@ -258,74 +524,14 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Checkbox',
-    url: '/docs/components/checkbox'
-  },
-  {
-    name: 'Code',
-    url: '/docs/components/code'
-  },
-  {
-    name: 'Col',
-    url: '/docs/components/col'
-  },
-  {
     name: 'Collapse',
     url: '/docs/components/collapse',
-    tag: 'Updated'
-  },
-  {
-    name: 'Color Input',
-    url: '/docs/components/color-input',
-    tag: 'New'
-  },
-  {
-    name: 'Color Picker',
-    url: '/docs/components/color-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Combobox',
-    url: '/docs/components/combobox',
-    tag: 'Updated'
-  },
-  {
-    name: 'Command',
-    url: '/docs/components/command',
     tag: 'Updated'
   },
   {
     name: 'CompositeChart',
     url: '/docs/components/composite-chart',
     tag: 'New'
-  },
-  {
-    name: 'Container',
-    url: '/docs/components/container'
-  },
-  {
-    name: 'Copy Button',
-    url: '/docs/components/copy-button',
-    tag: 'New'
-  },
-  {
-    name: 'Context Menu',
-    url: '/docs/components/context-menu',
-    tag: 'New'
-  },
-  {
-    name: 'DatePicker',
-    url: '/docs/components/date-picker',
-    tag: 'Updated'
-  },
-  {
-    name: 'DateRangePicker',
-    url: '/docs/components/date-range-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Description',
-    url: '/docs/components/description'
   },
   {
     name: 'Diff',
@@ -337,10 +543,6 @@ export const components = [
     url: '/docs/components/display'
   },
   {
-    name: 'Divider',
-    url: '/docs/components/divider'
-  },
-  {
     name: 'DonutChart',
     url: '/docs/components/donut-chart',
     tag: 'New'
@@ -348,30 +550,6 @@ export const components = [
   {
     name: 'Dot',
     url: '/docs/components/dot'
-  },
-  {
-    name: 'Drawer',
-    url: '/docs/components/drawer',
-    tag: 'Updated'
-  },
-  {
-    name: 'EmojiPicker',
-    url: '/docs/components/emoji-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Empty State',
-    url: '/docs/components/empty-state',
-    tag: 'New'
-  },
-  {
-    name: 'Dropzone',
-    url: '/docs/components/dropzone',
-    tag: 'New'
-  },
-  {
-    name: 'Fieldset',
-    url: '/docs/components/fieldset'
   },
   {
     name: 'FunnelChart',
@@ -382,10 +560,6 @@ export const components = [
     name: 'GaugeChart',
     url: '/docs/components/gauge-chart',
     tag: 'New'
-  },
-  {
-    name: 'Grid',
-    url: '/docs/components/grid'
   },
   {
     name: 'Heatmap',
@@ -406,30 +580,9 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Input',
-    url: '/docs/components/input'
-  },
-  {
-    name: 'JsonViewer',
-    url: '/docs/components/json-viewer',
-    tag: 'New'
-  },
-  {
-    name: 'Keyboard',
-    url: '/docs/components/keyboard'
-  },
-  {
     name: 'LineChart',
     url: '/docs/components/line-chart',
     tag: 'New'
-  },
-  {
-    name: 'Link',
-    url: '/docs/components/link'
-  },
-  {
-    name: 'Loading',
-    url: '/docs/components/loading'
   },
   {
     name: 'Mark',
@@ -442,40 +595,9 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Menu',
-    url: '/docs/components/menu',
-    tag: 'Updated'
-  },
-  {
-    name: 'MonthPicker',
-    url: '/docs/components/month-picker',
+    name: 'MatrixChart',
+    url: '/docs/components/matrix-chart',
     tag: 'New'
-  },
-  {
-    name: 'Modal',
-    url: '/docs/components/modal',
-    tag: 'Updated'
-  },
-  {
-    name: 'ModalsProvider',
-    url: '/docs/components/modals-provider',
-    tag: 'New'
-  },
-  {
-    name: 'Note',
-    url: '/docs/components/note'
-  },
-  {
-    name: 'Number Input',
-    url: '/docs/components/number-input'
-  },
-  {
-    name: 'Page',
-    url: '/docs/components/page'
-  },
-  {
-    name: 'Pagination',
-    url: '/docs/components/pagination'
   },
   {
     name: 'PieChart',
@@ -483,18 +605,9 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Pin Input',
-    url: '/docs/components/pin-input',
+    name: 'QuarterPicker',
+    url: '/docs/components/quarter-picker',
     tag: 'New'
-  },
-  {
-    name: 'Popover',
-    url: '/docs/components/popover',
-    tag: 'Updated'
-  },
-  {
-    name: 'Progress',
-    url: '/docs/components/progress'
   },
   {
     name: 'RadarChart',
@@ -507,33 +620,6 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Radio',
-    url: '/docs/components/radio',
-    tag: 'Updated'
-  },
-  {
-    name: 'Rating',
-    url: '/docs/components/rating'
-  },
-  {
-    name: 'Row',
-    url: '/docs/components/row'
-  },
-  {
-    name: 'Segmented Control',
-    url: '/docs/components/segmented-control',
-    tag: 'New'
-  },
-  {
-    name: 'Select',
-    url: '/docs/components/select',
-    tag: 'Updated'
-  },
-  {
-    name: 'Skeleton',
-    url: '/docs/components/skeleton'
-  },
-  {
     name: 'SankeyChart',
     url: '/docs/components/sankey-chart',
     tag: 'New'
@@ -544,30 +630,8 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Schedule',
-    url: '/docs/components/schedule',
-    tag: 'New'
-  },
-  {
-    name: 'Scroll Area',
-    url: '/docs/components/scroll-area',
-    tag: 'New'
-  },
-  {
-    name: 'Section',
-    url: '/docs/components/section'
-  },
-  {
-    name: 'Slider',
-    url: '/docs/components/slider'
-  },
-  {
     name: 'Snippet',
     url: '/docs/components/snippet'
-  },
-  {
-    name: 'Spacer',
-    url: '/docs/components/spacer'
   },
   {
     name: 'Sparkline',
@@ -575,27 +639,9 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Spoiler',
-    url: '/docs/components/spoiler',
-    tag: 'New'
-  },
-  {
-    name: 'Spinner',
-    url: '/docs/components/spinner'
-  },
-  {
-    name: 'Splitter',
-    url: '/docs/components/splitter',
-    tag: 'New'
-  },
-  {
     name: 'Stat',
     url: '/docs/components/stat',
     tag: 'New'
-  },
-  {
-    name: 'Stepper',
-    url: '/docs/components/stepper'
   },
   {
     name: 'SunburstChart',
@@ -608,10 +654,6 @@ export const components = [
     tag: 'Updated'
   },
   {
-    name: 'Tabs',
-    url: '/docs/components/tabs'
-  },
-  {
     name: 'Tag',
     url: '/docs/components/tag',
     tag: 'Updated'
@@ -622,30 +664,108 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Tags Input',
-    url: '/docs/components/tags-input',
+    name: 'TreeSelect',
+    url: '/docs/components/tree-select',
     tag: 'New'
   },
   {
-    name: 'Text',
-    url: '/docs/components/text'
-  },
-  {
-    name: 'Textarea',
-    url: '/docs/components/textarea'
-  },
-  {
-    name: 'Toast',
-    url: '/docs/hooks/use-toast'
-  },
-  {
-    name: 'TimePicker',
-    url: '/docs/components/time-picker',
+    name: 'Treemap',
+    url: '/docs/components/treemap',
     tag: 'New'
   },
   {
-    name: 'Toggle',
-    url: '/docs/components/toggle'
+    name: 'WeekPicker',
+    url: '/docs/components/week-picker',
+    tag: 'New'
+  },
+  {
+    name: 'YearPicker',
+    url: '/docs/components/year-picker',
+    tag: 'New'
+  },
+  {
+    name: 'WaffleChart',
+    url: '/docs/components/waffle-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Feedback',
+    url: '',
+    icon: 'Bell'
+  },
+  {
+    name: 'Capacity',
+    url: '/docs/components/capacity'
+  },
+  {
+    name: 'EmojiPicker',
+    url: '/docs/components/emoji-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Empty State',
+    url: '/docs/components/empty-state',
+    tag: 'New'
+  },
+  {
+    name: 'Loading',
+    url: '/docs/components/loading'
+  },
+  {
+    name: 'ModalsProvider',
+    url: '/docs/components/modals-provider',
+    tag: 'New'
+  },
+  {
+    name: 'Note',
+    url: '/docs/components/note'
+  },
+  {
+    name: 'Progress',
+    url: '/docs/components/progress'
+  },
+  {
+    name: 'Skeleton',
+    url: '/docs/components/skeleton'
+  },
+  {
+    name: 'Spoiler',
+    url: '/docs/components/spoiler',
+    tag: 'New'
+  },
+  {
+    name: 'Spinner',
+    url: '/docs/components/spinner'
+  },
+  {
+    name: 'Overlays',
+    url: '',
+    icon: 'Layers'
+  },
+  {
+    name: 'Drawer',
+    url: '/docs/components/drawer',
+    tag: 'Updated'
+  },
+  {
+    name: 'Copy Button',
+    url: '/docs/components/copy-button',
+    tag: 'New'
+  },
+  {
+    name: 'Context Menu',
+    url: '/docs/components/context-menu',
+    tag: 'New'
+  },
+  {
+    name: 'Modal',
+    url: '/docs/components/modal',
+    tag: 'Updated'
+  },
+  {
+    name: 'Popover',
+    url: '/docs/components/popover',
+    tag: 'Updated'
   },
   {
     name: 'Toolbar',
@@ -658,23 +778,39 @@ export const components = [
     tag: 'Updated'
   },
   {
+    name: 'Navigation',
+    url: '',
+    icon: 'Compass'
+  },
+  {
+    name: 'Breadcrumbs',
+    url: '/docs/components/breadcrumbs'
+  },
+  {
+    name: 'Command',
+    url: '/docs/components/command',
+    tag: 'Updated'
+  },
+  {
+    name: 'Pagination',
+    url: '/docs/components/pagination'
+  },
+  {
+    name: 'Stepper',
+    url: '/docs/components/stepper'
+  },
+  {
     name: 'Tour',
     url: '/docs/components/tour',
     tag: 'New'
   },
   {
+    name: 'Tabs',
+    url: '/docs/components/tabs'
+  },
+  {
     name: 'Tree',
     url: '/docs/components/tree',
-    tag: 'New'
-  },
-  {
-    name: 'Treemap',
-    url: '/docs/components/treemap',
-    tag: 'New'
-  },
-  {
-    name: 'WaffleChart',
-    url: '/docs/components/waffle-chart',
     tag: 'New'
   }
 ]
@@ -686,12 +822,22 @@ export const hooks = [
     icon: 'MousePointer'
   },
   {
+    name: 'useActiveElement',
+    url: '/docs/hooks/use-active-element',
+    tag: 'New'
+  },
+  {
     name: 'useBodyScroll',
     url: '/docs/hooks/use-body-scroll'
   },
   {
     name: 'useClickAway',
     url: '/docs/hooks/use-click-away'
+  },
+  {
+    name: 'useBrowserLanguage',
+    url: '/docs/hooks/use-browser-language',
+    tag: 'New'
   },
   {
     name: 'useCollapse',
@@ -904,6 +1050,11 @@ export const hooks = [
     url: '/docs/hooks/use-selection'
   },
   {
+    name: 'useSessionStorage',
+    url: '/docs/hooks/use-session-storage',
+    tag: 'New'
+  },
+  {
     name: 'useSet',
     url: '/docs/hooks/use-set'
   },
@@ -985,6 +1136,11 @@ export const hooks = [
   {
     name: 'useHeadroom',
     url: '/docs/hooks/use-headroom'
+  },
+  {
+    name: 'useHotkeys',
+    url: '/docs/hooks/use-hotkeys',
+    tag: 'New'
   },
   {
     name: 'useIdle',

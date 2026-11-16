@@ -1,0 +1,87 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { FileInput, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'FileInput',
+  description: 'A field that opens the file dialog and shows the names of the chosen files.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 107
+}
+
+## FileInput
+
+A field that opens the file dialog and shows the names of the chosen files. To drop files on an area instead, use [Dropzone](/docs/components/dropzone).
+
+<Playground
+  desc="Choose a file and its name takes the place of the placeholder."
+  scope={{ FileInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <FileInput aria-label="Upload" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Multiple"
+  desc="With `multiple`, `onChange` receives an array of files. `clearable` adds a button to remove them."
+  scope={{ FileInput, Grid, Text }}
+  code={`
+() => {
+  const [files, setFiles] = React.useState([])
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid>
+        <FileInput aria-label="Attachments" multiple clearable placeholder="Select files" value={files} onChange={setFiles} />
+      </Grid>
+      <Grid>
+        <Text p my={0}>{files.length} files</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Accept"
+  desc="Limit the types in the dialog with `accept`."
+  scope={{ FileInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid>
+    <FileInput aria-label="Image" accept="image/*" placeholder="Select an image" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/file-input.mdx">
+<Attributes.Title>FileInput.Props</Attributes.Title>
+
+| Property         | Description                                  | Type                         | Accepted values                                  | Default         |
+| ---------------- | -------------------------------------------- | ---------------------------- | ------------------------------------------------ | --------------- |
+| **value**        | controlled file, or files with `multiple`    | `File \| File[] \| null`     | -                                                | -               |
+| **initialValue** | initial file, or files with `multiple`       | `File \| File[] \| null`     | -                                                | `null`          |
+| **onChange**     | called with the chosen file, or the files    | `(value) => void`            | -                                                | -               |
+| **multiple**     | allow more than one file                     | `boolean`                    | -                                                | `false`         |
+| **accept**       | types shown in the dialog                    | `string`                     | -                                                | -               |
+| **placeholder**  | text shown while there is no file            | `string`                     | -                                                | `Select a file` |
+| **clearable**    | show a button that removes the files         | `boolean`                    | -                                                | `false`         |
+| **clearLabel**   | accessible name of the clear button          | `string`                     | -                                                | `Clear`         |
+| **disabled**     | disable the field                            | `boolean`                    | -                                                | `false`         |
+| **type**         | color of the field                           | `NormalTypes`                | `'default' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `default`       |
+| **rounded**      | round the corners                            | `boolean`                    | -                                                | `false`         |
+| ...              | native props of `input`                      | `InputHTMLAttributes`        | `'name', 'required', 'id', ...`                  | -               |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

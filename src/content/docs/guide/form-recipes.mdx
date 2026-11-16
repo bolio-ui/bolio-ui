@@ -1,0 +1,124 @@
+import Docs from 'src/templates/Docs'
+import { Spacer } from 'core'
+
+export const meta = {
+  title: 'Form recipes',
+  description:
+    'Six patterns for useForm: a pending submit, errors from the server, saving only changes, linked fields, a different payload and a record that loads later.',
+  sidebar: 'guide',
+  group: 'Guide'
+}
+
+## Form recipes
+
+Short answers to the questions that come after the first form. Each recipe uses [useForm](/docs/hooks/use-form) and the fields you already have, and none needs more than a few lines.
+
+<Spacer h={2} />
+
+### Show that a submit is pending
+
+`onSubmit` waits for your handler, and `submitting` is `true` until it ends. Pass it to the button, which also stops a second click while the request runs.
+
+```tsx
+import { Button, Input, useForm, isEmail } from '@bolio-ui/core'
+
+const form = useForm({
+  initialValues: { email: '' },
+  validate: { email: isEmail('Enter an e-mail such as name@company.com') }
+})
+
+<form onSubmit={form.onSubmit(async (values) => {
+  await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify(values) })
+})}>
+  <Input label="E-mail" {...form.getInputProps('email')} />
+  <Button htmlType="submit" loading={form.submitting}>Subscribe</Button>
+</form>
+```
+
+<Spacer h={2} />
+
+### Show an error from the server
+
+The server knows things the form does not, such as an e-mail that is taken. Catch the failure in the handler and put the message on the field with `setFieldError`, or on several with `setErrors`. The next change in that field clears it.
+
+```tsx
+<form onSubmit={form.onSubmit(async (values) => {
+  const response = await fetch('/api/subscribe', {
+    method: 'POST',
+    body: JSON.stringify(values)
+  })
+  if (response.status === 409) {
+    form.setFieldError('email', 'This e-mail is already subscribed. Use another one.')
+  }
+})}>
+```
+
+<Spacer h={2} />
+
+### Save only when something changed
+
+`isDirty` compares the values with the initial ones, so it can disable the button. After a successful save, call `resetDirty` so the saved values become the new starting point.
+
+```tsx
+<Button htmlType="submit" disabled={!form.isDirty()} loading={form.submitting}>
+  Save changes
+</Button>
+
+const save = form.onSubmit(async (values) => {
+  await updateProfile(values)
+  form.resetDirty()
+})
+```
+
+<Spacer h={2} />
+
+### Link two fields
+
+Change one field from the other with `onValuesChange`. It runs after every change but not after `initialize`, so it does not fight a record that loads. Compare with the previous values to react only to the field you care about.
+
+```tsx
+const form = useForm({
+  initialValues: { country: 'BR', state: '' },
+  onValuesChange: (values) => {
+    if (values.country !== 'BR' && values.state) form.setFieldValue('state', '')
+  }
+})
+```
+
+To check one field against another, use a rule with the second argument, or `matchesField`.
+
+<Spacer h={2} />
+
+### Send other values than the form holds
+
+`transformValues` shapes what `onSubmit` hands to your handler, while the form keeps the values the fields need. Use it to turn text into numbers or to drop fields the API does not take.
+
+```tsx
+const form = useForm({
+  initialValues: { name: '', price: '', agree: false },
+  transformValues: ({ name, price }) => ({
+    name: name.trim(),
+    price: Number(price)
+  })
+})
+
+<form onSubmit={form.onSubmit((payload) => api.create(payload))}>
+```
+
+<Spacer h={2} />
+
+### Edit a record that loads later
+
+Start with empty values and call `initialize` when the data arrives. It sets both the values and the starting point, so `isDirty` is `false` right after and `reset` goes back to the loaded record.
+
+```tsx
+const form = useForm({ initialValues: { name: '', email: '' } })
+
+useEffect(() => {
+  fetch('/api/profile')
+    .then((response) => response.json())
+    .then((profile) => form.initialize(profile))
+}, [])
+```
+
+export default Docs.withMeta(meta)

@@ -3,7 +3,9 @@ import React from 'react'
 import * as Bolio from '..'
 
 const {
+  Affix,
   Alert,
+  AngleSlider,
   Autocomplete,
   Avatar,
   Badge,
@@ -16,12 +18,14 @@ const {
   Heatmap,
   Sparkline,
   Breadcrumbs,
+  Burger,
   Button,
   ButtonDropdown,
   ButtonGroup,
   Calendar,
   Capacity,
   Card,
+  Cascader,
   Diff,
   EmojiPicker,
   JsonViewer,
@@ -38,6 +42,7 @@ const {
   ContextMenu,
   CssBaseline,
   DatePicker,
+  DateTimePicker,
   DateRangePicker,
   Description,
   Display,
@@ -46,6 +51,7 @@ const {
   Drawer,
   Dropzone,
   Fieldset,
+  FileInput,
   Grid,
   Image,
   ImageZoom,
@@ -57,17 +63,27 @@ const {
   Mark,
   Menu,
   Modal,
+  MiniCalendar,
   MonthPicker,
+  WeekPicker,
+  YearPicker,
+  TimeGrid,
   TimePicker,
+  NavLink,
+  NProgress,
   Note,
   NumberInput,
+  OverflowList,
   Page,
   Pagination,
+  PhoneInput,
   PinInput,
   Popover,
   Progress,
+  QuarterPicker,
   Radio,
   Rating,
+  RollingNumber,
   Row,
   ScrollArea,
   Section,
@@ -77,6 +93,16 @@ const {
   Slider,
   Snippet,
   Spacer,
+  AppShell,
+  ColorSwatch,
+  List,
+  Overlay,
+  LoadingOverlay,
+  Flex,
+  Stack,
+  Group,
+  Center,
+  SimpleGrid,
   Spoiler,
   Spinner,
   Splitter,
@@ -91,7 +117,8 @@ const {
   Toolbar,
   Tooltip,
   Tour,
-  Tree
+  Tree,
+  TreeSelect
 } = Bolio
 
 export const cases: Array<[string, () => React.ReactElement]> = [
@@ -252,6 +279,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['CssBaseline', () => <CssBaseline />],
   ['DatePicker', () => <DatePicker aria-label="Birthday" />],
+  ['DateTimePicker', () => <DateTimePicker />],
   ['DateRangePicker', () => <DateRangePicker aria-label="Stay" />],
   ['Description', () => <Description title="T" content="C" />],
   ['Display', () => <Display caption="Caption">Content</Display>],
@@ -266,6 +294,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Dropzone', () => <Dropzone aria-label="Attachments" />],
+  ['FileInput', () => <FileInput aria-label="Upload" />],
   [
     'Fieldset',
     () => (
@@ -306,8 +335,27 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </Modal>
     )
   ],
+  [
+    'NavLink',
+    () => (
+      <NavLink label="Settings" defaultOpened>
+        <NavLink label="Profile" href="#" active />
+      </NavLink>
+    )
+  ],
+  ['NProgress', () => <NProgress value={40} />],
   ['Note', () => <Note>Note</Note>],
   ['NumberInput', () => <NumberInput aria-label="Quantity" min={0} />],
+  [
+    'OverflowList',
+    () => (
+      <OverflowList
+        data={['a', 'b']}
+        renderItem={(item) => <span>{item}</span>}
+        renderOverflow={(hidden) => <span>+{hidden.length}</span>}
+      />
+    )
+  ],
   [
     'Page',
     () => (
@@ -317,6 +365,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['Pagination', () => <Pagination count={5} initialPage={1} />],
+  ['PhoneInput', () => <PhoneInput initialValue="+5511999999999" />],
   ['PinInput', () => <PinInput aria-label="Code" numeric initialValue="12" />],
   [
     'Popover',
@@ -328,6 +377,10 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Progress', () => <Progress value={30} />],
   [
+    'QuarterPicker',
+    () => <QuarterPicker initialValue={new Date(2026, 3, 1)} />
+  ],
+  [
     'Radio',
     () => (
       <Radio.Group value="1" onChange={() => undefined}>
@@ -338,6 +391,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Mark', () => <Mark highlight="a">Mark</Mark>],
   ['Rating', () => <Rating value={3} />],
+  ['RollingNumber', () => <RollingNumber value={1280} />],
   [
     'Row',
     () => (
@@ -369,6 +423,31 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['Skeleton', () => <Skeleton lines={2} />],
   ['Slider', () => <Slider initialValue={20} />],
   ['Snippet', () => <Snippet text="yarn add @bolio-ui/core" />],
+  ['Flex', () => <Flex>Content</Flex>],
+  ['Stack', () => <Stack>Content</Stack>],
+  ['Group', () => <Group>Content</Group>],
+  ['Center', () => <Center>Content</Center>],
+  ['SimpleGrid', () => <SimpleGrid cols={2}>Content</SimpleGrid>],
+  ['Overlay', () => <Overlay />],
+  ['LoadingOverlay', () => <LoadingOverlay />],
+  [
+    'List',
+    () => (
+      <List>
+        <List.Item>One</List.Item>
+      </List>
+    )
+  ],
+  ['ColorSwatch', () => <ColorSwatch color="#3b82f6" />],
+  [
+    'AppShell',
+    () => (
+      <AppShell height={200}>
+        <AppShell.Header>Header</AppShell.Header>
+        <AppShell.Main>Main</AppShell.Main>
+      </AppShell>
+    )
+  ],
   ['Spacer', () => <Spacer h={1} />],
   ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],
@@ -418,7 +497,11 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ],
   ['Text', () => <Text h1>Title</Text>],
   ['Textarea', () => <Textarea placeholder="write" />],
+  ['MiniCalendar', () => <MiniCalendar defaultDate={new Date(2026, 10, 9)} />],
   ['MonthPicker', () => <MonthPicker initialValue={new Date(2026, 10, 1)} />],
+  ['WeekPicker', () => <WeekPicker defaultMonth={new Date(2026, 10, 1)} />],
+  ['YearPicker', () => <YearPicker initialValue={new Date(2026, 0, 1)} />],
+  ['TimeGrid', () => <TimeGrid initialValue="09:30" />],
   ['TimePicker', () => <TimePicker aria-label="Time" initialValue="09:30" />],
   ['Toggle', () => <Toggle />],
   [
@@ -440,6 +523,16 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   [
+    'Cascader',
+    () => (
+      <Cascader
+        aria-label="Place"
+        data={[{ value: 'a', label: 'A' }]}
+        initialValue={['a']}
+      />
+    )
+  ],
+  [
     'Tree',
     () => (
       <Tree
@@ -451,6 +544,26 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       />
     )
   ],
+  [
+    'TreeSelect',
+    () => (
+      <TreeSelect
+        aria-label="File"
+        data={[{ value: 'a', label: 'A' }]}
+        initialValue="a"
+      />
+    )
+  ],
+  ['AngleSlider', () => <AngleSlider aria-label="Angle" initialValue={45} />],
+  [
+    'Affix',
+    () => (
+      <Affix bottom={20} right={20}>
+        Pinned
+      </Affix>
+    )
+  ],
+  ['Burger', () => <Burger label="Open menu" />],
   ['Alert', () => <Alert title="Heads up">Your trial ends soon.</Alert>],
   [
     'Chip',

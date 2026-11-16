@@ -91,7 +91,7 @@ const CardComponent = React.forwardRef<
     const hasContent = hasChild(withoutImageChildren, CardContent)
 
     const cardStyle = {
-      borderRadius: rounded ? '25px' : theme.layout.radius,
+      borderRadius: rounded ? '25px' : `calc(${theme.layout.radius} + 4px)`,
       boxShadow: shadow ? theme.expressiveness.shadowSmall : 'none',
       color,
       backgroundColor: glass

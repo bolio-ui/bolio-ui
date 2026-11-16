@@ -1,0 +1,109 @@
+.root {
+  box-sizing: border-box;
+  font-size: var(--mini-calendar-font-size);
+  width: var(--mini-calendar-width);
+  padding: var(--mini-calendar-padding-top) var(--mini-calendar-padding-right)
+    var(--mini-calendar-padding-bottom) var(--mini-calendar-padding-left);
+  margin: var(--mini-calendar-margin-top) var(--mini-calendar-margin-right)
+    var(--mini-calendar-margin-bottom) var(--mini-calendar-margin-left);
+  color: var(--mini-calendar-text-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.title {
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
+}
+
+.nav,
+.day {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--mini-calendar-radius);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.nav {
+  width: 2em;
+  height: 2em;
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.days {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 2px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125em;
+  align-items: center;
+  min-width: 3em;
+  padding: 0.5em 0.25em;
+}
+
+.weekday {
+  font-size: 0.8125em;
+  color: var(--mini-calendar-muted-color);
+  text-transform: lowercase;
+}
+
+.weekday::first-letter {
+  text-transform: uppercase;
+}
+
+.number {
+  font-size: 1.125em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.nav:hover:not(:disabled),
+.day:hover:not(:disabled) {
+  background-color: var(--mini-calendar-hover-bg);
+}
+
+.nav:focus-visible,
+.day:focus-visible {
+  outline: 2px solid var(--mini-calendar-focus-outline);
+  outline-offset: 1px;
+}
+
+.day:disabled {
+  cursor: not-allowed;
+  color: var(--mini-calendar-disabled-color);
+}
+
+.today {
+  border-color: var(--mini-calendar-today-border);
+}
+
+.selected,
+.selected:hover:not(:disabled),
+.selected .weekday {
+  color: var(--mini-calendar-selected-color);
+}
+
+.selected,
+.selected:hover:not(:disabled) {
+  background-color: var(--mini-calendar-selected-bg);
+  border-color: var(--mini-calendar-selected-bg);
+}

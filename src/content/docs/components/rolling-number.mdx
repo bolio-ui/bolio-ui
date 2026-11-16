@@ -1,0 +1,75 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { RollingNumber, Button, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'RollingNumber',
+  description: 'A number whose digits roll to the new value when it changes.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 106
+}
+
+## RollingNumber
+
+A number whose digits roll to the new value when it changes. It reads as plain text for assistive technology and stops rolling when the user prefers reduced motion.
+
+<Playground
+  desc="Change the value and each digit rolls to its place."
+  scope={{ RollingNumber, Button, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(1280)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Text h2 my={0}><RollingNumber value={value} /></Text>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.6} onClick={() => setValue(value + 137)}>Add 137</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Format"
+  desc="Pass the locale and the options of `Intl.NumberFormat`."
+  scope={{ RollingNumber, Button, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState(4820.5)
+  return (
+    <Grid.Container gap={2} alignItems="center">
+      <Grid>
+        <Text h2 my={0}>
+          <RollingNumber value={value} formatOptions={{ style: 'currency', currency: 'USD' }} />
+        </Text>
+      </Grid>
+      <Grid>
+        <Button auto scale={0.6} onClick={() => setValue(value * 2)}>Double</Button>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/components/rolling-number.mdx">
+<Attributes.Title>RollingNumber.Props</Attributes.Title>
+
+| Property          | Description                          | Type                       | Accepted values | Default |
+| ----------------- | ------------------------------------ | -------------------------- | --------------- | ------- |
+| **value**         | number to show                       | `number`                   | -               | -       |
+| **locale**        | locale used to format the number     | `string`                   | -               | browser |
+| **formatOptions** | options of `Intl.NumberFormat`       | `Intl.NumberFormatOptions` | -               | -       |
+| **duration**      | milliseconds each digit takes to roll | `number`                  | -               | `600`   |
+| ...               | native props of `span`               | `HTMLAttributes`           | -               | -       |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

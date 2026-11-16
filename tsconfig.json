@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "prism-react-renderer": [
-        "node_modules/prism-react-renderer/dist/index.d.ts"
-      ]
+      "prism-react-renderer": ["node_modules/prism-react-renderer"]
     },
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext", "webworker"],

@@ -1,0 +1,92 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { PhoneInput, Grid, Text, Spacer } from 'core'
+
+export const meta = {
+  title: 'PhoneInput',
+  description: 'A phone number field with a country select that sets the calling code.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 108
+}
+
+## PhoneInput
+
+A phone number field with a country select that sets the calling code. The value is the international number as a plus sign and digits, such as `+5511999999999`, or an empty string while there are no digits.
+
+<Playground
+  desc="Choose a country and type the number. Any character that is not a digit is dropped."
+  scope={{ PhoneInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={12}>
+    <PhoneInput defaultCountry="BR" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Controlled"
+  desc="The country follows the calling code of the value."
+  scope={{ PhoneInput, Grid, Text }}
+  code={`
+() => {
+  const [value, setValue] = React.useState('+351912345678')
+  return (
+    <Grid.Container gap={2} direction="column">
+      <Grid xs={24} sm={12}>
+        <PhoneInput value={value} onChange={setValue} />
+      </Grid>
+      <Grid>
+        <Text p my={0}>{value || 'No number yet'}</Text>
+      </Grid>
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Spacer h={2} />
+
+<Playground
+  title="Countries"
+  desc="Pass your own list with `countries`. `phoneCountries` is the default one."
+  scope={{ PhoneInput, Grid }}
+  code={`
+<Grid.Container gap={2}>
+  <Grid xs={24} sm={12}>
+    <PhoneInput
+      defaultCountry="BR"
+      countries={[
+        { code: 'BR', name: 'Brazil', dial: '55' },
+        { code: 'PT', name: 'Portugal', dial: '351' }
+      ]}
+    />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/content/docs/components/phone-input.mdx">
+<Attributes.Title>PhoneInput.Props</Attributes.Title>
+
+| Property           | Description                                       | Type                         | Accepted values | Default        |
+| ------------------ | ------------------------------------------------- | ---------------------------- | --------------- | -------------- |
+| **value**          | controlled number, such as `+5511999999999`       | `string`                     | -               | -              |
+| **initialValue**   | initial number                                    | `string`                     | -               | `''`           |
+| **onChange**       | called with the number, or `''` when it is empty  | `(value: string) => void`    | -               | -              |
+| **countries**      | countries in the select                           | `PhoneCountry[]`             | -               | `phoneCountries` |
+| **defaultCountry** | ISO code used while the number is empty           | `string`                     | -               | `US`           |
+| **placeholder**    | text and accessible name of the number field      | `string`                     | -               | `Phone number` |
+| **countryLabel**   | accessible name of the country select             | `string`                     | -               | `Country`      |
+| **disabled**       | disable both fields                               | `boolean`                    | -               | `false`        |
+| **type**           | color of the fields                               | `NormalTypes`                | `'default' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `default` |
+| **rounded**        | round the corners                                 | `boolean`                    | -               | `false`        |
+| ...                | native props of `div`                             | `HTMLAttributes`             | -               | -              |
+
+</Attributes>
+
+export default Docs.withMeta(meta)

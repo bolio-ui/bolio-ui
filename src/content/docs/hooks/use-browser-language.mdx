@@ -1,0 +1,39 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Text, useBrowserLanguage } from 'core'
+
+export const meta = {
+  title: 'useBrowserLanguage',
+  description: 'Read the preferred language of the browser.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 110
+}
+
+## useBrowserLanguage
+
+Read the preferred language of the browser. It is undefined on the server and on the first render, then follows the browser.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The language the browser asks sites for."
+  scope={{ Text, useBrowserLanguage }}
+  code={`
+() => {
+  const language = useBrowserLanguage()
+  return <Text>{language || 'unknown'}</Text>
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-browser-language.mdx">
+<Attributes.Title>useBrowserLanguage</Attributes.Title>
+
+```ts
+const useBrowserLanguage = () => string | undefined
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

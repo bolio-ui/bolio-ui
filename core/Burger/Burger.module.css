@@ -1,0 +1,78 @@
+.burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--burger-size);
+  height: var(--burger-size);
+  padding: 0;
+  color: var(--burger-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--burger-radius);
+  cursor: pointer;
+}
+
+.burger:focus-visible {
+  outline: 2px solid var(--burger-focus);
+  outline-offset: 2px;
+}
+
+.burger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* the middle line is the element, the outer two are its pseudo-elements */
+.lines,
+.lines::before,
+.lines::after {
+  display: block;
+  width: 50%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.lines {
+  position: relative;
+}
+
+.lines::before,
+.lines::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  content: '';
+}
+
+.lines::before {
+  top: calc(var(--burger-size) * -0.16);
+}
+
+.lines::after {
+  top: calc(var(--burger-size) * 0.16);
+}
+
+.opened .lines {
+  background-color: transparent;
+}
+
+.opened .lines::before {
+  transform: translateY(calc(var(--burger-size) * 0.16)) rotate(45deg);
+}
+
+.opened .lines::after {
+  transform: translateY(calc(var(--burger-size) * -0.16)) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lines,
+  .lines::before,
+  .lines::after {
+    transition: none;
+  }
+}

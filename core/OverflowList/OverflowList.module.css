@@ -1,0 +1,30 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.overflow {
+  flex: none;
+}
+
+/* the probe lays out every item at its own width without showing it */
+.probe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.measure {
+  flex: none;
+}

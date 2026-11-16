@@ -21,7 +21,7 @@ import type { ScheduleEvent } from './schedule-utils'
 import useGridFocus from './use-grid-focus'
 import styles from './Schedule.module.css'
 
-export type ScheduleView = 'day' | 'week' | 'month'
+export type ScheduleView = 'day' | 'week' | 'month' | 'agenda' | 'year'
 
 export interface ScheduleLabels {
   today: string
@@ -31,7 +31,13 @@ export interface ScheduleLabels {
   day: string
   week: string
   month: string
+  agenda: string
+  year: string
   allDay: string
+  // shown by the agenda view when the month has no events
+  noEvents: string
+  // the count of events of a month, read by the year view
+  events: (count: number) => string
   // the text of the "+N more" button of a month day
   more: (count: number) => string
 }
@@ -44,7 +50,11 @@ const defaultLabels: ScheduleLabels = {
   day: 'Day',
   week: 'Week',
   month: 'Month',
+  agenda: 'Agenda',
+  year: 'Year',
   allDay: 'All day',
+  noEvents: 'No events this month',
+  events: (count) => (count === 1 ? '1 event' : `${count} events`),
   more: (count) => `+${count} more`
 }
 
@@ -157,6 +167,7 @@ const ScheduleComponent = React.forwardRef<HTMLDivElement, ScheduleProps>(
           month: 'long',
           year: 'numeric'
         }),
+        monthName: new Intl.DateTimeFormat(locale, { month: 'long' }),
         short: new Intl.DateTimeFormat(locale, {
           month: 'short',
           day: 'numeric',
@@ -173,6 +184,7 @@ const ScheduleComponent = React.forwardRef<HTMLDivElement, ScheduleProps>(
 
     // The days each view lays out
     const days = useMemo(() => {
+      if (view === 'agenda' || view === 'year') return []
       if (view === 'day') return [date]
       if (view === 'week') {
         const first = startOfWeek(date, weekStartsOn)
@@ -195,23 +207,27 @@ const ScheduleComponent = React.forwardRef<HTMLDivElement, ScheduleProps>(
     const title =
       view === 'day'
         ? formats.long.format(date)
-        : view === 'month'
-          ? formats.month.format(date)
-          : (() => {
-              const range = formats.short as Intl.DateTimeFormat & {
-                formatRange?: (a: Date, b: Date) => string
-              }
-              const [first, last] = [days[0], days[days.length - 1]]
-              return range.formatRange
-                ? range.formatRange(first, last)
-                : `${formats.short.format(first)} – ${formats.short.format(last)}`
-            })()
+        : view === 'year'
+          ? String(date.getFullYear())
+          : view === 'month' || view === 'agenda'
+            ? formats.month.format(date)
+            : (() => {
+                const range = formats.short as Intl.DateTimeFormat & {
+                  formatRange?: (a: Date, b: Date) => string
+                }
+                const [first, last] = [days[0], days[days.length - 1]]
+                return range.formatRange
+                  ? range.formatRange(first, last)
+                  : `${formats.short.format(first)} – ${formats.short.format(last)}`
+              })()
 
     const step = (direction: 1 | -1) =>
       changeDate(
-        view === 'month'
-          ? addMonths(date, direction)
-          : addDays(date, direction * (view === 'week' ? 7 : 1))
+        view === 'year'
+          ? addMonths(date, direction * 12)
+          : view === 'month' || view === 'agenda'
+            ? addMonths(date, direction)
+            : addDays(date, direction * (view === 'week' ? 7 : 1))
       )
 
     const openDay = (day: Date) => {
@@ -523,6 +539,115 @@ const ScheduleComponent = React.forwardRef<HTMLDivElement, ScheduleProps>(
       </table>
     )
 
+    // ---- the agenda: the events of the month, day by day
+    const renderAgenda = () => {
+      const last = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+      ).getDate()
+      const agendaDays = Array.from(
+        { length: last },
+        (_, i) => new Date(date.getFullYear(), date.getMonth(), i + 1)
+      )
+        .map((day) => ({
+          day,
+          list: sorted.filter((event) => overlapsDay(event, day))
+        }))
+        .filter((item) => item.list.length > 0)
+      if (agendaDays.length === 0)
+        return <p className={styles.agendaEmpty}>{labels.noEvents}</p>
+      return (
+        <div className={styles.agenda}>
+          {agendaDays.map(({ day, list }) => (
+            <section
+              key={day.getTime()}
+              className={styles.agendaDay}
+              aria-label={formats.long.format(day)}
+            >
+              <button
+                type="button"
+                className={joinClasses(styles.agendaHeading, {
+                  [styles.today]: isSameDay(day, now)
+                })}
+                aria-current={isSameDay(day, now) ? 'date' : undefined}
+                onClick={() => openDay(day)}
+              >
+                <span className={styles.weekday}>
+                  {formats.weekday.format(day)}
+                </span>
+                <span className={styles.agendaNumber}>{day.getDate()}</span>
+              </button>
+              <div className={styles.agendaEvents}>
+                {list.map((event) => chip(event, true))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )
+    }
+
+    // ---- the year: a card for each month, with a dot on the days that have
+    // events. The whole card is the button, so the keyboard visits 12 stops.
+    const renderYear = () => (
+      <div className={styles.yearGrid}>
+        {Array.from({ length: 12 }, (_, month) => {
+          const first = new Date(date.getFullYear(), month, 1)
+          const length = new Date(date.getFullYear(), month + 1, 0).getDate()
+          const offset = (first.getDay() - weekStartsOn + 7) % 7
+          const next = new Date(date.getFullYear(), month + 1, 1)
+          const count = sorted.filter(
+            (event) =>
+              event.start < next &&
+              Math.max(+event.end, +event.start + 1) > +first
+          ).length
+          return (
+            <button
+              key={month}
+              type="button"
+              className={styles.yearCard}
+              aria-label={`${formats.month.format(first)}, ${labels.events(count)}`}
+              aria-current={
+                now.getFullYear() === date.getFullYear() &&
+                now.getMonth() === month
+                  ? 'date'
+                  : undefined
+              }
+              onClick={() => {
+                changeDate(first)
+                changeView('month')
+              }}
+            >
+              <span className={styles.yearTitle}>
+                {formats.monthName.format(first)}
+              </span>
+              <span className={styles.yearDays} aria-hidden="true">
+                {Array.from({ length: offset }, (_, i) => (
+                  <span key={`blank-${i}`} />
+                ))}
+                {Array.from({ length }, (_, i) => {
+                  const day = new Date(date.getFullYear(), month, i + 1)
+                  return (
+                    <span
+                      key={i}
+                      className={joinClasses(styles.yearDay, {
+                        [styles.yearBusy]: sorted.some((event) =>
+                          overlapsDay(event, day)
+                        ),
+                        [styles.yearToday]: isSameDay(day, now)
+                      })}
+                    >
+                      {i + 1}
+                    </span>
+                  )
+                })}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+    )
+
     return (
       <div
         ref={ref}
@@ -577,7 +702,13 @@ const ScheduleComponent = React.forwardRef<HTMLDivElement, ScheduleProps>(
             </div>
           )}
         </div>
-        {view === 'month' ? renderMonth() : renderTimeGrid()}
+        {view === 'month'
+          ? renderMonth()
+          : view === 'agenda'
+            ? renderAgenda()
+            : view === 'year'
+              ? renderYear()
+              : renderTimeGrid()}
       </div>
     )
   }
