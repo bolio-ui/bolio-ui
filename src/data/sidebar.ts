@@ -42,6 +42,11 @@ export const guide = [
     tag: 'New'
   },
   {
+    name: 'Form recipes',
+    url: '/docs/guide/form-recipes',
+    tag: 'New'
+  },
+  {
     name: 'Page structure',
     url: '/docs/guide/page-structure'
   },
@@ -333,6 +338,11 @@ export const components = [
     name: 'Forms',
     url: '',
     icon: 'Edit3'
+  },
+  {
+    name: 'AngleSlider',
+    url: '/docs/components/angle-slider',
+    tag: 'New'
   },
   {
     name: 'Autocomplete',
@@ -721,6 +731,11 @@ export const components = [
     url: '/docs/components/note'
   },
   {
+    name: 'NProgress',
+    url: '/docs/components/nprogress',
+    tag: 'New'
+  },
+  {
     name: 'Progress',
     url: '/docs/components/progress'
   },
@@ -758,6 +773,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'Lightbox',
+    url: '/docs/components/lightbox',
+    tag: 'New'
+  },
+  {
     name: 'Modal',
     url: '/docs/components/modal',
     tag: 'Updated'
@@ -790,6 +810,11 @@ export const components = [
     name: 'Command',
     url: '/docs/components/command',
     tag: 'Updated'
+  },
+  {
+    name: 'NavLink',
+    url: '/docs/components/nav-link',
+    tag: 'New'
   },
   {
     name: 'Pagination',
@@ -1157,6 +1182,11 @@ export const hooks = [
   {
     name: 'useNetwork',
     url: '/docs/hooks/use-network'
+  },
+  {
+    name: 'useNProgress',
+    url: '/docs/hooks/use-nprogress',
+    tag: 'New'
   },
   {
     name: 'useOs',
