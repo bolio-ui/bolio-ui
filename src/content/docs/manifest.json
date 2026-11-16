@@ -197,6 +197,11 @@
               "path": "/docs/components/affix.mdx"
             },
             {
+              "title": "AppShell",
+              "keywords": "app shell, layout, header, navbar, sidebar, aside, footer, main, dashboard",
+              "path": "/docs/components/app-shell.mdx"
+            },
+            {
               "title": "Alert",
               "keywords": "alert, callout, banner, message, notice, dismissible, status, warning, error",
               "path": "/docs/components/alert.mdx"

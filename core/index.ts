@@ -318,6 +318,9 @@ export type { SnippetProps } from './Snippet'
 export { default as Spacer } from './Spacer'
 export type { SpacerProps } from './Spacer'
 
+export { default as AppShell } from './AppShell'
+export type { AppShellProps } from './AppShell'
+
 export { default as ColorSwatch } from './ColorSwatch'
 export type { ColorSwatchProps } from './ColorSwatch'
 

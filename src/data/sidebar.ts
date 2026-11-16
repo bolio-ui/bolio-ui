@@ -169,6 +169,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'AppShell',
+    url: '/docs/components/app-shell',
+    tag: 'New'
+  },
+  {
     name: 'Alert',
     url: '/docs/components/alert',
     tag: 'New'

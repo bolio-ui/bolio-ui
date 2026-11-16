@@ -167,6 +167,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'AppShell',
+            url: '/docs/components/app-shell',
+            group: 'Components'
+          },
+          {
             name: 'Alert',
             url: '/docs/components/alert',
             group: 'Components'

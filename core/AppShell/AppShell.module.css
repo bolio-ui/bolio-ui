@@ -1,0 +1,44 @@
+.shell {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'navbar main aside'
+    'footer footer footer';
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  box-sizing: border-box;
+  min-height: 0;
+  background-color: var(--shell-bg);
+}
+
+.header,
+.nav,
+.aside,
+.main,
+.footer {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+.header {
+  border-bottom: 1px solid var(--shell-border);
+}
+
+.nav {
+  overflow: auto;
+  border-right: 1px solid var(--shell-border);
+}
+
+.main {
+  overflow: auto;
+}
+
+.aside {
+  overflow: auto;
+  border-left: 1px solid var(--shell-border);
+}
+
+.footer {
+  border-top: 1px solid var(--shell-border);
+}

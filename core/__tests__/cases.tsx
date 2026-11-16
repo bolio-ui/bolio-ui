@@ -93,6 +93,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  AppShell,
   ColorSwatch,
   List,
   Overlay,
@@ -438,6 +439,15 @@ export const cases: Array<[string, () => React.ReactElement]> = [
     )
   ],
   ['ColorSwatch', () => <ColorSwatch color="#3b82f6" />],
+  [
+    'AppShell',
+    () => (
+      <AppShell height={200}>
+        <AppShell.Header>Header</AppShell.Header>
+        <AppShell.Main>Main</AppShell.Main>
+      </AppShell>
+    )
+  ],
   ['Spacer', () => <Spacer h={1} />],
   ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],

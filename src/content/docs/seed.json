@@ -10862,5 +10862,58 @@
     "title": "APIs",
     "component": false,
     "path": "/docs/hooks/use-session-storage#apis"
+  },
+  {
+    "title": "AppShell",
+    "component": true,
+    "path": "/docs/components/app-shell"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell General",
+    "component": false,
+    "path": "/docs/components/app-shell#general"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Aside and footer",
+    "component": false,
+    "path": "/docs/components/app-shell#aside-and-footer"
+  },
+  {
+    "head": "AppShell",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/app-shell#apis"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Header Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.header.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "AppShell Navbar Props",
+    "component": false,
+    "path": "/docs/components/app-shell#appshell.navbar.props"
+  },
+  {
+    "head": "AppShell",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/app-shell#ref"
+  },
+  {
+    "head": "AppShell",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/app-shell#accessibility"
   }
 ]

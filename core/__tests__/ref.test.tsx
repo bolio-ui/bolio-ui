@@ -95,6 +95,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  AppShell,
   ColorSwatch,
   List,
   Overlay,
@@ -413,6 +414,14 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     'UL'
   ],
   ['ColorSwatch', (ref) => <ColorSwatch ref={ref} color="#3b82f6" />],
+  [
+    'AppShell',
+    (ref) => (
+      <AppShell ref={ref} height={200}>
+        <AppShell.Main>Main</AppShell.Main>
+      </AppShell>
+    )
+  ],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],

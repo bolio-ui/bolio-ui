@@ -1,0 +1,103 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { AppShell, Text, Group, Stack, Button } from 'core'
+
+export const meta = {
+  title: 'AppShell',
+  description:
+    'The frame of an app: a header, a navbar, the main content, an aside and a footer, each in its place.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 130
+}
+
+## AppShell
+
+The frame of an app. It places a header, a navbar, the main content, an aside and a footer in a grid, and gives the main area its own scroll. Every slot is optional, and one that you do not render takes no room.
+
+The shell is as tall as `height`, which is the whole screen by default. Put it in a container with a fixed height, or give it a `height`, to see it inside a page.
+
+<Playground
+  desc="Set the `height` of the header and the footer, and the `width` of the navbar and the aside."
+  scope={{ AppShell, Text, Stack, Button }}
+  code={`
+<AppShell height={320}>
+  <AppShell.Header height={48} style={{ display: 'flex', alignItems: 'center', padding: '0 16px' }}>
+    <Text p b my={0}>Acme</Text>
+  </AppShell.Header>
+  <AppShell.Navbar width={160} aria-label="Main" style={{ padding: 12 }}>
+    <Stack gap={0.5}>
+      <Button auto scale={0.8}>Overview</Button>
+      <Button auto scale={0.8}>Customers</Button>
+      <Button auto scale={0.8}>Billing</Button>
+    </Stack>
+  </AppShell.Navbar>
+  <AppShell.Main style={{ padding: 16 }}>
+    <Text p my={0}>The main area scrolls on its own when the content is taller.</Text>
+  </AppShell.Main>
+</AppShell>
+`}
+/>
+
+<Playground
+  title="Aside and footer"
+  desc="Add an aside for details of the selection, and a footer for status or actions."
+  scope={{ AppShell, Text, Group, Button }}
+  code={`
+<AppShell height={320}>
+  <AppShell.Header height={48} style={{ display: 'flex', alignItems: 'center', padding: '0 16px' }}>
+    <Text p b my={0}>Invoices</Text>
+  </AppShell.Header>
+  <AppShell.Main style={{ padding: 16 }}>
+    <Text p my={0}>Select an invoice to see its details.</Text>
+  </AppShell.Main>
+  <AppShell.Aside width={180} aria-label="Details" style={{ padding: 16 }}>
+    <Text p small type="secondary" my={0}>No invoice selected</Text>
+  </AppShell.Aside>
+  <AppShell.Footer height={48} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '0 16px' }}>
+    <Group gap={0.5}>
+      <Button auto scale={0.7}>Discard</Button>
+      <Button auto scale={0.7} type="primary">Save</Button>
+    </Group>
+  </AppShell.Footer>
+</AppShell>
+`}
+/>
+
+<Attributes edit="/content/docs/components/app-shell.mdx">
+<Attributes.Title>AppShell.Props</Attributes.Title>
+
+| Attribute  | Description                                 | Type               | Accepted values | Default   |
+| ---------- | ------------------------------------------- | ------------------ | --------------- | --------- |
+| **height** | height of the whole shell                   | `number` or `string` | -             | `'100vh'` |
+| ...        | native props, passed to the root element    | `HTMLAttributes`   | `'id', 'className', ...` | - |
+
+<Attributes.Title>AppShell.Header.Props</Attributes.Title>
+
+| Attribute  | Description                    | Type                 | Accepted values | Default |
+| ---------- | ------------------------------ | -------------------- | --------------- | ------- |
+| **height** | height of the header           | `number` or `string` | -               | content |
+| ...        | native props, passed to the `header` | `HTMLAttributes` | `'id', 'className', ...` | - |
+
+`AppShell.Footer` takes the same props and renders a `footer`.
+
+<Attributes.Title>AppShell.Navbar.Props</Attributes.Title>
+
+| Attribute | Description                    | Type                 | Accepted values | Default |
+| --------- | ------------------------------ | -------------------- | --------------- | ------- |
+| **width** | width of the navbar            | `number` or `string` | -               | content |
+| ...       | native props, passed to the `nav` | `HTMLAttributes`  | `'id', 'className', ...` | - |
+
+`AppShell.Aside` takes the same props and renders an `aside`. `AppShell.Main` takes only the native props and renders a `main`.
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` of each part points at its element.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+Each slot renders a landmark: `header`, `nav`, `main`, `aside` and `footer`, so screen reader users can jump between them. Set an `aria-label` on the navbar and the aside to name them, mainly when the page has more than one navigation.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
