@@ -372,6 +372,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Flex',
+            url: '/docs/components/flex',
+            group: 'Components'
+          },
+          {
             name: 'DonutChart',
             url: '/docs/components/donut-chart',
             group: 'Components'

@@ -412,6 +412,11 @@
               "path": "/docs/components/divider.mdx"
             },
             {
+              "title": "Flex",
+              "keywords": "flex, stack, group, center, grid, row, column, gap, layout, align, justify",
+              "path": "/docs/components/flex.mdx"
+            },
+            {
               "title": "DonutChart",
               "keywords": "donut chart, doughnut, ring, proportion, chart, data visualization, recharts",
               "path": "/docs/components/donut-chart.mdx"

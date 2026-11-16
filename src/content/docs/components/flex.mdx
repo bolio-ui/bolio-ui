@@ -1,0 +1,136 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Flex, Stack, Group, Center, SimpleGrid, Button, Card, Text, Tag } from 'core'
+
+export const meta = {
+  title: 'Flex',
+  description:
+    'Flex, Stack, Group, Center and SimpleGrid arrange children in a row, a column or a grid.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 126
+}
+
+## Flex
+
+Small layout helpers over CSS flexbox and grid. `Flex` is the base, `Stack` and `Group` are the usual column and row, `Center` centers its content and `SimpleGrid` splits the row in equal columns. The `gap` of all of them is in `rem`.
+
+<Playground
+  desc="Flex takes the direction, alignment and gap as props."
+  scope={{ Flex, Button }}
+  code={`
+<Flex gap={1} justify="space-between" align="center">
+  <Button auto>Back</Button>
+  <Button auto type="primary">Next</Button>
+</Flex>
+`}
+/>
+
+<Playground
+  title="Stack"
+  desc="Children one under the other, stretched to the full width."
+  scope={{ Stack, Button }}
+  code={`
+<Stack gap={0.5}>
+  <Button>Profile</Button>
+  <Button>Billing</Button>
+  <Button>Team</Button>
+</Stack>
+`}
+/>
+
+<Playground
+  title="Group"
+  desc="Children side by side, wrapping when they do not fit. Use `grow` to share the row equally."
+  scope={{ Stack, Group, Button, Tag }}
+  code={`
+<Stack>
+  <Group>
+    <Tag>React</Tag>
+    <Tag>TypeScript</Tag>
+    <Tag>CSS</Tag>
+  </Group>
+  <Group grow>
+    <Button>Cancel</Button>
+    <Button type="primary">Save</Button>
+  </Group>
+</Stack>
+`}
+/>
+
+<Playground
+  title="Center"
+  desc="Centers its content on both axes, inside the height you give it."
+  scope={{ Center, Text }}
+  code={`
+<Center style={{ height: 120 }}>
+  <Text p my={0}>Nothing to show yet</Text>
+</Center>
+`}
+/>
+
+<Playground
+  title="SimpleGrid"
+  desc="Use `cols` for a fixed number of columns, or `minChildWidth` to fit as many as the width allows."
+  scope={{ SimpleGrid, Card, Text }}
+  code={`
+<SimpleGrid minChildWidth={140}>
+  {['One', 'Two', 'Three', 'Four'].map((name) => (
+    <Card key={name} bordered>
+      <Text p my={0}>{name}</Text>
+    </Card>
+  ))}
+</SimpleGrid>
+`}
+/>
+
+<Attributes edit="/content/docs/components/flex.mdx">
+<Attributes.Title>Flex.Props</Attributes.Title>
+
+| Attribute     | Description                              | Type      | Accepted values                                              | Default  |
+| ------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ | -------- |
+| **gap**       | space between the children, in `rem`     | `number`  | -                                                            | `0`      |
+| **direction** | main axis of the layout                  | `string`  | `'row'`, `'column'`                                          | `'row'`  |
+| **wrap**      | lets the children go to the next line    | `boolean` | -                                                            | `false`  |
+| **align**     | alignment on the cross axis              | `string`  | `'start'`, `'center'`, `'end'`, `'stretch'`, `'baseline'`    | -        |
+| **justify**   | alignment on the main axis               | `string`  | `'start'`, `'center'`, `'end'`, `'space-between'`, `'space-around'` | - |
+| **inline**    | renders `inline-flex` instead of `flex`  | `boolean` | -                                                            | `false`  |
+| **component** | element to render                        | `string`  | `'div'`, `'section'`, `'ul'`, ...                            | `'div'`  |
+| ...           | native props, passed to the element      | `HTMLAttributes` | `'id', 'className', ...`                              | -        |
+
+<Attributes.Title>Stack.Props</Attributes.Title>
+
+Same as `Flex`, without `direction` and `wrap`. The defaults are `gap` of `1` and `align` of `'stretch'`.
+
+<Attributes.Title>Group.Props</Attributes.Title>
+
+Same as `Flex`, without `direction`. The defaults are `gap` of `1`, `align` of `'center'` and `wrap` on.
+
+| Attribute | Description                                  | Type      | Accepted values | Default |
+| --------- | -------------------------------------------- | --------- | --------------- | ------- |
+| **grow**  | every child takes an equal share of the row  | `boolean` | -               | `false` |
+
+<Attributes.Title>Center.Props</Attributes.Title>
+
+Same as `Flex`, without `align` and `justify`, which are always `'center'`.
+
+<Attributes.Title>SimpleGrid.Props</Attributes.Title>
+
+| Attribute         | Description                                                      | Type     | Accepted values | Default |
+| ----------------- | ---------------------------------------------------------------- | -------- | --------------- | ------- |
+| **cols**          | number of equal columns                                          | `number` | -               | `1`     |
+| **minChildWidth** | fits as many columns as possible, none narrower than this, in px | `number` | -               | -       |
+| **gap**           | space between the cells, in `rem`                                | `number` | -               | `1`     |
+| ...               | native props, passed to the element                              | `HTMLAttributes` | `'id', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element of each component.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+They only arrange their children and add no role, so use `component` to render a semantic element such as `ul` or `section` when the content needs it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)

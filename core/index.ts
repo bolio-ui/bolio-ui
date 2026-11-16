@@ -313,6 +313,13 @@ export type { SnippetProps } from './Snippet'
 export { default as Spacer } from './Spacer'
 export type { SpacerProps } from './Spacer'
 
+export { default as Flex } from './Flex'
+export { Stack } from './Flex'
+export { Group } from './Flex'
+export { Center } from './Flex'
+export { SimpleGrid } from './Flex'
+export type { FlexProps, StackProps, GroupProps, CenterProps, SimpleGridProps } from './Flex'
+
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
 

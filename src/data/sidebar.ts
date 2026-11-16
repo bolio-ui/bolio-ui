@@ -191,6 +191,11 @@ export const components = [
     url: '/docs/components/divider'
   },
   {
+    name: 'Flex',
+    url: '/docs/components/flex',
+    tag: 'New'
+  },
+  {
     name: 'FileInput',
     url: '/docs/components/file-input',
     tag: 'New'

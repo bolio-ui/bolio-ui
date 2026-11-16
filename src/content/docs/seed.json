@@ -10591,5 +10591,88 @@
     "title": "useForm with all inputs General",
     "component": false,
     "path": "/docs/form/all-inputs#general"
+  },
+  {
+    "title": "Flex",
+    "component": true,
+    "path": "/docs/components/flex"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex General",
+    "component": false,
+    "path": "/docs/components/flex#general"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Stack",
+    "component": false,
+    "path": "/docs/components/flex#stack"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Group",
+    "component": false,
+    "path": "/docs/components/flex#group"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Center",
+    "component": false,
+    "path": "/docs/components/flex#center"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex SimpleGrid",
+    "component": false,
+    "path": "/docs/components/flex#simplegrid"
+  },
+  {
+    "head": "Flex",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/flex#apis"
+  },
+  {
+    "head": "Flex",
+    "title": "Flex Props",
+    "component": false,
+    "path": "/docs/components/flex#flex.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Stack Props",
+    "component": false,
+    "path": "/docs/components/flex#stack.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Group Props",
+    "component": false,
+    "path": "/docs/components/flex#group.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Center Props",
+    "component": false,
+    "path": "/docs/components/flex#center.props"
+  },
+  {
+    "head": "Flex",
+    "title": "SimpleGrid Props",
+    "component": false,
+    "path": "/docs/components/flex#simplegrid.props"
+  },
+  {
+    "head": "Flex",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/flex#ref"
+  },
+  {
+    "head": "Flex",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/flex#accessibility"
   }
 ]
