@@ -162,6 +162,22 @@ Displays a boolean value.
 `}
 />
 
+<Playground
+  title="Cards"
+  desc="Checkbox.Card puts each option in a card where the whole area toggles the box."
+  scope={{ Checkbox, Grid }}
+  code={`
+<Grid.Container direction="column" gap={1}>
+  <Grid>
+    <Checkbox.Card checked>Email me about new releases</Checkbox.Card>
+  </Grid>
+  <Grid>
+    <Checkbox.Card>Send a weekly summary</Checkbox.Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
 <Attributes edit="/content/docs/components/checkbox.mdx">
 <Attributes.Title>Checkbox.Props</Attributes.Title>
 
@@ -186,6 +202,10 @@ Displays a boolean value.
 | **disabled** | disable checkbox group | `boolean`                    | -               | `false` |
 | **onChange** | change event handler   | `(values: string[]) => void` | -               | -       |
 | ...          | native props           | `HTMLAttributes`             | `'id', ...`     | -       |
+
+<Attributes.Title>Checkbox.Card.Props</Attributes.Title>
+
+Same as `Checkbox.Props`. The card has the border and the radius of the theme, and takes the primary color while the box is checked.
 
 <Attributes.Title>CheckboxTypes</Attributes.Title>
 

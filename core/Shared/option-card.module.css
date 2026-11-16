@@ -1,0 +1,45 @@
+/* A card around a Radio or a Checkbox: the whole card is the click target, and
+   it takes the primary color while the input is checked. */
+.card {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.75em 1em;
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  background-color: var(--card-bg);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card :global(.radio),
+.card label {
+  position: static;
+}
+
+.card label::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card:hover {
+  border-color: var(--card-hover-border);
+}
+
+.card:has(input:checked) {
+  border-color: var(--card-color);
+  background-color: color-mix(in srgb, var(--card-color) 8%, var(--card-bg));
+}
+
+.card:has(input:focus-visible) {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--card-color) 30%, transparent);
+}
+
+.card:has(input:disabled) {
+  cursor: not-allowed;
+  border-color: var(--card-border);
+  background-color: var(--card-bg);
+}

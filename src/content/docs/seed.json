@@ -1205,6 +1205,12 @@
   },
   {
     "head": "Checkbox",
+    "title": "Checkbox Cards",
+    "component": false,
+    "path": "/docs/components/checkbox#cards"
+  },
+  {
+    "head": "Checkbox",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/checkbox#apis"
@@ -1220,6 +1226,12 @@
     "title": "Checkbox Group Props",
     "component": false,
     "path": "/docs/components/checkbox#checkbox.group.props"
+  },
+  {
+    "head": "Checkbox",
+    "title": "Checkbox Card Props",
+    "component": false,
+    "path": "/docs/components/checkbox#checkbox.card.props"
   },
   {
     "head": "Checkbox",
@@ -4778,6 +4790,12 @@
   },
   {
     "head": "Radio",
+    "title": "Radio Cards",
+    "component": false,
+    "path": "/docs/components/radio#cards"
+  },
+  {
+    "head": "Radio",
     "title": "APIs",
     "component": false,
     "path": "/docs/components/radio#apis"
@@ -4799,6 +4817,12 @@
     "title": "Radio Description Props",
     "component": false,
     "path": "/docs/components/radio#radio.description.props"
+  },
+  {
+    "head": "Radio",
+    "title": "Radio Card Props",
+    "component": false,
+    "path": "/docs/components/radio#radio.card.props"
   },
   {
     "head": "Radio",

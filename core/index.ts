@@ -60,7 +60,11 @@ export { default as Carousel } from './Carousel'
 export type { CarouselProps } from './Carousel'
 
 export { default as Checkbox } from './Checkbox'
-export type { CheckboxProps, CheckboxGroupProps } from './Checkbox'
+export type {
+  CheckboxProps,
+  CheckboxCardProps,
+  CheckboxGroupProps
+} from './Checkbox'
 
 export { default as Chip } from './Chip'
 export type { ChipProps, ChipGroupProps } from './Chip'
@@ -262,6 +266,7 @@ export type { QuarterPickerProps } from './QuarterPicker'
 export { default as Radio } from './Radio'
 export type {
   RadioProps,
+  RadioCardProps,
   RadioGroupProps,
   RadioDescriptionProps
 } from './Radio'
@@ -328,7 +333,13 @@ export { Stack } from './Flex'
 export { Group } from './Flex'
 export { Center } from './Flex'
 export { SimpleGrid } from './Flex'
-export type { FlexProps, StackProps, GroupProps, CenterProps, SimpleGridProps } from './Flex'
+export type {
+  FlexProps,
+  StackProps,
+  GroupProps,
+  CenterProps,
+  SimpleGridProps
+} from './Flex'
 
 export { default as Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'

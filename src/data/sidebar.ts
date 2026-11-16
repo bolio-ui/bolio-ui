@@ -341,7 +341,8 @@ export const components = [
   },
   {
     name: 'Checkbox',
-    url: '/docs/components/checkbox'
+    url: '/docs/components/checkbox',
+    tag: 'Updated'
   },
   {
     name: 'Color Input',

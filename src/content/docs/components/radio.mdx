@@ -184,6 +184,30 @@ Provides single user input from a selection of options.
 `}
 />
 
+<Playground
+  title="Cards"
+  desc="Radio.Card puts each option in a card where the whole area is the click target. Use Radio.Description for the second line."
+  scope={{ Radio, Grid }}
+  code={`
+<Radio.Group initialValue="pro">
+  <Grid.Container direction="column" gap={1}>
+    <Grid>
+      <Radio.Card value="free">
+        Free
+        <Radio.Description>US$ 0 a month. 1 project.</Radio.Description>
+      </Radio.Card>
+    </Grid>
+    <Grid>
+      <Radio.Card value="pro">
+        Pro
+        <Radio.Description>US$ 12 a month. Unlimited projects.</Radio.Description>
+      </Radio.Card>
+    </Grid>
+  </Grid.Container>
+</Radio.Group>
+`}
+/>
+
 <Attributes edit="/content/docs/components/radio.mdx">
 <Attributes.Title>Radio.Props</Attributes.Title>
 
@@ -218,6 +242,10 @@ Provides single user input from a selection of options.
 | Attribute | Description  | Type             | Accepted values          | Default |
 | --------- | ------------ | ---------------- | ------------------------ | ------- |
 | ...       | native props | `HTMLAttributes` | `'id', 'className', ...` | -       |
+
+<Attributes.Title>Radio.Card.Props</Attributes.Title>
+
+Same as `Radio.Props`. The card has the border and the radius of the theme, and takes the primary color while the radio is selected.
 
 <Attributes.Title>RadioTypes</Attributes.Title>
 
