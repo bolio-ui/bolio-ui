@@ -21,9 +21,11 @@ A full screen viewer for a gallery of images, with captions and arrows. It is a 
 () => {
   const [opened, setOpened] = React.useState(false)
   const images = [
-    { src: '/cover.jpg', alt: 'The cover of the docs', caption: 'The cover of the docs' },
-    { src: '/logo-colored.svg', alt: 'The colored logo', caption: 'The colored logo' },
-    { src: '/logo.svg', alt: 'The logo' }
+    { src: '/img/jpg/docs/lake-sunrise.jpg', alt: 'A mountain lake at sunrise', caption: 'Lake at sunrise' },
+    { src: '/img/jpg/docs/forest-lake.jpg', alt: 'A forest lake under the clouds', caption: 'Forest lake' },
+    { src: '/img/jpg/docs/autumn-canyon.jpg', alt: 'A river in a canyon in autumn', caption: 'Autumn canyon' },
+    { src: '/img/jpg/docs/mountain-reflection.jpg', alt: 'Snowy mountains reflected in a lake', caption: 'Mountain reflection' },
+    { src: '/img/jpg/docs/moonlit-peaks.jpg', alt: 'Snowy mountains under the moon', caption: 'Moonlit peaks' }
   ]
   return (
     <>
@@ -44,9 +46,11 @@ A full screen viewer for a gallery of images, with captions and arrows. It is a 
   const [opened, setOpened] = React.useState(false)
   const [index, setIndex] = React.useState(1)
   const images = [
-    { src: '/cover.jpg', alt: 'The cover of the docs' },
-    { src: '/logo-colored.svg', alt: 'The colored logo' },
-    { src: '/logo.svg', alt: 'The logo' }
+    { src: '/img/jpg/docs/lake-sunrise.jpg', alt: 'A mountain lake at sunrise' },
+    { src: '/img/jpg/docs/forest-lake.jpg', alt: 'A forest lake under the clouds' },
+    { src: '/img/jpg/docs/autumn-canyon.jpg', alt: 'A river in a canyon in autumn' },
+    { src: '/img/jpg/docs/mountain-reflection.jpg', alt: 'Snowy mountains reflected in a lake' },
+    { src: '/img/jpg/docs/moonlit-peaks.jpg', alt: 'Snowy mountains under the moon' }
   ]
   return (
     <Grid.Container gap={2} alignItems="center">
