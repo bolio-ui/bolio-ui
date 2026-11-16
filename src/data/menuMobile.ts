@@ -472,6 +472,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'List',
+            url: '/docs/components/list',
+            group: 'Components'
+          },
+          {
             name: 'LineChart',
             url: '/docs/components/line-chart',
             group: 'Components'

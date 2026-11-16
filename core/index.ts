@@ -313,6 +313,9 @@ export type { SnippetProps } from './Snippet'
 export { default as Spacer } from './Spacer'
 export type { SpacerProps } from './Spacer'
 
+export { default as List } from './List'
+export type { ListProps, ListItemProps } from './List'
+
 export { default as Overlay } from './Overlay'
 export { LoadingOverlay } from './Overlay'
 export type { OverlayProps, LoadingOverlayProps } from './Overlay'

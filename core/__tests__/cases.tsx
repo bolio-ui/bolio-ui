@@ -93,6 +93,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  List,
   Overlay,
   LoadingOverlay,
   Flex,
@@ -427,6 +428,14 @@ export const cases: Array<[string, () => React.ReactElement]> = [
   ['SimpleGrid', () => <SimpleGrid cols={2}>Content</SimpleGrid>],
   ['Overlay', () => <Overlay />],
   ['LoadingOverlay', () => <LoadingOverlay />],
+  [
+    'List',
+    () => (
+      <List>
+        <List.Item>One</List.Item>
+      </List>
+    )
+  ],
   ['Spacer', () => <Spacer h={1} />],
   ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],

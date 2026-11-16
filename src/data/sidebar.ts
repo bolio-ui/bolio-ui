@@ -283,6 +283,11 @@ export const components = [
     url: '/docs/components/keyboard'
   },
   {
+    name: 'List',
+    url: '/docs/components/list',
+    tag: 'New'
+  },
+  {
     name: 'Link',
     url: '/docs/components/link'
   },

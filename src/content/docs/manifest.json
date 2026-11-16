@@ -512,6 +512,11 @@
               "path": "/docs/components/keyboard.mdx"
             },
             {
+              "title": "List",
+              "keywords": "list, bullets, ordered, numbered, unordered, icons, ul, ol",
+              "path": "/docs/components/list.mdx"
+            },
+            {
               "title": "LineChart",
               "keywords": "line chart, trend, time series, chart, data visualization, recharts",
               "path": "/docs/components/line-chart.mdx"

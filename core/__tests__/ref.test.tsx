@@ -95,6 +95,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  List,
   Overlay,
   LoadingOverlay,
   Flex,
@@ -401,6 +402,15 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
   ['SimpleGrid', (ref) => <SimpleGrid ref={ref}>Content</SimpleGrid>],
   ['Overlay', (ref) => <Overlay ref={ref} />],
   ['LoadingOverlay', (ref) => <LoadingOverlay ref={ref} />],
+  [
+    'List',
+    (ref) => (
+      <List ref={ref}>
+        <List.Item>One</List.Item>
+      </List>
+    ),
+    'UL'
+  ],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],

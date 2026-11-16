@@ -10721,5 +10721,58 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/overlay#accessibility"
+  },
+  {
+    "title": "List",
+    "component": true,
+    "path": "/docs/components/list"
+  },
+  {
+    "head": "List",
+    "title": "List General",
+    "component": false,
+    "path": "/docs/components/list#general"
+  },
+  {
+    "head": "List",
+    "title": "List Ordered",
+    "component": false,
+    "path": "/docs/components/list#ordered"
+  },
+  {
+    "head": "List",
+    "title": "List Icons",
+    "component": false,
+    "path": "/docs/components/list#icons"
+  },
+  {
+    "head": "List",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/list#apis"
+  },
+  {
+    "head": "List",
+    "title": "List Props",
+    "component": false,
+    "path": "/docs/components/list#list.props"
+  },
+  {
+    "head": "List",
+    "title": "List Item Props",
+    "component": false,
+    "path": "/docs/components/list#list.item.props"
+  },
+  {
+    "head": "List",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/list#ref"
+  },
+  {
+    "head": "List",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/list#accessibility"
   }
 ]

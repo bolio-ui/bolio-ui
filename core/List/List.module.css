@@ -1,0 +1,21 @@
+.list {
+  margin: 0;
+  padding-inline-start: 1.5em;
+}
+
+.item + .item {
+  margin-top: var(--list-spacing);
+}
+
+.withIcon {
+  display: flex;
+  gap: 0.5em;
+  align-items: flex-start;
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  height: 1lh;
+}
