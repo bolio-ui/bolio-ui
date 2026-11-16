@@ -10845,5 +10845,22 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/color-swatch#accessibility"
+  },
+  {
+    "title": "useSessionStorage",
+    "component": true,
+    "path": "/docs/hooks/use-session-storage"
+  },
+  {
+    "head": "useSessionStorage",
+    "title": "useSessionStorage General",
+    "component": false,
+    "path": "/docs/hooks/use-session-storage#general"
+  },
+  {
+    "head": "useSessionStorage",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/hooks/use-session-storage#apis"
   }
 ]

@@ -1240,6 +1240,11 @@
               "path": "/docs/hooks/use-selection.mdx"
             },
             {
+              "title": "useSessionStorage",
+              "keywords": "useSessionStorage",
+              "path": "/docs/hooks/use-session-storage.mdx"
+            },
+            {
               "title": "useSet",
               "keywords": "useSet",
               "path": "/docs/hooks/use-set.mdx"

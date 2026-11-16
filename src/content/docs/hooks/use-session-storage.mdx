@@ -1,0 +1,52 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { Link, Button, Input, Spacer, useSessionStorage } from 'core'
+
+export const meta = {
+  title: 'useSessionStorage',
+  description: 'Keep a value in sessionStorage, in sync across components, safe for server rendering.',
+  sidebar: 'hooks',
+  group: 'Hooks',
+  index: 127
+}
+
+## useSessionStorage
+
+Keep a value in sessionStorage, in sync across components, safe for server rendering.
+
+This is custom React hooks, you need to follow the <Link target="_blank" color href="https://reactjs.org/docs/hooks-rules.html">Basic Rules</Link> when you use it.
+
+<Playground
+  desc="The value survives a page reload, and is gone when the tab closes."
+  scope={{ Button, Input, Spacer, useSessionStorage }}
+  code={`
+() => {
+  const [name, setName, removeName] = useSessionStorage({ key: 'bolio-ui-docs-session-name', defaultValue: '' })
+  return (
+    <>
+      <Input placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
+      <Spacer h={0.5} />
+      <Button auto scale={0.6} onClick={removeName}>Clear</Button>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/content/docs/hooks/use-session-storage.mdx">
+<Attributes.Title>useSessionStorage</Attributes.Title>
+
+```ts
+const useSessionStorage = <T>(options: {
+  key: string
+  defaultValue: T
+}) => [
+  T,
+  (value: T | ((current: T) => T)) => void,
+  () => void,
+]
+```
+
+</Attributes>
+
+export default Docs.withMeta(meta)

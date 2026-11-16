@@ -5,6 +5,7 @@ import {
   useDidUpdate,
   useListState,
   useLocalStorage,
+  useSessionStorage,
   useQueue,
   useStateHistory,
   useThrottledCallback,
@@ -124,6 +125,20 @@ describe('hooks', () => {
     expect(window.localStorage.getItem('key')).toBe('"next"')
     act(() => result.current[2]())
     expect(window.localStorage.getItem('key')).toBeNull()
+    expect(result.current[0]).toBe('default')
+  })
+
+  it('useSessionStorage reads, writes and removes the value', () => {
+    window.sessionStorage.setItem('key', JSON.stringify('saved'))
+    const { result } = renderHook(() =>
+      useSessionStorage({ key: 'key', defaultValue: 'default' })
+    )
+    expect(result.current[0]).toBe('saved')
+    act(() => result.current[1]('next'))
+    expect(window.sessionStorage.getItem('key')).toBe('"next"')
+    expect(window.localStorage.getItem('key')).toBeNull()
+    act(() => result.current[2]())
+    expect(window.sessionStorage.getItem('key')).toBeNull()
     expect(result.current[0]).toBe('default')
   })
 

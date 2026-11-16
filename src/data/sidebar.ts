@@ -1045,6 +1045,11 @@ export const hooks = [
     url: '/docs/hooks/use-selection'
   },
   {
+    name: 'useSessionStorage',
+    url: '/docs/hooks/use-session-storage',
+    tag: 'New'
+  },
+  {
     name: 'useSet',
     url: '/docs/hooks/use-set'
   },
