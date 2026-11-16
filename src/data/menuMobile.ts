@@ -262,6 +262,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'ColorSwatch',
+            url: '/docs/components/color-swatch',
+            group: 'Components'
+          },
+          {
             name: 'Carousel',
             url: '/docs/components/carousel',
             group: 'Components'

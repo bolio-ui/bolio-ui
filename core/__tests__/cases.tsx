@@ -93,6 +93,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  ColorSwatch,
   List,
   Overlay,
   LoadingOverlay,
@@ -436,6 +437,7 @@ export const cases: Array<[string, () => React.ReactElement]> = [
       </List>
     )
   ],
+  ['ColorSwatch', () => <ColorSwatch color="#3b82f6" />],
   ['Spacer', () => <Spacer h={1} />],
   ['Spoiler', () => <Spoiler>Content</Spoiler>],
   ['Spinner', () => <Spinner />],

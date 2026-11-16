@@ -10774,5 +10774,52 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/list#accessibility"
+  },
+  {
+    "title": "ColorSwatch",
+    "component": true,
+    "path": "/docs/components/color-swatch"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch General",
+    "component": false,
+    "path": "/docs/components/color-swatch#general"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch Square",
+    "component": false,
+    "path": "/docs/components/color-swatch#square"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch With a label",
+    "component": false,
+    "path": "/docs/components/color-swatch#with-a-label"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/color-swatch#apis"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "ColorSwatch Props",
+    "component": false,
+    "path": "/docs/components/color-swatch#colorswatch.props"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/color-swatch#ref"
+  },
+  {
+    "head": "ColorSwatch",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/color-swatch#accessibility"
   }
 ]

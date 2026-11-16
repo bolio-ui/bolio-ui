@@ -95,6 +95,7 @@ const {
   Slider,
   Snippet,
   Spacer,
+  ColorSwatch,
   List,
   Overlay,
   LoadingOverlay,
@@ -411,6 +412,7 @@ const cases: Array<[string, (ref: Ref) => React.ReactElement, string?]> = [
     ),
     'UL'
   ],
+  ['ColorSwatch', (ref) => <ColorSwatch ref={ref} color="#3b82f6" />],
   ['Spacer', (ref) => <Spacer ref={ref} h={1} />],
   ['Spoiler', (ref) => <Spoiler ref={ref}>Content</Spoiler>],
   ['Spinner', (ref) => <Spinner ref={ref} />],

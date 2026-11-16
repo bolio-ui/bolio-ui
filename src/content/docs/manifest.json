@@ -302,6 +302,11 @@
               "path": "/docs/components/card.mdx"
             },
             {
+              "title": "ColorSwatch",
+              "keywords": "color swatch, color, dot, circle, palette, theme",
+              "path": "/docs/components/color-swatch.mdx"
+            },
+            {
               "title": "Carousel",
               "keywords": "carousel, slider, slides, scroll snap, gallery, testimonials, swipe, slideshow",
               "path": "/docs/components/carousel.mdx"

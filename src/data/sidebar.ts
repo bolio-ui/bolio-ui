@@ -508,6 +508,11 @@ export const components = [
     url: '/docs/components/card'
   },
   {
+    name: 'ColorSwatch',
+    url: '/docs/components/color-swatch',
+    tag: 'New'
+  },
+  {
     name: 'Carousel',
     url: '/docs/components/carousel',
     tag: 'New'

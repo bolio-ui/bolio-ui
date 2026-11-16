@@ -1,0 +1,75 @@
+import Docs from 'src/templates/Docs'
+import { Playground, Attributes } from 'src/components'
+import { ColorSwatch, Group, Text } from 'core'
+
+export const meta = {
+  title: 'ColorSwatch',
+  description: 'A small circle or square that shows a color.',
+  sidebar: 'components',
+  group: 'Components',
+  index: 129
+}
+
+## ColorSwatch
+
+A small circle or square that shows a color, with a thin ring so light colors stay visible on a light page. Use it next to the name or the code of a color.
+
+<Playground
+  desc="Pass any CSS color. Use `scale` to resize it, like the other components."
+  scope={{ ColorSwatch, Group }}
+  code={`
+<Group>
+  <ColorSwatch color="#3b82f6" />
+  <ColorSwatch color="#f97316" />
+  <ColorSwatch color="#ffffff" />
+  <ColorSwatch color="#111827" scale={1.5} />
+</Group>
+`}
+/>
+
+<Playground
+  title="Square"
+  desc="Use `square` for a swatch with rounded corners."
+  scope={{ ColorSwatch, Group }}
+  code={`
+<Group>
+  <ColorSwatch color="#16a34a" square />
+  <ColorSwatch color="#dc2626" square />
+</Group>
+`}
+/>
+
+<Playground
+  title="With a label"
+  desc="Place it before the name of a color, and set `label` to name it for screen readers."
+  scope={{ ColorSwatch, Group, Text }}
+  code={`
+<Group gap={0.5}>
+  <ColorSwatch color="#3b82f6" label="Primary" />
+  <Text p my={0}>Primary</Text>
+  <Text p small type="secondary" my={0}>#3b82f6</Text>
+</Group>
+`}
+/>
+
+<Attributes edit="/content/docs/components/color-swatch.mdx">
+<Attributes.Title>ColorSwatch.Props</Attributes.Title>
+
+| Attribute  | Description                                  | Type      | Accepted values | Default       |
+| ---------- | -------------------------------------------- | --------- | --------------- | ------------- |
+| **color**  | color to show, any CSS color                 | `string`  | -               | -             |
+| **label**  | name read by screen readers                  | `string`  | -               | the color     |
+| **square** | square with rounded corners instead of a circle | `boolean` | -            | `false`       |
+| ...        | native props, passed to the root element     | `HTMLAttributes` | `'id', 'className', ...` | - |
+
+<Attributes.Title>Ref</Attributes.Title>
+
+The `ref` points at the root element.
+
+<Attributes.Title>Accessibility</Attributes.Title>
+
+The swatch has the `img` role and an `aria-label` with the `label`, or the color when there is none. Set a `label` with the name of the color, because a code such as `#3b82f6` says little to a screen reader. When the name already sits next to the swatch, set `aria-hidden` to skip it.
+
+</Attributes>
+
+export default Docs.withMeta(meta)
