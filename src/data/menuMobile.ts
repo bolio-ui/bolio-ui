@@ -377,6 +377,11 @@ export const menuMobile = [
             group: 'Components'
           },
           {
+            name: 'Overlay',
+            url: '/docs/components/overlay',
+            group: 'Components'
+          },
+          {
             name: 'DonutChart',
             url: '/docs/components/donut-chart',
             group: 'Components'

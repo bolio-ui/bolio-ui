@@ -417,6 +417,11 @@
               "path": "/docs/components/flex.mdx"
             },
             {
+              "title": "Overlay",
+              "keywords": "overlay, loading overlay, dim, block, blur, backdrop, loading",
+              "path": "/docs/components/overlay.mdx"
+            },
+            {
               "title": "DonutChart",
               "keywords": "donut chart, doughnut, ring, proportion, chart, data visualization, recharts",
               "path": "/docs/components/donut-chart.mdx"

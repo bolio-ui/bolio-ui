@@ -196,6 +196,11 @@ export const components = [
     tag: 'New'
   },
   {
+    name: 'Overlay',
+    url: '/docs/components/overlay',
+    tag: 'New'
+  },
+  {
     name: 'FileInput',
     url: '/docs/components/file-input',
     tag: 'New'

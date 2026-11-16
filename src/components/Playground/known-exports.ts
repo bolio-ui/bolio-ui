@@ -96,6 +96,8 @@ export const CORE_EXPORT_NAMES = new Set([
   'Slider',
   'Snippet',
   'Spacer',
+  'Overlay',
+  'LoadingOverlay',
   'Flex',
   'Stack',
   'Group',

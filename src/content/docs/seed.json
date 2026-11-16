@@ -10674,5 +10674,52 @@
     "title": "Accessibility",
     "component": false,
     "path": "/docs/components/flex#accessibility"
+  },
+  {
+    "title": "Overlay",
+    "component": true,
+    "path": "/docs/components/overlay"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay General",
+    "component": false,
+    "path": "/docs/components/overlay#general"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay Loading",
+    "component": false,
+    "path": "/docs/components/overlay#loading"
+  },
+  {
+    "head": "Overlay",
+    "title": "APIs",
+    "component": false,
+    "path": "/docs/components/overlay#apis"
+  },
+  {
+    "head": "Overlay",
+    "title": "Overlay Props",
+    "component": false,
+    "path": "/docs/components/overlay#overlay.props"
+  },
+  {
+    "head": "Overlay",
+    "title": "LoadingOverlay Props",
+    "component": false,
+    "path": "/docs/components/overlay#loadingoverlay.props"
+  },
+  {
+    "head": "Overlay",
+    "title": "Ref",
+    "component": false,
+    "path": "/docs/components/overlay#ref"
+  },
+  {
+    "head": "Overlay",
+    "title": "Accessibility",
+    "component": false,
+    "path": "/docs/components/overlay#accessibility"
   }
 ]

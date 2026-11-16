@@ -313,6 +313,10 @@ export type { SnippetProps } from './Snippet'
 export { default as Spacer } from './Spacer'
 export type { SpacerProps } from './Spacer'
 
+export { default as Overlay } from './Overlay'
+export { LoadingOverlay } from './Overlay'
+export type { OverlayProps, LoadingOverlayProps } from './Overlay'
+
 export { default as Flex } from './Flex'
 export { Stack } from './Flex'
 export { Group } from './Flex'
