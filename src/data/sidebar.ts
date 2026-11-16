@@ -159,6 +159,11 @@ export const components = [
     url: '/docs/components/overview'
   },
   {
+    name: 'Layout',
+    url: '',
+    icon: 'Layout'
+  },
+  {
     name: 'Affix',
     url: '/docs/components/affix',
     tag: 'New'
@@ -174,9 +179,25 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'MatrixChart',
-    url: '/docs/components/matrix-chart',
+    name: 'Col',
+    url: '/docs/components/col'
+  },
+  {
+    name: 'Container',
+    url: '/docs/components/container'
+  },
+  {
+    name: 'Divider',
+    url: '/docs/components/divider'
+  },
+  {
+    name: 'FileInput',
+    url: '/docs/components/file-input',
     tag: 'New'
+  },
+  {
+    name: 'Grid',
+    url: '/docs/components/grid'
   },
   {
     name: 'Mention',
@@ -184,46 +205,85 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'AreaChart',
-    url: '/docs/components/area-chart',
+    name: 'OverflowList',
+    url: '/docs/components/overflow-list',
     tag: 'New'
   },
   {
-    name: 'Autocomplete',
-    url: '/docs/components/autocomplete',
+    name: 'Page',
+    url: '/docs/components/page'
+  },
+  {
+    name: 'RollingNumber',
+    url: '/docs/components/rolling-number',
     tag: 'New'
   },
   {
-    name: 'Avatar',
-    url: '/docs/components/avatar'
+    name: 'Row',
+    url: '/docs/components/row'
   },
   {
-    name: 'Badge',
-    url: '/docs/components/badge'
-  },
-  {
-    name: 'BarChart',
-    url: '/docs/components/bar-chart',
+    name: 'Splitter',
+    url: '/docs/components/splitter',
     tag: 'New'
   },
   {
-    name: 'BarsList',
-    url: '/docs/components/bars-list',
+    name: 'Schedule',
+    url: '/docs/components/schedule',
+    tag: 'Updated'
+  },
+  {
+    name: 'Scroll Area',
+    url: '/docs/components/scroll-area',
     tag: 'New'
   },
   {
-    name: 'Breadcrumbs',
-    url: '/docs/components/breadcrumbs'
+    name: 'Section',
+    url: '/docs/components/section'
   },
   {
-    name: 'BubbleChart',
-    url: '/docs/components/bubble-chart',
+    name: 'Spacer',
+    url: '/docs/components/spacer'
+  },
+  {
+    name: 'Typography',
+    url: '',
+    icon: 'Type'
+  },
+  {
+    name: 'Code',
+    url: '/docs/components/code'
+  },
+  {
+    name: 'DateTimePicker',
+    url: '/docs/components/date-time-picker',
     tag: 'New'
   },
   {
-    name: 'BulletChart',
-    url: '/docs/components/bullet-chart',
+    name: 'Description',
+    url: '/docs/components/description'
+  },
+  {
+    name: 'JsonViewer',
+    url: '/docs/components/json-viewer',
     tag: 'New'
+  },
+  {
+    name: 'Keyboard',
+    url: '/docs/components/keyboard'
+  },
+  {
+    name: 'Link',
+    url: '/docs/components/link'
+  },
+  {
+    name: 'Text',
+    url: '/docs/components/text'
+  },
+  {
+    name: 'Buttons',
+    url: '',
+    icon: 'MousePointer'
   },
   {
     name: 'Burger',
@@ -245,26 +305,18 @@ export const components = [
     url: '/docs/components/button-group'
   },
   {
-    name: 'Calendar',
-    url: '/docs/components/calendar',
+    name: 'Menu',
+    url: '/docs/components/menu',
     tag: 'Updated'
   },
   {
-    name: 'CandlestickChart',
-    url: '/docs/components/candlestick-chart',
-    tag: 'New'
+    name: 'Forms',
+    url: '',
+    icon: 'Edit3'
   },
   {
-    name: 'Capacity',
-    url: '/docs/components/capacity'
-  },
-  {
-    name: 'Card',
-    url: '/docs/components/card'
-  },
-  {
-    name: 'Carousel',
-    url: '/docs/components/carousel',
+    name: 'Autocomplete',
+    url: '/docs/components/autocomplete',
     tag: 'New'
   },
   {
@@ -275,19 +327,6 @@ export const components = [
   {
     name: 'Checkbox',
     url: '/docs/components/checkbox'
-  },
-  {
-    name: 'Code',
-    url: '/docs/components/code'
-  },
-  {
-    name: 'Col',
-    url: '/docs/components/col'
-  },
-  {
-    name: 'Collapse',
-    url: '/docs/components/collapse',
-    tag: 'Updated'
   },
   {
     name: 'Color Input',
@@ -305,27 +344,13 @@ export const components = [
     tag: 'Updated'
   },
   {
-    name: 'Command',
-    url: '/docs/components/command',
-    tag: 'Updated'
-  },
-  {
-    name: 'CompositeChart',
-    url: '/docs/components/composite-chart',
+    name: 'MiniCalendar',
+    url: '/docs/components/mini-calendar',
     tag: 'New'
   },
   {
-    name: 'Container',
-    url: '/docs/components/container'
-  },
-  {
-    name: 'Copy Button',
-    url: '/docs/components/copy-button',
-    tag: 'New'
-  },
-  {
-    name: 'Context Menu',
-    url: '/docs/components/context-menu',
+    name: 'MonthPicker',
+    url: '/docs/components/month-picker',
     tag: 'New'
   },
   {
@@ -339,52 +364,6 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'DateTimePicker',
-    url: '/docs/components/date-time-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Description',
-    url: '/docs/components/description'
-  },
-  {
-    name: 'Diff',
-    url: '/docs/components/diff',
-    tag: 'New'
-  },
-  {
-    name: 'Display',
-    url: '/docs/components/display'
-  },
-  {
-    name: 'Divider',
-    url: '/docs/components/divider'
-  },
-  {
-    name: 'DonutChart',
-    url: '/docs/components/donut-chart',
-    tag: 'New'
-  },
-  {
-    name: 'Dot',
-    url: '/docs/components/dot'
-  },
-  {
-    name: 'Drawer',
-    url: '/docs/components/drawer',
-    tag: 'Updated'
-  },
-  {
-    name: 'EmojiPicker',
-    url: '/docs/components/emoji-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Empty State',
-    url: '/docs/components/empty-state',
-    tag: 'New'
-  },
-  {
     name: 'Dropzone',
     url: '/docs/components/dropzone',
     tag: 'New'
@@ -394,127 +373,16 @@ export const components = [
     url: '/docs/components/fieldset'
   },
   {
-    name: 'FunnelChart',
-    url: '/docs/components/funnel-chart',
-    tag: 'New'
-  },
-  {
-    name: 'GaugeChart',
-    url: '/docs/components/gauge-chart',
-    tag: 'New'
-  },
-  {
-    name: 'FileInput',
-    url: '/docs/components/file-input',
-    tag: 'New'
-  },
-  {
-    name: 'Grid',
-    url: '/docs/components/grid'
-  },
-  {
-    name: 'Heatmap',
-    url: '/docs/components/heatmap',
-    tag: 'New'
-  },
-  {
-    name: 'Icons',
-    url: '/docs/components/icons'
-  },
-  {
-    name: 'Image',
-    url: '/docs/components/image'
-  },
-  {
-    name: 'Image Zoom',
-    url: '/docs/components/image-zoom',
-    tag: 'New'
-  },
-  {
     name: 'Input',
     url: '/docs/components/input'
-  },
-  {
-    name: 'JsonViewer',
-    url: '/docs/components/json-viewer',
-    tag: 'New'
-  },
-  {
-    name: 'Keyboard',
-    url: '/docs/components/keyboard'
-  },
-  {
-    name: 'LineChart',
-    url: '/docs/components/line-chart',
-    tag: 'New'
-  },
-  {
-    name: 'Link',
-    url: '/docs/components/link'
-  },
-  {
-    name: 'Loading',
-    url: '/docs/components/loading'
-  },
-  {
-    name: 'Mark',
-    url: '/docs/components/mark',
-    tag: 'New'
-  },
-  {
-    name: 'Marquee',
-    url: '/docs/components/marquee',
-    tag: 'New'
-  },
-  {
-    name: 'Menu',
-    url: '/docs/components/menu',
-    tag: 'Updated'
-  },
-  {
-    name: 'MiniCalendar',
-    url: '/docs/components/mini-calendar',
-    tag: 'New'
-  },
-  {
-    name: 'MonthPicker',
-    url: '/docs/components/month-picker',
-    tag: 'New'
-  },
-  {
-    name: 'Modal',
-    url: '/docs/components/modal',
-    tag: 'Updated'
-  },
-  {
-    name: 'ModalsProvider',
-    url: '/docs/components/modals-provider',
-    tag: 'New'
-  },
-  {
-    name: 'Note',
-    url: '/docs/components/note'
   },
   {
     name: 'Number Input',
     url: '/docs/components/number-input'
   },
   {
-    name: 'OverflowList',
-    url: '/docs/components/overflow-list',
-    tag: 'New'
-  },
-  {
-    name: 'Page',
-    url: '/docs/components/page'
-  },
-  {
-    name: 'Pagination',
-    url: '/docs/components/pagination'
-  },
-  {
-    name: 'PieChart',
-    url: '/docs/components/pie-chart',
+    name: 'Tags Input',
+    url: '/docs/components/tags-input',
     tag: 'New'
   },
   {
@@ -528,30 +396,6 @@ export const components = [
     tag: 'New'
   },
   {
-    name: 'Popover',
-    url: '/docs/components/popover',
-    tag: 'Updated'
-  },
-  {
-    name: 'Progress',
-    url: '/docs/components/progress'
-  },
-  {
-    name: 'QuarterPicker',
-    url: '/docs/components/quarter-picker',
-    tag: 'New'
-  },
-  {
-    name: 'RadarChart',
-    url: '/docs/components/radar-chart',
-    tag: 'New'
-  },
-  {
-    name: 'RadialBarChart',
-    url: '/docs/components/radial-bar-chart',
-    tag: 'New'
-  },
-  {
     name: 'Radio',
     url: '/docs/components/radio',
     tag: 'Updated'
@@ -559,15 +403,6 @@ export const components = [
   {
     name: 'Rating',
     url: '/docs/components/rating'
-  },
-  {
-    name: 'RollingNumber',
-    url: '/docs/components/rolling-number',
-    tag: 'New'
-  },
-  {
-    name: 'Row',
-    url: '/docs/components/row'
   },
   {
     name: 'Segmented Control',
@@ -580,105 +415,8 @@ export const components = [
     tag: 'Updated'
   },
   {
-    name: 'Skeleton',
-    url: '/docs/components/skeleton'
-  },
-  {
-    name: 'SankeyChart',
-    url: '/docs/components/sankey-chart',
-    tag: 'New'
-  },
-  {
-    name: 'ScatterChart',
-    url: '/docs/components/scatter-chart',
-    tag: 'New'
-  },
-  {
-    name: 'Schedule',
-    url: '/docs/components/schedule',
-    tag: 'Updated'
-  },
-  {
-    name: 'Scroll Area',
-    url: '/docs/components/scroll-area',
-    tag: 'New'
-  },
-  {
-    name: 'Section',
-    url: '/docs/components/section'
-  },
-  {
     name: 'Slider',
     url: '/docs/components/slider'
-  },
-  {
-    name: 'Snippet',
-    url: '/docs/components/snippet'
-  },
-  {
-    name: 'Spacer',
-    url: '/docs/components/spacer'
-  },
-  {
-    name: 'Sparkline',
-    url: '/docs/components/sparkline',
-    tag: 'New'
-  },
-  {
-    name: 'Spoiler',
-    url: '/docs/components/spoiler',
-    tag: 'New'
-  },
-  {
-    name: 'Spinner',
-    url: '/docs/components/spinner'
-  },
-  {
-    name: 'Splitter',
-    url: '/docs/components/splitter',
-    tag: 'New'
-  },
-  {
-    name: 'Stat',
-    url: '/docs/components/stat',
-    tag: 'New'
-  },
-  {
-    name: 'Stepper',
-    url: '/docs/components/stepper'
-  },
-  {
-    name: 'SunburstChart',
-    url: '/docs/components/sunburst-chart',
-    tag: 'New'
-  },
-  {
-    name: 'Table',
-    url: '/docs/components/table',
-    tag: 'Updated'
-  },
-  {
-    name: 'Tabs',
-    url: '/docs/components/tabs'
-  },
-  {
-    name: 'Tag',
-    url: '/docs/components/tag',
-    tag: 'Updated'
-  },
-  {
-    name: 'Timeline',
-    url: '/docs/components/timeline',
-    tag: 'New'
-  },
-  {
-    name: 'Tags Input',
-    url: '/docs/components/tags-input',
-    tag: 'New'
-  },
-  {
-    name: 'Text',
-    url: '/docs/components/text'
   },
   {
     name: 'Textarea',
@@ -703,23 +441,200 @@ export const components = [
     url: '/docs/components/toggle'
   },
   {
-    name: 'Toolbar',
-    url: '/docs/components/toolbar',
+    name: 'Data Display',
+    url: '',
+    icon: 'Database'
+  },
+  {
+    name: 'AreaChart',
+    url: '/docs/components/area-chart',
     tag: 'New'
   },
   {
-    name: 'Tooltip',
-    url: '/docs/components/tooltip',
+    name: 'Avatar',
+    url: '/docs/components/avatar'
+  },
+  {
+    name: 'Badge',
+    url: '/docs/components/badge'
+  },
+  {
+    name: 'BarChart',
+    url: '/docs/components/bar-chart',
+    tag: 'New'
+  },
+  {
+    name: 'BarsList',
+    url: '/docs/components/bars-list',
+    tag: 'New'
+  },
+  {
+    name: 'BubbleChart',
+    url: '/docs/components/bubble-chart',
+    tag: 'New'
+  },
+  {
+    name: 'BulletChart',
+    url: '/docs/components/bullet-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Calendar',
+    url: '/docs/components/calendar',
     tag: 'Updated'
   },
   {
-    name: 'Tour',
-    url: '/docs/components/tour',
+    name: 'CandlestickChart',
+    url: '/docs/components/candlestick-chart',
     tag: 'New'
   },
   {
-    name: 'Tree',
-    url: '/docs/components/tree',
+    name: 'Card',
+    url: '/docs/components/card'
+  },
+  {
+    name: 'Carousel',
+    url: '/docs/components/carousel',
+    tag: 'New'
+  },
+  {
+    name: 'Collapse',
+    url: '/docs/components/collapse',
+    tag: 'Updated'
+  },
+  {
+    name: 'CompositeChart',
+    url: '/docs/components/composite-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Diff',
+    url: '/docs/components/diff',
+    tag: 'New'
+  },
+  {
+    name: 'Display',
+    url: '/docs/components/display'
+  },
+  {
+    name: 'DonutChart',
+    url: '/docs/components/donut-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Dot',
+    url: '/docs/components/dot'
+  },
+  {
+    name: 'FunnelChart',
+    url: '/docs/components/funnel-chart',
+    tag: 'New'
+  },
+  {
+    name: 'GaugeChart',
+    url: '/docs/components/gauge-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Heatmap',
+    url: '/docs/components/heatmap',
+    tag: 'New'
+  },
+  {
+    name: 'Icons',
+    url: '/docs/components/icons'
+  },
+  {
+    name: 'Image',
+    url: '/docs/components/image'
+  },
+  {
+    name: 'Image Zoom',
+    url: '/docs/components/image-zoom',
+    tag: 'New'
+  },
+  {
+    name: 'LineChart',
+    url: '/docs/components/line-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Mark',
+    url: '/docs/components/mark',
+    tag: 'New'
+  },
+  {
+    name: 'Marquee',
+    url: '/docs/components/marquee',
+    tag: 'New'
+  },
+  {
+    name: 'MatrixChart',
+    url: '/docs/components/matrix-chart',
+    tag: 'New'
+  },
+  {
+    name: 'PieChart',
+    url: '/docs/components/pie-chart',
+    tag: 'New'
+  },
+  {
+    name: 'QuarterPicker',
+    url: '/docs/components/quarter-picker',
+    tag: 'New'
+  },
+  {
+    name: 'RadarChart',
+    url: '/docs/components/radar-chart',
+    tag: 'New'
+  },
+  {
+    name: 'RadialBarChart',
+    url: '/docs/components/radial-bar-chart',
+    tag: 'New'
+  },
+  {
+    name: 'SankeyChart',
+    url: '/docs/components/sankey-chart',
+    tag: 'New'
+  },
+  {
+    name: 'ScatterChart',
+    url: '/docs/components/scatter-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Snippet',
+    url: '/docs/components/snippet'
+  },
+  {
+    name: 'Sparkline',
+    url: '/docs/components/sparkline',
+    tag: 'New'
+  },
+  {
+    name: 'Stat',
+    url: '/docs/components/stat',
+    tag: 'New'
+  },
+  {
+    name: 'SunburstChart',
+    url: '/docs/components/sunburst-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Table',
+    url: '/docs/components/table',
+    tag: 'Updated'
+  },
+  {
+    name: 'Tag',
+    url: '/docs/components/tag',
+    tag: 'Updated'
+  },
+  {
+    name: 'Timeline',
+    url: '/docs/components/timeline',
     tag: 'New'
   },
   {
@@ -745,6 +660,131 @@ export const components = [
   {
     name: 'WaffleChart',
     url: '/docs/components/waffle-chart',
+    tag: 'New'
+  },
+  {
+    name: 'Feedback',
+    url: '',
+    icon: 'Bell'
+  },
+  {
+    name: 'Capacity',
+    url: '/docs/components/capacity'
+  },
+  {
+    name: 'EmojiPicker',
+    url: '/docs/components/emoji-picker',
+    tag: 'New'
+  },
+  {
+    name: 'Empty State',
+    url: '/docs/components/empty-state',
+    tag: 'New'
+  },
+  {
+    name: 'Loading',
+    url: '/docs/components/loading'
+  },
+  {
+    name: 'ModalsProvider',
+    url: '/docs/components/modals-provider',
+    tag: 'New'
+  },
+  {
+    name: 'Note',
+    url: '/docs/components/note'
+  },
+  {
+    name: 'Progress',
+    url: '/docs/components/progress'
+  },
+  {
+    name: 'Skeleton',
+    url: '/docs/components/skeleton'
+  },
+  {
+    name: 'Spoiler',
+    url: '/docs/components/spoiler',
+    tag: 'New'
+  },
+  {
+    name: 'Spinner',
+    url: '/docs/components/spinner'
+  },
+  {
+    name: 'Overlays',
+    url: '',
+    icon: 'Layers'
+  },
+  {
+    name: 'Drawer',
+    url: '/docs/components/drawer',
+    tag: 'Updated'
+  },
+  {
+    name: 'Copy Button',
+    url: '/docs/components/copy-button',
+    tag: 'New'
+  },
+  {
+    name: 'Context Menu',
+    url: '/docs/components/context-menu',
+    tag: 'New'
+  },
+  {
+    name: 'Modal',
+    url: '/docs/components/modal',
+    tag: 'Updated'
+  },
+  {
+    name: 'Popover',
+    url: '/docs/components/popover',
+    tag: 'Updated'
+  },
+  {
+    name: 'Toolbar',
+    url: '/docs/components/toolbar',
+    tag: 'New'
+  },
+  {
+    name: 'Tooltip',
+    url: '/docs/components/tooltip',
+    tag: 'Updated'
+  },
+  {
+    name: 'Navigation',
+    url: '',
+    icon: 'Compass'
+  },
+  {
+    name: 'Breadcrumbs',
+    url: '/docs/components/breadcrumbs'
+  },
+  {
+    name: 'Command',
+    url: '/docs/components/command',
+    tag: 'Updated'
+  },
+  {
+    name: 'Pagination',
+    url: '/docs/components/pagination'
+  },
+  {
+    name: 'Stepper',
+    url: '/docs/components/stepper'
+  },
+  {
+    name: 'Tour',
+    url: '/docs/components/tour',
+    tag: 'New'
+  },
+  {
+    name: 'Tabs',
+    url: '/docs/components/tabs'
+  },
+  {
+    name: 'Tree',
+    url: '/docs/components/tree',
     tag: 'New'
   }
 ]
