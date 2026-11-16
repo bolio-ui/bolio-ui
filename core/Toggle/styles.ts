@@ -11,7 +11,7 @@ export const getColors = (
 ): SelectColor => {
   const colors: { [key in NormalTypes]: SelectColor } = {
     default: {
-      bg: palette.success
+      bg: palette.primary
     },
     primary: {
       bg: palette.primary

@@ -136,12 +136,11 @@ const RadioComponent = React.forwardRef<
         : theme.palette.foreground,
       '--radio-cursor': isDisabled ? 'not-allowed' : 'pointer',
       '--radio-color': isDisabled ? theme.palette.accents_3 : color,
-      '--radio-border': selfChecked
-        ? 'var(--radio-color)'
-        : isDisabled
-          ? theme.palette.accents_2
-          : `color-mix(in srgb, var(--radio-color) 55%, ${theme.palette.background})`,
+      '--radio-border': isDisabled
+        ? theme.palette.accents_2
+        : theme.palette.accents_4,
       '--radio-hover-border': isDisabled ? undefined : 'var(--radio-color)',
+      '--radio-mark': theme.palette.background,
       '--radio-bg': isDisabled
         ? theme.palette.accents_1
         : theme.palette.background

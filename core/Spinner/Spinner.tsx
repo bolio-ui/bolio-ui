@@ -26,7 +26,7 @@ const SpinnerComponent = React.forwardRef<
     height: SCALES.height(1.25),
     padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
     margin: `${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)}`,
-    '--spinner-color': theme.palette.foreground,
+    '--spinner-color': theme.palette.primary,
     '--spinner-radius': theme.layout.radius,
     ...style
   } as React.CSSProperties

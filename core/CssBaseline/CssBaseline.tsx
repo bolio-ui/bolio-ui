@@ -63,7 +63,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({
           font-weight: 400;
           color: inherit;
           letter-spacing: -0.005625em;
-          font-family: ${theme.font.sans};
+          font-family: inherit;
         }
 
         p {

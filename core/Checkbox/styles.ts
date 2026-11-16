@@ -6,7 +6,7 @@ export const getColors = (
   status?: NormalTypes
 ): string => {
   const colors: { [key in NormalTypes]: string } = {
-    default: palette.foreground,
+    default: palette.primary,
     primary: palette.primary,
     secondary: palette.secondary,
     success: palette.success,

@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useId, useMemo, useState } from 'react'
 import { useCheckbox } from './CheckboxContext'
-import CheckboxIcon from './CheckboxIcon'
 import logWarning from '../utils/log-warning'
 import type { NormalTypes } from '../utils/prop-types'
 import { getColors } from './styles'
@@ -116,9 +115,16 @@ const CheckboxComponent = React.forwardRef<
 
     const checkboxStyle = {
       '--checkbox-size': SCALES.font(1),
-      '--checkbox-focus-color': theme.palette.primary,
+      '--checkbox-color': isDisabled ? theme.palette.accents_3 : fill,
+      '--checkbox-border': isDisabled
+        ? theme.palette.accents_2
+        : theme.palette.accents_4,
+      '--checkbox-bg': isDisabled
+        ? theme.palette.accents_1
+        : theme.palette.background,
+      '--checkbox-hover-border': isDisabled ? undefined : fill,
+      '--checkbox-mark': theme.palette.background,
       cursor: isDisabled ? 'not-allowed' : 'pointer',
-      opacity: isDisabled ? 0.75 : 1,
       width: SCALES.width(1, 'auto'),
       height: SCALES.height(1, 'var(--checkbox-size)'),
       padding: `${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)}`,
@@ -128,11 +134,6 @@ const CheckboxComponent = React.forwardRef<
     return (
       <>
         <label className={classes} style={checkboxStyle}>
-          <CheckboxIcon
-            fill={fill}
-            disabled={isDisabled}
-            checked={selfChecked}
-          />
           <input
             ref={ref}
             type="checkbox"
@@ -144,6 +145,17 @@ const CheckboxComponent = React.forwardRef<
             aria-describedby={describedBy}
             className={styles.input}
           />
+          <span className={styles.box}>
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M2.5 6.25 5 8.75l4.5-5.5"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
           <span
             className={styles.text}
             style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}

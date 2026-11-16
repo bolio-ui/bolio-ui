@@ -47,6 +47,7 @@
   border: 1.5px solid var(--radio-border);
   background-color: var(--radio-bg);
   transition:
+    background-color 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   display: inline-grid;
@@ -60,7 +61,7 @@
   height: 50%;
   transform: scale(0);
   border-radius: 50%;
-  background-color: var(--radio-color);
+  background-color: var(--radio-mark);
   transition: transform 0.2s ease;
 }
 
@@ -68,7 +69,9 @@
   border-color: var(--radio-hover-border);
 }
 
-.active {
+.active,
+.label:hover .active {
+  background-color: var(--radio-color);
   border-color: var(--radio-color);
 }
 
